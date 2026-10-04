@@ -27,6 +27,10 @@ with the review's findings.
 
     python probe_v3.py ../../models/coop-deberta-v3-ens3-v3 ../../models/coop-deberta-v3-ens3-v2 > probe_v3.log
                        # final v3, shipped v2 (the defaults); jev environment; writes results_v3_probe.json
+    python probe_v3.py ../../models/coop-deberta-v3-ens3-v31 ../../models/coop-deberta-v3-ens3-v3 results_v31_probe.json > probe_v31.log
+                       # another pair of bots (the first is printed in the "v3" column, the second in "v2"); a
+                       # third argument names the results file. Seed set v31 was written against these very
+                       # probes, so for a v31 model they show whether the fix took, not how well it generalises
 """
 import gc, hashlib, io, json, os, sys
 from collections import Counter
@@ -313,7 +317,7 @@ def main():
                         "Per line and bot: the gate's intent, its confidence, the pick (NONE under the threshold), decide()'s action",
                "bots": info, "summary": summary, "seeds": res_e,
                "probes": {k: [dict(r, **{b: OUT[b][r["text"]] for b in OUT}) for r in sl] for k, sl in P.items()}},
-              io.open(os.path.join(HERE, "results_v3_probe.json"), "w", encoding="utf-8"), indent=1)
+              io.open(os.path.join(HERE, sys.argv[3] if len(sys.argv) > 3 else "results_v3_probe.json"), "w", encoding="utf-8"), indent=1)
     log_after = hashlib.sha256(io.open(B.LOG, "rb").read()).hexdigest() if os.path.exists(B.LOG) else None
     assert log_after == log_before, "coop_bot_log.jsonl changed during the probes"
 
