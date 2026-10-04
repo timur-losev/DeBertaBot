@@ -10,16 +10,28 @@ models/coop-deberta-v3-base/cpp/):
                          negations / signals behind punctuation, newlines and non-ASCII letters
   dialogue.jsonl         a scripted conversation through coop_bot.Bot (the real model): per line the
                          picked intent, its confidence (probability, or family mass under the family
-                         gate), the action and the order still queued after it
+                         gate), the action, the order still queued after it, the places, and on
+                         "execute" the order that fires with its places and its "other" slot
   decide_tests.jsonl     coop_bot.Bot.decide on constructed probabilities, one conversation per gate,
                          so that every branch (negated, say again, ignore, execute, go, wait, queued,
-                         act, "other", the threshold boundary) is compared, no model
+                         act, "other", the threshold boundary) is compared, no model; then the queue
+                         case by case (a negated order, a second order, "say again" and a negation
+                         under the threshold while an order with a place waits; "other" kept with the
+                         order; the lines that leave it alone; the first label queued; an order
+                         without a place; the slots and places under every action), and two short
+                         conversations per gate under a threshold that is not the config's (0.95,
+                         0.25), as the chat's /t sets it. The generator stops if a gate's
+                         conversation misses an action. It also stops for a threshold outside
+                         0.35..0.89, where its fixed probabilities no longer fall on the intended side
   location_tests.jsonl   locations.record() per line: the tokenizer lines, the developer's regression
                          lines, the v3 lines and the location seeds
   gate_tests.jsonl       coop_bot.Bot.pick under both gates, no model: on the golden probabilities and
                          on constructed rows (exact ties across and inside families, the top label
                          outside the top-mass family, tied family masses, random rows); every value
                          is a float32, as the model's probabilities are
+
+COOP_TAG is not read here: the tokenizer and location line sets follow golden.jsonl, which
+export_cpp.py writes under that tag (762 lines for v21, 1062 for v3).
 
     python gen_tests.py [BOT_DIR]      # jev environment; default models/coop-deberta-v3-ens3-v2 (shipped)
 """
@@ -114,7 +126,8 @@ def dialogue():
         _, rec = bot.respond(text)
         rows.append({"text": text, "intent": rec["intent"], "prob": rec["prob"], "action": rec["action"],
                      "pending": bot.pending, "other": rec["other"], "places": rec["places"],
-                     "executed_places": rec["executed_places"]})
+                     "executed": rec["executed"], "executed_places": rec["executed_places"],
+                     "executed_other": rec["executed_other"]})
     os.remove(coop_bot.LOG)
     return rows, bot
 
@@ -123,12 +136,35 @@ def f32(x):
     return struct.unpack("f", struct.pack("f", x))[0]
 
 
+def f32_below(x):
+    """The largest float32 strictly below x > 0. float32(x) itself is not always it: 0.58 rounds
+    down, 0.60 rounds up (0.6000000238), 0.50 is exact."""
+    y = f32(x)
+    if y < x:
+        return y
+    return struct.unpack("f", struct.pack("I", struct.unpack("I", struct.pack("f", y))[0] - 1))[0]   # the one before y
+
+
+ACTIONS = {"act", "execute", "go", "ignore", "negated", "queued", "say_again", "wait"}
+
+
 def decide_tests(bot):
     """Every branch of Bot.decide with constructed probabilities, as one conversation per gate: the
     model reads leading negations as NONE / WAIT by itself, so real lines never reach 'negated'."""
     L = bot.labels
     ix = {k: i for i, k in enumerate(L)}
     thr = bot.threshold
+    # the threshold boundary under the family gate, where the confidence is a sum of float32 taken in
+    # double: the threshold itself cut into three float32 (a its leading bits, b the next ones, c the
+    # rest; their sums are exact) and given to FLASH, SMOKE and FRAG, one family. Without c the mass is
+    # under the threshold by less than a float32 can show, so only a comparison in double says again;
+    # with c it is the threshold exactly, which is not under it: the bot acts
+    a = f32(thr * (1 - 2.0 ** -12))
+    b = f32_below(thr - a)
+    c = thr - a - b
+    mates = {k: 0.0 for k in L if bot.family[k] == bot.family["FLASH"]}
+    under, exact = dict(mates, FLASH=a, SMOKE=b), dict(mates, FLASH=a, SMOKE=b, FRAG=c)
+    assert {"SMOKE", "FRAG"} <= set(mates) and c == f32(c) > 0 and a + b + c == thr and f32(a + b) >= f32(thr), (thr, a, b, c)
 
     def probs(**named):
         rest = max(0.0, 1.0 - sum(named.values())) / max(1, len(L) - len(named))
@@ -163,23 +199,108 @@ def decide_tests(bot):
         ("never mind", dict(WAIT=0.9)),                             # wait: the queued places go too
         ("go", dict(GO_NOW=0.9)),                                   # go, nothing queued, no places
         ("open the back door", dict(OPEN=0.9)),                     # act, flag unknown_modifier
-        ("at the threshold", {"TAKE_COVER" if "TAKE_COVER" in ix else "FLANK": thr}),   # float32(thr) < thr
+        # the largest float32 under the threshold: say again (TAKE_COVER is alone in its family)
+        ("at the threshold", {"TAKE_COVER" if "TAKE_COVER" in ix else "FLANK": f32_below(thr)}),
         ("just over it", {"TAKE_COVER" if "TAKE_COVER" in ix else "FLANK": thr + 0.001}),
+        ("the family sum just under it", under, "say_again"),      # family: a float32 comparison would act
+        ("the family sum exactly on it", exact),                    # top: say again (FLASH alone); family: act
+        # the queue, case by case (a third element: the action the step must give under both gates).
+        # A negated order drops the queued order, its place and its "other" slot
+        ("smoke the other door on my go", dict(SMOKE=0.9), "queued"),       # place: door; other
+        ("don't, just breach it", dict(BREACH=0.9), "negated"),
+        ("go", dict(GO_NOW=0.95), "go"),                            # nothing left to execute
+        # a second order on signal replaces the first, its place and its "other" slot
+        ("open the other window on my go", dict(OPEN=0.9), "queued"),       # place: window; other
+        ("flash the south window on my go", dict(FLASH=0.9), "queued"),     # place: window south; no other
+        ("go", dict(GO_NOW=0.95), "execute"),                       # FLASH at window south, without "other"
+        # "say again" leaves the queued order alone
+        ("breach the main door on my go", dict(BREACH=0.9), "queued"),
+        ("hmm what", dict(FLANK=0.30, DRONE=0.25), "say_again"),
+        ("go", dict(GO_NOW=0.95), "execute"),                       # BREACH at door main
+        # the negation is looked at before the threshold: under it, a negated order still drops the queue
+        ("smoke the north door on my go", dict(SMOKE=0.9), "queued"),
+        ("don't know, maybe flank", dict(FLANK=0.30, DRONE=0.25), "negated"),
+        ("go, i'm on the roof", dict(GO_NOW=0.9), "go"),            # nothing queued: the roof is not an executed place
+        # "other" waits with the order and comes back when it fires; the GO line's own slot stays its own
+        ("open the other window on my go", dict(OPEN=0.9), "queued"),
+        ("go", dict(GO_NOW=0.95), "execute"),                       # OPEN at window, executed_other
+        ("i got north door, you take the other one on my go", dict(HOLD_ANGLE=0.9), "queued"),
+        ("go", dict(GO_NOW=0.95), "execute"),                       # the matcher's flag "other" (rule 5c) and the slot
+        ("breach on my go", dict(BREACH=0.9), "queued"),
+        ("go, they're on the other side", dict(GO_NOW=0.9), "execute"),     # other (this line's), no executed_other
+        ("take the other stairs on my signal", dict(MOVE_TO=0.9), "queued"),
+        ("wait", dict(WAIT=0.9), "wait"),                           # drops the order with its place and its "other"
+        # what leaves the queued order alone, and what the signal's words do not change: only an order is queued
+        ("smoke the north door on my go", dict(SMOKE=0.9), "queued"),
+        ("cover me", dict(COVER_ME=0.9), "act"),                    # an order for now: the queued one waits on
+        ("he said on three", dict(NONE=0.95), "ignore"),            # a callout, whatever its words
+        ("go?", dict(GO_NOW=0.30, DRONE=0.25), "say_again"),        # GO under the threshold executes nothing
+        ("go on three", dict(GO_NOW=0.9), "execute"),               # GO fires at once: SMOKE at door north
+        ("flank on my go", dict(FLANK=0.9), "queued"),
+        ("wait?", dict(WAIT=0.30, DRONE=0.25), "say_again"),        # WAIT under the threshold drops nothing
+        ("wait for my signal", dict(WAIT=0.9), "wait"),             # WAIT drops the order, it is not queued itself
+        # label 0 queued (the engine's "nothing queued" is -1, not 0), with its place and its "other"
+        ("follow me to the other door on my go", dict(FOLLOW_ME=0.9), "queued"),
+        ("go", dict(GO_NOW=0.95), "execute"),
+        # a queued order without a place: the GO line's place does not become the executed place
+        ("breach on my go", dict(BREACH=0.9), "queued"),
+        ("go, i'm on the roof", dict(GO_NOW=0.9), "execute"),
+        # "other" without a place is kept too
+        ("hold the other angle on my go", dict(HOLD_OTHER_ANGLE=0.9), "queued"),
+        ("go", dict(GO_NOW=0.95), "execute"),
+        # slots and places are reported under every action
+        ("don't take the other door", dict(OPEN=0.9), "negated"),
+        ("wait at the north door", dict(WAIT=0.9), "wait"),
+        ("the north door maybe", dict(FLANK=0.30, DRONE=0.25), "say_again"),
     ]
-    out, keep = [], (bot.gate, bot.pending)
+    # the threshold in use is the bot's own, which the chat's /t moves, not the config's (0.35..0.89
+    # here): under 0.95 a 0.90 order is asked again, under 0.25 a 0.30 one is carried out
+    moved = [
+        (0.95, [("smoke it", dict(SMOKE=0.9), "say_again"), ("smoke it", dict(SMOKE=0.97), "act")]),
+        (0.25, [("hmm what", dict(FLANK=0.30, DRONE=0.25), "act"), ("hmm what", dict(FLANK=0.15, DRONE=0.10), "say_again")]),
+    ]
+
+    def step(text, named):
+        p = probs(**named)
+        _, rec = bot.decide(text, p)
+        return {"text": text, "probs": p, "intent": rec["intent"], "prob": rec["prob"],
+                "action": rec["action"], "pending": bot.pending, "other": rec["other"],
+                "places": rec["places"], "executed": rec["executed"],
+                "executed_places": rec["executed_places"], "executed_other": rec["executed_other"],
+                "pending_places": bot.pending_places, "pending_other": bot.pending_other}
+
+    out, keep = [], bot.gate
     for gate in ("top", "family"):
-        bot.gate, bot.pending, bot.pending_places = gate, None, None
+        bot.gate = gate
+        bot.reset()
         steps = []
-        for text, named in script:
-            p = probs(**named)
-            _, rec = bot.decide(text, p)
-            steps.append({"text": text, "probs": p, "intent": rec["intent"], "prob": rec["prob"],
-                          "action": rec["action"], "pending": bot.pending, "other": rec["other"],
-                          "places": rec["places"], "executed_places": rec["executed_places"],
-                          "pending_places": bot.pending_places})
+        for text, named, *want in script:
+            steps.append(step(text, named))
+            assert not want or steps[-1]["action"] == want[0], \
+                (gate, text, steps[-1]["action"], "the script's 0.30 / 0.90 probabilities need a threshold in 0.35..0.89")
+        # a threshold that moves must not empty a branch unnoticed: float32(0.60) is above 0.60, and the
+        # v3 bot's first file had no "say again" step under the family gate
+        act = {s["text"]: s["action"] for s in steps}
+        conf = {s["text"]: s["prob"] for s in steps}
+        assert {s["action"] for s in steps} == ACTIONS, (gate, sorted(ACTIONS - {s["action"] for s in steps}))
+        assert act["the family sum exactly on it"] == ("act" if gate == "family" else "say_again"), gate
+        assert gate == "family" or (act["at the threshold"], act["just over it"]) == ("say_again", "act"), \
+            (gate, thr, act["at the threshold"], act["just over it"])
+        # and the steps must still be what their comments say: the two masses as built, the negated
+        # line under the threshold
+        assert gate == "top" or (conf["the family sum just under it"], conf["the family sum exactly on it"]) == (a + b, thr), \
+            (gate, thr)
+        assert conf["don't know, maybe flank"] < thr, gate
         out.append({"gate": gate, "threshold": thr, "steps": steps})
-    bot.gate, bot.pending = keep
-    bot.pending_places = None
+    for gate in ("top", "family"):
+        for t, lines in moved:
+            bot.gate, bot.threshold = gate, t
+            bot.reset()
+            steps = [step(text, named) for text, named, _ in lines]
+            assert [s["action"] for s in steps] == [want for _, _, want in lines], (gate, t, [s["action"] for s in steps])
+            out.append({"gate": gate, "threshold": t, "steps": steps})
+    bot.gate, bot.threshold = keep, thr
+    bot.reset()
     return out
 
 
@@ -251,6 +372,7 @@ def gate_tests(bot, golden_probs):
 def main():
     rows, bot = dialogue()
     tok = bot.tok
+    dt = decide_tests(bot)   # first: it stops on a conversation that misses a branch, before any file is written
     gold = [json.loads(l) for l in io.open(os.path.join(OUT, "golden.jsonl"), encoding="utf-8")]
     gt = gate_tests(bot, [g["probs"] for g in gold])
     with io.open(os.path.join(OUT, "gate_tests.jsonl"), "w", encoding="utf-8", newline="\n") as f:
@@ -258,11 +380,12 @@ def main():
             f.write(json.dumps(r) + "\n")
     differ = sum(r["top"]["intent"] != r["family"]["intent"] for r in gt)
     print(f"gate tests: {len(gt)} rows, the two gates pick different intents on {differ}")
-    dt = decide_tests(bot)
     with io.open(os.path.join(OUT, "decide_tests.jsonl"), "w", encoding="utf-8", newline="\n") as f:
         for r in dt:
             f.write(json.dumps(r) + "\n")
-    print("decide tests, actions per gate:", {r["gate"]: sorted({s["action"] for s in r["steps"]}) for r in dt})
+    print("decide tests, actions per gate:",   # the two full conversations; the others run under a moved threshold
+          {r["gate"]: sorted({s["action"] for s in r["steps"]}) for r in dt if r["threshold"] == bot.threshold},
+          f"({sum(len(r['steps']) for r in dt)} steps in {len(dt)} conversations)")
     with io.open(os.path.join(OUT, "dialogue.jsonl"), "w", encoding="utf-8", newline="\n") as f:
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")

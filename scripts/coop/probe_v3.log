@@ -1,0 +1,147 @@
+POST-REVIEW probes (probe_v3.py): exploratory, NOT blind. Written during the review of 2026-10-03/04, after every
+v3 blind line and the first results were seen. Templated lines; which line is a callout and which an order is the
+developer's reading, with no annotators. Counts of what the bots do, not accuracy.
+The families (a)-(e) are the classes of line in which the review found a problem, and most frames were written
+after a first look at the model's answers. The reviewer's 11 callout / negation frames written before any model
+was run were clean by the review's count: a wrong action on 0 of 415 lines (v3), on 2 of 415 (v2).
+  v2 = coop-deberta-v3-ens3-v2: family gate, threshold 0.58, trained on a device bot_config.json does not record
+  v3 = coop-deberta-v3-ens3-v3: family gate, threshold 0.60, trained on mps
+  920 distinct lines, each through Bot.classify + Bot.decide on CPU; 'acts' = the line is taken as an order
+  (not 'say again', not NONE, not stood down by the leading-negation rule)
+
+(a) SMOKE-STATE CALLOUTS (reading: smoke is already there, nothing to do; acting throws another one)
+  '<place> is smoked', 47 names with the article (23 of the dictionary, 24 outside)
+    v2: acts on  7/47 SMOKE 7   (dictionary 3/23, outside 4/24)   confidence 0.59..0.64, median 0.61
+    v3: acts on 47/47 SMOKE 47   (dictionary 23/23, outside 24/24)   confidence 0.95..1.00, median 1.00
+  9 phrasings x 8 places (north door, blue stairs, basement, top floor, roof, main, east window, garage): acts on n of 8
+    {} is smoked                           v2  1/8 SMOKE 1                 v3  8/8 SMOKE 8
+    {} is already smoked                   v2  1/8 SMOKE 1                 v3  8/8 SMOKE 8
+    {}'s smoked                            v2  0/8                         v3  8/8 SMOKE 8
+    {} smoked                              v2  6/8 SMOKE 6                 v3  8/8 SMOKE 8
+    they smoked {}                         v2  0/8                         v3  7/8 SMOKE 7
+    i smoked {}                            v2  0/8                         v3  8/8 SMOKE 8
+    there's smoke on {}                    v2  0/8                         v3  8/8 SMOKE 8
+    {} is smoked off, can't see anything   v2  0/8                         v3  8/8 SMOKE 8
+    i already smoked {}                    v2  0/8                         v3  8/8 SMOKE 8
+    all                                    v2  8/72 SMOKE 8                v3 71/72 SMOKE 71
+  no place in the line (intent, confidence, action)
+    "it's smoked"            v2 NONE 0.88 ignore               v3 SMOKE 0.73 act
+    'already smoked'         v2 SMOKE 0.94 act                 v3 SMOKE 1.00 act
+    "that's smoked"          v2 NONE 0.95 ignore               v3 SMOKE 0.81 act
+    'site is smoked'         v2 NONE 0.51 say_again            v3 SMOKE 1.00 act
+    "it's already smoked"    v2 NONE 0.95 ignore               v3 SMOKE 0.99 act
+    'they smoked it'         v2 NONE 0.74 ignore               v3 SMOKE 0.66 act
+    'smoked'                 v2 SMOKE 0.99 act                 v3 SMOKE 1.00 act
+    'that door is smoked'    v2 SMOKE 0.55 say_again           v3 SMOKE 1.00 act
+
+(b) CLEAR CALLOUTS (reading: the place is empty, nothing to do; acting = ENTRY, the bot pushes in)
+    the counts on names outside the dictionary depend on the list of names: a verifier of the review, on outside
+    names of their own, counted v2 10/10 and v3 10/10 without the article, v2 24/24 and v3 21/24 with it. '<name> clear'
+    is ENTRY in the shipped v2 bot as well on names outside the dictionary and on lines with no place (of the 9
+    at the end of (b), v2 acts on 5 and v3 on 5); the regression of v3 is on dictionary names: 11 -> 17 of 20,
+    with the article 13 -> 20 of 23
+  '<place> clear', 30 names without an article (20 of the dictionary, 10 outside)
+    v2: acts on 19/30 ENTRY 19   (dictionary 11/20, outside 8/10)   confidence 0.58..0.98, median 0.81
+    v3: acts on 27/30 ENTRY 27   (dictionary 17/20, outside 10/10)   confidence 0.64..1.00, median 0.98
+  '<place> clear', the 47 names with the article
+    v2: acts on 30/47 ENTRY 30   (dictionary 13/23, outside 17/24)   confidence 0.60..0.97, median 0.83
+    v3: acts on 42/47 ENTRY 42   (dictionary 20/23, outside 22/24)   confidence 0.60..1.00, median 0.84
+  phrasings x 8 places: without a copula
+    {} clear                               v2  6/8 ENTRY 6                 v3  8/8 ENTRY 8
+    clear on {}                            v2  8/8 ENTRY 8                 v3  8/8 ENTRY 8
+    {} cleared                             v2  2/8 ENTRY 2                 v3  5/8 ENTRY 5
+    {} clear, moving up                    v2  4/8 ENTRY 3, RAPPEL 1       v3  5/8 ENTRY 5
+    {} all clear                           v2  0/8                         v3  3/8 ENTRY 3
+    all                                    v2 20/40 ENTRY 19, RAPPEL 1     v3 29/40 ENTRY 29
+  with a copula or 'looks' (the safe control: the NONE seeds have '<place> is clear')
+    {} is clear                            v2  0/8                         v3  0/8
+    {}'s clear                             v2  0/8                         v3  0/8
+    {} looks clear                         v2  0/8                         v3  0/8
+    {} is clear, nobody there              v2  0/8                         v3  0/8
+    all                                    v2  0/32                        v3  0/32
+  no place in the line (intent, confidence, action); the last three have a copula
+    'clear'                  v2 ENTRY 0.96 act                 v3 ENTRY 0.99 act
+    'room clear'             v2 ENTRY 0.99 act                 v3 ENTRY 0.99 act
+    'door clear'             v2 ENTRY 0.97 act                 v3 ENTRY 0.99 act
+    'stairs clear'           v2 ENTRY 0.96 act                 v3 ENTRY 0.90 act
+    'window clear'           v2 ENTRY 0.93 act                 v3 ENTRY 0.97 act
+    'all clear'              v2 NONE 0.49 say_again            v3 NONE 0.66 ignore
+    "it's clear"             v2 NONE 1.00 ignore               v3 NONE 1.00 ignore
+    'site is clear'          v2 NONE 0.99 ignore               v3 NONE 1.00 ignore
+    'the door is clear'      v2 NONE 0.99 ignore               v3 NONE 1.00 ignore
+
+(c) ROOF ORDERS WITHOUT A ROPE WORD (reading, spec_v3: go there on foot = MOVE_TO; RAPPEL is another family)
+  grid, 7 verbs (go, get, move, head, climb, run, come) x 6 forms: '<verb> ... roof'
+    'climb' is kept from the reviewer's grid although RAPPEL is a reading one can defend for it: each bot's counts
+    per verb, and without 'climb' and the bare '<verb> roof' rows, follow its counts per form
+    v2: RAPPEL 40/42, MOVE_TO 0/42, under the threshold 2/42, other 0
+        RAPPEL per form, of 7 verbs: '<verb> to the roof' 6; '<verb> up to the roof' 6; '<verb> on the roof' 7; '<verb> up on the roof' 7; '<verb> onto the roof' 7; '<verb> roof' 7
+        RAPPEL per verb, of 6 forms: go 6; get 6; move 6; head 5; climb 6; run 5; come 6
+        without 'climb' and the bare '<verb> roof' rows: RAPPEL 28/30, MOVE_TO 0/30, under the threshold 2/30
+        without the training rows of the final v3 model (5, verbatim): RAPPEL 36/37, MOVE_TO 0/37, under the threshold 1/37
+    v3: RAPPEL 18/42, MOVE_TO 21/42, under the threshold 3/42, other 0
+        RAPPEL per form, of 7 verbs: '<verb> to the roof' 0; '<verb> up to the roof' 0; '<verb> on the roof' 6; '<verb> up on the roof' 1; '<verb> onto the roof' 5; '<verb> roof' 6
+        RAPPEL per verb, of 6 forms: go 3; get 3; move 0; head 2; climb 4; run 3; come 3
+        without 'climb' and the bare '<verb> roof' rows: RAPPEL 9/30, MOVE_TO 21/30, under the threshold 0/30
+        without the training rows of the final v3 model (5, verbatim): RAPPEL 16/37, MOVE_TO 18/37, under the threshold 3/37
+  control, the same grid with 'top floor' for 'roof'
+    v2: RAPPEL 20/42, MOVE_TO 15/42, under the threshold 7/42, other 0
+        RAPPEL per form, of 7 verbs: '<verb> to the top floor' 1; '<verb> up to the top floor' 1; '<verb> on the top floor' 4; '<verb> up on the top floor' 5; '<verb> onto the top floor' 5; '<verb> top floor' 4
+        RAPPEL per verb, of 6 forms: go 4; get 4; move 0; head 1; climb 6; run 3; come 2
+        without 'climb' and the bare '<verb> top floor' rows: RAPPEL 11/30, MOVE_TO 15/30, under the threshold 4/30
+        without the training rows of the final v3 model (1, verbatim): RAPPEL 20/41, MOVE_TO 14/41, under the threshold 7/41
+    v3: RAPPEL 2/42, MOVE_TO 34/42, under the threshold 3/42, other 3
+        RAPPEL per form, of 7 verbs: '<verb> to the top floor' 0; '<verb> up to the top floor' 0; '<verb> on the top floor' 0; '<verb> up on the top floor' 1; '<verb> onto the top floor' 1; '<verb> top floor' 0
+        RAPPEL per verb, of 6 forms: go 0; get 0; move 0; head 0; climb 2; run 0; come 0
+        without 'climb' and the bare '<verb> top floor' rows: RAPPEL 0/30, MOVE_TO 28/30, under the threshold 2/30
+        without the training rows of the final v3 model (1, verbatim): RAPPEL 2/41, MOVE_TO 33/41, under the threshold 3/41
+  30 roof orders a reviewer wrote before running a model (10 of them are also lines of the grid)
+    v2: RAPPEL 23/30, MOVE_TO 4/30, under the threshold 3/30, other 0
+        without the training rows of the final v3 model (3, verbatim): RAPPEL 20/27, MOVE_TO 4/27, under the threshold 3/27
+    v3: RAPPEL 7/30, MOVE_TO 21/30, under the threshold 2/30, other 0
+        without the training rows of the final v3 model (3, verbatim): RAPPEL 5/27, MOVE_TO 20/27, under the threshold 2/27
+    lines on which v3 answers RAPPEL: 'get on the roof' 1.00 [training row]; 'go roof' 1.00 [training row]; 'roof, go' 0.99; 'take the roof' 0.92; 'get on the rooftop' 0.99; 'bot, get on the roof' 1.00; 'get onto the roof' 1.00
+
+(d) 'take <colour> stairs' AGAINST 'take <colour>' (the seed template 'take {}' is MOVE_TO and offers the five lone
+    colours, 5 of the 12 names of 'take <name>', next to the colour stairs; training rows of v3 among these 23 lines:
+    'take yellow stairs', 'take white stairs', 'take brown stairs'. ENTRY for a lone 'take blue' is a reading one
+    can defend, so this shows a difference, not an error count; the count is for the bare two-word line)
+  'take <name> stairs', 11 names: v2 acts on  9/11 MOVE_TO 9   v3 acts on 11/11 MOVE_TO 11
+    'take blue stairs'     dictionary v2 MOVE_TO 0.74 act               v3 MOVE_TO 1.00 act
+    'take red stairs'      dictionary v2 MOVE_TO 0.75 act               v3 MOVE_TO 1.00 act
+    'take yellow stairs'   dictionary v2 MOVE_TO 0.65 act               v3 MOVE_TO 1.00 act
+    'take white stairs'    dictionary v2 MOVE_TO 0.64 act               v3 MOVE_TO 1.00 act
+    'take brown stairs'    dictionary v2 MOVE_TO 0.71 act               v3 MOVE_TO 1.00 act
+    'take green stairs'    outside    v2 MOVE_TO 0.77 act               v3 MOVE_TO 1.00 act
+    'take black stairs'    outside    v2 VAULT_WINDOW 0.51 say_again    v3 MOVE_TO 1.00 act
+    'take orange stairs'   outside    v2 MOVE_TO 0.76 act               v3 MOVE_TO 1.00 act
+    'take purple stairs'   outside    v2 MOVE_TO 0.75 act               v3 MOVE_TO 1.00 act
+    'take pink stairs'     outside    v2 MOVE_TO 0.81 act               v3 MOVE_TO 1.00 act
+    'take grey stairs'     outside    v2 MOVE_TO 0.48 say_again         v3 MOVE_TO 1.00 act
+  'take <name>', 12 names: v2 acts on  4/12 ENTRY 4   v3 acts on 12/12 ENTRY 12
+    'take main'            dictionary v2 ENTRY 0.87 act                 v3 ENTRY 0.98 act
+    'take blue'            dictionary v2 ENTRY 0.53 say_again           v3 ENTRY 0.89 act
+    'take red'             dictionary v2 ENTRY 0.55 say_again           v3 ENTRY 0.77 act
+    'take yellow'          dictionary v2 ENTRY 0.61 act                 v3 ENTRY 0.68 act
+    'take white'           dictionary v2 ENTRY 0.77 act                 v3 ENTRY 0.88 act
+    'take brown'           dictionary v2 ENTRY 0.44 say_again           v3 ENTRY 0.86 act
+    'take green'           outside    v2 ENTRY 0.55 say_again           v3 ENTRY 0.97 act
+    'take black'           outside    v2 ENTRY 0.66 act                 v3 ENTRY 0.90 act
+    'take orange'          outside    v2 FRAG 0.42 say_again            v3 ENTRY 0.64 act
+    'take purple'          outside    v2 FRAG 0.38 say_again            v3 ENTRY 0.76 act
+    'take pink'            outside    v2 FRAG 0.46 say_again            v3 ENTRY 0.66 act
+    'take grey'            outside    v2 ENTRY 0.54 say_again           v3 ENTRY 0.66 act
+
+(e) THE 233 SEED COMMANDS OF seed_commands_v21.json (training rows of both bots), as written and in ALL CAPS
+  as written v2: the seed's intent 233, same family 0, nothing 0, WRONG FAMILY 0
+  as written v3: the seed's intent 233, same family 0, nothing 0, WRONG FAMILY 0
+  ALL CAPS   v2: the seed's intent 220, same family 2, nothing 3, WRONG FAMILY 8
+  ALL CAPS   v3: the seed's intent 218, same family 0, nothing 5, WRONG FAMILY 10
+  ALL CAPS, wrong-family picks of v2: 'FLANK' (FLANK) -> FRAG 0.99 act; 'FLANK THEM' (FLANK) -> FRAG 0.99 act; 'FLANK LEFT' (FLANK) -> FLASH 0.66 act; 'RAPPEL' (RAPPEL) -> FRAG 0.97 act; 'RAPPEL UP' (RAPPEL) -> FRAG 0.59 act; 'DRONE' (DRONE) -> FRAG 0.59 act; 'DRONE IT' (DRONE) -> FRAG 0.73 act; 'DRONE THE ROOM' (DRONE) -> FRAG 0.65 act
+  ALL CAPS, wrong-family picks of v3: 'FLANK' (FLANK) -> FLASH 0.99 act; 'FLANK THEM' (FLANK) -> FRAG 0.98 act; 'FLANK LEFT' (FLANK) -> FLASH 0.99 act; 'FLANK RIGHT' (FLANK) -> FRAG 0.98 act; 'RAPPEL' (RAPPEL) -> FRAG 0.99 act; 'RAPPEL UP' (RAPPEL) -> FRAG 0.61 act; 'DRONE' (DRONE) -> FRAG 0.61 act; 'DRONE IT' (DRONE) -> FRAG 0.65 act; 'DRONE IT OUT' (DRONE) -> FRAG 0.64 act; 'REVIVE' (REVIVE_ME) -> FALL_BACK 0.70 act
+
+(f) CONTROLS on the 30 names of (b)
+    'smoke {}' is a seed template of v3 (make_spec_v3.py), and so are the callouts 'one on {}' and 'two at {}';
+    training rows of v3 among these 60 lines, verbatim: 0
+  the plain order 'smoke <place>': v2 acts on 30/30 SMOKE 30   v3 acts on 30/30 SMOKE 30
+  the callout 'two on <place>':    v2 acts on  0/30   v3 acts on  0/30

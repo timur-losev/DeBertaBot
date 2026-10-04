@@ -12,7 +12,8 @@ What happens to each line you type (the pipeline COOP-BOT.md recommends):
   1b. places       the map's named places in the line (locations.py): door / window / stairs with
                    their side or colour, furniture, floors; whose place each is; which one the bot acts on
   4. game side     NONE (a callout, chatter, a cancelled order) -> acknowledge, do nothing;
-                   an order given "on my go" -> queued; GO_NOW -> executes the queued order
+                   an order given "on my go" -> queued, with its places and its "other" slot;
+                   GO_NOW -> executes the queued order
 Every line is appended to coop_bot_log.jsonl: in a real game those are the lines you label next.
 
     python coop_bot.py                   # jev environment; the fine-tuned DeBERTa
@@ -113,6 +114,7 @@ class Bot:
         self.threshold = cfg["threshold"]
         self.pending = None           # an order given "on my go", waiting for GO_NOW
         self.pending_places = None    # ... and the places that order named: they execute with it
+        self.pending_other = False    # ... and its "other" slot: the GO line does not repeat it
         self.classify("warm up")      # the first call pays for allocation; do it before the player talks
 
     def classify(self, text):
@@ -141,6 +143,10 @@ class Bot:
         j = max((j for j in range(len(p)) if self.family[self.labels[j]] == fam), key=p.__getitem__)
         return self.labels[j], mass[fam]
 
+    def reset(self):
+        """Forget the queued order (the C++ BotBrain::Reset)."""
+        self.pending, self.pending_places, self.pending_other = None, None, False
+
     def respond(self, text):
         top, ms = self.classify(text)
         reply, rec = self.decide(text, self.last_probs)
@@ -153,11 +159,11 @@ class Bot:
         """The game side for one line, given the classifier's probabilities (the C++ BotBrain::Decide)."""
         intent, prob = self.pick(p)
         places = LOC.record(text)     # for every line: under NONE they are contacts, not orders
-        executed_places = None
+        executed, executed_places, executed_other = None, None, False
         on_signal = bool(ON_SIGNAL.search(text))
         other = bool(OTHER.search(text))
         if NEGATION.search(text) and intent not in SAFE:
-            self.pending = self.pending_places = None
+            self.reset()
             action, reply = "negated", "Copy, standing down."
         elif prob < self.threshold:
             action, reply = "say_again", random.choice(AGAIN)
@@ -166,15 +172,16 @@ class Bot:
         elif intent == "GO_NOW":
             if self.pending:
                 action, reply = "execute", f"Now! {random.choice(LINES[self.pending])}"
-                executed_places = self.pending_places     # the queued order's places, not the GO line's
-                self.pending = self.pending_places = None
+                # the queued order with its places and its "other" slot, not the GO line's
+                executed, executed_places, executed_other = self.pending, self.pending_places, self.pending_other
+                self.reset()
             else:
                 action, reply = "go", "Going!"
         elif intent == "WAIT":
-            self.pending = self.pending_places = None
+            self.reset()
             action, reply = "wait", random.choice(LINES["WAIT"])
         elif on_signal:
-            self.pending, self.pending_places = intent, places
+            self.pending, self.pending_places, self.pending_other = intent, places, other
             action, reply = "queued", f"Ready to {self.phrase[intent]}. On your go."
         else:
             action, reply = "act", random.choice(LINES[intent])
@@ -182,7 +189,8 @@ class Bot:
             reply += " Taking the other one."
         rec = {"text": text, "intent": intent, "prob": prob, "gate": self.gate, "action": action,
                "on_signal": on_signal, "other": other, "threshold": self.threshold,
-               "places": places, "executed_places": executed_places}
+               "places": places, "executed": executed, "executed_places": executed_places,
+               "executed_other": executed_other}
         return reply, rec
 
 
@@ -216,7 +224,8 @@ def main():
         print(f"bot> {reply}")
         if why:
             (i1, p1), (i2, p2), (i3, p3) = rec["top3"]
-            slots = [s for s, on in (("on my signal", rec["on_signal"]), ("other", rec["other"])) if on]
+            slots = [s for s, on in (("on my signal", rec["on_signal"]), ("other", rec["other"]),
+                                     ("other (the queued order's)", rec["executed_other"])) if on]
             mass = f" | {bot.family[rec['intent']]} mass {rec['prob']:.2f}" if bot.gate == "family" else ""
             print(f"     {i1} ({bot.family[i1]}) {p1:.2f} | {i2} {p2:.2f} | {i3} {p3:.2f}{mass}"
                   f" | {rec['action']}" + (f" | slots: {', '.join(slots)}" if slots else "")

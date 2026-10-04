@@ -17,6 +17,8 @@ deberta-v3-base (one model, 0.8 GB, ~25 ms on 4 CPU threads) the study measures:
     python train_v2.py cv base large       # jev environment, GPU
     python train_v2.py cv large --held r6,cs --results results_v2_probs_large_a.json   # a second process
     python train_v2.py final base|large|ens3
+
+The device is cuda, else mps (Apple silicon), else cpu; COOP_DEVICE=cpu|mps|cuda overrides.
 """
 import io, json, os, random, sys, time
 
@@ -35,6 +37,23 @@ SEEDS = [0, 1, 2]
 HP = T.HP
 RESULTS = os.path.join(HERE, f"results_{V.TAG}_probs.json")   # COOP_TAG=v21 -> results_v21_probs.json
 MODELS_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "models"))
+
+
+def pick_device():
+    want = os.environ.get("COOP_DEVICE")
+    if want:
+        return want
+    if torch.cuda.is_available():
+        return "cuda"
+    return "mps" if torch.backends.mps.is_available() else "cpu"
+
+
+def free_cache(device):
+    """Hand the freed model's memory back between trainings (cuda and mps keep it cached)."""
+    if device == "cuda":
+        torch.cuda.empty_cache()
+    elif device == "mps":
+        torch.mps.empty_cache()
 
 
 def batcher(tok, items, device):
@@ -110,7 +129,7 @@ def oof(size, train, seed, device, k=5):
         tr = [i for j, i in enumerate(lines) if j % k != f]
         ep = round(full_steps / ((len(tr) + HP["batch"] - 1) // HP["batch"]))
         out.update(train_predict(size, tr, te, seed, device, epochs=ep)[0])
-        torch.cuda.empty_cache()
+        free_cache(device)
     return out
 
 
@@ -134,7 +153,7 @@ def cv(sizes, device, held_only=None, path=RESULTS):
                     continue
                 full, model, _ = train_predict(size, train, test, seed, device)
                 del model
-                torch.cuda.empty_cache()
+                free_cache(device)
                 res.setdefault(size, {})[key] = {"test": full, "oof": oof(size, train, seed, device)}
                 json.dump(res, io.open(path, "w", encoding="utf-8"))
                 print(f"{size} held={held} seed={seed} done, {time.time() - t0:.0f}s", flush=True)
@@ -158,6 +177,11 @@ def final(kind, device):
     thr = fits[gate][0]
     print(f"out-of-fold over {len(avg)} lines: " + ", ".join(
         f"{g} gate thr {t:.2f} (near-2*wf {v})" for g, (t, v) in fits.items()) + f" -> {gate}", flush=True)
+    # kept per member, as cv() keeps its own: without them the threshold and the gate in bot_config.json
+    # can be checked against the log line above but not re-derived
+    json.dump({"_meta": {"labels": LABELS, "kind": kind, "n_items": len(items), "n_seeds": len(seeds), "device": device},
+               "oof": {str(s): o for s, o in zip(members, oofs)}},
+              io.open(os.path.join(HERE, f"results_{V.TAG}_final_oof.json"), "w", encoding="utf-8"))
     os.makedirs(out_dir, exist_ok=True)
     member_dirs = []
     for s in members:
@@ -167,14 +191,15 @@ def final(kind, device):
         tok.save_pretrained(d)
         member_dirs.append(os.path.relpath(d, out_dir))
         del model
-        torch.cuda.empty_cache()
+        free_cache(device)
     cfg = {
         "labels": LABELS, "threshold": thr, "gate": gate, "families": V.FAMILY,
         "phrases": {k: v["label"] for k, v in V.I.items()},
         "base_model": MODELS[size], "members": member_dirs,
-        "recipe": {**HP, "lr": HP["lr"][size], "dtype": "float32", "seeds": members},
+        "recipe": {**HP, "lr": HP["lr"][size], "dtype": "float32", "seeds": members, "device": device},
         "trained_on": f"{len(items)} lines from 3 AI-written authors (v1 blind lines + v2 lines for "
-                      f"TAKE_COVER/OPEN), majority of author + 2 AI annotators, plus {len(seeds)} "
+                      f"TAKE_COVER/OPEN{' + v3 lines that name map places' if V.TAG == 'v3' else ''}), "
+                      f"majority of author + 2 AI annotators, plus {len(seeds)} "
                       f"developer-written canonical commands ({V.SEED_FILE})",
         "threshold_from": f"5-fold out-of-fold predictions ({'averaged over the members' if len(members) > 1 else 'one model'}), "
                           "criterion near - 2*wrong-family, strict; gate chosen the same way",
@@ -185,7 +210,8 @@ def final(kind, device):
 
 
 def main():
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = pick_device()
+    print(f"device: {device}", flush=True)
     if sys.argv[1] == "cv":
         args = sys.argv[2:]
         held = args[args.index("--held") + 1].split(",") if "--held" in args else None

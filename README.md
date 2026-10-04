@@ -1,3 +1,17 @@
+# DeBertaBot
+
+A co-op game bot that turns a player's voice order into one of 24 intents plus a place on the map:
+three fine-tuned DeBERTa-v3-base models, a rule matcher for the map's named places, and a C++17 engine
+checked line by line against the Python bot. Start with [HANDOFF.md](HANDOFF.md) (the current state, in
+Russian), [COOP-BOT.md](COOP-BOT.md) (the study) and [cpp/coop_intent/README.md](cpp/coop_intent/README.md).
+
+This repository is the co-op bot part of a larger research folder, `project_synth`; the rest of this file
+is that folder's README. The documents FINDINGS.md, MODELS.md, GAME-BOT.md and NPC-DECISIONS.md and the
+scripts outside `scripts/coop` that it lists are not in this repository. Model weights are not in git
+either (HANDOFF.md, section 1).
+
+---
+
 # project_synth
 
 Research notes and measurement harnesses from one session of evaluating ollaya: how it compares with

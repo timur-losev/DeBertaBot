@@ -1,12 +1,14 @@
 """
 Does rewriting the line for the classifier (locations.normalized) change what the shipped bot answers
-on the lines it already handles? The 483 v1+v2 lines, three inputs: raw, "strip", "strip+zone".
+on the lines it already handles? The 483 v1+v2 lines, two inputs: raw and "strip", the one rewrite
+the frozen matcher has. (A draft of the matcher from before the freeze also had "strip+zone"; the
+first results_v3_noharm.json came from that draft, with other rewrite counts. This run replaces it.)
 
 The shipped model was trained on these lines, so this is not a quality measurement -- only a check
 that the rewrite does not flip answers on known lines. Quality on lines with map locations is
 eval_v3.py, on lines the model never saw.
 
-    python v3_noharm.py      # jev environment
+    python v3_noharm.py      # jev environment; COOP_TAG unset (under v3 the 150 v3 lines would join)
 """
 import io, json, os, sys
 
@@ -23,7 +25,7 @@ def main():
     gate, thr = P.cfg["gate"], P.cfg["threshold"]
     res = {}
     base = None
-    for mode in ("raw", "strip", "strip+zone"):
+    for mode in ("raw", "strip"):
         texts = [LOC.normalized(i["text"], mode) for i in items]
         probs = P(texts)
         preds = {i["id"]: V.pick(p, gate, thr)[0] for i, p in zip(items, probs)}

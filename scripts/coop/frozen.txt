@@ -162,3 +162,33 @@ e87898d6045131c91216f35c54a4f71e33dd7f56c1a53c7e6e31175ed460db59 *../../cpp/coop
 fcdfa26e0c426cef49dd5c6e4d5c021d2bb544f019c596639cfe170bfa887571 *results_v3_probs_stt.json
 076207d32efeae8f8d205edb8af542fa3313ee89046ad07f757e43f188897ca9 *../../cpp/coop_intent/CMakeLists.txt
 d7d1c307a08c7da6bd9e2c3a515ea6bbefeb53a04016b02c7c3cde66a2a1046d *../../cpp/coop_intent/src/tokenizer.cpp
+2026-10-03T23:40:26+02:00
+# on the Mac (Apple M5 Pro, torch 2.14.1), after every v3 result: train_v2.py gets a device choice (cuda, else mps, else cpu; COOP_DEVICE overrides), bot_config.json records the device, and its trained_on text names the v3 lines under COOP_TAG=v3; recipe unchanged. Checked before use: the shipped v2 members give the same probabilities on mps as on cpu (762 golden lines, max |dp| 1.2e-5, same argmax on 762); leave-stt-out trained on mps is inside the seed-to-seed spread of the CUDA runs (ens3 at argmax: near 86.3 vs 87.7, wrong family 9.0 vs 7.1, same pick on 213/227; two CUDA seeds agree on 195-199/227). Final v3 ensemble training started on mps
+14e1ef1f147bd104ea811dd544de07c6ff73a72ce431b971fd51ae40b496296e *train_v2.py
+2026-10-04T15:34:27+02:00
+# on the Mac, after every v3 result and after the adversarial review of v3 (workflow wf_abb3f803-ba6; its findings are in review_v3/FINDINGS.md; fixes wf_3c094ed0-e32 and wf_0b9438ff-2fb). No rule, vocabulary, spec, seed or label was edited. Final v3 ensemble trained on mps in 3200 s (family gate, threshold 0.60; out-of-fold criterion family 569, top 560), exported (ONNX = PyTorch on 1062/1062 golden lines) and checked in C++ (tokenizer 9231/9231, location 8563/8563, gate 2938/2938, decide 138/138, dialogue 77/77); the default model stays v2. Fixes: the bot keeps the 'other' slot with a queued order and reports the order it executed (coop_bot.py, bot_brain; no existing decision changes); tokenizer.cpp reads vocabulary scores independently of the locale and refuses non-finite ones; LocationMatcher::Init refuses an unknown word list; coop_cli names the bot it checks, reads the v1 test files, compares regex-limit rows at run time, reloads the vocabulary under a decimal-comma locale, checks Reset(); gen_tests.py: the 'at the threshold' step is the largest float32 below the threshold (it was above it for 0.60) and the decide file has 138 steps (was 52; 72 of 72 mutants of BotBrain::Decide are caught); train_v2.py final() also writes results_<tag>_final_oof.json (recipe unchanged; from the next training on); v3_noharm.py runs again (raw vs strip; replaces the pre-freeze run). New, POST-REVIEW and not blind: eval_v3_review.py, probe_v3.py and their outputs; review_v3/ (the findings, and a fresh AI author's 80 lines: seen, not for tuning). The v2 decide_tests.jsonl and dialogue.jsonl were regenerated on the Mac: confidences differ from the Sep 29 files by at most 1.3e-6, every other old key is identical. Correction to the entry of 2026-10-03T23:40:26: the mps check was at argmax only; at the stt fold's CUDA out-of-fold thresholds the mps-trained leave-stt-out ens3 has wrong family 8 vs 4 of 211 (top) and 10 vs 6 (family), near 180 vs 181 and 183 vs 184 (one fold, sign test p = 0.22-0.29). coop_cli.cpp had also been edited on 2026-10-03 22:00 (portability) without a record
+906acc5fe4503cb4bd15f5509c77c110f1dd367ee9abaa96eed2bd213f026500 *train_v2.py
+a878e8741f206292ad8d87a86e4d49d2382abd8a81d7070d41acacbfecf24517 *coop_bot.py
+bd4b0f22fa4fcb151b93e833284132e936db51b4e9af74da90053aa01dbfb4fb *say.py
+9fe98b87335750d4db4bcd6a47ef43d0c23998f1cc34c3d2e71296c8216dd00e *v3_noharm.py
+c4cbbff5b31f2d4195b2cf91e934ad9c416b2637ec34898e06ede01be0d98239 *results_v3_noharm.json
+2c278e947d9269219f286609efcce81cac892b4a89e20f29d40eed29f3942334 *eval_v3_review.py
+218e2e510384e7ccf87b0a2ccde9ba94e2ee3bcbd74fe518646f78add4a8379a *eval_v3_review.log
+624f0a0454e987dc4d2de4e82fd01dd76e5287ee0a902721ce54c6b898422e91 *results_v3_review.json
+b8d8328833479c77c2db6adae42a293a421aac1400655cb4215fedc879dcfba4 *probe_v3.py
+a485ed396c50934b99fe9e59ef4bb10e2411d360f8432247d312fb9585ff38a1 *probe_v3.log
+d3a479adaa46ccad1ba8ec54e5557353743f9c3bd5918019c7f2e7b108b88eb6 *results_v3_probe.json
+33725a9f418a2cdf850e646d309adf7891373fd8c0f05caab264257a7b78ef1f *review_v3/findings.json
+2b53eddc7c10fd9c6d6cbdc307372a844a8a68a0267d8c0688af4af21c06e27b *review_v3/fresh_author.json
+34e0e44097affe344c3717212a8c9bad48aa6acc17319c53f07bbf4fafc3c9cc *review_v3/fresh_probs_v2.json
+530a1a972e67b851b663267fc96d847405bb1b4ee4f751c3ab56efc67b7fb0db *review_v3/fresh_probs_v3.json
+0ad1ca00c70887dd96c67bcac0fb3eebe6d9ef6636f4c6a65234be8332172e56 *train_v3_final_ens3.log
+52bfc1e1894229c476ffc99c6424cf471e0aee40725ed59ffec853c2e014a80c *../../cpp/coop_intent/include/coop_intent/bot_brain.h
+500182c38ca8aa86db0dc7867e4e5413c926671584448f9bc68824dcb9a3e793 *../../cpp/coop_intent/src/bot_brain.cpp
+b57c5916dc2b119c0ab2c724d0f1b2ac37331b066711d90ba00f0326da8b448f *../../cpp/coop_intent/src/tokenizer.cpp
+b46aafe5da87c3c3676640ef86b56d93f1d5bb17302657df4f3f231429ab554c *../../cpp/coop_intent/src/locations.cpp
+08f7800889c4f6dcd4422be148f29bca10ce911f8181b1a9bddab832bda2cb48 *../../cpp/coop_intent/tools/coop_cli.cpp
+d51914edb1fbc8a3fe4974610e78e1d22c2a075261bbea6ac781a8dd85e1bdd7 *../../cpp/coop_intent/tools/gen_tests.py
+bfb06ae0092b4c39cf759866cb25bc08ba9c5eaa835ccc293ad863c93088cc14 *../../models/coop-deberta-v3-ens3-v3/bot_config.json
+19e262ffbc9064dc8d6a0d94802a06cd0ead8dc09e26b5eeed3c3750f20734bb *../../models/coop-deberta-v3-ens3-v3/cpp/intent_config.json
+f1c8786aed261ab9b54fd810f6c3defd853ef68b9d8eed3284c02d3a2187c8d9 *../../models/coop-deberta-v3-ens3-v3/cpp/golden.jsonl
