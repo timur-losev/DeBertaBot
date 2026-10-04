@@ -11,7 +11,8 @@
 //   6. "on my go / when I say / on three"                           -> queue the order
 //   7. anything else                                                -> act
 // "other / another / opposite" is reported as a slot for the planner, and so are the map places the
-// line names (locations.h); a queued order keeps its places and executes with them.
+// line names (locations.h); a queued order keeps its places and its "other" slot and executes with
+// them.
 #pragma once
 
 #include <atomic>
@@ -50,10 +51,11 @@ struct Decision {
     Action action = Action::Ignore;
     int executed = -1;         // Execute: the queued order that fires now
     bool on_signal = false;    // slot: the order waits for the player's signal
-    bool other = false;        // slot: the planner takes the other object
+    bool other = false;        // slot: the planner takes the other object (this line's own, also on Execute)
     bool negated = false;      // the line starts with a negation
     PlaceRecord places;        // the map places this line names (every action: under Ignore they are contacts)
     PlaceRecord executed_places;   // Execute: the places of the queued order that fires now
+    bool executed_other = false;   // Execute: ... and its "other" slot, which the GO line does not repeat
 };
 
 // the three regexes with Python re semantics, in std::regex:
@@ -94,10 +96,12 @@ public:
 
     int Pending() const { return pending_; }   // the queued order, -1 if none
     const PlaceRecord& PendingPlaces() const { return pending_places_; }   // and the places it named
+    bool PendingOther() const { return pending_other_; }                   // and its "other" slot
     const LocationMatcher& Places() const { return places_; }
     void Reset() {
         pending_ = -1;
         pending_places_ = PlaceRecord();
+        pending_other_ = false;
     }
     double threshold = 0.78;
     const IntentConfig& Config() const { return cfg_; }
@@ -113,6 +117,7 @@ private:
     int none_ = -1, go_now_ = -1, wait_ = -1;
     int pending_ = -1;
     PlaceRecord pending_places_;
+    bool pending_other_ = false;
     LocationMatcher places_;
 };
 

@@ -1,14 +1,15 @@
 """
 Does rewriting the line for the classifier (locations.normalized) change what the v2 bot answers on
-the lines it already handles? The 483 v1+v2 lines, two inputs: raw and "strip".
+the lines it already handles? The 483 v1+v2 lines, two inputs: raw and "strip", the one rewrite the
+matcher has. (A draft of the matcher from before the freeze also had "strip+zone", which replaced
+floors and changed the meaning of orders; the first results_v3_noharm.json came from that draft, with
+other rewrite counts. The Mac run of 2026-10-04 replaces it.)
 
 The v2 bot (models/coop-deberta-v3-ens3-v2) was trained on these lines, so this is not a quality
 measurement -- only a check that the rewrite does not flip answers on known lines. Quality on lines
-with map locations is eval_v3.py, on lines the model never saw. (The first run, before the rules were
-frozen, also had a "strip+zone" mode that replaced floors; it changed the meaning of orders and was
-dropped from locations.normalized.)
+with map locations is eval_v3.py, on lines the model never saw.
 
-    python v3_noharm.py      # jev environment
+    python v3_noharm.py      # jev environment; the v2 bot and the 483 lines are pinned, whatever COOP_TAG says
 """
 import io, json, os, sys
 

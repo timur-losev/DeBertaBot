@@ -2,8 +2,10 @@
 
 #include <algorithm>
 #include <charconv>
-#include <cstdlib>
+#include <cmath>
 #include <limits>
+#include <locale>
+#include <sstream>
 
 #include "coop_intent/unicode.h"
 
@@ -48,6 +50,12 @@ bool DebertaTokenizer::Load(std::string_view tsv, Options options, std::string* 
     piece_ids_.clear();
     added_text_.clear();
     size_t pos = 0, line = 0;
+#if !defined(_MSC_VER) && !(defined(__cpp_lib_to_chars) && __cpp_lib_to_chars >= 201611L)
+    // without floating-point from_chars the scores are read by one stream in the classic locale, never
+    // by strtod: that follows LC_NUMERIC, and under a decimal comma "0.0" is a bad score
+    std::istringstream score_in;
+    score_in.imbue(std::locale::classic());
+#endif
     while (pos < tsv.size()) {
         size_t end = tsv.find('\n', pos);
         if (end == std::string_view::npos) end = tsv.size();
@@ -62,13 +70,15 @@ bool DebertaTokenizer::Load(std::string_view tsv, Options options, std::string* 
         const auto [p, ec] = std::from_chars(row.data() + tab + 1, row.data() + row.size(), score);
         if (ec != std::errc() || p != row.data() + row.size())
             return fail("vocab line " + std::to_string(line) + ": bad score");
-#else   // a standard library without floating-point from_chars (older libc++ on macOS)
-        const std::string number(row.substr(tab + 1));
-        char* stop = nullptr;
-        score = std::strtod(number.c_str(), &stop);
-        if (number.empty() || stop != number.c_str() + number.size())
+#else   // every libc++ so far: it does not define the macro, and testing its version instead would not build
+        // on Apple below a macOS 26 deployment target (from_chars(double) is marked unavailable there)
+        score_in.clear();
+        score_in.str(std::string(row.substr(tab + 1)));
+        if (!(score_in >> score) || !score_in.eof())
             return fail("vocab line " + std::to_string(line) + ": bad score");
 #endif
+        // from_chars reads "inf" and "nan", the stream does not: neither is a score, on either branch
+        if (!std::isfinite(score)) return fail("vocab line " + std::to_string(line) + ": bad score");
         pieces_.emplace_back(row.substr(0, tab));
         scores_.push_back(score);
     }

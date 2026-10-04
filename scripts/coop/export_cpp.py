@@ -16,7 +16,7 @@ sentencepiece pipeline: normalizer = collapse whitespace runs / \\n\\r\\t to one
 pre-tokenizer = Metaspace (prepend U+2581 always, split into words); model = Unigram. The C++ port
 reproduces that pipeline, so the golden ids come from the same tokenizer object the bot uses.
 
-    python export_cpp.py [BOT_DIR]      # jev environment; default: the newest trained bot (bots.py)
+    python export_cpp.py [BOT_DIR]      # jev environment; default: the shipped bot (bots.py)
     python export_cpp.py [BOT_DIR] --config-only    # after editing locations.json or the regexes: no ONNX export
 """
 import io, json, os, re, sys

@@ -107,7 +107,7 @@ int BotBrain::LabelIndex(const std::string& label) const {
 bool BotBrain::Init(IntentConfig config, std::string* error) {
     cfg_ = std::move(config);
     threshold = cfg_.threshold;
-    pending_ = -1;
+    Reset();
     none_ = LabelIndex("NONE");
     go_now_ = LabelIndex("GO_NOW");
     wait_ = LabelIndex("WAIT");
@@ -177,6 +177,7 @@ Decision BotBrain::Decide(std::string_view text, const std::vector<float>& probs
     auto drop_pending = [&] {
         pending_ = -1;
         pending_places_ = PlaceRecord();
+        pending_other_ = false;
     };
 
     if (d.negated && !safe_[static_cast<size_t>(d.intent)]) {
@@ -189,7 +190,10 @@ Decision BotBrain::Decide(std::string_view text, const std::vector<float>& probs
     } else if (d.intent == go_now_) {
         d.action = pending_ >= 0 ? Action::Execute : Action::Go;
         d.executed = pending_;
-        if (pending_ >= 0) d.executed_places = pending_places_;   // the queued order's places, not the GO line's
+        if (pending_ >= 0) {   // the queued order's places and "other" slot, not the GO line's
+            d.executed_places = pending_places_;
+            d.executed_other = pending_other_;
+        }
         drop_pending();
     } else if (d.intent == wait_) {
         drop_pending();
@@ -197,6 +201,7 @@ Decision BotBrain::Decide(std::string_view text, const std::vector<float>& probs
     } else if (d.on_signal) {
         pending_ = d.intent;
         pending_places_ = d.places;
+        pending_other_ = d.other;
         d.action = Action::Queued;
     } else {
         d.action = Action::Act;

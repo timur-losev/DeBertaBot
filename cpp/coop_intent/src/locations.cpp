@@ -189,6 +189,8 @@ bool LocationMatcher::Init(const LocationVocab& v, std::string* error) {
                 return fail(std::string("word list ") + name + ": \"" + w + "\" must be one lowercase ASCII token");
         lists_[name] = std::unordered_set<std::string>(it->second.begin(), it->second.end());
     }
+    for (const auto& list : v.words)   // a list no rule reads: locations.py refuses the vocabulary too
+        if (lists_.count(list.first) == 0) return fail("unknown word list " + list.first);
     ready_ = true;
     return true;
 }

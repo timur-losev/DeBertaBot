@@ -1,0 +1,183 @@
+POST-REVIEW numbers (eval_v3_review.py): computed after every v3 blind line, its labels and the first results
+had been seen (review of 2026-10-03/04, review_v3/README.md). Slices, joint rates and intervals were chosen with
+the results in view: not blind measurements. Stored probabilities only, no model loaded.
+
+A. CLASSIFIER on the 150 v3 lines: shipped (coop-deberta-v3-ens3-v2, family gate, threshold 0.58, raw line) against re-trained ens3 (leave one author out)
+   fold thresholds of the re-trained ens3: top gate r6 0.62 / cs 0.58 / stt 0.58; family gate r6 0.60 / cs 0.58 / stt 0.52
+   lines near / exact ok / wrong family, and the score (near - 2 x wrong family, % of the lines)
+  all (150)        shipped 125 / 123 / 5  score  76.7   | ens3/top 135 / 134 / 2  score  87.3   | ens3/family 136 / 135 / 2  score  88.0
+  author r6 (50)   shipped  39 /  39 / 1  score  74.0   | ens3/top  49 /  49 / 0  score  98.0   | ens3/family  49 /  49 / 0  score  98.0
+  author cs (50)   shipped  46 /  45 / 3  score  80.0   | ens3/top  45 /  44 / 1  score  86.0   | ens3/family  46 /  45 / 1  score  88.0
+  author stt (50)  shipped  40 /  39 / 1  score  76.0   | ens3/top  41 /  41 / 1  score  78.0   | ens3/family  41 /  41 / 1  score  78.0
+   re-trained - shipped, paired over lines (95% CI over lines of these three authors, not over authors);
+   near: lines gained / lost, exact sign test
+  all lines (n=150)            top     score +10.7 [+3.3, +18.7]   near +6.7 [+1.3, +12.7]   (15 / 5, p=0.041)   wrong family: 3 removed, 0 new
+                               family  score +11.3 [+4.0, +19.3]   near +7.3 [+2.0, +13.3]   (15 / 4, p=0.019)   wrong family: 3 removed, 0 new
+  without author r6 (n=100)    top     score +4.0 [-4.0, +14.0]    near +0.0 [-6.0, +6.0]    (5 / 5, p=1.000)   wrong family: 2 removed, 0 new
+                               family  score +5.0 [-3.0, +14.0]    near +1.0 [-5.0, +7.0]    (5 / 4, p=1.000)   wrong family: 2 removed, 0 new
+  author r6 only (n=50)        top     score +24.0 [+12.0, +38.0]  near +20.0 [+10.0, +32.0] (10 / 0, p=0.002)   wrong family: 1 removed, 0 new
+                               family  score +24.0 [+12.0, +38.0]  near +20.0 [+10.0, +32.0] (10 / 0, p=0.002)   wrong family: 1 removed, 0 new
+  author cs only (n=50)        top     score +6.0 [-8.0, +22.0]    near -2.0 [-10.0, +4.0]   (1 / 2, p=1.000)   wrong family: 2 removed, 0 new
+                               family  score +8.0 [-4.0, +24.0]    near +0.0 [-6.0, +6.0]    (1 / 1, p=1.000)   wrong family: 2 removed, 0 new
+  author stt only (n=50)       top     score +2.0 [-8.0, +12.0]    near +2.0 [-8.0, +12.0]   (4 / 3, p=1.000)   wrong family: 0 removed, 0 new
+                               family  score +2.0 [-8.0, +12.0]    near +2.0 [-8.0, +12.0]   (4 / 3, p=1.000)   wrong family: 0 removed, 0 new
+
+B. NOVELTY of the v3 lines (eval_v2.novelty: char 2-5-gram tf-idf cosine to the nearest other-author line
+   or seed, the measure and the 0.5 cut of the v2 study; neither was chosen on v3 lines)
+   novel is relative to the training data of the re-trained fold: the other authors' lines, their v3 lines included,
+   and the v3 seeds. The shipped bot saw neither the v3 lines nor the location seeds (and it did see the same
+   author's older lines), so its rows are not 'the shipped bot on lines novel to it'
+  novel (< 0.5): n=90 (r6 34, cs 26, stt 30)
+    shipped      near  82.2% (74/90)   wrong family  2.2% (2/90)
+    ens3/top     near  88.9% (80/90)   wrong family  1.1% (1/90)
+    ens3/family  near  90.0% (81/90)   wrong family  1.1% (1/90)
+    ens3/top - shipped: score +8.9 [+1.1, +17.8]   near +6.7 [+0.0, +14.4] (9 / 3)
+    ens3/family - shipped: score +10.0 [+2.2, +18.9]   near +7.8 [+1.1, +14.4] (9 / 2)
+  near-copy (>= 0.5): n=60 (r6 16, cs 24, stt 20)
+    shipped      near  85.0% (51/60)   wrong family  5.0% (3/60)
+    ens3/top     near  91.7% (55/60)   wrong family  1.7% (1/60)
+    ens3/family  near  91.7% (55/60)   wrong family  1.7% (1/60)
+    ens3/top - shipped: score +13.3 [+0.0, +28.3]   near +6.7 [-1.7, +15.0] (6 / 2)
+    ens3/family - shipped: score +13.3 [+0.0, +28.3]   near +6.7 [-1.7, +15.0] (6 / 2)
+
+C. JOINT: intent near AND the matcher's primary exact on the same line (the planner needs both)
+  matcher rules v2 (on disk; r6 and cs after tuning, stt held out)
+    shipped      all  80.7% (121/150) [73.6, 86.2]   author r6  74.0% (37/50) [60.4, 84.1]   author cs  92.0% (46/50) [81.2, 96.8]   author stt  76.0% (38/50) [62.6, 85.7]
+    ens3/top     all  87.3% (131/150) [81.1, 91.7]   author r6  94.0% (47/50) [83.8, 97.9]   author cs  90.0% (45/50) [78.6, 95.7]   author stt  78.0% (39/50) [64.8, 87.2]
+    ens3/family  all  88.0% (132/150) [81.8, 92.3]   author r6  94.0% (47/50) [83.8, 97.9]   author cs  92.0% (46/50) [81.2, 96.8]   author stt  78.0% (39/50) [64.8, 87.2]
+    ens3/top - shipped: +6.7 [+1.3, +12.7] (15 lines gained, 5 lost)
+    ens3/family - shipped: +7.3 [+2.0, +13.3] (15 lines gained, 4 lost)
+  matcher rules v1 (frozen before the lines; misses from eval_v3_rules_v1.log)
+    shipped      all  73.3% (110/150) [65.7, 79.8]   author r6  68.0% (34/50) [54.2, 79.2]   author cs  80.0% (40/50) [67.0, 88.8]   author stt  72.0% (36/50) [58.3, 82.5]
+    ens3/top     all  78.7% (118/150) [71.4, 84.5]   author r6  84.0% (42/50) [71.5, 91.7]   author cs  78.0% (39/50) [64.8, 87.2]   author stt  74.0% (37/50) [60.4, 84.1]
+    ens3/family  all  79.3% (119/150) [72.2, 85.0]   author r6  84.0% (42/50) [71.5, 91.7]   author cs  80.0% (40/50) [67.0, 88.8]   author stt  74.0% (37/50) [60.4, 84.1]
+    ens3/top - shipped: +5.3 [+0.0, +11.3] (13 lines gained, 5 lost)
+    ens3/family - shipped: +6.0 [+0.7, +11.3] (13 lines gained, 4 lost)
+  ens3/family, rules v2: on the 126 lines whose truth is an order, near 112, near and exact place 111
+  near, but the place is wrong (truth -> pick; on a NONE pick the bot does nothing with the place):
+    r6v3_039   NONE -> NONE     'My ping is through the roof tonight, west coast servers are trash.'
+    r6v3_045   NONE -> NONE     "Bro I've been a Thermite main since year one and I still whiff that."
+    sttv3_036  NONE -> NONE     'two guys on the rough i see them'
+    sttv3_045  ENTRY -> ENTRY    'second story is not clear go in and clean it'
+
+D. THE 483 OLDER LINES, v21 study -> v3 study (both leave one author out, ens3; the v3 study adds the
+   v3 lines of the two training authors and the location seeds, and refits each fold's threshold)
+  top gate: fold thresholds (r6 / cs / stt) 0.46 / 0.50 / 0.42 -> 0.62 / 0.58 / 0.58
+    near 441 -> 433 (-1.7 [-3.7, +0.4]; 9 gained, 17 lost)   wrong family 12 -> 8 (4 new, 8 removed)   acts on non-order 5/75 -> 3/75
+    score +0.0 [-3.9, +4.1] (the line eval_v3.log prints); picks that differ: 38
+    lines whose outcome changed (truth: v21 pick -> v3 pick):
+      r6_016     HOLD_ANGLE:       HOLD_ANGLE       -> NONE             near lost                        "pre-aim the window by my ping and don't peek off it"
+      r6_027     DEFUSE:           DEFUSE           -> NONE             near lost                        'tap the defuser, I got you'
+      r6_052     NONE:             NONE             -> DRONE            near lost, wrong family new      'Valk cam top of stairs'
+      r6_058     SMOKE:            NONE             -> SMOKE            near gained                      'drop a cloud so we can cross'
+      r6_071     PLANT:            DEFUSE           -> NONE             near lost                        'drop the defuser behind the counter'
+      r6_073     ENTRY:            ENTRY            -> NONE             near lost                        'take site, check every corner'
+      r6_079     BREACH:           ENTRY            -> NONE             near lost                        'go in after you blow the hatch'
+      r6_081     MOVE_TO:          NONE             -> MOVE_TO          near gained                      'run up to the balcony and wait for me there'
+      r6_098     HOLD_OTHER_ANGLE: HOLD_OTHER_ANGLE -> NONE             near lost                        'crossfire it, you watch the opposite side from me'
+      r6_114     VAULT_WINDOW:     VAULT_WINDOW     -> NONE             near lost                        'vault in and plant behind the desk'
+      r6_120     ENTRY:            ENTRY            -> NONE             near lost                        "you're entry frag this round, get in the room"
+      r6v2_003   TAKE_COVER:       NONE             -> TAKE_COVER       near gained                      "get off that window line and hug the wall, they're pixel peeking you"
+      r6v2_004   HOLD_ANGLE:       TAKE_COVER       -> NONE             near lost                        'sit in cover and hold the hatch, anyone drops you shoot'
+      r6v2_005   BREACH:           BREACH           -> OPEN             near lost, wrong family new      'hatch is reinforced, get it open with the thermite'
+      r6v2_011   COVER_ME:         OPEN             -> NONE             wrong family removed             "I'm opening this door, you got me if someone swings?"
+      cs_004     HOLD_POSITION:    TAKE_COVER       -> HOLD_POSITION    near gained, wrong family removed 'plant your feet and quit walking around'
+      cs_028     ENTRY:            NONE             -> ENTRY            near gained                      "rush B, I'm right behind"
+      cs_105     BREACH:           BREACH           -> OPEN             near lost, wrong family new      'open up the hatch below us with your explosive'
+      cs_108     NONE:             BREACH           -> NONE             near gained, wrong family removed 'bomb down A, default plant'
+      csv2_039   TAKE_COVER:       TAKE_COVER       -> NONE             near lost                        "hug the pillar, don't give them a free kill"
+      stt_001    FLANK:            FALL_BACK        -> NONE             wrong family removed             'flake right but dont move till i say'
+      stt_005    FALL_BACK:        FLANK            -> NONE             wrong family removed             'full back full back'
+      stt_012    FLASH:            NONE             -> ENTRY            wrong family new                 'flesh the room then clear it'
+      stt_030    ENTRY:            NONE             -> ENTRY            near gained                      'youre first in bot sweep the room'
+      stt_057    SMOKE:            OPEN             -> NONE             wrong family removed             'pop a smock on the stairs'
+      stt_074    BREACH:           BREACH           -> NONE             near lost                        'beach that wall on my go'
+      stt_105    FLASH:            ENTRY            -> FRAG             near gained, wrong family removed 'throw a flesh in there'
+      stt_111    DEFUSE:           PLANT            -> NONE             near lost                        'the fuse it the fuse'
+      stt_119    FLANK:            NONE             -> FLANK            near gained                      'flake left through the uh garage'
+      sttv2_010  OPEN:             OPEN             -> NONE             near lost                        'uh on my mark crack that door open'
+      sttv2_022  OPEN:             OPEN             -> NONE             near lost                        'roll the shudder up'
+      sttv2_025  COVER_ME:         REVIVE_ME        -> NONE             wrong family removed             'lover me lover me im reloading'
+  family gate: fold thresholds (r6 / cs / stt) 0.62 / 0.56 / 0.54 -> 0.60 / 0.58 / 0.52
+    near 437 -> 440 (+0.6 [-1.4, +2.7]; 15 gained, 12 lost)   wrong family 9 -> 11 (7 new, 5 removed)   acts on non-order 4/75 -> 5/75
+    score -0.2 [-4.3, +3.7] (the line eval_v3.log prints); picks that differ: 39
+    lines whose outcome changed (truth: v21 pick -> v3 pick):
+      r6_019     BREACH:           NONE             -> BREACH           near gained                      'slap a charge on the barricade'
+      r6_046     COVER_ME:         NONE             -> REVIVE_ME        wrong family new                 'be ready to trade me when I swing'
+      r6_052     NONE:             NONE             -> DRONE            near lost, wrong family new      'Valk cam top of stairs'
+      r6_073     ENTRY:            ENTRY            -> NONE             near lost                        'take site, check every corner'
+      r6_081     MOVE_TO:          NONE             -> MOVE_TO          near gained                      'run up to the balcony and wait for me there'
+      r6_114     VAULT_WINDOW:     VAULT_WINDOW     -> NONE             near lost                        'vault in and plant behind the desk'
+      r6_120     ENTRY:            ENTRY            -> NONE             near lost                        "you're entry frag this round, get in the room"
+      r6v2_003   TAKE_COVER:       NONE             -> TAKE_COVER       near gained                      "get off that window line and hug the wall, they're pixel peeking you"
+      r6v2_004   HOLD_ANGLE:       NONE             -> HOLD_ANGLE       near gained                      'sit in cover and hold the hatch, anyone drops you shoot'
+      r6v2_005   BREACH:           BREACH           -> OPEN             near lost, wrong family new      'hatch is reinforced, get it open with the thermite'
+      r6v2_007   OPEN:             NONE             -> OPEN             near gained                      "open it up, I'll hold the angle"
+      r6v2_011   COVER_ME:         OPEN             -> NONE             wrong family removed             "I'm opening this door, you got me if someone swings?"
+      r6v2_034   HOLD_ANGLE:       NONE             -> TAKE_COVER       near gained                      'post up behind the doorframe and lock that window'
+      cs_004     HOLD_POSITION:    TAKE_COVER       -> HOLD_POSITION    near gained, wrong family removed 'plant your feet and quit walking around'
+      cs_008     FRAG:             FRAG             -> NONE             near lost                        'wait for my call, then burn out that corner'
+      cs_028     ENTRY:            NONE             -> ENTRY            near gained                      "rush B, I'm right behind"
+      cs_105     BREACH:           BREACH           -> OPEN             near lost, wrong family new      'open up the hatch below us with your explosive'
+      csv2_035   NONE:             NONE             -> BREACH           near lost, wrong family new      'just open fire, spam through the wall'
+      csv2_039   TAKE_COVER:       TAKE_COVER       -> NONE             near lost                        "hug the pillar, don't give them a free kill"
+      stt_001    FLANK:            FALL_BACK        -> NONE             wrong family removed             'flake right but dont move till i say'
+      stt_005    FALL_BACK:        FLANK            -> NONE             wrong family removed             'full back full back'
+      stt_012    FLASH:            NONE             -> ENTRY            wrong family new                 'flesh the room then clear it'
+      stt_026    ENTRY:            NONE             -> FRAG             wrong family new                 'storm site'
+      stt_028    REVIVE_ME:        NONE             -> REVIVE_ME        near gained                      'uh im on the floor by the stairs someone get me up'
+      stt_030    ENTRY:            NONE             -> ENTRY            near gained                      'youre first in bot sweep the room'
+      stt_057    SMOKE:            OPEN             -> FRAG             near gained, wrong family removed 'pop a smock on the stairs'
+      stt_074    BREACH:           BREACH           -> NONE             near lost                        'beach that wall on my go'
+      stt_079    VAULT_WINDOW:     NONE             -> VAULT_WINDOW     near gained                      'uh bail out through the winder'
+      stt_105    FLASH:            NONE             -> FRAG             near gained                      'throw a flesh in there'
+      stt_111    DEFUSE:           PLANT            -> NONE             near lost                        'the fuse it the fuse'
+      stt_119    FLANK:            NONE             -> FLANK            near gained                      'flake left through the uh garage'
+      sttv2_003  OPEN:             NONE             -> OPEN             near gained                      'hey bot get that door for me but dont walk through it'
+      sttv2_010  OPEN:             OPEN             -> NONE             near lost                        'uh on my mark crack that door open'
+
+E. SHIPPED BOT, raw line against 'strip' (attached side / colour words removed): 58 of 150 lines are rewritten
+  near 125 -> 122 (-2.0 [-4.7, +0.0]), wrong family 5 -> 6, score -3.3 [-8.0, +0.0]
+  answers that differ: 3 (0 better, 3 worse on near; exact sign test p=0.250); no line improves, so the interval cannot go above zero
+    sttv3_011  truth NONE       raw NONE (HOLD_ANGLE 0.512) -> strip HOLD_ANGLE (HOLD_ANGLE 0.616)
+               'sniper east window careful' -> 'sniper window careful'
+    sttv3_014  truth BREACH     raw BREACH (BREACH 0.889) -> strip NONE (BREACH 0.489)
+               'when i say go you beach west door okay not before' -> 'when i say go you beach door okay not before'
+    sttv3_049  truth MOVE_TO    raw MOVE_TO (MOVE_TO 0.601) -> strip NONE (MOVE_TO 0.521)
+               'i got main covered so you uh run over to yellow stares' -> 'i got main covered so you uh run over to stares'
+
+F. MATCHER, exact primary per author: rules v1 (frozen before the lines; eval_v3_rules_v1.log) -> rules v2
+   (on disk; edited after the first blind run from the r6 and cs lines, stt not used)
+  all (150)         88.0% (132/150) [81.8, 92.3] ->  96.7% (145/150) [92.4, 98.6]   13 gained, 0 lost
+  author r6 (50)    86.0% (43/50) [73.8, 93.0] ->  96.0% (48/50) [86.5, 98.9]   5 gained, 0 lost
+  author cs (50)    88.0% (44/50) [76.2, 94.4] -> 100.0% (50/50) [92.9, 100.0]   6 gained, 0 lost
+  author stt (50)   90.0% (45/50) [78.6, 95.7] ->  94.0% (47/50) [83.8, 97.9]   2 gained, 0 lost, exact sign test p=0.50
+  the 150 primaries (rules v2): 18 carry a role (them 6, status 5, not 3, from 2, mine 2), 20 a flag (unknown_modifier 12, unsure 7, other 1), 1 of them both (r6v3_045), 107 neither, 6 lines have no place
+  a role means 'the bot is NOT sent there' (locations.py), and eval_v3 does not score it; the primaries with one:
+    them    6 lines, 0 with an order to act on as truth
+    status  5 lines, 4 with an order to act on as truth; on 4 of them it IS the readers' target: r6v3_021, csv3_039, csv3_048, sttv3_040
+    not     3 lines, 0 with an order to act on as truth
+    from    2 lines, 2 with an order to act on as truth; on 2 of them it IS the readers' target: r6v3_000, csv3_027
+    mine    2 lines, 0 with an order to act on as truth
+
+G. FRESH REVIEW AUTHOR (review_v3/fresh_author.json; sha256 2b53eddc7c10fd9c... equals the stamp of 2026-10-04T00:43:35Z)
+   80 lines: 60 that name a place + 20 plain orders. ONE AI author who is also the ONLY
+   labeller (no second reader); blindness partial (written from blind/spec_v3.json, but the author's task text
+   carried the titles of earlier findings); short seed-like lines. Scored on the author's own label, no
+   alternates. A direction check, not a held-out rate.
+   mean length in the matcher's tokens: place lines 6.8, the project's v3 lines r6 12.5 / cs 10.5 / stt 10.1; 4 lines equal a training text
+   of the final model token for token (a05 = seed_VAULT_WINDOW_9, a09 = seed_TAKE_COVER_16, p02 = seed_MOVE_TO_6, p18 = r6_105 = cs_062 = stt_118)
+  matcher rules v2, exact primary: place lines  95.0% (57/60) [86.3, 98.3]; no place found on 20/20 plain orders; all lines  96.2% (77/80) [89.5, 98.7]
+    misses: c04 'theyre pushing east window fall back to white stairs'; i01 "We've only got a short window, plant now!"; i02 'well that went south fall back fall back'
+  shipped v2 (coop-deberta-v3-ens3-v2, family gate, 0.58):
+    place lines  near  91.7% (55/60) [81.9, 96.4]   exact ok  88.3% (53/60) [77.8, 94.2]   wrong family 1/60
+                 near and exact place  88.3% (53/60) [77.8, 94.2]   exact intent and exact place  85.0% (51/60) [73.9, 91.9]
+    plain orders near 100.0% (20/20) [83.9, 100.0]   exact ok 100.0% (20/20) [83.9, 100.0]   wrong family 0/20
+    not near: a08 FRAG -> NONE "Nade the sofa, he's hiding behind it"; a21 MOVE_TO -> NONE 'okay head up to the roof'; c02 HOLD_ANGLE -> NONE 'Leave the west door and come hold Main.'; c04 FALL_BACK -> NONE 'theyre pushing east window fall back to white stairs'; d06 NONE -> HOLD_ANGLE 'sniper on the roof watch out'
+  final v3 (coop-deberta-v3-ens3-v3, family gate, 0.60), the model as trained on this Mac (MPS), scored from archived probabilities and to be re-run if the model is re-trained:
+    place lines  near  98.3% (59/60) [91.1, 99.7]   exact ok  96.7% (58/60) [88.6, 99.1]   wrong family 0/60
+                 near and exact place  93.3% (56/60) [84.1, 97.4]   exact intent and exact place  91.7% (55/60) [81.9, 96.4]
+    plain orders near 100.0% (20/20) [83.9, 100.0]   exact ok 100.0% (20/20) [83.9, 100.0]   wrong family 0/20
+    not near: c02 HOLD_ANGLE -> NONE 'Leave the west door and come hold Main.'
+  final v3 - shipped v2, place lines: near 4 lines better, 0 worse (exact sign test p=0.125); exact ok 5 better, 0 worse (p=0.0625)
+  final v3 - shipped v2, plain orders: near 0 lines better, 0 worse (exact sign test p=1.000); exact ok 0 better, 0 worse (p=1.0000)

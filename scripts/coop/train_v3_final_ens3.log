@@ -1,0 +1,444 @@
+23:40:36 device: mps
+23:40:36 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+23:40:37 /Users/t.losiev/Documents/models_training/project_synth/.venv/lib/python3.11/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+23:40:37   warnings.warn(
+23:40:37 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2284.54it/s]
+23:40:37 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+23:40:37 Key                                     | Status     | 
+23:40:37 ----------------------------------------+------------+-
+23:40:37 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+23:40:37 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+23:40:37 mask_predictions.classifier.bias        | UNEXPECTED | 
+23:40:37 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+23:40:37 mask_predictions.dense.weight           | UNEXPECTED | 
+23:40:37 mask_predictions.dense.bias             | UNEXPECTED | 
+23:40:37 mask_predictions.classifier.weight      | UNEXPECTED | 
+23:40:37 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+23:40:37 lm_predictions.lm_head.bias             | UNEXPECTED | 
+23:40:37 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+23:40:37 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+23:40:37 classifier.bias                         | MISSING    | 
+23:40:37 classifier.weight                       | MISSING    | 
+23:40:37 pooler.dense.bias                       | MISSING    | 
+23:40:37 pooler.dense.weight                     | MISSING    | 
+23:40:37 
+23:40:37 Notes:
+23:40:37 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+23:40:37 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+23:43:40 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1738.66it/s]
+23:43:40 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+23:43:40 Key                                     | Status     | 
+23:43:40 ----------------------------------------+------------+-
+23:43:40 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+23:43:40 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+23:43:40 mask_predictions.classifier.bias        | UNEXPECTED | 
+23:43:40 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+23:43:40 mask_predictions.dense.weight           | UNEXPECTED | 
+23:43:40 mask_predictions.dense.bias             | UNEXPECTED | 
+23:43:40 mask_predictions.classifier.weight      | UNEXPECTED | 
+23:43:40 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+23:43:40 lm_predictions.lm_head.bias             | UNEXPECTED | 
+23:43:40 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+23:43:40 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+23:43:40 classifier.bias                         | MISSING    | 
+23:43:40 classifier.weight                       | MISSING    | 
+23:43:40 pooler.dense.bias                       | MISSING    | 
+23:43:40 pooler.dense.weight                     | MISSING    | 
+23:43:40 
+23:43:40 Notes:
+23:43:40 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+23:43:40 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+23:46:44 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1994.50it/s]
+23:46:44 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+23:46:44 Key                                     | Status     | 
+23:46:44 ----------------------------------------+------------+-
+23:46:44 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+23:46:44 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+23:46:44 mask_predictions.classifier.bias        | UNEXPECTED | 
+23:46:44 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+23:46:44 mask_predictions.dense.weight           | UNEXPECTED | 
+23:46:44 mask_predictions.dense.bias             | UNEXPECTED | 
+23:46:44 mask_predictions.classifier.weight      | UNEXPECTED | 
+23:46:44 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+23:46:44 lm_predictions.lm_head.bias             | UNEXPECTED | 
+23:46:44 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+23:46:44 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+23:46:44 classifier.bias                         | MISSING    | 
+23:46:44 classifier.weight                       | MISSING    | 
+23:46:44 pooler.dense.bias                       | MISSING    | 
+23:46:44 pooler.dense.weight                     | MISSING    | 
+23:46:44 
+23:46:44 Notes:
+23:46:44 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+23:46:44 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+23:49:43 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1704.50it/s]
+23:49:43 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+23:49:43 Key                                     | Status     | 
+23:49:43 ----------------------------------------+------------+-
+23:49:43 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+23:49:43 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+23:49:43 mask_predictions.classifier.bias        | UNEXPECTED | 
+23:49:43 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+23:49:43 mask_predictions.dense.weight           | UNEXPECTED | 
+23:49:43 mask_predictions.dense.bias             | UNEXPECTED | 
+23:49:43 mask_predictions.classifier.weight      | UNEXPECTED | 
+23:49:43 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+23:49:43 lm_predictions.lm_head.bias             | UNEXPECTED | 
+23:49:43 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+23:49:43 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+23:49:43 classifier.bias                         | MISSING    | 
+23:49:43 classifier.weight                       | MISSING    | 
+23:49:43 pooler.dense.bias                       | MISSING    | 
+23:49:43 pooler.dense.weight                     | MISSING    | 
+23:49:43 
+23:49:43 Notes:
+23:49:43 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+23:49:43 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+23:52:44 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1825.57it/s]
+23:52:44 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+23:52:44 Key                                     | Status     | 
+23:52:44 ----------------------------------------+------------+-
+23:52:44 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+23:52:44 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+23:52:44 mask_predictions.classifier.bias        | UNEXPECTED | 
+23:52:44 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+23:52:44 mask_predictions.dense.weight           | UNEXPECTED | 
+23:52:44 mask_predictions.dense.bias             | UNEXPECTED | 
+23:52:44 mask_predictions.classifier.weight      | UNEXPECTED | 
+23:52:44 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+23:52:44 lm_predictions.lm_head.bias             | UNEXPECTED | 
+23:52:44 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+23:52:44 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+23:52:44 classifier.bias                         | MISSING    | 
+23:52:44 classifier.weight                       | MISSING    | 
+23:52:44 pooler.dense.bias                       | MISSING    | 
+23:52:44 pooler.dense.weight                     | MISSING    | 
+23:52:44 
+23:52:44 Notes:
+23:52:44 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+23:52:44 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+23:55:42 oof seed 0 done, 906s
+23:55:43 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1824.07it/s]
+23:55:43 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+23:55:43 Key                                     | Status     | 
+23:55:43 ----------------------------------------+------------+-
+23:55:43 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+23:55:43 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+23:55:43 mask_predictions.classifier.bias        | UNEXPECTED | 
+23:55:43 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+23:55:43 mask_predictions.dense.weight           | UNEXPECTED | 
+23:55:43 mask_predictions.dense.bias             | UNEXPECTED | 
+23:55:43 mask_predictions.classifier.weight      | UNEXPECTED | 
+23:55:43 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+23:55:43 lm_predictions.lm_head.bias             | UNEXPECTED | 
+23:55:43 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+23:55:43 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+23:55:43 classifier.bias                         | MISSING    | 
+23:55:43 classifier.weight                       | MISSING    | 
+23:55:43 pooler.dense.bias                       | MISSING    | 
+23:55:43 pooler.dense.weight                     | MISSING    | 
+23:55:43 
+23:55:43 Notes:
+23:55:43 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+23:55:43 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+23:58:41 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1707.57it/s]
+23:58:41 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+23:58:41 Key                                     | Status     | 
+23:58:41 ----------------------------------------+------------+-
+23:58:41 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+23:58:41 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+23:58:41 mask_predictions.classifier.bias        | UNEXPECTED | 
+23:58:41 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+23:58:41 mask_predictions.dense.weight           | UNEXPECTED | 
+23:58:41 mask_predictions.dense.bias             | UNEXPECTED | 
+23:58:41 mask_predictions.classifier.weight      | UNEXPECTED | 
+23:58:41 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+23:58:41 lm_predictions.lm_head.bias             | UNEXPECTED | 
+23:58:41 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+23:58:41 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+23:58:41 classifier.bias                         | MISSING    | 
+23:58:41 classifier.weight                       | MISSING    | 
+23:58:41 pooler.dense.bias                       | MISSING    | 
+23:58:41 pooler.dense.weight                     | MISSING    | 
+23:58:41 
+23:58:41 Notes:
+23:58:41 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+23:58:41 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+00:01:42 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1714.38it/s]
+00:01:42 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+00:01:42 Key                                     | Status     | 
+00:01:42 ----------------------------------------+------------+-
+00:01:42 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+00:01:42 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+00:01:42 mask_predictions.classifier.bias        | UNEXPECTED | 
+00:01:42 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+00:01:42 mask_predictions.dense.weight           | UNEXPECTED | 
+00:01:42 mask_predictions.dense.bias             | UNEXPECTED | 
+00:01:42 mask_predictions.classifier.weight      | UNEXPECTED | 
+00:01:42 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+00:01:42 lm_predictions.lm_head.bias             | UNEXPECTED | 
+00:01:42 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+00:01:42 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+00:01:42 classifier.bias                         | MISSING    | 
+00:01:42 classifier.weight                       | MISSING    | 
+00:01:42 pooler.dense.bias                       | MISSING    | 
+00:01:42 pooler.dense.weight                     | MISSING    | 
+00:01:42 
+00:01:42 Notes:
+00:01:42 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+00:01:42 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+00:04:40 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1371.67it/s]
+00:04:40 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+00:04:40 Key                                     | Status     | 
+00:04:40 ----------------------------------------+------------+-
+00:04:40 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+00:04:40 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+00:04:40 mask_predictions.classifier.bias        | UNEXPECTED | 
+00:04:40 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+00:04:40 mask_predictions.dense.weight           | UNEXPECTED | 
+00:04:40 mask_predictions.dense.bias             | UNEXPECTED | 
+00:04:40 mask_predictions.classifier.weight      | UNEXPECTED | 
+00:04:40 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+00:04:40 lm_predictions.lm_head.bias             | UNEXPECTED | 
+00:04:40 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+00:04:40 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+00:04:40 classifier.bias                         | MISSING    | 
+00:04:40 classifier.weight                       | MISSING    | 
+00:04:40 pooler.dense.bias                       | MISSING    | 
+00:04:40 pooler.dense.weight                     | MISSING    | 
+00:04:40 
+00:04:40 Notes:
+00:04:40 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+00:04:40 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+00:07:39 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1774.24it/s]
+00:07:39 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+00:07:39 Key                                     | Status     | 
+00:07:39 ----------------------------------------+------------+-
+00:07:39 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+00:07:39 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+00:07:39 mask_predictions.classifier.bias        | UNEXPECTED | 
+00:07:39 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+00:07:39 mask_predictions.dense.weight           | UNEXPECTED | 
+00:07:39 mask_predictions.dense.bias             | UNEXPECTED | 
+00:07:39 mask_predictions.classifier.weight      | UNEXPECTED | 
+00:07:39 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+00:07:39 lm_predictions.lm_head.bias             | UNEXPECTED | 
+00:07:39 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+00:07:39 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+00:07:39 classifier.bias                         | MISSING    | 
+00:07:39 classifier.weight                       | MISSING    | 
+00:07:39 pooler.dense.bias                       | MISSING    | 
+00:07:39 pooler.dense.weight                     | MISSING    | 
+00:07:39 
+00:07:39 Notes:
+00:07:39 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+00:07:39 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+00:10:34 oof seed 1 done, 1798s
+00:10:35 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 12127.22it/s]
+00:10:35 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+00:10:35 Key                                     | Status     | 
+00:10:35 ----------------------------------------+------------+-
+00:10:35 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+00:10:35 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+00:10:35 mask_predictions.classifier.bias        | UNEXPECTED | 
+00:10:35 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+00:10:35 mask_predictions.dense.weight           | UNEXPECTED | 
+00:10:35 mask_predictions.dense.bias             | UNEXPECTED | 
+00:10:35 mask_predictions.classifier.weight      | UNEXPECTED | 
+00:10:35 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+00:10:35 lm_predictions.lm_head.bias             | UNEXPECTED | 
+00:10:35 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+00:10:35 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+00:10:35 classifier.bias                         | MISSING    | 
+00:10:35 classifier.weight                       | MISSING    | 
+00:10:35 pooler.dense.bias                       | MISSING    | 
+00:10:35 pooler.dense.weight                     | MISSING    | 
+00:10:35 
+00:10:35 Notes:
+00:10:35 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+00:10:35 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+00:13:30 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 11095.45it/s]
+00:13:30 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+00:13:30 Key                                     | Status     | 
+00:13:30 ----------------------------------------+------------+-
+00:13:30 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+00:13:30 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+00:13:30 mask_predictions.classifier.bias        | UNEXPECTED | 
+00:13:30 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+00:13:30 mask_predictions.dense.weight           | UNEXPECTED | 
+00:13:30 mask_predictions.dense.bias             | UNEXPECTED | 
+00:13:30 mask_predictions.classifier.weight      | UNEXPECTED | 
+00:13:30 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+00:13:30 lm_predictions.lm_head.bias             | UNEXPECTED | 
+00:13:30 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+00:13:30 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+00:13:30 classifier.bias                         | MISSING    | 
+00:13:30 classifier.weight                       | MISSING    | 
+00:13:30 pooler.dense.bias                       | MISSING    | 
+00:13:30 pooler.dense.weight                     | MISSING    | 
+00:13:30 
+00:13:30 Notes:
+00:13:30 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+00:13:30 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+00:16:25 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 11742.44it/s]
+00:16:25 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+00:16:25 Key                                     | Status     | 
+00:16:25 ----------------------------------------+------------+-
+00:16:25 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+00:16:25 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+00:16:25 mask_predictions.classifier.bias        | UNEXPECTED | 
+00:16:25 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+00:16:25 mask_predictions.dense.weight           | UNEXPECTED | 
+00:16:25 mask_predictions.dense.bias             | UNEXPECTED | 
+00:16:25 mask_predictions.classifier.weight      | UNEXPECTED | 
+00:16:25 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+00:16:25 lm_predictions.lm_head.bias             | UNEXPECTED | 
+00:16:25 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+00:16:25 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+00:16:25 classifier.bias                         | MISSING    | 
+00:16:25 classifier.weight                       | MISSING    | 
+00:16:25 pooler.dense.bias                       | MISSING    | 
+00:16:25 pooler.dense.weight                     | MISSING    | 
+00:16:25 
+00:16:25 Notes:
+00:16:25 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+00:16:25 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+00:19:20 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 11811.08it/s]
+00:19:20 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+00:19:20 Key                                     | Status     | 
+00:19:20 ----------------------------------------+------------+-
+00:19:20 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+00:19:20 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+00:19:20 mask_predictions.classifier.bias        | UNEXPECTED | 
+00:19:20 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+00:19:20 mask_predictions.dense.weight           | UNEXPECTED | 
+00:19:20 mask_predictions.dense.bias             | UNEXPECTED | 
+00:19:20 mask_predictions.classifier.weight      | UNEXPECTED | 
+00:19:20 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+00:19:20 lm_predictions.lm_head.bias             | UNEXPECTED | 
+00:19:20 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+00:19:20 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+00:19:20 classifier.bias                         | MISSING    | 
+00:19:20 classifier.weight                       | MISSING    | 
+00:19:20 pooler.dense.bias                       | MISSING    | 
+00:19:20 pooler.dense.weight                     | MISSING    | 
+00:19:20 
+00:19:20 Notes:
+00:19:20 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+00:19:20 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+00:22:14 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 10789.14it/s]
+00:22:14 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+00:22:14 Key                                     | Status     | 
+00:22:14 ----------------------------------------+------------+-
+00:22:14 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+00:22:14 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+00:22:14 mask_predictions.classifier.bias        | UNEXPECTED | 
+00:22:14 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+00:22:14 mask_predictions.dense.weight           | UNEXPECTED | 
+00:22:14 mask_predictions.dense.bias             | UNEXPECTED | 
+00:22:14 mask_predictions.classifier.weight      | UNEXPECTED | 
+00:22:14 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+00:22:14 lm_predictions.lm_head.bias             | UNEXPECTED | 
+00:22:14 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+00:22:14 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+00:22:14 classifier.bias                         | MISSING    | 
+00:22:14 classifier.weight                       | MISSING    | 
+00:22:14 pooler.dense.bias                       | MISSING    | 
+00:22:14 pooler.dense.weight                     | MISSING    | 
+00:22:14 
+00:22:14 Notes:
+00:22:14 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+00:22:14 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+00:25:07 oof seed 2 done, 2671s
+00:25:07 out-of-fold over 633 lines: top gate thr 0.60 (near-2*wf 560), family gate thr 0.60 (near-2*wf 569) -> family
+00:25:08 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 12026.94it/s]
+00:25:08 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+00:25:08 Key                                     | Status     | 
+00:25:08 ----------------------------------------+------------+-
+00:25:08 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+00:25:08 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+00:25:08 mask_predictions.classifier.bias        | UNEXPECTED | 
+00:25:08 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+00:25:08 mask_predictions.dense.weight           | UNEXPECTED | 
+00:25:08 mask_predictions.dense.bias             | UNEXPECTED | 
+00:25:08 mask_predictions.classifier.weight      | UNEXPECTED | 
+00:25:08 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+00:25:08 lm_predictions.lm_head.bias             | UNEXPECTED | 
+00:25:08 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+00:25:08 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+00:25:08 classifier.bias                         | MISSING    | 
+00:25:08 classifier.weight                       | MISSING    | 
+00:25:08 pooler.dense.bias                       | MISSING    | 
+00:25:08 pooler.dense.weight                     | MISSING    | 
+00:25:08 
+00:25:08 Notes:
+00:25:08 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+00:25:08 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+00:28:02 Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  5.71it/s]
+00:28:03 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 18816.21it/s]
+00:28:03 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+00:28:03 Key                                     | Status     | 
+00:28:03 ----------------------------------------+------------+-
+00:28:03 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+00:28:03 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+00:28:03 mask_predictions.classifier.bias        | UNEXPECTED | 
+00:28:03 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+00:28:03 mask_predictions.dense.weight           | UNEXPECTED | 
+00:28:03 mask_predictions.dense.bias             | UNEXPECTED | 
+00:28:03 mask_predictions.classifier.weight      | UNEXPECTED | 
+00:28:03 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+00:28:03 lm_predictions.lm_head.bias             | UNEXPECTED | 
+00:28:03 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+00:28:03 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+00:28:03 classifier.bias                         | MISSING    | 
+00:28:03 classifier.weight                       | MISSING    | 
+00:28:03 pooler.dense.bias                       | MISSING    | 
+00:28:03 pooler.dense.weight                     | MISSING    | 
+00:28:03 
+00:28:03 Notes:
+00:28:03 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+00:28:03 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+00:30:58 Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  6.72it/s]
+00:30:59 Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2019.99it/s]
+00:30:59 [transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-base
+00:30:59 Key                                     | Status     | 
+00:30:59 ----------------------------------------+------------+-
+00:30:59 lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+00:30:59 lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+00:30:59 mask_predictions.classifier.bias        | UNEXPECTED | 
+00:30:59 mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+00:30:59 mask_predictions.dense.weight           | UNEXPECTED | 
+00:30:59 mask_predictions.dense.bias             | UNEXPECTED | 
+00:30:59 mask_predictions.classifier.weight      | UNEXPECTED | 
+00:30:59 lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+00:30:59 lm_predictions.lm_head.bias             | UNEXPECTED | 
+00:30:59 mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+00:30:59 lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+00:30:59 classifier.bias                         | MISSING    | 
+00:30:59 classifier.weight                       | MISSING    | 
+00:30:59 pooler.dense.bias                       | MISSING    | 
+00:30:59 pooler.dense.weight                     | MISSING    | 
+00:30:59 
+00:30:59 Notes:
+00:30:59 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+00:30:59 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+00:33:54 Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  6.72it/s]
+00:33:54 saved to /Users/t.losiev/Documents/models_training/project_synth/models/coop-deberta-v3-ens3-v3 in 3198s
+00:33:54      3200.39 real       795.33 user       238.79 sys
+00:33:54           2041790464  maximum resident set size
+00:33:54                    0  average shared memory size
+00:33:54                    0  average unshared data size
+00:33:54                    0  average unshared stack size
+00:33:54              1566205  page reclaims
+00:33:54               252589  page faults
+00:33:54                    0  swaps
+00:33:54                    0  block input operations
+00:33:54                    0  block output operations
+00:33:54                  505  messages sent
+00:33:54                 1466  messages received
+00:33:54                    0  signals received
+00:33:54                 3266  voluntary context switches
+00:33:54             11957530  involuntary context switches
+00:33:54        9996994154661  instructions retired
+00:33:54        4145812660841  cycles elapsed
+00:33:54           9040775400  peak memory footprint

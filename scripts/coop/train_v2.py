@@ -21,12 +21,11 @@ deberta-v3-base (one model, 0.8 GB, ~25 ms on 4 CPU threads) the study measures:
                                            # skip the 15 out-of-fold trainings: keep that bot's gate and threshold
     python train_v2.py smoke               # one short training and a prediction: does this machine's device work
 
-The device is CUDA, else Apple MPS, else CPU (COOP_DEVICE overrides). Only CUDA has been run; the
-numbers in the write-ups are CUDA runs.
+The device is cuda, else mps (Apple silicon), else cpu; COOP_DEVICE=cpu|mps|cuda overrides. The
+cross-validation numbers in the write-ups are CUDA runs; the v3 final model was trained on mps.
 """
 import io, json, os, random, sys, time
 
-os.environ.setdefault("PYTORCH_ENABLE_MPS_FALLBACK", "1")   # an operator MPS lacks runs on the CPU instead of failing
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, get_linear_schedule_with_warmup
 
@@ -42,6 +41,23 @@ SEEDS = [0, 1, 2]
 HP = T.HP
 RESULTS = os.path.join(HERE, f"results_{V.TAG}_probs.json")   # COOP_TAG=v21 -> results_v21_probs.json
 MODELS_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "models"))
+
+
+def pick_device():
+    want = os.environ.get("COOP_DEVICE")
+    if want:
+        return want
+    if torch.cuda.is_available():
+        return "cuda"
+    return "mps" if torch.backends.mps.is_available() else "cpu"
+
+
+def free_cache(device):
+    """Hand the freed model's memory back between trainings (cuda and mps keep it cached)."""
+    if device == "cuda":
+        torch.cuda.empty_cache()
+    elif device == "mps":
+        torch.mps.empty_cache()
 
 
 def batcher(tok, items, device):
@@ -64,23 +80,6 @@ def batcher(tok, items, device):
         x = X[rows, :n]
         return {"input_ids": x, "token_type_ids": torch.zeros_like(x), "attention_mask": M[rows, :n]}
     return batch
-
-
-def pick_device():
-    if os.environ.get("COOP_DEVICE"):
-        return os.environ["COOP_DEVICE"]
-    if torch.cuda.is_available():
-        return "cuda"
-    if getattr(torch.backends, "mps", None) is not None and torch.backends.mps.is_available():
-        return "mps"
-    return "cpu"
-
-
-def free(device):
-    if device == "cuda":
-        torch.cuda.empty_cache()
-    elif device == "mps":
-        torch.mps.empty_cache()
 
 
 def train_predict(size, train, test, seed, device, epochs=None):
@@ -134,7 +133,7 @@ def oof(size, train, seed, device, k=5):
         tr = [i for j, i in enumerate(lines) if j % k != f]
         ep = round(full_steps / ((len(tr) + HP["batch"] - 1) // HP["batch"]))
         out.update(train_predict(size, tr, te, seed, device, epochs=ep)[0])
-        free(device)
+        free_cache(device)
     return out
 
 
@@ -158,7 +157,7 @@ def cv(sizes, device, held_only=None, path=RESULTS):
                     continue
                 full, model, _ = train_predict(size, train, test, seed, device)
                 del model
-                free(device)
+                free_cache(device)
                 res.setdefault(size, {})[key] = {"test": full, "oof": oof(size, train, seed, device)}
                 json.dump(res, io.open(path, "w", encoding="utf-8"))
                 print(f"{size} held={held} seed={seed} done, {time.time() - t0:.0f}s", flush=True)
@@ -189,6 +188,11 @@ def final(kind, device, reuse_gate=None):
         thr = fits[gate][0]
         print(f"out-of-fold over {len(avg)} lines: " + ", ".join(
             f"{g} gate thr {t:.2f} (near-2*wf {v})" for g, (t, v) in fits.items()) + f" -> {gate}", flush=True)
+        # kept per member, as cv() keeps its own: without them the threshold and the gate in bot_config.json
+        # can be checked against the log line above but not re-derived
+        json.dump({"_meta": {"labels": LABELS, "kind": kind, "n_items": len(items), "n_seeds": len(seeds), "device": device},
+                   "oof": {str(s): o for s, o in zip(members, oofs)}},
+                  io.open(os.path.join(HERE, f"results_{V.TAG}_final_oof.json"), "w", encoding="utf-8"))
     os.makedirs(out_dir, exist_ok=True)
     member_dirs = []
     for s in members:
@@ -198,15 +202,16 @@ def final(kind, device, reuse_gate=None):
         tok.save_pretrained(d)
         member_dirs.append(os.path.relpath(d, out_dir).replace(os.sep, "/"))
         del model
-        free(device)
+        free_cache(device)
         print(f"member seed {s} saved, {time.time() - t0:.0f}s", flush=True)
     cfg = {
         "labels": LABELS, "threshold": thr, "gate": gate, "families": V.FAMILY,
         "phrases": {k: v["label"] for k, v in V.I.items()},
         "base_model": MODELS[size], "members": member_dirs,
-        "recipe": {**HP, "lr": HP["lr"][size], "dtype": "float32", "seeds": members},
-        "trained_on": f"{len(items)} lines from 3 AI-written authors (v1 blind lines, v2 lines for "
-                      f"TAKE_COVER/OPEN{', v3 lines that name map places' if V.PLACES else ''}), "
+        "recipe": {**HP, "lr": HP["lr"][size], "dtype": "float32", "seeds": members, "device": device,
+                   "torch": torch.__version__},
+        "trained_on": f"{len(items)} lines from 3 AI-written authors (v1 blind lines + v2 lines for "
+                      f"TAKE_COVER/OPEN{' + v3 lines that name map places' if V.PLACES else ''}), "
                       f"majority of author + 2 AI annotators, plus {len(seeds)} "
                       f"developer-written canonical commands ({V.SEED_FILE})",
         "threshold_from": f"kept from {os.path.basename(os.path.dirname(os.path.abspath(reuse_gate)))} (not re-fitted to this training set)"
@@ -214,7 +219,6 @@ def final(kind, device, reuse_gate=None):
                           f"5-fold out-of-fold predictions ({'averaged over the members' if len(members) > 1 else 'one model'}), "
                           "criterion near - 2*wrong-family, strict; gate chosen the same way",
         "oof_fits": {g: {"threshold": t, "criterion": v} for g, (t, v) in fits.items()},
-        "device": device, "torch": torch.__version__,
     }
     json.dump(cfg, io.open(os.path.join(out_dir, "bot_config.json"), "w", encoding="utf-8"), indent=1)
     print(f"saved to {out_dir} in {time.time() - t0:.0f}s", flush=True)

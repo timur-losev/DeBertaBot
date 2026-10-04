@@ -21,12 +21,9 @@ else()
   endif()
 endif()
 set(ORT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party/${ORT_NAME}" CACHE PATH "ONNX Runtime release (include/, lib/)")
-# the newest exported bot that exists: v31 (seed set v31, trained after the v3 review) or v3
-set(_COOP_BOT "${CMAKE_CURRENT_SOURCE_DIR}/../../models/coop-deberta-v3-ens3-v3/cpp")
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../../models/coop-deberta-v3-ens3-v31/cpp/intent_config.json")
-    set(_COOP_BOT "${CMAKE_CURRENT_SOURCE_DIR}/../../models/coop-deberta-v3-ens3-v31/cpp")
-endif()
-set(COOP_MODEL_DIR "${_COOP_BOT}" CACHE PATH "export_cpp.py output")
+# the shipped bot (scripts/coop/bots.py names the same one for the Python tools); a cache variable:
+# pass -DCOOP_MODEL_DIR=... or use coop_cli --model-dir for another bot
+set(COOP_MODEL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../models/coop-deberta-v3-ens3-v2/cpp" CACHE PATH "export_cpp.py output")
 if(NOT EXISTS "${ORT_DIR}/include/onnxruntime_cxx_api.h")
   message(FATAL_ERROR "ONNX Runtime not found in ${ORT_DIR}: unpack the ${ORT_NAME} release there, or pass -DORT_DIR=<dir>")
 endif()

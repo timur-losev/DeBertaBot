@@ -3,21 +3,25 @@
 //
 //   coop_cli                      chat; /why /t <x> /q as in coop_bot.py
 //   coop_cli --golden             golden.jsonl: token ids equal, probabilities within 1e-4, same argmax
-//   coop_cli --tokenizer-tests    tokenizer_tests.jsonl: normalizer output, token ids, regex slots (no model)
-//   coop_cli --dialogue           dialogue.jsonl: a scripted conversation, the bot's action, confidence and
-//                                 queued order on every line
+//   coop_cli --tokenizer-tests    tokenizer_tests.jsonl: normalizer output, token ids, regex slots (no model);
+//                                 the token ids again with the vocabulary reloaded under a decimal-comma locale
+//   coop_cli --dialogue           dialogue.jsonl: a scripted conversation, the bot's action, confidence,
+//                                 queued order, places and executed order on every line
 //   coop_cli --gate-tests         gate_tests.jsonl: both gates on the Python bot's probabilities and on
 //                                 constructed rows (ties, family mass against top label; no model)
-//   coop_cli --decide-tests       decide_tests.jsonl: every branch of the bot's decision, both gates (no model)
+//   coop_cli --decide-tests       decide_tests.jsonl: every branch of the bot's decision, both gates (no model);
+//                                 Reset() on every queued order
 //   coop_cli --location-tests     location_tests.jsonl: the map places found in each line (no model)
 //   coop_cli --bench              latency on the golden lines, load time, memory
 //   coop_cli --tokenize "text"    the words, pieces and ids of one line
+// every mode first prints the bot it runs on (directory, labels, gate, threshold)
 // options: --model-dir DIR (export_cpp.py output: intent_config.json, vocab.tsv and the model files
 //          it lists under "members"), --threads N (per model, default 4),
 //          --no-spin (ONNX Runtime worker threads sleep between calls), --sequential (an ensemble's
 //          members one after another instead of one thread each)
 #include <algorithm>
 #include <chrono>
+#include <clocale>
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
@@ -221,6 +225,32 @@ std::string PlacesStr(const json& r) {
     return s;
 }
 
+// a label or null, and a flag, as the Python bot wrote them
+std::string LabelStr(const json& v) { return v.is_null() ? std::string("-") : v.get<std::string>(); }
+std::string FlagStr(const json& v) { return v.get<bool>() ? "1" : "0"; }
+
+// a key the test files have had only since the bot reports places (the place records, the order that
+// fires and its "other" slot): compared whenever the row has it. A row without it passes only for a
+// bot without "locations", whose stored files predate these keys (the v1 bot's); for a bot with
+// places the key is missing, and that is a difference.
+bool SameNewer(const json& row, const char* key, const std::string& got, std::string (*str)(const json&),
+               const coop::IntentConfig& cfg, bool* missing) {
+    const auto it = row.find(key);
+    if (it != row.end()) return got == str(*it);
+    if (cfg.has_locations) *missing = true;
+    return !cfg.has_locations;
+}
+
+// the order a line executes with its "other" slot, for the messages: "SMOKE", "OPEN+other", "-"
+std::string ExecStr(const std::string& label, bool other) { return label + (other ? "+other" : ""); }
+std::string ExecStr(const json& row) {
+    const auto it = row.find("executed");
+    return it == row.end() ? "?" : ExecStr(LabelStr(*it), row.value("executed_other", false));
+}
+
+const char kMissingKeys[] = "  rows lack keys that a bot with places writes (places, executed, ...): "
+                            "regenerate the test files with gen_tests.py\n";
+
 // what the planner gets, for the chat's debug line: "* north door (basement) [mine]"
 std::string PlacesText(const coop::PlaceRecord& r, const coop::LocationMatcher& m) {
     std::string s;
@@ -260,9 +290,12 @@ int RunTokenizerTests(Model& m) {
         const auto want = r["ids"].get<std::vector<int64_t>>();
         if (ids != want) ++bad_ids, show("ids", text, IdsStr(want), IdsStr(ids));
         coop::Decision d;
+        const unsigned gave_up = slots.SearchErrors();
         slots.Match(text, &d);   // must not crash on any line
         const auto s = r["slots"].get<std::vector<bool>>();
-        if (r.value("regex_limit", false)) {   // past std::regex's recursion limit: documented, not compared
+        // a line built to pass std::regex's recursion limit, and it did (MSVC; libc++ has no such limit
+        // and is compared): documented, not compared
+        if (r.value("regex_limit", false) && slots.SearchErrors() != gave_up) {
             ++limit_rows;
             continue;
         }
@@ -274,12 +307,38 @@ int RunTokenizerTests(Model& m) {
             show("slots", text, a, b);
         }
     }
+    // the vocabulary must load whatever locale the host process has set: read with strtod, "0.0" is a
+    // bad score under a decimal comma. Every line is encoded again with the vocabulary reloaded under
+    // such a locale, if one is installed
+    const char* comma = nullptr;
+    for (const char* name : {"de_DE.UTF-8", "de_DE.utf8", "German_Germany.1252"})
+        if (!comma && std::setlocale(LC_ALL, name)) comma = name;
+    size_t bad_locale = 0;
+    bool loads = true;
+    if (comma) {
+        Model again;
+        again.dir = m.dir;
+        loads = LoadConfig(again, &err);
+        if (loads)
+            for (const json& r : rows)
+                bad_locale += again.tok.Encode(r["text"].get<std::string>()) != r["ids"].get<std::vector<int64_t>>();
+        std::setlocale(LC_ALL, "C");
+    }
     const size_t n = rows.size();
-    std::printf("tokenizer tests, %zu lines: normalizer %zu/%zu equal, token ids %zu/%zu equal, regex slots %zu/%zu equal"
-                " (+%zu lines past std::regex's recursion limit, not compared; it gave up on %u slot searches)\n",
-                n, n - bad_norm, n, n - bad_ids, n, n - limit_rows - bad_slots, n - limit_rows, limit_rows,
-                slots.SearchErrors());
-    return bad_norm || bad_ids || bad_slots ? 1 : 0;
+    std::printf("tokenizer tests, %zu lines: normalizer %zu/%zu equal, token ids %zu/%zu equal, regex slots %zu/%zu equal",
+                n, n - bad_norm, n, n - bad_ids, n, n - limit_rows - bad_slots, n - limit_rows);
+    if (limit_rows)
+        std::printf(" (+%zu lines past std::regex's recursion limit, not compared; it gave up on %u slot searches)\n",
+                    limit_rows, slots.SearchErrors());
+    else
+        std::printf(" (every line compared; std::regex gave up on %u slot searches)\n", slots.SearchErrors());
+    if (!comma)
+        std::printf("  vocabulary reload under a decimal comma skipped: no decimal-comma locale installed\n");
+    else if (!loads)
+        std::printf("  under %s the vocabulary does not load: %s\n", comma, err.c_str());
+    else
+        std::printf("  vocabulary reloaded under %s: token ids %zu/%zu equal\n", comma, n - bad_locale, n);
+    return bad_norm || bad_ids || bad_slots || bad_locale || !loads ? 1 : 0;
 }
 
 int RunGolden(Model& m) {
@@ -317,6 +376,7 @@ int RunDialogue(Model& m) {
     std::string err;
     if (!brain.Init(m.cfg, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
     size_t ok = 0;
+    bool missing = false;
     for (const json& r : rows) {
         const std::string text = r["text"];
         std::vector<float> p;
@@ -325,19 +385,27 @@ int RunDialogue(Model& m) {
         const std::string intent = d.intent >= 0 ? m.cfg.labels[d.intent] : "?";
         const std::string pending = brain.Pending() >= 0 ? m.cfg.labels[brain.Pending()] : "-";
         const std::string want_pending = r["pending"].is_null() ? "-" : r["pending"].get<std::string>();
+        const std::string executed = d.executed >= 0 ? m.cfg.labels[d.executed] : "-";
+        auto newer = [&](const char* key, const std::string& got, std::string (*str)(const json&)) {
+            return SameNewer(r, key, got, str, m.cfg, &missing);
+        };
         // the confidence too: under the family gate it is the family's mass, not the top probability
         const bool same = intent == r["intent"] && std::fabs(d.prob - r["prob"].get<double>()) <= 1e-4 &&
                           coop::ActionName(d.action) == r["action"].get<std::string>() &&
                           pending == want_pending && d.other == r["other"].get<bool>() &&
-                          PlacesStr(d.places, brain.Places()) == PlacesStr(r["places"]) &&
-                          PlacesStr(d.executed_places, brain.Places()) == PlacesStr(r["executed_places"]);
+                          newer("places", PlacesStr(d.places, brain.Places()), PlacesStr) &&
+                          newer("executed", executed, LabelStr) &&
+                          newer("executed_places", PlacesStr(d.executed_places, brain.Places()), PlacesStr) &&
+                          newer("executed_other", d.executed_other ? "1" : "0", FlagStr);
         ok += same;
         std::printf("%s %-44s %-16s %.2f %-9s queued %-14s%s\n", same ? "ok  " : "DIFF", Escaped(text).c_str(),
                     intent.c_str(), d.prob, coop::ActionName(d.action), pending.c_str(), d.other ? " other" : "");
         if (!same)
-            std::printf("     python: %s %.2f %s queued %s\n", r["intent"].get<std::string>().c_str(), r["prob"].get<double>(),
-                        r["action"].get<std::string>().c_str(), want_pending.c_str());
+            std::printf("     python: %s %.2f %s queued %s executes %s; c++ executes %s\n", r["intent"].get<std::string>().c_str(),
+                        r["prob"].get<double>(), r["action"].get<std::string>().c_str(), want_pending.c_str(),
+                        ExecStr(r).c_str(), ExecStr(executed, d.executed_other).c_str());
     }
+    if (missing) std::printf("%s", kMissingKeys);
     std::printf("dialogue, %zu lines: the C++ bot did what the Python bot did on %zu/%zu\n", rows.size(), ok, rows.size());
     return ok == rows.size() ? 0 : 1;
 }
@@ -404,12 +472,13 @@ int RunDecideTests(Model& m) {
     const auto rows = ReadJsonl(m.dir + "/decide_tests.jsonl");
     std::string err;
     size_t n = 0, ok = 0;
+    bool missing = false;
     for (const json& sc : rows) {
         coop::IntentConfig cfg = m.cfg;
         cfg.gate = sc["gate"].get<std::string>();
-        coop::BotBrain brain;
-        if (!brain.Init(cfg, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
-        brain.threshold = sc["threshold"].get<double>();
+        coop::BotBrain brain, spare;   // spare: the one Reset() is tried on
+        if (!brain.Init(cfg, &err) || !spare.Init(cfg, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+        brain.threshold = spare.threshold = sc["threshold"].get<double>();
         for (const json& s : sc["steps"]) {
             std::vector<float> p;
             for (double x : s["probs"].get<std::vector<double>>()) p.push_back(static_cast<float>(x));
@@ -418,21 +487,42 @@ int RunDecideTests(Model& m) {
             const std::string intent = d.intent >= 0 ? cfg.labels[d.intent] : "?";
             const std::string pending = brain.Pending() >= 0 ? cfg.labels[brain.Pending()] : "-";
             const std::string want_pending = s["pending"].is_null() ? "-" : s["pending"].get<std::string>();
+            const std::string executed = d.executed >= 0 ? cfg.labels[d.executed] : "-";
+            auto newer = [&](const char* key, const std::string& got, std::string (*str)(const json&)) {
+                return SameNewer(s, key, got, str, cfg, &missing);
+            };
             const bool same = intent == s["intent"] && std::fabs(d.prob - s["prob"].get<double>()) <= 1e-12 &&
                               coop::ActionName(d.action) == s["action"].get<std::string>() &&
                               pending == want_pending && d.other == s["other"].get<bool>() &&
-                              PlacesStr(d.places, brain.Places()) == PlacesStr(s["places"]) &&
-                              PlacesStr(d.executed_places, brain.Places()) == PlacesStr(s["executed_places"]) &&
-                              PlacesStr(brain.PendingPlaces(), brain.Places()) == PlacesStr(s["pending_places"]);
+                              newer("places", PlacesStr(d.places, brain.Places()), PlacesStr) &&
+                              newer("executed", executed, LabelStr) &&
+                              newer("executed_places", PlacesStr(d.executed_places, brain.Places()), PlacesStr) &&
+                              newer("executed_other", d.executed_other ? "1" : "0", FlagStr) &&
+                              newer("pending_places", PlacesStr(brain.PendingPlaces(), brain.Places()), PlacesStr) &&
+                              newer("pending_other", brain.PendingOther() ? "1" : "0", FlagStr);
+            // Reset() with an order queued: the conversation's brain only runs it in Init, with nothing
+            // queued, so a second brain queues this step's order and must forget it, its places and its
+            // "other" slot
+            bool forgot = true;
+            if (s["action"] == "queued") {
+                spare.Decide(text, p);
+                spare.Reset();
+                forgot = spare.Pending() < 0 && spare.PendingPlaces().targets.empty() && !spare.PendingOther();
+                if (!forgot)
+                    std::printf("  %s gate, %s: Reset() left the queued order, its places or its \"other\" slot\n",
+                                cfg.gate.c_str(), Escaped(text).c_str());
+            }
             ++n;
-            ok += same;
+            ok += same && forgot;
             if (!same)
-                std::printf("  %s gate, %s: python %s %s queued %s, c++ %s %s queued %s\n", cfg.gate.c_str(),
-                            Escaped(text).c_str(), s["intent"].get<std::string>().c_str(),
-                            s["action"].get<std::string>().c_str(), want_pending.c_str(), intent.c_str(),
-                            coop::ActionName(d.action), pending.c_str());
+                std::printf("  %s gate, %s: python %s %s queued %s executes %s, c++ %s %s queued %s executes %s\n",
+                            cfg.gate.c_str(), Escaped(text).c_str(), s["intent"].get<std::string>().c_str(),
+                            s["action"].get<std::string>().c_str(), want_pending.c_str(), ExecStr(s).c_str(),
+                            intent.c_str(), coop::ActionName(d.action), pending.c_str(),
+                            ExecStr(executed, d.executed_other).c_str());
         }
     }
+    if (missing) std::printf("%s", kMissingKeys);
     std::printf("decide tests, %zu steps over both gates: C++ decided what the Python bot decided on %zu/%zu\n", n, ok, n);
     return ok == n ? 0 : 1;
 }
@@ -572,6 +662,7 @@ int RunChat(Model& m, int threads) {
             std::string slots;
             if (d.on_signal) slots += "on my signal";
             if (d.other) slots += std::string(slots.empty() ? "" : ", ") + "other";
+            if (d.executed_other) slots += std::string(slots.empty() ? "" : ", ") + "other (the queued order's)";
             const std::string& first = m.cfg.labels[top[0]];
             char mass[64] = "";
             if (m.cfg.gate == "family")
@@ -620,6 +711,10 @@ int main(int argc, char** argv) {
     }
     std::string err;
     if (!LoadConfig(m, &err)) return std::fprintf(stderr, "%s: %s\n", m.dir.c_str(), err.c_str()), 1;
+    // which bot this run is about: the default directory is compiled in (and stays in the CMake cache),
+    // and the checks' own lines do not tell one bot from another
+    std::printf("bot: %s (%zu labels, %s gate, threshold %g)\n", m.dir.c_str(), m.cfg.labels.size(), m.cfg.gate.c_str(),
+                m.cfg.threshold);
     if (mode == "tokenizer-tests") return RunTokenizerTests(m);
     if (mode == "gate-tests") return RunGateTests(m);
     if (mode == "decide-tests") return RunDecideTests(m);
