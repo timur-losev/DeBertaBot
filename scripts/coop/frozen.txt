@@ -247,3 +247,10 @@ acc1fcbf84b38c8713caa33954ceb94e621cc53d7048b0e921a3ff687d70b3cd *../../models/c
 2e4c4fc47d89133f941c590fa3b63cc61eea0f363f762f2b3dcf1394c586e993 *../../models/coop-deberta-v3-ens3-v3/cpp/intent_config.json
 dd6d6f4b639d1b232c455892359b090cf17e9b1ce63437cbebada70163c8a32c *../../models/coop-deberta-v3-ens3-v2/cpp/location_tests.jsonl
 cfa8d8b447b967c19461d62063c5394b6f8012628f0073baa5609916ea9ced11 *../../models/coop-deberta-v3-ens3-v3/cpp/location_tests.jsonl
+2026-10-04T17:17:38+02:00
+# on the work machine, BEFORE any v31 training: the final review of the training inputs found that seed set v31 (hash bf359c8e above... recorded in the previous entry as 'seed_commands_v31.json') had been built from the v21 set with a fresh draw of the templates, so it had lost the v3 set's 'go to the roof' and 'head to the roof' -- the order the roof fix is about. v31 is rebuilt as a superset of the v3 seed set: its 383 seeds kept ('get on the roof' and 'go roof' relabelled MOVE_TO), 5 plain NONE callouts, 192 new templated seeds, the roof in every MOVE_TO template that takes a floor; 580 seeds, 1213 training rows with the 633 lines. Checked: make_seeds_v31.py reproduces the file; no seed text under two labels; no seed equal to a study line with another label (5 equal ones, same label, all v1 seeds); no training row is cut at 64 tokens; among the study lines no roof line without a rope word is RAPPEL except r6_000 (rope jargon), every 'clear' line that is not NONE is a verb use (ENTRY), the two 'smoked' lines are SMOKE orders with a second clause; train_v2.py smoke on cuda. probe_v3.py reads COOP_TAG (default v3). Final v31 ensemble training started on cuda (RTX 4090, torch 2.14.0+cu130)
+e12d0859e7116e606cc9ea939e9dfb5ebe87b27fc71299de3e78121ff5680299 *make_seeds_v31.py
+5485ff250742af1a782810d5635ea2aba34fae35bf1cf1ea5cd4019f13f7ac2c *seed_commands_v31.json
+ebcb6783a56aa919f039e3619a6bca5d41253fee6122d4889e5741286b428b28 *train_v2.py
+5e81e99a6488dee8563be320df5c67cb5ecbfb0e76c06153a1436b1ca852ab87 *coop_v2.py
+0dc09ae104e41d60b4b7e2b0b8cace725a0f7337685881450ca2b614d3df2ac3 *probe_v3.py

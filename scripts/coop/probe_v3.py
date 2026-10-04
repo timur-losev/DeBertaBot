@@ -27,7 +27,7 @@ with the review's findings.
 
     python probe_v3.py ../../models/coop-deberta-v3-ens3-v3 ../../models/coop-deberta-v3-ens3-v2 > probe_v3.log
                        # final v3, shipped v2 (the defaults); jev environment; writes results_v3_probe.json
-    python probe_v3.py ../../models/coop-deberta-v3-ens3-v31 ../../models/coop-deberta-v3-ens3-v3 results_v31_probe.json > probe_v31.log
+    COOP_TAG=v31 python probe_v3.py ../../models/coop-deberta-v3-ens3-v31 ../../models/coop-deberta-v3-ens3-v3 results_v31_probe.json > probe_v31.log
                        # another pair of bots (the first is printed in the "v3" column, the second in "v2"); a
                        # third argument names the results file. Seed set v31 was written against these very
                        # probes, so for a v31 model they show whether the fix took, not how well it generalises
@@ -37,7 +37,9 @@ from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-os.environ["COOP_TAG"] = "v3"      # coop_v2 as the final model was trained: its families and its training rows
+# coop_v2 as the probed model was trained (its training rows mark which probe lines it saw): v3 unless
+# COOP_TAG says otherwise, e.g. COOP_TAG=v31 for a v31 model
+os.environ.setdefault("COOP_TAG", "v3")
 import coop_v2 as V  # noqa: E402
 import coop_bot as B  # noqa: E402
 

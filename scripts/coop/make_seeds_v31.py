@@ -1,15 +1,18 @@
 """
-Seed set v31 = v21 + location seeds, corrected after the v3 review (seed_commands_v3.json stays as the
-v3 study used it). Two things were wrong in v3's seeds:
+Seed set v31 = the v3 seed set, corrected and extended after the v3 review (seed_commands_v3.json
+itself stays as the v3 study used it). Every v3 seed is kept, two change their label, and new ones
+are added. What was wrong in v3's seeds:
 
   1. make_spec_v3.py re-defined RAPPEL (the rope; just going to the roof is MOVE_TO) but only appended
      to the v21 seeds, so "get on the roof" and "go roof" stayed under RAPPEL and the bot trained on
      them answered RAPPEL to both. Here they move to MOVE_TO.
   2. Each order template was filled with 3 places sampled from its whole list, 150 of 486
      combinations; "take {}" drew only "... stairs" forms, so "take blue" was never taught and the
-     bot read it as ENTRY. Here every template is filled with PER_GROUP places from each KIND of
-     place it allows (doors, windows, stairs, lone names, floors, furniture), so every template
+     bot read it as ENTRY. Here every template is also filled with PER_GROUP places from each KIND
+     of place it allows (doors, windows, stairs, lone names, floors, furniture), so every template
      meets every kind. It is still a sample, not the full grid: a name is not seen in every order.
+     The roof is not left to the draw: every MOVE_TO template that takes a floor gets it ("go to
+     the roof", "get to the roof", ...), because that is the order the old RAPPEL seeds fought.
 
   3. (from the review run on the Mac, review_v3/ and probe_v3.log) The v3 bot carries out state
      callouts as orders: "<place> is smoked" -> SMOKE on 47 names of 47, "<place> clear" -> ENTRY on
@@ -43,8 +46,9 @@ ROOF = ["the roof"]
 ANY = [DOOR, WINDOW, STAIRS]
 # intent -> [(template, [groups of places])]
 TEMPLATES = {
-    "MOVE_TO": [("go to {}", ANY + [ZONE, FURN]), ("move to {}", ANY + [ZONE]), ("get to {}", ANY + [ZONE]),
-                ("head to {}", [ZONE, STAIRS]), ("take {}", [COLOUR, STAIRS]), ("go up to {}", [UP])],
+    "MOVE_TO": [("go to {}", ANY + [ZONE, FURN, ROOF]), ("move to {}", ANY + [ZONE, ROOF]),
+                ("get to {}", ANY + [ZONE, ROOF]), ("head to {}", [ZONE, STAIRS, ROOF]), ("take {}", [COLOUR, STAIRS]),
+                ("go up to {}", [UP])],
     "HOLD_ANGLE": [("hold {}", ANY + [LONE]), ("watch {}", ANY + [LONE]), ("cover {}", [DOOR, WINDOW]),
                    ("eyes on {}", ANY), ("hold {}", [FLOOR]), ("lock down {}", [ZONE])],
     "OPEN": [("open {}", [DOOR, WINDOW])],
@@ -89,7 +93,8 @@ def location_seeds():
 
 
 def main():
-    seeds = json.load(io.open(os.path.join(HERE, "seed_commands_v21.json"), encoding="utf-8"))
+    seeds = json.load(io.open(os.path.join(HERE, "seed_commands_v3.json"), encoding="utf-8"))
+    kept = sum(len(v) for k, v in seeds.items() if not k.startswith("_"))
     for intent, lines in MOVED.items():
         for x in lines:
             seeds[intent].remove(x)
@@ -103,15 +108,16 @@ def main():
         seeds[k] = seeds[k] + new
         n += len(new)
     seeds["_note_v31"] = (
-        f"v31 (make_seeds_v31.py, after the v3 review): 'get on the roof' and 'go roof' moved from RAPPEL to "
+        f"v31 (make_seeds_v31.py, after the v3 review): the {kept} seeds of the v3 set, with 'get on the roof' and 'go roof' moved from RAPPEL to "
         f"MOVE_TO (spec_v3: going to the roof without a rope word is MOVE_TO); + {sum(map(len, PLAIN.values()))} plain "
-        f"NONE callouts ('it's smoked', 'all clear'); + {n} templated seed commands with "
-        f"map places, {PER_GROUP} per kind of place per template ({n} of the {grid} template x place combinations): "
-        + ", ".join(f"{k} {len(v)}" for k, v in extra.items()))
+        f"NONE callouts ('it's smoked', 'all clear'); + {n} new templated seed commands with map places "
+        f"({PER_GROUP} per kind of place per template, drawn from {grid} template x place combinations; the roof in "
+        f"every MOVE_TO template; state callouts under NONE)")
     json.dump(seeds, io.open(os.path.join(HERE, "seed_commands_v31.json"), "w", encoding="utf-8", newline="\n"),
               ensure_ascii=False, indent=1)
     total = sum(len(v) for k, v in seeds.items() if not k.startswith("_"))
-    print(f"{total} seeds; {n} location seeds of {grid} combinations over {len(extra)} intents")
+    print(f"{total} seeds: {kept} of the v3 set, {sum(map(len, PLAIN.values()))} plain callouts, {n} new templated ones "
+          f"(drawn from {grid} template x place combinations)")
     clash = {}
     for k, v in seeds.items():
         if not k.startswith("_"):
