@@ -239,7 +239,11 @@
     "second floor",
     "2nd floor",
     "floor two",
-    "floor 2"
+    "floor 2",
+    "second level",
+    "2nd level",
+    "level two",
+    "level 2"
    ],
    "words_end": [
     "to second",
@@ -290,7 +294,10 @@
   "off the table",
   "is through the roof",
   "s through the roof",
-  "let s table"
+  "let s table",
+  "lets table",
+  "hold on second",
+  "hang on second"
  ],
  "words": {
   "before_fill": [
@@ -453,7 +460,20 @@
    "maybe",
    "really",
    "very",
-   "covered"
+   "covered",
+   "it",
+   "its",
+   "let",
+   "lets",
+   "don",
+   "dont",
+   "would",
+   "could",
+   "might",
+   "seems",
+   "everybody",
+   "come",
+   "hurry"
   ],
   "lone_block": [
    "ping",
@@ -510,7 +530,12 @@
    "shirt",
    "jacket",
    "uniform",
-   "coast"
+   "coast",
+   "issue",
+   "concern",
+   "priority",
+   "threat",
+   "focus"
   ],
   "lone_not_after": [
    "m",
@@ -521,7 +546,12 @@
    "my",
    "your",
    "a",
-   "code"
+   "code",
+   "im",
+   "youre",
+   "hes",
+   "shes",
+   "theyre"
   ],
   "unknown_modifier": [
    "back",
@@ -559,7 +589,10 @@
    "i",
    "im",
    "ill",
-   "ive"
+   "ive",
+   "lemme",
+   "ima",
+   "imma"
   ],
   "role_them": [
    "they",
@@ -581,7 +614,15 @@
    "noise",
    "shots",
    "gunfire",
-   "voices"
+   "voices",
+   "incoming",
+   "shooter",
+   "hes",
+   "shes",
+   "theyve",
+   "theyll",
+   "someones",
+   "somebodys"
   ],
   "number": [
    "one",
@@ -607,13 +648,19 @@
    "up",
    "down",
    "top",
-   "bottom"
+   "bottom",
+   "inside",
+   "outside",
+   "under",
+   "through"
   ],
   "status_next": [
    "is",
    "s",
    "are",
-   "clear"
+   "clear",
+   "looks",
+   "seems"
   ],
   "role_stop": [
    "you"
@@ -654,7 +701,8 @@
    "your",
    "my",
    "their",
-   "his"
+   "his",
+   "our"
   ],
   "neutral_modifier": [
    "other",
@@ -670,7 +718,21 @@
    "stupid",
    "only",
    "nearest",
-   "closest"
+   "closest",
+   "entire",
+   "frickin",
+   "fricking",
+   "friggin",
+   "freakin",
+   "fuckin",
+   "effing",
+   "darn",
+   "dang",
+   "goddamned",
+   "nearby",
+   "actual",
+   "every",
+   "each"
   ],
   "role_them_soft": [
    "guy",
@@ -755,7 +817,14 @@
    "heard",
    "hear",
    "think",
-   "probably"
+   "probably",
+   "last",
+   "those",
+   "these",
+   "careful",
+   "count",
+   "counted",
+   "hearing"
   ],
   "status_not_next": [
    "yours",
@@ -769,12 +838,9 @@
    "let",
    "lose",
    "stop",
-   "worry",
    "hesitate",
    "miss",
    "wait",
-   "care",
-   "bother",
    "panic"
   ],
   "not_unless_to": [
@@ -785,7 +851,11 @@
    "they",
    "theyre",
    "he",
-   "she"
+   "she",
+   "hes",
+   "shes",
+   "theyve",
+   "theyll"
   ],
   "aux": [
    "will",
@@ -814,7 +884,13 @@
    "also",
    "gotta",
    "go",
-   "about"
+   "about",
+   "trying",
+   "try",
+   "could",
+   "might",
+   "must",
+   "probably"
   ],
   "order_verb": [
    "go",
@@ -905,7 +981,18 @@
    "barricade",
    "deploy",
    "place",
-   "drone"
+   "drone",
+   "defend",
+   "break",
+   "kick",
+   "bust",
+   "smash",
+   "mark",
+   "aim",
+   "search",
+   "cross",
+   "bring",
+   "lead"
   ],
   "preposition": [
    "on",
@@ -944,7 +1031,8 @@
   "post_prep": [
    "on",
    "to",
-   "at"
+   "at",
+   "in"
   ],
   "post_modifier": [
    "left",
@@ -1007,7 +1095,8 @@
    "last",
    "another",
    "some",
-   "whole"
+   "whole",
+   "bad"
   ],
   "number_fill": [
    "of",
@@ -1024,7 +1113,10 @@
    "left",
    "are",
    "is",
-   "s"
+   "s",
+   "people",
+   "players",
+   "men"
   ],
   "motion_past": [
    "went",
@@ -1039,13 +1131,53 @@
    "peeked",
    "walked",
    "climbed",
-   "entered"
+   "entered",
+   "rushed",
+   "headed",
+   "flanked",
+   "fell",
+   "snuck"
   ],
   "role_from_of": [
    "of"
   ],
   "of_lead": [
    "out"
+  ],
+  "filler": [
+   "uh",
+   "um",
+   "uhm",
+   "er",
+   "erm",
+   "ah",
+   "hmm",
+   "mm",
+   "huh"
+  ],
+  "anaphor": [
+   "one",
+   "ones"
+  ],
+  "let": [
+   "let"
+  ],
+  "let_me": [
+   "me"
+  ],
+  "negator": [
+   "not",
+   "dont",
+   "don",
+   "never"
+  ],
+  "fire": [
+   "fire"
+  ],
+  "no_words": [
+   "no",
+   "zero",
+   "any"
   ]
  }
 }

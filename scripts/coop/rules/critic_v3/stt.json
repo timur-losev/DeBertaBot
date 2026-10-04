@@ -1,0 +1,2901 @@
+[
+{
+"text": "two on blue stairs watch the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "theyre on the red stairs hold the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hes on the roof get to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "shes camping the north window go around through the south door",
+"accept": [
+[
+"door",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "theyre pushing main fall back to the white stairs",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "sniper in the east window stay behind the sofa",
+"accept": [
+[
+"sofa",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "three coming up yellow stairs smoke them",
+"accept": [
+[
+"stairs",
+"yellow",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "to on red stairs watch the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "too on the roof watch the brown stairs",
+"accept": [
+[
+"stairs",
+"brown",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "there pushing the south door hold the west window",
+"accept": [
+[
+"window",
+"west",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "his on the roof watch the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i think theyre in the basement stay on the top floor",
+"accept": [
+[
+null,
+null,
+"top_floor"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i heard them on the roof watch the white stairs",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "theres someone on the red stairs hold the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "someones in the basement watch the brown stairs",
+"accept": [
+[
+"stairs",
+"brown",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "a guy just went up the blue stairs watch the top floor",
+"accept": [
+[
+null,
+null,
+"top_floor"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "two of them on the main door get behind the table",
+"accept": [
+[
+"table",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "last one is on the roof go up the red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "snipers on the roof get behind the couch",
+"accept": [
+[
+"sofa",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "enemy spotted at the east door flash the south window",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "contact north window get down behind the table",
+"accept": [
+[
+"table",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "got one at main door watch red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "two blue stairs hold the top floor",
+"accept": [
+[
+null,
+null,
+"top_floor"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold the main door theres two on red stairs",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "watch the north window theyre coming up blue",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "theyre coming up blue watch the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hes upstairs watch the blue stairs",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "they are downstairs hold the top floor",
+"accept": [
+[
+null,
+null,
+"top_floor"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im taking fire from the east window get behind the sofa",
+"accept": [
+[
+"sofa",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "shots from the north window hide behind the table",
+"accept": [
+[
+"table",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "theyre gonna push the main door hold the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i saw them go through the north door watch the south window",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "footsteps in the basement watch the white stairs",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "2 on red stairs hold the top floor",
+"accept": [
+[
+null,
+null,
+"top_floor"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "1 at the north window watch the south door",
+"accept": [
+[
+"door",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "theres a guy behind the sofa flash the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "they just breached the west door fall back to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hes on yellow stairs",
+"accept": [
+[
+"stairs",
+"yellow",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "theyre in the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "im reloading cover the north window for me",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im on the north door you take the south window",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "ill take the red stairs you take blue",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "ive got the main door watch the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im gonna go hold the north door you take the south one",
+"accept": [
+[
+"door",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "ill go watch the roof you stay on the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im gonna go up to the roof hold the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "ill go and check the basement you watch the white stairs",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "let me take the north door you watch the yellow stairs",
+"accept": [
+[
+"stairs",
+"yellow",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "lemme get the east window you hold the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "ima plant at the south door watch the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "am on the top floor you stay in the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "holding the north window you take the south one",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "watching the red stairs plant at the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "heading to the roof hold the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "got the east door you take the west window",
+"accept": [
+[
+"window",
+"west",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "pushing main cover me from the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im reloading defend the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im low break the east window and get out",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i got him kick the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im reloading old the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im down whole the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "ill flash you push the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im planting watch brown stairs",
+"accept": [
+[
+"stairs",
+"brown",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im coming up blue stairs dont shoot",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": "mine",
+"flag": null
+},
+{
+"text": "im going in through the main door cover me",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "mine",
+"flag": null
+},
+{
+"text": "i need you to hold the west door",
+"accept": [
+[
+"door",
+"west",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i want smoke on the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i got eyes on the main door you take the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "all take the north door you take the south window",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "ill be on the roof you stay in the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im in the basement go to the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i am going to the top floor watch the red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im gonna rappel from the roof you take the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im with you go to the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "coming up red stairs dont shoot",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": "mine",
+"flag": null
+},
+{
+"text": "im dead its on you hold the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "ill take the one on the roof you get the one on red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im blind dont push the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "not",
+"flag": null
+},
+{
+"text": "im out cover the south window",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "west door is clear watch the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "main doors locked take the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "red stairs blocked take blue",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "basements clear go to the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "the roof is clear im moving to the basement hold the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "north windows covered watch the south door",
+"accept": [
+[
+"door",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "top floor is clear check the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "blue stairs are clear push red",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "watch the north window clear the basement after",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold the main door upstairs is clear",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "smoke the north window basement is clear",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "main door is open go through it",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "east door is yours ill take the west window",
+"accept": [
+[
+"door",
+"east",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "south door locked use the west one",
+"accept": [
+[
+"door",
+"west",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "roof is clear",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "the basement is hot stay on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "not the east window the west one",
+"accept": [
+[
+"window",
+"west",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "dont go to the roof stay in the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "dont forget the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "dont leave the red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "dont get off the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "dont open the main door watch the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "forget the basement go to the top floor",
+"accept": [
+[
+null,
+null,
+"top_floor"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "skip the east door breach the west door",
+"accept": [
+[
+"door",
+"west",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "no not the roof i said the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "dont ever open the south door",
+"accept": [
+[
+"door",
+"south",
+null
+]
+],
+"role": "not",
+"flag": null
+},
+{
+"text": "you shouldnt open the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "not",
+"flag": null
+},
+{
+"text": "dont worry about the roof hold the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "never mind the roof go to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "dont let them through the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold the main door not the north window",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "dont push hold the white stairs",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "instead of the roof go to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "dont touch the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "not",
+"flag": null
+},
+{
+"text": "do not go through the east door",
+"accept": [
+[
+"door",
+"east",
+null
+]
+],
+"role": "not",
+"flag": null
+},
+{
+"text": "dont go main",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "not",
+"flag": null
+},
+{
+"text": "get off the roof and go to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "come down from the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "from",
+"flag": null
+},
+{
+"text": "get out of the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "from",
+"flag": null
+},
+{
+"text": "leave the main door go to the red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "fall back from the north door to the top floor",
+"accept": [
+[
+null,
+null,
+"top_floor"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "rotate from blue to yellow",
+"accept": [
+[
+"stairs",
+"yellow",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "get away from the window theres a sniper",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"role": "from",
+"flag": null
+},
+{
+"text": "cover me from the top floor",
+"accept": [
+[
+null,
+null,
+"top_floor"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "watch from the roof go to the basement after",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "come out of the basement and hold the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "move off the stairs get to the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "back off the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "from",
+"flag": null
+},
+{
+"text": "get down from the top floor and watch the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "take blue ill take red",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "push main theyre rotating",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "go red im right behind you",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold yellow dont peek",
+"accept": [
+[
+"stairs",
+"yellow",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "main main main",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "blue blue go blue",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "watch white hes coming",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "go main lets go",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "take brown cover me",
+"accept": [
+[
+"stairs",
+"brown",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "push north its clear",
+"accept": [
+[
+null,
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "two on red hold main",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im red",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im red need heals hold the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "you take north ill take south",
+"accept": [
+[
+null,
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "smoke blue then push main",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "go blue quick",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "take red uh quickly",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold main watch the stairs",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold the uh door",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold the north uh door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "go to the um stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "take the blue um stairs",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "smoke the north uh south window",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "the north north door hold it",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "red red red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold the the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "watch the watch the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "go to the go to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "take the north door no wait the south door",
+"accept": [
+[
+"door",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "go to the roof i mean the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "watch blue stairs sorry red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold the door the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "smoke the east window no the west window",
+"accept": [
+[
+"window",
+"west",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "um hold uh hold the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i i ill take the north door you take the south",
+"accept": [
+[
+"door",
+"south",
+null
+],
+[
+null,
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "take the stairs uh the blue ones",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "all right north door hold it",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "go to the roof actually the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "like the the north window watch it",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "open the uh the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold hold hold the white stairs",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "nice shot man that was close",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "lets table that for now",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "my pings through the roof",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold on a second im reloading",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im right behind you",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "all right lets go",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "he came out of the blue",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "what are you doing man",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "need ammo anyone",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "good job thanks",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i cant see anything im flashed",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "one left",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "thats the main thing just stay alive",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "wait a second i need to reload",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold on second i gotta reload",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "were getting stomped lol",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "watch the window on the right",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"role": null,
+"flag": "unknown_modifier"
+},
+{
+"text": "take the rear door",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": "unknown_modifier"
+},
+{
+"text": "go through the door right now",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "fall back main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "go to the 2nd floor",
+"accept": [
+[
+null,
+null,
+"floor_2"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "go to the second level",
+"accept": [
+[
+null,
+null,
+"floor_2"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "get to the roof and rappel down to the east window",
+"accept": [
+[
+null,
+null,
+"roof"
+],
+[
+"window",
+"east",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "take the stairs to the roof",
+"accept": [
+[
+"stairs",
+null,
+null
+],
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "check the smashed window",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"role": null,
+"flag": "unknown_modifier"
+},
+{
+"text": "the last door on the first floor hold it",
+"accept": [
+[
+"door",
+null,
+"floor_1"
+]
+],
+"role": null,
+"flag": "unknown_modifier"
+},
+{
+"text": "watch the other window",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "smoke the window on the east side",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "go to the basement north door",
+"accept": [
+[
+"door",
+"north",
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "first floor main door hold it",
+"accept": [
+[
+"door",
+"main",
+"floor_1"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold the frickin door",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "guys were going main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "incoming main door hold the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "incoming on red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "im hit falling back to the basement cover the white stairs",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "dont push main instead hold the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "instead watch the red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "jump out of the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "go out of the main door and flank left",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "theyre coming out of the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "nothing in the basement go to the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "he's on the roof get to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "take blue i'll take red",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "north door's locked take the south window",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "theyve taken the roof stay in the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "theyll push the main door hold the blue stairs",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "ones on red stairs hold the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "ill take the east door you take the west one",
+"accept": [
+[
+"door",
+"west",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "ive got the east window you get the west",
+"accept": [
+[
+"window",
+"west",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "one by one through the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "go to the roof no the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "head to the basement wait no the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold the main the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "go to the red the red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "watch the north the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "theres two on blue and one on red hold the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "one on red one on blue watch main",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold the north door till i get to the roof",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "when i say go breach the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "its not the north door its the south door",
+"accept": [
+[
+"door",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im gonna take main you watch north",
+"accept": [
+[
+null,
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "smoke main cross to north",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "watch the door i mean the window",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "they got the roof were falling back to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "we need to hold the roof theyre coming up white stairs",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im about to plant at the south door watch the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "watch the stairs im going to the roof",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "why not take the blue stairs",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "go to the roof instead of the basement",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "one left hes on the roof push up the red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im out heading to the roof watch the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "wait for me at blue ill be right there",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "something moving on the roof stay inside the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "theyre shooting from the roof get to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "im moving up cover the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "dont leave the roof until i say",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "do not forget the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"role": null,
+"flag": null
+}
+]

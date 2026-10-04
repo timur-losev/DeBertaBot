@@ -11,8 +11,14 @@ v3 study used it). Two things were wrong in v3's seeds:
      place it allows (doors, windows, stairs, lone names, floors, furniture), so every template
      meets every kind. It is still a sample, not the full grid: a name is not seen in every order.
 
-Written after the first v3 lines had been seen (the review quoted two of them); the lines of the
-second batch (blind/v3b) did not exist yet. Never scored.
+  3. (from the review run on the Mac, review_v3/ and probe_v3.log) The v3 bot carries out state
+     callouts as orders: "<place> is smoked" -> SMOKE on 47 names of 47, "<place> clear" -> ENTRY on
+     27 of 30. The training data had "smoked" only in two SMOKE orders and no "clear" callout without
+     a copula. Here NONE gets templates for both, next to the orders they must not be confused with
+     ("smoke {}", "clear {}"), and five plain callouts without a place.
+
+Written after the first v3 lines and the review's probes had been seen: every number on those lines
+for a model trained with this set is "after tuning". Never scored itself.
 
     python make_seeds_v31.py
 """
@@ -29,6 +35,10 @@ FURN = ["the sofa", "the couch", "the table", "the chairs"]
 ZONE = ["the basement", "the first floor", "the top floor", "the roof"]
 FLOOR = ["the basement", "the first floor", "the top floor"]
 UP = ["the top floor", "the roof"]
+# as players call them out, no article
+DOOR_B = [f"{q} door" for q in ("main", "north", "south", "west", "east")]
+WINDOW_B = [f"{q} window" for q in ("north", "south", "west", "east")]
+ZONE_B = ["basement", "first floor", "top floor", "roof"]
 ROOF = ["the roof"]
 ANY = [DOOR, WINDOW, STAIRS]
 # intent -> [(template, [groups of places])]
@@ -54,11 +64,16 @@ TEMPLATES = {
     "COVER_ME": [("cover me from {}", [WINDOW, STAIRS, FURN])],
     "NONE": [("one on {}", [STAIRS, COLOUR]), ("two at {}", [DOOR, WINDOW]), ("{} is clear", ANY + [ZONE]),
              ("he's behind {}", [FURN]), ("they're on {}", [["the first floor", "the top floor", "the roof"]]), ("they're in {}", [["the basement"]]), ("contact {}", [LONE, STAIRS]),
-             ("don't open {}", [DOOR, WINDOW]), ("don't go to {}", [ZONE, STAIRS]), ("don't smoke {}", ANY)],
+             ("don't open {}", [DOOR, WINDOW]), ("don't go to {}", [ZONE, STAIRS]), ("don't smoke {}", ANY),
+             # state callouts (point 3 of the docstring)
+             ("{} is smoked", ANY + [ZONE]), ("{} smoked", [DOOR_B, STAIRS, LONE]), ("i smoked {}", [DOOR, WINDOW]),
+             ("they smoked {}", [STAIRS, ZONE]), ("{} clear", [DOOR_B, WINDOW_B, STAIRS, LONE, ZONE_B]),
+             ("{} cleared", [DOOR_B, ZONE_B]), ("clear on {}", [STAIRS, LONE])],
     "WAIT": [("don't push {} yet", [LONE, DOOR]), ("don't open {} yet", [DOOR])],
 }
 PER_GROUP = 2
 MOVED = {"RAPPEL": ["get on the roof", "go roof"]}      # -> MOVE_TO: no rope word
+PLAIN = {"NONE": ["all clear", "room clear", "it's smoked", "already smoked", "that's smoked"]}
 
 
 def location_seeds():
@@ -79,6 +94,8 @@ def main():
         for x in lines:
             seeds[intent].remove(x)
             seeds["MOVE_TO"].append(x)
+    for intent, lines in PLAIN.items():
+        seeds[intent] += [x for x in lines if x not in seeds[intent]]
     extra, grid = location_seeds()
     n = 0
     for k, v in extra.items():
@@ -87,7 +104,8 @@ def main():
         n += len(new)
     seeds["_note_v31"] = (
         f"v31 (make_seeds_v31.py, after the v3 review): 'get on the roof' and 'go roof' moved from RAPPEL to "
-        f"MOVE_TO (spec_v3: going to the roof without a rope word is MOVE_TO); + {n} templated seed commands with "
+        f"MOVE_TO (spec_v3: going to the roof without a rope word is MOVE_TO); + {sum(map(len, PLAIN.values()))} plain "
+        f"NONE callouts ('it's smoked', 'all clear'); + {n} templated seed commands with "
         f"map places, {PER_GROUP} per kind of place per template ({n} of the {grid} template x place combinations): "
         + ", ".join(f"{k} {len(v)}" for k, v in extra.items()))
     json.dump(seeds, io.open(os.path.join(HERE, "seed_commands_v31.json"), "w", encoding="utf-8", newline="\n"),

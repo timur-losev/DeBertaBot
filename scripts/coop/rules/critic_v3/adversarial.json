@@ -1,0 +1,3090 @@
+[
+{
+"text": "i'm going to hold the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": "mine",
+"flag": null
+},
+{
+"text": "i'll go check the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "mine",
+"flag": null
+},
+{
+"text": "i'm gonna go watch the red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": "mine",
+"flag": null
+},
+{
+"text": "i'm heading over to the red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": "mine",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'm on my way to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "mine",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i've got eyes on the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": "mine",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'm about to breach the east door",
+"accept": [
+[
+"door",
+"east",
+null
+]
+],
+"role": "mine",
+"flag": null
+},
+{
+"text": "let me take the south window",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": "mine",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'm reloading cover the west door",
+"accept": [
+[
+"door",
+"west",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i can't hold the main door much longer",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "mine",
+"flag": null
+},
+{
+"text": "they're going to rush the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "they're trying to breach the south window",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "they could push the main door any second",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "enemies hold the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "they're set up at the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "they're all up on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'm taking fire from the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "sniper fire from the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "enemy drone in the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "they have a stack on the east door",
+"accept": [
+[
+"door",
+"east",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "he's behind cover near the west window",
+"accept": [
+[
+"window",
+"west",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'll cover the stairs you watch the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i will drone the basement you hold the top floor",
+"accept": [
+[
+null,
+null,
+"top_floor"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i'm just gonna camp the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "mine",
+"flag": null
+},
+{
+"text": "they flash the main door every round",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "we should smoke the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "cover me while i plant at the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "mine",
+"flag": null
+},
+{
+"text": "i need to get to the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "mine",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'd hold the north door if i were you",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "smoke the north door then flash the south window",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i need you to stack up at the east door",
+"accept": [
+[
+"door",
+"east",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "enemy team is rotating to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'm going to go to the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "mine",
+"flag": null
+},
+{
+"text": "i'm moving up to the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "mine",
+"flag": null,
+"arguable": false
+},
+{
+"text": "enemies are coming up from the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'm trying to hold the west door",
+"accept": [
+[
+"door",
+"west",
+null
+]
+],
+"role": "mine",
+"flag": null,
+"arguable": false
+},
+{
+"text": "get out of the cellar right now",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "from",
+"flag": null
+},
+{
+"text": "come down from the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "from",
+"flag": null,
+"arguable": false
+},
+{
+"text": "back off to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "don't leave the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "leave through the south door",
+"accept": [
+[
+"door",
+"south",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "they're rotating from main to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'm moving from red to blue",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": "mine",
+"flag": null,
+"arguable": false
+},
+{
+"text": "from the roof, go to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "cover the stairs from the east window",
+"accept": [
+[
+"stairs",
+null,
+null
+],
+[
+"window",
+"east",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "get away from the windows",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"role": "from",
+"flag": null
+},
+{
+"text": "fall back from red to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "keep them off the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "drop off the roof onto the couch",
+"accept": [
+[
+"sofa",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "move up from the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "from",
+"flag": null,
+"arguable": false
+},
+{
+"text": "shoot from the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "get the hell off the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "from",
+"flag": null,
+"arguable": false
+},
+{
+"text": "head from the main door over to the red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "step away from me and get to the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "they come from the north door every time",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "come in from the south window",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "jump down from the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"role": "from",
+"flag": null,
+"arguable": false
+},
+{
+"text": "hop off the roof and watch the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "stay off the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"role": "from",
+"flag": null
+},
+{
+"text": "run from the basement to the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "don't move from the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "pull back off the stairs to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "move off to the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "basement looks clear, check the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "north door open, hold the south window",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "basement is clear, i'm going upstairs",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "status",
+"flag": null,
+"arguable": false
+},
+{
+"text": "the east door is jammed, use the window",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "south window is locked, try the other one",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"role": null,
+"flag": "other"
+},
+{
+"text": "the east door is the priority, the roof can wait",
+"accept": [
+[
+"door",
+"east",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "red and blue are clear, go main",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "the window is too exposed, use the door instead",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "north door has been breached, hold the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "roof is yours, i'll stay in the basement",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "the west door is wide open",
+"accept": [
+[
+"door",
+"west",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "one more on the red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "two of them on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "two upstairs",
+"accept": [
+[
+null,
+null,
+"up"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "two red, one main",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "one is coming up blue",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "two are on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "heads up two on the east door",
+"accept": [
+[
+"door",
+"east",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "last one on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "two inside the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "two people on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "another at the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "throw one at the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "only one on the north door, the rest with me",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": true
+},
+{
+"text": "got two flanking through the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "you two on the south door",
+"accept": [
+[
+"door",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i need one on the south window",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "we need one more on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "there's one camping the top floor",
+"accept": [
+[
+null,
+null,
+"top_floor"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "three pushing main",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "one thing, watch the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "two guys just went upstairs",
+"accept": [
+[
+null,
+null,
+"up"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "i count two on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "maybe three on the west door",
+"accept": [
+[
+"door",
+"west",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "put two on the north door and one on the roof",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "someone on the red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "there's someone in the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "you guys are on the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "guys are we pushing main or not",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "someone needs to watch the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "stack up at the west door",
+"accept": [
+[
+"door",
+"west",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "full stack coming up yellow",
+"accept": [
+[
+"stairs",
+"yellow",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "is someone watching the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "a guy just ran into the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "dude get on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "guy at the west window",
+"accept": [
+[
+"window",
+"west",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "someone shot me from the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "squad is camping the top floor",
+"accept": [
+[
+null,
+null,
+"top_floor"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "somebody get on the south door",
+"accept": [
+[
+"door",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "second floor, two at the east window",
+"accept": [
+[
+"window",
+"east",
+"floor_2"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "go basement, east door",
+"accept": [
+[
+"door",
+"east",
+"basement"
+],
+[
+"door",
+"east",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "they're on the top floor, north window",
+"accept": [
+[
+"window",
+"north",
+"top_floor"
+],
+[
+null,
+null,
+"top_floor"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "Basement. East door.",
+"accept": [
+[
+"door",
+"east",
+"basement"
+],
+[
+"door",
+"east",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "upstairs, watch the north window",
+"accept": [
+[
+"window",
+"north",
+"up"
+],
+[
+"window",
+"north",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "check the basement, then the north door",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "top floor, the window on the left",
+"accept": [
+[
+"window",
+null,
+"top_floor"
+]
+],
+"role": null,
+"flag": "unknown_modifier"
+},
+{
+"text": "hold the red stairs, top floor is clear",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "south window, ground floor",
+"accept": [
+[
+"window",
+"south",
+"floor_1"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "get to the roof, the stairs are blocked",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "they went up to second",
+"accept": [
+[
+null,
+null,
+"floor_2"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "on second thought take the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "one on second",
+"accept": [
+[
+null,
+null,
+"floor_2"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "they're on second i think",
+"accept": [
+[
+null,
+null,
+"floor_2"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "go to second door",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": "unknown_modifier"
+},
+{
+"text": "push up to second it's clear",
+"accept": [
+[
+null,
+null,
+"floor_2"
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "on second, east window",
+"accept": [
+[
+"window",
+"east",
+"floor_2"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "watch the door in the back",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": "unknown_modifier",
+"arguable": false
+},
+{
+"text": "hide behind the couch in the corner",
+"accept": [
+[
+"sofa",
+null,
+null
+]
+],
+"role": null,
+"flag": "unknown_modifier",
+"arguable": false
+},
+{
+"text": "take the stairs to the top",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "hold the door on our left",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": "unknown_modifier",
+"arguable": false
+},
+{
+"text": "hold garage door",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": "unknown_modifier",
+"arguable": false
+},
+{
+"text": "stay near stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "go through the open door",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": "unknown_modifier",
+"arguable": true
+},
+{
+"text": "cover the entire staircase",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "that's the wrong door, go to the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "breach the door at the right time",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "open the big wooden door",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": "unknown_modifier",
+"arguable": false
+},
+{
+"text": "smoke the window on your right",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"role": null,
+"flag": "unknown_modifier"
+},
+{
+"text": "get behind that long table",
+"accept": [
+[
+"table",
+null,
+null
+]
+],
+"role": null,
+"flag": "unknown_modifier"
+},
+{
+"text": "smoke the damn stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i've got the north door, you take the other door",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": "other",
+"arguable": false
+},
+{
+"text": "close the bloody window",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "push the door on the far side",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": "unknown_modifier"
+},
+{
+"text": "open the frickin door",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "watch that glass door",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": "unknown_modifier"
+},
+{
+"text": "check the two doors",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "hold the door at the end of the corridor",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": "unknown_modifier"
+},
+{
+"text": "hold red top floor",
+"accept": [
+[
+"stairs",
+"red",
+"top_floor"
+],
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "take yellow upstairs",
+"accept": [
+[
+"stairs",
+"yellow",
+"up"
+],
+[
+"stairs",
+"yellow",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "push main team",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "push blue it's clear",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "push main push main",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "hold main don't peek",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "rush red let's go",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "the main issue is ammo",
+"accept": [
+null
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'm main, you take the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "smoke blue then flash red",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "watch the yellow marker",
+"accept": [
+null
+],
+"role": null,
+"flag": null
+},
+{
+"text": "push red with me",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "main needs a smoke",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "red red red",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "blue would be better",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "watch the window on the south wall",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "they're on red and blue",
+"accept": [
+[
+"stairs",
+"red",
+null
+],
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'll hold the north door and the south window",
+"accept": [
+[
+"door",
+"north",
+null
+],
+[
+"window",
+"south",
+null
+]
+],
+"role": "mine",
+"flag": null,
+"arguable": false
+},
+{
+"text": "don't open the north or south doors",
+"accept": [
+[
+"door",
+"north",
+null
+],
+[
+"door",
+"south",
+null
+]
+],
+"role": "not",
+"flag": null,
+"arguable": false
+},
+{
+"text": "they're at the north and south doors",
+"accept": [
+[
+"door",
+"north",
+null
+],
+[
+"door",
+"south",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "don't go red or blue",
+"accept": [
+[
+"stairs",
+"red",
+null
+],
+[
+"stairs",
+"blue",
+null
+]
+],
+"role": "not",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'll watch the east window, you watch the west",
+"accept": [
+[
+"window",
+"west",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "he's behind the couch on the other side",
+"accept": [
+[
+"sofa",
+null,
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'll hold the north door, you help the other guys",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": "mine",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i've got north, you take the other one",
+"accept": [
+[
+null,
+null,
+null
+]
+],
+"role": null,
+"flag": "other",
+"arguable": true
+},
+{
+"text": "not that door, the other one",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"role": null,
+"flag": "other"
+},
+{
+"text": "i'm on blue, take the other stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"role": null,
+"flag": "other",
+"arguable": false
+},
+{
+"text": "i'm at the main door with the other bot",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "mine",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'll watch the east window and you take the other",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"role": null,
+"flag": "other"
+},
+{
+"text": "don't forget the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "don't worry about the roof, watch the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "avoid the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "not",
+"flag": null,
+"arguable": false
+},
+{
+"text": "don't forget to check the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "do not open the east door",
+"accept": [
+[
+"door",
+"east",
+null
+]
+],
+"role": "not",
+"flag": null
+},
+{
+"text": "never mind the west window",
+"accept": [
+[
+"window",
+"west",
+null
+]
+],
+"role": "not",
+"flag": null
+},
+{
+"text": "try not to lose the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "don't bother with the south door, go to the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "don't stop holding the west door",
+"accept": [
+[
+"door",
+"west",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i see him on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i heard them in the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "they're right behind you at the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "north window, sniper",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "red stairs, two guys",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "sniper on the roof watching the north door",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i think he's in the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "can i get a flash on the east door",
+"accept": [
+[
+"door",
+"east",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i meant the south window",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "okay so listen that last round was a total mess because nobody was talking and nobody was trading and we kept running in alone like idiots so this time we stick together and we do it properly and nobody runs off chasing kills because that is exactly how we lost and honestly it was embarrassing okay so listen that last round was a total mess because nobody was talking and nobody was trading and we kept running in alone like idiots so this time we stick together and we do it properly and nobody runs off chasing kills because that is exactly how we lost and honestly it was embarrassing okay so listen that last round was a total mess because nobody was talking and nobody was trading and we, hold the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "okay so listen that last round was a total mess because nobody was talking and nobody was trading and we kept running in alone like idiots so this time we stick together and we do it properly and nobody runs off chasing kills because that is exactly how we lost and honestly it was embarrassing okay so listen that last round was a total mess because nobody was talking and nobody was trading and we kept running in alone like idiots so this time we stick together and we do it properly and nobody runs off chasing kills because that is exactly how we lost and honestly it was embarrassing okay so listen that last round was a total mess because nobody was talking and nobody was, north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "okay so listen that last round was a total mess because nobody was talking and nobody was trading and we kept running in alone like idiots so this time we stick together and we do it properly and nobody runs off chasing kills because that is exactly how we lost and honestly it was embarrassing okay so listen that last, hold the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "incoming on the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "enemy spotted, heading to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "getting shot from the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "hearing someone upstairs",
+"accept": [
+[
+null,
+null,
+"up"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "two coming out of the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "they're shooting out of the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'm out of ammo at the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": "mine",
+"flag": null,
+"arguable": false
+},
+{
+"text": "look out of the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "stay out of the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "from",
+"flag": null
+},
+{
+"text": "i'll throw a smoke at the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "mine",
+"flag": null,
+"arguable": false
+},
+{
+"text": "i'm tossing a flash through the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"role": "mine",
+"flag": null,
+"arguable": false
+},
+{
+"text": "we need a guy on the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "put one guy on the south window",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "squad on me at the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "no contact at the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "no movement on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "make some noise at the south door",
+"accept": [
+[
+"door",
+"south",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "instead hold the south door",
+"accept": [
+[
+"door",
+"south",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "why not hold the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "they are falling back to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "he's pulling back from the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "pushing main, cover me",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "mine",
+"flag": null
+},
+{
+"text": "one more just went upstairs",
+"accept": [
+[
+null,
+null,
+"up"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "those two on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "one left through the south door",
+"accept": [
+[
+"door",
+"south",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "two rushed main",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "footsteps upstairs",
+"accept": [
+[
+null,
+null,
+"up"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "shots from the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "someone is defusing at the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "the guy behind the couch",
+"accept": [
+[
+"sofa",
+null,
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "running low, falling back to the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"role": "mine",
+"flag": null
+},
+{
+"text": "watch the guy on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "i'm going to go grab the bomb at the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "mine",
+"flag": null
+},
+{
+"text": "i'll help you hold the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "they're about to plant at the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "i say we hold the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "i can cover the north door if you take the south window",
+"accept": [
+[
+"window",
+"south",
+null
+]
+],
+"role": null,
+"flag": null
+},
+{
+"text": "they will try to flank through the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"role": "them",
+"flag": null,
+"arguable": false
+},
+{
+"text": "they probably went upstairs",
+"accept": [
+[
+null,
+null,
+"up"
+]
+],
+"role": "them",
+"flag": null
+},
+{
+"text": "revive the guy at the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"role": null,
+"flag": null,
+"arguable": false
+},
+{
+"text": "okay moving to the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": "mine",
+"flag": null,
+"arguable": false
+},
+{
+"text": "give me two on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"role": null,
+"flag": null
+}
+]
