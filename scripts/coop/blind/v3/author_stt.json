@@ -1,0 +1,702 @@
+[
+ {
+  "id": "sttv3_000",
+  "text": "duck behind the couch bot they see you",
+  "intent": "TAKE_COVER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "sofa",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_001",
+  "text": "toss a nade at the chairs somebody is hiding",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "chair",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_002",
+  "text": "okay go upstairs i meet you in a second",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "up",
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_003",
+  "text": "main needs smoke bot throw it now",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "main",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_004",
+  "text": "one guy was sitting on the sofa upstairs i think he still alive",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "sofa",
+   "qualifier": null,
+   "zone": "up",
+   "unknown_modifier": false
+  },
+  "kind": "callout"
+ },
+ {
+  "id": "sttv3_005",
+  "text": "red stares is blocked uh get to the other stares",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "other",
+  "target": {
+   "object": "stairs",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "other_ref"
+ },
+ {
+  "id": "sttv3_006",
+  "text": "is a guy camping blue stares so flake him through south door",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "south",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "two_places"
+ },
+ {
+  "id": "sttv3_007",
+  "text": "east window on the second floor climb through it",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "east",
+   "zone": "floor_2",
+   "unknown_modifier": false
+  },
+  "kind": "zone_object"
+ },
+ {
+  "id": "sttv3_008",
+  "text": "south window uh just fault it and get inside",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "south",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_009",
+  "text": "uh the red door open it but stay outside",
+  "intent": "OPEN",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  },
+  "kind": "unnamed"
+ },
+ {
+  "id": "sttv3_010",
+  "text": "wait for my count and then you storm the top floor",
+  "intent": "ENTRY",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "top_floor",
+   "unknown_modifier": false
+  },
+  "kind": "on_signal"
+ },
+ {
+  "id": "sttv3_011",
+  "text": "sniper east window careful",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "east",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "callout"
+ },
+ {
+  "id": "sttv3_012",
+  "text": "nah forget what i said about east window you dont need to watch it",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "east",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "sttv3_013",
+  "text": "okay so uh keep you eyes on red they always sneak up from it",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "red",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_014",
+  "text": "when i say go you beach west door okay not before",
+  "intent": "BREACH",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "west",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "on_signal"
+ },
+ {
+  "id": "sttv3_015",
+  "text": "top floor blue stares keep your gun on it",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "blue",
+   "zone": "top_floor",
+   "unknown_modifier": false
+  },
+  "kind": "zone_object"
+ },
+ {
+  "id": "sttv3_016",
+  "text": "i hear steps someone coming up blue",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "blue",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "callout"
+ },
+ {
+  "id": "sttv3_017",
+  "text": "everybody back to first floor bot it means you too",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "floor_1",
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_018",
+  "text": "move to the spiral stares i will be with you in a second",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  },
+  "kind": "unnamed"
+ },
+ {
+  "id": "sttv3_019",
+  "text": "hey buddy put the charge on east door and beach it",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "east",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_020",
+  "text": "drone out top floor first i want to know how many",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "top_floor",
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_021",
+  "text": "get yourself downstairs fast fast",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "down",
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_022",
+  "text": "i go in west window you climb in by the other window",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "other",
+  "target": {
+   "object": "window",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "other_ref"
+ },
+ {
+  "id": "sttv3_023",
+  "text": "no not the north window i said east one fault the east one",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "east",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "two_places"
+ },
+ {
+  "id": "sttv3_024",
+  "text": "main is trapped theres a claymore behind it",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "main",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "callout"
+ },
+ {
+  "id": "sttv3_025",
+  "text": "alpha repel down to west window and hang outside of it",
+  "intent": "RAPPEL",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "west",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_026",
+  "text": "run down to basement like right now",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_027",
+  "text": "um throw flash at the sofa down in basement",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "sofa",
+   "qualifier": null,
+   "zone": "basement",
+   "unknown_modifier": false
+  },
+  "kind": "zone_object"
+ },
+ {
+  "id": "sttv3_028",
+  "text": "get off the rough and come to west door",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "west",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "two_places"
+ },
+ {
+  "id": "sttv3_029",
+  "text": "back door bot watch the back door someone is coming for sure",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  },
+  "kind": "unnamed"
+ },
+ {
+  "id": "sttv3_030",
+  "text": "bro my ping is through the roof again sorry",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "other_sense"
+ },
+ {
+  "id": "sttv3_031",
+  "text": "go stand by the table upstairs",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "table",
+   "qualifier": null,
+   "zone": "up",
+   "unknown_modifier": false
+  },
+  "kind": "zone_object"
+ },
+ {
+  "id": "sttv3_032",
+  "text": "north window open it quiet dont climb in just open",
+  "intent": "OPEN",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "north",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_033",
+  "text": "they all sitting in basement smoke the brown stares before they come out",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "brown",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "two_places"
+ },
+ {
+  "id": "sttv3_034",
+  "text": "this is not even my main i play on my brother account",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "other_sense"
+ },
+ {
+  "id": "sttv3_035",
+  "text": "smoke goes on white stares but only on my call",
+  "intent": "SMOKE",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "white",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "on_signal"
+ },
+ {
+  "id": "sttv3_036",
+  "text": "two guys on the rough i see them",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "roof",
+   "unknown_modifier": false
+  },
+  "kind": "callout"
+ },
+ {
+  "id": "sttv3_037",
+  "text": "i am on north door you look at the other door",
+  "intent": "HOLD_OTHER_ANGLE",
+  "timing": "now",
+  "reference": "other",
+  "target": {
+   "object": "door",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "other_ref"
+ },
+ {
+  "id": "sttv3_038",
+  "text": "bot you gonna repel on the north window but only when i tell you",
+  "intent": "RAPPEL",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "north",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "on_signal"
+ },
+ {
+  "id": "sttv3_039",
+  "text": "wait wait scratch that dont push basement yet hold up",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "sttv3_040",
+  "text": "west is yours bot dont let nobody come through",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": "west",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_041",
+  "text": "get yourself on the rough um the rooftop i need you up top of the building",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "roof",
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_042",
+  "text": "throw a flash bang over the table okay",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "table",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_043",
+  "text": "flake them uh go around through brown",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "brown",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_044",
+  "text": "put the bomb down by white stares i watch you back",
+  "intent": "PLANT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "white",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_045",
+  "text": "second story is not clear go in and clean it",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "floor_2",
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_046",
+  "text": "jump in through the left window i go right behind you",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  },
+  "kind": "unnamed"
+ },
+ {
+  "id": "sttv3_047",
+  "text": "too many too many pull back to yellow",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "yellow",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "sttv3_048",
+  "text": "the north door on ground floor open it slow and dont peak",
+  "intent": "OPEN",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "north",
+   "zone": "floor_1",
+   "unknown_modifier": false
+  },
+  "kind": "zone_object"
+ },
+ {
+  "id": "sttv3_049",
+  "text": "i got main covered so you uh run over to yellow stares",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "yellow",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "two_places"
+ }
+]

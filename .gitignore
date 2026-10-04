@@ -1,0 +1,13 @@
+# local environment and build output
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# model weights: over GitHub's 100 MB file limit (9 x .safetensors + 7 x .onnx, about 10 GB); kept outside git
+*.safetensors
+*.onnx
+
+# ONNX Runtime release, downloaded per platform (cpp/coop_intent/README.md)
+cpp/coop_intent/third_party/onnxruntime-*

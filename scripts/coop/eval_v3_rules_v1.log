@@ -1,0 +1,98 @@
+v3 lines: 150; majority intent on 150, unanimous on 150; intents {'NONE': 24, 'MOVE_TO': 22, 'VAULT_WINDOW': 13, 'SMOKE': 12, 'HOLD_ANGLE': 12, 'ENTRY': 8, 'FRAG': 7, 'FLASH': 7, 'RAPPEL': 6, 'FLANK': 6, 'BREACH': 5, 'TAKE_COVER': 5, 'OPEN': 5, 'DRONE': 4, 'PLANT': 3, 'HOLD_OTHER_ANGLE': 3, 'WAIT': 3, 'FALL_BACK': 3, 'DEFUSE': 2}
+
+A. MATCHER on 150 v3 lines (readers agree on the whole target on 150, unanimously on 150)
+  all                    exact  88.0% (132/150)   object  94.7% (142/150)   qualifier  95.3% (143/150)   zone  94.0% (141/150)   truth in list  90.7% (136/150)
+  author r6              exact  86.0% (43/50)   object  96.0% (48/50)   qualifier  92.0% (46/50)   zone  94.0% (47/50)   truth in list  90.0% (45/50)
+  author cs              exact  88.0% (44/50)   object  92.0% (46/50)   qualifier  96.0% (48/50)   zone  94.0% (47/50)   truth in list  92.0% (46/50)
+  author stt             exact  90.0% (45/50)   object  96.0% (48/50)   qualifier  98.0% (49/50)   zone  94.0% (47/50)   truth in list  90.0% (45/50)
+  kind callout           exact  93.3% (14/15)   object 100.0% (15/15)   qualifier 100.0% (15/15)   zone  93.3% (14/15)   truth in list  93.3% (14/15)
+  kind negated           exact 100.0% (6/6)   object 100.0% (6/6)   qualifier 100.0% (6/6)   zone 100.0% (6/6)   truth in list 100.0% (6/6)
+  kind on_signal         exact 100.0% (12/12)   object 100.0% (12/12)   qualifier 100.0% (12/12)   zone 100.0% (12/12)   truth in list 100.0% (12/12)
+  kind other_ref         exact  88.9% (8/9)   object 100.0% (9/9)   qualifier  88.9% (8/9)   zone 100.0% (9/9)   truth in list  88.9% (8/9)
+  kind other_sense       exact   0.0% (0/6)   object  33.3% (2/6)   qualifier  50.0% (3/6)   zone  66.7% (4/6)   truth in list   0.0% (0/6)
+  kind place             exact  93.3% (56/60)   object 100.0% (60/60)   qualifier 100.0% (60/60)   zone  93.3% (56/60)   truth in list  93.3% (56/60)
+  kind two_places        exact  66.7% (10/15)   object  73.3% (11/15)   qualifier  80.0% (12/15)   zone  93.3% (14/15)   truth in list  93.3% (14/15)
+  kind unnamed           exact 100.0% (12/12)   object 100.0% (12/12)   qualifier 100.0% (12/12)   zone 100.0% (12/12)   truth in list 100.0% (12/12)
+  kind zone_object       exact  93.3% (14/15)   object 100.0% (15/15)   qualifier 100.0% (15/15)   zone  93.3% (14/15)   truth in list  93.3% (14/15)
+  readers agreed         exact  88.0% (132/150)   object  94.7% (142/150)   qualifier  95.3% (143/150)   zone  94.0% (141/150)   truth in list  90.7% (136/150)
+  unknown_modifier flag: raised on 7 lines, the readers mark 12; both 7
+  mismatches (author kind | text | readers -> matcher):
+    r6v3_015   two_places  'Smoke blue stairs, no wait, not blue, I meant white.'
+                 ('stairs', 'white', None) -> ('stairs', 'blue', None)  role=None flag=None  [truth is in the list]
+    r6v3_017   place       "Keep an eye on the floor below, somebody's gonna come up on us."
+                 (None, None, 'down') -> (None, None, None)
+    r6v3_019   other_ref   'I got north door locked, you sit on the other one.'
+                 ('door', None, None) -> ('door', 'north', None)  role=mine flag=None
+    r6v3_020   place       "Get yourself up a floor, the whole team's rotating."
+                 (None, None, 'up') -> (None, None, None)
+    r6v3_029   two_places  'Whole stack is sitting on yellow stairs, wrap around through south door and pinch them.'
+                 ('door', 'south', None) -> ('stairs', 'yellow', None)  role=None flag=None  [truth is in the list]
+    r6v3_039   other_sense 'My ping is through the roof tonight, west coast servers are trash.'
+                 (None, None, None) -> (None, None, 'roof')  role=None flag=None
+    r6v3_045   other_sense "Bro I've been a Thermite main since year one and I still whiff that."
+                 (None, None, None) -> ('door', 'main', None)  role=mine flag=unsure
+    csv3_005   place       'we lost this fight, pull back to second'
+                 (None, None, 'floor_2') -> (None, None, None)
+    csv3_019   zone_object "get over to the table up on second, I'll meet you"
+                 ('table', None, 'floor_2') -> ('table', None, None)  role=None flag=None
+    csv3_034   two_places  'not the north window, I said smoke west door'
+                 ('door', 'west', None) -> ('window', 'north', None)  role=not flag=None  [truth is in the list]
+    csv3_035   other_sense "my main got vac banned last week so I'm stuck on this smurf"
+                 (None, None, None) -> ('door', 'main', None)  role=None flag=unsure
+    csv3_040   two_places  "awp's up on the roof, get your ass behind the table"
+                 ('table', None, None) -> (None, None, 'roof')  role=None flag=None  [truth is in the list]
+    csv3_041   other_sense "let's table that strat, it gets us killed every single round"
+                 (None, None, None) -> ('table', None, None)  role=None flag=None
+    sttv3_023  two_places  'no not the north window i said east one fault the east one'
+                 ('window', 'east', None) -> (None, 'east', None)  role=None flag=None
+    sttv3_030  other_sense 'bro my ping is through the roof again sorry'
+                 (None, None, None) -> (None, None, 'roof')  role=None flag=None
+    sttv3_034  other_sense 'this is not even my main i play on my brother account'
+                 (None, None, None) -> ('door', 'main', None)  role=not flag=None
+    sttv3_036  callout     'two guys on the rough i see them'
+                 (None, None, 'roof') -> (None, None, None)
+    sttv3_045  place       'second story is not clear go in and clean it'
+                 (None, None, 'floor_2') -> (None, None, None)
+  on the 483 older lines the matcher finds a target in 120
+
+B. SHIPPED BOT (coop-deberta-v3-ens3-v2, family gate, threshold 0.58) on the 150 v3 lines it never saw
+  input: raw                         near  83.3  exact ok  82.0  wrong family  3.3  acts on non-order   8.3  score  76.7
+  input: strip                       near  81.3  exact ok  80.0  wrong family  4.0  acts on non-order  12.5  score  73.3
+  strip - raw, score: -3.3 [-8.0, +0.0]; answers that differ: 3
+    raw, kind callout      n= 15  near 100.0  wrong family  0.0
+    raw, kind negated      n=  6  near 100.0  wrong family  0.0
+    raw, kind on_signal    n= 12  near  83.3  wrong family  0.0
+    raw, kind other_ref    n=  9  near  66.7  wrong family 11.1
+    raw, kind other_sense  n=  6  near 100.0  wrong family  0.0
+    raw, kind place        n= 60  near  83.3  wrong family  5.0
+    raw, kind two_places   n= 15  near  53.3  wrong family  6.7
+    raw, kind unnamed      n= 12  near  91.7  wrong family  0.0
+    raw, kind zone_object  n= 15  near  86.7  wrong family  0.0
+  raw input, not near-correct (truth -> pick):
+    r6v3_001   zone_object FRAG -> NONE           "Top floor table, guy's prone under it, nade him out."
+    r6v3_002   two_places  MOVE_TO -> NONE           "Forget the roof, nothing's happening up there, get down to basement."
+    r6v3_006   unnamed     HOLD_ANGLE -> NONE           "Somebody needs eyes on the back door, that's you, don't let them walk in free."
+    r6v3_015   two_places  SMOKE -> NONE           'Smoke blue stairs, no wait, not blue, I meant white.'
+    r6v3_020   place       MOVE_TO -> NONE           "Get yourself up a floor, the whole team's rotating."
+    r6v3_030   two_places  DRONE -> NONE           "I'm posted on red stairs, you go drone out top floor."
+    r6v3_034   place       DEFUSE -> NONE           "Defuser's ticking on top floor, go get it off, I'll trade you."
+    r6v3_036   on_signal   ENTRY -> NONE           'Main, we hit it together, you go in when I say go.'
+    r6v3_041   other_ref   SMOKE -> NONE           'Yellow stairs is already smoked, put yours on the other staircase.'
+    r6v3_046   place       FALL_BACK -> TAKE_COVER     "You're getting swarmed, ditch that fight and get back to ground floor."
+    r6v3_048   zone_object HOLD_ANGLE -> NONE           'Red stairs down in basement, lock that down, nobody walks up it.'
+    csv3_007   other_ref   SMOKE -> HOLD_OTHER_ANGLE "main's already smoked, put yours on the other door"
+    csv3_016   place       DEFUSE -> NONE           "bomb's ticking by the sofa, get on it, I'll watch your back"
+    csv3_031   two_places  MOVE_TO -> RAPPEL         'get off the roof and come down to the basement'
+    csv3_037   place       MOVE_TO -> RAPPEL         'get up on the roof, I want somebody up top'
+    sttv3_005  other_ref   MOVE_TO -> NONE           'red stares is blocked uh get to the other stares'
+    sttv3_006  two_places  FLANK -> NONE           'is a guy camping blue stares so flake him through south door'
+    sttv3_010  on_signal   ENTRY -> NONE           'wait for my count and then you storm the top floor'
+    sttv3_017  place       MOVE_TO -> NONE           'everybody back to first floor bot it means you too'
+    sttv3_021  place       MOVE_TO -> NONE           'get yourself downstairs fast fast'
+    sttv3_023  two_places  VAULT_WINDOW -> NONE           'no not the north window i said east one fault the east one'
+    sttv3_028  two_places  MOVE_TO -> NONE           'get off the rough and come to west door'
+    sttv3_032  place       OPEN -> VAULT_WINDOW   'north window open it quiet dont climb in just open'
+    sttv3_040  place       HOLD_ANGLE -> NONE           'west is yours bot dont let nobody come through'
+    sttv3_041  place       MOVE_TO -> NONE           'get yourself on the rough um the rooftop i need you up top of the building'
+
+C. (train_v2.py cv base under COOP_TAG=v3 has not finished)

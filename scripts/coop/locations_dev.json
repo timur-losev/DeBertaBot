@@ -1,0 +1,3058 @@
+{
+"_note": "Developer regression lines for locations.py, written by a design-critique agent before any v3 test line existed (254 transcripts with the primary targets a teammate would accept; FLAG / ROLE: acceptable if the primary carries a flag / a role). Tuning material for the rules, never a test set. Three expectations were extended when the zones floor_2 / up / down were added to the vocabulary.",
+"cases": [
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "hold the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "watch the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "go to blue stairs",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "open the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "get behind the sofa",
+"accept": [
+[
+"sofa",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "take cover behind the table",
+"accept": [
+[
+"table",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "smoke the front door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "go to the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "get down to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "hold the north door in the basement",
+"accept": [
+[
+"door",
+"north",
+"basement"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "vault the south window on three",
+"accept": [
+[
+"window",
+"south",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "breach the west door on my go",
+"accept": [
+[
+"door",
+"west",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "first floor, north window",
+"accept": [
+[
+"window",
+"north",
+"floor_1"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "top floor window, east side",
+"accept": [
+[
+"window",
+"east",
+"top_floor"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "watch the brown staircase",
+"accept": [
+[
+"stairs",
+"brown",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plain",
+"text": "hide behind the couch on the top floor",
+"accept": [
+[
+"sofa",
+null,
+"top_floor"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "qual-after",
+"text": "hold the door on the north side",
+"accept": [
+[
+"door",
+"north",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "qual-after",
+"text": "watch the window, the east one",
+"accept": [
+[
+"window",
+"east",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "qual-after",
+"text": "take the stairs, the blue ones",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "qual-after",
+"text": "hold the door to the north",
+"accept": [
+[
+"door",
+"north",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "qual-after",
+"text": "watch the window facing east",
+"accept": [
+[
+"window",
+"east",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "qual-after",
+"text": "hold the door that's on the west side",
+"accept": [
+[
+"door",
+"west",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "qual-after",
+"text": "the window on the first floor on the east side",
+"accept": [
+[
+"window",
+"east",
+"floor_1"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "qual-after",
+"text": "open the door, the main one",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "qual-after",
+"text": "smoke the door then go north",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "qual-after",
+"text": "open the window and watch west",
+"accept": [
+[
+"window",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "qual-after",
+"text": "hold the stairs, red is pushing",
+"accept": [
+[
+"stairs",
+null,
+null
+],
+[
+"stairs",
+"red",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "mine-vs-yours",
+"text": "i'll take the north door, you take the south door",
+"accept": [
+[
+"door",
+"south",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "mine-vs-yours",
+"text": "i'm holding blue stairs, watch red",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "mine-vs-yours",
+"text": "i got the east window you watch the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "mine-vs-yours",
+"text": "i'm on blue, you watch the door",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "mine-vs-yours",
+"text": "i'm going to the roof, hold the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "mine-vs-yours",
+"text": "i've got north, you take south",
+"accept": [
+[
+null,
+"south",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "mine-vs-yours",
+"text": "watch red, i'm holding blue",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "mine-vs-yours",
+"text": "hold the north door, i'm going to the basement",
+"accept": [
+[
+"door",
+"north",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "mine-vs-yours",
+"text": "take the south door i'll take north",
+"accept": [
+[
+"door",
+"south",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "mine-vs-yours",
+"text": "i'm planting, watch the white stairs",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "from-to",
+"text": "go from the north door to the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "from-to",
+"text": "leave the basement and go to the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "from-to",
+"text": "rotate off red stairs to blue stairs",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "from-to",
+"text": "come up from the basement to the first floor",
+"accept": [
+[
+null,
+null,
+"floor_1"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "from-to",
+"text": "get off the roof and hold the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "from-to",
+"text": "move from the sofa to the table",
+"accept": [
+[
+"table",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "negation",
+"text": "not the north door, the south one",
+"accept": [
+[
+"door",
+"south",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "negation",
+"text": "not blue, red",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "negation",
+"text": "not that door, the east door",
+"accept": [
+[
+"door",
+"east",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "negation",
+"text": "forget the basement, hold the top floor",
+"accept": [
+[
+null,
+null,
+"top_floor"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "negation",
+"text": "stay off the blue stairs, use red",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "negation",
+"text": "hold the south door not the north door",
+"accept": [
+[
+"door",
+"south",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "negation",
+"text": "no, the west window",
+"accept": [
+[
+"window",
+"west",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "negation",
+"text": "don't go through the main door, take the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "negation",
+"text": "east window, not the door",
+"accept": [
+[
+"window",
+"east",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "negation",
+"text": "don't open the north door",
+"accept": [
+[
+"door",
+"north",
+null
+],
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other",
+"text": "take the other door",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "other",
+"text": "the other stairs, not blue",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "other",
+"text": "hold the other window, i've got east",
+"accept": [
+[
+"window",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "other",
+"text": "i've got the north door, take the other one",
+"accept": [
+[
+"door",
+null,
+null
+],
+[
+"door",
+"north",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "other",
+"text": "watch the other stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "lone",
+"text": "take blue",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "lone",
+"text": "push main",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "lone",
+"text": "hold north",
+"accept": [
+[
+null,
+"north",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "lone",
+"text": "watch red",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "lone",
+"text": "hold blue, door is clear",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "lone",
+"text": "hold main, windows are covered",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "lone",
+"text": "push the door and take blue",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "lone",
+"text": "go north and hold the door",
+"accept": [
+[
+null,
+"north",
+null
+],
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "lone",
+"text": "smoke yellow then push",
+"accept": [
+[
+"stairs",
+"yellow",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "lone",
+"text": "top of red",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "coord",
+"text": "watch the north and south doors",
+"accept": [
+[
+"door",
+"north",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "coord",
+"text": "cover the east and west windows",
+"accept": [
+[
+"window",
+"east",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "coord",
+"text": "cover red and blue stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "coord",
+"text": "north or south door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "coord",
+"text": "check the doors and windows on the north side",
+"accept": [
+[
+"door",
+"north",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plural",
+"text": "watch the doors",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plural",
+"text": "check all the windows",
+"accept": [
+[
+"window",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plural",
+"text": "close the doors and windows on the first floor",
+"accept": [
+[
+"door",
+null,
+"floor_1"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plural",
+"text": "watch both staircases",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "plural",
+"text": "get behind one of the chairs",
+"accept": [
+[
+"chair",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "zone",
+"text": "take the basement stairs",
+"accept": [
+[
+"stairs",
+null,
+"basement"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "zone",
+"text": "go to the roof through the top floor window",
+"accept": [
+[
+null,
+null,
+"roof"
+],
+[
+"window",
+null,
+"top_floor"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "zone",
+"text": "rappel from the roof to the top floor window",
+"accept": [
+[
+"window",
+null,
+"top_floor"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "zone",
+"text": "from the roof rappel down to the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "zone",
+"text": "go up the blue stairs to the top floor",
+"accept": [
+[
+"stairs",
+"blue",
+null
+],
+[
+"stairs",
+"blue",
+"top_floor"
+],
+[
+null,
+null,
+"top_floor"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "zone",
+"text": "after you clear the basement, hold blue stairs",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "zone",
+"text": "clear the first floor then the basement",
+"accept": [
+[
+null,
+null,
+"floor_1"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "zone",
+"text": "go to the main floor",
+"accept": [
+[
+null,
+null,
+"floor_1"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "zone",
+"text": "go to the second floor",
+"accept": [
+null,
+[
+null,
+null,
+"floor_2"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "zone",
+"text": "go downstairs",
+"accept": [
+null,
+[
+null,
+null,
+"down"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "zone",
+"text": "go down stairs",
+"accept": [
+null,
+[
+"stairs",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "zone",
+"text": "hold the top of the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "zone",
+"text": "get on the roof above the east window",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "callout+order",
+"text": "one pushing main, hold the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "callout+order",
+"text": "enemy at the east window, fall back to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "callout+order",
+"text": "sniper on the roof, take cover behind the table",
+"accept": [
+[
+"table",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "callout+order",
+"text": "they're in the basement, hold the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+],
+[
+"stairs",
+null,
+"basement"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "callout+order",
+"text": "he's behind the sofa, flash him",
+"accept": [
+[
+"sofa",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "callout+order",
+"text": "they're coming up blue, watch the door",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "callout+order",
+"text": "two on red stairs, smoke yellow",
+"accept": [
+[
+"stairs",
+"yellow",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "callout+order",
+"text": "they breached the west door, fall back",
+"accept": [
+null,
+"ROLE"
+]
+},
+{
+"batch": "adversarial",
+"cat": "callout+order",
+"text": "roof is clear, go check the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "callout",
+"text": "two on red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "callout",
+"text": "they're on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "go to my yellow ping",
+"accept": [
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "push through the main hall",
+"accept": [
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "clear the main room",
+"accept": [
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "the main thing is stay alive",
+"accept": [
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "breach the west wall",
+"accept": [
+[
+null,
+"west",
+null
+],
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "take two steps back",
+"accept": [
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "back up a few steps",
+"accept": [
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "he's in the room next door",
+"accept": [
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "watch the red dot on the wall",
+"accept": [
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "blue team is pushing",
+"accept": [
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "you've got a window, go now",
+"accept": [
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "that's off the table",
+"accept": [
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "throw it at the white van",
+"accept": [
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "hit the floor one sec",
+"accept": [
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "enemy north of you",
+"accept": [
+[
+null,
+"north",
+null
+],
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "other-sense",
+"text": "main site is clear",
+"accept": [
+null
+]
+},
+{
+"batch": "adversarial",
+"cat": "unknown-mod",
+"text": "hold the back door",
+"accept": [
+null,
+"FLAG"
+]
+},
+{
+"batch": "adversarial",
+"cat": "unknown-mod",
+"text": "watch the side door",
+"accept": [
+null,
+"FLAG"
+]
+},
+{
+"batch": "adversarial",
+"cat": "unknown-mod",
+"text": "take the back stairs",
+"accept": [
+null,
+"FLAG"
+]
+},
+{
+"batch": "adversarial",
+"cat": "unknown-mod",
+"text": "hold the east stairs",
+"accept": [
+null,
+"FLAG"
+]
+},
+{
+"batch": "adversarial",
+"cat": "unknown-mod",
+"text": "open the left window",
+"accept": [
+null,
+"FLAG"
+]
+},
+{
+"batch": "adversarial",
+"cat": "unknown-mod",
+"text": "watch the second window",
+"accept": [
+null,
+"FLAG"
+]
+},
+{
+"batch": "adversarial",
+"cat": "unknown-mod",
+"text": "smoke the blue door",
+"accept": [
+null,
+"FLAG"
+]
+},
+{
+"batch": "adversarial",
+"cat": "unknown-mod",
+"text": "hold the north west door",
+"accept": [
+null,
+"FLAG"
+]
+},
+{
+"batch": "adversarial",
+"cat": "two-objects",
+"text": "go to the window next to the north door",
+"accept": [
+[
+"window",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "two-objects",
+"text": "smoke the door between red and blue stairs",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "two-objects",
+"text": "hold the door by blue",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "two-objects",
+"text": "the door at the red stairs",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "two-objects",
+"text": "window north of the main door",
+"accept": [
+[
+"window",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "two-objects",
+"text": "take the stairs by the east window",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "compound",
+"text": "smoke the main door and push through the east window",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "compound",
+"text": "open the north door then hold the red stairs",
+"accept": [
+[
+"door",
+"north",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "compound",
+"text": "go through the main door and hold the yellow stairs",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "compound",
+"text": "flash blue and push the top floor",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "stt",
+"text": "go to the 1st floor",
+"accept": [
+[
+null,
+null,
+"floor_1"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "stt",
+"text": "hold the north-side door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "stt",
+"text": "watch the stair case",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "stt",
+"text": "Hold The NORTH Door.",
+"accept": [
+[
+"door",
+"north",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "stt",
+"text": "hold the northside door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "stt",
+"text": "watch the stairwells",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "stt",
+"text": "go to level one",
+"accept": [
+[
+null,
+null,
+"floor_1"
+]
+]
+},
+{
+"batch": "adversarial",
+"cat": "stt",
+"text": "hold the entrance",
+"accept": [
+[
+"door",
+"main",
+null
+],
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "watch main",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "hold red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "go top floor",
+"accept": [
+[
+null,
+null,
+"top_floor"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "push basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "get on the roof and rappel the east window",
+"accept": [
+[
+null,
+null,
+"roof"
+],
+[
+"window",
+"east",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "rappel down to the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "open the west window",
+"accept": [
+[
+"window",
+"west",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "close the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "breach the south door on my mark",
+"accept": [
+[
+"door",
+"south",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "flash through the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "frag the top of yellow stairs",
+"accept": [
+[
+"stairs",
+"yellow",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "drone the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "drone the first floor before we go in",
+"accept": [
+[
+null,
+null,
+"floor_1"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "cover me while i open the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "follow me to the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "follow me up the white stairs",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "fall back to main",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "fall back to the sofa",
+"accept": [
+[
+"sofa",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "plant behind the table",
+"accept": [
+[
+"table",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "plant at the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "take cover behind that couch",
+"accept": [
+[
+"sofa",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "hide under the table in the basement",
+"accept": [
+[
+"table",
+null,
+"basement"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "stay away from the windows",
+"accept": [
+null,
+"ROLE"
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "watch the stairs to the basement",
+"accept": [
+[
+"stairs",
+null,
+null
+],
+[
+"stairs",
+null,
+"basement"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "hold the bottom of blue",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "top red",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "go main",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "main door now",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "smoke main and cross",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "hold west side",
+"accept": [
+[
+null,
+"west",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "watch the west side windows",
+"accept": [
+[
+"window",
+"west",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "the door on your left",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "that door",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "this window here",
+"accept": [
+[
+"window",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "door",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "blue",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "north window please",
+"accept": [
+[
+"window",
+"north",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "can you watch the east door",
+"accept": [
+[
+"door",
+"east",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "is the main door open",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "who's watching blue",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "need you on red stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "you go south door i'll go north",
+"accept": [
+[
+"door",
+"south",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "i'll breach the east door you flash",
+"accept": [
+[
+"door",
+"east",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "after i open the main door flash it",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "go to the table by the north window",
+"accept": [
+[
+"table",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "get to the chair next to the sofa",
+"accept": [
+[
+"chair",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "watch the door behind the sofa",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "smoke between the sofa and the main door",
+"accept": [
+[
+"sofa",
+null,
+null
+],
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "enemy on white stairs",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "they're pushing the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "one in the basement one on the roof",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "contact east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "he went upstairs",
+"accept": [
+null,
+[
+null,
+null,
+"up"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "check the first floor windows",
+"accept": [
+[
+"window",
+null,
+"floor_1"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "top floor east window",
+"accept": [
+[
+"window",
+"east",
+"top_floor"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "basement north door",
+"accept": [
+[
+"door",
+"north",
+"basement"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "east window top floor",
+"accept": [
+[
+"window",
+"east",
+"top_floor"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "the stairs on the top floor, the yellow ones",
+"accept": [
+[
+"stairs",
+"yellow",
+"top_floor"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "go up to the top floor and hold the north window",
+"accept": [
+[
+null,
+null,
+"top_floor"
+],
+[
+"window",
+"north",
+"top_floor"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "go down to the basement and watch the brown stairs",
+"accept": [
+[
+null,
+null,
+"basement"
+],
+[
+"stairs",
+"brown",
+"basement"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "hold here and watch the doors",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "stack up on the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "on me, main entrance",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "wait at the top of the white stairs",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "hold the stairs from the top floor",
+"accept": [
+[
+"stairs",
+null,
+null
+],
+[
+"stairs",
+null,
+"top_floor"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "watch north i'll watch south",
+"accept": [
+[
+null,
+"north",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "red or blue",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "which door",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "the window not the door",
+"accept": [
+[
+"window",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "go back to the front door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "back to main",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "move up to the next door",
+"accept": [
+[
+"door",
+null,
+null
+],
+"FLAG"
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "take a few steps to the left",
+"accept": [
+null
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "watch the steps",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "go up the steps to the roof",
+"accept": [
+[
+"stairs",
+null,
+null
+],
+[
+"stairs",
+null,
+"roof"
+],
+[
+null,
+null,
+"roof"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "cover the windows on the east side of the top floor",
+"accept": [
+[
+"window",
+"east",
+"top_floor"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "vault through the kitchen window",
+"accept": [
+[
+"window",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "breach the basement door",
+"accept": [
+[
+"door",
+null,
+"basement"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "blow the door at the bottom of the red stairs",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "hold the angle on the main door from behind the sofa",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "get behind the sofa and watch the main door",
+"accept": [
+[
+"sofa",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "throw a smoke at the base of the yellow stairs",
+"accept": [
+[
+"stairs",
+"yellow",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "let's go roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "rappel the south side",
+"accept": [
+[
+null,
+"south",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "white stairs clear",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "white stairs are clear, move up",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "push up blue with me",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "hold blue tight",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "go red quietly",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "push main hard",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "peek main",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "watch north window and north door",
+"accept": [
+[
+"window",
+"north",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "lock down the top floor",
+"accept": [
+[
+null,
+null,
+"top_floor"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "don't let them through the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "hold the door at the end of the hall",
+"accept": [
+[
+"door",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "smoke the window and i'll take the door",
+"accept": [
+[
+"window",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "you take blue i'll take red",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "i'm at the main door, come to me",
+"accept": [
+[
+"door",
+"main",
+null
+],
+null
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "they're on blue stairs, i'm falling back to the basement",
+"accept": [
+[
+"stairs",
+"blue",
+null
+],
+[
+null,
+null,
+"basement"
+],
+null
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "use the window instead of the door",
+"accept": [
+[
+"window",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "go around through the south window and hit them from behind",
+"accept": [
+[
+"window",
+"south",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "flank through the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "he's at the top of brown stairs, frag him",
+"accept": [
+[
+"stairs",
+"brown",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "table, get behind the table",
+"accept": [
+[
+"table",
+null,
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "watch the long hallway from the east door",
+"accept": [
+[
+"door",
+"east",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "hold the main door from the inside",
+"accept": [
+[
+"door",
+"main",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "set up on the roof and wait for my go",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "eyes on red, three coming",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+]
+},
+{
+"batch": "ordinary",
+"cat": "b2",
+"text": "red stairs, top floor, two of them",
+"accept": [
+[
+"stairs",
+"red",
+"top_floor"
+]
+]
+}
+]
+}

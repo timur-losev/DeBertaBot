@@ -1,0 +1,10 @@
+== v1 single model --threads 4
+model load 1991 ms, working set +786 MB (805 MB total)
+754 lines x 2, 8.2 tokens on average (max 64)
+tokenizer: median 20.5 us, p99 56.8 us
+model:     median 25.7 ms, p90 29.5 ms, p99 33.5 ms, max 65.0 ms
+== v1 single model --threads 1
+model load 1975 ms, working set +786 MB (805 MB total)
+754 lines x 2, 8.2 tokens on average (max 64)
+tokenizer: median 19.6 us, p99 48.1 us
+model:     median 39.6 ms, p90 49.4 ms, p99 56.9 ms, max 131.4 ms

@@ -1,0 +1,1244 @@
+[
+ {
+  "text": "follow me",
+  "want": [
+   "FOLLOW_ME"
+  ],
+  "group": "seed copy",
+  "zero": "FOLLOW_ME",
+  "ft": "FOLLOW_ME",
+  "pz": {
+   "follow me": 1.0,
+   "hold position": 1.3414590487586403e-16,
+   "open fire": 3.526593965342759e-18,
+   "cease fire": 1.8713119062351973e-16,
+   "fall back": 1.0828174721400907e-16,
+   "take cover": 8.906028662231835e-17,
+   "cover me": 3.744532548277473e-16,
+   "heal me": 7.325532184284927e-18,
+   "revive me": 3.344049059427566e-18,
+   "open the door": 2.945895556383486e-17,
+   "loot the area": 1.4262818876261965e-17,
+   "go to the marker": 4.447641362903467e-16,
+   "report status": 8.046355733473234e-17,
+   "switch weapon": 9.963592972015171e-17,
+   "go quiet": 1.960018755125384e-16,
+   "none of these": 1.4783890715227904e-15
+  }
+ },
+ {
+  "text": "hold position",
+  "want": [
+   "HOLD_POSITION"
+  ],
+  "group": "seed copy",
+  "zero": "HOLD_POSITION",
+  "ft": "HOLD_POSITION",
+  "pz": {
+   "follow me": 3.387135905086325e-08,
+   "hold position": 0.9999914169311523,
+   "open fire": 2.4318389080235647e-08,
+   "cease fire": 1.563589535180654e-06,
+   "fall back": 3.767427472212148e-07,
+   "take cover": 2.3114799319046142e-07,
+   "cover me": 1.5710210163888405e-06,
+   "heal me": 1.7823845510633873e-08,
+   "revive me": 1.4289120109367559e-08,
+   "open the door": 5.3561443280614185e-08,
+   "loot the area": 7.176652605522804e-09,
+   "go to the marker": 5.820838850922883e-07,
+   "report status": 2.0678025691722723e-07,
+   "switch weapon": 1.442993067257703e-07,
+   "go quiet": 6.793733291488024e-07,
+   "none of these": 3.242249931645347e-06
+  }
+ },
+ {
+  "text": "open fire",
+  "want": [
+   "ATTACK_TARGET"
+  ],
+  "group": "new intent",
+  "zero": "ATTACK_TARGET",
+  "ft": "ATTACK_TARGET",
+  "pz": {
+   "follow me": 1.8218361264032978e-09,
+   "hold position": 2.2710946456783176e-09,
+   "open fire": 0.9999997615814209,
+   "cease fire": 5.542634795574486e-09,
+   "fall back": 6.268585095448032e-10,
+   "take cover": 7.252267120172462e-10,
+   "cover me": 8.726044775642094e-09,
+   "heal me": 1.364822144189759e-10,
+   "revive me": 2.700439039049485e-10,
+   "open the door": 1.1312583758638084e-08,
+   "loot the area": 5.690947713077321e-10,
+   "go to the marker": 1.7954986830659436e-08,
+   "report status": 4.985567514381728e-09,
+   "switch weapon": 1.6042367434465632e-08,
+   "go quiet": 5.446264772501763e-09,
+   "none of these": 2.262965494992386e-07
+  }
+ },
+ {
+  "text": "cease fire",
+  "want": [
+   "CEASE_FIRE"
+  ],
+  "group": "new intent",
+  "zero": "CEASE_FIRE",
+  "ft": "CEASE_FIRE",
+  "pz": {
+   "follow me": 9.762534481861092e-17,
+   "hold position": 1.5683194065657267e-15,
+   "open fire": 1.2715866127253634e-14,
+   "cease fire": 1.0,
+   "fall back": 1.3740201863911777e-16,
+   "take cover": 1.0472831165137927e-16,
+   "cover me": 1.1942118470595776e-15,
+   "heal me": 1.3130304392919688e-17,
+   "revive me": 1.7040496336298707e-17,
+   "open the door": 8.081639949682296e-17,
+   "loot the area": 3.203819735800381e-17,
+   "go to the marker": 5.173307723706027e-16,
+   "report status": 2.5625266577460667e-16,
+   "switch weapon": 3.1368480832089844e-16,
+   "go quiet": 7.643586352507233e-15,
+   "none of these": 1.1258457850076096e-14
+  }
+ },
+ {
+  "text": "fall back",
+  "want": [
+   "FALL_BACK"
+  ],
+  "group": "seed copy",
+  "zero": "FALL_BACK",
+  "ft": "FALL_BACK",
+  "pz": {
+   "follow me": 1.7906637977960216e-11,
+   "hold position": 1.3493284267696026e-10,
+   "open fire": 5.0420787336968864e-12,
+   "cease fire": 1.3274262244955537e-10,
+   "fall back": 1.0,
+   "take cover": 1.1046172657125375e-11,
+   "cover me": 3.342090493241301e-11,
+   "heal me": 1.970623750985334e-12,
+   "revive me": 4.408201234595843e-12,
+   "open the door": 4.823267653331076e-12,
+   "loot the area": 3.249740537433765e-12,
+   "go to the marker": 5.814357675881787e-11,
+   "report status": 4.244538401310116e-11,
+   "switch weapon": 1.0637396345714034e-11,
+   "go quiet": 6.61733307039114e-11,
+   "none of these": 1.1269287586435084e-10
+  }
+ },
+ {
+  "text": "take cover",
+  "want": [
+   "TAKE_COVER"
+  ],
+  "group": "new intent",
+  "zero": "TAKE_COVER",
+  "ft": "TAKE_COVER",
+  "pz": {
+   "follow me": 0.014733179472386837,
+   "hold position": 0.1412724256515503,
+   "open fire": 0.0014548987383022904,
+   "cease fire": 0.03290008008480072,
+   "fall back": 0.012679907493293285,
+   "take cover": 0.4308425188064575,
+   "cover me": 0.02380400337278843,
+   "heal me": 0.0001803074701456353,
+   "revive me": 0.00011439102672738954,
+   "open the door": 0.00030600017635151744,
+   "loot the area": 0.00038316394784487784,
+   "go to the marker": 0.0033154021948575974,
+   "report status": 0.003114798106253147,
+   "switch weapon": 0.0016446886584162712,
+   "go quiet": 0.0071241892874240875,
+   "none of these": 0.32613009214401245
+  }
+ },
+ {
+  "text": "cover me",
+  "want": [
+   "COVER_ME"
+  ],
+  "group": "seed copy",
+  "zero": "COVER_ME",
+  "ft": "COVER_ME",
+  "pz": {
+   "follow me": 2.4505270630470477e-05,
+   "hold position": 9.732980106491596e-05,
+   "open fire": 1.0271702194586396e-05,
+   "cease fire": 2.5645225832704455e-05,
+   "fall back": 9.081782991415821e-06,
+   "take cover": 4.883075598627329e-05,
+   "cover me": 0.9997344613075256,
+   "heal me": 3.698195030210627e-07,
+   "revive me": 2.3697289464053028e-07,
+   "open the door": 1.0212476126980619e-06,
+   "loot the area": 9.953135986506823e-07,
+   "go to the marker": 1.2753494956996292e-05,
+   "report status": 7.243529125844361e-06,
+   "switch weapon": 6.453757123381365e-06,
+   "go quiet": 8.875651474227197e-06,
+   "none of these": 1.1860408449138049e-05
+  }
+ },
+ {
+  "text": "heal me",
+  "want": [
+   "HEAL_ME"
+  ],
+  "group": "new intent",
+  "zero": "HEAL_ME",
+  "ft": "HEAL_ME",
+  "pz": {
+   "follow me": 0.0003882075834553689,
+   "hold position": 0.0034045393113046885,
+   "open fire": 0.0002556262188591063,
+   "cease fire": 0.0008628204232081771,
+   "fall back": 0.0003397426335141063,
+   "take cover": 0.0002443563425913453,
+   "cover me": 0.0006188633851706982,
+   "heal me": 0.9636048674583435,
+   "revive me": 3.6810542951570824e-05,
+   "open the door": 2.8126221877755597e-05,
+   "loot the area": 4.2472041968721896e-05,
+   "go to the marker": 0.000123068384709768,
+   "report status": 0.00013254104123916477,
+   "switch weapon": 0.0001321198942605406,
+   "go quiet": 0.0002494216605555266,
+   "none of these": 0.029536506161093712
+  }
+ },
+ {
+  "text": "revive me",
+  "want": [
+   "REVIVE_ME"
+  ],
+  "group": "seed copy",
+  "zero": "REVIVE_ME",
+  "ft": "REVIVE_ME",
+  "pz": {
+   "follow me": 6.023683596367846e-08,
+   "hold position": 1.4378096011569141e-06,
+   "open fire": 4.30017053076881e-07,
+   "cease fire": 5.951293928774248e-07,
+   "fall back": 8.256563432951225e-08,
+   "take cover": 6.45593942749656e-08,
+   "cover me": 2.3540013671663473e-07,
+   "heal me": 1.9749295177007298e-07,
+   "revive me": 0.999995231628418,
+   "open the door": 1.6511236822225328e-08,
+   "loot the area": 1.11052660400901e-08,
+   "go to the marker": 4.142674470131169e-08,
+   "report status": 6.224279047728487e-08,
+   "switch weapon": 3.427363282071383e-08,
+   "go quiet": 8.527612038733423e-08,
+   "none of these": 1.3727423038289999e-06
+  }
+ },
+ {
+  "text": "open the door",
+  "want": [
+   "OPEN_DOOR"
+  ],
+  "group": "overlapping",
+  "zero": "OPEN_DOOR",
+  "ft": "OPEN_DOOR",
+  "pz": {
+   "follow me": 9.70523927890099e-09,
+   "hold position": 4.3312823549968016e-08,
+   "open fire": 8.45759231538068e-08,
+   "cease fire": 2.7853019446411054e-08,
+   "fall back": 2.811642030309258e-09,
+   "take cover": 1.742228805667878e-09,
+   "cover me": 1.9857912647580633e-08,
+   "heal me": 2.1751218881593815e-10,
+   "revive me": 2.3446611319144495e-10,
+   "open the door": 0.9999997615814209,
+   "loot the area": 3.554694039120676e-10,
+   "go to the marker": 5.31023847116785e-09,
+   "report status": 8.331374701242567e-09,
+   "switch weapon": 3.672525172859764e-09,
+   "go quiet": 1.9039076981641756e-09,
+   "none of these": 2.8706001131695302e-08
+  }
+ },
+ {
+  "text": "loot the bodies",
+  "want": [
+   "LOOT_AREA"
+  ],
+  "group": "new intent",
+  "zero": "LOOT_AREA",
+  "ft": "LOOT_AREA",
+  "pz": {
+   "follow me": 0.0002534220984671265,
+   "hold position": 0.005128688644617796,
+   "open fire": 0.0015109458472579718,
+   "cease fire": 0.0006755528156645596,
+   "fall back": 0.00034377671545371413,
+   "take cover": 0.00020527424931060523,
+   "cover me": 0.00043591627036221325,
+   "heal me": 1.3827188013237901e-05,
+   "revive me": 1.6976297047222033e-05,
+   "open the door": 0.00010515234316699207,
+   "loot the area": 0.9893394112586975,
+   "go to the marker": 5.92026517551858e-05,
+   "report status": 1.8922213712357916e-05,
+   "switch weapon": 6.348961323965341e-05,
+   "go quiet": 3.143224967061542e-05,
+   "none of these": 0.0017979694530367851
+  }
+ },
+ {
+  "text": "go to the marker",
+  "want": [
+   "GO_TO_MARKER"
+  ],
+  "group": "overlapping",
+  "zero": "GO_TO_MARKER",
+  "ft": "GO_TO_MARKER",
+  "pz": {
+   "follow me": 0.0039473422802984715,
+   "hold position": 0.015942104160785675,
+   "open fire": 0.0021530359517782927,
+   "cease fire": 0.007384222000837326,
+   "fall back": 0.002360875252634287,
+   "take cover": 0.0014417455531656742,
+   "cover me": 0.011060153134167194,
+   "heal me": 5.297482857713476e-05,
+   "revive me": 7.386880315607414e-05,
+   "open the door": 0.0004074324097018689,
+   "loot the area": 5.783516098745167e-05,
+   "go to the marker": 0.9521421790122986,
+   "report status": 0.0008516806992702186,
+   "switch weapon": 0.00029154669027775526,
+   "go quiet": 0.000246246752794832,
+   "none of these": 0.001586712896823883
+  }
+ },
+ {
+  "text": "status report",
+  "want": [
+   "STATUS_REPORT"
+  ],
+  "group": "new intent",
+  "zero": "STATUS_REPORT",
+  "ft": "STATUS_REPORT",
+  "pz": {
+   "follow me": 1.3188282537157647e-06,
+   "hold position": 5.408951255958527e-05,
+   "open fire": 5.100187649986765e-07,
+   "cease fire": 9.33330193220172e-06,
+   "fall back": 5.938981757935835e-06,
+   "take cover": 3.7596655602101237e-06,
+   "cover me": 6.558223958563758e-06,
+   "heal me": 9.793995303652991e-08,
+   "revive me": 6.568519950178597e-08,
+   "open the door": 1.332505235041026e-07,
+   "loot the area": 3.4057993758551675e-08,
+   "go to the marker": 8.545378591406916e-07,
+   "report status": 0.9999092817306519,
+   "switch weapon": 1.022355391455676e-07,
+   "go quiet": 2.468612194661546e-07,
+   "none of these": 7.573266429972136e-06
+  }
+ },
+ {
+  "text": "switch to your shotgun",
+  "want": [
+   "SWITCH_WEAPON"
+  ],
+  "group": "new intent",
+  "zero": "SWITCH_WEAPON",
+  "ft": "SWITCH_WEAPON",
+  "pz": {
+   "follow me": 7.898082003521267e-06,
+   "hold position": 0.0001094325925805606,
+   "open fire": 3.2026884582592174e-05,
+   "cease fire": 2.0091209080419503e-05,
+   "fall back": 1.9941950085922144e-05,
+   "take cover": 2.850736927939579e-05,
+   "cover me": 4.436242670635693e-05,
+   "heal me": 5.984191489005752e-07,
+   "revive me": 2.3479550748106703e-07,
+   "open the door": 1.053793880601006e-06,
+   "loot the area": 4.620050333414838e-07,
+   "go to the marker": 3.8857097024447285e-06,
+   "report status": 3.3543005883984733e-06,
+   "switch weapon": 0.9997208714485168,
+   "go quiet": 9.124732400778157e-07,
+   "none of these": 6.421780653909082e-06
+  }
+ },
+ {
+  "text": "go quiet",
+  "want": [
+   "STEALTH_MODE"
+  ],
+  "group": "new intent",
+  "zero": "STEALTH_MODE",
+  "ft": "STEALTH_MODE",
+  "pz": {
+   "follow me": 0.00014323696086648852,
+   "hold position": 0.0041881101205945015,
+   "open fire": 0.00018503160390537232,
+   "cease fire": 0.003630261868238449,
+   "fall back": 0.00038835735176689923,
+   "take cover": 0.0003306365106254816,
+   "cover me": 0.0005861376412212849,
+   "heal me": 2.810546720866114e-05,
+   "revive me": 7.906824066594709e-06,
+   "open the door": 2.4126353309839033e-05,
+   "loot the area": 5.5124296522990335e-06,
+   "go to the marker": 6.048653813195415e-05,
+   "report status": 8.9498826127965e-05,
+   "switch weapon": 5.1659520977409557e-05,
+   "go quiet": 0.9894853234291077,
+   "none of these": 0.0007956395274959505
+  }
+ },
+ {
+  "text": "yo stick with me",
+  "want": [
+   "FOLLOW_ME"
+  ],
+  "group": "overlapping",
+  "zero": "FOLLOW_ME",
+  "ft": "FOLLOW_ME",
+  "pz": {
+   "follow me": 0.9984061121940613,
+   "hold position": 0.00023967215383891016,
+   "open fire": 3.2196079700952396e-05,
+   "cease fire": 0.0001579530508024618,
+   "fall back": 0.00015708344290032983,
+   "take cover": 7.078401540638879e-05,
+   "cover me": 0.000383542210329324,
+   "heal me": 7.0899845923122484e-06,
+   "revive me": 2.4033774934650864e-06,
+   "open the door": 1.5960074961185455e-05,
+   "loot the area": 6.564609066117555e-06,
+   "go to the marker": 7.491491851396859e-05,
+   "report status": 5.7714296417543665e-05,
+   "switch weapon": 7.542871026089415e-05,
+   "go quiet": 7.336503767874092e-05,
+   "none of these": 0.00023916618374641985
+  }
+ },
+ {
+  "text": "uh stay there dont move",
+  "want": [
+   "HOLD_POSITION"
+  ],
+  "group": "overlapping",
+  "zero": "HOLD_POSITION",
+  "ft": "HOLD_POSITION",
+  "pz": {
+   "follow me": 0.09417878091335297,
+   "hold position": 0.612750232219696,
+   "open fire": 0.007651390042155981,
+   "cease fire": 0.028214389458298683,
+   "fall back": 0.013689665123820305,
+   "take cover": 0.006911463104188442,
+   "cover me": 0.029017506167292595,
+   "heal me": 0.0007338976720348,
+   "revive me": 0.00039418204687535763,
+   "open the door": 0.001988696865737438,
+   "loot the area": 0.0004137482028454542,
+   "go to the marker": 0.005336236208677292,
+   "report status": 0.005736376158893108,
+   "switch weapon": 0.003153732977807522,
+   "go quiet": 0.030613893643021584,
+   "none of these": 0.15921589732170105
+  }
+ },
+ {
+  "text": "light him up",
+  "want": [
+   "ATTACK_TARGET"
+  ],
+  "group": "new intent",
+  "zero": "ATTACK_TARGET",
+  "ft": "ATTACK_TARGET",
+  "pz": {
+   "follow me": 6.629800918744877e-05,
+   "hold position": 0.0005402404931373894,
+   "open fire": 0.9976467490196228,
+   "cease fire": 2.607490387163125e-05,
+   "fall back": 1.4092458513914607e-05,
+   "take cover": 4.6448669309029356e-05,
+   "cover me": 0.0003293589106760919,
+   "heal me": 6.66618871036917e-06,
+   "revive me": 1.0071454198623542e-05,
+   "open the door": 5.686956865247339e-05,
+   "loot the area": 3.616625690483488e-05,
+   "go to the marker": 0.00011285384971415624,
+   "report status": 5.4290892876451835e-05,
+   "switch weapon": 0.0003041427698917687,
+   "go quiet": 9.824999142438173e-05,
+   "none of these": 0.0006514292326755822
+  }
+ },
+ {
+  "text": "stop shooting stop stop",
+  "want": [
+   "CEASE_FIRE"
+  ],
+  "group": "new intent",
+  "zero": "CEASE_FIRE",
+  "ft": "CEASE_FIRE",
+  "pz": {
+   "follow me": 6.787192432966549e-06,
+   "hold position": 0.00016936777683440596,
+   "open fire": 0.0005819489597342908,
+   "cease fire": 0.9985260963439941,
+   "fall back": 4.742459623230388e-06,
+   "take cover": 4.1586918086977676e-06,
+   "cover me": 1.897360198199749e-05,
+   "heal me": 4.75587711434855e-07,
+   "revive me": 4.953788561579131e-07,
+   "open the door": 1.7888615957417642e-06,
+   "loot the area": 1.1539771094248863e-06,
+   "go to the marker": 1.014035296975635e-05,
+   "report status": 4.475163677852834e-06,
+   "switch weapon": 1.1109788829344325e-05,
+   "go quiet": 7.11664542905055e-05,
+   "none of these": 0.0005871148896403611
+  }
+ },
+ {
+  "text": "get out of there now",
+  "want": [
+   "FALL_BACK"
+  ],
+  "group": "overlapping",
+  "zero": "NONE",
+  "ft": "FALL_BACK",
+  "pz": {
+   "follow me": 0.09349722415208817,
+   "hold position": 0.1649109423160553,
+   "open fire": 0.02984916977584362,
+   "cease fire": 0.018855847418308258,
+   "fall back": 0.010119475424289703,
+   "take cover": 0.013047938235104084,
+   "cover me": 0.016718443483114243,
+   "heal me": 0.0008914783829823136,
+   "revive me": 0.0002715665032155812,
+   "open the door": 0.0018532390240579844,
+   "loot the area": 0.0006663178792223334,
+   "go to the marker": 0.004718331154435873,
+   "report status": 0.002400962868705392,
+   "switch weapon": 0.004054249729961157,
+   "go quiet": 0.008680185303092003,
+   "none of these": 0.6294646859169006
+  }
+ },
+ {
+  "text": "get behind the crates",
+  "want": [
+   "TAKE_COVER"
+  ],
+  "group": "new intent",
+  "zero": "FOLLOW_ME",
+  "ft": "TAKE_COVER",
+  "pz": {
+   "follow me": 0.5784115791320801,
+   "hold position": 0.11203977465629578,
+   "open fire": 0.006604797672480345,
+   "cease fire": 0.018697261810302734,
+   "fall back": 0.013589033856987953,
+   "take cover": 0.05115234851837158,
+   "cover me": 0.020054254680871964,
+   "heal me": 0.0005439882515929639,
+   "revive me": 0.0003445245383772999,
+   "open the door": 0.002531062811613083,
+   "loot the area": 0.0069546871818602085,
+   "go to the marker": 0.015378319658339024,
+   "report status": 0.002564165508374572,
+   "switch weapon": 0.00403555715456605,
+   "go quiet": 0.005744014400988817,
+   "none of these": 0.1613546758890152
+  }
+ },
+ {
+  "text": "watch my back while i push",
+  "want": [
+   "COVER_ME"
+  ],
+  "group": "overlapping",
+  "zero": "COVER_ME",
+  "ft": "COVER_ME",
+  "pz": {
+   "follow me": 0.06836451590061188,
+   "hold position": 0.01763560064136982,
+   "open fire": 0.0009756114450283349,
+   "cease fire": 0.007881117053329945,
+   "fall back": 0.002639350015670061,
+   "take cover": 0.001943884533829987,
+   "cover me": 0.7872627973556519,
+   "heal me": 0.00041270157089456916,
+   "revive me": 0.00019900401821359992,
+   "open the door": 0.0012865372700616717,
+   "loot the area": 0.00024471073993481696,
+   "go to the marker": 0.00250905635766685,
+   "report status": 0.002783628413453698,
+   "switch weapon": 0.002040247432887554,
+   "go quiet": 0.0010468229884281754,
+   "none of these": 0.10277441143989563
+  }
+ },
+ {
+  "text": "im bleeding out patch me up",
+  "want": [
+   "HEAL_ME"
+  ],
+  "group": "new intent",
+  "zero": "HEAL_ME",
+  "ft": "HEAL_ME",
+  "pz": {
+   "follow me": 3.956773434765637e-05,
+   "hold position": 0.00022085742966737598,
+   "open fire": 1.0330693839932792e-05,
+   "cease fire": 6.328588642645627e-05,
+   "fall back": 2.8218923034728505e-05,
+   "take cover": 1.6756270269979723e-05,
+   "cover me": 4.811566759599373e-05,
+   "heal me": 0.998150110244751,
+   "revive me": 0.001080417656339705,
+   "open the door": 7.888240247666545e-07,
+   "loot the area": 8.308030032821989e-07,
+   "go to the marker": 4.092215021955781e-06,
+   "report status": 1.4003324395162053e-05,
+   "switch weapon": 3.5058562843914842e-06,
+   "go quiet": 1.5069766959641129e-05,
+   "none of these": 0.00030409457394853234
+  }
+ },
+ {
+  "text": "im down man pick me up",
+  "want": [
+   "REVIVE_ME"
+  ],
+  "group": "overlapping",
+  "zero": "REVIVE_ME",
+  "ft": "HEAL_ME",
+  "pz": {
+   "follow me": 0.012210446409881115,
+   "hold position": 0.11731135845184326,
+   "open fire": 0.09966712445020676,
+   "cease fire": 0.09955258667469025,
+   "fall back": 0.009289293549954891,
+   "take cover": 0.0029095045756548643,
+   "cover me": 0.010656892322003841,
+   "heal me": 0.046162962913513184,
+   "revive me": 0.33596092462539673,
+   "open the door": 0.0015145037323236465,
+   "loot the area": 0.0020144768059253693,
+   "go to the marker": 0.003652238054201007,
+   "report status": 0.005460784304887056,
+   "switch weapon": 0.008547581732273102,
+   "go quiet": 0.005885926075279713,
+   "none of these": 0.2392033189535141
+  }
+ },
+ {
+  "text": "breach it",
+  "want": [
+   "OPEN_DOOR"
+  ],
+  "group": "seed copy",
+  "zero": "OPEN_DOOR",
+  "ft": "OPEN_DOOR",
+  "pz": {
+   "follow me": 0.01356372982263565,
+   "hold position": 0.13150958716869354,
+   "open fire": 0.06710951775312424,
+   "cease fire": 0.0263123270124197,
+   "fall back": 0.01331942155957222,
+   "take cover": 0.009308063425123692,
+   "cover me": 0.028323879465460777,
+   "heal me": 0.00034996229805983603,
+   "revive me": 0.00021899644343648106,
+   "open the door": 0.6105136871337891,
+   "loot the area": 0.001958673121407628,
+   "go to the marker": 0.0025403862819075584,
+   "report status": 0.002499660011380911,
+   "switch weapon": 0.0018491285154595971,
+   "go quiet": 0.002452487125992775,
+   "none of these": 0.08817043155431747
+  }
+ },
+ {
+  "text": "grab that ammo box",
+  "want": [
+   "LOOT_AREA"
+  ],
+  "group": "new intent",
+  "zero": "LOOT_AREA",
+  "ft": "LOOT_AREA",
+  "pz": {
+   "follow me": 0.006936348974704742,
+   "hold position": 0.07398384809494019,
+   "open fire": 0.03521767258644104,
+   "cease fire": 0.008008751086890697,
+   "fall back": 0.004208961967378855,
+   "take cover": 0.007553511299192905,
+   "cover me": 0.004763641860336065,
+   "heal me": 0.00026711224927566946,
+   "revive me": 0.00010504892998142168,
+   "open the door": 0.0005923794233240187,
+   "loot the area": 0.8350738883018494,
+   "go to the marker": 0.0010759272845461965,
+   "report status": 0.0007079651113599539,
+   "switch weapon": 0.0072797792963683605,
+   "go quiet": 0.0012219608761370182,
+   "none of these": 0.013003166764974594
+  }
+ },
+ {
+  "text": "move up to where i marked",
+  "want": [
+   "GO_TO_MARKER"
+  ],
+  "group": "overlapping",
+  "zero": "GO_TO_MARKER",
+  "ft": "GO_TO_MARKER",
+  "pz": {
+   "follow me": 0.05966755375266075,
+   "hold position": 0.016446655616164207,
+   "open fire": 0.0008203646866604686,
+   "cease fire": 0.00260423612780869,
+   "fall back": 0.0020499136298894882,
+   "take cover": 0.00039628162630833685,
+   "cover me": 0.0027023437432944775,
+   "heal me": 4.374942000140436e-05,
+   "revive me": 2.9463233659043908e-05,
+   "open the door": 0.00013647315790876746,
+   "loot the area": 4.249378980603069e-05,
+   "go to the marker": 0.9140059947967529,
+   "report status": 0.00015503964095842093,
+   "switch weapon": 0.00021894226665608585,
+   "go quiet": 0.0001079957073670812,
+   "none of these": 0.0005725329392589629
+  }
+ },
+ {
+  "text": "sitrep",
+  "want": [
+   "STATUS_REPORT"
+  ],
+  "group": "new intent",
+  "zero": "NONE",
+  "ft": "STATUS_REPORT",
+  "pz": {
+   "follow me": 0.009355292655527592,
+   "hold position": 0.1399366706609726,
+   "open fire": 0.0016760786529630423,
+   "cease fire": 0.015528100542724133,
+   "fall back": 0.009306790307164192,
+   "take cover": 0.008288966491818428,
+   "cover me": 0.021537570282816887,
+   "heal me": 0.0007994328043423593,
+   "revive me": 0.0004376788856461644,
+   "open the door": 0.0015196707099676132,
+   "loot the area": 0.000538764288648963,
+   "go to the marker": 0.005963427014648914,
+   "report status": 0.0859690010547638,
+   "switch weapon": 0.003632302861660719,
+   "go quiet": 0.0042664785869419575,
+   "none of these": 0.6912437677383423
+  }
+ },
+ {
+  "text": "use the rifle instead",
+  "want": [
+   "SWITCH_WEAPON"
+  ],
+  "group": "new intent",
+  "zero": "SWITCH_WEAPON",
+  "ft": "SWITCH_WEAPON",
+  "pz": {
+   "follow me": 0.0002452575135976076,
+   "hold position": 0.0022556877229362726,
+   "open fire": 0.0008960346458479762,
+   "cease fire": 0.00020644834148697555,
+   "fall back": 0.0001323705946560949,
+   "take cover": 0.00021497346460819244,
+   "cover me": 0.00040825307951308787,
+   "heal me": 8.713544048077893e-06,
+   "revive me": 2.528657205402851e-06,
+   "open the door": 1.721565604384523e-05,
+   "loot the area": 5.841500296810409e-06,
+   "go to the marker": 4.246502066962421e-05,
+   "report status": 3.176230893586762e-05,
+   "switch weapon": 0.9953444600105286,
+   "go quiet": 9.32553484744858e-06,
+   "none of these": 0.00017858351930044591
+  }
+ },
+ {
+  "text": "keep it down theyll hear us",
+  "want": [
+   "STEALTH_MODE"
+  ],
+  "group": "new intent",
+  "zero": "HOLD_POSITION",
+  "ft": "STEALTH_MODE",
+  "pz": {
+   "follow me": 0.027879253029823303,
+   "hold position": 0.3052358031272888,
+   "open fire": 0.04089370369911194,
+   "cease fire": 0.24403050541877747,
+   "fall back": 0.01869290880858898,
+   "take cover": 0.017886817455291748,
+   "cover me": 0.026019595563411713,
+   "heal me": 0.001748807611875236,
+   "revive me": 0.0004928068956360221,
+   "open the door": 0.0029218443669378757,
+   "loot the area": 0.0007464511436410248,
+   "go to the marker": 0.005542632658034563,
+   "report status": 0.006318951491266489,
+   "switch weapon": 0.006722443737089634,
+   "go quiet": 0.0870722234249115,
+   "none of these": 0.20779526233673096
+  }
+ },
+ {
+  "text": "dont follow me stay here",
+  "want": [
+   "HOLD_POSITION"
+  ],
+  "group": "overlapping",
+  "zero": "FOLLOW_ME",
+  "ft": "NONE",
+  "pz": {
+   "follow me": 0.9904991984367371,
+   "hold position": 0.0001955572224687785,
+   "open fire": 1.1671125321299769e-05,
+   "cease fire": 9.117232548305765e-05,
+   "fall back": 5.887510269531049e-05,
+   "take cover": 5.14596322318539e-05,
+   "cover me": 0.00014114085934124887,
+   "heal me": 3.8133846373966662e-06,
+   "revive me": 1.3983070630274597e-06,
+   "open the door": 8.824206815916114e-06,
+   "loot the area": 2.7546286673896248e-06,
+   "go to the marker": 3.48936919181142e-05,
+   "report status": 1.4841971278656274e-05,
+   "switch weapon": 1.6074298400781117e-05,
+   "go quiet": 6.735164788551629e-05,
+   "none of these": 0.00880104023963213
+  }
+ },
+ {
+  "text": "do not open that door",
+  "want": [
+   "NONE"
+  ],
+  "group": "overlapping",
+  "zero": "OPEN_DOOR",
+  "ft": "NONE",
+  "pz": {
+   "follow me": 0.0020461385138332844,
+   "hold position": 0.09173620492219925,
+   "open fire": 0.006203031167387962,
+   "cease fire": 0.010596148669719696,
+   "fall back": 0.0014373973244801164,
+   "take cover": 0.0011753402650356293,
+   "cover me": 0.00293155899271369,
+   "heal me": 4.7151999751804397e-05,
+   "revive me": 3.8642036088276654e-05,
+   "open the door": 0.46045979857444763,
+   "loot the area": 5.913943095947616e-05,
+   "go to the marker": 0.000408498162869364,
+   "report status": 0.0010433783754706383,
+   "switch weapon": 0.001176843885332346,
+   "go quiet": 0.0019180875970050693,
+   "none of these": 0.4187226891517639
+  }
+ },
+ {
+  "text": "stop shooting at him",
+  "want": [
+   "CEASE_FIRE"
+  ],
+  "group": "new intent",
+  "zero": "CEASE_FIRE",
+  "ft": "CEASE_FIRE",
+  "pz": {
+   "follow me": 1.1823328094351382e-07,
+   "hold position": 1.4847840930087841e-06,
+   "open fire": 4.026434908155352e-06,
+   "cease fire": 0.9999867677688599,
+   "fall back": 1.0800586380810273e-07,
+   "take cover": 4.5433736772793054e-08,
+   "cover me": 3.976006723860337e-07,
+   "heal me": 1.6610847808351537e-08,
+   "revive me": 1.1633170871050424e-08,
+   "open the door": 4.28728661461264e-08,
+   "loot the area": 3.529869374574446e-08,
+   "go to the marker": 2.7410138159211783e-07,
+   "report status": 1.2232284518631786e-07,
+   "switch weapon": 2.1740416400461982e-07,
+   "go quiet": 5.807531806567567e-07,
+   "none of these": 5.789744591311319e-06
+  }
+ },
+ {
+  "text": "cover me im going in",
+  "want": [
+   "COVER_ME"
+  ],
+  "group": "overlapping",
+  "zero": "COVER_ME",
+  "ft": "COVER_ME",
+  "pz": {
+   "follow me": 1.0349466720072087e-05,
+   "hold position": 1.877330578281544e-05,
+   "open fire": 9.121750736085232e-06,
+   "cease fire": 2.144937934644986e-05,
+   "fall back": 5.6205253713415004e-06,
+   "take cover": 2.6285442800144665e-05,
+   "cover me": 0.9998399019241333,
+   "heal me": 2.577302780082391e-07,
+   "revive me": 1.6501817867720092e-07,
+   "open the door": 2.5657679998403182e-06,
+   "loot the area": 7.591023631903226e-07,
+   "go to the marker": 1.4999148334027268e-05,
+   "report status": 2.9487613574019633e-05,
+   "switch weapon": 6.7163682615500875e-06,
+   "go quiet": 6.2422022892860696e-06,
+   "none of these": 7.319390988413943e-06
+  }
+ },
+ {
+  "text": "get to cover yourself",
+  "want": [
+   "TAKE_COVER"
+  ],
+  "group": "new intent",
+  "zero": "TAKE_COVER",
+  "ft": "TAKE_COVER",
+  "pz": {
+   "follow me": 0.00010399414895800874,
+   "hold position": 0.0002240541944047436,
+   "open fire": 6.127386586740613e-05,
+   "cease fire": 0.0006488926010206342,
+   "fall back": 0.0001423686189809814,
+   "take cover": 0.9964463114738464,
+   "cover me": 0.0017873477190732956,
+   "heal me": 1.5882412753853714e-06,
+   "revive me": 3.769549948628992e-06,
+   "open the door": 8.252965926658362e-06,
+   "loot the area": 7.387744062725687e-06,
+   "go to the marker": 9.896964184008539e-05,
+   "report status": 7.699410343775526e-05,
+   "switch weapon": 0.00010711267532315105,
+   "go quiet": 0.00011848154099425301,
+   "none of these": 0.00016315888206008822
+  }
+ },
+ {
+  "text": "im down not hurt revive",
+  "want": [
+   "REVIVE_ME"
+  ],
+  "group": "overlapping",
+  "zero": "REVIVE_ME",
+  "ft": "REVIVE_ME",
+  "pz": {
+   "follow me": 1.7276076391681272e-07,
+   "hold position": 3.0861135655868566e-06,
+   "open fire": 3.4035957696687547e-07,
+   "cease fire": 1.6889506468942272e-06,
+   "fall back": 4.969361384610238e-07,
+   "take cover": 1.8668494305984495e-07,
+   "cover me": 7.000475079621538e-07,
+   "heal me": 6.369648417603457e-07,
+   "revive me": 0.9999786615371704,
+   "open the door": 3.053046171430651e-08,
+   "loot the area": 1.0976080488944717e-08,
+   "go to the marker": 1.349284843854548e-07,
+   "report status": 1.9957423091909732e-07,
+   "switch weapon": 8.03852131525673e-08,
+   "go quiet": 3.679859048588696e-07,
+   "none of these": 1.3195720384828746e-05
+  }
+ },
+ {
+  "text": "open the door then follow me",
+  "want": [
+   "OPEN_DOOR"
+  ],
+  "group": "overlapping",
+  "zero": "FOLLOW_ME",
+  "ft": "OPEN_DOOR",
+  "pz": {
+   "follow me": 0.9999303817749023,
+   "hold position": 3.823282662684946e-11,
+   "open fire": 2.2416665745872422e-11,
+   "cease fire": 2.532310472425081e-10,
+   "fall back": 6.398178514777086e-11,
+   "take cover": 1.2120941403348517e-11,
+   "cover me": 8.896285097481638e-11,
+   "heal me": 1.2982156582380666e-12,
+   "revive me": 1.7103368417717424e-12,
+   "open the door": 6.959400343475863e-05,
+   "loot the area": 5.2210531904794966e-12,
+   "go to the marker": 1.0345058143457209e-10,
+   "report status": 8.267676127049484e-11,
+   "switch weapon": 5.14199308132568e-11,
+   "go quiet": 3.1880807022099944e-11,
+   "none of these": 6.109763389661182e-11
+  }
+ },
+ {
+  "text": "fly up to the roof and snipe him",
+  "want": [
+   "NONE"
+  ],
+  "group": "overlapping",
+  "zero": "ATTACK_TARGET",
+  "ft": "ATTACK_TARGET",
+  "pz": {
+   "follow me": 0.033818989992141724,
+   "hold position": 0.007063218392431736,
+   "open fire": 0.8606477379798889,
+   "cease fire": 0.0007742970483377576,
+   "fall back": 0.0007714380044490099,
+   "take cover": 0.0011616185074672103,
+   "cover me": 0.005877649877220392,
+   "heal me": 0.00012076691928086802,
+   "revive me": 9.830479393713176e-05,
+   "open the door": 0.000494337931741029,
+   "loot the area": 0.0001978439249796793,
+   "go to the marker": 0.0035069813020527363,
+   "report status": 0.0007117950590327382,
+   "switch weapon": 0.020005688071250916,
+   "go quiet": 0.002732803113758564,
+   "none of these": 0.06201653555035591
+  }
+ },
+ {
+  "text": "man this level is brutal",
+  "want": [
+   "NONE"
+  ],
+  "group": "overlapping",
+  "zero": "NONE",
+  "ft": "NONE",
+  "pz": {
+   "follow me": 0.00255717895925045,
+   "hold position": 0.028698043897747993,
+   "open fire": 0.0026072540786117315,
+   "cease fire": 0.0022650824394077063,
+   "fall back": 0.002353518968448043,
+   "take cover": 0.001772646326571703,
+   "cover me": 0.00329768774099648,
+   "heal me": 0.0002681210753507912,
+   "revive me": 8.159065328072757e-05,
+   "open the door": 0.00037999125197529793,
+   "loot the area": 0.0002526708412915468,
+   "go to the marker": 0.0009129483951255679,
+   "report status": 0.0008266424993053079,
+   "switch weapon": 0.0010226218728348613,
+   "go quiet": 0.0014914172934368253,
+   "none of these": 0.9512125253677368
+  }
+ },
+ {
+  "text": "haha nice shot dude",
+  "want": [
+   "NONE"
+  ],
+  "group": "overlapping",
+  "zero": "NONE",
+  "ft": "NONE",
+  "pz": {
+   "follow me": 0.0037983779329806566,
+   "hold position": 0.1949044018983841,
+   "open fire": 0.10442685335874557,
+   "cease fire": 0.01281704381108284,
+   "fall back": 0.007461962755769491,
+   "take cover": 0.007002541795372963,
+   "cover me": 0.013367172330617905,
+   "heal me": 0.0007357170688919723,
+   "revive me": 0.00032634250237606466,
+   "open the door": 0.001528679858893156,
+   "loot the area": 0.0006950492970645428,
+   "go to the marker": 0.0031970434356480837,
+   "report status": 0.00270398729480803,
+   "switch weapon": 0.008486832492053509,
+   "go quiet": 0.008997678756713867,
+   "none of these": 0.6295502781867981
+  }
+ },
+ {
+  "text": "you are useless you keep dying",
+  "want": [
+   "NONE"
+  ],
+  "group": "overlapping",
+  "zero": "NONE",
+  "ft": "NONE",
+  "pz": {
+   "follow me": 2.9348533644224517e-05,
+   "hold position": 0.0007534560281783342,
+   "open fire": 0.0002158356219297275,
+   "cease fire": 0.0002692693960852921,
+   "fall back": 7.963262760313228e-05,
+   "take cover": 3.750267205759883e-05,
+   "cover me": 0.0001063145900843665,
+   "heal me": 1.49936240632087e-05,
+   "revive me": 1.4979203115217388e-05,
+   "open the door": 1.0854889296751935e-05,
+   "loot the area": 8.26884661364602e-06,
+   "go to the marker": 2.6234447432216257e-05,
+   "report status": 1.951935701072216e-05,
+   "switch weapon": 3.2530908356420696e-05,
+   "go quiet": 5.461766340886243e-05,
+   "none of these": 0.9983265995979309
+  }
+ },
+ {
+  "text": "whats the weather like in paris",
+  "want": [
+   "NONE"
+  ],
+  "group": "overlapping",
+  "zero": "NONE",
+  "ft": "NONE",
+  "pz": {
+   "follow me": 0.005158079322427511,
+   "hold position": 0.09391283988952637,
+   "open fire": 0.0018742346437647939,
+   "cease fire": 0.005941330920904875,
+   "fall back": 0.006655720062553883,
+   "take cover": 0.004917046055197716,
+   "cover me": 0.0061212885193526745,
+   "heal me": 0.0004574627382680774,
+   "revive me": 0.00012159804464317858,
+   "open the door": 0.0005825970438309014,
+   "loot the area": 0.00028693172498606145,
+   "go to the marker": 0.0013905043015256524,
+   "report status": 0.0045588668435812,
+   "switch weapon": 0.0010007006349042058,
+   "go quiet": 0.0023396117612719536,
+   "none of these": 0.8646812438964844
+  }
+ },
+ {
+  "text": "dave you take the left side ill go right",
+  "want": [
+   "NONE"
+  ],
+  "group": "overlapping",
+  "zero": "NONE",
+  "ft": "HOLD_POSITION",
+  "pz": {
+   "follow me": 0.18681596219539642,
+   "hold position": 0.16302162408828735,
+   "open fire": 0.018970321863889694,
+   "cease fire": 0.026515111327171326,
+   "fall back": 0.03612082079052925,
+   "take cover": 0.027756480500102043,
+   "cover me": 0.04092731699347496,
+   "heal me": 0.0022842392791062593,
+   "revive me": 0.0008022724650800228,
+   "open the door": 0.004053154494613409,
+   "loot the area": 0.002371444134041667,
+   "go to the marker": 0.011890014633536339,
+   "report status": 0.005683219060301781,
+   "switch weapon": 0.011992131359875202,
+   "go quiet": 0.006169628817588091,
+   "none of these": 0.45462629199028015
+  }
+ },
+ {
+  "text": "the the uh mm",
+  "want": [
+   "NONE"
+  ],
+  "group": "overlapping",
+  "zero": "NONE",
+  "ft": "NONE",
+  "pz": {
+   "follow me": 0.005277815740555525,
+   "hold position": 0.05922963097691536,
+   "open fire": 0.003908527549356222,
+   "cease fire": 0.004745259881019592,
+   "fall back": 0.004497844725847244,
+   "take cover": 0.002977092517539859,
+   "cover me": 0.002980876946821809,
+   "heal me": 0.00025561029906384647,
+   "revive me": 7.664696749998257e-05,
+   "open the door": 0.0005003251135349274,
+   "loot the area": 0.0002021045220317319,
+   "go to the marker": 0.0009870780631899834,
+   "report status": 0.0012190687702968717,
+   "switch weapon": 0.0007076342008076608,
+   "go quiet": 0.0026943001430481672,
+   "none of these": 0.9097402095794678
+  }
+ },
+ {
+  "text": "zzz kkk brrr",
+  "want": [
+   "NONE"
+  ],
+  "group": "overlapping",
+  "zero": "NONE",
+  "ft": "NONE",
+  "pz": {
+   "follow me": 0.00025688993628136814,
+   "hold position": 0.001573415007442236,
+   "open fire": 0.00020257678988855332,
+   "cease fire": 0.00022593836183659732,
+   "fall back": 0.00028221699176356196,
+   "take cover": 0.00013120792573317885,
+   "cover me": 0.00021931449009571224,
+   "heal me": 2.1056426703580655e-05,
+   "revive me": 9.806371963350102e-06,
+   "open the door": 2.4692535589565523e-05,
+   "loot the area": 1.2651247743633576e-05,
+   "go to the marker": 5.8298453950555995e-05,
+   "report status": 3.7856883864151314e-05,
+   "switch weapon": 4.71472303615883e-05,
+   "go quiet": 0.00033557816641405225,
+   "none of these": 0.9965613484382629
+  }
+ },
+ {
+  "text": "how many bullets does this gun hold",
+  "want": [
+   "NONE"
+  ],
+  "group": "overlapping",
+  "zero": "NONE",
+  "ft": "NONE",
+  "pz": {
+   "follow me": 0.0013968234416097403,
+   "hold position": 0.030068514868617058,
+   "open fire": 0.06027771532535553,
+   "cease fire": 0.002070360817015171,
+   "fall back": 0.0015472022350877523,
+   "take cover": 0.0015745802083984017,
+   "cover me": 0.0011415433837100863,
+   "heal me": 0.00010874642612179741,
+   "revive me": 3.1347506592283025e-05,
+   "open the door": 0.0003115612198598683,
+   "loot the area": 0.00021530028607230633,
+   "go to the marker": 0.0005304684164002538,
+   "report status": 0.0005526751047000289,
+   "switch weapon": 0.006274200510233641,
+   "go quiet": 0.0008540299022570252,
+   "none of these": 0.8930449485778809
+  }
+ }
+]

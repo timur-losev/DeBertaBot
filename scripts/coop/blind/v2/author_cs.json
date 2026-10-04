@@ -1,0 +1,322 @@
+[
+ {
+  "id": "csv2_000",
+  "text": "guy's in cover behind the car, he's lit for 90",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "csv2_001",
+  "text": "duck behind that car real quick",
+  "intent": "TAKE_COVER",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "csv2_002",
+  "text": "they're spraying through the smoke, get down get down",
+  "intent": "TAKE_COVER",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "csv2_003",
+  "text": "you're one hp man, get yourself somewhere safe",
+  "intent": "TAKE_COVER",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "csv2_004",
+  "text": "cover me while I open the gate",
+  "intent": "COVER_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "boundary"
+ },
+ {
+  "id": "csv2_005",
+  "text": "climb in through the open window",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "this",
+  "kind": "boundary"
+ },
+ {
+  "id": "csv2_006",
+  "text": "hatch above us is open, someone's up there",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "csv2_007",
+  "text": "that door's boarded up, blast it",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "boundary"
+ },
+ {
+  "id": "csv2_008",
+  "text": "raise the garage door, nice and quiet",
+  "intent": "OPEN",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "csv2_009",
+  "text": "hide by my ping, you're way too exposed out there",
+  "intent": "TAKE_COVER",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "csv2_010",
+  "text": "nvm don't bother getting behind cover",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "csv2_011",
+  "text": "yo you're getting beamed, get behind the boxes",
+  "intent": "TAKE_COVER",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "csv2_012",
+  "text": "don't open that door, they're stacked right behind it",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "csv2_013",
+  "text": "they opened the garage door, two coming through",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "csv2_014",
+  "text": "break line of sight, the AWP is looking right at you",
+  "intent": "TAKE_COVER",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "csv2_015",
+  "text": "get the other window open, this one's jammed",
+  "intent": "OPEN",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "csv2_016",
+  "text": "crack that door open for me, just a little",
+  "intent": "OPEN",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "csv2_017",
+  "text": "bro you're standing in the open, tuck in somewhere",
+  "intent": "TAKE_COVER",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "csv2_018",
+  "text": "jump out the window, it's already open",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "this",
+  "kind": "boundary"
+ },
+ {
+  "id": "csv2_019",
+  "text": "swing the double doors open, I wanna see into the room",
+  "intent": "OPEN",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "csv2_020",
+  "text": "unlatch the hatch on the floor, we'll drop later",
+  "intent": "OPEN",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "csv2_021",
+  "text": "one hiding behind the boxes on A short",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "csv2_022",
+  "text": "on my count, dip behind the truck",
+  "intent": "TAKE_COVER",
+  "timing": "on_signal",
+  "reference": "this",
+  "kind": "on_signal"
+ },
+ {
+  "id": "csv2_023",
+  "text": "watch that door from behind the crates",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "boundary"
+ },
+ {
+  "id": "csv2_024",
+  "text": "shut the door behind you",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "out_of_menu"
+ },
+ {
+  "id": "csv2_025",
+  "text": "crack the door when I say go, I'm throwing a flash in",
+  "intent": "OPEN",
+  "timing": "on_signal",
+  "reference": "this",
+  "kind": "on_signal"
+ },
+ {
+  "id": "csv2_026",
+  "text": "flip the closet door open, I'll hold it from here",
+  "intent": "OPEN",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "csv2_027",
+  "text": "stay in cover and watch me cross",
+  "intent": "COVER_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "boundary"
+ },
+ {
+  "id": "csv2_028",
+  "text": "blow that hatch open",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "boundary"
+ },
+ {
+  "id": "csv2_029",
+  "text": "hold the window, tap anyone who peeks it",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "boundary"
+ },
+ {
+  "id": "csv2_030",
+  "text": "door's open, push site and clear it",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "this",
+  "kind": "boundary"
+ },
+ {
+  "id": "csv2_031",
+  "text": "I'm hiding in the corner, watch my back",
+  "intent": "COVER_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "boundary"
+ },
+ {
+  "id": "csv2_032",
+  "text": "you don't gotta hide man, last guy's dead",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "csv2_033",
+  "text": "scratch that, leave the window shut",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "csv2_034",
+  "text": "roll up the shutter on the left side",
+  "intent": "OPEN",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "csv2_035",
+  "text": "just open fire, spam through the wall",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "out_of_menu"
+ },
+ {
+  "id": "csv2_036",
+  "text": "go behind the other car, that one's getting wallbanged",
+  "intent": "TAKE_COVER",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "csv2_037",
+  "text": "pop the window but stay inside",
+  "intent": "OPEN",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "csv2_038",
+  "text": "get that gate for me will ya",
+  "intent": "OPEN",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "csv2_039",
+  "text": "hug the pillar, don't give them a free kill",
+  "intent": "TAKE_COVER",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ }
+]

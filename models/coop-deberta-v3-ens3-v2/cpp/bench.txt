@@ -1,0 +1,31 @@
+0
+== ensemble --threads 4
+model load 5692 ms, working set +2310 MB (2329 MB total)
+tokenizer: median 28.6 us, p99 69.7 us
+model:     median 45.6 ms, p90 50.8 ms, p99 55.0 ms, max 92.2 ms
+== ensemble --threads 2
+model load 5534 ms, working set +2310 MB (2329 MB total)
+tokenizer: median 25.6 us, p99 61.9 us
+model:     median 50.7 ms, p90 58.1 ms, p99 64.5 ms, max 125.4 ms
+== ensemble --threads 1
+model load 5591 ms, working set +2310 MB (2329 MB total)
+tokenizer: median 24.7 us, p99 57.8 us
+model:     median 61.3 ms, p90 71.2 ms, p99 80.6 ms, max 146.8 ms
+== ensemble --threads 4 --sequential
+model load 5586 ms, working set +2309 MB (2328 MB total)
+tokenizer: median 24.8 us, p99 59.7 us
+model:     median 77.5 ms, p90 87.8 ms, p99 95.0 ms, max 197.9 ms
+== ensemble --threads 2 --sequential
+model load 5594 ms, working set +2308 MB (2327 MB total)
+tokenizer: median 21.0 us, p99 52.6 us
+model:     median 90.8 ms, p90 105.8 ms, p99 119.9 ms, max 246.1 ms
+== ensemble --threads 1 --sequential
+model load 5568 ms, working set +2308 MB (2327 MB total)
+tokenizer: median 19.9 us, p99 50.9 us
+model:     median 123.2 ms, p90 151.5 ms, p99 171.4 ms, max 410.5 ms
+== ensemble --threads 4 --no-spin
+model load 5733 ms, working set +2311 MB (2330 MB total)
+tokenizer: median 24.4 us, p99 63.9 us
+model:     median 48.5 ms, p90 54.0 ms, p99 59.4 ms, max 107.7 ms
+
+[exited with code 0]

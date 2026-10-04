@@ -1,0 +1,63 @@
+test: 363 lines
+  majority on 363, unanimous on 357, author outvoted by both annotators on 3
+  one reader vs the other two (ceiling): 99% top-1
+
+config                              thr  top1   ok  safe  wrong  LOUD     ms   ok by kind:   callout   chatter  compound   negated on_signal other_ref     plain     slang
+laya:en code                       0.00    39   42    13     45    36     20          58        60        75        11        67        67        34        37
+laya:en code                       0.84    37   39    29     32    27     20          67        67        75        22        62        67        30        30
+laya:en phrase                     0.00    53   55    16     29    17     20          50        87        67        28        62        78        59        47
+laya:en phrase                     0.98    37   39    52      9     6     20          92       100        58        33        54        72        29        23
+laya:en phrase+desc                0.00    34   36     8     56    51     20          21        40        58         6        58        61        38        29
+laya:en phrase+desc                0.96    30   31    52     17    15     20          75       100        42        33        42        33        24        19
+laya:multilingual code             0.00    27   28     7     65    29     16           8        13        25        11        46        61        26        29
+laya:multilingual code             0.98    25   27    66      7     2     16          96       100        25        67        21        39        15        10
+laya:multilingual phrase           0.00    37   38     9     53    36     16          12        40        33        22        54        78        42        31
+laya:multilingual phrase           0.88    34   35    56     10     7     16          92        87        25        61        46        61        25        18
+laya:multilingual phrase+desc      0.00    37   38     9     53    43     16           8         7        58         0        62        78        44        34
+laya:multilingual phrase+desc      0.94    32   33    61      6     5     16          96       100        25        56        42        61        18        21
+von:1.1 code                       0.00    38   40    10     49    32     18          29        67        58        83        42        44        37        34
+von:1.1 code                       0.98    37   40    33     27    22     18          79        80        50        89        38        28        32        29
+von:1.1 phrase                     0.00    47   50    24     26    15     18          79       100        42        89        29        67        43        41
+von:1.1 phrase                     0.98    41   44    43     14     5     18          92       100        25        89        25        67        35        31
+von:1.1 phrase+desc                0.00    36   37     1     62     1     17           0         0        42        11        25        11        57        38
+von:1.1 phrase+desc                0.98    33   34    37     29     0     17          46        33        17        39         8        11        45        29
+gliclass:large code                0.00    38   40    46     13     9     14          79        53        50        56        50        61        32        32
+gliclass:large code                0.24    40   43    48     10     7     14          96        93        50        61        50        61        32        30
+gliclass:large phrase              0.00    46   48    25     26     6     15           4         7        50        39        75        50        53        53
+gliclass:large phrase              0.38    50   53    43      4     2     15          92       100        50        78        67        50        48        41
+gliclass:large phrase+desc         0.00    28   29     1     71     2     17           4         0        42         0        38        11        39        30
+gliclass:large phrase+desc         0.34    32   34    56     10     1     17          96        93         8        78        25         6        27        23
+nli:latest code                    0.00    46   49     7     43    29     28          17        67        67        61        46        78        54        41
+nli:latest code                    0.18    42   46    43     12     7     28         100        93        58        94        25        61        40        28
+nli:latest phrase                  0.00    60   63     9     28     9     28          75       100        58        78        71        50        61        57
+nli:latest phrase                  0.26    48   50    41      9     2     28         100       100        58       100        17        39        46        38
+nli:latest phrase+desc             0.00    40   42     6     52     4     33          21        67        50        39        17         6        51        43
+nli:latest phrase+desc             0.30    30   32    64      4     0     33         100       100         0        89        12         0        26        20
+decision:eos phrase                0.00    50   52     9     39    26    189           4        47        58        28        62        67        60        52
+decision:eos phrase                0.52    41   43    51      6     4    189          92        93        33        94        42        50        31        33
+decision:eos phrase+desc           0.00    63   66     5     29    18    244           4        27        58        50        71        78        82        66
+decision:eos phrase+desc           0.52    58   60    36      3     3    244          96       100        33       100        50        67        61        45
+qwen phrase                        0.00    40   42    21     37    23    179          71        93        42        22        62        56        34        35
+qwen phrase                        0.46    33   34    59      6     3    179         100       100        25        61        46        44        23        19
+qwen phrase + menu in context      0.00    28   29     1     69    29    177           4         0        25        11        33        39        36        32
+qwen phrase + menu in context      0.42    23   26    72      2     0    177          92       100         0        83         8        11        16        13
+
+TWO-KEY: act only if both models agree (each at its dev threshold), else do nothing
+  gliclass:large phrase & decision:eos phrase+desc     ok  44  safe  56  wrong   1  LOUD   1
+  nli:latest phrase & decision:eos phrase+desc         ok  39  safe  61  wrong   0  LOUD   0
+  gliclass:large phrase & nli:latest phrase            ok  37  safe  63  wrong   0  LOUD   0
+  von:1.1 phrase & decision:eos phrase+desc            ok  35  safe  65  wrong   1  LOUD   1
+  laya:en phrase & decision:eos phrase+desc            ok  34  safe  66  wrong   0  LOUD   0
+  von:1.1 phrase & gliclass:large phrase               ok  34  safe  65  wrong   1  LOUD   0
+  laya:en phrase & gliclass:large phrase               ok  33  safe  66  wrong   1  LOUD   1
+  laya:en phrase & von:1.1 phrase                      ok  33  safe  67  wrong   1  LOUD   1
+
+SLOTS: timing (now / on my signal) and reference (this / other / none), same request
+  lines: on_signal 24, now 288, other 30, not other 282, HOLD_OTHER_ANGLE 12, HOLD_ANGLE 12
+  model            signal kept  now kept fires early other found false other flat other-angle slot other-angle
+  laya:en             20/24      76/288      7/24       24/30        9/282      5/12 + 1/12       4/12 + 1/12
+  von:1.1             14/24     274/288     16/24       16/30        0/282      5/12 + 0/12       4/12 + 0/12
+  gliclass:large      23/24      64/288      1/24       27/30       16/282      0/12 + 5/12       5/12 + 5/12
+  decision:eos        22/24     152/288      5/24       26/30        0/282     10/12 + 8/12       8/12 + 8/12
+  nli:latest          24/24     212/288      2/24       26/30      132/282      3/12 + 0/12       3/12 + 0/12
+  qwen                21/24      81/288      3/24       27/30      279/282      0/12 + 0/12       0/12 + 0/12

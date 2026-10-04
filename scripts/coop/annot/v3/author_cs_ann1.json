@@ -1,0 +1,616 @@
+{
+ "csv3_000": {
+  "intent": "FRAG",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "sofa",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_001": {
+  "intent": "FRAG",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "down",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_002": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "table",
+   "qualifier": null,
+   "zone": "top_floor",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_003": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "west",
+   "zone": "up",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_004": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "north",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_005": {
+  "intent": "FALL_BACK",
+  "ok": [
+   "MOVE_TO"
+  ],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "floor_2",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_006": {
+  "intent": "FLASH",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "blue",
+   "zone": "floor_1",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_007": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "other",
+  "target": {
+   "object": "door",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_008": {
+  "intent": "NONE",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "west",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_009": {
+  "intent": "DRONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "up",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_010": {
+  "intent": "FRAG",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "chair",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_011": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "floor_1",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_012": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "top_floor",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_013": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "other",
+  "target": {
+   "object": "window",
+   "qualifier": null,
+   "zone": "up",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_014": {
+  "intent": "WAIT",
+  "ok": [
+   "NONE"
+  ],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "red",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_015": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "main",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_016": {
+  "intent": "DEFUSE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "sofa",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_017": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "north",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_018": {
+  "intent": "HOLD_OTHER_ANGLE",
+  "ok": [
+   "HOLD_ANGLE"
+  ],
+  "timing": "now",
+  "reference": "other",
+  "target": {
+   "object": "stairs",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_019": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "table",
+   "qualifier": null,
+   "zone": "floor_2",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_020": {
+  "intent": "PLANT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "table",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_021": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "yellow",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_022": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  }
+ },
+ "csv3_023": {
+  "intent": "FLASH",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "white",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_024": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "red",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_025": {
+  "intent": "TAKE_COVER",
+  "ok": [
+   "MOVE_TO"
+  ],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "chair",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_026": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  }
+ },
+ "csv3_027": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "east",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_028": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "west",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_029": {
+  "intent": "FLANK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "yellow",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_030": {
+  "intent": "FLASH",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "north",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_031": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_032": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "north",
+   "zone": "top_floor",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_033": {
+  "intent": "FLANK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "east",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_034": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "west",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_035": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_036": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  }
+ },
+ "csv3_037": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "roof",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_038": {
+  "intent": "RAPPEL",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "south",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_039": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_040": {
+  "intent": "TAKE_COVER",
+  "ok": [
+   "MOVE_TO"
+  ],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "table",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_041": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_042": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_043": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "east",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_044": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "main",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_045": {
+  "intent": "FRAG",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  }
+ },
+ "csv3_046": {
+  "intent": "OPEN",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "south",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_047": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "east",
+   "zone": "basement",
+   "unknown_modifier": false
+  }
+ },
+ "csv3_048": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "east",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "csv3_049": {
+  "intent": "HOLD_ANGLE",
+  "ok": [
+   "HOLD_OTHER_ANGLE"
+  ],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "south",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ }
+}

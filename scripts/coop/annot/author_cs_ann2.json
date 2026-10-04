@@ -1,0 +1,769 @@
+{
+ "cs_000": {
+  "intent": "PLANT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_001": {
+  "intent": "COVER_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_002": {
+  "intent": "FLANK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_003": {
+  "intent": "COVER_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_004": {
+  "intent": "HOLD_POSITION",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_005": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_006": {
+  "intent": "GO_NOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_007": {
+  "intent": "NONE",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_008": {
+  "intent": "FRAG",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this"
+ },
+ "cs_009": {
+  "intent": "HOLD_OTHER_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "other"
+ },
+ "cs_010": {
+  "intent": "FRAG",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_011": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_012": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_013": {
+  "intent": "HOLD_POSITION",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_014": {
+  "intent": "FLASH",
+  "ok": [
+   "ENTRY"
+  ],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_015": {
+  "intent": "FRAG",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_016": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_017": {
+  "intent": "FALL_BACK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_018": {
+  "intent": "FLANK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_019": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_020": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_021": {
+  "intent": "WAIT",
+  "ok": [
+   "HOLD_POSITION"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_022": {
+  "intent": "RAPPEL",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_023": {
+  "intent": "BREACH",
+  "ok": [
+   "ENTRY"
+  ],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_024": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_025": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "now",
+  "reference": "other"
+ },
+ "cs_026": {
+  "intent": "FRAG",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_027": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "none"
+ },
+ "cs_028": {
+  "intent": "ENTRY",
+  "ok": [
+   "MOVE_TO"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_029": {
+  "intent": "FOLLOW_ME",
+  "ok": [
+   "MOVE_TO"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_030": {
+  "intent": "PLANT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_031": {
+  "intent": "NONE",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_032": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_033": {
+  "intent": "SMOKE",
+  "ok": [
+   "ENTRY"
+  ],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_034": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this"
+ },
+ "cs_035": {
+  "intent": "GO_NOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_036": {
+  "intent": "DEFUSE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_037": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_038": {
+  "intent": "RAPPEL",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_039": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_040": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_041": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_042": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_043": {
+  "intent": "FLASH",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this"
+ },
+ "cs_044": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_045": {
+  "intent": "FALL_BACK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_046": {
+  "intent": "DEFUSE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_047": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_048": {
+  "intent": "DRONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_049": {
+  "intent": "DEFUSE",
+  "ok": [
+   "PLANT",
+   "BREACH"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_050": {
+  "intent": "FALL_BACK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_051": {
+  "intent": "FOLLOW_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_052": {
+  "intent": "DRONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_053": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_054": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_055": {
+  "intent": "FALL_BACK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_056": {
+  "intent": "HOLD_OTHER_ANGLE",
+  "ok": [
+   "HOLD_ANGLE"
+  ],
+  "timing": "now",
+  "reference": "other"
+ },
+ "cs_057": {
+  "intent": "HOLD_POSITION",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_058": {
+  "intent": "WAIT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_059": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_060": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_061": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_062": {
+  "intent": "GO_NOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_063": {
+  "intent": "DRONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_064": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_065": {
+  "intent": "NONE",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_066": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_067": {
+  "intent": "FLASH",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_068": {
+  "intent": "MOVE_TO",
+  "ok": [
+   "HOLD_OTHER_ANGLE"
+  ],
+  "timing": "now",
+  "reference": "other"
+ },
+ "cs_069": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "now",
+  "reference": "other"
+ },
+ "cs_070": {
+  "intent": "WAIT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_071": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_072": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_073": {
+  "intent": "HOLD_OTHER_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "other"
+ },
+ "cs_074": {
+  "intent": "PLANT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_075": {
+  "intent": "FRAG",
+  "ok": [],
+  "timing": "now",
+  "reference": "other"
+ },
+ "cs_076": {
+  "intent": "FRAG",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_077": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_078": {
+  "intent": "FLANK",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "none"
+ },
+ "cs_079": {
+  "intent": "FLASH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_080": {
+  "intent": "DRONE",
+  "ok": [
+   "ENTRY"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_081": {
+  "intent": "FLASH",
+  "ok": [
+   "SMOKE"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_082": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_083": {
+  "intent": "REVIVE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_084": {
+  "intent": "PLANT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_085": {
+  "intent": "REVIVE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_086": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_087": {
+  "intent": "NONE",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_088": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_089": {
+  "intent": "COVER_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_090": {
+  "intent": "DRONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_091": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_092": {
+  "intent": "REVIVE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_093": {
+  "intent": "FOLLOW_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_094": {
+  "intent": "REVIVE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_095": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_096": {
+  "intent": "RAPPEL",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "none"
+ },
+ "cs_097": {
+  "intent": "COVER_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_098": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "other"
+ },
+ "cs_099": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this"
+ },
+ "cs_100": {
+  "intent": "DEFUSE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_101": {
+  "intent": "FLANK",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_102": {
+  "intent": "WAIT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_103": {
+  "intent": "FLASH",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_104": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_105": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_106": {
+  "intent": "RAPPEL",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_107": {
+  "intent": "HOLD_POSITION",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_108": {
+  "intent": "NONE",
+  "ok": [
+   "PLANT"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_109": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_110": {
+  "intent": "GO_NOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_111": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "other"
+ },
+ "cs_112": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_113": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this"
+ },
+ "cs_114": {
+  "intent": "FLANK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_115": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "cs_116": {
+  "intent": "WAIT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_117": {
+  "intent": "FOLLOW_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_118": {
+  "intent": "RAPPEL",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "cs_119": {
+  "intent": "HOLD_OTHER_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "other"
+ },
+ "cs_120": {
+  "intent": "NONE",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "none"
+ }
+}

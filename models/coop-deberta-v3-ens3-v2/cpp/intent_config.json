@@ -1,0 +1,659 @@
+{
+ "labels": [
+  "FOLLOW_ME",
+  "MOVE_TO",
+  "HOLD_POSITION",
+  "HOLD_ANGLE",
+  "HOLD_OTHER_ANGLE",
+  "FLANK",
+  "VAULT_WINDOW",
+  "RAPPEL",
+  "BREACH",
+  "DRONE",
+  "FLASH",
+  "SMOKE",
+  "FRAG",
+  "COVER_ME",
+  "ENTRY",
+  "FALL_BACK",
+  "PLANT",
+  "DEFUSE",
+  "REVIVE_ME",
+  "WAIT",
+  "GO_NOW",
+  "TAKE_COVER",
+  "OPEN",
+  "NONE"
+ ],
+ "families": {
+  "BREACH": "assault",
+  "ENTRY": "assault",
+  "VAULT_WINDOW": "assault",
+  "RAPPEL": "assault",
+  "FLASH": "utility",
+  "SMOKE": "utility",
+  "FRAG": "utility",
+  "HOLD_POSITION": "hold",
+  "HOLD_ANGLE": "hold",
+  "HOLD_OTHER_ANGLE": "hold",
+  "COVER_ME": "hold",
+  "FOLLOW_ME": "move",
+  "MOVE_TO": "move",
+  "FLANK": "move",
+  "PLANT": "objective",
+  "DEFUSE": "objective",
+  "DRONE": "scout",
+  "REVIVE_ME": "revive",
+  "FALL_BACK": "retreat",
+  "WAIT": "stop",
+  "GO_NOW": "go",
+  "NONE": "none",
+  "TAKE_COVER": "cover",
+  "OPEN": "open"
+ },
+ "phrases": {
+  "FOLLOW_ME": "follow me",
+  "MOVE_TO": "move there",
+  "HOLD_POSITION": "hold position",
+  "HOLD_ANGLE": "hold the angle",
+  "HOLD_OTHER_ANGLE": "hold the other angle",
+  "FLANK": "flank",
+  "VAULT_WINDOW": "go through the window",
+  "RAPPEL": "rappel",
+  "BREACH": "breach",
+  "DRONE": "drone it",
+  "FLASH": "throw a flash",
+  "SMOKE": "throw a smoke",
+  "FRAG": "throw a frag",
+  "COVER_ME": "cover me",
+  "ENTRY": "push in",
+  "FALL_BACK": "fall back",
+  "PLANT": "plant it",
+  "DEFUSE": "defuse it",
+  "REVIVE_ME": "revive me",
+  "WAIT": "wait",
+  "GO_NOW": "go now",
+  "TAKE_COVER": "take cover",
+  "OPEN": "open it",
+  "NONE": "not an order"
+ },
+ "threshold": 0.58,
+ "gate": "family",
+ "members": [
+  "model0.onnx",
+  "model1.onnx",
+  "model2.onnx"
+ ],
+ "max_len": 64,
+ "cls_id": 1,
+ "sep_id": 2,
+ "pad_id": 0,
+ "unk_id": 3,
+ "added_tokens": {
+  "[PAD]": 0,
+  "[CLS]": 1,
+  "[SEP]": 2,
+  "[UNK]": 3,
+  "[MASK]": 128000
+ },
+ "regex": {
+  "on_signal": "\\b(on|at) (my|the) (go|call|mark|signal|count|word|command)\\b|\\bwhen i (say|call|give|tell|shout)|\\bon (one|two|three|1|2|3)\\b|\\b(wait|hold) (for|till|until) (my|i)\\b|\\b(till|until) i say",
+  "other": "\\b(other|another|opposite)\\b",
+  "negation": "^\\W*(?:(?:uh|um|so|okay|ok|hey|bot|buddy|please|nah|no)\\W+)*(don'?t|do not|dont|never|no need to)\\b"
+ },
+ "safe_intents": [
+  "NONE",
+  "WAIT",
+  "HOLD_POSITION"
+ ],
+ "locations": {
+  "version": 2,
+  "objects": [
+   {
+    "id": "door",
+    "words": [
+     "door",
+     "doors",
+     "doorway",
+     "doorways",
+     "entrance",
+     "entrances",
+     "entryway"
+    ],
+    "qualifiers": [
+     "main",
+     "north",
+     "south",
+     "west",
+     "east"
+    ]
+   },
+   {
+    "id": "window",
+    "words": [
+     "window",
+     "windows"
+    ],
+    "qualifiers": [
+     "north",
+     "south",
+     "west",
+     "east"
+    ]
+   },
+   {
+    "id": "stairs",
+    "words": [
+     "stairs",
+     "stair",
+     "staircase",
+     "staircases",
+     "stairway",
+     "stairways",
+     "stairwell",
+     "stairwells",
+     "stares",
+     "the steps",
+     "those steps"
+    ],
+    "qualifiers": [
+     "blue",
+     "red",
+     "yellow",
+     "white",
+     "brown"
+    ]
+   },
+   {
+    "id": "chair",
+    "words": [
+     "chair",
+     "chairs"
+    ],
+    "qualifiers": []
+   },
+   {
+    "id": "sofa",
+    "words": [
+     "sofa",
+     "sofas",
+     "couch",
+     "couches"
+    ],
+    "qualifiers": []
+   },
+   {
+    "id": "table",
+    "words": [
+     "table",
+     "tables"
+    ],
+    "qualifiers": []
+   }
+  ],
+  "qualifiers": [
+   {
+    "id": "main",
+    "words": [
+     "main"
+    ],
+    "lone": "door"
+   },
+   {
+    "id": "north",
+    "words": [
+     "north",
+     "northern",
+     "northside"
+    ],
+    "lone": null
+   },
+   {
+    "id": "south",
+    "words": [
+     "south",
+     "southern",
+     "southside"
+    ],
+    "lone": null
+   },
+   {
+    "id": "west",
+    "words": [
+     "west",
+     "western",
+     "westside"
+    ],
+    "lone": null
+   },
+   {
+    "id": "east",
+    "words": [
+     "east",
+     "eastern",
+     "eastside"
+    ],
+    "lone": null
+   },
+   {
+    "id": "blue",
+    "words": [
+     "blue"
+    ],
+    "lone": "stairs"
+   },
+   {
+    "id": "red",
+    "words": [
+     "red"
+    ],
+    "lone": "stairs"
+   },
+   {
+    "id": "yellow",
+    "words": [
+     "yellow"
+    ],
+    "lone": "stairs"
+   },
+   {
+    "id": "white",
+    "words": [
+     "white"
+    ],
+    "lone": "stairs"
+   },
+   {
+    "id": "brown",
+    "words": [
+     "brown"
+    ],
+    "lone": "stairs"
+   }
+  ],
+  "named": [
+   {
+    "phrase": "front door",
+    "object": "door",
+    "qualifier": "main"
+   },
+   {
+    "phrase": "front doors",
+    "object": "door",
+    "qualifier": "main"
+   },
+   {
+    "phrase": "front entrance",
+    "object": "door",
+    "qualifier": "main"
+   },
+   {
+    "phrase": "blue steps",
+    "object": "stairs",
+    "qualifier": "blue"
+   },
+   {
+    "phrase": "red steps",
+    "object": "stairs",
+    "qualifier": "red"
+   },
+   {
+    "phrase": "yellow steps",
+    "object": "stairs",
+    "qualifier": "yellow"
+   },
+   {
+    "phrase": "white steps",
+    "object": "stairs",
+    "qualifier": "white"
+   },
+   {
+    "phrase": "brown steps",
+    "object": "stairs",
+    "qualifier": "brown"
+   }
+  ],
+  "zones": [
+   {
+    "id": "basement",
+    "words": [
+     "basement",
+     "basements",
+     "cellar",
+     "base mint",
+     "bass mint"
+    ]
+   },
+   {
+    "id": "floor_1",
+    "words": [
+     "first floor",
+     "1st floor",
+     "ground floor",
+     "floor one",
+     "floor 1",
+     "main floor",
+     "main level",
+     "ground level",
+     "level one",
+     "level 1",
+     "first level"
+    ]
+   },
+   {
+    "id": "floor_2",
+    "words": [
+     "second floor",
+     "2nd floor",
+     "floor two",
+     "floor 2",
+     "to second",
+     "on second"
+    ]
+   },
+   {
+    "id": "top_floor",
+    "words": [
+     "top floor",
+     "top level",
+     "upper floor",
+     "upper level",
+     "top story",
+     "top storey"
+    ]
+   },
+   {
+    "id": "roof",
+    "words": [
+     "roof",
+     "roofs",
+     "rooftop",
+     "rooftops",
+     "roof top"
+    ]
+   },
+   {
+    "id": "up",
+    "words": [
+     "upstairs",
+     "floor above",
+     "up a floor",
+     "one floor up"
+    ]
+   },
+   {
+    "id": "down",
+    "words": [
+     "downstairs",
+     "floor below",
+     "down a floor",
+     "one floor down"
+    ]
+   }
+  ],
+  "ignore": [
+   "steps back",
+   "few steps",
+   "two steps",
+   "couple steps",
+   "off the table",
+   "second thought",
+   "a second",
+   "one second",
+   "through the roof",
+   "table that"
+  ],
+  "words": {
+   "before_fill": [
+    "side",
+    "facing"
+   ],
+   "after_fill": [
+    "on",
+    "at",
+    "to",
+    "in",
+    "the",
+    "that",
+    "s",
+    "is",
+    "thats",
+    "facing",
+    "towards",
+    "far"
+   ],
+   "tail": [
+    "side",
+    "one",
+    "ones"
+   ],
+   "zone_before_fill": [
+    "the",
+    "a"
+   ],
+   "zone_after_fill": [
+    "in",
+    "on",
+    "at",
+    "of",
+    "the",
+    "down",
+    "up",
+    "inside"
+   ],
+   "lone_follow": [
+    "side",
+    "one",
+    "ones",
+    "and",
+    "then",
+    "or",
+    "but",
+    "not",
+    "is",
+    "s",
+    "are",
+    "now",
+    "please",
+    "first",
+    "too",
+    "with",
+    "on",
+    "in",
+    "at",
+    "to",
+    "for",
+    "from",
+    "you",
+    "i",
+    "we",
+    "they",
+    "he",
+    "when",
+    "while",
+    "until",
+    "till",
+    "after",
+    "before",
+    "if",
+    "so",
+    "fast",
+    "quick",
+    "quickly",
+    "again",
+    "okay",
+    "ok",
+    "go",
+    "instead"
+   ],
+   "lone_block": [
+    "ping",
+    "dot",
+    "team",
+    "hall",
+    "hallway",
+    "room",
+    "site",
+    "thing",
+    "wall",
+    "corridor",
+    "lobby",
+    "light",
+    "smoke",
+    "of",
+    "guy",
+    "area",
+    "zone",
+    "marker",
+    "laser"
+   ],
+   "lone_not_after": [
+    "m",
+    "re",
+    "am",
+    "was",
+    "wearing",
+    "my",
+    "your",
+    "a"
+   ],
+   "unknown_modifier": [
+    "back",
+    "side",
+    "rear",
+    "left",
+    "right",
+    "far",
+    "near",
+    "second",
+    "third",
+    "middle",
+    "last",
+    "next"
+   ],
+   "role_not": [
+    "not",
+    "dont",
+    "don",
+    "never",
+    "forget",
+    "ignore",
+    "skip",
+    "except",
+    "instead"
+   ],
+   "role_from": [
+    "from",
+    "off",
+    "leave",
+    "leaving"
+   ],
+   "role_mine": [
+    "i",
+    "im",
+    "ill",
+    "ive"
+   ],
+   "role_them": [
+    "they",
+    "he",
+    "she",
+    "enemy",
+    "enemies",
+    "hostile",
+    "hostiles",
+    "sniper",
+    "guy",
+    "guys",
+    "someone",
+    "contact",
+    "contacts",
+    "awp",
+    "awper",
+    "stack",
+    "squad",
+    "camper"
+   ],
+   "number": [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "number_next": [
+    "on",
+    "in",
+    "at",
+    "by",
+    "behind",
+    "near",
+    "pushing",
+    "coming",
+    "up",
+    "down",
+    "top",
+    "bottom"
+   ],
+   "status_next": [
+    "is",
+    "s",
+    "are",
+    "clear"
+   ],
+   "role_stop": [
+    "you"
+   ],
+   "report_verb": [
+    "said",
+    "meant",
+    "mean",
+    "say",
+    "want",
+    "wanted",
+    "need",
+    "told"
+   ],
+   "other": [
+    "other",
+    "another",
+    "opposite"
+   ],
+   "determiner": [
+    "the",
+    "that",
+    "this",
+    "a",
+    "an",
+    "those",
+    "these",
+    "your",
+    "my",
+    "their",
+    "his"
+   ],
+   "neutral_modifier": [
+    "other",
+    "another",
+    "opposite",
+    "same",
+    "damn",
+    "fucking",
+    "freaking",
+    "goddamn",
+    "bloody",
+    "whole",
+    "stupid",
+    "only",
+    "nearest",
+    "closest",
+    "first"
+   ]
+  }
+ }
+}

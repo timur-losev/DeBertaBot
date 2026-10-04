@@ -1,0 +1,702 @@
+[
+ {
+  "id": "csv3_000",
+  "text": "molly the couch, there's always a rat sitting on it",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "sofa",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_001",
+  "text": "chuck a nade downstairs, that guy is one hp",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "down",
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_002",
+  "text": "last one's crouched under the table on top floor I think",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "table",
+   "qualifier": null,
+   "zone": "top_floor",
+   "unknown_modifier": false
+  },
+  "kind": "callout"
+ },
+ {
+  "id": "csv3_003",
+  "text": "upstairs west window, bail out through it",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "west",
+   "zone": "up",
+   "unknown_modifier": false
+  },
+  "kind": "zone_object"
+ },
+ {
+  "id": "csv3_004",
+  "text": "on three you bust in through north door, not a second earlier",
+  "intent": "ENTRY",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "north",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "on_signal"
+ },
+ {
+  "id": "csv3_005",
+  "text": "we lost this fight, pull back to second",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "floor_2",
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_006",
+  "text": "flash blue on the ground floor before I peek",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "blue",
+   "zone": "floor_1",
+   "unknown_modifier": false
+  },
+  "kind": "zone_object"
+ },
+ {
+  "id": "csv3_007",
+  "text": "main's already smoked, put yours on the other door",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "other",
+  "target": {
+   "object": "door",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "other_ref"
+ },
+ {
+  "id": "csv3_008",
+  "text": "nah don't waste your smoke on west window, keep it",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "west",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "csv3_009",
+  "text": "send your little drone upstairs first, I wanna know who's home",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "up",
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_010",
+  "text": "have a nade ready for the chairs and throw it the moment I call it",
+  "intent": "FRAG",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "chair",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "on_signal"
+ },
+ {
+  "id": "csv3_011",
+  "text": "head back to first floor, nothing's happening where we are",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "floor_1",
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_012",
+  "text": "top floor, push it and wipe whoever's in there",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "top_floor",
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_013",
+  "text": "two windows upstairs, I'm going in north, you climb through the other one",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "other",
+  "target": {
+   "object": "window",
+   "qualifier": null,
+   "zone": "up",
+   "unknown_modifier": false
+  },
+  "kind": "other_ref"
+ },
+ {
+  "id": "csv3_014",
+  "text": "wait wait, scratch the red push, stay off those stairs for now",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "red",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "csv3_015",
+  "text": "two of them pushing main right now",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "main",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "callout"
+ },
+ {
+  "id": "csv3_016",
+  "text": "bomb's ticking by the sofa, get on it, I'll watch your back",
+  "intent": "DEFUSE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "sofa",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_017",
+  "text": "awp's sitting in north window again",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "north",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "callout"
+ },
+ {
+  "id": "csv3_018",
+  "text": "I'm sitting on blue, you watch the other staircase",
+  "intent": "HOLD_OTHER_ANGLE",
+  "timing": "now",
+  "reference": "other",
+  "target": {
+   "object": "stairs",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "other_ref"
+ },
+ {
+  "id": "csv3_019",
+  "text": "get over to the table up on second, I'll meet you",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "table",
+   "qualifier": null,
+   "zone": "floor_2",
+   "unknown_modifier": false
+  },
+  "kind": "zone_object"
+ },
+ {
+  "id": "csv3_020",
+  "text": "stick the bomb down by the table, default plant",
+  "intent": "PLANT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "table",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_021",
+  "text": "I hear steps on yellow, at least one guy",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "yellow",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "callout"
+ },
+ {
+  "id": "csv3_022",
+  "text": "hold the back door, they always sneak in from there",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  },
+  "kind": "unnamed"
+ },
+ {
+  "id": "csv3_023",
+  "text": "when I say go you flash white, I'll run up right after",
+  "intent": "FLASH",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "white",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "on_signal"
+ },
+ {
+  "id": "csv3_024",
+  "text": "keep your crosshair on red, they love walking up that way",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "red",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_025",
+  "text": "get behind the chairs man, you're standing in the open",
+  "intent": "TAKE_COVER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "chair",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_026",
+  "text": "the broken window, climb out through it",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  },
+  "kind": "unnamed"
+ },
+ {
+  "id": "csv3_027",
+  "text": "smoke off east window so the awp can't see us cross",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "east",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_028",
+  "text": "west window, hop in through it",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "west",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_029",
+  "text": "wrap around through yellow and hit them from behind",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "yellow",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_030",
+  "text": "pop a flash through north door, I'm swinging off it",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "north",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_031",
+  "text": "get off the roof and come down to the basement",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "unknown_modifier": false
+  },
+  "kind": "two_places"
+ },
+ {
+  "id": "csv3_032",
+  "text": "top floor, north window, keep your scope glued to it",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "north",
+   "zone": "top_floor",
+   "unknown_modifier": false
+  },
+  "kind": "zone_object"
+ },
+ {
+  "id": "csv3_033",
+  "text": "they're all stacked on brown, so loop around east door and backstab them",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "east",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "two_places"
+ },
+ {
+  "id": "csv3_034",
+  "text": "not the north window, I said smoke west door",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "west",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "two_places"
+ },
+ {
+  "id": "csv3_035",
+  "text": "my main got vac banned last week so I'm stuck on this smurf",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "other_sense"
+ },
+ {
+  "id": "csv3_036",
+  "text": "run over to the spiral staircase, fast",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  },
+  "kind": "unnamed"
+ },
+ {
+  "id": "csv3_037",
+  "text": "get up on the roof, I want somebody up top",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "roof",
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_038",
+  "text": "rope down to south window and just hang there",
+  "intent": "RAPPEL",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "south",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_039",
+  "text": "basement is all you, go in hard and check every corner",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_040",
+  "text": "awp's up on the roof, get your ass behind the table",
+  "intent": "TAKE_COVER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "table",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "two_places"
+ },
+ {
+  "id": "csv3_041",
+  "text": "let's table that strat, it gets us killed every single round",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "other_sense"
+ },
+ {
+  "id": "csv3_042",
+  "text": "bomb down in the basement, nobody picked it up",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "unknown_modifier": false
+  },
+  "kind": "callout"
+ },
+ {
+  "id": "csv3_043",
+  "text": "east window, you're going in through it, but only on my go",
+  "intent": "VAULT_WINDOW",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "east",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "on_signal"
+ },
+ {
+  "id": "csv3_044",
+  "text": "yo get over to main real quick",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "main",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_045",
+  "text": "toss a molly at the red door, burn him out",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  },
+  "kind": "unnamed"
+ },
+ {
+  "id": "csv3_046",
+  "text": "crack south door for me, just pull it, don't walk in",
+  "intent": "OPEN",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "south",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_047",
+  "text": "basement, the east door, smoke it off so they can't spam us",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "east",
+   "zone": "basement",
+   "unknown_modifier": false
+  },
+  "kind": "zone_object"
+ },
+ {
+  "id": "csv3_048",
+  "text": "east door's boarded, put a charge on it and blow it",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "east",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "place"
+ },
+ {
+  "id": "csv3_049",
+  "text": "I'm holding main, you go stare at south window",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "south",
+   "zone": null,
+   "unknown_modifier": false
+  },
+  "kind": "two_places"
+ }
+]

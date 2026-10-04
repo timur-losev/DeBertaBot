@@ -1,0 +1,970 @@
+[
+ {
+  "id": "cs_000",
+  "text": "you've got the C4, set it up on A",
+  "intent": "PLANT",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_001",
+  "text": "cover me while I plant",
+  "intent": "COVER_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_002",
+  "text": "go around the back and hit 'em from behind",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_003",
+  "text": "keep me alive while I cross",
+  "intent": "COVER_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_004",
+  "text": "plant your feet and quit walking around",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_005",
+  "text": "hold that door, anybody pokes out you drop 'em",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_006",
+  "text": "okay do it",
+  "intent": "GO_NOW",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_007",
+  "text": "don't breach, it's way too loud",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "cs_008",
+  "text": "wait for my call, then burn out that corner",
+  "intent": "FRAG",
+  "timing": "on_signal",
+  "reference": "this",
+  "kind": "on_signal"
+ },
+ {
+  "id": "cs_009",
+  "text": "I got long, you take the other one",
+  "intent": "HOLD_OTHER_ANGLE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_010",
+  "text": "molly the default",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_011",
+  "text": "heard footsteps right above us",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "cs_012",
+  "text": "one's lit, like 20 hp, went pit",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "cs_013",
+  "text": "stay put, don't budge",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_014",
+  "text": "flash the room and then entry",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "compound"
+ },
+ {
+  "id": "cs_015",
+  "text": "toss a frag into the back of the room",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_016",
+  "text": "need a smoke on that doorway asap",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_017",
+  "text": "back off, we lost that fight",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_018",
+  "text": "take the long way round and catch them off guard",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_019",
+  "text": "can you even hear me or what",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "chatter"
+ },
+ {
+  "id": "cs_020",
+  "text": "block vision on window, I wanna cross",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_021",
+  "text": "don't push yet",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "cs_022",
+  "text": "hang off the outside by that window and peek in",
+  "intent": "RAPPEL",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_023",
+  "text": "blow the hatch and drop in on them",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "compound"
+ },
+ {
+  "id": "cs_024",
+  "text": "bro why'd you just run past him",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "chatter"
+ },
+ {
+  "id": "cs_025",
+  "text": "blow open the other hatch, not this one",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "cs_026",
+  "text": "HE them, they're all stacked up",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_027",
+  "text": "on three we entry, ready?",
+  "intent": "ENTRY",
+  "timing": "on_signal",
+  "reference": "none",
+  "kind": "on_signal"
+ },
+ {
+  "id": "cs_028",
+  "text": "rush B, I'm right behind",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_029",
+  "text": "stick with me, we're going B together",
+  "intent": "FOLLOW_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_030",
+  "text": "plant it, plant it",
+  "intent": "PLANT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_031",
+  "text": "nah forget the flank",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "cs_032",
+  "text": "watch long for me, they love to peek it",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_033",
+  "text": "smoke it and push",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "compound"
+ },
+ {
+  "id": "cs_034",
+  "text": "blow that wall on my go",
+  "intent": "BREACH",
+  "timing": "on_signal",
+  "reference": "this",
+  "kind": "on_signal"
+ },
+ {
+  "id": "cs_035",
+  "text": "now, now!",
+  "intent": "GO_NOW",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_036",
+  "text": "defuse it, you've got time",
+  "intent": "DEFUSE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_037",
+  "text": "I hate this map so much",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "chatter"
+ },
+ {
+  "id": "cs_038",
+  "text": "grab the rope and get up on the roof",
+  "intent": "RAPPEL",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_039",
+  "text": "last one's rotating through CT",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "cs_040",
+  "text": "rotate to connector, quick",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_041",
+  "text": "how are we doing on money",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "chatter"
+ },
+ {
+  "id": "cs_042",
+  "text": "throw a smoke at the choke point",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_043",
+  "text": "flash it when I call it, not before",
+  "intent": "FLASH",
+  "timing": "on_signal",
+  "reference": "none",
+  "kind": "on_signal"
+ },
+ {
+  "id": "cs_044",
+  "text": "vault in there, the window on your left",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_045",
+  "text": "pull out and regroup behind",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_046",
+  "text": "disarm that thing before it blows",
+  "intent": "DEFUSE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_047",
+  "text": "nice one dude, clean",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "chatter"
+ },
+ {
+  "id": "cs_048",
+  "text": "get me some info on what's inside first",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_049",
+  "text": "go stick it, I'll cover",
+  "intent": "DEFUSE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_050",
+  "text": "retreat, there's way too many",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_051",
+  "text": "on me, on me, don't wander off",
+  "intent": "FOLLOW_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_052",
+  "text": "scout it out before we go in",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_053",
+  "text": "swing in and kill everything inside",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_054",
+  "text": "they got an AWP holding long",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "cs_055",
+  "text": "save, save, don't take the fight",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_056",
+  "text": "I've got left, you get right",
+  "intent": "HOLD_OTHER_ANGLE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_057",
+  "text": "you're fine there, don't go anywhere",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_058",
+  "text": "easy, easy, don't do anything yet",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_059",
+  "text": "climb out over the sill and get outside",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_060",
+  "text": "just jump the frame, it's quicker than the door",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_061",
+  "text": "you entry this one, I'll trade",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_062",
+  "text": "go go go",
+  "intent": "GO_NOW",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_063",
+  "text": "send your drone in first, see what's in there",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_064",
+  "text": "blow that wall open",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_065",
+  "text": "no smoke, I need to see",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "cs_066",
+  "text": "get yourself over to that ping I just dropped",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_067",
+  "text": "gimme a popflash into A main",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_068",
+  "text": "get over to the other stairs",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "cs_069",
+  "text": "go clear the other room, I've got this one",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "cs_070",
+  "text": "wait a sec, not yet",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_071",
+  "text": "that wall's soft btw, they can spray through it",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "callout"
+ },
+ {
+  "id": "cs_072",
+  "text": "make a hole in this barricade, loud is fine",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_073",
+  "text": "I'll hold stairs, you hold whatever's opposite",
+  "intent": "HOLD_OTHER_ANGLE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_074",
+  "text": "get the bomb down, we're good",
+  "intent": "PLANT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_075",
+  "text": "nade the other box, that's where he's hiding",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "cs_076",
+  "text": "burn them out of that corner",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_077",
+  "text": "two pushing through B apps",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "cs_078",
+  "text": "hit them from behind once I give the word",
+  "intent": "FLANK",
+  "timing": "on_signal",
+  "reference": "none",
+  "kind": "on_signal"
+ },
+ {
+  "id": "cs_079",
+  "text": "chuck a stun grenade in there",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_080",
+  "text": "send the drone first, then we rush",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "compound"
+ },
+ {
+  "id": "cs_081",
+  "text": "blind them for me before I peek",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_082",
+  "text": "make your way up to top banana",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_083",
+  "text": "I'm down, pick me up",
+  "intent": "REVIVE_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_084",
+  "text": "go plant default, I'll watch",
+  "intent": "PLANT",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_085",
+  "text": "res me bro",
+  "intent": "REVIVE_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_086",
+  "text": "keep your crosshair on the stairs",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_087",
+  "text": "actually scratch the molly",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "cs_088",
+  "text": "hop through that window",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_089",
+  "text": "watch my back, I'm going for the AWP",
+  "intent": "COVER_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_090",
+  "text": "run the little car in and spot for me",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_091",
+  "text": "put a charge on the door and blast it",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_092",
+  "text": "knocked, knocked, need you to get me back up",
+  "intent": "REVIVE_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_093",
+  "text": "tag along behind me through mid and keep it tight",
+  "intent": "FOLLOW_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_094",
+  "text": "come get me up, I'm bleeding out over here",
+  "intent": "REVIVE_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_095",
+  "text": "they're stacking B, like four of them",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "cs_096",
+  "text": "when I say drop, you go down the rope",
+  "intent": "RAPPEL",
+  "timing": "on_signal",
+  "reference": "none",
+  "kind": "on_signal"
+ },
+ {
+  "id": "cs_097",
+  "text": "I'm on the defuse, protect me",
+  "intent": "COVER_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_098",
+  "text": "hop in the other window, this one's watched",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "cs_099",
+  "text": "throw the smoke on window when I say",
+  "intent": "SMOKE",
+  "timing": "on_signal",
+  "reference": "this",
+  "kind": "on_signal"
+ },
+ {
+  "id": "cs_100",
+  "text": "get on the bomb and cut it",
+  "intent": "DEFUSE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_101",
+  "text": "lurk through my ping and get in their backs",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_102",
+  "text": "hold up hold up",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_103",
+  "text": "pop a flash over for me",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_104",
+  "text": "go stand by the double stack over there",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_105",
+  "text": "open up the hatch below us with your explosive",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_106",
+  "text": "go down the side of the building on that rope thing",
+  "intent": "RAPPEL",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_107",
+  "text": "just stay where you're at, no moving around",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_108",
+  "text": "bomb down A, default plant",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "cs_109",
+  "text": "smoke off CT for me",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_110",
+  "text": "alright send it",
+  "intent": "GO_NOW",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_111",
+  "text": "smoke the other door, they're holding it",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "cs_112",
+  "text": "lock down the corridor with your gun up",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_113",
+  "text": "be ready to hop through the window, but only when I tell you",
+  "intent": "VAULT_WINDOW",
+  "timing": "on_signal",
+  "reference": "this",
+  "kind": "on_signal"
+ },
+ {
+  "id": "cs_114",
+  "text": "swing wide and pinch them from the side while I keep them busy",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_115",
+  "text": "push in there and clear it out",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_116",
+  "text": "stop, cancel whatever you're doing",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_117",
+  "text": "you're my shadow this round, go where I go",
+  "intent": "FOLLOW_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_118",
+  "text": "zip down the wall from up top",
+  "intent": "RAPPEL",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "cs_119",
+  "text": "I'm on this door, you watch the other side",
+  "intent": "HOLD_OTHER_ANGLE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "plain"
+ },
+ {
+  "id": "cs_120",
+  "text": "nope, no flash this time",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ }
+]

@@ -1,0 +1,776 @@
+{
+ "stt_000": {
+  "intent": "HOLD_OTHER_ANGLE",
+  "ok": [
+   "HOLD_ANGLE"
+  ],
+  "timing": "now",
+  "reference": "other"
+ },
+ "stt_001": {
+  "intent": "FLANK",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "on_signal",
+  "reference": "none"
+ },
+ "stt_002": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_003": {
+  "intent": "HOLD_OTHER_ANGLE",
+  "ok": [
+   "HOLD_ANGLE"
+  ],
+  "timing": "now",
+  "reference": "other"
+ },
+ "stt_004": {
+  "intent": "WAIT",
+  "ok": [
+   "NONE",
+   "HOLD_POSITION"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_005": {
+  "intent": "FALL_BACK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_006": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_007": {
+  "intent": "WAIT",
+  "ok": [
+   "HOLD_POSITION"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_008": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_009": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_010": {
+  "intent": "FOLLOW_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_011": {
+  "intent": "NONE",
+  "ok": [
+   "FRAG"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_012": {
+  "intent": "FLASH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_013": {
+  "intent": "FRAG",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_014": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_015": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_016": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "other"
+ },
+ "stt_017": {
+  "intent": "HOLD_POSITION",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_018": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "now",
+  "reference": "other"
+ },
+ "stt_019": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_020": {
+  "intent": "DRONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_021": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_022": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_023": {
+  "intent": "RAPPEL",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "none"
+ },
+ "stt_024": {
+  "intent": "HOLD_POSITION",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_025": {
+  "intent": "DEFUSE",
+  "ok": [
+   "HOLD_ANGLE"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_026": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_027": {
+  "intent": "RAPPEL",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_028": {
+  "intent": "REVIVE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_029": {
+  "intent": "WAIT",
+  "ok": [
+   "NONE",
+   "HOLD_POSITION"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_030": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_031": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "other"
+ },
+ "stt_032": {
+  "intent": "REVIVE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_033": {
+  "intent": "HOLD_OTHER_ANGLE",
+  "ok": [
+   "HOLD_ANGLE"
+  ],
+  "timing": "now",
+  "reference": "other"
+ },
+ "stt_034": {
+  "intent": "MOVE_TO",
+  "ok": [
+   "FLANK"
+  ],
+  "timing": "now",
+  "reference": "other"
+ },
+ "stt_035": {
+  "intent": "REVIVE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_036": {
+  "intent": "FALL_BACK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_037": {
+  "intent": "RAPPEL",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_038": {
+  "intent": "NONE",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_039": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_040": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_041": {
+  "intent": "FLASH",
+  "ok": [
+   "SMOKE"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_042": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_043": {
+  "intent": "FLANK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_044": {
+  "intent": "HOLD_OTHER_ANGLE",
+  "ok": [
+   "HOLD_ANGLE"
+  ],
+  "timing": "now",
+  "reference": "other"
+ },
+ "stt_045": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_046": {
+  "intent": "FOLLOW_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_047": {
+  "intent": "DEFUSE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_048": {
+  "intent": "FLANK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_049": {
+  "intent": "COVER_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_050": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_051": {
+  "intent": "DRONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "other"
+ },
+ "stt_052": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_053": {
+  "intent": "GO_NOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_054": {
+  "intent": "FRAG",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "on_signal",
+  "reference": "none"
+ },
+ "stt_055": {
+  "intent": "WAIT",
+  "ok": [
+   "NONE"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_056": {
+  "intent": "FLASH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_057": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_058": {
+  "intent": "FLASH",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this"
+ },
+ "stt_059": {
+  "intent": "COVER_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_060": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_061": {
+  "intent": "FOLLOW_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_062": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_063": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_064": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_065": {
+  "intent": "FRAG",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_066": {
+  "intent": "FRAG",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_067": {
+  "intent": "FLASH",
+  "ok": [],
+  "timing": "now",
+  "reference": "other"
+ },
+ "stt_068": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_069": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_070": {
+  "intent": "FOLLOW_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_071": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_072": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_073": {
+  "intent": "PLANT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_074": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this"
+ },
+ "stt_075": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_076": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_077": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_078": {
+  "intent": "HOLD_POSITION",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_079": {
+  "intent": "VAULT_WINDOW",
+  "ok": [
+   "FALL_BACK"
+  ],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_080": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_081": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this"
+ },
+ "stt_082": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_083": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_084": {
+  "intent": "RAPPEL",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_085": {
+  "intent": "DEFUSE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_086": {
+  "intent": "FLASH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_087": {
+  "intent": "WAIT",
+  "ok": [
+   "NONE"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_088": {
+  "intent": "COVER_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_089": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_090": {
+  "intent": "WAIT",
+  "ok": [
+   "HOLD_POSITION"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_091": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_092": {
+  "intent": "FALL_BACK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_093": {
+  "intent": "PLANT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_094": {
+  "intent": "DRONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_095": {
+  "intent": "COVER_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_096": {
+  "intent": "DRONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_097": {
+  "intent": "HOLD_POSITION",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_098": {
+  "intent": "GO_NOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_099": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "none"
+ },
+ "stt_100": {
+  "intent": "DRONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_101": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_102": {
+  "intent": "NONE",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_103": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_104": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this"
+ },
+ "stt_105": {
+  "intent": "FLASH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_106": {
+  "intent": "PLANT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_107": {
+  "intent": "WAIT",
+  "ok": [
+   "NONE"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_108": {
+  "intent": "NONE",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_109": {
+  "intent": "FLANK",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_110": {
+  "intent": "PLANT",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_111": {
+  "intent": "DEFUSE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_112": {
+  "intent": "GO_NOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_113": {
+  "intent": "FALL_BACK",
+  "ok": [
+   "TAKE_COVER"
+  ],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_114": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_115": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_116": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_117": {
+  "intent": "RAPPEL",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_118": {
+  "intent": "GO_NOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "stt_119": {
+  "intent": "FLANK",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "stt_120": {
+  "intent": "REVIVE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ }
+}

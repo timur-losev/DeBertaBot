@@ -1,0 +1,268 @@
+{
+ "csv2_000": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "csv2_001": {
+  "intent": "TAKE_COVER",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_002": {
+  "intent": "TAKE_COVER",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "csv2_003": {
+  "intent": "TAKE_COVER",
+  "ok": [
+   "FALL_BACK"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "csv2_004": {
+  "intent": "COVER_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "csv2_005": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_006": {
+  "intent": "NONE",
+  "ok": [
+   "HOLD_ANGLE"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "csv2_007": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_008": {
+  "intent": "OPEN",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_009": {
+  "intent": "TAKE_COVER",
+  "ok": [
+   "MOVE_TO"
+  ],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_010": {
+  "intent": "WAIT",
+  "ok": [
+   "NONE"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "csv2_011": {
+  "intent": "TAKE_COVER",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_012": {
+  "intent": "NONE",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_013": {
+  "intent": "NONE",
+  "ok": [
+   "HOLD_ANGLE"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "csv2_014": {
+  "intent": "TAKE_COVER",
+  "ok": [
+   "FALL_BACK"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "csv2_015": {
+  "intent": "OPEN",
+  "ok": [],
+  "timing": "now",
+  "reference": "other"
+ },
+ "csv2_016": {
+  "intent": "OPEN",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_017": {
+  "intent": "TAKE_COVER",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "csv2_018": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_019": {
+  "intent": "OPEN",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_020": {
+  "intent": "OPEN",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_021": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "csv2_022": {
+  "intent": "TAKE_COVER",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this"
+ },
+ "csv2_023": {
+  "intent": "HOLD_ANGLE",
+  "ok": [
+   "TAKE_COVER"
+  ],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_024": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_025": {
+  "intent": "OPEN",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this"
+ },
+ "csv2_026": {
+  "intent": "OPEN",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_027": {
+  "intent": "COVER_ME",
+  "ok": [
+   "HOLD_POSITION"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "csv2_028": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_029": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_030": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "csv2_031": {
+  "intent": "COVER_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none"
+ },
+ "csv2_032": {
+  "intent": "NONE",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "none"
+ },
+ "csv2_033": {
+  "intent": "WAIT",
+  "ok": [
+   "NONE"
+  ],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_034": {
+  "intent": "OPEN",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_035": {
+  "intent": "NONE",
+  "ok": [
+   "HOLD_ANGLE"
+  ],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_036": {
+  "intent": "TAKE_COVER",
+  "ok": [
+   "MOVE_TO"
+  ],
+  "timing": "now",
+  "reference": "other"
+ },
+ "csv2_037": {
+  "intent": "OPEN",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_038": {
+  "intent": "OPEN",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ },
+ "csv2_039": {
+  "intent": "TAKE_COVER",
+  "ok": [],
+  "timing": "now",
+  "reference": "this"
+ }
+}

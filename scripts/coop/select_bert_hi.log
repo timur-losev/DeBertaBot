@@ -1,0 +1,198 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  11%|█         | 15/136 [00:00<00:00, 142.26it/s]Loading weights:  27%|██▋       | 37/136 [00:00<00:00, 178.25it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 599.23it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  12%|█▏        | 16/136 [00:00<00:00, 151.65it/s]Loading weights:  24%|██▎       | 32/136 [00:00<00:00, 133.92it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 466.59it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  12%|█▏        | 16/136 [00:00<00:00, 127.21it/s]Loading weights:  24%|██▍       | 33/136 [00:00<00:00, 145.11it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 478.35it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  18%|█▊        | 24/136 [00:00<00:00, 220.11it/s]Loading weights:  35%|███▍      | 47/136 [00:00<00:00, 204.71it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 440.86it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  12%|█▏        | 16/136 [00:00<00:00, 158.68it/s]Loading weights:  29%|██▊       | 39/136 [00:00<00:00, 197.68it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 451.28it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  15%|█▌        | 21/136 [00:00<00:00, 192.07it/s]Loading weights:  30%|███       | 41/136 [00:00<00:00, 180.76it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 445.06it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  15%|█▍        | 20/136 [00:00<00:00, 181.44it/s]Loading weights:  29%|██▊       | 39/136 [00:00<00:00, 161.81it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 447.17it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  18%|█▊        | 24/136 [00:00<00:00, 234.86it/s]Loading weights:  35%|███▌      | 48/136 [00:00<00:00, 172.06it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 450.33it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  10%|█         | 14/136 [00:00<00:00, 133.58it/s]Loading weights:  27%|██▋       | 37/136 [00:00<00:00, 188.87it/s]Loading weights:  43%|████▎     | 59/136 [00:00<00:00, 200.97it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 434.08it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  14%|█▍        | 19/136 [00:00<00:00, 150.59it/s]Loading weights:  31%|███       | 42/136 [00:00<00:00, 188.75it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 481.43it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  12%|█▎        | 17/136 [00:00<00:00, 159.70it/s]Loading weights:  25%|██▌       | 34/136 [00:00<00:00, 164.81it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 504.97it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:   9%|▉         | 12/136 [00:00<00:01, 116.42it/s]Loading weights:  19%|█▉        | 26/136 [00:00<00:00, 129.30it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 454.55it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  15%|█▌        | 21/136 [00:00<00:00, 204.86it/s]Loading weights:  31%|███       | 42/136 [00:00<00:00, 187.43it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 491.29it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  15%|█▌        | 21/136 [00:00<00:00, 168.74it/s]Loading weights:  32%|███▏      | 43/136 [00:00<00:00, 188.78it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 458.97it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  15%|█▌        | 21/136 [00:00<00:00, 205.18it/s]Loading weights:  31%|███       | 42/136 [00:00<00:00, 163.25it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 504.84it/s]
+answerdotai/ModernBERT-base@selected-hi held=r6: chose lr=0.0002 epoch=15 (criterion 102 on 242 OOF lines), 338s
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  18%|█▊        | 25/136 [00:00<00:00, 209.21it/s]Loading weights:  35%|███▍      | 47/136 [00:00<00:00, 196.39it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 432.31it/s]
+answerdotai/ModernBERT-base@selected-hi held=r6 seed=0 done, 359s
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  12%|█▏        | 16/136 [00:00<00:00, 139.14it/s]Loading weights:  23%|██▎       | 31/136 [00:00<00:00, 141.88it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 441.83it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  16%|█▌        | 22/136 [00:00<00:00, 202.03it/s]Loading weights:  32%|███▏      | 43/136 [00:00<00:00, 203.44it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 468.85it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  18%|█▊        | 24/136 [00:00<00:00, 230.77it/s]Loading weights:  35%|███▌      | 48/136 [00:00<00:00, 165.01it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 442.07it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  18%|█▊        | 24/136 [00:00<00:00, 217.93it/s]Loading weights:  34%|███▍      | 46/136 [00:00<00:00, 203.12it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 450.79it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  15%|█▍        | 20/136 [00:00<00:00, 197.84it/s]Loading weights:  31%|███       | 42/136 [00:00<00:00, 208.65it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 456.77it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  18%|█▊        | 24/136 [00:00<00:00, 238.64it/s]Loading weights:  35%|███▌      | 48/136 [00:00<00:00, 161.21it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 473.25it/s]
+answerdotai/ModernBERT-base@selected-hi held=r6 seed=1 done, 462s
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  16%|█▌        | 22/136 [00:00<00:00, 213.32it/s]Loading weights:  32%|███▏      | 44/136 [00:00<00:00, 188.12it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 463.56it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  14%|█▍        | 19/136 [00:00<00:00, 153.72it/s]Loading weights:  29%|██▉       | 40/136 [00:00<00:00, 181.61it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 427.05it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  15%|█▍        | 20/136 [00:00<00:00, 199.89it/s]Loading weights:  32%|███▏      | 43/136 [00:00<00:00, 202.61it/s]Loading weights:  89%|████████▉ | 121/136 [00:00<00:00, 455.95it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 433.57it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  12%|█▎        | 17/136 [00:00<00:00, 162.49it/s]Loading weights:  25%|██▌       | 34/136 [00:00<00:00, 159.46it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 454.24it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  15%|█▌        | 21/136 [00:00<00:00, 209.50it/s]Loading weights:  31%|███       | 42/136 [00:00<00:00, 173.94it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 482.99it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  18%|█▊        | 25/136 [00:00<00:00, 227.63it/s]Loading weights:  35%|███▌      | 48/136 [00:00<00:00, 192.18it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 470.65it/s]
+answerdotai/ModernBERT-base@selected-hi held=r6 seed=2 done, 566s
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  13%|█▎        | 18/136 [00:00<00:00, 179.31it/s]Loading weights:  26%|██▋       | 36/136 [00:00<00:00, 158.18it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 493.95it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  12%|█▎        | 17/136 [00:00<00:00, 158.74it/s]Loading weights:  32%|███▏      | 43/136 [00:00<00:00, 212.64it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 464.88it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  13%|█▎        | 18/136 [00:00<00:00, 166.48it/s]Loading weights:  26%|██▌       | 35/136 [00:00<00:00, 134.62it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 431.14it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:   9%|▉         | 12/136 [00:00<00:01, 106.87it/s]Loading weights:  18%|█▊        | 25/136 [00:00<00:01, 109.77it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 439.22it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  11%|█         | 15/136 [00:00<00:00, 138.05it/s]Loading weights:  21%|██▏       | 29/136 [00:00<00:00, 137.11it/s]Loading weights:  32%|███▏      | 43/136 [00:00<00:00, 134.19it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 419.32it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  26%|██▋       | 36/136 [00:00<00:00, 293.21it/s]Loading weights:  49%|████▊     | 66/136 [00:00<00:00, 239.86it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 490.98it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  10%|▉         | 13/136 [00:00<00:00, 128.48it/s]Loading weights:  19%|█▉        | 26/136 [00:00<00:00, 115.58it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 458.66it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  22%|██▏       | 30/136 [00:00<00:00, 273.45it/s]Loading weights:  43%|████▎     | 58/136 [00:00<00:00, 195.08it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 468.81it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  10%|█         | 14/136 [00:00<00:00, 135.27it/s]Loading weights:  21%|██        | 28/136 [00:00<00:01, 102.81it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 453.07it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  14%|█▍        | 19/136 [00:00<00:00, 177.41it/s]Loading weights:  29%|██▊       | 39/136 [00:00<00:00, 180.19it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 448.92it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  19%|█▉        | 26/136 [00:00<00:00, 250.92it/s]Loading weights:  38%|███▊      | 52/136 [00:00<00:00, 215.90it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 463.69it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  18%|█▊        | 24/136 [00:00<00:00, 224.40it/s]Loading weights:  35%|███▍      | 47/136 [00:00<00:00, 217.01it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 470.50it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  10%|▉         | 13/136 [00:00<00:00, 124.40it/s]Loading weights:  23%|██▎       | 31/136 [00:00<00:00, 143.24it/s]Loading weights:  79%|███████▉  | 108/136 [00:00<00:00, 401.10it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 415.42it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  17%|█▋        | 23/136 [00:00<00:00, 228.94it/s]Loading weights:  34%|███▍      | 46/136 [00:00<00:00, 195.97it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 466.67it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  12%|█▎        | 17/136 [00:00<00:00, 168.73it/s]Loading weights:  25%|██▌       | 34/136 [00:00<00:00, 161.63it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 483.89it/s]
+answerdotai/ModernBERT-base@selected-hi held=cs: chose lr=0.00012 epoch=17 (criterion 105 on 242 OOF lines), 901s
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  14%|█▍        | 19/136 [00:00<00:00, 174.49it/s]Loading weights:  27%|██▋       | 37/136 [00:00<00:00, 175.74it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 439.73it/s]
+answerdotai/ModernBERT-base@selected-hi held=cs seed=0 done, 924s
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  19%|█▉        | 26/136 [00:00<00:00, 254.92it/s]Loading weights:  38%|███▊      | 52/136 [00:00<00:00, 230.29it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 460.43it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  15%|█▌        | 21/136 [00:00<00:00, 207.92it/s]Loading weights:  31%|███       | 42/136 [00:00<00:00, 167.44it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 436.58it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:   8%|▊         | 11/136 [00:00<00:01, 101.39it/s]Loading weights:  17%|█▋        | 23/136 [00:00<00:01, 108.10it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 433.84it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  15%|█▍        | 20/136 [00:00<00:00, 163.37it/s]Loading weights:  30%|███       | 41/136 [00:00<00:00, 180.19it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 466.31it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  12%|█▎        | 17/136 [00:00<00:00, 167.07it/s]Loading weights:  25%|██▌       | 34/136 [00:00<00:00, 133.30it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 422.53it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  14%|█▍        | 19/136 [00:00<00:00, 169.04it/s]Loading weights:  26%|██▋       | 36/136 [00:00<00:00, 151.16it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 465.12it/s]
+answerdotai/ModernBERT-base@selected-hi held=cs seed=1 done, 1041s
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  11%|█         | 15/136 [00:00<00:00, 141.26it/s]Loading weights:  26%|██▋       | 36/136 [00:00<00:00, 173.25it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 456.08it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  10%|█         | 14/136 [00:00<00:00, 139.15it/s]Loading weights:  21%|██        | 28/136 [00:00<00:00, 123.58it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 489.73it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  12%|█▏        | 16/136 [00:00<00:00, 159.75it/s]Loading weights:  24%|██▍       | 33/136 [00:00<00:00, 161.62it/s]Loading weights:  40%|████      | 55/136 [00:00<00:00, 181.98it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 429.34it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  15%|█▍        | 20/136 [00:00<00:00, 188.63it/s]Loading weights:  35%|███▍      | 47/136 [00:00<00:00, 225.21it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 482.78it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  12%|█▎        | 17/136 [00:00<00:00, 158.74it/s]Loading weights:  27%|██▋       | 37/136 [00:00<00:00, 178.69it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 473.08it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  10%|▉         | 13/136 [00:00<00:01, 116.35it/s]Loading weights:  21%|██        | 28/136 [00:00<00:00, 133.25it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 459.61it/s]
+answerdotai/ModernBERT-base@selected-hi held=cs seed=2 done, 1156s
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  18%|█▊        | 24/136 [00:00<00:00, 206.96it/s]Loading weights:  33%|███▎      | 45/136 [00:00<00:00, 187.75it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 459.05it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  15%|█▍        | 20/136 [00:00<00:00, 194.58it/s]Loading weights:  29%|██▉       | 40/136 [00:00<00:00, 191.99it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 454.26it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  16%|█▌        | 22/136 [00:00<00:00, 218.88it/s]Loading weights:  32%|███▏      | 44/136 [00:00<00:00, 198.76it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 464.89it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  13%|█▎        | 18/136 [00:00<00:00, 151.82it/s]Loading weights:  26%|██▋       | 36/136 [00:00<00:00, 165.76it/s]Loading weights:  39%|███▉      | 53/136 [00:00<00:00, 159.54it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 406.18it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  11%|█         | 15/136 [00:00<00:00, 146.29it/s]Loading weights:  29%|██▊       | 39/136 [00:00<00:00, 179.97it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 458.77it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  12%|█▎        | 17/136 [00:00<00:00, 158.19it/s]Loading weights:  24%|██▍       | 33/136 [00:00<00:00, 148.09it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 476.84it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  15%|█▍        | 20/136 [00:00<00:00, 196.22it/s]Loading weights:  29%|██▉       | 40/136 [00:00<00:00, 184.48it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 479.30it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  16%|█▌        | 22/136 [00:00<00:00, 164.07it/s]Loading weights:  32%|███▏      | 43/136 [00:00<00:00, 182.73it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 449.90it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  18%|█▊        | 25/136 [00:00<00:00, 223.95it/s]Loading weights:  35%|███▌      | 48/136 [00:00<00:00, 197.14it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 445.11it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  20%|█▉        | 27/136 [00:00<00:00, 228.07it/s]Loading weights:  37%|███▋      | 50/136 [00:00<00:00, 195.17it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 452.98it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  11%|█         | 15/136 [00:00<00:00, 140.20it/s]Loading weights:  26%|██▋       | 36/136 [00:00<00:00, 173.47it/s]Loading weights:  68%|██████▊   | 92/136 [00:00<00:00, 342.64it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 429.88it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  14%|█▍        | 19/136 [00:00<00:00, 176.03it/s]Loading weights:  33%|███▎      | 45/136 [00:00<00:00, 220.86it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 438.35it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  19%|█▉        | 26/136 [00:00<00:00, 240.70it/s]Loading weights:  40%|███▉      | 54/136 [00:00<00:00, 254.27it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 477.60it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:   9%|▉         | 12/136 [00:00<00:01, 117.22it/s]Loading weights:  23%|██▎       | 31/136 [00:00<00:00, 157.01it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 466.87it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:   7%|▋         | 10/136 [00:00<00:01, 98.02it/s]Loading weights:  18%|█▊        | 25/136 [00:00<00:00, 127.32it/s]Loading weights:  30%|███       | 41/136 [00:00<00:00, 137.40it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 384.87it/s]
+answerdotai/ModernBERT-base@selected-hi held=stt: chose lr=0.00012 epoch=16 (criterion 107 on 242 OOF lines), 1492s
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  16%|█▌        | 22/136 [00:00<00:00, 214.97it/s]Loading weights:  32%|███▏      | 44/136 [00:00<00:00, 165.84it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 471.33it/s]
+answerdotai/ModernBERT-base@selected-hi held=stt seed=0 done, 1514s
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  12%|█▎        | 17/136 [00:00<00:00, 159.20it/s]Loading weights:  26%|██▋       | 36/136 [00:00<00:00, 170.22it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 448.37it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  13%|█▎        | 18/136 [00:00<00:00, 168.58it/s]Loading weights:  26%|██▌       | 35/136 [00:00<00:00, 161.53it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 496.85it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  11%|█         | 15/136 [00:00<00:00, 140.38it/s]Loading weights:  24%|██▎       | 32/136 [00:00<00:00, 155.52it/s]Loading weights:  36%|███▌      | 49/136 [00:00<00:00, 155.52it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 427.41it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  10%|█         | 14/136 [00:00<00:00, 132.28it/s]Loading weights:  21%|██        | 28/136 [00:00<00:00, 130.82it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 448.97it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  16%|█▌        | 22/136 [00:00<00:00, 219.27it/s]Loading weights:  32%|███▏      | 44/136 [00:00<00:00, 162.90it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 448.21it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  10%|▉         | 13/136 [00:00<00:01, 120.49it/s]Loading weights:  29%|██▊       | 39/136 [00:00<00:00, 199.13it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 462.35it/s]
+answerdotai/ModernBERT-base@selected-hi held=stt seed=1 done, 1623s
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  16%|█▌        | 22/136 [00:00<00:00, 214.02it/s]Loading weights:  32%|███▏      | 44/136 [00:00<00:00, 209.85it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 459.86it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  14%|█▍        | 19/136 [00:00<00:00, 183.45it/s]Loading weights:  34%|███▍      | 46/136 [00:00<00:00, 219.47it/s]Loading weights:  50%|█████     | 68/136 [00:00<00:00, 218.31it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 426.13it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  10%|▉         | 13/136 [00:00<00:00, 129.33it/s]Loading weights:  19%|█▉        | 26/136 [00:00<00:00, 125.84it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 457.81it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  16%|█▌        | 22/136 [00:00<00:00, 205.63it/s]Loading weights:  32%|███▏      | 43/136 [00:00<00:00, 163.14it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 474.99it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  18%|█▊        | 25/136 [00:00<00:00, 232.64it/s]Loading weights:  36%|███▌      | 49/136 [00:00<00:00, 211.59it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 491.38it/s]
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights:  15%|█▍        | 20/136 [00:00<00:00, 167.58it/s]Loading weights:  27%|██▋       | 37/136 [00:00<00:00, 146.22it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 483.38it/s]
+answerdotai/ModernBERT-base@selected-hi held=stt seed=2 done, 1733s
+answerdotai/ModernBERT-base@selected-hi: total 28.9 min
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3217.24it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2201.48it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3284.80it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 4167.76it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2883.23it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2897.76it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3600.00it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2979.08it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3018.67it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3489.60it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3607.78it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3272.44it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2538.51it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights:  93%|█████████▎| 185/198 [00:00<00:00, 1831.72it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1816.56it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2808.09it/s]
+microsoft/deberta-v3-base@selected-hi held=r6: chose lr=8e-05 epoch=18 (criterion 140 on 242 OOF lines), 366s
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2828.53it/s]
+microsoft/deberta-v3-base@selected-hi held=r6 seed=0 done, 393s
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2932.69it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2588.18it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3789.05it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3285.75it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3422.12it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3012.54it/s]
+microsoft/deberta-v3-base@selected-hi held=r6 seed=1 done, 526s
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2897.69it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 4613.86it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3339.27it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3324.73it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2991.38it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 4841.25it/s]
+microsoft/deberta-v3-base@selected-hi held=r6 seed=2 done, 659s
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3016.06it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3087.75it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3235.11it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2432.96it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3310.05it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2848.06it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2891.26it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 4105.72it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3300.45it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3121.63it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3241.60it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3348.57it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3377.00it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2621.83it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2768.72it/s]
+microsoft/deberta-v3-base@selected-hi held=cs: chose lr=8e-05 epoch=18 (criterion 139 on 242 OOF lines), 1023s
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3000.01it/s]
+microsoft/deberta-v3-base@selected-hi held=cs seed=0 done, 1050s
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2828.61it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2911.83it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2942.11it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3000.05it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3142.95it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2693.44it/s]
+microsoft/deberta-v3-base@selected-hi held=cs seed=1 done, 1183s
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2640.07it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3022.66it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3413.76it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2836.88it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2911.79it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2824.45it/s]
+microsoft/deberta-v3-base@selected-hi held=cs seed=2 done, 1317s
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2977.92it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3284.13it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3032.12it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3272.33it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3300.07it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2712.37it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2117.45it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3142.91it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3147.36it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3015.86it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3142.87it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3379.60it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3143.00it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3045.25it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3535.77it/s]
+microsoft/deberta-v3-base@selected-hi held=stt: chose lr=8e-05 epoch=10 (criterion 130 on 242 OOF lines), 1681s
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3069.35it/s]
+microsoft/deberta-v3-base@selected-hi held=stt seed=0 done, 1697s
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3069.13it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 4829.17it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights:  91%|█████████▏| 181/198 [00:00<00:00, 1770.99it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1733.77it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3300.09it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2955.25it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3022.45it/s]
+microsoft/deberta-v3-base@selected-hi held=stt seed=1 done, 1774s
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2748.43it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3141.80it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3245.92it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3356.12it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3300.07it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2998.87it/s]
+microsoft/deberta-v3-base@selected-hi held=stt seed=2 done, 1850s
+microsoft/deberta-v3-base@selected-hi: total 30.9 min
+exit 0

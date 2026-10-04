@@ -1,0 +1,66 @@
+{"text": "hey, follow me", "intent": "FOLLOW_ME", "prob": 0.9914276599884033, "action": "act", "pending": null, "other": false}
+{"text": "breach on my go", "intent": "BREACH", "prob": 0.9948514103889465, "action": "queued", "pending": "BREACH", "other": false}
+{"text": "go", "intent": "GO_NOW", "prob": 0.9918360114097595, "action": "execute", "pending": null, "other": false}
+{"text": "smoke the hallway when i say", "intent": "SMOKE", "prob": 0.994122326374054, "action": "queued", "pending": "SMOKE", "other": false}
+{"text": "wait", "intent": "WAIT", "prob": 0.993033766746521, "action": "wait", "pending": null, "other": false}
+{"text": "go go go", "intent": "GO_NOW", "prob": 0.9924232959747314, "action": "go", "pending": null, "other": false}
+{"text": "hold the other angle", "intent": "HOLD_OTHER_ANGLE", "prob": 0.9931824803352356, "action": "act", "pending": null, "other": true}
+{"text": "flank left on my call", "intent": "FLANK", "prob": 0.993196964263916, "action": "queued", "pending": "FLANK", "other": false}
+{"text": "don't push yet", "intent": "WAIT", "prob": 0.9939034581184387, "action": "wait", "pending": null, "other": false}
+{"text": "two on the stairs, one lit", "intent": "NONE", "prob": 0.9987039566040039, "action": "ignore", "pending": null, "other": false}
+{"text": "asdkj qwe", "intent": "REVIVE_ME", "prob": 0.5453596115112305, "action": "say_again", "pending": null, "other": false}
+{"text": "do not come to me", "intent": "NONE", "prob": 0.9985176920890808, "action": "ignore", "pending": null, "other": false}
+{"text": "cover me", "intent": "COVER_ME", "prob": 0.9945639371871948, "action": "act", "pending": null, "other": false}
+{"text": "take the other door on my signal", "intent": "HOLD_OTHER_ANGLE", "prob": 0.9930230379104614, "action": "queued", "pending": "HOLD_OTHER_ANGLE", "other": true}
+{"text": "now!", "intent": "GO_NOW", "prob": 0.9843399524688721, "action": "execute", "pending": null, "other": false}
+{"text": "hold position", "intent": "HOLD_POSITION", "prob": 0.9936548471450806, "action": "act", "pending": null, "other": false}
+{"text": "don't move, hold position", "intent": "HOLD_POSITION", "prob": 0.9932985901832581, "action": "act", "pending": null, "other": false}
+{"text": "frag out on three", "intent": "FRAG", "prob": 0.9449464678764343, "action": "queued", "pending": "FRAG", "other": false}
+{"text": "never mind", "intent": "WAIT", "prob": 0.9936525821685791, "action": "wait", "pending": null, "other": false}
+{"text": "nice shot", "intent": "NONE", "prob": 0.9892709255218506, "action": "ignore", "pending": null, "other": false}
+{"text": "revive me", "intent": "REVIVE_ME", "prob": 0.9904996752738953, "action": "act", "pending": null, "other": false}
+{"text": "rappel down on my mark", "intent": "RAPPEL", "prob": 0.9913450479507446, "action": "queued", "pending": "RAPPEL", "other": false}
+{"text": "okay go now", "intent": "GO_NOW", "prob": 0.9919358491897583, "action": "execute", "pending": null, "other": false}
+{"text": "fall back!", "intent": "FALL_BACK", "prob": 0.993078887462616, "action": "act", "pending": null, "other": false}
+{"text": "drone it first", "intent": "DRONE", "prob": 0.9957029223442078, "action": "act", "pending": null, "other": false}
+{"text": "vault through the window", "intent": "VAULT_WINDOW", "prob": 0.9950652718544006, "action": "act", "pending": null, "other": false}
+{"text": "hold that angle", "intent": "HOLD_ANGLE", "prob": 0.992515504360199, "action": "act", "pending": null, "other": false}
+{"text": "move to the ping", "intent": "MOVE_TO", "prob": 0.9925748109817505, "action": "act", "pending": null, "other": false}
+{"text": "defuse it", "intent": "DEFUSE", "prob": 0.9911164045333862, "action": "act", "pending": null, "other": false}
+{"text": "entry now", "intent": "GO_NOW", "prob": 0.7976638674736023, "action": "go", "pending": null, "other": false}
+{"text": "flash in when i say", "intent": "FLASH", "prob": 0.9942276477813721, "action": "queued", "pending": "FLASH", "other": false}
+{"text": "uh, don't breach", "intent": "NONE", "prob": 0.998668909072876, "action": "ignore", "pending": "FLASH", "other": false}
+{"text": "go", "intent": "GO_NOW", "prob": 0.9918360114097595, "action": "execute", "pending": null, "other": false}
+{"text": "plant the bomb on my count", "intent": "PLANT", "prob": 0.9893853068351746, "action": "queued", "pending": "PLANT", "other": false}
+{"text": "wait for my call", "intent": "FRAG", "prob": 0.5571200251579285, "action": "say_again", "pending": "PLANT", "other": false}
+{"text": "execute", "intent": "GO_NOW", "prob": 0.9910898208618164, "action": "execute", "pending": null, "other": false}
+{"text": "what", "intent": "NONE", "prob": 0.99832683801651, "action": "ignore", "pending": null, "other": false}
+{"text": "прикрой меня", "intent": "REVIVE_ME", "prob": 0.9163573980331421, "action": "act", "pending": null, "other": false}
+{"text": "the opposite window, on three", "intent": "VAULT_WINDOW", "prob": 0.9898777604103088, "action": "queued", "pending": "VAULT_WINDOW", "other": true}
+{"text": "GO", "intent": "GO_NOW", "prob": 0.9904046058654785, "action": "execute", "pending": null, "other": false}
+{"text": "hold   the other   angle", "intent": "HOLD_OTHER_ANGLE", "prob": 0.9931824803352356, "action": "act", "pending": null, "other": true}
+{"text": "go find cover", "intent": "DEFUSE", "prob": 0.4278612732887268, "action": "say_again", "pending": null, "other": false}
+{"text": "hide there", "intent": "HOLD_POSITION", "prob": 0.983096718788147, "action": "act", "pending": null, "other": false}
+{"text": "cover yourself", "intent": "COVER_ME", "prob": 0.9912735819816589, "action": "act", "pending": null, "other": false}
+{"text": "cover me while I reload", "intent": "COVER_ME", "prob": 0.9945306181907654, "action": "act", "pending": null, "other": false}
+{"text": "open the door", "intent": "BREACH", "prob": 0.9928290247917175, "action": "act", "pending": null, "other": false}
+{"text": "open the other window on my go", "intent": "VAULT_WINDOW", "prob": 0.9930312633514404, "action": "queued", "pending": "VAULT_WINDOW", "other": true}
+{"text": "go", "intent": "GO_NOW", "prob": 0.9918360114097595, "action": "execute", "pending": null, "other": false}
+{"text": "don't open that door", "intent": "NONE", "prob": 0.9988619089126587, "action": "ignore", "pending": null, "other": false}
+{"text": "break in", "intent": "BREACH", "prob": 0.5083153247833252, "action": "say_again", "pending": null, "other": false}
+{"text": "open window", "intent": "VAULT_WINDOW", "prob": 0.9910379648208618, "action": "act", "pending": null, "other": false}
+{"text": "breach window", "intent": "VAULT_WINDOW", "prob": 0.9598590135574341, "action": "act", "pending": null, "other": false}
+{"text": "get down behind the car", "intent": "RAPPEL", "prob": 0.8969511985778809, "action": "act", "pending": null, "other": false}
+{"text": "shut the door", "intent": "DEFUSE", "prob": 0.8248818516731262, "action": "act", "pending": null, "other": false}
+{"text": "open fire", "intent": "BREACH", "prob": 0.3640248775482178, "action": "say_again", "pending": null, "other": false}
+{"text": "take cover when i say", "intent": "COVER_ME", "prob": 0.9857059717178345, "action": "queued", "pending": "COVER_ME", "other": false}
+{"text": "wait", "intent": "WAIT", "prob": 0.993033766746521, "action": "wait", "pending": null, "other": false}
+{"text": "watch that door", "intent": "HOLD_ANGLE", "prob": 0.9928761720657349, "action": "act", "pending": null, "other": false}
+{"text": "breach on my go", "intent": "BREACH", "prob": 0.9948514103889465, "action": "queued", "pending": "BREACH", "other": false}
+{"text": "don't worry about it, breach", "intent": "NONE", "prob": 0.8944635391235352, "action": "ignore", "pending": "BREACH", "other": false}
+{"text": "never mind the wall, flank left", "intent": "WAIT", "prob": 0.9853273630142212, "action": "wait", "pending": null, "other": false}
+{"text": "no need to wait, go go go", "intent": "WAIT", "prob": 0.9814625978469849, "action": "wait", "pending": null, "other": false}
+{"text": "uh the thing", "intent": "PLANT", "prob": 0.47299885749816895, "action": "say_again", "pending": null, "other": false}
+{"text": "hmm maybe", "intent": "NONE", "prob": 0.9471226930618286, "action": "ignore", "pending": null, "other": false}
+{"text": "blue", "intent": "FLASH", "prob": 0.37690362334251404, "action": "say_again", "pending": null, "other": false}
+{"text": "that one there i guess", "intent": "NONE", "prob": 0.994900643825531, "action": "ignore", "pending": null, "other": false}

@@ -1,0 +1,93 @@
+fold held=r6 done
+fold held=cs done
+fold held=stt done
+
+LEAVE-ONE-AUTHOR-OUT, union of the three held-out folds (363 lines)
+order-gate AUC (NONE vs an order) per held-out fold: decision:eos 0.93, laya:en 0.89, gliclass:large 0.54, nli:latest 0.87
+columns: ok = exact intent accepted; near = ok or same family (BREACH for ENTRY is fine); safe = did nothing; cross = acted, wrong family; fires = acted on a callout/chatter/negation line
+
+method                                                           ok  near  safe  cross  fires   near by kind:  callout  chatter  negated compound on_signa other_re    plain    slang
+logreg char-ngrams  (+threshold)                                 78    80    15      6     14         83      100       89       83       92       89       79       71
+logreg char-ngrams  (+threshold +neg guard)                      76    78    17      5     12         83      100      100       83       88       72       78       69
+logreg char-ngrams  (+neg guard)                                 78    80    12      8     14         79      100      100       83       88       72       81       72
+decision:eos +examples  (+threshold)                             71    73    23      5      8         92      100       94       50       79       67       74       64
+decision:eos +examples + gliclass:large order gate               71    73    23      5      8         92      100       94       50       79       67       74       64
+decision:eos +examples + nli:latest order gate                   71    73    23      5      8         92      100       94       50       79       67       74       64
+decision:eos +examples + laya:en order gate                      71    72    24      4      6         96      100       94       50       79       67       71       64
+logreg char-ngrams  (argmax)                                     79    81    10      9     18         79      100       83       83       92       89       82       74
+decision:eos +examples  (+threshold +neg guard)                  70    72    25      4      8         92      100       94       50       75       56       73       63
+decision:eos +examples + gliclass:large order gate +neg guard    70    72    25      4      8         92      100       94       50       75       56       73       63
+decision:eos +examples + nli:latest order gate +neg guard        70    72    25      4      8         92      100       94       50       75       56       73       63
+decision:eos base  (+threshold)                                  69    72    24      5      8         88      100      100       42       62       72       76       61
+decision:eos +examples + decision:eos order gate                 71    72    24      5      8         92      100       94       50       79       67       73       62
+decision:eos +examples + laya:en order gate +neg guard           69    71    25      4      6         96      100       94       50       75       56       71       63
+decision:eos base + decision:eos order gate                      69    72    24      5      8         88      100      100       42       62       72       76       61
+decision:eos base + laya:en order gate                           69    72    24      5      8         88      100      100       42       62       72       76       61
+decision:eos base + gliclass:large order gate                    69    72    24      5      8         88      100      100       42       62       72       76       61
+decision:eos base + nli:latest order gate                        69    72    24      5      8         88      100      100       42       62       72       76       61
+decision:eos +examples + decision:eos order gate +neg guard      69    71    25      4      8         92      100       94       50       75       56       72       61
+decision:eos base  (+threshold +neg guard)                       67    71    26      5      8         88      100      100       42       54       61       75       61
+decision:eos base + decision:eos order gate +neg guard           67    71    26      5      8         88      100      100       42       54       61       75       61
+decision:eos base + laya:en order gate +neg guard                67    71    26      5      8         88      100      100       42       54       61       75       61
+decision:eos base + gliclass:large order gate +neg guard         67    71    26      5      8         88      100      100       42       54       61       75       61
+decision:eos base + nli:latest order gate +neg guard             67    71    26      5      8         88      100      100       42       54       61       75       61
+kNN char-ngrams  (+threshold +neg guard)                         70    73    19      9     20         71       93       94       83       79       78       74       63
+gliclass:large base  (+threshold +neg guard)                     53    56    43      2      4         92      100       89       50       58       44       52       46
+gliclass:large base  (+threshold)                                54    58    41      3     10         92      100       72       50       67       50       54       47
+kNN char-ngrams  (+threshold)                                    70    72    17     11     29         71       93       61       83       83       89       74       65
+kNN char-ngrams  (+neg guard)                                    73    77     6     17     33         46       87       94       92       79       78       81       72
+laya:en base + decision:eos order gate +neg guard                52    58    35     10      4        100      100       78       67       54       61       51       49
+nli:latest base  (+threshold)                                    49    52    43      6      2        100      100      100       58       17       44       48       40
+nli:latest base + decision:eos order gate                        49    52    43      6      2        100      100      100       58       17       44       48       40
+nli:latest base + laya:en order gate                             49    52    43      6      2        100      100      100       58       17       44       48       40
+nli:latest base + gliclass:large order gate                      49    52    43      6      2        100      100      100       58       17       44       48       40
+nli:latest base + nli:latest order gate                          49    52    43      6      2        100      100      100       58       17       44       48       40
+laya:en base + decision:eos order gate                           53    60    32     11      6        100      100       72       67       67       72       53       49
+laya:en base + laya:en order gate +neg guard                     45    51    44      7      4        100      100       89       58       46       50       40       42
+nli:latest base  (+threshold +neg guard)                         47    50    45      6      2        100      100      100       58        8       33       47       38
+nli:latest base + decision:eos order gate +neg guard             47    50    45      6      2        100      100      100       58        8       33       47       38
+nli:latest base + laya:en order gate +neg guard                  47    50    45      6      2        100      100      100       58        8       33       47       38
+nli:latest base + gliclass:large order gate +neg guard           47    50    45      6      2        100      100      100       58        8       33       47       38
+nli:latest base + nli:latest order gate +neg guard               47    50    45      6      2        100      100      100       58        8       33       47       38
+laya:en base + laya:en order gate                                46    52    42      8      8        100      100       78       58       58       56       42       42
+kNN char-ngrams  (argmax)                                        73    77     2     21     45         46       87       56       92       88       94       82       74
+qwen base  (+threshold +neg guard)                               37    43    54      4      2         96      100       89       33       42       39       36       28
+laya:en base + nli:latest order gate +neg guard                  44    48    45      7      6         96      100       89       58       25       50       43       35
+decision:eos +examples  (+neg guard)                             70    72     9     19     61          4       13       67       50       75       61       89       79
+laya:en base  (+threshold +neg guard)                            52    60    31     13     20         62       87       83       67       54       61       59       53
+laya:en base + gliclass:large order gate +neg guard              52    60    31     13     20         62       87       83       67       54       61       59       53
+decision:eos +examples  (argmax)                                 71    74     6     20     65          4       13       56       50       83       72       91       80
+laya:en base + nli:latest order gate                             45    49    43      9     12         96      100       72       58       38       61       44       35
+qwen base  (+threshold)                                          37    44    52      6     12         96      100       56       33       50       50       38       29
+decision:eos base  (+neg guard)                                  66    71     7     22     63          4       27       94       67       62       67       85       74
+laya:en base  (+neg guard)                                       56    65    19     19     22         50       87       83       75       54       61       67       61
+laya:en base  (+threshold)                                       51    59    28     17     37         62       87       28       67       67       78       60       53
+laya:en base + gliclass:large order gate                         51    59    28     17     37         62       87       28       67       67       78       60       53
+von:1.1 base  (+threshold +neg guard)                            43    46    44     11      8         92      100       94       25       25       61       40       34
+von:1.1 base  (+threshold)                                       44    47    43     12     10         92      100       89       25       25       67       42       34
+nli:latest base  (+neg guard)                                    62    68    12     23     16         75      100       89       58       62       44       70       62
+nli:latest base  (argmax)                                        63    69     9     24     20         75      100       78       58       71       56       71       64
+qwen +examples in context  (+threshold +neg guard)               24    27    71      2      0        100      100       89       17       17       22       14       11
+decision:eos base  (argmax)                                      66    71     5     25     76          4       27       50       67       71       78       87       75
+qwen +examples in context  (+threshold)                          24    26    71      3      2        100      100       83       17       17       22       14       11
+gliclass:large +examples  (+threshold +neg guard)                21    21    79      1      0        100      100       89        8       12        6        5        7
+gliclass:large +examples  (+threshold)                           20    20    79      1      2        100      100       83        8       12        6        5        7
+laya:en base  (argmax)                                           55    64    16     23     39         50       87       28       75       67       78       68       61
+nli:latest +examples  (+threshold +neg guard)                    17    18    82      0      2        100       93       89        0        0        0        4        4
+nli:latest +examples  (+threshold)                               17    18    82      1      2        100       93       89        0        0        0        4        4
+qwen base  (+neg guard)                                          43    55    25     22     16         71       93       83       42       58       61       49       49
+gliclass:large base  (+neg guard)                                48    54    27     22     33          4        7       72       50       67       50       61       59
+von:1.1 base  (+neg guard)                                       49    54    26     22     14         79      100       94       42       29       61       51       44
+von:1.1 base  (argmax)                                           50    55    24     23     16         79      100       89       42       29       67       53       45
+gliclass:large base  (argmax)                                    48    55    25     24     41          4        7       39       50       75       56       63       59
+qwen base  (argmax)                                              42    55    21     26     35         71       93       22       42       71       72       51       51
+qwen +examples in context  (+neg guard)                          25    39     8     54     80          4        0       78       58       67       50       40       33
+von:1.1 +examples  (+threshold +neg guard)                       14    21    32     46     35         50       67       83        0        8       17       15       13
+von:1.1 +examples  (+threshold)                                  13    20    27     53     47         50       67       33        0       12       17       16       15
+qwen +examples in context  (argmax)                              22    36     2     63    100          4        0        0       58       71       61       40       34
+nli:latest +examples  (+neg guard)                               14    22     6     72     80          0        0       78       33       17       22       21       23
+gliclass:large +examples  (+neg guard)                           15    16    15     69     75          4       13       78       17       21       11       12       13
+von:1.1 +examples  (+neg guard)                                   7    15     7     77     80          0        0       78        0        8       17       16       13
+nli:latest +examples  (argmax)                                   11    20     0     80    100          0        0        6       33       17       28       21       25
+gliclass:large +examples  (argmax)                               12    13    10     77     92          4       13        6       17       21       17       12       14
+von:1.1 +examples  (argmax)                                       4    13     0     87    100          0        0        0        0       12       17       17       15

@@ -1,0 +1,16 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+laya:en-ft+seeds held=r6 seed=0 done, 74s
+laya:en-ft+seeds held=r6 seed=1 done, 149s
+laya:en-ft+seeds held=r6 seed=2 done, 223s
+laya:en-ft+seeds held=cs seed=0 done, 297s
+laya:en-ft+seeds held=cs seed=1 done, 371s
+laya:en-ft+seeds held=cs seed=2 done, 445s
+laya:en-ft+seeds held=stt seed=0 done, 519s
+laya:en-ft+seeds held=stt seed=1 done, 594s
+laya:en-ft+seeds held=stt seed=2 done, 667s
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+squad bot, zero-shot laya (PyTorch copy): 38/46
+out-of-fold threshold 0.60 (near - 2*wf = 287 of 363), 445s
+squad bot, fine-tuned laya: 42/46  (zero-shot 38/46)
+saved to G:\Proj\ollaya\project_synth\models\coop-laya-ft, 533s total
+exit 0

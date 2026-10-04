@@ -1,0 +1,24 @@
+{
+ "_note": "Dev lines for the two slot questions, written by the experimenter after the first dev run showed the timing question answering 'on my signal' for almost everything, and BEFORE any test line existed. Used only to choose the question form per model.",
+ "timing": [
+  ["breach on my go", "on_signal"], ["flash it when I call it", "on_signal"], ["on three we push", "on_signal"],
+  ["wait for my signal then blow the hatch", "on_signal"], ["smoke on my call", "on_signal"],
+  ["get on the rope and drop in when I say", "on_signal"], ["frag it on my mark", "on_signal"],
+  ["plant when I give the word", "on_signal"], ["hold the charge till I say go", "on_signal"],
+  ["ready the flash, throw on my go", "on_signal"], ["vault in on three", "on_signal"],
+  ["entry on my count", "on_signal"],
+  ["breach now", "now"], ["flash it", "now"], ["push in", "now"], ["blow the hatch", "now"],
+  ["smoke the door", "now"], ["drop in from the roof", "now"], ["frag that corner", "now"],
+  ["plant it", "now"], ["vault in", "now"], ["go take the room", "now"], ["throw the stun right away", "now"],
+  ["hurry up and breach", "now"]
+ ],
+ "reference": [
+  ["hold the other angle", "other"], ["watch the other door", "other"], ["breach the other wall", "other"],
+  ["go through the other window", "other"], ["take the other stairs", "other"], ["no the other hatch", "other"],
+  ["I got left, you take the other side", "other"], ["other door, not this one", "other"],
+  ["the other one, smoke the other one", "other"], ["cover the other entrance", "other"],
+  ["hold this angle", "this"], ["breach this wall", "this"], ["go through that window", "this"],
+  ["watch the stairs", "this"], ["smoke the doorway", "this"], ["blow the hatch here", "this"],
+  ["follow me", "none"], ["fall back", "none"], ["wait", "none"], ["push in", "none"]
+ ]
+}

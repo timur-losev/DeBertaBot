@@ -1,0 +1,4 @@
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  15%|█▌        | 31/202 [00:00<00:00, 304.18it/s]Loading weights:  42%|████▏     | 85/202 [00:00<00:00, 438.26it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 993.32it/s]
+co-op bot ready on http://127.0.0.1:8765

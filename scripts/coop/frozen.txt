@@ -1,0 +1,164 @@
+7136f3aa46f0fe65f349b742c2390c4e08ef8f3803e11d12ceb42211ba5d5125 *intents.json
+de8b4f8191f344c446a49f3b7ac5ba6a4664b67c436962152d18a476076f719d *dev.json
+7a0c85a5e2c2bf24bb0865f3f851fd86937b41c3084139c3a424915bbdf686b5 *blind/spec.json
+2026-09-27T19:14:24+02:00
+52b5ff67087a2be1e1d520bab11656b0889f104a8df39da69190485c6b1087e2 *dev_slots.json
+69efd45b3782e7385e0ef3ed3be938d7c7fc6433643aee03d71d584be5f725b2 *blind/author_cs.json
+b11562a1a7bad7f307515f0589d6f7cb55f45d18564db70467003afd5b5d2b7c *blind/author_cs_lines.json
+d20741ab35646701f24df6b76f946792035f61bd8fe1b32983a1423182ae8c2a *blind/author_r6.json
+d738da2c90fa1bb0c754463426664f3d083682c07421e7fde9da8b53ae7bc61a *blind/author_r6_lines.json
+071f93523e302726881d323469d0f2257e51b8c8a48f1554ffb662416994a30d *blind/author_stt.json
+fece47b1ce35ace5e8474f5d9352039f4b318b5b63f6c7d8d8d74b0cfca12973 *blind/author_stt_lines.json
+3ff785a7ad9464112d16f2c7626c5c150297e20c0aafda8d2f4a8d790561796f *annot/author_cs_ann1.json
+b049590570953e1a4442df4bf23f4b7b10e5120b17ff539a2c97504e4b74f72c *annot/author_cs_ann2.json
+802038d25d7ee69f0bd170e49b7b361d3826df2bc7a8d46c2d8a75ff092d0318 *annot/author_r6_ann1.json
+7c800d4a1d57999a8c6c99b5f8385611e966681cbfbaf8215c5e14a132f01a6b *annot/author_r6_ann2.json
+d87e79cc7382f46755903afeed0dc7e8cd2d18d053fcef989ee43556aa4971e5 *annot/author_stt_ann1.json
+e89eecf08b553339a0cd630e272c47f63513ebe7492424a89afe8e64bb742bbf *annot/author_stt_ann2.json
+51f87da6794b600e7f794cb47f909496324c6f3a05f4dc62379782456b801a22 *robustness.py
+b844fa96a8485a4769813ac2e0ee0aebb8227af9edb00a18e66187ed3fd0b66c *timing_rule.py
+8bd448c3fc37cf1d4dc4b105ee01e8fae16ad2e137c5a663cc2983ef7f5a9add *train_bert.py
+3bdcbe3979e128926ccafd07a4c6f176b21127557b8195603f7211cdf1062140 *eval_bert.py
+2026-09-28T15:40:57+02:00
+# train_bert.py changed after the first run: explicit fp32 load (deberta-v3-base is saved in fp16 and diverged to NaN on step 1). No hyperparameter changed; ModernBERT runs were fp32 already and are kept.
+e7f667f41a6b90892620b0fab3faa176393e908a57fd1c2030aede2fd735f7bf *train_bert.py
+2026-09-28T16:12:23+02:00
+# train_bert.py: --oof added (5-fold out-of-fold threshold fitting, matched steps) after review found the inner-fitted DeBERTa threshold too low.
+abfe20b155a492de0cd51403b1aba014ce61f880f214f06174aa631756be3c22 *train_bert.py
+2026-09-28T16:32:22+02:00
+# select_bert.py: nested hyperparameter search per model (written before any of its results)
+3a1128fb08cb4385431fd95a9e8643eaa8f9783bb50cc34e50b6d57018c187b6 *select_bert.py
+2026-09-28T17:18:26+02:00
+# select_bert.py: --lrs option added (wider grid after every ModernBERT-base fold chose the grid's top rate 8e-5); still nested
+10754dc41b7a1a2c2cf2d7e6a069ed40378173e8f74a6b0c82adc33aaa757693 *select_bert.py
+2026-09-28T17:36:52+02:00
+# select_bert.py: --max-epochs option (DeBERTa's first fold chose the 10-epoch cap); run() default read at call time
+01cbc5db533e56587060fdd5465dc3c4232a7162cbc2471a7ef13bd73999b3c6 *select_bert.py
+2026-09-28T17:47:32+02:00
+# eval_bert.py: OOF thresholds, integer-count fitting, @selected handling, oracle equal-risk diagnostic (the version that produced eval_final.log). The @selected runs used select_bert.py 3a1128fb (default path identical to the current file); @selected-hi used 01cbc5db.
+a8f5dad36b82e5a3c00c4a2747f5573af14eed6adfc4c6d8ece3e42be5775639 *eval_bert.py
+01cbc5db533e56587060fdd5465dc3c4232a7162cbc2471a7ef13bd73999b3c6 *select_bert.py
+2026-09-28T19:34:04+02:00
+# laya fine-tuning: laya_torch.py (parity with ollaya: max prob gap 0.0035), train_laya.py and train_laya_final.py written before any fine-tuned laya result
+22b435fee661f7711f47a2cc267ff37bb8edb33c515b50bd47e7f490a9013f1a *laya_torch.py
+83f19df8f98944df58fdc4e402d46ef982bbd137a7d577a7a8a69ee0b8346b7a *train_laya.py
+d1407eaa20c3c662c2dd3acff95b9f81b808f8a2cc699498d6c1c030fcb3a6bc *train_laya_final.py
+2026-09-28T22:41:46+02:00
+# review fixes: exact threshold sweep in bootstrap_bert.indicators and eval_bert's diagnostic (fixed grids ended at 0.98/0.99 and zeroed over-confident models); laya_torch.py edited after the laya runs only to add loader arguments (config_dir, tokenizer) with unchanged defaults
+de05f73ebb1705a7f83292a2db6e982f08e45c7022f1463f18b68422a3c079ef *bootstrap_bert.py
+ae504a6f291ec6119b181a2e747ee0de076d466634b770ae170d5fb742238ae0 *eval_bert.py
+60ebe9ba2310a0cee0a8d17cbc981376107a09a1b073ca72497c5d0021f0d59e *laya_torch.py
+2026-09-28T23:13:53+02:00
+2026-09-29T14:58:17+02:00
+# v2 label set (TAKE_COVER, OPEN; own families 'cover', 'open'), its spec, model vocabulary and seed commands, written before any v2 test line existed
+98b7ca538dd425bb21cf67cdc65ba5f70580a6b8dd6b3c058e2671bf49de574f *make_spec_v2.py
+bc3deafb1c16b8891fdc2ea33958c3d299dbf432cd96a3f075dd0688046e3df7 *blind/spec_v2.json
+a912cdaa8e246d607ebcf9dd7e7b4a765456d3c475ce8b724b8e4d2fd7a1e168 *intents_v2.json
+3b24e03fab406246b117b8fab941d58c301743d672ec003f45c1452ae9c4b9dd *seed_commands_v2.json
+2026-09-29T15:02:11+02:00
+# v2 blind lines (3 authors x 40), their 2 annotators each, and one v2 re-reading of every v1 line (workflow wf_931906b5-d74)
+63dee1c14a4f248a5f41bc033f300263b82d44871db4709047f9d88723a70229 *blind/v2/author_cs.json
+92d337b225a1267d5b3f890acd2f228eea4b442d1cdb2727fd85d0af6d51a1fe *blind/v2/author_cs_lines.json
+31506208baf2869143ea37a206da2a6c118064b0e80822f3b6c156c6dda939a0 *blind/v2/author_r6.json
+34553f48a16d66768a0fe9d4c7d529076f1bf80303f4a2956e38a347a3fa55eb *blind/v2/author_r6_lines.json
+9fb27e2752e040d0e1c229ff7132f29138804478e2fdda6cae73286bea15e498 *blind/v2/author_stt.json
+bf8fc65f75887edaecb30a342a818902c3b8fbb0d41d85e85d5a7519d836ed33 *blind/v2/author_stt_lines.json
+86d92d97dc4474da2cc625d5367ee5648584f684ce2c10a91571273a6feb24a4 *annot/v2/author_cs_ann1.json
+5cc658a9992db706646c333bdf414d3989c2002186e5ebbbefb2d76b984fdb64 *annot/v2/author_cs_ann2.json
+3ac26bb90e59ae1da11e582d4275b71a13b5d69f643d024a86504f4d696346ed *annot/v2/author_r6_ann1.json
+ea74bd51f04cbfe04a40faa42410ac21550011c84cc87426f31e78867d00af1a *annot/v2/author_r6_ann2.json
+831985cbfe6ac7d609545125d74df683993b86006ddea5c47d5dcc5fd68f1f93 *annot/v2/author_stt_ann1.json
+7c53742e90bcdb5c0a76b2657d6f3462bd91ff888988bdfce606b05d0e269432 *annot/v2/author_stt_ann2.json
+59c81594c977fa86199df71b700b92a057b31fd353a6ff28f11787d19cbfd8ea *annot/v2/old_cs_v2ann.json
+103b98bfbd2c8719d27285b130c0f4c4287e01b94a0852ea931f2b17484e0742 *annot/v2/old_r6_v2ann.json
+836c1b35372ae5129d532a925cc65a03092bdc87684090879a2fe89998b221ea *annot/v2/old_stt_v2ann.json
+2026-09-29T15:02:45+02:00
+# coop_v2.py (data, families, gates, strict score) and train_v2.py (v1 recipe, base + large, cv/final) written before any v2 result
+ca5bf5d7a8a307afb1ab4b1d96096a490cff0343dc81a9af2958328e32135ff2 *coop_v2.py
+fe8f352e06cdc2019e08b4ce0a2fca694057967fb105ab38f74d49fe702a3646 *train_v2.py
+2026-09-29T15:10:50+02:00
+# train_v2.py: --held / --results added so several processes share the GPU (large alongside base); recipe unchanged. base r6/0 finished before the change; the unfinished run was killed and restarts
+613a8058a2938422efaac5370712ad4c2429f03c397305baf18a96ef456761dd *train_v2.py
+2026-09-29T17:22:40+02:00
+# after the v2 study (eval_v2.log): large dropped (2/9 models collapsed); seed set v21 (+8 COVER_ME with a bare 'cover') because the owner's 'cover from behid' went to TAKE_COVER; COOP_TAG selects the seed set and tags result files, the v2 study files are unchanged
+89d88a18dee103e4cb41f93071abed68295fb2f4e8b9ebdd8357703d3607c80d *eval_v2.log
+f9b79cda275b518df93fe76759fc0b003d7fb8386336804d149ac21306c84891 *results_v2_probs.json
+983fe5c55b1535b853394f4e00464bdfe5e66de77cd6f4504a2c67ffef6ee82c *results_v2_probs_large_a.json
+9972e0399912c5f326495a9f9b93a90272a22fdb2524ad648eb6dd27dcf36165 *results_v2_probs_large_b.json
+f2852ccd6461ce4369dbf3e99611fec8df08c018fd4290a8cb33fcfba90442da *make_seeds_v21.py
+112b3ff8a5d6b00538b5a6f89dee4350cf0a706bd4d6c8248135a29f7b6d0111 *seed_commands_v21.json
+d115bb95fcdb52eebbf283b4751b6dec09af17ba6696d9da44ba6d9abb720c46 *coop_v2.py
+cd1b34201391f7eda4d1261d09b4310f2458419b7e6ee509868c824c2eb46dab *train_v2.py
+075dda938f30e01ba656e2bfff039dcd8cc2cdb84e604b7f861318702919f8fb *eval_v2.py
+2026-09-29T19:26:57+02:00
+# NOTE on this file's convention: up to 2026-09-28T23:13:53 each timestamp FOLLOWS its block; from 2026-09-29T14:58:17 on each timestamp PRECEDES its block (the v2 entries).
+# after the review of v2 (workflow wf_f28c43b5-6f5): C++ fixes (std::regex_error caught, model/label-count check at load, Pick(), gate and decide tests, confidence in the dialogue check, Unicode strip), eval_v2.py splits 'say again' from a confident NONE (only those table rows changed; both logs re-run), docs corrected; model and results unchanged
+d90f15061752eaee904db15bcf93cc49509c13a2fd8ab110f3d6047753070f32 *coop_v2.py
+cd1b34201391f7eda4d1261d09b4310f2458419b7e6ee509868c824c2eb46dab *train_v2.py
+626544facbe1ed4d3b3b24f18b5644b53b04dacdbe302fcf79fb94751fef1b0b *eval_v2.py
+7eb8d32e7a38fc3408b63a29f5f97af2c6336c80cb73d371ea6345de16715a06 *eval_v2.log
+336c68ab13f3c67e1adba45725a9f710bc091f7bcd93af39aa5670eab2c4e34d *eval_v21.log
+1d809b6944721e92017614090b9a4ff6bff97eb21cae3df92d2068a3554e4332 *coop_bot.py
+3e8bed96e41073659c131de6302bee299e81979ddcfd170f5c36c6575ec25d0f *export_cpp.py
+9031ed18bd9d81acec042d73e63f4283f956cfdc47ebc033bffa01c57e3e0507 *check_onnx.py
+d646d1c03fadb70bdaa93b19a663e43ea49c4ca620efca91bcc0de0f13c0f52d *../../cpp/coop_intent/tools/gen_tests.py
+847a1541d56d3b0068d7c661428ae9be46e1d7cbb6497f7b6c6a0a8e22392bb1 *../../cpp/coop_intent/tools/coop_cli.cpp
+f4cc3f0ec8fdaff370e43a2ec75fabc42abde32780e37f43481ff57353afc841 *../../cpp/coop_intent/src/bot_brain.cpp
+2b6abf1b133e361009ec91bbefd11fc1955a9fb657985f06a88799c6fbb119fa *../../models/coop-deberta-v3-ens3-v2/bot_config.json
+2026-10-03T20:55:13+02:00
+# v3 (map places): vocabulary + matcher rules v1 (after a 3-agent design critique, wf_e7746201-bd5, on the developer's own lines only), developer regression lines, spec_v3 (target modifier; RAPPEL / MOVE_TO sharpened), seed set v3 (v21 + templated location seeds); all before any v3 test line existed
+9999cc9f656430a9b0c2c27d111073365528932e6dc9686a23c13a12f46d7e7a *locations.json
+111d1a760364d31368e133d7c861e14f8e79541989b6c684ff8c31fb4c17f2c7 *locations.py
+cf6bbf37ead72372ffe4e1402343ef0a7ba55b890a55fd9d137d6f6c19cb2bb9 *locations_dev.json
+52d124bbe67f81b1bc64ea4686ad5cc1c65ff6d01aac3be9b58c18f1add57ac2 *make_spec_v3.py
+746899c280431270ee9495f66c89c91044c18fcfc029e89bee792b25defd8ca2 *blind/spec_v3.json
+9e520412ede39efbd628b52bdefa0281d616c3b9328e0d7b0dc823e001ac9ef6 *seed_commands_v3.json
+2026-10-03T20:57:31+02:00
+# v3 evaluation code, written before any v3 line was read: coop_v2.py (TAG v3, target truth), train_v2.py (v3 output dir), eval_v2.py (v1 slice by version, v3 slice), eval_v3.py, v3_shipped.py, shipped.py
+0b9841cfef0e81289f0e9ce5e807276dab1e6bf7d0497317d1346b71860d97cc *coop_v2.py
+c0e16dd38566b58929d5bfea5a1b4f95e329931282411f59b5844a1bd4006b10 *train_v2.py
+97632dfb661cdefb806fe409cd07fb6b32ee5aa7303423ceca62deab6179df7e *eval_v2.py
+521657baa2089700247034b803cb5779c69385209176dcfa81f8c19dc55a4747 *eval_v3.py
+0b6af9ac4442a296c48d05637aacd478f5358ad6f4d20ca5cb8f43d5d9a18ea7 *v3_shipped.py
+4a80fc381ac689fc29ea76440b6251d59b8af3dc18574a1f1080b0e1b03fcadf *shipped.py
+2026-10-03T21:00:44+02:00
+# v3 blind lines (3 authors x 50) and 2 annotators each (workflow wf_04800970-338)
+761f5e8c23bd4cd93932294e79b70b9eda67c5df75a8bf29b41bf727b5f3ca4b *blind/v3/author_cs.json
+73110d9524f72442fa2521ee3536b36b1741e6e5754066ec94d14264948b9a57 *blind/v3/author_cs_lines.json
+be9921a6c324c9d430a5a231483822d2845ca3253b5f4fe3430544c5ae404053 *blind/v3/author_r6.json
+3cd017854488bcecfe4b2767b6937dd6e9cc9fa4dc057ff271440c431b20070f *blind/v3/author_r6_lines.json
+b06bc55794c9d95da08756301c651db39b48909802788d17bcbe7735a4532b8c *blind/v3/author_stt.json
+1ed9451aaeebbb76808784bfadc3a5a4e66eb1f6a6a51059fe683da4dd816100 *blind/v3/author_stt_lines.json
+56a2dd5e5c6033f464a2a95ce26dad164d922a4f198d4683a9454a1e3b21a3ea *annot/v3/author_cs_ann1.json
+36305d2e30218bd2b97465b68a866537f5a70a3f5f5924a48bbdcd1cd96a33a2 *annot/v3/author_cs_ann2.json
+07378aece559a98117747afc7498289b9d68e74ef0cff881737020a0c28a7166 *annot/v3/author_r6_ann1.json
+07378aece559a98117747afc7498289b9d68e74ef0cff881737020a0c28a7166 *annot/v3/author_r6_ann2.json
+28f068d9791374aa4aa6ffe3c666ef9b2a9a6c8c0b68a8f7dd1c50ec36d92e9f *annot/v3/author_stt_ann1.json
+6e97f5d4379b1b087493d261b693f6e89e56046875430820b3e920a17fab1cfc *annot/v3/author_stt_ann2.json
+2026-10-03T21:03:00+02:00
+# locations rules v2, AFTER the first blind v3 run (eval_v3_rules_v1.log: exact 88.0%; classifier input: raw beats strip): tuned on the r6 and cs authors' mismatches only; stt is the held-out author for v2 (94.0%, was 90.0%)
+890d651a7f5d48417e101aea71d578bff8e990470b53f1a87508298da1ebaa9d *locations.json
+b3e9314a70e383d334c9aad7e28fa105c6e6dd23a8e6f0c3c755f44d0e443c7a *locations.py
+1ff6fd9696b14b223b2086616e6d37fdcaa40c0bb79b45be88895ea5b2fd19d9 *eval_v3_rules_v1.log
+5c0d196f49f08cd2658eec1360d7c2d01ed172af81c9afbf6ae51fd08f9edba5 *eval_v3.log
+e86d5c8a79d740555858c47c8367bcaa9d864cec023b3d60047dc85bb354653b *results_v3_shipped.json
+2026-10-03T21:09:54+02:00
+# places in the bot (after the first blind v3 run, before any v3 re-training result): coop_bot.py (places per line; a queued order keeps its places), export_cpp.py (locations in intent_config.json, --config-only), gen_tests.py (location_tests, places in decide/dialogue tests), C++ locations.h/.cpp + BotBrain + coop_cli --location-tests: 8570/8570 records equal, decide 52/52, dialogue 77/77
+6ca38fc720529d7bf6246d00e5021df478d185b1916d957bff86f897b86db5eb *coop_bot.py
+13b815549f933f1f3c140eacfed2f4165a50e075220b980b4e13bce88067ba64 *export_cpp.py
+3b56282554d41063693ca145917a6585c3001a907f38595535a89dd1a8b72ea4 *../../cpp/coop_intent/tools/gen_tests.py
+5f3b25118ff85880ce3cf2ed817a57c523ca76e01774fc5af62b256bceb040c5 *../../cpp/coop_intent/src/locations.cpp
+894e2cc9099f358870990285b91db355f18e4cdaab53fce2aa58c0f8c5397b45 *../../cpp/coop_intent/include/coop_intent/locations.h
+e87898d6045131c91216f35c54a4f71e33dd7f56c1a53c7e6e31175ed460db59 *../../cpp/coop_intent/src/bot_brain.cpp
+6114308fb7d07c68b89078b1aec36816a99f4b747518f95075bba58768c20ba8 *../../cpp/coop_intent/tools/coop_cli.cpp
+2026-10-03T21:37:53+02:00
+# train_v2.py speed-up before the v3 cross-validation: lines tokenized once (batches bit-identical to the tokenizer call: 1600/1600 random batches), fused AdamW on CUDA; recipe unchanged
+6b46927ccc79ffd8bf4d975c4be9dbd9d23c45288c35693cc913fe7880262bfd *train_v2.py
+2026-10-03T22:26:03+02:00
+# v3 cross-validation finished (results_v3_probs_{r6,cs,stt}.json, eval_v3.log section C: re-trained ens3 vs shipped on v3 lines +10.7 [+3.3,+18.7] top / +11.3 [+4.0,+19.3] family; older lines +0.0 / -0.2); C++ made portable (CMake for macOS/Linux, strtod fallback), not built outside Windows; final v3 ensemble training started
+908815569b227944f80c42b4c311fc50dd9fad74c71a873ccf1e83e0dc08b730 *eval_v3.log
+13369271ec05515475cdb1446625d85d37a98bd0743886c111e874a31cf1a991 *results_v3_probs_r6.json
+8ab735d9018f8ce527b6fb496cd413d6696baddf726c1ec34d7116430859764c *results_v3_probs_cs.json
+fcdfa26e0c426cef49dd5c6e4d5c021d2bb544f019c596639cfe170bfa887571 *results_v3_probs_stt.json
+076207d32efeae8f8d205edb8af542fa3313ee89046ad07f757e43f188897ca9 *../../cpp/coop_intent/CMakeLists.txt
+d7d1c307a08c7da6bd9e2c3a515ea6bbefeb53a04016b02c7c3cde66a2a1046d *../../cpp/coop_intent/src/tokenizer.cpp

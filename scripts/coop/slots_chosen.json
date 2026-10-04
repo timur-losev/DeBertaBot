@@ -1,0 +1,22 @@
+{
+ "laya:en": {
+  "timing": "choice+desc",
+  "reference": "choice+desc"
+ },
+ "von:1.1": {
+  "timing": "noul",
+  "reference": "noul"
+ },
+ "gliclass:large": {
+  "timing": "choice",
+  "reference": "choice"
+ },
+ "decision:eos": {
+  "timing": "choice+desc",
+  "reference": "choice"
+ },
+ "nli:latest": {
+  "timing": "choice",
+  "reference": "choice"
+ }
+}

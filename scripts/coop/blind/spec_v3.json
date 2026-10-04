@@ -1,0 +1,66 @@
+{
+ "setting": "A co-op AI teammate (a bot) in a tactical shooter like Rainbow Six Siege or Counter-Strike. The human player places markers (pings) on the map and gives voice orders in English. The voice goes through speech-to-text; the bot receives the transcript (and, separately, the latest marker position). The bot must map each transcript to exactly one intent below; its planner then works out how to carry it out (which window, which route, where the marker is). Words like 'here', 'there', 'that', 'this' usually refer to the latest marker or to where the player is looking; the planner resolves them.",
+ "intents": {
+  "FOLLOW_ME": "the bot follows the player and stays with them",
+  "MOVE_TO": "the bot moves to a place: the marker, or a named or pointed-at location (a door, stairs, a floor, the roof)",
+  "HOLD_POSITION": "the bot stays where it is and stops moving",
+  "HOLD_ANGLE": "the bot watches a specific angle / door / window / corridor / stairs, ready to shoot",
+  "HOLD_OTHER_ANGLE": "the bot watches the OTHER angle than the one currently covered (by the player or by the bot), e.g. the player takes one door and tells the bot to take the other",
+  "FLANK": "the bot takes an alternative route around to hit the enemy from the side or behind, often via the marker",
+  "VAULT_WINDOW": "the bot goes in or out through a window (vault, climb, jump through)",
+  "RAPPEL": "the bot uses a rappel rope on the outside of the building (rope up, drop down, hang at a window). Just going to a named place, the roof included, is MOVE_TO",
+  "BREACH": "the bot opens a wall, floor hatch, ceiling or barricaded door with a breaching charge or tool (loud)",
+  "DRONE": "the bot sends a drone or scouts to gather intel before anyone goes in",
+  "FLASH": "the bot throws a flashbang / stun grenade",
+  "SMOKE": "the bot throws a smoke grenade",
+  "FRAG": "the bot throws a lethal grenade (frag, molotov, incendiary)",
+  "COVER_ME": "the bot covers the PLAYER (watches over them, ready to shoot) while the player moves or does something",
+  "ENTRY": "the bot pushes into the room / site and clears it",
+  "FALL_BACK": "the bot retreats / breaks off from the fight",
+  "PLANT": "the bot plants the bomb / defuser",
+  "DEFUSE": "the bot defuses the bomb / disables the defuser",
+  "REVIVE_ME": "the bot comes to revive the downed player",
+  "WAIT": "the bot pauses: stop what you are doing, hold up, do not act yet, cancel the last order",
+  "GO_NOW": "the bot executes the prepared or announced action right now; the player's go signal",
+  "TAKE_COVER": "the bot gets ITSELF into cover or out of sight to protect itself (hide, get behind something solid, get down); its planner picks the spot: the nearest cover, or the marker if the player points at one. Protecting the player is COVER_ME, not this",
+  "OPEN": "the bot opens a door, window, hatch, gate or shutter the normal way (by hand, quietly) and does NOT go through it; its planner picks which one. Going through a window is VAULT_WINDOW, pushing into the room is ENTRY, forcing it open with a charge or tool is BREACH",
+  "NONE": "not an order to the bot: an information callout about enemies, chatter, a question, a complaint, an order the player explicitly takes back or negates, or an order the bot has no intent for"
+ },
+ "modifiers": {
+  "timing": "now | on_signal -- 'on_signal' when the player says to do it on their call / when they say go / on three; otherwise 'now'",
+  "reference": "this | other | none -- 'other' when the order is about the OTHER one of two things (the other door, the other window, the other angle); 'this' when it points at a specific thing ('this wall', 'here', 'that window'); 'none' when it names no object",
+  "target": "the place on the map the BOT must act on for the order's first action -- go to, watch, open, throw at, hide behind... -- as {object, qualifier, zone, unknown_modifier}. object: one of the map's objects or null; qualifier: one of the map's qualifiers or null (also when the player named it without saying the object, e.g. 'push main' = door / main, 'take blue' = stairs / blue; a bare compass word with no object is qualifier only); zone: the floor the place is on, or the floor itself when the order is about the floor, else null. It is NOT the player's own position, NOT where the enemy is and NOT the place to leave: 'I'll take the north door, you take the south window' -> window / south. unknown_modifier: true when the player singles out one particular object with a word the map names cannot express ('the back door', 'the left window', 'the blue door'); then give the object and leave the qualifier null. For a callout or chatter (intent NONE) give the place the line is about, if it names one. All four are null / false when the line names no place of the map (a marker, 'here', 'there', 'that wall')."
+ },
+ "map": {
+  "note": "Every map of the game has these named places, and players use the names in orders and callouts. Doors and windows are named by compass side, plus one Main door; stairs are named by colour; furniture and floors by what they are.",
+  "objects": {
+   "door": "a door: the Main door, or the north / south / west / east door",
+   "window": "a window: the north / south / west / east window",
+   "stairs": "a staircase: the blue / red / yellow / white / brown stairs",
+   "chair": "chairs",
+   "sofa": "a sofa",
+   "table": "a table"
+  },
+  "qualifiers": [
+   "main",
+   "north",
+   "south",
+   "west",
+   "east",
+   "blue",
+   "red",
+   "yellow",
+   "white",
+   "brown"
+  ],
+  "zones": {
+   "basement": "the basement",
+   "floor_1": "the 1st (ground) floor",
+   "floor_2": "a second floor, if the player names one",
+   "top_floor": "the top floor",
+   "roof": "the roof",
+   "up": "'upstairs': the floor above, relative",
+   "down": "'downstairs': the floor below, relative"
+  }
+ }
+}

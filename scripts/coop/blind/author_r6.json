@@ -1,0 +1,970 @@
+[
+ {
+  "id": "r6_000",
+  "text": "clip onto the roof edge and go inverted on bedroom",
+  "intent": "RAPPEL",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_001",
+  "text": "go wide and hit them off their side while I bait front",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_002",
+  "text": "what op are you even running",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "chatter"
+ },
+ {
+  "id": "r6_003",
+  "text": "drone the other room first",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "r6_004",
+  "text": "split the angles, I take hatch, you take the other one",
+  "intent": "HOLD_OTHER_ANGLE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_005",
+  "text": "get on the rope and climb up to roof",
+  "intent": "RAPPEL",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_006",
+  "text": "on my mark, drop down the rope",
+  "intent": "RAPPEL",
+  "timing": "on_signal",
+  "reference": "none",
+  "kind": "on_signal"
+ },
+ {
+  "id": "r6_007",
+  "text": "block their sightline with a smoke",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_008",
+  "text": "hop on the bomb and stick the defuse",
+  "intent": "DEFUSE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_009",
+  "text": "bro how did he hear me through the floor",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "chatter"
+ },
+ {
+  "id": "r6_010",
+  "text": "disengage and reset",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_011",
+  "text": "take the long way through my ping and pinch them",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_012",
+  "text": "come get me, I'm bleeding out",
+  "intent": "REVIVE_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_013",
+  "text": "send it",
+  "intent": "GO_NOW",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_014",
+  "text": "smash the glass and jump through",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_015",
+  "text": "get out of there, it's a trap",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_016",
+  "text": "pre-aim the window by my ping and don't peek off it",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_017",
+  "text": "overwatch me while I'm droning",
+  "intent": "COVER_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_018",
+  "text": "throw a stun through the doorway",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_019",
+  "text": "slap a charge on the barricade",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_020",
+  "text": "this map is so bad for attack",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "chatter"
+ },
+ {
+  "id": "r6_021",
+  "text": "take the other stairs up",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "r6_022",
+  "text": "blow the hatch open",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_023",
+  "text": "don't push yet, not ready",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "r6_024",
+  "text": "cook one and toss it in",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_025",
+  "text": "roll a cam into kitchen and ID the ops",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_026",
+  "text": "rez me please",
+  "intent": "REVIVE_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_027",
+  "text": "tap the defuser, I got you",
+  "intent": "DEFUSE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_028",
+  "text": "you anchor, freeze where you are",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_029",
+  "text": "tail me, we're rushing this together",
+  "intent": "FOLLOW_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_030",
+  "text": "bang the doorway then entry with me",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "compound"
+ },
+ {
+  "id": "r6_031",
+  "text": "I'm on this angle, you cover whatever I'm not looking at",
+  "intent": "HOLD_OTHER_ANGLE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_032",
+  "text": "they rotated through the bedroom wall",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "r6_033",
+  "text": "toss a bang in there",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_034",
+  "text": "vault into the room off my marker",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_035",
+  "text": "cover default plant with smoke, Glaz is watching",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_036",
+  "text": "smoke the doorway",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_037",
+  "text": "smoke the second door, not the one I'm at",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "r6_038",
+  "text": "hang on a sec, don't do anything",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_039",
+  "text": "blind the room for me",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_040",
+  "text": "hold main door, anyone swings you drop 'em",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_041",
+  "text": "wait for my call, then smoke the door",
+  "intent": "SMOKE",
+  "timing": "on_signal",
+  "reference": "this",
+  "kind": "on_signal"
+ },
+ {
+  "id": "r6_042",
+  "text": "burn them out with a molly under the stairs",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_043",
+  "text": "when I yell go, loop round the back",
+  "intent": "FLANK",
+  "timing": "on_signal",
+  "reference": "none",
+  "kind": "on_signal"
+ },
+ {
+  "id": "r6_044",
+  "text": "flash when I call it",
+  "intent": "FLASH",
+  "timing": "on_signal",
+  "reference": "none",
+  "kind": "on_signal"
+ },
+ {
+  "id": "r6_045",
+  "text": "flash the opposite doorway",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "r6_046",
+  "text": "be ready to trade me when I swing",
+  "intent": "COVER_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_047",
+  "text": "I'm down, pick me up",
+  "intent": "REVIVE_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_048",
+  "text": "rotate over to where I marked",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_049",
+  "text": "drone me in before we commit",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_050",
+  "text": "Bandit tricking the reinforce on main wall",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "r6_051",
+  "text": "breach that wall on my go",
+  "intent": "BREACH",
+  "timing": "on_signal",
+  "reference": "this",
+  "kind": "on_signal"
+ },
+ {
+  "id": "r6_052",
+  "text": "Valk cam top of stairs",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "r6_053",
+  "text": "hard breach that wall",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_054",
+  "text": "keep your crosshair on the long hallway",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_055",
+  "text": "nade that room",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_056",
+  "text": "on three we entry",
+  "intent": "ENTRY",
+  "timing": "on_signal",
+  "reference": "none",
+  "kind": "on_signal"
+ },
+ {
+  "id": "r6_057",
+  "text": "I got left door, you hold the right one",
+  "intent": "HOLD_OTHER_ANGLE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_058",
+  "text": "drop a cloud so we can cross",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_059",
+  "text": "go in through the other window",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "r6_060",
+  "text": "keep me alive, I'm crossing",
+  "intent": "COVER_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_061",
+  "text": "don't breach, they got Bandit on it",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "r6_062",
+  "text": "plant is on you, I'm covering",
+  "intent": "PLANT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_063",
+  "text": "watch my back while I plant",
+  "intent": "COVER_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_064",
+  "text": "make us a hole in this floor, loud is fine",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_065",
+  "text": "swing in there and clean it out",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_066",
+  "text": "chill in that spot, no moving",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_067",
+  "text": "on me, stick to my hip",
+  "intent": "FOLLOW_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_068",
+  "text": "peel out, they got numbers",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_069",
+  "text": "get your drone out and find the objective",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_070",
+  "text": "rope up and dangle outside that window upside down",
+  "intent": "RAPPEL",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_071",
+  "text": "drop the defuser behind the counter",
+  "intent": "PLANT",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_072",
+  "text": "climb over the sill and drop inside",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_073",
+  "text": "take site, check every corner",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_074",
+  "text": "pop a flash into site",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_075",
+  "text": "scrap the rappel, call it off",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "r6_076",
+  "text": "be my shadow this round, wherever I walk you walk",
+  "intent": "FOLLOW_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_077",
+  "text": "breach the other hatch instead",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "r6_078",
+  "text": "rappel down from roof to the balcony",
+  "intent": "RAPPEL",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_079",
+  "text": "go in after you blow the hatch",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "compound"
+ },
+ {
+  "id": "r6_080",
+  "text": "get over to my ping",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_081",
+  "text": "run up to the balcony and wait for me there",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_082",
+  "text": "stay put, don't budge",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_083",
+  "text": "get the bomb down, we got 20 seconds",
+  "intent": "PLANT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_084",
+  "text": "come with me up to 2F, don't lose me",
+  "intent": "FOLLOW_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_085",
+  "text": "scratch that, stand by",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_086",
+  "text": "loop around and catch them from behind",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_087",
+  "text": "get ready to plant, don't touch it till I say",
+  "intent": "PLANT",
+  "timing": "on_signal",
+  "reference": "none",
+  "kind": "on_signal"
+ },
+ {
+  "id": "r6_088",
+  "text": "Jager's dead, their util's gone",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "r6_089",
+  "text": "alright pull the trigger, do it",
+  "intent": "GO_NOW",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_090",
+  "text": "roamer ran to garage, he's one shot",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "r6_091",
+  "text": "frag out on default",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_092",
+  "text": "whoa whoa, easy, not yet",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_093",
+  "text": "reposition to kitchen real quick",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_094",
+  "text": "now now now",
+  "intent": "GO_NOW",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_095",
+  "text": "nade the room the second I say now",
+  "intent": "FRAG",
+  "timing": "on_signal",
+  "reference": "this",
+  "kind": "on_signal"
+ },
+ {
+  "id": "r6_096",
+  "text": "deny that plant before it pops",
+  "intent": "DEFUSE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_097",
+  "text": "sit tight right where you are, I'll come to you",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_098",
+  "text": "crossfire it, you watch the opposite side from me",
+  "intent": "HOLD_OTHER_ANGLE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_099",
+  "text": "scout ahead, I wanna know what's waiting",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_100",
+  "text": "don't nade it, I'm going in",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "r6_101",
+  "text": "watch that vert above stairs",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_102",
+  "text": "no smoke, I need to see",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "r6_103",
+  "text": "two in kitchen, one's Mute",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "r6_104",
+  "text": "hold your horses",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_105",
+  "text": "go go go",
+  "intent": "GO_NOW",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_106",
+  "text": "back off, back off, we lost it",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_107",
+  "text": "nah forget the flank, hold up",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "r6_108",
+  "text": "hatch above default is open",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "r6_109",
+  "text": "wrap 'em through the back route",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_110",
+  "text": "hop through that window",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_111",
+  "text": "I'm DBNO behind the bed, need a hand",
+  "intent": "REVIVE_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_112",
+  "text": "smoke it and push",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "compound"
+ },
+ {
+  "id": "r6_113",
+  "text": "go default plant",
+  "intent": "PLANT",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_114",
+  "text": "vault in and plant behind the desk",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "none",
+  "kind": "compound"
+ },
+ {
+  "id": "r6_115",
+  "text": "full commit onto site, kill whatever's in there",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "r6_116",
+  "text": "Mira on the wall, they're anchored in site",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "r6_117",
+  "text": "did you see that, clean 3k",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "chatter"
+ },
+ {
+  "id": "r6_118",
+  "text": "kill the defuser on my ping, it's ticking",
+  "intent": "DEFUSE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "r6_119",
+  "text": "man I'm tilted, died to a pixel peek again",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "chatter"
+ },
+ {
+  "id": "r6_120",
+  "text": "you're entry frag this round, get in the room",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ }
+]

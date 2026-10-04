@@ -1,0 +1,616 @@
+{
+ "r6v3_000": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "stairs",
+   "qualifier": "yellow",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_001": {
+  "intent": "FRAG",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "table",
+   "qualifier": null,
+   "zone": "top_floor",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_002": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_003": {
+  "intent": "NONE",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "red",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_004": {
+  "intent": "RAPPEL",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "window",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  }
+ },
+ "r6v3_005": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "stairs",
+   "qualifier": "blue",
+   "zone": "up",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_006": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  }
+ },
+ "r6v3_007": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "other",
+  "target": {
+   "object": "window",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_008": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "sofa",
+   "qualifier": null,
+   "zone": "floor_2",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_009": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "roof",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_010": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": "north",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_011": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "west",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_012": {
+  "intent": "VAULT_WINDOW",
+  "ok": [
+   "WAIT"
+  ],
+  "timing": "on_signal",
+  "reference": "this",
+  "target": {
+   "object": "window",
+   "qualifier": "east",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_013": {
+  "intent": "PLANT",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "chair",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_014": {
+  "intent": "RAPPEL",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "window",
+   "qualifier": "north",
+   "zone": "floor_2",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_015": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "stairs",
+   "qualifier": "white",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_016": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  }
+ },
+ "r6v3_017": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "down",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_018": {
+  "intent": "DRONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_019": {
+  "intent": "HOLD_OTHER_ANGLE",
+  "ok": [
+   "HOLD_ANGLE"
+  ],
+  "timing": "now",
+  "reference": "other",
+  "target": {
+   "object": "door",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_020": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "up",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_021": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": "east",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_022": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": "west",
+   "zone": "floor_1",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_023": {
+  "intent": "RAPPEL",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "window",
+   "qualifier": "west",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_024": {
+  "intent": "FLASH",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": "south",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_025": {
+  "intent": "NONE",
+  "ok": [
+   "DEFUSE"
+  ],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "table",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_026": {
+  "intent": "TAKE_COVER",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "sofa",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_027": {
+  "intent": "WAIT",
+  "ok": [
+   "HOLD_POSITION"
+  ],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": "north",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_028": {
+  "intent": "FRAG",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "sofa",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_029": {
+  "intent": "FLANK",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": "south",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_030": {
+  "intent": "DRONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "top_floor",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_031": {
+  "intent": "VAULT_WINDOW",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "window",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_032": {
+  "intent": "FLASH",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this",
+  "target": {
+   "object": "window",
+   "qualifier": "west",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_033": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "window",
+   "qualifier": "north",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_034": {
+  "intent": "DEFUSE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "top_floor",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_035": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": "main",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_036": {
+  "intent": "ENTRY",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": "main",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_037": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "blue",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_038": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "roof",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_039": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_040": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "stairs",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": true
+  }
+ },
+ "r6v3_041": {
+  "intent": "SMOKE",
+  "ok": [],
+  "timing": "now",
+  "reference": "other",
+  "target": {
+   "object": "stairs",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_042": {
+  "intent": "BREACH",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": "south",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_043": {
+  "intent": "ENTRY",
+  "ok": [
+   "MOVE_TO"
+  ],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "floor_2",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_044": {
+  "intent": "TAKE_COVER",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "table",
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_045": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_046": {
+  "intent": "FALL_BACK",
+  "ok": [
+   "MOVE_TO"
+  ],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "floor_1",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_047": {
+  "intent": "OPEN",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": "south",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_048": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "stairs",
+   "qualifier": "red",
+   "zone": "basement",
+   "unknown_modifier": false
+  }
+ },
+ "r6v3_049": {
+  "intent": "FLANK",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "stairs",
+   "qualifier": "brown",
+   "zone": null,
+   "unknown_modifier": false
+  }
+ }
+}

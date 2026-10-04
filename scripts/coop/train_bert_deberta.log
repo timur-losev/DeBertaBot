@@ -1,0 +1,41 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3493.72it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3451.04it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3316.00it/s]
+microsoft/deberta-v3-base held=r6 seed=0 done, 66s elapsed
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights:  75%|███████▌  | 149/198 [00:00<00:00, 1479.50it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1772.45it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3152.74it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3178.48it/s]
+microsoft/deberta-v3-base held=r6 seed=1 done, 131s elapsed
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2139.96it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2896.60it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2943.74it/s]
+microsoft/deberta-v3-base held=r6 seed=2 done, 195s elapsed
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights:  97%|█████████▋| 193/198 [00:00<00:00, 1925.20it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1779.82it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3175.63it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3033.59it/s]
+microsoft/deberta-v3-base held=cs seed=0 done, 260s elapsed
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3227.28it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2952.07it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3218.95it/s]
+microsoft/deberta-v3-base held=cs seed=1 done, 325s elapsed
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2077.07it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3347.40it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2480.99it/s]
+microsoft/deberta-v3-base held=cs seed=2 done, 390s elapsed
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2760.43it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2652.03it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3085.36it/s]
+microsoft/deberta-v3-base held=stt seed=0 done, 455s elapsed
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights:  99%|█████████▉| 197/198 [00:00<00:00, 1924.79it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 1915.85it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2207.69it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3146.09it/s]
+microsoft/deberta-v3-base held=stt seed=1 done, 520s elapsed
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2651.85it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3430.19it/s]
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 2916.51it/s]
+microsoft/deberta-v3-base held=stt seed=2 done, 585s elapsed
+microsoft/deberta-v3-base: CPU latency median 67.1 ms, total 9.8 min
+exit 0

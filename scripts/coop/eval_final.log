@@ -1,0 +1,61 @@
+ModernBERT-base@selected: chosen per held-out author: r6 lr=8e-05 epochs=6, cs lr=8e-05 epochs=5, stt lr=8e-05 epochs=9
+deberta-v3-base@selected: chosen per held-out author: r6 lr=8e-05 epochs=10, cs lr=8e-05 epochs=9, stt lr=8e-05 epochs=10
+ModernBERT-large@selected: chosen per held-out author: r6 lr=5e-05 epochs=9, cs lr=8e-05 epochs=9, stt lr=8e-05 epochs=5
+ModernBERT-base@selected-hi: chosen per held-out author: r6 lr=0.0002 epochs=15, cs lr=0.00012 epochs=17, stt lr=0.00012 epochs=16
+deberta-v3-base@selected-hi: chosen per held-out author: r6 lr=8e-05 epochs=18, cs lr=8e-05 epochs=18, stt lr=8e-05 epochs=10
+ModernBERT-large@selected-hi: chosen per held-out author: r6 lr=8e-05 epochs=14, cs lr=0.0002 epochs=7, stt lr=0.00012 epochs=17
+held-out union, 363 lines; novel = 200 lines with no close copy in another author's set
+
+method                                                    near      wrong fam      non-order       near-2*wf     novel: near     novel: wf    novel: n-2wf
+zero-shot decision:eos, dev thr 0.52                      62.3            2.2            5.9            57.9            63.5           2.0            59.5
+decision:eos base, thr                                    72.2            5.8           11.8            60.6            69.5           6.5            56.5
+logreg, thr                                               79.6            5.8           17.6            68.0            65.5           8.0            49.5
+family key: logreg + decision base                        63.4            0.3            3.9            62.8            54.0           0.5            53.0
+zero-shot laya:en, argmax                                 64.2           27.3           49.0             9.6            58.0          30.0            -2.0
+ModernBERT-base, argmax                           75.6 [72-78]   17.4 [15-19]   26.8 [24-29]    40.7 [34-46]    65.3 [61-68]  23.8 [20-26]    17.7 [10-30]
+ModernBERT-base, threshold (inner)                65.7 [61-68]      3.2 [3-4]     9.2 [6-12]    59.2 [55-63]    52.3 [48-56]     4.2 [4-4]    44.0 [40-47]
+ModernBERT-base, family key, inner thr            55.0 [52-57]      0.3 [0-1]      0.7 [0-2]    54.5 [51-57]    45.2 [42-46]     0.3 [0-0]    44.5 [42-46]
+ModernBERT-large, argmax                          73.7 [71-77]   19.8 [18-23]   18.3 [16-20]    34.1 [25-40]    64.5 [62-68]  26.3 [25-28]     11.8 [5-18]
+ModernBERT-large, threshold (inner)               57.4 [53-63]      3.6 [1-6]     6.5 [4-10]    50.2 [46-54]    45.3 [38-50]     3.3 [0-6]    38.7 [36-43]
+ModernBERT-large, family key, inner thr           48.1 [44-53]      0.4 [0-1]            0.0    47.4 [44-52]    39.2 [34-44]           0.0    39.2 [34-44]
+deberta-v3-base, argmax                           83.3 [81-85]   14.1 [13-17]   28.1 [25-29]    55.0 [47-59]    75.7 [74-78]  20.8 [19-24]    34.0 [26-40]
+deberta-v3-base, threshold (inner)                82.4 [80-85]   10.6 [10-11]   23.5 [22-25]    61.2 [58-65]    74.2 [72-78]  15.8 [15-16]    42.5 [39-49]
+deberta-v3-base, family key, inner thr            65.9 [65-68]      0.7 [1-1]      3.3 [2-4]    64.5 [64-66]    59.3 [58-62]     0.7 [0-1]    58.0 [57-60]
+deberta-v3-base, threshold (oof)                  75.5 [74-77]      4.8 [3-7]   13.7 [12-16]    65.9 [61-71]    66.0 [65-67]     6.5 [4-9]    53.0 [49-57]
+deberta-v3-base, family key, oof thr              60.8 [60-62]      0.5 [0-1]      3.3 [2-4]    59.9 [59-61]    52.7 [52-53]     0.3 [0-0]    52.0 [52-52]
+ModernBERT-base@selected, argmax                  78.0 [77-79]   17.4 [15-18]   22.2 [16-29]    43.3 [40-49]    67.3 [66-68]  25.0 [22-28]     17.3 [9-24]
+ModernBERT-base@selected, threshold (oof)         63.5 [57-70]      3.2 [2-5]     9.8 [6-14]    57.1 [53-60]    50.3 [44-55]     4.5 [2-8]    41.3 [39-46]
+ModernBERT-base@selected, family key, oof thr     53.7 [49-57]            0.0      2.6 [2-4]    53.7 [49-57]    43.8 [39-47]           0.0    43.8 [39-47]
+deberta-v3-base@selected, argmax                  78.6 [76-81]   17.8 [16-21]   20.9 [18-24]    43.0 [34-48]    71.0 [68-73]  23.8 [20-28]    23.3 [11-32]
+deberta-v3-base@selected, threshold (oof)         67.3 [62-74]      6.8 [4-9]   13.1 [12-16]    53.7 [51-55]    59.0 [53-66]    8.0 [5-12]    43.0 [43-43]
+deberta-v3-base@selected, family key, oof thr     55.5 [53-59]      0.5 [0-1]            2.0    54.5 [52-58]    47.8 [45-52]     0.3 [0-0]    47.2 [44-52]
+ModernBERT-large@selected, argmax                 80.6 [79-83]   15.4 [13-17]   22.9 [16-27]    49.8 [45-56]    73.2 [70-76]  20.3 [18-22]    32.5 [25-40]
+ModernBERT-large@selected, threshold (oof)        68.4 [63-71]      4.4 [3-7]     9.2 [8-10]    59.6 [56-65]    58.0 [50-62]     5.8 [4-9]    46.3 [42-54]
+ModernBERT-large@selected, family key, oof thr    56.4 [52-58]      0.5 [0-1]      1.3 [0-2]    55.5 [52-58]    48.2 [43-52]     0.2 [0-0]    47.8 [43-52]
+ModernBERT-base@selected-hi, argmax               80.9 [79-82]   15.5 [15-17]   27.5 [22-31]    49.9 [45-53]    70.8 [68-73]  23.3 [21-26]    24.2 [15-31]
+ModernBERT-base@selected-hi, threshold (oof)      71.4 [68-74]      3.7 [2-6]     7.8 [6-10]    64.1 [62-66]    59.5 [55-62]     4.7 [1-9]    50.2 [44-54]
+ModernBERT-base@selected-hi, family key, oof thr    58.0 [56-60]      0.6 [0-1]      2.6 [2-4]    56.9 [54-59]    48.2 [45-50]     0.5 [0-1]    47.2 [44-50]
+deberta-v3-base@selected-hi, argmax               84.8 [83-86]   14.1 [14-14]   30.7 [24-41]    56.5 [55-58]    77.3 [76-78]  21.3 [21-22]    34.7 [32-37]
+deberta-v3-base@selected-hi, threshold (oof)      79.7 [78-81]      6.1 [4-7]   17.0 [16-18]    67.6 [64-71]    71.0 [69-74]    8.5 [6-10]    54.0 [49-59]
+deberta-v3-base@selected-hi, family key, oof thr    63.0 [62-64]      0.4 [0-1]      3.9 [2-6]    62.3 [61-63]    54.8 [54-56]           0.0    54.8 [54-56]
+ModernBERT-large@selected-hi, argmax              76.4 [66-82]   20.8 [13-33]   35.3 [18-57]     34.9 [1-56]    69.7 [59-76]  26.2 [17-40]   17.3 [-20-42]
+ModernBERT-large@selected-hi, threshold (oof)     65.7 [56-72]      2.6 [2-3]     7.2 [6-10]    60.5 [52-66]    57.5 [48-64]     3.2 [2-4]    51.2 [40-59]
+ModernBERT-large@selected-hi, family key, oof thr    53.0 [44-58]      0.2 [0-0]      1.3 [0-2]    52.6 [44-57]    47.3 [40-52]           0.0    47.3 [40-52]
+
+thresholds fitted (mean over folds and seeds): {'ModernBERT-base threshold (inner)': 0.62, 'ModernBERT-base family key, inner thr': 0.62, 'ModernBERT-large threshold (inner)': 0.69, 'ModernBERT-large family key, inner thr': 0.69, 'deberta-v3-base threshold (inner)': 0.32, 'deberta-v3-base family key, inner thr': 0.32, 'deberta-v3-base threshold (oof)': 0.54, 'deberta-v3-base family key, oof thr': 0.54, 'ModernBERT-base@selected threshold (oof)': 0.66, 'ModernBERT-base@selected family key, oof thr': 0.66, 'deberta-v3-base@selected threshold (oof)': 0.32, 'deberta-v3-base@selected family key, oof thr': 0.32, 'ModernBERT-large@selected threshold (oof)': 0.78, 'ModernBERT-large@selected family key, oof thr': 0.78, 'ModernBERT-base@selected-hi threshold (oof)': 0.72, 'ModernBERT-base@selected-hi family key, oof thr': 0.72, 'deberta-v3-base@selected-hi threshold (oof)': 0.54, 'deberta-v3-base@selected-hi family key, oof thr': 0.54, 'ModernBERT-large@selected-hi threshold (oof)': 0.84, 'ModernBERT-large@selected-hi family key, oof thr': 0.84}
+
+DIAGNOSTIC (oracle threshold swept on the test lines; compares methods at equal risk, not a result):
+method                                     wf<=2%         wf<=4%       wf<=6.5%        wf<=10%   (all lines | novel lines)
+decision:eos (descriptions)          58.4 |  64.0   68.3 |  68.0   73.6 |  70.5   74.9 |  71.5
+logreg char-ngrams                   67.8 |  43.5   76.9 |  53.0   80.7 |  60.5   81.5 |  68.5
+ModernBERT-base (fine-tuned)         60.0 |  44.3   66.8 |  52.0   70.5 |  55.2   73.1 |  59.3
+ModernBERT-large (fine-tuned)        55.3 |  44.8   60.5 |  48.2   64.1 |  51.3   68.8 |  54.8
+deberta-v3-base (fine-tuned)         70.4 |  57.3   75.7 |  65.2   79.3 |  67.5   82.2 |  72.0
+ModernBERT-base@selected (fine-tuned)   61.4 |  43.5   68.2 |  51.2   72.0 |  58.2   74.2 |  61.2
+deberta-v3-base@selected (fine-tuned)   56.6 |  48.0   62.4 |  52.7   68.5 |  60.3   71.7 |  63.5
+ModernBERT-large@selected (fine-tuned)   59.8 |  47.7   66.3 |  53.7   73.0 |  59.3   77.2 |  66.0
+ModernBERT-base@selected-hi (fine-tuned)   69.2 |  55.7   73.5 |  58.7   75.6 |  61.5   79.3 |  64.7
+deberta-v3-base@selected-hi (fine-tuned)   75.8 |  64.7   78.4 |  68.3   81.4 |  70.7   83.3 |  73.7
+ModernBERT-large@selected-hi (fine-tuned)   62.0 |  53.7   69.8 |  60.3   72.3 |  63.8   75.4 |  66.7
+
+CPU latency per line: {'answerdotai/ModernBERT-base': '33.1 ms', 'answerdotai/ModernBERT-large': '79.7 ms', 'microsoft/deberta-v3-base': '67.1 ms'}

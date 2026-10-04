@@ -1,0 +1,970 @@
+[
+ {
+  "id": "stt_000",
+  "text": "i take this door, you watch other",
+  "intent": "HOLD_OTHER_ANGLE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_001",
+  "text": "flake right but dont move till i say",
+  "intent": "FLANK",
+  "timing": "on_signal",
+  "reference": "none",
+  "kind": "on_signal"
+ },
+ {
+  "id": "stt_002",
+  "text": "blow the hatch open",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_003",
+  "text": "i got this door you take the other one",
+  "intent": "HOLD_OTHER_ANGLE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_004",
+  "text": "actually dont go in yet",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "stt_005",
+  "text": "full back full back",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_006",
+  "text": "i hear foot steps above us like right above",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "stt_007",
+  "text": "hang on a sec",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_008",
+  "text": "beach this wall",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_009",
+  "text": "eyes on the stairs bot keep em on the stairs",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_010",
+  "text": "on me on me",
+  "intent": "FOLLOW_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_011",
+  "text": "frag out",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_012",
+  "text": "flesh the room then clear it",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "compound"
+ },
+ {
+  "id": "stt_013",
+  "text": "uh cook a frog and toss it in the room",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_014",
+  "text": "fault in through the window bot",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_015",
+  "text": "get in there and take the room",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_016",
+  "text": "uh fault through the other window not this one",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "stt_017",
+  "text": "you stay in this place no moving okay",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_018",
+  "text": "blow the other hatch bot",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "stt_019",
+  "text": "smoke it",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_020",
+  "text": "uh scout it out before anyone goes in",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_021",
+  "text": "uh hop in the window and watch the stairs",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "this",
+  "kind": "compound"
+ },
+ {
+  "id": "stt_022",
+  "text": "beach the hatch and drop in on em",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "compound"
+ },
+ {
+  "id": "stt_023",
+  "text": "hey buddy get on the rope and drop in when i give the word",
+  "intent": "RAPPEL",
+  "timing": "on_signal",
+  "reference": "none",
+  "kind": "on_signal"
+ },
+ {
+  "id": "stt_024",
+  "text": "Freeze. stop moving hole there",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_025",
+  "text": "deny the plant bot",
+  "intent": "DEFUSE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_026",
+  "text": "storm site",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_027",
+  "text": "repel down from the roof bot",
+  "intent": "RAPPEL",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_028",
+  "text": "uh im on the floor by the stairs someone get me up",
+  "intent": "REVIVE_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_029",
+  "text": "whoa whoa easy",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_030",
+  "text": "youre first in bot sweep the room",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_031",
+  "text": "smoke the other door",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "stt_032",
+  "text": "help im bleeding out over here",
+  "intent": "REVIVE_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_033",
+  "text": "bot cover the opposite doorway from me",
+  "intent": "HOLD_OTHER_ANGLE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_034",
+  "text": "head up the other stairs",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "stt_035",
+  "text": "im down pick me up",
+  "intent": "REVIVE_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_036",
+  "text": "pull out were losing this one",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_037",
+  "text": "uh hang on your rope outside that window",
+  "intent": "RAPPEL",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_038",
+  "text": "dont beach it",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "stt_039",
+  "text": "push in after you smoke the door",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "compound"
+ },
+ {
+  "id": "stt_040",
+  "text": "hop through that window",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_041",
+  "text": "blind em bot",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_042",
+  "text": "watch that door",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_043",
+  "text": "bot swing wide and pinch em from the side",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_044",
+  "text": "Okay so switch, take the other ankle",
+  "intent": "HOLD_OTHER_ANGLE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_045",
+  "text": "climb in right here through the glass",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_046",
+  "text": "okay so just uh shadow me dont go wandering off",
+  "intent": "FOLLOW_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_047",
+  "text": "shut their defuser down",
+  "intent": "DEFUSE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_048",
+  "text": "go round the back and hit em from behind",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_049",
+  "text": "watch my back while i plant",
+  "intent": "COVER_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_050",
+  "text": "uh head over there by the red container",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_051",
+  "text": "send the drone thru the other hallway",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "stt_052",
+  "text": "bot get over to my ping",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_053",
+  "text": "okay execute",
+  "intent": "GO_NOW",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_054",
+  "text": "wait for my call then frag em",
+  "intent": "FRAG",
+  "timing": "on_signal",
+  "reference": "none",
+  "kind": "on_signal"
+ },
+ {
+  "id": "stt_055",
+  "text": "never mind the drone bot",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "stt_056",
+  "text": "toss a stun through the door",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_057",
+  "text": "pop a smock on the stairs",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_058",
+  "text": "bot flash it but only when i call it",
+  "intent": "FLASH",
+  "timing": "on_signal",
+  "reference": "none",
+  "kind": "on_signal"
+ },
+ {
+  "id": "stt_059",
+  "text": "back me up im gonna peek",
+  "intent": "COVER_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_060",
+  "text": "nice shot buddy",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "chatter"
+ },
+ {
+  "id": "stt_061",
+  "text": "hey buddy keep up with me im heading upstairs",
+  "intent": "FOLLOW_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_062",
+  "text": "uh guy on roof",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "stt_063",
+  "text": "hold this ankle right here",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_064",
+  "text": "this map is trash honestly",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "chatter"
+ },
+ {
+  "id": "stt_065",
+  "text": "nade that corner",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_066",
+  "text": "throw a molly in there",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_067",
+  "text": "toss your flash in the uh other doorway",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "other",
+  "kind": "other_ref"
+ },
+ {
+  "id": "stt_068",
+  "text": "shield guy in the hallway",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "stt_069",
+  "text": "gimme a smoke screen out front",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_070",
+  "text": "uh bot stick with me okay",
+  "intent": "FOLLOW_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_071",
+  "text": "two on the stairs two",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "stt_072",
+  "text": "uh bot slap a charge on the floor and pop it",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_073",
+  "text": "get the defuser down",
+  "intent": "PLANT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_074",
+  "text": "beach that wall on my go",
+  "intent": "BREACH",
+  "timing": "on_signal",
+  "reference": "this",
+  "kind": "on_signal"
+ },
+ {
+  "id": "stt_075",
+  "text": "theres a claymore on the window",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "stt_076",
+  "text": "bot are you even listening to me",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "chatter"
+ },
+ {
+  "id": "stt_077",
+  "text": "cloud up that doorway",
+  "intent": "SMOKE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_078",
+  "text": "stay put bot",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_079",
+  "text": "uh bail out through the winder",
+  "intent": "VAULT_WINDOW",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_080",
+  "text": "there rotating to be",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "stt_081",
+  "text": "hop the window on my mark",
+  "intent": "VAULT_WINDOW",
+  "timing": "on_signal",
+  "reference": "this",
+  "kind": "on_signal"
+ },
+ {
+  "id": "stt_082",
+  "text": "please you walk to where i mark",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_083",
+  "text": "uh aim at that window and if anything peeks you drop it",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_084",
+  "text": "rope down the outside wall to second floor",
+  "intent": "RAPPEL",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_085",
+  "text": "get on the bomb and uh kit it",
+  "intent": "DEFUSE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_086",
+  "text": "flash it",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_087",
+  "text": "nah forget the flake",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "stt_088",
+  "text": "hey buddy keep me alive im reloading",
+  "intent": "COVER_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_089",
+  "text": "one in kitchen hes one shot",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "stt_090",
+  "text": "uh wait one",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_091",
+  "text": "alpha reposition to garage like right now",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_092",
+  "text": "uh disengage disengage reset",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_093",
+  "text": "put the spike down bot",
+  "intent": "PLANT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_094",
+  "text": "drown the room first",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_095",
+  "text": "cover me im crossing",
+  "intent": "COVER_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_096",
+  "text": "roll the cam in there get me some eyes",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "this",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_097",
+  "text": "okay you uh you just camp there dont move",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_098",
+  "text": "now now now",
+  "intent": "GO_NOW",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_099",
+  "text": "okay on three we push in",
+  "intent": "ENTRY",
+  "timing": "on_signal",
+  "reference": "none",
+  "kind": "on_signal"
+ },
+ {
+  "id": "stt_100",
+  "text": "send your drone in",
+  "intent": "DRONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_101",
+  "text": "push in and clear it out",
+  "intent": "ENTRY",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_102",
+  "text": "uh dont frag theres a hostage in there",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "stt_103",
+  "text": "how much time's left",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "chatter"
+ },
+ {
+  "id": "stt_104",
+  "text": "uh smoke the stairs when i say",
+  "intent": "SMOKE",
+  "timing": "on_signal",
+  "reference": "this",
+  "kind": "on_signal"
+ },
+ {
+  "id": "stt_105",
+  "text": "throw a flesh in there",
+  "intent": "FLASH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_106",
+  "text": "plan it plan it now",
+  "intent": "PLANT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_107",
+  "text": "scratch what i just said",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_108",
+  "text": "no smoke no smoke",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "negated"
+ },
+ {
+  "id": "stt_109",
+  "text": "take the long route past my marker come up behind them",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_110",
+  "text": "you got the c4 right arm it on b",
+  "intent": "PLANT",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_111",
+  "text": "the fuse it the fuse",
+  "intent": "DEFUSE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_112",
+  "text": "send it",
+  "intent": "GO_NOW",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_113",
+  "text": "get outta there bot",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_114",
+  "text": "make us a hole in that wall",
+  "intent": "BREACH",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_115",
+  "text": "why'd you just run in there man",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "chatter"
+ },
+ {
+  "id": "stt_116",
+  "text": "last ones low behind the couch",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "kind": "callout"
+ },
+ {
+  "id": "stt_117",
+  "text": "grab the rope and climb up top",
+  "intent": "RAPPEL",
+  "timing": "now",
+  "reference": "none",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_118",
+  "text": "go go go",
+  "intent": "GO_NOW",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ },
+ {
+  "id": "stt_119",
+  "text": "flake left through the uh garage",
+  "intent": "FLANK",
+  "timing": "now",
+  "reference": "this",
+  "kind": "plain"
+ },
+ {
+  "id": "stt_120",
+  "text": "bot come res me",
+  "intent": "REVIVE_ME",
+  "timing": "now",
+  "reference": "none",
+  "kind": "slang"
+ }
+]
