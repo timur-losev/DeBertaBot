@@ -5,19 +5,22 @@ covers the tokenizer, the model call (one model or an ensemble), and the bot's d
 checked line by line against the Python bot, and it is laid out so the core can move into UE5
 unchanged.
 
-The shipped bot is **v2** ([COOP-BOT.md](../../COOP-BOT.md), section "v2"), and it is the default
-(`COOP_MODEL_DIR` in `CMakeLists.txt`):
+The default bot is **v31** ([COOP-BOT.md](../../COOP-BOT.md), sections "v2" and "v3";
+`COOP_MODEL_DIR` in `CMakeLists.txt`):
 - 24 intents, including TAKE_COVER (the bot hides; the planner picks the spot) and OPEN (open a door
   or window without going through);
-- three DeBERTa-v3-base models with their probabilities averaged;
-- the family gate, threshold 0.58;
+- three DeBERTa-v3-base models with their probabilities averaged, re-trained with lines that name
+  map places and seed set v31;
+- the family gate, threshold 0.62;
 - the map's named places found in every line and handed to the planner as a record (`locations.h`,
-  rule set v3; COOP-BOT.md, section "v3"). The matcher does not depend on the model.
+  rule set v3). The matcher does not depend on the model.
+
+Model weights are not in git. On a machine without the v31 weights CMake makes the v2 bot the
+default and says so.
 
 Other bots run with `--model-dir`:
-- `../../models/coop-deberta-v3-ens3-v31/cpp`: v31, the same ensemble re-trained with lines that name
-  map places and the corrected seed set (family gate, 0.62; trained on the work machine). The
-  candidate to become the default;
+- `../../models/coop-deberta-v3-ens3-v2/cpp`: v2, the default until 2026-10-04: no place lines in
+  training (family gate, 0.58);
 - `../../models/coop-deberta-v3-ens3-v3/cpp`: v3, re-trained with place lines and the first seed set
   (family gate, 0.60; trained on the Mac). It carries out smoke and "clear" callouts as orders;
 - `../../models/coop-deberta-v3-base/cpp`: v1, 22 intents, no place vocabulary in its config.
@@ -36,8 +39,8 @@ Other bots run with `--model-dir`:
 | `tools/gen_unicode_tables.py` | writes `unicode_tables.inc` from the HF `tokenizers` library itself | no |
 | `tools/gen_tests.py` | writes the test files (tokenizer, places, gates, decisions, dialogue) from the Python bot | no |
 
-`scripts/coop/export_cpp.py <bot dir>` writes the model files to `<bot dir>/cpp/`. For the shipped
-bot that is `models/coop-deberta-v3-ens3-v2/cpp/`:
+`scripts/coop/export_cpp.py <bot dir>` writes the model files to `<bot dir>/cpp/`. For the default
+bot that is `models/coop-deberta-v3-ens3-v31/cpp/`:
 - `model0.onnx`, `model1.onnx`, `model2.onnx`: fp32, 739 MB (704 MiB) each, opset 17, dynamic
   sequence length. A single-model bot has one `model.onnx`. The weights are not in git (HANDOFF.md,
   section 1).
@@ -57,11 +60,11 @@ cmake -S . -B build -G "Visual Studio 17 2022" -A x64
 cmake --build build --config Release
 
 build\Release\coop_cli.exe                    # chat, like coop_bot.py: /why /t 0.6 /q
-build\Release\coop_cli.exe --golden           # C++ vs PyTorch on the golden lines (762 for the v2 bot)
-build\Release\coop_cli.exe --tokenizer-tests  # C++ vs the HF tokenizer and Python re (8931 lines)
-build\Release\coop_cli.exe --location-tests   # the place records vs locations.py (20201 lines, no model)
+build\Release\coop_cli.exe --golden           # C++ vs PyTorch on the golden lines (1259 for the v31 bot)
+build\Release\coop_cli.exe --tokenizer-tests  # C++ vs the HF tokenizer and Python re (9428 lines)
+build\Release\coop_cli.exe --location-tests   # the place records vs locations.py (20204 lines, no model)
 build\Release\coop_cli.exe --dialogue         # C++ vs coop_bot.Bot on a 77-line conversation
-build\Release\coop_cli.exe --gate-tests       # both gates on 1169 probability rows (no model)
+build\Release\coop_cli.exe --gate-tests       # both gates on 1666 probability rows (no model)
 build\Release\coop_cli.exe --decide-tests     # every branch of the bot's decision, both gates (no model)
 build\Release\coop_cli.exe --bench --threads 1
 build\Release\coop_cli.exe --tokenize "hold the other angle"
@@ -82,7 +85,7 @@ With rule set v3, on Windows (2026-10-04). The v3 bot's weights exist only on th
 checks through the model were last run there, before rule set v3 (1062/1062 and 77/77); its other
 test files were refreshed on Windows with `gen_tests.py --no-model`.
 
-| check | v2 bot (shipped) | v31 bot | v3 bot | v1 bot |
+| check | v2 bot | v31 bot (default) | v3 bot | v1 bot |
 |---|---|---|---|---|
 | token ids and probabilities vs PyTorch, golden lines | 762/762, max difference 3.3e-6 | 1259/1259, 2.2e-6 | needs the weights | 754/754, 3.1e-6 |
 | normalizer / token ids | 8931/8931 | 9428/9428 | 9231/9231 | 8923/8923 |
@@ -141,7 +144,7 @@ architecture as the bots in the repository, its files are not in it):
 - `--no-spin` (idle threads sleep, which a game wants) cost nothing measurable: 34.7 ms median at 4
   threads per model.
 - The v31 bot: 40.8 ms with one thread per model, 56.4 ms in turn with 4 threads (its `bench.txt`).
-- The shipped v2 bot gives the same latencies: 39.7 ms with one thread per model and 56.8 ms in turn
+- The v2 bot gives the same latencies: 39.7 ms with one thread per model and 56.8 ms in turn
   with 4 threads (re-measured 2026-10-04, appended to its `bench.txt`). The first block of that file
   is an earlier run that was 35–55% slower, for a reason not identified.
 

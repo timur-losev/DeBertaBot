@@ -21,9 +21,15 @@ else()
   endif()
 endif()
 set(ORT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party/${ORT_NAME}" CACHE PATH "ONNX Runtime release (include/, lib/)")
-# the shipped bot (scripts/coop/bots.py names the same one for the Python tools); a cache variable:
-# pass -DCOOP_MODEL_DIR=... or use coop_cli --model-dir for another bot
-set(COOP_MODEL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../models/coop-deberta-v3-ens3-v2/cpp" CACHE PATH "export_cpp.py output")
+# the default bot (scripts/coop/bots.py names the same one for the Python tools). Weights are not in git:
+# on a machine without the default bot's, coop_cli defaults to the v2 bot. A cache variable: pass
+# -DCOOP_MODEL_DIR=... or use coop_cli --model-dir for another bot
+set(_COOP_BOT "${CMAKE_CURRENT_SOURCE_DIR}/../../models/coop-deberta-v3-ens3-v31/cpp")
+if(NOT EXISTS "${_COOP_BOT}/model0.onnx")
+  message(STATUS "the weights of the default bot (coop-deberta-v3-ens3-v31) are not on this machine: coop_cli defaults to coop-deberta-v3-ens3-v2")
+  set(_COOP_BOT "${CMAKE_CURRENT_SOURCE_DIR}/../../models/coop-deberta-v3-ens3-v2/cpp")
+endif()
+set(COOP_MODEL_DIR "${_COOP_BOT}" CACHE PATH "export_cpp.py output")
 if(NOT EXISTS "${ORT_DIR}/include/onnxruntime_cxx_api.h")
   message(FATAL_ERROR "ONNX Runtime not found in ${ORT_DIR}: unpack the ${ORT_NAME} release there, or pass -DORT_DIR=<dir>")
 endif()

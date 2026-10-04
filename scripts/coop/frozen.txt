@@ -279,3 +279,8 @@ e46ae79d297061c5cd4928d89a85e25152394c3224733687d0f4ac2d12080d93 *eval_v2_v31.lo
 70adc7a15198207979c5f7792b2d81f39a00cf6dae276ac588dcfa7028d53147 *eval_fresh.log
 7d21a75c48899d7e01b051f80a6bcc9edfab1f72896602dce0248fa25394e829 *review_v3/fresh_probs_v31.json
 db5bcc8ef24eb997685e7797c95ae260a6e5577cfceaf3f12a060f2751ae4420 *eval_v3_review.py
+2026-10-04T20:46:07+02:00
+# the default bot is v31, by the owner's decision of 2026-10-04 (asked after the v31 results above; before that the default was v2): bots.py DEFAULT and cpp/coop_intent/CMakeLists.txt. Model weights are not in git, so on a machine without the v31 weights both fall back to the v2 bot and say so. Checked on the work machine with the default: coop_cli tokenizer 9428/9428, location 20204/20204, gate 3332/3332, decide 140/140, golden 1259/1259, dialogue 77/77; coop_bot.py loads v31 (family gate, 0.62). No model, rule, seed or threshold changed
+48fbbbf03f5c94cc4c6553170905e8784dae94b65e87fe9fb31f582d60d0084e *bots.py
+9665a6deb1709e8e0b3a1a59193531dce6dd263390dfed00f4f4f2e548e12372 *coop_bot.py
+71b95f80c69485554e518e3961f9f76675a3e51b856546b82b888fd9d84eef98 *../../cpp/coop_intent/CMakeLists.txt

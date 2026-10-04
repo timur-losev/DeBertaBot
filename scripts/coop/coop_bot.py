@@ -1,7 +1,8 @@
 """
-Talk to the co-op bot, on CPU: by default the shipped v2 bot (bots.py: three fine-tuned
-DeBERTa-v3-base models, train_v2.py final ens3); --model ../../models/coop-deberta-v3-ens3-v3 for the
-bot trained with lines that name map places, ../../models/coop-deberta-v3-base for the 22-intent v1 bot.
+Talk to the co-op bot, on CPU: by default the v31 bot (bots.py: three fine-tuned DeBERTa-v3-base
+models, train_v2.py final ens3 under COOP_TAG=v31; without its weights on this machine, the v2 bot);
+--model ../../models/coop-deberta-v3-ens3-v2 for the bot trained without place lines,
+../../models/coop-deberta-v3-base for the 22-intent v1 bot.
 
 What happens to each line you type (the pipeline COOP-BOT.md recommends):
   1. regex slots   "on my go / when I say / on three" -> the order waits for your signal;
@@ -37,8 +38,8 @@ import locations as LOC  # noqa: E402  the map's named places in the line (COOP-
 
 import re  # noqa: E402
 
-# the shipped bot: v2 (24 intents incl. TAKE_COVER and OPEN), three DeBERTa-v3-base seeds averaged,
-# family gate (train_v2.py final ens3, COOP-BOT.md "v2"); bots.py is the one place that names it
+# the default bot: v31 (24 intents incl. TAKE_COVER and OPEN, trained with lines that name map places),
+# three DeBERTa-v3-base seeds averaged, family gate (COOP-BOT.md "v3"); bots.py is the one place that names it
 MODEL_DIR = bots.default_bot()
 LAYA_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "models", "coop-laya-ft"))
 # Safety net for polarity: the classifier reads the topic of a line, not whether it is negated

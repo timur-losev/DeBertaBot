@@ -683,7 +683,7 @@ v3 lines and the location seeds; three base seeds averaged; out-of-fold threshol
   I want somebody up top" still goes to RAPPEL.
 
 **The final v3 model** ([train_v2.py](scripts/coop/train_v2.py) `final ens3` under `COOP_TAG=v3`) is
-trained on all 633 lines and 383 seed commands. It is not the default bot (`scripts/coop/bots.py`).
+trained on all 633 lines and 383 seed commands. It never became the default bot.
 - The model in the repository was trained on the MacBook (MPS): family gate at 0.60 (out-of-fold
   criterion 569 against 560 for top). The work machine trained its own on CUDA (family gate at 0.52,
   565 against 564); that one is not in the repository.
@@ -705,8 +705,8 @@ order template filled with places of every kind it allows, lone names included; 
 MOVE_TO template), NONE templates for smoke and "clear" callouts, and 5 plain callouts: 580 seeds. It
 was written after the blind lines and the probes had been seen, so every number below except the
 fresh author's is "after tuning". The model (`models/coop-deberta-v3-ens3-v31`, trained on CUDA on
-633 lines and 580 seeds): family gate at 0.62 (out-of-fold criterion 566 against 561 for top). It is
-not the default bot either; that is the owner's decision.
+633 lines and 580 seeds): family gate at 0.62 (out-of-fold criterion 566 against 561 for top). The
+owner made it the default bot on 2026-10-04 (`scripts/coop/bots.py`).
 
 - **The probes it was written against** (`probe_v31.log`; a check that the fix took, not an
   evaluation):
@@ -798,8 +798,8 @@ voice ─► STT ─► regex: timing (on my go?)        ─┐
   Places on the map come from a dictionary matcher that hands the planner the place, with any
   classifier (section v3). The same ensemble re-trained with lines that name places (v3) carries out
   smoke and "clear" callouts as orders; v31, trained with a corrected seed set, does not, and sends
-  roof orders to MOVE_TO. v31 is the candidate to replace v2 as the default; it has no blind number
-  yet, and the switch is the owner's decision.
+  roof orders to MOVE_TO. v31 is the default bot since 2026-10-04, by the owner's decision; it has
+  no blind number yet.
 - **Timing and "the other one" are code**, then checked by the planner. The models smear a one-word
   modifier across the whole sentence.
 - **Do not put playtest lines into the descriptions as examples.** It raises the score on repeated
