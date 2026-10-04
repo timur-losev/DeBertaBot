@@ -36,6 +36,10 @@ COOP_TAG is not read here: the tokenizer and location line sets follow golden.js
 export_cpp.py writes under the tag the bot was trained in (762 lines for v21, 1062 for v3).
 
     python gen_tests.py [BOT_DIR]      # jev environment; default: the shipped bot (scripts/coop/bots.py)
+    python gen_tests.py BOT_DIR --no-model
+        # after a change of the rules, the vocabulary or the regexes, on a machine without the bot's
+        # weights: everything is rebuilt except the model's own answers. dialogue.jsonl keeps each
+        # line's stored intent and confidence and gets the actions, queue and places they lead to now
 """
 import io, json, os, random, struct, sys
 
@@ -43,7 +47,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 COOP = os.path.normpath(os.path.join(HERE, "..", "..", "..", "scripts", "coop"))
 sys.path.insert(0, COOP)
 import bots  # noqa: E402
-MODEL = os.path.normpath(sys.argv[1] if len(sys.argv) > 1 else bots.default_bot())
+_ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
+NO_MODEL = "--no-model" in sys.argv
+MODEL = os.path.normpath(_ARGS[0] if _ARGS else bots.default_bot())
 OUT = os.path.join(MODEL, "cpp")
 import coop_bot  # noqa: E402
 import locations as LOC  # noqa: E402
@@ -99,7 +105,38 @@ def random_line(rng, words):
     return line
 
 
+def bare_bot():
+    """coop_bot.Bot without its weights: the gates, decide() and the tokenizer need none."""
+    from transformers import AutoTokenizer
+    cfg = json.load(io.open(os.path.join(MODEL, "bot_config.json"), encoding="utf-8"))
+    bot = coop_bot.Bot.__new__(coop_bot.Bot)
+    bot.laya, bot.labels, bot.phrase = False, cfg["labels"], cfg["phrases"]
+    bot.gate, bot.family, bot.threshold = cfg.get("gate", "top"), cfg["families"], cfg["threshold"]
+    bot.tok = AutoTokenizer.from_pretrained(os.path.join(MODEL, cfg.get("members", ["."])[0]))
+    bot.reset()
+    return bot
+
+
+def replay_dialogue():
+    """--no-model: the stored conversation again, each line with the intent and confidence the model
+    gave it when the file was written; the action, the queue, the slots and the places are today's."""
+    bot = bare_bot()
+    rows = []
+    for old in [json.loads(l) for l in io.open(os.path.join(OUT, "dialogue.jsonl"), encoding="utf-8")]:
+        bot.pick = lambda p, old=old: (old["intent"], old["prob"])
+        _, rec = bot.decide(old["text"], None)
+        rows.append({"text": old["text"], "intent": rec["intent"], "prob": rec["prob"], "action": rec["action"],
+                     "pending": bot.pending, "other": rec["other"], "places": rec["places"],
+                     "executed": rec["executed"], "executed_places": rec["executed_places"],
+                     "executed_other": rec["executed_other"]})
+    del bot.pick      # back to the class's own pick()
+    bot.reset()
+    return rows, bot
+
+
 def dialogue():
+    if NO_MODEL:
+        return replay_dialogue()
     coop_bot.LOG = os.path.join(OUT, "_dialogue_log.jsonl")   # the bot appends every line to its log
     bot = coop_bot.Bot(model_dir=MODEL)
     script = ["hey, follow me", "breach on my go", "go", "smoke the hallway when i say", "wait", "go go go",
@@ -419,7 +456,8 @@ def main():
     with io.open(os.path.join(OUT, "dialogue.jsonl"), "w", encoding="utf-8", newline="\n") as f:
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
-    print("dialogue actions:", sorted({r["action"] for r in rows}))
+    print("dialogue actions:", sorted({r["action"] for r in rows}),
+          "(replayed from the stored intents: --no-model)" if NO_MODEL else "")
 
     golden = [json.loads(l)["text"] for l in io.open(os.path.join(OUT, "golden.jsonl"), encoding="utf-8")]
     words = sorted({w for t in golden for w in t.split()})

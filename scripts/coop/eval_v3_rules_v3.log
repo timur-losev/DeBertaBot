@@ -1,0 +1,107 @@
+study v3; v3 lines: 150; majority intent on 150, unanimous on 150; intents {'NONE': 24, 'MOVE_TO': 22, 'VAULT_WINDOW': 13, 'SMOKE': 12, 'HOLD_ANGLE': 12, 'ENTRY': 8, 'FRAG': 7, 'FLASH': 7, 'RAPPEL': 6, 'FLANK': 6, 'BREACH': 5, 'TAKE_COVER': 5, 'OPEN': 5, 'DRONE': 4, 'PLANT': 3, 'HOLD_OTHER_ANGLE': 3, 'WAIT': 3, 'FALL_BACK': 3, 'DEFUSE': 2}
+
+A. MATCHER, rule set v3 (current), on 150 v3 lines (readers agree on the whole target on 150, unanimously on 150)
+  NOT a blind number: this rule set was written after these lines had been read (blind: --rules v1, and eval_v3b.py)
+  all                    exact  98.0% (147/150)   usable on orders  99.2% (122/123)   object  99.3% (149/150)   qualifier  99.3% (149/150)   zone  98.7% (148/150)   truth in list  98.0% (147/150)
+  author r6              exact  98.0% (49/50)   usable on orders 100.0% (41/41)   object  98.0% (49/50)   qualifier  98.0% (49/50)   zone 100.0% (50/50)   truth in list  98.0% (49/50)
+  author cs              exact 100.0% (50/50)   usable on orders 100.0% (41/41)   object 100.0% (50/50)   qualifier 100.0% (50/50)   zone 100.0% (50/50)   truth in list 100.0% (50/50)
+  author stt             exact  96.0% (48/50)   usable on orders  97.6% (40/41)   object 100.0% (50/50)   qualifier 100.0% (50/50)   zone  96.0% (48/50)   truth in list  96.0% (48/50)
+  kind callout           exact  93.3% (14/15)   usable on orders   0.0% (0/0)   object 100.0% (15/15)   qualifier 100.0% (15/15)   zone  93.3% (14/15)   truth in list  93.3% (14/15)
+  kind negated           exact 100.0% (6/6)   usable on orders   0.0% (0/0)   object 100.0% (6/6)   qualifier 100.0% (6/6)   zone 100.0% (6/6)   truth in list 100.0% (6/6)
+  kind on_signal         exact 100.0% (12/12)   usable on orders 100.0% (12/12)   object 100.0% (12/12)   qualifier 100.0% (12/12)   zone 100.0% (12/12)   truth in list 100.0% (12/12)
+  kind other_ref         exact 100.0% (9/9)   usable on orders 100.0% (9/9)   object 100.0% (9/9)   qualifier 100.0% (9/9)   zone 100.0% (9/9)   truth in list 100.0% (9/9)
+  kind other_sense       exact  83.3% (5/6)   usable on orders   0.0% (0/0)   object  83.3% (5/6)   qualifier  83.3% (5/6)   zone 100.0% (6/6)   truth in list  83.3% (5/6)
+  kind place             exact  98.3% (59/60)   usable on orders  98.3% (59/60)   object 100.0% (60/60)   qualifier 100.0% (60/60)   zone  98.3% (59/60)   truth in list  98.3% (59/60)
+  kind two_places        exact 100.0% (15/15)   usable on orders 100.0% (15/15)   object 100.0% (15/15)   qualifier 100.0% (15/15)   zone 100.0% (15/15)   truth in list 100.0% (15/15)
+  kind unnamed           exact 100.0% (12/12)   usable on orders 100.0% (12/12)   object 100.0% (12/12)   qualifier 100.0% (12/12)   zone 100.0% (12/12)   truth in list 100.0% (12/12)
+  kind zone_object       exact 100.0% (15/15)   usable on orders 100.0% (15/15)   object 100.0% (15/15)   qualifier 100.0% (15/15)   zone 100.0% (15/15)   truth in list 100.0% (15/15)
+  readers agreed         exact  98.0% (147/150)   usable on orders  99.2% (122/123)   object  99.3% (149/150)   qualifier  99.3% (149/150)   zone  98.7% (148/150)   truth in list  98.0% (147/150)
+  order lines: 123; exact 122; of the exact ones the primary carries a role on 0 and 'unsure' on 0
+  unknown_modifier flag: raised on 12 lines, the readers mark 12; both 12; raised where the readers do not mark it 0
+  'unsure' flags: on 0 lines
+  mismatches (author kind | text | readers -> matcher):
+    r6v3_045   other_sense "Bro I've been a Thermite main since year one and I still whiff that."
+                 (None, None, None) -> ('door', 'main', None)  role=mine flag=None
+    sttv3_036  callout     'two guys on the rough i see them'
+                 (None, None, 'roof') -> (None, None, None)
+    sttv3_045  place       'second story is not clear go in and clean it'
+                 (None, None, 'floor_2') -> (None, None, None)
+  exact, but not usable (order lines whose primary has a role or 'unsure'):
+  on the 483 older lines the matcher finds a target in 117; unknown_modifier on 15, a role on the primary of 18, 'unsure' on 0
+
+B. SHIPPED BOT (coop-deberta-v3-ens3-v2, family gate, threshold 0.58) on the 150 v3 lines it never saw
+  (score = near - 2 x wrong family)
+  input: raw                         near  83.3  exact ok  82.0  wrong family  3.3  acts on non-order   8.3  score  76.7
+  input: strip                       near  81.3  exact ok  80.0  wrong family  4.0  acts on non-order  12.5  score  73.3
+  strip - raw, score: -3.3 [-8.0, +0.0]; answers that differ: 3
+    raw, kind callout      n= 15  near 100.0  wrong family  0.0
+    raw, kind negated      n=  6  near 100.0  wrong family  0.0
+    raw, kind on_signal    n= 12  near  83.3  wrong family  0.0
+    raw, kind other_ref    n=  9  near  66.7  wrong family 11.1
+    raw, kind other_sense  n=  6  near 100.0  wrong family  0.0
+    raw, kind place        n= 60  near  83.3  wrong family  5.0
+    raw, kind two_places   n= 15  near  53.3  wrong family  6.7
+    raw, kind unnamed      n= 12  near  91.7  wrong family  0.0
+    raw, kind zone_object  n= 15  near  86.7  wrong family  0.0
+  raw input, not near-correct (truth -> pick):
+    r6v3_001   zone_object FRAG -> NONE           "Top floor table, guy's prone under it, nade him out."
+    r6v3_002   two_places  MOVE_TO -> NONE           "Forget the roof, nothing's happening up there, get down to basement."
+    r6v3_006   unnamed     HOLD_ANGLE -> NONE           "Somebody needs eyes on the back door, that's you, don't let them walk in free."
+    r6v3_015   two_places  SMOKE -> NONE           'Smoke blue stairs, no wait, not blue, I meant white.'
+    r6v3_020   place       MOVE_TO -> NONE           "Get yourself up a floor, the whole team's rotating."
+    r6v3_030   two_places  DRONE -> NONE           "I'm posted on red stairs, you go drone out top floor."
+    r6v3_034   place       DEFUSE -> NONE           "Defuser's ticking on top floor, go get it off, I'll trade you."
+    r6v3_036   on_signal   ENTRY -> NONE           'Main, we hit it together, you go in when I say go.'
+    r6v3_041   other_ref   SMOKE -> NONE           'Yellow stairs is already smoked, put yours on the other staircase.'
+    r6v3_046   place       FALL_BACK -> TAKE_COVER     "You're getting swarmed, ditch that fight and get back to ground floor."
+    r6v3_048   zone_object HOLD_ANGLE -> NONE           'Red stairs down in basement, lock that down, nobody walks up it.'
+    csv3_007   other_ref   SMOKE -> HOLD_OTHER_ANGLE "main's already smoked, put yours on the other door"
+    csv3_016   place       DEFUSE -> NONE           "bomb's ticking by the sofa, get on it, I'll watch your back"
+    csv3_031   two_places  MOVE_TO -> RAPPEL         'get off the roof and come down to the basement'
+    csv3_037   place       MOVE_TO -> RAPPEL         'get up on the roof, I want somebody up top'
+    sttv3_005  other_ref   MOVE_TO -> NONE           'red stares is blocked uh get to the other stares'
+    sttv3_006  two_places  FLANK -> NONE           'is a guy camping blue stares so flake him through south door'
+    sttv3_010  on_signal   ENTRY -> NONE           'wait for my count and then you storm the top floor'
+    sttv3_017  place       MOVE_TO -> NONE           'everybody back to first floor bot it means you too'
+    sttv3_021  place       MOVE_TO -> NONE           'get yourself downstairs fast fast'
+    sttv3_023  two_places  VAULT_WINDOW -> NONE           'no not the north window i said east one fault the east one'
+    sttv3_028  two_places  MOVE_TO -> NONE           'get off the rough and come to west door'
+    sttv3_032  place       OPEN -> VAULT_WINDOW   'north window open it quiet dont climb in just open'
+    sttv3_040  place       HOLD_ANGLE -> NONE           'west is yours bot dont let nobody come through'
+    sttv3_041  place       MOVE_TO -> NONE           'get yourself on the rough um the rooftop i need you up top of the building'
+
+C. RE-TRAINED under v3 with the v3 lines and location seeds (leave one author out), 633 lines
+  ens3, top gate: all lines          near  89.7  exact ok  89.1  wrong family  1.6  acts on non-order   4.0  score  86.6
+  ens3, top gate: v3 lines           near  90.0  exact ok  89.3  wrong family  1.3  acts on non-order   4.2  score  87.3
+  ens3, top gate: older lines        near  89.6  exact ok  89.0  wrong family  1.7  acts on non-order   4.0  score  86.3
+  ens3, family gate: all lines       near  91.0  exact ok  90.0  wrong family  2.1  acts on non-order   6.1  score  86.9
+  ens3, family gate: v3 lines        near  90.7  exact ok  90.0  wrong family  1.3  acts on non-order   4.2  score  88.0
+  ens3, family gate: older lines     near  91.1  exact ok  90.1  wrong family  2.3  acts on non-order   6.7  score  86.5
+  one base model (seed 0), top: v3   near  88.0  exact ok  86.7  wrong family  2.7  acts on non-order   4.2  score  82.7
+  one base model (seed 1), top: v3   near  89.3  exact ok  88.0  wrong family  2.0  acts on non-order  12.5  score  85.3
+  one base model (seed 2), top: v3   near  87.3  exact ok  87.3  wrong family  0.7  acts on non-order   4.2  score  86.0
+  on v3 lines, re-trained ens3/top - shipped (raw input), score: +10.7 [+3.3, +18.7]
+      author r6  n=50: near 78 -> 98, wrong family 2 -> 0, score +24.0 [+12.0, +38.0]
+      author cs  n=50: near 92 -> 90, wrong family 6 -> 2, score +6.0 [-8.0, +22.0]
+      author stt n=50: near 80 -> 82, wrong family 2 -> 2, score +2.0 [-8.0, +12.0]
+  on v3 lines, re-trained ens3/family - shipped (raw input), score: +11.3 [+4.0, +19.3]
+      author r6  n=50: near 78 -> 98, wrong family 2 -> 0, score +24.0 [+12.0, +38.0]
+      author cs  n=50: near 92 -> 92, wrong family 6 -> 2, score +8.0 [-4.0, +24.0]
+      author stt n=50: near 80 -> 82, wrong family 2 -> 2, score +2.0 [-8.0, +12.0]
+  on the 483 older lines, v3 study - v21 study, ens3/top, score: +0.0 [-3.9, +4.1]
+  on the 483 older lines, v3 study - v21 study, ens3/family, score: -0.2 [-4.3, +3.7]
+  re-trained ens3 (family gate), v3 lines not near-correct (truth -> pick):
+    r6v3_046   place       FALL_BACK -> NONE           "You're getting swarmed, ditch that fight and get back to ground floor."
+    csv3_000   place       FRAG -> NONE           "molly the couch, there's always a rat sitting on it"
+    csv3_016   place       DEFUSE -> NONE           "bomb's ticking by the sofa, get on it, I'll watch your back"
+    csv3_031   two_places  MOVE_TO -> NONE           'get off the roof and come down to the basement'
+    csv3_037   place       MOVE_TO -> RAPPEL         'get up on the roof, I want somebody up top'
+    sttv3_005  other_ref   MOVE_TO -> NONE           'red stares is blocked uh get to the other stares'
+    sttv3_006  two_places  FLANK -> NONE           'is a guy camping blue stares so flake him through south door'
+    sttv3_010  on_signal   ENTRY -> NONE           'wait for my count and then you storm the top floor'
+    sttv3_014  on_signal   BREACH -> NONE           'when i say go you beach west door okay not before'
+    sttv3_019  place       BREACH -> NONE           'hey buddy put the charge on east door and beach it'
+    sttv3_023  two_places  VAULT_WINDOW -> NONE           'no not the north window i said east one fault the east one'
+    sttv3_032  place       OPEN -> VAULT_WINDOW   'north window open it quiet dont climb in just open'
+    sttv3_038  on_signal   RAPPEL -> NONE           'bot you gonna repel on the north window but only when i tell you'
+    sttv3_040  place       HOLD_ANGLE -> NONE           'west is yours bot dont let nobody come through'

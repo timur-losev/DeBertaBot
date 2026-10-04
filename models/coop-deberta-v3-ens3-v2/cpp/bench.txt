@@ -29,3 +29,14 @@ tokenizer: median 24.4 us, p99 63.9 us
 model:     median 48.5 ms, p90 54.0 ms, p99 59.4 ms, max 107.7 ms
 
 [exited with code 0]
+
+== re-measured 2026-10-04 on the same machine (i9-10900K), engine with rule set v3; the block above (2026-09-29) was a slow run
+== ensemble --threads 1
+model load 4650 ms, working set +2308 MB (2328 MB total)
+tokenizer: median 18.4 us, p99 41.3 us
+places:    median 2.1 us, p99 8.4 us (145 of 762 lines name a place)
+model:     median 39.7 ms, p90 46.4 ms, p99 50.5 ms, max 119.5 ms
+== ensemble --threads 4 --sequential
+tokenizer: median 18.4 us, p99 50.5 us
+places:    median 2.0 us, p99 6.8 us (145 of 762 lines name a place)
+model:     median 56.8 ms, p90 64.8 ms, p99 72.7 ms, max 142.5 ms

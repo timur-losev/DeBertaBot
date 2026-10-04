@@ -28,11 +28,15 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <iterator>
+#include <limits>
 #include <memory>
 #include <numeric>
 #include <random>
 #include <sstream>
+#include <stdexcept>
 #include <string>
+#include <unordered_set>
 #include <vector>
 
 #ifdef _WIN32
@@ -151,38 +155,65 @@ bool LoadConfig(Model& m, std::string* err) {
     std::string cfg_text, vocab;
     if (!ReadFile(m.dir + "/intent_config.json", &cfg_text)) return *err = "cannot read intent_config.json", false;
     if (!ReadFile(m.dir + "/vocab.tsv", &vocab)) return *err = "cannot read vocab.tsv", false;
-    const json j = json::parse(cfg_text);
-    coop::IntentConfig& c = m.cfg;
-    c.labels = j["labels"].get<std::vector<std::string>>();
-    c.families = j["families"].get<std::unordered_map<std::string, std::string>>();
-    c.phrases = j["phrases"].get<std::unordered_map<std::string, std::string>>();
-    c.threshold = j["threshold"].get<double>();
-    c.gate = j.value("gate", std::string("top"));
-    m.members = j.value("members", std::vector<std::string>{"model.onnx"});
-    c.safe_intents = j["safe_intents"].get<std::vector<std::string>>();
-    c.on_signal = j["regex"]["on_signal"].get<std::string>();
-    c.other = j["regex"]["other"].get<std::string>();
-    c.negation = j["regex"]["negation"].get<std::string>();
-    if (j.contains("locations")) {   // the map's named places (scripts/coop/locations.json)
-        const json& L = j["locations"];
-        c.has_locations = true;
-        for (const json& o : L["objects"])
-            c.locations.objects.push_back({o["id"], o["words"].get<std::vector<std::string>>(),
-                                           o["qualifiers"].get<std::vector<std::string>>()});
-        for (const json& q : L["qualifiers"])
-            c.locations.qualifiers.push_back({q["id"], q["words"].get<std::vector<std::string>>(),
-                                              q["lone"].is_null() ? std::string() : q["lone"].get<std::string>()});
-        for (const json& t : L["named"]) c.locations.named.push_back({t["phrase"], t["object"], t["qualifier"]});
-        for (const json& z : L["zones"]) c.locations.zones.push_back({z["id"], z["words"].get<std::vector<std::string>>()});
-        c.locations.ignore = L["ignore"].get<std::vector<std::string>>();
-        c.locations.words = L["words"].get<std::unordered_map<std::string, std::vector<std::string>>>();
-    }
     coop::DebertaTokenizer::Options o;
-    o.cls_id = j["cls_id"].get<int32_t>();
-    o.sep_id = j["sep_id"].get<int32_t>();
-    o.unk_id = j["unk_id"].get<int32_t>();
-    o.max_len = j["max_len"].get<int>();
-    for (auto& [text, id] : j["added_tokens"].items()) o.added.push_back({text, id.get<int32_t>()});
+    try {   // a missing key or a wrong type is a refusal with a message (json::at throws), not a crash
+        // a key written twice is refused, as locations.py does: the later value would silently win
+        std::vector<std::unordered_set<std::string>> seen;
+        const json j = json::parse(cfg_text, [&seen](int, json::parse_event_t event, json& parsed) {
+            if (event == json::parse_event_t::object_start) seen.emplace_back();
+            if (event == json::parse_event_t::object_end) seen.pop_back();
+            if (event == json::parse_event_t::key && !seen.back().insert(parsed.get<std::string>()).second)
+                throw std::runtime_error("duplicate key \"" + parsed.get<std::string>() + "\"");
+            return true;
+        });
+        coop::IntentConfig& c = m.cfg;
+        c.labels = j.at("labels").get<std::vector<std::string>>();
+        c.families = j.at("families").get<std::unordered_map<std::string, std::string>>();
+        c.phrases = j.at("phrases").get<std::unordered_map<std::string, std::string>>();
+        c.threshold = j.at("threshold").get<double>();
+        c.gate = j.value("gate", std::string("top"));
+        m.members = j.value("members", std::vector<std::string>{"model.onnx"});
+        c.safe_intents = j.at("safe_intents").get<std::vector<std::string>>();
+        c.on_signal = j.at("regex").at("on_signal").get<std::string>();
+        c.other = j.at("regex").at("other").get<std::string>();
+        c.negation = j.at("regex").at("negation").get<std::string>();
+        if (j.contains("locations")) {   // the map's named places (scripts/coop/locations.json)
+            const json& L = j.at("locations");
+            c.has_locations = true;
+            // the sections locations.py validate() requires, and no other
+            const char* const sections[] = {"version", "objects", "qualifiers", "named", "zones", "ignore", "words"};
+            for (const char* s : sections)
+                if (!L.contains(s)) throw std::runtime_error(std::string("locations: missing section \"") + s + "\"");
+            for (auto& [key, value] : L.items()) {
+                (void)value;
+                if (std::find_if(std::begin(sections), std::end(sections), [&](const char* s) { return key == s; }) == std::end(sections))
+                    throw std::runtime_error("locations: unknown section \"" + key + "\"");
+            }
+            for (const json& ob : L.at("objects"))
+                c.locations.objects.push_back({ob.at("id"), ob.at("words").get<std::vector<std::string>>(),
+                                               ob.at("qualifiers").get<std::vector<std::string>>()});
+            for (const json& q : L.at("qualifiers")) {
+                const json& lone = q.at("lone");   // explicit: an object id or null
+                if (!lone.is_null() && lone.get<std::string>().empty())
+                    throw std::runtime_error("locations: qualifier " + q.at("id").get<std::string>() + ": \"lone\" must be an object id or null");
+                c.locations.qualifiers.push_back({q.at("id"), q.at("words").get<std::vector<std::string>>(),
+                                                  lone.is_null() ? std::string() : lone.get<std::string>()});
+            }
+            for (const json& t : L.at("named")) c.locations.named.push_back({t.at("phrase"), t.at("object"), t.at("qualifier")});
+            for (const json& z : L.at("zones"))
+                c.locations.zones.push_back({z.at("id"), z.at("words").get<std::vector<std::string>>(),
+                                             z.value("words_end", std::vector<std::string>{})});
+            c.locations.ignore = L.at("ignore").get<std::vector<std::string>>();
+            c.locations.words = L.at("words").get<std::unordered_map<std::string, std::vector<std::string>>>();
+        }
+        o.cls_id = j.at("cls_id").get<int32_t>();
+        o.sep_id = j.at("sep_id").get<int32_t>();
+        o.unk_id = j.at("unk_id").get<int32_t>();
+        o.max_len = j.at("max_len").get<int>();
+        for (auto& [text, id] : j.at("added_tokens").items()) o.added.push_back({text, id.get<int32_t>()});
+    } catch (const std::exception& e) {
+        return *err = std::string("intent_config.json refused: ") + e.what(), false;
+    }
     return m.tok.Load(vocab, std::move(o), err);
 }
 
@@ -522,8 +553,23 @@ int RunDecideTests(Model& m) {
                             ExecStr(executed, d.executed_other).c_str());
         }
     }
+    // the engine's own guard, which the test file cannot carry (JSON has no NaN): a model that returns NaN
+    // is asked again under both gates, and nothing is queued
+    for (const char* gate : {"top", "family"}) {
+        coop::IntentConfig cfg = m.cfg;
+        cfg.gate = gate;
+        coop::BotBrain brain;
+        if (!brain.Init(cfg, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+        const std::vector<float> nan(cfg.labels.size(), std::numeric_limits<float>::quiet_NaN());
+        const coop::Decision d = brain.Decide("smoke the north door on my go", nan);
+        const bool good = d.action == coop::Action::SayAgain && brain.Pending() < 0;
+        ++n;
+        ok += good;
+        if (!good) std::printf("  %s gate: NaN probabilities gave %s, not say_again\n", gate, coop::ActionName(d.action));
+    }
     if (missing) std::printf("%s", kMissingKeys);
-    std::printf("decide tests, %zu steps over both gates: C++ decided what the Python bot decided on %zu/%zu\n", n, ok, n);
+    std::printf("decide tests, %zu steps over both gates (2 of them built in: NaN probabilities): C++ decided what the "
+                "Python bot decided on %zu/%zu\n", n, ok, n);
     return ok == n ? 0 : 1;
 }
 

@@ -34,6 +34,7 @@ struct LocationVocab {
     struct Zone {
         std::string id;
         std::vector<std::string> words;
+        std::vector<std::string> words_end;   // phrases that count only where they end their phrase ("on second")
     };
     std::vector<Object> objects;
     std::vector<Qualifier> qualifiers;
@@ -43,7 +44,12 @@ struct LocationVocab {
     std::unordered_map<std::string, std::vector<std::string>> words;   // the rules' word lists
 };
 
-enum class PlaceRole { None, Not, From, Mine, Them, Status };          // whose place: the bot is not sent to a place with a role
+// whose place it is. A place with a role is not a destination: the player's own (Mine), the enemy's
+// (Them), the place to leave (From), negated or corrected (Not), only reported on (Status)
+enum class PlaceRole { None, Not, From, Mine, Them, Status };
+// UnknownModifier: the player singled out one object in a way the map names cannot express ("the back
+// door"): do not fall back to the nearest one. Other: the other one of its kind. Unsure: a lone name
+// before a word the vocabulary does not know; most are real places
 enum class PlaceFlag { None, UnknownModifier, Unsure, Other };
 const char* PlaceRoleName(PlaceRole r);   // "not", "from", "mine", "them", "status" or ""
 const char* PlaceFlagName(PlaceFlag f);   // "unknown_modifier", "unsure", "other" or ""
@@ -51,14 +57,15 @@ const char* PlaceFlagName(PlaceFlag f);   // "unknown_modifier", "unsure", "othe
 struct PlaceTarget {
     int object = -1, qualifier = -1, zone = -1;   // indices into the vocabulary, -1: none
     PlaceRole role = PlaceRole::None;
-    PlaceFlag flag = PlaceFlag::None;   // UnknownModifier: do not fall back to the nearest one; Unsure: confirm
-    bool inferred = false;              // the object was not said ("take blue")
-    int first = 0, last = 0;            // token positions in the line
+    PlaceFlag flag = PlaceFlag::None;
+    bool inferred = false;              // the object was not said ("take blue", "you take the south one")
 };
 
 struct PlaceRecord {
     std::vector<PlaceTarget> targets;   // in line order
-    int primary = -1;                   // the target the bot acts on, -1: the line names no place
+    // the first target without a role; -1: the line names no place. If every target has a role it is
+    // the first target, and the line gives the bot no destination: check Primary()->role
+    int primary = -1;
     const PlaceTarget* Primary() const { return primary >= 0 ? &targets[static_cast<size_t>(primary)] : nullptr; }
 };
 
@@ -73,7 +80,7 @@ public:
     const std::string& ZoneId(int i) const { return zones_[static_cast<size_t>(i)]; }
 
 private:
-    enum class Kind { Object, Qualifier, Named, Zone, Ignore };
+    enum class Kind { Object, Qualifier, Named, Zone, Ignore, ZoneEnd };
     struct Phrase {
         Kind kind;
         int a = -1, b = -1;   // object / qualifier / zone index; Named: object and qualifier

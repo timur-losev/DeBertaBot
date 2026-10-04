@@ -1,0 +1,8 @@
+critics' lines, rule set v3 (in-sample: the rules were changed with these lines)
+  ordinary     395 lines: wrong primary place on 0, right place but wrong role on 5, wrong flag on 0
+  stt          246 lines: wrong primary place on 37, right place but wrong role on 13, wrong flag on 8
+  adversarial  242 lines: wrong primary place on 17, right place but wrong role on 43, wrong flag on 7
+the Mac review's fresh author, 80 lines (an outside check, one author-labeller)
+  rule set v1  exact 76/80; on lines that name a place 56/58; usable on orders 65/70
+  rule set v2  exact 77/80; on lines that name a place 57/58; usable on orders 66/70
+  rule set v3  exact 78/80; on lines that name a place 58/58; usable on orders 68/70

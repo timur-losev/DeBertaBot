@@ -142,6 +142,7 @@ bool BotBrain::Init(IntentConfig config, std::string* error) {
         }
         safe_[static_cast<size_t>(i)] = true;
     }
+    places_ = LocationMatcher();   // a config without "locations" must not keep the matcher of the one before
     if (cfg_.has_locations && !places_.Init(cfg_.locations, error)) return false;
     return slots_.Init(cfg_, error);
 }
@@ -168,12 +169,12 @@ bool BotBrain::Pick(const std::vector<float>& probs, int* intent, double* confid
 
 Decision BotBrain::Decide(std::string_view text, const std::vector<float>& probs) {
     Decision d;
+    if (places_.Ready()) d.places = places_.Find(text);   // for every action: under Ignore they are contacts
     if (!Pick(probs, &d.intent, &d.prob)) {   // a model that does not fit the config: never act
         d.action = Action::SayAgain;
         return d;
     }
     slots_.Match(text, &d);
-    if (places_.Ready()) d.places = places_.Find(text);
     auto drop_pending = [&] {
         pending_ = -1;
         pending_places_ = PlaceRecord();
@@ -183,7 +184,7 @@ Decision BotBrain::Decide(std::string_view text, const std::vector<float>& probs
     if (d.negated && !safe_[static_cast<size_t>(d.intent)]) {
         drop_pending();
         d.action = Action::Negated;
-    } else if (d.prob < threshold) {
+    } else if (!(d.prob >= threshold)) {   // also when the model returned NaN: never act on it
         d.action = Action::SayAgain;
     } else if (d.intent == none_) {
         d.action = Action::Ignore;
