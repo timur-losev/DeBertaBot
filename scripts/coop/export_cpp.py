@@ -16,26 +16,35 @@ sentencepiece pipeline: normalizer = collapse whitespace runs / \\n\\r\\t to one
 pre-tokenizer = Metaspace (prepend U+2581 always, split into words); model = Unigram. The C++ port
 reproduces that pipeline, so the golden ids come from the same tokenizer object the bot uses.
 
-    python export_cpp.py [BOT_DIR]      # jev environment; default ../../models/coop-deberta-v3-ens3-v2 (shipped)
+    python export_cpp.py [BOT_DIR]      # jev environment; default: the newest trained bot (bots.py)
     python export_cpp.py [BOT_DIR] --config-only    # after editing locations.json or the regexes: no ONNX export
 """
-import io, json, os, sys
+import io, json, os, re, sys
 
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-import coop_v2 as V  # noqa: E402
-from coop_bot import NEGATION  # noqa: E402
-from timing_rule import ON_SIGNAL, OTHER  # noqa: E402
 
 # the bot to export: argv[1], a directory with bot_config.json (train_final.py / train_v2.py final);
 # an ensemble lists its member directories in bot_config "members" and becomes model0.onnx, model1.onnx...
 _ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
 CONFIG_ONLY = "--config-only" in sys.argv     # rewrite intent_config.json and vocab.tsv, keep the ONNX files and golden.jsonl
-MODEL = os.path.normpath(_ARGS[0] if _ARGS else os.path.join(HERE, "..", "..", "models", "coop-deberta-v3-ens3-v2"))
+import bots  # noqa: E402
+MODEL = os.path.normpath(_ARGS[0] if _ARGS else bots.default_bot())
 OUT = os.path.join(MODEL, "cpp")
+# the golden lines are the lines and seeds of the study the bot was trained in: its bot_config names
+# the seed file, and the seed file names the COOP_TAG (the v1 bot names none: the default study)
+_SEEDS = re.search(r"seed_commands_(v[0-9]+)", json.load(io.open(os.path.join(MODEL, "bot_config.json"),
+                                                                 encoding="utf-8")).get("trained_on", ""))
+if _SEEDS:
+    if os.environ.get("COOP_TAG", _SEEDS.group(1)) != _SEEDS.group(1):
+        sys.exit(f"COOP_TAG={os.environ['COOP_TAG']} but {MODEL} was trained under {_SEEDS.group(1)}")
+    os.environ["COOP_TAG"] = _SEEDS.group(1)
+import coop_v2 as V  # noqa: E402
+from coop_bot import NEGATION  # noqa: E402
+from timing_rule import ON_SIGNAL, OTHER  # noqa: E402
 MAX_LEN = 64
 
 # lines chosen to break a tokenizer port: whitespace runs, tabs, newlines, leading/trailing spaces,

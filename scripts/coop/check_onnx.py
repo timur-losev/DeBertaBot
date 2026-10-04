@@ -15,8 +15,9 @@ import numpy as np
 import onnxruntime as ort
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-D = os.path.normpath(os.path.join(sys.argv[1], "cpp") if len(sys.argv) > 1 else
-                     os.path.join(HERE, "..", "..", "models", "coop-deberta-v3-ens3-v2", "cpp"))
+sys.path.insert(0, HERE)
+import bots  # noqa: E402
+D = os.path.normpath(os.path.join(sys.argv[1] if len(sys.argv) > 1 else bots.default_bot(), "cpp"))
 
 
 def session(path, threads=4):

@@ -1,0 +1,108 @@
+"""
+Seed set v31 = v21 + location seeds, corrected after the v3 review (seed_commands_v3.json stays as the
+v3 study used it). Two things were wrong in v3's seeds:
+
+  1. make_spec_v3.py re-defined RAPPEL (the rope; just going to the roof is MOVE_TO) but only appended
+     to the v21 seeds, so "get on the roof" and "go roof" stayed under RAPPEL and the bot trained on
+     them answered RAPPEL to both. Here they move to MOVE_TO.
+  2. Each order template was filled with 3 places sampled from its whole list, 150 of 486
+     combinations; "take {}" drew only "... stairs" forms, so "take blue" was never taught and the
+     bot read it as ENTRY. Here every template is filled with PER_GROUP places from each KIND of
+     place it allows (doors, windows, stairs, lone names, floors, furniture), so every template
+     meets every kind. It is still a sample, not the full grid: a name is not seen in every order.
+
+Written after the first v3 lines had been seen (the review quoted two of them); the lines of the
+second batch (blind/v3b) did not exist yet. Never scored.
+
+    python make_seeds_v31.py
+"""
+import io, json, os, random
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+DOOR = [f"the {q} door" for q in ("main", "north", "south", "west", "east")]
+WINDOW = [f"the {q} window" for q in ("north", "south", "west", "east")]
+STAIRS = [f"{c} stairs" for c in ("blue", "red", "yellow", "white", "brown")]
+COLOUR = ["blue", "red", "yellow", "white", "brown"]
+LONE = ["main"] + COLOUR
+FURN = ["the sofa", "the couch", "the table", "the chairs"]
+ZONE = ["the basement", "the first floor", "the top floor", "the roof"]
+FLOOR = ["the basement", "the first floor", "the top floor"]
+UP = ["the top floor", "the roof"]
+ROOF = ["the roof"]
+ANY = [DOOR, WINDOW, STAIRS]
+# intent -> [(template, [groups of places])]
+TEMPLATES = {
+    "MOVE_TO": [("go to {}", ANY + [ZONE, FURN]), ("move to {}", ANY + [ZONE]), ("get to {}", ANY + [ZONE]),
+                ("head to {}", [ZONE, STAIRS]), ("take {}", [COLOUR, STAIRS]), ("go up to {}", [UP])],
+    "HOLD_ANGLE": [("hold {}", ANY + [LONE]), ("watch {}", ANY + [LONE]), ("cover {}", [DOOR, WINDOW]),
+                   ("eyes on {}", ANY), ("hold {}", [FLOOR]), ("lock down {}", [ZONE])],
+    "OPEN": [("open {}", [DOOR, WINDOW])],
+    "SMOKE": [("smoke {}", ANY + [LONE])],
+    "FLASH": [("flash {}", ANY + [LONE])],
+    "FRAG": [("frag {}", ANY), ("nade {}", [STAIRS, LONE])],
+    "BREACH": [("breach {}", [DOOR, WINDOW]), ("blow {}", [DOOR])],
+    "VAULT_WINDOW": [("vault {}", [WINDOW]), ("go through {}", [WINDOW]), ("hop in {}", [WINDOW])],
+    "ENTRY": [("push {}", [LONE, DOOR]), ("push {}", [FLOOR]), ("clear {}", [ZONE]), ("rush {}", [LONE])],
+    "FLANK": [("flank through {}", [DOOR, ["the basement"]]), ("go around through {}", [DOOR, WINDOW])],
+    "TAKE_COVER": [("hide behind {}", [FURN]), ("take cover behind {}", [FURN]), ("get behind {}", [FURN])],
+    "RAPPEL": [("rappel to {}", [WINDOW]), ("rope down to {}", [WINDOW]), ("rappel from {}", [ROOF])],
+    "DRONE": [("drone {}", [ZONE, STAIRS, DOOR])],
+    "FALL_BACK": [("fall back to {}", [ZONE, STAIRS, DOOR])],
+    "PLANT": [("plant at {}", [STAIRS, DOOR]), ("plant behind {}", [FURN])],
+    "FOLLOW_ME": [("follow me to {}", ANY + [ZONE])],
+    "COVER_ME": [("cover me from {}", [WINDOW, STAIRS, FURN])],
+    "NONE": [("one on {}", [STAIRS, COLOUR]), ("two at {}", [DOOR, WINDOW]), ("{} is clear", ANY + [ZONE]),
+             ("he's behind {}", [FURN]), ("they're on {}", [["the first floor", "the top floor", "the roof"]]), ("they're in {}", [["the basement"]]), ("contact {}", [LONE, STAIRS]),
+             ("don't open {}", [DOOR, WINDOW]), ("don't go to {}", [ZONE, STAIRS]), ("don't smoke {}", ANY)],
+    "WAIT": [("don't push {} yet", [LONE, DOOR]), ("don't open {} yet", [DOOR])],
+}
+PER_GROUP = 2
+MOVED = {"RAPPEL": ["get on the roof", "go roof"]}      # -> MOVE_TO: no rope word
+
+
+def location_seeds():
+    rng = random.Random(31)
+    out, grid = {}, 0
+    for intent, templates in TEMPLATES.items():
+        for tpl, groups in templates:
+            for places in groups:
+                grid += len(places)
+                for place in rng.sample(places, min(PER_GROUP, len(places))):
+                    out.setdefault(intent, []).append(tpl.format(place))
+    return out, grid
+
+
+def main():
+    seeds = json.load(io.open(os.path.join(HERE, "seed_commands_v21.json"), encoding="utf-8"))
+    for intent, lines in MOVED.items():
+        for x in lines:
+            seeds[intent].remove(x)
+            seeds["MOVE_TO"].append(x)
+    extra, grid = location_seeds()
+    n = 0
+    for k, v in extra.items():
+        new = [x for x in dict.fromkeys(v) if x not in seeds[k]]
+        seeds[k] = seeds[k] + new
+        n += len(new)
+    seeds["_note_v31"] = (
+        f"v31 (make_seeds_v31.py, after the v3 review): 'get on the roof' and 'go roof' moved from RAPPEL to "
+        f"MOVE_TO (spec_v3: going to the roof without a rope word is MOVE_TO); + {n} templated seed commands with "
+        f"map places, {PER_GROUP} per kind of place per template ({n} of the {grid} template x place combinations): "
+        + ", ".join(f"{k} {len(v)}" for k, v in extra.items()))
+    json.dump(seeds, io.open(os.path.join(HERE, "seed_commands_v31.json"), "w", encoding="utf-8", newline="\n"),
+              ensure_ascii=False, indent=1)
+    total = sum(len(v) for k, v in seeds.items() if not k.startswith("_"))
+    print(f"{total} seeds; {n} location seeds of {grid} combinations over {len(extra)} intents")
+    clash = {}
+    for k, v in seeds.items():
+        if not k.startswith("_"):
+            for x in v:
+                clash.setdefault(x, []).append(k)
+    print("the same line under two intents:", {x: ks for x, ks in clash.items() if len(ks) > 1})
+    for k, v in extra.items():
+        print(f"  {k}: {v}")
+
+
+if __name__ == "__main__":
+    main()

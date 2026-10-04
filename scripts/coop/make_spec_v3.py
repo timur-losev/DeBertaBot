@@ -11,9 +11,14 @@ decidable: RAPPEL is using the rope; simply going to a named place, the roof inc
 
 Writes:
   blind/spec_v3.json       what the v3 blind authors and annotators see
-  seed_commands_v3.json    seed set v21 + templated seed commands with map places, so that a model
-                           trained with them (train_v2.py, COOP_TAG=v3) sees every place name in every
-                           kind of order and learns the construction, not the word; never scored
+  seed_commands_v3.json    seed set v21 + templated seed commands with map places for a model trained
+                           with them (train_v2.py, COOP_TAG=v3); never scored. Each of the 50 templates
+                           is filled with 3 places sampled from its list: 150 of the 486 template x
+                           place combinations, NOT every name in every kind of order (the v3 review:
+                           "take {}" drew only "... stairs" forms). The v21 RAPPEL seeds "get on the
+                           roof" / "go roof" also stayed, against the sharpened RAPPEL below. Both
+                           are corrected in seed set v31 (make_seeds_v31.py); this file and its
+                           output stay as the v3 study used them
 
     python make_spec_v3.py
 """
@@ -55,7 +60,7 @@ CHANGED = {
     "MOVE_TO": "the bot moves to a place: the marker, or a named or pointed-at location (a door, stairs, a floor, the roof)",
 }
 
-# ---- seed commands with places: template x place, so every name meets every kind of order
+# ---- seed commands with places: template x 3 sampled places (see the docstring)
 DOOR = [f"the {q} door" for q in ("main", "north", "south", "west", "east")]
 WINDOW = [f"the {q} window" for q in ("north", "south", "west", "east")]
 STAIRS = [f"{c} stairs" for c in ("blue", "red", "yellow", "white", "brown")]

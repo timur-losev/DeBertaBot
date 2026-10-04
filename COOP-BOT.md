@@ -504,6 +504,160 @@ What this says:
   - The v1 seed commands were written after the v1 blind lines had been read. They are training-only,
     but the all-line numbers include that. The v2-line and novel columns are the cleaner estimates.
 
+## v3: places on the map (callouts)
+
+The owner's maps all have the same named places:
+- a Main door; north, south, west and east doors and windows;
+- blue, red, yellow, white and brown stairs;
+- chairs, sofas, tables;
+- a basement, a 1st floor, a top floor, a roof.
+
+Players use these names in orders ("hold the north door", "take blue") and in callouts ("two on red
+stairs"). More names will follow.
+
+**Design: the names are not in the classifier.** The 24 intents do not change. A dictionary with
+position rules ([locations.json](scripts/coop/locations.json), [locations.py](scripts/coop/locations.py))
+finds the places in the line and hands the planner a record. A new callout is a new line in
+`locations.json`, not a re-training.
+
+What the planner gets for "i'll take the north door, you take the south window":
+
+| target | role | primary |
+|---|---|---|
+| door / north | mine | |
+| window / south | | yes |
+
+- **Targets** come in line order, each as {object, qualifier, zone}.
+- **Role** says whose place it is: `mine` (the player's), `them` (the enemy's), `from` (the place to
+  leave), `not` (negated or corrected), `status` ("blue is clear"). The bot is not sent to a place with
+  a role.
+- **Primary** is the first target without a role.
+- **Flags:**
+  - `unknown_modifier`: the player singled out one object with a word the map has no name for ("the
+    back door", "the blue door"). The planner must not fall back to the nearest one.
+  - `unsure`: a lone colour or "main" followed by an unknown word ("the white van").
+  - `other`: "I've got the north door, you take the other one".
+- **A queued order keeps its places.** "smoke the west window on my go", then "go", executes at the
+  west window.
+- **Callouts still get a record.** Under NONE the places are contacts for the planner, not orders.
+
+**Decisions taken for the owner** (written into [spec_v3.json](scripts/coop/blind/spec_v3.json)):
+- "Go to the roof" without rope words is MOVE_TO, not RAPPEL.
+- Three zones were added beyond the owner's list because players say them: `up` / `down`
+  ("upstairs", "downstairs": relative to the bot) and `floor_2`. The planner maps them per map.
+- "First floor" and "ground floor" are one zone.
+
+**How it was built and measured** ([make_spec_v3.py](scripts/coop/make_spec_v3.py),
+[eval_v3.py](scripts/coop/eval_v3.py), hash log [frozen.txt](scripts/coop/frozen.txt)):
+1. **Design critique before any test line existed.** Three agents attacked the first matcher with
+   about 600 lines of their own. On one critic's 254 lines the first version chose a wrong primary on
+   78; the rules frozen as v1 choose a wrong one on 5. Those lines are now the developer's regression
+   set ([locations_dev.json](scripts/coop/locations_dev.json), `python locations.py --dev`). It is
+   tuning material, not a test.
+2. **Frozen before the test lines:** the vocabulary, the rules v1, the spec, and 150 templated seed
+   commands that put every place name into every kind of order
+   ([seed_commands_v3.json](scripts/coop/seed_commands_v3.json)).
+3. **Blind lines:** the same three personas wrote 50 lines each ([blind/v3/](scripts/coop/blind/v3/)).
+   Per author:
+   - 20 orders with one place;
+   - 5 with an object and its floor;
+   - 5 with two places where the bot's place is not the first;
+   - 4 on-signal orders and 3 "other" orders;
+   - 4 about an object the map has no name for;
+   - 5 callouts;
+   - 2 chatter lines using a vocabulary word in another sense;
+   - 2 negations.
+
+   Two blind annotators per author labelled the intent and the target. All 150 intents and all 150
+   targets are unanimous.
+
+**A. The matcher: primary target against the readers' target** (150 lines; exact = object, qualifier
+and zone all equal)
+
+| | all | r6 | cs | stt | flag `unknown_modifier` (readers mark 12) |
+|---|---|---|---|---|---|
+| rules v1, frozen before the lines | 88.0% (132) | 86% | 88% | 90% | raised on 7, all correct |
+| rules v2, tuned on r6 and cs only | 96.7% (145) | 96% | 100% | **94%** | raised on 12, all correct |
+
+- **The blind number is 88.0%.** With rules v1, plain orders with a place were 93% (56/60), two-place
+  lines 67% (10/15), and chatter using a vocabulary word in another sense 0/6.
+- **Rules v2** were written from the r6 and cs mismatches only:
+  - relative-floor phrases ("the floor below");
+  - "I said X" is not the player's own place;
+  - a correction reaches back ("smoke blue, no wait, not blue, white");
+  - "the spiral staircase" is flagged;
+  - more ignore phrases ("through the roof").
+
+  The stt author is the held-out check for v2: 94%, up from 90%. The r6 and cs numbers for v2 are
+  upper bounds.
+- **The 5 lines v2 still gets wrong:**
+  - 2 chatter lines ("a Thermite main since year one"); both carry the `unsure` flag;
+  - "rough" for roof;
+  - "second story";
+  - one double correction in speech-to-text output.
+- **Speed and port:** the matcher takes 1.7 µs per line in C++. The C++ port gives the same record as
+  Python on 8563 of 8563 lines.
+
+**B. The shipped v2 classifier on the 150 lines** (it never saw them; shipped gate and threshold)
+
+| input | near | exact ok | wrong family | acts on non-order |
+|---|---|---|---|---|
+| the raw line | 83.3 | 82.0 | 3.3 | 8.3 |
+| attached qualifiers stripped ("hold the north door" → "hold the door") | 81.3 | 80.0 | 4.0 | 12.5 |
+
+- **The classifier reads the raw line.** Stripping the names does not help: −3.3 [−8.0, +0.0].
+- Replacing lone names or zones was dropped at the design stage, because it changes orders: "push
+  main" → "push the door" reads as OPEN, and "go to the roof" → "go to there" loses RAPPEL.
+- Most raw-line misses are "say again". The systematic wrong action is "get up on the roof" → RAPPEL.
+
+**C. Re-training with the place lines** (leave one author out; training folds get the other authors'
+v3 lines and the location seeds; three base seeds averaged; out-of-fold threshold per fold)
+
+| | near | exact ok | wrong family | acts on non-order |
+|---|---|---|---|---|
+| v3 lines, shipped v2 bot (raw line) | 83.3 | 82.0 | 3.3 | 8.3 |
+| v3 lines, re-trained ens3, top gate | 90.0 | 89.3 | 1.3 | 4.2 |
+| v3 lines, re-trained ens3, family gate | **90.7** | 90.0 | 1.3 | 4.2 |
+| the 483 older lines, re-trained, top / family | 89.6 / 91.1 | 89.0 / 90.1 | 1.7 / 2.3 | 4.0 / 6.7 |
+| all 633 lines, re-trained, top / family | 89.7 / 91.0 | 89.1 / 90.0 | 1.6 / 2.1 | 4.0 / 6.1 |
+
+- **Re-training is worth it on place lines.** Paired bootstrap of near − 2 × wrong family against the
+  shipped bot: +10.7 [+3.3, +18.7] with the top gate, +11.3 [+4.0, +19.3] with the family gate.
+- **It costs nothing on the older lines.** Against the v21 study: +0.0 [−3.9, +4.1] (top) and −0.2
+  [−4.3, +3.7] (family).
+- **The shipped v3 model** ([train_v2.py](scripts/coop/train_v2.py) `final ens3` under `COOP_TAG=v3`)
+  is trained on all 633 lines and 383 seed commands. Its out-of-fold fit chose the family gate at
+  0.52 (criterion 565 against 564 for top: a tie).
+- **The comparison is not like for like in one respect:** the shipped bot runs at its fixed threshold
+  (0.58), the re-trained one at thresholds fitted out of fold.
+- **Still wrong after re-training** (14 of 150, 12 of them "say again" or a confident NONE): mostly
+  speech-to-text lines ("beach west door", "red stares … the other stares"). One "get up on the roof"
+  still goes to RAPPEL.
+
+**Cost.**
+- The v3 bot is the same size as v2: three models, 2.3 GB.
+- One thread per model (3 cores): 39.4 ms median, 54.0 ms p99.
+- 4 threads per model: 35.4 ms.
+- Models in turn, 4 threads: 57.0 ms.
+- The v2 section's latencies were measured about a third slower. Re-measured the same day as v3, the
+  v2 bot gives 39.9 ms and 57.2 ms for the same two settings, so that earlier run was slow for a reason
+  not identified (machine load is the likely one).
+- The C++ engine reproduces the Python bot on 1062 golden lines (probabilities within 1.4e-6), 9227
+  tokenizer and regex lines, 8563 place records, 2938 gate decisions, every branch of the decision and
+  a 77-line conversation.
+
+**Caveats.**
+- The authors and annotators are agents of one model family: 150/150 unanimous targets is more
+  agreement than human readers would reach.
+- The spec names the places, so the authors' phrasings are primed by it.
+- The matcher's rules were tuned once on two authors. Tuning them further needs new blind lines.
+- Each author has only 2 chatter lines with a vocabulary word in another sense, so false places in
+  chatter are barely measured.
+- The planner side is not built: resolving a target to an actor, "which one?" questions, relative
+  floors.
+- Real speech-to-text will produce name variants the vocabulary does not have ("rough", "stares").
+  They have to be harvested from the real engine.
+
 ## Recommendation
 
 ```
@@ -530,6 +684,8 @@ voice ─► STT ─► regex: timing (on my go?)        ─┐
   only half the orders. Neither matches zero-shot decision:eos on phrasings nobody has said before.
   With the seed commands and the v2 intents, three DeBERTa-v3-base seeds averaged are the shipped bot:
   90.5 near at 1.9% wrong family, 2.3 GB, 46–123 ms on CPU depending on threads (61 ms on 3 cores; section v2).
+  The current bot is v3: the same ensemble re-trained with lines that name map places, plus a
+  dictionary matcher that hands the planner the place (section v3). It runs in 40 ms on 3 cores.
 - **Timing and "the other one" are code**, then checked by the planner. The models smear a one-word
   modifier across the whole sentence.
 - **Do not put playtest lines into the descriptions as examples.** It raises the score on repeated
@@ -591,3 +747,6 @@ version:
 | [blind/v2/](scripts/coop/blind/v2/), [annot/v2/](scripts/coop/annot/v2/) | v2 lines (3 × 40) with author labels, two annotators each, and the v2 re-reading of the v1 lines (`old_*_v2ann.json`) |
 | [coop_v2.py](scripts/coop/coop_v2.py), [train_v2.py](scripts/coop/train_v2.py), [eval_v2.py](scripts/coop/eval_v2.py), [v1_on_v2.py](scripts/coop/v1_on_v2.py) | v2 data and scoring, training (cv / final), evaluation, the v1 bot on the v2 lines; logs `eval_v2.log` (the study), `eval_v21.log` (seed set v21, shipped) |
 | [make_seeds_v21.py](scripts/coop/make_seeds_v21.py), [seed_commands_v21.json](scripts/coop/seed_commands_v21.json) | the post-study COVER_ME seeds with a bare "cover" |
+| [locations.json](scripts/coop/locations.json), [locations.py](scripts/coop/locations.py), [locations_dev.json](scripts/coop/locations_dev.json) | v3: the map vocabulary, the place matcher, the developer's regression lines |
+| [make_spec_v3.py](scripts/coop/make_spec_v3.py), [blind/spec_v3.json](scripts/coop/blind/spec_v3.json), [seed_commands_v3.json](scripts/coop/seed_commands_v3.json), [blind/v3/](scripts/coop/blind/v3/), [annot/v3/](scripts/coop/annot/v3/) | v3 spec (target modifier), seed set with location seeds, the 150 blind lines and their annotations |
+| [eval_v3.py](scripts/coop/eval_v3.py), [v3_shipped.py](scripts/coop/v3_shipped.py), [shipped.py](scripts/coop/shipped.py), [v3_noharm.py](scripts/coop/v3_noharm.py) | v3 evaluation: matcher, the v2 bot on the place lines, re-training; logs `eval_v3_rules_v1.log` (first blind run), `eval_v3.log` |

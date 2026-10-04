@@ -1,6 +1,6 @@
 """
-Test data for the C++ engine, produced by the Python bot itself (next to golden.jsonl in
-models/coop-deberta-v3-base/cpp/):
+Test data for the C++ engine, produced by the Python bot itself (next to golden.jsonl in the bot's
+cpp/ directory):
 
   tokenizer_tests.jsonl  per line: text, the normalizer's output, the token ids, and the three regex
                          slots [on_signal, other, negation] -- the golden lines plus generated lines
@@ -15,22 +15,24 @@ models/coop-deberta-v3-base/cpp/):
                          so that every branch (negated, say again, ignore, execute, go, wait, queued,
                          act, "other", the threshold boundary) is compared, no model
   location_tests.jsonl   locations.record() per line: the tokenizer lines, the developer's regression
-                         lines, the v3 lines and the location seeds
+                         lines, both batches of place lines, the location seeds, and generated lines
+                         (random sequences of vocabulary phrases, rule words and punctuation, so
+                         every rule branch is compared many times; a few past the token cap)
   gate_tests.jsonl       coop_bot.Bot.pick under both gates, no model: on the golden probabilities and
                          on constructed rows (exact ties across and inside families, the top label
                          outside the top-mass family, tied family masses, random rows); every value
                          is a float32, as the model's probabilities are
 
-    python gen_tests.py [BOT_DIR]      # jev environment; default models/coop-deberta-v3-ens3-v2 (shipped)
+    python gen_tests.py [BOT_DIR]      # jev environment; default: the newest trained bot (scripts/coop/bots.py)
 """
 import io, json, os, random, struct, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 COOP = os.path.normpath(os.path.join(HERE, "..", "..", "..", "scripts", "coop"))
-MODEL = os.path.normpath(sys.argv[1] if len(sys.argv) > 1 else
-                         os.path.join(HERE, "..", "..", "..", "models", "coop-deberta-v3-ens3-v2"))
-OUT = os.path.join(MODEL, "cpp")
 sys.path.insert(0, COOP)
+import bots  # noqa: E402
+MODEL = os.path.normpath(sys.argv[1] if len(sys.argv) > 1 else bots.default_bot())
+OUT = os.path.join(MODEL, "cpp")
 import coop_bot  # noqa: E402
 import locations as LOC  # noqa: E402
 from timing_rule import ON_SIGNAL, OTHER  # noqa: E402
@@ -163,6 +165,14 @@ def decide_tests(bot):
         ("never mind", dict(WAIT=0.9)),                             # wait: the queued places go too
         ("go", dict(GO_NOW=0.9)),                                   # go, nothing queued, no places
         ("open the back door", dict(OPEN=0.9)),                     # act, flag unknown_modifier
+        # what happens to a queued order's places on every other branch
+        ("smoke the north door on my go", dict(SMOKE=0.9)),         # queued, place: door north
+        ("don't worry, breach the east window", dict(BREACH=0.9)),  # negated: the queued places go
+        ("flash blue on my go", dict(FLASH=0.9)),                   # queued: stairs blue
+        ("frag the main door on my go", dict(FRAG=0.9)),            # a second queued order replaces it: door main
+        ("hmm the white one", dict(FLASH=0.40, SMOKE=0.30)),        # top: say again; family: act; the queue stays
+        ("hold the west window", dict(HOLD_ANGLE=0.9)),             # act while an order is queued: the queue stays
+        ("go", dict(GO_NOW=0.9)),                                   # execute at door main
         ("at the threshold", {"TAKE_COVER" if "TAKE_COVER" in ix else "FLANK": thr}),   # float32(thr) < thr
         ("just over it", {"TAKE_COVER" if "TAKE_COVER" in ix else "FLANK": thr + 0.001}),
     ]
@@ -183,17 +193,45 @@ def decide_tests(bot):
     return out
 
 
+def place_lines(n, seed=23):
+    """Random sequences of vocabulary phrases, rule words, filler words and punctuation: no meaning,
+    every rule branch many times. Some lines run past locations.MAX_TOKENS."""
+    v = json.load(io.open(os.path.join(COOP, "locations.json"), encoding="utf-8"))
+    phrases = [w for o in v["objects"] for w in o["words"]] + [w for q in v["qualifiers"] for w in q["words"]] + \
+        [t["phrase"] for t in v["named"]] + [w for z in v["zones"] for w in z["words"] + z.get("words_end", [])] + v["ignore"]
+    rule = sorted({w for ws in v["words"].values() for w in ws})
+    filler = ["bot", "uh", "it", "them", "me", "hallway", "thing", "now", "please", "there", "that", "yard",
+              "kitchen", "spiral", "broken", "big", "floor", "second", "story", "steps", "i'm", "don't", "he's", "i'll"]
+    punct = [",", ",", ".", "!", "?", ";", ":", " -", "..."]
+    rng = random.Random(seed)
+    out = []
+    for k in range(n):
+        size = rng.choice([1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 16]) if k % 200 else rng.choice([126, 127, 128, 129, 130, 200, 400])
+        parts = []
+        for _ in range(size):
+            r = rng.random()
+            w = rng.choice(phrases) if r < 0.38 else rng.choice(rule) if r < 0.82 else rng.choice(filler)
+            if rng.random() < 0.04:
+                w = w.upper() if rng.random() < 0.5 else w.capitalize()
+            parts.append(w + (rng.choice(punct) if rng.random() < 0.12 else ""))
+        out.append(" ".join(parts))
+    return out
+
+
 def location_tests(texts):
     """locations.record() for every line: the tokenizer lines (any bytes must be safe), the developer's
-    regression lines, the v3 lines and the location seeds."""
+    regression lines, both batches of place lines, the location seeds and generated lines."""
     dev = json.load(io.open(os.path.join(COOP, "locations_dev.json"), encoding="utf-8"))["cases"]
     more = [c["text"] for c in dev]
-    for key in ("r6", "cs", "stt"):
-        p = os.path.join(COOP, "blind", "v3", f"author_{key}_lines.json")
-        if os.path.exists(p):
-            more += [x["text"] for x in json.load(io.open(p, encoding="utf-8"))]
-    seeds = json.load(io.open(os.path.join(COOP, "seed_commands_v3.json"), encoding="utf-8"))
-    more += [t for k, v in seeds.items() if not k.startswith("_") for t in v]
+    for batch in ("v3", "v3b"):
+        for key in ("r6", "cs", "stt"):
+            p = os.path.join(COOP, "blind", batch, f"author_{key}_lines.json")
+            if os.path.exists(p):
+                more += [x["text"] for x in json.load(io.open(p, encoding="utf-8"))]
+    for name in ("seed_commands_v3.json", "seed_commands_v31.json"):
+        seeds = json.load(io.open(os.path.join(COOP, name), encoding="utf-8"))
+        more += [t for k, v in seeds.items() if not k.startswith("_") for t in v]
+    more += place_lines(12000)
     seen, out = set(), []
     for t in list(texts) + more:
         if t not in seen:

@@ -29,7 +29,8 @@ cd project_synth
 python3.11 -m venv .venv && source .venv/bin/activate
 pip install torch "transformers==5.17.0" "tokenizers==0.23.2" onnxruntime onnx scikit-learn numpy
 cd scripts/coop
-python coop_bot.py            # боевой бот v2 (24 приказа, ансамбль из трёх моделей), на CPU
+python coop_bot.py            # текущий бот v3 (24 приказа, ансамбль из трёх моделей, места), на CPU
+python coop_bot.py --model ../../models/coop-deberta-v3-ens3-v2     # бот v2, если архива с v3 нет
 ```
 
 - Версии `transformers` и `tokenizers` — те, на которых всё обучалось и проверялось. С другими
@@ -58,7 +59,8 @@ cmake --build build -j
 ./build/coop_cli --threads 1          # чат
 ```
 
-Проверки паритета с Python-ботом. Эталонные файлы уже лежат в `models/coop-deberta-v3-ens3-v2/cpp/`:
+Проверки паритета с Python-ботом. Эталонные файлы лежат в `models/coop-deberta-v3-ens3-v3/cpp/` (бот по умолчанию). Без архива с v3
+добавь к командам `--model-dir ../../models/coop-deberta-v3-ens3-v2/cpp`:
 
 ```
 ./build/coop_cli --tokenizer-tests     # токенизатор и регэкспы, без модели
@@ -122,39 +124,31 @@ cmake --build build -j
 - На 483 старых строках разница 0.0 / −0.2 [−4, +4], то есть старые приказы не пострадали.
 - Вывод: дообучение нужно, финальная модель v3 — следующий шаг.
 
-**Финальная модель v3**
-- На момент снимка обучается на рабочей машине: `models/coop-deberta-v3-ens3-v3`, лог
-  `scripts/coop/train_v3_final_ens3.log`.
-- В архив с моделями она не вошла. Её нужно довезти отдельной папкой либо обучить заново (шаг 2 ниже).
+**Финальная модель v3 обучена, экспортирована и проверена** (после первого снимка; в архив
+`coop-bot-models.tar` она не вошла и лежит в отдельном архиве `coop-bot-model-v3.tar`):
+- `models/coop-deberta-v3-ens3-v3`: гейт по семейству, порог 0.52;
+- все шесть проверок `coop_cli` проходят на Windows;
+- бот по умолчанию (`coop_bot.py`, `CMakeLists.txt`) переключён на v3.
 
 ## 5. Что делать дальше
 
-1. Оценка v3 уже сделана (раздел C в `eval_v3.log`). Пересчитать можно так:
+1. На Mac: собрать C++ и прогнать шесть проверок (раздел 3). Это первая сборка вне Windows.
+2. Этап 2 — плагин UE5. План в `cpp/coop_intent/README.md`:
+   - модель через NNE;
+   - регэкспы через ICU по ASCII-«тени»;
+   - места — теги на акторах уровня, `Decision::places` передаётся планировщику как есть.
+3. После первых игровых сессий:
+   - разметить реальные реплики из лога и добавить в обучение;
+   - собрать варианты названий мест от настоящего распознавания речи («rough», «stares») и добавить в
+     `locations.json`.
+4. Если понадобится переобучить (нужен GPU; на Mac без него — часы, в `train_v2.py` только `cuda` или
+   `cpu`):
    ```
-   COOP_TAG=v3 python eval_v3.py
-   ```
-2. Финальная модель v3, если её папку не привезли с рабочей машины:
-   ```
-   COOP_TAG=v3 python train_v2.py final ens3      # -> models/coop-deberta-v3-ens3-v3
-   ```
-   Это 18 обучений. На RTX 4090 занимает около 25 минут, на Mac без GPU — часы.
-   - `train_v2.py` выбирает `cuda` или `cpu`. Поддержки MPS в нём нет, её нужно добавить и проверить.
-   - Проще обучить финальную модель на рабочей машине и перенести папку.
-3. Экспорт и проверки C++ для новой модели:
-   ```
+   COOP_TAG=v3 python scripts/coop/train_v2.py final ens3      # -> models/coop-deberta-v3-ens3-v3
    COOP_TAG=v3 python scripts/coop/export_cpp.py models/coop-deberta-v3-ens3-v3
    COOP_TAG=v3 python scripts/coop/check_onnx.py  models/coop-deberta-v3-ens3-v3
    COOP_TAG=v3 python cpp/coop_intent/tools/gen_tests.py models/coop-deberta-v3-ens3-v3
    ```
-   После этого прогнать все шесть проверок `coop_cli` с `--model-dir models/coop-deberta-v3-ens3-v3/cpp`.
-   Затем поменять модель по умолчанию в `CMakeLists.txt` и в `coop_bot.py`.
-4. Состязательное ревью v3 (методика, цифры, код), как было для v2.
-5. Раздел «v3» в `COOP-BOT.md`, раздел в `DEBERTA-BOT.md`, обновление `cpp/coop_intent/README.md`.
-6. Этап 2 — плагин UE5. План в `cpp/coop_intent/README.md`:
-   - модель через NNE;
-   - регэкспы через ICU по ASCII-«тени»;
-   - места — GameplayTags на акторах уровня;
-   - `PlaceRecord` передаётся планировщику как есть.
 
 Если поменялся только словарь мест или регэкспы, переобучать не нужно:
 

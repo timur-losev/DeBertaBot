@@ -46,9 +46,14 @@ AUTHORS = ["r6", "cs", "stt"]
 # added after the study showed the owner's "cover from behind" going to TAKE_COVER); results files and
 # outputs carry the tag, so the v2 study stays as it was
 TAG = os.environ.get("COOP_TAG", "v2")
-SEED_FILE = {"v2": "seed_commands_v2.json", "v21": "seed_commands_v21.json", "v3": "seed_commands_v3.json"}[TAG]
+SEED_FILE = {"v2": "seed_commands_v2.json", "v21": "seed_commands_v21.json", "v3": "seed_commands_v3.json",
+             "v31": "seed_commands_v31.json"}[TAG]
 # "v3": the lines that name map places (blind/v3, annot/v3) join the data, with the seed set that has
-# templated location seeds; the v2 / v21 studies load exactly what they loaded before
+# templated location seeds; the v2 / v21 studies load exactly what they loaded before.
+# "v31": the v3 data with the seed set corrected after the v3 review (make_seeds_v31.py), and with the
+# independent re-reading of the r6 author's lines (annot/v3/reann_r6.json) in place of the second r6
+# annotation, which is byte-identical to the first; the v3 study stays as it was
+PLACES = TAG in ("v3", "v31")
 
 # the owner's own live-test lines with the reading they asked for, and the canonical probes the v1
 # live test failed on. Not a blind check: none is a training line verbatim, but most are near copies
@@ -109,8 +114,8 @@ def reread_flags():
 
 
 def load_items(with_v2=True, with_v3=None):
-    """with_v3: the lines that name map places; by default only under COOP_TAG=v3."""
-    with_v3 = TAG == "v3" if with_v3 is None else with_v3
+    """with_v3: the lines that name map places; by default only under COOP_TAG=v3 / v31."""
+    with_v3 = PLACES if with_v3 is None else with_v3
     items = []
     flags = reread_flags()
     adj_path = os.path.join(HERE, "annot", "v2", "old_adjudicated.json")
@@ -143,8 +148,30 @@ def load_items(with_v2=True, with_v3=None):
         anns = [json.load(io.open(p, encoding="utf-8"))
                 for p in sorted(glob.glob(os.path.join(HERE, "annot", "v3", f"author_{key}_ann*.json")))]
         assert len(anns) == 2, (key, len(anns))
+        if TAG == "v31" and key == "r6":
+            anns[1] = json.load(io.open(os.path.join(HERE, "annot", "v3", "reann_r6.json"), encoding="utf-8"))
         for a in auth:
             items.append(_item(a, key, [_read(a)] + [_read(an[a["id"]]) for an in anns], "v3"))
+    for it in items:
+        for r in it["reads"]:
+            assert r["set"] <= set(INTENTS), (it["id"], r)
+    return items
+
+
+def load_v3b():
+    """The second batch of lines that name map places (blind/v3b, annot/v3b): written after rule set v3
+    and seed set v31 were fixed. A test set only; no model is trained on it."""
+    items = []
+    for key in AUTHORS:
+        p = os.path.join(HERE, "blind", "v3b", f"author_{key}.json")
+        if not os.path.exists(p):
+            continue
+        auth = json.load(io.open(p, encoding="utf-8"))
+        anns = [json.load(io.open(q, encoding="utf-8"))
+                for q in sorted(glob.glob(os.path.join(HERE, "annot", "v3b", f"author_{key}_ann*.json")))]
+        assert len(anns) == 2, (key, len(anns))
+        for a in auth:
+            items.append(_item(a, key, [_read(a)] + [_read(an[a["id"]]) for an in anns], "v3b"))
     for it in items:
         for r in it["reads"]:
             assert r["set"] <= set(INTENTS), (it["id"], r)

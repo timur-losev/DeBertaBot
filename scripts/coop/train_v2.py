@@ -17,9 +17,16 @@ deberta-v3-base (one model, 0.8 GB, ~25 ms on 4 CPU threads) the study measures:
     python train_v2.py cv base large       # jev environment, GPU
     python train_v2.py cv large --held r6,cs --results results_v2_probs_large_a.json   # a second process
     python train_v2.py final base|large|ens3
+    python train_v2.py final ens3 --reuse-gate ../../models/coop-deberta-v3-ens3-v3/bot_config.json
+                                           # skip the 15 out-of-fold trainings: keep that bot's gate and threshold
+    python train_v2.py smoke               # one short training and a prediction: does this machine's device work
+
+The device is CUDA, else Apple MPS, else CPU (COOP_DEVICE overrides). Only CUDA has been run; the
+numbers in the write-ups are CUDA runs.
 """
 import io, json, os, random, sys, time
 
+os.environ.setdefault("PYTORCH_ENABLE_MPS_FALLBACK", "1")   # an operator MPS lacks runs on the CPU instead of failing
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, get_linear_schedule_with_warmup
 
@@ -57,6 +64,23 @@ def batcher(tok, items, device):
         x = X[rows, :n]
         return {"input_ids": x, "token_type_ids": torch.zeros_like(x), "attention_mask": M[rows, :n]}
     return batch
+
+
+def pick_device():
+    if os.environ.get("COOP_DEVICE"):
+        return os.environ["COOP_DEVICE"]
+    if torch.cuda.is_available():
+        return "cuda"
+    if getattr(torch.backends, "mps", None) is not None and torch.backends.mps.is_available():
+        return "mps"
+    return "cpu"
+
+
+def free(device):
+    if device == "cuda":
+        torch.cuda.empty_cache()
+    elif device == "mps":
+        torch.mps.empty_cache()
 
 
 def train_predict(size, train, test, seed, device, epochs=None):
@@ -110,7 +134,7 @@ def oof(size, train, seed, device, k=5):
         tr = [i for j, i in enumerate(lines) if j % k != f]
         ep = round(full_steps / ((len(tr) + HP["batch"] - 1) // HP["batch"]))
         out.update(train_predict(size, tr, te, seed, device, epochs=ep)[0])
-        torch.cuda.empty_cache()
+        free(device)
     return out
 
 
@@ -134,30 +158,37 @@ def cv(sizes, device, held_only=None, path=RESULTS):
                     continue
                 full, model, _ = train_predict(size, train, test, seed, device)
                 del model
-                torch.cuda.empty_cache()
+                free(device)
                 res.setdefault(size, {})[key] = {"test": full, "oof": oof(size, train, seed, device)}
                 json.dump(res, io.open(path, "w", encoding="utf-8"))
                 print(f"{size} held={held} seed={seed} done, {time.time() - t0:.0f}s", flush=True)
 
 
-def final(kind, device):
+def final(kind, device, reuse_gate=None):
     """kind: base | large (one model, seed 0) or ens3 (three base seeds). The threshold and the gate
-    come from out-of-fold predictions over all study lines (seeds excluded from fitting)."""
+    come from out-of-fold predictions over all study lines (seeds excluded from fitting).
+    reuse_gate: another bot's bot_config.json; its gate and threshold are kept and the out-of-fold
+    trainings are skipped (5 per member). The threshold then was not fitted to this training set."""
     items, seeds = V.load_items(), V.seed_items()
     size, members = ("base", SEEDS) if kind == "ens3" else (kind, [0])
-    out_dir = os.path.join(MODELS_DIR, f"coop-deberta-v3-{kind}-{'v3' if V.TAG == 'v3' else 'v2'}")
+    out_dir = os.path.join(MODELS_DIR, f"coop-deberta-v3-{kind}-{V.TAG if V.PLACES else 'v2'}")
     t0 = time.time()
-    oofs = []
-    for s in members:
-        oofs.append(oof(size, items + seeds, s, device))
-        print(f"oof seed {s} done, {time.time() - t0:.0f}s", flush=True)
-    avg = {k: [sum(o[k][j] for o in oofs) / len(oofs) for j in range(len(LABELS))]
-           for k in oofs[0] if not k.startswith("seed_")}
-    fits = {g: V.fit_threshold(avg, items, g) for g in ("top", "family")}
-    gate = max(fits, key=lambda g: (fits[g][1], g == "top"))   # ties keep the simpler top gate
-    thr = fits[gate][0]
-    print(f"out-of-fold over {len(avg)} lines: " + ", ".join(
-        f"{g} gate thr {t:.2f} (near-2*wf {v})" for g, (t, v) in fits.items()) + f" -> {gate}", flush=True)
+    if reuse_gate:
+        prev = json.load(io.open(reuse_gate, encoding="utf-8"))
+        gate, thr, fits = prev["gate"], prev["threshold"], {}
+        print(f"gate and threshold kept from {reuse_gate}: {gate} {thr}", flush=True)
+    else:
+        oofs = []
+        for s in members:
+            oofs.append(oof(size, items + seeds, s, device))
+            print(f"oof seed {s} done, {time.time() - t0:.0f}s", flush=True)
+        avg = {k: [sum(o[k][j] for o in oofs) / len(oofs) for j in range(len(LABELS))]
+               for k in oofs[0] if not k.startswith("seed_")}
+        fits = {g: V.fit_threshold(avg, items, g) for g in ("top", "family")}
+        gate = max(fits, key=lambda g: (fits[g][1], g == "top"))   # ties keep the simpler top gate
+        thr = fits[gate][0]
+        print(f"out-of-fold over {len(avg)} lines: " + ", ".join(
+            f"{g} gate thr {t:.2f} (near-2*wf {v})" for g, (t, v) in fits.items()) + f" -> {gate}", flush=True)
     os.makedirs(out_dir, exist_ok=True)
     member_dirs = []
     for s in members:
@@ -165,35 +196,55 @@ def final(kind, device):
         d = out_dir if len(members) == 1 else os.path.join(out_dir, f"seed{s}")
         model.to("cpu").save_pretrained(d, safe_serialization=True)
         tok.save_pretrained(d)
-        member_dirs.append(os.path.relpath(d, out_dir))
+        member_dirs.append(os.path.relpath(d, out_dir).replace(os.sep, "/"))
         del model
-        torch.cuda.empty_cache()
+        free(device)
+        print(f"member seed {s} saved, {time.time() - t0:.0f}s", flush=True)
     cfg = {
         "labels": LABELS, "threshold": thr, "gate": gate, "families": V.FAMILY,
         "phrases": {k: v["label"] for k, v in V.I.items()},
         "base_model": MODELS[size], "members": member_dirs,
         "recipe": {**HP, "lr": HP["lr"][size], "dtype": "float32", "seeds": members},
-        "trained_on": f"{len(items)} lines from 3 AI-written authors (v1 blind lines + v2 lines for "
-                      f"TAKE_COVER/OPEN), majority of author + 2 AI annotators, plus {len(seeds)} "
+        "trained_on": f"{len(items)} lines from 3 AI-written authors (v1 blind lines, v2 lines for "
+                      f"TAKE_COVER/OPEN{', v3 lines that name map places' if V.PLACES else ''}), "
+                      f"majority of author + 2 AI annotators, plus {len(seeds)} "
                       f"developer-written canonical commands ({V.SEED_FILE})",
-        "threshold_from": f"5-fold out-of-fold predictions ({'averaged over the members' if len(members) > 1 else 'one model'}), "
+        "threshold_from": f"kept from {os.path.basename(os.path.dirname(os.path.abspath(reuse_gate)))} (not re-fitted to this training set)"
+                          if reuse_gate else
+                          f"5-fold out-of-fold predictions ({'averaged over the members' if len(members) > 1 else 'one model'}), "
                           "criterion near - 2*wrong-family, strict; gate chosen the same way",
         "oof_fits": {g: {"threshold": t, "criterion": v} for g, (t, v) in fits.items()},
+        "device": device, "torch": torch.__version__,
     }
     json.dump(cfg, io.open(os.path.join(out_dir, "bot_config.json"), "w", encoding="utf-8"), indent=1)
     print(f"saved to {out_dir} in {time.time() - t0:.0f}s", flush=True)
 
 
+def smoke(device):
+    """A short training on this device: 64 lines, 2 epochs, then predictions on 32 others."""
+    items = [i for i in V.load_items() if i["maj"]]
+    t0 = time.time()
+    out, model, _ = train_predict("base", items[:64], items[64:96], 0, device, epochs=2)
+    ok = all(len(r) == len(LABELS) and abs(sum(r) - 1) < 1e-3 for r in out.values())
+    print(f"device {device}, torch {torch.__version__}: 8 optimizer steps and {len(out)} predictions in "
+          f"{time.time() - t0:.0f}s; probabilities {'sum to 1' if ok else 'ARE BROKEN'}")
+    sys.exit(0 if ok else 1)
+
+
 def main():
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    if sys.argv[1] == "cv":
+    device = pick_device()
+    print(f"device: {device}", flush=True)
+    if sys.argv[1] == "smoke":
+        smoke(device)
+    elif sys.argv[1] == "cv":
         args = sys.argv[2:]
         held = args[args.index("--held") + 1].split(",") if "--held" in args else None
         path = os.path.join(HERE, args[args.index("--results") + 1]) if "--results" in args else RESULTS
         sizes = [a for i, a in enumerate(args) if not a.startswith("--") and (i == 0 or not args[i - 1].startswith("--"))]
         cv(sizes, device, held, path)
     elif sys.argv[1] == "final":
-        final(sys.argv[2], device)
+        args = sys.argv[3:]
+        final(sys.argv[2], device, args[args.index("--reuse-gate") + 1] if "--reuse-gate" in args else None)
 
 
 if __name__ == "__main__":

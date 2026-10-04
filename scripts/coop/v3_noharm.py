@@ -1,10 +1,12 @@
 """
-Does rewriting the line for the classifier (locations.normalized) change what the shipped bot answers
-on the lines it already handles? The 483 v1+v2 lines, three inputs: raw, "strip", "strip+zone".
+Does rewriting the line for the classifier (locations.normalized) change what the v2 bot answers on
+the lines it already handles? The 483 v1+v2 lines, two inputs: raw and "strip".
 
-The shipped model was trained on these lines, so this is not a quality measurement -- only a check
-that the rewrite does not flip answers on known lines. Quality on lines with map locations is
-eval_v3.py, on lines the model never saw.
+The v2 bot (models/coop-deberta-v3-ens3-v2) was trained on these lines, so this is not a quality
+measurement -- only a check that the rewrite does not flip answers on known lines. Quality on lines
+with map locations is eval_v3.py, on lines the model never saw. (The first run, before the rules were
+frozen, also had a "strip+zone" mode that replaced floors; it changed the meaning of orders and was
+dropped from locations.normalized.)
 
     python v3_noharm.py      # jev environment
 """
@@ -18,12 +20,12 @@ import shipped  # noqa: E402
 
 
 def main():
-    items = V.load_items()
-    P = shipped.Predictor()
+    items = V.load_items(with_v3=False)
+    P = shipped.Predictor(os.path.normpath(os.path.join(HERE, "..", "..", "models", "coop-deberta-v3-ens3-v2")))
     gate, thr = P.cfg["gate"], P.cfg["threshold"]
     res = {}
     base = None
-    for mode in ("raw", "strip", "strip+zone"):
+    for mode in ("raw", "strip"):
         texts = [LOC.normalized(i["text"], mode) for i in items]
         probs = P(texts)
         preds = {i["id"]: V.pick(p, gate, thr)[0] for i, p in zip(items, probs)}

@@ -162,3 +162,13 @@ e87898d6045131c91216f35c54a4f71e33dd7f56c1a53c7e6e31175ed460db59 *../../cpp/coop
 fcdfa26e0c426cef49dd5c6e4d5c021d2bb544f019c596639cfe170bfa887571 *results_v3_probs_stt.json
 076207d32efeae8f8d205edb8af542fa3313ee89046ad07f757e43f188897ca9 *../../cpp/coop_intent/CMakeLists.txt
 d7d1c307a08c7da6bd9e2c3a515ea6bbefeb53a04016b02c7c3cde66a2a1046d *../../cpp/coop_intent/src/tokenizer.cpp
+2026-10-03T23:43:46+02:00
+# v3 final: models/coop-deberta-v3-ens3-v3 (family gate 0.52), exported and checked in C++ (golden 1062, tokenizer 9231, places 8563, gates 2938, decide 52, dialogue 77); defaults switched to v3; docs written; before the v3 review
+1a312e68ff1b9b54ef7bbf84159ed81811e7b03a038501d18a888fee177e77c5 *../../models/coop-deberta-v3-ens3-v3/bot_config.json
+1a24e9eacd80013f44b03d33451e4ec5e1927714d40dc712aa17fb19a522923e *../../models/coop-deberta-v3-ens3-v3/cpp/intent_config.json
+77f3a11b90d4ea833431d4c2ca43d628d74a54e1d21b482f3df9352c0506c0ca *../../models/coop-deberta-v3-ens3-v3/cpp/bench.txt
+3ea9ee6f122520b025bdfe171883148d649c67ae6623108a28767f8f9f0edfd3 *train_v2.py
+e1d04230385ab2fe82aca008faf1879941e624ede5b114eaa4935e2e51dbb3d1 *v3_shipped.py
+2c4d0018a85fbcde161881f5c7f8f0ab33b4c7b4520ad76a9557547d8a9cc281 *shipped.py
+a5463adc6355a95d7976b009572ef5e53739772ff7859f2a8adee6ba28a2c70e *coop_bot.py
+1dba9e725f756e7d78fdc8f03d07e2b69b209707abb37688d827a3068f6c4ac2 *../../cpp/coop_intent/tools/coop_cli.cpp

@@ -461,6 +461,19 @@ int RunBench(Model& m, double load_ms, double mem_before) {
     std::printf("%zu lines x 2, %.1f tokens on average (max %.0f)\n", texts.size(),
                 std::accumulate(len.begin(), len.end(), 0.0) / len.size(), *std::max_element(len.begin(), len.end()));
     std::printf("tokenizer: median %.1f us, p99 %.1f us\n", Percentile(tok_us, 0.5), Percentile(tok_us, 0.99));
+    coop::LocationMatcher places;
+    if (m.cfg.has_locations && places.Init(m.cfg.locations, &err)) {
+        std::vector<double> loc_us;
+        size_t with_place = 0;
+        for (const std::string& t : texts) {
+            const auto t0 = Clock::now();
+            const coop::PlaceRecord r = places.Find(t);
+            loc_us.push_back(Ms(Clock::now() - t0) * 1000);
+            with_place += !r.targets.empty();
+        }
+        std::printf("places:    median %.1f us, p99 %.1f us (%zu of %zu lines name a place)\n", Percentile(loc_us, 0.5),
+                    Percentile(loc_us, 0.99), with_place, texts.size());
+    }
     std::printf("model:     median %.1f ms, p90 %.1f ms, p99 %.1f ms, max %.1f ms\n", Percentile(model_ms, 0.5),
                 Percentile(model_ms, 0.9), Percentile(model_ms, 0.99), Percentile(model_ms, 1.0));
     return 0;

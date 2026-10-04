@@ -14,11 +14,14 @@ import coop_v2 as V  # noqa: E402
 import locations as LOC  # noqa: E402
 import shipped  # noqa: E402
 
+# the bot shipped before v3, whatever coop_bot.py runs now
+V2_BOT = os.path.normpath(os.path.join(HERE, "..", "..", "models", "coop-deberta-v3-ens3-v2"))
+
 
 def main():
     items = [i for i in V.load_items() if i["version"] == "v3"]
-    P = shipped.Predictor()
-    out = {"threshold": P.cfg["threshold"], "gate": P.cfg["gate"], "model": os.path.basename(shipped.MODEL_DIR)}
+    P = shipped.Predictor(V2_BOT)
+    out = {"threshold": P.cfg["threshold"], "gate": P.cfg["gate"], "model": os.path.basename(V2_BOT)}
     for mode in ("raw", "strip"):
         texts = [LOC.normalized(i["text"], mode) for i in items]
         out[mode] = {i["id"]: p for i, p in zip(items, P(texts))}

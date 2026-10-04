@@ -12,38 +12,21 @@ map, and a new callout must work the moment it is added to locations.json.
 
 Everything is defined on the UTF-8 bytes of the line, so the C++ port is the same loop: a token is a
 maximal run of ASCII letters and digits (A-Z lowercased), every other byte separates; between two
-tokens a comma is a weak break (1) and . ; : ! ? a strong one (2). Offsets are byte offsets. Only the
-first MAX_TOKENS tokens are read.
+tokens a comma is a weak break (1) and . ; : ! ? a strong one (2). Offsets are byte offsets.
 
-Rule sets (the word lists are in locations.json "words"):
-  v1  frozen before any v3 test line existed (rules/v1): the only set with a blind number on the first
-      v3 lines (88.0% exact).
-  v2  after that run, from the r6 and cs authors' lines (rules/v2).
-  v3  this file, after the review of v2: roles no longer fire on ordinary orders, "on second" is a
-      floor only where it ends its phrase, zones and loose names do not attach across a clause, the
-      unknown_modifier flag looks after the object too. Written after the first v3 lines had been
-      seen; its blind number is on the second batch (blind/v3b, eval_v3b.py).
-
+Rules (v1 was frozen before any v3 test line existed; v2 added 1d, 5b, 5c and the report verbs after
+the first blind run, from the r6 and cs authors' lines only -- eval_v3.py reports the stt author
+separately; the word lists are in locations.json "words")
   mentions    left to right, the longest vocabulary phrase at each token: object, qualifier, named
-              place (object + qualifier in one phrase), zone, or an "ignore" phrase ("off the table").
-              A zone's "words_end" phrase ("on second") counts only where it ends its phrase: at the
-              end of the line, before punctuation or before a lone_follow word.
+              place (object + qualifier in one phrase), zone, or an "ignore" phrase ("two steps").
   before      an object takes the qualifier standing right before it (nothing, or one before_fill
-              word, between; no punctuation). "north and south doors" makes two targets.
-  unknown     the target is flagged "unknown_modifier" -- the player singled out one object in a way
-              the map names cannot express, and the planner must not fall back to the nearest one --
-              when: the object cannot carry the qualifier ("blue door"); two qualifiers stand side by
-              side ("north west door"); an unknown_modifier word stands right before it ("back door",
-              "first door"); exactly one word the vocabulary does not know stands between a determiner
-              and an unqualified object ("the spiral staircase"; not a preposition, a number or an
-              order verb: "a flash through window" is not flagged); or a post_prep word, an optional
-              determiner and a post_modifier word follow an unqualified object ("the door on the
-              left").
+              word, between; no punctuation). A qualifier the object cannot carry ("blue door"), two
+              qualifiers side by side ("north west door") or an unknown_modifier word ("back door")
+              flag the target "unknown_modifier": the planner must not fall back to the nearest one.
+              "north and south doors" makes two targets.
   after       a qualifier still free attaches to the object before it when only after_fill words
-              (at most 4, zone phrases skipped) stand between, without punctuation: "door on the north
-              side". Across a comma only when a tail word follows it ("the stairs, blue ones"). A
-              qualifier followed by a lone_block word or a zone phrase belongs to that phrase ("the
-              door to the main hall"). If the object already has a qualifier, it is a second target
+              (at most 4, zone phrases skipped) and no strong break stand between: "door on the north
+              side", "the stairs, blue ones". If that object already has one, it is a second target
               of the same kind ("not the north door, the south one").
   lone        a qualifier no object took is a place only where it ends its phrase: at the end of the
               line, before punctuation or before a lone_follow word. Before a lone_block word or a
@@ -51,38 +34,14 @@ Rule sets (the word lists are in locations.json "words"):
               is nothing; before any other word it is a target flagged "unsure". Its object is the
               qualifier's "lone" object (blue -> stairs, main -> door); a compass word has none, so
               the target has only a qualifier (a direction).
-  zone        a zone belongs to a target only inside its noun phrase: right before it ("basement
-              door") or after it with only zone_after_fill words (at most 3) between, without
-              punctuation. Across a comma only as shorthand, the zone an item of its own: "first
-              floor, north window", "basement, the east door", "red stairs, top floor, two of them";
-              not "get to the basement, the door is open". Any other zone is a target of its own.
-  role        whose place it is. Looking back at most 5 tokens from a target, not across punctuation,
-              "you" or another target, and not past an order verb that starts the bot's own order
-              ("im planting watch the white stairs"; a verb with its subject or negator right before
-              it -- "i'll take", "i'm going to breach", "don't open", "they hold" -- hands the search
-              to that subject or negator):
-                not     a role_not word ("don't forget to", "don't let", "do not lose" excepted)
-                from    leave / leaving; "from" or "off" after a from_lead word ("fall back from",
-                        "get off") or when "to <another place>" follows ("from blue to red",
-                        "from the roof rappel down to the east window"); "out of".
-                        "cover me from the east window", "smoke off the main door": no role
-                mine    i / i'm / i'll / i've, unless a report verb follows ("i said", "i need") or
-                        it is a request ("can i get smoke on ..."); an -ing word that starts the
-                        line or the clause ("pushing main", "i'm hit, falling back to the basement")
-                them    a role_them word ("they", "enemy", "footsteps"). A role_them_soft word
-                        ("guy", "someone", "stack") or a number, when what follows is what an enemy
-                        does there: a form of "be", an -ing word or a motion_past word ("stack is
-                        sitting on ...", "someone just ran up ...", "two of them pushing ..."), or a
-                        number_next word where a callout starts -- the line or clause start, after
-                        a lead word or after another place ("two on red", "got one at ...", "i hear
-                        someone in ..."). "put one on the north door", "stack up on the north
-                        door", "you guys on the main door" get no role
-              "status" (a status_next word follows the target, and not "is yours" / "is all you") is
-              given only when the line has another place to act on, or asks for "the other one":
-              "north door is clear, hold the south window"; "east door's barricaded, blow it" has none.
-  primary     the first target without a role. If every target has one, the first target: then the
-              line gives no destination, and the role says why ("get off the roof": the place to
-              leave).
+  zone        a zone belongs to a target only inside its noun phrase: right before it (at most one
+              zone_before_fill word) or after it with only zone_after_fill words (at most 3) between.
+              Any other zone is a target of its own.
+  role        looking back at most 5 tokens from a target (not across punctuation, "you" or another
+              target): role_not -> "not", role_from -> "from", role_mine -> "mine", role_them or a
+              number followed by a number_next word -> "them"; else, if a status_next word follows the
+              target, "status". These are places the bot is NOT sent to.
+  primary     the first target without a role; if all have one, the first target.
 
 normalized(text, "strip") is the line with attached qualifiers removed ("hold the north door" ->
 "hold the door"), for measuring whether the classifier does better on it (eval_v3.py). Lone
@@ -98,17 +57,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROLE_WINDOW = 5
 AFTER_MAX = 4
 ZONE_AFTER_MAX = 3
-GOVERN_MAX = 4
 MAX_PHRASE_TOKENS = 4
-MAX_TOKENS = 128
 SECTIONS = ("version", "objects", "qualifiers", "named", "zones", "ignore", "words")
-WORD_LISTS = ("before_fill", "after_fill", "tail", "zone_after_fill", "lone_follow",
+WORD_LISTS = ("before_fill", "after_fill", "tail", "zone_before_fill", "zone_after_fill", "lone_follow",
               "lone_block", "lone_not_after", "unknown_modifier", "role_not", "role_from", "role_mine",
               "role_them", "number", "number_next", "status_next", "role_stop", "report_verb", "other",
-              "determiner", "neutral_modifier",
-              "role_them_soft", "soft_fill", "soft_lead", "number_fill", "motion_past", "role_from_of", "of_lead", "be", "not_ing", "role_from_after", "from_lead", "from_to", "ask", "number_lead",
-              "status_not_next", "not_exempt", "not_unless_to", "govern", "aux", "order_verb", "from_particle",
-              "preposition", "post_prep", "post_modifier")
+              "determiner", "neutral_modifier")
 
 
 def _is_token_byte(c):
@@ -200,8 +154,6 @@ def validate(v):
             errs.append(f"zone {z.get('id')!r} has no words")
         for w in z.get("words", []):
             claim(w, f"zone {z.get('id')}")
-        for w in z.get("words_end", []):
-            claim(w, f"zone {z.get('id')} (words_end)")
     for p in v["ignore"]:
         claim(p, "ignore")
     for k in WORD_LISTS:
@@ -242,8 +194,6 @@ def load_vocab(path=None):
     for z in v["zones"]:
         for w in z["words"]:
             phrases[tuple(w.split(" "))] = ("zone", z["id"])
-        for w in z.get("words_end", []):
-            phrases[tuple(w.split(" "))] = ("zone_end", z["id"])
     for p in v["ignore"]:
         phrases[tuple(p.split(" "))] = ("ignore", None)
     return {"phrases": phrases, "max_len": max(map(len, phrases)),
@@ -265,23 +215,15 @@ def _target(obj, qual, first, last, source, **more):
 def find(text, vocab=VOCAB):
     """-> {"targets": [...in line order...], "primary": index or -1, "target": the primary's
     {object, qualifier, zone, role, flag} or None}. Token positions: "first" / "last"."""
-    toks = tokenize(text)[:MAX_TOKENS]
+    toks = tokenize(text)
     words = [t[0] for t in toks]
     n, W = len(toks), vocab["w"]
-
-    def ends_phrase(j):      # token j does not continue the phrase before it
-        return j >= n or toks[j][3] or words[j] in W["lone_follow"]
-
     mentions, i = [], 0
     while i < n:
         for k in range(min(vocab["max_len"], n - i), 0, -1):
             hit = vocab["phrases"].get(tuple(words[i:i + k]))
             # a phrase does not run across punctuation ("first, floor")
             if hit and not any(toks[j][3] for j in range(i + 1, i + k)):
-                if hit[0] == "zone_end":
-                    if not ends_phrase(i + k):
-                        continue               # "on second thought", "to second door"
-                    hit = ("zone", hit[1])
                 if hit[0] != "ignore":
                     mentions.append({"kind": hit[0], "value": hit[1], "first": i, "last": i + k - 1,
                                      "start": toks[i][1], "end": toks[i + k - 1][2]})
@@ -346,16 +288,18 @@ def find(text, vocab=VOCAB):
                 and not toks[t["first"]][3] and kind_at.get(t["first"] - 1) is None:
             t["flag"] = "unknown_modifier"
 
-    # 1d. "the spiral staircase", "that broken window": one word the vocabulary does not know between
-    # a determiner and an unqualified object singles out one object
+    # 1d. "the spiral staircase", "that broken window", "the left-hand window": one or two words the
+    # vocabulary does not know between a determiner and an unqualified object single out one object
     for t in targets:
-        f = t["first"]
-        if "twin" in t or t["flag"] or t["qualifier"] is not None or f < 2:
+        if "twin" in t or t["flag"] or t["qualifier"] is not None:
             continue
-        w = words[f - 1]
-        if words[f - 2] in W["determiner"] and not toks[f - 1][3] and not toks[f][3] and kind_at.get(f - 1) is None \
-                and not any(w in W[k] for k in ("neutral_modifier", "determiner", "preposition", "number", "order_verb")):
-            t["flag"] = "unknown_modifier"
+        f = t["first"]
+        for k in (1, 2):
+            mid = range(f - k, f)
+            if f - k - 1 >= 0 and words[f - k - 1] in W["determiner"] and not any(toks[j][3] for j in range(f - k, f + 1))                     and all(kind_at.get(j) is None and words[j] not in W["neutral_modifier"]
+                            and words[j] not in W["determiner"] for j in mid):
+                t["flag"] = "unknown_modifier"
+                break
 
     # 2. a free qualifier after an object
     for k, q in enumerate(quals):
@@ -366,17 +310,13 @@ def find(text, vocab=VOCAB):
             continue
         o = prev[-1]
         t = by_obj[id(o)]
-        nxt = q["last"] + 1
-        if nxt < n and not toks[nxt][3] and (words[nxt] in W["lone_block"] or kind_at.get(nxt) == "zone"):
-            continue                       # "the door to the main hall": the name belongs to that phrase
-        tail = nxt < n and words[nxt] in W["tail"] and not toks[nxt][3]
-        b = brk(o["last"], q["first"])
         g = gap(o["last"], q["first"], skip=("zone",))
         if (q["value"] in vocab["allowed"][t["object"]] and len(g) <= AFTER_MAX and set(g) <= W["after_fill"]
-                and (b == 0 or (b == 1 and tail))
+                and brk(o["last"], q["first"]) < 2
                 and not any(kind_at.get(j) == "qualifier" for j in range(o["last"] + 1, q["first"]))):
             free[k] = False
-            last = q["last"] + (1 if tail else 0)
+            nxt = q["last"] + 1
+            last = q["last"] + (1 if nxt < n and words[nxt] in W["tail"] and not toks[nxt][3] else 0)
             zs = [z for z in zones if o["last"] < z["first"] < q["first"]]
             if t["qualifier"] is None:
                 t["qualifier"], t["last"], t["after"] = q["value"], last, True
@@ -390,17 +330,6 @@ def find(text, vocab=VOCAB):
             ta["shares"] = tb
             if ta["qualifier"] is None and tb.get("after") and tb["qualifier"] in vocab["allowed"][ta["object"]]:
                 ta["qualifier"] = tb["qualifier"]
-    # 2c. "the door on the left", "the stairs at the back": a modifier after an unqualified object
-    for o in objects:
-        t = by_obj[id(o)]
-        e = o["last"] + 1
-        if t["flag"] or t["qualifier"] is not None or e >= n or toks[e][3] or words[e] not in W["post_prep"]:
-            continue
-        e += 1
-        if e < n and not toks[e][3] and words[e] in W["determiner"]:
-            e += 1
-        if e < n and not toks[e][3] and words[e] in W["post_modifier"] and kind_at.get(e) is None:
-            t["flag"] = "unknown_modifier"
 
     # 3. lone qualifiers: a place only where the word ends its phrase
     for k, q in enumerate(quals):
@@ -410,10 +339,10 @@ def find(text, vocab=VOCAB):
             continue                       # "i'm red"
         nxt = q["last"] + 1
         flag = None
-        if not ends_phrase(nxt):
+        if nxt < n and not toks[nxt][3] and words[nxt] not in W["lone_follow"]:
             if words[nxt] in W["lone_block"] or kind_at.get(nxt) == "zone":
                 continue                   # "yellow ping", "main hall"
-            flag = "unsure"                # "the white fence": maybe a phrase the vocabulary does not know
+            flag = "unsure"                # "hold blue tight", "the white van"
         obj = vocab["lone"][q["value"]]
         last = q["last"] + (1 if nxt < n and words[nxt] in W["tail"] and not toks[nxt][3] else 0)
         targets.append(_target(obj, q["value"], q["first"], last, None, flag=flag, inferred=obj is not None))
@@ -427,19 +356,13 @@ def find(text, vocab=VOCAB):
             if "zone_at" in t:
                 continue
             if z["last"] < t["first"]:
-                # "basement door"; across a comma only as shorthand, the zone an item of its own:
-                # "first floor, north window", "basement, the east door, smoke it"
-                g, b = gap(z["last"], t["first"]), brk(z["last"], t["first"])
-                if (not g and not b) or (b == 1 and toks[z["last"] + 1][3] == 1 and (z["first"] == 0 or toks[z["first"]][3])
-                                         and (not g or (len(g) == 1 and g[0] in W["determiner"]))):
+                g = gap(z["last"], t["first"])
+                if len(g) <= 1 and set(g) <= W["zone_before_fill"] and brk(z["last"], t["first"]) < 2:
                     best = best or t
             elif z["first"] > t["last"] or (t["obj"] is not None and t["obj"]["last"] < z["first"] <= t["last"]):
                 a = t["obj"]["last"] if t["obj"] is not None and z["first"] <= t["last"] else t["last"]
                 g = gap(a, z["first"])
-                b = brk(a, z["first"])
-                # across a comma only as shorthand, the zone an item of its own: "red stairs, top floor, ..."
-                if (len(g) <= ZONE_AFTER_MAX and set(g) <= W["zone_after_fill"]
-                        and (b == 0 or (b == 1 and not g and (z["last"] + 1 >= n or toks[z["last"] + 1][3])))
+                if (len(g) <= ZONE_AFTER_MAX and set(g) <= W["zone_after_fill"] and brk(a, z["first"]) < 2
                         and not any(a < u["first"] < z["first"] for u in targets if u is not t)):
                     best = t
                     t["zone_after"] = True
@@ -460,108 +383,28 @@ def find(text, vocab=VOCAB):
     owned = set()
     for t in targets:
         owned.update(range(t["first"], t["last"] + 1))
-
-    def governor(j):         # the subject or negator right before the order verb at j (auxiliaries between), or -1
-        k = j - 1
-        for _ in range(GOVERN_MAX + 1):
-            if k < 0 or toks[k + 1][3]:
-                return -1
-            if words[k] in W["role_not"] or words[k] in W["role_mine"] or words[k] in W["govern"]:
-                return k
-            if words[k] not in W["aux"]:
-                return -1
-            k -= 1
-        return -1
-
-    def ing(j):              # "camping", "sitting": a progressive form (by its ending; not_ing: "thing", "building")
-        return j < n and len(words[j]) > 4 and words[j].endswith("ing") and words[j] not in W["not_ing"]
-
-    def after(j, fill):      # the token after j and at most two filler words: "two of them | on", "guy just | went"
-        k = j + 1
-        for _ in range(2):
-            if k < n and not toks[k][3] and words[k] in W[fill]:
-                k += 1
-        return k
-
-    def acts(k):             # what an enemy does there: "is", "sitting", "went"
-        return k < n and not toks[k][3] and (words[k] in W["be"] or ing(k) or words[k] in W["motion_past"])
-
-    def starts(j, more=()):  # token j starts a callout: line or clause start, after a lead word or after another place
-        return j == 0 or toks[j][3] or words[j - 1] in W["number_lead"] or j - 1 in owned or any(words[j - 1] in W[m] for m in more)
-
-    def leads_to(t):         # "from blue to red", "from the roof rappel down to the east window"
-        e = t["last"] + 1
-        for skip in ("order_verb", "from_particle"):
-            if e < n and not toks[e][3] and words[e] in W[skip] and kind_at.get(e) is None:
-                e += 1
-        if e >= n or toks[e][3] or words[e] not in W["from_to"]:
-            return False
-        e += 1
-        if e < n and not toks[e][3] and words[e] in W["determiner"]:
-            e += 1
-        return e < n and not toks[e][3] and kind_at.get(e) is not None
-
     for t in targets:
         j, steps = t["first"] - 1, 0
         while j >= 0 and steps < ROLE_WINDOW:
             if toks[j + 1][3] or words[j] in W["role_stop"] or j in owned:
                 break
             w = words[j]
-            soft = False
-            if w in W["role_them_soft"]:   # "stack is sitting on ...", "guy on ..."; not "stack up on the north door"
-                k = after(j, "soft_fill")
-                soft = k < t["first"] and (acts(k) or (words[k] in W["number_next"] and w not in W["order_verb"]
-                                                       and starts(j, ("soft_lead", "number"))))
-            if w in W["order_verb"] and not soft:
-                j = governor(j)
-                if j < 0:
-                    break                  # "im planting watch the white stairs": the bot's own order starts here
-                w = words[j]               # "i'm going to breach the north door": straight to the subject
             if w in W["role_not"]:
-                k = j + 2 if words[j + 1] == "t" else j + 1     # "don't" is two tokens
-                if (w in W["not_unless_to"] and words[j + 1] == "to") or (k < n and words[k] in W["not_exempt"]):
-                    break                  # "don't forget to smoke the north door", "do not lose the top floor"
                 t["role"] = "not"
             elif w in W["role_from"]:
                 t["role"] = "from"
-            elif w in W["role_from_after"]:
-                if (j > 0 and not toks[j][3] and words[j - 1] in W["from_lead"]) or leads_to(t):
-                    t["role"] = "from"     # else the bot's own position: "cover me from the east window"
             elif w in W["role_mine"]:
-                k = j + 1
-                while k < t["first"] and words[k] in W["aux"]:
-                    k += 1
-                if words[k] in W["report_verb"] or (j > 0 and not toks[j][3] and words[j - 1] in W["ask"]):
-                    break                  # "I said the west door", "can i get smoke on the north door"
+                if words[j + 1] in W["report_verb"]:     # "I said the west door": not the player's place
+                    break
                 t["role"] = "mine"
-            elif w in W["role_from_of"]:
-                if j > 0 and not toks[j][3] and words[j - 1] in W["of_lead"]:
-                    t["role"] = "from"     # "get out of the basement"
-            elif w in W["role_them"] or soft:
+            elif w in W["role_them"] or (w in W["number"] and words[j + 1] in W["number_next"]):
                 t["role"] = "them"
-            elif w in W["number"]:
-                k = after(j, "number_fill")
-                if k < t["first"] and (words[k] in W["number_next"] or acts(k)) and starts(j):
-                    t["role"] = "them"     # "two on red", "got one at main"; not "put one on the north door"
-            elif ing(j) and (j == 0 or toks[j][3]):
-                t["role"] = "mine"         # "pushing main", "i'm hit, falling back to the basement": a report, not an order
             if t["role"]:
                 break
             j -= 1
             steps += 1
-
-    # 5a. status: "north door is clear, hold the south window". Only when the line has another place to
-    # act on (or asks for "the other one"): "east door's barricaded, blow it" names its own target
-    def status_follows(t):
         e = t["last"] + 1
-        if e >= n or toks[e][3] or words[e] not in W["status_next"]:
-            return False
-        return not (e + 1 < n and not toks[e + 1][3] and words[e + 1] in W["status_not_next"])
-
-    cand = [t for t in targets if t["role"] is None and status_follows(t)]
-    if cand and (any(t["role"] is None and not any(t is c for c in cand) for t in targets)
-                 or any(words[j] in W["other"] for j in range(targets[-1]["last"] + 1, n))):
-        for t in cand:
+        if t["role"] is None and e < n and words[e] in W["status_next"] and not toks[e][3]:
             t["role"] = "status"
 
     # 5b. a correction reaches back: "smoke blue stairs, no wait, not blue, I meant white"
@@ -570,9 +413,9 @@ def find(text, vocab=VOCAB):
             for u in targets[:k]:
                 if u["role"] is None and u["qualifier"] == t["qualifier"] and u["object"] in (t["object"], None):
                     u["role"] = "not"
-    # 5c. "I've got the north door, you take the other one", "not the north door, the other one": no
-    # named place is the bot's, and the line asks for the other one -> another object of that kind
-    if targets and all(t["role"] for t in targets):
+    # 5c. "I've got the north door, you take the other one": only the player's place is named, and the
+    # line asks for the other one -> another object of that kind
+    if targets and all(t["role"] in ("mine", "status") for t in targets):
         t = targets[-1]
         if t["object"] is not None and any(words[j] in W["other"] for j in range(t["last"] + 1, n)):
             targets.append(_target(t["object"], None, n, n, None, flag="other"))
@@ -619,10 +462,9 @@ def normalized(text, mode, vocab=VOCAB):
     return res.decode("utf-8")
 
 
-def run_dev(path=None, show=True):
+def run_dev(path=None):
     """The developer's regression lines: {cat, text, accept: [[object, qualifier, zone] | null |
-    "FLAG" | "ROLE"]}; a case may also fix the primary's "role" and "flag" (null: none). Tuning
-    material, never a test set."""
+    "FLAG" | "ROLE"]}. Tuning material, never a test set."""
     cases = json.load(io.open(path or os.path.join(HERE, "locations_dev.json"), encoding="utf-8"))["cases"]
     fails = {}
     for c in cases:
@@ -630,18 +472,13 @@ def run_dev(path=None, show=True):
         got = None if t is None else [t["object"], t["qualifier"], t["zone"]]
         ok = got in [a for a in c["accept"] if not isinstance(a, str)] or \
             ("FLAG" in c["accept"] and t and t["flag"]) or ("ROLE" in c["accept"] and t and t["role"])
-        for k in ("role", "flag"):
-            if k in c and (t[k] if t else None) != c[k]:
-                ok = False
         if not ok:
-            fails.setdefault(c["cat"], []).append((c["text"], got, t and t["role"], t and t["flag"], c))
+            fails.setdefault(c["cat"], []).append((c["text"], got, c["accept"]))
     n_fail = sum(map(len, fails.values()))
-    if show:
-        print(f"{len(cases)} dev lines, {n_fail} with a primary target the line's author would not accept")
-        for cat, rows in fails.items():
-            for text, got, role, flag, c in rows:
-                want = f"{c['accept']}" + "".join(f" {k}={c[k]}" for k in ("role", "flag") if k in c)
-                print(f"  [{cat}] {text!r}: got {got} role={role} flag={flag}, want {want}")
+    print(f"{len(cases)} dev lines, {n_fail} with a primary target the line's author would not accept")
+    for cat, rows in fails.items():
+        for text, got, want in rows:
+            print(f"  [{cat}] {text!r}: got {got}, want {want}")
     return n_fail
 
 

@@ -5,13 +5,16 @@ bot in the game answer to this line" (eval_v3.py, v3_noharm.py).
 
     import shipped; P = shipped.Predictor(); probs = P(["hold the north door"])
 """
-import io, json, os
+import io, json, os, sys
 
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-MODEL_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "models", "coop-deberta-v3-ens3-v2"))
+sys.path.insert(0, HERE)
+import bots  # noqa: E402
+
+MODEL_DIR = bots.default_bot()
 
 
 class Predictor:

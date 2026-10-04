@@ -15,7 +15,7 @@ import run_coop as C  # noqa: E402
 ON_SIGNAL = re.compile(
     r"\b(on|at) (my|the) (go|call|mark|signal|count|word|command)\b"
     r"|\bwhen i (say|call|give|tell|shout)"
-    r"|\bon (one|two|three|1|2|3)\b"
+    r"|\bon (one|two|three|1|2|3)\b(?! of\b)"      # not "on one of the windows" (v3 review)
     r"|\b(wait|hold) (for|till|until) (my|i)\b"
     r"|\b(till|until) i say", re.I)
 OTHER = re.compile(r"\b(other|another|opposite)\b", re.I)

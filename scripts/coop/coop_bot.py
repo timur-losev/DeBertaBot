@@ -1,6 +1,8 @@
 """
-Talk to the co-op bot, on CPU: by default the v2 bot (three fine-tuned DeBERTa-v3-base models,
-train_v2.py final ens3); --model ../../models/coop-deberta-v3-base for the 22-intent v1 bot.
+Talk to the co-op bot, on CPU: by default the newest trained bot (bots.py: the v3 ensemble, three
+fine-tuned DeBERTa-v3-base models, or its v31 re-training once that exists); --model
+../../models/coop-deberta-v3-ens3-v2 for the bot trained without place lines,
+../../models/coop-deberta-v3-base for the 22-intent v1 bot.
 
 What happens to each line you type (the pipeline COOP-BOT.md recommends):
   1. regex slots   "on my go / when I say / on three" -> the order waits for your signal;
@@ -30,13 +32,14 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from timing_rule import ON_SIGNAL, OTHER  # noqa: E402  the two regexes measured in COOP-BOT.md
+import bots  # noqa: E402
 import locations as LOC  # noqa: E402  the map's named places in the line (COOP-BOT.md "v3")
 
 import re  # noqa: E402
 
-# the shipped bot: v2 (24 intents incl. TAKE_COVER and OPEN), three DeBERTa-v3-base seeds averaged,
-# family gate (train_v2.py final ens3, COOP-BOT.md "v2"); the 22-intent v1 bot is models/coop-deberta-v3-base
-MODEL_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "models", "coop-deberta-v3-ens3-v2"))
+# the shipped bot: v3 (24 intents incl. TAKE_COVER and OPEN, trained with lines that name map places),
+# three DeBERTa-v3-base seeds averaged, family gate (train_v2.py final ens3, COOP-BOT.md "v3")
+MODEL_DIR = bots.default_bot()
 LAYA_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "models", "coop-laya-ft"))
 # Safety net for polarity: the classifier reads the topic of a line, not whether it is negated
 # ("do not come to me" -> FOLLOW_ME 0.93 in the first live test). Only a LEADING negation counts:
@@ -159,7 +162,7 @@ class Bot:
         if NEGATION.search(text) and intent not in SAFE:
             self.pending = self.pending_places = None
             action, reply = "negated", "Copy, standing down."
-        elif prob < self.threshold:
+        elif not prob >= self.threshold:      # also when the model returned NaN: never act on it
             action, reply = "say_again", random.choice(AGAIN)
         elif intent == "NONE":
             action, reply = "ignore", random.choice(ACK)
