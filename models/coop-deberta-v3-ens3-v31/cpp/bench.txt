@@ -1,0 +1,13 @@
+== 2026-10-04, i9-10900K, fp32, ONNX Runtime CPU; measured while one training process was using the GPU and a CPU core
+== ensemble --threads 1
+model load 4629 ms, working set +2309 MB (2329 MB total)
+1259 lines x 2, 8.4 tokens on average (max 64)
+tokenizer: median 19.8 us, p99 47.4 us
+places:    median 4.7 us, p99 14.1 us (630 of 1259 lines name a place)
+model:     median 40.8 ms, p90 48.7 ms, p99 59.2 ms, max 124.0 ms
+== ensemble --threads 4 --sequential
+model load 4547 ms, working set +2310 MB (2330 MB total)
+1259 lines x 2, 8.4 tokens on average (max 64)
+tokenizer: median 19.1 us, p99 54.4 us
+places:    median 3.4 us, p99 12.0 us (630 of 1259 lines name a place)
+model:     median 56.4 ms, p90 65.4 ms, p99 74.3 ms, max 140.4 ms

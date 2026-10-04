@@ -697,11 +697,49 @@ trained on all 633 lines and 383 seed commands. It is not the default bot (`scri
   - "take blue" → ENTRY, while "take blue stairs" → MOVE_TO: the sampled seeds have only the stairs
     forms (seen on the CUDA-trained model);
   - the model is case-sensitive and saw mostly lowercase lines.
-- **Seed set v31** ([make_seeds_v31.py](scripts/coop/make_seeds_v31.py), `COOP_TAG=v31`) answers
-  these: the two roof seeds move to MOVE_TO; every order template is filled with places of every
-  kind it allows (253 of 582 combinations, lone names included); NONE gets templates for smoke and
-  "clear" callouts. No model has been trained with it yet. It was written after the blind lines and
-  the probes had been seen, so numbers on those lines for a v31 model will be "after tuning".
+
+**v31: the seed set corrected, and the model trained with it**
+([make_seeds_v31.py](scripts/coop/make_seeds_v31.py), `COOP_TAG=v31`). The seed set is the v3 set
+with its 383 seeds kept (the two roof seeds relabelled MOVE_TO), plus 192 templated seeds (every
+order template filled with places of every kind it allows, lone names included; the roof in every
+MOVE_TO template), NONE templates for smoke and "clear" callouts, and 5 plain callouts: 580 seeds. It
+was written after the blind lines and the probes had been seen, so every number below except the
+fresh author's is "after tuning". The model (`models/coop-deberta-v3-ens3-v31`, trained on CUDA on
+633 lines and 580 seeds): family gate at 0.62 (out-of-fold criterion 566 against 561 for top). It is
+not the default bot either; that is the owner's decision.
+
+- **The probes it was written against** (`probe_v31.log`; a check that the fix took, not an
+  evaluation):
+
+  | | v2 bot | v3 (Mac) | v31 |
+  |---|---|---|---|
+  | "<place> is smoked" carried out as an order | 7 of 47 | 47 of 47 | 0 of 47 |
+  | "<place> clear" carried out as ENTRY | 19 of 30 | 27 of 30 | 0 of 30 |
+  | roof orders without a rope word → RAPPEL (grid of 42) | 40 | 18 | 0 (MOVE_TO on 33) |
+  | "take <colour>" → MOVE_TO | 0 of 12 | not probed | 11 of 12 |
+  | the plain order "smoke <place>" carried out | 30 of 30 | not probed | 30 of 30 |
+  | the v21 seed commands in ALL CAPS: wrong family | 8 of 233 | 10 of 233 | 12 of 233 |
+
+  Side effects seen on single phrases: "clear main" and a bare "clear" are now read as callouts (the
+  v2 bot stormed); "clear the basement", "clear the room", "clear it" and "go clear the north door"
+  are still ENTRY. "take main" stays under the threshold.
+- **Cross-validation** (leave one author out, ens3, family gate; `eval_v31.log`) against the v3 study:
+
+  | | near | wrong family | acts on non-order | score |
+  |---|---|---|---|---|
+  | all 633 lines, v3 → v31 | 91.0 → 91.2 | 2.1 → 2.4 | 6.1 → 7.1 | 86.9 → 86.4 |
+  | the 150 place lines | 90.7 → 92.0 | 1.3 → 2.0 | 4.2 → 8.3 | 88.0 → 88.0 |
+  | the 483 older lines | 91.1 → 90.9 | 2.3 → 2.5 | 6.7 → 6.7 | 86.5 → 85.9 |
+
+  Paired difference v31 − v3 of the score: +0.0 [−6.7, +6.7] on the place lines, −0.6 [−4.6, +3.3] on
+  the older lines. No change detected; a loss of up to about 5 points on the older lines is not
+  excluded. Against the shipped v2 bot on the place lines: +11.3 [+0.7, +22.7]; per author near
+  78 → 100 (r6), 92 → 96 (cs), 80 → 80 (stt).
+- **The Mac review's fresh author** (80 lines; `eval_fresh.log`): v31 equals v3, near on 59 of 60
+  place lines and on 20 of 20 plain orders, with one wrong-family action where v3 said again.
+- **Checks:** ONNX equals PyTorch on 1259 of 1259 golden lines; the C++ engine equals the Python bot
+  on 1259 golden lines (within 2.2e-6), 9428 tokenizer lines, 20204 place records, 3332 gate
+  decisions, 140 decision steps and the 77-line conversation. 40.8 ms per line on 3 cores.
 
 **Cost.**
 - The v3 bot is the same size as v2: three models, 2.3 GB.
@@ -758,9 +796,10 @@ voice ─► STT ─► regex: timing (on my go?)        ─┐
   90.5 near at 1.9% wrong family, 2.3 GB, about 40 ms on 3 CPU cores (section v2; re-measured in
   section v3).
   Places on the map come from a dictionary matcher that hands the planner the place, with any
-  classifier (section v3). The same ensemble re-trained with lines that name places (v3) is trained
-  but not the default: it carries out smoke and "clear" callouts as orders. Seed set v31 is written
-  against that and waits for training.
+  classifier (section v3). The same ensemble re-trained with lines that name places (v3) carries out
+  smoke and "clear" callouts as orders; v31, trained with a corrected seed set, does not, and sends
+  roof orders to MOVE_TO. v31 is the candidate to replace v2 as the default; it has no blind number
+  yet, and the switch is the owner's decision.
 - **Timing and "the other one" are code**, then checked by the planner. The models smear a one-word
   modifier across the whole sentence.
 - **Do not put playtest lines into the descriptions as examples.** It raises the score on repeated
@@ -827,6 +866,7 @@ version:
 | [make_spec_v3.py](scripts/coop/make_spec_v3.py), [blind/spec_v3.json](scripts/coop/blind/spec_v3.json), [seed_commands_v3.json](scripts/coop/seed_commands_v3.json), [blind/v3/](scripts/coop/blind/v3/), [annot/v3/](scripts/coop/annot/v3/) | v3 spec (target modifier), seed set with location seeds, the 150 blind lines and their annotations |
 | [eval_v3.py](scripts/coop/eval_v3.py), [v3_shipped.py](scripts/coop/v3_shipped.py), [shipped.py](scripts/coop/shipped.py), [v3_noharm.py](scripts/coop/v3_noharm.py) | v3 evaluation: matcher (`--rules v1` for the blind rule set), the v2 bot on the place lines, re-training; logs `eval_v3_rules_v1.log` (first blind run), `eval_v3.log` (rule set v2), `eval_v3_rules_v3.log` |
 | [review_v3/](scripts/coop/review_v3/), [eval_v3_review.py](scripts/coop/eval_v3_review.py), [probe_v3.py](scripts/coop/probe_v3.py) | the Mac review of v3: findings, a fresh author's 80 lines, post-review slices and probes of the final model (none blind) |
-| [make_seeds_v31.py](scripts/coop/make_seeds_v31.py), [seed_commands_v31.json](scripts/coop/seed_commands_v31.json), [annot/v3/reann_r6.json](scripts/coop/annot/v3/reann_r6.json) | `COOP_TAG=v31`: the corrected seed set and the independent re-reading of the r6 lines; not trained yet |
+| [make_seeds_v31.py](scripts/coop/make_seeds_v31.py), [seed_commands_v31.json](scripts/coop/seed_commands_v31.json), [annot/v3/reann_r6.json](scripts/coop/annot/v3/reann_r6.json) | `COOP_TAG=v31`: the corrected seed set and the independent re-reading of the r6 lines; logs `train_v31_*.log`, `eval_v31.log`, `eval_v2_v31.log`, `probe_v31.log` |
+| [eval_fresh.py](scripts/coop/eval_fresh.py) | a trained bot on the Mac review's fresh author, next to the archived v2 and v3 answers (`eval_fresh.log`) |
 | [eval_v3b.py](scripts/coop/eval_v3b.py), [v3b_shipped.py](scripts/coop/v3b_shipped.py) | a second blind batch (`blind/v3b`, not written yet): rule sets v1–v3 and every trained bot on lines none of them was fitted to |
 | [bots.py](scripts/coop/bots.py) | the one place that names the default bot |

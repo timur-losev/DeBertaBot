@@ -254,3 +254,28 @@ e12d0859e7116e606cc9ea939e9dfb5ebe87b27fc71299de3e78121ff5680299 *make_seeds_v31
 ebcb6783a56aa919f039e3619a6bca5d41253fee6122d4889e5741286b428b28 *train_v2.py
 5e81e99a6488dee8563be320df5c67cb5ecbfb0e76c06153a1436b1ca852ab87 *coop_v2.py
 0dc09ae104e41d60b4b7e2b0b8cace725a0f7337685881450ca2b614d3df2ac3 *probe_v3.py
+2026-10-04T18:39:00+02:00
+# on the work machine: v31 trained and evaluated. Final ensemble (COOP_TAG=v31 train_v2.py final ens3, cuda, 2634 s while two cv processes shared the GPU): family gate, threshold 0.62 (out-of-fold criterion family 566, top 561), 633 lines + 580 seeds. Exported: ONNX = PyTorch argmax on 1259/1259; C++ (rule set v3 engine): tokenizer 9428/9428, regex 9424/9424, location 20204/20204, gate 3332/3332, decide 140/140, golden 1259/1259 (max 2.2e-6), dialogue 77/77. Cross-validation (54 trainings, three processes, results_v31_probs_{r6,cs,stt}.json): eval_v31.log, eval_v2_v31.log -- ens3/family all lines near 91.2, wrong family 2.4, score 86.4; v31 - v3 study +0.0 [-6.7,+6.7] on the v3 lines, -0.6 [-4.6,+3.3] on the older lines; v31 - shipped v2 on the v3 lines +11.3 [+0.7,+22.7]. Probes (probe_v31.log, the lines seed set v31 was written against, so a check of the fix and not an evaluation): '<place> is smoked' acted on 0/47, '<place> clear' 0/30, roof grid RAPPEL 0/42, 'take <colour>' MOVE_TO 11/12, 'smoke <place>' 30/30. Fresh author (eval_fresh.log): place lines near 59/60, one wrong family; plain 20/20. eval_v3_review.py is pinned to rule set v2 (it reproduces eval_v3_review.log byte for byte apart from line ends). The default bot is still v2
+842e6870c977808d5be6baf345730ea09bb80fa516ea4d8cddb8ea8f427cee0d *../../models/coop-deberta-v3-ens3-v31/bot_config.json
+9b5c8c29e3995f6829cff37285e7152d327f1c1f487d421b67aa33c9087b7f58 *../../models/coop-deberta-v3-ens3-v31/cpp/intent_config.json
+ea0b981d292a88b176193c5ec35267f1761d7c445ba80375e7a7972bf5f62d96 *../../models/coop-deberta-v3-ens3-v31/cpp/golden.jsonl
+926bd1a3e092aaf116e23ec521a26a291bd2e13387c13d4870072ee276e7b9de *../../models/coop-deberta-v3-ens3-v31/cpp/onnx_check.json
+28479d8d788b6e0d6284a3435251490612d3725157e583f803d9b8a42edf8b3f *../../models/coop-deberta-v3-ens3-v31/cpp/bench.txt
+48a3517003bec9c1390a4fab4365e1e88c59f2294352bfab4da508db3f59fd5c *train_v31_final_ens3.log
+06916b1d8088172bf1c4b8ac0dabab3b521a3af97e29ba923f9695f1ca6ad2a4 *train_v31_cv_r6.log
+34880b6388ba507e7e7cf4032a9f604b3ab3c77d658d15923acbedcfbd577c23 *train_v31_cv_cs.log
+c2ecd4ca21589ac22a26fa6e64c52779b94ea3b83284d8bbba7139edd725b14f *train_v31_cv_stt.log
+fc5c90cafc5043a423f3402112327145c5c672b213a046f316f64692ff3f0b09 *results_v31_final_oof.json
+86253ee3c09d2025a2403ab0830df2991a67133e5d35561d80ff3d90c25f7fe0 *results_v31_probs_r6.json
+f134b3ad6a1c4f120b301efcbc48d6a982d644b76d9120c1441d9162e510f085 *results_v31_probs_cs.json
+7a4a36abcc44639480e0c57a96bd4d26565f2567ebb90d0da71c88ded3b7401a *results_v31_probs_stt.json
+8b4c180dfd57301a5d7a862ca1d8640c701c974effebdadf90b2ff782c5b9d10 *results_v31.json
+af71abfd38c1ea60e227c5148969cad7bfde485ce01b7d2854d99975c2463e55 *results_v31_matcher.json
+08bab57087724d1fa3ea2d310ecc7dc333ef1a89ecf191499f843ff3613f3f1b *eval_v31.log
+e46ae79d297061c5cd4928d89a85e25152394c3224733687d0f4ac2d12080d93 *eval_v2_v31.log
+78aeaf0360366b8edfd8f2df8a9ff45f9565eba37384fbb697a3b08c6f1f6ba7 *probe_v31.log
+3bc1d488a26cfe179bf3196c68930e7be987039cbf6502f1145bc19abeb0e1fc *results_v31_probe.json
+0d4c2face4fa83e98f1e2b4f1b6e50911ff9c6d5d691e2102854a3df7c71e805 *eval_fresh.py
+70adc7a15198207979c5f7792b2d81f39a00cf6dae276ac588dcfa7028d53147 *eval_fresh.log
+7d21a75c48899d7e01b051f80a6bcc9edfab1f72896602dce0248fa25394e829 *review_v3/fresh_probs_v31.json
+db5bcc8ef24eb997685e7797c95ae260a6e5577cfceaf3f12a060f2751ae4420 *eval_v3_review.py

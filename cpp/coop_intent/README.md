@@ -15,9 +15,11 @@ The shipped bot is **v2** ([COOP-BOT.md](../../COOP-BOT.md), section "v2"), and 
   rule set v3; COOP-BOT.md, section "v3"). The matcher does not depend on the model.
 
 Other bots run with `--model-dir`:
-- `../../models/coop-deberta-v3-ens3-v3/cpp`: v3, the same ensemble re-trained with lines that name
-  map places (family gate, 0.60; trained on the Mac). Not the default: it carries out smoke and
-  "clear" callouts as orders;
+- `../../models/coop-deberta-v3-ens3-v31/cpp`: v31, the same ensemble re-trained with lines that name
+  map places and the corrected seed set (family gate, 0.62; trained on the work machine). The
+  candidate to become the default;
+- `../../models/coop-deberta-v3-ens3-v3/cpp`: v3, re-trained with place lines and the first seed set
+  (family gate, 0.60; trained on the Mac). It carries out smoke and "clear" callouts as orders;
 - `../../models/coop-deberta-v3-base/cpp`: v1, 22 intents, no place vocabulary in its config.
 
 ## Layout
@@ -80,15 +82,15 @@ With rule set v3, on Windows (2026-10-04). The v3 bot's weights exist only on th
 checks through the model were last run there, before rule set v3 (1062/1062 and 77/77); its other
 test files were refreshed on Windows with `gen_tests.py --no-model`.
 
-| check | v2 bot (shipped) | v3 bot | v1 bot |
-|---|---|---|---|
-| token ids and probabilities vs PyTorch, golden lines | 762/762, max difference 3.3e-6 | needs the weights | 754/754, 3.1e-6 |
-| normalizer / token ids | 8931/8931 | 9231/9231 | 8923/8923 |
-| regex slots (+ 4 lines past std::regex's limit, see below) | 8927/8927 | 9227/9227 | 8919/8919 |
-| place records (targets, roles, flags, primary) | 20201/20201 | 20197/20197 | no vocabulary |
-| conversation through the models | 77/77 | needs the weights | 66/66 |
-| both gates on the golden probabilities, exact ties, the top label outside the top-mass family, random rows | 2338/2338 | 2938/2938 | 2322/2322 |
-| decision steps, both gates (2 of them built in: NaN probabilities are asked again) | 140/140 | 140/140 | 40/40 |
+| check | v2 bot (shipped) | v31 bot | v3 bot | v1 bot |
+|---|---|---|---|---|
+| token ids and probabilities vs PyTorch, golden lines | 762/762, max difference 3.3e-6 | 1259/1259, 2.2e-6 | needs the weights | 754/754, 3.1e-6 |
+| normalizer / token ids | 8931/8931 | 9428/9428 | 9231/9231 | 8923/8923 |
+| regex slots (+ 4 lines past std::regex's limit, see below) | 8927/8927 | 9424/9424 | 9227/9227 | 8919/8919 |
+| place records (targets, roles, flags, primary) | 20201/20201 | 20204/20204 | 20197/20197 | no vocabulary |
+| conversation through the models | 77/77 | 77/77 | needs the weights | 66/66 |
+| both gates on the golden probabilities, exact ties, the top label outside the top-mass family, random rows | 2338/2338 | 3332/3332 | 2938/2938 | 2322/2322 |
+| decision steps, both gates (2 of them built in: NaN probabilities are asked again) | 140/140 | 140/140 | 140/140 | 40/40 |
 
 - The place lines: the tokenizer's adversarial lines, the developer's regression lines, the blind v3
   lines, the location seeds of both seed sets, and 12000 generated lines (random sequences of
@@ -138,6 +140,7 @@ architecture as the bots in the repository, its files are not in it):
   last 128 words of a line.
 - `--no-spin` (idle threads sleep, which a game wants) cost nothing measurable: 34.7 ms median at 4
   threads per model.
+- The v31 bot: 40.8 ms with one thread per model, 56.4 ms in turn with 4 threads (its `bench.txt`).
 - The shipped v2 bot gives the same latencies: 39.7 ms with one thread per model and 56.8 ms in turn
   with 4 threads (re-measured 2026-10-04, appended to its `bench.txt`). The first block of that file
   is an earlier run that was 35–55% slower, for a reason not identified.

@@ -34,7 +34,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import eval_v3 as X  # noqa: E402  (sets COOP_TAG=v3; per_item, bootstrap, ens_preds are the log's own)
 
-V, LOC = X.V, X.LOC
+# the matcher as it was when this review ran: rule set v2 (the current locations.py is rule set v3)
+V, LOC = X.V, X.load_rules("v2")
 REVIEW = os.path.join(HERE, "review_v3")
 
 

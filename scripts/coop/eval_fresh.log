@@ -1,0 +1,17 @@
+wrote fresh_probs_v31.json
+fresh author: 60 lines that name a place, 20 plain orders; matcher rule set v3 exact on 58/60 place lines
+  coop-deberta-v3-ens3-v2 (family gate, 0.58)
+    place lines  near 55/60   exact ok 53/60   wrong family 1/60   near and exact place 53/60
+    plain orders near 20/20   exact ok 20/20   wrong family 0/20
+    not near: a08 FRAG -> NONE; a21 MOVE_TO -> NONE; c02 HOLD_ANGLE -> NONE; c04 FALL_BACK -> NONE; d06 NONE -> HOLD_ANGLE
+  coop-deberta-v3-ens3-v3 (family gate, 0.60)
+    place lines  near 59/60   exact ok 58/60   wrong family 0/60   near and exact place 57/60
+    plain orders near 20/20   exact ok 20/20   wrong family 0/20
+    not near: c02 HOLD_ANGLE -> NONE
+  coop-deberta-v3-ens3-v31 (family gate, 0.62)
+    place lines  near 59/60   exact ok 58/60   wrong family 1/60   near and exact place 57/60
+    plain orders near 20/20   exact ok 20/20   wrong family 0/20
+    not near: c02 HOLD_ANGLE -> MOVE_TO
+  coop-deberta-v3-ens3-v3 against coop-deberta-v3-ens3-v2, near: 4 lines better, 0 worse
+  coop-deberta-v3-ens3-v31 against coop-deberta-v3-ens3-v2, near: 4 lines better, 0 worse
+  coop-deberta-v3-ens3-v31 against coop-deberta-v3-ens3-v3, near: 0 lines better, 0 worse

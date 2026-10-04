@@ -1,0 +1,55 @@
+633 test lines (363 v1, 120 v2), 302 novel (nearest training line or seed < 0.5 cosine)
+
+DEPLOYABLE (out-of-fold threshold per fold). near / exact ok / wrong family / acts on non-order, %
+method                   thr          near            ok     wrong fam     non-order         score |       v2 near         v2 wf |    novel near      novel wf
+base, top gate          0.83  86.4 [85-88]  85.8 [84-87]   2.3 [2-3]   6.4 [4-8]  81.9 [81-83] |  85.3 [84-87]   2.5 [1-5] |  83.1 [80-85]   2.5 [2-3]
+base, family gate       0.88  87.0 [87-87]  86.2 [86-87]   2.2 [2-3]   6.4 [4-8]  82.7 [82-83] |  85.3 [85-86]   2.5 [1-5] |  82.9 [81-84]   2.6 [2-3]
+ens3, top gate          0.47  91.3        90.8         3.0         8.1        85.3       |  90.0         4.2       |  89.4         3.3      
+ens3, family gate       0.57  91.2        90.5         2.4         7.1        86.4       |  90.0         2.5       |  88.4         2.6      
+v1 bot as shipped       0.78                                                                       |  41.7          25.8         | (v2 lines only: it trained on v1)
+
+NEW INTENTS on the v2 lines, deployable threshold (share of lines, mean over seeds; n lines)
+                                                     base/top       base/fam       ens3/top       ens3/fam v1 shipped/top
+TAKE_COVER lines -> TAKE_COVER (n=30)                    76.7           77.8           83.3           83.3            0.0
+TAKE_COVER lines -> say again (under threshold) (n=30)           14.4           14.4            6.7           10.0           43.3
+TAKE_COVER lines -> NONE (ignored) (n=30)                 6.7            6.7            3.3            3.3           20.0
+TAKE_COVER lines -> COVER_ME/HOLD_* (n=30)                1.1            0.0            3.3            3.3           10.0
+OPEN lines -> OPEN (n=30)                                86.7           84.4           93.3           93.3            0.0
+OPEN lines -> say again (under threshold) (n=30)            5.6            7.8            0.0            0.0           46.7
+OPEN lines -> NONE (ignored) (n=30)                       6.7            6.7            6.7            6.7            0.0
+OPEN lines -> assault family (n=30)                       0.0            0.0            0.0            0.0           43.3
+COVER_ME lines -> COVER_ME (n=9)                         85.2           77.8           88.9           77.8           77.8
+COVER_ME lines -> TAKE_COVER (n=9)                        0.0            0.0            0.0            0.0            0.0
+assault-family lines -> OPEN (n=15)                       6.7            6.7            0.0            0.0            0.0
+HOLD_ANGLE lines -> TAKE_COVER/OPEN (n=6)                 0.0            0.0            0.0            0.0            0.0
+NONE lines (callout/negated/out of menu) -> acts (n=24)            2.8            2.8            4.2            0.0           12.5
+WAIT lines -> WAIT (n=6)                                 66.7           66.7           66.7           66.7           83.3
+
+DIAGNOSTIC, equal risk: best near with wrong family <= 2 / 4 / 6.5 % (threshold swept on the scored lines)
+base, top        all 86.2 / 88.9 / 90.5   novel 82.2 / 85.4 / 86.5   v2 85.8 / 87.8 / 88.6
+base, family     all 86.9 / 89.4 / 90.6   novel 82.9 / 85.5 / 86.5   v2 85.6 / 87.2 / 88.3
+ens3, top        all 90.4 / 91.8 / 92.3   novel 88.4 / 89.4 / 90.4   v2 89.2 / 90.0 / 91.7
+ens3, family     all 90.4 / 91.6 / 92.6   novel 86.4 / 89.4 / 90.7   v2 90.8 / 90.8 / 90.8
+
+PAIRED BOOTSTRAP of the deployable score (near - 2 * wrong family, points; 95% CI over lines)
+ens3/top - base/top          all  +3.4 [ +0.6,  +6.1]  v1  +5.6 [ +2.5,  +8.8]  v2  +1.4 [ -6.4,  +8.6]  novel  +4.7 [ +0.1,  +9.2]  v3  -0.2 [ -6.9,  +5.6]
+base/family - base/top       all  +0.8 [ -0.2,  +1.9]  v1  +1.3 [ +0.0,  +2.8]  v2  +0.0 [ -2.5,  +2.5]  novel  -0.4 [ -1.8,  +0.9]  v3  +0.4 [ -1.6,  +2.9]
+ens3/family - ens3/top       all  +1.1 [ -1.1,  +3.5]  v1  +0.3 [ -2.5,  +3.3]  v2  +3.3 [ -2.5, +10.8]  novel  +0.3 [ -3.6,  +4.6]  v3  +1.3 [ -1.3,  +6.0]
+
+PROBES (the owner's live-test lines and v1's failed probes): pick at each fold model's threshold, majority over models
+  'go find cover'                  want TAKE_COVER             v1 NONE  |  base/top TAKE_COVER ok  base/fam TAKE_COVER ok  ens3/top TAKE_COVER ok  ens3/fam TAKE_COVER ok
+  'hide out'                       want TAKE_COVER             v1 HOLD_POSITION  |  base/top TAKE_COVER ok  base/fam TAKE_COVER ok  ens3/top TAKE_COVER ok  ens3/fam TAKE_COVER ok
+  'hide there'                     want TAKE_COVER             v1 HOLD_POSITION  |  base/top TAKE_COVER ok  base/fam TAKE_COVER ok  ens3/top TAKE_COVER ok  ens3/fam TAKE_COVER ok
+  'cover from behid'               want COVER_ME               v1 COVER_ME  |  base/top COVER_ME 7/9 ok  base/fam COVER_ME 6/9 ok  ens3/top COVER_ME ok  ens3/fam COVER_ME ok
+  'follow me and cover my back'    want COVER_ME/FOLLOW_ME     v1 COVER_ME  |  base/top NONE 6/9 --  base/fam NONE 6/9 --  ens3/top COVER_ME ok  ens3/fam COVER_ME ok
+  'cover while moving'             want COVER_ME               v1 COVER_ME  |  base/top COVER_ME ok  base/fam COVER_ME ok  ens3/top COVER_ME ok  ens3/fam COVER_ME ok
+  'break in'                       want BREACH/ENTRY           v1 NONE  |  base/top ENTRY 6/9 ok  base/fam ENTRY 8/9 ok  ens3/top ENTRY ok  ens3/fam ENTRY ok
+  'open window'                    want OPEN                   v1 VAULT_WINDOW  |  base/top OPEN 6/9 ok  base/fam OPEN 6/9 ok  ens3/top OPEN ok  ens3/fam OPEN ok
+  'breach window'                  want BREACH/VAULT_WINDOW    v1 VAULT_WINDOW  |  base/top BREACH ok  base/fam BREACH ok  ens3/top BREACH ok  ens3/fam BREACH ok
+  'come here'                      want FOLLOW_ME              v1 FOLLOW_ME  |  base/top FOLLOW_ME ok  base/fam FOLLOW_ME ok  ens3/top FOLLOW_ME ok  ens3/fam FOLLOW_ME ok
+  'go there'                       want MOVE_TO                v1 MOVE_TO  |  base/top MOVE_TO ok  base/fam MOVE_TO ok  ens3/top MOVE_TO ok  ens3/fam MOVE_TO ok
+  'breach'                         want BREACH                 v1 BREACH  |  base/top BREACH ok  base/fam BREACH ok  ens3/top BREACH ok  ens3/fam BREACH ok
+  'do not come to me'              want NONE                   v1 NONE  |  base/top NONE ok  base/fam NONE ok  ens3/top NONE ok  ens3/fam NONE ok
+  "don't blow that wall"           want NONE/WAIT              v1 NONE  |  base/top NONE ok  base/fam NONE ok  ens3/top NONE ok  ens3/fam NONE ok
+  'dont breach'                    want NONE/WAIT              v1 NONE  |  base/top NONE ok  base/fam NONE ok  ens3/top NONE ok  ens3/fam NONE ok
+  'never flank'                    want NONE/WAIT              v1 FLANK  |  base/top NONE 7/9 ok  base/fam NONE 7/9 ok  ens3/top NONE ok  ens3/fam NONE ok
