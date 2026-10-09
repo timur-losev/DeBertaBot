@@ -940,6 +940,42 @@ data had the word "other".
   190/190, golden 2275/2275, conversation 77/77; 39.2 ms on three cores.
 - **Limits.** Those of v52. v31 is still the default bot.
 
+## v54: the pin, answers, "come back" and stance -- prepared, trained on the MacBook
+
+The owner talked to bot v53 and decided, on 2026-10-09 and 10
+([owner_voice_20261009c.json](scripts/coop/owner_voice_20261009c.json)): the game will point at places with a 3D pin
+a lot, so the bot must say that a line points at the pin -- "Stay at my pin." kept the bot where it stood, and
+"Stay on my mark." and "check at my mark" were read as "wait for my go"; "mark" is the pin, not the signal; the
+answers Yes / No / Maybe / I don't know are to be classified so that the planner can ask back, "affirmative" and
+"negative" being yes and no; "come back" is a label of its own and "return back" goes there; stance orders are
+needed; "go inside" / "get inside" is just walking or climbing in.
+
+- **The pin is not an intent: it is a fifth field of a target, "pointer"** -- rule set v5 of the place matcher.
+  "pin" when the line names the player's marker ("my pin", "the ping", "on my mark", "where I marked"); "this"
+  when it points with this / that / here / there. A pointer belongs to a named place ("the window by my ping") or
+  is a target of its own ("stay at my pin"). A lone "this" never takes the primary from a named place; a pin
+  does when it comes first. On the project's 2229 lines and seeds the places, directions and primary differ
+  from rule set v4 on two lines, both "on my mark".
+- **Its first blind number** (132 lines written after the freeze): place and direction 131; the primary points
+  with the pin on 20 of the 24 pin lines (the pin is found on 23: "next to my ping" after a named place is not
+  joined to it); with "this" on 14 of 14; and it points on 7 of the 94 lines the readers call "none" ("get back
+  here", "scrap that order").
+- **Intents: 33 -> 41** ([spec_v54.json](scripts/coop/blind/spec_v54.json)): COME_BACK (family "move"); CROUCH,
+  PRONE, STAND_UP (one family "stance"); YES and NO (a family each, so the family gate never adds a yes to a
+  no); MAYBE and DONT_KNOW (one family "unsure"). "Go inside" is MOVE_TO. The four answers are an action of
+  their own in the bot: reported, never queued, the queued order left alone.
+- **Seeds: 1146 -> 1482, not blind.** Lines: 3 authors x 44, two annotators each, all 132 unanimous; the 1083
+  earlier lines were read again and six became YES, NO or PRONE, each 3 of 3.
+- **One change to the recipe.** A transcript that is, word for word, a typed command of another intent is left
+  out of training: Parakeet heard "now now now" as "no, no, no", "stay" as "okay", "check" as "yeah". 12 of 3080.
+- **No model yet.** The voiced lines and Parakeet's transcripts were made on the work machine (the MacBook has
+  neither the audio nor the recognizer); the owner runs the training on the MacBook
+  ([scripts/coop/stt/README.md](scripts/coop/stt/README.md)). Bot v53 with rule set v5 and no retraining already
+  gets 9 of the owner's 19 lines against 7 in his test: "Stay at my pin." carries the pin, "check at my mark" is
+  no longer queued.
+- **The developer's choices, unconfirmed:** three stance labels; "roger" / "copy" as NONE; "up to you" as MAYBE;
+  a bare "okay" as YES; "stay at my pin" as HOLD_POSITION with the pin as its place.
+
 ## Recommendation
 
 ```

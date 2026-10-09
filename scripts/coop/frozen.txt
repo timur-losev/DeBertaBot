@@ -630,3 +630,97 @@ ad1011d23333f77036bf5ad2d9bebbfc2122fdaf6b9c78d2795a8413b0725ca2 *../../models/c
 899a25299f0a0aef4281f3d5ecde106a8d9c16e5d3716e5ce0dc46ea4f5e9f68 *../../models/coop-deberta-v3-ens3-v53/cpp/golden.jsonl
 54146f91ea4555e616c5957c549b3d7cf5fca6e72503acb7919765bdbe1ea8ce *../../models/coop-deberta-v3-ens3-v53/cpp/location_tests.jsonl
 b476a7979559632fba163fbb789cad3d2b5842d2a123e36cc034c3e2843f2cef *../../models/coop-deberta-v3-ens3-v53/cpp/decide_tests.jsonl
+2026-10-10T00:39:25+02:00
+# v54 (work machine), BEFORE any v54 test line exists; AFTER the owner's test of bot v53 with a real voice (2026-10-09) and his decisions of 2026-10-09 and 10: the game points at places with a 3D pin, so the bot must report that a line points at the pin ('Stay at my pin.' kept the bot where it stood; 'Stay on my mark.' and 'check at my mark' were read as waiting for a go); 'mark' is the pin; the answers Yes / No / Maybe / I don't know are to be classified so the planner can ask back, 'affirmative' and 'negative' being yes and no; 'come back' is a label of its own and 'return back' goes there; stance orders are needed; 'go inside' / 'get inside' is just walking or climbing in. PLACE MATCHER, RULE SET v5 (locations.py, locations.json version 5; rules/v4b = the rules before, rules/v5 = these bytes): a fifth field of a target, 'pointer' = pin | this, from 21 new word lists; jump / hop lead left, right, forward and back. Written with the owner's lines on the table and TUNED on the project's own lines: against rule set v4b the places, directions and primary differ on 2 of 2229 lines and seeds (both 'on my mark', the pin now first); among targets the bot may act on, the matcher points on 125 of the 271 lines the old readers marked reference 'this' (their 'this' also covered places only named with 'the') and on 21 of the 812 they marked none / other. 543 dev cases (+54), the same 3 known failures. THE BOT (coop_bot.py, export_cpp.py): the timing pattern loses 'mark' ('wait for my mark' stays a signal through another branch); the four answers are an action of their own ('answer': reported, never queued, the queued order untouched); DONT_KNOW is safe from the leading-negation guard. spec_v54.json = spec_v53 + COME_BACK (family 'move'), CROUCH / PRONE / STAND_UP (one family 'stance'), YES and NO (a family each), MAYBE and DONT_KNOW (one family 'unsure'); reference becomes pin | this | other | none and timing says 'on my mark' is no signal; ten intents sharpened. intents_v54.json (41); seed set v54 (v53 with its ids unchanged + 336; two more seeds keep their id under another label: 'sit down' NONE -> CROUCH, 'go in' ENTRY -> MOVE_TO). The developer's choices, unconfirmed by the owner: the three stance labels; 'roger' / 'copy' under NONE; 'up to you' under MAYBE; bare 'okay' under YES; 'stay at my pin' as HOLD_POSITION with the pin as its place; the family 'unsure'. The SEEDS ARE NOT BLIND. coop_v2.py gets COOP_TAG=v54 (canonical dumps under v31, v5, v51, v52 and v53 unchanged). The re-reading rule as before: a line of the v53 data whose v54 re-reading picks one of the eight new intents takes the majority of three v54 readings. The owner will train bot v54 on the MacBook: here everything up to the training is prepared
+9ed97c6998ec54211390853a4ac5d6114bf0a62484cb5576f07c1545bc5c3c0f *blind/spec_v54.json
+22f369665c7291d3a499589f25730b49da29300ce8d79d489b5f3fcc18cf44d9 *intents_v54.json
+6c58e3a2e9e23436b3ea1231e2afff976d99666cfe6af39b9de120588e56666d *seed_commands_v54.json
+bfeb487d27f36e6cc63d1e3c67c1ba2331c7fdd921b3acc71189631227ee00ee *make_spec_v54.py
+d2058fbb9d276a5ce90977522f3a4ff40c4496e03f517de949f94aa5e8f04d01 *coop_v2.py
+24f85fee8f2d1017e62c9605e2ebebf1d48b9058f3923fcc9dd31d7cdd969c74 *coop_bot.py
+edb0e948529effd591a74faede2d11e79c648896e3f51e65bf2bd9918c985e9e *export_cpp.py
+cbf3babf5ca619d7c9e7aa641d116c9bfbac8c126446ebadd230bf2efac90aa2 *locations.py
+62bfe820f138fca97e94e59246d72d7d94537f6f3ec91e6f29f94f24a6d761b2 *locations.json
+65a2bb0c6ea42853f1eda35d50b8ea913bdbedb28ca1e1f54d940e45b23fa859 *locations_dev.json
+87e96531bd442de229d3587ef4a342b2713b8aaaf3e55539acdc97e367fa36e6 *rules/v4b/locations.py
+0953f7a4c20a8399cda8230aa66fc73a6b03ee09eecccc879017589837909db0 *rules/v4b/locations.json
+cbf3babf5ca619d7c9e7aa641d116c9bfbac8c126446ebadd230bf2efac90aa2 *rules/v5/locations.py
+62bfe820f138fca97e94e59246d72d7d94537f6f3ec91e6f29f94f24a6d761b2 *rules/v5/locations.json
+ff05ff95e834ca5aef5bfdc04aadfa130a95a23d87d308293743b93b38abf614 *blind/v54/old_r6_lines.json
+e9bc4285e8d043f329a822a014531ee8f5047f3200d41104c9ae31c48039b8b1 *blind/v54/old_cs_lines.json
+08229c08a2e0ff6206204c5032a820033a5ca84a5a6f5f8521395cf299e4924f *blind/v54/old_stt_lines.json
+2026-10-10T00:52:14+02:00
+# v54 blind lines (work machine), written and read AFTER the v54 freeze of 2026-10-10T00:39:25 by agents that saw only the spec (a copy of blind/spec_v54.json) and label-free lines: 3 authors x 44 lines (blind/v54/author_*.json; kinds: 8 answers -- two each of YES, NO, MAYBE, DONT_KNOW --, 4 COME_BACK, 6 stance, 8 orders that name the pin, 4 that point with this / that / here / there, 4 about going inside -- two MOVE_TO and two ENTRY --, 8 boundary, 2 negations), 2 annotators per author: all 132 unanimous on intent, place and direction (AI readers of AI lines); the readers' reference by majority: pin 24, this 14, none 94. All 1083 lines of the v53 data re-read under spec v54 by one annotator per author (annot/v54/old_*_v54ann.json): 6 lines flagged (r6v2_030, r6v5_054 and sttv52_029 NO; r6v5_052 and sttv5_053 YES; sttv2_017 PRONE), each read by two adjudicators among 18 decoys, all six 3 of 3. Also hashed here, derived from the v53 scripts by exact replacements before any result: the v54 voice, build, score and evaluation scripts -- build_v54.py is device-agnostic and resumable, for the owner's training on the MacBook --, the shell scripts for it (run_build_v54.sh, after_build_v54.sh, quick_config_v54.py), the owner's lines of the v53 test (owner_voice_20261009c.json) and owner_voice.py reading them. ONE FIX AFTER THE FREEZE in coop_bot.py: the bot's timing pattern was defined above 'import re' and the module did not load; the lines moved below the import, the pattern is the frozen one. No v54 model has been trained; the developer has not read the v54 lines
+31c197f3ec18b5d04c2f86fef2a3a5d882e732e6279b18e3fd7aea48812bd626 *blind/v54/author_r6.json
+2c87ff84689c14e3b554cf4596586a2b927a1908d7c39e43de9e2d2eccea71b2 *blind/v54/author_r6_lines.json
+472ba200c2a95fa770b4a3eb995407b095fd7b93c5df115d64f97eb773030096 *annot/v54/author_r6_ann1.json
+4dd6e7e1623a7a91a19a14178985b97ce0948928f4d43800b0b8915948d54d13 *annot/v54/author_r6_ann2.json
+104e0b497366e5f964aa29999b88f4732cf81bfa34d8977f071fcc8c04f92ff2 *annot/v54/old_r6_v54ann.json
+19296acaaf8162cb95a215f5c667843219af5a07b81c009b9800d168d261a087 *blind/v54/author_cs.json
+7627a44fe8198a452eee47078da317591a02d9d385779c109b158db2cc328e6a *blind/v54/author_cs_lines.json
+ddb7f97613e075de26bd231baab7746e40562f4dffb9164f46d7f113494ca86e *annot/v54/author_cs_ann1.json
+fba697cebfe940ca6677b0532baead8d58094774fdd6ddc68e9b33f091df5860 *annot/v54/author_cs_ann2.json
+b9972195c0cccd1bf570d9eab35814b721e20475eb128ecc88fba1b5d0e6f1b7 *annot/v54/old_cs_v54ann.json
+810015c4196ad613995f8d34748269c518b37d4878e4cca66b2f425f13d30548 *blind/v54/author_stt.json
+4c101b69bd99f16b900f153dfc194a5c3ed4b9ef150535817dd6e632129d8d01 *blind/v54/author_stt_lines.json
+7429ce7c52e2e256f88bd6537169b17268d7ffc894f226732988cc0c4596e078 *annot/v54/author_stt_ann1.json
+45085d1f27f1eb45a22b17b6bf6a15cb3aca1c8a4358f9ed0e0ba60ee19c879b *annot/v54/author_stt_ann2.json
+d31060c4b0b42a57fd77bc2985b65044811e39097df5b9683a44c3ce6ea443c2 *annot/v54/old_stt_v54ann.json
+10989ebb1f87f4129d2f5fa71952cffbb3fd465d5f80040527eaf60c59803cc0 *annot/v54/old_adjudicated.json
+c061b86e26d76a1a779b7328af4ca049f728274955632171e261cb4488b9b287 *annot/v54/old_adjudication_all.json
+db68d92bee583c176805a44efdf06fcd9272e13a57618f8c3803066af218da12 *coop_bot.py
+8b1ab49d579f1e60e5f9a707fd108c45afd1e903741ce47599b594abcef7619a *owner_voice.py
+519629c355fcd1d7b1d8ef6ef08e4f3029407de8ab4a3006e7df8cb5fc4007c4 *owner_voice_20261009c.json
+8cf5a4b58f9cc53fe26566a5ed98601de3f87efd9fe1c068ad82907850042e25 *eval_v54.py
+5a47907fc442bca74e1fbd8f5f35dc69e4937b2a7b844b54df271e9c58da42f5 *stt/export_v54.py
+61c5386ee4887de07e8a1bc5a28c322ce371b4a76a767cde15f1c75545684de2 *stt/synth_v54.py
+01443a5040d7b9edd32ff1a0fe5fa7d162426cfa44eb035582ddf66b37d97560 *stt/synth_windows_v54.ps1
+a62b9d81c127410ec2bbacf326f2c9ecb89fd614f59cbae08b461f6bb3e53875 *stt/build_v54.py
+bb469536a71b03435963e4e3b46ccc79a743ab7b76a848c2104ba0448617e5f0 *stt/score_v54.py
+2d28871aa584ddacce362370b1e2a95e56950fb3a90a626876c55325e2c5f26a *stt/kinds_v54.py
+bdbffb458f1ec19b77c2005eefd646dce2bb2f3c1b2205471a128ec3275d1034 *stt/run_build_v54.ps1
+197b021c4b5118bb0262987a7909b6eaf87ccfd680735830d1dabaf0edbc4f32 *stt/run_build_v54.sh
+802e5cf1f608369e0956142a33884679e57abd8b43f8a8f6142cf95d92178378 *stt/after_build_v54.sh
+553fa4f2847a7c73ca6e37a7ec7a6b69c313ef134f34b7f4d05dcf1bc0cdef09 *stt/quick_config_v54.py
+2026-10-10T00:52:38+02:00
+# v54: the place matcher on the 132 v54 lines, first run of eval_v54.py with rule set v5 as hashed at the v54 freeze: exact (place and direction) 131/132, place 131/132, direction 132/132 (no line of this batch has one), usable on orders 116/120; rule set v4b gives the same 131/132 on place and direction. THE POINTER, its first blind number: of the 24 lines the readers call reference 'pin' the primary's pointer is pin on 20 and none on 4 (three say 'next to my ping / marker' after a place -- the rule joins a pin to a place through one preposition only -- and one is a mis-heard 'my pink'); some target carries the pin on 23 of the 24. Of the 14 'this' lines the primary points with this on all 14. Of the 94 'none' lines the primary points on 7: 'get back here' / 'come back here' three times (the spec does not count the player's own place), 'scrap that order' / 'that last call' twice, 'negative on that one', and one 'from here' that the matcher gives the role mine. The one place mismatch is a mis-heard 'couch down' for crouch. The mismatches have been looked at; nothing was changed after this run
+0d6c0660051c32a40ed195a368fe4615754426b29591577b8f737f06c640940b *eval_v54_rules_v5.log
+2b8f091836ba706354153f0664239a7abb07e51027a36d2361ea813e9090afb9 *results_v54_matcher.json
+2026-10-10T01:10:01+02:00
+# v54 voice additions and everything the MacBook needs, BEFORE any v54 training (none is run on the work machine: the owner trains on the MacBook): lines_v54.json (the 88 v54 lines of r6 and cs), seeds_v54.json (336 new seed commands), their audio by the same voice pools (voices_v54.json) and Parakeet's transcripts (out_*_v54.json; the Python package, ONNX Runtime 1.28.2). Three changes after the hashes of the entry before: (1) build_v54.py leaves out a transcript that is, word for word, a typed line or seed of ANOTHER intent -- Parakeet heard one command as another one ('now now now' as 'no, no, no', 'nah' as 'now', 'stay' as 'okay', 'check' and 'get out' as 'yeah', 'get up' as 'shut up', 'go low' as 'go now'), and with the answers among the intents such a transcript would teach that 'no, no, no' is GO_NOW: 12 of 3080 transcripts, 9 of them touching the new intents (scratch count, before any training; the out-of-fold test still gets every transcript as heard). The data assembles to 5765 training lines (1215 lines + 1482 seeds typed, 3068 transcripts; 41 intents; COME_BACK 76, CROUCH 54, PRONE 62, STAND_UP 35, YES 76, NO 64, MAYBE 44, DONT_KNOW 54). (2) run_build_v54.sh hands each job to sh as an argument instead of xargs -I (BSD xargs on macOS does not substitute into a long command); dry-run with a fake interpreter under Git Bash. (3) after_build_v54.sh also runs a typed probe: probe_v54.txt (54 lines with the readings wanted, written by the developer before any v54 result; not blind) through probe_v54.py; bot v53 with rule set v5 on it: 30/54 (probe_v54_on_v53.log). Bot v53 on the owner's lines of his v53 test, with rule set v5 and the new timing pattern but no retraining: 9/19 as he wants, against 7/19 in the live test ('Stay at my pin.' now carries the pin, 'check at my mark' is no longer queued)
+5a5ed94279c4e394938b6be9c67d83563eccfe28d6cbb25175db5847fec75d2d *stt/lines_v54.json
+49652d7b8813ecc78aed66770feef1080aede6077d6516edc96a09dc19ec0b65 *stt/seeds_v54.json
+cfa71f64c921bf712fb0f42e19631d69524a2a58acb3e6d3c1dd5b9001de39a4 *stt/voices_v54.json
+03172fb2d122b727e33e9c7eb1f17bf177e1aa622622e711019a32c99e97bfea *stt/out_parakeet-0.6b-v2_clean_v54.json
+08a184fbf78fc435d194dfc564134691ba8a5068eff0ec4c8602d089b9363a8d *stt/out_parakeet-0.6b-v2_kokoro_v54.json
+e760618a4b5f42773b87b6ba1ce0b74fd05b3ab6a96b723a25d14b79749cfc74 *stt/out_parakeet-0.6b-v2_kokorox_v54.json
+a7fd7024aa7718c957246a7c83b0e7710655967bab18424ba7cfc8af16ee4470 *stt/out_parakeet-0.6b-v2_seedclean_v54.json
+c90db08c1a9ef2787c5c4749bf89a12245f8ff233f48205dec4d0715a9150288 *stt/out_parakeet-0.6b-v2_seedkokoro_v54.json
+790d2ede49dcd62c7c2e75e5c1b3abaa162368d2d87cb2227b29483c7a5f02f4 *stt/out_parakeet-0.6b-v2_seedkokorox_v54.json
+f718810d90630f2c130da07258d22a7fbeec9d2584dea673fcb55a53a7611a70 *stt/out_parakeet-0.6b-v2_seedvctkA_v54.json
+4df86de32f305114a50666f19c35abe09a94a9f96d3c2ba5361fb35f129ac776 *stt/out_parakeet-0.6b-v2_vctkA_v54.json
+b0d4b016f088d8d147da6ca34ac096b88a46f2563f302ae41f5c4d8883629465 *stt/out_parakeet-0.6b-v2_vctkB_v54.json
+27ec3c368b29d09c0a79b6d9b9a2f4d8aa0e58c3982163f4aef3f40e2f189672 *stt/build_v54.py
+c8e088edbeba5fdc63981d96ec0f7554b3c9be40be7298f62505afef6ba617b3 *stt/run_build_v54.sh
+f4ac660801dfd11880fa1e20984a983fb49353f6cf396fc7809e2e2dbf274882 *stt/after_build_v54.sh
+7e5d447b840aa5e70e90bac0fb019d8cabf67f09c30e20d92eb95fdb0cf8875f *probe_v54.py
+978c4d7fd2089f3e8dbae9fb181642f13553e1b3d1678b248293d4b20d7d9288 *probe_v54.txt
+8b90c700f80daa63fcafbc87929016f235f7f27214b5e9d6b6a53ee9935afe03 *probe_v54_on_v53.log
+2026-10-10T01:49:24+02:00
+# v54, the C++ twin and what its port found (work machine; still no v54 training). The engine got rule set v5 (PlaceTarget::pointer; a config without the pin_* / point_* lists runs rule set v4 or v3 as before) and the answer action (IntentConfig::answer_intents, Action::Answer), gen_tests.py the pointer batch (16000 lines from 108 patterns among the direction patterns, 65 written out) and the answer steps of the decide tests; it now takes the bot's own timing pattern and refuses a config whose regexes are not today's. TWO PYTHON CHANGES AFTER THE v54 FREEZE, both found by the port's review and neither by a study line: (1) locations.py, one condition: a demonstrative before a pin noun is the pin's determiner and no longer also a 'this' of its own ('go to that marker' gave two targets); the dev set (543, the same 3), the blind log of the v54 lines (byte-identical) and the comparison with rule set v4b (2 of 2229) are unchanged; rules/v5 keeps the frozen bytes. (2) coop_bot.py / export_cpp.py: all four answers are safe from the leading-negation guard, not only DONT_KNOW ('never', 'don't think so' picked as NO were 'negated' and dropped the queued order, which an answer must leave alone). Checked with build/Release/coop_cli.exe built from these sources (ONNX Runtime 1.28.2): a scratch copy of bot v53 under rule set v5 -- tokenizer 10444/10444, regex slots 10440/10440, places 50429/50429 (14629 with a direction, 13901 with a pointer), gates 5364/5364, decide 190/190; a scratch bot with the 41 labels of v54 -- decide 244/244, the action 'answer' among them; bots v52, v51 and v31 with their files untouched -- the numbers they had. BOT v53 MOVED TO RULE SET v5 without retraining (export_cpp.py --config-only, gen_tests.py with the model): its intent_config.json carries the v5 vocabulary and the timing pattern without 'mark', its test files are written again; C++ equals Python on tokenizer 10444/10444, regex slots 10440/10440, places 50429/50429, gates 5364/5364, decide 190/190, golden 2275/2275 (max 1.25e-06), dialogue 77/77. Bot v53 so moved on the owner's 19 lines of his v53 test: 9 as he wants (7 in the live test); on the v54 probe: 30/54
+901127753d8f10ce60f0662f28601f27377b352b79834ecf61492a61a1a08f9b *locations.py
+ab2e79b117a857d62bb0200221b75d3f713ed975b75ad450a722a131cd070501 *coop_bot.py
+8eca955ae37a948829debfd12838fbc707988fdc9a9a993529d04af0385a9d78 *export_cpp.py
+09f59786439d192f2072ff4a62e22709f7249c1532d17dbe2b8153f44b13bc29 *../../cpp/coop_intent/include/coop_intent/locations.h
+3d2c67822a0f52f745fbcbcfb6a08c4795abe26a040356c5af48835849b2acc7 *../../cpp/coop_intent/src/locations.cpp
+d931f097143b60404566cfc3b1d1354c90336e7663709f0d833483b22249e772 *../../cpp/coop_intent/include/coop_intent/bot_brain.h
+a772681ab96b66f4207363b0ceaa0377cc0b921d70c39b7839bc416b139202cb *../../cpp/coop_intent/src/bot_brain.cpp
+d0998898d4fee64debf178a381c158626970ae0f92b1b0b57fed2e4f77fdb753 *../../cpp/coop_intent/tools/coop_cli.cpp
+d57e30fdad87c807dbfdc7eaf6d26ae434b86c761c1ec6ba38ee12d8d7bb2dfa *../../cpp/coop_intent/tools/gen_tests.py
+7953b8cddb25fc7fe32e9171ebf6d2d51f9f30aa0b7af14c71f34d7a81f556ea *../../models/coop-deberta-v3-ens3-v53/cpp/intent_config.json
+5c051677a6d563d7e8237d537618d6d10db2a4fef00c6be372ecdb71b7e37d37 *../../models/coop-deberta-v3-ens3-v53/cpp/location_tests.jsonl
+db8f4db630b8ecc77f2281a9a1927b25aa4ad098e8db3f8fd807410e13151c4b *../../models/coop-deberta-v3-ens3-v53/cpp/decide_tests.jsonl
+5cce903e9393314e419ee83cbe89e0ff4c9f0a7b31ca80019db8d4247d85d764 *../../models/coop-deberta-v3-ens3-v53/cpp/dialogue.jsonl
+bece241fe7adeba99e76671f62ddf9505be2ac178f73df68cc9acf7263cdb34d *../../models/coop-deberta-v3-ens3-v53/cpp/tokenizer_tests.jsonl
+7e5f30857eea6df5a15c8f7aaf8c18402c93d607ad2623e45248bb36b0f660da *owner_voice_c_on_v53.log
+8b90c700f80daa63fcafbc87929016f235f7f27214b5e9d6b6a53ee9935afe03 *probe_v54_on_v53.log
