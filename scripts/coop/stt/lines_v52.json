@@ -1,0 +1,542 @@
+[
+{
+"id": "r6v52_000",
+"author": "r6",
+"version": "v52",
+"text": "Help me out, I can't win a one-v-three alone.",
+"maj": "HELP",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0000.wav"
+},
+{
+"id": "r6v52_001",
+"author": "r6",
+"version": "v52",
+"text": "I need backup here, hurry up.",
+"maj": "HELP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0001.wav"
+},
+{
+"id": "r6v52_002",
+"author": "r6",
+"version": "v52",
+"text": "Yo, I could use a hand.",
+"maj": "HELP",
+"voice": "Microsoft Mark",
+"wav": "v52_0002.wav"
+},
+{
+"id": "r6v52_003",
+"author": "r6",
+"version": "v52",
+"text": "They're swinging me from both sides, I need help!",
+"maj": "HELP",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0003.wav"
+},
+{
+"id": "r6v52_004",
+"author": "r6",
+"version": "v52",
+"text": "On my call, come give me a hand, not before.",
+"maj": "HELP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0004.wav"
+},
+{
+"id": "r6v52_005",
+"author": "r6",
+"version": "v52",
+"text": "Help me, help me, they're collapsing on me!",
+"maj": "HELP",
+"voice": "Microsoft Mark",
+"wav": "v52_0005.wav"
+},
+{
+"id": "r6v52_006",
+"author": "r6",
+"version": "v52",
+"text": "Check the basement, I think their roamer dropped the hatch.",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0006.wav"
+},
+{
+"id": "r6v52_007",
+"author": "r6",
+"version": "v52",
+"text": "Go check red stairs, somebody might be camping them.",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0007.wav"
+},
+{
+"id": "r6v52_008",
+"author": "r6",
+"version": "v52",
+"text": "See if anyone's hiding behind the sofa before I walk in.",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "v52_0008.wav"
+},
+{
+"id": "r6v52_009",
+"author": "r6",
+"version": "v52",
+"text": "Check behind us, I'm hearing footsteps.",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0009.wav"
+},
+{
+"id": "r6v52_010",
+"author": "r6",
+"version": "v52",
+"text": "Check the room on our right, make sure it's empty before we plant.",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0010.wav"
+},
+{
+"id": "r6v52_011",
+"author": "r6",
+"version": "v52",
+"text": "Check that room I just pinged, I want to know it's clear.",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "v52_0011.wav"
+},
+{
+"id": "r6v52_012",
+"author": "r6",
+"version": "v52",
+"text": "On my go, check the top floor for roamers.",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0012.wav"
+},
+{
+"id": "r6v52_013",
+"author": "r6",
+"version": "v52",
+"text": "Go see if it's clear upstairs, I'm staying on site.",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0013.wav"
+},
+{
+"id": "r6v52_014",
+"author": "r6",
+"version": "v52",
+"text": "Lay down fire on north window so the anchor can't move.",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "v52_0014.wav"
+},
+{
+"id": "r6v52_015",
+"author": "r6",
+"version": "v52",
+"text": "Keep them pinned on the left while I swing.",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0015.wav"
+},
+{
+"id": "r6v52_016",
+"author": "r6",
+"version": "v52",
+"text": "On three, covering fire through main door.",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0016.wav"
+},
+{
+"id": "r6v52_017",
+"author": "r6",
+"version": "v52",
+"text": "Suppress, suppress, don't let anybody peek!",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "v52_0017.wav"
+},
+{
+"id": "r6v52_018",
+"author": "r6",
+"version": "v52",
+"text": "Just keep shooting at that wall so they can't rotate.",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0018.wav"
+},
+{
+"id": "r6v52_019",
+"author": "r6",
+"version": "v52",
+"text": "Spam bullets at them so they can't peek, I'm going for default plant.",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0019.wav"
+},
+{
+"id": "r6v52_020",
+"author": "r6",
+"version": "v52",
+"text": "Help me, I'm knocked, get me back up!",
+"maj": "REVIVE_ME",
+"voice": "Microsoft Mark",
+"wav": "v52_0020.wav"
+},
+{
+"id": "r6v52_021",
+"author": "r6",
+"version": "v52",
+"text": "Drone out second floor first, see if it's clear before we go in.",
+"maj": "DRONE",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0021.wav"
+},
+{
+"id": "r6v52_022",
+"author": "r6",
+"version": "v52",
+"text": "When I say go, swing main and clear out site.",
+"maj": "ENTRY",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0022.wav"
+},
+{
+"id": "r6v52_023",
+"author": "r6",
+"version": "v52",
+"text": "Look over at the west window real quick.",
+"maj": "LOOK_AT",
+"voice": "Microsoft Mark",
+"wav": "v52_0023.wav"
+},
+{
+"id": "r6v52_024",
+"author": "r6",
+"version": "v52",
+"text": "Keep eyes on the back stairs in case their roamer rotates.",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0024.wav"
+},
+{
+"id": "r6v52_025",
+"author": "r6",
+"version": "v52",
+"text": "You're clear to shoot, hit anything that peeks east window.",
+"maj": "OPEN_FIRE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0025.wav"
+},
+{
+"id": "r6v52_026",
+"author": "r6",
+"version": "v52",
+"text": "Cover me, I'm getting the defuser down.",
+"maj": "COVER_ME",
+"voice": "Microsoft Mark",
+"wav": "v52_0026.wav"
+},
+{
+"id": "r6v52_027",
+"author": "r6",
+"version": "v52",
+"text": "Stop shooting, you're giving away our position.",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0027.wav"
+},
+{
+"id": "r6v52_028",
+"author": "r6",
+"version": "v52",
+"text": "Never mind, I don't need help anymore, I traded him out.",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0028.wav"
+},
+{
+"id": "r6v52_029",
+"author": "r6",
+"version": "v52",
+"text": "Don't bother checking the roof, it's a waste of time.",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "v52_0029.wav"
+},
+{
+"id": "csv52_000",
+"author": "cs",
+"version": "v52",
+"text": "yo help me out real quick",
+"maj": "HELP",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0030.wav"
+},
+{
+"id": "csv52_001",
+"author": "cs",
+"version": "v52",
+"text": "i need backup on me right now",
+"maj": "HELP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0031.wav"
+},
+{
+"id": "csv52_002",
+"author": "cs",
+"version": "v52",
+"text": "i'm lit like ninety, come help me",
+"maj": "HELP",
+"voice": "Microsoft Mark",
+"wav": "v52_0032.wav"
+},
+{
+"id": "csv52_003",
+"author": "cs",
+"version": "v52",
+"text": "need a hand over here man, come on",
+"maj": "HELP",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0033.wav"
+},
+{
+"id": "csv52_004",
+"author": "cs",
+"version": "v52",
+"text": "on my call you come help me, not before",
+"maj": "HELP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0034.wav"
+},
+{
+"id": "csv52_005",
+"author": "cs",
+"version": "v52",
+"text": "i'm getting swarmed again, every damn round, just help me for once",
+"maj": "HELP",
+"voice": "Microsoft Mark",
+"wav": "v52_0035.wav"
+},
+{
+"id": "csv52_006",
+"author": "cs",
+"version": "v52",
+"text": "check red stairs before we commit",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0036.wav"
+},
+{
+"id": "csv52_007",
+"author": "cs",
+"version": "v52",
+"text": "see if the east window is clear, i don't wanna get one tapped",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0037.wav"
+},
+{
+"id": "csv52_008",
+"author": "cs",
+"version": "v52",
+"text": "go make sure nobody's lurking in the basement",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "v52_0038.wav"
+},
+{
+"id": "csv52_009",
+"author": "cs",
+"version": "v52",
+"text": "check left real quick, i heard steps",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0039.wav"
+},
+{
+"id": "csv52_010",
+"author": "cs",
+"version": "v52",
+"text": "check behind you, pretty sure one snuck past us",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0040.wav"
+},
+{
+"id": "csv52_011",
+"author": "cs",
+"version": "v52",
+"text": "check that spot i just pinged, see if anyone's sitting in it",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "v52_0041.wav"
+},
+{
+"id": "csv52_012",
+"author": "cs",
+"version": "v52",
+"text": "on my go, see if that room's clear, not before",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0042.wav"
+},
+{
+"id": "csv52_013",
+"author": "cs",
+"version": "v52",
+"text": "i got this room, you go check the other one",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0043.wav"
+},
+{
+"id": "csv52_014",
+"author": "cs",
+"version": "v52",
+"text": "covering fire on main, don't let anyone peek out",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "v52_0044.wav"
+},
+{
+"id": "csv52_015",
+"author": "cs",
+"version": "v52",
+"text": "suppress right side for me, i need to cross",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0045.wav"
+},
+{
+"id": "csv52_016",
+"author": "cs",
+"version": "v52",
+"text": "when i say go you pin them down, i'm gonna run across",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0046.wav"
+},
+{
+"id": "csv52_017",
+"author": "cs",
+"version": "v52",
+"text": "keep spraying that corner so he can't swing",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "v52_0047.wav"
+},
+{
+"id": "csv52_018",
+"author": "cs",
+"version": "v52",
+"text": "just keep their heads down, don't care if you hit anything",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0048.wav"
+},
+{
+"id": "csv52_019",
+"author": "cs",
+"version": "v52",
+"text": "i need suppressing fire like now, they're pushing me",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0049.wav"
+},
+{
+"id": "csv52_020",
+"author": "cs",
+"version": "v52",
+"text": "ah i'm knocked, help, come pick me up",
+"maj": "REVIVE_ME",
+"voice": "Microsoft Mark",
+"wav": "v52_0050.wav"
+},
+{
+"id": "csv52_021",
+"author": "cs",
+"version": "v52",
+"text": "scout upstairs first before we rush it",
+"maj": "DRONE",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0051.wav"
+},
+{
+"id": "csv52_022",
+"author": "cs",
+"version": "v52",
+"text": "on my go push through north door and clear the room, i'll trade you",
+"maj": "ENTRY",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0052.wav"
+},
+{
+"id": "csv52_023",
+"author": "cs",
+"version": "v52",
+"text": "turn and look at the yellow stairs for a sec",
+"maj": "LOOK_AT",
+"voice": "Microsoft Mark",
+"wav": "v52_0053.wav"
+},
+{
+"id": "csv52_024",
+"author": "cs",
+"version": "v52",
+"text": "keep eyes on the back door, shoot whoever peeks",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0054.wav"
+},
+{
+"id": "csv52_025",
+"author": "cs",
+"version": "v52",
+"text": "just start shooting at the left window, he's lit",
+"maj": "OPEN_FIRE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0055.wav"
+},
+{
+"id": "csv52_026",
+"author": "cs",
+"version": "v52",
+"text": "cover me, i'm going for the defuse",
+"maj": "COVER_ME",
+"voice": "Microsoft Mark",
+"wav": "v52_0056.wav"
+},
+{
+"id": "csv52_027",
+"author": "cs",
+"version": "v52",
+"text": "quit shooting man, you're giving us away",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft David Desktop",
+"wav": "v52_0057.wav"
+},
+{
+"id": "csv52_028",
+"author": "cs",
+"version": "v52",
+"text": "nah don't check blue stairs, forget it, waste of time",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v52_0058.wav"
+},
+{
+"id": "csv52_029",
+"author": "cs",
+"version": "v52",
+"text": "no don't help me, i'm good, i can clutch it",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "v52_0059.wav"
+}
+]

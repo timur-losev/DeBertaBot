@@ -83,6 +83,10 @@ LINES = {
     "HOLD_FIRE": ["Holding fire.", "Weapons tight.", "Ceasing fire."],
     "LOOK_AT": ["Looking.", "I see it.", "Turning to look."],
     "LOOK_AT_ME": ["Looking at you.", "Yeah, I see you.", "Facing you."],
+    "HELP": ["Coming to help.", "On my way to you.", "Hang on, I'm coming."],
+    "CHECK": ["Checking it.", "I'll check.", "Going to take a look."],
+    "SUPPRESS": ["Suppressing!", "Covering fire!", "Keeping their heads down."],
+    "JUMP": ["Jumping.", "On it, jumping.", "Going over."],
 }
 ACK = ["Copy.", "Noted.", "Heard."]                   # NONE: a callout or chatter, nothing to do
 AGAIN = ["Say again?", "Didn't catch that.", "Come again?"]

@@ -1,0 +1,40 @@
+coop-deberta-v3-ens3-v52: gate family, threshold 0.6
+  ok  'Where is my shoes?'                       NONE           1.00   want NONE                   v51: NONE 0.99 ignore
+  ok  'Hi, talking to me.'                       NONE           1.00   want NONE                   v51: LOOK_AT_ME 0.45 say_again
+  ok  'Look at me.'                              LOOK_AT_ME     1.00   want LOOK_AT_ME             v51: LOOK_AT_ME 1.00 act
+  ok  'Kiss me.'                                 NONE           1.00   want NONE                   v51: FOLLOW_ME 0.58 say_again
+  ok  'Walk around.'                             FLANK          0.86   want FLANK/NONE/MOVE_TO     v51: FLANK 1.00 act
+  ok  "Don't make any noise."                    NONE           1.00   want NONE                   v51: NONE 0.93 ignore
+  ok  'Be silent.'                               NONE           1.00   want NONE                   v51: HOLD_FIRE 0.68 act
+  ok  'Revive me, revive me.'                    REVIVE_ME      1.00   want REVIVE_ME              v51: REVIVE_ME 0.99 act
+  ok  'Check that room.'                         CHECK          1.00   want CHECK                  v51: ENTRY 0.43 say_again
+  ok  'Check the room in front of us.'           CHECK          1.00   want CHECK                  v51: DRONE 0.68 act  place:  dir=forward
+  ok  'Sneak into that room.'                    MOVE_TO        1.00   want MOVE_TO/ENTRY          v51: VAULT_WINDOW 0.78 act
+  ok  'Jump in the window.'                      VAULT_WINDOW   1.00   want VAULT_WINDOW           v51: VAULT_WINDOW 1.00 act  place: window
+  ok  'Help me here.'                            HELP           1.00   want HELP                   v51: REVIVE_ME 1.00 act
+  ok  'Check the room.'                          CHECK          1.00   want CHECK                  v51: ENTRY 0.57 say_again
+  ok  'Open the door.'                           OPEN           1.00   want OPEN                   v51: OPEN 1.00 act  place: door
+  ok  'Go into the room.'                        ENTRY          0.68   want ENTRY/MOVE_TO          v51: ENTRY 0.72 act
+  ok  'Draw in the room.'                        DRONE          0.99   want DRONE                  v51: DRONE 0.98 act
+  ok  'Cover me from behind.'                    COVER_ME       1.00   want COVER_ME               v51: COVER_ME 1.00 act  place:  dir=back
+  ok  'Car my front.'                            (say again)    0.30   want COVER_ME/NONE          v51: DRONE 0.32 say_again
+  ok  'Cover my fraud.'                          COVER_ME       1.00   want COVER_ME               v51: COVER_ME 1.00 act
+  ok  'Cover my front.'                          COVER_ME       1.00   want COVER_ME               v51: COVER_ME 1.00 act  place:  dir=forward
+  ok  'Cover me from left.'                      COVER_ME       1.00   want COVER_ME               v51: COVER_ME 1.00 act  place:  dir=left
+  ok  'Cover me from right.'                     COVER_ME       1.00   want COVER_ME               v51: COVER_ME 1.00 act  place:  dir=right
+  ok  'Get back, get back.'                      FALL_BACK      1.00   want FALL_BACK              v51: FALL_BACK 1.00 act
+  ok  'jump into this hole.'                     VAULT_WINDOW   1.00   want VAULT_WINDOW/MOVE_TO   v51: VAULT_WINDOW 1.00 act
+  ok  'Open the window.'                         OPEN           1.00   want OPEN                   v51: OPEN 1.00 act  place: window
+  ok  'Go into the window.'                      VAULT_WINDOW   1.00   want VAULT_WINDOW           v51: VAULT_WINDOW 0.99 act  place: window
+  ok  'Open fire.'                               OPEN_FIRE      1.00   want OPEN_FIRE              v51: OPEN_FIRE 1.00 act
+  ok  'Suppressive fire.'                        SUPPRESS       1.00   want SUPPRESS               v51: HOLD_FIRE 0.98 act
+  ok  'Suppress them.'                           SUPPRESS       1.00   want SUPPRESS               v51: DEFUSE 0.68 act
+  ok  'Help me up.'                              REVIVE_ME      1.00   want REVIVE_ME              v51: REVIVE_ME 1.00 act
+  ok  'Can you see me?'                          NONE           1.00   want NONE                   v51: NONE 0.67 ignore
+  ok  'Look at that door.'                       LOOK_AT        1.00   want LOOK_AT                v51: LOOK_AT 1.00 act  place: door
+  ok  'Look left.'                               LOOK_AT        1.00   want LOOK_AT                v51: LOOK_AT 1.00 act  place:  dir=left
+  ok  'Look right.'                              LOOK_AT        1.00   want LOOK_AT                v51: LOOK_AT 1.00 act  place:  dir=right
+  ok  'Look into that hole.'                     LOOK_AT        1.00   want LOOK_AT/CHECK          v51: LOOK_AT 0.81 act
+  ok  'Kill them up. Kill kill all of them.'     ATTACK         1.00   want ATTACK                 v51: ATTACK 0.99 act
+  ok  "You're stupid."                           NONE           1.00   want NONE                   v51: TAKE_COVER 0.27 say_again
+coop-deberta-v3-ens3-v52: 38/38 as the owner wants (bot v51 in the live test: 30/38); acted on a wrong order: 0

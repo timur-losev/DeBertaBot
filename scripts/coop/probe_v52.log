@@ -1,0 +1,93 @@
+A typed probe of bots v51 and v52 in the C++ chat (coop_cli, family gate, thresholds 0.62 and 0.60), 2026-10-09, after
+v52 was trained. The lines were written by the developer who wrote seed set v52, after the training: not seeds
+(the four that are seeds are marked), not blind either. Lowercase without a final mark, as the voice chat gives the
+classifier its transcripts. Found here: 'check fire' and 'check your fire' -- an order to stop shooting -- were
+HOLD_FIRE 1.00 in v51 and are CHECK 0.60 in v52.
+
+i need some help over here
+  v51: REVIVE_ME (revive) 0.99 | FOLLOW_ME 0.00 | COVER_ME 0.00 | revive mass 0.99 | act
+  v52: HELP (help) 1.00 | REVIVE_ME 0.00 | GO_NOW 0.00 | help mass 1.00 | act
+help me with this door
+  v51: REVIVE_ME (revive) 0.99 | COVER_ME 0.01 | OPEN 0.00 | revive mass 0.99 | act   place: * door
+  v52: HELP (help) 0.88 | REVIVE_ME 0.11 | COVER_ME 0.00 | help mass 0.88 | act   place: * door
+hey help
+  v51: REVIVE_ME (revive) 0.98 | NONE 0.00 | ATTACK 0.00 | revive mass 0.98 | act
+  v52: HELP (help) 0.99 | REVIVE_ME 0.00 | TAKE_COVER 0.00 | help mass 0.99 | act
+help me i'm bleeding out
+  v51: REVIVE_ME (revive) 1.00 | COVER_ME 0.00 | FOLLOW_ME 0.00 | revive mass 1.00 | act
+  v52: REVIVE_ME (revive) 0.87 | HELP 0.13 | COVER_ME 0.00 | revive mass 0.87 | act
+check the kitchen
+  v51: LOOK_AT (look) 0.51 | DRONE 0.44 | ENTRY 0.03 | look mass 0.51 | say_again
+  v52: CHECK (check) 1.00 | DRONE 0.00 | TAKE_COVER 0.00 | check mass 1.00 | act
+check the corner on the right
+  v51: ENTRY (assault) 0.47 | LOOK_AT 0.39 | DRONE 0.10 | assault mass 0.47 | say_again   place: * dir=right
+  v52: CHECK (check) 1.00 | DRONE 0.00 | TAKE_COVER 0.00 | check mass 1.00 | act   place: * dir=right
+go and check upstairs
+  v51: DRONE (scout) 0.48 | MOVE_TO 0.38 | LOOK_AT 0.10 | scout mass 0.48 | say_again   place: * up
+  v52: CHECK (check) 1.00 | MOVE_TO 0.00 | DRONE 0.00 | check mass 1.00 | act   place: * up
+check six
+  v51: LOOK_AT (look) 0.69 | ENTRY 0.28 | DRONE 0.02 | look mass 0.70 | act   place: * dir=back
+  v52: CHECK (check) 1.00 | ENTRY 0.00 | DEFUSE 0.00 | check mass 1.00 | act   place: * dir=back
+take a look in that room
+  v51: DRONE (scout) 0.41 | LOOK_AT 0.30 | FLASH 0.18 | scout mass 0.41 | say_again
+  v52: LOOK_AT (look) 0.66 | CHECK 0.33 | DRONE 0.00 | look mass 0.66 | act
+is that room clear
+  v51: NONE (none) 1.00 | LOOK_AT 0.00 | FRAG 0.00 | none mass 1.00 | ignore
+  v52: NONE (none) 1.00 | LOOK_AT 0.00 | SMOKE 0.00 | none mass 1.00 | ignore
+check fire
+  v51: HOLD_FIRE (ceasefire) 1.00 | OPEN_FIRE 0.00 | WAIT 0.00 | ceasefire mass 1.00 | act
+  v52: CHECK (check) 0.60 | HOLD_FIRE 0.33 | OPEN_FIRE 0.02 | check mass 0.60 | act
+check your fire
+  v51: HOLD_FIRE (ceasefire) 1.00 | NONE 0.00 | WAIT 0.00 | ceasefire mass 1.00 | act
+  v52: CHECK (check) 0.60 | HOLD_FIRE 0.34 | OPEN_FIRE 0.01 | check mass 0.60 | say_again
+suppress the stairs
+  v51: DEFUSE (objective) 0.98 | WAIT 0.01 | HOLD_FIRE 0.00 | objective mass 0.98 | act   place: * stairs
+  v52: SUPPRESS (fire) 1.00 | SMOKE 0.00 | DRONE 0.00 | fire mass 1.00 | act   place: * stairs
+suppressing fire on that window
+  v51: HOLD_FIRE (ceasefire) 1.00 | OPEN_FIRE 0.00 | DEFUSE 0.00 | ceasefire mass 1.00 | act   place: * window
+  v52: SUPPRESS (fire) 1.00 | SMOKE 0.00 | DEFUSE 0.00 | fire mass 1.00 | act   place: * window
+keep them busy
+  v51: HOLD_ANGLE (hold) 0.30 | OPEN_FIRE 0.25 | ATTACK 0.16 | hold mass 0.31 | say_again
+  v52: SUPPRESS (fire) 0.79 | DRONE 0.12 | ATTACK 0.07 | fire mass 0.79 | act
+light them up   [a seed]
+  v51: OPEN_FIRE (fire) 1.00 | ATTACK 0.00 | FRAG 0.00 | fire mass 1.00 | act
+  v52: OPEN_FIRE (fire) 1.00 | ATTACK 0.00 | FRAG 0.00 | fire mass 1.00 | act
+cover fire
+  v51: COVER_ME (hold) 0.37 | HOLD_FIRE 0.23 | TAKE_COVER 0.22 | hold mass 0.38 | say_again
+  v52: SUPPRESS (fire) 1.00 | HOLD_FIRE 0.00 | COVER_ME 0.00 | fire mass 1.00 | act
+kiss my ass
+  v51: COVER_ME (hold) 0.61 | FOLLOW_ME 0.37 | LOOK_AT_ME 0.01 | hold mass 0.61 | say_again
+  v52: NONE (none) 0.59 | LOOK_AT_ME 0.19 | FOLLOW_ME 0.08 | none mass 0.59 | say_again
+shut your mouth
+  v51: HOLD_FIRE (ceasefire) 0.83 | HOLD_POSITION 0.09 | WAIT 0.07 | ceasefire mass 0.83 | act
+  v52: NONE (none) 0.61 | HOLD_FIRE 0.38 | WAIT 0.00 | none mass 0.61 | ignore
+do a backflip
+  v51: FLANK (move) 0.61 | MOVE_TO 0.32 | LOOK_AT 0.06 | move mass 0.93 | act
+  v52: FRAG (utility) 0.21 | NONE 0.16 | LOOK_AT 0.14 | utility mass 0.21 | say_again
+sneak up to the window
+  v51: RAPPEL (assault) 0.99 | VAULT_WINDOW 0.01 | MOVE_TO 0.00 | assault mass 1.00 | act   place: * window
+  v52: MOVE_TO (move) 1.00 | RAPPEL 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act   place: * window
+crawl to the door
+  v51: RAPPEL (assault) 0.88 | MOVE_TO 0.11 | VAULT_WINDOW 0.00 | assault mass 0.88 | act   place: * door
+  v52: MOVE_TO (move) 1.00 | RAPPEL 0.00 | FALL_BACK 0.00 | move mass 1.00 | act   place: * door
+turn around   [a seed]
+  v51: LOOK_AT (look) 1.00 | NONE 0.00 | LOOK_AT_ME 0.00 | look mass 1.00 | act
+  v52: LOOK_AT (look) 1.00 | LOOK_AT_ME 0.00 | NONE 0.00 | look mass 1.00 | act
+stop firing   [a seed]
+  v51: HOLD_FIRE (ceasefire) 1.00 | OPEN_FIRE 0.00 | WAIT 0.00 | ceasefire mass 1.00 | act
+  v52: HOLD_FIRE (ceasefire) 1.00 | OPEN_FIRE 0.00 | NONE 0.00 | ceasefire mass 1.00 | act
+fire at will   [a seed]
+  v51: OPEN_FIRE (fire) 1.00 | ATTACK 0.00 | HOLD_FIRE 0.00 | fire mass 1.00 | act
+  v52: OPEN_FIRE (fire) 1.00 | HOLD_FIRE 0.00 | ATTACK 0.00 | fire mass 1.00 | act
+go check the roof on my go
+  v51: MOVE_TO (move) 0.46 | DRONE 0.33 | ENTRY 0.16 | move mass 0.48 | say_again | slots: on my signal   place: * roof
+  v52: CHECK (check) 1.00 | DRONE 0.00 | MOVE_TO 0.00 | check mass 1.00 | queued | slots: on my signal | queued: CHECK   place: * roof
+don't suppress them
+  v51: NONE (none) 1.00 | WAIT 0.00 | HOLD_FIRE 0.00 | none mass 1.00 | ignore
+  v52: NONE (none) 1.00 | WAIT 0.00 | HOLD_FIRE 0.00 | none mass 1.00 | ignore | queued: CHECK
+help him
+  v51: REVIVE_ME (revive) 0.95 | NONE 0.02 | ATTACK 0.01 | revive mass 0.95 | act
+  v52: HELP (help) 0.91 | REVIVE_ME 0.08 | ATTACK 0.00 | help mass 0.91 | act | queued: CHECK
+check on me
+  v51: LOOK_AT_ME (look) 0.48 | COVER_ME 0.28 | REVIVE_ME 0.15 | look mass 0.48 | say_again
+  v52: CHECK (check) 0.83 | LOOK_AT_ME 0.15 | DRONE 0.00 | check mass 0.83 | act | queued: CHECK

@@ -1,0 +1,17 @@
+MATCHER, rule set v4 (current), on 90 v52 lines (the readers agree on the place on 90 and on the direction on 90)
+  all                      exact  98.9% (89/90)   place 100.0% (90/90)   direction  98.9% (89/90)   usable on orders  98.8% (83/84)
+  author r6                exact 100.0% (30/30)   place 100.0% (30/30)   direction 100.0% (30/30)   usable on orders 100.0% (28/28)
+  author cs                exact 100.0% (30/30)   place 100.0% (30/30)   direction 100.0% (30/30)   usable on orders 100.0% (28/28)
+  author stt               exact  96.7% (29/30)   place 100.0% (30/30)   direction  96.7% (29/30)   usable on orders  96.4% (27/28)
+  kind boundary            exact 100.0% (24/24)   place 100.0% (24/24)   direction 100.0% (24/24)   usable on orders 100.0% (24/24)
+  kind check               exact  95.8% (23/24)   place 100.0% (24/24)   direction  95.8% (23/24)   usable on orders  95.8% (23/24)
+  kind help                exact 100.0% (18/18)   place 100.0% (18/18)   direction 100.0% (18/18)   usable on orders 100.0% (18/18)
+  kind negated             exact 100.0% (6/6)   place 100.0% (6/6)   direction 100.0% (6/6)   usable on orders   0.0% (0/0)
+  kind suppress            exact 100.0% (18/18)   place 100.0% (18/18)   direction 100.0% (18/18)   usable on orders 100.0% (18/18)
+  lines where the readers give a direction: 10; the matcher's primary has that direction on 9, another direction on 0, none on 1 (the direction is somewhere in its list on 9)
+  lines where the readers give none: 80; the matcher's primary has a direction on 0, some target has one on 0
+  readers' direction -> matcher's: back->back 3, left->left 4, right->right 2, right->None 1, None->None 80
+  unknown_modifier flag: raised on 3 lines, the readers mark 3; both 3
+  mismatches (id kind | text | readers -> matcher):
+    sttv52_009 check          'check on the write side'
+                 None/None/None dir=right -> None/None/None dir=None   all: []

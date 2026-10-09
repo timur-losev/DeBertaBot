@@ -1,0 +1,135 @@
+{
+ "_note": "The model-side vocabulary: what each model is shown as the option label and description. Written by the experimenter, never shown to the blind authors or annotators (they see blind/spec.json only). Phrase labels because they won on laya:en in GAME-BOT.md (+9-11 pp over codes); descriptions because von reads the description and not the label.",
+ "_note_v2": "v2 = v1 + TAKE_COVER + OPEN (make_spec_v2.py). v2 families: v1 families + TAKE_COVER in its own family 'cover' and OPEN in its own family 'open'",
+ "FOLLOW_ME": {
+  "label": "follow me",
+  "description": "follow me, stay with me, on me"
+ },
+ "MOVE_TO": {
+  "label": "move there",
+  "description": "go to the marker or that spot, move up there"
+ },
+ "HOLD_POSITION": {
+  "label": "hold position",
+  "description": "stay here, stop moving, hold this spot"
+ },
+ "HOLD_ANGLE": {
+  "label": "hold the angle",
+  "description": "watch that angle, door, window or stairs"
+ },
+ "HOLD_OTHER_ANGLE": {
+  "label": "hold the other angle",
+  "description": "watch the other angle, take the other side"
+ },
+ "FLANK": {
+  "label": "flank",
+  "description": "go around, take the other route, hit them from the side"
+ },
+ "VAULT_WINDOW": {
+  "label": "go through the window",
+  "description": "vault, climb or jump through the window"
+ },
+ "RAPPEL": {
+  "label": "rappel",
+  "description": "use the rope, go up to the roof or drop down outside"
+ },
+ "BREACH": {
+  "label": "breach",
+  "description": "blow open the wall, hatch or barricade with a charge"
+ },
+ "DRONE": {
+  "label": "drone it",
+  "description": "send a drone, scout, get intel first"
+ },
+ "FLASH": {
+  "label": "throw a flash",
+  "description": "flashbang or stun grenade"
+ },
+ "SMOKE": {
+  "label": "throw a smoke",
+  "description": "smoke grenade, block their view"
+ },
+ "FRAG": {
+  "label": "throw a frag",
+  "description": "lethal grenade, frag, molotov or incendiary"
+ },
+ "COVER_ME": {
+  "label": "cover me",
+  "description": "cover me while I move, watch my back"
+ },
+ "ENTRY": {
+  "label": "push in",
+  "description": "go in and clear the room or site"
+ },
+ "FALL_BACK": {
+  "label": "fall back",
+  "description": "retreat, back off, get out"
+ },
+ "PLANT": {
+  "label": "plant it",
+  "description": "plant the bomb or the defuser"
+ },
+ "DEFUSE": {
+  "label": "defuse it",
+  "description": "defuse the bomb or disable the defuser"
+ },
+ "REVIVE_ME": {
+  "label": "revive me",
+  "description": "I am down, pick me up"
+ },
+ "WAIT": {
+  "label": "wait",
+  "description": "hold up, pause, do not act yet, cancel that"
+ },
+ "GO_NOW": {
+  "label": "go now",
+  "description": "execute now, that is the signal, go go go"
+ },
+ "TAKE_COVER": {
+  "label": "take cover",
+  "description": "hide, get into cover, get down, get out of sight"
+ },
+ "OPEN": {
+  "label": "open it",
+  "description": "open the door, window or hatch without going through"
+ },
+ "ATTACK": {
+  "label": "attack",
+  "description": "attack or engage the enemy; the planner picks how"
+ },
+ "OPEN_FIRE": {
+  "label": "open fire",
+  "description": "start shooting, weapons free, fire at will"
+ },
+ "HOLD_FIRE": {
+  "label": "hold fire",
+  "description": "stop shooting, cease fire, do not shoot"
+ },
+ "_note_v5": "v5 families: v2 families + ATTACK in its own family 'attack', OPEN_FIRE in 'fire' and HOLD_FIRE in 'ceasefire'",
+ "LOOK_AT": {
+  "label": "look there",
+  "description": "turn and look at a place, an object, a marked thing or a direction"
+ },
+ "LOOK_AT_ME": {
+  "label": "look at you",
+  "description": "turn and look at the player"
+ },
+ "_note_v51": "v51 families: v5 families + LOOK_AT and LOOK_AT_ME in one family 'look'",
+ "HELP": {
+  "label": "help you",
+  "description": "come and help the player; the planner works out with what"
+ },
+ "CHECK": {
+  "label": "check it",
+  "description": "go and check a place or a thing: is it clear, what is there"
+ },
+ "SUPPRESS": {
+  "label": "suppress",
+  "description": "suppressive or covering fire: keep shooting to pin the enemy down"
+ },
+ "NONE": {
+  "label": "not an order",
+  "description": "a callout, chatter, a question, or an order taken back"
+ },
+ "_note_v52": "v52 families: v51 families + HELP in 'help', CHECK in 'check', SUPPRESS in 'fire' with OPEN_FIRE"
+}

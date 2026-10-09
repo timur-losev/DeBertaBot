@@ -1,0 +1,57 @@
+{
+ "csv51_021": [
+  {
+   "intent": "CHECK",
+   "ok": [
+    "DRONE"
+   ],
+   "timing": "now",
+   "reference": "none"
+  },
+  {
+   "intent": "CHECK",
+   "ok": [
+    "DRONE"
+   ],
+   "timing": "now",
+   "reference": "none"
+  }
+ ],
+ "sttv51_019": [
+  {
+   "intent": "CHECK",
+   "ok": [
+    "DRONE"
+   ],
+   "timing": "now",
+   "reference": "none"
+  },
+  {
+   "intent": "CHECK",
+   "ok": [
+    "DRONE"
+   ],
+   "timing": "now",
+   "reference": "none"
+  }
+ ],
+ "sttv5_043": [
+  {
+   "intent": "CHECK",
+   "ok": [
+    "HOLD_ANGLE",
+    "LOOK_AT"
+   ],
+   "timing": "now",
+   "reference": "none"
+  },
+  {
+   "intent": "CHECK",
+   "ok": [
+    "HOLD_ANGLE"
+   ],
+   "timing": "now",
+   "reference": "none"
+  }
+ ]
+}

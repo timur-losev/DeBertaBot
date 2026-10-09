@@ -1,0 +1,1255 @@
+[
+{
+"id": "seed_MOVE_TO_77",
+"text": "sneak into that room",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0000.wav"
+},
+{
+"id": "seed_MOVE_TO_78",
+"text": "sneak in there",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0001.wav"
+},
+{
+"id": "seed_MOVE_TO_79",
+"text": "sneak over there",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "s52_0002.wav"
+},
+{
+"id": "seed_MOVE_TO_80",
+"text": "sneak to the door",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0003.wav"
+},
+{
+"id": "seed_MOVE_TO_81",
+"text": "move quietly to the door",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0004.wav"
+},
+{
+"id": "seed_MOVE_TO_82",
+"text": "quietly go to the stairs",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "s52_0005.wav"
+},
+{
+"id": "seed_REVIVE_ME_8",
+"text": "help me up",
+"maj": "REVIVE_ME",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0006.wav"
+},
+{
+"id": "seed_REVIVE_ME_9",
+"text": "help me up i'm down",
+"maj": "REVIVE_ME",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0007.wav"
+},
+{
+"id": "seed_REVIVE_ME_10",
+"text": "pick me up i'm down",
+"maj": "REVIVE_ME",
+"voice": "Microsoft Mark",
+"wav": "s52_0008.wav"
+},
+{
+"id": "seed_WAIT_25",
+"text": "don't check yet",
+"maj": "WAIT",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0009.wav"
+},
+{
+"id": "seed_WAIT_26",
+"text": "don't suppress yet",
+"maj": "WAIT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0010.wav"
+},
+{
+"id": "seed_NONE_170",
+"text": "kiss me",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s52_0011.wav"
+},
+{
+"id": "seed_NONE_171",
+"text": "you're stupid",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0012.wav"
+},
+{
+"id": "seed_NONE_172",
+"text": "be quiet",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0013.wav"
+},
+{
+"id": "seed_NONE_173",
+"text": "be silent",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s52_0014.wav"
+},
+{
+"id": "seed_NONE_174",
+"text": "shut up",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0015.wav"
+},
+{
+"id": "seed_NONE_175",
+"text": "stay quiet",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0016.wav"
+},
+{
+"id": "seed_NONE_176",
+"text": "keep quiet",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s52_0017.wav"
+},
+{
+"id": "seed_NONE_177",
+"text": "sing a song",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0018.wav"
+},
+{
+"id": "seed_NONE_178",
+"text": "dance",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0019.wav"
+},
+{
+"id": "seed_NONE_179",
+"text": "tell me a joke",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s52_0020.wav"
+},
+{
+"id": "seed_NONE_180",
+"text": "are you talking to me",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0021.wav"
+},
+{
+"id": "seed_NONE_181",
+"text": "hey i'm talking to you",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0022.wav"
+},
+{
+"id": "seed_NONE_182",
+"text": "can you hear me",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s52_0023.wav"
+},
+{
+"id": "seed_NONE_183",
+"text": "can you see me",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0024.wav"
+},
+{
+"id": "seed_NONE_184",
+"text": "where are my shoes",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0025.wav"
+},
+{
+"id": "seed_NONE_185",
+"text": "where is my gun",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s52_0026.wav"
+},
+{
+"id": "seed_NONE_186",
+"text": "what's your name",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0027.wav"
+},
+{
+"id": "seed_NONE_187",
+"text": "how are you",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0028.wav"
+},
+{
+"id": "seed_NONE_188",
+"text": "you're useless",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s52_0029.wav"
+},
+{
+"id": "seed_NONE_189",
+"text": "nice shot",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0030.wav"
+},
+{
+"id": "seed_NONE_190",
+"text": "thank you",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0031.wav"
+},
+{
+"id": "seed_NONE_191",
+"text": "sit down",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s52_0032.wav"
+},
+{
+"id": "seed_NONE_192",
+"text": "wave at me",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0033.wav"
+},
+{
+"id": "seed_NONE_193",
+"text": "say something",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0034.wav"
+},
+{
+"id": "seed_NONE_194",
+"text": "what are you doing",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s52_0035.wav"
+},
+{
+"id": "seed_NONE_195",
+"text": "i'm bored",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0036.wav"
+},
+{
+"id": "seed_NONE_196",
+"text": "you idiot",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0037.wav"
+},
+{
+"id": "seed_NONE_197",
+"text": "love you",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s52_0038.wav"
+},
+{
+"id": "seed_NONE_198",
+"text": "hello",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0039.wav"
+},
+{
+"id": "seed_NONE_199",
+"text": "hi there",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0040.wav"
+},
+{
+"id": "seed_NONE_200",
+"text": "who are you",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s52_0041.wav"
+},
+{
+"id": "seed_NONE_201",
+"text": "hi are you talking to me",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0042.wav"
+},
+{
+"id": "seed_NONE_202",
+"text": "be nice",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0043.wav"
+},
+{
+"id": "seed_NONE_203",
+"text": "don't help me",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s52_0044.wav"
+},
+{
+"id": "seed_NONE_204",
+"text": "i don't need help",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0045.wav"
+},
+{
+"id": "seed_NONE_205",
+"text": "no need to help",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0046.wav"
+},
+{
+"id": "seed_NONE_206",
+"text": "don't check it",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s52_0047.wav"
+},
+{
+"id": "seed_NONE_207",
+"text": "don't check that room",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0048.wav"
+},
+{
+"id": "seed_NONE_208",
+"text": "no need to check",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0049.wav"
+},
+{
+"id": "seed_NONE_209",
+"text": "don't suppress",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s52_0050.wav"
+},
+{
+"id": "seed_NONE_210",
+"text": "no suppressive fire",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0051.wav"
+},
+{
+"id": "seed_HOLD_FIRE_18",
+"text": "stop suppressing",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0052.wav"
+},
+{
+"id": "seed_HOLD_FIRE_19",
+"text": "cease suppressive fire",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft Mark",
+"wav": "s52_0053.wav"
+},
+{
+"id": "seed_HELP_0",
+"text": "help",
+"maj": "HELP",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0054.wav"
+},
+{
+"id": "seed_HELP_1",
+"text": "help me here",
+"maj": "HELP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0055.wav"
+},
+{
+"id": "seed_HELP_2",
+"text": "i need help",
+"maj": "HELP",
+"voice": "Microsoft Mark",
+"wav": "s52_0056.wav"
+},
+{
+"id": "seed_HELP_3",
+"text": "i need help here",
+"maj": "HELP",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0057.wav"
+},
+{
+"id": "seed_HELP_4",
+"text": "give me a hand",
+"maj": "HELP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0058.wav"
+},
+{
+"id": "seed_HELP_5",
+"text": "need a hand here",
+"maj": "HELP",
+"voice": "Microsoft Mark",
+"wav": "s52_0059.wav"
+},
+{
+"id": "seed_HELP_6",
+"text": "come help me",
+"maj": "HELP",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0060.wav"
+},
+{
+"id": "seed_HELP_7",
+"text": "help me out",
+"maj": "HELP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0061.wav"
+},
+{
+"id": "seed_HELP_8",
+"text": "i need backup",
+"maj": "HELP",
+"voice": "Microsoft Mark",
+"wav": "s52_0062.wav"
+},
+{
+"id": "seed_HELP_9",
+"text": "need backup here",
+"maj": "HELP",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0063.wav"
+},
+{
+"id": "seed_HELP_10",
+"text": "assist me",
+"maj": "HELP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0064.wav"
+},
+{
+"id": "seed_HELP_11",
+"text": "i need assistance",
+"maj": "HELP",
+"voice": "Microsoft Mark",
+"wav": "s52_0065.wav"
+},
+{
+"id": "seed_HELP_12",
+"text": "can you help me",
+"maj": "HELP",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0066.wav"
+},
+{
+"id": "seed_HELP_13",
+"text": "help me with this",
+"maj": "HELP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0067.wav"
+},
+{
+"id": "seed_HELP_14",
+"text": "get over here and help",
+"maj": "HELP",
+"voice": "Microsoft Mark",
+"wav": "s52_0068.wav"
+},
+{
+"id": "seed_HELP_15",
+"text": "somebody help me",
+"maj": "HELP",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0069.wav"
+},
+{
+"id": "seed_HELP_16",
+"text": "a little help here",
+"maj": "HELP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0070.wav"
+},
+{
+"id": "seed_HELP_17",
+"text": "i could use some help",
+"maj": "HELP",
+"voice": "Microsoft Mark",
+"wav": "s52_0071.wav"
+},
+{
+"id": "seed_HELP_18",
+"text": "help me out here",
+"maj": "HELP",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0072.wav"
+},
+{
+"id": "seed_HELP_19",
+"text": "come give me a hand",
+"maj": "HELP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0073.wav"
+},
+{
+"id": "seed_CHECK_0",
+"text": "check",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0074.wav"
+},
+{
+"id": "seed_CHECK_1",
+"text": "check it",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0075.wav"
+},
+{
+"id": "seed_CHECK_2",
+"text": "check that",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0076.wav"
+},
+{
+"id": "seed_CHECK_3",
+"text": "check it out",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0077.wav"
+},
+{
+"id": "seed_CHECK_4",
+"text": "check that room",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0078.wav"
+},
+{
+"id": "seed_CHECK_5",
+"text": "check the room",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0079.wav"
+},
+{
+"id": "seed_CHECK_6",
+"text": "check this room",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0080.wav"
+},
+{
+"id": "seed_CHECK_7",
+"text": "go check it",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0081.wav"
+},
+{
+"id": "seed_CHECK_8",
+"text": "go check that",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0082.wav"
+},
+{
+"id": "seed_CHECK_9",
+"text": "check there",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0083.wav"
+},
+{
+"id": "seed_CHECK_10",
+"text": "check over there",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0084.wav"
+},
+{
+"id": "seed_CHECK_11",
+"text": "check if it's clear",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0085.wav"
+},
+{
+"id": "seed_CHECK_12",
+"text": "see if it's clear",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0086.wav"
+},
+{
+"id": "seed_CHECK_13",
+"text": "make sure it's clear",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0087.wav"
+},
+{
+"id": "seed_CHECK_14",
+"text": "check the area",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0088.wav"
+},
+{
+"id": "seed_CHECK_15",
+"text": "check that corner",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0089.wav"
+},
+{
+"id": "seed_CHECK_16",
+"text": "check the corners",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0090.wav"
+},
+{
+"id": "seed_CHECK_17",
+"text": "check inside",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0091.wav"
+},
+{
+"id": "seed_CHECK_18",
+"text": "go check inside",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0092.wav"
+},
+{
+"id": "seed_CHECK_19",
+"text": "inspect that room",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0093.wav"
+},
+{
+"id": "seed_CHECK_20",
+"text": "check behind that",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0094.wav"
+},
+{
+"id": "seed_CHECK_21",
+"text": "check that spot",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0095.wav"
+},
+{
+"id": "seed_CHECK_22",
+"text": "check around",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0096.wav"
+},
+{
+"id": "seed_CHECK_23",
+"text": "make sure nobody is in there",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0097.wav"
+},
+{
+"id": "seed_CHECK_24",
+"text": "go see if anyone is there",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0098.wav"
+},
+{
+"id": "seed_CHECK_25",
+"text": "check that for me",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0099.wav"
+},
+{
+"id": "seed_CHECK_26",
+"text": "check left",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0100.wav"
+},
+{
+"id": "seed_CHECK_27",
+"text": "check right",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0101.wav"
+},
+{
+"id": "seed_CHECK_28",
+"text": "check your six",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0102.wav"
+},
+{
+"id": "seed_CHECK_29",
+"text": "check behind you",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0103.wav"
+},
+{
+"id": "seed_CHECK_30",
+"text": "check above",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0104.wav"
+},
+{
+"id": "seed_CHECK_31",
+"text": "check the left side",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0105.wav"
+},
+{
+"id": "seed_CHECK_32",
+"text": "check the room in front of you",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0106.wav"
+},
+{
+"id": "seed_CHECK_33",
+"text": "check the door on the left",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0107.wav"
+},
+{
+"id": "seed_CHECK_34",
+"text": "check up the stairs",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0108.wav"
+},
+{
+"id": "seed_CHECK_35",
+"text": "check behind us",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0109.wav"
+},
+{
+"id": "seed_CHECK_36",
+"text": "check your left",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0110.wav"
+},
+{
+"id": "seed_CHECK_37",
+"text": "check upstairs",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0111.wav"
+},
+{
+"id": "seed_CHECK_38",
+"text": "check downstairs",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0112.wav"
+},
+{
+"id": "seed_CHECK_39",
+"text": "check the room in front of us",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0113.wav"
+},
+{
+"id": "seed_CHECK_40",
+"text": "check the room on my go",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0114.wav"
+},
+{
+"id": "seed_CHECK_41",
+"text": "check it when i say",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0115.wav"
+},
+{
+"id": "seed_CHECK_42",
+"text": "check the main door",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0116.wav"
+},
+{
+"id": "seed_CHECK_43",
+"text": "check the north door",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0117.wav"
+},
+{
+"id": "seed_CHECK_44",
+"text": "check the west window",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0118.wav"
+},
+{
+"id": "seed_CHECK_45",
+"text": "check blue stairs",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0119.wav"
+},
+{
+"id": "seed_CHECK_46",
+"text": "check white stairs",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0120.wav"
+},
+{
+"id": "seed_CHECK_47",
+"text": "check the basement",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0121.wav"
+},
+{
+"id": "seed_CHECK_48",
+"text": "check the top floor",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0122.wav"
+},
+{
+"id": "seed_CHECK_49",
+"text": "check the roof",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0123.wav"
+},
+{
+"id": "seed_CHECK_50",
+"text": "check the stairs",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0124.wav"
+},
+{
+"id": "seed_CHECK_51",
+"text": "check that door",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0125.wav"
+},
+{
+"id": "seed_CHECK_52",
+"text": "check that window",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0126.wav"
+},
+{
+"id": "seed_CHECK_53",
+"text": "go check the west door",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0127.wav"
+},
+{
+"id": "seed_CHECK_54",
+"text": "go check the north window",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0128.wav"
+},
+{
+"id": "seed_CHECK_55",
+"text": "go check red stairs",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0129.wav"
+},
+{
+"id": "seed_CHECK_56",
+"text": "go check the first floor",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0130.wav"
+},
+{
+"id": "seed_CHECK_57",
+"text": "check behind the sofa",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0131.wav"
+},
+{
+"id": "seed_CHECK_58",
+"text": "check behind the table",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0132.wav"
+},
+{
+"id": "seed_CHECK_59",
+"text": "check if the basement is clear",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0133.wav"
+},
+{
+"id": "seed_CHECK_60",
+"text": "check if the roof is clear",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0134.wav"
+},
+{
+"id": "seed_CHECK_61",
+"text": "check if yellow stairs is clear",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0135.wav"
+},
+{
+"id": "seed_CHECK_62",
+"text": "make sure the top floor is clear",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0136.wav"
+},
+{
+"id": "seed_CHECK_63",
+"text": "make sure the east door is clear",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s52_0137.wav"
+},
+{
+"id": "seed_SUPPRESS_0",
+"text": "suppress",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0138.wav"
+},
+{
+"id": "seed_SUPPRESS_1",
+"text": "suppress them",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0139.wav"
+},
+{
+"id": "seed_SUPPRESS_2",
+"text": "suppressive fire",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "s52_0140.wav"
+},
+{
+"id": "seed_SUPPRESS_3",
+"text": "suppressing fire",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0141.wav"
+},
+{
+"id": "seed_SUPPRESS_4",
+"text": "suppress him",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0142.wav"
+},
+{
+"id": "seed_SUPPRESS_5",
+"text": "lay down suppressive fire",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "s52_0143.wav"
+},
+{
+"id": "seed_SUPPRESS_6",
+"text": "lay down suppressing fire",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0144.wav"
+},
+{
+"id": "seed_SUPPRESS_7",
+"text": "covering fire",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0145.wav"
+},
+{
+"id": "seed_SUPPRESS_8",
+"text": "give me covering fire",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "s52_0146.wav"
+},
+{
+"id": "seed_SUPPRESS_9",
+"text": "give me suppressive fire",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0147.wav"
+},
+{
+"id": "seed_SUPPRESS_10",
+"text": "pin them down",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0148.wav"
+},
+{
+"id": "seed_SUPPRESS_11",
+"text": "keep them pinned",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "s52_0149.wav"
+},
+{
+"id": "seed_SUPPRESS_12",
+"text": "keep their heads down",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0150.wav"
+},
+{
+"id": "seed_SUPPRESS_13",
+"text": "lay down fire",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0151.wav"
+},
+{
+"id": "seed_SUPPRESS_14",
+"text": "put fire on them",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "s52_0152.wav"
+},
+{
+"id": "seed_SUPPRESS_15",
+"text": "suppress the enemy",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0153.wav"
+},
+{
+"id": "seed_SUPPRESS_16",
+"text": "suppress that position",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0154.wav"
+},
+{
+"id": "seed_SUPPRESS_17",
+"text": "suppress that",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "s52_0155.wav"
+},
+{
+"id": "seed_SUPPRESS_18",
+"text": "keep them suppressed",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0156.wav"
+},
+{
+"id": "seed_SUPPRESS_19",
+"text": "suppress that guy",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0157.wav"
+},
+{
+"id": "seed_SUPPRESS_20",
+"text": "i need suppressing fire",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "s52_0158.wav"
+},
+{
+"id": "seed_SUPPRESS_21",
+"text": "suppression",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0159.wav"
+},
+{
+"id": "seed_SUPPRESS_22",
+"text": "suppress left",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0160.wav"
+},
+{
+"id": "seed_SUPPRESS_23",
+"text": "suppress the right side",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "s52_0161.wav"
+},
+{
+"id": "seed_SUPPRESS_24",
+"text": "suppressive fire on the left",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0162.wav"
+},
+{
+"id": "seed_SUPPRESS_25",
+"text": "suppress the window on the right",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0163.wav"
+},
+{
+"id": "seed_SUPPRESS_26",
+"text": "covering fire to the right",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "s52_0164.wav"
+},
+{
+"id": "seed_SUPPRESS_27",
+"text": "suppress on my go",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0165.wav"
+},
+{
+"id": "seed_SUPPRESS_28",
+"text": "covering fire when i say",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0166.wav"
+},
+{
+"id": "seed_SUPPRESS_29",
+"text": "suppress the north window",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "s52_0167.wav"
+},
+{
+"id": "seed_SUPPRESS_30",
+"text": "suppress the east window",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0168.wav"
+},
+{
+"id": "seed_SUPPRESS_31",
+"text": "suppress the main door",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0169.wav"
+},
+{
+"id": "seed_SUPPRESS_32",
+"text": "suppress brown stairs",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "s52_0170.wav"
+},
+{
+"id": "seed_SUPPRESS_33",
+"text": "suppress the roof",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0171.wav"
+},
+{
+"id": "seed_SUPPRESS_34",
+"text": "suppressive fire on the south door",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0172.wav"
+},
+{
+"id": "seed_SUPPRESS_35",
+"text": "suppressive fire on the south window",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "s52_0173.wav"
+},
+{
+"id": "seed_SUPPRESS_36",
+"text": "suppressive fire on red stairs",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0174.wav"
+},
+{
+"id": "seed_SUPPRESS_37",
+"text": "covering fire on the north door",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0175.wav"
+},
+{
+"id": "seed_SUPPRESS_38",
+"text": "covering fire on the west window",
+"maj": "SUPPRESS",
+"voice": "Microsoft Mark",
+"wav": "s52_0176.wav"
+},
+{
+"id": "seed_SUPPRESS_39",
+"text": "pin them down at blue stairs",
+"maj": "SUPPRESS",
+"voice": "Microsoft David Desktop",
+"wav": "s52_0177.wav"
+},
+{
+"id": "seed_SUPPRESS_40",
+"text": "pin them down at the east door",
+"maj": "SUPPRESS",
+"voice": "Microsoft Zira Desktop",
+"wav": "s52_0178.wav"
+}
+]
