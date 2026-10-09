@@ -768,6 +768,81 @@ owner made it the default bot on 2026-10-04 (`scripts/coop/bots.py`).
 - Real speech-to-text will produce name variants the vocabulary does not have ("rough", "second
   story"). They have to be harvested from the real engine.
 
+## v4: the voice chain (a speech recognizer, and a bot trained on what it hears)
+
+Until here every number is on typed text. On 2026-10-07/09 the chain was closed with a real recognizer, on
+synthesized voices only; the details, every table and the commands are in
+[scripts/coop/stt/README.md](scripts/coop/stt/README.md) (in Russian).
+
+- **Engine: NVIDIA Parakeet TDT 0.6B v2 through sherpa-onnx** (the owner's choice; push-to-talk, minimum CPU
+  i9-10900K). About 0.7 GB of RAM and about 200 ms after the key is released on 2 threads. With the v31 bot
+  on 422 voiced lines (in-sample for the bot, so only the ranking counts) it scores 99 on clean synthetic
+  voices and 72 on Piper/VCTK voices with regional accents; the light streaming engines (Moonshine,
+  Zipformer) score 93-98 and 54-67.
+- **Bot v4** (`models/coop-deberta-v3-ens3-v4`): the v31 data (633 lines, 580 seeds) plus 1456 Parakeet
+  transcripts of the r6 and cs lines and the seed commands with their known labels, 12 epochs.
+  Out of fold (a line is unseen typed and spoken), near − 2 × wrong family on the r6 and cs lines: 90.0
+  typed, 86.0-88.9 through Parakeet from clean synthetic voices, 69.2 from VCTK speakers that are in no
+  training set (near 79.1, wrong family 5.0%).
+- **What the comparisons said** (one model, VCTK speakers never trained on): transcripts in training help;
+  dropping the cs author's lines costs 20-27 points and the stt author's lines 3-5 more; stripping case and
+  punctuation before the classifier costs 4-10; 12 epochs are not worse than 20, 8 are.
+- **Limits:** synthetic voices only, no real speech; the check is softer than leave one author out; every
+  choice was made on these same lines, so the numbers are "after tuning"; the fitted threshold (0.50, top
+  gate) lets the bot act on 10-12% of non-orders on clean voices. v31 is still the default bot.
+
+## v5 and v51: fire control, a plain "attack", directions, "look at"
+
+On 2026-10-09 the owner tried the v4 bot in the C++ chat. "open fire", "don't shoot" and "stop shooting" had no
+intent; "attack" split between ENTRY and BREACH and was asked again; "go down by stairs" and "go up by stairs"
+gave the same place record. The owner's decisions: fire-control intents; "attack" as its own intent, the planner
+choosing breach or shooting; all six directions; and, while the training waited for the GPU, the command
+"look at ..." ("look at me", "look at sofa", "look at that window"). Done by the project's protocol: spec, seeds
+and rules frozen before any test line ([frozen.txt](scripts/coop/frozen.txt)), blind authors and annotators.
+
+- **Intents: 24 -> 29.** v5 adds ATTACK (the way is left to the planner), OPEN_FIRE and HOLD_FIRE, each in a
+  family of its own; v51 adds LOOK_AT (a place, an object, the marked thing or a direction) and LOOK_AT_ME (the
+  player), in one family. A 27-intent v5 bot was specified and frozen but never trained: v51 replaced it before
+  any training. Specs: [spec_v5.json](scripts/coop/blind/spec_v5.json),
+  [spec_v51.json](scripts/coop/blind/spec_v51.json).
+- **"don't shoot" is an order.** HOLD_FIRE is a safe intent: the leading-negation guard lets it through. It acts
+  at once, is never queued and does not drop the queued order; "hold fire until I say" queues OPEN_FIRE for the
+  signal. That behaviour, and LOOK_AT_ME as its own intent, are the developer's choices.
+- **Directions are the matcher's, not the classifier's: rule set v4.** A target gets a fourth field (up, down,
+  left, right, forward, back): an object's ("the left window", "down the stairs", "the door behind you") or a
+  target of its own ("go left"). A direction word counts only in listed contexts ("fall back", "right now",
+  "two left", "go ahead" are not directions). Three critic agents read the first draft on their own lines
+  ([rules/critic_v4](scripts/coop/rules/critic_v4)): missed directions 142 -> 30 of 569 lines, false ones
+  211 -> 67 of 460, by the critics' scoring. On the 14,662 lines the project had, the places equal rule set
+  v3's except that an unknown_modifier flag may become a direction and a place reported clear may become a
+  status.
+- **The matcher's blind numbers** (rules frozen first; primary target against the readers'):
+
+  | lines | exact (place and direction) | place | direction where the readers give one | false direction |
+  |---|---|---|---|---|
+  | 180 v5 lines | 174 (96.7%) | 180 | 47 of 53 | 0 of 127 |
+  | 90 v51 lines | 79 (87.8%) | 82 | 15 of 17 | 1 of 73 |
+
+  Rule set v3 on the same lines: 127 and 65. On the v51 lines the stt author's mis-heard words ("so far" for
+  sofa) cost most: 21 of 30, against 29 of 30 for each of the other two.
+- **Lines.** 3 authors x 60 for v5 and x 30 for v51, two annotators each: all 270 unanimous on intent, place and
+  direction -- AI readers of AI lines, weaker than it sounds. Every earlier line was read again under each new
+  spec; three got a new intent (two OPEN_FIRE, one LOOK_AT) and were read by two adjudicators among decoys.
+- **Bot v51** (`models/coop-deberta-v3-ens3-v51`): v4's recipe on 3768 lines (903 lines and 801 seeds typed,
+  2064 Parakeet transcripts), 12 epochs; family gate, threshold 0.62. Out of fold, near - 2 x wrong family on
+  the r6 and cs lines (602): 91.0 typed, 88.9-90.7 through Parakeet from clean synthetic voices, 71.9 from VCTK
+  speakers in no training set (near 82.2, wrong family 5.1%). On the 422 lines v4 was checked on it is level
+  with v4 (89.8 against 90.0 typed, 69.0 against 69.2 on the unseen speakers). The new intents, typed: ATTACK
+  16/16, HOLD_FIRE 18/18, OPEN_FIRE 15/18, LOOK_AT 20/20, LOOK_AT_ME 11/12; on the unseen VCTK speakers one
+  HOLD_FIRE line was heard as OPEN_FIRE and one the other way round. Tables:
+  [scripts/coop/stt/README.md](scripts/coop/stt/README.md).
+- **C++.** The engine got a twin of rule set v4 and of the HOLD_FIRE decision; a config without "directions"
+  still runs rule set v3, so the earlier bots keep their files. v51: places 35447/35447 (9755 with a
+  direction), decisions 190/190, golden 1750/1750, conversation 77/77.
+- **Limits.** Synthetic voices only; the check is softer than leave one author out; the readers are AI; after
+  the blind runs their mismatches were seen, so any later rule change is "after tuning". "turn around" gets
+  LOOK_AT but no direction from the matcher. v31 is still the default bot.
+
 ## Recommendation
 
 ```

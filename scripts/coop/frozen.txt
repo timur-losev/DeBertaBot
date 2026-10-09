@@ -284,3 +284,179 @@ db5bcc8ef24eb997685e7797c95ae260a6e5577cfceaf3f12a060f2751ae4420 *eval_v3_review
 48fbbbf03f5c94cc4c6553170905e8784dae94b65e87fe9fb31f582d60d0084e *bots.py
 9665a6deb1709e8e0b3a1a59193531dce6dd263390dfed00f4f4f2e548e12372 *coop_bot.py
 71b95f80c69485554e518e3961f9f76675a3e51b856546b82b888fd9d84eef98 *../../cpp/coop_intent/CMakeLists.txt
+2026-10-09T01:11:34+02:00
+# v4, the bot for the voice chain (work machine). The owner chose Parakeet TDT 0.6B v2 for speech-to-text on 2026-10-08 and asked for the bot to be trained on what it hears. stt/build_v4.py trains on the v31 data (633 lines, 580 seeds, typed) plus 1456 Parakeet transcripts of the r6 and cs lines and of the seed commands read by synthesized voices (Windows SAPI, Kokoro, Piper/VCTK speaker pool A), each with its line's label, for 12 epochs. Everything about v4 is AFTER TUNING: every line had been read long before; the engine, the data mix (cs and stt lines kept, inner punctuation kept, no case-and-punctuation stripping) and the epoch count were chosen on out-of-fold results over these same lines (stt/README.md); the voices are synthetic, no real speech has been tested. Gate and threshold (top, 0.50) come from the out-of-fold predictions on the r6 and cs lines as Parakeet heard them from the training voices; the VCTK pool-B speakers read test lines only. The default bot stays v31 (bots.py is unchanged).
+43e0cfa80d0c9b0a60559d6edc51a2543ed187e7741d770bd62dcab999822eab *stt/README.md
+57d974dc2772421c36454ca3efdef1916955a9de538ea53b7d45a130c3bf2cfd *stt/build_v4.py
+490f96370c834b5b83b325af0c450451bc13b0dd0db12a9a89d716b15b999427 *stt/score_v4.py
+c91393e5d318efd8e15b102ce07f86223d72a23648dc812b8e7805cf509dcbbc *stt/run_stt.py
+fef742d72585a237757f716eba6da514dbce82a5ad705f711c2f46a0ca8b3644 *stt/export_lines.py
+788dc991b8ec1e9c64640f2da6a603f38bd04ba28e14b57b289005c44c5fe062 *stt/export_seeds.py
+0c61e465b3c6e45d2881a24622bdf5aa35958933d5918af3e61034cdb423cc15 *stt/synth_windows.ps1
+b73f2bc0a8a011c7ab20d24318543aa01ac958ef9bcdd8000251525ae9fca3d3 *stt/synth_accents.py
+24f076447f75cb37f673e09038a414a0133dd2a6caf1059ca63ce4a20d7324e4 *stt/synth_train.py
+1e4bf1641b81cf6f56e96e3c347dc5614a1a9c3797ce27935ebbfd7086daf9f1 *stt/lines.json
+6ae71ca71740629a6c083b49f93f7da6c28c466fdb1454b029302fa749ab9ad7 *stt/seeds.json
+daa68d27a01418d113ac79e6914017beeded4e7de65d03f7705f9d81295da236 *stt/speaker-info.txt
+1a75240ee437fdb455ab58e1c2bff9130eb4a864154657b430733faf9d224bb6 *stt/accents.json
+c8b1da4bd107679f4ed85e64139d7a248a74aa2143f975c05b5ed2f45ad597e0 *stt/voices_train.json
+364de1b816447951873c76298eb527005c64032623a91b9b3640720dc396a983 *stt/out_parakeet-0.6b-v2_clean.json
+aeb876d92ab0f582b8a5a8a353dbfd86fd755455c8858cf6159a4940ba0bfc11 *stt/out_parakeet-0.6b-v2_kokoro.json
+e40f501133673943d5dcb7d5a3b4f42099851927120987ab3f6043ec245fc8d6 *stt/out_parakeet-0.6b-v2_kokorox.json
+181b56a29cac669b27d966fb02911b97c1e9781e10fd043c7e94b7ba92d24046 *stt/out_parakeet-0.6b-v2_vctkA.json
+2d8709bea264b08d167270141651b50a3f4cf96fbd2a23cc924f09db1cdb0641 *stt/out_parakeet-0.6b-v2_vctkB.json
+cfdd2fea6c7294d38801a69b13682cd1b5b04afbe556bc0263159a556fa61997 *stt/out_parakeet-0.6b-v2_seedclean.json
+e81425c21e6f27a5336cc68c7280b8a141262073840935cdd57c6f0a65669b08 *stt/out_parakeet-0.6b-v2_seedkokoro.json
+610d3a178ab8958591687b6e2af2a07fe37c53a6a93b1b30c871b8d2c919978e *stt/out_parakeet-0.6b-v2_seedkokorox.json
+f4657d01e4467e8ca157e6a0af80a5936257258f34ee75a0fa7103071a13bd5a *stt/out_parakeet-0.6b-v2_seedvctkA.json
+c633538b006e3566811b17bc96340512738bfdb6f9f5bb3d504de93826525327 *stt/finaloof_0.json
+1f00f0c3926fc41938448e555e293a63aec9e92599dc42a969220356645d201b *stt/finaloof_1.json
+0fa64838306c145cb7a92a437c02534aabc6ca95c882c0714ad888907ae56519 *stt/finaloof_2.json
+b2cd06ed4fed6370f38bced800b7512fce69dd13107014ac9677063557ad095d *../../models/coop-deberta-v3-ens3-v4/bot_config.json
+896d01f0e35dda690b6b865882e7bec07df2e47895e6ff4a08b623faa829e960 *../../models/coop-deberta-v3-ens3-v4/cpp/intent_config.json
+b103dff46e9ca18238eca972d18fcda630c53b529e6c81e5dc1122463324c827 *../../models/coop-deberta-v3-ens3-v4/cpp/golden.jsonl
+faeed865d2cd8aba77db0c4d8ea7841ce537ab80816cd80f9f84c37beff81996 *../../models/coop-deberta-v3-ens3-v4/cpp/onnx_check.json
+2026-10-09T02:42:58+02:00
+# v5 (work machine), BEFORE any v5 test line exists. The owner asked for it on 2026-10-09 after a live test of v4 in the C++ chat: fire-control orders, a plain 'attack' that leaves the way to the planner, and directions ('go down by stairs' and 'go up by stairs' gave the same record). Frozen here: (1) spec_v5.json -- 27 intents (ATTACK, OPEN_FIRE, HOLD_FIRE are new; ENTRY, WAIT and NONE sharpened against them) and a direction (up, down, left, right, forward, back) in the target; intents_v5.json; seed set v5 (the v31 set with its ids unchanged, + 125); make_spec_v5.py. (2) place matcher rule set v4 = rule set v3 + directions (locations.py / locations.json version 4, archived in rules/v4; rule set v3 is in rules/v3). Its first draft was read by three critic agents who wrote their own lines and saw no test line (rules/critic_v4): missed directions 142 -> 30 of 569 lines, false directions 211 -> 67 of 460 by the critics' own scoring, 1.4 million fuzzed lines without an exception on the draft and 120,000 on the final rules; on the 14,662 lines the project has (study lines, seeds, critics' lines, transcripts) the place targets equal rule set v3's except that an unknown_modifier flag may become a direction and that a place reported clear may get the role 'status' when the line's other target is a direction. The developer's regression set has 482 lines (228 new direction cases) and the same 3 failures as before. After the critique and before this entry the spec got three clarifications (a direction that describes an object is the object's; the side that tells which object comes before a direction of movement; 'the stairs at the back' is unknown_modifier). (3) the v5 data, bot and evaluation code, written before any line: coop_v2.py (COOP_TAG=v5; the re-reading rule: an older line whose v5 re-reading picks ATTACK, OPEN_FIRE or HOLD_FIRE takes the majority of three v5 readings, every other older line keeps its truth; the target truth carries a direction), coop_bot.py and export_cpp.py (HOLD_FIRE is a safe intent: 'don't shoot' is not cancelled by its negation; it acts at once, keeps the queued order, and 'hold fire until I say' queues OPEN_FIRE -- the developer's design, not yet confirmed by the owner), eval_v5.py (the matcher on the v5 lines), stt/export_v5.py, stt/synth_v5.py, stt/synth_windows_v5.ps1, stt/build_v5.py, stt/score_v5.py (v4's recipe on the v5 data). Not written yet: the C++ twin of rule set v4. Rule set v4 changes what every bot's Python chat prints for places (the matcher is shared); the exported C++ bots keep the vocabulary they were exported with.
+211001eab25ae335f28ca80db178ae6d2600182f2cb7ca20ea1a032bf5a2a2e2 *blind/spec_v5.json
+7f8f7b6301b4107cad6c336725b2eaa4811582942e82427eb77280cce9cd079b *intents_v5.json
+f897ebf6421df033c3a7c5e6a3d8bd2a62d88a93623dfd9b7f2c5f93c07aa466 *seed_commands_v5.json
+90c3bdc8e3de1e25367e427a47ec6d93973df310a9c0d5b04518978fd0b8370e *make_spec_v5.py
+7d2913444e587e443d5500e95836e150901136f4ce5974e1d02f14eeb4363317 *locations.py
+0953f7a4c20a8399cda8230aa66fc73a6b03ee09eecccc879017589837909db0 *locations.json
+39346933f8650518ad813349744ef8b2745521caa5fe19f83fde0cd944c6266f *locations_dev.json
+7d2913444e587e443d5500e95836e150901136f4ce5974e1d02f14eeb4363317 *rules/v4/locations.py
+0953f7a4c20a8399cda8230aa66fc73a6b03ee09eecccc879017589837909db0 *rules/v4/locations.json
+14b95ebbacd6b6302d0c2e60b579ce4ad777948e5784ec86a0fd50b84335c85f *rules/critic_v4/critic_a.json
+b2c473904d851fb669db9036c4098dc5c01823cfe398c571a4f39e18ce83e57a *rules/critic_v4/critic_b.json
+d9b8911000b9eb5bb9ee08e0811fa65cf90c00ab1c17e9b187851dadc003ea39 *rules/critic_v4/critic_c.txt
+57650f53f3555f9935fcd68815037f21650af1da93a26793277c629d95fc0605 *rules/critic_v4/check.py
+a5912629692625f0271a6293bcab3e494ab45deb9fffae137938c26882c4e29c *coop_v2.py
+c700d035e46f028a41bee0a69b533f64d4368eef669f4d9736d5defbebc92738 *coop_bot.py
+0630d1c841f88a18694a986bc6920f67f33c6f0c3ccd0f83a8dc5870919be777 *export_cpp.py
+9f2251dbbcacca08c218da7c27c2dc89d11a04a3c7e19a6b4a4f78947310a1ea *eval_v5.py
+2fe53246803534df42a663825d79bf9606e7ccec4d8390a8f8f4f5264c49501c *stt/export_v5.py
+31b82e26939859a79a3f21b0f318bfa4a17207260a22803718f3332400d54352 *stt/synth_v5.py
+ea333dc27c0968d8a6cd0ca5c83c1315754f54d49af60b1bdc0af4798a64b753 *stt/synth_windows_v5.ps1
+97cd9cc6e1db71e2130b4176d41d9044baa5aa88db4822874aaac570a60f6560 *stt/build_v5.py
+1b811c62928893c4c9c7fc1135a80844f4904a8ab9a18044f1bd62a5fea69d20 *stt/score_v5.py
+2026-10-09T02:55:58+02:00
+# v5 blind lines (work machine), written and read AFTER the freeze of 2026-10-09T02:42:58 by agents that saw only the spec (a copy of blind/spec_v5.json) and label-free lines: 3 authors x 60 lines (blind/v5/author_*.json; kinds: 8 ATTACK, 8 OPEN_FIRE, 8 HOLD_FIRE, 10 boundary, 12 direction, 4 callouts with a direction, 4 direction words in another sense, 3 negations, 3 chatter), 2 annotators per author (annot/v5/author_*_ann{1,2}.json); the 633 older lines re-read under spec v5 by one annotator per author (annot/v5/old_*_v5ann.json): 2 lines flagged (csv2_035, sttv2_000, both OPEN_FIRE) and read by two adjudicators among 18 decoys (annot/v5/old_adjudicated.json, old_adjudication_all.json). No model has been trained and no evaluation has been run on these lines yet; the developer has not read them
+5b216c494a42bab08b835881516a4d69989c87614e10283b6002af5062b11635 *blind/v5/author_r6.json
+7dee8c9b8b47a38d01f96c886ec4375720b7333ff923fb12adbef567f8058542 *blind/v5/author_cs.json
+8ec6950a33a82bb5fbb90c9c694c291c173d64fa78dbfa8451a0d1d8f289dbf6 *blind/v5/author_stt.json
+82292c6a93be22391cd8db42ae0d37e3ed7cdbce211e5f2be8cdffa64e2a5a16 *blind/v5/author_r6_lines.json
+21ab9e21029139123136ac4e5474b1845b464affa6e7fd4ecfb857dd615ca052 *blind/v5/author_cs_lines.json
+26d9792d2b2c2a7c0ff92704a9284d452bf52cf0c44b8a474ad20fae68b464fb *blind/v5/author_stt_lines.json
+4e7474b1d84b4b95188bb8de78592053fd472b84ba4f5c50322b5e103fff3667 *blind/v5/old_r6_lines.json
+d8f5402b9d676ad27261b09f3806b352448811442d048b60ebcd577114ad0e8e *blind/v5/old_cs_lines.json
+692233a894d990909b2a58b1638435a6fca2b7b2e15da297429c24974f01c8b9 *blind/v5/old_stt_lines.json
+93ca467b2295db20f65182a3e3c40a4b19bea4cbbcac7c644b2b868f04755360 *annot/v5/author_r6_ann1.json
+c6db6a923b47dd6ab5d7805a1e26ed69ce58a16f6706556b4baaa3edd7495639 *annot/v5/author_r6_ann2.json
+02ba48a683d53c05d2b4afe9599ef7026d53de9d674b1334ee129c9313ce8e61 *annot/v5/author_cs_ann1.json
+02ba48a683d53c05d2b4afe9599ef7026d53de9d674b1334ee129c9313ce8e61 *annot/v5/author_cs_ann2.json
+832ad9848f47e166d50fb3ed9ebaf167b67a80217f40232dc3e6d1949cd61138 *annot/v5/author_stt_ann1.json
+602d0b193fad4261f1166580196eb8de09570ee68ae5eccba16c00c19918a2dd *annot/v5/author_stt_ann2.json
+9908451bb29672b66f20ce522fdc337cc2cff23bb528b46b0f5db1c0e3c6b667 *annot/v5/old_r6_v5ann.json
+bf8bfc5f55573d0c3ae5b2685574b41d2b56d6b7a246910960bd05f6902cee3c *annot/v5/old_cs_v5ann.json
+2314f029ed30283654ba168b862f9af456155b806a7f17c5ee399cfc700bc8b4 *annot/v5/old_stt_v5ann.json
+ace48b1547ea467d15a47f1790d60ab20741cbadac33320b591b3b4df862727b *annot/v5/old_adjudicated.json
+4868dec0933475dbbe83b2e30241317ebbac27a6207fd75811d1293f052496f9 *annot/v5/old_adjudication_all.json
+2026-10-09T02:56:28+02:00
+# v5: the place matcher's BLIND number. eval_v5.py (frozen above) with rule set v4 (frozen above) on the 180 v5 lines, first run, nothing changed since the freeze: exact (place and direction) 174/180 = 96.7%, place 180/180, of the 53 lines where the readers give a direction the primary has it on 47, another on 1, none on 5; of the 127 lines without a direction none gets one. Rule set v3 on the same lines: 127/180 (it has no directions). All 180 intents, places and directions are unanimous among author and two annotators -- AI readers of AI lines, which is weaker than it sounds (as noted for blind/v3). The log lists the six mismatches, so from here on the developer has seen those lines: any later rule change is AFTER TUNING
+b18be73db505cc4556c05b3b8896f949a1209f805b2516e73e004b1fea9f25bc *eval_v5_rules_v4.log
+3e6b9c17f3124fc7d07e2b320f6ac8357a7e1328efe6f8dc949f5858cebc2a72 *results_v5_matcher.json
+2026-10-09T03:54:14+02:00
+# v5, AFTER the blind matcher run and BEFORE any training: (1) a crash fix in locations.py, the only change to the rules since the freeze -- step 6d read past the last token when a line asked for 'the other one' and reported a direction clear ('not the north door, the other one, left is clear': IndexError; now the direction is a status and the other door stays primary). Found by the C++ port's generated lines (7 of 35,023), not by a study line: eval_v5.py's output on the 180 blind lines is byte-identical before and after, the dev set and the critics' counts are unchanged; rules/v4 keeps the frozen bytes. (2) the C++ twin of rule set v4 and of the HOLD_FIRE decision (locations.h/.cpp, bot_brain.h/.cpp, coop_cli.cpp, gen_tests.py), written by an agent that did not read the blind lines: a vocabulary without 'directions' still runs as rule set v3, so the exported bots keep their files -- v31 and v4 untouched and all equal (tokenizer 9428, places 20204, gates 3332, decide 140, golden 1259, dialogue 77); on a scratch copy of the v4 bot re-exported with the v4 vocabulary the C++ record equals the Python record on 35023/35023 lines (9634 with a direction) after the fix; on a fabricated 27-label config decide 190/190, and each of 10 mutants of the new branch is caught. (3) the voice additions for v5, by the scripts frozen above: lines_v5.json (the 120 v5 lines of r6 and cs), seeds_v5.json (125 new seed commands), their audio by the same voice pools as v4 (voices_v5.json) and Parakeet's transcripts (out_*_v5.json); build_v5.py's data assembles to 3362 training lines (813 lines + 705 seeds typed, 1844 transcripts; ATTACK 100, OPEN_FIRE 119, HOLD_FIRE 100). run_build_v5.ps1 launches the 18 trainings; it has not been run: the owner holds the GPU and asked to wait for their word.
+b66bb8db68d99b86ae18f8abaecc2b95d54f9d95320c995b4f9f627eb3af75e4 *locations.py
+abeb5b7d0fb6059f836bb1081ae244374fb835387fc77a0bd95c6515a7997a06 *../../cpp/coop_intent/include/coop_intent/locations.h
+2651e1102cc61e171a0d415a16ce996a0a043759b771f46fa9ddafedfd5d2579 *../../cpp/coop_intent/src/locations.cpp
+eb10e13a9724c494cdd1ac8bddbb8285592b3dd19210fce91c419e4316f1f133 *../../cpp/coop_intent/include/coop_intent/bot_brain.h
+c786676d0b94df953683afa245420330d0a85b98b939af59cbb4ea6da0c36f03 *../../cpp/coop_intent/src/bot_brain.cpp
+6418408f1a30055269c22f287c63d8a6a1f106950b28183794f4770aea2a1c7c *../../cpp/coop_intent/tools/coop_cli.cpp
+89831097a22e8525329bf2a791530660be620c056d607a3a1508288745f21558 *../../cpp/coop_intent/tools/gen_tests.py
+1b3e8cdf6d3391dfba249d94344fecd334d68448e75d1b2f3c471122eee98ecd *stt/lines_v5.json
+718a1bcf554c99b1305d57c2aa9b2a4889c3ebcd49741a0a58dee7fbe630711e *stt/seeds_v5.json
+8e7895802f96fb8e064cb65478f545e6f17eb6dbcf0f6b84bb018948fc8151a3 *stt/voices_v5.json
+a6aeb9f68a4b16dcf4d3a251fc805fa393beec4e58c6f83f2e5b6e3b7adc740d *stt/run_build_v5.ps1
+dfcf1201bde4625d3debb35daa31f2324d0e445baccf29411071381a3439f16a *stt/out_parakeet-0.6b-v2_clean_v5.json
+e1c19937241a92fa26ec33ff8acc62e6824ce5dfa632705a87c5e3aa6dc6b28b *stt/out_parakeet-0.6b-v2_kokoro_v5.json
+7e5b037b37bb75eb9b9bc19799b310043ccc2b00de0caf7cefecd4062e1cc871 *stt/out_parakeet-0.6b-v2_kokorox_v5.json
+cce1c8c44af75bf666a2d8a9d008094e9c1e3aec811a5ea4d23ca45bf7ad81f9 *stt/out_parakeet-0.6b-v2_seedclean_v5.json
+a42b6a0dbc07873fc3a3c43ed56c7abfcd835fb268d68dd9bdeb66f1180fac30 *stt/out_parakeet-0.6b-v2_seedkokoro_v5.json
+294bbc281f4e72b40a8703603e733f88c75759b75ea947311e57aa4c33a1392e *stt/out_parakeet-0.6b-v2_seedkokorox_v5.json
+9d5a0dd9040b67ff185758216be40cc442bf3ab6a5bc5da13e5f1fe07e645c35 *stt/out_parakeet-0.6b-v2_seedvctkA_v5.json
+3308c341225862feb3408ec6d3518b7043fe8f63cffe0fdce0e1939a2236de73 *stt/out_parakeet-0.6b-v2_vctkA_v5.json
+0784d6c1177553dd92eb5ace1be14bf03d4acefdd616cc7409579eebe33b6b67 *stt/out_parakeet-0.6b-v2_vctkB_v5.json
+2026-10-09T04:41:18+02:00
+# v51 (work machine), BEFORE any v51 test line exists and before any v5 model was trained. The owner asked on 2026-10-09, while the v5 training waited for the GPU, for the command 'look at ...' (look at me, look at sofa, look at that window). spec_v51.json = spec_v5 + LOOK_AT (the bot turns and looks at a place, an object, the marked thing or a direction; one look, not a watch: HOLD_ANGLE keeps covering) and LOOK_AT_ME (the player is not a place of the map, so the intent carries it, as FOLLOW_ME / COVER_ME do; the developer's choice), both in the family 'look'; HOLD_ANGLE and FOLLOW_ME sharpened against them; intents_v51.json (29); seed set v51 (v5 with its ids unchanged + 96: plain, placed, directed, negated, 'look' in another sense under NONE); make_spec_v51.py. The place matcher is NOT changed (rule set v4 + the logged crash fix): it already gives the place or direction of every look-at seed. coop_v2.py gets COOP_TAG=v51 (the same re-reading rule one step on: a line of the v5 data whose v51 re-reading picks LOOK_AT or LOOK_AT_ME takes the majority of three v51 readings; the older tags load the same items as before: the canonical dumps under v2, v31 and v5 have the same hash before and after), coop_bot.py gets the two reply lists. The 27-intent v5 bot will not be trained: v51 supersedes it before any training
+d0bc6206c77392e0a327267518b31b976f803a106a71d8fbaf26567c81909d39 *blind/spec_v51.json
+17c2607362ddbc0aea60e8098e319b0d28887bd6572a1e8a99fe0329e90bc714 *intents_v51.json
+687362d3fb0e251bde5c69b965d8afb7bb102d19de07c232c928947111aae0a7 *seed_commands_v51.json
+e0f35db837134b06daeeede8c74a02beaace63830aebca5082696a24cadf512a *make_spec_v51.py
+30d13fc31dfd964a175b0f677bd63c38018782af320745318dfbe9f2c7d9bd32 *coop_v2.py
+7f1cdb21ccfc4f878161daec5b4af9ae41a828a68c2019f9585d4748f6c43105 *coop_bot.py
+2026-10-09T04:51:41+02:00
+# v51 blind lines (work machine), written and read AFTER the v51 freeze of 2026-10-09T04:41:18 by agents that saw only the spec (a copy of blind/spec_v51.json) and label-free lines: 3 authors x 30 lines (blind/v51/author_*.json; kinds: 10 LOOK_AT, 6 LOOK_AT_ME, 8 boundary, 4 'look' in another sense, 2 negations), 2 annotators per author; all 813 lines of the v5 data re-read under spec v51 by one annotator per author (annot/v51/old_*_v51ann.json): 1 line flagged (sttv5_043, LOOK_AT) and read by two adjudicators among 18 decoys (one LOOK_AT, one HOLD_ANGLE: its truth is LOOK_AT, 2 of 3). Also hashed here, written while the lines were being written and before any result: the v51 voice, build, score and evaluation scripts (derived from the frozen v5 ones by exact replacements) and the two reply lists in coop_cli.cpp. No model has been trained; the developer has not read the v51 lines
+d72bfb1566bf55d5cb7df11ca5f5e1b8fa2b9ef6080a85a302791e0f3d94a0b5 *blind/v51/author_r6.json
+018c9d06d09bace15ca95c612c7cccf27f4fe81d90e1fa77ce06dd78eef114b4 *blind/v51/author_cs.json
+ec9620a34b5e8a094289e5b7e87b835176413e918d7e9b5b4dd76368cf5db0e6 *blind/v51/author_stt.json
+8a7877a5b4aa0686aa650696a498f013768840d1033f8ac37e641078a9f4f560 *blind/v51/author_r6_lines.json
+243591a5728d7b48f684236d380d294d31e7e9ec82090e1bd1ac094b70d59c14 *blind/v51/author_cs_lines.json
+8e729f43469d510ac92528e254195f1cbfe2c08ecce7bf9d6e5e7adbb311b4dc *blind/v51/author_stt_lines.json
+0acd6bc8d6c57619bfd5a865f1e31237fd7926b6177b67eff9a8d37a6d5c492d *blind/v51/old_r6_lines.json
+4de3e0777569e1e27e84303cb3c7c8d0c24391a24debabeb8779a08ffb1b63e4 *blind/v51/old_cs_lines.json
+2cfccf8f59c056bac954cac758d0eaf813e9d18878b71e306f4bbee9e5a5195d *blind/v51/old_stt_lines.json
+0514c3bdc43026da84d0f2abb748350ab34f8d9a066b8ce75b3660ff9f32b00e *annot/v51/author_r6_ann1.json
+f9c1e6d5a847f2b5aaa8f46d223ec880fb22c6d626942fe527b9b714422679e4 *annot/v51/author_r6_ann2.json
+b962060bc2ecccfb1effd705c648a154e11ba05fe6c60ca6b63f6335e094cca4 *annot/v51/author_cs_ann1.json
+a434146f9f0a94d5e9c4c841b0a2517756f4286d303769cc1efa2b8d5c91ace8 *annot/v51/author_cs_ann2.json
+7fb8a26ac427c07644e6d0c721e79d4bf5aa17df1d00ecc77894283dd04aa399 *annot/v51/author_stt_ann1.json
+7fb8a26ac427c07644e6d0c721e79d4bf5aa17df1d00ecc77894283dd04aa399 *annot/v51/author_stt_ann2.json
+1fbd55430af808580360ccc2adb79c2946ba4523fa18387562e852ba98869055 *annot/v51/old_r6_v51ann.json
+6061e4a2e465047fe5b318ce9d3b1fb9c238e5269dee27f5e0d5b3dbfb86495c *annot/v51/old_cs_v51ann.json
+e0a920215b3918de5e0b510bb7b0870119bccfa6fd6e55900b373ee4f160bb93 *annot/v51/old_stt_v51ann.json
+da91cd93e84d6c067f473b80b48cc92aa492e637bc195e1cea0bbd497068a90c *annot/v51/old_adjudicated.json
+c32dede13bc528b15f8e53fb137b8492e4e9977a332d8f716a8d92da8df51d24 *annot/v51/old_adjudication_all.json
+f5ba23067aada400bbfe3b7544aa0b6463e40d54e222461a3721f9bafa79f6c9 *eval_v51.py
+cf1d7a1ee4a7d3237bbbebd4c78bf481620e4adab86325f7a236222c0d0d56c3 *stt/export_v51.py
+0b7e7bb7575c56cadfe6da98bfaaad53cced66f3a2bd2ae045a8beb4a5e8bb9e *stt/synth_v51.py
+da0e7f7d660c32dea6a1ae6986b843ddefde820fa5ae874ef642ed6fc61e04b0 *stt/synth_windows_v51.ps1
+dca598bd7ffdba6c2d8f536d38d25e565c91c32a1725889615a5a4bcc79c6341 *stt/build_v51.py
+f81c3896d7b88137ee241533d4384827dc5b6fce3db57ad440cf15d3b01cf03e *stt/score_v51.py
+bee9ebcfe8fd05b632138fc4b6d291e70ea94be43c33ca85b447fe6f524777ce *stt/run_build_v51.ps1
+848d81b56b112610bb5e7b586474e61073ef85e31536296f96e18cd98e2673d4 *../../cpp/coop_intent/tools/coop_cli.cpp
+2026-10-09T04:51:56+02:00
+# v51: the place matcher on the 90 v51 lines, first run of eval_v51.py (frozen above) with the rules unchanged since their freeze except the logged crash fix -- a second batch the rules never saw: exact (place and direction) 79/90 = 87.8% (r6 29/30, cs 29/30, stt 21/30: the stt author's lines carry mis-heard words), place 82/90, direction 87/90; of the 17 lines where the readers give a direction the primary has it on 15, none on 2; of the 73 without one, 1 gets one. Rule set v3: 65/90. All 90 intents, places and directions are unanimous among author and two annotators (AI readers of AI lines). The log lists the mismatches: from here on any rule change is AFTER TUNING
+38e5ea19642f295d9a10f07c0d913aafa5ed37bdd3fb8b49a0b21850d00a3850 *eval_v51_rules_v4.log
+5071c4fb7311149b69b5316373bbf016af2c8bc023a28439baf3abd243d0bfea *results_v51_matcher.json
+2026-10-09T04:58:05+02:00
+# v51 voice additions, before any training: lines_v51.json (the 60 v51 lines of r6 and cs), seeds_v51.json (96 new seed commands), their audio by the same voice pools (voices_v51.json) and Parakeet's transcripts (out_*_v51.json). build_v51.py's data assembles to 3768 training lines (903 lines + 801 seeds typed, 2064 transcripts; 29 intents; ATTACK 100, OPEN_FIRE 119, HOLD_FIRE 100, LOOK_AT 195, LOOK_AT_ME 66). One transcript contradicts a seed: 'look at it' is a LOOK_AT seed and what Parakeet heard for a NONE line (left in, as the four such pairs of v4 and v5). The owner released the GPU ('start the training right after all preparations'): run_build_v51.ps1 starts now
+0dc804e8f4a6abaef05cc3c7c3aa8049fda7c738ca7782adc615224e2a1e79b9 *stt/lines_v51.json
+af2cb16dd14df35b7333e08d5c19f0b225d784d02b12fcfcf2b5dbb0a1059fa1 *stt/seeds_v51.json
+a81defe2ca0a0d5cb1a95b01e33955b4a4454beddddee0a35d5ce287489872cd *stt/voices_v51.json
+3bfcf30568bda993375593989fd78185fda33f0bf534d0d524dd5030b093c228 *stt/out_parakeet-0.6b-v2_clean_v51.json
+f5afd798a9c68e428b7d6db2287146f9440643c177fca895edbe7e94ba72e80c *stt/out_parakeet-0.6b-v2_kokoro_v51.json
+a2fcc196be1fd086f8fadf2327697a1ec102a087a65371b5a5353209d25769ff *stt/out_parakeet-0.6b-v2_kokorox_v51.json
+e363c950a3b95bd55c104cc02d68c1db9caf36d76d945e07edeb6c7ac82ee595 *stt/out_parakeet-0.6b-v2_seedclean_v51.json
+97c80054d5f6080954fbf6f620fd4f571e5508e152dc2e3950f277534b61b4bb *stt/out_parakeet-0.6b-v2_seedkokoro_v51.json
+3cec2f43dd68d3691d89b4caca6ffa3bd2f009bec159b0103f193a75360a76d3 *stt/out_parakeet-0.6b-v2_seedkokorox_v51.json
+caa6307704d400017254419c2909cad9eba34f0e35a63ae0d65b111c43a2be98 *stt/out_parakeet-0.6b-v2_seedvctkA_v51.json
+bab61a1f7518cf84bd4004bbeef470c438563fba030fd49374ae0a776f8f00f1 *stt/out_parakeet-0.6b-v2_vctkA_v51.json
+b49019446e4dccf3b087e296b2586c062439db5b5a04f69d43e8ddb1206b03ad *stt/out_parakeet-0.6b-v2_vctkB_v51.json
+2026-10-09T05:38:15+02:00
+# v51 trained and checked (work machine, RTX 4090, cuda). stt/run_build_v51.ps1: 18 trainings in 1689 s, four processes at a time (15 out-of-fold, 3 final; 12 epochs; 3768 training lines). stt/score_v51.py (score_v51.log): gate family, threshold 0.62, fitted on the r6 and cs lines as Parakeet heard them from the training voices. Out-of-fold check, criterion near - 2 x wrong family, r6 and cs lines (602): typed 91.0, Windows voices 90.7, Kokoro English 90.7, Kokoro other-language 88.9, VCTK speakers used in training 70.6, VCTK speakers never in training 71.9 (near 82.2, wrong family 5.1%, acts on 7.4% of non-orders). On the 422 older lines v4 was checked on (with their v51 truth): typed 89.8, Windows 89.1, Kokoro 89.6 / 87.9, VCTK 68.7 / 69.0 -- v4 had 90.0, 88.9, 87.2 / 86.0, 65.6 / 69.2. On the 180 lines written for v5 and v51: typed 93.9, VCTK unseen speakers 78.9. The five new intents, typed (picked exactly / lines): ATTACK 16/16, HOLD_FIRE 18/18, OPEN_FIRE 15/18, LOOK_AT 20/20, LOOK_AT_ME 11/12; on the unseen VCTK speakers 14/16, 16/18, 13/18, 18/20, 9/12 -- there one HOLD_FIRE line was picked as OPEN_FIRE and one OPEN_FIRE line as HOLD_FIRE. The stt author's 301 lines, typed: 88.4. Nothing here is a leave-one-author-out number: a held-out line's author is in training. Exported (export_cpp.py: 29 labels, safe_intents with HOLD_FIRE, the rule set v4 vocabulary) and checked: ONNX = PyTorch argmax on 1750/1750; C++ (a build of the current sources in a scratch directory -- the owner's open chat holds build/Release/coop_cli.exe): tokenizer 9919/9919, regex slots 9915/9915, places 35447/35447 (9755 with a direction), gates 4314/4314, decide 190/190, golden 1750/1750 (max 1.77e-06), dialogue 77/77; model median 38.8 ms on three cores. The default bot is still v31; nothing is committed.
+63e3ebf002461abc6333767db40c044e656c1c671b3be3e371a348be30377d40 *stt/score_v51.log
+64b680e0d0c684cfe51a13ebcd24d0fdeea6f289055078ea5050ae182181f38e *stt/finaloof51_0.json
+e508d1fc0072cf8d8047a375f1689e1c84086a92bbec45499ca2a3a776c79dec *stt/finaloof51_1.json
+bdae477490e546ea12ec32f187f9a56b392c767ffe8a14067fca902bde776ac9 *stt/finaloof51_2.json
+a4afd10a788f3afaf0f58c19e0f75c344ddeb761676868ed98cd6258c6ae221d *../../models/coop-deberta-v3-ens3-v51/bot_config.json
+394509951ae6a9a922d06c6d558b9a34b6ed242b8acaf148c20c745fdd0c560a *../../models/coop-deberta-v3-ens3-v51/cpp/intent_config.json
+2f44f824cb9e914944a3a80029be5289c108c424b0a541ddbbf9dd8f619eb718 *../../models/coop-deberta-v3-ens3-v51/cpp/golden.jsonl
+8aa02f9ab4185178d98f1206404c1d04fc7765203edea3c15af616e8cce133bb *../../models/coop-deberta-v3-ens3-v51/cpp/location_tests.jsonl
+ca665ddf9ba72a0f8e0979e8e2a75bdf29c40e7d0d3c4db4b4bbc32fba535eec *../../models/coop-deberta-v3-ens3-v51/cpp/decide_tests.jsonl
+2026-10-09T10:48:48+02:00
+# v51, after the owner closed the chat that held the exe: cpp/coop_intent/build/Release/coop_cli.exe rebuilt in place from the hashed sources (no warnings) and all six checks re-run with it. v51: tokenizer 9919/9919, regex slots 9915/9915, places 35447/35447, gates 4314/4314, decide 190/190, golden 1750/1750 (max 1.77e-06), dialogue 77/77. v31 and v4, their files untouched: 9428, 9424, 20204, 3332, 140, 1259, 77 each. Documents written (HANDOFF.md section 4 'Модель v51', COOP-BOT.md 'v5 and v51', stt/README.md, cpp/coop_intent/README.md). The default bot is still v31; nothing is committed
+848d81b56b112610bb5e7b586474e61073ef85e31536296f96e18cd98e2673d4 *../../cpp/coop_intent/tools/coop_cli.cpp
+2651e1102cc61e171a0d415a16ce996a0a043759b771f46fa9ddafedfd5d2579 *../../cpp/coop_intent/src/locations.cpp
+c786676d0b94df953683afa245420330d0a85b98b939af59cbb4ea6da0c36f03 *../../cpp/coop_intent/src/bot_brain.cpp

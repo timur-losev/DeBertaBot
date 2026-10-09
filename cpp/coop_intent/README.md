@@ -23,7 +23,22 @@ Other bots run with `--model-dir`:
   training (family gate, 0.58);
 - `../../models/coop-deberta-v3-ens3-v3/cpp`: v3, re-trained with place lines and the first seed set
   (family gate, 0.60; trained on the Mac). It carries out smoke and "clear" callouts as orders;
-- `../../models/coop-deberta-v3-base/cpp`: v1, 22 intents, no place vocabulary in its config.
+- `../../models/coop-deberta-v3-base/cpp`: v1, 22 intents, no place vocabulary in its config;
+- `../../models/coop-deberta-v3-ens3-v4/cpp`: v4, the bot for the voice chain: the v31 data plus what the
+  Parakeet speech recognizer heard of it, 12 epochs (top gate, 0.50; `scripts/coop/stt/README.md`). The
+  engine still takes text: speech recognition is not part of it yet. Checked against the Python bot on
+  2026-10-09: 1259 golden lines (within 2.2e-6), 9428 tokenizer lines, 20204 place records, 3332 gate
+  decisions, 140 decision steps, the 77-line conversation; 40.0 ms per line on 3 cores;
+- `../../models/coop-deberta-v3-ens3-v51/cpp`: v51, the voice-chain bot with 29 intents (family gate,
+  0.62): v4's recipe plus ATTACK, OPEN_FIRE, HOLD_FIRE, LOOK_AT and LOOK_AT_ME, and the first bot
+  exported with rule set v4 of the place matcher, so its place records carry a direction
+  ("go down by stairs" -> stairs + down, "the left window" -> window + left, "go left" -> left only).
+  Checked on 2026-10-09: the column "v51 bot" below; 38.8 ms per line on 3 cores.
+
+**The matcher follows the vocabulary a bot was exported with.** A config with a `"directions"` section
+runs rule set v4; one without it runs rule set v3 exactly as before, so the bots exported earlier keep
+their records and their test files. `export_cpp.py <bot> --config-only` moves a bot to the current
+vocabulary (rule set v4), and `gen_tests.py` refuses a bot whose config holds an older one.
 
 ## Layout
 
@@ -31,7 +46,7 @@ Other bots run with `--model-dir`:
 |---|---|---|
 | `include/coop_intent/unicode.h`, `src/unicode.cpp`, `src/unicode_tables.inc` | UTF-8, NFC and the character classes, from generated tables (no ICU, no OS calls) | as is |
 | `include/coop_intent/tokenizer.h`, `src/tokenizer.cpp` | the HF DebertaV2 tokenizer: added tokens, normalizer, Metaspace, Unigram/Viterbi | as is |
-| `include/coop_intent/bot_brain.h`, `src/bot_brain.cpp` | `coop_bot.py` `respond()`: top or family gate, threshold, negation guard, GO_NOW/WAIT, queued order, regex slots | as is, or swap `SlotPatterns` for `FRegexPattern` |
+| `include/coop_intent/bot_brain.h`, `src/bot_brain.cpp` | `coop_bot.py` `respond()`: top or family gate, threshold, negation guard, GO_NOW/WAIT, HOLD_FIRE (a bot that has the label: it acts at once and keeps the queued order; with the signal slot it queues OPEN_FIRE), queued order, regex slots | as is, or swap `SlotPatterns` for `FRegexPattern` |
 | `include/coop_intent/locations.h`, `src/locations.cpp` | `LocationMatcher`: the map places in a line (object, side or colour, floor), whose place each is, which one the bot acts on; a twin of `scripts/coop/locations.py`, no regex and no Unicode tables | as is |
 | `include/coop_intent/intent_model.h`, `src/intent_model.cpp` | `ILogitsBackend`, `EnsembleBackend` (averages the members' probabilities, one thread each or in turn), softmax, top-k | as is |
 | `src/ort_backend.cpp` | `OrtBackend`: one model in ONNX Runtime 1.30 (C++ API) | replaced by an NNE backend |
@@ -81,26 +96,37 @@ exe, because Windows ships an older `onnxruntime.dll` in System32.
 
 ## What was checked
 
-With rule set v3, on Windows (2026-10-04). The v3 bot's weights exist only on the Mac, so its two
-checks through the model were last run there, before rule set v3 (1062/1062 and 77/77); its other
-test files were refreshed on Windows with `gen_tests.py --no-model`.
+On Windows. The v2, v31, v3 and v1 columns are rule set v3 (2026-10-04) and were re-run unchanged with
+the engine that also knows rule set v4 (2026-10-09: the same numbers, their files untouched). The v51
+column is rule set v4 (2026-10-09). The v3 bot's weights exist only on the Mac, so its two checks
+through the model were last run there, before rule set v3 (1062/1062 and 77/77); its other test files
+were refreshed on Windows with `gen_tests.py --no-model`.
 
-| check | v2 bot | v31 bot (default) | v3 bot | v1 bot |
-|---|---|---|---|---|
-| token ids and probabilities vs PyTorch, golden lines | 762/762, max difference 3.3e-6 | 1259/1259, 2.2e-6 | needs the weights | 754/754, 3.1e-6 |
-| normalizer / token ids | 8931/8931 | 9428/9428 | 9231/9231 | 8923/8923 |
-| regex slots (+ 4 lines past std::regex's limit, see below) | 8927/8927 | 9424/9424 | 9227/9227 | 8919/8919 |
-| place records (targets, roles, flags, primary) | 20201/20201 | 20204/20204 | 20197/20197 | no vocabulary |
-| conversation through the models | 77/77 | 77/77 | needs the weights | 66/66 |
-| both gates on the golden probabilities, exact ties, the top label outside the top-mass family, random rows | 2338/2338 | 3332/3332 | 2938/2938 | 2322/2322 |
-| decision steps, both gates (2 of them built in: NaN probabilities are asked again) | 140/140 | 140/140 | 140/140 | 40/40 |
+| check | v2 bot | v31 bot (default) | v3 bot | v1 bot | v51 bot |
+|---|---|---|---|---|---|
+| token ids and probabilities vs PyTorch, golden lines | 762/762, max difference 3.3e-6 | 1259/1259, 2.2e-6 | needs the weights | 754/754, 3.1e-6 | 1750/1750, 1.8e-6 |
+| normalizer / token ids | 8931/8931 | 9428/9428 | 9231/9231 | 8923/8923 | 9919/9919 |
+| regex slots (+ 4 lines past std::regex's limit, see below) | 8927/8927 | 9424/9424 | 9227/9227 | 8919/8919 | 9915/9915 |
+| place records (targets, directions, roles, flags, primary) | 20201/20201 | 20204/20204 | 20197/20197 | no vocabulary | 35447/35447, 9755 of them with a direction |
+| conversation through the models | 77/77 | 77/77 | needs the weights | 66/66 | 77/77 |
+| both gates on the golden probabilities, exact ties, the top label outside the top-mass family, random rows | 2338/2338 | 3332/3332 | 2938/2938 | 2322/2322 | 4314/4314 |
+| decision steps, both gates (2 of them built in: NaN probabilities are asked again) | 140/140 | 140/140 | 140/140 | 40/40 | 190/190 |
 
 - The place lines: the tokenizer's adversarial lines, the developer's regression lines, the blind v3
-  lines, the location seeds of both seed sets, and 12000 generated lines (random sequences of
-  vocabulary phrases, rule words and punctuation; some longer than the 128-word cap).
+  lines, the location seeds of the seed sets, and generated lines: 12000 random sequences of
+  vocabulary phrases, rule words and punctuation (some longer than the 128-word cap) and, for rule
+  set v4, 16000 lines built from about 100 clause patterns of the direction rules, a third of them
+  one edit away from their pattern. A record carries `"direction"`; a stored record without the key
+  reads as none (the older bots' files).
 - The decision steps cover every branch (negated, say again, ignore, execute, go, wait, queued, act,
   "other", the threshold boundary in float32 and as a family sum) and the queue case by case: what a
-  queued order keeps (its places, its "other" slot), and what drops, replaces or leaves it.
+  queued order keeps (its places, its "other" slot), and what drops, replaces or leaves it. A bot
+  with a HOLD_FIRE label gets 25 more steps per gate (HOLD_FIRE under and over the threshold, with
+  and without the signal slot, with an order already queued, "don't shoot" past the negation guard,
+  GO_NOW firing the queued OPEN_FIRE); each of ten single-line mutants of that branch fails them.
+  `gen_tests.py BOT_DIR --decide-only` writes just this file and needs only `bot_config.json`.
+- The C++ twin of rule set v4 was also run with the v3 vocabulary over the 35,023 lines of a v4-rules
+  test file against records from `scripts/coop/rules/v3/locations.py`: equal on all of them.
 
 The tokenizer lines are the golden lines plus lines generated to break a port:
 - every kind of whitespace;
@@ -167,6 +193,11 @@ The raw outputs are in `bench.txt` next to each bot's `intent_config.json`.
   absent). A no-exceptions UE build therefore has to replace `SlotPatterns` (see Regexes).
   `locations.cpp` uses neither regex nor Unicode tables, throws nothing, and ports as is.
 - **Places:** `Decision::places` is the record for the planner.
+  - Rule set v4: `PlaceTarget::direction` (`PlaceDirectionName`: up, down, left, right, forward,
+    back). It is either an object's direction ("the left window", "up the blue stairs", "the door
+    behind you") or a target of its own with object, qualifier and zone all -1 ("go left"). The
+    primary may be such a direction-only target: check for it before resolving a place. A UE loader
+    has to fill `has_directions`, `directions` and `Object::vertical` and make `Init`'s checks.
   - Give the level's actors tags that mirror the vocabulary ids (`Place.Door.North`,
     `Place.Stairs.Blue`, `Zone.Basement`) and resolve the primary target against them.
   - One match: take it. Several (chairs, the same door on two floors): the bot's floor, then the
@@ -223,7 +254,8 @@ python cpp/coop_intent/tools/gen_tests.py models/coop-deberta-v3-ens3-v31   # to
 study the bot was trained in.
 
 After changing only the map vocabulary (`scripts/coop/locations.json`), the rules or the regexes, no
-training and no ONNX export are needed. For every bot directory:
+training and no ONNX export are needed. For a bot directory (this also moves a bot exported under
+rule set v3 to rule set v4: its place records and its `location_tests.jsonl` change):
 ```
 python scripts/coop/locations.py --dev                             # the developer's regression lines
 python scripts/coop/export_cpp.py models/<bot> --config-only
