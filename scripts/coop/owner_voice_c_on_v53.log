@@ -1,0 +1,21 @@
+coop-deberta-v3-ens3-v53: gate family, threshold 0.66; owner_voice_20261009c.json
+  ok  'Stay at my pin.'                          HOLD_POSITION  0.69   want HOLD_POSITION          v53: HOLD_POSITION 0.69 act  place:  @pin  pointer pin (want pin)
+  NO  'Stay on my mark.'                         (say again)    0.58   want HOLD_POSITION          v53: FOLLOW_ME 0.58 say_again  place:  @pin  pointer pin (want pin)  not queued
+  ok  'check at my mark'                         CHECK          1.00   want CHECK                  v53: CHECK 1.00 queued  place:  @pin  pointer pin (want pin)  not queued
+  ok  'Check that room.'                         CHECK          1.00   want CHECK                  v53: CHECK 1.00 act  place:  @this  pointer this (want this)
+  NO  'Yes.'                                     (say again)    0.38   want YES                    v53: GO_NOW 0.38 say_again
+  NO  'No.'                                      (say again)    0.22   want NO                     v53: GO_NOW 0.22 say_again
+  NO  'Come back.'                               (say again)    0.52   want COME_BACK              v53: FALL_BACK 0.52 say_again
+  NO  'Return back.'                             FALL_BACK      0.99   want COME_BACK              v53: FALL_BACK 0.99 act
+  NO  'Lie down.'                                (say again)    0.56   want PRONE                  v53: NONE 0.56 say_again
+  NO  'Sit down.'                                NONE           1.00   want CROUCH                 v53: NONE 1.00 ignore
+  NO  'go inside'                                (say again)    0.57   want MOVE_TO                v53: ENTRY 0.57 say_again
+  NO  'get inside'                               (say again)    0.50   want MOVE_TO                v53: ENTRY 0.50 say_again
+  ok  'Jump left.'                               JUMP           0.69   want JUMP                   v53: JUMP 0.69 act  place:  dir=left
+  NO  'Jump back.'                               (say again)    0.66   want JUMP                   v53: JUMP 0.66 say_again  place:  dir=back
+  ok  'Stand right here.'                        HOLD_POSITION  0.86   want HOLD_POSITION          v53: HOLD_POSITION 0.86 act  place:  @this  pointer this (want this)
+  ok  'Come here.'                               FOLLOW_ME      1.00   want FOLLOW_ME              v53: FOLLOW_ME 1.00 act  place:  @this
+  ok  "Don't move."                              HOLD_POSITION  0.99   want HOLD_POSITION          v53: HOLD_POSITION 0.99 act
+  ok  'Watch right side of the door.'            HOLD_ANGLE     1.00   want HOLD_ANGLE             v53: HOLD_ANGLE 1.00 act  place: door dir=right
+  ok  'enter'                                    ENTRY          1.00   want ENTRY                  v53: ENTRY 1.00 act
+coop-deberta-v3-ens3-v53: 9/19 as the owner wants (bot v53 in the live test: 7/19); acted on a wrong order: 2

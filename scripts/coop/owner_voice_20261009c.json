@@ -1,0 +1,24 @@
+{
+ "_note": "The owner's test of bot v53 with a real voice, 2026-10-09 (coop_cli --voice; the last lines typed into the same chat): the lines his remarks and the developer's reading of the log are about. 'heard' is the transcript or the typed line; 'v53' is what bot v53 did (the top intent it would act on, the gate's confidence at threshold 0.66, the action); 'want' is the reading he decided on 2026-10-09 and 10 (the pin, yes / no, come back, stance, going inside) or left uncontested; 'pointer' is what the place record must say, 'timing': 'now' that the line must not be queued for a go; 'v53_ok': false marks a line the owner called bad although bot v53 picked the right order. NOT a blind test: seed set v54 and rule set v5 of the place matcher were written with these lines on the table. owner_voice.py runs a bot on them.",
+ "lines": [
+  {"heard": "Stay at my pin.", "want": ["HOLD_POSITION"], "pointer": "pin", "v53": ["HOLD_POSITION", 0.69, "act"], "v53_ok": false, "note": "v53 acted, with no place: the bot stayed where it stood"},
+  {"heard": "Stay on my mark.", "want": ["HOLD_POSITION"], "pointer": "pin", "timing": "now", "v53": ["FOLLOW_ME", 0.58, "say_again"], "note": "v53's timing slot fired: 'on my mark' was a signal"},
+  {"heard": "check at my mark", "want": ["CHECK"], "pointer": "pin", "timing": "now", "v53": ["CHECK", 1.0, "queued"], "v53_ok": false, "note": "typed; v53 queued it for a go"},
+  {"heard": "Check that room.", "want": ["CHECK"], "pointer": "this", "v53": ["CHECK", 1.0, "act"]},
+  {"heard": "Yes.", "want": ["YES"], "v53": ["GO_NOW", 0.38, "say_again"]},
+  {"heard": "No.", "want": ["NO"], "v53": ["GO_NOW", 0.22, "say_again"]},
+  {"heard": "Come back.", "want": ["COME_BACK"], "v53": ["FALL_BACK", 0.52, "say_again"]},
+  {"heard": "Return back.", "want": ["COME_BACK"], "v53": ["FALL_BACK", 0.99, "act"]},
+  {"heard": "Lie down.", "want": ["PRONE"], "v53": ["NONE", 0.56, "say_again"]},
+  {"heard": "Sit down.", "want": ["CROUCH"], "v53": ["NONE", 1.0, "ignore"]},
+  {"heard": "go inside", "want": ["MOVE_TO"], "v53": ["ENTRY", 0.57, "say_again"], "note": "typed"},
+  {"heard": "get inside", "want": ["MOVE_TO"], "v53": ["ENTRY", 0.5, "say_again"], "note": "typed"},
+  {"heard": "Jump left.", "want": ["JUMP"], "v53": ["JUMP", 0.69, "act"], "note": "v53 gave no direction; rule set v5 gives left"},
+  {"heard": "Jump back.", "want": ["JUMP"], "v53": ["JUMP", 0.66, "say_again"]},
+  {"heard": "Stand right here.", "want": ["HOLD_POSITION"], "pointer": "this", "v53": ["HOLD_POSITION", 0.86, "act"]},
+  {"heard": "Come here.", "want": ["FOLLOW_ME"], "v53": ["FOLLOW_ME", 1.0, "act"]},
+  {"heard": "Don't move.", "want": ["HOLD_POSITION"], "v53": ["HOLD_POSITION", 0.99, "act"]},
+  {"heard": "Watch right side of the door.", "want": ["HOLD_ANGLE"], "v53": ["HOLD_ANGLE", 1.0, "act"]},
+  {"heard": "enter", "want": ["ENTRY"], "v53": ["ENTRY", 1.0, "act"], "note": "typed"}
+ ]
+}
