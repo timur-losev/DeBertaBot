@@ -1,0 +1,70 @@
+ensemble of 3 seeds, 12 epochs; gate family, threshold 0.66; 1083 lines, 447 of them v5, v51, v52 and v53 lines, 5 lines with a re-read truth
+
+r6 and cs lines, all
+  what the classifier is given             near  wrong fam  acts on non-order  criterion
+  typed text                               93.6       1.9%               4.7%       89.8   n=722
+  Windows voices                           92.0       2.4%               7.5%       87.3   n=722
+  Kokoro, English voices                   92.0       2.4%               5.7%       87.3   n=722
+  Kokoro, other-language voices            90.0       2.4%               4.7%       85.3   n=722
+  VCTK, speakers used in training          79.8       4.0%               6.6%       71.7   n=722
+  VCTK, speakers never in training         80.5       4.4%               6.6%       71.6   n=722
+
+r6 and cs lines written for v5, v51, v52 and v53
+  what the classifier is given             near  wrong fam  acts on non-order  criterion
+  typed text                               96.7       1.7%               4.9%       93.3   n=300
+  Windows voices                           95.0       1.7%               4.9%       91.7   n=300
+  Kokoro, English voices                   95.3       1.7%               4.9%       92.0   n=300
+  Kokoro, other-language voices            92.7       2.0%               4.9%       88.7   n=300
+  VCTK, speakers used in training          83.0       3.3%               4.9%       76.3   n=300
+  VCTK, speakers never in training         86.7       3.3%               4.9%       80.0   n=300
+
+r6 and cs lines written for v53 only
+  what the classifier is given             near  wrong fam  acts on non-order  criterion
+  typed text                               96.7       1.7%              12.5%       93.3   n=60
+  Windows voices                           95.0       1.7%              12.5%       91.7   n=60
+  Kokoro, English voices                   93.3       1.7%              12.5%       90.0   n=60
+  Kokoro, other-language voices            91.7       1.7%              12.5%       88.3   n=60
+  VCTK, speakers used in training          81.7       3.3%              12.5%       75.0   n=60
+  VCTK, speakers never in training         86.7       3.3%               0.0%       80.0   n=60
+
+r6 and cs lines bot v52 was checked on (662, with their v53 truth)
+  what the classifier is given             near  wrong fam  acts on non-order  criterion
+  typed text                               93.4       2.0%               4.1%       89.4   n=662
+  Windows voices                           91.7       2.4%               7.1%       86.9   n=662
+  Kokoro, English voices                   91.8       2.4%               5.1%       87.0   n=662
+  Kokoro, other-language voices            89.9       2.4%               4.1%       85.0   n=662
+  VCTK, speakers used in training          79.6       4.1%               6.1%       71.5   n=662
+  VCTK, speakers never in training         79.9       4.5%               7.1%       70.8   n=662
+
+r6 and cs older lines (the 422 lines v4 was checked on, with their v53 truth)
+  what the classifier is given             near  wrong fam  acts on non-order  criterion
+  typed text                               91.5       2.1%               4.6%       87.2   n=422
+  Windows voices                           89.8       2.8%               9.2%       84.1   n=422
+  Kokoro, English voices                   89.6       2.8%               6.2%       83.9   n=422
+  Kokoro, other-language voices            88.2       2.6%               4.6%       82.9   n=422
+  VCTK, speakers used in training          77.5       4.5%               7.7%       68.5   n=422
+  VCTK, speakers never in training         76.1       5.2%               7.7%       65.6   n=422
+
+stt lines (typed only, never voiced)
+  what the classifier is given             near  wrong fam  acts on non-order  criterion
+  typed text                               91.4       2.2%               5.7%       87.0   n=361
+
+the new intents (r6 and cs lines whose truth is the intent): picked exactly / in its family / another order / nothing
+  typed text                             ATTACK 15/16 (nothing 1) | CHECK 15/17 (DRONE 1, HOLD_OTHER_ANGLE 1) | HELP 12/12 | HOLD_FIRE 23/24 (nothing 1) | JUMP 19/20 (nothing 1) | LOOK_AT 22/22 | LOOK_AT_ME 12/12 | OPEN_FIRE 17/20 (nothing 2) (SUPPRESS 1) | SUPPRESS 12/12
+                                         wrongly picked a new intent: HOLD_ANGLE->LOOK_AT 2, OPEN_FIRE->SUPPRESS 1, VAULT_WINDOW->JUMP 1, REVIVE_ME->HELP 1, SMOKE->SUPPRESS 1, NONE->JUMP 1
+  Windows voices                         ATTACK 15/16 (nothing 1) | CHECK 15/17 (DRONE 1, HOLD_OTHER_ANGLE 1) | HELP 10/12 (nothing 2) | HOLD_FIRE 23/24 (nothing 1) | JUMP 18/20 (nothing 2) | LOOK_AT 21/22 (LOOK_AT_ME 1) | LOOK_AT_ME 12/12 | OPEN_FIRE 17/20 (nothing 2) (SUPPRESS 1) | SUPPRESS 11/12 (OPEN_FIRE 1)
+                                         wrongly picked a new intent: HOLD_ANGLE->LOOK_AT 2, OPEN_FIRE->SUPPRESS 1, LOOK_AT->LOOK_AT_ME 1, VAULT_WINDOW->JUMP 1, REVIVE_ME->HELP 1, SMOKE->SUPPRESS 1
+  Kokoro, English voices                 ATTACK 15/16 (nothing 1) | CHECK 15/17 (DRONE 1, HOLD_OTHER_ANGLE 1) | HELP 10/12 (nothing 2) | HOLD_FIRE 23/24 (nothing 1) | JUMP 17/20 (nothing 3) | LOOK_AT 21/22 (LOOK_AT_ME 1) | LOOK_AT_ME 12/12 | OPEN_FIRE 17/20 (nothing 2) (SUPPRESS 1) | SUPPRESS 11/12 (OPEN_FIRE 1)
+                                         wrongly picked a new intent: HOLD_ANGLE->LOOK_AT 2, OPEN_FIRE->SUPPRESS 1, LOOK_AT->LOOK_AT_ME 1, VAULT_WINDOW->JUMP 1, ENTRY->CHECK 1, REVIVE_ME->HELP 1
+  Kokoro, other-language voices          ATTACK 14/16 (nothing 2) | CHECK 14/17 (nothing 1) (DRONE 1, HOLD_OTHER_ANGLE 1) | HELP 9/12 (nothing 3) | HOLD_FIRE 23/24 (nothing 1) | JUMP 17/20 (nothing 3) | LOOK_AT 21/22 (LOOK_AT_ME 1) | LOOK_AT_ME 12/12 | OPEN_FIRE 18/20 (nothing 2) | SUPPRESS 10/12 (nothing 1) (OPEN_FIRE 1)
+                                         wrongly picked a new intent: HOLD_ANGLE->LOOK_AT 2, LOOK_AT->LOOK_AT_ME 1, VAULT_WINDOW->JUMP 1, REVIVE_ME->HELP 1, SMOKE->SUPPRESS 1, SUPPRESS->OPEN_FIRE 1
+  VCTK, speakers used in training        ATTACK 11/16 (nothing 5) | CHECK 15/17 (DRONE 1, HOLD_OTHER_ANGLE 1) | HELP 10/12 (nothing 2) | HOLD_FIRE 14/24 (nothing 9) (FOLLOW_ME 1) | JUMP 16/20 (nothing 4) | LOOK_AT 20/22 (nothing 1) (LOOK_AT_ME 1) | LOOK_AT_ME 11/12 (nothing 1) | OPEN_FIRE 14/20 (nothing 3) (SUPPRESS 1, MOVE_TO 1, HOLD_FIRE 1) | SUPPRESS 10/12 (nothing 2)
+                                         wrongly picked a new intent: VAULT_WINDOW->JUMP 2, DRONE->CHECK 2, HOLD_ANGLE->LOOK_AT 1, OPEN_FIRE->SUPPRESS 1, LOOK_AT->LOOK_AT_ME 1, SMOKE->SUPPRESS 1
+  VCTK, speakers never in training       ATTACK 13/16 (nothing 3) | CHECK 15/17 (DRONE 1, HOLD_OTHER_ANGLE 1) | HELP 9/12 (nothing 3) | HOLD_FIRE 20/24 (nothing 3) (OPEN_FIRE 1) | JUMP 15/20 (nothing 5) | LOOK_AT 20/22 (nothing 2) | LOOK_AT_ME 11/12 (nothing 1) | OPEN_FIRE 13/20 (nothing 4) (BREACH 1, SUPPRESS 1, HOLD_FIRE 1) | SUPPRESS 9/12 (nothing 1) (OPEN_FIRE 2)
+                                         wrongly picked a new intent: HOLD_ANGLE->LOOK_AT 2, SUPPRESS->OPEN_FIRE 2, RAPPEL->JUMP 2, VAULT_WINDOW->JUMP 2, OPEN_FIRE->SUPPRESS 1, OPEN_FIRE->HOLD_FIRE 1
+
+the same check at other thresholds (r6 and cs lines, VCTK speakers never in training):
+  gate top: 0.30: crit 65.7, wf 9.6%, non-order 11.3% | 0.50: crit 69.5, wf 6.4%, non-order 9.4% | 0.62: crit 70.9, wf 5.0%, non-order 6.6% | 0.70: crit 68.4, wf 3.7%, non-order 5.7% | 0.80: crit 67.5, wf 2.9%, non-order 4.7% | 0.90: crit 67.2, wf 2.2%, non-order 3.8%
+  gate family: 0.30: crit 63.2, wf 10.7%, non-order 14.2% | 0.50: crit 68.4, wf 7.6%, non-order 9.4% | 0.62: crit 71.7, wf 5.3%, non-order 6.6% | 0.70: crit 69.4, wf 4.0%, non-order 6.6% | 0.80: crit 69.4, wf 3.0%, non-order 4.7% | 0.90: crit 69.1, wf 2.4%, non-order 3.8%
+
+bot_config.json written: G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-ens3-v53

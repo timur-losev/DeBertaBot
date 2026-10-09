@@ -1,0 +1,542 @@
+[
+{
+"id": "r6v53_000",
+"author": "r6",
+"version": "v53",
+"text": "Drop down, drop down, I'm holding the bottom for you.",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0000.wav"
+},
+{
+"id": "r6v53_001",
+"author": "r6",
+"version": "v53",
+"text": "That hatch is already open, just jump down through it and pinch site with me.",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0001.wav"
+},
+{
+"id": "r6v53_002",
+"author": "r6",
+"version": "v53",
+"text": "We're out of time, hop down and swing with me.",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "v53_0002.wav"
+},
+{
+"id": "r6v53_003",
+"author": "r6",
+"version": "v53",
+"text": "Climb up onto that ledge, you get a way better line on the default plant.",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0003.wav"
+},
+{
+"id": "r6v53_004",
+"author": "r6",
+"version": "v53",
+"text": "Vault over that sofa and get on my side of the room.",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0004.wav"
+},
+{
+"id": "r6v53_005",
+"author": "r6",
+"version": "v53",
+"text": "Climb onto the table, you'll see right over their deployable shield.",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "v53_0005.wav"
+},
+{
+"id": "r6v53_006",
+"author": "r6",
+"version": "v53",
+"text": "On my go, jump across that gap and we hit them from both sides.",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0006.wav"
+},
+{
+"id": "r6v53_007",
+"author": "r6",
+"version": "v53",
+"text": "Hop off the balcony, it's quicker than running all the way around.",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0007.wav"
+},
+{
+"id": "r6v53_008",
+"author": "r6",
+"version": "v53",
+"text": "Jump the railing and land next to me, we have to trade the roamer.",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "v53_0008.wav"
+},
+{
+"id": "r6v53_009",
+"author": "r6",
+"version": "v53",
+"text": "Just jump, it's not that high, you won't take fall damage.",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0009.wav"
+},
+{
+"id": "r6v53_010",
+"author": "r6",
+"version": "v53",
+"text": "Hop in through the east window while I keep them busy on main.",
+"maj": "VAULT_WINDOW",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0010.wav"
+},
+{
+"id": "r6v53_011",
+"author": "r6",
+"version": "v53",
+"text": "Jump out that window, we need to get out of the building before they collapse.",
+"maj": "VAULT_WINDOW",
+"voice": "Microsoft Mark",
+"wav": "v53_0011.wav"
+},
+{
+"id": "r6v53_012",
+"author": "r6",
+"version": "v53",
+"text": "Rope down to the south window, I want you outside it before the drone phase ends.",
+"maj": "RAPPEL",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0012.wav"
+},
+{
+"id": "r6v53_013",
+"author": "r6",
+"version": "v53",
+"text": "Drop off the roof on your rope, quietly, they don't know we're here.",
+"maj": "RAPPEL",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0013.wav"
+},
+{
+"id": "r6v53_014",
+"author": "r6",
+"version": "v53",
+"text": "Just walk down the red stairs, dropping the hatch is way too loud.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v53_0014.wav"
+},
+{
+"id": "r6v53_015",
+"author": "r6",
+"version": "v53",
+"text": "Go down to the basement and set up on site, I'm coming.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0015.wav"
+},
+{
+"id": "r6v53_016",
+"author": "r6",
+"version": "v53",
+"text": "Get down behind the sofa, he's about to swing!",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0016.wav"
+},
+{
+"id": "r6v53_017",
+"author": "r6",
+"version": "v53",
+"text": "Pop a charge on that hatch and blow it open, I'll be the one dropping.",
+"maj": "BREACH",
+"voice": "Microsoft Mark",
+"wav": "v53_0017.wav"
+},
+{
+"id": "r6v53_018",
+"author": "r6",
+"version": "v53",
+"text": "I'll hold main door, you watch the other door.",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0018.wav"
+},
+{
+"id": "r6v53_019",
+"author": "r6",
+"version": "v53",
+"text": "Take the other angle, I'm already on this one.",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0019.wav"
+},
+{
+"id": "r6v53_020",
+"author": "r6",
+"version": "v53",
+"text": "East window is mine, go hold the opposite side for me.",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "v53_0020.wav"
+},
+{
+"id": "r6v53_021",
+"author": "r6",
+"version": "v53",
+"text": "Keep your crosshair on that door, I'll go watch the other one.",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0021.wav"
+},
+{
+"id": "r6v53_022",
+"author": "r6",
+"version": "v53",
+"text": "Keep holding the blue stairs, I'm taking the other angle myself.",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0022.wav"
+},
+{
+"id": "r6v53_023",
+"author": "r6",
+"version": "v53",
+"text": "Lock down this hallway, I'm rotating to cover the other door.",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "v53_0023.wav"
+},
+{
+"id": "r6v53_024",
+"author": "r6",
+"version": "v53",
+"text": "Check fire, check fire, you're shooting at me!",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0024.wav"
+},
+{
+"id": "r6v53_025",
+"author": "r6",
+"version": "v53",
+"text": "Cease fire, weapons tight, you're giving away our position.",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0025.wav"
+},
+{
+"id": "r6v53_026",
+"author": "r6",
+"version": "v53",
+"text": "I'm pinned down, I'm getting suppressed hard and I can't even peek.",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "v53_0026.wav"
+},
+{
+"id": "r6v53_027",
+"author": "r6",
+"version": "v53",
+"text": "We're taking fire from the north window, the whole team is pinned.",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0027.wav"
+},
+{
+"id": "r6v53_028",
+"author": "r6",
+"version": "v53",
+"text": "Don't jump down, they're holding the drop with a shotgun.",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0028.wav"
+},
+{
+"id": "r6v53_029",
+"author": "r6",
+"version": "v53",
+"text": "Scratch that, do not climb over the chairs, you'd be way too exposed.",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "v53_0029.wav"
+},
+{
+"id": "csv53_000",
+"author": "cs",
+"version": "v53",
+"text": "bro just drop down to me, they all rotated off site",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0030.wav"
+},
+{
+"id": "csv53_001",
+"author": "cs",
+"version": "v53",
+"text": "jump down off the balcony, i need someone to trade me",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0031.wav"
+},
+{
+"id": "csv53_002",
+"author": "cs",
+"version": "v53",
+"text": "hop down through that hatch, it's already open",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "v53_0032.wav"
+},
+{
+"id": "csv53_003",
+"author": "cs",
+"version": "v53",
+"text": "climb up onto that ledge, you can one tap them from it",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0033.wav"
+},
+{
+"id": "csv53_004",
+"author": "cs",
+"version": "v53",
+"text": "leap over that sofa and trade me, i'm swinging now",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0034.wav"
+},
+{
+"id": "csv53_005",
+"author": "cs",
+"version": "v53",
+"text": "hop onto the table real quick, you can see over the boxes from it",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "v53_0035.wav"
+},
+{
+"id": "csv53_006",
+"author": "cs",
+"version": "v53",
+"text": "when i say go, jump off the edge and i'll swing with you",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0036.wav"
+},
+{
+"id": "csv53_007",
+"author": "cs",
+"version": "v53",
+"text": "hop that railing, quick",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0037.wav"
+},
+{
+"id": "csv53_008",
+"author": "cs",
+"version": "v53",
+"text": "damn it just leap off the roof man, way faster than walking round",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "v53_0038.wav"
+},
+{
+"id": "csv53_009",
+"author": "cs",
+"version": "v53",
+"text": "ok so i need you to, uh, jump across that gap, like right now, can you do that",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0039.wav"
+},
+{
+"id": "csv53_010",
+"author": "cs",
+"version": "v53",
+"text": "hop in through the east window, i'm flashing for you",
+"maj": "VAULT_WINDOW",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0040.wav"
+},
+{
+"id": "csv53_011",
+"author": "cs",
+"version": "v53",
+"text": "climb out that window on your left, hurry up",
+"maj": "VAULT_WINDOW",
+"voice": "Microsoft Mark",
+"wav": "v53_0041.wav"
+},
+{
+"id": "csv53_012",
+"author": "cs",
+"version": "v53",
+"text": "use the rope and drop down the side, keep it quiet",
+"maj": "RAPPEL",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0042.wav"
+},
+{
+"id": "csv53_013",
+"author": "cs",
+"version": "v53",
+"text": "grab the rope and climb up to the roof, i'll meet you there",
+"maj": "RAPPEL",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0043.wav"
+},
+{
+"id": "csv53_014",
+"author": "cs",
+"version": "v53",
+"text": "head down the yellow stairs and meet me at the bottom",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v53_0044.wav"
+},
+{
+"id": "csv53_015",
+"author": "cs",
+"version": "v53",
+"text": "get yourself downstairs man, they're all over the bomb",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0045.wav"
+},
+{
+"id": "csv53_016",
+"author": "cs",
+"version": "v53",
+"text": "get down dude, get down, awp's scoped in on you",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0046.wav"
+},
+{
+"id": "csv53_017",
+"author": "cs",
+"version": "v53",
+"text": "blow that hatch open, then we drop on their heads",
+"maj": "BREACH",
+"voice": "Microsoft Mark",
+"wav": "v53_0047.wav"
+},
+{
+"id": "csv53_018",
+"author": "cs",
+"version": "v53",
+"text": "i've got this angle, go hold the other for me",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0048.wav"
+},
+{
+"id": "csv53_019",
+"author": "cs",
+"version": "v53",
+"text": "i'm on the north door, you watch the other door",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0049.wav"
+},
+{
+"id": "csv53_020",
+"author": "cs",
+"version": "v53",
+"text": "no no, wrong window, hold the other one",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "v53_0050.wav"
+},
+{
+"id": "csv53_021",
+"author": "cs",
+"version": "v53",
+"text": "keep your crosshair on that door, i'll go watch the other one",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0051.wav"
+},
+{
+"id": "csv53_022",
+"author": "cs",
+"version": "v53",
+"text": "keep holding the south window, i'm taking the other window myself",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0052.wav"
+},
+{
+"id": "csv53_023",
+"author": "cs",
+"version": "v53",
+"text": "you're fine on this angle, keep it, i'll take the opposite side myself",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "v53_0053.wav"
+},
+{
+"id": "csv53_024",
+"author": "cs",
+"version": "v53",
+"text": "cease fire man, cease fire, you're giving away our spot",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0054.wav"
+},
+{
+"id": "csv53_025",
+"author": "cs",
+"version": "v53",
+"text": "check fire, check fire, i'm crossing, do not shoot",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0055.wav"
+},
+{
+"id": "csv53_026",
+"author": "cs",
+"version": "v53",
+"text": "i'm pinned, can't even peek, guy's spraying me through the wall",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "v53_0056.wav"
+},
+{
+"id": "csv53_027",
+"author": "cs",
+"version": "v53",
+"text": "we're getting shot at from the left, whole team's stuck",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "v53_0057.wav"
+},
+{
+"id": "csv53_028",
+"author": "cs",
+"version": "v53",
+"text": "don't jump man, it's a long fall and you'll lose half your hp",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v53_0058.wav"
+},
+{
+"id": "csv53_029",
+"author": "cs",
+"version": "v53",
+"text": "jump across to me, actually nah don't, forget i said that",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "v53_0059.wav"
+}
+]

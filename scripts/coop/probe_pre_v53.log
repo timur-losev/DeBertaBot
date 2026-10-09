@@ -1,0 +1,101 @@
+A typed probe of bot v52 in the C++ chat (coop_cli, family gate, threshold 0.60), 2026-10-09, BEFORE spec v53 and seed
+set v53 were written: the developer's lines around the owner's "Jump down." and "Another angle.", around "check fire"
+and around reports of being under fire. Lowercase without a final mark, as the voice chat gives the classifier its
+transcripts. Seed set v53 was written with this log on the table (make_spec_v53.py), so it is tuning material.
+
+jump down
+  v52: VAULT_WINDOW (assault) 0.70 | RAPPEL 0.30 | OPEN 0.00 | assault mass 1.00 | act   place: * dir=down
+drop down
+  v52: RAPPEL (assault) 1.00 | FALL_BACK 0.00 | MOVE_TO 0.00 | assault mass 1.00 | act   place: * dir=down
+hop down
+  v52: VAULT_WINDOW (assault) 0.59 | RAPPEL 0.40 | OPEN 0.00 | assault mass 0.99 | act   place: * dir=down
+jump off
+  v52: VAULT_WINDOW (assault) 0.87 | RAPPEL 0.13 | OPEN 0.00 | assault mass 1.00 | act
+jump off the roof
+  v52: VAULT_WINDOW (assault) 0.67 | RAPPEL 0.33 | OPEN 0.00 | assault mass 1.00 | act   place: * roof [from]
+jump down from there
+  v52: VAULT_WINDOW (assault) 0.66 | RAPPEL 0.34 | OPEN 0.00 | assault mass 1.00 | act   place: * dir=down
+jump down to me
+  v52: RAPPEL (assault) 0.86 | VAULT_WINDOW 0.12 | FOLLOW_ME 0.01 | assault mass 0.98 | act   place: * dir=down
+jump
+  v52: VAULT_WINDOW (assault) 0.98 | LOOK_AT 0.00 | OPEN 0.00 | assault mass 0.99 | act
+jump over
+  v52: VAULT_WINDOW (assault) 1.00 | FLANK 0.00 | RAPPEL 0.00 | assault mass 1.00 | act
+jump over the sofa
+  v52: VAULT_WINDOW (assault) 1.00 | RAPPEL 0.00 | FLANK 0.00 | assault mass 1.00 | act   place: * sofa
+jump up
+  v52: VAULT_WINDOW (assault) 0.78 | RAPPEL 0.19 | MOVE_TO 0.02 | assault mass 0.97 | act   place: * dir=up
+jump across
+  v52: VAULT_WINDOW (assault) 1.00 | FLANK 0.00 | RAPPEL 0.00 | assault mass 1.00 | act
+jump on the table
+  v52: RAPPEL (assault) 0.64 | VAULT_WINDOW 0.33 | TAKE_COVER 0.02 | assault mass 0.97 | act   place: * table
+climb down
+  v52: RAPPEL (assault) 0.74 | VAULT_WINDOW 0.25 | OPEN 0.00 | assault mass 1.00 | act   place: * dir=down
+climb up
+  v52: RAPPEL (assault) 0.57 | VAULT_WINDOW 0.42 | MOVE_TO 0.00 | assault mass 0.99 | act   place: * dir=up
+climb on the table
+  v52: VAULT_WINDOW (assault) 0.70 | RAPPEL 0.29 | OPEN 0.00 | assault mass 0.99 | act   place: * table
+get down   [a seed of v52]
+  v52: TAKE_COVER (cover) 1.00 | NONE 0.00 | CHECK 0.00 | cover mass 1.00 | act
+go down
+  v52: MOVE_TO (move) 0.67 | RAPPEL 0.14 | FALL_BACK 0.07 | move mass 0.67 | act   place: * dir=down
+come down here
+  v52: FOLLOW_ME (move) 0.97 | HELP 0.02 | REVIVE_ME 0.00 | move mass 0.97 | act   place: * dir=down
+jump through the window   [a seed of v52]
+  v52: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | RAPPEL 0.00 | assault mass 1.00 | act   place: * window
+jump in the window
+  v52: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | RAPPEL 0.00 | assault mass 1.00 | act   place: * window
+jump out the window
+  v52: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | RAPPEL 0.00 | assault mass 1.00 | act   place: * window
+jump into this hole
+  v52: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | RAPPEL 0.00 | assault mass 1.00 | act
+drop down the hatch
+  v52: RAPPEL (assault) 0.98 | OPEN 0.01 | VAULT_WINDOW 0.01 | assault mass 0.99 | act   place: * dir=down
+go down the hatch
+  v52: RAPPEL (assault) 0.47 | OPEN 0.29 | MOVE_TO 0.20 | assault mass 0.51 | say_again   place: * dir=down
+check fire
+  v52: CHECK (check) 0.60 | HOLD_FIRE 0.33 | OPEN_FIRE 0.02 | check mass 0.60 | act
+check your fire
+  v52: CHECK (check) 0.60 | HOLD_FIRE 0.34 | OPEN_FIRE 0.01 | check mass 0.60 | say_again
+check firing
+  v52: CHECK (check) 1.00 | TAKE_COVER 0.00 | WAIT 0.00 | check mass 1.00 | act
+cease fire   [a seed of v52]
+  v52: HOLD_FIRE (ceasefire) 1.00 | OPEN_FIRE 0.00 | NONE 0.00 | ceasefire mass 1.00 | act
+hold your fire   [a seed of v52]
+  v52: HOLD_FIRE (ceasefire) 1.00 | WAIT 0.00 | NONE 0.00 | ceasefire mass 1.00 | act
+watch your fire
+  v52: HOLD_FIRE (ceasefire) 1.00 | NONE 0.00 | WAIT 0.00 | ceasefire mass 1.00 | act
+i'm suppressed
+  v52: SUPPRESS (fire) 0.43 | HOLD_FIRE 0.24 | REVIVE_ME 0.11 | fire mass 0.43 | say_again
+i'm pinned down
+  v52: SUPPRESS (fire) 0.53 | COVER_ME 0.15 | REVIVE_ME 0.13 | fire mass 0.54 | say_again
+we're taking fire
+  v52: HOLD_FIRE (ceasefire) 0.89 | OPEN_FIRE 0.05 | HELP 0.02 | ceasefire mass 0.89 | act
+they're suppressing us
+  v52: NONE (none) 0.46 | HOLD_FIRE 0.38 | SUPPRESS 0.10 | none mass 0.46 | say_again
+another angle
+  v52: FLANK (move) 0.31 | HOLD_OTHER_ANGLE 0.30 | SMOKE 0.11 | move mass 0.31 | say_again | slots: other
+keep another angle
+  v52: HOLD_OTHER_ANGLE (hold) 0.51 | HOLD_ANGLE 0.48 | HOLD_POSITION 0.00 | hold mass 1.00 | act | slots: other
+hold another angle
+  v52: HOLD_OTHER_ANGLE (hold) 0.65 | HOLD_ANGLE 0.35 | HOLD_POSITION 0.00 | hold mass 1.00 | act | slots: other
+take another angle
+  v52: FLANK (move) 0.34 | MOVE_TO 0.19 | RAPPEL 0.16 | move mass 0.53 | say_again | slots: other
+the other one
+  v52: HOLD_OTHER_ANGLE (hold) 1.00 | COVER_ME 0.00 | OPEN_FIRE 0.00 | hold mass 1.00 | act | slots: other
+opposite angle
+  v52: HOLD_OTHER_ANGLE (hold) 0.63 | FLANK 0.32 | VAULT_WINDOW 0.02 | hold mass 0.63 | act | slots: other
+other angle
+  v52: HOLD_OTHER_ANGLE (hold) 0.96 | VAULT_WINDOW 0.02 | RAPPEL 0.00 | hold mass 0.97 | act | slots: other
+switch angle
+  v52: TAKE_COVER (cover) 0.37 | FLANK 0.32 | LOOK_AT 0.15 | cover mass 0.37 | say_again
+watch another door
+  v52: HOLD_OTHER_ANGLE (hold) 0.66 | HOLD_ANGLE 0.33 | SMOKE 0.00 | hold mass 1.00 | act | slots: other   place: * door [other]
+cover another window
+  v52: HOLD_ANGLE (hold) 0.98 | HOLD_OTHER_ANGLE 0.02 | COVER_ME 0.00 | hold mass 1.00 | act | slots: other   place: * window [other]
+different angle
+  v52: FLANK (move) 0.36 | LOOK_AT 0.18 | TAKE_COVER 0.11 | move mass 0.37 | say_again
+hold this angle i'll take the other one
+  v52: HOLD_OTHER_ANGLE (hold) 1.00 | HOLD_ANGLE 0.00 | COVER_ME 0.00 | hold mass 1.00 | act | slots: other
+watch the door i've got the other side
+  v52: HOLD_OTHER_ANGLE (hold) 1.00 | HOLD_ANGLE 0.00 | COVER_ME 0.00 | hold mass 1.00 | act | slots: other   place: * door

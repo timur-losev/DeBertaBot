@@ -1,0 +1,31 @@
+MATCHER, rule set v4 (current), on 90 v53 lines (the readers agree on the place on 90 and on the direction on 90)
+  all                      exact  91.1% (82/90)   place  94.4% (85/90)   direction  96.7% (87/90)   usable on orders  88.5% (69/78)
+  author r6                exact  90.0% (27/30)   place  90.0% (27/30)   direction 100.0% (30/30)   usable on orders  88.5% (23/26)
+  author cs                exact  93.3% (28/30)   place  96.7% (29/30)   direction  96.7% (29/30)   usable on orders  92.3% (24/26)
+  author stt               exact  90.0% (27/30)   place  96.7% (29/30)   direction  93.3% (28/30)   usable on orders  84.6% (22/26)
+  kind angle               exact  88.9% (16/18)   place  88.9% (16/18)   direction 100.0% (18/18)   usable on orders  88.9% (16/18)
+  kind boundary            exact  87.5% (21/24)   place  95.8% (23/24)   direction  91.7% (22/24)   usable on orders  87.5% (21/24)
+  kind fire                exact 100.0% (12/12)   place 100.0% (12/12)   direction 100.0% (12/12)   usable on orders 100.0% (6/6)
+  kind jump                exact  90.0% (27/30)   place  93.3% (28/30)   direction  96.7% (29/30)   usable on orders  86.7% (26/30)
+  kind negated             exact 100.0% (6/6)   place 100.0% (6/6)   direction 100.0% (6/6)   usable on orders   0.0% (0/0)
+  lines where the readers give a direction: 27; the matcher's primary has that direction on 24, another direction on 0, none on 3 (the direction is somewhere in its list on 24)
+  lines where the readers give none: 63; the matcher's primary has a direction on 0, some target has one on 0
+  readers' direction -> matcher's: down->down 16, down->None 1, left->left 4, right->None 1, up->up 4, up->None 1, None->None 63
+  unknown_modifier flag: raised on 0 lines, the readers mark 0; both 0
+  mismatches (id kind | text | readers -> matcher):
+    r6v53_013  boundary       "Drop off the roof on your rope, quietly, they don't know we're here."
+                 None/None/None dir=None -> None/None/roof dir=None  role=from flag=None   all: [(None, None, 'roof', None, 'from')]
+    r6v53_020  angle          'East window is mine, go hold the opposite side for me.'
+                 None/None/None dir=None -> window/east/None dir=None  role=None flag=None   all: [('window', 'east', None, None, None)]
+    r6v53_023  angle          "Lock down this hallway, I'm rotating to cover the other door."
+                 None/None/None dir=None -> door/None/None dir=None  role=None flag=other   all: [('door', None, None, None, None)]
+    csv53_008  jump           'damn it just leap off the roof man, way faster than walking round'
+                 None/None/None dir=None -> None/None/roof dir=None  role=None flag=None   all: [(None, None, 'roof', None, None)]
+    csv53_012  boundary       'use the rope and drop down the side, keep it quiet'
+                 None/None/None dir=down -> None/None/None dir=None   all: []
+    sttv53_004 jump           'get over that so far just jump it dont walk around'
+                 sofa/None/None dir=None -> None/None/None dir=None   all: []
+    sttv53_009 jump           'jump across to the write side there is a ledge jump across'
+                 None/None/None dir=right -> None/None/None dir=None   all: []
+    sttv53_013 boundary       'repel up the outside wall uh repel up'
+                 None/None/None dir=up -> None/None/None dir=None   all: []

@@ -1,0 +1,8 @@
+{
+ "_note": "The owner's test of bot v52 with a real voice, 2026-10-09 (coop_cli --voice, Parakeet TDT 0.6B v2): the lines he reported. 'heard' is Parakeet's transcript as the chat printed it; 'v52' is what bot v52 did (intent, confidence under its family gate at 0.60, action); 'want' is the reading he asked for. NOT a blind test: seed set v53 was written with these lines on the table (make_spec_v53.py). owner_voice.py runs a bot on them.",
+ "lines": [
+  {"heard": "Another angle.", "want": ["HOLD_OTHER_ANGLE"], "v52": ["FLANK", 0.31, "say_again"], "note": "FLANK 0.31, HOLD_OTHER_ANGLE 0.30"},
+  {"heard": "Keep another angle.", "want": ["HOLD_OTHER_ANGLE"], "v52": ["HOLD_OTHER_ANGLE", 1.0, "act"], "note": "right, by a coin toss inside the family: HOLD_OTHER_ANGLE 0.51, HOLD_ANGLE 0.48"},
+  {"heard": "Jump down.", "want": ["JUMP"], "v52": ["VAULT_WINDOW", 1.0, "act"], "note": "VAULT_WINDOW 0.70, RAPPEL 0.30; the owner: not the window label, just jumping down"}
+ ]
+}

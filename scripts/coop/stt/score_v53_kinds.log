@@ -1,0 +1,9 @@
+gate family, threshold 0.66; 60 v53 lines of r6 and cs; exact = the bot acts on the line's own intent (or does nothing on a NONE line)
+  jump (JUMP): typed 19/20 (NONE 1) | Windows 18/20 (NONE 2) | Kokoro EN 17/20 (NONE 3) | Kokoro other 17/20 (NONE 3) | VCTK seen 16/20 (NONE 4) | VCTK unseen 15/20 (NONE 5)
+  boundary (window, rope, move, cover, breach): typed 16/16 | Windows 16/16 | Kokoro EN 16/16 | Kokoro other 15/16 (NONE 1) | VCTK seen 11/16 (NONE 4, OPEN_FIRE 1) | VCTK unseen 14/16 (JUMP 1, NONE 1)
+  angle: the bot takes the other (HOLD_OTHER_ANGLE): typed 6/6 | Windows 6/6 | Kokoro EN 6/6 | Kokoro other 6/6 | VCTK seen 6/6 | VCTK unseen 6/6
+  angle: the player takes the other (HOLD_ANGLE): typed 6/6 | Windows 6/6 | Kokoro EN 6/6 | Kokoro other 6/6 | VCTK seen 6/6 | VCTK unseen 5/6 (MOVE_TO 1)
+  fire: cease fire in radio wording (HOLD_FIRE): typed 4/4 | Windows 4/4 | Kokoro EN 4/4 | Kokoro other 4/4 | VCTK seen 3/4 (NONE 1) | VCTK unseen 4/4
+  fire: reports of being under fire (NONE): typed 4/4 | Windows 4/4 | Kokoro EN 4/4 | Kokoro other 4/4 | VCTK seen 4/4 | VCTK unseen 4/4
+  negated jumps (NONE): typed 3/4 (JUMP 1) | Windows 3/4 (JUMP 1) | Kokoro EN 3/4 (JUMP 1) | Kokoro other 3/4 (JUMP 1) | VCTK seen 3/4 (JUMP 1) | VCTK unseen 4/4
+  (a pick shown as NONE on an order line is the bot doing nothing: it asked again or took the line for chatter)

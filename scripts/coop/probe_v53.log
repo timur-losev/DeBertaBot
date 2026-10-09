@@ -1,0 +1,148 @@
+The typed probe of probe_pre_v53.log again, on bots v52 and v53 in the C++ chat (coop_cli, family gate), 2026-10-09,
+after v53 was trained. NOT a test: seed set v53 was written with these 48 lines on the table, and the lines marked as
+seeds are in v53's training data verbatim. It shows whether the tuning took and what it moved next to it.
+
+jump down   [a seed of v53]
+  v52: VAULT_WINDOW (assault) 0.70 | RAPPEL 0.30 | OPEN 0.00 | assault mass 1.00 | act   place: * dir=down
+  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act   place: * dir=down
+drop down   [a seed of v53]
+  v52: RAPPEL (assault) 1.00 | FALL_BACK 0.00 | MOVE_TO 0.00 | assault mass 1.00 | act   place: * dir=down
+  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act   place: * dir=down
+hop down   [a seed of v53]
+  v52: VAULT_WINDOW (assault) 0.59 | RAPPEL 0.40 | OPEN 0.00 | assault mass 0.99 | act   place: * dir=down
+  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act   place: * dir=down
+jump off   [a seed of v53]
+  v52: VAULT_WINDOW (assault) 0.87 | RAPPEL 0.13 | OPEN 0.00 | assault mass 1.00 | act
+  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act
+jump off the roof   [a seed of v53]
+  v52: VAULT_WINDOW (assault) 0.67 | RAPPEL 0.33 | OPEN 0.00 | assault mass 1.00 | act   place: * roof [from]
+  v53: JUMP (move) 1.00 | NONE 0.00 | RAPPEL 0.00 | move mass 1.00 | act   place: * roof [from]
+jump down from there   [a seed of v53]
+  v52: VAULT_WINDOW (assault) 0.66 | RAPPEL 0.34 | OPEN 0.00 | assault mass 1.00 | act   place: * dir=down
+  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act   place: * dir=down
+jump down to me   [a seed of v53]
+  v52: RAPPEL (assault) 0.86 | VAULT_WINDOW 0.12 | FOLLOW_ME 0.01 | assault mass 0.98 | act   place: * dir=down
+  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act   place: * dir=down
+jump   [a seed of v53]
+  v52: VAULT_WINDOW (assault) 0.98 | LOOK_AT 0.00 | OPEN 0.00 | assault mass 0.99 | act
+  v53: JUMP (move) 1.00 | VAULT_WINDOW 0.00 | NONE 0.00 | move mass 1.00 | act
+jump over   [a seed of v53]
+  v52: VAULT_WINDOW (assault) 1.00 | FLANK 0.00 | RAPPEL 0.00 | assault mass 1.00 | act
+  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act
+jump over the sofa   [a seed of v53]
+  v52: VAULT_WINDOW (assault) 1.00 | RAPPEL 0.00 | FLANK 0.00 | assault mass 1.00 | act   place: * sofa
+  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act   place: * sofa
+jump up   [a seed of v53]
+  v52: VAULT_WINDOW (assault) 0.78 | RAPPEL 0.19 | MOVE_TO 0.02 | assault mass 0.97 | act   place: * dir=up
+  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act   place: * dir=up
+jump across   [a seed of v53]
+  v52: VAULT_WINDOW (assault) 1.00 | FLANK 0.00 | RAPPEL 0.00 | assault mass 1.00 | act
+  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act
+jump on the table   [a seed of v53]
+  v52: RAPPEL (assault) 0.64 | VAULT_WINDOW 0.33 | TAKE_COVER 0.02 | assault mass 0.97 | act   place: * table
+  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act   place: * table
+climb down   [a seed of v53]
+  v52: RAPPEL (assault) 0.74 | VAULT_WINDOW 0.25 | OPEN 0.00 | assault mass 1.00 | act   place: * dir=down
+  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act   place: * dir=down
+climb up   [a seed of v53]
+  v52: RAPPEL (assault) 0.57 | VAULT_WINDOW 0.42 | MOVE_TO 0.00 | assault mass 0.99 | act   place: * dir=up
+  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act   place: * dir=up
+climb on the table   [a seed of v53]
+  v52: VAULT_WINDOW (assault) 0.70 | RAPPEL 0.29 | OPEN 0.00 | assault mass 0.99 | act   place: * table
+  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act   place: * table
+get down   [a seed of v53]
+  v52: TAKE_COVER (cover) 1.00 | NONE 0.00 | CHECK 0.00 | cover mass 1.00 | act
+  v53: TAKE_COVER (cover) 1.00 | FALL_BACK 0.00 | NONE 0.00 | cover mass 1.00 | act
+go down   [a seed of v53]
+  v52: MOVE_TO (move) 0.67 | RAPPEL 0.14 | FALL_BACK 0.07 | move mass 0.67 | act   place: * dir=down
+  v53: MOVE_TO (move) 1.00 | GO_NOW 0.00 | RAPPEL 0.00 | move mass 1.00 | act   place: * dir=down
+come down here
+  v52: FOLLOW_ME (move) 0.97 | HELP 0.02 | REVIVE_ME 0.00 | move mass 0.97 | act   place: * dir=down
+  v53: FOLLOW_ME (move) 0.98 | HELP 0.01 | MOVE_TO 0.00 | move mass 0.99 | act   place: * dir=down
+jump through the window   [a seed of v53]
+  v52: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | RAPPEL 0.00 | assault mass 1.00 | act   place: * window
+  v53: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | JUMP 0.00 | assault mass 1.00 | act   place: * window
+jump in the window   [a seed of v53]
+  v52: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | RAPPEL 0.00 | assault mass 1.00 | act   place: * window
+  v53: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | ENTRY 0.00 | assault mass 1.00 | act   place: * window
+jump out the window   [a seed of v53]
+  v52: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | RAPPEL 0.00 | assault mass 1.00 | act   place: * window
+  v53: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | RAPPEL 0.00 | assault mass 1.00 | act   place: * window
+jump into this hole
+  v52: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | RAPPEL 0.00 | assault mass 1.00 | act
+  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act
+drop down the hatch   [a seed of v53]
+  v52: RAPPEL (assault) 0.98 | OPEN 0.01 | VAULT_WINDOW 0.01 | assault mass 0.99 | act   place: * dir=down
+  v53: JUMP (move) 1.00 | RAPPEL 0.00 | NONE 0.00 | move mass 1.00 | act   place: * dir=down
+go down the hatch
+  v52: RAPPEL (assault) 0.47 | OPEN 0.29 | MOVE_TO 0.20 | assault mass 0.51 | say_again   place: * dir=down
+  v53: MOVE_TO (move) 0.72 | RAPPEL 0.27 | JUMP 0.00 | move mass 0.73 | act   place: * dir=down
+check fire   [a seed of v53]
+  v52: CHECK (check) 0.60 | HOLD_FIRE 0.33 | OPEN_FIRE 0.02 | check mass 0.60 | act
+  v53: HOLD_FIRE (ceasefire) 1.00 | OPEN_FIRE 0.00 | SUPPRESS 0.00 | ceasefire mass 1.00 | act
+check your fire   [a seed of v53]
+  v52: CHECK (check) 0.60 | HOLD_FIRE 0.34 | OPEN_FIRE 0.01 | check mass 0.60 | say_again
+  v53: HOLD_FIRE (ceasefire) 1.00 | WAIT 0.00 | OPEN_FIRE 0.00 | ceasefire mass 1.00 | act
+check firing   [a seed of v53]
+  v52: CHECK (check) 1.00 | TAKE_COVER 0.00 | WAIT 0.00 | check mass 1.00 | act
+  v53: HOLD_FIRE (ceasefire) 1.00 | WAIT 0.00 | OPEN_FIRE 0.00 | ceasefire mass 1.00 | act
+cease fire   [a seed of v53]
+  v52: HOLD_FIRE (ceasefire) 1.00 | OPEN_FIRE 0.00 | NONE 0.00 | ceasefire mass 1.00 | act
+  v53: HOLD_FIRE (ceasefire) 1.00 | OPEN_FIRE 0.00 | SUPPRESS 0.00 | ceasefire mass 1.00 | act
+hold your fire   [a seed of v53]
+  v52: HOLD_FIRE (ceasefire) 1.00 | WAIT 0.00 | NONE 0.00 | ceasefire mass 1.00 | act
+  v53: HOLD_FIRE (ceasefire) 1.00 | WAIT 0.00 | OPEN_FIRE 0.00 | ceasefire mass 1.00 | act
+watch your fire
+  v52: HOLD_FIRE (ceasefire) 1.00 | NONE 0.00 | WAIT 0.00 | ceasefire mass 1.00 | act
+  v53: HOLD_FIRE (ceasefire) 1.00 | WAIT 0.00 | OPEN_FIRE 0.00 | ceasefire mass 1.00 | act
+i'm suppressed   [a seed of v53]
+  v52: SUPPRESS (fire) 0.43 | HOLD_FIRE 0.24 | REVIVE_ME 0.11 | fire mass 0.43 | say_again
+  v53: NONE (none) 1.00 | OPEN_FIRE 0.00 | TAKE_COVER 0.00 | none mass 1.00 | ignore
+i'm pinned down   [a seed of v53]
+  v52: SUPPRESS (fire) 0.53 | COVER_ME 0.15 | REVIVE_ME 0.13 | fire mass 0.54 | say_again
+  v53: NONE (none) 1.00 | OPEN_FIRE 0.00 | TAKE_COVER 0.00 | none mass 1.00 | ignore
+we're taking fire   [a seed of v53]
+  v52: HOLD_FIRE (ceasefire) 0.89 | OPEN_FIRE 0.05 | HELP 0.02 | ceasefire mass 0.89 | act
+  v53: NONE (none) 1.00 | OPEN_FIRE 0.00 | TAKE_COVER 0.00 | none mass 1.00 | ignore
+they're suppressing us   [a seed of v53]
+  v52: NONE (none) 0.46 | HOLD_FIRE 0.38 | SUPPRESS 0.10 | none mass 0.46 | say_again
+  v53: NONE (none) 1.00 | OPEN_FIRE 0.00 | TAKE_COVER 0.00 | none mass 1.00 | ignore
+another angle   [a seed of v53]
+  v52: FLANK (move) 0.31 | HOLD_OTHER_ANGLE 0.30 | SMOKE 0.11 | move mass 0.31 | say_again | slots: other
+  v53: HOLD_OTHER_ANGLE (hold) 1.00 | COVER_ME 0.00 | HOLD_ANGLE 0.00 | hold mass 1.00 | act | slots: other
+keep another angle   [a seed of v53]
+  v52: HOLD_OTHER_ANGLE (hold) 0.51 | HOLD_ANGLE 0.48 | HOLD_POSITION 0.00 | hold mass 1.00 | act | slots: other
+  v53: HOLD_OTHER_ANGLE (hold) 1.00 | COVER_ME 0.00 | HOLD_ANGLE 0.00 | hold mass 1.00 | act | slots: other
+hold another angle   [a seed of v53]
+  v52: HOLD_OTHER_ANGLE (hold) 0.65 | HOLD_ANGLE 0.35 | HOLD_POSITION 0.00 | hold mass 1.00 | act | slots: other
+  v53: HOLD_OTHER_ANGLE (hold) 1.00 | HOLD_ANGLE 0.00 | COVER_ME 0.00 | hold mass 1.00 | act | slots: other
+take another angle   [a seed of v53]
+  v52: FLANK (move) 0.34 | MOVE_TO 0.19 | RAPPEL 0.16 | move mass 0.53 | say_again | slots: other
+  v53: HOLD_OTHER_ANGLE (hold) 1.00 | COVER_ME 0.00 | HOLD_ANGLE 0.00 | hold mass 1.00 | act | slots: other
+the other one
+  v52: HOLD_OTHER_ANGLE (hold) 1.00 | COVER_ME 0.00 | OPEN_FIRE 0.00 | hold mass 1.00 | act | slots: other
+  v53: HOLD_OTHER_ANGLE (hold) 1.00 | HOLD_ANGLE 0.00 | COVER_ME 0.00 | hold mass 1.00 | act | slots: other
+opposite angle   [a seed of v53]
+  v52: HOLD_OTHER_ANGLE (hold) 0.63 | FLANK 0.32 | VAULT_WINDOW 0.02 | hold mass 0.63 | act | slots: other
+  v53: HOLD_OTHER_ANGLE (hold) 1.00 | COVER_ME 0.00 | HOLD_ANGLE 0.00 | hold mass 1.00 | act | slots: other
+other angle   [a seed of v53]
+  v52: HOLD_OTHER_ANGLE (hold) 0.96 | VAULT_WINDOW 0.02 | RAPPEL 0.00 | hold mass 0.97 | act | slots: other
+  v53: HOLD_OTHER_ANGLE (hold) 1.00 | COVER_ME 0.00 | HOLD_ANGLE 0.00 | hold mass 1.00 | act | slots: other
+switch angle
+  v52: TAKE_COVER (cover) 0.37 | FLANK 0.32 | LOOK_AT 0.15 | cover mass 0.37 | say_again
+  v53: HOLD_OTHER_ANGLE (hold) 0.84 | COVER_ME 0.06 | NONE 0.03 | hold mass 0.93 | act
+watch another door   [a seed of v53]
+  v52: HOLD_OTHER_ANGLE (hold) 0.66 | HOLD_ANGLE 0.33 | SMOKE 0.00 | hold mass 1.00 | act | slots: other   place: * door [other]
+  v53: HOLD_OTHER_ANGLE (hold) 1.00 | HOLD_ANGLE 0.00 | COVER_ME 0.00 | hold mass 1.00 | act | slots: other   place: * door [other]
+cover another window   [a seed of v53]
+  v52: HOLD_ANGLE (hold) 0.98 | HOLD_OTHER_ANGLE 0.02 | COVER_ME 0.00 | hold mass 1.00 | act | slots: other   place: * window [other]
+  v53: HOLD_OTHER_ANGLE (hold) 1.00 | COVER_ME 0.00 | HOLD_ANGLE 0.00 | hold mass 1.00 | act | slots: other   place: * window [other]
+different angle
+  v52: FLANK (move) 0.36 | LOOK_AT 0.18 | TAKE_COVER 0.11 | move mass 0.37 | say_again
+  v53: HOLD_OTHER_ANGLE (hold) 1.00 | COVER_ME 0.00 | HOLD_ANGLE 0.00 | hold mass 1.00 | act
+hold this angle i'll take the other one   [a seed of v53]
+  v52: HOLD_OTHER_ANGLE (hold) 1.00 | HOLD_ANGLE 0.00 | COVER_ME 0.00 | hold mass 1.00 | act | slots: other
+  v53: HOLD_ANGLE (hold) 1.00 | HOLD_POSITION 0.00 | SMOKE 0.00 | hold mass 1.00 | act | slots: other
+watch the door i've got the other side
+  v52: HOLD_OTHER_ANGLE (hold) 1.00 | HOLD_ANGLE 0.00 | COVER_ME 0.00 | hold mass 1.00 | act | slots: other   place: * door
+  v53: HOLD_ANGLE (hold) 1.00 | HOLD_OTHER_ANGLE 0.00 | SMOKE 0.00 | hold mass 1.00 | act | slots: other   place: * door

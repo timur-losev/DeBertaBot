@@ -1,0 +1,1164 @@
+[
+{
+"id": "seed_MOVE_TO_83",
+"text": "go down",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0000.wav"
+},
+{
+"id": "seed_MOVE_TO_84",
+"text": "go up",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0001.wav"
+},
+{
+"id": "seed_MOVE_TO_85",
+"text": "go down there",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "s53_0002.wav"
+},
+{
+"id": "seed_MOVE_TO_86",
+"text": "go up there",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0003.wav"
+},
+{
+"id": "seed_MOVE_TO_87",
+"text": "go downstairs",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0004.wav"
+},
+{
+"id": "seed_MOVE_TO_88",
+"text": "go upstairs",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "s53_0005.wav"
+},
+{
+"id": "seed_MOVE_TO_89",
+"text": "head down to the basement",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0006.wav"
+},
+{
+"id": "seed_MOVE_TO_90",
+"text": "walk down the stairs",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0007.wav"
+},
+{
+"id": "seed_HOLD_ANGLE_60",
+"text": "hold this angle i'll take the other one",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "s53_0008.wav"
+},
+{
+"id": "seed_HOLD_ANGLE_61",
+"text": "watch this door i've got the other one",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0009.wav"
+},
+{
+"id": "seed_HOLD_ANGLE_62",
+"text": "you hold this side i'll take the other",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0010.wav"
+},
+{
+"id": "seed_HOLD_ANGLE_63",
+"text": "stay on this angle i'm taking the other one",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "s53_0011.wav"
+},
+{
+"id": "seed_HOLD_ANGLE_64",
+"text": "keep watching that door i'll cover the other one",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0012.wav"
+},
+{
+"id": "seed_HOLD_ANGLE_65",
+"text": "hold that window i'll watch the other side",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0013.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_8",
+"text": "another angle",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "s53_0014.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_9",
+"text": "the other angle",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0015.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_10",
+"text": "other angle",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0016.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_11",
+"text": "keep another angle",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "s53_0017.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_12",
+"text": "hold another angle",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0018.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_13",
+"text": "take another angle",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0019.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_14",
+"text": "watch another angle",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "s53_0020.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_15",
+"text": "the opposite angle",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0021.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_16",
+"text": "opposite angle",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0022.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_17",
+"text": "take the opposite side",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "s53_0023.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_18",
+"text": "hold the opposite side",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0024.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_19",
+"text": "watch another door",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0025.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_20",
+"text": "cover another window",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "s53_0026.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_21",
+"text": "cover the other window",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0027.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_22",
+"text": "watch the other window",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0028.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_23",
+"text": "i've got this one you take the other",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "s53_0029.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_24",
+"text": "i'll hold this angle you take the other one",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0030.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_25",
+"text": "i'm on this door you watch the other one",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0031.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_26",
+"text": "switch to the other angle",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "s53_0032.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_27",
+"text": "cover the other angle",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0033.wav"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_28",
+"text": "keep the other angle",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0034.wav"
+},
+{
+"id": "seed_VAULT_WINDOW_19",
+"text": "jump in the window",
+"maj": "VAULT_WINDOW",
+"voice": "Microsoft Mark",
+"wav": "s53_0035.wav"
+},
+{
+"id": "seed_VAULT_WINDOW_20",
+"text": "jump out the window",
+"maj": "VAULT_WINDOW",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0036.wav"
+},
+{
+"id": "seed_VAULT_WINDOW_21",
+"text": "jump through that window",
+"maj": "VAULT_WINDOW",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0037.wav"
+},
+{
+"id": "seed_VAULT_WINDOW_22",
+"text": "climb through the window",
+"maj": "VAULT_WINDOW",
+"voice": "Microsoft Mark",
+"wav": "s53_0038.wav"
+},
+{
+"id": "seed_VAULT_WINDOW_23",
+"text": "climb out the window",
+"maj": "VAULT_WINDOW",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0039.wav"
+},
+{
+"id": "seed_RAPPEL_13",
+"text": "drop down on the rope",
+"maj": "RAPPEL",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0040.wav"
+},
+{
+"id": "seed_RAPPEL_14",
+"text": "rope down",
+"maj": "RAPPEL",
+"voice": "Microsoft Mark",
+"wav": "s53_0041.wav"
+},
+{
+"id": "seed_RAPPEL_15",
+"text": "rope down from the roof",
+"maj": "RAPPEL",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0042.wav"
+},
+{
+"id": "seed_RAPPEL_16",
+"text": "rappel down from the roof",
+"maj": "RAPPEL",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0043.wav"
+},
+{
+"id": "seed_RAPPEL_17",
+"text": "climb up the rope",
+"maj": "RAPPEL",
+"voice": "Microsoft Mark",
+"wav": "s53_0044.wav"
+},
+{
+"id": "seed_RAPPEL_18",
+"text": "drop down the rope",
+"maj": "RAPPEL",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0045.wav"
+},
+{
+"id": "seed_WAIT_27",
+"text": "don't jump yet",
+"maj": "WAIT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0046.wav"
+},
+{
+"id": "seed_WAIT_28",
+"text": "don't drop down yet",
+"maj": "WAIT",
+"voice": "Microsoft Mark",
+"wav": "s53_0047.wav"
+},
+{
+"id": "seed_TAKE_COVER_19",
+"text": "get down get down",
+"maj": "TAKE_COVER",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0048.wav"
+},
+{
+"id": "seed_TAKE_COVER_20",
+"text": "stay down",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0049.wav"
+},
+{
+"id": "seed_TAKE_COVER_21",
+"text": "duck",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Mark",
+"wav": "s53_0050.wav"
+},
+{
+"id": "seed_TAKE_COVER_22",
+"text": "get down now",
+"maj": "TAKE_COVER",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0051.wav"
+},
+{
+"id": "seed_NONE_211",
+"text": "we're taking fire",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0052.wav"
+},
+{
+"id": "seed_NONE_212",
+"text": "taking fire",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s53_0053.wav"
+},
+{
+"id": "seed_NONE_213",
+"text": "i'm taking fire",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0054.wav"
+},
+{
+"id": "seed_NONE_214",
+"text": "i'm under fire",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0055.wav"
+},
+{
+"id": "seed_NONE_215",
+"text": "we're under fire",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s53_0056.wav"
+},
+{
+"id": "seed_NONE_216",
+"text": "i'm pinned down",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0057.wav"
+},
+{
+"id": "seed_NONE_217",
+"text": "i'm pinned",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0058.wav"
+},
+{
+"id": "seed_NONE_218",
+"text": "we're pinned down",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s53_0059.wav"
+},
+{
+"id": "seed_NONE_219",
+"text": "i'm suppressed",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0060.wav"
+},
+{
+"id": "seed_NONE_220",
+"text": "we're suppressed",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0061.wav"
+},
+{
+"id": "seed_NONE_221",
+"text": "they're suppressing us",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s53_0062.wav"
+},
+{
+"id": "seed_NONE_222",
+"text": "they've got me pinned",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0063.wav"
+},
+{
+"id": "seed_NONE_223",
+"text": "i'm getting shot at",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0064.wav"
+},
+{
+"id": "seed_NONE_224",
+"text": "taking fire from the left",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s53_0065.wav"
+},
+{
+"id": "seed_NONE_225",
+"text": "taking fire from the north window",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0066.wav"
+},
+{
+"id": "seed_NONE_226",
+"text": "he jumped down",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0067.wav"
+},
+{
+"id": "seed_NONE_227",
+"text": "they jumped out the window",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s53_0068.wav"
+},
+{
+"id": "seed_NONE_228",
+"text": "someone dropped down the hatch",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0069.wav"
+},
+{
+"id": "seed_NONE_229",
+"text": "i'm jumping down",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0070.wav"
+},
+{
+"id": "seed_NONE_230",
+"text": "i'll jump down first",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s53_0071.wav"
+},
+{
+"id": "seed_NONE_231",
+"text": "i'm going to drop down",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0072.wav"
+},
+{
+"id": "seed_NONE_232",
+"text": "he's climbing up",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0073.wav"
+},
+{
+"id": "seed_NONE_233",
+"text": "nice jump",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s53_0074.wav"
+},
+{
+"id": "seed_NONE_234",
+"text": "he's on the other angle",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0075.wav"
+},
+{
+"id": "seed_NONE_235",
+"text": "they're on the other side",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0076.wav"
+},
+{
+"id": "seed_NONE_236",
+"text": "nice angle",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s53_0077.wav"
+},
+{
+"id": "seed_NONE_237",
+"text": "that's a bad angle",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0078.wav"
+},
+{
+"id": "seed_NONE_238",
+"text": "don't jump",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0079.wav"
+},
+{
+"id": "seed_NONE_239",
+"text": "don't jump down",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s53_0080.wav"
+},
+{
+"id": "seed_NONE_240",
+"text": "do not drop down",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0081.wav"
+},
+{
+"id": "seed_NONE_241",
+"text": "no need to jump",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0082.wav"
+},
+{
+"id": "seed_NONE_242",
+"text": "don't climb up there",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s53_0083.wav"
+},
+{
+"id": "seed_HOLD_FIRE_20",
+"text": "check fire",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0084.wav"
+},
+{
+"id": "seed_HOLD_FIRE_21",
+"text": "check your fire",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0085.wav"
+},
+{
+"id": "seed_HOLD_FIRE_22",
+"text": "check firing",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft Mark",
+"wav": "s53_0086.wav"
+},
+{
+"id": "seed_HOLD_FIRE_23",
+"text": "check fire check fire",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0087.wav"
+},
+{
+"id": "seed_HOLD_FIRE_24",
+"text": "check your fire friendlies ahead",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0088.wav"
+},
+{
+"id": "seed_JUMP_0",
+"text": "jump",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0089.wav"
+},
+{
+"id": "seed_JUMP_1",
+"text": "jump down",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0090.wav"
+},
+{
+"id": "seed_JUMP_2",
+"text": "drop down",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0091.wav"
+},
+{
+"id": "seed_JUMP_3",
+"text": "hop down",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0092.wav"
+},
+{
+"id": "seed_JUMP_4",
+"text": "jump off",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0093.wav"
+},
+{
+"id": "seed_JUMP_5",
+"text": "jump down from there",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0094.wav"
+},
+{
+"id": "seed_JUMP_6",
+"text": "jump down here",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0095.wav"
+},
+{
+"id": "seed_JUMP_7",
+"text": "jump down to me",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0096.wav"
+},
+{
+"id": "seed_JUMP_8",
+"text": "drop down here",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0097.wav"
+},
+{
+"id": "seed_JUMP_9",
+"text": "drop down to me",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0098.wav"
+},
+{
+"id": "seed_JUMP_10",
+"text": "drop down there",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0099.wav"
+},
+{
+"id": "seed_JUMP_11",
+"text": "just jump down",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0100.wav"
+},
+{
+"id": "seed_JUMP_12",
+"text": "leap down",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0101.wav"
+},
+{
+"id": "seed_JUMP_13",
+"text": "jump over",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0102.wav"
+},
+{
+"id": "seed_JUMP_14",
+"text": "jump over that",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0103.wav"
+},
+{
+"id": "seed_JUMP_15",
+"text": "jump over it",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0104.wav"
+},
+{
+"id": "seed_JUMP_16",
+"text": "hop over that",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0105.wav"
+},
+{
+"id": "seed_JUMP_17",
+"text": "hop over it",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0106.wav"
+},
+{
+"id": "seed_JUMP_18",
+"text": "vault over that",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0107.wav"
+},
+{
+"id": "seed_JUMP_19",
+"text": "vault over it",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0108.wav"
+},
+{
+"id": "seed_JUMP_20",
+"text": "climb over that",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0109.wav"
+},
+{
+"id": "seed_JUMP_21",
+"text": "climb over it",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0110.wav"
+},
+{
+"id": "seed_JUMP_22",
+"text": "jump across",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0111.wav"
+},
+{
+"id": "seed_JUMP_23",
+"text": "jump across the gap",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0112.wav"
+},
+{
+"id": "seed_JUMP_24",
+"text": "jump the gap",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0113.wav"
+},
+{
+"id": "seed_JUMP_25",
+"text": "jump up",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0114.wav"
+},
+{
+"id": "seed_JUMP_26",
+"text": "jump up there",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0115.wav"
+},
+{
+"id": "seed_JUMP_27",
+"text": "climb up",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0116.wav"
+},
+{
+"id": "seed_JUMP_28",
+"text": "climb up there",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0117.wav"
+},
+{
+"id": "seed_JUMP_29",
+"text": "climb up here",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0118.wav"
+},
+{
+"id": "seed_JUMP_30",
+"text": "climb down",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0119.wav"
+},
+{
+"id": "seed_JUMP_31",
+"text": "climb down from there",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0120.wav"
+},
+{
+"id": "seed_JUMP_32",
+"text": "jump on that",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0121.wav"
+},
+{
+"id": "seed_JUMP_33",
+"text": "climb on that",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0122.wav"
+},
+{
+"id": "seed_JUMP_34",
+"text": "get up on that",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0123.wav"
+},
+{
+"id": "seed_JUMP_35",
+"text": "climb on top of that",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0124.wav"
+},
+{
+"id": "seed_JUMP_36",
+"text": "jump off the ledge",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0125.wav"
+},
+{
+"id": "seed_JUMP_37",
+"text": "drop off the ledge",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0126.wav"
+},
+{
+"id": "seed_JUMP_38",
+"text": "jump off the edge",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0127.wav"
+},
+{
+"id": "seed_JUMP_39",
+"text": "jump down the hatch",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0128.wav"
+},
+{
+"id": "seed_JUMP_40",
+"text": "drop down the hatch",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0129.wav"
+},
+{
+"id": "seed_JUMP_41",
+"text": "drop through the hatch",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0130.wav"
+},
+{
+"id": "seed_JUMP_42",
+"text": "jump down the hole",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0131.wav"
+},
+{
+"id": "seed_JUMP_43",
+"text": "drop down through the hole",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0132.wav"
+},
+{
+"id": "seed_JUMP_44",
+"text": "jump into the hole",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0133.wav"
+},
+{
+"id": "seed_JUMP_45",
+"text": "jump to the lower floor",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0134.wav"
+},
+{
+"id": "seed_JUMP_46",
+"text": "drop to the floor below",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0135.wav"
+},
+{
+"id": "seed_JUMP_47",
+"text": "jump down a level",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0136.wav"
+},
+{
+"id": "seed_JUMP_48",
+"text": "drop down a floor",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0137.wav"
+},
+{
+"id": "seed_JUMP_49",
+"text": "jump down on the left",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0138.wav"
+},
+{
+"id": "seed_JUMP_50",
+"text": "drop down on the right side",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0139.wav"
+},
+{
+"id": "seed_JUMP_51",
+"text": "climb up on the right",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0140.wav"
+},
+{
+"id": "seed_JUMP_52",
+"text": "jump down on my go",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0141.wav"
+},
+{
+"id": "seed_JUMP_53",
+"text": "drop down when i say",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0142.wav"
+},
+{
+"id": "seed_JUMP_54",
+"text": "jump on my mark",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0143.wav"
+},
+{
+"id": "seed_JUMP_55",
+"text": "jump over the sofa",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0144.wav"
+},
+{
+"id": "seed_JUMP_56",
+"text": "jump over the table",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0145.wav"
+},
+{
+"id": "seed_JUMP_57",
+"text": "jump over the chairs",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0146.wav"
+},
+{
+"id": "seed_JUMP_58",
+"text": "hop over the sofa",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0147.wav"
+},
+{
+"id": "seed_JUMP_59",
+"text": "hop over the table",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0148.wav"
+},
+{
+"id": "seed_JUMP_60",
+"text": "climb over the sofa",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0149.wav"
+},
+{
+"id": "seed_JUMP_61",
+"text": "climb over the table",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0150.wav"
+},
+{
+"id": "seed_JUMP_62",
+"text": "vault over the sofa",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0151.wav"
+},
+{
+"id": "seed_JUMP_63",
+"text": "vault over the table",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0152.wav"
+},
+{
+"id": "seed_JUMP_64",
+"text": "jump on the table",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0153.wav"
+},
+{
+"id": "seed_JUMP_65",
+"text": "jump on the sofa",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0154.wav"
+},
+{
+"id": "seed_JUMP_66",
+"text": "climb on the table",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0155.wav"
+},
+{
+"id": "seed_JUMP_67",
+"text": "climb on the sofa",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0156.wav"
+},
+{
+"id": "seed_JUMP_68",
+"text": "jump off the roof",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0157.wav"
+},
+{
+"id": "seed_JUMP_69",
+"text": "jump off the table",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0158.wav"
+},
+{
+"id": "seed_JUMP_70",
+"text": "jump down from the roof",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0159.wav"
+},
+{
+"id": "seed_JUMP_71",
+"text": "jump down from the top floor",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0160.wav"
+},
+{
+"id": "seed_JUMP_72",
+"text": "drop down from the top floor",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0161.wav"
+},
+{
+"id": "seed_JUMP_73",
+"text": "jump down to the first floor",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0162.wav"
+},
+{
+"id": "seed_JUMP_74",
+"text": "jump down to the basement",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s53_0163.wav"
+},
+{
+"id": "seed_JUMP_75",
+"text": "drop down to the basement",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s53_0164.wav"
+},
+{
+"id": "seed_JUMP_76",
+"text": "drop down to the first floor",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s53_0165.wav"
+}
+]

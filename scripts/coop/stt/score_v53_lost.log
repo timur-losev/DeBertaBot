@@ -1,0 +1,12 @@
+the 662 lines bot v52 was checked on
+  typed         n=662  v53 at 0.66: lost 20 (does nothing on 16; acts on JUMP 2, HOLD_FIRE 1, FALL_BACK 1), won 12 | v53 at 0.60: lost 14 (does nothing on 9; acts on JUMP 3, HOLD_FIRE 1, FALL_BACK 1), won 12
+  Windows       n=662  v53 at 0.66: lost 23 (does nothing on 19; acts on JUMP 2, HOLD_FIRE 1, FALL_BACK 1), won 9 | v53 at 0.60: lost 18 (does nothing on 12; acts on JUMP 3, FRAG 1, HOLD_FIRE 1, FALL_BACK 1), won 10
+  Kokoro EN     n=662  v53 at 0.66: lost 24 (does nothing on 19; acts on JUMP 2, HOLD_FIRE 1, OPEN_FIRE 1, FALL_BACK 1), won 10 | v53 at 0.60: lost 21 (does nothing on 13; acts on JUMP 3, FRAG 2, HOLD_FIRE 1, OPEN_FIRE 1), won 13
+  Kokoro other  n=662  v53 at 0.66: lost 29 (does nothing on 24; acts on JUMP 2, HOLD_FIRE 1, FLASH 1, FALL_BACK 1), won 11 | v53 at 0.60: lost 23 (does nothing on 15; acts on JUMP 3, FRAG 1, HOLD_FIRE 1, FLASH 1), won 14
+  VCTK unseen   n=662  v53 at 0.66: lost 30 (does nothing on 24; acts on JUMP 3, MOVE_TO 1, DEFUSE 1, FALL_BACK 1), won 20 | v53 at 0.60: lost 20 (does nothing on 11; acts on JUMP 3, DRONE 1, COVER_ME 1, MOVE_TO 1), won 22
+the 422 older lines
+  typed         n=422  v53 at 0.66: lost 17 (does nothing on 14; acts on JUMP 2, HOLD_FIRE 1), won 9 | v53 at 0.60: lost 11 (does nothing on 7; acts on JUMP 3, HOLD_FIRE 1), won 9
+  Windows       n=422  v53 at 0.66: lost 18 (does nothing on 15; acts on JUMP 2, HOLD_FIRE 1), won 7 | v53 at 0.60: lost 15 (does nothing on 10; acts on JUMP 3, FRAG 1, HOLD_FIRE 1), won 8
+  Kokoro EN     n=422  v53 at 0.66: lost 19 (does nothing on 15; acts on JUMP 2, HOLD_FIRE 1, OPEN_FIRE 1), won 5 | v53 at 0.60: lost 18 (does nothing on 11; acts on JUMP 3, FRAG 2, HOLD_FIRE 1, OPEN_FIRE 1), won 7
+  Kokoro other  n=422  v53 at 0.66: lost 23 (does nothing on 19; acts on JUMP 2, HOLD_FIRE 1, FLASH 1), won 7 | v53 at 0.60: lost 18 (does nothing on 12; acts on JUMP 3, FRAG 1, HOLD_FIRE 1, FLASH 1), won 10
+  VCTK unseen   n=422  v53 at 0.66: lost 24 (does nothing on 19; acts on JUMP 3, MOVE_TO 1, DEFUSE 1), won 13 | v53 at 0.60: lost 18 (does nothing on 10; acts on JUMP 3, DRONE 1, COVER_ME 1, MOVE_TO 1), won 15

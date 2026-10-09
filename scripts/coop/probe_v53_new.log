@@ -1,0 +1,152 @@
+A second typed probe, on bots v52 and v53 in the C++ chat (coop_cli, family gate), 2026-10-09. The 48 lines and the
+readings wanted for them were written by the developer AFTER seed set v53 and while bot v53 was training, before any
+v53 result: wordings that are not seeds (a line that is one is marked), next to JUMP, the other angle, cease-fire
+wording and reports of being under fire, and a few older orders. Not blind -- the developer wrote the seeds -- and the
+wanted readings are his reading of spec v53. "ok" = the bot acts on a wanted order, or does nothing where NONE is wanted.
+
+hop off   want JUMP
+  NO  v52: RAPPEL (assault) 0.59 | VAULT_WINDOW 0.35 | FALL_BACK 0.04 | assault mass 0.94 | act
+  ok  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act
+jump down from the balcony   want JUMP
+  NO  v52: VAULT_WINDOW (assault) 0.62 | RAPPEL 0.37 | OPEN 0.00 | assault mass 1.00 | act   place: * dir=down
+  ok  v53: JUMP (move) 1.00 | RAPPEL 0.00 | NONE 0.00 | move mass 1.00 | act   place: * dir=down
+drop off the roof   want JUMP
+  NO  v52: RAPPEL (assault) 1.00 | MOVE_TO 0.00 | VAULT_WINDOW 0.00 | assault mass 1.00 | act   place: * roof [from]
+  ok  v53: JUMP (move) 1.00 | RAPPEL 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act   place: * roof [from]
+leap over the table   want JUMP
+  NO  v52: VAULT_WINDOW (assault) 1.00 | RAPPEL 0.00 | FLANK 0.00 | assault mass 1.00 | act   place: * table
+  ok  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act   place: * table
+get over that wall   want JUMP
+  NO  v52: BREACH (assault) 0.35 | TAKE_COVER 0.33 | OPEN 0.19 | assault mass 0.46 | say_again
+  ok  v53: JUMP (move) 1.00 | RAPPEL 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act
+jump the fence   want JUMP
+  NO  v52: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | RAPPEL 0.00 | assault mass 1.00 | act
+  ok  v53: JUMP (move) 1.00 | VAULT_WINDOW 0.00 | RAPPEL 0.00 | move mass 1.00 | act
+hop on the sofa   want JUMP
+  NO  v52: MOVE_TO (move) 0.87 | RAPPEL 0.09 | TAKE_COVER 0.02 | move mass 0.87 | act   place: * sofa
+  ok  v53: JUMP (move) 1.00 | VAULT_WINDOW 0.00 | NONE 0.00 | move mass 1.00 | act   place: * sofa
+climb onto that crate   want JUMP
+  NO  v52: VAULT_WINDOW (assault) 0.79 | MOVE_TO 0.18 | RAPPEL 0.02 | assault mass 0.81 | act
+  ok  v53: JUMP (move) 1.00 | NONE 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act
+climb the ladder   want JUMP
+  NO  v52: RAPPEL (assault) 0.65 | VAULT_WINDOW 0.35 | MOVE_TO 0.00 | assault mass 0.99 | act
+  ok  v53: JUMP (move) 0.67 | RAPPEL 0.20 | VAULT_WINDOW 0.13 | move mass 0.67 | act
+jump down there with me   want JUMP
+  NO  v52: FOLLOW_ME (move) 0.51 | RAPPEL 0.40 | VAULT_WINDOW 0.08 | move mass 0.51 | say_again   place: * dir=down
+  ok  v53: JUMP (move) 1.00 | NONE 0.00 | OPEN_FIRE 0.00 | move mass 1.00 | act   place: * dir=down
+drop in through the hatch   want JUMP
+  NO  v52: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | BREACH 0.00 | assault mass 1.00 | act
+  NO  v53: VAULT_WINDOW (assault) 0.84 | JUMP 0.16 | RAPPEL 0.00 | assault mass 0.84 | act
+go ahead and jump   want JUMP
+  NO  v52: VAULT_WINDOW (assault) 0.52 | MOVE_TO 0.26 | OPEN 0.09 | assault mass 0.63 | act
+  ok  v53: JUMP (move) 1.00 | PLANT 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act
+can you jump down   want JUMP
+  NO  v52: VAULT_WINDOW (assault) 0.67 | RAPPEL 0.32 | NONE 0.01 | assault mass 0.99 | act   place: * dir=down
+  NO  v53: NONE (none) 0.93 | JUMP 0.07 | OPEN_FIRE 0.00 | none mass 0.93 | ignore   place: * dir=down
+jump down and cover me   want JUMP
+  NO  v52: COVER_ME (hold) 0.97 | REVIVE_ME 0.01 | FOLLOW_ME 0.01 | hold mass 0.97 | act   place: * dir=down
+  NO  v53: COVER_ME (hold) 0.50 | JUMP 0.46 | VAULT_WINDOW 0.01 | hold mass 0.50 | say_again   place: * dir=down
+jump through the east window   want VAULT_WINDOW
+  ok  v52: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | FLANK 0.00 | assault mass 1.00 | act   place: * east window
+  ok  v53: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | JUMP 0.00 | assault mass 1.00 | act   place: * east window
+climb in through that window   want VAULT_WINDOW
+  ok  v52: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | FLANK 0.00 | assault mass 1.00 | act   place: * window
+  ok  v53: VAULT_WINDOW (assault) 1.00 | OPEN 0.00 | ENTRY 0.00 | assault mass 1.00 | act   place: * window
+rope down the wall   want RAPPEL
+  ok  v52: RAPPEL (assault) 1.00 | VAULT_WINDOW 0.00 | FLANK 0.00 | assault mass 1.00 | act
+  ok  v53: RAPPEL (assault) 1.00 | JUMP 0.00 | MOVE_TO 0.00 | assault mass 1.00 | act
+go down to the basement   want MOVE_TO
+  ok  v52: MOVE_TO (move) 1.00 | RAPPEL 0.00 | CHECK 0.00 | move mass 1.00 | act   place: * basement dir=down
+  ok  v53: MOVE_TO (move) 1.00 | RAPPEL 0.00 | CHECK 0.00 | move mass 1.00 | act   place: * basement dir=down
+come down the stairs   want FOLLOW_ME/MOVE_TO
+  ok  v52: MOVE_TO (move) 0.95 | VAULT_WINDOW 0.02 | FOLLOW_ME 0.01 | move mass 0.96 | act   place: * stairs dir=down
+  ok  v53: MOVE_TO (move) 0.98 | FOLLOW_ME 0.01 | CHECK 0.00 | move mass 0.98 | act   place: * stairs dir=down
+get down behind the sofa   want TAKE_COVER
+  ok  v52: TAKE_COVER (cover) 1.00 | FALL_BACK 0.00 | CHECK 0.00 | cover mass 1.00 | act   place: * sofa
+  ok  v53: TAKE_COVER (cover) 1.00 | NONE 0.00 | FALL_BACK 0.00 | cover mass 1.00 | act   place: * sofa
+keep your head down   want TAKE_COVER
+  NO  v52: SUPPRESS (fire) 0.75 | TAKE_COVER 0.14 | HOLD_ANGLE 0.08 | fire mass 0.75 | act
+  NO  v53: SUPPRESS (fire) 0.38 | TAKE_COVER 0.25 | HOLD_ANGLE 0.21 | fire mass 0.38 | say_again
+he jumped off the roof   want NONE
+  ok  v52: NONE (none) 1.00 | LOOK_AT 0.00 | TAKE_COVER 0.00 | none mass 1.00 | ignore   place: * roof [them]
+  ok  v53: NONE (none) 1.00 | JUMP 0.00 | OPEN_FIRE 0.00 | none mass 1.00 | ignore   place: * roof [them]
+watch out he's dropping down   want NONE
+  ok  v52: NONE (none) 0.97 | TAKE_COVER 0.01 | HOLD_FIRE 0.01 | none mass 0.97 | ignore   place: * dir=down [them]
+  ok  v53: NONE (none) 1.00 | WAIT 0.00 | CHECK 0.00 | none mass 1.00 | ignore   place: * dir=down [them]
+check your fire you're hitting me   want HOLD_FIRE
+  NO  v52: CHECK (check) 0.47 | HOLD_FIRE 0.38 | OPEN_FIRE 0.05 | check mass 0.47 | say_again
+  ok  v53: HOLD_FIRE (ceasefire) 1.00 | OPEN_FIRE 0.00 | WAIT 0.00 | ceasefire mass 1.00 | act
+check fire check fire check fire   want HOLD_FIRE
+  NO  v52: CHECK (check) 0.66 | OPEN_FIRE 0.16 | HOLD_FIRE 0.08 | check mass 0.66 | act
+  ok  v53: HOLD_FIRE (ceasefire) 1.00 | WAIT 0.00 | OPEN_FIRE 0.00 | ceasefire mass 1.00 | act
+cease firing   want HOLD_FIRE
+  ok  v52: HOLD_FIRE (ceasefire) 1.00 | OPEN_FIRE 0.00 | NONE 0.00 | ceasefire mass 1.00 | act
+  ok  v53: HOLD_FIRE (ceasefire) 1.00 | OPEN_FIRE 0.00 | SUPPRESS 0.00 | ceasefire mass 1.00 | act
+check the fire escape   want CHECK
+  ok  v52: CHECK (check) 1.00 | HOLD_POSITION 0.00 | TAKE_COVER 0.00 | check mass 1.00 | act
+  NO  v53: HOLD_FIRE (ceasefire) 1.00 | WAIT 0.00 | SUPPRESS 0.00 | ceasefire mass 1.00 | act
+we're getting shot at   want NONE
+  ok  v52: HOLD_FIRE (ceasefire) 0.49 | NONE 0.39 | TAKE_COVER 0.06 | ceasefire mass 0.49 | say_again
+  ok  v53: NONE (none) 1.00 | OPEN_FIRE 0.00 | TAKE_COVER 0.00 | none mass 1.00 | ignore
+i'm pinned behind the sofa   want NONE
+  ok  v52: REVIVE_ME (revive) 0.38 | TAKE_COVER 0.30 | COVER_ME 0.16 | revive mass 0.38 | say_again   place: * sofa [mine]
+  ok  v53: NONE (none) 1.00 | TAKE_COVER 0.00 | OPEN_FIRE 0.00 | none mass 1.00 | ignore   place: * sofa [mine]
+taking heavy fire   want NONE
+  NO  v52: HOLD_FIRE (ceasefire) 0.69 | SUPPRESS 0.26 | OPEN_FIRE 0.01 | ceasefire mass 0.69 | act
+  ok  v53: NONE (none) 1.00 | HOLD_FIRE 0.00 | OPEN_FIRE 0.00 | none mass 1.00 | ignore
+you take another angle   want HOLD_OTHER_ANGLE
+  ok  v52: HOLD_OTHER_ANGLE (hold) 0.63 | RAPPEL 0.13 | TAKE_COVER 0.07 | hold mass 0.64 | act | slots: other
+  ok  v53: HOLD_OTHER_ANGLE (hold) 1.00 | HOLD_ANGLE 0.00 | COVER_ME 0.00 | hold mass 1.00 | act | slots: other
+get the opposite angle   want HOLD_OTHER_ANGLE
+  ok  v52: HOLD_OTHER_ANGLE (hold) 1.00 | HOLD_ANGLE 0.00 | OPEN_FIRE 0.00 | hold mass 1.00 | act | slots: other
+  ok  v53: HOLD_OTHER_ANGLE (hold) 1.00 | HOLD_ANGLE 0.00 | COVER_ME 0.00 | hold mass 1.00 | act | slots: other
+watch the opposite window   want HOLD_OTHER_ANGLE
+  ok  v52: HOLD_OTHER_ANGLE (hold) 0.94 | HOLD_ANGLE 0.05 | HOLD_POSITION 0.00 | hold mass 1.00 | act | slots: other   place: * window [other]
+  ok  v53: HOLD_OTHER_ANGLE (hold) 1.00 | HOLD_ANGLE 0.00 | COVER_ME 0.00 | hold mass 1.00 | act | slots: other   place: * window [other]
+i'll watch the other door you stay on this one   want HOLD_ANGLE
+  NO  v52: HOLD_OTHER_ANGLE (hold) 1.00 | HOLD_ANGLE 0.00 | COVER_ME 0.00 | hold mass 1.00 | act | slots: other   place: * door [mine] [other]
+  NO  v53: HOLD_OTHER_ANGLE (hold) 0.64 | HOLD_ANGLE 0.36 | COVER_ME 0.00 | hold mass 1.00 | act | slots: other   place: * door [mine] [other]
+hold your angle i'm switching to the other one   want HOLD_ANGLE
+  NO  v52: HOLD_OTHER_ANGLE (hold) 0.99 | HOLD_ANGLE 0.01 | HOLD_POSITION 0.00 | hold mass 1.00 | act | slots: other
+  ok  v53: HOLD_ANGLE (hold) 1.00 | HOLD_POSITION 0.00 | HOLD_OTHER_ANGLE 0.00 | hold mass 1.00 | act | slots: other
+i need a hand over here   want HELP
+  ok  v52: HELP (help) 1.00 | REVIVE_ME 0.00 | COVER_ME 0.00 | help mass 1.00 | act
+  ok  v53: HELP (help) 1.00 | REVIVE_ME 0.00 | GO_NOW 0.00 | help mass 1.00 | act
+check the corner   want CHECK
+  ok  v52: CHECK (check) 1.00 | DEFUSE 0.00 | TAKE_COVER 0.00 | check mass 1.00 | act
+  ok  v53: CHECK (check) 1.00 | DRONE 0.00 | ENTRY 0.00 | check mass 1.00 | act
+suppress the door   want SUPPRESS
+  ok  v52: SUPPRESS (fire) 1.00 | SMOKE 0.00 | DRONE 0.00 | fire mass 1.00 | act   place: * door
+  ok  v53: SUPPRESS (fire) 1.00 | HOLD_FIRE 0.00 | SMOKE 0.00 | fire mass 1.00 | act   place: * door
+come with me   want FOLLOW_ME   [a seed of v53]
+  ok  v52: FOLLOW_ME (move) 1.00 | FLASH 0.00 | REVIVE_ME 0.00 | move mass 1.00 | act
+  ok  v53: FOLLOW_ME (move) 1.00 | REVIVE_ME 0.00 | ENTRY 0.00 | move mass 1.00 | act
+toss a flash in there   want FLASH
+  ok  v52: FLASH (utility) 1.00 | ENTRY 0.00 | DRONE 0.00 | utility mass 1.00 | act
+  ok  v53: FLASH (utility) 1.00 | DRONE 0.00 | SMOKE 0.00 | utility mass 1.00 | act
+blow that wall   want BREACH
+  ok  v52: BREACH (assault) 1.00 | ENTRY 0.00 | VAULT_WINDOW 0.00 | assault mass 1.00 | act
+  ok  v53: BREACH (assault) 1.00 | OPEN 0.00 | ENTRY 0.00 | assault mass 1.00 | act
+stay right here   want HOLD_POSITION
+  ok  v52: HOLD_POSITION (hold) 0.99 | FOLLOW_ME 0.00 | GO_NOW 0.00 | hold mass 0.99 | act
+  ok  v53: HOLD_POSITION (hold) 1.00 | FOLLOW_ME 0.00 | PLANT 0.00 | hold mass 1.00 | act
+pull back   want FALL_BACK   [a seed of v53]
+  ok  v52: FALL_BACK (retreat) 1.00 | WAIT 0.00 | REVIVE_ME 0.00 | retreat mass 1.00 | act
+  ok  v53: FALL_BACK (retreat) 1.00 | WAIT 0.00 | REVIVE_ME 0.00 | retreat mass 1.00 | act
+pick me up   want REVIVE_ME   [a seed of v53]
+  ok  v52: REVIVE_ME (revive) 1.00 | FRAG 0.00 | HELP 0.00 | revive mass 1.00 | act
+  ok  v53: REVIVE_ME (revive) 1.00 | FOLLOW_ME 0.00 | ATTACK 0.00 | revive mass 1.00 | act
+sneak up to the window   want MOVE_TO
+  ok  v52: MOVE_TO (move) 1.00 | RAPPEL 0.00 | VAULT_WINDOW 0.00 | move mass 1.00 | act   place: * window
+  ok  v53: MOVE_TO (move) 0.99 | RAPPEL 0.01 | JUMP 0.00 | move mass 0.99 | act   place: * window
+walk around   want FLANK/MOVE_TO/NONE
+  ok  v52: FLANK (move) 0.85 | TAKE_COVER 0.04 | LOOK_AT 0.03 | move mass 0.86 | act
+  ok  v53: FLANK (move) 0.99 | FOLLOW_ME 0.00 | RAPPEL 0.00 | move mass 1.00 | act
+turn around   want LOOK_AT   [a seed of v53]
+  ok  v52: LOOK_AT (look) 1.00 | LOOK_AT_ME 0.00 | NONE 0.00 | look mass 1.00 | act
+  ok  v53: LOOK_AT (look) 1.00 | NONE 0.00 | LOOK_AT_ME 0.00 | look mass 1.00 | act
+do a backflip   want JUMP/NONE
+  ok  v52: FRAG (utility) 0.21 | NONE 0.16 | LOOK_AT 0.14 | utility mass 0.21 | say_again
+  ok  v53: NONE (none) 0.65 | JUMP 0.26 | TAKE_COVER 0.02 | none mass 0.65 | say_again
+
+as wanted: v52 28/48, v53 42/48
