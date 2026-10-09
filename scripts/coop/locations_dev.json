@@ -1,5 +1,5 @@
 {
-"_note": "Developer regression lines for locations.py, written by a design-critique agent before any v3 test line existed (254 transcripts with the primary targets a teammate would accept; FLAG / ROLE: acceptable if the primary carries a flag / a role). Tuning material for the rules, never a test set. Three expectations were extended when the zones floor_2 / up / down were added to the vocabulary.",
+"_note": "Developer regression lines for locations.py, written by a design-critique agent before any v3 test line existed (254 transcripts with the primary targets a teammate would accept; FLAG / ROLE: acceptable if the primary carries a flag / a role). Tuning material for the rules, never a test set. Three expectations were extended when the zones floor_2 / up / down were added to the vocabulary. Rule set v4 (directions, spec v5): 178 cases of the batch 'v4' were added by the developer before any v5 test line existed -- direction words in and out of a direction sense; a case may fix the primary's \"direction\" (null: none), and an accept of null also covers a target that is only a direction. 'open the left window' is window + left now, no longer an unknown modifier. 50 cases of the batch 'v4-review' are examples from the three critics of rule set v4 (rules/critic_v4), with the records the rules give after their critique.",
 "cases": [
 {
 "batch": "adversarial",
@@ -496,7 +496,8 @@ null,
 null,
 "floor_1"
 ]
-]
+],
+"direction": "up"
 },
 {
 "batch": "adversarial",
@@ -1088,7 +1089,8 @@ null,
 null,
 "down"
 ]
-]
+],
+"direction": null
 },
 {
 "batch": "adversarial",
@@ -1312,7 +1314,8 @@ null
 "text": "take two steps back",
 "accept": [
 null
-]
+],
+"direction": "back"
 },
 {
 "batch": "adversarial",
@@ -1440,9 +1443,14 @@ null,
 "cat": "unknown-mod",
 "text": "open the left window",
 "accept": [
+[
+"window",
 null,
-"FLAG"
+null
 ]
+],
+"direction": "left",
+"flag": null
 },
 {
 "batch": "adversarial",
@@ -2603,7 +2611,8 @@ null
 "text": "take a few steps to the left",
 "accept": [
 null
-]
+],
+"direction": "left"
 },
 {
 "batch": "ordinary",
@@ -2853,7 +2862,8 @@ null,
 null,
 "top_floor"
 ]
-]
+],
+"direction": null
 },
 {
 "batch": "ordinary",
@@ -3053,6 +3063,2547 @@ null
 "top_floor"
 ]
 ]
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go right",
+"accept": [
+null
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "move forward",
+"accept": [
+null
+],
+"direction": "forward",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "push forward",
+"accept": [
+null
+],
+"direction": "forward",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go back",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go up",
+"accept": [
+null
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go down",
+"accept": [
+null
+],
+"direction": "down",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go down by stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": "down",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go up by stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go down the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": "down",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "up the blue stairs",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "take the stairs down",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": "down",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "take the red stairs up",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go down to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"direction": "down",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "head up to the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "get up on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "push up blue",
+"accept": [
+[
+"stairs",
+"blue",
+null
+]
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "move up the white stairs",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go back up the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go back down",
+"accept": [
+null
+],
+"direction": "down",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "look up",
+"accept": [
+null
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "look down",
+"accept": [
+null
+],
+"direction": "down",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "aim up",
+"accept": [
+null
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "drop down",
+"accept": [
+null
+],
+"direction": "down",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "jump down",
+"accept": [
+null
+],
+"direction": "down",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "check above",
+"accept": [
+null
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "watch below",
+"accept": [
+null
+],
+"direction": "down",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "enemy above",
+"accept": [
+null
+],
+"direction": "up",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "they're below us",
+"accept": [
+null
+],
+"direction": "down",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "shots from above",
+"accept": [
+null
+],
+"direction": "up",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "he's up there",
+"accept": [
+null
+],
+"direction": "up",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "get up there",
+"accept": [
+null
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "someone's up top",
+"accept": [
+null
+],
+"direction": "up",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "the window above",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "watch the stairs below",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": "down",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "hold the right door",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "the door on the left",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "the window on your right",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "the left hand door",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "the right side window",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "breach the north door on the left",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go left to the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go left through the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "turn right at the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "look up at the north window",
+"accept": [
+[
+"window",
+"north",
+null
+]
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "flank left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "flank right and hold the north door",
+"accept": [
+null
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go left, then smoke the main door",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "contact left",
+"accept": [
+null
+],
+"direction": "left",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "contact right",
+"accept": [
+null
+],
+"direction": "right",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "two on the left",
+"accept": [
+null
+],
+"direction": "left",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "one on your right",
+"accept": [
+null
+],
+"direction": "right",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "enemy on the right side",
+"accept": [
+null
+],
+"direction": "right",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "left side clear",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "watch your left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "check the right",
+"accept": [
+null
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "on your left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "to the right",
+"accept": [
+null
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "take a left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "hang a right",
+"accept": [
+null
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "hard left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "i'll go left, you go right",
+"accept": [
+null
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "I'll go left, you take the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "don't go left",
+"accept": [
+null
+],
+"direction": "left",
+"role": "not"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "smoke left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "flash the right side",
+"accept": [
+null
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "frag left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "open fire on the left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "attack from the right",
+"accept": [
+null
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "shoot left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "straight ahead",
+"accept": [
+null
+],
+"direction": "forward",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go straight",
+"accept": [
+null
+],
+"direction": "forward",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "keep going forward",
+"accept": [
+null
+],
+"direction": "forward",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "forward!",
+"accept": [
+null
+],
+"direction": "forward",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "enemy up ahead",
+"accept": [
+null
+],
+"direction": "forward",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "contact ahead",
+"accept": [
+null
+],
+"direction": "forward",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "in front of you",
+"accept": [
+null
+],
+"direction": "forward",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "he's right in front of you",
+"accept": [
+null
+],
+"direction": "forward",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "push to the front",
+"accept": [
+null
+],
+"direction": "forward",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "twelve o'clock",
+"accept": [
+null
+],
+"direction": "forward",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "contact twelve o'clock",
+"accept": [
+null
+],
+"direction": "forward",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "three o'clock",
+"accept": [
+null
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "enemy at nine o'clock",
+"accept": [
+null
+],
+"direction": "left",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "six o'clock",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "check your six",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "on your six",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "watch my six",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "behind you",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "he's behind you",
+"accept": [
+null
+],
+"direction": "back",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "check behind you",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "shots from behind",
+"accept": [
+null
+],
+"direction": "back",
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "watch behind us",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "look back",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "step back",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "move back",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go backwards",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "to the rear",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "watch our rear",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "at the back",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "go around the back",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "cover from back there",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "take two steps left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "fall back",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "back up",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "back off",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "pull back",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "get back",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "come back",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "come back here",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "hold up",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "move up",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "push up",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "get down",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "stay down",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "man down",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "enemy down",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "one down",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "two left",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "one enemy left",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "only one left",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "no smoke left",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "i have a flash left",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "how many are left",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "he left the building",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "they left through the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"direction": null,
+"role": "them"
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "right now",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "do it right now",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "go right now",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "all right",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "you're right",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "that's right",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "is that right",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "right behind you",
+"accept": [
+null
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "stay right there",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "right, hold the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "that's the right spot",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "looking right at you",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "go ahead",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "go ahead and breach the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "set up on the roof",
+"accept": [
+[
+null,
+null,
+"roof"
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "stack up on the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "hold up at the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "pick up the bomb",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "blow up the east door",
+"accept": [
+[
+"door",
+"east",
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "shut down the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "heads up",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "hurry up",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "listen up",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "team up",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "go up to him",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "move up to the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "go back to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "go back to the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "fall back to the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "the back door",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "check the back door",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "the rear window",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "the stairs at the back",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "stay behind the sofa",
+"accept": [
+[
+"sofa",
+null,
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "hide behind the table",
+"accept": [
+[
+"table",
+null,
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "stay behind",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "above the east window",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "in front of the main door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "go down the hall",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "put the bomb down by the white stairs",
+"accept": [
+[
+"stairs",
+"white",
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "get your head down behind the table",
+"accept": [
+[
+"table",
+null,
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "upstairs",
+"accept": [
+[
+null,
+null,
+"up"
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "one floor up",
+"accept": [
+[
+null,
+null,
+"up"
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "shoot back",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "don't shoot back",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "look forward to it",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "there's two of them",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "i need two more",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "give me five",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction-not",
+"text": "six guys rushing",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "nothing's happening up there, get down to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"direction": "down",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "drop down from the roof",
+"accept": [
+null
+],
+"direction": "down",
+"role": null
+},
+{
+"batch": "v4",
+"cat": "direction",
+"text": "I got left door, you hold the right one",
+"accept": [
+null
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "go up the basement stairs",
+"accept": [
+[
+"stairs",
+null,
+"basement"
+]
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "go up the back stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "go up the left stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "take the stairs in the basement down",
+"accept": [
+[
+"stairs",
+null,
+"basement"
+]
+],
+"direction": "down",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "Go up the stairs on your right",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "take the right stairs down",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "on your right by the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "take a right at the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "throw a flash left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "two guys left side",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "take a look left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "he went up there",
+"accept": [
+null
+],
+"direction": "up",
+"role": "them"
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "go all the way up",
+"accept": [
+null
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "keep your eyes left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "they're on the stairs and the left",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": null,
+"role": "them"
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "watch the left and right windows",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "up the red or blue stairs",
+"accept": [
+[
+"stairs",
+"red",
+null
+]
+],
+"direction": "up",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "back up to the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "get down by the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "go right ahead",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "watch the door behind you",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"direction": "back",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "watch the door in front of you",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"direction": "forward",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "North door's barricaded, go left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "left side is clear, push the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "go left, no, right",
+"accept": [
+null
+],
+"direction": "right",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "enemy at the north door behind you",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"direction": "back",
+"role": "them"
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "go left hold the north door",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "Go left, hold the north door.",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "on your left, north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "come from the left",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "breach on my three",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "left door and window upstairs",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "wait at the back of the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "clean up the basement",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "He went left.",
+"accept": [
+null
+],
+"direction": "left",
+"role": "them"
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "Left!",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "Contact, left!",
+"accept": [
+null
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "North door, on the left.",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "Rappel down to the east window.",
+"accept": [
+[
+"window",
+"east",
+null
+]
+],
+"direction": "down",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "Behind you! Get to the stairs!",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "One down in the basement.",
+"accept": [
+[
+null,
+null,
+"basement"
+]
+],
+"direction": null,
+"role": "them"
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "Back me up here.",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "I got smoke left.",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "Check the back room.",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "Someone left the north door open.",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "It's five to six.",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "He's below half health.",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4-review",
+"cat": "direction-not",
+"text": "Go right ahead and breach the north door.",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"direction": null,
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "Smoke the left side of the main door.",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"direction": "left",
+"role": null
+},
+{
+"batch": "v4-review",
+"cat": "direction",
+"text": "Stack up behind me at the north door.",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"direction": "back",
+"role": null
 }
 ]
 }

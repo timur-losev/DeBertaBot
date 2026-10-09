@@ -28,10 +28,7 @@ Rule sets (the word lists are in locations.json "words"):
       names are the ones rule set v3 finds, with these exceptions: a direction next to an object replaces the
       unknown_modifier flag ("the left window", "the door on the left", "the door in front of you"), and a
       place reported clear gets the role "status" also when the line's other target is a direction ("north
-      door is clear, go left"). The primary may now be a direction. rules/v4 holds the frozen bytes; this file
-      differs from them by one condition in step 6d (the frozen rules raised IndexError when a line asked for
-      "the other one" and reported a direction clear: "not the north door, the other one, left is clear";
-      found by the C++ port's generated lines, no study line is affected).
+      door is clear, go left"). The primary may now be a direction.
 
   mentions    left to right, the longest vocabulary phrase at each token: object, qualifier, named
               place (object + qualifier in one phrase), zone, or an "ignore" phrase ("off the table").
@@ -136,9 +133,8 @@ Rule sets (the word lists are in locations.json "words"):
                 left, right   after a dir_lead_lateral word ("go left", "flank right", "contact left",
                               "he went left"); after a dir_prep word; after an `other` word ("the other
                               left"); before a dir_side word ("left side", "the left hallway"); after a
-                              dir_det word that opens (or stands right after a place or another
-                              direction), follows a dir_prep or lateral lead word, or where the phrase
-                              ends ("on your left", "watch the right"); "take a left";
+                              dir_det word that opens, follows a dir_prep or lateral lead word, or where
+                              the phrase ends ("on your left", "watch the right"); "take a left";
                               before "of" ("left of the stairs"); before a status word when it opens
                               ("left clear"); a "left" that is a phrase of its own ("Left!") -- never a
                               bare "right" ("Right, hold the north door"), except in a correction ("not
@@ -1104,8 +1100,8 @@ def find(text, vocab=VOCAB):
     free = [t for t in lone if "joined" not in t and t["role"] is None]
     cand = [t for t in targets if t["role"] is None and status_follows(t)] + [t for t in free if dir_status(t)]
     acts_on = [t for t in free + [u for u in targets if u["role"] is None] if not any(t is c for c in cand)]
-    for c in cand:              # o["first"] >= n: the "other one" the line asks for (5c) is a target to act on
-        if any(o["first"] < c["first"] or o["first"] >= n or brk(c["last"], o["first"]) for o in acts_on):
+    for c in cand:
+        if any(o["first"] < c["first"] or brk(c["last"], o["first"]) for o in acts_on):
             c["role"] = "status"
     targets = sorted(targets + [t for t in lone if "joined" not in t], key=lambda t: t["first"])
 

@@ -22,16 +22,7 @@ Rule sets (the word lists are in locations.json "words"):
   v3  this file, after the review of v2: roles no longer fire on ordinary orders, "on second" is a
       floor only where it ends its phrase, zones and loose names do not attach across a clause, the
       unknown_modifier flag looks after the object too. Written after the first v3 lines had been
-      seen; its blind number is on the second batch (blind/v3b, eval_v3b.py). Archived as rules/v3.
-  v4  this file: rule set v3 plus directions (spec_v5.json), frozen before any v5 test line existed, after three
-      critics had read the first draft (rules/critic_v4: their lines are tuning material). The places a line
-      names are the ones rule set v3 finds, with these exceptions: a direction next to an object replaces the
-      unknown_modifier flag ("the left window", "the door on the left", "the door in front of you"), and a
-      place reported clear gets the role "status" also when the line's other target is a direction ("north
-      door is clear, go left"). The primary may now be a direction. rules/v4 holds the frozen bytes; this file
-      differs from them by one condition in step 6d (the frozen rules raised IndexError when a line asked for
-      "the other one" and reported a direction clear: "not the north door, the other one, left is clear";
-      found by the C++ port's generated lines, no study line is affected).
+      seen; its blind number is on the second batch (blind/v3b, eval_v3b.py).
 
   mentions    left to right, the longest vocabulary phrase at each token: object, qualifier, named
               place (object + qualifier in one phrase), zone, or an "ignore" phrase ("off the table").
@@ -48,10 +39,8 @@ Rule sets (the word lists are in locations.json "words"):
               "first door"); exactly one word the vocabulary does not know stands between a determiner
               and an unqualified object ("the spiral staircase"; not a preposition, a number or an
               order verb: "a flash through window" is not flagged); or a post_prep word, an optional
-              determiner and a post_modifier word follow an unqualified object ("the stairs at the
-              back"). Since rule set v4 "left" / "right" in these places is the object's direction,
-              not a flag ("the left window", "the left hand door", "the door on the left"; of "the
-              left and right windows" the first one named).
+              determiner and a post_modifier word follow an unqualified object ("the door on the
+              left").
   after       a qualifier still free attaches to the object before it when only after_fill words
               (at most 4, zone phrases skipped) stand between, without punctuation: "door on the north
               side". Across a comma only when a tail word follows it ("the stairs, blue ones"). A
@@ -105,97 +94,6 @@ Rule sets (the word lists are in locations.json "words"):
               line gives no destination, and the role says why ("get off the roof": the place to
               leave).
 
-  direction   (rule set v4) up / down / left / right / forward / back: the fourth field of a target, the
-              direction the line gives the action. The six ids are fixed; their words are in locations.json
-              "directions", and a word counts only in one of the contexts below (the dir_* word lists name
-              the words) -- everywhere else it is an ordinary word. Terms: "prev" is the word right before
-              in the same phrase (not a word of a place); the "lead" is prev, unless a dir_det word stands
-              before it ("get your head down": a noun; dir_lead_noun words still lead: "all the way
-              left"); a word "opens" when it starts the line or follows punctuation; it "stops" when the
-              line, punctuation or a dir_end_next word follows; "ends its phrase" is the looser test of
-              the lone qualifiers (a lone_follow word may follow).
-                up, down      next to stairs: right before them ("up the blue stairs", "up blue", "up the
-                              back stairs"; through a dir_stairs_prep word only when the word opens or
-                              follows a climbing lead: "go down by stairs", not "put it down by the
-                              stairs") or right after them ("take the stairs down", "blue stairs going
-                              up"; not after a dir_split_verb: "lock the stairs down"). Before a floor
-                              through a dir_zone_prep word: always with "to" / "into" / "onto" ("down to
-                              the basement"), else only when the word opens, follows a climbing lead, or
-                              is "up" after a dir_there_lead word that is no pronoun ("he's up on the
-                              roof"; "one down in the basement" is a kill). Before "there" / "here" /
-                              "top" / a ladder, hatch, ramp or rope when the word opens or follows a
-                              dir_there_lead word ("get up there", "climb up the ladder"). At the end of
-                              its phrase after a dir_lead_vertical word ("go up", "look down", "go back
-                              up", "he went up there"). Never after a dir_vertical_block word ("lock
-                              down", "set up", "hold up") or a split phrasal verb ("back me up here",
-                              "set it up there"); "back up to <floor>" is a retreat unless a vertical
-                              lead stands before "back"; the bare "up" never before a dir_up_block word
-                              ("go up to him"). "above" / "below" unless a place or an amount follows
-                              ("from above", "below us"; not "above the east window", "below half");
-                              "upwards", "downwards" always.
-                left, right   after a dir_lead_lateral word ("go left", "flank right", "contact left",
-                              "he went left"); after a dir_prep word; after an `other` word ("the other
-                              left"); before a dir_side word ("left side", "the left hallway"); after a
-                              dir_det word that opens (or stands right after a place or another
-                              direction), follows a dir_prep or lateral lead word, or where the phrase
-                              ends ("on your left", "watch the right"); "take a left";
-                              before "of" ("left of the stairs"); before a status word when it opens
-                              ("left clear"); a "left" that is a phrase of its own ("Left!") -- never a
-                              bare "right" ("Right, hold the north door"), except in a correction ("not
-                              left, right!", "go left, no, right": the earlier one gets the role "not")
-                              or after a count that opens the line ("two right").
-                              Not "right" before a dir_right_noun word ("the right spot"), nor -- without
-                              a determiner -- before a dir_right_block word ("right now", "right behind
-                              you") or before "at" / "on" unless a dir_turn word leads and no pronoun
-                              follows ("looking right at you", "go right at them"; "turn right at the
-                              stairs" is a direction). Not "left" after a counted thing or a resource
-                              someone has ("one enemy left", "no smoke left", "i got smoke left"; "two
-                              steps left" and "throw a flash left" are directions), nor as a verb before
-                              its object ("someone left the door open").
-                forward       "forward" after a dir_lead_forward word or when it opens; "go straight"
-                              (the phrase stops there); "ahead" after a dir_lead_ahead word or before
-                              "of" + a person ("straight ahead", "up ahead", "ahead of us"; not "go
-                              ahead", "go right ahead"); "in front", "up front", "to the front", unless a
-                              place or "of the <thing>" follows ("in front of you"; not "in front of the
-                              main door", "in front of the car", "the front room").
-                back          "back" after a dir_lead_back word and not before a dir_back_block word
-                              ("go back", "step back"; not "go back to the basement", "fall back", "back
-                              up"); "at the back", "watch my back", "out back" where the phrase ends;
-                              "back there"; never before a place ("the back door", "at the back of the
-                              stairs"). "behind" before a dir_person word, or as the end of its phrase
-                              when it opens or follows a dir_behind_lead word ("behind you", "from
-                              behind", "Behind!"; not "behind the sofa", "stay behind", "we're behind").
-                              "to the rear", "the rear" where the phrase ends; "backwards".
-                clock         an hour before "o'clock" ("three o'clock" -> right, "nine" -> left, "twelve"
-                              -> forward, "six" -> back: the "clock" lists); "your six", "check six", "one
-                              at twelve"; another hour after a possessive only as "check your nine",
-                              "contact on my three" ("breach on my three" is a countdown).
-              Whose direction it is. It is the object's when written in its noun phrase or right after
-              it: up / down next to stairs or before a floor; "above" / "below" / "behind you" / "in
-              front (of you)" right after the place, also through "is" / "are" ("the window's above
-              you"); left / right as in "the left window", "the door on the left", "the stairs are on
-              your right". An object keeps the first direction it gets; the side that tells which object
-              it is comes first ("go up the stairs on the left" = stairs + left). Any other direction is
-              a target of its own with no object, qualifier or zone. It gets its role by the rules of the
-              places ("i'll go left, you go right": left is mine; "they're on the stairs and the left":
-              both theirs), never the role "from". Then, in this order:
-                callout       a verbless direction that ends its sentence, with an order that names a
-                              place after it, is a "status": "Behind you! Get to the stairs!"
-                on the way    it joins the next place with the same role and no direction when only
-                              prepositions, determiners, its own "side" / "me" and other places stand
-                              between, without punctuation ("go left to the north door", "look up at the
-                              east window", "come up from the basement to the first floor"); across one
-                              comma only as a bare pointer ("on your right, the north door").
-                afterthought  a direction that is a comma item of its own right after a place is that
-                              place's ("north door, on the left"; "he's on the stairs, left side").
-                status        a place or a direction reported clear ("left side is clear", "north door's
-                              barricaded") gets the role "status" when the line has another target to
-                              act on, before it or after punctuation.
-              A direction that joined nothing stays a target: "flank left and hold the north door" = left
-              (primary), then the door.
-  primary     the first target without a role, in line order -- a place or a direction; if every target
-              has a role, the first target.
-
 normalized(text, "strip") is the line with attached qualifiers removed ("hold the north door" ->
 "hold the door"), for measuring whether the classifier does better on it (eval_v3.py). Lone
 qualifiers and zones are left alone: replacing them changed the meaning of orders ("push main" ->
@@ -215,8 +113,7 @@ ZONE_AFTER_MAX = 3
 GOVERN_MAX = 4
 MAX_PHRASE_TOKENS = 4
 MAX_TOKENS = 128
-DIRECTIONS = ("up", "down", "left", "right", "forward", "back")
-SECTIONS = ("version", "objects", "qualifiers", "named", "zones", "directions", "ignore", "words")
+SECTIONS = ("version", "objects", "qualifiers", "named", "zones", "ignore", "words")
 WORD_LISTS = ("before_fill", "after_fill", "tail", "zone_after_fill", "lone_follow",
               "lone_block", "lone_not_after", "unknown_modifier", "role_not", "role_from", "role_mine",
               "role_them", "number", "number_next", "status_next", "role_stop", "report_verb", "other",
@@ -224,15 +121,7 @@ WORD_LISTS = ("before_fill", "after_fill", "tail", "zone_after_fill", "lone_foll
               "role_them_soft", "soft_fill", "soft_lead", "number_fill", "motion_past", "role_from_of", "of_lead", "be", "not_ing", "role_from_after", "from_lead", "from_to", "ask", "number_lead",
               "status_not_next", "not_exempt", "not_unless_to", "govern", "aux", "order_verb", "from_particle",
               "filler", "anaphor", "let", "let_me", "negator", "fire", "no_words",
-              "preposition", "post_prep", "post_modifier",
-             "dir_adjective", "dir_adjective_tail", "dir_lead_lateral", "dir_prep", "dir_det", "dir_article",
-              "dir_side", "dir_right_block", "dir_count", "dir_unit", "dir_always", "dir_relation",
-              "dir_lead_vertical", "dir_vertical_block", "dir_up_block", "dir_stairs_prep", "dir_stairs_link",
-              "dir_zone_prep", "dir_place_next", "dir_lead_forward", "dir_lead_ahead", "dir_front_lead",
-              "dir_lead_back", "dir_back_block", "dir_back_next", "dir_back_prep", "dir_person", "dir_behind_lead",
-              "dir_end_next", "dir_six_lead", "dir_six_verb", "dir_lead_climb", "dir_there_lead", "dir_right_soft",
-              "dir_turn", "dir_split_object", "dir_split_verb", "dir_resource", "dir_have", "dir_amount",
-              "dir_right_noun", "dir_lead_noun", "dir_throw", "dir_correction", "dir_straight_not", "dir_we")
+              "preposition", "post_prep", "post_modifier")
 
 
 def _is_token_byte(c):
@@ -328,39 +217,6 @@ def validate(v):
             claim(w, f"zone {z.get('id')} (words_end)")
     for p in v["ignore"]:
         claim(p, "ignore")
-    seen = {}
-    if not isinstance(v["directions"], list) or any(not isinstance(d, dict) for d in v["directions"]):
-        errs.append('"directions" must be a list of {id, words, clock}')
-    else:
-        ids = [d.get("id") for d in v["directions"]]
-        if sorted(map(str, ids)) != sorted(DIRECTIONS):     # the rules name the six
-            errs.append(f"directions must be exactly {', '.join(DIRECTIONS)}: {ids}")
-        fillers = v["words"].get("filler", []) if isinstance(v["words"], dict) else []
-        for d in v["directions"]:
-            for key in ("words", "clock"):
-                if not isinstance(d.get(key), list):
-                    errs.append(f"direction {d.get('id')!r} needs {key!r} (a list; \"clock\" may be empty)")
-                    continue
-                for w in d[key]:
-                    if not isinstance(w, str) or not _phrase_ok(w) or " " in w:
-                        errs.append(f"direction {d.get('id')!r}: {w!r} must be one lowercase ASCII token")
-                    elif (key, w) in seen:
-                        errs.append(f"direction word {w!r} is in both {seen[key, w]} and {d.get('id')}")
-                    elif key == "words" and w in owner:
-                        errs.append(f"direction word {w!r} is also the phrase of {owner[w]}")
-                    elif w in fillers:
-                        errs.append(f"direction word {w!r} is a filler word: it would never be read")
-                    else:
-                        seen[key, w] = d.get("id")
-            if d.get("words") == []:
-                errs.append(f"direction {d.get('id')!r} has no words")
-        if isinstance(v["words"], dict):
-            for w in v["words"].get("dir_adjective", []):
-                if ("words", w) not in seen:
-                    errs.append(f"dir_adjective word {w!r} is not a direction word")
-    for o in v["objects"]:
-        if not isinstance(o.get("vertical", False), bool):
-            errs.append(f"object {o.get('id')!r}: \"vertical\" must be true or false")
     for k in WORD_LISTS:
         if k not in v["words"]:
             errs.append(f"missing word list {k!r}")
@@ -406,9 +262,6 @@ def load_vocab(path=None):
     return {"phrases": phrases, "max_len": max(map(len, phrases)),
             "allowed": {o["id"]: set(o["qualifiers"]) for o in v["objects"]},
             "lone": {q["id"]: q["lone"] for q in v["qualifiers"]},
-            "dirs": {w: d["id"] for d in v["directions"] for w in d["words"]},
-            "clock": {w: d["id"] for d in v["directions"] for w in d["clock"]},
-            "vertical": {o["id"] for o in v["objects"] if o.get("vertical")},
             "w": {k: set(ws) for k, ws in v["words"].items()}, "version": v["version"]}
 
 
@@ -416,7 +269,7 @@ VOCAB = load_vocab()
 
 
 def _target(obj, qual, first, last, source, **more):
-    t = {"object": obj, "qualifier": qual, "zone": None, "direction": None, "role": None, "flag": None, "inferred": False,
+    t = {"object": obj, "qualifier": qual, "zone": None, "role": None, "flag": None, "inferred": False,
          "first": first, "last": last, "obj": source, "cut": []}
     t.update(more)
     return t
@@ -424,7 +277,7 @@ def _target(obj, qual, first, last, source, **more):
 
 def find(text, vocab=VOCAB):
     """-> {"targets": [...in line order...], "primary": index or -1, "target": the primary's
-    {object, qualifier, zone, direction, role, flag} or None}. Token positions: "first" / "last"."""
+    {object, qualifier, zone, role, flag} or None}. Token positions: "first" / "last"."""
     W = vocab["w"]
     toks, carry = [], 0
     for w, a, b, br in tokenize(text):
@@ -511,34 +364,21 @@ def find(text, vocab=VOCAB):
                     free[k2] = False
                     t["flag"], t["first"] = "unknown_modifier", q1["first"]
     # 1c. a modifier word the vocabulary does not have, right before the object: "back door"
-    dir_used = set()         # tokens already read as a direction or as an object's modifier (rule set v4)
     for t in targets:
         if "twin" not in t and t["first"] > 0 and words[t["first"] - 1] in W["unknown_modifier"] \
                 and not toks[t["first"]][3] and kind_at.get(t["first"] - 1) is None:
-            a = t["first"] - 1
-            if words[a] in W["dir_adjective_tail"] and a > 0 and not toks[a][3] and words[a - 1] in W["dir_adjective"]:
-                a -= 1                     # "the left hand door", "the right side window"
-            if words[a] in W["dir_adjective"]:
-                if a >= 2 and not toks[a][3] and not toks[a - 1][3] and words[a - 1] in ("and", "or") \
-                        and words[a - 2] in W["dir_adjective"] and kind_at.get(a - 2) is None:
-                    a -= 2                 # "the left and right windows": the first one named
-                t["direction"] = vocab["dirs"][words[a]]      # "the left window": a direction, not an unknown name
-                dir_used.update(range(a, t["first"]))
-            else:
-                t["flag"] = "unknown_modifier"
-            t["np"] = a                    # where the object's noun phrase starts (step 6)
+            t["flag"] = "unknown_modifier"
 
     # 1d. "the spiral staircase", "that broken window": one word the vocabulary does not know between
     # a determiner and an unqualified object singles out one object
     for t in targets:
         f = t["first"]
-        if "twin" in t or t["flag"] or t["direction"] or t["qualifier"] is not None or f < 2:
+        if "twin" in t or t["flag"] or t["qualifier"] is not None or f < 2:
             continue
         w = words[f - 1]
         if words[f - 2] in W["determiner"] and not toks[f - 1][3] and not toks[f][3] and kind_at.get(f - 1) is None \
                 and not any(w in W[k] for k in ("neutral_modifier", "determiner", "preposition", "number", "order_verb")):
             t["flag"] = "unknown_modifier"
-            t["np"] = f - 1
 
     # 1e. "take the other door": the object right after an `other` word is the other one of its kind
     for t in targets:
@@ -546,7 +386,6 @@ def find(text, vocab=VOCAB):
         if "twin" not in t and t["flag"] is None and t["qualifier"] is None and f > 0 and not toks[f][3] \
                 and words[f - 1] in W["other"]:
             t["flag"] = "other"
-            t["np"] = f - 1
 
     # 2. a free qualifier after an object
     for k, q in enumerate(quals):
@@ -577,7 +416,7 @@ def find(text, vocab=VOCAB):
     # 2b. "doors and windows on the north side": coordinated objects share the qualifier after them
     for a, b in zip(objects, objects[1:]):
         ta, tb = by_obj[id(a)], by_obj[id(b)]
-        if gap(a["last"], b["first"]) in (["and"], ["or"]) and ta["flag"] is None and ta["direction"] is None:
+        if gap(a["last"], b["first"]) in (["and"], ["or"]) and ta["flag"] is None:
             ta["shares"] = tb
             if ta["qualifier"] is None and tb.get("after") and tb["qualifier"] in vocab["allowed"][ta["object"]]:
                 ta["qualifier"] = tb["qualifier"]
@@ -590,13 +429,8 @@ def find(text, vocab=VOCAB):
         e += 1
         if e < n and not toks[e][3] and words[e] in W["determiner"]:
             e += 1
-        if e < n and not toks[e][3] and words[e] in W["post_modifier"] and kind_at.get(e) is None \
-                and not (words[e] == "front" and words[e - 1] == "in"):        # "the door in front ...": step 6
-            if words[e] in W["dir_adjective"] and t["direction"] is None:
-                t["direction"] = vocab["dirs"][words[e]]      # "the door on the left"
-            else:
-                t["flag"] = "unknown_modifier"
-            dir_used.add(e)      # "the stairs at the back": the word is this object's, not a direction of its own
+        if e < n and not toks[e][3] and words[e] in W["post_modifier"] and kind_at.get(e) is None:
+            t["flag"] = "unknown_modifier"
 
     # 3. lone qualifiers: a place only where the word ends its phrase
     for k, q in enumerate(quals):
@@ -655,10 +489,6 @@ def find(text, vocab=VOCAB):
                     t["zone_after"] = True
         if best is not None:
             best["zone"], best["zone_at"] = z["value"], z["first"]
-            if z["last"] < best["first"]:
-                best["np"] = min(best.get("np", best["first"]), z["first"])       # "the basement stairs"
-            elif z["first"] > best["last"]:
-                best["np_last"] = z["last"]                                       # "the stairs in the basement"
             placed.append(z)
     for t in targets:
         if t.get("shares") is not None and t["zone"] is None and t["shares"].get("zone_after"):
@@ -725,15 +555,15 @@ def find(text, vocab=VOCAB):
     def next_to(j, t):       # only determiners and neutral words between token j and the place
         return all(words[x] in W["determiner"] or words[x] in W["neutral_modifier"] for x in range(j + 1, t["first"]))
 
-    def assign_role(ti, t, group):
+    for ti, t in enumerate(targets):
         # "they're on red and blue": a place joined to the one before it by and / or shares its role
-        if ti and group[ti - 1]["role"] in ("mine", "them", "not"):
-            u = group[ti - 1]
+        if ti and targets[ti - 1]["role"] in ("mine", "them", "not"):
+            u = targets[ti - 1]
             g = [words[x] for x in range(u["last"] + 1, t["first"])]
             if g and brk(u["last"], t["first"]) < 2 and any(x in ("and", "or") for x in g) \
                     and all(x in ("and", "or") or x in W["determiner"] for x in g):
                 t["role"] = u["role"]
-                return
+                continue
         j, steps = t["first"] - 1, 0
         while j >= 0 and steps < ROLE_WINDOW and t["first"] - j <= ROLE_REACH:
             if toks[j + 1][3] or words[j] in W["role_stop"] or j in owned:
@@ -796,16 +626,10 @@ def find(text, vocab=VOCAB):
             steps += 0 if any(w in W[k] for k in ("aux", "determiner", "from_particle")) else 1
             j -= 1
 
-    for ti, t in enumerate(targets):
-        assign_role(ti, t, targets)
-
     # 5a. status: "north door is clear, hold the south window". Only when the line has another place to
     # act on (or asks for "the other one"): "east door's barricaded, blow it" names its own target
     def status_follows(t):
         e = t["last"] + 1
-        if t["direction"] and e < n and not toks[e][3] and words[e] in W["post_prep"]:
-            while e < n and not toks[e][3] and (e in dir_used or words[e] in W["post_prep"] or words[e] in W["determiner"]):
-                e += 1                     # "the door on the right | is clear"
         if e >= n or toks[e][3] or words[e] not in W["status_next"]:
             return False
         return not (e + 1 < n and not toks[e + 1][3] and words[e + 1] in W["status_not_next"])
@@ -833,284 +657,8 @@ def find(text, vocab=VOCAB):
         if t["object"] is not None and other_after(t["last"] + 1):
             targets.append(_target(t["object"], None, n, n, None, flag="other"))
 
-    # 6. directions (rule set v4): a direction word counts only in the contexts the module docstring lists
-    D, CL = vocab["dirs"], vocab["clock"]
-    np_first = lambda t: t.get("np", t["first"])         # noqa: E731  the object's noun phrase: "the back stairs",
-    np_last = lambda t: t.get("np_last", t["last"])      # noqa: E731  "the basement stairs", "the stairs in the basement"
-    first_of = {np_first(t): t for t in targets if t["first"] < n}
-    last_of = {np_last(t): t for t in targets if t["last"] < n}
-    np_tok = {j for t in targets if t["first"] < n for j in range(np_first(t), np_last(t) + 1)}
-
-    def nb(j):               # token j exists and only spaces separate it from the token before
-        return 0 < j < n and not toks[j][3]
-
-    def plain(j):            # token j is a word of the line that belongs to no place and no direction
-        return 0 <= j < n and kind_at.get(j) is None and j not in dir_used
-
-    def place_at(j):         # a place starts at token j, after an optional determiner: "above the east window"
-        if nb(j) and kind_at.get(j) is None and words[j] in W["determiner"]:
-            j += 1
-        return nb(j) and kind_at.get(j) is not None
-
-    def floor(t):            # a floor on its own: "the basement", "the roof"
-        return t["object"] is None and t["qualifier"] is None and t["zone"] is not None
-
-    def place_after(j, preps):   # the place that starts at j, after one optional word of `preps` and one determiner
-        if nb(j) and j not in first_of and words[j] in preps:
-            j += 1
-        if nb(j) and j not in first_of and words[j] in W["determiner"]:
-            j += 1
-        return first_of.get(j) if nb(j) else None
-
-    def place_before(j):     # the place that ends right before token j, or before a form of "be" there: "the stairs are | on your right"
-        if not nb(j):
-            return None
-        t = last_of.get(j - 1)
-        if t is None and nb(j - 1) and kind_at.get(j - 1) is None and words[j - 1] in W["be"]:
-            t = last_of.get(j - 2)
-        return t
-
-    lone = []
-    for i in range(n):
-        w = words[i]
-        if (w not in D and w not in CL) or not plain(i) or i in owned:
-            continue
-        prev = words[i - 1] if nb(i) and plain(i - 1) else None              # the word before, in the same phrase
-        prev2 = words[i - 2] if prev is not None and nb(i - 1) and plain(i - 2) else None
-        prev3 = words[i - 3] if prev2 is not None and nb(i - 2) and plain(i - 3) else None
-        nxt = words[i + 1] if nb(i + 1) else None
-        nxt2 = words[i + 2] if nxt is not None and nb(i + 2) else None
-        # "get your head down": a noun, not a verb (dir_lead_noun: "all the way left", "keep your eyes left")
-        lead = None if prev2 in W["dir_det"] and prev not in W["dir_lead_noun"] else prev
-        opens = i == 0 or toks[i][3] > 0                                     # the word starts the line or a phrase
-        stop = i + 1 >= n or toks[i + 1][3] > 0 or nxt in W["dir_end_next"]  # the phrase ends here: "go straight, then ..."
-        d, last, att, corrects = None, i, None, False
-        if w in CL:
-            c = CL[w]
-            if nxt == "oclock":
-                d, last = c, i + 1                        # "three oclock"
-            elif nxt == "o" and nxt2 == "clock":
-                d, last = c, i + 2                        # "three o'clock"
-            elif c in ("back", "forward"):
-                if (prev in W["dir_six_lead"] and ends_phrase(i + 1)) or (prev in W["dir_six_verb"] and stop):
-                    d = c                                 # "on your six", "check six", "one at twelve"; not "my six kills"
-            elif prev in W["dir_six_lead"] and stop                     and (prev2 is None or prev2 in W["dir_prep"] or prev2 in W["dir_six_verb"] or prev2 in W["dir_lead_lateral"])                     and not (prev == "my" and prev2 == "on" and prev3 not in W["role_them"] and prev3 not in W["role_them_soft"]
-                             and prev3 not in W["number"]):
-                d = c                                     # "check your nine", "contact on my three"; not "breach on my three" (a countdown), "i used my one"
-        if d is None and w in D:
-            k = D[w]
-            if w in W["dir_always"]:
-                d = k                                     # "upwards", "backwards"
-            elif w in W["dir_relation"]:
-                if not place_at(i + 1) and not (nxt is not None and (nxt.isdigit() or nxt in W["dir_amount"])):
-                    d = k                                 # "from above", "below you"; not "above the east window", "below half"
-                    att = place_before(i)                 # "the stairs below", "the window's above you"
-            elif k in ("up", "down"):
-                # "lock down the top floor", "set up on the roof"; "back me up here", "set it up there"
-                blocked = prev in W["dir_vertical_block"] or (prev in W["dir_split_object"] and prev2 in W["dir_split_verb"])
-                climb = lead in W["dir_lead_vertical"] or lead in W["dir_lead_climb"]
-                t = None if blocked else place_after(i + 1, ())
-                if t is None and not blocked and (opens or climb):
-                    t = place_after(i + 1, W["dir_stairs_prep"])             # "go down by stairs"; not "put it down by the stairs"
-                if t is not None and t["object"] in vocab["vertical"]:
-                    d, att = k, t                         # "up the blue stairs", "up blue", "up the back stairs"
-                if d is None:
-                    t = last_of.get(i - 1) if nb(i) else None
-                    if t is None and nb(i) and nb(i - 1) and kind_at.get(i - 1) is None and words[i - 1] in W["dir_stairs_link"]:
-                        t = last_of.get(i - 2)
-                    if t is not None and t["object"] in vocab["vertical"]:
-                        j = np_first(t) - 1               # the verb before the stairs: "lock the stairs down", "hold blue down"
-                        if j >= 0 and not toks[j + 1][3] and kind_at.get(j) is None and words[j] in W["determiner"]:
-                            j -= 1
-                        if not (j >= 0 and not toks[j + 1][3] and kind_at.get(j) is None and words[j] in W["dir_split_verb"]):
-                            d, att = k, t                 # "take the stairs down", "blue stairs going up"
-                if d is None and not blocked and not (k == "up" and prev == "back" and prev2 not in W["dir_lead_vertical"]):
-                    t = place_after(i + 1, W["dir_zone_prep"])
-                    # "down to the basement" always; "up on the roof" after a motion word or at the start of a phrase;
-                    # "he's up on the roof" too, but "one down in the basement" is a kill; "back up to the basement" a retreat
-                    if t is not None and floor(t) and (nxt in W["from_to"] or nxt == "onto" or opens or climb
-                                                       or (k == "up" and prev in W["dir_there_lead"]
-                                                           and prev not in W["dir_split_object"])):
-                        d, att = k, t
-                if d is None and not blocked and not (k == "up" and nxt in W["dir_up_block"]):
-                    there = nxt2 if nxt in W["determiner"] and nxt2 in W["dir_place_next"] else nxt     # "up the ladder"
-                    if there in W["dir_place_next"] and (opens or prev in W["dir_there_lead"]):
-                        d = k                             # "get up there", "he's down there", "up top"
-                    elif ends_phrase(i + 1) and (lead in W["dir_lead_vertical"]
-                                                 or (prev == "back" and prev2 in W["dir_lead_vertical"])):
-                        d = k                             # "go up", "go back up", "he went up there"; not "go down the hall", "go up to him"
-            elif k in ("left", "right"):
-                det, art = prev in W["dir_det"], prev in W["dir_article"]
-                bare = opens and stop                     # a phrase of its own: "Left!"
-                fix = bare and ((i >= 2 and words[i - 1] in W["dir_adjective"] and words[i - 1] != w
-                                 and words[i - 2] in W["negator"])
-                                or (i + 2 < n and words[i + 1] in W["negator"] and words[i + 2] in W["dir_adjective"]
-                                    and words[i + 2] != w)
-                                or (i >= 2 and words[i - 1] in W["dir_correction"]
-                                    and any(x in W["dir_adjective"] and x != w for x in words[:i - 1])))
-                if k == "right" and (nxt in W["dir_right_noun"]
-                                     or (not det and not art
-                                         and (nxt in W["dir_right_block"]
-                                              or (nxt in W["dir_right_soft"]
-                                                  and (lead not in W["dir_turn"] or nxt2 in W["dir_back_block"]
-                                                       or nxt2 in W["dir_right_block"]))))):
-                    pass          # "the right spot"; "right now", "looking right at you", "go right at them"; not "on your right now", "turn right at the stairs"
-                elif k == "left" and nxt != "of" and not (nxt in W["dir_side"] and nxt not in W["anaphor"]) \
-                        and ((prev2 in W["dir_count"] and prev not in W["dir_unit"]
-                              and not (prev2 in W["dir_article"] and prev3 in W["dir_throw"]))
-                             or (prev in W["dir_resource"] and prev2 in W["dir_have"])):
-                    pass          # "one enemy left", "no smoke left", "i got smoke left"; not "two steps left", "throw a flash left"
-                elif k == "left" and nxt in W["dir_det"] and (prev in W["role_them"] or prev in W["role_them_soft"]):
-                    pass          # "someone left the door open", "enemy left the site"
-                elif lead in W["dir_lead_lateral"] or prev in W["dir_prep"] or prev in W["other"] \
-                        or (nxt in W["dir_side"] and not (k == "left" and (prev in W["role_mine"] or prev in W["govern"]
-                                                                           or prev in W["role_stop"] or prev in W["dir_we"]))) \
-                        or (det and (prev2 is None or prev2 in W["dir_prep"] or prev2 in W["dir_lead_lateral"]
-                                     or ends_phrase(i + 1))) \
-                        or (art and prev2 in W["dir_lead_lateral"]) \
-                        or (nxt == "of" and prev not in W["dir_count"]) \
-                        or (opens and nxt in W["status_next"]) \
-                        or (bare and k == "left") or fix \
-                        or (k == "right" and prev in W["number"] and prev2 is None and stop):
-                    # "go left", "on your right", "the other left", "left side", "take a left", "left of the stairs",
-                    # "left clear", "Left!" (never a bare "right": "Right, hold the north door"), "not left, right!",
-                    # "go left, no, right", "two right"
-                    d, corrects = k, fix
-                    j = i - 2 if det else i - 1           # "the north door on the left": its preposition
-                    if j >= 1 and nb(j + 1) and nb(j) and kind_at.get(j) is None and words[j] in W["post_prep"]:
-                        att = place_before(j)             # also "the stairs are on your right"
-            elif k == "forward":
-                if w == "straight":
-                    if lead in W["dir_lead_forward"] and lead not in W["dir_straight_not"] and stop:
-                        d = k                             # "go straight"; not "go straight to the north door", "shoot straight"
-                elif w == "ahead":
-                    if (lead in W["dir_lead_ahead"] and not (prev == "right" and prev2 == "go")) \
-                            or (nxt == "of" and nxt2 in W["dir_person"]):
-                        d = k                             # "straight ahead", "up ahead", "ahead of us"; not "go ahead", "go right ahead"
-                elif w == "front":
-                    obj = last_of.get(i - 2) if prev == "in" and nb(i - 1) else None      # "the door in front ..."
-                    if (prev in W["dir_front_lead"] or (prev in W["dir_det"] and prev2 in W["dir_prep"])) \
-                            and not place_at(i + 2 if nxt == "of" else i + 1) \
-                            and (prev not in W["dir_det"] or nxt == "of" or ends_phrase(i + 1)) \
-                            and not (prev in W["dir_front_lead"] and nxt == "of" and nxt2 in W["determiner"]):
-                        d, att = k, obj                   # "in front of you", "up front"; not "in front of the car", "the front room"
-                    elif obj is not None and not obj["flag"] and obj["qualifier"] is None:
-                        obj["flag"] = "unknown_modifier"  # "the door in front of the stairs": one particular door (as rule set v3)
-                elif lead in W["dir_lead_forward"] or opens:
-                    d = k                                 # "move forward", "forward!"
-            elif w == "behind":
-                if nxt in W["dir_person"]:
-                    d, att = k, place_before(i)           # "behind you"; "the door behind you" is that door's
-                elif stop and (opens or (prev in W["dir_behind_lead"] and not (prev == "re" and prev2 in W["dir_we"]))):
-                    d = k                                 # "from behind", "Behind!"; not "behind the sofa", "stay behind", "we're behind"
-            elif not place_at(i + 2 if nxt == "of" else i + 1):       # "back", "rear"; not "the back door", "at the back of the stairs"
-                if w == "rear":
-                    if prev in W["dir_prep"] or (prev in W["dir_det"] and (nxt == "of" or ends_phrase(i + 1))):
-                        d = k                             # "to the rear"; not "the rear hallway"
-                elif nxt in W["dir_back_next"] \
-                        or (lead in W["dir_lead_back"] and nxt not in W["dir_back_block"]) \
-                        or (prev in W["dir_det"] and (prev2 in W["dir_prep"] or prev2 in W["dir_six_verb"]
-                                                      or prev2 in W["dir_back_prep"]) and (nxt == "of" or ends_phrase(i + 1))) \
-                        or (prev in W["dir_back_prep"] and ends_phrase(i + 1)):
-                    d = k                                 # "back there", "go back", "at the back", "out back"; not "the back room"
-        if d is None:
-            continue
-        dir_used.update(range(i, last + 1))
-        if att is None:
-            lone.append(_target(None, None, i, last, None, direction=d, lone=True, corrects=corrects))
-        elif att["direction"] is None:
-            att["direction"] = d                          # an object keeps its first direction: "up the stairs on the left" = left
-    for t in targets:                                     # "up the red or blue stairs": both
-        u = t.get("twin")
-        if u is not None and (t["direction"] is None) != (u["direction"] is None):
-            t["direction"] = u["direction"] = t["direction"] or u["direction"]
-    # the roles of the directions, by the rules of the places ("they're on the stairs and the left": both theirs);
-    # a direction is never a place to leave ("come from the left")
-    owned.update(j for t in lone for j in range(t["first"], t["last"] + 1))
-    merged = sorted(targets + lone, key=lambda t: t["first"])
-    for k, t in enumerate(merged):
-        if "lone" in t:
-            assign_role(k, t, merged)
-            if t["role"] == "from":
-                t["role"] = None
-    for k, t in enumerate(lone):                          # "go left, no, right": the correction reaches back
-        if t["corrects"] and t["role"] is None:
-            for u in lone[:k]:
-                if u["role"] is None and u["direction"] in ("left", "right") and u["direction"] != t["direction"]:
-                    u["role"] = "not"
-
-    def phrase_start(j):     # the first token of the phrase token j is in
-        while j > 0 and not toks[j][3]:
-            j -= 1
-        return j
-
-    def ordered(t):          # an order verb or a lateral lead stands before the direction in its phrase: "go left"
-        return any(words[j] in W["order_verb"] or words[j] in W["dir_lead_lateral"] for j in range(phrase_start(t["first"]), t["first"]))
-
-    # 6a. a verbless direction that ends its sentence is a callout when an order with a place follows:
-    # "Behind you! Get to the stairs!"
-    for t in lone:
-        e = t["last"] + 1
-        while e < n and not toks[e][3] and (words[e] in W["dir_side"] or words[e] in W["dir_person"]):
-            e += 1
-        if t["role"] is None and e < n and toks[e][3] == 2 and not ordered(t) \
-                and any(u["role"] is None and e <= u["first"] < n for u in targets):
-            t["role"] = "status"
-    # 6b. a direction said on the way to a place is that place's: "go left to the north door", "look up at the east
-    # window", "come up from the basement to the first floor". The place is the next one with the same role; only
-    # prepositions, determiners, the direction's own "side" / "me" and other places stand between, and no
-    # punctuation (a place with another role may stand between only when the direction has no role). Across one comma only as a bare pointer: "on your right,
-    # the north door"
-    for t in lone:
-        for u in targets:
-            if not t["last"] < u["first"] < n or (u["role"] != t["role"] and t["role"] is None):
-                continue
-            if u["direction"] is None and u["role"] == t["role"]:
-                between = range(t["last"] + 1, np_first(u))
-                breaks = [toks[j][3] for j in range(t["last"] + 1, u["first"] + 1) if toks[j][3]]
-                on_the_way = not breaks and all(
-                    j in np_tok or kind_at.get(j) is not None
-                    or any(words[j] in W[x] for x in ("preposition", "determiner", "dir_side", "post_modifier", "dir_person"))
-                    for j in between)             # "behind me at the north door", "the left side of the main door"
-                pointer = breaks == [1] and not ordered(t) \
-                    and all(words[j] in W["determiner"] or words[j] in W["dir_side"] or words[j] in W["dir_person"] for j in between)
-                if on_the_way or pointer:
-                    u["direction"], t["joined"] = t["direction"], True
-            break
-    # 6c. "north door, on the left", "he's on the stairs, left side": a direction that is a comma item of its own
-    # right after a place is that place's
-    for t in lone:
-        if "joined" in t or t["role"] is not None:
-            continue
-        a, e = t["first"], t["last"] + 1
-        for _ in range(2):                 # its own preposition and determiner: "on your left", "to the right"
-            if a > 0 and not toks[a][3] and kind_at.get(a - 1) is None and (words[a - 1] in W["dir_prep"] or words[a - 1] in W["dir_det"]):
-                a -= 1
-        if e < n and not toks[e][3] and words[e] in W["dir_side"]:
-            e += 1                         # "left side"
-        u = last_of.get(a - 1) if a > 0 and toks[a][3] == 1 else None
-        if u is not None and u["direction"] is None and u["role"] in (None, "them") and (e >= n or toks[e][3]):
-            u["direction"], t["joined"] = t["direction"], True
-
-    # 6d. status, with the directions: "left side is clear, push the main door", "north door is clear, go left" --
-    # what is reported clear is not the order's target when the line has another one, before it or after punctuation
-    def dir_status(t):       # "left side | is clear", "behind us | is clear"
-        e = t["last"] + 1
-        if e < n and not toks[e][3] and (words[e] in W["dir_side"] or words[e] in W["dir_person"]):
-            e += 1
-        return e < n and not toks[e][3] and words[e] in W["status_next"] \
-            and not (e + 1 < n and not toks[e + 1][3] and words[e + 1] in W["status_not_next"])
-
-    free = [t for t in lone if "joined" not in t and t["role"] is None]
-    cand = [t for t in targets if t["role"] is None and status_follows(t)] + [t for t in free if dir_status(t)]
-    acts_on = [t for t in free + [u for u in targets if u["role"] is None] if not any(t is c for c in cand)]
-    for c in cand:              # o["first"] >= n: the "other one" the line asks for (5c) is a target to act on
-        if any(o["first"] < c["first"] or o["first"] >= n or brk(c["last"], o["first"]) for o in acts_on):
-            c["role"] = "status"
-    targets = sorted(targets + [t for t in lone if "joined" not in t], key=lambda t: t["first"])
-
     primary = next((k for k, t in enumerate(targets) if t["role"] is None), 0 if targets else -1)
-    keys = ("object", "qualifier", "zone", "direction", "role", "flag")
+    keys = ("object", "qualifier", "zone", "role", "flag")
     return {"targets": targets, "primary": primary,
             "target": {k: targets[primary][k] for k in keys} if primary >= 0 else None}
 
@@ -1118,7 +666,7 @@ def find(text, vocab=VOCAB):
 def record(text, vocab=VOCAB):
     """What the bot hands the planner: the targets in line order and which one is primary."""
     r = find(text, vocab)
-    keys = ("object", "qualifier", "zone", "direction", "role", "flag", "inferred")
+    keys = ("object", "qualifier", "zone", "role", "flag", "inferred")
     return {"primary": r["primary"], "targets": [{k: t[k] for k in keys} for t in r["targets"]]}
 
 
@@ -1159,21 +707,21 @@ def run_dev(path=None, show=True):
     fails = {}
     for c in cases:
         t = find(c["text"])["target"]
-        got = None if t is None or not (t["object"] or t["qualifier"] or t["zone"]) else [t["object"], t["qualifier"], t["zone"]]
+        got = None if t is None else [t["object"], t["qualifier"], t["zone"]]
         ok = got in [a for a in c["accept"] if not isinstance(a, str)] or \
             ("FLAG" in c["accept"] and t and t["flag"]) or ("ROLE" in c["accept"] and t and t["role"])
-        for k in ("role", "flag", "direction"):
+        for k in ("role", "flag"):
             if k in c and (t[k] if t else None) != c[k]:
                 ok = False
         if not ok:
-            fails.setdefault(c["cat"], []).append((c["text"], got, t and t["role"], t and t["flag"], t and t["direction"], c))
+            fails.setdefault(c["cat"], []).append((c["text"], got, t and t["role"], t and t["flag"], c))
     n_fail = sum(map(len, fails.values()))
     if show:
         print(f"{len(cases)} dev lines, {n_fail} with a primary target the line's author would not accept")
         for cat, rows in fails.items():
-            for text, got, role, flag, direction, c in rows:
-                want = f"{c['accept']}" + "".join(f" {k}={c[k]}" for k in ("role", "flag", "direction") if k in c)
-                print(f"  [{cat}] {text!r}: got {got} role={role} flag={flag} direction={direction}, want {want}")
+            for text, got, role, flag, c in rows:
+                want = f"{c['accept']}" + "".join(f" {k}={c[k]}" for k in ("role", "flag") if k in c)
+                print(f"  [{cat}] {text!r}: got {got} role={role} flag={flag}, want {want}")
     return n_fail
 
 
