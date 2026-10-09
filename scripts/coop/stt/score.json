@@ -1,0 +1,460 @@
+{
+ "typed text (no speech)": {
+  "clean": {
+   "raw": {
+    "near": 100.0,
+    "cross": 0.0,
+    "fired": 0.0,
+    "criterion": 100.0,
+    "cross_count": 0
+   },
+   "lower": {
+    "near": 99.76303317535546,
+    "cross": 0.0,
+    "fired": 0.0,
+    "criterion": 99.76303317535546,
+    "cross_count": 0
+   }
+  }
+ },
+ "moonshine-medium": {
+  "clean": {
+   "raw": {
+    "near": 97.1563981042654,
+    "cross": 0.47393364928909953,
+    "fired": 0.0,
+    "criterion": 96.2085308056872,
+    "cross_count": 2
+   },
+   "lower": {
+    "near": 98.5781990521327,
+    "cross": 0.47393364928909953,
+    "fired": 0.0,
+    "criterion": 97.6303317535545,
+    "cross_count": 2
+   },
+   "wer": 4.638109305760709,
+   "domain_kept": 89.1566265060241,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 98.34123222748815
+  },
+  "noisy": {
+   "raw": {
+    "near": 94.54976303317537,
+    "cross": 1.4218009478672986,
+    "fired": 1.5151515151515151,
+    "criterion": 91.70616113744077,
+    "cross_count": 6
+   },
+   "lower": {
+    "near": 95.260663507109,
+    "cross": 2.132701421800948,
+    "fired": 1.5151515151515151,
+    "criterion": 90.99526066350711,
+    "cross_count": 9
+   },
+   "wer": 8.242245199409158,
+   "domain_kept": 80.72289156626506,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 94.07582938388626
+  }
+ },
+ "moonshine-small+terms": {
+  "clean": {
+   "raw": {
+    "near": 97.6303317535545,
+    "cross": 0.23696682464454977,
+    "fired": 1.5151515151515151,
+    "criterion": 97.15639810426539,
+    "cross_count": 1
+   },
+   "lower": {
+    "near": 98.81516587677726,
+    "cross": 0.23696682464454977,
+    "fired": 1.5151515151515151,
+    "criterion": 98.34123222748815,
+    "cross_count": 1
+   },
+   "wer": 4.519940915805022,
+   "domain_kept": 89.1566265060241,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 98.81516587677726
+  },
+  "noisy": {
+   "raw": {
+    "near": 92.65402843601895,
+    "cross": 1.4218009478672986,
+    "fired": 0.0,
+    "criterion": 89.81042654028435,
+    "cross_count": 6
+   },
+   "lower": {
+    "near": 93.60189573459715,
+    "cross": 2.6066350710900474,
+    "fired": 0.0,
+    "criterion": 88.38862559241706,
+    "cross_count": 11
+   },
+   "wer": 9.512555391432793,
+   "domain_kept": 78.3132530120482,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 93.12796208530806
+  }
+ },
+ "moonshine-small": {
+  "clean": {
+   "raw": {
+    "near": 97.6303317535545,
+    "cross": 0.23696682464454977,
+    "fired": 1.5151515151515151,
+    "criterion": 97.15639810426539,
+    "cross_count": 1
+   },
+   "lower": {
+    "near": 98.81516587677726,
+    "cross": 0.23696682464454977,
+    "fired": 1.5151515151515151,
+    "criterion": 98.34123222748815,
+    "cross_count": 1
+   },
+   "wer": 4.697193500738552,
+   "domain_kept": 87.95180722891567,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 98.81516587677726
+  },
+  "noisy": {
+   "raw": {
+    "near": 92.41706161137441,
+    "cross": 1.6587677725118484,
+    "fired": 1.5151515151515151,
+    "criterion": 89.0995260663507,
+    "cross_count": 7
+   },
+   "lower": {
+    "near": 93.12796208530806,
+    "cross": 2.6066350710900474,
+    "fired": 1.5151515151515151,
+    "criterion": 87.91469194312796,
+    "cross_count": 11
+   },
+   "wer": 9.80797636632201,
+   "domain_kept": 72.28915662650603,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 92.41706161137441
+  }
+ },
+ "moonshine-tiny": {
+  "clean": {
+   "raw": {
+    "near": 94.07582938388626,
+    "cross": 0.9478672985781991,
+    "fired": 1.5151515151515151,
+    "criterion": 92.18009478672985,
+    "cross_count": 4
+   },
+   "lower": {
+    "near": 95.02369668246445,
+    "cross": 1.1848341232227488,
+    "fired": 4.545454545454546,
+    "criterion": 92.65402843601895,
+    "cross_count": 5
+   },
+   "wer": 8.980797636632202,
+   "domain_kept": 74.6987951807229,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 94.7867298578199
+  },
+  "noisy": {
+   "raw": {
+    "near": 86.49289099526067,
+    "cross": 2.843601895734597,
+    "fired": 4.545454545454546,
+    "criterion": 80.80568720379146,
+    "cross_count": 12
+   },
+   "lower": {
+    "near": 87.20379146919431,
+    "cross": 4.265402843601896,
+    "fired": 3.0303030303030303,
+    "criterion": 78.67298578199052,
+    "cross_count": 18
+   },
+   "wer": 14.889217134416544,
+   "domain_kept": 62.65060240963855,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 86.72985781990522
+  }
+ },
+ "parakeet-0.6b-v2": {
+  "clean": {
+   "raw": {
+    "near": 98.5781990521327,
+    "cross": 0.0,
+    "fired": 1.5151515151515151,
+    "criterion": 98.5781990521327,
+    "cross_count": 0
+   },
+   "lower": {
+    "near": 99.0521327014218,
+    "cross": 0.0,
+    "fired": 0.0,
+    "criterion": 99.0521327014218,
+    "cross_count": 0
+   },
+   "wer": 3.3382570162481535,
+   "domain_kept": 91.56626506024097,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 99.28909952606635
+  },
+  "noisy": {
+   "raw": {
+    "near": 94.54976303317537,
+    "cross": 1.1848341232227488,
+    "fired": 0.0,
+    "criterion": 92.18009478672985,
+    "cross_count": 5
+   },
+   "lower": {
+    "near": 95.02369668246445,
+    "cross": 1.6587677725118484,
+    "fired": 1.5151515151515151,
+    "criterion": 91.70616113744076,
+    "cross_count": 7
+   },
+   "wer": 5.642540620384047,
+   "domain_kept": 81.92771084337349,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 94.7867298578199
+  }
+ },
+ "parakeet-110m": {
+  "clean": {
+   "raw": {
+    "near": 96.91943127962085,
+    "cross": 0.7109004739336493,
+    "fired": 0.0,
+    "criterion": 95.49763033175354,
+    "cross_count": 3
+   },
+   "lower": {
+    "near": 97.39336492890996,
+    "cross": 0.7109004739336493,
+    "fired": 0.0,
+    "criterion": 95.97156398104265,
+    "cross_count": 3
+   },
+   "wer": 7.474150664697193,
+   "domain_kept": 83.13253012048193,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 97.6303317535545
+  },
+  "noisy": {
+   "raw": {
+    "near": 89.0995260663507,
+    "cross": 2.843601895734597,
+    "fired": 1.5151515151515151,
+    "criterion": 83.41232227488152,
+    "cross_count": 12
+   },
+   "lower": {
+    "near": 90.04739336492891,
+    "cross": 3.7914691943127963,
+    "fired": 0.0,
+    "criterion": 82.46445497630332,
+    "cross_count": 16
+   },
+   "wer": 12.850812407680944,
+   "domain_kept": 62.65060240963855,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 89.57345971563981
+  }
+ },
+ "whisper-tiny.en": {
+  "clean": {
+   "raw": {
+    "near": 96.91943127962085,
+    "cross": 0.9478672985781991,
+    "fired": 1.5151515151515151,
+    "criterion": 95.02369668246445,
+    "cross_count": 4
+   },
+   "lower": {
+    "near": 97.86729857819904,
+    "cross": 0.9478672985781991,
+    "fired": 1.5151515151515151,
+    "criterion": 95.97156398104265,
+    "cross_count": 4
+   },
+   "wer": 7.0014771048744455,
+   "domain_kept": 87.95180722891567,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 97.39336492890995
+  },
+  "noisy": {
+   "raw": {
+    "near": 90.99526066350711,
+    "cross": 2.3696682464454977,
+    "fired": 4.545454545454546,
+    "criterion": 86.25592417061611,
+    "cross_count": 10
+   },
+   "lower": {
+    "near": 92.18009478672985,
+    "cross": 3.3175355450236967,
+    "fired": 4.545454545454546,
+    "criterion": 85.54502369668246,
+    "cross_count": 14
+   },
+   "wer": 11.403249630723781,
+   "domain_kept": 75.90361445783132,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 91.23222748815166
+  }
+ },
+ "zipformer-2023+terms": {
+  "clean": {
+   "raw": {
+    "near": 87.20379146919431,
+    "cross": 3.7914691943127963,
+    "fired": 7.575757575757576,
+    "criterion": 79.62085308056872,
+    "cross_count": 16
+   },
+   "lower": {
+    "near": 92.41706161137441,
+    "cross": 3.080568720379147,
+    "fired": 6.0606060606060606,
+    "criterion": 86.25592417061611,
+    "cross_count": 13
+   },
+   "wer": 14.47562776957164,
+   "domain_kept": 78.3132530120482,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 92.41706161137441
+  },
+  "noisy": {
+   "raw": {
+    "near": 79.85781990521326,
+    "cross": 4.502369668246446,
+    "fired": 4.545454545454546,
+    "criterion": 70.85308056872037,
+    "cross_count": 19
+   },
+   "lower": {
+    "near": 83.88625592417061,
+    "cross": 5.213270142180095,
+    "fired": 6.0606060606060606,
+    "criterion": 73.45971563981043,
+    "cross_count": 22
+   },
+   "wer": 19.409158050221563,
+   "domain_kept": 72.28915662650603,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 83.41232227488152
+  }
+ },
+ "zipformer-2023": {
+  "clean": {
+   "raw": {
+    "near": 87.20379146919431,
+    "cross": 3.5545023696682465,
+    "fired": 7.575757575757576,
+    "criterion": 80.09478672985783,
+    "cross_count": 15
+   },
+   "lower": {
+    "near": 90.99526066350711,
+    "cross": 4.028436018957346,
+    "fired": 7.575757575757576,
+    "criterion": 82.93838862559242,
+    "cross_count": 17
+   },
+   "wer": 14.859675036927623,
+   "domain_kept": 63.855421686746986,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 90.75829383886256
+  },
+  "noisy": {
+   "raw": {
+    "near": 80.56872037914692,
+    "cross": 4.739336492890995,
+    "fired": 4.545454545454546,
+    "criterion": 71.09004739336493,
+    "cross_count": 20
+   },
+   "lower": {
+    "near": 79.85781990521326,
+    "cross": 4.739336492890995,
+    "fired": 6.0606060606060606,
+    "criterion": 70.37914691943128,
+    "cross_count": 20
+   },
+   "wer": 20.0,
+   "domain_kept": 57.83132530120482,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 79.62085308056872
+  }
+ },
+ "zipformer-kroko25": {
+  "clean": {
+   "raw": {
+    "near": 95.97156398104265,
+    "cross": 0.7109004739336493,
+    "fired": 1.5151515151515151,
+    "criterion": 94.54976303317535,
+    "cross_count": 3
+   },
+   "lower": {
+    "near": 96.91943127962085,
+    "cross": 0.7109004739336493,
+    "fired": 1.5151515151515151,
+    "criterion": 95.49763033175354,
+    "cross_count": 3
+   },
+   "wer": 5.967503692762186,
+   "domain_kept": 85.5421686746988,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 97.1563981042654
+  },
+  "noisy": {
+   "raw": {
+    "near": 92.65402843601895,
+    "cross": 1.6587677725118484,
+    "fired": 0.0,
+    "criterion": 89.33649289099526,
+    "cross_count": 7
+   },
+   "lower": {
+    "near": 93.36492890995261,
+    "cross": 2.843601895734597,
+    "fired": 0.0,
+    "criterion": 87.67772511848341,
+    "cross_count": 12
+   },
+   "wer": 9.039881831610044,
+   "domain_kept": 72.28915662650603,
+   "domain_n": 83,
+   "empty": 0,
+   "same_family_as_typed": 93.12796208530806
+  }
+ }
+}

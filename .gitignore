@@ -11,3 +11,14 @@ __pycache__/
 
 # ONNX Runtime release, downloaded per platform (cpp/coop_intent/README.md)
 cpp/coop_intent/third_party/onnxruntime-*
+
+# speech chain (scripts/coop/stt/README.md): synthesized test audio, downloaded speech models and the tools' environment are
+# regenerated or downloaded per machine; the transcripts, lists, scripts and results next to them are in git
+scripts/coop/stt/wav_*/
+scripts/coop/stt/models/
+scripts/coop/stt/tts/
+scripts/coop/stt/models_out/
+scripts/coop/stt/venv/
+
+# stderr of the training processes (library warnings); their summaries are in build_*.log
+scripts/coop/stt/*.log.err

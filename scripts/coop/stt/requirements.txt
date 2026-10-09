@@ -1,0 +1,13 @@
+# The speech tools' own environment (Python 3.11), kept apart from the training environment:
+#     python -m venv venv
+#     venv\Scripts\pip install -r requirements.txt        (venv/bin/pip on macOS)
+# It runs synth_accents.py, synth_train.py, run_stt.py and lead_test.py. build_v4.py and the scoring scripts
+# that load the bot need the training environment instead (torch, transformers: HANDOFF.md, section 2).
+sherpa-onnx==1.13.8
+numpy
+soxr
+psutil
+sentencepiece
+
+# only for the engine comparison (run_stt.py moonshine-*, lead_test.py); the v4 build does not need it
+moonshine-voice==0.1.5
