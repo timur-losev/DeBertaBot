@@ -11,6 +11,8 @@ __pycache__/
 
 # ONNX Runtime release, downloaded per platform (cpp/coop_intent/README.md)
 cpp/coop_intent/third_party/onnxruntime-*
+# sherpa-onnx's C API, copied per platform from the Python package of the same version (cpp/coop_intent/README.md)
+cpp/coop_intent/third_party/sherpa-onnx-*
 
 # speech chain (scripts/coop/stt/README.md): synthesized test audio, downloaded speech models and the tools' environment are
 # regenerated or downloaded per machine; the transcripts, lists, scripts and results next to them are in git

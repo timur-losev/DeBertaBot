@@ -15,9 +15,19 @@
 //                                 vocabulary, the directions (no model)
 //   coop_cli --bench              latency on the golden lines, load time, memory
 //   coop_cli --tokenize "text"    the words, pieces and ids of one line
+//   coop_cli --speech-text-tests FILE   SpeechTextForClassifier against the Python `norm` (no model)
+// with speech-to-text (a build that found sherpa-onnx under third_party/):
+//   coop_cli --voice              the chat with a microphone: hold SPACE and talk, release to send; a typed
+//                                 line still works (Windows)
+//   coop_cli --stt-wav FILE       one clip (16-bit PCM WAV) through the recognizer and the bot; may be repeated
+//   coop_cli --mic-test SECONDS   the default microphone for that long: the level it heard and the transcript
+//                                 (Windows; no bot is loaded)
+//   coop_cli --stt-tests LIST WAVDIR EXPECTED   the C++ transcripts against the Python package's: LIST is a
+//                                 list of {id, wav} (scripts/coop/stt/lines.json), EXPECTED a run_stt.py output
 // every mode first prints the bot it runs on (directory, labels, gate, threshold)
 // options: --model-dir DIR (export_cpp.py output: intent_config.json, vocab.tsv and the model files
 //          it lists under "members"), --threads N (per model, default 4),
+//          --stt-model DIR (a sherpa-onnx export of Parakeet TDT), --stt-threads N (default 2),
 //          --no-spin (ONNX Runtime worker threads sleep between calls), --sequential (an ensemble's
 //          members one after another instead of one thread each)
 #include <algorithm>
@@ -44,13 +54,18 @@
 #define NOMINMAX
 #include <windows.h>
 #include <psapi.h>
+#include <conio.h>
 #endif
 
 #include "coop_intent/bot_brain.h"
 #include "coop_intent/intent_model.h"
+#include "coop_intent/speech.h"
 #include "coop_intent/tokenizer.h"
 #include "coop_intent/unicode.h"
 #include "nlohmann/json.hpp"
+#if defined(COOP_WITH_STT) && defined(_WIN32)
+#include "mic_capture.h"
+#endif
 
 using json = nlohmann::json;
 using Clock = std::chrono::steady_clock;
@@ -675,6 +690,10 @@ const std::unordered_map<std::string, std::vector<std::string>> kLines = {
     {"HOLD_FIRE", {"Holding fire.", "Weapons tight.", "Ceasing fire."}},
     {"LOOK_AT", {"Looking.", "I see it.", "Turning to look."}},
     {"LOOK_AT_ME", {"Looking at you.", "Yeah, I see you.", "Facing you."}},
+    {"HELP", {"Coming to help.", "On my way to you.", "Hang on, I'm coming."}},
+    {"CHECK", {"Checking it.", "I'll check.", "Going to take a look."}},
+    {"SUPPRESS", {"Suppressing!", "Covering fire!", "Keeping their heads down."}},
+    {"JUMP", {"Jumping.", "On it, jumping.", "Going over."}},
 };
 const std::vector<std::string> kAck = {"Copy.", "Noted.", "Heard."};
 
@@ -685,55 +704,63 @@ const std::vector<std::string>& LinesFor(const std::string& label) {
 }
 const std::vector<std::string> kAgain = {"Say again?", "Didn't catch that.", "Come again?"};
 
-int RunChat(Model& m, int threads) {
+// coop_bot.py strips the line with str.strip(): the same Unicode whitespace here
+std::string StripPy(const std::string& line) {
+    std::u32string u = coop::DecodeUtf8(line);
+    size_t b = 0, e = u.size();
+    while (b < e && coop::IsPySpace(u[b])) ++b;
+    while (e > b && coop::IsPySpace(u[e - 1])) --e;
+    return coop::EncodeUtf8(std::u32string_view(u).substr(b, e - b));
+}
+
+// one bot in a conversation: the demo's replies and the debug line
+struct Chat {
+    Model& m;
     coop::BotBrain brain;
-    std::string err;
-    if (!brain.Init(m.cfg, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
-    std::vector<float> p;
-    Classify(m, m.tok.Encode("warm up"), &p, &err);
-    std::mt19937 rng(static_cast<unsigned>(Clock::now().time_since_epoch().count()));
-    auto pick = [&](const std::vector<std::string>& v) { return v[rng() % v.size()]; };
+    std::mt19937 rng{static_cast<unsigned>(Clock::now().time_since_epoch().count())};
     bool why = true;
-    std::printf("ready (C++, ONNX Runtime CPU, %d threads). threshold %.2f. Talk to your teammate in English; /why /t <x> /q\n\n",
-                threads, brain.threshold);
-    for (;;) {
-        std::printf("you> ");
-        std::fflush(stdout);
-        std::string line;
-        if (!ReadLine(&line)) return std::printf("\n"), 0;
-        {   // coop_bot.py strips the line with str.strip(): the same Unicode whitespace here
-            std::u32string u = coop::DecodeUtf8(line);
-            size_t b = 0, e = u.size();
-            while (b < e && coop::IsPySpace(u[b])) ++b;
-            while (e > b && coop::IsPySpace(u[e - 1])) --e;
-            line = coop::EncodeUtf8(std::u32string_view(u).substr(b, e - b));
-        }
-        if (line.empty()) continue;
-        if (line == "/q" || line == "/quit") return 0;
-        if (line == "/why") { why = !why; continue; }
+    std::vector<float> p;
+
+    explicit Chat(Model& model) : m(model) {}
+    bool Init(std::string* err) {
+        if (!brain.Init(m.cfg, err)) return false;
+        return Classify(m, m.tok.Encode("warm up"), &p, err);
+    }
+    const std::string& Pick(const std::vector<std::string>& v) { return v[rng() % v.size()]; }
+
+    // /q /why /t: 0 not a command, 1 handled, 2 quit
+    int Command(const std::string& line) {
+        if (line == "/q" || line == "/quit") return 2;
+        if (line == "/why") return why = !why, 1;
         if (line.rfind("/t ", 0) == 0) {
             brain.threshold = std::atof(line.c_str() + 3);
             std::printf("  threshold %.2f\n", brain.threshold);
-            continue;
+            return 1;
         }
+        return 0;
+    }
+
+    // One line. `heard` is what the regex slots and the place matcher read; `text` is what the classifier
+    // reads: the same string for a typed line, SpeechTextForClassifier(heard) for a spoken one
+    bool Respond(const std::string& heard, const std::string& text, std::string* err) {
         const auto t0 = Clock::now();
-        const auto ids = m.tok.Encode(line);
-        if (!Classify(m, ids, &p, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+        const auto ids = m.tok.Encode(text);
+        if (!Classify(m, ids, &p, err)) return false;
         const double ms = Ms(Clock::now() - t0);
         const int pending_before = brain.Pending();
-        const coop::Decision d = brain.Decide(line, p);
-        if (d.intent < 0) return std::fprintf(stderr, "the model does not fit intent_config.json\n"), 1;
+        const coop::Decision d = brain.Decide(heard, p);
+        if (d.intent < 0) return *err = "the model does not fit intent_config.json", false;
         const std::string& intent = m.cfg.labels[d.intent];
         std::string reply;
         switch (d.action) {
             case coop::Action::Negated: reply = "Copy, standing down."; break;
-            case coop::Action::SayAgain: reply = pick(kAgain); break;
-            case coop::Action::Ignore: reply = pick(kAck); break;
-            case coop::Action::Execute: reply = "Now! " + pick(LinesFor(m.cfg.labels[pending_before])); break;
+            case coop::Action::SayAgain: reply = Pick(kAgain); break;
+            case coop::Action::Ignore: reply = Pick(kAck); break;
+            case coop::Action::Execute: reply = "Now! " + Pick(LinesFor(m.cfg.labels[pending_before])); break;
             case coop::Action::Go: reply = "Going!"; break;
-            case coop::Action::Wait: reply = pick(kLines.at("WAIT")); break;
+            case coop::Action::Wait: reply = Pick(kLines.at("WAIT")); break;
             case coop::Action::Queued: reply = "Ready to " + m.cfg.phrases[intent] + ". On your go."; break;
-            case coop::Action::Act: reply = pick(LinesFor(intent)); break;
+            case coop::Action::Act: reply = Pick(LinesFor(intent)); break;
         }
         // "hold fire until I say": the bot holds now and has queued OPEN_FIRE for the signal
         if (intent == "HOLD_FIRE" && d.action == coop::Action::Act && d.on_signal && brain.LabelIndex("OPEN_FIRE") >= 0)
@@ -762,8 +789,274 @@ int RunChat(Model& m, int threads) {
             if (!d.executed_places.targets.empty())
                 std::printf("     executes at: %s\n", PlacesText(d.executed_places, brain.Places()).c_str());
         }
+        return true;
+    }
+};
+
+int RunChat(Model& m, int threads) {
+    Chat chat(m);
+    std::string err;
+    if (!chat.Init(&err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+    std::printf("ready (C++, ONNX Runtime %s CPU, %d threads). threshold %.2f. Talk to your teammate in English; /why /t <x> /q\n\n",
+                coop::OrtBackend::RuntimeVersion().c_str(), threads, chat.brain.threshold);
+    for (;;) {
+        std::printf("you> ");
+        std::fflush(stdout);
+        std::string line;
+        if (!ReadLine(&line)) return std::printf("\n"), 0;
+        line = StripPy(line);
+        if (line.empty()) continue;
+        if (const int c = chat.Command(line)) {
+            if (c == 2) return 0;
+            continue;
+        }
+        if (!chat.Respond(line, line, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
     }
 }
+
+// SpeechTextForClassifier against scripts/coop/stt `norm`: a list of {text, norm} written by Python
+int RunSpeechTextTests(const std::string& path) {
+    std::string raw;
+    if (!ReadFile(path, &raw)) return std::fprintf(stderr, "cannot read %s\n", path.c_str()), 1;
+    const json rows = json::parse(raw);
+    size_t same = 0, shown = 0;
+    for (const json& r : rows) {
+        const std::string got = coop::SpeechTextForClassifier(r.at("text").get<std::string>());
+        if (got == r.at("norm").get<std::string>()) ++same;
+        else if (shown++ < 5)
+            std::printf("  %s: C++ %s, Python %s\n", Escaped(r.at("text")).c_str(), Escaped(got).c_str(), Escaped(r.at("norm")).c_str());
+    }
+    std::printf("speech text tests, %zu lines: the classifier's text equals the Python one on %zu/%zu\n", rows.size(), same, rows.size());
+    return same == rows.size() ? 0 : 1;
+}
+
+#ifdef COOP_WITH_STT
+// a 16-bit PCM WAV file: its first channel as samples in -1..1
+bool ReadWav(const std::string& path, std::vector<float>* samples, int* sample_rate, std::string* err) {
+    std::string raw;
+    if (!ReadFile(path, &raw)) return *err = "cannot read " + path, false;
+    auto u16 = [&](size_t i) { return static_cast<unsigned>(static_cast<unsigned char>(raw[i])) | static_cast<unsigned>(static_cast<unsigned char>(raw[i + 1])) << 8; };
+    auto u32 = [&](size_t i) { return u16(i) | u16(i + 2) << 16; };
+    if (raw.size() < 12 || raw.compare(0, 4, "RIFF") != 0 || raw.compare(8, 4, "WAVE") != 0) return *err = path + " is not a WAV file", false;
+    unsigned channels = 0, bits = 0, format = 0;
+    for (size_t i = 12; i + 8 <= raw.size();) {
+        const size_t n = u32(i + 4), body = i + 8;
+        if (body + n > raw.size() && raw.compare(i, 4, "data") != 0) break;
+        if (raw.compare(i, 4, "fmt ") == 0 && n >= 16) {
+            format = u16(body), channels = u16(body + 2), *sample_rate = static_cast<int>(u32(body + 4)), bits = u16(body + 14);
+        } else if (raw.compare(i, 4, "data") == 0) {
+            if (format != 1 || bits != 16 || channels == 0) return *err = path + ": only 16-bit PCM is read", false;
+            const size_t bytes = std::min(n, raw.size() - body), frame = 2 * channels;
+            samples->resize(bytes / frame);
+            for (size_t k = 0; k < samples->size(); ++k)
+                (*samples)[k] = static_cast<short>(u16(body + k * frame)) / 32768.0f;
+            return true;
+        }
+        i = body + n + (n & 1);
+    }
+    return *err = path + " has no audio data", false;
+}
+
+bool LoadSpeech(coop::SpeechRecognizer& stt, const coop::SpeechOptions& opt, std::string* err) {
+    const auto t0 = Clock::now();
+    const double mem0 = WorkingSetMb();
+    if (!stt.Load(opt, err)) return false;
+    std::vector<float> silence(16000, 0.0f);    // the first call pays for allocation
+    std::string text;
+    if (!stt.Transcribe(silence.data(), silence.size(), 16000, &text, err)) return false;
+    std::printf("speech: %s on ONNX Runtime %s, %s (%d threads; loaded in %.1f s, %.0f MB)\n",
+                coop::SpeechRecognizer::Backend().c_str(), coop::OrtBackend::RuntimeVersion().c_str(), opt.model_dir.c_str(),
+                opt.threads, Ms(Clock::now() - t0) / 1000, WorkingSetMb() - mem0);
+    return true;
+}
+
+// The C++ transcripts against what the Python package printed for the same clips (scripts/coop/stt/run_stt.py),
+// and what the difference does to the bot: its pick on the C++ transcript against its pick on the Python one
+// (the intent, or "say again" under the threshold), and against the line's own label where the list has one
+int RunSttTests(Model& m, const coop::SpeechOptions& opt, const std::string& list, const std::string& wav_dir,
+                const std::string& expected) {
+    coop::SpeechRecognizer stt;
+    coop::BotBrain brain;
+    std::string err, raw;
+    if (!LoadSpeech(stt, opt, &err) || !brain.Init(m.cfg, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+    if (!ReadFile(list, &raw)) return std::fprintf(stderr, "cannot read %s\n", list.c_str()), 1;
+    const json rows = json::parse(raw);
+    if (!ReadFile(expected, &raw)) return std::fprintf(stderr, "cannot read %s\n", expected.c_str()), 1;
+    const json python = json::parse(raw);
+    std::unordered_map<std::string, std::string> want;
+    for (const json& r : python.at("rows")) want[r.at("id").get<std::string>()] = r.at("text").get<std::string>();
+    std::vector<float> p;
+    auto pick = [&](const std::string& transcript, std::string* label) {
+        if (!Classify(m, m.tok.Encode(coop::SpeechTextForClassifier(transcript)), &p, &err)) return false;
+        int intent = -1;
+        double conf = 0;
+        if (!brain.Pick(p, &intent, &conf)) return err = "the model does not fit intent_config.json", false;
+        *label = conf >= brain.threshold ? m.cfg.labels[static_cast<size_t>(intent)] : std::string("(say again)");
+        return true;
+    };
+    size_t n = 0, same = 0, same_pick = 0, labelled = 0, right_cpp = 0, right_python = 0, shown = 0;
+    std::vector<double> ms;
+    double audio = 0;
+    for (const json& r : rows) {
+        const auto w = want.find(r.at("id").get<std::string>());
+        if (w == want.end()) continue;
+        std::vector<float> x;
+        int rate = 0;
+        if (!ReadWav(wav_dir + "/" + r.at("wav").get<std::string>(), &x, &rate, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+        const auto t0 = Clock::now();
+        std::string text, a, b;
+        if (!stt.Transcribe(x.data(), x.size(), rate, &text, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+        ms.push_back(Ms(Clock::now() - t0));
+        audio += static_cast<double>(x.size()) / rate;
+        ++n;
+        if (!pick(text, &a) || !pick(w->second, &b)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+        if (text == w->second) ++same;
+        else if (shown++ < 5)
+            std::printf("  %s: C++ %s -> %s, Python %s -> %s\n", r.at("wav").get<std::string>().c_str(), Escaped(text).c_str(), a.c_str(),
+                        Escaped(w->second).c_str(), b.c_str());
+        if (a == b) ++same_pick;
+        if (r.contains("maj") && r["maj"].is_string()) {
+            ++labelled;
+            right_cpp += a == r["maj"].get<std::string>();
+            right_python += b == r["maj"].get<std::string>();
+        }
+    }
+    if (n == 0) return std::fprintf(stderr, "no clip of %s is in %s\n", list.c_str(), expected.c_str()), 1;
+    std::printf("stt tests, %zu clips of %s: the C++ transcript equals the Python transcript on %zu/%zu; the bot picks the same on %zu/%zu",
+                n, wav_dir.c_str(), same, n, same_pick, n);
+    if (labelled)
+        std::printf(" (the line's own intent on %zu from the C++ transcript, %zu from the Python one, of %zu)", right_cpp, right_python, labelled);
+    std::printf("; median %.0f ms, p95 %.0f ms per clip of %.1f s\n", Percentile(ms, 0.5), Percentile(ms, 0.95), audio / n);
+    return same == n ? 0 : 1;
+}
+
+// one recorded or read clip through the recognizer and the bot
+bool HearAndRespond(Chat& chat, const coop::SpeechRecognizer& stt, const std::vector<float>& clip, int rate, const char* prefix,
+                    std::string* err) {
+    const auto t0 = Clock::now();
+    std::string heard;
+    if (!stt.Transcribe(clip.data(), clip.size(), rate, &heard, err)) return false;
+    heard = StripPy(heard);
+    std::printf("%s%s   [%.1f s of audio, recognized in %.0f ms]\n", prefix, heard.empty() ? "(nothing recognized)" : heard.c_str(),
+                static_cast<double>(clip.size()) / rate, Ms(Clock::now() - t0));
+    if (heard.empty()) return true;
+    return chat.Respond(heard, coop::SpeechTextForClassifier(heard), err);
+}
+
+int RunSttWav(Model& m, const coop::SpeechOptions& opt, const std::vector<std::string>& files) {
+    coop::SpeechRecognizer stt;
+    Chat chat(m);
+    std::string err;
+    if (!LoadSpeech(stt, opt, &err) || !chat.Init(&err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+    for (const std::string& f : files) {
+        std::vector<float> x;
+        int rate = 0;
+        if (!ReadWav(f, &x, &rate, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+        std::printf("%s\n", f.c_str());
+        if (!HearAndRespond(chat, stt, x, rate, "you> ", &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+    }
+    return 0;
+}
+
+#ifdef _WIN32
+// Is the microphone the one the player means, and is it loud enough: SECONDS of it, its level, its transcript
+int RunMicTest(const coop::SpeechOptions& opt, double seconds) {
+    coop::SpeechRecognizer stt;
+    MicCapture mic;
+    std::string err, text;
+    if (!LoadSpeech(stt, opt, &err) || !mic.Start(&err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+    std::printf("listening for %.1f s: say something\n", seconds);
+    std::fflush(stdout);
+    Sleep(300);   // more than the pre-roll: the clip starts with real audio
+    mic.Begin();
+    Sleep(static_cast<DWORD>(seconds * 1000));
+    const std::vector<float> clip = mic.End();
+    double sum = 0, peak = 0;
+    for (float x : clip) sum += static_cast<double>(x) * x, peak = std::max(peak, std::fabs(static_cast<double>(x)));
+    const double rms = clip.empty() ? 0 : std::sqrt(sum / static_cast<double>(clip.size()));
+    const auto t0 = Clock::now();
+    if (!stt.Transcribe(clip.data(), clip.size(), MicCapture::kSampleRate, &text, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+    std::printf("mic test: %.2f s captured at %d Hz (asked for %.2f s + %.2f s before and %.2f s after), level %.1f dBFS, peak %.1f dBFS%s\n",
+                static_cast<double>(clip.size()) / MicCapture::kSampleRate, MicCapture::kSampleRate, seconds, MicCapture::kPreRollSeconds,
+                MicCapture::kTailSeconds, 20 * std::log10(std::max(rms, 1e-9)), 20 * std::log10(std::max(peak, 1e-9)),
+                peak == 0 ? " -- pure silence: the device gives no signal (muted, or the wrong default input)" : "");
+    std::printf("heard: %s   [recognized in %.0f ms]\n", text.empty() ? "(nothing recognized)" : text.c_str(), Ms(Clock::now() - t0));
+    return clip.empty() ? 1 : 0;
+}
+
+// The chat with a microphone. The key is read from this console (so it does nothing while another window has
+// the keyboard); its release is read from the keyboard state, which the console does not report
+int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads) {
+    const HANDLE in = GetStdHandle(STD_INPUT_HANDLE);
+    DWORD mode = 0;
+    if (!GetConsoleMode(in, &mode)) return std::fprintf(stderr, "--voice reads the key from a console: run it in a terminal, not through a pipe\n"), 1;
+    coop::SpeechRecognizer stt;
+    Chat chat(m);
+    MicCapture mic;
+    std::string err;
+    if (!LoadSpeech(stt, opt, &err) || !chat.Init(&err) || !mic.Start(&err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+    std::printf("ready (C++, ONNX Runtime %s CPU, %d threads). threshold %.2f.\n"
+                "Hold SPACE and talk, release to send. Or type a line and press Enter; /why /t <x> /q. Esc quits.\n\n",
+                coop::OrtBackend::RuntimeVersion().c_str(), threads, chat.brain.threshold);
+    for (;;) {
+        std::printf("you> ");
+        std::fflush(stdout);
+        wint_t c = _getwch();
+        if (c == 27 || c == WEOF) return std::printf("\n"), 0;
+        if (c == 0 || c == 0xE0) {   // a function or arrow key: its second code
+            _getwch();
+            std::printf("\r");
+            continue;
+        }
+        if (c == L' ') {
+            mic.Begin();
+            const auto t0 = Clock::now();
+            std::printf("(listening)");
+            std::fflush(stdout);
+            while (GetAsyncKeyState(VK_SPACE) & 0x8000) Sleep(5);
+            const double held = Ms(Clock::now() - t0);
+            const std::vector<float> clip = mic.End();
+            FlushConsoleInputBuffer(in);   // the spaces the held key typed
+            std::printf("\r                \r");   // over "you> (listening)"
+            if (held < 200) {
+                std::printf("you> (hold SPACE while you talk)\n");
+                continue;
+            }
+            if (!HearAndRespond(chat, stt, clip, MicCapture::kSampleRate, "you> ", &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+            continue;
+        }
+        std::u32string typed;   // a typed line: echoed and edited here, because the console's own line input is off
+        for (;; c = _getwch()) {
+            if (c == L'\r' || c == L'\n') break;
+            if (c == 27) {
+                typed.clear();
+                break;
+            }
+            if (c == 0 || c == 0xE0) {
+                _getwch();
+            } else if (c == L'\b') {
+                if (!typed.empty()) {
+                    typed.pop_back();
+                    std::printf("\b \b");
+                }
+            } else if (c >= 0x20) {
+                typed.push_back(static_cast<char32_t>(c));
+                _putwch(static_cast<wchar_t>(c));
+            }
+            std::fflush(stdout);
+        }
+        std::printf("\n");
+        const std::string line = StripPy(coop::EncodeUtf8(typed));
+        if (line.empty()) continue;
+        if (const int k = chat.Command(line)) {
+            if (k == 2) return 0;
+            continue;
+        }
+        if (!chat.Respond(line, line, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+    }
+}
+#endif   // _WIN32
+#endif   // COOP_WITH_STT
 
 }  // namespace
 
@@ -773,9 +1066,15 @@ int main(int argc, char** argv) {
 #endif
     Model m;
     m.dir = COOP_DEFAULT_MODEL_DIR;
-    std::string mode = "chat", tokenize_text;
+    std::string mode = "chat", tokenize_text, speech_text_file;
     coop::OrtBackend::Options opt;
     bool parallel = true;
+    coop::SpeechOptions speech;
+#ifdef COOP_DEFAULT_STT_DIR
+    speech.model_dir = COOP_DEFAULT_STT_DIR;
+#endif
+    std::vector<std::string> wavs, stt_test;
+    double mic_seconds = 0;
     for (int i = 1; i < argc; ++i) {
         const std::string a = argv[i];
         if (a == "--model-dir" && i + 1 < argc) m.dir = argv[++i];
@@ -786,15 +1085,32 @@ int main(int argc, char** argv) {
                  a == "--decide-tests" || a == "--location-tests")
             mode = a.substr(2);
         else if (a == "--tokenize" && i + 1 < argc) mode = "tokenize", tokenize_text = argv[++i];
+        else if (a == "--speech-text-tests" && i + 1 < argc) mode = "speech-text-tests", speech_text_file = argv[++i];
+        else if (a == "--stt-model" && i + 1 < argc) speech.model_dir = argv[++i];
+        else if (a == "--stt-threads" && i + 1 < argc) speech.threads = std::atoi(argv[++i]);
+        else if (a == "--voice") mode = "voice";
+        else if (a == "--mic-test" && i + 1 < argc) mode = "mic-test", mic_seconds = std::atof(argv[++i]);
+        else if (a == "--stt-wav" && i + 1 < argc) mode = "stt-wav", wavs.push_back(argv[++i]);
+        else if (a == "--stt-tests" && i + 3 < argc) mode = "stt-tests", stt_test = {argv[i + 1], argv[i + 2], argv[i + 3]}, i += 3;
         else {
             std::fprintf(stderr, "usage: coop_cli [--golden | --tokenizer-tests | --dialogue | --gate-tests | --decide-tests |\n"
-                                 "                 --bench |\n"
-                                 "                 --tokenize TEXT]\n"
-                                 "                [--model-dir DIR] [--threads N] [--no-spin] [--sequential]\n");
+                                 "                 --location-tests | --bench | --tokenize TEXT | --speech-text-tests FILE |\n"
+                                 "                 --voice | --mic-test SECONDS | --stt-wav FILE ... | --stt-tests LIST WAVDIR EXPECTED]\n"
+                                 "                [--model-dir DIR] [--threads N] [--no-spin] [--sequential]\n"
+                                 "                [--stt-model DIR] [--stt-threads N]\n");
             return 2;
         }
     }
     std::string err;
+    if (mode == "speech-text-tests") return RunSpeechTextTests(speech_text_file);
+#if defined(COOP_WITH_STT) && defined(_WIN32)
+    if (mode == "mic-test") return RunMicTest(speech, mic_seconds);
+#endif
+#ifndef COOP_WITH_STT
+    if (mode == "voice" || mode == "stt-wav" || mode == "stt-tests" || mode == "mic-test")
+        return std::fprintf(stderr, "this coop_cli was built without speech-to-text: sherpa-onnx was not under third_party/ "
+                                    "(cpp/coop_intent/README.md)\n"), 2;
+#endif
     if (!LoadConfig(m, &err)) return std::fprintf(stderr, "%s: %s\n", m.dir.c_str(), err.c_str()), 1;
     // which bot this run is about: the default directory is compiled in (and stays in the CMake cache),
     // and the checks' own lines do not tell one bot from another
@@ -824,5 +1140,15 @@ int main(int argc, char** argv) {
     if (mode == "golden") return RunGolden(m);
     if (mode == "dialogue") return RunDialogue(m);
     if (mode == "bench") return RunBench(m, load_ms, mem0);
+#ifdef COOP_WITH_STT
+    if (mode == "stt-wav") return RunSttWav(m, speech, wavs);
+    if (mode == "stt-tests") return RunSttTests(m, speech, stt_test[0], stt_test[1], stt_test[2]);
+#ifdef _WIN32
+    if (mode == "voice") return RunVoice(m, speech, opt.threads);
+#else
+    if (mode == "voice" || mode == "mic-test")
+        return std::fprintf(stderr, "the microphone is read only on Windows so far; --stt-wav reads a file\n"), 2;
+#endif
+#endif
     return RunChat(m, opt.threads);
 }

@@ -1,12 +1,45 @@
 // OrtBackend: the model in ONNX Runtime's C++ API (standalone build only; UE5 goes through NNE).
+//
+// The C++ API is initialized by hand, with the API level of the runtime that is actually loaded: built
+// against the 1.30 headers, the engine still runs on an older onnxruntime.dll. A process holds one
+// onnxruntime.dll, and with speech-to-text that is the one sherpa-onnx was built with (CMakeLists.txt).
+// Everything called here has been in the C API for many versions.
+#define ORT_API_MANUAL_INIT
 #include <onnxruntime_cxx_api.h>
+#undef ORT_API_MANUAL_INIT
 
 #include <array>
+#include <cstdlib>
+#include <mutex>
 
 #include "coop_intent/intent_model.h"
 #include "coop_intent/unicode.h"
 
 namespace coop {
+
+namespace {
+
+// "1.28.2" -> 28: the newest API level this runtime has (asking it for a newer one fails, and it says so on stderr)
+bool InitOrt(std::string* error) {
+    static std::once_flag once;
+    static bool ok = false;
+    std::call_once(once, [] {
+        const OrtApiBase* base = OrtGetApiBase();
+        const char* version = base->GetVersionString();
+        const char* dot = version;
+        while (*dot && *dot != '.') ++dot;
+        const int minor = *dot ? std::atoi(dot + 1) : 0;
+        const OrtApi* api = base->GetApi(static_cast<uint32_t>(minor > 0 && minor < ORT_API_VERSION ? minor : ORT_API_VERSION));
+        if (api) Ort::InitApi(api);
+        ok = api != nullptr;
+    });
+    if (!ok && error) *error = std::string("ONNX Runtime ") + OrtGetApiBase()->GetVersionString() + " gave no API";
+    return ok;
+}
+
+}  // namespace
+
+std::string OrtBackend::RuntimeVersion() { return OrtGetApiBase()->GetVersionString(); }
 
 struct OrtBackend::Impl {
     Ort::Env env{ORT_LOGGING_LEVEL_WARNING, "coop_intent"};
@@ -18,6 +51,7 @@ OrtBackend::OrtBackend() = default;
 OrtBackend::~OrtBackend() = default;
 
 bool OrtBackend::Load(const std::string& path, const Options& o, std::string* error) {
+    if (!InitOrt(error)) return false;
     try {
         impl_ = std::make_unique<Impl>();
         Ort::SessionOptions so;

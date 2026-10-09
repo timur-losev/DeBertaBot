@@ -45,6 +45,7 @@ public:
     ~OrtBackend() override;
     bool Load(const std::string& onnx_path_utf8, const Options& options, std::string* error);
     bool Run(const std::vector<int64_t>& ids, std::vector<float>* logits, std::string* error) override;
+    static std::string RuntimeVersion();   // of the onnxruntime library this process loaded, e.g. "1.30.0"
 
 private:
     struct Impl;

@@ -45,7 +45,8 @@ add_library(coop_intent_core STATIC
   src/tokenizer.cpp
   src/bot_brain.cpp
   src/locations.cpp
-  src/intent_model.cpp)
+  src/intent_model.cpp
+  src/speech_text.cpp)
 target_include_directories(coop_intent_core PUBLIC include)
 target_link_libraries(coop_intent_core PUBLIC Threads::Threads)
 
@@ -68,11 +69,68 @@ get_filename_component(COOP_MODEL_DIR_ABS "${COOP_MODEL_DIR}" ABSOLUTE)
 target_compile_definitions(coop_cli PRIVATE COOP_DEFAULT_MODEL_DIR="${COOP_MODEL_DIR_ABS}")
 if(WIN32)
   target_link_libraries(coop_cli PRIVATE psapi)
-  # next to the exe: Windows ships an older onnxruntime.dll in System32 that must not be picked up
-  add_custom_command(TARGET coop_cli POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${ORT_DIR}/lib/onnxruntime.dll"
-            "${ORT_DIR}/lib/onnxruntime_providers_shared.dll" $<TARGET_FILE_DIR:coop_cli>)
 else()
   # macOS / Linux: the executable finds the runtime library where it was linked from
   set_target_properties(coop_cli PROPERTIES BUILD_RPATH "${ORT_DIR}/lib")
+endif()
+
+# Speech-to-text, optional: sherpa-onnx's C API (include/sherpa-onnx/c-api/c-api.h, lib/sherpa-onnx-c-api.*,
+# lib/onnxruntime.dll) under third_party/. The Python package `sherpa-onnx` of the same version carries
+# exactly these files (site-packages/sherpa_onnx/include and lib), so the C++ and the Python transcripts
+# come from one binary.
+#
+# A process holds ONE onnxruntime.dll, and the transcripts depend on which: on sherpa-onnx's own runtime
+# (1.28.2 for sherpa-onnx 1.13.8) the C++ transcripts equal the Python ones clip for clip; on the engine's
+# 1.30.0 they differ on 3% of clean clips and 20-30% of accented ones (README.md, "Speech-to-text"). The
+# bots were trained on the Python transcripts, so with speech-to-text the exe gets sherpa-onnx's runtime,
+# and the engine runs the bot on it too (ort_backend.cpp asks the loaded runtime for its own API level).
+if(WIN32)
+  set(SHERPA_NAME "sherpa-onnx-1.13.8-win-x64")
+  set(SHERPA_LIB "lib/sherpa-onnx-c-api.lib")
+elseif(APPLE)
+  set(SHERPA_NAME "sherpa-onnx-1.13.8-osx")
+  set(SHERPA_LIB "lib/libsherpa-onnx-c-api.dylib")
+else()
+  set(SHERPA_NAME "sherpa-onnx-1.13.8-linux")
+  set(SHERPA_LIB "lib/libsherpa-onnx-c-api.so")
+endif()
+set(SHERPA_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party/${SHERPA_NAME}" CACHE PATH "sherpa-onnx C API (include/, lib/)")
+set(COOP_STT_MODEL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../scripts/coop/stt/models/sherpa-onnx-nemo-parakeet-tdt-0.6b-v2-int8"
+    CACHE PATH "sherpa-onnx export of Parakeet TDT 0.6B v2 (scripts/coop/stt/README.md)")
+if(EXISTS "${SHERPA_DIR}/include/sherpa-onnx/c-api/c-api.h" AND EXISTS "${SHERPA_DIR}/${SHERPA_LIB}")
+  add_library(coop_intent_stt STATIC src/sherpa_speech.cpp)
+  target_include_directories(coop_intent_stt PRIVATE "${SHERPA_DIR}/include")
+  target_link_libraries(coop_intent_stt PUBLIC coop_intent_core "${SHERPA_DIR}/${SHERPA_LIB}")
+  target_link_libraries(coop_cli PRIVATE coop_intent_stt)
+  get_filename_component(COOP_STT_MODEL_DIR_ABS "${COOP_STT_MODEL_DIR}" ABSOLUTE)
+  target_compile_definitions(coop_cli PRIVATE COOP_WITH_STT COOP_DEFAULT_STT_DIR="${COOP_STT_MODEL_DIR_ABS}")
+  if(WIN32)
+    target_sources(coop_cli PRIVATE tools/mic_capture_win.cpp)   # the microphone of coop_cli --voice
+    target_link_libraries(coop_cli PRIVATE winmm)
+    add_custom_command(TARGET coop_cli POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${SHERPA_DIR}/lib/sherpa-onnx-c-api.dll" $<TARGET_FILE_DIR:coop_cli>)
+    if(EXISTS "${SHERPA_DIR}/lib/onnxruntime.dll")
+      set(COOP_RUNTIME_DLLS "${SHERPA_DIR}/lib/onnxruntime.dll")
+      message(STATUS "speech-to-text: coop_cli runs on sherpa-onnx's ONNX Runtime (${SHERPA_DIR}/lib/onnxruntime.dll)")
+    else()
+      message(STATUS "speech-to-text: no onnxruntime.dll in ${SHERPA_DIR}/lib, the recognizer runs on the engine's ONNX Runtime: its transcripts differ from the Python package's")
+    endif()
+  else()
+    set_property(TARGET coop_cli APPEND PROPERTY BUILD_RPATH "${SHERPA_DIR}/lib")
+  endif()
+else()
+  message(STATUS "sherpa-onnx is not in ${SHERPA_DIR}: coop_cli is built without speech-to-text (--voice, --stt-wav, --stt-tests)")
+endif()
+
+if(WIN32)
+  # the runtime next to the exe: Windows ships an older onnxruntime.dll in System32 that must not be picked up.
+  # A leftover onnxruntime_providers_shared.dll of another version is removed: only the CPU provider is used
+  if(NOT COOP_RUNTIME_DLLS)
+    set(COOP_RUNTIME_DLLS "${ORT_DIR}/lib/onnxruntime.dll" "${ORT_DIR}/lib/onnxruntime_providers_shared.dll")
+  else()
+    add_custom_command(TARGET coop_cli POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E rm -f "$<TARGET_FILE_DIR:coop_cli>/onnxruntime_providers_shared.dll")
+  endif()
+  add_custom_command(TARGET coop_cli POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${COOP_RUNTIME_DLLS} $<TARGET_FILE_DIR:coop_cli>)
 endif()
