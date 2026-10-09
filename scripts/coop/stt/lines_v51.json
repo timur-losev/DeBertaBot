@@ -1,0 +1,542 @@
+[
+{
+"id": "r6v51_000",
+"author": "r6",
+"version": "v51",
+"text": "Look at red stairs on second floor, I think their roamer just rotated.",
+"maj": "LOOK_AT",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0000.wav"
+},
+{
+"id": "r6v51_001",
+"author": "r6",
+"version": "v51",
+"text": "Turn and face the north door for a sec, I heard the barricade break.",
+"maj": "LOOK_AT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0001.wav"
+},
+{
+"id": "r6v51_002",
+"author": "r6",
+"version": "v51",
+"text": "Glance at the sofa for me, I think there's a trap tucked next to it.",
+"maj": "LOOK_AT",
+"voice": "Microsoft Mark",
+"wav": "v51_0002.wav"
+},
+{
+"id": "r6v51_003",
+"author": "r6",
+"version": "v51",
+"text": "Turn around and look behind us, somebody's coming up on our flank.",
+"maj": "LOOK_AT",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0003.wav"
+},
+{
+"id": "r6v51_004",
+"author": "r6",
+"version": "v51",
+"text": "Look up, quick, I think the hatch above us got opened.",
+"maj": "LOOK_AT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0004.wav"
+},
+{
+"id": "r6v51_005",
+"author": "r6",
+"version": "v51",
+"text": "Turn to your right, three o'clock, I just saw something roll through.",
+"maj": "LOOK_AT",
+"voice": "Microsoft Mark",
+"wav": "v51_0005.wav"
+},
+{
+"id": "r6v51_006",
+"author": "r6",
+"version": "v51",
+"text": "Look at my ping for a second, tell me that's not a trap.",
+"maj": "LOOK_AT",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0006.wav"
+},
+{
+"id": "r6v51_007",
+"author": "r6",
+"version": "v51",
+"text": "Look over there where I'm aiming, something just moved.",
+"maj": "LOOK_AT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0007.wav"
+},
+{
+"id": "r6v51_008",
+"author": "r6",
+"version": "v51",
+"text": "When I call it, turn and look at the west door, I'll bait him out.",
+"maj": "LOOK_AT",
+"voice": "Microsoft Mark",
+"wav": "v51_0008.wav"
+},
+{
+"id": "r6v51_009",
+"author": "r6",
+"version": "v51",
+"text": "Look at that window above you, someone's hanging on it.",
+"maj": "LOOK_AT",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0009.wav"
+},
+{
+"id": "r6v51_010",
+"author": "r6",
+"version": "v51",
+"text": "Turn and look at me, I'm standing by the blue stairs.",
+"maj": "LOOK_AT_ME",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0010.wav"
+},
+{
+"id": "r6v51_011",
+"author": "r6",
+"version": "v51",
+"text": "Face me real quick, I need to see which gadget you've got out.",
+"maj": "LOOK_AT_ME",
+"voice": "Microsoft Mark",
+"wav": "v51_0011.wav"
+},
+{
+"id": "r6v51_012",
+"author": "r6",
+"version": "v51",
+"text": "Look over here at me, I'm waving at you.",
+"maj": "LOOK_AT_ME",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0012.wav"
+},
+{
+"id": "r6v51_013",
+"author": "r6",
+"version": "v51",
+"text": "When I say now, turn and face me, I'm coming in from your blind side.",
+"maj": "LOOK_AT_ME",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0013.wav"
+},
+{
+"id": "r6v51_014",
+"author": "r6",
+"version": "v51",
+"text": "Yo, turn to me.",
+"maj": "LOOK_AT_ME",
+"voice": "Microsoft Mark",
+"wav": "v51_0014.wav"
+},
+{
+"id": "r6v51_015",
+"author": "r6",
+"version": "v51",
+"text": "Look my way for a sec, I want to line something up.",
+"maj": "LOOK_AT_ME",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0015.wav"
+},
+{
+"id": "r6v51_016",
+"author": "r6",
+"version": "v51",
+"text": "Keep your eyes on the south window and don't come off it, they love that runout.",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0016.wav"
+},
+{
+"id": "r6v51_017",
+"author": "r6",
+"version": "v51",
+"text": "Hold your crosshair on the door to your right, he's going to swing it.",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "v51_0017.wav"
+},
+{
+"id": "r6v51_018",
+"author": "r6",
+"version": "v51",
+"text": "On me, stay tight, we're rotating to site together.",
+"maj": "FOLLOW_ME",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0018.wav"
+},
+{
+"id": "r6v51_019",
+"author": "r6",
+"version": "v51",
+"text": "Get yourself over to the yellow stairs, I need a body on that rotate.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0019.wav"
+},
+{
+"id": "r6v51_020",
+"author": "r6",
+"version": "v51",
+"text": "Go take a look around the basement before we commit, I want intel on their anchors.",
+"maj": "DRONE",
+"voice": "Microsoft Mark",
+"wav": "v51_0020.wav"
+},
+{
+"id": "r6v51_021",
+"author": "r6",
+"version": "v51",
+"text": "Come to me and stick on my shoulder, I don't want you roaming alone.",
+"maj": "FOLLOW_ME",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0021.wav"
+},
+{
+"id": "r6v51_022",
+"author": "r6",
+"version": "v51",
+"text": "Keep an eye on me while I plant default, I can't watch my own flank.",
+"maj": "COVER_ME",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0022.wav"
+},
+{
+"id": "r6v51_023",
+"author": "r6",
+"version": "v51",
+"text": "I've got this angle locked down, you take the other one.",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "v51_0023.wav"
+},
+{
+"id": "r6v51_024",
+"author": "r6",
+"version": "v51",
+"text": "Look out, roamer swinging on your left!",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0024.wav"
+},
+{
+"id": "r6v51_025",
+"author": "r6",
+"version": "v51",
+"text": "Look, we're out of time, just plant the defuser already.",
+"maj": "PLANT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0025.wav"
+},
+{
+"id": "r6v51_026",
+"author": "r6",
+"version": "v51",
+"text": "Help me look for the defuser, it dropped somewhere near the white stairs.",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "v51_0026.wav"
+},
+{
+"id": "r6v51_027",
+"author": "r6",
+"version": "v51",
+"text": "Oh my god, look at that spray transfer, did you see that?",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0027.wav"
+},
+{
+"id": "r6v51_028",
+"author": "r6",
+"version": "v51",
+"text": "Don't bother looking at the north window, that's a fake, nobody's coming from there.",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0028.wav"
+},
+{
+"id": "r6v51_029",
+"author": "r6",
+"version": "v51",
+"text": "Scratch that, you don't need to look at me, carry on.",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "v51_0029.wav"
+},
+{
+"id": "csv51_000",
+"author": "cs",
+"version": "v51",
+"text": "turn and look at the east window upstairs, think someone's peeking from it",
+"maj": "LOOK_AT",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0030.wav"
+},
+{
+"id": "csv51_001",
+"author": "cs",
+"version": "v51",
+"text": "face main for a sec, pretty sure i heard steps",
+"maj": "LOOK_AT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0031.wav"
+},
+{
+"id": "csv51_002",
+"author": "cs",
+"version": "v51",
+"text": "look at the sofa, i swear something just moved",
+"maj": "LOOK_AT",
+"voice": "Microsoft Mark",
+"wav": "v51_0032.wav"
+},
+{
+"id": "csv51_003",
+"author": "cs",
+"version": "v51",
+"text": "look left, left, your left dude",
+"maj": "LOOK_AT",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0033.wav"
+},
+{
+"id": "csv51_004",
+"author": "cs",
+"version": "v51",
+"text": "turn around man, check behind you, he's lit",
+"maj": "LOOK_AT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0034.wav"
+},
+{
+"id": "csv51_005",
+"author": "cs",
+"version": "v51",
+"text": "look at your three o'clock real quick",
+"maj": "LOOK_AT",
+"voice": "Microsoft Mark",
+"wav": "v51_0035.wav"
+},
+{
+"id": "csv51_006",
+"author": "cs",
+"version": "v51",
+"text": "look where i just pinged, over there",
+"maj": "LOOK_AT",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0036.wav"
+},
+{
+"id": "csv51_007",
+"author": "cs",
+"version": "v51",
+"text": "hey turn and look at that thing i'm aiming at",
+"maj": "LOOK_AT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0037.wav"
+},
+{
+"id": "csv51_008",
+"author": "cs",
+"version": "v51",
+"text": "when i say go, look at the south door, not before",
+"maj": "LOOK_AT",
+"voice": "Microsoft Mark",
+"wav": "v51_0038.wav"
+},
+{
+"id": "csv51_009",
+"author": "cs",
+"version": "v51",
+"text": "take a quick look at the window above you, think he's up there",
+"maj": "LOOK_AT",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0039.wav"
+},
+{
+"id": "csv51_010",
+"author": "cs",
+"version": "v51",
+"text": "hey look at me a sec, wanna check your skin",
+"maj": "LOOK_AT_ME",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0040.wav"
+},
+{
+"id": "csv51_011",
+"author": "cs",
+"version": "v51",
+"text": "turn to face me dude, you're staring at a wall",
+"maj": "LOOK_AT_ME",
+"voice": "Microsoft Mark",
+"wav": "v51_0041.wav"
+},
+{
+"id": "csv51_012",
+"author": "cs",
+"version": "v51",
+"text": "look over here, over here",
+"maj": "LOOK_AT_ME",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0042.wav"
+},
+{
+"id": "csv51_013",
+"author": "cs",
+"version": "v51",
+"text": "turn and look at me, i'm at the north window",
+"maj": "LOOK_AT_ME",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0043.wav"
+},
+{
+"id": "csv51_014",
+"author": "cs",
+"version": "v51",
+"text": "on three you turn and face me, ready",
+"maj": "LOOK_AT_ME",
+"voice": "Microsoft Mark",
+"wav": "v51_0044.wav"
+},
+{
+"id": "csv51_015",
+"author": "cs",
+"version": "v51",
+"text": "face me real quick, don't walk over, just turn your head",
+"maj": "LOOK_AT_ME",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0045.wav"
+},
+{
+"id": "csv51_016",
+"author": "cs",
+"version": "v51",
+"text": "keep your crosshair glued to the west door, damn guy's gonna peek it any second",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0046.wav"
+},
+{
+"id": "csv51_017",
+"author": "cs",
+"version": "v51",
+"text": "keep watching the stairs on your left, don't take your eyes off em",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "v51_0047.wav"
+},
+{
+"id": "csv51_018",
+"author": "cs",
+"version": "v51",
+"text": "come to me and stick close, we're rotating together",
+"maj": "FOLLOW_ME",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0048.wav"
+},
+{
+"id": "csv51_019",
+"author": "cs",
+"version": "v51",
+"text": "go over to that window i'm looking at and stand by it",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0049.wav"
+},
+{
+"id": "csv51_020",
+"author": "cs",
+"version": "v51",
+"text": "go scout the basement first, see who's home",
+"maj": "DRONE",
+"voice": "Microsoft Mark",
+"wav": "v51_0050.wav"
+},
+{
+"id": "csv51_021",
+"author": "cs",
+"version": "v51",
+"text": "take a look around upstairs before we push",
+"maj": "DRONE",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0051.wav"
+},
+{
+"id": "csv51_022",
+"author": "cs",
+"version": "v51",
+"text": "i'm going for the plant, keep your eyes on me and cover me",
+"maj": "COVER_ME",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0052.wav"
+},
+{
+"id": "csv51_023",
+"author": "cs",
+"version": "v51",
+"text": "i got main covered, you watch the other door",
+"maj": "HOLD_OTHER_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "v51_0053.wav"
+},
+{
+"id": "csv51_024",
+"author": "cs",
+"version": "v51",
+"text": "look out, awp on your right",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0054.wav"
+},
+{
+"id": "csv51_025",
+"author": "cs",
+"version": "v51",
+"text": "bro did you see my one tap? looked so clean",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0055.wav"
+},
+{
+"id": "csv51_026",
+"author": "cs",
+"version": "v51",
+"text": "look, just flash me in through main already",
+"maj": "FLASH",
+"voice": "Microsoft Mark",
+"wav": "v51_0056.wav"
+},
+{
+"id": "csv51_027",
+"author": "cs",
+"version": "v51",
+"text": "look for the bomb, he dropped it somewhere by the sofa",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "v51_0057.wav"
+},
+{
+"id": "csv51_028",
+"author": "cs",
+"version": "v51",
+"text": "nah don't look at the west window, false alarm",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v51_0058.wav"
+},
+{
+"id": "csv51_029",
+"author": "cs",
+"version": "v51",
+"text": "never mind bro, no need to look at me, forget it",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "v51_0059.wav"
+}
+]
