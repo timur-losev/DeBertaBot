@@ -16,6 +16,7 @@ const char* ActionName(Action a) {
         case Action::Wait: return "wait";
         case Action::Queued: return "queued";
         case Action::Act: return "act";
+        case Action::Answer: return "answer";
     }
     return "?";
 }
@@ -144,6 +145,15 @@ bool BotBrain::Init(IntentConfig config, std::string* error) {
         }
         safe_[static_cast<size_t>(i)] = true;
     }
+    answer_.assign(cfg_.labels.size(), false);
+    for (const std::string& s : cfg_.answer_intents) {
+        const int i = LabelIndex(s);
+        if (i < 0) {
+            if (error) *error = "unknown answer intent " + s;
+            return false;
+        }
+        answer_[static_cast<size_t>(i)] = true;
+    }
     places_ = LocationMatcher();   // a config without "locations" must not keep the matcher of the one before
     if (cfg_.has_locations && !places_.Init(cfg_.locations, error)) return false;
     return slots_.Init(cfg_, error);
@@ -190,6 +200,10 @@ Decision BotBrain::Decide(std::string_view text, const std::vector<float>& probs
         d.action = Action::SayAgain;
     } else if (d.intent == none_) {
         d.action = Action::Ignore;
+    } else if (answer_[static_cast<size_t>(d.intent)]) {
+        // an answer to the planner's question is reported and nothing else: it is never queued (the
+        // signal slot is ignored), and it leaves the queued order alone
+        d.action = Action::Answer;
     } else if (d.intent == go_now_) {
         d.action = pending_ >= 0 ? Action::Execute : Action::Go;
         d.executed = pending_;

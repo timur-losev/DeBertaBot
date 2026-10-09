@@ -7,11 +7,15 @@
 //       -> door/north (role mine), window/south <- primary: the place the bot acts on
 //   "go up the blue stairs then go left"               (rule set v4: a vocabulary with "directions")
 //       -> stairs/blue direction up <- primary, then a target that is only a direction: left
+//   "hold that window", "stay at my pin"               (rule set v5: a vocabulary with the pin_* / point_* lists)
+//       -> window pointer this; a target that is only a pointer: pin <- primary
 // Everything is defined on the UTF-8 bytes: a token is a maximal run of ASCII letters and digits
 // (A-Z lowercased), every other byte separates. No regex, no Unicode tables.
 //
 // The rule set follows the vocabulary: one without "directions" (a bot exported before rule set v4)
 // is matched by rule set v3, as it was when its test files were written -- no target has a direction.
+// One with "directions" and without the pin_* / point_* word lists (exported before rule set v5) is
+// matched by rule set v4 -- no target has a pointer.
 #pragma once
 
 #include <string>
@@ -55,6 +59,12 @@ struct LocationVocab {
     // rule set v3 one: it has none of the dir_* word lists and no target gets a direction
     bool has_directions = false;
     std::vector<Direction> directions;
+    // rule set v5: "words" holds the pin_* and point_* lists. Without them (has_pointers false) the
+    // vocabulary is a rule set v4 or v3 one: it has none of those lists and no target gets a pointer
+    bool has_pointers = false;
+    // a word list of rule set v5, by its name: "pin_noun", "point_det", ... A loader sets has_pointers
+    // when "words" has any such list; Init then wants every one of them, and "directions"
+    static bool PointerList(std::string_view name) { return name.rfind("pin_", 0) == 0 || name.rfind("point_", 0) == 0; }
     std::vector<std::string> ignore;
     std::unordered_map<std::string, std::vector<std::string>> words;   // the rules' word lists
 };
@@ -71,13 +81,22 @@ enum class PlaceFlag { None, UnknownModifier, Unsure, Other };
 // window", "up the blue stairs", "the door behind you"); any other direction is a target of its own,
 // with no object, qualifier or zone ("go left")
 enum class PlaceDirection { None, Up, Down, Left, Right, Forward, Back };
+// how the line points at the place (rule set v5). Pin: the player's 3D marker ("my pin", "the ping",
+// "on my mark", "where i marked"). This: this / that / here / there ("that window", "over there",
+// "where i'm looking"). It is a place's or a direction's when said in its noun phrase, right after it
+// or on the way to it ("the window by my ping", "get up there", "that room by the north door"); any
+// other pointer is a target of its own, with no object, qualifier, zone or direction ("stay at my
+// pin", "check that room")
+enum class PlacePointer { None, Pin, This };
 const char* PlaceRoleName(PlaceRole r);   // "not", "from", "mine", "them", "status" or ""
 const char* PlaceFlagName(PlaceFlag f);   // "unknown_modifier", "unsure", "other" or ""
 const char* PlaceDirectionName(PlaceDirection d);   // "up", "down", "left", "right", "forward", "back" or ""
+const char* PlacePointerName(PlacePointer p);   // "pin", "this" or ""
 
 struct PlaceTarget {
     int object = -1, qualifier = -1, zone = -1;   // indices into the vocabulary, -1: none
     PlaceDirection direction = PlaceDirection::None;
+    PlacePointer pointer = PlacePointer::None;
     PlaceRole role = PlaceRole::None;
     PlaceFlag flag = PlaceFlag::None;
     bool inferred = false;              // the object was not said ("take blue", "you take the south one")
@@ -87,7 +106,9 @@ struct PlaceRecord {
     std::vector<PlaceTarget> targets;   // in line order
     // the first target without a role, a place or a direction; -1: the line names neither. If every
     // target has a role it is the first target, and the line gives the bot no destination: check
-    // Primary()->role
+    // Primary()->role.
+    // Rule set v5: a target that is only a pin counts like a place; one that is only a "this" (here,
+    // there, "that room") is the primary only when the line has no place, direction or pin at all
     int primary = -1;
     const PlaceTarget* Primary() const { return primary >= 0 ? &targets[static_cast<size_t>(primary)] : nullptr; }
 };
@@ -112,6 +133,7 @@ private:
 
     bool ready_ = false;
     bool directions_ = false;                  // rule set v4: the vocabulary has "directions"
+    bool pointers_ = false;                    // rule set v5: ... and the pin_* / point_* word lists
     std::vector<std::string> objects_, qualifiers_, zones_;
     std::vector<std::vector<bool>> allowed_;   // [object][qualifier]
     std::vector<int> lone_;                    // qualifier -> object or -1

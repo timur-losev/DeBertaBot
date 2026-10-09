@@ -26,7 +26,14 @@ cpp/ directory):
                          A bot with the label HOLD_FIRE (27 intents) gets the steps of that branch
                          after them: over and under the threshold, with and without the signal, with
                          an order queued, behind a leading negation, and GO_NOW firing the OPEN_FIRE
-                         it queued; a bot without the label gets the file it always got
+                         it queued; a bot without the label gets the file it always got.
+                         A bot with answer labels (coop_bot.ANSWERS: YES, NO, MAYBE, DONT_KNOW; 41
+                         intents) gets the steps of the "answer" branch after those: with nothing
+                         queued, with an order queued (it waits on and still executes), with the
+                         signal's words in the line (nothing is queued or replaced), with a place and
+                         the "other" slot, under the threshold, behind a leading negation ("don't
+                         know" is the answer itself; another answer is cancelled like an order, as
+                         coop_bot.SAFE has it today); a bot without them gets the file it always got
   location_tests.jsonl   locations.record() per line: the tokenizer lines, the developer's regression
                          lines, both batches of place lines, the location seeds, and generated lines
                          (random sequences of vocabulary phrases, rule words and punctuation, so
@@ -34,9 +41,13 @@ cpp/ directory):
                          than half of the generated lines are made of clauses for rule set v4
                          (DIR_PATTERNS: a direction word or a clock hour with the words steps 1c, 2c,
                          5 and 6 of locations.find() test around it, "o'clock", a place on either
-                         side), a third of the clauses one edit away from their pattern. A line
-                         locations.record() raises on is written without a record ("python_error"):
-                         the C++ check runs it and compares nothing
+                         side), a third of the clauses one edit away from their pattern. With a
+                         vocabulary that has the pin_* and point_* word lists (rule set v5) there is a
+                         third batch, made of clauses for the pointer rules (PTR_PATTERNS: step 7 and
+                         7b and the primary rule) mixed with the direction clauses, and the lines of
+                         PTR_TARGETED; a vocabulary without those lists gets the lines it always got.
+                         A line locations.record() raises on is written without a record
+                         ("python_error"): the C++ check runs it and compares nothing
   gate_tests.jsonl       coop_bot.Bot.pick under both gates, no model: on the golden probabilities and
                          on constructed rows (exact ties across and inside families, the top label
                          outside the top-mass family, tied family masses, random rows); every value
@@ -49,7 +60,8 @@ The place records are written with scripts/coop/locations.json as it is today, a
 checked with the vocabulary inside the bot's intent_config.json: the two must be the same one. A bot
 exported under an older rule set keeps its test files as they are (the engine matches its vocabulary
 by its own rule set); for such a bot the generator stops before it writes anything. Export it again
-(export_cpp.py BOT_DIR --config-only) only to move it to today's rules.
+(export_cpp.py BOT_DIR --config-only) only to move it to today's rules. The same goes for the three slot
+patterns: the regex slots written here are the Python bot's of today, the engine's are the config's.
 
     python gen_tests.py [BOT_DIR]      # jev environment; default: the shipped bot (scripts/coop/bots.py)
     python gen_tests.py BOT_DIR --no-model
@@ -75,7 +87,10 @@ MODEL = os.path.normpath(_ARGS[0] if _ARGS else bots.default_bot())
 OUT = os.path.join(MODEL, "cpp")
 import coop_bot  # noqa: E402
 import locations as LOC  # noqa: E402
-from timing_rule import ON_SIGNAL, OTHER  # noqa: E402
+from timing_rule import OTHER  # noqa: E402
+# the bot's own timing pattern, the one export_cpp.py writes into intent_config.json: since rule set v5 it is
+# timing_rule's without "mark" (the pin), and the slots of the tokenizer lines are the bot's
+ON_SIGNAL = coop_bot.ON_SIGNAL
 
 WS = [" ", "  ", "   ", "\t", "\n", "\r\n", "\r", "\xa0", "\xa0\xa0", " \xa0", "\u3000", "\u2009",
       "\u200b", "\u2028", "\x0b", "\x0c", "\x85", "\u202f", "\u2003 ", "\u180e", "\ufeff"]
@@ -208,7 +223,7 @@ def f32_below(x):
     return struct.unpack("f", struct.pack("I", struct.unpack("I", struct.pack("f", y))[0] - 1))[0]   # the one before y
 
 
-ACTIONS = {"act", "execute", "go", "ignore", "negated", "queued", "say_again", "wait"}
+ACTIONS = {"act", "execute", "go", "ignore", "negated", "queued", "say_again", "wait"}   # + "answer": a bot with answer labels
 
 
 def decide_tests(bot):
@@ -355,6 +370,67 @@ def decide_tests(bot):
             ("wait", dict(WAIT=0.9), "wait"),
             ("go", dict(GO_NOW=0.95), "go"),
         ]
+    # The answers to the planner's questions (a bot with 41 intents; the conversation above ends with nothing
+    # queued): an answer is reported and that is all. It is never queued, whatever the line says about a signal,
+    # and it leaves the queued order alone. The steps name the answers the bot has: for one it lacks, the first
+    # it has
+    answers = [k for k in coop_bot.ANSWERS if k in ix]
+    if answers:
+        yes, no, maybe = [k if k in ix else answers[0] for k in ("YES", "NO", "MAYBE")]
+        script += [
+            ("yes", {yes: 0.9}, "answer"),                                      # nothing queued, and nothing is
+            ("go", dict(GO_NOW=0.95), "go"),
+            # an order already queued waits on, with its place and its "other" slot, and still executes
+            ("smoke the other door on my go", dict(SMOKE=0.9), "queued"),
+            ("no", {no: 0.9}, "answer"),
+            ("maybe", {maybe: 0.9}, "answer"),
+            ("go", dict(GO_NOW=0.95), "execute"),                               # SMOKE at the door, executed_other
+            # the signal's words do not queue an answer ...
+            ("yes, on my go", {yes: 0.9}, "answer"),
+            ("go", dict(GO_NOW=0.95), "go"),
+            # ... and do not replace the queued order with it
+            ("breach the main door on my go", dict(BREACH=0.9), "queued"),
+            ("maybe, when i say", {maybe: 0.9}, "answer"),
+            ("no, wait for my signal", {no: 0.9}, "answer"),
+            ("go", dict(GO_NOW=0.95), "execute"),                               # BREACH at door main
+            # its places and its "other" slot are reported, as under every action; nothing is queued
+            ("yes, the north door", {yes: 0.9}, "answer"),
+            ("no, the other one", {no: 0.9}, "answer"),
+            ("go", dict(GO_NOW=0.95), "go"),
+            # under the threshold: say again, and the queued order stays
+            ("flank on my go", dict(FLANK=0.9), "queued"),
+            ("yes?", {yes: 0.30, "DRONE": 0.25}, "say_again"),
+            ("yes!", {yes: 0.9}, "answer"),
+            ("go", dict(GO_NOW=0.95), "execute"),                               # FLANK
+        ]
+        # A leading negation is looked at before the answer, and before the threshold. Today it cancels the line
+        # unless the answer is a safe intent, and only DONT_KNOW is one: "don't think so" picked as NO is "negated"
+        # and drops the queued order. No action is asked of these steps: they follow coop_bot.SAFE, whatever it holds
+        unsafe = [k for k in ("NO", "YES", "MAYBE") if k in ix and k not in coop_bot.SAFE]
+        if unsafe:
+            script += [
+                ("smoke the north door on my go", dict(SMOKE=0.9), "queued"),
+                ("don't think so", {unsafe[0]: 0.9}),                           # negated: SMOKE and its door are gone
+                ("go", dict(GO_NOW=0.95)),                                      # go: nothing left to execute
+                ("flash the south window on my go", dict(FLASH=0.9), "queued"),
+                ("don't think so?", {unsafe[0]: 0.30, "DRONE": 0.25}),          # negated, under the threshold too
+                ("go", dict(GO_NOW=0.95)),                                      # go
+            ]
+        if "DONT_KNOW" in ix:
+            # "don't know" starts with a negation and is the answer itself (DONT_KNOW is a safe intent), over and
+            # under the threshold and with the signal's words; the queued order is not dropped
+            script += [
+                ("don't know", dict(DONT_KNOW=0.9), "answer"),                  # nothing queued
+                ("hold the main door on my go", dict(HOLD_ANGLE=0.9), "queued"),
+                ("i don't know", dict(DONT_KNOW=0.9), "answer"),                # no leading negation
+                ("don't know, sorry", dict(DONT_KNOW=0.9), "answer"),
+                ("don't know?", dict(DONT_KNOW=0.30, DRONE=0.25), "say_again"),
+                ("don't know until i say", dict(DONT_KNOW=0.9), "answer"),      # not queued: HOLD_ANGLE waits on
+            ]
+            if "MAYBE" in ix and bot.family["MAYBE"] == bot.family["DONT_KNOW"]:
+                # two answers of one family. top: say again; family: their mass, 0.89, and its top label answers
+                script.append(("don't know, not sure", dict(DONT_KNOW=0.45, MAYBE=0.44)))
+            script.append(("go", dict(GO_NOW=0.95), "execute"))                 # HOLD_ANGLE at door main
     # the threshold in use is the bot's own, which the chat's /t moves, not the config's (0.35..0.89
     # here): under 0.95 a 0.90 order is asked again, under 0.25 a 0.30 one is carried out
     moved = [
@@ -384,7 +460,8 @@ def decide_tests(bot):
         # v3 bot's first file had no "say again" step under the family gate
         act = {s["text"]: s["action"] for s in steps}
         conf = {s["text"]: s["prob"] for s in steps}
-        assert {s["action"] for s in steps} == ACTIONS, (gate, sorted(ACTIONS - {s["action"] for s in steps}))
+        actions = ACTIONS | ({"answer"} if answers else set())
+        assert {s["action"] for s in steps} == actions, (gate, sorted(actions ^ {s["action"] for s in steps}))
         assert act["the family sum exactly on it"] == ("act" if gate == "family" else "say_again"), gate
         assert gate == "family" or (act["at the threshold"], act["just over it"]) == ("say_again", "act"), \
             (gate, thr, act["at the threshold"], act["just over it"])
@@ -401,6 +478,14 @@ def decide_tests(bot):
             assert [queued[t] for t in ("hold fire at the left window until i say", "hold your fire on the red stairs until i say",
                                         "hold fire on the other door until i say", "don't shoot until i say")] == \
                 [fire, fire or "OPEN", fire or "SMOKE", fire or "BREACH"], gate
+        if answers:              # what waits after each answer step, as their comments say
+            queued = {s["text"]: s["pending"] for s in steps}
+            assert [queued[t] for t in ("yes", "no", "maybe", "yes, on my go", "maybe, when i say", "no, wait for my signal",
+                                        "yes, the north door", "no, the other one", "yes?", "yes!")] == \
+                [None, "SMOKE", "SMOKE", None, "BREACH", "BREACH", None, None, "FLANK", "FLANK"], gate
+            if "DONT_KNOW" in ix:
+                assert [queued[t] for t in ("don't know", "i don't know", "don't know, sorry", "don't know?",
+                                            "don't know until i say")] == [None] + ["HOLD_ANGLE"] * 4, gate
         out.append({"gate": gate, "threshold": thr, "steps": steps})
     for gate in ("top", "family"):
         for t, lines in moved:
@@ -519,6 +604,141 @@ order_verb number number_next determiner PLACE
 role_mine order_verb determiner PLACE , role_stop order_verb determiner other anaphor?
 PLACE status_next status_next , role_stop order_verb determiner other anaphor
 """.split("\n") if p]
+# Rule set v5 in patterns, in the same notation: the contexts step 7 of locations.find() tells apart (the pin as
+# a noun, "where i marked", this / that before a place, before a word the vocabulary does not know and as a
+# pronoun, here / there), next to each the ones it must not take for it (the verbs "pin" and "mark", "pull the
+# pin", "wait for my mark", "my ping is 200", "make sure that", "that's", the relative "that", "this round",
+# "there's two", "hang in there", "almost here"), then whose pointer it is (after a place, before one, across a
+# comma: step 7b), the roles a pointer gets like a place, and the primary rule. THING is a word the vocabulary
+# does not know. They are used only with a vocabulary that has the pin_* and point_* word lists
+PTR_PATTERNS = [p for p in """
+order_verb? preposition? pin_det pin_noun
+order_verb preposition pin_det pin_noun dir_end_next|lone_follow? order_verb determiner PLACE
+order_verb|preposition pin_det pin_det pin_noun
+pin_block_prev pin_det pin_noun
+pin_block_prev? pin_det pin_noun be? number|DIGITS?
+pin_wait_verb pin_wait_prep pin_det pin_noun
+pin_wait_verb|order_verb pin_wait_prep|preposition pin_det|determiner pin_noun dir_end_next?
+order_verb|pin_wait_verb pin_wait_prep? pin_det pin_noun
+pin_verb|order_verb pin_noun|pin_verb determiner|role_them|them PLACE?
+pin_verb role_them|them down|preposition preposition determiner PLACE
+role_mine? aux? pin_verb|pin_noun determiner PLACE
+point_det|pin_det pin_noun point_loc?
+PLACE preposition? pin_det pin_noun
+order_verb determiner PLACE preposition pin_det pin_noun be?
+order_verb determiner PLACE post_prep dir_det LR preposition pin_det pin_noun
+PLACE , preposition? pin_det pin_noun
+PLACE and|or preposition? pin_det pin_noun
+pin_det pin_noun preposition determiner? PLACE
+pin_det pin_noun preposition determiner? unknown_modifier|other|dir_adjective OBJ
+pin_det pin_noun , determiner? PLACE
+pin_det pin_noun order_verb|and|then determiner PLACE
+pin_det pin_noun preposition determiner THING preposition determiner PLACE
+order_verb preposition pin_det pin_noun , then|and? order_verb determiner PLACE
+order_verb determiner PLACE , then|and? order_verb preposition pin_det pin_noun
+dir_lead_lateral|order_verb DIR preposition pin_det pin_noun
+order_verb preposition pin_det pin_noun and|then dir_lead_lateral LR
+role_mine|role_them|govern be? preposition pin_det pin_noun
+role_not aux? order_verb preposition? pin_det pin_noun
+role_from|from pin_det pin_noun preposition determiner PLACE
+number number_next pin_det pin_noun
+order_verb? preposition? where pin_past_fill? pin_past_fill? pin_past|pin_verb
+order_verb? determiner? PLACE|spot|place|one|THING pin_past_fill? pin_past_fill? pin_past
+order_verb determiner PLACE pin_past_lead pin_past_fill? pin_past be?
+order_verb determiner THING pin_past_lead|pin_past_fill pin_past_fill? pin_past
+role_mine|pin_past_lead|role_them? aux? pin_past determiner? PLACE
+order_verb determiner PLACE , pin_past_fill pin_past
+where pin_past_fill|role_them pin_past_fill? pin_verb|point_ing|pin_past
+order_verb? where determiner? PLACE pin_past_fill? pin_verb|point_ing|pin_past
+order_verb preposition? where role_mine|i|we|you aux? aux? point_ing
+where role_mine be? point_ing , determiner PLACE
+order_verb where pin_past_fill pin_past_fill pin_past_fill point_ing|pin_past|pin_verb
+role_mine? aux? point_ing preposition determiner|point_det PLACE
+order_verb|preposition? point_det PLACE status_next?
+order_verb|preposition? point_det QUAL? OBJ zone_after_fill? ZONE?
+order_verb? point_det unknown_modifier|dir_adjective|other|THING OBJ
+order_verb? point_det ZONE OBJ?
+point_not_prev point_det PLACE|THING?
+order_verb|role_mine? point_not_prev point_det
+point_det point_not_next determiner? PLACE?
+PLACE point_det status_next|order_verb|motion_past|be determiner? PLACE?
+order_verb determiner PLACE , point_det anaphor?
+role_them|role_them_soft|point_rel_prev point_det order_verb|be|motion_past determiner? PLACE?
+order_verb|preposition|negator? point_det|that THING|point_not_noun|point_person|role_them|role_them_soft|point_rel_prev
+order_verb|preposition|negator? point_det THING preposition determiner? PLACE
+order_verb? point_det THING preposition? determiner? PLACE preposition determiner? PLACE
+order_verb? point_det THING preposition dir_det LR preposition determiner PLACE
+point_det THING , determiner? PLACE
+point_det THING , ZONE , determiner? QUAL? OBJ
+point_loc_lead? point_loc , ZONE , determiner? QUAL? OBJ
+pin_det pin_noun , ZONE , determiner? QUAL? OBJ
+order_verb point_det THING , preposition? determiner? PLACE
+point_det THING order_verb|and|then determiner PLACE
+point_det THING after_fill after_fill? after_fill? after_fill? after_fill? after_fill? after_fill? determiner PLACE
+point_det point_person|role_them|role_them_soft preposition determiner PLACE
+point_det point_person|role_them_soft be? preposition determiner PLACE , order_verb determiner PLACE
+order_verb|preposition|negator|role_mine|aux? point_det point_pron_next|anaphor?
+order_verb|negator point_det anaphor , determiner other anaphor
+order_verb|preposition|negator? point_det anaphor , determiner? PLACE
+order_verb? point_det anaphor preposition determiner? PLACE
+role_mine|govern aux? negator? order_verb point_det point_pron_next?
+point_det , order_verb determiner PLACE
+order_verb point_det dir_end_next order_verb determiner PLACE
+order_verb|point_here_not|role_mine? point_loc_lead? point_loc_lead? point_loc
+order_verb point_loc and|then? order_verb determiner PLACE
+order_verb|preposition? determiner? PLACE point_loc_lead? point_loc_lead? point_loc status_next?
+order_verb determiner PLACE post_prep dir_det LR point_loc_lead? point_loc
+order_verb? determiner PLACE point_loc_lead point_loc_lead point_loc_lead? point_loc
+dir_lead_vertical|dir_there_lead|order_verb UD|back|LR|behind point_loc
+dir_lead_vertical|dir_there_lead UD point_loc preposition determiner PLACE
+point_loc point_exist_next|number number? preposition determiner PLACE
+point_loc 's|s number|role_them_soft preposition determiner PLACE
+hang|order_verb in point_loc
+point_loc_lead point_loc_lead? point_loc , determiner? PLACE
+point_loc , preposition? determiner? PLACE
+order_verb point_loc_lead? point_loc , determiner? PLACE
+point_loc ! order_verb determiner PLACE
+point_loc , point_loc|point_det
+role_mine|ask? order_verb|need|report_verb THING? point_loc
+point_here_not point_loc
+role_mine aux? order_verb point_loc_lead? point_loc , role_stop order_verb determiner PLACE
+role_mine aux? order_verb determiner PLACE , role_stop order_verb point_loc_lead? point_loc
+role_from|role_from_after point_loc order_verb? preposition determiner PLACE
+negator? from_lead from_particle? role_from_after point_loc|point_det
+of_lead role_from_of point_loc|point_det THING?
+role_them|role_them_soft|number be? point_loc_lead? point_loc
+number number_next point_loc_lead? point_loc|point_det
+role_not aux? order_verb point_loc|point_det THING?
+order_verb point_loc , negator point_loc
+role_mine order_verb determiner PLACE and point_loc|point_det
+point_loc and|or determiner? PLACE
+order_verb point_loc and dir_lead_lateral LR
+dir_lead_lateral LR and order_verb point_loc
+order_verb preposition pin_det pin_noun and|, order_verb point_det THING
+order_verb point_det THING and|, order_verb preposition pin_det pin_noun
+role_mine aux? order_verb preposition pin_det pin_noun , role_stop order_verb point_loc|PLACE|point_det
+role_them be? preposition pin_det pin_noun , order_verb point_loc
+PLACE status_next status_next , order_verb point_loc|point_det
+order_verb point_loc , PLACE status_next status_next
+""".split("\n") if p]
+# the lines the module docstring of locations.py gives for rule set v5, and the owner's ("Stay at my pin.")
+PTR_TARGETED = ["Stay at my pin.", "my pin", "the ping", "that marker", "on my mark", "stay on my mark", "check at my mark",
+                "pin them down", "mark the door", "pull the pin", "my ping is 200", "wait for my mark", "where i marked",
+                "the spot i just pinged", "where i mark", "that window", "that room", "this wall", "make sure that",
+                "copy that", "that's a trap", "make sure that they stay", "the door that leads to the roof",
+                "something that stops rounds", "this round", "check that", "not that one", "we can't win this one",
+                "the stairs over there", "over there", "in here", "hang in there", "go there", "stay here",
+                "i need backup here", "almost here", "there's two", "here they come", "where i'm looking",
+                "that north door", "the window by my ping", "the door i marked", "get up there",
+                "i'll hold here, you take the north door", "that guy", "that guy at the north door",
+                "that room by the north door", "over there, the north door", "my pin by the north door", "stay at my pin",
+                "go there and hold the north door", "go to my pin, then hold the north door",
+                "hold here and watch the doors", "check that room", "from here", "from here to the north door",
+                "jump left", "hop back", "jump forward",
+                # step 7b next to a place whose noun phrase starts with its floor, across a comma; the pronoun's
+                # "one"; a third lead
+                "that room, basement, north door", "over there, basement, north door", "my pin, basement, north door",
+                "that one, the north door", "check that one, the north door", "the stairs right over in there"]
 OCLOCK = ["o'clock", "o'clock", "oclock", "oclock", "o clock", "O'Clock", "o’clock"]
 # step 6d with the "other" target of step 5c in the line: the first is compared, on the others
 # locations.find() raises (location_tests() below)
@@ -530,11 +750,16 @@ PLACE_TARGETED = ["go right, left side is clear, i've got the north door, you ta
                   "not the north door, the other one, left is clear"]
 
 
-def place_lines(n, seed=23, patterns=0.0):
+def has_pointers(v):
+    """The vocabulary has the word lists of rule set v5 (locations.json "words": pin_*, point_*)."""
+    return any(k.startswith(("pin_", "point_")) for k in v["words"])
+
+
+def place_lines(n, seed=23, patterns=0.0, use=DIR_PATTERNS):
     """Random sequences of vocabulary phrases, rule words, filler words and punctuation: no meaning,
     every rule branch many times. Some lines run past locations.MAX_TOKENS. `patterns` is the share of
-    parts that are one of DIR_PATTERNS (rule set v4), a third of them with one word dropped, added or
-    swapped, or a punctuation mark put in: the lines next to the ones a rule is written for."""
+    parts that are one of `use` (DIR_PATTERNS: rule set v4), a third of them with one word dropped, added
+    or swapped, or a punctuation mark put in: the lines next to the ones a rule is written for."""
     v = json.load(io.open(os.path.join(COOP, "locations.json"), encoding="utf-8"))
     phrases = [w for o in v["objects"] for w in o["words"]] + [w for q in v["qualifiers"] for w in q["words"]] + \
         [t["phrase"] for t in v["named"]] + [w for z in v["zones"] for w in z["words"] + z.get("words_end", [])] + v["ignore"]
@@ -553,7 +778,9 @@ def place_lines(n, seed=23, patterns=0.0):
                       if w not in v["words"].get("dir_always", []) + v["words"].get("dir_relation", [])],
                "LR": directions.get("left", []) + directions.get("right", []),
                "HOUR": [w for d in v.get("directions", []) for w in d["clock"]], "OCLOCK": OCLOCK,
-               "DIGITS": ["3", "6", "12", "50", "100"]}
+               "DIGITS": ["3", "6", "12", "50", "100"],
+               # PTR_PATTERNS: a word the vocabulary does not know
+               "THING": ["room", "wall", "corner", "hallway", "car", "box", "spot", "area", "building", "thing", "yard", "van"]}
 
     def place():     # "door", "north door", "blue door" (not a place), "basement", "blue", "front door"
         o = rng.choice(v["objects"])
@@ -564,7 +791,7 @@ def place_lines(n, seed=23, patterns=0.0):
 
     def pattern():
         words = []
-        for slot in rng.choice(DIR_PATTERNS).split():
+        for slot in rng.choice(use).split():
             if slot.endswith("?"):
                 if rng.random() < 0.5:
                     continue
@@ -603,6 +830,9 @@ def place_lines(n, seed=23, patterns=0.0):
     return out
 
 
+PTR_LINES = 16000     # the generated lines of rule set v5 (location_tests)
+
+
 def location_tests(texts):
     """locations.record() for every line: the tokenizer lines (any bytes must be safe), the developer's
     regression lines, both batches of place lines, the location seeds and generated lines."""
@@ -620,8 +850,17 @@ def location_tests(texts):
         seeds = json.load(io.open(os.path.join(COOP, name), encoding="utf-8"))
         more += [t for k, v in seeds.items() if not k.startswith("_") for t in v]
     more += PLACE_TARGETED + place_lines(12000) + place_lines(16000, seed=29, patterns=0.75)
+    # rule set v5: the pointer clauses, two in three, among the direction clauses (a pointer may be a direction's,
+    # and both go through the roles and the primary rule together). Only a vocabulary with the pointer lists gets
+    # them, after every other line: those do not depend on these
+    pointers = []
+    if has_pointers(json.load(io.open(os.path.join(COOP, "locations.json"), encoding="utf-8"))):
+        pointers = PTR_TARGETED + place_lines(PTR_LINES, seed=31, patterns=0.75, use=2 * PTR_PATTERNS + DIR_PATTERNS)
+    older = set(texts) | set(more)
+    # how many lines the pointer batch adds (None: the vocabulary has no pointer lists), for main()'s summary
+    location_tests.pointer_lines = len(set(pointers) - older) if pointers else None
     seen, out = set(), []
-    for t in list(texts) + more:
+    for t in list(texts) + more + pointers:
         if t not in seen:
             seen.add(t)
             try:
@@ -681,19 +920,29 @@ def gate_tests(bot, golden_probs):
 
 
 def check_vocabulary():
-    """Stop if the bot was exported with another place vocabulary than today's locations.json: the
-    records written here would not be what the C++ engine finds with the bot's own (module docstring).
-    A bot without places (v1) has none to differ."""
+    """Stop if the bot was exported with another place vocabulary than today's locations.json (rule set v5:
+    the pin_* and point_* word lists are part of it): the records written here would not be what the C++
+    engine finds with the bot's own (module docstring). A bot without places (v1) has none to differ.
+    Stop as well if its config holds other slot patterns than the Python bot uses today."""
     p = os.path.join(OUT, "intent_config.json")
     if not os.path.exists(p):
         return
-    mine = json.load(io.open(p, encoding="utf-8")).get("locations")
+    cfg = json.load(io.open(p, encoding="utf-8"))
+    mine = cfg.get("locations")
     now = {k: v for k, v in json.load(io.open(os.path.join(COOP, "locations.json"), encoding="utf-8")).items()
            if not k.startswith("_")}
     if mine is not None and mine != now:
         sys.exit(f"{p} holds the place vocabulary of rule set {mine.get('version')}, scripts/coop/locations.json is "
                  f"rule set {now.get('version')}: the bot's test files stay as they are. To move the bot to today's "
                  f"rules: export_cpp.py {MODEL} --config-only, then this again")
+    # the same for the three regexes: the slots written here are the Python bot's of today (since rule set v5 its
+    # timing pattern has no "mark"), and the C++ engine matches the patterns inside the bot's intent_config.json
+    today = {"on_signal": ON_SIGNAL.pattern, "other": OTHER.pattern, "negation": coop_bot.NEGATION.pattern}
+    other = [k for k in today if cfg.get("regex", {}).get(k) != today[k]]
+    if other:
+        sys.exit(f"{p} holds other slot patterns than the Python bot uses today ({', '.join(other)}): the bot's test "
+                 f"files stay as they are. To move the bot to today's patterns: export_cpp.py {MODEL} --config-only, "
+                 f"then this again")
 
 
 def write_decide_tests(bot, dt):
@@ -749,8 +998,20 @@ def main():
         for r in lt:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
     recs = [r["places"] for r in lt if r["places"]]
-    print(f"location tests: {len(lt)} lines, {sum(bool(p['targets']) for p in recs)} name a place or a direction, "
-          f"{sum(any(t.get('direction') for t in p['targets']) for p in recs)} of them a direction")
+    named = sum(bool(p["targets"]) for p in recs)
+    directed = sum(any(t.get("direction") for t in p["targets"]) for p in recs)
+    if location_tests.pointer_lines is None:
+        print(f"location tests: {len(lt)} lines, {named} name a place or a direction, {directed} of them a direction")
+    else:                    # rule set v5: a target may be a pointer alone
+        pointed = [p for p in recs if any(t["pointer"] for t in p["targets"])]
+        own = sum(any(t["pointer"] and not (t["object"] or t["qualifier"] or t["zone"] or t["direction"]) for t in p["targets"])
+                  for p in pointed)
+        print(f"location tests: {len(lt)} lines, {named} name a place, a direction or a pointer, {directed} of them a "
+              f"direction, {len(pointed)} a pointer ({sum(any(t['pointer'] == 'pin' for t in p['targets']) for p in pointed)} "
+              f"a pin; in {own} a pointer is a target of its own)")
+        print(f"  rule set v5: {location_tests.pointer_lines} of the lines are the pointer batch's ({PTR_LINES} generated from "
+              f"{len(PTR_PATTERNS)} pointer patterns among the direction patterns, and {len(PTR_TARGETED)} written out; "
+              f"without the ones generated twice or already there)")
     raised = [r["text"] for r in lt if r.get("python_error")]
     if raised:
         print(f"  locations.record() raises IndexError on {len(raised)} of them (written without a record, not compared), "
