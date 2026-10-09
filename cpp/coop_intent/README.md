@@ -33,7 +33,16 @@ Other bots run with `--model-dir`:
   0.62): v4's recipe plus ATTACK, OPEN_FIRE, HOLD_FIRE, LOOK_AT and LOOK_AT_ME, and the first bot
   exported with rule set v4 of the place matcher, so its place records carry a direction
   ("go down by stairs" -> stairs + down, "the left window" -> window + left, "go left" -> left only).
-  Checked on 2026-10-09: the column "v51 bot" below; 38.8 ms per line on 3 cores.
+  Checked on 2026-10-09: the column "v51 bot" below; 38.8 ms per line on 3 cores;
+- `../../models/coop-deberta-v3-ens3-v52/cpp`: v52, the voice-chain bot with 32 intents (family gate,
+  0.60): v51 plus HELP, CHECK and SUPPRESS, added after the owner's first test with a real voice, and
+  examples of things the bot has no order for. Known fault: "check fire" (stop shooting) is picked as
+  CHECK; v51 had it right. Checked on 2026-10-09: the column "v52 bot" below; 39.5 ms per line on 3 cores;
+- `../../models/coop-deberta-v3-ens3-v53/cpp`: v53, the voice-chain bot with 33 intents (family gate,
+  0.66): v52 plus JUMP (jump, drop or climb without a rope or a window; the direction or the object is in
+  the place record), "check fire" back under HOLD_FIRE, both sides of "the other angle". Known faults:
+  "check the fire escape" is picked as HOLD_FIRE, "drop in through the hatch" as VAULT_WINDOW. Checked on
+  2026-10-09: the column "v53 bot" below; 39.2 ms per line on 3 cores.
 
 **The matcher follows the vocabulary a bot was exported with.** A config with a `"directions"` section
 runs rule set v4; one without it runs rule set v3 exactly as before, so the bots exported earlier keep
@@ -49,7 +58,10 @@ vocabulary (rule set v4), and `gen_tests.py` refuses a bot whose config holds an
 | `include/coop_intent/bot_brain.h`, `src/bot_brain.cpp` | `coop_bot.py` `respond()`: top or family gate, threshold, negation guard, GO_NOW/WAIT, HOLD_FIRE (a bot that has the label: it acts at once and keeps the queued order; with the signal slot it queues OPEN_FIRE), queued order, regex slots | as is, or swap `SlotPatterns` for `FRegexPattern` |
 | `include/coop_intent/locations.h`, `src/locations.cpp` | `LocationMatcher`: the map places in a line (object, side or colour, floor), whose place each is, which one the bot acts on; a twin of `scripts/coop/locations.py`, no regex and no Unicode tables | as is |
 | `include/coop_intent/intent_model.h`, `src/intent_model.cpp` | `ILogitsBackend`, `EnsembleBackend` (averages the members' probabilities, one thread each or in turn), softmax, top-k | as is |
-| `src/ort_backend.cpp` | `OrtBackend`: one model in ONNX Runtime 1.30 (C++ API) | replaced by an NNE backend |
+| `src/ort_backend.cpp` | `OrtBackend`: one model in ONNX Runtime (C++ API; it asks the loaded runtime for that runtime's own API level, so the 1.30 build also runs on an older `onnxruntime.dll`) | replaced by an NNE backend |
+| `include/coop_intent/speech.h`, `src/speech_text.cpp` | `SpeechTextForClassifier`: the form of a transcript the voice-chain bots were trained on | as is |
+| `src/sherpa_speech.cpp` | `SpeechRecognizer`: Parakeet TDT through sherpa-onnx's C API (optional, see "Speech-to-text") | with sherpa-onnx as a third-party library |
+| `tools/mic_capture.h`, `tools/mic_capture_win.cpp` | the microphone of `coop_cli --voice` (Windows, waveIn) | no: the game has its own capture |
 | `tools/coop_cli.cpp` | terminal chat and the checks | no |
 | `tools/gen_unicode_tables.py` | writes `unicode_tables.inc` from the HF `tokenizers` library itself | no |
 | `tools/gen_tests.py` | writes the test files (tokenizer, places, gates, decisions, dialogue) from the Python bot | no |
@@ -92,25 +104,93 @@ build\Release\coop_cli.exe --tokenize "hold the other angle"
 
 `third_party/` holds the ONNX Runtime release (`onnxruntime-win-x64-1.30.0`, from GitHub
 releases) and `nlohmann/json.hpp` (the CLI only). The build copies `onnxruntime.dll` next to the
-exe, because Windows ships an older `onnxruntime.dll` in System32.
+exe, because Windows ships an older `onnxruntime.dll` in System32. With speech-to-text the DLL next
+to the exe is sherpa-onnx's 1.28.2 instead (next section); the chat's first lines print which one runs.
+
+## Speech-to-text (optional)
+
+The voice chain in one process: microphone -> NVIDIA Parakeet TDT 0.6B v2 (sherpa-onnx) -> the bot.
+The recognizer, the voices it was measured on and the bots trained on its transcripts are described in
+[scripts/coop/stt/README.md](../../scripts/coop/stt/README.md) (in Russian).
+
+```
+build\Release\coop_cli.exe --voice --model-dir ..\..\models\coop-deberta-v3-ens3-v53\cpp
+                                              # hold SPACE and talk, release to send; typing still works; Esc quits
+build\Release\coop_cli.exe --mic-test 3       # is the default microphone the right one, and how loud (no bot)
+build\Release\coop_cli.exe --stt-wav clip.wav --model-dir ...    # one 16-bit PCM WAV through recognizer and bot
+build\Release\coop_cli.exe --stt-tests LIST WAVDIR EXPECTED      # C++ transcripts against the Python package's
+build\Release\coop_cli.exe --speech-text-tests ..\..\scripts\coop\stt\norm_tests.json
+```
+
+- **Setup.** CMake looks for `third_party/sherpa-onnx-1.13.8-win-x64/` and builds without speech when
+  it is not there (the directory is not in git). Its three files are the ones the Python package
+  carries: after `pip install sherpa-onnx==1.13.8`, copy from `site-packages/sherpa_onnx/`
+  `include/sherpa-onnx/c-api/c-api.h` to `include/sherpa-onnx/c-api/`, and `lib/sherpa-onnx-c-api.dll`,
+  `lib/sherpa-onnx-c-api.lib` and `lib/onnxruntime.dll` to `lib/`. The model is read from
+  `scripts/coop/stt/models/sherpa-onnx-nemo-parakeet-tdt-0.6b-v2-int8` (`--stt-model DIR` for another
+  place; the download link is in the stt README). `--stt-threads N` (default 2).
+- **Two forms of one transcript.** The classifier gets `SpeechTextForClassifier(transcript)`:
+  lowercased, the final `.!?` stripped, punctuation inside kept, as in training. `BotBrain::Decide`
+  gets the transcript itself: the regex slots and the place matcher read it as the recognizer printed it.
+- **Push-to-talk.** The microphone is open while `--voice` runs, so a clip starts 0.2 s before the key
+  went down and ends 0.15 s after it came up; nothing else is kept. The key press is read from the
+  console (it does nothing while another window has the keyboard). A press shorter than 0.2 s is ignored.
+- **One ONNX Runtime per process, and the transcripts depend on which.** `sherpa-onnx-c-api.dll` and the
+  engine both import `onnxruntime.dll`, and Windows gives a process one module of that name.
+  sherpa-onnx 1.13.8 is built with ONNX Runtime 1.28.2. On that runtime the C++ transcripts equal the
+  Python package's clip for clip; on the engine's 1.30.0 the same recognizer hears differently:
+
+  | r6 and cs lines, 602 clips per voice set | transcript equal on 1.28.2 | on 1.30.0 | the bot's pick equal on 1.30.0 |
+  |---|---|---|---|
+  | Windows voices | 602 | 586 | 602 |
+  | Kokoro, English voices | 602 | 571 | 602 |
+  | Kokoro, other-language voices | 602 | 544 | 600 |
+  | VCTK, speakers used in training | 602 | 481 | 598 |
+  | VCTK, speakers never in training | 602 | 468 | 591 |
+
+  The differences are mostly spellings of jargon ("rappelle" / "rappell", "sight" / "site"). On the
+  unseen VCTK speakers bot v51 picks the line's own intent on 545 clips from the 1.30 transcripts and
+  on 550 from the 1.28.2 ones. The bots were trained and measured on the 1.28.2 transcripts, so with
+  speech-to-text the build puts sherpa-onnx's `onnxruntime.dll` next to the exe and the bot runs on it
+  too: every check of the table below passes on it as well (golden: 1750/1750, 1259/1259 and 762/762,
+  within 3.1e-6; 39.7 ms per line). Without `lib/onnxruntime.dll` in the sherpa-onnx directory the
+  build keeps 1.30.0 and says so.
+- **Checked** (2026-10-09, Windows, bot v51, 2 threads):
+  - transcripts against the Python package's on every voiced set of lines: 3010 clips (the table), all
+    equal on 1.28.2 (the seed-command clips were compared on 1.30.0 only: 2991 of 3204 equal there);
+  - `SpeechTextForClassifier` against the Python `norm`: 4183/4183 lines
+    (`scripts/coop/stt/export_norm_tests.py` writes the file);
+  - a clip from file to reply ("Turn around and look behind us..." -> LOOK_AT, `dir=back`);
+  - the microphone: opens the default device, 2.00 s asked gives 2.38 s (0.20 s before, 0.15 s after),
+    silence gives no text.
+  - **The push-to-talk loop and real speech: the owner's tests only** (2026-10-09: 43 utterances with
+    bot v51, then bot v52; recognizer and chat worked; what the bots misread led to v52 and v53). Every number above is on
+    synthesized voices.
+- **Cost.** About 0.69 GB of RAM for the recognizer and 2.2 s to load it; a clip of 2.5-3 s is
+  recognized in about 230 ms on 2 threads (p95 about 330 ms), then the bot's 40 ms. Waiting costs nothing:
+  0.000 cores with the bot loaded and 0.006 with the recognizer loaded and the microphone open.
+- **Not there yet.** A microphone on macOS / Linux (`--stt-wav` works wherever sherpa-onnx is found:
+  put the platform's files under `third_party/sherpa-onnx-1.13.8-osx` or `-linux`); a choice of input
+  device and of the talk key; noise handling; hot words for the game's jargon.
 
 ## What was checked
 
 On Windows. The v2, v31, v3 and v1 columns are rule set v3 (2026-10-04) and were re-run unchanged with
-the engine that also knows rule set v4 (2026-10-09: the same numbers, their files untouched). The v51
-column is rule set v4 (2026-10-09). The v3 bot's weights exist only on the Mac, so its two checks
+the engine that also knows rule set v4 (2026-10-09: the same numbers, their files untouched). The v51,
+v52 and v53 columns are rule set v4 (2026-10-09; v51's place records were written again after the rule for
+"cover my front" was added). The v3 bot's weights exist only on the Mac, so its two checks
 through the model were last run there, before rule set v3 (1062/1062 and 77/77); its other test files
 were refreshed on Windows with `gen_tests.py --no-model`.
 
-| check | v2 bot | v31 bot (default) | v3 bot | v1 bot | v51 bot |
-|---|---|---|---|---|---|
-| token ids and probabilities vs PyTorch, golden lines | 762/762, max difference 3.3e-6 | 1259/1259, 2.2e-6 | needs the weights | 754/754, 3.1e-6 | 1750/1750, 1.8e-6 |
-| normalizer / token ids | 8931/8931 | 9428/9428 | 9231/9231 | 8923/8923 | 9919/9919 |
-| regex slots (+ 4 lines past std::regex's limit, see below) | 8927/8927 | 9424/9424 | 9227/9227 | 8919/8919 | 9915/9915 |
-| place records (targets, directions, roles, flags, primary) | 20201/20201 | 20204/20204 | 20197/20197 | no vocabulary | 35447/35447, 9755 of them with a direction |
-| conversation through the models | 77/77 | 77/77 | needs the weights | 66/66 | 77/77 |
-| both gates on the golden probabilities, exact ties, the top label outside the top-mass family, random rows | 2338/2338 | 3332/3332 | 2938/2938 | 2322/2322 | 4314/4314 |
-| decision steps, both gates (2 of them built in: NaN probabilities are asked again) | 140/140 | 140/140 | 140/140 | 40/40 | 190/190 |
+| check | v2 bot | v31 bot (default) | v3 bot | v1 bot | v51 bot | v52 bot | v53 bot |
+|---|---|---|---|---|---|---|---|
+| token ids and probabilities vs PyTorch, golden lines | 762/762, max difference 3.3e-6 | 1259/1259, 2.2e-6 | needs the weights | 754/754, 3.1e-6 | 1750/1750, 1.8e-6 | 2019/2019, 1.9e-6 | 2275/2275, 1.3e-6 |
+| normalizer / token ids | 8931/8931 | 9428/9428 | 9231/9231 | 8923/8923 | 9919/9919 | 10188/10188 | 10444/10444 |
+| regex slots (+ 4 lines past std::regex's limit, see below) | 8927/8927 | 9424/9424 | 9227/9227 | 8919/8919 | 9915/9915 | 10184/10184 | 10440/10440 |
+| place records (targets, directions, roles, flags, primary) | 20201/20201 | 20204/20204 | 20197/20197 | no vocabulary | 35454/35454, 9762 of them with a direction | 35623/35623, 9789 with a direction | 35889/35889, 9866 with a direction |
+| conversation through the models | 77/77 | 77/77 | needs the weights | 66/66 | 77/77 | 77/77 | 77/77 |
+| both gates on the golden probabilities, exact ties, the top label outside the top-mass family, random rows | 2338/2338 | 3332/3332 | 2938/2938 | 2322/2322 | 4314/4314 | 4852/4852 | 5364/5364 |
+| decision steps, both gates (2 of them built in: NaN probabilities are asked again) | 140/140 | 140/140 | 140/140 | 40/40 | 190/190 | 190/190 | 190/190 |
 
 - The place lines: the tokenizer's adversarial lines, the developer's regression lines, the blind v3
   lines, the location seeds of the seed sets, and generated lines: 12000 random sequences of
@@ -236,6 +316,12 @@ The raw outputs are in `bench.txt` next to each bot's `intent_config.json`.
 - **Loading data:** `vocab.tsv` and `intent_config.json` are read with `FFileHelper` and
   `FJsonSerializer`. `DebertaTokenizer::Load` takes the text, not a path. Load the three models
   asynchronously at level start (4.5 s).
+- **Speech:** `speech.h` moves as is; `sherpa_speech.cpp` needs sherpa-onnx as a third-party library, and
+  the runtime question from "Speech-to-text" comes back: NNE embeds its own ONNX Runtime, and a second
+  `onnxruntime.dll` cannot be loaded under the same name. Either build sherpa-onnx statically with its
+  runtime into its own module, or run it on the engine's runtime -- and then regenerate the training
+  transcripts with that exact binary and retrain (28 minutes), because the recognizer's output depends
+  on the runtime. Feed it the game's own capture (16 kHz mono float), keep the 0.2 s before the key.
 - **Game integration:** labels become GameplayTags; the game voices the reply lines itself (the CLI's
   lines are a demo). TAKE_COVER and OPEN carry no target; the planner picks the cover spot or the door
   (the marker, or the nearest one).

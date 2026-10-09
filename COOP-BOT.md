@@ -843,6 +843,103 @@ and rules frozen before any test line ([frozen.txt](scripts/coop/frozen.txt)), b
   the blind runs their mismatches were seen, so any later rule change is "after tuning". "turn around" gets
   LOOK_AT but no direction from the matcher. v31 is still the default bot.
 
+## v52: "help", "check", "suppress" after the first test with a real voice
+
+On 2026-10-09 the owner talked to bot v51 through the C++ voice chat (push-to-talk, Parakeet): 43 utterances,
+the 38 distinct ones kept with the readings he asked for in
+[owner_voice_20261009.json](scripts/coop/owner_voice_20261009.json). Speech-to-text and the chat worked. His
+remarks were about understanding: REVIVE_ME takes too much and a label HELP is needed ("Help me here." was
+REVIVE_ME 1.00); "check <something>" must be an order of its own ("Check that room." was asked again);
+"suppress" and "suppressive fire" must be recognised ("Suppressive fire." was HOLD_FIRE 0.98, the opposite
+order; "Suppress them." was DEFUSE). The same session showed weak refusals of things the bot has no order for
+("Kiss me." 0.58 under a 0.62 threshold, "Be silent." acted on as HOLD_FIRE) and "Sneak into that room." acted
+on as VAULT_WINDOW.
+
+- **Intents: 29 -> 32** ([spec_v52.json](scripts/coop/blind/spec_v52.json)). HELP: the player asks for help and
+  does not say with what, the planner works it out; a family of its own ("help me up" and "I'm down" stay
+  REVIVE_ME). CHECK: the bot checks a place or a thing itself; a family of its own; the line between the
+  looking intents is the verb (check / inspect / make sure is CHECK, look / face is LOOK_AT, watch / hold /
+  cover is HOLD_ANGLE, a drone or scouting is DRONE). SUPPRESS: suppressive or covering fire, in the family
+  "fire" with OPEN_FIRE -- the developer's choice.
+- **Seeds: 801 -> 980, and they are not blind.** 179 new ones: the three intents (plain, with places, with
+  directions, negated, on a signal), 34 things the bot has no order for under NONE, 6 quiet moves under
+  MOVE_TO. One seed keeps its id under another label ("help me": REVIVE_ME -> HELP). They were written with
+  the owner's lines on the table and some are near copies; the blind authors' lines that followed are blind.
+- **One matcher rule, after tuning:** "cover my front" gives the direction forward. The blind logs of v5 and
+  v51 did not change.
+- **Lines.** 3 authors x 30, two annotators each: all 90 unanimous on intent, place and direction. Every
+  earlier line was read again under the v52 spec; three became CHECK, all three readers agreeing. The matcher
+  on the 90 lines, rules frozen first: exact 89, place 90, direction 9 of 10, no false direction.
+- **Bot v52** (`models/coop-deberta-v3-ens3-v52`): v4's recipe on 4274 lines (993 lines and 980 seeds typed,
+  2301 Parakeet transcripts), 12 epochs; family gate, threshold 0.60. Out of fold on the r6 and cs lines (662):
+  90.0 typed, 87.5-89.1 through Parakeet from clean synthetic voices, 70.5 from VCTK speakers in no training
+  set. On the 60 lines written for v52: 95.0 typed, 85.0 on the unseen speakers. HELP 12/12, CHECK 15/17,
+  SUPPRESS 12/12 typed; 12, 15 and 9 on the unseen speakers.
+- **The older lines cost something.** On the 422 lines v4 was checked on, v52 is below v51 on five of the six
+  inputs, by 0.7 to 3.3 points (typed 88.6 against 89.8, Windows voices 85.8 against 89.1, unseen VCTK
+  speakers 66.8 against 69.0): three more intents to tell apart. On the Windows voices it acts on 12.3% of
+  the non-orders (v51: 9.2%). At threshold 0.70 the unseen-speaker criterion is 72.4 instead of 70.4 and the
+  bot acts on 4.1% of non-orders instead of 8.2%.
+- **The owner's lines:** 38 of 38 as he wants, none acted on wrongly; v51 in his live test had 30 of 38
+  ([owner_voice_v52.log](scripts/coop/owner_voice_v52.log)). Not a blind number: the seeds were written from
+  these lines.
+- **A probe after the training** ([probe_v52.log](scripts/coop/probe_v52.log): 29 typed lines by the developer,
+  25 of them not seeds). The three intents are picked on new wordings ("check the kitchen", "check six",
+  "cover fire", "keep them busy"); "sneak up to the window" and "crawl to the door" are MOVE_TO (v51: RAPPEL);
+  "do a backflip" is asked again (v51 acted: FLANK). **One regression:** "check fire" and "check your fire" --
+  an order to stop shooting -- were HOLD_FIRE 1.00 in v51 and are CHECK 0.60 in v52. Not fixed.
+- **C++.** v52: tokens 10188/10188, places 35623/35623 (9789 with a direction), gates 4852/4852, decisions
+  190/190, golden 2019/2019, conversation 77/77; 39.5 ms on three cores.
+- **Limits.** Those of v51. The family gate sums probabilities inside a family, so it can act on a weak top
+  intent ("Sneak into that room." in v51: VAULT_WINDOW 0.37, family mass 0.78); v52 fixed that line with
+  seeds, the gate is unchanged. v31 is still the default bot.
+
+## v53: "jump", "check fire" and "another angle" after the test of v52
+
+The same day the owner talked to bot v52 ([owner_voice_20261009b.json](scripts/coop/owner_voice_20261009b.json)).
+"Jump down." was acted on as VAULT_WINDOW -- "not the window label, just jumping down"; "Another angle." was
+asked again; "Keep another angle." was a coin toss between HOLD_OTHER_ANGLE and HOLD_ANGLE. The developer's
+typed probes ([probe_pre_v53.log](scripts/coop/probe_pre_v53.log)) widened it: every jump, drop or climb that is
+not a window or a rope was acted on as VAULT_WINDOW or RAPPEL -- the data had no such move, so the words were
+learnt from the window and rope lines alone; "check fire" had become CHECK; "we're taking fire" was acted on as
+HOLD_FIRE; "hold this angle i'll take the other one" was HOLD_OTHER_ANGLE, because no HOLD_ANGLE line of the
+data had the word "other".
+
+- **Intents: 32 -> 33** ([spec_v53.json](scripts/coop/blind/spec_v53.json)). JUMP: the bot jumps, drops or
+  climbs with its own body -- down, up, over or onto something; where to is in the place record ("jump down" =
+  direction down, "jump over the sofa" = sofa). The developer's choices: the family "move" with MOVE_TO;
+  climbing included; no rope word, no RAPPEL (as "go to the roof" without a rope is MOVE_TO), so "drop down from
+  the roof" is JUMP now. VAULT_WINDOW, RAPPEL, MOVE_TO, HOLD_FIRE, CHECK, HOLD_ANGLE, HOLD_OTHER_ANGLE and NONE
+  are sharpened against it and against the probes.
+- **Seeds: 980 -> 1146, not blind.** JUMP in every form, the orders next to it, "check fire" under HOLD_FIRE,
+  both sides of "the other angle", reports of being under fire under NONE.
+- **A suggestion withdrawn.** Reading HOLD_ANGLE with the "other" slot as HOLD_OTHER_ANGLE in the planner would
+  undo "hold this angle, I'll take the other one": the slot is a regex on a word and does not know whose angle
+  it is.
+- **Lines.** 3 authors x 30, two annotators each: all 90 unanimous. The 993 earlier lines were read again under
+  the v53 spec: none became JUMP and no truth changed. The matcher, unchanged, on the 90 lines: exact 82, place
+  85, direction 24 of 27, no false direction.
+- **Bot v53** (`models/coop-deberta-v3-ens3-v53`): v4's recipe on 4799 lines (1083 lines and 1146 seeds typed,
+  2570 Parakeet transcripts), 12 epochs; family gate, threshold 0.66. Out of fold on the r6 and cs lines (722):
+  89.8 typed, 85.3-87.3 through Parakeet from clean synthetic voices, 71.6 from VCTK speakers in no training
+  set. The v53 lines by kind, typed / unseen speakers ([score_v53_kinds.log](scripts/coop/stt/score_v53_kinds.log)):
+  JUMP 19/20 and 15/20; the orders next to it 16/16 and 14/16; the other angle for the bot 6/6 and 6/6, for the
+  player 6/6 and 5/6; cease fire in radio wording 4/4 and 4/4; reports of being under fire 4/4 and 4/4.
+- **What it cost.** On the 662 lines v52 was checked on, v53 is 0.6 to 2.5 points lower on typed text and the
+  clean voices and level on VCTK; most of the loss is the bot asking again (16 of the 20 typed lines lost),
+  and it acts on fewer non-orders (4.1% against 6.1% typed). On the 422 oldest lines the criterion has now
+  fallen three versions in a row: typed 89.8 (v51), 88.6 (v52), 87.2 (v53); Kokoro English 89.6, 87.7, 83.9.
+- **The owner's lines** (not blind): the three from the v52 test 3/3 (v52: 1/3); the first 38 -- 37/38 (v52:
+  38/38), "Go into the room." is asked again at 0.58 under the 0.66 threshold.
+- **Probes after the training.** [probe_v53_new.log](scripts/coop/probe_v53_new.log): 48 new wordings with the
+  readings wanted, written before any v53 result -- v52 28/48, v53 42/48. **Known faults of v53, not fixed:**
+  "check the fire escape" is HOLD_FIRE 1.00 (v52: CHECK -- the mirror of v52's "check fire"); "i'll watch the
+  other door you stay on this one" is HOLD_OTHER_ANGLE 0.64; "drop in through the hatch" is VAULT_WINDOW 0.84;
+  "can you jump down" is ignored; "jump down and cover me" and "keep your head down" are asked again.
+- **C++.** v53: tokens 10444/10444, places 35889/35889 (9866 with a direction), gates 5364/5364, decisions
+  190/190, golden 2275/2275, conversation 77/77; 39.2 ms on three cores.
+- **Limits.** Those of v52. v31 is still the default bot.
+
 ## Recommendation
 
 ```
