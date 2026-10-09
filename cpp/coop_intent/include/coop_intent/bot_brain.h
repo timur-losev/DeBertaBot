@@ -8,8 +8,11 @@
 //   3. NONE (a callout, chatter)                                    -> acknowledge, do nothing
 //   4. GO_NOW                                                       -> execute the queued order, if any
 //   5. WAIT                                                         -> drop the queued order
-//   6. "on my go / when I say / on three"                           -> queue the order
-//   7. anything else                                                -> act
+//   6. HOLD_FIRE (a bot that has the label)                         -> act: the bot stops shooting at once
+//      and keeps its queued order. With "on my go / until I say" and a label OPEN_FIRE, OPEN_FIRE is
+//      queued with the line's places: the one order whose signal means the opposite
+//   7. "on my go / when I say / on three"                           -> queue the order
+//   8. anything else                                                -> act
 // "other / another / opposite" is reported as a slot for the planner, and so are the map places the
 // line names (locations.h); a queued order keeps its places and its "other" slot and executes with
 // them.
@@ -115,6 +118,7 @@ private:
     int families_ = 0;
     bool family_gate_ = false;
     int none_ = -1, go_now_ = -1, wait_ = -1;
+    int hold_fire_ = -1, open_fire_ = -1;   // optional labels (a 27-intent bot): -1 without them
     int pending_ = -1;
     PlaceRecord pending_places_;
     bool pending_other_ = false;

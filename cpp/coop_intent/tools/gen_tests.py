@@ -22,11 +22,21 @@ cpp/ directory):
                          conversations per gate under a threshold that is not the config's (0.95,
                          0.25), as the chat's /t sets it. The generator stops if a gate's
                          conversation misses an action. It also stops for a threshold outside
-                         0.35..0.89, where its fixed probabilities no longer fall on the intended side
+                         0.35..0.89, where its fixed probabilities no longer fall on the intended side.
+                         A bot with the label HOLD_FIRE (27 intents) gets the steps of that branch
+                         after them: over and under the threshold, with and without the signal, with
+                         an order queued, behind a leading negation, and GO_NOW firing the OPEN_FIRE
+                         it queued; a bot without the label gets the file it always got
   location_tests.jsonl   locations.record() per line: the tokenizer lines, the developer's regression
                          lines, both batches of place lines, the location seeds, and generated lines
                          (random sequences of vocabulary phrases, rule words and punctuation, so
-                         every rule branch is compared many times; a few past the token cap)
+                         every rule branch is compared many times; a few past the token cap). More
+                         than half of the generated lines are made of clauses for rule set v4
+                         (DIR_PATTERNS: a direction word or a clock hour with the words steps 1c, 2c,
+                         5 and 6 of locations.find() test around it, "o'clock", a place on either
+                         side), a third of the clauses one edit away from their pattern. A line
+                         locations.record() raises on is written without a record ("python_error"):
+                         the C++ check runs it and compares nothing
   gate_tests.jsonl       coop_bot.Bot.pick under both gates, no model: on the golden probabilities and
                          on constructed rows (exact ties across and inside families, the top label
                          outside the top-mass family, tied family masses, random rows); every value
@@ -35,11 +45,22 @@ cpp/ directory):
 COOP_TAG is not read here: the tokenizer and location line sets follow golden.jsonl, which
 export_cpp.py writes under the tag the bot was trained in (762 lines for v21, 1062 for v3).
 
+The place records are written with scripts/coop/locations.json as it is today, and the C++ engine is
+checked with the vocabulary inside the bot's intent_config.json: the two must be the same one. A bot
+exported under an older rule set keeps its test files as they are (the engine matches its vocabulary
+by its own rule set); for such a bot the generator stops before it writes anything. Export it again
+(export_cpp.py BOT_DIR --config-only) only to move it to today's rules.
+
     python gen_tests.py [BOT_DIR]      # jev environment; default: the shipped bot (scripts/coop/bots.py)
     python gen_tests.py BOT_DIR --no-model
         # after a change of the rules, the vocabulary or the regexes, on a machine without the bot's
         # weights: everything is rebuilt except the model's own answers. dialogue.jsonl keeps each
         # line's stored intent and confidence and gets the actions, queue and places they lead to now
+    python gen_tests.py BOT_DIR --decide-only
+        # decide_tests.jsonl alone. It needs bot_config.json and nothing else of the bot (no weights, no
+        # tokenizer, no golden.jsonl, no stored conversation): for a label set whose bot is not trained yet.
+        # coop_cli --decide-tests reads intent_config.json and vocab.tsv next to it (export_cpp.py
+        # BOT_DIR --config-only)
 """
 import io, json, os, random, struct, sys
 
@@ -49,6 +70,7 @@ sys.path.insert(0, COOP)
 import bots  # noqa: E402
 _ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
 NO_MODEL = "--no-model" in sys.argv
+DECIDE_ONLY = "--decide-only" in sys.argv
 MODEL = os.path.normpath(_ARGS[0] if _ARGS else bots.default_bot())
 OUT = os.path.join(MODEL, "cpp")
 import coop_bot  # noqa: E402
@@ -105,14 +127,16 @@ def random_line(rng, words):
     return line
 
 
-def bare_bot():
-    """coop_bot.Bot without its weights: the gates, decide() and the tokenizer need none."""
-    from transformers import AutoTokenizer
+def bare_bot(tokenizer=True):
+    """coop_bot.Bot without its weights: the gates, decide() and the tokenizer need none (and decide()
+    no tokenizer: --decide-only)."""
     cfg = json.load(io.open(os.path.join(MODEL, "bot_config.json"), encoding="utf-8"))
     bot = coop_bot.Bot.__new__(coop_bot.Bot)
     bot.laya, bot.labels, bot.phrase = False, cfg["labels"], cfg["phrases"]
     bot.gate, bot.family, bot.threshold = cfg.get("gate", "top"), cfg["families"], cfg["threshold"]
-    bot.tok = AutoTokenizer.from_pretrained(os.path.join(MODEL, cfg.get("members", ["."])[0]))
+    if tokenizer:
+        from transformers import AutoTokenizer
+        bot.tok = AutoTokenizer.from_pretrained(os.path.join(MODEL, cfg.get("members", ["."])[0]))
     bot.reset()
     return bot
 
@@ -292,6 +316,45 @@ def decide_tests(bot):
         ("wait at the north door", dict(WAIT=0.9), "wait"),
         ("the north door maybe", dict(FLANK=0.30, DRONE=0.25), "say_again"),
     ]
+    # HOLD_FIRE (a bot with 27 intents; the conversation above ends with nothing queued): the bot stops
+    # shooting at once, the order is never queued itself and leaves the queued order alone. With the
+    # signal it queues OPEN_FIRE with the line's places and without its "other" slot (a bot that had
+    # HOLD_FIRE and no OPEN_FIRE would queue nothing: the comments describe the bot with both)
+    if "HOLD_FIRE" in ix:
+        script += [
+            ("hold fire", dict(HOLD_FIRE=0.9), "act"),                          # nothing queued, and nothing is
+            ("go", dict(GO_NOW=0.95), "go"),
+            ("hold fire at the left window until i say", dict(HOLD_FIRE=0.9), "act"),    # queued: OPEN_FIRE at window, left
+            ("go", dict(GO_NOW=0.95)),                                          # execute OPEN_FIRE at window, left
+            # an order already queued waits on, with its place
+            ("smoke the north door on my go", dict(SMOKE=0.9), "queued"),
+            ("cease fire at the south window", dict(HOLD_FIRE=0.9), "act"),
+            ("go", dict(GO_NOW=0.95), "execute"),                               # SMOKE at door north
+            # ... with the signal OPEN_FIRE replaces it, its place and its "other": the HOLD_FIRE line's own
+            # "other" is not kept, and the GO line's place is not the executed place
+            ("open the other window on my go", dict(OPEN=0.9), "queued"),
+            ("hold your fire on the red stairs until i say", dict(HOLD_FIRE=0.9), "act"),
+            ("two on the roof", dict(NONE=0.95), "ignore"),                     # a callout: OPEN_FIRE waits on
+            ("go, i'm on the roof", dict(GO_NOW=0.9), "execute"),               # OPEN_FIRE at stairs red
+            ("smoke the north door on my go", dict(SMOKE=0.9), "queued"),
+            ("hold fire on the other door until i say", dict(HOLD_FIRE=0.9), "act"),     # other; queued without it
+            ("go", dict(GO_NOW=0.95), "execute"),                               # OPEN_FIRE at the door, no executed_other
+            # under the threshold nothing is queued, and the queued order stays
+            ("flank on my go", dict(FLANK=0.9), "queued"),
+            ("hold fire until i say?", dict(HOLD_FIRE=0.30, DRONE=0.25), "say_again"),
+            ("go", dict(GO_NOW=0.95), "execute"),                               # FLANK
+            # a leading negation: "don't shoot" is the order itself (HOLD_FIRE is a safe intent), over and
+            # under the threshold; the queued order is not dropped
+            ("breach the main door on my go", dict(BREACH=0.9), "queued"),
+            ("don't shoot", dict(HOLD_FIRE=0.9), "act"),
+            ("don't shoot?", dict(HOLD_FIRE=0.30, DRONE=0.25), "say_again"),
+            ("don't shoot until i say", dict(HOLD_FIRE=0.9), "act"),            # queued: OPEN_FIRE, no place
+            ("go", dict(GO_NOW=0.95), "execute"),                               # OPEN_FIRE; BREACH and its door are gone
+            # the queued OPEN_FIRE is dropped like any other order
+            ("hold fire until i say", dict(HOLD_FIRE=0.9), "act"),
+            ("wait", dict(WAIT=0.9), "wait"),
+            ("go", dict(GO_NOW=0.95), "go"),
+        ]
     # the threshold in use is the bot's own, which the chat's /t moves, not the config's (0.35..0.89
     # here): under 0.95 a 0.90 order is asked again, under 0.25 a 0.30 one is carried out
     moved = [
@@ -330,6 +393,14 @@ def decide_tests(bot):
         assert gate == "top" or (conf["the family sum just under it"], conf["the family sum exactly on it"]) == (a + b, thr), \
             (gate, thr)
         assert conf["don't know, maybe flank"] < thr, gate
+        if "HOLD_FIRE" in ix:    # what waits after each HOLD_FIRE step, as their comments say
+            queued = {s["text"]: s["pending"] for s in steps}
+            fire = "OPEN_FIRE" if "OPEN_FIRE" in ix else None
+            assert [queued[t] for t in ("hold fire", "cease fire at the south window", "hold fire until i say?",
+                                        "don't shoot", "don't shoot?")] == [None, "SMOKE", "FLANK", "BREACH", "BREACH"], gate
+            assert [queued[t] for t in ("hold fire at the left window until i say", "hold your fire on the red stairs until i say",
+                                        "hold fire on the other door until i say", "don't shoot until i say")] == \
+                [fire, fire or "OPEN", fire or "SMOKE", fire or "BREACH"], gate
         out.append({"gate": gate, "threshold": thr, "steps": steps})
     for gate in ("top", "family"):
         for t, lines in moved:
@@ -343,9 +414,127 @@ def decide_tests(bot):
     return out
 
 
-def place_lines(n, seed=23):
+# Rule set v4 in patterns, one per line: the contexts steps 1c, 2c and 6 of locations.find() tell apart, next
+# to each the ones it must not take for it, and at the end the role rules of step 5, which a direction goes
+# through like a place. A slot is a word list of locations.json "words" (one of its words), a class in
+# capitals (place_lines() below: OBJ, STAIRS, QUAL, SQ, ZONE, PLACE, DIR, UD, LR, HOUR, OCLOCK, DIGITS),
+# alternatives a|b, or the word itself; "?" after a slot: there half of the time
+DIR_PATTERNS = [p for p in """
+determiner dir_adjective dir_adjective_tail? OBJ status_next?
+determiner? dir_adjective and|or dir_adjective OBJ
+determiner? unknown_modifier|dir_adjective_tail OBJ
+determiner? other dir_adjective OBJ?
+dir_lead_lateral|dir_prep determiner other LR dir_side?
+OBJ and|or OBJ post_prep determiner? dir_adjective
+dir_adjective? OBJ and|or OBJ after_fill determiner? QUAL tail? zone_after_fill? ZONE?
+determiner? QUAL and|or? QUAL OBJ zone_after_fill? ZONE?
+dir_adjective? OBJ post_prep determiner? post_modifier status_next? status_not_next?
+QUAL OBJ post_prep dir_det dir_adjective status_next? status_next?
+OBJ post_prep dir_det dir_adjective status_next status_next? , order_verb determiner PLACE
+OBJ in front of? dir_person|determiner? PLACE?
+QUAL? OBJ in front status_next?
+dir_six_lead|dir_six_verb|dir_prep|dir_lead_lateral? dir_six_lead? HOUR OCLOCK
+dir_six_verb|dir_prep|dir_lead_lateral|role_them|role_them_soft|number|order_verb? on|at? dir_six_lead HOUR lone_follow|dir_end_next?
+role_them|role_them_soft|number|order_verb|dir_six_verb on my HOUR
+dir_six_verb|dir_six_lead HOUR dir_end_next|lone_follow|OBJ?
+number at|on HOUR
+dir_lead_vertical|dir_lead_climb|dir_vertical_block|order_verb? UD dir_stairs_prep? determiner? SQ? STAIRS
+dir_lead_vertical|dir_lead_climb? UD determiner? SQ
+dir_split_verb|order_verb determiner? SQ? STAIRS dir_stairs_link? UD
+order_verb determiner? SQ UD
+dir_split_verb|dir_vertical_block dir_split_object? UD dir_place_next|lone_follow?
+dir_lead_vertical|dir_lead_climb|dir_there_lead|number|dir_split_object|dir_vertical_block? back? UD dir_zone_prep determiner? ZONE
+dir_lead_vertical? back? UD dir_zone_prep determiner? QUAL? OBJ
+dir_there_lead|dir_split_object UD on|in|at determiner? ZONE
+dir_there_lead|dir_lead_vertical|dir_split_object? UD determiner? dir_place_next
+dir_lead_vertical|dir_lead_climb back? UD dir_up_block|lone_follow|dir_end_next|dir_person?
+dir_det dir_lead_noun|order_verb|dir_lead_vertical UD|LR
+UD determiner unknown_modifier STAIRS
+UD determiner? SQ and|or SQ STAIRS
+PLACE be? dir_relation dir_person|dir_amount|DIGITS?
+dir_prep? dir_relation determiner? PLACE
+dir_lead_vertical|dir_lead_back? dir_always
+dir_lead_lateral|dir_turn|order_verb dir_det|dir_article? LR dir_side|dir_end_next|of? determiner? PLACE?
+dir_lead_lateral|dir_turn|dir_det|dir_article? right dir_right_block|dir_right_soft|dir_right_noun dir_person|dir_back_block|dir_right_block|determiner? PLACE?
+dir_turn right dir_right_soft dir_right_block|dir_person|determiner PLACE?
+dir_prep|dir_lead_lateral? dir_det LR dir_side|lone_follow? status_next?
+dir_count dir_unit|dir_resource|role_them_soft? left dir_side|of?
+dir_throw dir_article dir_resource LR
+role_mine|govern? dir_have dir_resource left
+role_them|role_them_soft left dir_det OBJ
+role_mine|govern|role_stop|dir_we left dir_side
+dir_count? LR of determiner? PLACE
+LR status_next status_next?
+negator LR , LR
+LR , negator LR
+dir_lead_lateral LR , dir_correction , LR
+dir_lead_lateral? LR dir_correction LR
+number LR dir_end_next?
+LR , order_verb determiner PLACE
+PLACE be? post_prep dir_det? LR status_next? status_next?
+dir_lead_forward|dir_straight_not|order_verb straight dir_end_next|from_to? determiner? PLACE?
+dir_lead_forward straight dir_end_next?
+dir_lead_ahead|go ahead of? dir_person?
+go right ahead
+dir_front_lead|dir_prep|order_verb dir_det? front of? dir_person|determiner? PLACE?
+dir_lead_forward|dir_det? forward|forwards
+behind dir_person|determiner? PLACE?
+PLACE be? behind dir_person
+dir_behind_lead|order_verb behind dir_end_next?
+dir_we re behind
+we're|you're|they're|he's|it's behind|ahead|UD|LR dir_place_next|dir_side|dir_end_next?
+PLACE 's above|below|behind|LR dir_person?
+dir_prep|dir_det|order_verb dir_det? rear of? PLACE?
+dir_lead_back|order_verb|dir_det dir_lead_noun? back dir_back_block|dir_back_next|dir_end_next? PLACE?
+dir_prep|dir_six_verb|dir_back_prep|order_verb dir_det back of? PLACE?
+dir_back_prep back lone_follow?
+dir_det dir_lead_forward|dir_lead_back|dir_lead_ahead|dir_lead_noun|dir_behind_lead DIR dir_end_next?
+role_mine|role_them|govern be? dir_prep determiner? PLACE and determiner? LR
+role_mine dir_lead_lateral LR , role_stop dir_lead_lateral LR
+role_from_after|role_from determiner? DIR
+behind dir_person ! order_verb dir_prep? determiner PLACE
+dir_prep dir_det LR dir_side? ! order_verb determiner PLACE
+dir_lead_lateral|dir_lead_vertical DIR dir_side? preposition determiner? PLACE
+dir_lead_lateral LR dir_side? preposition determiner? PLACE preposition determiner? PLACE
+dir_prep dir_det LR dir_side? , determiner? PLACE
+PLACE , dir_prep? dir_det? LR dir_side?
+role_them be? dir_prep determiner PLACE , LR dir_side
+LR dir_side|dir_person? status_next status_next? , order_verb determiner PLACE
+PLACE status_next status_next? , dir_lead_lateral LR
+order_verb determiner PLACE , LR dir_side? status_next status_next?
+dir_lead_lateral LR and|then order_verb determiner PLACE
+role_not aux? dir_lead_lateral determiner? LR|PLACE
+role_not t? not_exempt|to determiner? PLACE
+negator? role_from determiner? PLACE|LR
+negator? from_lead from_particle? role_from_after determiner? PLACE|LR
+fire role_from_after determiner PLACE|LR
+role_from_after determiner PLACE order_verb? from_particle? from_to determiner? PLACE
+of_lead role_from_of determiner? PLACE|LR
+role_mine|let let_me? aux? aux? order_verb|report_verb|dir_lead_lateral dir_prep? determiner? PLACE|LR
+ask role_mine order_verb preposition determiner PLACE|LR
+no_words? role_them be? dir_prep determiner PLACE|LR
+soft_lead|number? role_them_soft soft_fill? be|motion_past|number_next dir_prep? determiner PLACE|LR
+number_lead? number number_fill? number_next determiner? PLACE|LR
+order_verb number number_next determiner PLACE
+role_mine order_verb determiner PLACE , role_stop order_verb determiner other anaphor?
+PLACE status_next status_next , role_stop order_verb determiner other anaphor
+""".split("\n") if p]
+OCLOCK = ["o'clock", "o'clock", "oclock", "oclock", "o clock", "O'Clock", "o’clock"]
+# step 6d with the "other" target of step 5c in the line: the first is compared, on the others
+# locations.find() raises (location_tests() below)
+PLACE_TARGETED = ["go right, left side is clear, i've got the north door, you take the other one",
+                  "i've got the north door, you take the other one, left side is clear",
+                  "left side is clear, i've got the north door, you take the other one",
+                  "i've got the north door, left side is clear, you take the other one",
+                  "i've got the north door, you take the other one, behind us is clear",
+                  "not the north door, the other one, left is clear"]
+
+
+def place_lines(n, seed=23, patterns=0.0):
     """Random sequences of vocabulary phrases, rule words, filler words and punctuation: no meaning,
-    every rule branch many times. Some lines run past locations.MAX_TOKENS."""
+    every rule branch many times. Some lines run past locations.MAX_TOKENS. `patterns` is the share of
+    parts that are one of DIR_PATTERNS (rule set v4), a third of them with one word dropped, added or
+    swapped, or a punctuation mark put in: the lines next to the ones a rule is written for."""
     v = json.load(io.open(os.path.join(COOP, "locations.json"), encoding="utf-8"))
     phrases = [w for o in v["objects"] for w in o["words"]] + [w for q in v["qualifiers"] for w in q["words"]] + \
         [t["phrase"] for t in v["named"]] + [w for z in v["zones"] for w in z["words"] + z.get("words_end", [])] + v["ignore"]
@@ -354,11 +543,57 @@ def place_lines(n, seed=23):
               "kitchen", "spiral", "broken", "big", "floor", "second", "story", "steps", "i'm", "don't", "he's", "i'll"]
     punct = [",", ",", ".", "!", "?", ";", ":", " -", "..."]
     rng = random.Random(seed)
+    directions = {d["id"]: d["words"] for d in v.get("directions", [])}
+    vertical = [o for o in v["objects"] if o.get("vertical")]
+    classes = {"OBJ": [w for o in v["objects"] for w in o["words"]], "STAIRS": [w for o in vertical for w in o["words"]],
+               "QUAL": [w for q in v["qualifiers"] for w in q["words"]],
+               "SQ": [w for q in v["qualifiers"] if any(q["id"] in o["qualifiers"] for o in vertical) for w in q["words"]],
+               "ZONE": [w for z in v["zones"] for w in z["words"]], "DIR": [w for ws in directions.values() for w in ws],
+               "UD": [w for k in ("up", "down") for w in directions.get(k, [])
+                      if w not in v["words"].get("dir_always", []) + v["words"].get("dir_relation", [])],
+               "LR": directions.get("left", []) + directions.get("right", []),
+               "HOUR": [w for d in v.get("directions", []) for w in d["clock"]], "OCLOCK": OCLOCK,
+               "DIGITS": ["3", "6", "12", "50", "100"]}
+
+    def place():     # "door", "north door", "blue door" (not a place), "basement", "blue", "front door"
+        o = rng.choice(v["objects"])
+        q = rng.choice(o["qualifiers"] or [None]) if rng.random() < 0.8 else rng.choice(v["qualifiers"])["id"]
+        words = [w for x in v["qualifiers"] if x["id"] == q for w in x["words"]]
+        return rng.choice([rng.choice(o["words"]), rng.choice(classes["ZONE"]), rng.choice(classes["QUAL"]),
+                           rng.choice(v["named"])["phrase"]] + 3 * [(rng.choice(words) + " " if words else "") + rng.choice(o["words"])])
+
+    def pattern():
+        words = []
+        for slot in rng.choice(DIR_PATTERNS).split():
+            if slot.endswith("?"):
+                if rng.random() < 0.5:
+                    continue
+                slot = slot[:-1]
+            slot = rng.choice(slot.split("|"))
+            words.append(place() if slot == "PLACE" else rng.choice(classes[slot]) if slot in classes else
+                         rng.choice(v["words"][slot]) if slot in v["words"] else slot)
+        if rng.random() < 0.33:
+            k, r = rng.randrange(len(words)), rng.random()
+            if r < 0.3:
+                del words[k]
+            elif r < 0.6:
+                words.insert(k, rng.choice(rule) if rng.random() < 0.7 else rng.choice(phrases))
+            elif r < 0.8:
+                words[k] += rng.choice(punct)
+            elif k:
+                words[k - 1], words[k] = words[k], words[k - 1]
+        return " ".join(words).replace(" ,", ",").replace(" !", "!")
+
     out = []
     for k in range(n):
         size = rng.choice([1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 16]) if k % 200 else rng.choice([126, 127, 128, 129, 130, 200, 400])
+        if patterns and k % 200:      # a pattern is a clause: a few of them, and few words around them
+            size = rng.choice([1, 1, 1, 2, 2, 3, 4])
         parts = []
         for _ in range(size):
+            if patterns and directions and rng.random() < patterns:
+                parts.append(pattern() + (rng.choice(punct) if rng.random() < 0.2 else ""))
+                continue
             r = rng.random()
             w = rng.choice(phrases) if r < 0.38 else rng.choice(rule) if r < 0.82 else rng.choice(filler)
             if rng.random() < 0.04:
@@ -378,15 +613,24 @@ def location_tests(texts):
             p = os.path.join(COOP, "blind", batch, f"author_{key}_lines.json")
             if os.path.exists(p):
                 more += [x["text"] for x in json.load(io.open(p, encoding="utf-8"))]
-    for name in ("seed_commands_v3.json", "seed_commands_v31.json"):
+    names = ["seed_commands_v3.json", "seed_commands_v31.json"]
+    if os.path.exists(os.path.join(COOP, "seed_commands_v5.json")):    # the 27 intents: not in every checkout yet
+        names.append("seed_commands_v5.json")
+    for name in names:
         seeds = json.load(io.open(os.path.join(COOP, name), encoding="utf-8"))
         more += [t for k, v in seeds.items() if not k.startswith("_") for t in v]
-    more += place_lines(12000)
+    more += PLACE_TARGETED + place_lines(12000) + place_lines(16000, seed=29, patterns=0.75)
     seen, out = set(), []
     for t in list(texts) + more:
         if t not in seen:
             seen.add(t)
-            out.append({"text": t, "places": LOC.record(t)})
+            try:
+                out.append({"text": t, "places": LOC.record(t)})
+            except IndexError:
+                # rule set v4, step 6d of locations.find(): the "other" target of step 5c stands after the last
+                # token, and brk() reads that token's punctuation ("i've got the north door, you take the other
+                # one, left side is clear"). The line has no Python record to compare; the C++ check still runs it
+                out.append({"text": t, "places": None, "python_error": True})
     return out
 
 
@@ -436,7 +680,38 @@ def gate_tests(bot, golden_probs):
     return out
 
 
+def check_vocabulary():
+    """Stop if the bot was exported with another place vocabulary than today's locations.json: the
+    records written here would not be what the C++ engine finds with the bot's own (module docstring).
+    A bot without places (v1) has none to differ."""
+    p = os.path.join(OUT, "intent_config.json")
+    if not os.path.exists(p):
+        return
+    mine = json.load(io.open(p, encoding="utf-8")).get("locations")
+    now = {k: v for k, v in json.load(io.open(os.path.join(COOP, "locations.json"), encoding="utf-8")).items()
+           if not k.startswith("_")}
+    if mine is not None and mine != now:
+        sys.exit(f"{p} holds the place vocabulary of rule set {mine.get('version')}, scripts/coop/locations.json is "
+                 f"rule set {now.get('version')}: the bot's test files stay as they are. To move the bot to today's "
+                 f"rules: export_cpp.py {MODEL} --config-only, then this again")
+
+
+def write_decide_tests(bot, dt):
+    with io.open(os.path.join(OUT, "decide_tests.jsonl"), "w", encoding="utf-8", newline="\n") as f:
+        for r in dt:
+            f.write(json.dumps(r) + "\n")
+    print("decide tests, actions per gate:",   # the two full conversations; the others run under a moved threshold
+          {r["gate"]: sorted({s["action"] for s in r["steps"]}) for r in dt if r["threshold"] == bot.threshold},
+          f"({sum(len(r['steps']) for r in dt)} steps in {len(dt)} conversations)")
+
+
 def main():
+    check_vocabulary()
+    if DECIDE_ONLY:
+        bot = bare_bot(tokenizer=False)
+        os.makedirs(OUT, exist_ok=True)
+        write_decide_tests(bot, decide_tests(bot))
+        return
     rows, bot = dialogue()
     tok = bot.tok
     dt = decide_tests(bot)   # first: it stops on a conversation that misses a branch, before any file is written
@@ -447,12 +722,7 @@ def main():
             f.write(json.dumps(r) + "\n")
     differ = sum(r["top"]["intent"] != r["family"]["intent"] for r in gt)
     print(f"gate tests: {len(gt)} rows, the two gates pick different intents on {differ}")
-    with io.open(os.path.join(OUT, "decide_tests.jsonl"), "w", encoding="utf-8", newline="\n") as f:
-        for r in dt:
-            f.write(json.dumps(r) + "\n")
-    print("decide tests, actions per gate:",   # the two full conversations; the others run under a moved threshold
-          {r["gate"]: sorted({s["action"] for s in r["steps"]}) for r in dt if r["threshold"] == bot.threshold},
-          f"({sum(len(r['steps']) for r in dt)} steps in {len(dt)} conversations)")
+    write_decide_tests(bot, dt)
     with io.open(os.path.join(OUT, "dialogue.jsonl"), "w", encoding="utf-8", newline="\n") as f:
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
@@ -478,7 +748,13 @@ def main():
     with io.open(os.path.join(OUT, "location_tests.jsonl"), "w", encoding="utf-8", newline="\n") as f:
         for r in lt:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
-    print(f"location tests: {len(lt)} lines, {sum(bool(r['places']['targets']) for r in lt)} name a place")
+    recs = [r["places"] for r in lt if r["places"]]
+    print(f"location tests: {len(lt)} lines, {sum(bool(p['targets']) for p in recs)} name a place or a direction, "
+          f"{sum(any(t.get('direction') for t in p['targets']) for p in recs)} of them a direction")
+    raised = [r["text"] for r in lt if r.get("python_error")]
+    if raised:
+        print(f"  locations.record() raises IndexError on {len(raised)} of them (written without a record, not compared), "
+              f"the shortest: {min(raised, key=len)!a}")
     n_unk = sum(3 in i[1:-1] for i in ids)
     n_cut = sum(len(i) == 64 for i in ids)
     n_slot = [sum(bool(p.search(t)) for t in texts) for p in (ON_SIGNAL, OTHER, neg)]

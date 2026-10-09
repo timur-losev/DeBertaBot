@@ -115,6 +115,8 @@ bool BotBrain::Init(IntentConfig config, std::string* error) {
         if (error) *error = "labels must include NONE, GO_NOW and WAIT";
         return false;
     }
+    hold_fire_ = LabelIndex("HOLD_FIRE");
+    open_fire_ = LabelIndex("OPEN_FIRE");
     if (cfg_.gate != "top" && cfg_.gate != "family") {
         if (error) *error = "gate must be \"top\" or \"family\": " + cfg_.gate;
         return false;
@@ -199,6 +201,15 @@ Decision BotBrain::Decide(std::string_view text, const std::vector<float>& probs
     } else if (d.intent == wait_) {
         drop_pending();
         d.action = Action::Wait;
+    } else if (d.intent == hold_fire_) {
+        // stopping the shooting is never queued and does not cancel the queued order; "hold fire until I
+        // say" is the one order whose signal means the opposite: the bot holds now and fires on the go
+        d.action = Action::Act;
+        if (d.on_signal && open_fire_ >= 0) {
+            pending_ = open_fire_;
+            pending_places_ = d.places;
+            pending_other_ = false;
+        }
     } else if (d.on_signal) {
         pending_ = d.intent;
         pending_places_ = d.places;

@@ -2,13 +2,15 @@
 
 #include <algorithm>
 #include <deque>
+#include <iterator>
 
 namespace coop {
 namespace {
 
 constexpr int kRoleWindow = 5, kRoleReach = 12, kAnaphorMax = 6, kGovernMax = 4;
 constexpr size_t kAfterMax = 4, kZoneAfterMax = 3, kMaxPhraseTokens = 4, kMaxTokens = 128;
-// locations.py WORD_LISTS: a vocabulary must have exactly these
+// locations.py WORD_LISTS: a vocabulary must have exactly these, and with "directions" (rule set v4)
+// the dir_* lists below as well; a rule set v3 vocabulary has none of those
 const char* const kWordLists[] = {
     "before_fill", "after_fill", "tail", "zone_after_fill", "lone_follow", "lone_block", "lone_not_after",
     "unknown_modifier", "role_not", "role_from", "role_mine", "role_them", "number", "number_next", "status_next",
@@ -17,6 +19,16 @@ const char* const kWordLists[] = {
     "ask", "number_lead", "status_not_next", "not_exempt", "not_unless_to", "govern", "aux", "order_verb",
     "from_particle", "filler", "anaphor", "let", "let_me", "negator", "fire", "no_words", "preposition", "post_prep",
     "post_modifier"};
+const char* const kDirWordLists[] = {
+    "dir_adjective", "dir_adjective_tail", "dir_lead_lateral", "dir_prep", "dir_det", "dir_article", "dir_side",
+    "dir_right_block", "dir_count", "dir_unit", "dir_always", "dir_relation", "dir_lead_vertical", "dir_vertical_block",
+    "dir_up_block", "dir_stairs_prep", "dir_stairs_link", "dir_zone_prep", "dir_place_next", "dir_lead_forward",
+    "dir_lead_ahead", "dir_front_lead", "dir_lead_back", "dir_back_block", "dir_back_next", "dir_back_prep", "dir_person",
+    "dir_behind_lead", "dir_end_next", "dir_six_lead", "dir_six_verb", "dir_lead_climb", "dir_there_lead",
+    "dir_right_soft", "dir_turn", "dir_split_object", "dir_split_verb", "dir_resource", "dir_have", "dir_amount",
+    "dir_right_noun", "dir_lead_noun", "dir_throw", "dir_correction", "dir_straight_not", "dir_we"};
+// locations.py DIRECTIONS, in the order of PlaceDirection after None: the rules name the six
+const char* const kDirections[] = {"up", "down", "left", "right", "forward", "back"};
 
 struct Tok {
     std::string word;
@@ -68,6 +80,11 @@ bool PhraseOk(const std::string& p) {
     return tokens <= kMaxPhraseTokens;
 }
 
+// Python str.isdigit() on a token: every byte an ASCII digit
+bool Digits(const std::string& w) {
+    return std::all_of(w.begin(), w.end(), [](char c) { return c >= '0' && c <= '9'; });
+}
+
 template <class V>
 int IndexOf(const V& ids, const std::string& id) {
     auto it = std::find(ids.begin(), ids.end(), id);
@@ -88,6 +105,12 @@ struct Work {
     Work* twin = nullptr;           // "north and south doors": the target that owns the object
     Work* shares = nullptr;         // "doors and windows on ...": the next coordinated object
     bool is_twin = false, after = false, zone_set = false, zone_after = false;
+    // rule set v4. The noun phrase, where it is wider than first..last (-1: it is not): "the back
+    // stairs", "the basement stairs" start at np, "the stairs in the basement" end at np_last
+    int np = -1, np_last = -1;
+    // a direction that is a target of its own; corrects: "go left, no, right"; joined: it became a
+    // place's direction and is no target any more
+    bool lone = false, corrects = false, joined = false;
 };
 
 }  // namespace
@@ -114,6 +137,19 @@ const char* PlaceFlagName(PlaceFlag f) {
     return "";
 }
 
+const char* PlaceDirectionName(PlaceDirection d) {
+    switch (d) {
+        case PlaceDirection::Up: return "up";
+        case PlaceDirection::Down: return "down";
+        case PlaceDirection::Left: return "left";
+        case PlaceDirection::Right: return "right";
+        case PlaceDirection::Forward: return "forward";
+        case PlaceDirection::Back: return "back";
+        case PlaceDirection::None: break;
+    }
+    return "";
+}
+
 bool LocationMatcher::In(const char* list, const std::string& word) const {
     auto it = lists_.find(list);
     return it != lists_.end() && it->second.count(word) != 0;
@@ -130,11 +166,16 @@ bool LocationMatcher::Init(const LocationVocab& v, std::string* error) {
     zones_.clear();
     phrases_.clear();
     lists_.clear();
+    vertical_.clear();
+    dirs_.clear();
+    clock_.clear();
     max_len_ = 1;
+    directions_ = v.has_directions;
     for (const auto& o : v.objects) {
         if (IndexOf(objects_, o.id) >= 0) return fail("duplicate object id " + o.id);
         if (o.words.empty()) return fail("object " + o.id + " has no words");
         objects_.push_back(o.id);
+        vertical_.push_back(directions_ && o.vertical);
     }
     for (const auto& q : v.qualifiers) {
         if (IndexOf(qualifiers_, q.id) >= 0) return fail("duplicate qualifier id " + q.id);
@@ -190,16 +231,51 @@ bool LocationMatcher::Init(const LocationVocab& v, std::string* error) {
     }
     for (const auto& p : v.ignore)
         if (!claim(p, {Kind::Ignore, -1, -1}, "ignore")) return false;
-    for (const char* name : kWordLists) {
+    auto one_token = [](const std::string& w) { return PhraseOk(w) && w.find(' ') == std::string::npos; };
+    auto word_list = [&](const char* name) {
         auto it = v.words.find(name);
         if (it == v.words.end()) return fail(std::string("missing word list ") + name);
         for (const auto& w : it->second)
-            if (!PhraseOk(w) || w.find(' ') != std::string::npos)
-                return fail(std::string("word list ") + name + ": \"" + w + "\" must be one lowercase ASCII token");
+            if (!one_token(w)) return fail(std::string("word list ") + name + ": \"" + w + "\" must be one lowercase ASCII token");
         lists_[name] = std::unordered_set<std::string>(it->second.begin(), it->second.end());
-    }
-    for (const auto& list : v.words)   // a list no rule reads: locations.py refuses the vocabulary too
+        return true;
+    };
+    for (const char* name : kWordLists)
+        if (!word_list(name)) return false;
+    if (directions_)
+        for (const char* name : kDirWordLists)
+            if (!word_list(name)) return false;
+    // a list no rule reads: locations.py refuses the vocabulary too (in a rule set v3 one, any dir_* list)
+    for (const auto& list : v.words)
         if (lists_.count(list.first) == 0) return fail("unknown word list " + list.first);
+    if (directions_) {
+        // rule set v4: exactly the six directions the rules name, each with its words and the hours that
+        // mean it ("clock" may be empty). A direction word is one token, not a phrase of the vocabulary
+        // and not a filler word (it would never be read); no word or hour belongs to two directions
+        bool have[std::size(kDirections)] = {};
+        for (const auto& d : v.directions) {
+            size_t k = 0;
+            while (k < std::size(kDirections) && d.id != kDirections[k]) ++k;
+            if (k == std::size(kDirections) || have[k])
+                return fail("directions must be exactly up, down, left, right, forward, back: \"" + d.id + "\"");
+            have[k] = true;
+            if (d.words.empty()) return fail("direction " + d.id + " has no words");
+            for (const bool hours : {false, true}) {
+                auto& of = hours ? clock_ : dirs_;
+                for (const auto& w : hours ? d.clock : d.words) {
+                    if (!one_token(w)) return fail("direction " + d.id + ": \"" + w + "\" must be one lowercase ASCII token");
+                    if (!hours && phrases_.count(w) != 0) return fail("direction word \"" + w + "\" is also a phrase of the vocabulary");
+                    if (In("filler", w)) return fail("direction word \"" + w + "\" is a filler word: it would never be read");
+                    if (!of.emplace(w, static_cast<PlaceDirection>(k + 1)).second)
+                        return fail("direction word \"" + w + "\" is listed twice (second: " + d.id + ")");
+                }
+            }
+        }
+        if (v.directions.size() != std::size(kDirections))
+            return fail("directions must be exactly up, down, left, right, forward, back");
+        for (const auto& w : lists_["dir_adjective"])   // "the left window": the object's direction is the word's
+            if (dirs_.count(w) == 0) return fail("dir_adjective word \"" + w + "\" is not a direction word");
+    }
     ready_ = true;
     return true;
 }
@@ -343,25 +419,45 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
         }
     }
     // 1c. a modifier word the vocabulary does not have, right before the object: "back door"
+    // tokens already read as a direction or as an object's modifier (rule set v4)
+    std::vector<char> dir_used(static_cast<size_t>(n), 0);
+    auto dir_of = [&](int j) { return dirs_.find(word(j))->second; };   // of a dir_adjective word: Init checked it is one
     for (Work* t : targets) {
         const int f = t->first;
-        if (!t->is_twin && f > 0 && In("unknown_modifier", word(f - 1)) && !tbrk(f) && kind(f - 1) < 0)
+        if (t->is_twin || f == 0 || !In("unknown_modifier", word(f - 1)) || tbrk(f) || kind(f - 1) >= 0) continue;
+        int a = f - 1;
+        // "the left hand door", "the right side window"
+        if (In("dir_adjective_tail", word(a)) && a > 0 && !tbrk(a) && In("dir_adjective", word(a - 1))) --a;
+        if (In("dir_adjective", word(a))) {
+            if (a >= 2 && !tbrk(a) && !tbrk(a - 1) && (word(a - 1) == "and" || word(a - 1) == "or") &&
+                In("dir_adjective", word(a - 2)) && kind(a - 2) < 0)
+                a -= 2;                       // "the left and right windows": the first one named
+            t->t.direction = dir_of(a);       // "the left window": a direction, not an unknown name
+            for (int j = a; j < f; ++j) dir_used[static_cast<size_t>(j)] = 1;
+        } else {
             t->t.flag = PlaceFlag::UnknownModifier;
+        }
+        t->np = a;   // where the object's noun phrase starts (step 6)
     }
     // 1d. "the spiral staircase": one unknown word between a determiner and an unqualified object
     for (Work* t : targets) {
         const int f = t->first;
-        if (t->is_twin || t->t.flag != PlaceFlag::None || t->t.qualifier >= 0 || f < 2) continue;
+        if (t->is_twin || t->t.flag != PlaceFlag::None || t->t.direction != PlaceDirection::None || t->t.qualifier >= 0 || f < 2)
+            continue;
         const std::string& w = word(f - 1);
         if (In("determiner", word(f - 2)) && !tbrk(f - 1) && !tbrk(f) && kind(f - 1) < 0 && !In("neutral_modifier", w) &&
-            !In("determiner", w) && !In("preposition", w) && !In("number", w) && !In("order_verb", w))
+            !In("determiner", w) && !In("preposition", w) && !In("number", w) && !In("order_verb", w)) {
             t->t.flag = PlaceFlag::UnknownModifier;
+            t->np = f - 1;
+        }
     }
     // 1e. "take the other door": the object right after an `other` word is the other one of its kind
     for (Work* t : targets) {
         const int f = t->first;
-        if (!t->is_twin && t->t.flag == PlaceFlag::None && t->t.qualifier < 0 && f > 0 && !tbrk(f) && In("other", word(f - 1)))
+        if (!t->is_twin && t->t.flag == PlaceFlag::None && t->t.qualifier < 0 && f > 0 && !tbrk(f) && In("other", word(f - 1))) {
             t->t.flag = PlaceFlag::Other;
+            t->np = f - 1;
+        }
     }
 
     // 2. a free qualifier after an object
@@ -397,7 +493,8 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
     // 2b. "doors and windows on the north side": coordinated objects share the qualifier after them
     for (size_t i = 0; i + 1 < objects.size(); ++i) {
         Work *ta = by_obj[i], *tb = by_obj[i + 1];
-        if (and_or(objects[i]->last, objects[i + 1]->first) && ta->t.flag == PlaceFlag::None) {
+        if (and_or(objects[i]->last, objects[i + 1]->first) && ta->t.flag == PlaceFlag::None &&
+            ta->t.direction == PlaceDirection::None) {
             ta->shares = tb;
             if (ta->t.qualifier < 0 && tb->after && tb->t.qualifier >= 0 && allows(ta->t.object, tb->t.qualifier))
                 ta->t.qualifier = tb->t.qualifier;
@@ -410,7 +507,15 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
         if (t->t.flag != PlaceFlag::None || t->t.qualifier >= 0 || e >= n || tbrk(e) || !In("post_prep", word(e))) continue;
         ++e;
         if (e < n && !tbrk(e) && In("determiner", word(e))) ++e;
-        if (e < n && !tbrk(e) && In("post_modifier", word(e)) && kind(e) < 0) t->t.flag = PlaceFlag::UnknownModifier;
+        if (e >= n || tbrk(e) || !In("post_modifier", word(e)) || kind(e) >= 0) continue;
+        // "the door in front ...": step 6. Only under rule set v4: without directions step 6 never reads
+        // the word, and the door keeps the flag rule set v3 gives it here
+        if (directions_ && word(e) == "front" && word(e - 1) == "in") continue;
+        if (In("dir_adjective", word(e)) && t->t.direction == PlaceDirection::None)
+            t->t.direction = dir_of(e);   // "the door on the left"
+        else
+            t->t.flag = PlaceFlag::UnknownModifier;
+        dir_used[static_cast<size_t>(e)] = 1;   // "the stairs at the back": the word is this object's, not a direction of its own
     }
 
     // 3. lone qualifiers: a place only where the word ends its phrase
@@ -480,6 +585,10 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
         if (best) {
             best->t.zone = z->a;
             best->zone_set = true;
+            if (z->last < best->first)
+                best->np = std::min(best->np >= 0 ? best->np : best->first, z->first);   // "the basement stairs"
+            else if (z->first > best->last)
+                best->np_last = z->last;                                                 // "the stairs in the basement"
             placed[zi] = 1;
         }
     }
@@ -546,11 +655,11 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
         return true;
     };
 
-    for (size_t ti = 0; ti < targets.size(); ++ti) {
-        Work* t = targets[ti];
+    // the role of group[ti]; the group is the targets in line order (in step 6: with the directions)
+    auto assign_role = [&](size_t ti, Work* t, const std::vector<Work*>& group) {
         // "they're on red and blue": a place joined to the one before it by and / or shares its role
         if (ti > 0) {
-            const Work* u = targets[ti - 1];
+            const Work* u = group[ti - 1];
             if (u->t.role == PlaceRole::Mine || u->t.role == PlaceRole::Them || u->t.role == PlaceRole::Not) {
                 bool joined = false, only = true;
                 int count = 0;
@@ -562,7 +671,7 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
                 }
                 if (count > 0 && brk(u->last, t->first) < 2 && joined && only) {
                     t->t.role = u->t.role;
-                    continue;
+                    return;
                 }
             }
         }
@@ -620,12 +729,16 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
             if (!(In("aux", *w) || In("determiner", *w) || In("from_particle", *w))) ++steps;
             --j;
         }
-    }
+    };
+    for (size_t ti = 0; ti < targets.size(); ++ti) assign_role(ti, targets[ti], targets);
 
     // 5a. status: "north door is clear, hold the south window". Only when the line has another place to
     // act on (or asks for "the other one"): "east door's barricaded, blow it" names its own target
     auto status_follows = [&](const Work* t) {
-        const int e = t->last + 1;
+        int e = t->last + 1;
+        if (t->t.direction != PlaceDirection::None && e < n && !tbrk(e) && In("post_prep", word(e)))
+            while (e < n && !tbrk(e) && (dir_used[static_cast<size_t>(e)] || In("post_prep", word(e)) || In("determiner", word(e))))
+                ++e;   // "the door on the right | is clear"
         if (e >= n || tbrk(e) || !In("status_next", word(e))) return false;
         return !(e + 1 < n && !tbrk(e + 1) && In("status_not_next", word(e + 1)));
     };
@@ -662,6 +775,356 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
     if (!targets.empty() && std::all_of(targets.begin(), targets.end(), [](const Work* t) { return t->t.role != PlaceRole::None; })) {
         const Work* t = targets.back();
         if (t->t.object >= 0 && other_after(t->last + 1)) add(t->t.object, -1, n, n, nullptr)->t.flag = PlaceFlag::Other;
+    }
+
+    // 6. directions (rule set v4): a direction word counts only in the contexts locations.py lists. A
+    // vocabulary without "directions" is done here: rule set v3 ends with 5c
+    if (directions_) {
+        const PlaceDirection kNone = PlaceDirection::None, kUp = PlaceDirection::Up, kDown = PlaceDirection::Down,
+                             kLeft = PlaceDirection::Left, kRight = PlaceDirection::Right,
+                             kForward = PlaceDirection::Forward, kBack = PlaceDirection::Back;
+        // the object's noun phrase: "the back stairs", "the basement stairs", "the stairs in the basement"
+        auto np_first = [](const Work* t) { return t->np >= 0 ? t->np : t->first; };
+        auto np_last = [](const Work* t) { return t->np_last >= 0 ? t->np_last : t->last; };
+        // the target whose noun phrase starts / ends at a token (the later target, if two do); the "other"
+        // target of 5c stands at no token
+        std::vector<Work*> first_of(static_cast<size_t>(n), nullptr), last_of(static_cast<size_t>(n), nullptr);
+        std::vector<char> np_tok(static_cast<size_t>(n), 0);
+        for (Work* t : targets) {
+            if (t->first < n) first_of[static_cast<size_t>(np_first(t))] = t;
+            if (t->last < n) last_of[static_cast<size_t>(np_last(t))] = t;
+            if (t->first < n)
+                for (int j = np_first(t); j <= np_last(t); ++j) np_tok[static_cast<size_t>(j)] = 1;
+        }
+        auto starts_at = [&](int j) { return first_of[static_cast<size_t>(j)]; };
+        auto ends_at = [&](int j) { return last_of[static_cast<size_t>(j)]; };
+        auto used = [&](int j) { return dir_used[static_cast<size_t>(j)] != 0; };
+        // token j exists and only spaces separate it from the token before
+        auto nb = [&](int j) { return 0 < j && j < n && !tbrk(j); };
+        // token j is a word of the line that belongs to no place and no direction
+        auto plain = [&](int j) { return 0 <= j && j < n && kind(j) < 0 && !used(j); };
+        auto place_at = [&](int j) {   // a place starts at token j, after an optional determiner: "above the east window"
+            if (nb(j) && kind(j) < 0 && In("determiner", word(j))) ++j;
+            return nb(j) && kind(j) >= 0;
+        };
+        auto is_floor = [](const Work* t) {   // a floor on its own: "the basement", "the roof"
+            return t->t.object < 0 && t->t.qualifier < 0 && t->t.zone >= 0;
+        };
+        auto is_vertical = [&](const Work* t) { return t->t.object >= 0 && vertical_[static_cast<size_t>(t->t.object)]; };
+        // the place that starts at j, after one optional word of the list `preps` (nullptr: none) and one determiner
+        auto place_after = [&](int j, const char* preps) -> Work* {
+            if (preps && nb(j) && !starts_at(j) && In(preps, word(j))) ++j;
+            if (nb(j) && !starts_at(j) && In("determiner", word(j))) ++j;
+            return nb(j) ? starts_at(j) : nullptr;
+        };
+        // the place that ends right before token j, or before a form of "be" there: "the stairs are | on your right"
+        auto place_before = [&](int j) -> Work* {
+            if (!nb(j)) return nullptr;
+            Work* t = ends_at(j - 1);
+            if (!t && nb(j - 1) && kind(j - 1) < 0 && In("be", word(j - 1))) t = ends_at(j - 2);
+            return t;
+        };
+        // a neighbour of the direction word, or nullptr: no such word. No word is in no list and equals
+        // no word, so a negated test holds for it (locations.py: `None not in W[...]`)
+        auto in = [&](const char* list, const std::string* w) { return w && In(list, *w); };
+        auto is = [](const std::string* w, const char* s) { return w && *w == s; };
+
+        std::vector<Work*> lone;   // the directions that are targets of their own, in line order
+        for (int i = 0; i < n; ++i) {
+            const std::string& w = word(i);
+            const auto dw = dirs_.find(w), cw = clock_.find(w);
+            if ((dw == dirs_.end() && cw == clock_.end()) || !plain(i) || owned(i)) continue;
+            // the words before, in the same phrase and not words of a place or of a direction, and after
+            const std::string* prev = nb(i) && plain(i - 1) ? &word(i - 1) : nullptr;
+            const std::string* prev2 = prev && nb(i - 1) && plain(i - 2) ? &word(i - 2) : nullptr;
+            const std::string* prev3 = prev2 && nb(i - 2) && plain(i - 3) ? &word(i - 3) : nullptr;
+            const std::string* nxt = nb(i + 1) ? &word(i + 1) : nullptr;
+            const std::string* nxt2 = nxt && nb(i + 2) ? &word(i + 2) : nullptr;
+            // "get your head down": a noun, not a verb (dir_lead_noun: "all the way left", "keep your eyes left")
+            const std::string* lead = in("dir_det", prev2) && !in("dir_lead_noun", prev) ? nullptr : prev;
+            const bool opens = i == 0 || tbrk(i) > 0;                                     // the word starts the line or a phrase
+            const bool stop = i + 1 >= n || tbrk(i + 1) > 0 || in("dir_end_next", nxt);   // the phrase ends here: "go straight, then ..."
+            PlaceDirection d = kNone;
+            int last = i;
+            Work* att = nullptr;   // the place whose direction it is
+            bool corrects = false;
+            if (cw != clock_.end()) {
+                const PlaceDirection c = cw->second;
+                if (is(nxt, "oclock")) {
+                    d = c, last = i + 1;   // "three oclock"
+                } else if (is(nxt, "o") && is(nxt2, "clock")) {
+                    d = c, last = i + 2;   // "three o'clock"
+                } else if (c == kBack || c == kForward) {
+                    // "on your six", "check six", "one at twelve"; not "my six kills"
+                    if ((in("dir_six_lead", prev) && ends_phrase(i + 1)) || (in("dir_six_verb", prev) && stop)) d = c;
+                } else if (in("dir_six_lead", prev) && stop &&
+                           (!prev2 || in("dir_prep", prev2) || in("dir_six_verb", prev2) || in("dir_lead_lateral", prev2)) &&
+                           !(is(prev, "my") && is(prev2, "on") && !in("role_them", prev3) && !in("role_them_soft", prev3) &&
+                             !in("number", prev3))) {
+                    d = c;   // "check your nine", "contact on my three"; not "breach on my three" (a countdown), "i used my one"
+                }
+            }
+            if (d == kNone && dw != dirs_.end()) {
+                const PlaceDirection k = dw->second;
+                if (In("dir_always", w)) {
+                    d = k;   // "upwards", "backwards"
+                } else if (In("dir_relation", w)) {
+                    // "from above", "below you"; not "above the east window", "below half"
+                    if (!place_at(i + 1) && !(nxt && (Digits(*nxt) || In("dir_amount", *nxt)))) {
+                        d = k;
+                        att = place_before(i);   // "the stairs below", "the window's above you"
+                    }
+                } else if (k == kUp || k == kDown) {
+                    // "lock down the top floor", "set up on the roof"; "back me up here", "set it up there"
+                    const bool blocked = in("dir_vertical_block", prev) || (in("dir_split_object", prev) && in("dir_split_verb", prev2));
+                    const bool climb = in("dir_lead_vertical", lead) || in("dir_lead_climb", lead);
+                    Work* t = blocked ? nullptr : place_after(i + 1, nullptr);
+                    // "go down by stairs"; not "put it down by the stairs"
+                    if (!t && !blocked && (opens || climb)) t = place_after(i + 1, "dir_stairs_prep");
+                    if (t && is_vertical(t)) d = k, att = t;   // "up the blue stairs", "up blue", "up the back stairs"
+                    if (d == kNone) {
+                        t = nb(i) ? ends_at(i - 1) : nullptr;
+                        if (!t && nb(i) && nb(i - 1) && kind(i - 1) < 0 && In("dir_stairs_link", word(i - 1))) t = ends_at(i - 2);
+                        if (t && is_vertical(t)) {
+                            int j = np_first(t) - 1;   // the verb before the stairs: "lock the stairs down", "hold blue down"
+                            if (j >= 0 && !tbrk(j + 1) && kind(j) < 0 && In("determiner", word(j))) --j;
+                            if (!(j >= 0 && !tbrk(j + 1) && kind(j) < 0 && In("dir_split_verb", word(j))))
+                                d = k, att = t;        // "take the stairs down", "blue stairs going up"
+                        }
+                    }
+                    if (d == kNone && !blocked && !(k == kUp && is(prev, "back") && !in("dir_lead_vertical", prev2))) {
+                        t = place_after(i + 1, "dir_zone_prep");
+                        // "down to the basement" always; "up on the roof" after a motion word or at the start of a phrase;
+                        // "he's up on the roof" too, but "one down in the basement" is a kill; "back up to the basement" a retreat
+                        if (t && is_floor(t) &&
+                            (in("from_to", nxt) || is(nxt, "onto") || opens || climb ||
+                             (k == kUp && in("dir_there_lead", prev) && !in("dir_split_object", prev))))
+                            d = k, att = t;
+                    }
+                    if (d == kNone && !blocked && !(k == kUp && in("dir_up_block", nxt))) {
+                        const std::string* there = in("determiner", nxt) && in("dir_place_next", nxt2) ? nxt2 : nxt;   // "up the ladder"
+                        if (in("dir_place_next", there) && (opens || in("dir_there_lead", prev)))
+                            d = k;   // "get up there", "he's down there", "up top"
+                        else if (ends_phrase(i + 1) && (in("dir_lead_vertical", lead) || (is(prev, "back") && in("dir_lead_vertical", prev2))))
+                            d = k;   // "go up", "go back up", "he went up there"; not "go down the hall", "go up to him"
+                    }
+                } else if (k == kLeft || k == kRight) {
+                    const bool det = in("dir_det", prev), art = in("dir_article", prev);
+                    const bool bare = opens && stop;   // a phrase of its own: "Left!"
+                    // the other of left / right at token x
+                    auto opposite = [&](int x) { return In("dir_adjective", word(x)) && word(x) != w; };
+                    bool fix = false;   // a correction: "not left, right!", "right, not left", "go left, no, right"
+                    if (bare && i >= 2 && opposite(i - 1) && In("negator", word(i - 2))) fix = true;
+                    if (bare && i + 2 < n && In("negator", word(i + 1)) && opposite(i + 2)) fix = true;
+                    if (bare && i >= 2 && In("dir_correction", word(i - 1)))
+                        for (int x = 0; x < i - 1; ++x) fix = fix || opposite(x);
+                    if (k == kRight &&
+                        (in("dir_right_noun", nxt) ||
+                         (!det && !art &&
+                          (in("dir_right_block", nxt) ||
+                           (in("dir_right_soft", nxt) &&
+                            (!in("dir_turn", lead) || in("dir_back_block", nxt2) || in("dir_right_block", nxt2))))))) {
+                        // "the right spot"; "right now", "looking right at you", "go right at them"; not "on your right now",
+                        // "turn right at the stairs"
+                    } else if (k == kLeft && !is(nxt, "of") && !(in("dir_side", nxt) && !in("anaphor", nxt)) &&
+                               ((in("dir_count", prev2) && !in("dir_unit", prev) && !(in("dir_article", prev2) && in("dir_throw", prev3))) ||
+                                (in("dir_resource", prev) && in("dir_have", prev2)))) {
+                        // "one enemy left", "no smoke left", "i got smoke left"; not "two steps left", "throw a flash left"
+                    } else if (k == kLeft && in("dir_det", nxt) && (in("role_them", prev) || in("role_them_soft", prev))) {
+                        // "someone left the door open", "enemy left the site"
+                    } else if (in("dir_lead_lateral", lead) || in("dir_prep", prev) || in("other", prev) ||
+                               (in("dir_side", nxt) && !(k == kLeft && (in("role_mine", prev) || in("govern", prev) ||
+                                                                         in("role_stop", prev) || in("dir_we", prev)))) ||
+                               (det && (!prev2 || in("dir_prep", prev2) || in("dir_lead_lateral", prev2) || ends_phrase(i + 1))) ||
+                               (art && in("dir_lead_lateral", prev2)) || (is(nxt, "of") && !in("dir_count", prev)) ||
+                               (opens && in("status_next", nxt)) || (bare && k == kLeft) || fix ||
+                               (k == kRight && in("number", prev) && !prev2 && stop)) {
+                        // "go left", "on your right", "the other left", "left side", "take a left", "left of the stairs",
+                        // "left clear", "Left!" (never a bare "right": "Right, hold the north door"), "not left, right!",
+                        // "go left, no, right", "two right"
+                        d = k, corrects = fix;
+                        const int j = det ? i - 2 : i - 1;   // "the north door on the left": its preposition
+                        if (j >= 1 && nb(j + 1) && nb(j) && kind(j) < 0 && In("post_prep", word(j)))
+                            att = place_before(j);           // also "the stairs are on your right"
+                    }
+                } else if (k == kForward) {
+                    if (w == "straight") {
+                        // "go straight"; not "go straight to the north door", "shoot straight"
+                        if (in("dir_lead_forward", lead) && !in("dir_straight_not", lead) && stop) d = k;
+                    } else if (w == "ahead") {
+                        // "straight ahead", "up ahead", "ahead of us"; not "go ahead", "go right ahead"
+                        if ((in("dir_lead_ahead", lead) && !(is(prev, "right") && is(prev2, "go"))) ||
+                            (is(nxt, "of") && in("dir_person", nxt2)))
+                            d = k;
+                    } else if (w == "front") {
+                        Work* obj = is(prev, "in") && nb(i - 1) ? ends_at(i - 2) : nullptr;   // "the door in front ..."
+                        if ((in("dir_front_lead", prev) || (in("dir_det", prev) && in("dir_prep", prev2))) &&
+                            !place_at(is(nxt, "of") ? i + 2 : i + 1) &&
+                            (!in("dir_det", prev) || is(nxt, "of") || ends_phrase(i + 1)) &&
+                            !(in("dir_front_lead", prev) && is(nxt, "of") && in("determiner", nxt2))) {
+                            d = k, att = obj;   // "in front of you", "up front"; not "in front of the car", "the front room"
+                        } else if (obj && obj->t.flag == PlaceFlag::None && obj->t.qualifier < 0) {
+                            obj->t.flag = PlaceFlag::UnknownModifier;   // "the door in front of the stairs": one particular door (as rule set v3)
+                        }
+                    } else if (in("dir_lead_forward", lead) || opens) {
+                        d = k;   // "move forward", "forward!"
+                    }
+                } else if (w == "behind") {
+                    if (in("dir_person", nxt)) {
+                        d = k, att = place_before(i);   // "behind you"; "the door behind you" is that door's
+                    } else if (stop && (opens || (in("dir_behind_lead", prev) && !(is(prev, "re") && in("dir_we", prev2))))) {
+                        d = k;   // "from behind", "Behind!"; not "behind the sofa", "stay behind", "we're behind"
+                    }
+                } else if (!place_at(is(nxt, "of") ? i + 2 : i + 1)) {   // "back", "rear"; not "the back door", "at the back of the stairs"
+                    if (w == "rear") {
+                        // "to the rear"; not "the rear hallway"
+                        if (in("dir_prep", prev) || (in("dir_det", prev) && (is(nxt, "of") || ends_phrase(i + 1)))) d = k;
+                    } else if (in("dir_back_next", nxt) || (in("dir_lead_back", lead) && !in("dir_back_block", nxt)) ||
+                               (in("dir_det", prev) && (in("dir_prep", prev2) || in("dir_six_verb", prev2) || in("dir_back_prep", prev2)) &&
+                                (is(nxt, "of") || ends_phrase(i + 1))) ||
+                               (in("dir_back_prep", prev) && ends_phrase(i + 1))) {
+                        d = k;   // "back there", "go back", "at the back", "out back"; not "the back room"
+                    }
+                }
+            }
+            if (d == kNone) continue;
+            for (int j = i; j <= last; ++j) dir_used[static_cast<size_t>(j)] = 1;
+            if (!att) {
+                store.emplace_back();
+                Work* t = &store.back();
+                t->t.direction = d;
+                t->first = i;
+                t->last = last;
+                t->lone = true;
+                t->corrects = corrects;
+                lone.push_back(t);
+            } else if (att->t.direction == kNone) {
+                att->t.direction = d;   // an object keeps its first direction: "up the stairs on the left" = left
+            }
+        }
+        for (Work* t : targets) {   // "up the red or blue stairs": both
+            Work* u = t->twin;
+            if (u && (t->t.direction == kNone) != (u->t.direction == kNone))
+                t->t.direction = u->t.direction = t->t.direction != kNone ? t->t.direction : u->t.direction;
+        }
+        // the roles of the directions, by the rules of the places ("they're on the stairs and the left": both
+        // theirs), over places and directions in line order; a direction is never a place to leave ("come
+        // from the left"). Only now are their tokens owned: the places got their roles without them
+        for (const Work* t : lone)
+            for (int j = t->first; j <= t->last; ++j) owned_at[static_cast<size_t>(j)] = 1;
+        std::vector<Work*> merged = targets;
+        merged.insert(merged.end(), lone.begin(), lone.end());
+        std::stable_sort(merged.begin(), merged.end(), by_first);
+        for (size_t k = 0; k < merged.size(); ++k) {
+            Work* t = merged[k];
+            if (!t->lone) continue;
+            assign_role(k, t, merged);
+            if (t->t.role == PlaceRole::From) t->t.role = PlaceRole::None;
+        }
+        for (size_t k = 0; k < lone.size(); ++k) {   // "go left, no, right": the correction reaches back
+            const Work* t = lone[k];
+            if (!t->corrects || t->t.role != PlaceRole::None) continue;
+            for (size_t u = 0; u < k; ++u) {
+                Work* x = lone[u];
+                if (x->t.role == PlaceRole::None && (x->t.direction == kLeft || x->t.direction == kRight) &&
+                    x->t.direction != t->t.direction)
+                    x->t.role = PlaceRole::Not;
+            }
+        }
+        // an order verb or a lateral lead stands before the direction in its phrase: "go left"
+        auto ordered = [&](const Work* t) {
+            int a = t->first;
+            while (a > 0 && !tbrk(a)) --a;   // the first token of the phrase
+            for (int j = a; j < t->first; ++j)
+                if (In("order_verb", word(j)) || In("dir_lead_lateral", word(j))) return true;
+            return false;
+        };
+        auto side = [&](int j) { return In("dir_side", word(j)) || In("dir_person", word(j)); };   // the direction's own "side" / "me"
+
+        // 6a. a verbless direction that ends its sentence is a callout when an order with a place follows:
+        // "Behind you! Get to the stairs!"
+        for (Work* t : lone) {
+            int e = t->last + 1;
+            while (e < n && !tbrk(e) && side(e)) ++e;
+            if (t->t.role == PlaceRole::None && e < n && tbrk(e) == 2 && !ordered(t) &&
+                std::any_of(targets.begin(), targets.end(),
+                            [&](const Work* u) { return u->t.role == PlaceRole::None && e <= u->first && u->first < n; }))
+                t->t.role = PlaceRole::Status;
+        }
+        // 6b. a direction said on the way to a place is that place's: "go left to the north door", "look up at
+        // the east window", "come up from the basement to the first floor". The place is the next one with
+        // the same role; only prepositions, determiners, the direction's own "side" / "me" and other places
+        // stand between, and no punctuation (a place with another role may stand between only when the
+        // direction has no role). Across one comma only as a bare pointer: "on your right, the north door"
+        for (Work* t : lone) {
+            for (Work* u : targets) {
+                if (!(t->last < u->first && u->first < n) || (u->t.role != t->t.role && t->t.role == PlaceRole::None)) continue;
+                if (u->t.direction == kNone && u->t.role == t->t.role) {
+                    int breaks = 0, commas = 0;
+                    for (int j = t->last + 1; j <= u->first; ++j) {
+                        if (tbrk(j) != 0) ++breaks;
+                        if (tbrk(j) == 1) ++commas;
+                    }
+                    // "behind me at the north door", "the left side of the main door"
+                    bool on_the_way = breaks == 0, pointer = breaks == 1 && commas == 1 && !ordered(t);
+                    for (int j = t->last + 1; j < np_first(u); ++j) {
+                        on_the_way = on_the_way && (np_tok[static_cast<size_t>(j)] || kind(j) >= 0 || In("preposition", word(j)) ||
+                                                    In("determiner", word(j)) || In("post_modifier", word(j)) || side(j));
+                        pointer = pointer && (In("determiner", word(j)) || side(j));
+                    }
+                    if (on_the_way || pointer) {
+                        u->t.direction = t->t.direction;
+                        t->joined = true;
+                    }
+                }
+                break;
+            }
+        }
+        // 6c. "north door, on the left", "he's on the stairs, left side": a direction that is a comma item of
+        // its own right after a place is that place's
+        for (Work* t : lone) {
+            if (t->joined || t->t.role != PlaceRole::None) continue;
+            int a = t->first, e = t->last + 1;
+            for (int r = 0; r < 2; ++r)   // its own preposition and determiner: "on your left", "to the right"
+                if (a > 0 && !tbrk(a) && kind(a - 1) < 0 && (In("dir_prep", word(a - 1)) || In("dir_det", word(a - 1)))) --a;
+            if (e < n && !tbrk(e) && In("dir_side", word(e))) ++e;   // "left side"
+            Work* u = a > 0 && tbrk(a) == 1 ? ends_at(a - 1) : nullptr;
+            if (u && u->t.direction == kNone && (u->t.role == PlaceRole::None || u->t.role == PlaceRole::Them) && (e >= n || tbrk(e))) {
+                u->t.direction = t->t.direction;
+                t->joined = true;
+            }
+        }
+        // 6d. status, with the directions: "left side is clear, push the main door", "north door is clear, go
+        // left" -- what is reported clear is not the order's target when the line has another one, before it
+        // or after punctuation
+        auto dir_status = [&](const Work* t) {   // "left side | is clear", "behind us | is clear"
+            int e = t->last + 1;
+            if (e < n && !tbrk(e) && side(e)) ++e;
+            return e < n && !tbrk(e) && In("status_next", word(e)) && !(e + 1 < n && !tbrk(e + 1) && In("status_not_next", word(e + 1)));
+        };
+        std::vector<Work*> cand, acts_on;
+        for (Work* t : targets)
+            if (t->t.role == PlaceRole::None && status_follows(t)) cand.push_back(t);
+        for (Work* t : lone)
+            if (!t->joined && t->t.role == PlaceRole::None && dir_status(t)) cand.push_back(t);
+        auto reported = [&](const Work* t) { return std::find(cand.begin(), cand.end(), t) != cand.end(); };
+        for (Work* t : lone)
+            if (!t->joined && t->t.role == PlaceRole::None && !reported(t)) acts_on.push_back(t);
+        for (Work* t : targets)
+            if (t->t.role == PlaceRole::None && !reported(t)) acts_on.push_back(t);
+        for (Work* c : cand) {
+            bool another = false;
+            // the "other" target of 5c stands after the last token (first == n). locations.py reads the
+            // punctuation of that token here, which does not exist: IndexError, the line has no Python
+            // record ("i've got the north door, you take the other one, left side is clear"). Until the
+            // reference says what it means, the request for the other one counts as another target to act
+            // on wherever it stands, as it does for a place reported clear in 5a
+            for (const Work* o : acts_on) another = another || o->first < c->first || o->first >= n || brk(c->last, o->first) != 0;
+            if (another) c->t.role = PlaceRole::Status;
+        }
+        for (Work* t : lone)
+            if (!t->joined) targets.push_back(t);
+        std::stable_sort(targets.begin(), targets.end(), by_first);
     }
 
     for (const Work* t : targets) rec.targets.push_back(t->t);

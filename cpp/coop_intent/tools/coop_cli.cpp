@@ -11,7 +11,8 @@
 //                                 constructed rows (ties, family mass against top label; no model)
 //   coop_cli --decide-tests       decide_tests.jsonl: every branch of the bot's decision, both gates (no model);
 //                                 Reset() on every queued order
-//   coop_cli --location-tests     location_tests.jsonl: the map places found in each line (no model)
+//   coop_cli --location-tests     location_tests.jsonl: the map places found in each line and, with a rule set v4
+//                                 vocabulary, the directions (no model)
 //   coop_cli --bench              latency on the golden lines, load time, memory
 //   coop_cli --tokenize "text"    the words, pieces and ids of one line
 // every mode first prints the bot it runs on (directory, labels, gate, threshold)
@@ -180,18 +181,22 @@ bool LoadConfig(Model& m, std::string* err) {
         if (j.contains("locations")) {   // the map's named places (scripts/coop/locations.json)
             const json& L = j.at("locations");
             c.has_locations = true;
-            // the sections locations.py validate() requires, and no other
+            // the sections locations.py validate() requires, and no other. "directions" came with rule set
+            // v4: a bot exported before it has none, and its places are matched by rule set v3 as before
             const char* const sections[] = {"version", "objects", "qualifiers", "named", "zones", "ignore", "words"};
+            const bool directions = L.contains("directions");
             for (const char* s : sections)
                 if (!L.contains(s)) throw std::runtime_error(std::string("locations: missing section \"") + s + "\"");
             for (auto& [key, value] : L.items()) {
                 (void)value;
-                if (std::find_if(std::begin(sections), std::end(sections), [&](const char* s) { return key == s; }) == std::end(sections))
+                if (key != "directions" &&
+                    std::find_if(std::begin(sections), std::end(sections), [&](const char* s) { return key == s; }) == std::end(sections))
                     throw std::runtime_error("locations: unknown section \"" + key + "\"");
             }
-            for (const json& ob : L.at("objects"))
+            for (const json& ob : L.at("objects"))   // "vertical": true or false, where given (rule set v4)
                 c.locations.objects.push_back({ob.at("id"), ob.at("words").get<std::vector<std::string>>(),
-                                               ob.at("qualifiers").get<std::vector<std::string>>()});
+                                               ob.at("qualifiers").get<std::vector<std::string>>(),
+                                               directions && ob.value("vertical", false)});
             for (const json& q : L.at("qualifiers")) {
                 const json& lone = q.at("lone");   // explicit: an object id or null
                 if (!lone.is_null() && lone.get<std::string>().empty())
@@ -203,6 +208,13 @@ bool LoadConfig(Model& m, std::string* err) {
             for (const json& z : L.at("zones"))
                 c.locations.zones.push_back({z.at("id"), z.at("words").get<std::vector<std::string>>(),
                                              z.value("words_end", std::vector<std::string>{})});
+            if (directions) {   // a list of {id, words, clock}; "clock" may be empty
+                if (!L.at("directions").is_array()) throw std::runtime_error("locations: \"directions\" must be a list of {id, words, clock}");
+                c.locations.has_directions = true;
+                for (const json& d : L.at("directions"))
+                    c.locations.directions.push_back({d.at("id"), d.at("words").get<std::vector<std::string>>(),
+                                                      d.at("clock").get<std::vector<std::string>>()});
+            }
             c.locations.ignore = L.at("ignore").get<std::vector<std::string>>();
             c.locations.words = L.at("words").get<std::unordered_map<std::string, std::vector<std::string>>>();
         }
@@ -232,26 +244,27 @@ std::string IdsStr(const std::vector<int64_t>& ids) {
 
 std::string Escaped(const std::string& s) { return json(s).dump(); }
 
-// a place record as one comparable string: "<primary>: object/qualifier/zone/role/flag/inferred; ..."
+// a place record as one comparable string: "<primary>: object/qualifier/zone/direction/role/flag/inferred; ..."
 std::string PlacesStr(const coop::PlaceRecord& r, const coop::LocationMatcher& m) {
     std::string s = std::to_string(r.primary) + ":";
     for (const coop::PlaceTarget& t : r.targets) {
         auto dash = [](const std::string& x) { return x.empty() ? std::string("-") : x; };
         s += " " + (t.object >= 0 ? m.ObjectId(t.object) : "-") + "/" + (t.qualifier >= 0 ? m.QualifierId(t.qualifier) : "-") +
-             "/" + (t.zone >= 0 ? m.ZoneId(t.zone) : "-") + "/" + dash(coop::PlaceRoleName(t.role)) + "/" +
-             dash(coop::PlaceFlagName(t.flag)) + "/" + (t.inferred ? "1" : "0") + ";";
+             "/" + (t.zone >= 0 ? m.ZoneId(t.zone) : "-") + "/" + dash(coop::PlaceDirectionName(t.direction)) + "/" +
+             dash(coop::PlaceRoleName(t.role)) + "/" + dash(coop::PlaceFlagName(t.flag)) + "/" + (t.inferred ? "1" : "0") + ";";
     }
     return s;
 }
 
-// the same string from locations.record() as the Python bot wrote it (null: no record)
+// the same string from locations.record() as the Python bot wrote it (null: no record). A record
+// written under rule set v3 has no "direction": none, which is what the engine gives such a bot
 std::string PlacesStr(const json& r) {
     if (r.is_null()) return "-1:";
     std::string s = std::to_string(r["primary"].get<int>()) + ":";
     for (const json& t : r["targets"]) {
         auto f = [&](const char* k) { return t[k].is_null() ? std::string("-") : t[k].get<std::string>(); };
-        s += " " + f("object") + "/" + f("qualifier") + "/" + f("zone") + "/" + f("role") + "/" + f("flag") + "/" +
-             (t["inferred"].get<bool>() ? "1" : "0") + ";";
+        s += " " + f("object") + "/" + f("qualifier") + "/" + f("zone") + "/" + (t.contains("direction") ? f("direction") : "-") +
+             "/" + f("role") + "/" + f("flag") + "/" + (t["inferred"].get<bool>() ? "1" : "0") + ";";
     }
     return s;
 }
@@ -282,7 +295,7 @@ std::string ExecStr(const json& row) {
 const char kMissingKeys[] = "  rows lack keys that a bot with places writes (places, executed, ...): "
                             "regenerate the test files with gen_tests.py\n";
 
-// what the planner gets, for the chat's debug line: "* north door (basement) [mine]"
+// what the planner gets, for the chat's debug line: "* north door basement dir=left [mine]"
 std::string PlacesText(const coop::PlaceRecord& r, const coop::LocationMatcher& m) {
     std::string s;
     for (size_t k = 0; k < r.targets.size(); ++k) {
@@ -290,9 +303,11 @@ std::string PlacesText(const coop::PlaceRecord& r, const coop::LocationMatcher& 
         if (k) s += "; ";
         if (static_cast<int>(k) == r.primary) s += "* ";
         std::string name;
+        const char* direction = coop::PlaceDirectionName(t.direction);
         for (const std::string& part : {t.qualifier >= 0 ? m.QualifierId(t.qualifier) : std::string(),
                                         t.object >= 0 ? m.ObjectId(t.object) : std::string(),
-                                        t.zone >= 0 ? m.ZoneId(t.zone) : std::string()})
+                                        t.zone >= 0 ? m.ZoneId(t.zone) : std::string(),
+                                        *direction ? std::string("dir=") + direction : std::string()})
             if (!part.empty()) name += (name.empty() ? "" : " ") + part;
         s += name;
         for (const char* tag : {coop::PlaceRoleName(t.role), coop::PlaceFlagName(t.flag)})
@@ -481,21 +496,36 @@ int RunLocationTests(Model& m) {
     std::string err;
     if (!m.cfg.has_locations) return std::fprintf(stderr, "intent_config.json has no \"locations\"\n"), 1;
     if (!matcher.Init(m.cfg.locations, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
-    size_t ok = 0, with_place = 0;
+    size_t ok = 0, with_place = 0, with_direction = 0, no_record = 0;
     int shown = 0;
     for (const json& r : rows) {
         const std::string text = r["text"];
-        const coop::PlaceRecord rec = matcher.Find(text);
+        const coop::PlaceRecord rec = matcher.Find(text);   // must not crash on any line
+        // a line locations.record() raises on (gen_tests.py: rule set v4, step 6d): there is no Python
+        // record. Documented, not compared
+        if (r.value("python_error", false)) {
+            ++no_record;
+            continue;
+        }
         const std::string got = PlacesStr(rec, matcher), want = PlacesStr(r["places"]);
         with_place += !rec.targets.empty();
+        with_direction += std::any_of(rec.targets.begin(), rec.targets.end(),
+                                      [](const coop::PlaceTarget& t) { return t.direction != coop::PlaceDirection::None; });
         if (got == want)
             ++ok;
         else if (shown++ < 12)
             std::printf("  %s\n    python %s\n    c++    %s\n", Escaped(text).c_str(), want.c_str(), got.c_str());
     }
-    std::printf("location tests, %zu lines (%zu name a place): the C++ record equals the Python record on %zu/%zu\n",
-                rows.size(), with_place, ok, rows.size());
-    return ok == rows.size() ? 0 : 1;
+    const size_t n = rows.size() - no_record;
+    if (m.cfg.locations.has_directions)   // rule set v4: a target may be a direction alone
+        std::printf("location tests, %zu lines (%zu name a place or a direction, %zu of them a direction): the C++ record "
+                    "equals the Python record on %zu/%zu", n, with_place, with_direction, ok, n);
+    else
+        std::printf("location tests, %zu lines (%zu name a place): the C++ record equals the Python record on %zu/%zu", n,
+                    with_place, ok, n);
+    if (no_record) std::printf(" (+%zu lines the Python matcher raises on, not compared)", no_record);
+    std::printf("\n");
+    return ok == n ? 0 : 1;
 }
 
 // BotBrain::Decide against coop_bot.Bot.decide on constructed probabilities: every branch, both gates
@@ -640,6 +670,11 @@ const std::unordered_map<std::string, std::vector<std::string>> kLines = {
     {"WAIT", {"Holding up.", "Standing by.", "Copy, waiting."}},
     {"TAKE_COVER", {"Getting into cover.", "Finding cover.", "Hiding."}},
     {"OPEN", {"Opening it.", "Getting it open.", "Opening, not going in."}},
+    {"ATTACK", {"Attacking!", "Engaging.", "Going on the offensive."}},
+    {"OPEN_FIRE", {"Opening fire!", "Weapons free.", "Firing!"}},
+    {"HOLD_FIRE", {"Holding fire.", "Weapons tight.", "Ceasing fire."}},
+    {"LOOK_AT", {"Looking.", "I see it.", "Turning to look."}},
+    {"LOOK_AT_ME", {"Looking at you.", "Yeah, I see you.", "Facing you."}},
 };
 const std::vector<std::string> kAck = {"Copy.", "Noted.", "Heard."};
 
@@ -700,7 +735,11 @@ int RunChat(Model& m, int threads) {
             case coop::Action::Queued: reply = "Ready to " + m.cfg.phrases[intent] + ". On your go."; break;
             case coop::Action::Act: reply = pick(LinesFor(intent)); break;
         }
-        if (d.other && (d.action == coop::Action::Act || d.action == coop::Action::Queued) && intent != "HOLD_OTHER_ANGLE")
+        // "hold fire until I say": the bot holds now and has queued OPEN_FIRE for the signal
+        if (intent == "HOLD_FIRE" && d.action == coop::Action::Act && d.on_signal && brain.LabelIndex("OPEN_FIRE") >= 0)
+            reply += " On your go.";
+        if (d.other && (d.action == coop::Action::Act || d.action == coop::Action::Queued) && intent != "HOLD_OTHER_ANGLE" &&
+            intent != "HOLD_FIRE")
             reply += " Taking the other one.";
         std::printf("bot> %s\n", reply.c_str());
         if (why) {
