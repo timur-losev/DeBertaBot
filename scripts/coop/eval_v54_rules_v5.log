@@ -1,0 +1,36 @@
+MATCHER, rule set v5 (current), on 132 v54 lines (the readers agree on the place on 132 and on the direction on 132)
+  all                      exact  99.2% (131/132)   place  99.2% (131/132)   direction 100.0% (132/132)   usable on orders  96.7% (116/120)
+  author r6                exact 100.0% (44/44)   place 100.0% (44/44)   direction 100.0% (44/44)   usable on orders 100.0% (40/40)
+  author cs                exact 100.0% (44/44)   place 100.0% (44/44)   direction 100.0% (44/44)   usable on orders 100.0% (40/40)
+  author stt               exact  97.7% (43/44)   place  97.7% (43/44)   direction 100.0% (44/44)   usable on orders  90.0% (36/40)
+  kind answer              exact 100.0% (24/24)   place 100.0% (24/24)   direction 100.0% (24/24)   usable on orders  95.8% (23/24)
+  kind boundary            exact 100.0% (24/24)   place 100.0% (24/24)   direction 100.0% (24/24)   usable on orders 100.0% (18/18)
+  kind comeback            exact 100.0% (12/12)   place 100.0% (12/12)   direction 100.0% (12/12)   usable on orders 100.0% (12/12)
+  kind inside              exact 100.0% (12/12)   place 100.0% (12/12)   direction 100.0% (12/12)   usable on orders 100.0% (12/12)
+  kind negated             exact 100.0% (6/6)   place 100.0% (6/6)   direction 100.0% (6/6)   usable on orders   0.0% (0/0)
+  kind pin                 exact 100.0% (24/24)   place 100.0% (24/24)   direction 100.0% (24/24)   usable on orders  95.8% (23/24)
+  kind point               exact 100.0% (12/12)   place 100.0% (12/12)   direction 100.0% (12/12)   usable on orders  91.7% (11/12)
+  kind stance              exact  94.4% (17/18)   place  94.4% (17/18)   direction 100.0% (18/18)   usable on orders  94.4% (17/18)
+  lines where the readers give a direction: 0; the matcher's primary has that direction on 0, another direction on 0, none on 0 (the direction is somewhere in its list on 0)
+  lines where the readers give none: 132; the matcher's primary has a direction on 0, some target has one on 0
+  readers' direction -> matcher's: None->None 132
+  unknown_modifier flag: raised on 0 lines, the readers mark 0; both 0
+  pointer: lines the readers call 'pin': 24; the primary's pointer is pin on 20, the other kind on 0, none on 4 (some target points on 23)
+  pointer: lines the readers call 'this': 14; the primary's pointer is this on 14, the other kind on 0, none on 0 (some target points on 14)
+  pointer: lines the readers call 'none' or 'other': 94; the primary points on 7
+  readers' reference -> the primary's pointer: none->none 87, none->this 7, pin->none 4, pin->pin 20, this->this 14
+  pointer mismatches (id kind | text | readers' reference -> the primary's pointer):
+    r6v54_010  comeback   'Get back here, drone phase is over.': none -> this   all: [(None, 'this', None)]
+    r6v54_025  pin        'Check the stairs next to my ping, I heard footsteps.': pin -> none   all: [('stairs', None, None), (None, 'pin', None)]
+    r6v54_036  boundary   'No, hold up, scrap that order.': none -> this   all: [(None, 'this', None)]
+    csv54_003  answer     'negative, negative on that one': none -> this   all: [(None, 'this', None)]
+    csv54_009  comeback   'get back here man, where are you even going': none -> this   all: [(None, 'this', None)]
+    csv54_022  pin        "go check the door next to my marker, pretty sure i heard steps but maybe i'm just hearing things": pin -> none   all: [('door', None, None), (None, 'pin', None)]
+    csv54_036  boundary   'nah never mind, scrap that last call': none -> this   all: [(None, 'this', None)]
+    sttv54_007 answer     'no clue honestly i cant tell from here its too dark': none -> this   all: [(None, 'this', 'mine')]
+    sttv54_009 comeback   'calm back here calm back': none -> this   all: [(None, 'this', None)]
+    sttv54_018 pin        'uh move to my pink okay move to the pink': pin -> none   all: []
+    sttv54_023 pin        'i need you to uh keep eyes on the east door the one next to my marker': pin -> none   all: [('door', None, None), (None, 'pin', None)]
+  mismatches (id kind | text | readers -> matcher):
+    sttv54_012 stance         'uh couch down couch down and stay low'
+                 None/None/None dir=None -> sofa/None/None dir=None  role=None flag=None   all: [('sofa', None, None, None, None), ('sofa', None, None, None, None)]

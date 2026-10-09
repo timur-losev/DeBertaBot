@@ -1,0 +1,794 @@
+[
+{
+"id": "r6v54_000",
+"author": "r6",
+"version": "v54",
+"text": "Affirmative, that is correct.",
+"maj": "YES",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0000.wav"
+},
+{
+"id": "r6v54_001",
+"author": "r6",
+"version": "v54",
+"text": "Yep, exactly, you got it in one.",
+"maj": "YES",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0001.wav"
+},
+{
+"id": "r6v54_002",
+"author": "r6",
+"version": "v54",
+"text": "Negative, that's not what I meant.",
+"maj": "NO",
+"voice": "Microsoft Mark",
+"wav": "v54_0002.wav"
+},
+{
+"id": "r6v54_003",
+"author": "r6",
+"version": "v54",
+"text": "Nah, nope, you've got it wrong.",
+"maj": "NO",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0003.wav"
+},
+{
+"id": "r6v54_004",
+"author": "r6",
+"version": "v54",
+"text": "Could be, honestly it's your call.",
+"maj": "MAYBE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0004.wav"
+},
+{
+"id": "r6v54_005",
+"author": "r6",
+"version": "v54",
+"text": "Eh, perhaps, I guess so.",
+"maj": "MAYBE",
+"voice": "Microsoft Mark",
+"wav": "v54_0005.wav"
+},
+{
+"id": "r6v54_006",
+"author": "r6",
+"version": "v54",
+"text": "No idea, mate, I honestly can't tell.",
+"maj": "DONT_KNOW",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0006.wav"
+},
+{
+"id": "r6v54_007",
+"author": "r6",
+"version": "v54",
+"text": "Unknown, I can't confirm either way.",
+"maj": "DONT_KNOW",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0007.wav"
+},
+{
+"id": "r6v54_008",
+"author": "r6",
+"version": "v54",
+"text": "Come on back, you've roamed far enough.",
+"maj": "COME_BACK",
+"voice": "Microsoft Mark",
+"wav": "v54_0008.wav"
+},
+{
+"id": "r6v54_009",
+"author": "r6",
+"version": "v54",
+"text": "Regroup, we're resetting for the retake.",
+"maj": "COME_BACK",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0009.wav"
+},
+{
+"id": "r6v54_010",
+"author": "r6",
+"version": "v54",
+"text": "Get back here, drone phase is over.",
+"maj": "COME_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0010.wav"
+},
+{
+"id": "r6v54_011",
+"author": "r6",
+"version": "v54",
+"text": "Return to where you were anchoring, I'll finish the roam clear myself.",
+"maj": "COME_BACK",
+"voice": "Microsoft Mark",
+"wav": "v54_0011.wav"
+},
+{
+"id": "r6v54_012",
+"author": "r6",
+"version": "v54",
+"text": "Crouch, you're way too loud walking around like that.",
+"maj": "CROUCH",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0012.wav"
+},
+{
+"id": "r6v54_013",
+"author": "r6",
+"version": "v54",
+"text": "Take a knee right where you are and stay low.",
+"maj": "CROUCH",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0013.wav"
+},
+{
+"id": "r6v54_014",
+"author": "r6",
+"version": "v54",
+"text": "Go prone, they're pre-firing head height.",
+"maj": "PRONE",
+"voice": "Microsoft Mark",
+"wav": "v54_0014.wav"
+},
+{
+"id": "r6v54_015",
+"author": "r6",
+"version": "v54",
+"text": "Get flat on your belly, right now.",
+"maj": "PRONE",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0015.wav"
+},
+{
+"id": "r6v54_016",
+"author": "r6",
+"version": "v54",
+"text": "On your feet, we don't have time to lie around.",
+"maj": "STAND_UP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0016.wav"
+},
+{
+"id": "r6v54_017",
+"author": "r6",
+"version": "v54",
+"text": "Okay, stand back up, no reason to stay crouched.",
+"maj": "STAND_UP",
+"voice": "Microsoft Mark",
+"wav": "v54_0017.wav"
+},
+{
+"id": "r6v54_018",
+"author": "r6",
+"version": "v54",
+"text": "Hard breach the reinforced wall on my mark.",
+"maj": "BREACH",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0018.wav"
+},
+{
+"id": "r6v54_019",
+"author": "r6",
+"version": "v54",
+"text": "Anchor on my mark and don't move off it.",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0019.wav"
+},
+{
+"id": "r6v54_020",
+"author": "r6",
+"version": "v54",
+"text": "Cook a nade and put it at my mark, he's hiding in the corner.",
+"maj": "FRAG",
+"voice": "Microsoft Mark",
+"wav": "v54_0020.wav"
+},
+{
+"id": "r6v54_021",
+"author": "r6",
+"version": "v54",
+"text": "Flash my ping when I call it, not before.",
+"maj": "FLASH",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0021.wav"
+},
+{
+"id": "r6v54_022",
+"author": "r6",
+"version": "v54",
+"text": "Drone out where I pinged before we commit.",
+"maj": "DRONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0022.wav"
+},
+{
+"id": "r6v54_023",
+"author": "r6",
+"version": "v54",
+"text": "Take the flank through my marker, they're all looking at me.",
+"maj": "FLANK",
+"voice": "Microsoft Mark",
+"wav": "v54_0023.wav"
+},
+{
+"id": "r6v54_024",
+"author": "r6",
+"version": "v54",
+"text": "Rotate to my pin, fast.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0024.wav"
+},
+{
+"id": "r6v54_025",
+"author": "r6",
+"version": "v54",
+"text": "Check the stairs next to my ping, I heard footsteps.",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0025.wav"
+},
+{
+"id": "r6v54_026",
+"author": "r6",
+"version": "v54",
+"text": "Hold that window, somebody is going to swing it.",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "v54_0026.wav"
+},
+{
+"id": "r6v54_027",
+"author": "r6",
+"version": "v54",
+"text": "Toss a smoke over there before I cross.",
+"maj": "SMOKE",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0027.wav"
+},
+{
+"id": "r6v54_028",
+"author": "r6",
+"version": "v54",
+"text": "Hop over that sofa, quick.",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0028.wav"
+},
+{
+"id": "r6v54_029",
+"author": "r6",
+"version": "v54",
+"text": "Plant in that corner, it's the default spot.",
+"maj": "PLANT",
+"voice": "Microsoft Mark",
+"wav": "v54_0029.wav"
+},
+{
+"id": "r6v54_030",
+"author": "r6",
+"version": "v54",
+"text": "Just get inside the building, you're a free kill out on the street.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0030.wav"
+},
+{
+"id": "r6v54_031",
+"author": "r6",
+"version": "v54",
+"text": "Slip inside through the east door, nice and quiet.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0031.wav"
+},
+{
+"id": "r6v54_032",
+"author": "r6",
+"version": "v54",
+"text": "Push into site and clear it out, I'll trade you.",
+"maj": "ENTRY",
+"voice": "Microsoft Mark",
+"wav": "v54_0032.wav"
+},
+{
+"id": "r6v54_033",
+"author": "r6",
+"version": "v54",
+"text": "Push main and clear it corner by corner.",
+"maj": "ENTRY",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0033.wav"
+},
+{
+"id": "r6v54_034",
+"author": "r6",
+"version": "v54",
+"text": "Roger that, copy, I heard you.",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0034.wav"
+},
+{
+"id": "r6v54_035",
+"author": "r6",
+"version": "v54",
+"text": "Yeah, send it, go go go!",
+"maj": "GO_NOW",
+"voice": "Microsoft Mark",
+"wav": "v54_0035.wav"
+},
+{
+"id": "r6v54_036",
+"author": "r6",
+"version": "v54",
+"text": "No, hold up, scrap that order.",
+"maj": "WAIT",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0036.wav"
+},
+{
+"id": "r6v54_037",
+"author": "r6",
+"version": "v54",
+"text": "Get back, get out of the fight, you're about to get traded!",
+"maj": "FALL_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0037.wav"
+},
+{
+"id": "r6v54_038",
+"author": "r6",
+"version": "v54",
+"text": "Come over to me and stick on my hip.",
+"maj": "FOLLOW_ME",
+"voice": "Microsoft Mark",
+"wav": "v54_0038.wav"
+},
+{
+"id": "r6v54_039",
+"author": "r6",
+"version": "v54",
+"text": "Get down, use the sofa for cover, they're spraying through!",
+"maj": "TAKE_COVER",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0039.wav"
+},
+{
+"id": "r6v54_040",
+"author": "r6",
+"version": "v54",
+"text": "Get me back on my feet, I'm bleeding out!",
+"maj": "REVIVE_ME",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0040.wav"
+},
+{
+"id": "r6v54_041",
+"author": "r6",
+"version": "v54",
+"text": "Breach the hatch, but wait for my mark.",
+"maj": "BREACH",
+"voice": "Microsoft Mark",
+"wav": "v54_0041.wav"
+},
+{
+"id": "r6v54_042",
+"author": "r6",
+"version": "v54",
+"text": "Don't go prone, you'll lose every gunfight like that.",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0042.wav"
+},
+{
+"id": "r6v54_043",
+"author": "r6",
+"version": "v54",
+"text": "Don't come back, I never called a regroup.",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0043.wav"
+},
+{
+"id": "csv54_000",
+"author": "cs",
+"version": "v54",
+"text": "yep, exactly what i meant",
+"maj": "YES",
+"voice": "Microsoft Mark",
+"wav": "v54_0044.wav"
+},
+{
+"id": "csv54_001",
+"author": "cs",
+"version": "v54",
+"text": "affirmative, that's a yes from me",
+"maj": "YES",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0045.wav"
+},
+{
+"id": "csv54_002",
+"author": "cs",
+"version": "v54",
+"text": "nah, wrong, not what i was asking for",
+"maj": "NO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0046.wav"
+},
+{
+"id": "csv54_003",
+"author": "cs",
+"version": "v54",
+"text": "negative, negative on that one",
+"maj": "NO",
+"voice": "Microsoft Mark",
+"wav": "v54_0047.wav"
+},
+{
+"id": "csv54_004",
+"author": "cs",
+"version": "v54",
+"text": "hmm might be, i'd call it fifty fifty",
+"maj": "MAYBE",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0048.wav"
+},
+{
+"id": "csv54_005",
+"author": "cs",
+"version": "v54",
+"text": "eh, whatever you think is best, you decide",
+"maj": "MAYBE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0049.wav"
+},
+{
+"id": "csv54_006",
+"author": "cs",
+"version": "v54",
+"text": "damn, no clue man, couldn't tell you",
+"maj": "DONT_KNOW",
+"voice": "Microsoft Mark",
+"wav": "v54_0050.wav"
+},
+{
+"id": "csv54_007",
+"author": "cs",
+"version": "v54",
+"text": "honestly not sure, i lost track of him",
+"maj": "DONT_KNOW",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0051.wav"
+},
+{
+"id": "csv54_008",
+"author": "cs",
+"version": "v54",
+"text": "bro come back, you're gonna get one tapped lurking alone like that",
+"maj": "COME_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0052.wav"
+},
+{
+"id": "csv54_009",
+"author": "cs",
+"version": "v54",
+"text": "get back here man, where are you even going",
+"maj": "COME_BACK",
+"voice": "Microsoft Mark",
+"wav": "v54_0053.wav"
+},
+{
+"id": "csv54_010",
+"author": "cs",
+"version": "v54",
+"text": "ok let's regroup, you're way too deep for me to trade you",
+"maj": "COME_BACK",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0054.wav"
+},
+{
+"id": "csv54_011",
+"author": "cs",
+"version": "v54",
+"text": "return to your post, nobody told you to peek",
+"maj": "COME_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0055.wav"
+},
+{
+"id": "csv54_012",
+"author": "cs",
+"version": "v54",
+"text": "crouch man, your head's poking out like a free one tap",
+"maj": "CROUCH",
+"voice": "Microsoft Mark",
+"wav": "v54_0056.wav"
+},
+{
+"id": "csv54_013",
+"author": "cs",
+"version": "v54",
+"text": "get on one knee right where you're standing",
+"maj": "CROUCH",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0057.wav"
+},
+{
+"id": "csv54_014",
+"author": "cs",
+"version": "v54",
+"text": "lie flat on the ground, belly down",
+"maj": "PRONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0058.wav"
+},
+{
+"id": "csv54_015",
+"author": "cs",
+"version": "v54",
+"text": "prone out dude, flat on your stomach",
+"maj": "PRONE",
+"voice": "Microsoft Mark",
+"wav": "v54_0059.wav"
+},
+{
+"id": "csv54_016",
+"author": "cs",
+"version": "v54",
+"text": "alright you can stand back up now, it's clear",
+"maj": "STAND_UP",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0060.wav"
+},
+{
+"id": "csv54_017",
+"author": "cs",
+"version": "v54",
+"text": "up on your feet dude, stop crawling around",
+"maj": "STAND_UP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0061.wav"
+},
+{
+"id": "csv54_018",
+"author": "cs",
+"version": "v54",
+"text": "run over to my ping, the one i just placed",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v54_0062.wav"
+},
+{
+"id": "csv54_019",
+"author": "cs",
+"version": "v54",
+"text": "park yourself on my mark and don't move from it",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0063.wav"
+},
+{
+"id": "csv54_020",
+"author": "cs",
+"version": "v54",
+"text": "smoke my pin, i need to cross",
+"maj": "SMOKE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0064.wav"
+},
+{
+"id": "csv54_021",
+"author": "cs",
+"version": "v54",
+"text": "molly on my mark, he's lit and hiding in the corner",
+"maj": "FRAG",
+"voice": "Microsoft Mark",
+"wav": "v54_0065.wav"
+},
+{
+"id": "csv54_022",
+"author": "cs",
+"version": "v54",
+"text": "go check the door next to my marker, pretty sure i heard steps but maybe i'm just hearing things",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0066.wav"
+},
+{
+"id": "csv54_023",
+"author": "cs",
+"version": "v54",
+"text": "flank through my ping while i keep them busy",
+"maj": "FLANK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0067.wav"
+},
+{
+"id": "csv54_024",
+"author": "cs",
+"version": "v54",
+"text": "pop a flash over my mark when i say go, not before",
+"maj": "FLASH",
+"voice": "Microsoft Mark",
+"wav": "v54_0068.wav"
+},
+{
+"id": "csv54_025",
+"author": "cs",
+"version": "v54",
+"text": "keep your crosshair on my ping, somebody's gonna swing it",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0069.wav"
+},
+{
+"id": "csv54_026",
+"author": "cs",
+"version": "v54",
+"text": "watch that window for me, the awper keeps peeking it",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0070.wav"
+},
+{
+"id": "csv54_027",
+"author": "cs",
+"version": "v54",
+"text": "open this door slow and quiet, don't walk through it",
+"maj": "OPEN",
+"voice": "Microsoft Mark",
+"wav": "v54_0071.wav"
+},
+{
+"id": "csv54_028",
+"author": "cs",
+"version": "v54",
+"text": "rotate over there and be quick about it",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0072.wav"
+},
+{
+"id": "csv54_029",
+"author": "cs",
+"version": "v54",
+"text": "put a charge on this wall, blow it when i call it",
+"maj": "BREACH",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0073.wav"
+},
+{
+"id": "csv54_030",
+"author": "cs",
+"version": "v54",
+"text": "just go inside through the west door, no need to rush it",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v54_0074.wav"
+},
+{
+"id": "csv54_031",
+"author": "cs",
+"version": "v54",
+"text": "get in the basement already, we're burning the clock",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0075.wav"
+},
+{
+"id": "csv54_032",
+"author": "cs",
+"version": "v54",
+"text": "rush in through main and clear it out, don't stop in the doorway",
+"maj": "ENTRY",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0076.wav"
+},
+{
+"id": "csv54_033",
+"author": "cs",
+"version": "v54",
+"text": "you entry, push into that room and clear every corner",
+"maj": "ENTRY",
+"voice": "Microsoft Mark",
+"wav": "v54_0077.wav"
+},
+{
+"id": "csv54_034",
+"author": "cs",
+"version": "v54",
+"text": "copy that, loud and clear",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0078.wav"
+},
+{
+"id": "csv54_035",
+"author": "cs",
+"version": "v54",
+"text": "yeah yeah go go go, send it",
+"maj": "GO_NOW",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0079.wav"
+},
+{
+"id": "csv54_036",
+"author": "cs",
+"version": "v54",
+"text": "nah never mind, scrap that last call",
+"maj": "WAIT",
+"voice": "Microsoft Mark",
+"wav": "v54_0080.wav"
+},
+{
+"id": "csv54_037",
+"author": "cs",
+"version": "v54",
+"text": "pull back out of the fight bro, we're saving this round",
+"maj": "FALL_BACK",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0081.wav"
+},
+{
+"id": "csv54_038",
+"author": "cs",
+"version": "v54",
+"text": "come to me and stick close, we're moving as a pair",
+"maj": "FOLLOW_ME",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0082.wav"
+},
+{
+"id": "csv54_039",
+"author": "cs",
+"version": "v54",
+"text": "get down, use the sofa as cover, the awp has eyes on you",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Mark",
+"wav": "v54_0083.wav"
+},
+{
+"id": "csv54_040",
+"author": "cs",
+"version": "v54",
+"text": "get me up bro, i'm down and bleeding out",
+"maj": "REVIVE_ME",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0084.wav"
+},
+{
+"id": "csv54_041",
+"author": "cs",
+"version": "v54",
+"text": "wait for my mark, then flash the east door",
+"maj": "FLASH",
+"voice": "Microsoft Zira Desktop",
+"wav": "v54_0085.wav"
+},
+{
+"id": "csv54_042",
+"author": "cs",
+"version": "v54",
+"text": "don't crouch bro, you can't see anything over the box like that",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "v54_0086.wav"
+},
+{
+"id": "csv54_043",
+"author": "cs",
+"version": "v54",
+"text": "don't come back for me, i'm already dead",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "v54_0087.wav"
+}
+]

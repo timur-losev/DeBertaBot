@@ -1,0 +1,91 @@
+{
+ "setting": "A co-op AI teammate (a bot) in a tactical shooter like Rainbow Six Siege or Counter-Strike. The human player places markers on the map (a pin, a ping, a mark) and gives voice orders in English. The voice goes through speech-to-text; the bot receives the transcript (and, separately, the latest marker position). The bot must map each transcript to exactly one intent below; its planner then works out how to carry it out (which window, which route, where the marker is). Words like 'here', 'there', 'that', 'this' usually refer to the latest marker or to where the player is looking; the planner resolves them.",
+ "intents": {
+  "FOLLOW_ME": "the bot follows the player and stays with them. 'Look at me' is LOOK_AT_ME: the bot turns, it does not come. 'Come back' / 'return' is COME_BACK",
+  "MOVE_TO": "the bot moves to a place: the marker, or a named or pointed-at location (a door, stairs, a floor, the roof). If the player says to jump, drop, hop or climb ('jump down', 'climb up on that') it is JUMP. Going or getting inside something with no word about clearing it ('go inside', 'get in there', 'get inside the box', 'crawl into the vent') is this intent too: the bot just goes in. Coming back with no place named ('come back', 'return') is COME_BACK",
+  "HOLD_POSITION": "the bot stays where it is and stops moving. With a place or the player's marker the bot goes there and stays: 'stay at my pin', 'stay on my mark', 'stay over there' are this intent, and the target or the reference says where. Only changing posture is CROUCH / PRONE / STAND_UP",
+  "HOLD_ANGLE": "the bot watches a specific angle / door / window / corridor / stairs, ready to shoot, and keeps watching it. Only turning to look at something is LOOK_AT. It stays this intent when the player says they take the other one themselves ('hold this angle, I'll take the other one')",
+  "HOLD_OTHER_ANGLE": "the bot watches the OTHER angle than the one currently covered (by the player or by the bot), e.g. the player takes one door and tells the bot to take the other ('you take the other one', 'the other angle', 'another angle', 'the opposite side'). What counts is which angle the BOT gets: 'hold this angle, I'll take the other one' leaves the bot on its angle and is HOLD_ANGLE",
+  "FLANK": "the bot takes an alternative route around to hit the enemy from the side or behind, often via the marker",
+  "VAULT_WINDOW": "the bot goes in or out through a WINDOW (vault, climb, jump or hop through it; a bare 'vault' or 'vault in' means the window). Jumping, dropping or climbing that is not through a window ('jump down', 'hop over the sofa') is JUMP",
+  "RAPPEL": "the bot uses a rappel rope on the outside of the building (rappel, rope up, rope down, drop down on the rope, hang at a window). Just going to a named place, the roof included, is MOVE_TO; jumping or dropping down with no rope in the wording ('drop down', 'jump off the roof') is JUMP",
+  "BREACH": "the bot opens a wall, floor hatch, ceiling or barricaded door with a breaching charge or tool (loud)",
+  "DRONE": "the bot sends a drone or another gadget, or scouts ahead, to gather intel before anyone goes in. 'Check that room' with no drone and no scouting word is CHECK",
+  "FLASH": "the bot throws a flashbang / stun grenade",
+  "SMOKE": "the bot throws a smoke grenade",
+  "FRAG": "the bot throws a lethal grenade (frag, molotov, incendiary)",
+  "COVER_ME": "the bot covers the PLAYER (watches over them, ready to shoot) while the player moves or does something. 'Covering fire' and 'suppressing fire' are SUPPRESS",
+  "ENTRY": "the bot pushes into the room / site and clears it. A bare 'attack' that names no way is ATTACK; 'check the room' is CHECK. Just going or getting inside, with no pushing or clearing in the wording ('go inside', 'get in there'), is MOVE_TO",
+  "FALL_BACK": "the bot retreats / breaks off from the fight. 'Come back' / 'return' with no retreat in the wording is COME_BACK",
+  "PLANT": "the bot plants the bomb / defuser",
+  "DEFUSE": "the bot defuses the bomb / disables the defuser",
+  "REVIVE_ME": "the bot comes to revive the downed player (revive me, I'm down, pick me up, help me up). A plain 'help me' that does not say the player is down is HELP",
+  "WAIT": "the bot pauses: stop what you are doing, hold up, do not act yet, cancel the last order. Only stopping the shooting is HOLD_FIRE. A bare 'no' that answers the bot is NO",
+  "GO_NOW": "the bot executes the prepared or announced action right now; the player's go signal. A bare 'yes' that answers the bot is YES",
+  "TAKE_COVER": "the bot gets ITSELF into cover or out of sight to protect itself (hide, get behind something solid, get down); its planner picks the spot: the nearest cover, or the marker if the player points at one. Protecting the player is COVER_ME, not this. Only changing posture where the bot stands ('crouch', 'lie down', 'go prone') is CROUCH / PRONE",
+  "OPEN": "the bot opens a door, window, hatch, gate or shutter the normal way (by hand, quietly) and does NOT go through it; its planner picks which one. Going through a window is VAULT_WINDOW, pushing into the room is ENTRY, forcing it open with a charge or tool is BREACH",
+  "ATTACK": "the bot attacks the enemy, and HOW is left to its planner (push in, breach, or shoot from where it is): the player only says to attack / engage / take them out and names no way. If the player names the way, it is that intent instead: pushing into a room is ENTRY, a charge is BREACH, a grenade is FRAG, opening fire is OPEN_FIRE",
+  "OPEN_FIRE": "the bot starts shooting, or is told it is free to shoot (open fire, start shooting, weapons free, fire at will, light them up); its planner picks the targets. A place or direction in the line is where to shoot. Suppressive or covering fire is SUPPRESS",
+  "HOLD_FIRE": "the bot stops shooting or must not start (hold fire, cease fire, check fire, don't shoot, stop shooting), also until something happens ('don't shoot until they come closer'). It is an order even though it is phrased as a negation. The bot may keep moving and doing other things: pausing everything is WAIT. 'Check fire' / 'check your fire' is radio wording for stop shooting: this intent, not CHECK",
+  "LOOK_AT": "the bot turns and looks at something: a named place or object, the thing the player points at, or a direction (look at the sofa, look at that window, look left, look up, look behind you, face the door, turn around). It is one look, not a watch: keeping an angle covered, ready to shoot, is HOLD_ANGLE ('watch the window', 'eyes on the door', 'cover the stairs'); going to a place is MOVE_TO, checking a place or a side ('check that room', 'check your six') is CHECK. A 'look' that is not about turning to see is not this intent: a warning or an exclamation ('look out', 'look at that shot'), a filler ('look, we need to move'), searching ('look for the defuser') are NONE",
+  "LOOK_AT_ME": "the bot turns and looks at the PLAYER (look at me, face me, turn to me, look over here). The bot does not come to the player -- that is FOLLOW_ME -- and does not start covering them (COVER_ME)",
+  "HELP": "the player asks the bot for help and does not say with what (help me, help me here, I need a hand, I need backup here). The bot comes to the player and its planner works out what is needed. If the player says what they need, it is that intent: being revived or picked up when down is REVIVE_ME ('help me up', 'help, I'm down'), being covered is COVER_ME, being followed is FOLLOW_ME",
+  "CHECK": "the bot checks a place or a thing itself: goes and looks whether it is clear or what is there, and how is left to its planner (check that room, check the basement, check behind the sofa, check your six, see if it's clear, make sure nobody is in there). With a drone or another gadget it is DRONE; pushing in to clear the room by force is ENTRY; only turning to look is LOOK_AT; keeping it covered is HOLD_ANGLE. 'Check fire' / 'check your fire' is the order to stop shooting: HOLD_FIRE, but checking a place whose name has the word is this intent ('check the fire escape', 'check the fire exit')",
+  "SUPPRESS": "the bot lays down suppressive fire: keeps shooting at a place or at the enemy to pin them down, not to pick targets (suppress, suppressive fire, suppress them, covering fire, pin them down, keep their heads down). A plain order to start shooting is OPEN_FIRE; watching over the player without the order to shoot is COVER_ME",
+  "JUMP": "the bot jumps, drops or climbs with its own body -- no rope, and not through a window: down from where it is (off a ledge, a roof edge, a balcony, through an open hatch or a hole in the floor), up onto something, over an obstacle, across a gap (jump down, drop down, hop over that, jump on the table, climb up there, jump off the roof). Through a window it is VAULT_WINDOW; on a rope it is RAPPEL; walking down the stairs or just going to a place is MOVE_TO ('go down', 'head downstairs'); 'get down' in the sense of ducking or hiding is TAKE_COVER. Going, getting or climbing INSIDE something ('get inside the vent', 'climb into the box') is MOVE_TO; jumping or dropping in is still this intent ('jump into the hole', 'drop in through the hatch')",
+  "COME_BACK": "the bot comes back: returns to the player or to where it was before, and which of the two is left to its planner (come back, come back here, return, return back, get back here, return to your position, regroup). Retreating from a fight is FALL_BACK ('fall back', 'pull back', 'get back'); coming to the player or staying with them is FOLLOW_ME ('come here', 'on me', 'come with me'); going back to a place the line names is MOVE_TO ('go back to the stairs')",
+  "CROUCH": "the bot crouches or stays low where it is: a change of posture on the spot (crouch, crouch down, get low, stay low, squat, take a knee, sit down). Getting into cover is TAKE_COVER ('get down', 'duck', 'hide')",
+  "PRONE": "the bot lies down flat where it is (lie down, lay down, go prone, get on the ground, on your belly, hit the deck). 'Lay down fire' is SUPPRESS; getting into cover is TAKE_COVER",
+  "STAND_UP": "the bot stands up from crouching or lying (stand up, get up, on your feet, get back up). 'Get me up' / 'help me up' is REVIVE_ME; 'get up on that' and 'get up there' are JUMP or MOVE_TO; 'stand still', 'stand here' are HOLD_POSITION",
+  "YES": "the player answers yes to something the bot asked, or confirms what the bot said (yes, yeah, yep, affirmative, correct, that's right, exactly, sure, okay as a bare answer). It is not an order: the bot's planner uses it only if it asked something. If the line also gives an order, it is that order ('yes, breach it' = BREACH; 'yes, go' = GO_NOW). 'Roger' / 'copy' / 'got it' only acknowledge and are NONE",
+  "NO": "the player answers no, or rejects what the bot said or proposed (no, nope, nah, negative, wrong, not that one, that's not it). If the line also gives an order, it is that order ('no, hold fire' = HOLD_FIRE; 'no, wait' = WAIT). Pausing or cancelling an order is WAIT ('stop', 'hold on', 'cancel that', 'never mind'); a negated order is NONE ('don't breach')",
+  "MAYBE": "the player's answer is neither yes nor no: it may be so, or the bot may decide (maybe, perhaps, possibly, could be, probably, I guess so, up to you, your call)",
+  "DONT_KNOW": "the player answers that they do not know (I don't know, no idea, not sure, dunno, can't tell, who knows). It is an answer even though it is phrased as a negation",
+  "NONE": "not an order to the bot: an information callout about enemies, chatter, a question, a complaint, an order the player explicitly takes back or negates, or an order the bot has no intent for. Exception: 'don't shoot' / 'don't fire' is the order HOLD_FIRE. A report that the player or the team is under fire ('we're taking fire', 'I'm pinned down', 'I'm suppressed') is a callout: NONE, not SUPPRESS, HOLD_FIRE or HELP. What the player says they do themselves ('I'm jumping down') is not an order either. 'Roger' / 'copy' / 'got it' only acknowledge: NONE. What the player answers to the bot's question is YES / NO / MAYBE / DONT_KNOW"
+ },
+ "modifiers": {
+  "timing": "now | on_signal -- 'on_signal' when the player says to do it on their call / when they say go / on three; otherwise 'now'. 'On my mark' / 'at my mark' is NOT a signal: 'mark' is the player's marker on the map (see reference 'pin'), so 'check at my mark' is 'now'. 'Wait for my mark' is a signal",
+  "reference": "pin | this | other | none -- how the line points at the place the BOT must act on. 'pin': the line names the player's marker ('my pin', 'the ping', 'my marker', 'on my mark', 'where I marked'). 'this': it points with this / that / these / those / here / there ('this wall', 'that window', 'over there', 'check that room'). 'other': the order is about the OTHER one of two things (the other door, the other window, the other angle). 'none': everything else -- a place that is only named ('the east window', 'the stairs') is 'none'. If two apply: pin, then other, then this. A pointing word that is about the player's own place or the enemy's does not count: 'I'll hold here, you take the north door' is 'none'",
+  "target": "the place on the map the BOT must act on for the order's first action -- go to, watch, open, throw at, shoot at, hide behind... -- as {object, qualifier, zone, direction, unknown_modifier}. object: one of the map's objects or null; qualifier: one of the map's qualifiers or null (also when the player named it without saying the object, e.g. 'push main' = door / main, 'take blue' = stairs / blue; a bare compass word with no object is qualifier only); zone: the floor the place is on, or the floor itself when the order is about the floor, else null. direction: up | down | left | right | forward | back when the line gives the bot's action a direction, with or without an object ('go left' = direction left only; 'go down the stairs' = stairs + down; 'the door on the left' = door + left; 'check behind you' = back), else null. A direction that describes the object is that object's: 'the door behind you' = door + back, 'the window above you' = window + up. If the line gives both the side that tells WHICH object it is and a direction of movement, give the side: 'go up the stairs on the left' = stairs + left. A word that only belongs to a fixed phrase is NOT a direction: 'fall back' and 'back up' (retreat), 'hold up', 'move up' and 'push up' (advance), 'get down' (take cover), 'two left' (remaining), 'right now', 'go ahead' (permission). 'upstairs' / 'downstairs' stay the zones up / down, with no direction. The target is NOT the player's own position, NOT where the enemy is and NOT the place to leave: 'I'll take the north door, you take the south window' -> window / south; 'I'll go left, you go right' -> direction right. unknown_modifier: true when the player singles out one particular object with a word that is neither a map name nor a direction ('the back door', 'the side door', 'the blue door', 'the second window', 'the stairs at the back': 'back', 'rear' and 'side' said of an object name a part of the building, not a direction); then give the object and leave the qualifier null. 'the left window' is NOT unknown_modifier any more: window + direction left. For a callout or chatter (intent NONE) give the place or direction the line is about, if it names one ('two on the left' = direction left). All are null / false when the line names no place of the map and no direction (a marker, 'here', 'there', 'that wall'). For LOOK_AT the target is what the bot must look at ('look at the sofa' = sofa, 'look at that window' = window, 'look left' = direction left); for LOOK_AT_ME it is the player, who is not a place of the map: all null. For CHECK the target is what to check ('check the room in front of us' = direction forward, 'check your six' = direction back); for SUPPRESS where to fire; for HELP it is the player: all null. For JUMP the target is where to jump or what to get over or onto ('jump down' = direction down, 'climb up' = direction up, 'jump over the sofa' = sofa, 'climb on the table' = table); the place to jump off is the place to leave, so 'jump off the roof' has no target. The player's marker is not a place of the map: 'stay at my pin' has all nulls and reference 'pin'; 'the window by my ping' = window, reference 'pin'. For COME_BACK the target is the place to come back to, if the line names one. For CROUCH / PRONE / STAND_UP and for the four answers all null."
+ },
+ "map": {
+  "note": "Every map of the game has these named places, and players use the names in orders and callouts. Doors and windows are named by compass side, plus one Main door; stairs are named by colour; furniture and floors by what they are.",
+  "objects": {
+   "door": "a door: the Main door, or the north / south / west / east door",
+   "window": "a window: the north / south / west / east window",
+   "stairs": "a staircase: the blue / red / yellow / white / brown stairs",
+   "chair": "chairs",
+   "sofa": "a sofa",
+   "table": "a table"
+  },
+  "qualifiers": [
+   "main",
+   "north",
+   "south",
+   "west",
+   "east",
+   "blue",
+   "red",
+   "yellow",
+   "white",
+   "brown"
+  ],
+  "zones": {
+   "basement": "the basement",
+   "floor_1": "the 1st (ground) floor",
+   "floor_2": "a second floor, if the player names one",
+   "top_floor": "the top floor",
+   "roof": "the roof",
+   "up": "'upstairs': the floor above, relative",
+   "down": "'downstairs': the floor below, relative"
+  },
+  "directions": {
+   "up": "upwards: 'go up', 'up the stairs', 'look up', 'from above'",
+   "down": "downwards: 'go down', 'down the stairs', 'drop down', 'from below'",
+   "left": "to the bot's or player's left: 'go left', 'on your left', 'the left window', 'the door on the left', 'nine o'clock'",
+   "right": "to the right: 'go right', 'to the right', 'the right door', 'three o'clock'",
+   "forward": "ahead: 'move forward', 'push forward', 'straight ahead', 'in front of you', 'twelve o'clock'",
+   "back": "behind, backwards: 'go back', 'behind you', 'check your six', 'to the rear'"
+  }
+ }
+}
