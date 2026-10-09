@@ -5671,6 +5671,500 @@ null
 null
 ],
 "direction": "back"
+},
+{
+"cat": "v5-pointer",
+"text": "Stay at my pin.",
+"accept": [
+null
+],
+"pointer": "pin"
+},
+{
+"cat": "v5-pointer",
+"text": "Stay on my mark.",
+"accept": [
+null
+],
+"pointer": "pin"
+},
+{
+"cat": "v5-pointer",
+"text": "check at my mark",
+"accept": [
+null
+],
+"pointer": "pin"
+},
+{
+"cat": "v5-pointer",
+"text": "go to my ping",
+"accept": [
+null
+],
+"pointer": "pin"
+},
+{
+"cat": "v5-pointer",
+"text": "move to the marker",
+"accept": [
+null
+],
+"pointer": "pin"
+},
+{
+"cat": "v5-pointer",
+"text": "smoke that ping i just dropped",
+"accept": [
+null
+],
+"pointer": "pin"
+},
+{
+"cat": "v5-pointer",
+"text": "On my mark, open up on them.",
+"accept": [
+null
+],
+"pointer": "pin"
+},
+{
+"cat": "v5-pointer",
+"text": "smoke where i marked",
+"accept": [
+null
+],
+"pointer": "pin"
+},
+{
+"cat": "v5-pointer",
+"text": "watch the spot i just pinged",
+"accept": [
+null
+],
+"pointer": "pin"
+},
+{
+"cat": "v5-pointer",
+"text": "please you walk to where i mark",
+"accept": [
+null
+],
+"pointer": "pin"
+},
+{
+"cat": "v5-pointer",
+"text": "pre-aim the window by my ping",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"pointer": "pin"
+},
+{
+"cat": "v5-pointer",
+"text": "breach the door i marked",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"pointer": "pin"
+},
+{
+"cat": "v5-pointer",
+"text": "go to my pin, then hold the north door",
+"accept": [
+null
+],
+"pointer": "pin"
+},
+{
+"cat": "v5-pointer",
+"text": "hide by my ping, you're way too exposed out there",
+"accept": [
+null
+],
+"pointer": "pin"
+},
+{
+"cat": "v5-pointer",
+"text": "wait for my mark",
+"accept": [
+null
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "hold until my mark",
+"accept": [
+null
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "pin them down at the east door",
+"accept": [
+[
+"door",
+"east",
+null
+]
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "pull the pin and toss it",
+"accept": [
+null
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "my ping is through the roof tonight",
+"accept": [
+[
+"roof"
+],
+null,
+[
+null,
+null,
+"roof"
+]
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "mark the door for me",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "what's your ping like",
+"accept": [
+null
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "Check that room.",
+"accept": [
+null
+],
+"pointer": "this"
+},
+{
+"cat": "v5-pointer",
+"text": "watch that window",
+"accept": [
+[
+"window",
+null,
+null
+]
+],
+"pointer": "this"
+},
+{
+"cat": "v5-pointer",
+"text": "hold that north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"pointer": "this"
+},
+{
+"cat": "v5-pointer",
+"text": "smoke this",
+"accept": [
+null
+],
+"pointer": "this"
+},
+{
+"cat": "v5-pointer",
+"text": "look at that",
+"accept": [
+null
+],
+"pointer": "this"
+},
+{
+"cat": "v5-pointer",
+"text": "not that one, the other one",
+"accept": [
+null
+],
+"pointer": "this",
+"role": "not"
+},
+{
+"cat": "v5-pointer",
+"text": "go there",
+"accept": [
+null
+],
+"pointer": "this"
+},
+{
+"cat": "v5-pointer",
+"text": "stay here",
+"accept": [
+null
+],
+"pointer": "this"
+},
+{
+"cat": "v5-pointer",
+"text": "flash through here",
+"accept": [
+null
+],
+"pointer": "this"
+},
+{
+"cat": "v5-pointer",
+"text": "put it right there",
+"accept": [
+null
+],
+"pointer": "this"
+},
+{
+"cat": "v5-pointer",
+"text": "go to the stairs over there",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"pointer": "this"
+},
+{
+"cat": "v5-pointer",
+"text": "over there, the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"pointer": "this"
+},
+{
+"cat": "v5-pointer",
+"text": "check that room by the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"pointer": "this"
+},
+{
+"cat": "v5-pointer",
+"text": "go where i'm looking",
+"accept": [
+null
+],
+"pointer": "this"
+},
+{
+"cat": "v5-pointer",
+"text": "i need backup here, hurry up",
+"accept": [
+null
+],
+"pointer": "this"
+},
+{
+"cat": "v5-pointer",
+"text": "disarm that thing before it blows",
+"accept": [
+null
+],
+"pointer": "this"
+},
+{
+"cat": "v5-pointer",
+"text": "go there and hold the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "i'll hold here, you take the north door",
+"accept": [
+[
+"door",
+"north",
+null
+]
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "make sure that nobody comes through",
+"accept": [
+null
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "copy that",
+"accept": [
+null
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "that's a trap",
+"accept": [
+null
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "there's two on the stairs",
+"accept": [
+[
+"stairs",
+null,
+null
+]
+],
+"pointer": null,
+"role": "them"
+},
+{
+"cat": "v5-pointer",
+"text": "is anyone there",
+"accept": [
+null
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "hang in there",
+"accept": [
+null
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "here they come",
+"accept": [
+null
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "this round is lost",
+"accept": [
+null
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "we can't win this one",
+"accept": [
+null
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "no need for that",
+"accept": [
+null
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "the door that leads outside",
+"accept": [
+[
+"door",
+null,
+null
+]
+],
+"pointer": null
+},
+{
+"cat": "v5-pointer",
+"text": "Jump left.",
+"accept": [
+null
+],
+"direction": "left"
+},
+{
+"cat": "v5-pointer",
+"text": "Jump back.",
+"accept": [
+null
+],
+"direction": "back"
+},
+{
+"cat": "v5-pointer",
+"text": "hop right",
+"accept": [
+null
+],
+"direction": "right"
+},
+{
+"cat": "v5-pointer",
+"text": "jump forward",
+"accept": [
+null
+],
+"direction": "forward"
 }
 ]
 }

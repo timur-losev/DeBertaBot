@@ -42,9 +42,6 @@ Rule sets (the word lists are in locations.json "words"):
       hold the north door"). A "this" that stands alone is a target but never takes the primary from a place or a
       direction ("hold here and watch the doors": the doors).
       Also new: jump / hop lead left, right, forward and back ("jump left"), as they led up and down.
-      rules/v5 holds the frozen bytes; this file differs from them by one condition: a demonstrative before a pin
-      noun is the pin's determiner and no longer also a "this" of its own ("go to that marker" gave two targets;
-      found by the C++ port's generated lines, the primary of no study line changes).
 
   mentions    left to right, the longest vocabulary phrase at each token: object, qualifier, named
               place (object + qualifier in one phrase), zone, or an "ignore" phrase ("off the table").
@@ -1241,8 +1238,8 @@ def find(text, vocab=VOCAB):
                     kind = "this"
                     if nxt in W["anaphor"]:
                         last = i + 1
-            elif bare(i + 1) and nxt not in W["point_not_noun"] and nxt not in W["pin_noun"]:
-                kind = "this"                  # "that room", "this wall", "that guy"; "that marker" is the pin's
+            elif bare(i + 1) and nxt not in W["point_not_noun"]:
+                kind = "this"                  # "that room", "this wall", "that guy"
                 them = nxt in W["role_them"] or nxt in W["role_them_soft"] or nxt in W["point_person"]
         elif w in W["point_loc"]:
             if nxt in W["point_exist_next"] or nxt in W["number"]:
