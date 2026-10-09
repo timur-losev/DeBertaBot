@@ -31,7 +31,8 @@ Rule sets (the word lists are in locations.json "words"):
       door is clear, go left"). The primary may now be a direction. rules/v4 holds the frozen bytes; this file
       differs from them by one condition in step 6d (the frozen rules raised IndexError when a line asked for
       "the other one" and reported a direction clear: "not the north door, the other one, left is clear";
-      found by the C++ port's generated lines, no study line is affected).
+      found by the C++ port's generated lines, no study line is affected) and by one rule added AFTER the blind
+      runs, from the owner's spoken test of 2026-10-09: "cover my front" is forward, as "watch my back" was back.
 
   mentions    left to right, the longest vocabulary phrase at each token: object, qualifier, named
               place (object + qualifier in one phrase), zone, or an "ignore" phrase ("off the table").
@@ -155,9 +156,10 @@ Rule sets (the word lists are in locations.json "words"):
                 forward       "forward" after a dir_lead_forward word or when it opens; "go straight"
                               (the phrase stops there); "ahead" after a dir_lead_ahead word or before
                               "of" + a person ("straight ahead", "up ahead", "ahead of us"; not "go
-                              ahead", "go right ahead"); "in front", "up front", "to the front", unless a
-                              place or "of the <thing>" follows ("in front of you"; not "in front of the
-                              main door", "in front of the car", "the front room").
+                              ahead", "go right ahead"); "in front", "up front", "to the front", "cover my
+                              front" (a dir_six_verb word and a dir_det word before it, as for "watch my
+                              back"), unless a place or "of the <thing>" follows ("in front of you"; not
+                              "in front of the main door", "in front of the car", "the front room").
                 back          "back" after a dir_lead_back word and not before a dir_back_block word
                               ("go back", "step back"; not "go back to the basement", "fall back", "back
                               up"); "at the back", "watch my back", "out back" where the phrase ends;
@@ -989,11 +991,12 @@ def find(text, vocab=VOCAB):
                         d = k                             # "straight ahead", "up ahead", "ahead of us"; not "go ahead", "go right ahead"
                 elif w == "front":
                     obj = last_of.get(i - 2) if prev == "in" and nb(i - 1) else None      # "the door in front ..."
-                    if (prev in W["dir_front_lead"] or (prev in W["dir_det"] and prev2 in W["dir_prep"])) \
+                    if (prev in W["dir_front_lead"]
+                            or (prev in W["dir_det"] and (prev2 in W["dir_prep"] or prev2 in W["dir_six_verb"]))) \
                             and not place_at(i + 2 if nxt == "of" else i + 1) \
                             and (prev not in W["dir_det"] or nxt == "of" or ends_phrase(i + 1)) \
                             and not (prev in W["dir_front_lead"] and nxt == "of" and nxt2 in W["determiner"]):
-                        d, att = k, obj                   # "in front of you", "up front"; not "in front of the car", "the front room"
+                        d, att = k, obj                   # "in front of you", "up front", "cover my front"; not "in front of the car", "the front room"
                     elif obj is not None and not obj["flag"] and obj["qualifier"] is None:
                         obj["flag"] = "unknown_modifier"  # "the door in front of the stairs": one particular door (as rule set v3)
                 elif lead in W["dir_lead_forward"] or opens:

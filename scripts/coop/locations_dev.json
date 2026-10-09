@@ -1,5 +1,5 @@
 {
-"_note": "Developer regression lines for locations.py, written by a design-critique agent before any v3 test line existed (254 transcripts with the primary targets a teammate would accept; FLAG / ROLE: acceptable if the primary carries a flag / a role). Tuning material for the rules, never a test set. Three expectations were extended when the zones floor_2 / up / down were added to the vocabulary. Rule set v4 (directions, spec v5): 178 cases of the batch 'v4' were added by the developer before any v5 test line existed -- direction words in and out of a direction sense; a case may fix the primary's \"direction\" (null: none), and an accept of null also covers a target that is only a direction. 'open the left window' is window + left now, no longer an unknown modifier. 50 cases of the batch 'v4-review' are examples from the three critics of rule set v4 (rules/critic_v4), with the records the rules give after their critique.",
+"_note": "Developer regression lines for locations.py, written by a design-critique agent before any v3 test line existed (254 transcripts with the primary targets a teammate would accept; FLAG / ROLE: acceptable if the primary carries a flag / a role). Tuning material for the rules, never a test set. Three expectations were extended when the zones floor_2 / up / down were added to the vocabulary. Rule set v4 (directions, spec v5): 178 cases of the batch 'v4' were added by the developer before any v5 test line existed -- direction words in and out of a direction sense; a case may fix the primary's \"direction\" (null: none), and an accept of null also covers a target that is only a direction. 'open the left window' is window + left now, no longer an unknown modifier. 50 cases of the batch 'v4-review' are examples from the three critics of rule set v4 (rules/critic_v4), with the records the rules give after their critique. 7 cases of the batch 'v4-owner' follow the owner's spoken test of 2026-10-09 ('Cover my front.' gave no direction): added with the rule, after the blind runs.",
 "cases": [
 {
 "batch": "adversarial",
@@ -5604,6 +5604,73 @@ null
 ],
 "direction": "back",
 "role": null
+},
+{
+"batch": "v4-owner",
+"cat": "direction",
+"text": "cover my front",
+"accept": [
+null
+],
+"direction": "forward"
+},
+{
+"batch": "v4-owner",
+"cat": "direction",
+"text": "watch your front",
+"accept": [
+null
+],
+"direction": "forward"
+},
+{
+"batch": "v4-owner",
+"cat": "direction",
+"text": "check the front",
+"accept": [
+null
+],
+"direction": "forward"
+},
+{
+"batch": "v4-owner",
+"cat": "direction",
+"text": "Cover my front.",
+"accept": [
+null
+],
+"direction": "forward"
+},
+{
+"batch": "v4-owner",
+"cat": "direction-not",
+"text": "check the front door",
+"accept": [
+[
+"door",
+"main",
+null
+]
+],
+"direction": null
+},
+{
+"batch": "v4-owner",
+"cat": "direction-not",
+"text": "cover the front room",
+"accept": [
+null
+],
+"direction": null
+},
+{
+"batch": "v4-owner",
+"cat": "direction",
+"text": "cover my back",
+"accept": [
+null
+],
+"direction": "back"
 }
 ]
 }

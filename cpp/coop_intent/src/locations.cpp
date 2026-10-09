@@ -958,7 +958,8 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
                             d = k;
                     } else if (w == "front") {
                         Work* obj = is(prev, "in") && nb(i - 1) ? ends_at(i - 2) : nullptr;   // "the door in front ..."
-                        if ((in("dir_front_lead", prev) || (in("dir_det", prev) && in("dir_prep", prev2))) &&
+                        if ((in("dir_front_lead", prev) ||
+                             (in("dir_det", prev) && (in("dir_prep", prev2) || in("dir_six_verb", prev2)))) &&
                             !place_at(is(nxt, "of") ? i + 2 : i + 1) &&
                             (!in("dir_det", prev) || is(nxt, "of") || ends_phrase(i + 1)) &&
                             !(in("dir_front_lead", prev) && is(nxt, "of") && in("determiner", nxt2))) {
