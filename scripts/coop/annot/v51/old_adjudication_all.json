@@ -1,0 +1,282 @@
+{
+ "_note": "The two adjudicators of the v51 re-reading read the flagged lines mixed with other lines, not knowing which were flagged. Their readings of all of them are here; only the flagged ones are used (old_adjudicated.json).",
+ "lines": [
+  "stt_023",
+  "stt_019",
+  "stt_102",
+  "csv5_040",
+  "csv5_025",
+  "r6v3_042",
+  "sttv3_046",
+  "r6v5_032",
+  "csv5_050",
+  "stt_058",
+  "csv3_004",
+  "sttv2_013",
+  "r6_079",
+  "csv5_038",
+  "r6v5_054",
+  "sttv5_043",
+  "r6_097",
+  "r6v2_014",
+  "sttv3_009"
+ ],
+ "readings": [
+  {
+   "stt_023": {
+    "intent": "RAPPEL",
+    "ok": [],
+    "timing": "on_signal",
+    "reference": "none"
+   },
+   "stt_019": {
+    "intent": "SMOKE",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "stt_102": {
+    "intent": "NONE",
+    "ok": [
+     "WAIT"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "csv5_040": {
+    "intent": "VAULT_WINDOW",
+    "ok": [],
+    "timing": "now",
+    "reference": "this"
+   },
+   "csv5_025": {
+    "intent": "BREACH",
+    "ok": [],
+    "timing": "now",
+    "reference": "this"
+   },
+   "r6v3_042": {
+    "intent": "BREACH",
+    "ok": [],
+    "timing": "on_signal",
+    "reference": "this"
+   },
+   "sttv3_046": {
+    "intent": "VAULT_WINDOW",
+    "ok": [],
+    "timing": "now",
+    "reference": "this"
+   },
+   "r6v5_032": {
+    "intent": "GO_NOW",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "csv5_050": {
+    "intent": "FALL_BACK",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "stt_058": {
+    "intent": "FLASH",
+    "ok": [],
+    "timing": "on_signal",
+    "reference": "none"
+   },
+   "csv3_004": {
+    "intent": "ENTRY",
+    "ok": [
+     "BREACH"
+    ],
+    "timing": "on_signal",
+    "reference": "this"
+   },
+   "sttv2_013": {
+    "intent": "NONE",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6_079": {
+    "intent": "BREACH",
+    "ok": [
+     "ENTRY"
+    ],
+    "timing": "now",
+    "reference": "this"
+   },
+   "csv5_038": {
+    "intent": "MOVE_TO",
+    "ok": [],
+    "timing": "now",
+    "reference": "this"
+   },
+   "r6v5_054": {
+    "intent": "NONE",
+    "ok": [
+     "HOLD_FIRE",
+     "WAIT"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv5_043": {
+    "intent": "HOLD_ANGLE",
+    "ok": [
+     "LOOK_AT"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6_097": {
+    "intent": "HOLD_POSITION",
+    "ok": [
+     "WAIT"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6v2_014": {
+    "intent": "NONE",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv3_009": {
+    "intent": "OPEN",
+    "ok": [],
+    "timing": "now",
+    "reference": "this"
+   }
+  },
+  {
+   "stt_023": {
+    "intent": "RAPPEL",
+    "ok": [],
+    "timing": "on_signal",
+    "reference": "none"
+   },
+   "stt_019": {
+    "intent": "SMOKE",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "stt_102": {
+    "intent": "NONE",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "csv5_040": {
+    "intent": "VAULT_WINDOW",
+    "ok": [],
+    "timing": "now",
+    "reference": "this"
+   },
+   "csv5_025": {
+    "intent": "BREACH",
+    "ok": [],
+    "timing": "now",
+    "reference": "this"
+   },
+   "r6v3_042": {
+    "intent": "BREACH",
+    "ok": [],
+    "timing": "on_signal",
+    "reference": "this"
+   },
+   "sttv3_046": {
+    "intent": "VAULT_WINDOW",
+    "ok": [],
+    "timing": "now",
+    "reference": "this"
+   },
+   "r6v5_032": {
+    "intent": "GO_NOW",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "csv5_050": {
+    "intent": "FALL_BACK",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "stt_058": {
+    "intent": "FLASH",
+    "ok": [],
+    "timing": "on_signal",
+    "reference": "none"
+   },
+   "csv3_004": {
+    "intent": "ENTRY",
+    "ok": [
+     "BREACH"
+    ],
+    "timing": "on_signal",
+    "reference": "this"
+   },
+   "sttv2_013": {
+    "intent": "NONE",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6_079": {
+    "intent": "BREACH",
+    "ok": [
+     "ENTRY"
+    ],
+    "timing": "now",
+    "reference": "this"
+   },
+   "csv5_038": {
+    "intent": "MOVE_TO",
+    "ok": [],
+    "timing": "now",
+    "reference": "this"
+   },
+   "r6v5_054": {
+    "intent": "NONE",
+    "ok": [
+     "HOLD_FIRE",
+     "WAIT"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv5_043": {
+    "intent": "LOOK_AT",
+    "ok": [
+     "HOLD_ANGLE"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6_097": {
+    "intent": "HOLD_POSITION",
+    "ok": [
+     "WAIT"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6v2_014": {
+    "intent": "NONE",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv3_009": {
+    "intent": "OPEN",
+    "ok": [],
+    "timing": "now",
+    "reference": "this"
+   }
+  }
+ ]
+}

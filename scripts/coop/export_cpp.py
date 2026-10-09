@@ -88,7 +88,8 @@ def main():
         "cls_id": added["[CLS]"], "sep_id": added["[SEP]"], "pad_id": added["[PAD]"],
         "unk_id": tj["model"]["unk_id"], "added_tokens": added,
         "regex": {"on_signal": ON_SIGNAL.pattern, "other": OTHER.pattern, "negation": NEGATION.pattern},
-        "safe_intents": ["NONE", "WAIT", "HOLD_POSITION"],
+        # HOLD_FIRE (a v5 bot): "don't shoot" is an order, its leading negation must not cancel it (coop_bot.SAFE)
+        "safe_intents": ["NONE", "WAIT", "HOLD_POSITION"] + (["HOLD_FIRE"] if "HOLD_FIRE" in cfg["labels"] else []),
         # the map's named places and the matcher's word lists (locations.json, validated by locations.py)
         "locations": {k: v for k, v in json.load(io.open(os.path.join(HERE, "locations.json"), encoding="utf-8")).items()
                       if not k.startswith("_")},

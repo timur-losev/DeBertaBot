@@ -15,7 +15,9 @@ What happens to each line you type (the pipeline COOP-BOT.md recommends):
                    their side or colour, furniture, floors; whose place each is; which one the bot acts on
   4. game side     NONE (a callout, chatter, a cancelled order) -> acknowledge, do nothing;
                    an order given "on my go" -> queued, with its places and its "other" slot;
-                   GO_NOW -> executes the queued order
+                   GO_NOW -> executes the queued order;
+                   HOLD_FIRE (a v5 bot) -> the bot stops shooting at once and keeps its queued order;
+                   "hold fire until I say" queues OPEN_FIRE for the signal
 Every line is appended to coop_bot_log.jsonl: in a real game those are the lines you label next.
 
     python coop_bot.py                   # jev environment; the fine-tuned DeBERTa
@@ -49,7 +51,8 @@ LAYA_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "models", "coop-laya-
 # (seed_check.py). A bare "no" is left out: "no, the other door" is an order.
 NEGATION = re.compile(r"^\W*(?:(?:uh|um|so|okay|ok|hey|bot|buddy|please|nah|no)\W+)*"
                       r"(don'?t|do not|dont|never|no need to)\b", re.I)
-SAFE = {"NONE", "WAIT", "HOLD_POSITION"}
+# HOLD_FIRE (v5 bots): "don't shoot" is an order to stop shooting, so its leading negation must not cancel it
+SAFE = {"NONE", "WAIT", "HOLD_POSITION", "HOLD_FIRE"}
 LOG = os.path.join(HERE, "coop_bot_log.jsonl")
 
 LINES = {
@@ -75,6 +78,11 @@ LINES = {
     "WAIT": ["Holding up.", "Standing by.", "Copy, waiting."],
     "TAKE_COVER": ["Getting into cover.", "Finding cover.", "Hiding."],
     "OPEN": ["Opening it.", "Getting it open.", "Opening, not going in."],
+    "ATTACK": ["Attacking!", "Engaging.", "Going on the offensive."],
+    "OPEN_FIRE": ["Opening fire!", "Weapons free.", "Firing!"],
+    "HOLD_FIRE": ["Holding fire.", "Weapons tight.", "Ceasing fire."],
+    "LOOK_AT": ["Looking.", "I see it.", "Turning to look."],
+    "LOOK_AT_ME": ["Looking at you.", "Yeah, I see you.", "Facing you."],
 }
 ACK = ["Copy.", "Noted.", "Heard."]                   # NONE: a callout or chatter, nothing to do
 AGAIN = ["Say again?", "Didn't catch that.", "Come again?"]
@@ -183,12 +191,19 @@ class Bot:
         elif intent == "WAIT":
             self.reset()
             action, reply = "wait", random.choice(LINES["WAIT"])
+        elif intent == "HOLD_FIRE":
+            # stopping the shooting is never queued and does not cancel the queued order; "hold fire until I
+            # say" is the one order whose signal means the opposite: the bot holds now and fires on the go
+            action, reply = "act", random.choice(LINES["HOLD_FIRE"])
+            if on_signal and "OPEN_FIRE" in self.labels:
+                self.pending, self.pending_places, self.pending_other = "OPEN_FIRE", places, False
+                reply += " On your go."
         elif on_signal:
             self.pending, self.pending_places, self.pending_other = intent, places, other
             action, reply = "queued", f"Ready to {self.phrase[intent]}. On your go."
         else:
             action, reply = "act", random.choice(LINES[intent])
-        if other and action in ("act", "queued") and intent != "HOLD_OTHER_ANGLE":
+        if other and action in ("act", "queued") and intent not in ("HOLD_OTHER_ANGLE", "HOLD_FIRE"):
             reply += " Taking the other one."
         rec = {"text": text, "intent": intent, "prob": prob, "gate": self.gate, "action": action,
                "on_signal": on_signal, "other": other, "threshold": self.threshold,
@@ -236,7 +251,9 @@ def main():
             for label, pl in (("place", rec["places"]), ("executes at", rec["executed_places"])):
                 if pl and pl["targets"]:
                     print(f"     {label}: " + "; ".join(
-                        ("* " if k == pl["primary"] else "") + " ".join(str(t[f]) for f in ("qualifier", "object", "zone") if t[f])
+                        ("* " if k == pl["primary"] else "") + " ".join(
+                            [str(t[f]) for f in ("qualifier", "object", "zone") if t[f]]
+                            + ([f"dir={t['direction']}"] if t.get("direction") else []))
                         + "".join(f" [{t[f]}]" for f in ("role", "flag") if t[f]) for k, t in enumerate(pl["targets"])))
 
 

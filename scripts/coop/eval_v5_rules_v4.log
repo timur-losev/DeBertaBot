@@ -1,0 +1,31 @@
+MATCHER, rule set v4 (current), on 180 v5 lines (the readers agree on the place on 180 and on the direction on 180)
+  all                      exact  96.7% (174/180)   place 100.0% (180/180)   direction  96.7% (174/180)   usable on orders  95.9% (139/145)
+  author r6                exact 100.0% (60/60)   place 100.0% (60/60)   direction 100.0% (60/60)   usable on orders  97.9% (47/48)
+  author cs                exact  98.3% (59/60)   place 100.0% (60/60)   direction  98.3% (59/60)   usable on orders  95.9% (47/49)
+  author stt               exact  91.7% (55/60)   place 100.0% (60/60)   direction  91.7% (55/60)   usable on orders  93.8% (45/48)
+  kind attack              exact 100.0% (24/24)   place 100.0% (24/24)   direction 100.0% (24/24)   usable on orders  95.8% (23/24)
+  kind boundary            exact 100.0% (30/30)   place 100.0% (30/30)   direction 100.0% (30/30)   usable on orders 100.0% (27/27)
+  kind callout             exact  83.3% (10/12)   place 100.0% (12/12)   direction  83.3% (10/12)   usable on orders   0.0% (0/0)
+  kind chatter             exact 100.0% (9/9)   place 100.0% (9/9)   direction 100.0% (9/9)   usable on orders   0.0% (0/0)
+  kind direction           exact  88.9% (32/36)   place 100.0% (36/36)   direction  88.9% (32/36)   usable on orders  88.9% (32/36)
+  kind hold_fire           exact 100.0% (24/24)   place 100.0% (24/24)   direction 100.0% (24/24)   usable on orders  95.8% (23/24)
+  kind negated             exact 100.0% (9/9)   place 100.0% (9/9)   direction 100.0% (9/9)   usable on orders 100.0% (3/3)
+  kind open_fire           exact 100.0% (24/24)   place 100.0% (24/24)   direction 100.0% (24/24)   usable on orders 100.0% (24/24)
+  kind other_sense         exact 100.0% (12/12)   place 100.0% (12/12)   direction 100.0% (12/12)   usable on orders 100.0% (7/7)
+  lines where the readers give a direction: 53; the matcher's primary has that direction on 47, another direction on 1, none on 5 (the direction is somewhere in its list on 49)
+  lines where the readers give none: 127; the matcher's primary has a direction on 0, some target has one on 0
+  readers' direction -> matcher's: back->back 6, down->down 7, down->None 1, forward->forward 5, left->left 12, left->right 1, left->None 1, right->right 11, right->None 2, up->up 6, up->None 1, None->None 127
+  unknown_modifier flag: raised on 1 lines, the readers mark 1; both 1
+  mismatches (id kind | text | readers -> matcher):
+    csv5_037   direction      "toss a nade down, they're stacked under us"
+                 None/None/None dir=down -> None/None/None dir=None   all: []
+    sttv5_035  direction      'throw flash to the write side quick'
+                 None/None/None dir=right -> None/None/None dir=None   all: []
+    sttv5_042  direction      'move to the table the table at your nine o clock'
+                 table/None/None dir=left -> table/None/None dir=None  role=None flag=None   all: [('table', None, None, None, None), ('table', None, None, None, None), (None, None, None, 'left', None)]
+    sttv5_044  direction      'i am checking the right side so you send your drone left okay'
+                 None/None/None dir=left -> None/None/None dir=right  role=mine flag=None   all: [(None, None, None, 'right', 'mine')]
+    sttv5_046  callout        'two guys on the write side i saw them'
+                 None/None/None dir=right -> None/None/None dir=None   all: []
+    sttv5_049  callout        'i here steps above us on the top floor'
+                 None/None/top_floor dir=up -> None/None/top_floor dir=None  role=None flag=None   all: [(None, None, None, 'up', 'mine'), (None, None, 'top_floor', None, None)]

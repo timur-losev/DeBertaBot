@@ -13,8 +13,21 @@ Test lines ("items")
        show the rule came first; no line was flagged, so the rule never applied.)
   v2   blind/v2/author_*.json, 40 lines per author written under spec_v2.json (TAKE_COVER, OPEN and
        the orders they can be confused with); truth = majority of author + two annotators.
-The authors are the same three personas, so leave-one-author-out holds out an author's v1 and v2
-lines together.
+  v5   COOP_TAG=v5 (make_spec_v5.py): 27 intents -- ATTACK, OPEN_FIRE and HOLD_FIRE are new -- and
+       directions. Every older line (v1, v2, v3) was read again under spec_v5.json by one fresh
+       annotator (annot/v5/old_*_v5ann.json). Rule, fixed before the re-reading: an older line whose
+       re-reading picks ATTACK, OPEN_FIRE or HOLD_FIRE is "flagged"; its old reads cannot express the
+       new intents, so its truth becomes the majority of three v5 readings (the re-reader + two
+       adjudicators in annot/v5/old_adjudicated.json). Every other older line keeps its truth. Then
+       blind/v5/author_*.json, the lines written under spec_v5.json; truth = majority of author + two
+       annotators, and their targets carry a direction.
+  v51  COOP_TAG=v51 (make_spec_v51.py): 29 intents -- LOOK_AT and LOOK_AT_ME are new. The same rule one step
+       on: every line the v5 tag loads (the older lines and the v5 lines) was read again under spec_v51.json
+       (annot/v51/old_*_v51ann.json); a line whose re-reading picks LOOK_AT or LOOK_AT_ME takes the majority
+       of three v51 readings (annot/v51/old_adjudicated.json), every other line keeps its truth. Then
+       blind/v51/author_*.json, the lines written under spec_v51.json.
+The authors are the same three personas, so leave-one-author-out holds out all of an author's lines
+together.
 
 Scoring (strict: only NONE is doing nothing)
   near        the pick is accepted by two of three readers, or is in the family of their majority
@@ -29,7 +42,14 @@ import glob, io, json, os
 from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-_I = json.load(io.open(os.path.join(HERE, "intents_v2.json"), encoding="utf-8"))
+# which seed set: "v2" (the study) or "v21" (seed_commands_v21.json: + COVER_ME lines with a bare "cover",
+# added after the study showed the owner's "cover from behind" going to TAKE_COVER); results files and
+# outputs carry the tag, so the v2 study stays as it was
+TAG = os.environ.get("COOP_TAG", "v2")
+V5 = TAG in ("v5", "v51")    # 27 intents (intents_v5.json); every older tag keeps the 24 of intents_v2.json
+V51 = TAG == "v51"           # 29 intents (intents_v51.json): v5 + LOOK_AT, LOOK_AT_ME
+_I = json.load(io.open(os.path.join(HERE, "intents_v51.json" if V51 else "intents_v5.json" if V5 else "intents_v2.json"),
+                       encoding="utf-8"))
 I = {k: v for k, v in _I.items() if not k.startswith("_")}
 INTENTS = list(I)
 NEW = {"TAKE_COVER", "OPEN"}
@@ -40,20 +60,24 @@ FAMILY = {"BREACH": "assault", "ENTRY": "assault", "VAULT_WINDOW": "assault", "R
           "PLANT": "objective", "DEFUSE": "objective", "DRONE": "scout", "REVIVE_ME": "revive",
           "FALL_BACK": "retreat", "WAIT": "stop", "GO_NOW": "go", "NONE": "none",
           "TAKE_COVER": "cover", "OPEN": "open"}
+NEW5 = {"ATTACK", "OPEN_FIRE", "HOLD_FIRE"}
+if V5:      # each in a family of its own: a plain "attack" is not a breach, and firing is not ceasing fire
+    FAMILY.update({"ATTACK": "attack", "OPEN_FIRE": "fire", "HOLD_FIRE": "ceasefire"})
+NEW51 = {"LOOK_AT", "LOOK_AT_ME"}
+if V51:     # one family: the planner's one command "look"; the top intent says whether it is the player
+    FAMILY.update({"LOOK_AT": "look", "LOOK_AT_ME": "look"})
 assert set(FAMILY) == set(INTENTS), set(FAMILY) ^ set(INTENTS)
 AUTHORS = ["r6", "cs", "stt"]
-# which seed set: "v2" (the study) or "v21" (seed_commands_v21.json: + COVER_ME lines with a bare "cover",
-# added after the study showed the owner's "cover from behind" going to TAKE_COVER); results files and
-# outputs carry the tag, so the v2 study stays as it was
-TAG = os.environ.get("COOP_TAG", "v2")
 SEED_FILE = {"v2": "seed_commands_v2.json", "v21": "seed_commands_v21.json", "v3": "seed_commands_v3.json",
-             "v31": "seed_commands_v31.json"}[TAG]
+             "v31": "seed_commands_v31.json", "v5": "seed_commands_v5.json", "v51": "seed_commands_v51.json"}[TAG]
 # "v3": the lines that name map places (blind/v3, annot/v3) join the data, with the seed set that has
 # templated location seeds; the v2 / v21 studies load exactly what they loaded before.
 # "v31": the v3 data with the seed set corrected after the v3 review (make_seeds_v31.py), and with the
 # independent re-reading of the r6 author's lines (annot/v3/reann_r6.json) in place of the second r6
 # annotation, which is byte-identical to the first; the v3 study stays as it was
-PLACES = TAG in ("v3", "v31")
+# "v5": the v31 data read under the 27-intent spec (see the module docstring), the v5 lines and seeds
+# "v51": the v5 data read under the 29-intent spec, the v51 lines and seeds
+PLACES = TAG in ("v3", "v31", "v5", "v51")
 
 # the owner's own live-test lines with the reading they asked for, and the canonical probes the v1
 # live test failed on. Not a blind check: none is a training line verbatim, but most are near copies
@@ -75,7 +99,8 @@ def _read(a):
     t = a.get("target") or {}
     return {"intent": a["intent"], "set": {a["intent"]} | set(a.get("ok", [])),
             "timing": a.get("timing", "now"), "reference": a.get("reference", "none"),
-            "target": (t.get("object"), t.get("qualifier"), t.get("zone")), "unknown_modifier": bool(t.get("unknown_modifier"))}
+            "target": (t.get("object"), t.get("qualifier"), t.get("zone")), "unknown_modifier": bool(t.get("unknown_modifier")),
+            "direction": t.get("direction")}
 
 
 def _target_truth(reads):
@@ -86,8 +111,10 @@ def _target_truth(reads):
         v, n = Counter(r["target"][k] for r in reads).most_common(1)[0]
         fields.append(v if n >= 2 else None)
     whole, n = Counter(r["target"] for r in reads).most_common(1)[0]
+    d, dn = Counter(r["direction"] for r in reads).most_common(1)[0]
     return {"target": tuple(fields), "target_agreed": n >= 2, "target_unanimous": n == 3,
-            "unknown_modifier": sum(r["unknown_modifier"] for r in reads) >= 2}
+            "unknown_modifier": sum(r["unknown_modifier"] for r in reads) >= 2,
+            "direction": d if dn >= 2 else None, "direction_agreed": dn >= 2}
 
 
 def _item(a, key, reads, version):
@@ -113,8 +140,52 @@ def reread_flags():
     return out
 
 
+def reread_flags_of(ver, new):
+    """line id -> its re-reading under spec <ver>, for the lines whose re-reading picks one of the `new` intents."""
+    out = {}
+    for key in AUTHORS:
+        p = os.path.join(HERE, "annot", ver, f"old_{key}_{ver}ann.json")
+        if os.path.exists(p):
+            out.update({k: v for k, v in json.load(io.open(p, encoding="utf-8")).items() if v["intent"] in new})
+    return out
+
+
+def reread_flags_v5():
+    return reread_flags_of("v5", NEW5)
+
+
+def _apply(items, ver, new):
+    """COOP_TAG=v5 / v51: the flagged lines get their three readings under spec <ver>; then the <ver> lines join."""
+    flags = reread_flags_of(ver, new)
+    adj_path = os.path.join(HERE, "annot", ver, "old_adjudicated.json")
+    adj = json.load(io.open(adj_path, encoding="utf-8")) if os.path.exists(adj_path) else {}
+    missing = sorted(set(flags) - set(adj))
+    assert not missing, f"flagged lines without {ver} adjudication: {missing}"
+    assert set(flags) <= {it["id"] for it in items}, sorted(set(flags) - {it["id"] for it in items})
+    out = []
+    for it in items:
+        if it["id"] in flags:
+            a = {"id": it["id"], "text": it["text"], "kind": it["kind"]}
+            reads = [_read(flags[it["id"]])] + [_read(x) for x in adj[it["id"]]]
+            new_it = _item(a, it["author"], reads, it["version"] + "-reread" + ver[1:])
+            # a re-reading gives the intent only: the place stays what the line's own readers said
+            for k in ("target", "target_agreed", "target_unanimous", "unknown_modifier", "direction", "direction_agreed"):
+                new_it[k] = it[k]
+            out.append(new_it)
+        else:
+            out.append(it)
+    for key in AUTHORS:
+        auth = json.load(io.open(os.path.join(HERE, "blind", ver, f"author_{key}.json"), encoding="utf-8"))
+        anns = [json.load(io.open(p, encoding="utf-8"))
+                for p in sorted(glob.glob(os.path.join(HERE, "annot", ver, f"author_{key}_ann*.json")))]
+        assert len(anns) == 2, (key, len(anns))
+        for a in auth:
+            out.append(_item(a, key, [_read(a)] + [_read(an[a["id"]]) for an in anns], ver))
+    return out
+
+
 def load_items(with_v2=True, with_v3=None):
-    """with_v3: the lines that name map places; by default only under COOP_TAG=v3 / v31."""
+    """with_v3: the lines that name map places; by default only under COOP_TAG=v3 / v31 / v5."""
     with_v3 = PLACES if with_v3 is None else with_v3
     items = []
     flags = reread_flags()
@@ -148,10 +219,14 @@ def load_items(with_v2=True, with_v3=None):
         anns = [json.load(io.open(p, encoding="utf-8"))
                 for p in sorted(glob.glob(os.path.join(HERE, "annot", "v3", f"author_{key}_ann*.json")))]
         assert len(anns) == 2, (key, len(anns))
-        if TAG == "v31" and key == "r6":
+        if TAG in ("v31", "v5", "v51") and key == "r6":
             anns[1] = json.load(io.open(os.path.join(HERE, "annot", "v3", "reann_r6.json"), encoding="utf-8"))
         for a in auth:
             items.append(_item(a, key, [_read(a)] + [_read(an[a["id"]]) for an in anns], "v3"))
+    if V5 and with_v2 and with_v3:
+        items = _apply(items, "v5", NEW5)
+    if V51 and with_v2 and with_v3:
+        items = _apply(items, "v51", NEW51)
     for it in items:
         for r in it["reads"]:
             assert r["set"] <= set(INTENTS), (it["id"], r)

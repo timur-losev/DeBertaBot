@@ -1,0 +1,37 @@
+MATCHER, rule set v4 (current), on 90 v51 lines (the readers agree on the place on 90 and on the direction on 90)
+  all                      exact  87.8% (79/90)   place  91.1% (82/90)   direction  96.7% (87/90)   usable on orders  88.0% (66/75)
+  author r6                exact  96.7% (29/30)   place  96.7% (29/30)   direction 100.0% (30/30)   usable on orders  96.0% (24/25)
+  author cs                exact  96.7% (29/30)   place  96.7% (29/30)   direction 100.0% (30/30)   usable on orders  96.0% (24/25)
+  author stt               exact  70.0% (21/30)   place  80.0% (24/30)   direction  90.0% (27/30)   usable on orders  72.0% (18/25)
+  kind boundary            exact  87.5% (21/24)   place  91.7% (22/24)   direction  95.8% (23/24)   usable on orders  87.5% (21/24)
+  kind look_at             exact  86.7% (26/30)   place  93.3% (28/30)   direction  93.3% (28/30)   usable on orders  86.7% (26/30)
+  kind look_at_me          exact  88.9% (16/18)   place  88.9% (16/18)   direction 100.0% (18/18)   usable on orders  88.9% (16/18)
+  kind negated             exact  83.3% (5/6)   place  83.3% (5/6)   direction 100.0% (6/6)   usable on orders   0.0% (0/0)
+  kind other_sense         exact  91.7% (11/12)   place  91.7% (11/12)   direction 100.0% (12/12)   usable on orders 100.0% (3/3)
+  lines where the readers give a direction: 17; the matcher's primary has that direction on 15, another direction on 0, none on 2 (the direction is somewhere in its list on 16)
+  lines where the readers give none: 73; the matcher's primary has a direction on 1, some target has one on 1
+  readers' direction -> matcher's: back->back 3, left->left 4, left->None 1, right->right 5, right->None 1, up->up 3, None->back 1, None->None 72
+  unknown_modifier flag: raised on 4 lines, the readers mark 0; both 0
+  mismatches (id kind | text | readers -> matcher):
+    r6v51_010  look_at_me     "Turn and look at me, I'm standing by the blue stairs."
+                 None/None/None dir=None -> stairs/blue/None dir=None  role=mine flag=None   all: [('stairs', 'blue', None, None, 'mine')]
+    csv51_013  look_at_me     "turn and look at me, i'm at the north window"
+                 None/None/None dir=None -> window/north/None dir=None  role=mine flag=None   all: [('window', 'north', None, None, 'mine')]
+    sttv51_000 look_at        'okay uh look at the so far for a second'
+                 sofa/None/None dir=None -> None/None/None dir=None   all: []
+    sttv51_003 look_at        'look write look write quick quick'
+                 None/None/None dir=right -> None/None/None dir=None   all: []
+    sttv51_008 look_at        'when i say go you turn and look to the mane door okay not before'
+                 door/main/None dir=None -> door/None/None dir=None  role=None flag=unknown_modifier   all: [('door', None, None, None, None)]
+    sttv51_009 look_at        'uh look on that window the one on the left side'
+                 window/None/None dir=left -> window/None/None dir=None  role=None flag=None   all: [('window', None, None, None, None), (None, None, None, 'left', None)]
+    sttv51_016 boundary       'keep your eyes on the sauce window nobody comes through okay'
+                 window/south/None dir=None -> window/None/None dir=None  role=None flag=unknown_modifier   all: [('window', None, None, None, None)]
+    sttv51_018 boundary       'okay get over to the wide stairs on top floor'
+                 stairs/white/top_floor dir=None -> stairs/None/top_floor dir=None  role=None flag=unknown_modifier   all: [('stairs', None, 'top_floor', None, None)]
+    sttv51_020 boundary       'watch my back watch my back i am planting'
+                 None/None/None dir=None -> None/None/None dir=back  role=None flag=None   all: [(None, None, None, 'back', None)]
+    sttv51_027 other_sense    'can you look for the bomb i think he dropped it near the stable'
+                 table/None/None dir=None -> None/None/None dir=None   all: []
+    sttv51_028 negated        'no dont look at the yeast window there is nothing'
+                 window/east/None dir=None -> window/None/None dir=None  role=not flag=unknown_modifier   all: [('window', None, None, None, 'not')]

@@ -1,0 +1,20 @@
+{
+ "sttv5_043": [
+  {
+   "intent": "HOLD_ANGLE",
+   "ok": [
+    "LOOK_AT"
+   ],
+   "timing": "now",
+   "reference": "none"
+  },
+  {
+   "intent": "LOOK_AT",
+   "ok": [
+    "HOLD_ANGLE"
+   ],
+   "timing": "now",
+   "reference": "none"
+  }
+ ]
+}
