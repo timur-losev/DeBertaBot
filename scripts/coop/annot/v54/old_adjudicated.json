@@ -1,0 +1,102 @@
+{
+ "r6v2_030": [
+  {
+   "intent": "NO",
+   "ok": [
+    "NONE"
+   ],
+   "timing": "now",
+   "reference": "none"
+  },
+  {
+   "intent": "NO",
+   "ok": [
+    "NONE"
+   ],
+   "timing": "now",
+   "reference": "none"
+  }
+ ],
+ "r6v5_052": [
+  {
+   "intent": "YES",
+   "ok": [
+    "NONE"
+   ],
+   "timing": "now",
+   "reference": "none"
+  },
+  {
+   "intent": "YES",
+   "ok": [
+    "NONE"
+   ],
+   "timing": "now",
+   "reference": "none"
+  }
+ ],
+ "r6v5_054": [
+  {
+   "intent": "NO",
+   "ok": [
+    "NONE"
+   ],
+   "timing": "now",
+   "reference": "none"
+  },
+  {
+   "intent": "NO",
+   "ok": [
+    "NONE"
+   ],
+   "timing": "now",
+   "reference": "none"
+  }
+ ],
+ "sttv2_017": [
+  {
+   "intent": "PRONE",
+   "ok": [
+    "TAKE_COVER"
+   ],
+   "timing": "now",
+   "reference": "none"
+  },
+  {
+   "intent": "PRONE",
+   "ok": [
+    "TAKE_COVER"
+   ],
+   "timing": "now",
+   "reference": "none"
+  }
+ ],
+ "sttv52_029": [
+  {
+   "intent": "NO",
+   "ok": [],
+   "timing": "now",
+   "reference": "none"
+  },
+  {
+   "intent": "NO",
+   "ok": [],
+   "timing": "now",
+   "reference": "none"
+  }
+ ],
+ "sttv5_053": [
+  {
+   "intent": "YES",
+   "ok": [],
+   "timing": "now",
+   "reference": "none"
+  },
+  {
+   "intent": "YES",
+   "ok": [],
+   "timing": "now",
+   "reference": "none"
+  }
+ ]
+}

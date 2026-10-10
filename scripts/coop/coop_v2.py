@@ -35,6 +35,11 @@ Test lines ("items")
        rule: every line the v52 tag loads was read under spec_v53.json (annot/v53/old_*_v53ann.json); a line
        whose re-reading picks JUMP takes the majority of three v53 readings. Then blind/v53/author_*.json.
        "_relabel_v53" lists every seed with another label under this tag (v52's and "drop down from the roof").
+  v54  COOP_TAG=v54 (make_spec_v54.py): 41 intents -- COME_BACK, CROUCH, PRONE, STAND_UP, YES, NO, MAYBE and
+       DONT_KNOW are new, after the owner's test of bot v53 -- and the readers' "reference" may be "pin". The same
+       rule: every line the v53 tag loads was read under spec_v54.json (annot/v54/old_*_v54ann.json); a line
+       whose re-reading picks one of the eight takes the majority of three v54 readings. Then
+       blind/v54/author_*.json. "_relabel_v54" adds "sit down" (NONE -> CROUCH) and "go in" (ENTRY -> MOVE_TO).
 The authors are the same three personas, so leave-one-author-out holds out all of an author's lines
 together.
 
@@ -55,12 +60,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # added after the study showed the owner's "cover from behind" going to TAKE_COVER); results files and
 # outputs carry the tag, so the v2 study stays as it was
 TAG = os.environ.get("COOP_TAG", "v2")
-V5 = TAG in ("v5", "v51", "v52", "v53")    # 27 intents (intents_v5.json); every older tag keeps the 24 of intents_v2.json
-V51 = TAG in ("v51", "v52", "v53")         # 29 intents (intents_v51.json): v5 + LOOK_AT, LOOK_AT_ME
-V52 = TAG in ("v52", "v53")                # 32 intents (intents_v52.json): v51 + HELP, CHECK, SUPPRESS
-V53 = TAG == "v53"                         # 33 intents (intents_v53.json): v52 + JUMP
-_I = json.load(io.open(os.path.join(HERE, "intents_v53.json" if V53 else "intents_v52.json" if V52 else "intents_v51.json" if V51 else
-                                    "intents_v5.json" if V5 else "intents_v2.json"), encoding="utf-8"))
+V5 = TAG in ("v5", "v51", "v52", "v53", "v54")    # 27 intents (intents_v5.json); every older tag keeps the 24 of intents_v2.json
+V51 = TAG in ("v51", "v52", "v53", "v54")         # 29 intents (intents_v51.json): v5 + LOOK_AT, LOOK_AT_ME
+V52 = TAG in ("v52", "v53", "v54")                # 32 intents (intents_v52.json): v51 + HELP, CHECK, SUPPRESS
+V53 = TAG in ("v53", "v54")                       # 33 intents (intents_v53.json): v52 + JUMP
+V54 = TAG == "v54"                                # 41 intents (intents_v54.json): v53 + COME_BACK, three stances, four answers
+_I = json.load(io.open(os.path.join(HERE, "intents_v54.json" if V54 else "intents_v53.json" if V53 else "intents_v52.json" if V52 else
+                                    "intents_v51.json" if V51 else "intents_v5.json" if V5 else "intents_v2.json"), encoding="utf-8"))
 I = {k: v for k, v in _I.items() if not k.startswith("_")}
 INTENTS = list(I)
 NEW = {"TAKE_COVER", "OPEN"}
@@ -83,11 +89,15 @@ if V52:     # HELP is not a revive and CHECK is not a drone: their own families;
 NEW53 = {"JUMP"}
 if V53:     # a jump is a move: a planner that does not know it gets a move with a direction
     FAMILY.update({"JUMP": "move"})
+NEW54 = {"COME_BACK", "CROUCH", "PRONE", "STAND_UP", "YES", "NO", "MAYBE", "DONT_KNOW"}
+if V54:     # coming back is a move; a posture is a posture; a yes is never added to a no; the two unsure answers go together
+    FAMILY.update({"COME_BACK": "move", "CROUCH": "stance", "PRONE": "stance", "STAND_UP": "stance",
+                   "YES": "yes", "NO": "no", "MAYBE": "unsure", "DONT_KNOW": "unsure"})
 assert set(FAMILY) == set(INTENTS), set(FAMILY) ^ set(INTENTS)
 AUTHORS = ["r6", "cs", "stt"]
 SEED_FILE = {"v2": "seed_commands_v2.json", "v21": "seed_commands_v21.json", "v3": "seed_commands_v3.json",
              "v31": "seed_commands_v31.json", "v5": "seed_commands_v5.json", "v51": "seed_commands_v51.json", "v52": "seed_commands_v52.json",
-             "v53": "seed_commands_v53.json"}[TAG]
+             "v53": "seed_commands_v53.json", "v54": "seed_commands_v54.json"}[TAG]
 # "v3": the lines that name map places (blind/v3, annot/v3) join the data, with the seed set that has
 # templated location seeds; the v2 / v21 studies load exactly what they loaded before.
 # "v31": the v3 data with the seed set corrected after the v3 review (make_seeds_v31.py), and with the
@@ -97,7 +107,8 @@ SEED_FILE = {"v2": "seed_commands_v2.json", "v21": "seed_commands_v21.json", "v3
 # "v51": the v5 data read under the 29-intent spec, the v51 lines and seeds
 # "v52": the v51 data read under the 32-intent spec, the v52 lines and seeds
 # "v53": the v52 data read under the 33-intent spec, the v53 lines and seeds
-PLACES = TAG in ("v3", "v31", "v5", "v51", "v52", "v53")
+# "v54": the v53 data read under the 41-intent spec, the v54 lines and seeds
+PLACES = TAG in ("v3", "v31", "v5", "v51", "v52", "v53", "v54")
 
 # the owner's own live-test lines with the reading they asked for, and the canonical probes the v1
 # live test failed on. Not a blind check: none is a training line verbatim, but most are near copies
@@ -239,7 +250,7 @@ def load_items(with_v2=True, with_v3=None):
         anns = [json.load(io.open(p, encoding="utf-8"))
                 for p in sorted(glob.glob(os.path.join(HERE, "annot", "v3", f"author_{key}_ann*.json")))]
         assert len(anns) == 2, (key, len(anns))
-        if TAG in ("v31", "v5", "v51", "v52", "v53") and key == "r6":
+        if TAG in ("v31", "v5", "v51", "v52", "v53", "v54") and key == "r6":
             anns[1] = json.load(io.open(os.path.join(HERE, "annot", "v3", "reann_r6.json"), encoding="utf-8"))
         for a in auth:
             items.append(_item(a, key, [_read(a)] + [_read(an[a["id"]]) for an in anns], "v3"))
@@ -251,6 +262,8 @@ def load_items(with_v2=True, with_v3=None):
         items = _apply(items, "v52", NEW52)
     if V53 and with_v2 and with_v3:
         items = _apply(items, "v53", NEW53)
+    if V54 and with_v2 and with_v3:
+        items = _apply(items, "v54", NEW54)
     for it in items:
         for r in it["reads"]:
             assert r["set"] <= set(INTENTS), (it["id"], r)

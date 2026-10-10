@@ -34,11 +34,18 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from timing_rule import ON_SIGNAL, OTHER  # noqa: E402  the two regexes measured in COOP-BOT.md
+from timing_rule import ON_SIGNAL as _ON_SIGNAL_STUDY, OTHER  # noqa: E402  the two regexes measured in COOP-BOT.md
 import bots  # noqa: E402
 import locations as LOC  # noqa: E402  the map's named places in the line (COOP-BOT.md "v3")
 
 import re  # noqa: E402
+
+# The bot's timing pattern is the measured one without "mark". The owner, 2026-10-10: "mark" is the 3D pin, so "stay
+# on my mark" and "check at my mark" name a place (the place matcher reports the pin) and do not wait for a go.
+# "wait for my mark" is still a signal, through the pattern's "wait for my" branch.
+ON_SIGNAL = re.compile(_ON_SIGNAL_STUDY.pattern.replace("(go|call|mark|signal|count|word|command)",
+                                                        "(go|call|signal|count|word|command)"), re.I)
+assert ON_SIGNAL.pattern != _ON_SIGNAL_STUDY.pattern
 
 # the default bot: v31 (24 intents incl. TAKE_COVER and OPEN, trained with lines that name map places),
 # three DeBERTa-v3-base seeds averaged, family gate (COOP-BOT.md "v3"); bots.py is the one place that names it
@@ -52,7 +59,12 @@ LAYA_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "models", "coop-laya-
 NEGATION = re.compile(r"^\W*(?:(?:uh|um|so|okay|ok|hey|bot|buddy|please|nah|no)\W+)*"
                       r"(don'?t|do not|dont|never|no need to)\b", re.I)
 # HOLD_FIRE (v5 bots): "don't shoot" is an order to stop shooting, so its leading negation must not cancel it
-SAFE = {"NONE", "WAIT", "HOLD_POSITION", "HOLD_FIRE"}
+# v54 bots: what the player answers when the planner asked back. The bot reports the answer and does nothing else:
+# it is never queued, and it leaves the queued order alone (the planner knows what it asked)
+ANSWERS = ("YES", "NO", "MAYBE", "DONT_KNOW")
+# The answers are safe too: "don't know", "never", "don't think so" are answers, not cancelled orders, and an answer
+# must not drop the queued order
+SAFE = {"NONE", "WAIT", "HOLD_POSITION", "HOLD_FIRE"} | set(ANSWERS)
 LOG = os.path.join(HERE, "coop_bot_log.jsonl")
 
 LINES = {
@@ -87,6 +99,14 @@ LINES = {
     "CHECK": ["Checking it.", "I'll check.", "Going to take a look."],
     "SUPPRESS": ["Suppressing!", "Covering fire!", "Keeping their heads down."],
     "JUMP": ["Jumping.", "On it, jumping.", "Going over."],
+    "COME_BACK": ["Coming back.", "On my way back.", "Returning."],
+    "CROUCH": ["Crouching.", "Getting low.", "Down on a knee."],
+    "PRONE": ["Going prone.", "Lying down.", "Flat on the ground."],
+    "STAND_UP": ["Standing up.", "On my feet.", "Up."],
+    "YES": ["Yes, got it.", "Understood: yes.", "Copy, that's a yes."],
+    "NO": ["No, got it.", "Understood: no.", "Copy, that's a no."],
+    "MAYBE": ["Maybe, got it.", "Understood: not certain.", "Copy, I'll use my judgement."],
+    "DONT_KNOW": ["You don't know, got it.", "Understood: no answer.", "Copy, you're not sure."],
 }
 ACK = ["Copy.", "Noted.", "Heard."]                   # NONE: a callout or chatter, nothing to do
 AGAIN = ["Say again?", "Didn't catch that.", "Come again?"]
@@ -184,6 +204,8 @@ class Bot:
             action, reply = "say_again", random.choice(AGAIN)
         elif intent == "NONE":
             action, reply = "ignore", random.choice(ACK)
+        elif intent in ANSWERS:
+            action, reply = "answer", random.choice(LINES[intent])
         elif intent == "GO_NOW":
             if self.pending:
                 action, reply = "execute", f"Now! {random.choice(LINES[self.pending])}"
@@ -257,7 +279,8 @@ def main():
                     print(f"     {label}: " + "; ".join(
                         ("* " if k == pl["primary"] else "") + " ".join(
                             [str(t[f]) for f in ("qualifier", "object", "zone") if t[f]]
-                            + ([f"dir={t['direction']}"] if t.get("direction") else []))
+                            + ([f"dir={t['direction']}"] if t.get("direction") else [])
+                            + ([f"@{t['pointer']}"] if t.get("pointer") else []))
                         + "".join(f" [{t[f]}]" for f in ("role", "flag") if t[f]) for k, t in enumerate(pl["targets"])))
 
 

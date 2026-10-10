@@ -33,6 +33,18 @@ Rule sets (the word lists are in locations.json "words"):
       "the other one" and reported a direction clear: "not the north door, the other one, left is clear";
       found by the C++ port's generated lines, no study line is affected) and by one rule added AFTER the blind
       runs, from the owner's spoken test of 2026-10-09: "cover my front" is forward, as "watch my back" was back.
+      Archived as rules/v4b.
+  v5  this file: rule set v4 plus pointers (spec_v54.json), after the owner's test of bot v53: the game points at
+      places with a 3D pin, and "Stay at my pin." gave the planner no place at all. A target gets a fifth field,
+      "pointer": "pin" when the line names the player's marker, "this" when it points with this / that / here /
+      there. The places and directions a line names are the ones rule set v4 finds, and so is the primary, with one
+      exception: a pin that stands alone before every place the bot may act on is the primary ("go to my pin, then
+      hold the north door"). A "this" that stands alone is a target but never takes the primary from a place or a
+      direction ("hold here and watch the doors": the doors).
+      Also new: jump / hop lead left, right, forward and back ("jump left"), as they led up and down.
+      rules/v5 holds the frozen bytes; this file differs from them by one condition: a demonstrative before a pin
+      noun is the pin's determiner and no longer also a "this" of its own ("go to that marker" gave two targets;
+      found by the C++ port's generated lines, the primary of no study line changes).
 
   mentions    left to right, the longest vocabulary phrase at each token: object, qualifier, named
               place (object + qualifier in one phrase), zone, or an "ignore" phrase ("off the table").
@@ -195,8 +207,44 @@ Rule sets (the word lists are in locations.json "words"):
                               act on, before it or after punctuation.
               A direction that joined nothing stays a target: "flank left and hold the north door" = left
               (primary), then the door.
-  primary     the first target without a role, in line order -- a place or a direction; if every target
-              has a role, the first target.
+  pointer     (rule set v5) "pin" or "this": the fifth field of a target, set when the line points at its place.
+              The words are in the pin_* and point_* lists.
+                pin           the player's marker as a noun -- a pin_noun word after a pin_det word: "my pin", "the
+                              ping", "that marker", "on my mark" (the owner: "mark" is the pin, not the go-signal).
+                              Not the verbs ("pin them down", "mark the door"), not "pull the pin", not before a
+                              form of "be" ("my ping is 200"), not after a pin_wait_verb and a pin_wait_prep word
+                              ("wait for my mark": that one is a signal). Also a pin_past word with a
+                              pin_past_lead word among the three words before it ("where i marked", "the spot i
+                              just pinged"), and a pin_verb word with "where" among them ("where i mark").
+                this          a point_det word (this / that / these / those) before a place ("that window") or
+                              before a word the vocabulary does not know ("that room", "this wall"), unless a
+                              point_not_prev word stands before it ("make sure that", "copy that"), a
+                              point_not_next word follows ("that's", "that they"), it follows a place, a
+                              person or a point_rel_prev word as a relative ("the door that leads ...",
+                              "something that stops rounds"), or the word after it is a point_not_noun word
+                              ("this round"). As a pronoun where the phrase ends or a point_pron_next word
+                              follows, after an order verb, a preposition or a negator, or where it opens
+                              ("check that", "not that one"; not "we can't win this one"). A point_loc word (here / there) after a place ("the stairs over
+                              there"), after point_loc_lead words ("over there", "in here"; not "hang in there"),
+                              after an order verb ("go there", "stay here") or as a phrase of its own; "here"
+                              also wherever it ends its phrase, unless a point_here_not word stands before it ("i
+                              need backup here"; not "almost here") -- never before a point_exist_next word or a
+                              number ("there's two", "here they come").
+                              "where" + a point_ing word within four words ("where i'm looking").
+              Whose pointer it is. It is a place's when it stands in that place's noun phrase or right after
+              it ("that north door", "the window by my ping", "the door i marked", "the stairs over there"), and
+              a bare direction's when it follows it ("get up there"). A target keeps a pin over a this. Any other
+              pointer is a target of its own with no object, qualifier, zone or direction. It gets its role by
+              the rules of the places ("i'll hold here, you take the north door": here is mine); one that points
+              at a person is the enemy's ("that guy"). Then it joins the next place with the same role and no
+              pointer: a "this" when no punctuation, no order verb and at most six words stand between ("that
+              room by the north door"), or across one comma as a bare pointer ("over there, the north door"); a
+              pin only through prepositions and determiners ("my pin by the north door"). A pointer that joined
+              nothing stays a target: "stay at my pin" = pin (primary); "go there and hold the north door" =
+              there, then the door (primary).
+  primary     the first target without a role that is a place, a direction or a pin, in line order; if the line has
+              such targets and each has a role, the first of them (rule set v4: the role says why). Only a line with
+              no place, direction or pin at all has a "this" on its own as its primary ("check that room").
 
 normalized(text, "strip") is the line with attached qualifiers removed ("hold the north door" ->
 "hold the door"), for measuring whether the classifier does better on it (eval_v3.py). Lone
@@ -234,7 +282,11 @@ WORD_LISTS = ("before_fill", "after_fill", "tail", "zone_after_fill", "lone_foll
               "dir_lead_back", "dir_back_block", "dir_back_next", "dir_back_prep", "dir_person", "dir_behind_lead",
               "dir_end_next", "dir_six_lead", "dir_six_verb", "dir_lead_climb", "dir_there_lead", "dir_right_soft",
               "dir_turn", "dir_split_object", "dir_split_verb", "dir_resource", "dir_have", "dir_amount",
-              "dir_right_noun", "dir_lead_noun", "dir_throw", "dir_correction", "dir_straight_not", "dir_we")
+              "dir_right_noun", "dir_lead_noun", "dir_throw", "dir_correction", "dir_straight_not", "dir_we",
+              "pin_noun", "pin_det", "pin_block_prev", "pin_wait_verb", "pin_wait_prep", "pin_past", "pin_past_lead", "pin_past_fill",
+              "pin_verb", "point_det", "point_not_prev", "point_not_next", "point_not_noun", "point_pron_next", "point_person", "point_rel_prev",
+              "point_loc", "point_loc_lead", "point_here_not", "point_exist_next", "point_ing")
+POINTERS = ("pin", "this")
 
 
 def _is_token_byte(c):
@@ -418,15 +470,15 @@ VOCAB = load_vocab()
 
 
 def _target(obj, qual, first, last, source, **more):
-    t = {"object": obj, "qualifier": qual, "zone": None, "direction": None, "role": None, "flag": None, "inferred": False,
-         "first": first, "last": last, "obj": source, "cut": []}
+    t = {"object": obj, "qualifier": qual, "zone": None, "direction": None, "pointer": None, "role": None, "flag": None,
+         "inferred": False, "first": first, "last": last, "obj": source, "cut": []}
     t.update(more)
     return t
 
 
 def find(text, vocab=VOCAB):
     """-> {"targets": [...in line order...], "primary": index or -1, "target": the primary's
-    {object, qualifier, zone, direction, role, flag} or None}. Token positions: "first" / "last"."""
+    {object, qualifier, zone, direction, pointer, role, flag} or None}. Token positions: "first" / "last"."""
     W = vocab["w"]
     toks, carry = [], 0
     for w, a, b, br in tokenize(text):
@@ -1112,8 +1164,144 @@ def find(text, vocab=VOCAB):
             c["role"] = "status"
     targets = sorted(targets + [t for t in lone if "joined" not in t], key=lambda t: t["first"])
 
-    primary = next((k for k, t in enumerate(targets) if t["role"] is None), 0 if targets else -1)
-    keys = ("object", "qualifier", "zone", "direction", "role", "flag")
+    # 7. pointers (rule set v5): the line points at its place -- the player's pin, or this / that / here / there
+    in_np = {}               # token -> the target whose noun phrase, or direction, holds it
+    for t in targets:
+        if t["first"] < n:
+            for j in range(np_first(t), np_last(t) + 1):
+                in_np[j] = t
+
+    def bare(j):             # a word of the line that belongs to no place and no direction
+        return 0 <= j < n and j not in in_np and kind_at.get(j) is None and j not in dir_used
+
+    def same(j):             # token j exists and continues the phrase of the token before it
+        return 0 < j < n and not toks[j][3]
+
+    def back_words(i, k):    # up to k words before token i in its phrase, the nearest first
+        out, j = [], i
+        while len(out) < k and same(j):
+            j -= 1
+            out.append(words[j])
+        return out
+
+    def place_ending(j):     # the place (not a bare direction) whose noun phrase ends at token j
+        t = in_np.get(j)
+        return t if t is not None and "lone" not in t and np_last(t) == j else None
+
+    ptr = []
+    for i in range(n):
+        w = words[i]
+        if not bare(i):
+            continue
+        prev = words[i - 1] if same(i) else None
+        prev2 = words[i - 2] if prev is not None and same(i - 1) else None
+        nxt = words[i + 1] if same(i + 1) else None
+        kind, first, last, att, them = None, i, i, None, False
+        if w in W["pin_verb"] and "where" in back_words(i, 3):
+            b = back_words(i, 3)               # "where i mark", "where i ping": the verb, in the present
+            kind, first = "pin", i - 1 - b.index("where")
+        elif w in W["pin_noun"]:
+            # the player's marker as a noun: "my pin", "the ping", "on my mark" -- not the verbs ("pin them down", "mark
+            # the door"), the grenade's pin ("pull the pin") or the network's ("my ping is 200")
+            b = back_words(i, 3)
+            signal = len(b) == 3 and b[1] in W["pin_wait_prep"] and b[2] in W["pin_wait_verb"]     # "wait for my mark"
+            if prev in W["pin_det"] and bare(i - 1) and prev2 not in W["pin_block_prev"] and nxt not in W["be"] and not signal:
+                kind, first = "pin", i - 1
+                a = first - 1                  # "the window by my ping": the place right before it
+                if same(first) and bare(a) and words[a] in W["preposition"]:
+                    a -= 1
+                if same(a + 1):
+                    att = place_ending(a)
+        elif w in W["pin_past"]:
+            # "where i marked", "the spot i just pinged", "the door i marked"
+            if any(x in W["pin_past_lead"] for x in back_words(i, 3)):
+                kind = "pin"
+                a = i - 1
+                while same(a + 1) and bare(a) and words[a] in W["pin_past_fill"]:
+                    a -= 1
+                if same(a + 1):
+                    att = place_ending(a)
+                first = a + 1                  # "where i marked": its "i" is not the player's own place
+        elif w in W["point_ing"]:
+            b = back_words(i, 4)
+            if "where" in b:                   # "where i'm looking", "where i am pointing"
+                kind, first = "this", i - 1 - b.index("where")
+        elif w in W["point_det"]:
+            u = in_np.get(i + 1) if same(i + 1) else None
+            relative = w == "that" and same(i) and (in_np.get(i - 1) is not None or prev in W["role_them"]
+                                                    or prev in W["role_them_soft"] or prev in W["point_rel_prev"])
+            led = prev in W["order_verb"] or prev in W["preposition"] or prev in W["negator"] or i == 0 or toks[i][3] > 0
+            if prev in W["point_not_prev"] or nxt in W["point_not_next"] or relative:
+                pass                           # "make sure that ...", "that's a trap", "the door that leads ..."
+            elif u is not None and "lone" not in u and np_first(u) == i + 1:
+                kind, att = "this", u          # "that window", "this north door", "that back door"
+            elif nxt is None or nxt in W["point_pron_next"]:
+                # a pronoun: "check that", "smoke this one", "not that one"
+                if led:
+                    kind = "this"
+                    if nxt in W["anaphor"]:
+                        last = i + 1
+            elif bare(i + 1) and nxt not in W["point_not_noun"] and nxt not in W["pin_noun"]:
+                kind = "this"                  # "that room", "this wall", "that guy"; "that marker" is the pin's
+                them = nxt in W["role_them"] or nxt in W["role_them_soft"] or nxt in W["point_person"]
+        elif w in W["point_loc"]:
+            if nxt in W["point_exist_next"] or nxt in W["number"]:
+                continue                       # "there's two on the stairs", "here they come", "there you go"
+            a = i - 1                          # the leads: "over there", "right in here", "back there"
+            while same(a + 1) and i - a <= 2 and (bare(a) or a in dir_used) and words[a] in W["point_loc_lead"]:
+                a -= 1
+            leads = i - 1 - a
+            u = in_np.get(i - 1) if same(i) else None
+            if same(a + 1) and place_ending(a) is not None:
+                kind, att = "this", place_ending(a)        # "the north door there", "the stairs over there"
+            elif u is not None and "lone" in u:
+                kind, att = "this", u                      # "get up there", "back there": the direction's
+            elif leads and not (words[i - 1] == "in" and same(i - 1) and words[i - 2] == "hang"):
+                kind = "this"                              # "over there", "in here", "from there"
+            elif prev in W["order_verb"]:
+                kind = "this"                              # "go there", "stay here", "smoke there"
+            elif (i == 0 or toks[i][3] > 0) and (i + 1 >= n or toks[i + 1][3] > 0):
+                kind = "this"                              # "There!", "here, the window"
+            elif w == "here" and (i + 1 >= n or toks[i + 1][3] > 0) and prev not in W["point_here_not"]:
+                kind = "this"                              # "i need backup here", "smoke here"
+        if kind is None:
+            continue
+        if att is not None:
+            if att["pointer"] != "pin":
+                att["pointer"] = kind          # a target keeps a pin over a this
+            continue
+        ptr.append(_target(None, None, first, last, None, pointer=kind, ptr=True, them=them))
+    if ptr:
+        owned.update(j for t in ptr for j in range(t["first"], t["last"] + 1))
+        merged = sorted(targets + ptr, key=lambda t: t["first"])
+        for k, t in enumerate(merged):
+            if "ptr" in t:
+                assign_role(k, t, merged)
+                if t["role"] is None and t["them"]:
+                    t["role"] = "them"         # "that guy by the north door": where the enemy is
+        # 7b. a pointer said on the way to a place is that place's: "that room by the north door", "over there, the
+        # north door", "my pin by the north door"
+        for t in ptr:
+            u = next((x for x in targets if "lone" not in x and t["last"] < x["first"] < n), None)
+            if u is None or u["role"] != t["role"] or u["pointer"] is not None:
+                continue
+            between = range(t["last"] + 1, np_first(u))
+            breaks = [toks[j][3] for j in range(t["last"] + 1, u["first"] + 1) if toks[j][3]]
+            links = all(words[j] in W["preposition"] or words[j] in W["determiner"] for j in between)
+            if t["pointer"] == "pin":
+                joins = not breaks and links
+            else:
+                joins = (not breaks and len(between) <= 6 and not any(words[j] in W["order_verb"] for j in between)) \
+                    or (breaks == [1] and links and not ordered(t))
+            if joins:
+                u["pointer"], t["joined"] = t["pointer"], True
+        targets = sorted(targets + [t for t in ptr if "joined" not in t], key=lambda t: t["first"])
+
+    # a "this" with no place of its own never takes the primary from a place or a direction: only a pin does
+    named = [k for k, t in enumerate(targets) if "ptr" not in t or t["pointer"] == "pin"]
+    pool = named or list(range(len(targets)))
+    primary = next((k for k in pool if targets[k]["role"] is None), pool[0] if pool else -1)
+    keys = ("object", "qualifier", "zone", "direction", "pointer", "role", "flag")
     return {"targets": targets, "primary": primary,
             "target": {k: targets[primary][k] for k in keys} if primary >= 0 else None}
 
@@ -1121,7 +1309,7 @@ def find(text, vocab=VOCAB):
 def record(text, vocab=VOCAB):
     """What the bot hands the planner: the targets in line order and which one is primary."""
     r = find(text, vocab)
-    keys = ("object", "qualifier", "zone", "direction", "role", "flag", "inferred")
+    keys = ("object", "qualifier", "zone", "direction", "pointer", "role", "flag", "inferred")
     return {"primary": r["primary"], "targets": [{k: t[k] for k in keys} for t in r["targets"]]}
 
 
@@ -1165,18 +1353,18 @@ def run_dev(path=None, show=True):
         got = None if t is None or not (t["object"] or t["qualifier"] or t["zone"]) else [t["object"], t["qualifier"], t["zone"]]
         ok = got in [a for a in c["accept"] if not isinstance(a, str)] or \
             ("FLAG" in c["accept"] and t and t["flag"]) or ("ROLE" in c["accept"] and t and t["role"])
-        for k in ("role", "flag", "direction"):
+        for k in ("role", "flag", "direction", "pointer"):
             if k in c and (t[k] if t else None) != c[k]:
                 ok = False
         if not ok:
-            fails.setdefault(c["cat"], []).append((c["text"], got, t and t["role"], t and t["flag"], t and t["direction"], c))
+            fails.setdefault(c["cat"], []).append((c["text"], got, t and t["role"], t and t["flag"], t and t["direction"], t and t["pointer"], c))
     n_fail = sum(map(len, fails.values()))
     if show:
         print(f"{len(cases)} dev lines, {n_fail} with a primary target the line's author would not accept")
         for cat, rows in fails.items():
-            for text, got, role, flag, direction, c in rows:
-                want = f"{c['accept']}" + "".join(f" {k}={c[k]}" for k in ("role", "flag", "direction") if k in c)
-                print(f"  [{cat}] {text!r}: got {got} role={role} flag={flag} direction={direction}, want {want}")
+            for text, got, role, flag, direction, pointer, c in rows:
+                want = f"{c['accept']}" + "".join(f" {k}={c[k]}" for k in ("role", "flag", "direction", "pointer") if k in c)
+                print(f"  [{cat}] {text!r}: got {got} role={role} flag={flag} direction={direction} pointer={pointer}, want {want}")
     return n_fail
 
 

@@ -41,13 +41,23 @@ Other bots run with `--model-dir`:
 - `../../models/coop-deberta-v3-ens3-v53/cpp`: v53, the voice-chain bot with 33 intents (family gate,
   0.66): v52 plus JUMP (jump, drop or climb without a rope or a window; the direction or the object is in
   the place record), "check fire" back under HOLD_FIRE, both sides of "the other angle". Known faults:
-  "check the fire escape" is picked as HOLD_FIRE, "drop in through the hatch" as VAULT_WINDOW. Checked on
-  2026-10-09: the column "v53 bot" below; 39.2 ms per line on 3 cores.
+  "check the fire escape" is picked as HOLD_FIRE, "drop in through the hatch" as VAULT_WINDOW. Moved to
+  rule set v5 of the place matcher on 2026-10-10 without retraining (`export_cpp.py --config-only`): its
+  place records carry a pointer ("stay at my pin" -> `@pin`, "check that room" -> `@this`), and "on my
+  mark" no longer queues the order for a go. The column "v53 bot" below; 39.2 ms per line on 3 cores;
+- `../../models/coop-deberta-v3-ens3-v54/cpp`: v54, 41 intents (COME_BACK, CROUCH, PRONE, STAND_UP and the
+  answers YES / NO / MAYBE / DONT_KNOW). **Not trained yet**: the owner trains it on the MacBook
+  (`HANDOFF.md`, section 5, step 13). The engine already has what it needs: the pointer and the answer
+  action.
 
-**The matcher follows the vocabulary a bot was exported with.** A config with a `"directions"` section
-runs rule set v4; one without it runs rule set v3 exactly as before, so the bots exported earlier keep
-their records and their test files. `export_cpp.py <bot> --config-only` moves a bot to the current
-vocabulary (rule set v4), and `gen_tests.py` refuses a bot whose config holds an older one.
+**The matcher follows the vocabulary a bot was exported with.** A config whose word lists include the
+`pin_*` and `point_*` lists runs rule set v5: a target may carry a pointer, `pin` (the player's 3D marker:
+"my pin", "the ping", "on my mark", "where i marked") or `this` (this / that / here / there). One with a
+`"directions"` section and without those lists runs rule set v4, and one without `"directions"` runs
+rule set v3 -- each exactly as before, so the bots exported earlier keep their records and their test
+files. `export_cpp.py <bot> --config-only` moves a bot to the current vocabulary (rule set v5) and the
+current timing pattern ("mark" is the pin, not the go-signal), and `gen_tests.py` refuses a bot whose
+config holds an older vocabulary or older regexes.
 
 ## Layout
 
@@ -55,8 +65,8 @@ vocabulary (rule set v4), and `gen_tests.py` refuses a bot whose config holds an
 |---|---|---|
 | `include/coop_intent/unicode.h`, `src/unicode.cpp`, `src/unicode_tables.inc` | UTF-8, NFC and the character classes, from generated tables (no ICU, no OS calls) | as is |
 | `include/coop_intent/tokenizer.h`, `src/tokenizer.cpp` | the HF DebertaV2 tokenizer: added tokens, normalizer, Metaspace, Unigram/Viterbi | as is |
-| `include/coop_intent/bot_brain.h`, `src/bot_brain.cpp` | `coop_bot.py` `respond()`: top or family gate, threshold, negation guard, GO_NOW/WAIT, HOLD_FIRE (a bot that has the label: it acts at once and keeps the queued order; with the signal slot it queues OPEN_FIRE), queued order, regex slots | as is, or swap `SlotPatterns` for `FRegexPattern` |
-| `include/coop_intent/locations.h`, `src/locations.cpp` | `LocationMatcher`: the map places in a line (object, side or colour, floor), whose place each is, which one the bot acts on; a twin of `scripts/coop/locations.py`, no regex and no Unicode tables | as is |
+| `include/coop_intent/bot_brain.h`, `src/bot_brain.cpp` | `coop_bot.py` `respond()`: top or family gate, threshold, negation guard, GO_NOW/WAIT, HOLD_FIRE (a bot that has the label: it acts at once and keeps the queued order; with the signal slot it queues OPEN_FIRE), the answers (a bot whose config lists `answer_intents`: YES / NO / MAYBE / DONT_KNOW are the action `answer` -- reported, never queued, the queued order left alone), queued order, regex slots | as is, or swap `SlotPatterns` for `FRegexPattern` |
+| `include/coop_intent/locations.h`, `src/locations.cpp` | `LocationMatcher`: the map places in a line (object, side or colour, floor, direction, and whether the line points at it with the pin or with this / that / here / there), whose place each is, which one the bot acts on; a twin of `scripts/coop/locations.py`, no regex and no Unicode tables | as is |
 | `include/coop_intent/intent_model.h`, `src/intent_model.cpp` | `ILogitsBackend`, `EnsembleBackend` (averages the members' probabilities, one thread each or in turn), softmax, top-k | as is |
 | `src/ort_backend.cpp` | `OrtBackend`: one model in ONNX Runtime (C++ API; it asks the loaded runtime for that runtime's own API level, so the 1.30 build also runs on an older `onnxruntime.dll`) | replaced by an NNE backend |
 | `include/coop_intent/speech.h`, `src/speech_text.cpp` | `SpeechTextForClassifier`: the form of a transcript the voice-chain bots were trained on | as is |
@@ -193,7 +203,7 @@ On macOS the modes and options are the same: `./build/coop_cli --voice --model-d
     **the Mac's transcripts have not been compared with the ones the bots were trained on**: copy a
     `wav_*` directory over and run `--stt-tests` with its `out_parakeet-*.json`;
   - `SpeechTextForClassifier`: 4183/4183; the v53, v3 and v2 bots: every check of the table below;
-  - the microphone: opens the default device after macOS's question, 2.00 s asked gives 2.40 s, the
+  - the microphone: opens the default device after macOS's question, 2.00 s asked gives 2.32-2.40 s, the
     room's noise at -58 dBFS, and a sentence played from the laptop's own speakers comes back word for word;
   - the chat in a pseudo-terminal, SPACE "held" the way a terminal shows it (its auto-repeat) while the
     speakers talk: three orders heard and carried out; typed lines, backspace, arrow keys, Esc, Ctrl-C and
@@ -211,22 +221,24 @@ On macOS the modes and options are the same: `./build/coop_cli --voice --model-d
 
 ## What was checked
 
-On Windows (the v53, v3 and v2 columns were also run on macOS arm64 on 2026-10-09, in the build with
-speech-to-text: the same counts, except that libc++'s `std::regex` compares the regex slots on every
-line; golden within 1.5e-6, 1.8e-6 and 2.9e-6, and there with the v3 bot's weights: 1062/1062 and
-77/77). The v2, v31, v3 and v1 columns are rule set v3 (2026-10-04) and were re-run unchanged with
-the engine that also knows rule set v4 (2026-10-09: the same numbers, their files untouched). The v51,
-v52 and v53 columns are rule set v4 (2026-10-09; v51's place records were written again after the rule for
-"cover my front" was added). The v3 bot's weights exist only on the Mac, so its two checks
-through the model were last run there, before rule set v3 (1062/1062 and 77/77); its other test files
+On Windows. The v2, v31, v3 and v1 columns are rule set v3 (2026-10-04) and were re-run unchanged with
+the engine that also knows rule sets v4 and v5 (2026-10-10: the same numbers, their files untouched). The
+v51 and v52 columns are rule set v4 (2026-10-09; v51's place records were written again after the rule for
+"cover my front" was added). The v53 column is rule set v5 since 2026-10-10; under rule set v4 it had
+35889/35889 place records. The v3 bot's weights exist only on the Mac, so its two checks
+through the model are run there (2026-10-10, with this engine: 1062/1062 and 77/77); its other test files
 were refreshed on Windows with `gen_tests.py --no-model`.
+
+On macOS arm64 the v53, v3 and v2 columns were run again on 2026-10-10, with this engine in the build
+with speech-to-text: the same counts, except that libc++'s `std::regex` compares the regex slots on every
+line (10444, 9231 and 8931); golden within 1.5e-6, 1.8e-6 and 2.9e-6.
 
 | check | v2 bot | v31 bot (default) | v3 bot | v1 bot | v51 bot | v52 bot | v53 bot |
 |---|---|---|---|---|---|---|---|
 | token ids and probabilities vs PyTorch, golden lines | 762/762, max difference 3.3e-6 | 1259/1259, 2.2e-6 | needs the weights | 754/754, 3.1e-6 | 1750/1750, 1.8e-6 | 2019/2019, 1.9e-6 | 2275/2275, 1.3e-6 |
 | normalizer / token ids | 8931/8931 | 9428/9428 | 9231/9231 | 8923/8923 | 9919/9919 | 10188/10188 | 10444/10444 |
 | regex slots (+ 4 lines past std::regex's limit, see below) | 8927/8927 | 9424/9424 | 9227/9227 | 8919/8919 | 9915/9915 | 10184/10184 | 10440/10440 |
-| place records (targets, directions, roles, flags, primary) | 20201/20201 | 20204/20204 | 20197/20197 | no vocabulary | 35454/35454, 9762 of them with a direction | 35623/35623, 9789 with a direction | 35889/35889, 9866 with a direction |
+| place records (targets, directions, roles, flags, primary) | 20201/20201 | 20204/20204 | 20197/20197 | no vocabulary | 35454/35454, 9762 of them with a direction | 35623/35623, 9789 with a direction | 50429/50429, 14629 with a direction, 13901 with a pointer |
 | conversation through the models | 77/77 | 77/77 | needs the weights | 66/66 | 77/77 | 77/77 | 77/77 |
 | both gates on the golden probabilities, exact ties, the top label outside the top-mass family, random rows | 2338/2338 | 3332/3332 | 2938/2938 | 2322/2322 | 4314/4314 | 4852/4852 | 5364/5364 |
 | decision steps, both gates (2 of them built in: NaN probabilities are asked again) | 140/140 | 140/140 | 140/140 | 40/40 | 190/190 | 190/190 | 190/190 |
@@ -235,8 +247,13 @@ were refreshed on Windows with `gen_tests.py --no-model`.
   lines, the location seeds of the seed sets, and generated lines: 12000 random sequences of
   vocabulary phrases, rule words and punctuation (some longer than the 128-word cap) and, for rule
   set v4, 16000 lines built from about 100 clause patterns of the direction rules, a third of them
-  one edit away from their pattern. A record carries `"direction"`; a stored record without the key
-  reads as none (the older bots' files).
+  one edit away from their pattern, and for rule set v5 another 16000 lines in which 108 pointer
+  patterns stand among the direction patterns, plus 65 written out. A record carries `"direction"` and
+  `"pointer"`; a stored record without a key reads as none (the older bots' files).
+- The answer action has no trained bot yet. A scratch bot with the 41 labels of v54 gives 244/244
+  decision steps: an answer with nothing queued, with an order queued (it stays queued and executes on
+  the next go), with the signal slot (not queued), under the threshold, and behind a leading negation
+  ("don't know", "never": the answers are safe intents).
 - The decision steps cover every branch (negated, say again, ignore, execute, go, wait, queued, act,
   "other", the threshold boundary in float32 and as a family sum) and the queue case by case: what a
   queued order keeps (its places, its "other" slot), and what drops, replaces or leaves it. A bot

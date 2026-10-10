@@ -6,6 +6,9 @@
 //   2. confidence under the threshold (the top intent's probability, or
 //      its family's mass under the family gate)                    -> say again
 //   3. NONE (a callout, chatter)                                    -> acknowledge, do nothing
+//   3a. an answer to the planner's question (YES, NO, MAYBE, DONT_KNOW: a bot whose config lists them
+//      under "answer_intents")                                      -> report the answer: it is never
+//      queued, whatever the line says about a signal, and the queued order stays queued
 //   4. GO_NOW                                                       -> execute the queued order, if any
 //   5. WAIT                                                         -> drop the queued order
 //   6. HOLD_FIRE (a bot that has the label)                         -> act: the bot stops shooting at once
@@ -38,6 +41,8 @@ struct IntentConfig {
     // family with the most probability mass and its top intent, if that mass reaches the threshold
     std::string gate = "top";
     std::vector<std::string> safe_intents;                  // a leading negation does not cancel these
+    // what the player answers when the planner asked back (coop_bot.ANSWERS); empty: the bot has none
+    std::vector<std::string> answer_intents;
     // Python re patterns (ASCII only), matched case-insensitively with Python's Unicode \w and \b
     std::string on_signal, other, negation;
     // the map's named places (locations.json); without it the bot reports no places
@@ -45,8 +50,9 @@ struct IntentConfig {
     LocationVocab locations;
 };
 
-enum class Action { Negated, SayAgain, Ignore, Execute, Go, Wait, Queued, Act };
-const char* ActionName(Action a);   // the names coop_bot.py logs: "negated", "say_again", ...
+// Answer: the line answers the planner's question; Decision::intent says which answer
+enum class Action { Negated, SayAgain, Ignore, Execute, Go, Wait, Queued, Act, Answer };
+const char* ActionName(Action a);   // the names coop_bot.py logs: "negated", "say_again", ..., "answer"
 
 struct Decision {
     int intent = -1;           // the picked label (index into labels)
@@ -114,6 +120,7 @@ private:
     IntentConfig cfg_;
     SlotPatterns slots_;
     std::vector<bool> safe_;
+    std::vector<bool> answer_;   // [label]: one of answer_intents
     std::vector<int> family_;   // label -> family index, numbered in order of first appearance
     int families_ = 0;
     bool family_gate_ = false;

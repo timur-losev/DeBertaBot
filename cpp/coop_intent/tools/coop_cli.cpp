@@ -12,7 +12,7 @@
 //   coop_cli --decide-tests       decide_tests.jsonl: every branch of the bot's decision, both gates (no model);
 //                                 Reset() on every queued order
 //   coop_cli --location-tests     location_tests.jsonl: the map places found in each line and, with a rule set v4
-//                                 vocabulary, the directions (no model)
+//                                 vocabulary, the directions; with a rule set v5 one, the pointers too (no model)
 //   coop_cli --bench              latency on the golden lines, load time, memory
 //   coop_cli --tokenize "text"    the words, pieces and ids of one line
 //   coop_cli --speech-text-tests FILE   SpeechTextForClassifier against the Python `norm` (no model)
@@ -209,6 +209,8 @@ bool LoadConfig(Model& m, std::string* err) {
         c.gate = j.value("gate", std::string("top"));
         m.members = j.value("members", std::vector<std::string>{"model.onnx"});
         c.safe_intents = j.at("safe_intents").get<std::vector<std::string>>();
+        // the answers to the planner's questions: only a bot that has such labels lists them (export_cpp.py)
+        c.answer_intents = j.value("answer_intents", std::vector<std::string>{});
         c.on_signal = j.at("regex").at("on_signal").get<std::string>();
         c.other = j.at("regex").at("other").get<std::string>();
         c.negation = j.at("regex").at("negation").get<std::string>();
@@ -251,6 +253,11 @@ bool LoadConfig(Model& m, std::string* err) {
             }
             c.locations.ignore = L.at("ignore").get<std::vector<std::string>>();
             c.locations.words = L.at("words").get<std::unordered_map<std::string, std::vector<std::string>>>();
+            // the pin_* and point_* word lists came with rule set v5: a bot exported before it has none, and
+            // its places are matched by rule set v4 (or v3) as before. LocationMatcher::Init refuses a
+            // vocabulary that has only some of them, or has them without "directions"
+            for (const auto& list : c.locations.words)
+                c.locations.has_pointers = c.locations.has_pointers || coop::LocationVocab::PointerList(list.first);
         }
         o.cls_id = j.at("cls_id").get<int32_t>();
         o.sep_id = j.at("sep_id").get<int32_t>();
@@ -278,27 +285,31 @@ std::string IdsStr(const std::vector<int64_t>& ids) {
 
 std::string Escaped(const std::string& s) { return json(s).dump(); }
 
-// a place record as one comparable string: "<primary>: object/qualifier/zone/direction/role/flag/inferred; ..."
+// a place record as one comparable string:
+// "<primary>: object/qualifier/zone/direction/pointer/role/flag/inferred; ..."
 std::string PlacesStr(const coop::PlaceRecord& r, const coop::LocationMatcher& m) {
     std::string s = std::to_string(r.primary) + ":";
     for (const coop::PlaceTarget& t : r.targets) {
         auto dash = [](const std::string& x) { return x.empty() ? std::string("-") : x; };
         s += " " + (t.object >= 0 ? m.ObjectId(t.object) : "-") + "/" + (t.qualifier >= 0 ? m.QualifierId(t.qualifier) : "-") +
              "/" + (t.zone >= 0 ? m.ZoneId(t.zone) : "-") + "/" + dash(coop::PlaceDirectionName(t.direction)) + "/" +
-             dash(coop::PlaceRoleName(t.role)) + "/" + dash(coop::PlaceFlagName(t.flag)) + "/" + (t.inferred ? "1" : "0") + ";";
+             dash(coop::PlacePointerName(t.pointer)) + "/" + dash(coop::PlaceRoleName(t.role)) + "/" +
+             dash(coop::PlaceFlagName(t.flag)) + "/" + (t.inferred ? "1" : "0") + ";";
     }
     return s;
 }
 
 // the same string from locations.record() as the Python bot wrote it (null: no record). A record
-// written under rule set v3 has no "direction": none, which is what the engine gives such a bot
+// written under rule set v3 has no "direction", and one written under rule set v3 or v4 no "pointer":
+// none, which is what the engine gives such a bot
 std::string PlacesStr(const json& r) {
     if (r.is_null()) return "-1:";
     std::string s = std::to_string(r["primary"].get<int>()) + ":";
     for (const json& t : r["targets"]) {
         auto f = [&](const char* k) { return t[k].is_null() ? std::string("-") : t[k].get<std::string>(); };
         s += " " + f("object") + "/" + f("qualifier") + "/" + f("zone") + "/" + (t.contains("direction") ? f("direction") : "-") +
-             "/" + f("role") + "/" + f("flag") + "/" + (t["inferred"].get<bool>() ? "1" : "0") + ";";
+             "/" + (t.contains("pointer") ? f("pointer") : "-") + "/" + f("role") + "/" + f("flag") + "/" +
+             (t["inferred"].get<bool>() ? "1" : "0") + ";";
     }
     return s;
 }
@@ -329,7 +340,7 @@ std::string ExecStr(const json& row) {
 const char kMissingKeys[] = "  rows lack keys that a bot with places writes (places, executed, ...): "
                             "regenerate the test files with gen_tests.py\n";
 
-// what the planner gets, for the chat's debug line: "* north door basement dir=left [mine]"
+// what the planner gets, for the chat's debug line: "* north door basement dir=left @this [mine]"
 std::string PlacesText(const coop::PlaceRecord& r, const coop::LocationMatcher& m) {
     std::string s;
     for (size_t k = 0; k < r.targets.size(); ++k) {
@@ -338,10 +349,12 @@ std::string PlacesText(const coop::PlaceRecord& r, const coop::LocationMatcher& 
         if (static_cast<int>(k) == r.primary) s += "* ";
         std::string name;
         const char* direction = coop::PlaceDirectionName(t.direction);
+        const char* pointer = coop::PlacePointerName(t.pointer);
         for (const std::string& part : {t.qualifier >= 0 ? m.QualifierId(t.qualifier) : std::string(),
                                         t.object >= 0 ? m.ObjectId(t.object) : std::string(),
                                         t.zone >= 0 ? m.ZoneId(t.zone) : std::string(),
-                                        *direction ? std::string("dir=") + direction : std::string()})
+                                        *direction ? std::string("dir=") + direction : std::string(),
+                                        *pointer ? std::string("@") + pointer : std::string()})
             if (!part.empty()) name += (name.empty() ? "" : " ") + part;
         s += name;
         for (const char* tag : {coop::PlaceRoleName(t.role), coop::PlaceFlagName(t.flag)})
@@ -530,7 +543,7 @@ int RunLocationTests(Model& m) {
     std::string err;
     if (!m.cfg.has_locations) return std::fprintf(stderr, "intent_config.json has no \"locations\"\n"), 1;
     if (!matcher.Init(m.cfg.locations, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
-    size_t ok = 0, with_place = 0, with_direction = 0, no_record = 0;
+    size_t ok = 0, with_place = 0, with_direction = 0, with_pointer = 0, no_record = 0;
     int shown = 0;
     for (const json& r : rows) {
         const std::string text = r["text"];
@@ -545,13 +558,19 @@ int RunLocationTests(Model& m) {
         with_place += !rec.targets.empty();
         with_direction += std::any_of(rec.targets.begin(), rec.targets.end(),
                                       [](const coop::PlaceTarget& t) { return t.direction != coop::PlaceDirection::None; });
+        with_pointer += std::any_of(rec.targets.begin(), rec.targets.end(),
+                                    [](const coop::PlaceTarget& t) { return t.pointer != coop::PlacePointer::None; });
         if (got == want)
             ++ok;
         else if (shown++ < 12)
             std::printf("  %s\n    python %s\n    c++    %s\n", Escaped(text).c_str(), want.c_str(), got.c_str());
     }
     const size_t n = rows.size() - no_record;
-    if (m.cfg.locations.has_directions)   // rule set v4: a target may be a direction alone
+    if (m.cfg.locations.has_pointers)   // rule set v5: a target may be a pointer alone
+        std::printf("location tests, %zu lines (%zu name a place, a direction or a pointer, %zu of them a direction, %zu a "
+                    "pointer): the C++ record equals the Python record on %zu/%zu", n, with_place, with_direction, with_pointer,
+                    ok, n);
+    else if (m.cfg.locations.has_directions)   // rule set v4: a target may be a direction alone
         std::printf("location tests, %zu lines (%zu name a place or a direction, %zu of them a direction): the C++ record "
                     "equals the Python record on %zu/%zu", n, with_place, with_direction, ok, n);
     else
@@ -713,6 +732,14 @@ const std::unordered_map<std::string, std::vector<std::string>> kLines = {
     {"CHECK", {"Checking it.", "I'll check.", "Going to take a look."}},
     {"SUPPRESS", {"Suppressing!", "Covering fire!", "Keeping their heads down."}},
     {"JUMP", {"Jumping.", "On it, jumping.", "Going over."}},
+    {"COME_BACK", {"Coming back.", "On my way back.", "Returning."}},
+    {"CROUCH", {"Crouching.", "Getting low.", "Down on a knee."}},
+    {"PRONE", {"Going prone.", "Lying down.", "Flat on the ground."}},
+    {"STAND_UP", {"Standing up.", "On my feet.", "Up."}},
+    {"YES", {"Yes, got it.", "Understood: yes.", "Copy, that's a yes."}},
+    {"NO", {"No, got it.", "Understood: no.", "Copy, that's a no."}},
+    {"MAYBE", {"Maybe, got it.", "Understood: not certain.", "Copy, I'll use my judgement."}},
+    {"DONT_KNOW", {"You don't know, got it.", "Understood: no answer.", "Copy, you're not sure."}},
 };
 const std::vector<std::string> kAck = {"Copy.", "Noted.", "Heard."};
 
@@ -780,6 +807,7 @@ struct Chat {
             case coop::Action::Wait: reply = Pick(kLines.at("WAIT")); break;
             case coop::Action::Queued: reply = "Ready to " + m.cfg.phrases[intent] + ". On your go."; break;
             case coop::Action::Act: reply = Pick(LinesFor(intent)); break;
+            case coop::Action::Answer: reply = Pick(LinesFor(intent)); break;   // the answer said back: nothing is done
         }
         // "hold fire until I say": the bot holds now and has queued OPEN_FIRE for the signal
         if (intent == "HOLD_FIRE" && d.action == coop::Action::Act && d.on_signal && brain.LabelIndex("OPEN_FIRE") >= 0)

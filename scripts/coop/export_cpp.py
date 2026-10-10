@@ -43,8 +43,8 @@ if _SEEDS:
         sys.exit(f"COOP_TAG={os.environ['COOP_TAG']} but {MODEL} was trained under {_SEEDS.group(1)}")
     os.environ["COOP_TAG"] = _SEEDS.group(1)
 import coop_v2 as V  # noqa: E402
-from coop_bot import NEGATION  # noqa: E402
-from timing_rule import ON_SIGNAL, OTHER  # noqa: E402
+from coop_bot import ANSWERS, NEGATION, ON_SIGNAL  # noqa: E402  the bot's own timing pattern ("mark" is the pin)
+from timing_rule import OTHER  # noqa: E402
 MAX_LEN = 64
 
 # lines chosen to break a tokenizer port: whitespace runs, tabs, newlines, leading/trailing spaces,
@@ -89,7 +89,10 @@ def main():
         "unk_id": tj["model"]["unk_id"], "added_tokens": added,
         "regex": {"on_signal": ON_SIGNAL.pattern, "other": OTHER.pattern, "negation": NEGATION.pattern},
         # HOLD_FIRE (a v5 bot): "don't shoot" is an order, its leading negation must not cancel it (coop_bot.SAFE)
-        "safe_intents": ["NONE", "WAIT", "HOLD_POSITION"] + (["HOLD_FIRE"] if "HOLD_FIRE" in cfg["labels"] else []),
+        # the answers (a v54 bot): "don't know", "never" are answers, and an answer leaves the queued order alone
+        "safe_intents": ["NONE", "WAIT", "HOLD_POSITION"] + [x for x in ("HOLD_FIRE",) + ANSWERS if x in cfg["labels"]],
+        # a v54 bot: the answers to the planner's questions are reported, never queued (coop_bot.ANSWERS)
+        **({"answer_intents": [x for x in ANSWERS if x in cfg["labels"]]} if any(x in cfg["labels"] for x in ANSWERS) else {}),
         # the map's named places and the matcher's word lists (locations.json, validated by locations.py)
         "locations": {k: v for k, v in json.load(io.open(os.path.join(HERE, "locations.json"), encoding="utf-8")).items()
                       if not k.startswith("_")},

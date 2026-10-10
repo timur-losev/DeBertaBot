@@ -10,7 +10,8 @@ namespace {
 constexpr int kRoleWindow = 5, kRoleReach = 12, kAnaphorMax = 6, kGovernMax = 4;
 constexpr size_t kAfterMax = 4, kZoneAfterMax = 3, kMaxPhraseTokens = 4, kMaxTokens = 128;
 // locations.py WORD_LISTS: a vocabulary must have exactly these, and with "directions" (rule set v4)
-// the dir_* lists below as well; a rule set v3 vocabulary has none of those
+// the dir_* lists below as well; a rule set v3 vocabulary has none of those. A rule set v5 vocabulary
+// has the pin_* and point_* lists too, all of them; an older one has none
 const char* const kWordLists[] = {
     "before_fill", "after_fill", "tail", "zone_after_fill", "lone_follow", "lone_block", "lone_not_after",
     "unknown_modifier", "role_not", "role_from", "role_mine", "role_them", "number", "number_next", "status_next",
@@ -27,6 +28,10 @@ const char* const kDirWordLists[] = {
     "dir_behind_lead", "dir_end_next", "dir_six_lead", "dir_six_verb", "dir_lead_climb", "dir_there_lead",
     "dir_right_soft", "dir_turn", "dir_split_object", "dir_split_verb", "dir_resource", "dir_have", "dir_amount",
     "dir_right_noun", "dir_lead_noun", "dir_throw", "dir_correction", "dir_straight_not", "dir_we"};
+const char* const kPointerWordLists[] = {
+    "pin_noun", "pin_det", "pin_block_prev", "pin_wait_verb", "pin_wait_prep", "pin_past", "pin_past_lead",
+    "pin_past_fill", "pin_verb", "point_det", "point_not_prev", "point_not_next", "point_not_noun", "point_pron_next",
+    "point_person", "point_rel_prev", "point_loc", "point_loc_lead", "point_here_not", "point_exist_next", "point_ing"};
 // locations.py DIRECTIONS, in the order of PlaceDirection after None: the rules name the six
 const char* const kDirections[] = {"up", "down", "left", "right", "forward", "back"};
 
@@ -111,6 +116,9 @@ struct Work {
     // a direction that is a target of its own; corrects: "go left, no, right"; joined: it became a
     // place's direction and is no target any more
     bool lone = false, corrects = false, joined = false;
+    // rule set v5. ptr: a pointer that is a target of its own ("my pin", "over there"; joined: it became
+    // a place's pointer); them: it points at a person ("that guy")
+    bool ptr = false, them = false;
 };
 
 }  // namespace
@@ -150,6 +158,15 @@ const char* PlaceDirectionName(PlaceDirection d) {
     return "";
 }
 
+const char* PlacePointerName(PlacePointer p) {
+    switch (p) {
+        case PlacePointer::Pin: return "pin";
+        case PlacePointer::This: return "this";
+        case PlacePointer::None: break;
+    }
+    return "";
+}
+
 bool LocationMatcher::In(const char* list, const std::string& word) const {
     auto it = lists_.find(list);
     return it != lists_.end() && it->second.count(word) != 0;
@@ -171,6 +188,9 @@ bool LocationMatcher::Init(const LocationVocab& v, std::string* error) {
     clock_.clear();
     max_len_ = 1;
     directions_ = v.has_directions;
+    pointers_ = v.has_pointers;
+    // the pointer rules (step 7) stand on step 6: its noun phrases and its direction targets
+    if (pointers_ && !directions_) return fail("the pin_* and point_* word lists (rule set v5) need \"directions\"");
     for (const auto& o : v.objects) {
         if (IndexOf(objects_, o.id) >= 0) return fail("duplicate object id " + o.id);
         if (o.words.empty()) return fail("object " + o.id + " has no words");
@@ -245,7 +265,11 @@ bool LocationMatcher::Init(const LocationVocab& v, std::string* error) {
     if (directions_)
         for (const char* name : kDirWordLists)
             if (!word_list(name)) return false;
-    // a list no rule reads: locations.py refuses the vocabulary too (in a rule set v3 one, any dir_* list)
+    if (pointers_)
+        for (const char* name : kPointerWordLists)
+            if (!word_list(name)) return false;
+    // a list no rule reads: locations.py refuses the vocabulary too (in a rule set v3 one, any dir_* list;
+    // in a rule set v3 or v4 one, any pin_* or point_* list)
     for (const auto& list : v.words)
         if (lists_.count(list.first) == 0) return fail("unknown word list " + list.first);
     if (directions_) {
@@ -778,7 +802,7 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
     }
 
     // 6. directions (rule set v4): a direction word counts only in the contexts locations.py lists. A
-    // vocabulary without "directions" is done here: rule set v3 ends with 5c
+    // vocabulary without "directions" is done here: rule set v3 ends with 5c (and has no pointers: Init)
     if (directions_) {
         const PlaceDirection kNone = PlaceDirection::None, kUp = PlaceDirection::Up, kDown = PlaceDirection::Down,
                              kLeft = PlaceDirection::Left, kRight = PlaceDirection::Right,
@@ -1126,12 +1150,205 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
         for (Work* t : lone)
             if (!t->joined) targets.push_back(t);
         std::stable_sort(targets.begin(), targets.end(), by_first);
+
+        // 7. pointers (rule set v5): the line points at its place -- the player's pin, or this / that /
+        // here / there. A vocabulary without the pin_* and point_* lists is done here: rule set v4 ends
+        // with 6d
+        if (pointers_) {
+            const PlacePointer kNoPointer = PlacePointer::None, kPin = PlacePointer::Pin, kThis = PlacePointer::This;
+            // token -> the target whose noun phrase, or direction, holds it (the later target, if two do);
+            // the "other" target of 5c stands at no token
+            std::vector<Work*> in_np(static_cast<size_t>(n), nullptr);
+            for (Work* t : targets)
+                if (t->first < n)
+                    for (int j = np_first(t); j <= np_last(t); ++j) in_np[static_cast<size_t>(j)] = t;
+            auto np_at = [&](int j) -> Work* { return 0 <= j && j < n ? in_np[static_cast<size_t>(j)] : nullptr; };
+            // a word of the line that belongs to no place and no direction
+            auto bare = [&](int j) { return plain(j) && !in_np[static_cast<size_t>(j)]; };
+            // locations.py same(j) is nb(j): token j exists and continues the phrase of the token before it.
+            // Up to k (at most 4) words before token i in its phrase, the nearest first
+            struct Back {
+                const std::string* w[4] = {};
+                int n = 0;
+            };
+            auto back_words = [&](int i, int k) {
+                Back b;
+                for (int j = i; b.n < k && nb(j); --j) b.w[b.n++] = &word(j - 1);
+                return b;
+            };
+            auto where_in = [](const Back& b) {   // which of them is "where", or -1
+                for (int x = 0; x < b.n; ++x)
+                    if (*b.w[x] == "where") return x;
+                return -1;
+            };
+            // the place (not a bare direction) whose noun phrase ends at token j
+            auto place_ending = [&](int j) -> Work* {
+                Work* t = np_at(j);
+                return t && !t->lone && np_last(t) == j ? t : nullptr;
+            };
+
+            std::vector<Work*> ptr;   // the pointers that are targets of their own, in the order of their words
+            for (int i = 0; i < n; ++i) {
+                if (!bare(i)) continue;
+                const std::string& w = word(i);
+                const std::string* prev = nb(i) ? &word(i - 1) : nullptr;
+                const std::string* prev2 = prev && nb(i - 1) ? &word(i - 2) : nullptr;
+                const std::string* nxt = nb(i + 1) ? &word(i + 1) : nullptr;
+                PlacePointer p = kNoPointer;
+                int first = i, last = i, where = -1;
+                Work* att = nullptr;   // the place, or the direction, whose pointer it is
+                bool them = false;
+                if (In("pin_verb", w) && (where = where_in(back_words(i, 3))) >= 0) {
+                    p = kPin, first = i - 1 - where;   // "where i mark", "where i ping": the verb, in the present
+                } else if (In("pin_noun", w)) {
+                    // the player's marker as a noun: "my pin", "the ping", "on my mark" -- not the verbs ("pin them
+                    // down", "mark the door"), the grenade's pin ("pull the pin") or the network's ("my ping is 200")
+                    const Back b = back_words(i, 3);
+                    const bool signal = b.n == 3 && In("pin_wait_prep", *b.w[1]) && In("pin_wait_verb", *b.w[2]);   // "wait for my mark"
+                    if (in("pin_det", prev) && bare(i - 1) && !in("pin_block_prev", prev2) && !in("be", nxt) && !signal) {
+                        p = kPin, first = i - 1;
+                        int a = first - 1;   // "the window by my ping": the place right before it
+                        if (nb(first) && bare(a) && In("preposition", word(a))) --a;
+                        if (nb(a + 1)) att = place_ending(a);
+                    }
+                } else if (In("pin_past", w)) {
+                    // "where i marked", "the spot i just pinged", "the door i marked"
+                    const Back b = back_words(i, 3);
+                    bool led = false;
+                    for (int x = 0; x < b.n; ++x) led = led || In("pin_past_lead", *b.w[x]);
+                    if (led) {
+                        p = kPin;
+                        int a = i - 1;
+                        while (nb(a + 1) && bare(a) && In("pin_past_fill", word(a))) --a;
+                        if (nb(a + 1)) att = place_ending(a);
+                        first = a + 1;   // "where i marked": its "i" is not the player's own place
+                    }
+                } else if (In("point_ing", w)) {
+                    where = where_in(back_words(i, 4));
+                    if (where >= 0) p = kThis, first = i - 1 - where;   // "where i'm looking", "where i am pointing"
+                } else if (In("point_det", w)) {
+                    Work* u = nb(i + 1) ? np_at(i + 1) : nullptr;
+                    const bool relative = w == "that" && nb(i) &&
+                                          (np_at(i - 1) || in("role_them", prev) || in("role_them_soft", prev) || in("point_rel_prev", prev));
+                    const bool led = in("order_verb", prev) || in("preposition", prev) || in("negator", prev) || i == 0 || tbrk(i) > 0;
+                    if (in("point_not_prev", prev) || in("point_not_next", nxt) || relative) {
+                        // "make sure that ...", "that's a trap", "the door that leads ..."
+                    } else if (u && !u->lone && np_first(u) == i + 1) {
+                        p = kThis, att = u;   // "that window", "this north door", "that back door"
+                    } else if (!nxt || In("point_pron_next", *nxt)) {
+                        // a pronoun: "check that", "smoke this one", "not that one"
+                        if (led) {
+                            p = kThis;
+                            if (in("anaphor", nxt)) last = i + 1;
+                        }
+                    } else if (bare(i + 1) && !In("point_not_noun", *nxt) && !In("pin_noun", *nxt)) {
+                        p = kThis;   // "that room", "this wall", "that guy"; "that marker" is the pin's
+                        them = In("role_them", *nxt) || In("role_them_soft", *nxt) || In("point_person", *nxt);
+                    }
+                } else if (In("point_loc", w)) {
+                    if (in("point_exist_next", nxt) || in("number", nxt)) continue;   // "there's two on the stairs", "here they come"
+                    int a = i - 1;   // the leads: "over there", "right in here", "back there"
+                    while (nb(a + 1) && i - a <= 2 && (bare(a) || used(a)) && In("point_loc_lead", word(a))) --a;
+                    const int leads = i - 1 - a;
+                    Work* u = nb(i) ? np_at(i - 1) : nullptr;
+                    Work* place = nb(a + 1) ? place_ending(a) : nullptr;
+                    const bool ends = i + 1 >= n || tbrk(i + 1) > 0;
+                    if (place) {
+                        p = kThis, att = place;   // "the north door there", "the stairs over there"
+                    } else if (u && u->lone) {
+                        p = kThis, att = u;       // "get up there", "back there": the direction's
+                    } else if (leads && !(word(i - 1) == "in" && nb(i - 1) && word(i - 2) == "hang")) {
+                        p = kThis;                // "over there", "in here", "from there"; not "hang in there"
+                    } else if (in("order_verb", prev)) {
+                        p = kThis;                // "go there", "stay here", "smoke there"
+                    } else if ((i == 0 || tbrk(i) > 0) && ends) {
+                        p = kThis;                // "There!", "here, the window"
+                    } else if (w == "here" && ends && !in("point_here_not", prev)) {
+                        p = kThis;                // "i need backup here", "smoke here"; not "almost here"
+                    }
+                }
+                if (p == kNoPointer) continue;
+                if (att) {
+                    if (att->t.pointer != kPin) att->t.pointer = p;   // a target keeps a pin over a this
+                    continue;
+                }
+                store.emplace_back();
+                Work* t = &store.back();
+                t->t.pointer = p;
+                t->first = first;
+                t->last = last;
+                t->ptr = true;
+                t->them = them;
+                ptr.push_back(t);
+            }
+            if (!ptr.empty()) {
+                // their roles, by the rules of the places ("i'll hold here, you take the north door": here is
+                // mine), over places, directions and pointers in line order; one that points at a person is
+                // the enemy's ("that guy"). Only now are their tokens owned
+                for (const Work* t : ptr)
+                    for (int j = t->first; j <= t->last; ++j) owned_at[static_cast<size_t>(j)] = 1;
+                std::vector<Work*> all = targets;
+                all.insert(all.end(), ptr.begin(), ptr.end());
+                std::stable_sort(all.begin(), all.end(), by_first);
+                for (size_t k = 0; k < all.size(); ++k) {
+                    Work* t = all[k];
+                    if (!t->ptr) continue;
+                    assign_role(k, t, all);
+                    if (t->t.role == PlaceRole::None && t->them) t->t.role = PlaceRole::Them;
+                }
+                // 7b. a pointer said on the way to a place is that place's: "that room by the north door", "over
+                // there, the north door", "my pin by the north door". The place is the next one (never a bare
+                // direction), with the same role and no pointer yet. A "this" joins it when no punctuation, no
+                // order verb and at most six words stand between, or across one comma as a bare pointer; a pin
+                // only through prepositions and determiners
+                for (Work* t : ptr) {
+                    Work* u = nullptr;
+                    for (Work* x : targets)
+                        if (!x->lone && t->last < x->first && x->first < n) {
+                            u = x;
+                            break;
+                        }
+                    if (!u || u->t.role != t->t.role || u->t.pointer != kNoPointer) continue;
+                    int breaks = 0, commas = 0, between = 0;
+                    for (int j = t->last + 1; j <= u->first; ++j) {
+                        if (tbrk(j) != 0) ++breaks;
+                        if (tbrk(j) == 1) ++commas;
+                    }
+                    bool links = true, verb = false;
+                    for (int j = t->last + 1; j < np_first(u); ++j) {
+                        ++between;
+                        links = links && (In("preposition", word(j)) || In("determiner", word(j)));
+                        verb = verb || In("order_verb", word(j));
+                    }
+                    const bool joins = t->t.pointer == kPin
+                                           ? breaks == 0 && links
+                                           : (breaks == 0 && between <= 6 && !verb) || (breaks == 1 && commas == 1 && links && !ordered(t));
+                    if (joins) {
+                        u->t.pointer = t->t.pointer;
+                        t->joined = true;
+                    }
+                }
+                for (Work* t : ptr)
+                    if (!t->joined) targets.push_back(t);
+                std::stable_sort(targets.begin(), targets.end(), by_first);
+            }
+        }
     }
 
     for (const Work* t : targets) rec.targets.push_back(t->t);
-    for (size_t k = 0; k < rec.targets.size() && rec.primary < 0; ++k)
-        if (rec.targets[k].role == PlaceRole::None) rec.primary = static_cast<int>(k);
-    if (rec.primary < 0 && !rec.targets.empty()) rec.primary = 0;
+    // the primary: the first target without a role among the places, the directions and the pins; if
+    // each of them has a role, the first of them. A "this" with no place of its own (rule set v5: "hold
+    // here and watch the doors") never takes the primary from them: it is the primary only when the line
+    // has nothing else. Without pointer targets this is the rule of rule sets v3 and v4
+    auto named = [](const Work* t) { return !t->ptr || t->t.pointer == PlacePointer::Pin; };
+    const bool any_named = std::any_of(targets.begin(), targets.end(), named);
+    int first_of_them = -1;
+    for (size_t k = 0; k < targets.size() && rec.primary < 0; ++k) {
+        if (any_named && !named(targets[k])) continue;
+        if (first_of_them < 0) first_of_them = static_cast<int>(k);
+        if (targets[k]->t.role == PlaceRole::None) rec.primary = static_cast<int>(k);
+    }
+    if (rec.primary < 0) rec.primary = first_of_them;
     return rec;
 }
 

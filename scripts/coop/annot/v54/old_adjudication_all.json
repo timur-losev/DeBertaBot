@@ -1,0 +1,343 @@
+{
+ "_note": "The two adjudicators of the v54 re-reading read the flagged lines mixed with other lines, not knowing which were flagged. Their readings of all of them are here; only the flagged ones are used (old_adjudicated.json).",
+ "lines": [
+  "cs_114",
+  "r6_066",
+  "r6v5_054",
+  "r6_087",
+  "sttv3_019",
+  "stt_063",
+  "r6v5_052",
+  "stt_060",
+  "sttv53_027",
+  "sttv52_029",
+  "r6v5_035",
+  "sttv53_010",
+  "csv53_010",
+  "r6v2_030",
+  "sttv5_038",
+  "r6v5_014",
+  "sttv3_048",
+  "csv3_025",
+  "sttv2_017",
+  "sttv5_053",
+  "r6_048",
+  "r6v52_009",
+  "sttv3_035",
+  "sttv53_001"
+ ],
+ "readings": [
+  {
+   "cs_114": {
+    "intent": "FLANK",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6_066": {
+    "intent": "HOLD_POSITION",
+    "ok": [],
+    "timing": "now",
+    "reference": "this"
+   },
+   "r6v5_054": {
+    "intent": "NO",
+    "ok": [
+     "NONE"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6_087": {
+    "intent": "PLANT",
+    "ok": [],
+    "timing": "on_signal",
+    "reference": "none"
+   },
+   "sttv3_019": {
+    "intent": "BREACH",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "stt_063": {
+    "intent": "HOLD_ANGLE",
+    "ok": [],
+    "timing": "now",
+    "reference": "this"
+   },
+   "r6v5_052": {
+    "intent": "YES",
+    "ok": [
+     "NONE"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "stt_060": {
+    "intent": "NONE",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv53_027": {
+    "intent": "NONE",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv52_029": {
+    "intent": "NO",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6v5_035": {
+    "intent": "HOLD_ANGLE",
+    "ok": [
+     "LOOK_AT"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv53_010": {
+    "intent": "VAULT_WINDOW",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "csv53_010": {
+    "intent": "VAULT_WINDOW",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6v2_030": {
+    "intent": "NO",
+    "ok": [
+     "NONE"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv5_038": {
+    "intent": "MOVE_TO",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6v5_014": {
+    "intent": "OPEN_FIRE",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv3_048": {
+    "intent": "OPEN",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "csv3_025": {
+    "intent": "TAKE_COVER",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv2_017": {
+    "intent": "PRONE",
+    "ok": [
+     "TAKE_COVER"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv5_053": {
+    "intent": "YES",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6_048": {
+    "intent": "MOVE_TO",
+    "ok": [],
+    "timing": "now",
+    "reference": "pin"
+   },
+   "r6v52_009": {
+    "intent": "CHECK",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv3_035": {
+    "intent": "SMOKE",
+    "ok": [],
+    "timing": "on_signal",
+    "reference": "none"
+   },
+   "sttv53_001": {
+    "intent": "JUMP",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   }
+  },
+  {
+   "cs_114": {
+    "intent": "FLANK",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6_066": {
+    "intent": "HOLD_POSITION",
+    "ok": [],
+    "timing": "now",
+    "reference": "this"
+   },
+   "r6v5_054": {
+    "intent": "NO",
+    "ok": [
+     "NONE"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6_087": {
+    "intent": "PLANT",
+    "ok": [],
+    "timing": "on_signal",
+    "reference": "none"
+   },
+   "sttv3_019": {
+    "intent": "BREACH",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "stt_063": {
+    "intent": "HOLD_ANGLE",
+    "ok": [],
+    "timing": "now",
+    "reference": "this"
+   },
+   "r6v5_052": {
+    "intent": "YES",
+    "ok": [
+     "NONE"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "stt_060": {
+    "intent": "NONE",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv53_027": {
+    "intent": "NONE",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv52_029": {
+    "intent": "NO",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6v5_035": {
+    "intent": "HOLD_ANGLE",
+    "ok": [
+     "LOOK_AT"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv53_010": {
+    "intent": "VAULT_WINDOW",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "csv53_010": {
+    "intent": "VAULT_WINDOW",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6v2_030": {
+    "intent": "NO",
+    "ok": [
+     "NONE"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv5_038": {
+    "intent": "MOVE_TO",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6v5_014": {
+    "intent": "OPEN_FIRE",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv3_048": {
+    "intent": "OPEN",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "csv3_025": {
+    "intent": "TAKE_COVER",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv2_017": {
+    "intent": "PRONE",
+    "ok": [
+     "TAKE_COVER"
+    ],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv5_053": {
+    "intent": "YES",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "r6_048": {
+    "intent": "MOVE_TO",
+    "ok": [],
+    "timing": "now",
+    "reference": "pin"
+   },
+   "r6v52_009": {
+    "intent": "CHECK",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   },
+   "sttv3_035": {
+    "intent": "SMOKE",
+    "ok": [],
+    "timing": "on_signal",
+    "reference": "none"
+   },
+   "sttv53_001": {
+    "intent": "JUMP",
+    "ok": [],
+    "timing": "now",
+    "reference": "none"
+   }
+  }
+ ]
+}
