@@ -18,10 +18,10 @@
 //   coop_cli --speech-text-tests FILE   SpeechTextForClassifier against the Python `norm` (no model)
 // with speech-to-text (a build that found sherpa-onnx under third_party/):
 //   coop_cli --voice              the chat with a microphone: hold SPACE and talk, release to send; a typed
-//                                 line still works (Windows)
+//                                 line still works (Windows, macOS)
 //   coop_cli --stt-wav FILE       one clip (16-bit PCM WAV) through the recognizer and the bot; may be repeated
 //   coop_cli --mic-test SECONDS   the default microphone for that long: the level it heard and the transcript
-//                                 (Windows; no bot is loaded)
+//                                 (Windows, macOS; no bot is loaded)
 //   coop_cli --stt-tests LIST WAVDIR EXPECTED   the C++ transcripts against the Python package's: LIST is a
 //                                 list of {id, wav} (scripts/coop/stt/lines.json), EXPECTED a run_stt.py output
 // every mode first prints the bot it runs on (directory, labels, gate, threshold)
@@ -47,6 +47,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <string>
+#include <thread>
 #include <unordered_set>
 #include <vector>
 
@@ -55,6 +56,8 @@
 #include <windows.h>
 #include <psapi.h>
 #include <conio.h>
+#elif defined(__APPLE__)
+#include <mach/mach.h>
 #endif
 
 #include "coop_intent/bot_brain.h"
@@ -63,8 +66,18 @@
 #include "coop_intent/tokenizer.h"
 #include "coop_intent/unicode.h"
 #include "nlohmann/json.hpp"
-#if defined(COOP_WITH_STT) && defined(_WIN32)
+// the microphone modes (--voice, --mic-test) exist where tools/ has a MicCapture
+#if defined(COOP_WITH_STT) && (defined(_WIN32) || defined(__APPLE__))
+#define COOP_WITH_MIC
 #include "mic_capture.h"
+#endif
+#if defined(COOP_WITH_MIC) && defined(__APPLE__)
+#include <CoreGraphics/CoreGraphics.h>
+#include <poll.h>
+#include <termios.h>
+#include <unistd.h>
+#include <cerrno>
+#include <csignal>
 #endif
 
 using json = nlohmann::json;
@@ -112,6 +125,12 @@ double WorkingSetMb() {
 #ifdef _WIN32
     PROCESS_MEMORY_COUNTERS pmc{};
     if (GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof pmc)) return pmc.WorkingSetSize / 1048576.0;
+#elif defined(__APPLE__)
+    // the footprint, as Activity Monitor shows it: the resident size leaves out what macOS has compressed
+    task_vm_info_data_t info{};
+    mach_msg_type_number_t n = TASK_VM_INFO_COUNT;
+    if (task_info(mach_task_self(), TASK_VM_INFO, reinterpret_cast<task_info_t>(&info), &n) == KERN_SUCCESS)
+        return info.phys_footprint / 1048576.0;
 #endif
     return 0;
 }
@@ -865,7 +884,7 @@ bool LoadSpeech(coop::SpeechRecognizer& stt, const coop::SpeechOptions& opt, std
     std::string text;
     if (!stt.Transcribe(silence.data(), silence.size(), 16000, &text, err)) return false;
     std::printf("speech: %s on ONNX Runtime %s, %s (%d threads; loaded in %.1f s, %.0f MB)\n",
-                coop::SpeechRecognizer::Backend().c_str(), coop::OrtBackend::RuntimeVersion().c_str(), opt.model_dir.c_str(),
+                coop::SpeechRecognizer::Backend().c_str(), coop::SpeechRecognizer::RuntimeVersion().c_str(), opt.model_dir.c_str(),
                 opt.threads, Ms(Clock::now() - t0) / 1000, WorkingSetMb() - mem0);
     return true;
 }
@@ -958,7 +977,15 @@ int RunSttWav(Model& m, const coop::SpeechOptions& opt, const std::vector<std::s
     return 0;
 }
 
+#ifdef COOP_WITH_MIC
+void SleepMs(double ms) {
 #ifdef _WIN32
+    Sleep(static_cast<DWORD>(ms));
+#else
+    std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(ms));
+#endif
+}
+
 // Is the microphone the one the player means, and is it loud enough: SECONDS of it, its level, its transcript
 int RunMicTest(const coop::SpeechOptions& opt, double seconds) {
     coop::SpeechRecognizer stt;
@@ -967,9 +994,9 @@ int RunMicTest(const coop::SpeechOptions& opt, double seconds) {
     if (!LoadSpeech(stt, opt, &err) || !mic.Start(&err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
     std::printf("listening for %.1f s: say something\n", seconds);
     std::fflush(stdout);
-    Sleep(300);   // more than the pre-roll: the clip starts with real audio
+    SleepMs(300);   // more than the pre-roll: the clip starts with real audio
     mic.Begin();
-    Sleep(static_cast<DWORD>(seconds * 1000));
+    SleepMs(seconds * 1000);
     const std::vector<float> clip = mic.End();
     double sum = 0, peak = 0;
     for (float x : clip) sum += static_cast<double>(x) * x, peak = std::max(peak, std::fabs(static_cast<double>(x)));
@@ -984,6 +1011,7 @@ int RunMicTest(const coop::SpeechOptions& opt, double seconds) {
     return clip.empty() ? 1 : 0;
 }
 
+#ifdef _WIN32
 // The chat with a microphone. The key is read from this console (so it does nothing while another window has
 // the keyboard); its release is read from the keyboard state, which the console does not report
 int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads) {
@@ -1055,7 +1083,170 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads) {
         if (!chat.Respond(line, line, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
     }
 }
+#else   // macOS
+// The terminal of the voice chat: its keys one at a time and unechoed, as _getwch gives them on Windows. The
+// terminal's own settings are put back on every way out, Ctrl-C included.
+termios g_terminal;
+
+void RestoreTerminal() { tcsetattr(STDIN_FILENO, TCSANOW, &g_terminal); }
+
+void RestoreTerminalAndDie(int sig) {
+    RestoreTerminal();
+    std::signal(sig, SIG_DFL);
+    std::raise(sig);
+}
+
+// A keyboard setting of macOS in milliseconds. "InitialKeyRepeat" (how long a key is held before it repeats) and
+// "KeyRepeat" (the interval after that) are stored in sixtieths of a second, and only once the user has moved
+// the slider: `unset` is what macOS uses until then
+int KeySettingMs(CFStringRef key, double unset) {
+    double ms = unset;
+    if (CFPropertyListRef v = CFPreferencesCopyAppValue(key, kCFPreferencesCurrentApplication)) {
+        int ticks = 0;
+        if (CFGetTypeID(v) == CFNumberGetTypeID() && CFNumberGetValue(static_cast<CFNumberRef>(v), kCFNumberIntType, &ticks))
+            ms = ticks * 1000.0 / 60;
+        CFRelease(v);
+    }
+    return static_cast<int>(ms);
+}
+
+struct KeyTerminal {
+    bool raw = false;
+
+    ~KeyTerminal() {
+        if (raw) RestoreTerminal();
+    }
+    bool Open() {
+        if (tcgetattr(STDIN_FILENO, &g_terminal) != 0) return false;
+        termios t = g_terminal;
+        t.c_lflag &= ~static_cast<tcflag_t>(ICANON | ECHO);
+        t.c_cc[VMIN] = 1;
+        t.c_cc[VTIME] = 0;
+        if (tcsetattr(STDIN_FILENO, TCSANOW, &t) != 0) return false;
+        raw = true;
+        for (int sig : {SIGINT, SIGTERM, SIGHUP}) std::signal(sig, RestoreTerminalAndDie);
+        return true;
+    }
+    // one byte of what was typed; false at the end of input
+    static bool Read(unsigned char* b) {
+        ssize_t n;
+        while ((n = read(STDIN_FILENO, b, 1)) < 0 && errno == EINTR) {}
+        return n == 1;
+    }
+    static bool Waiting(int ms) {
+        pollfd in{STDIN_FILENO, POLLIN, 0};
+        return poll(&in, 1, ms) > 0;
+    }
+    // After the byte 27: Esc itself (false), or the start of an arrow or function key (ESC [ ... letter,
+    // ESC O letter), which is skipped. A key's bytes arrive together, so the rest of one is already waiting
+    static bool SkipSequence() {
+        if (!Waiting(25)) return false;
+        unsigned char b = 0;
+        if (Read(&b) && b == '[') {
+            while (Read(&b) && (b < 0x40 || b > 0x7E)) {}
+        } else if (b == 'O') {
+            Read(&b);
+        }
+        return true;
+    }
+    // Waits until SPACE is released. A terminal reports no key-up, so the release is read from the keyboard
+    // state. Where macOS does not show that state to this process (a remote terminal, secure keyboard entry),
+    // the spaces the held key goes on typing stand in for it and the wait ends when they stop coming: false
+    // then, and how long the key was down is not known
+    static bool WaitForSpaceUp() {
+        const auto down = [] { return CGEventSourceKeyState(kCGEventSourceStateCombinedSessionState, 49 /* kVK_Space */); };
+        unsigned char b = 0;
+        if (down()) {
+            while (down())
+                if (Waiting(5)) Read(&b);   // the spaces the held key types
+            return true;
+        }
+        static const int first = KeySettingMs(CFSTR("InitialKeyRepeat"), 500) + 300, next = KeySettingMs(CFSTR("KeyRepeat"), 83) + 200;
+        for (int wait = first; Waiting(wait) && Read(&b); wait = next) {}
+        return false;
+    }
+};
+
+// The chat with a microphone. The key is read from this terminal (so it does nothing while another window has
+// the keyboard); its release is read from the keyboard state, which the terminal does not report
+int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads) {
+    if (!isatty(STDIN_FILENO)) return std::fprintf(stderr, "--voice reads the key from a terminal: run it in one, not through a pipe\n"), 1;
+    coop::SpeechRecognizer stt;
+    Chat chat(m);
+    MicCapture mic;
+    KeyTerminal keys;
+    std::string err;
+    if (!LoadSpeech(stt, opt, &err) || !chat.Init(&err) || !mic.Start(&err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+    if (!keys.Open()) return std::fprintf(stderr, "this terminal does not give single keys\n"), 1;
+    std::printf("ready (C++, ONNX Runtime %s CPU, %d threads). threshold %.2f.\n"
+                "Hold SPACE and talk, release to send. Or type a line and press Enter; /why /t <x> /q. Esc quits.\n\n",
+                coop::OrtBackend::RuntimeVersion().c_str(), threads, chat.brain.threshold);
+    bool told = false;
+    for (;;) {
+        std::printf("you> ");
+        std::fflush(stdout);
+        unsigned char c = 0;
+        if (!keys.Read(&c) || c == 4) return std::printf("\n"), 0;   // the end of input, Ctrl-D
+        if (c == 27) {
+            if (!keys.SkipSequence()) return std::printf("\n"), 0;
+            std::printf("\r");
+            continue;
+        }
+        if (c == ' ') {
+            mic.Begin();
+            const auto t0 = Clock::now();
+            std::printf("(listening)");
+            std::fflush(stdout);
+            const bool timed = keys.WaitForSpaceUp();
+            const double held = Ms(Clock::now() - t0);
+            const std::vector<float> clip = mic.End();
+            tcflush(STDIN_FILENO, TCIFLUSH);   // the spaces the held key typed
+            std::printf("\r                \r");   // over "you> (listening)"
+            if (timed && held < 200) {
+                std::printf("you> (hold SPACE while you talk)\n");
+                continue;
+            }
+            if (!timed && !told) {
+                told = true;
+                std::printf("(macOS does not show the keyboard to this terminal: the release of SPACE is taken from the key's "
+                            "auto-repeat, a moment late)\n");
+            }
+            if (!HearAndRespond(chat, stt, clip, MicCapture::kSampleRate, "you> ", &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+            continue;
+        }
+        std::string typed;   // a typed line, UTF-8: echoed and edited here, because the terminal's own line input is off
+        for (;;) {
+            if (c == '\r' || c == '\n') break;
+            if (c == 27) {
+                if (!keys.SkipSequence()) {
+                    typed.clear();
+                    break;
+                }
+            } else if (c == 0x7F || c == '\b') {
+                if (!typed.empty()) {
+                    while (typed.size() > 1 && (static_cast<unsigned char>(typed.back()) & 0xC0) == 0x80) typed.pop_back();
+                    typed.pop_back();
+                    std::printf("\b \b");
+                }
+            } else if (c >= 0x20) {
+                typed.push_back(static_cast<char>(c));
+                std::putchar(c);
+            }
+            std::fflush(stdout);
+            if (!keys.Read(&c)) return std::printf("\n"), 0;
+        }
+        std::printf("\n");
+        const std::string line = StripPy(typed);
+        if (line.empty()) continue;
+        if (const int k = chat.Command(line)) {
+            if (k == 2) return 0;
+            continue;
+        }
+        if (!chat.Respond(line, line, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+    }
+}
 #endif   // _WIN32
+#endif   // COOP_WITH_MIC
 #endif   // COOP_WITH_STT
 
 }  // namespace
@@ -1103,7 +1294,7 @@ int main(int argc, char** argv) {
     }
     std::string err;
     if (mode == "speech-text-tests") return RunSpeechTextTests(speech_text_file);
-#if defined(COOP_WITH_STT) && defined(_WIN32)
+#ifdef COOP_WITH_MIC
     if (mode == "mic-test") return RunMicTest(speech, mic_seconds);
 #endif
 #ifndef COOP_WITH_STT
@@ -1143,11 +1334,11 @@ int main(int argc, char** argv) {
 #ifdef COOP_WITH_STT
     if (mode == "stt-wav") return RunSttWav(m, speech, wavs);
     if (mode == "stt-tests") return RunSttTests(m, speech, stt_test[0], stt_test[1], stt_test[2]);
-#ifdef _WIN32
+#ifdef COOP_WITH_MIC
     if (mode == "voice") return RunVoice(m, speech, opt.threads);
 #else
     if (mode == "voice" || mode == "mic-test")
-        return std::fprintf(stderr, "the microphone is read only on Windows so far; --stt-wav reads a file\n"), 2;
+        return std::fprintf(stderr, "the microphone is read only on Windows and macOS so far; --stt-wav reads a file\n"), 2;
 #endif
 #endif
     return RunChat(m, opt.threads);

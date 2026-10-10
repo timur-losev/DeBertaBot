@@ -1,0 +1,5 @@
+# macOS arm64 (MacBook Pro, M5 Pro, macOS 26.5.2), 2026-10-09: sherpa-onnx 1.13.8, bot v53, 2 threads.
+# Clips: the 422 lines of lines.json and the 60 of lines_v53.json read by macOS's own voices (say: Samantha, Daniel, Karen, Rishi in turn; 16 kHz mono 16-bit).
+# Python transcripts: run_stt.py parakeet-0.6b-v2 on the same Mac. The clips and these transcripts are not in git, and are not the audio the bots were trained on.
+the recognizer on sherpa-onnx's own ONNX Runtime 1.28.2 (the build as it is) : 482 clips of wav_macsay: the C++ transcript equals the Python transcript on 482/482; the bot picks the same on 482/482 (the line's own intent on 478 from the C++ transcript, 478 from the Python one, of 482); median 87 ms, p95 134 ms per clip of 2.6 s
+the recognizer forced onto the engine's ONNX Runtime 1.30.0 (DYLD_LIBRARY_PATH) : 482 clips of wav_macsay: the C++ transcript equals the Python transcript on 461/482; the bot picks the same on 480/482 (the line's own intent on 478 from the C++ transcript, 478 from the Python one, of 482); median 92 ms, p95 141 ms per clip of 2.6 s

@@ -61,7 +61,7 @@ vocabulary (rule set v4), and `gen_tests.py` refuses a bot whose config holds an
 | `src/ort_backend.cpp` | `OrtBackend`: one model in ONNX Runtime (C++ API; it asks the loaded runtime for that runtime's own API level, so the 1.30 build also runs on an older `onnxruntime.dll`) | replaced by an NNE backend |
 | `include/coop_intent/speech.h`, `src/speech_text.cpp` | `SpeechTextForClassifier`: the form of a transcript the voice-chain bots were trained on | as is |
 | `src/sherpa_speech.cpp` | `SpeechRecognizer`: Parakeet TDT through sherpa-onnx's C API (optional, see "Speech-to-text") | with sherpa-onnx as a third-party library |
-| `tools/mic_capture.h`, `tools/mic_capture_win.cpp` | the microphone of `coop_cli --voice` (Windows, waveIn) | no: the game has its own capture |
+| `tools/mic_capture.h`, `tools/mic_capture_win.cpp`, `tools/mic_capture_mac.mm` | the microphone of `coop_cli --voice` (Windows: waveIn; macOS: an AudioQueue) | no: the game has its own capture |
 | `tools/coop_cli.cpp` | terminal chat and the checks | no |
 | `tools/gen_unicode_tables.py` | writes `unicode_tables.inc` from the HF `tokenizers` library itself | no |
 | `tools/gen_tests.py` | writes the test files (tokenizer, places, gates, decisions, dialogue) from the Python bot | no |
@@ -122,6 +122,8 @@ build\Release\coop_cli.exe --stt-tests LIST WAVDIR EXPECTED      # C++ transcrip
 build\Release\coop_cli.exe --speech-text-tests ..\..\scripts\coop\stt\norm_tests.json
 ```
 
+On macOS the modes and options are the same: `./build/coop_cli --voice --model-dir ../../models/coop-deberta-v3-ens3-v53/cpp`.
+
 - **Setup.** CMake looks for `third_party/sherpa-onnx-1.13.8-win-x64/` and builds without speech when
   it is not there (the directory is not in git). Its three files are the ones the Python package
   carries: after `pip install sherpa-onnx==1.13.8`, copy from `site-packages/sherpa_onnx/`
@@ -129,12 +131,23 @@ build\Release\coop_cli.exe --speech-text-tests ..\..\scripts\coop\stt\norm_tests
   `lib/sherpa-onnx-c-api.lib` and `lib/onnxruntime.dll` to `lib/`. The model is read from
   `scripts/coop/stt/models/sherpa-onnx-nemo-parakeet-tdt-0.6b-v2-int8` (`--stt-model DIR` for another
   place; the download link is in the stt README). `--stt-threads N` (default 2).
+- **Setup on macOS.** The directory is `third_party/sherpa-onnx-1.13.8-osx/`, and the files from the same
+  place in the Python package are `include/sherpa-onnx/c-api/c-api.h`, `lib/libsherpa-onnx-c-api.dylib` and
+  `lib/libonnxruntime.dylib`. Configure again after copying them (`cmake -S . -B build`). The first run
+  with a microphone makes macOS ask whether the terminal may use it; a refusal is reported at start and is
+  changed in System Settings > Privacy & Security > Microphone.
 - **Two forms of one transcript.** The classifier gets `SpeechTextForClassifier(transcript)`:
   lowercased, the final `.!?` stripped, punctuation inside kept, as in training. `BotBrain::Decide`
   gets the transcript itself: the regex slots and the place matcher read it as the recognizer printed it.
 - **Push-to-talk.** The microphone is open while `--voice` runs, so a clip starts 0.2 s before the key
   went down and ends 0.15 s after it came up; nothing else is kept. The key press is read from the
   console (it does nothing while another window has the keyboard). A press shorter than 0.2 s is ignored.
+- **The talk key on macOS.** A terminal reports that a key went down and never that it came up. The
+  release is read from the keyboard state (`CGEventSourceKeyState`), as `GetAsyncKeyState` gives it on
+  Windows. Where macOS does not show that state to the process (a remote terminal, secure keyboard entry),
+  the spaces the held key goes on typing stand in for it: the clip ends when they stop, about 0.3 s after
+  the release, a press cannot be told from a tap, and the chat says once that it works this way. The
+  delays follow the keyboard's repeat settings.
 - **One ONNX Runtime per process, and the transcripts depend on which.** `sherpa-onnx-c-api.dll` and the
   engine both import `onnxruntime.dll`, and Windows gives a process one module of that name.
   sherpa-onnx 1.13.8 is built with ONNX Runtime 1.28.2. On that runtime the C++ transcripts equal the
@@ -155,6 +168,13 @@ build\Release\coop_cli.exe --speech-text-tests ..\..\scripts\coop\stt\norm_tests
   too: every check of the table below passes on it as well (golden: 1750/1750, 1259/1259 and 762/762,
   within 3.1e-6; 39.7 ms per line). Without `lib/onnxruntime.dll` in the sherpa-onnx directory the
   build keeps 1.30.0 and says so.
+- **On macOS the process holds both runtimes.** A library is loaded there by its path, so
+  `libsherpa-onnx-c-api.dylib` takes the `libonnxruntime.dylib` next to it (1.28.2, as on Windows) and the
+  bot stays on the engine's 1.30.0: the bot's checks do not depend on whether speech is built in. The
+  engine's directory also holds a file called `libonnxruntime.dylib`, so the build puts sherpa-onnx's
+  directory first in the search path, and the line `speech: ... on ONNX Runtime 1.28.2` prints the runtime
+  the recognizer was really given. Forced onto 1.30.0, the recognizer heard 21 of 482 clips differently
+  on the Mac as well (the bot's pick changed on 2).
 - **Checked** (2026-10-09, Windows, bot v51, 2 threads):
   - transcripts against the Python package's on every voiced set of lines: 3010 clips (the table), all
     equal on 1.28.2 (the seed-command clips were compared on 1.30.0 only: 2991 of 3204 equal there);
@@ -166,16 +186,35 @@ build\Release\coop_cli.exe --speech-text-tests ..\..\scripts\coop\stt\norm_tests
   - **The push-to-talk loop and real speech: the owner's tests only** (2026-10-09: 43 utterances with
     bot v51, then bot v52; recognizer and chat worked; what the bots misread led to v52 and v53). Every number above is on
     synthesized voices.
+- **Checked on macOS** (2026-10-09, MacBook Pro M5 Pro, macOS 26.5, Terminal, bot v53, 2 threads):
+  - transcripts against the Python package's on the same Mac: 482 clips, the 422 + 60 lines of
+    `lines.json` and `lines_v53.json` read by four voices of macOS (`say`), all equal
+    (`scripts/coop/stt/cpp_stt_parity_macos.log`). The clips of the Windows study are not on the Mac, so
+    **the Mac's transcripts have not been compared with the ones the bots were trained on**: copy a
+    `wav_*` directory over and run `--stt-tests` with its `out_parakeet-*.json`;
+  - `SpeechTextForClassifier`: 4183/4183; the v53, v3 and v2 bots: every check of the table below;
+  - the microphone: opens the default device after macOS's question, 2.00 s asked gives 2.40 s, the
+    room's noise at -58 dBFS, and a sentence played from the laptop's own speakers comes back word for word;
+  - the chat in a pseudo-terminal, SPACE "held" the way a terminal shows it (its auto-repeat) while the
+    speakers talk: three orders heard and carried out; typed lines, backspace, arrow keys, Esc, Ctrl-C and
+    Ctrl-D, with the terminal's settings back afterwards; the capture under the thread and address sanitizers.
+  - **Not checked: a finger on the key.** The keyboard state can only be read with a real key down, so the
+    first way of the two above waits for the owner's test.
 - **Cost.** About 0.69 GB of RAM for the recognizer and 2.2 s to load it; a clip of 2.5-3 s is
   recognized in about 230 ms on 2 threads (p95 about 330 ms), then the bot's 40 ms. Waiting costs nothing:
   0.000 cores with the bot loaded and 0.006 with the recognizer loaded and the microphone open.
-- **Not there yet.** A microphone on macOS / Linux (`--stt-wav` works wherever sherpa-onnx is found:
-  put the platform's files under `third_party/sherpa-onnx-1.13.8-osx` or `-linux`); a choice of input
+  On the M5 Pro: 1.76 GB for the recognizer (the Python package takes about as much there; the bot takes 2.3 GB)
+  and about 1 s to load it; a clip of 2.6 s in 88 ms (p95 135 ms), then the bot's 13 ms; 0.007 cores waiting.
+- **Not there yet.** A microphone on Linux (`--stt-wav` works wherever sherpa-onnx is found: put the
+  platform's files under `third_party/sherpa-onnx-1.13.8-linux`); a choice of input
   device and of the talk key; noise handling; hot words for the game's jargon.
 
 ## What was checked
 
-On Windows. The v2, v31, v3 and v1 columns are rule set v3 (2026-10-04) and were re-run unchanged with
+On Windows (the v53, v3 and v2 columns were also run on macOS arm64 on 2026-10-09, in the build with
+speech-to-text: the same counts, except that libc++'s `std::regex` compares the regex slots on every
+line; golden within 1.5e-6, 1.8e-6 and 2.9e-6, and there with the v3 bot's weights: 1062/1062 and
+77/77). The v2, v31, v3 and v1 columns are rule set v3 (2026-10-04) and were re-run unchanged with
 the engine that also knows rule set v4 (2026-10-09: the same numbers, their files untouched). The v51,
 v52 and v53 columns are rule set v4 (2026-10-09; v51's place records were written again after the rule for
 "cover my front" was added). The v3 bot's weights exist only on the Mac, so its two checks

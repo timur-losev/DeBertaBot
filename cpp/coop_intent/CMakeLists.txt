@@ -84,6 +84,9 @@ endif()
 # 1.30.0 they differ on 3% of clean clips and 20-30% of accented ones (README.md, "Speech-to-text"). The
 # bots were trained on the Python transcripts, so with speech-to-text the exe gets sherpa-onnx's runtime,
 # and the engine runs the bot on it too (ort_backend.cpp asks the loaded runtime for its own API level).
+#
+# macOS loads a library by its path, not by its name, so there the process holds both: sherpa-onnx's library
+# takes the libonnxruntime.dylib next to it (the same 1.28.2), and the bot stays on the engine's runtime.
 if(WIN32)
   set(SHERPA_NAME "sherpa-onnx-1.13.8-win-x64")
   set(SHERPA_LIB "lib/sherpa-onnx-c-api.lib")
@@ -114,6 +117,23 @@ if(EXISTS "${SHERPA_DIR}/include/sherpa-onnx/c-api/c-api.h" AND EXISTS "${SHERPA
       message(STATUS "speech-to-text: coop_cli runs on sherpa-onnx's ONNX Runtime (${SHERPA_DIR}/lib/onnxruntime.dll)")
     else()
       message(STATUS "speech-to-text: no onnxruntime.dll in ${SHERPA_DIR}/lib, the recognizer runs on the engine's ONNX Runtime: its transcripts differ from the Python package's")
+    endif()
+  elseif(APPLE)
+    # the microphone of coop_cli --voice: an AudioQueue, AVFoundation for the permission macOS asks the user
+    # for, and CoreGraphics for the state of the talk key (a terminal reports no key-up)
+    enable_language(OBJCXX)
+    target_sources(coop_cli PRIVATE tools/mic_capture_mac.mm)
+    set_source_files_properties(tools/mic_capture_mac.mm PROPERTIES COMPILE_OPTIONS "-fobjc-arc")
+    set_target_properties(coop_cli PROPERTIES OBJCXX_STANDARD 17 OBJCXX_STANDARD_REQUIRED ON)
+    target_link_libraries(coop_cli PRIVATE "-framework AudioToolbox" "-framework CoreAudio" "-framework AVFoundation"
+                          "-framework Foundation" "-framework CoreGraphics" "-framework CoreFoundation")
+    # sherpa-onnx's directory first: the engine's also holds a file called libonnxruntime.dylib (1.30.0), and
+    # sherpa-onnx's library must not be given that one
+    set_property(TARGET coop_cli PROPERTY BUILD_RPATH "${SHERPA_DIR}/lib" "${ORT_DIR}/lib")
+    if(EXISTS "${SHERPA_DIR}/lib/libonnxruntime.dylib")
+      message(STATUS "speech-to-text: the recognizer runs on sherpa-onnx's ONNX Runtime (${SHERPA_DIR}/lib/libonnxruntime.dylib), the bot on the engine's")
+    else()
+      message(STATUS "speech-to-text: no libonnxruntime.dylib in ${SHERPA_DIR}/lib, the recognizer runs on the engine's ONNX Runtime: its transcripts differ from the Python package's")
     endif()
   else()
     set_property(TARGET coop_cli APPEND PROPERTY BUILD_RPATH "${SHERPA_DIR}/lib")
