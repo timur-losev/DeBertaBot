@@ -975,6 +975,189 @@ needed; "go inside" / "get inside" is just walking or climbing in.
   no longer queued.
 - **The developer's choices, unconfirmed:** three stance labels; "roger" / "copy" as NONE; "up to you" as MAYBE;
   a bare "okay" as YES; "stay at my pin" as HOLD_POSITION with the pin as its place.
+- **Trained on the work machine too (2026-10-10)**, as the teacher of the distillation study below: the three
+  final members (551 s each on the RTX 4090), gate and threshold from the fold teachers' out-of-fold run (family,
+  0.68; [ensemble_bot_v54.py](scripts/coop/stt/ensemble_bot_v54.py)). On the owner's spoken lines: 37/38, 3/3 and
+  **19/19 on the lines of his v53 test** (7/19 live then); on the 54-line probe 53/54
+  ([owner_probe_v54_work.log](scripts/coop/owner_probe_v54_work.log)). The MacBook build stays the one that counts.
+
+## Brains: the world around the classifier (2026-10-10)
+
+The owner asked for a smarter bot at the same CPU cost, with UE5 not connected yet and any training or
+experiment allowed. The classifier already answers *what*; the additions answer *where* and *whether*, and the
+study asks what the ensemble's accuracy costs in milliseconds. Everything is checked line by line between
+Python and C++ as before.
+
+**Tier 0: the world, at no model cost** ([world.py](scripts/coop/world.py),
+[world.cpp](cpp/coop_intent/src/world.cpp); `Planner` over `BotBrain`). The game hands over a world state before
+every line: entities tagged with the place vocabulary's ids, bearing in the player's view, distance, elevation,
+tags; the player's pin; what the player looks at; the bot's stance and items; whether the player is down.
+Without UE5 it is a file ([world_example.json](scripts/coop/world_example.json); `coop_cli --world FILE`).
+- *Grounding.* "The door on the left" is the door in the left sector; "stay at my pin" the pin; "check that
+  window" the window under the crosshair; "the other door" not the last one; "there" the gaze, else the last
+  place settled. Two doors at 8 and 11 m are ambiguous (the nearest wins only when the next is 1.5x as far);
+  "the back door" is always ambiguous; nothing of the kind in sight is missing.
+- *The question.* On an ambiguous or missing place the bot asks instead of acting -- "Which door? The one
+  ahead, 8 m?" -- and the v54 answers settle it: YES takes it, NO offers the next, MAYBE / DONT_KNOW takes the
+  nearest; a place that narrows the candidates to one settles it too ("the left one"), even under the
+  threshold. Any other order drops the question; an order "on my go" is asked about first and queued with
+  its entity.
+- *Memory.* The last entity, the last order, the question, the queued order's entity; the bot pins where it goes.
+- *Priors.* The world lowers what it makes unlikely before the gate: a bot already crouched, no window in
+  sight, no bomb, the player up, no question pending -- x0.75 each, never renormalized. Simulated on the v54
+  teachers' out-of-fold probabilities ([priors_v54.py](scripts/coop/stt/priors_v54.py), 810 lines x 3
+  conditions): a world consistent with the truth gains 0.5-0.6 criterion points (2-4 picks change); a world
+  drawn blind costs 0.1-0.4 at x0.75 and 4-5 at the x0.4-x0.7 first tried. The priors are a bet on the game's
+  state being right, so they are mild and a game-side knob.
+- *Checked.* 600 random worlds and conversations per bot through the Python planner, replayed in C++
+  (`coop_cli --world-tests`): v53 5317/5317, the v54 label set 5198/5198, plus 11 worlds to refuse or accept.
+
+**Distillation: one small model instead of three base models** ([distill_v54.py](scripts/coop/stt/distill_v54.py)).
+The architecture cost on one CPU thread, one line, ONNX Runtime: deberta-v3-xsmall 10.8 ms, small 15.2 ms,
+base 30.0 ms (the ensemble: three base, ~40 ms on three cores). Three base teachers per fold on one fixed
+5-fold split (their out-of-fold average is the baseline on the same lines); xsmall and small students trained
+on the same lines with the teachers' soft probabilities (T=2, alpha=0.5), and for comparison without
+distillation and with 24 epochs; the final students distilled from the three final v54 members. Results
+([kd54_score.log](scripts/coop/stt/kd54_score.log); held-out r6 and cs lines, gate and threshold fitted per system
+on the training voices; near / wrong family / criterion):
+
+| system (one seed unless said) | typed | VCTK B, unseen speakers | CPU, one thread |
+|---|---|---|---|
+| teacher ensemble, 3 x base (the v54 bot) | 93.6 / 2.2% / 89.1 | 79.8 / 4.3% / 71.1 | 3 x 30 ms (one core each) |
+| one base teacher, no distillation | 90.9 / 1.6% / 87.7 | 75.1 / 4.8% / 65.4 | 30 ms |
+| base student distilled from the ensemble | 90.6 / 2.3% / 85.9 | 75.7 / 4.6% / 66.5 | 30 ms |
+| small, no distillation | 86.7 / 2.8% / 81.0 | 74.1 / 5.4% / 63.2 | 15 ms |
+| small, distilled | 86.3 / 2.6% / 81.1 | 74.0 / 5.6% / 62.8 | 15 ms |
+| xsmall, no distillation | 83.8 / 2.8% / 78.1 | 70.5 / 5.2% / 60.1 | 11 ms |
+| xsmall, distilled | 81.7 / 3.1% / 75.6 | 67.9 / 5.4% / 57.0 | 11 ms |
+| xsmall, distilled, 24 epochs | 86.7 / 3.7% / 79.3 | 75.6 / 6.0% / 63.5 | 11 ms |
+| 3 x small, distilled, averaged | 88.5 / 2.6% / 83.3 | 74.8 / 4.2% / 66.4 | 3 x 15 ms |
+| 3 x xsmall, distilled, averaged | 88.9 / 3.8% / 81.2 | 76.5 / 6.8% / 63.0 | 3 x 11 ms |
+
+The CPU column is the architecture in ONNX Runtime from Python; in the engine, one thread per model, nothing else
+running: the ensemble 39.3 ms (2.3 GB), base 28.4 ms (0.8 GB), small 14.1 ms (0.6 GB; 8.0 ms and 0.2 GB as
+int8), xsmall 9.8 ms (0.35 GB). The small models want more epochs (xsmall: 24 epochs beat 12 by 3-6 points) and
+still end 10 points under base.
+
+What it says: **the soft targets do not carry the ensemble's edge** -- a base student distilled from the ensemble
+is no better than a plain base, and the smaller students are no better than their undistilled twins (xsmall is
+worse). The teachers' probabilities on their own training lines are nearly one-hot, so there is little to
+distil; the ensemble's +3 near points over one base come from averaging three models, not from knowledge one
+model could absorb this way. Size is what costs: one base loses 1.4 criterion points typed and 5.7 on unseen
+speakers for a third of the CPU; small loses 8 on both for a sixth. Three small models averaged (the same
+three-core shape as the bot, 15 ms each) get back to one base's level on unseen speakers (66.4 vs 65.4) but not
+typed (83.3 vs 87.7); three xsmall models do not. **For "the same brain at less CPU" the honest choices are the
+ensemble as it is (40 ms on three cores) or one base model (30 ms on one core, -1.4 / -5.7 criterion); nothing
+smaller keeps the accuracy with this recipe.** The 24-epoch xsmall is in `kd54_score.log`.
+
+The students as bots ([student_bot_v54.py](scripts/coop/stt/student_bot_v54.py); `models/coop-deberta-v3-{xsmall,small,base}-kd-v54/`,
+one seed each, the C++ engine equal to Python on all seven checks for each): on the owner's spoken lines xsmall and
+small get 37/38, 3/3 and 18/19 (the ensemble 19/19) and on the 54-line probe 48 and 50 of 54 against 53, acting on
+a wrong order 3 and 2 times against 0 ([owner_probe_students_v54.log](scripts/coop/owner_probe_students_v54.log)).
+Their fitted thresholds sit at 0.96-0.98 (over-confident heads), clamped to 0.88 for the test generator.
+**Int8**, dynamic quantization measured on the 2743 golden lines: it breaks base (27 of 2743 keep their argmax, as it
+broke v1) and breaks xsmall unless only the MatMul weights are quantized (2739/2743 then, with single lines
+flipping hard: max |dp| 0.76); small survives both ways (2738 and 2735 of 2743). Any int8 bot would need its
+threshold refitted on quantized probabilities; none is proposed. Latencies in `kd54_after.log`.
+
+**A memory of commands** ([knn_v54.py](scripts/coop/stt/knn_v54.py)): the student's own pooled vector as an
+embedding, cosine nearest neighbours among the fold's training lines (or among the seed commands alone),
+abstaining under a similarity fitted like the head's threshold, against the softmax head on the same held-out
+lines. On the xsmall student the gated 5-neighbour vote beats its own head (typed 77.8 vs 75.6 criterion, unseen
+speakers 60.4 vs 57.0); on small it is level (78.9 vs 81.1 typed, 62.3 vs 62.8 unseen speakers). Without the
+gate the neighbours never abstain and wrong-family actions reach 10-20%: the gate is the whole point. **A new
+command known only by its seeds** (the line's intent is removed from everything but the seed commands, which
+stay as the player's defined phrases) is recognised from a new wording on 82-87% of typed lines and 70-74% of
+unseen-speaker transcripts -- what a player-defined command at run time would get without retraining. The
+engine needs one more ONNX output (the pooled vector) and a table of vectors; not built yet.
+
+**A small decoder for the long tail: rejected by the numbers** ([decoder_v54.py](scripts/coop/stt/decoder_v54.py)).
+Qwen2.5-1.5B-Instruct with the 41 intents and two seeds each in its prompt, the intent chosen by the
+log-probability of its name (no generation; the system prompt's KV cache computed once): on the 139 VCTK B
+lines under the v54 threshold, 24.5 near and 71.2% wrong family, against 18.0 / 0% for asking again and 39.6 /
+46.0% for the classifier's own pick with the gate off. 248 ms a line on the GPU, 5.4 s on the CPU (fp32, 4
+threads). Not in the engine.
+
+**Not done, with the reason.** Compound orders ("... then ..."): 11 of the 1215 lines, nine of them "wait for my
+call, then smoke the door" labelled as the second half, which a naive splitter would turn into WAIT. A context
+segment in the encoder's input and a token-tagging head: the priors and the grounding cover the same cases
+without retraining, and a tagging head trained on the rules' own spans would only learn the rules.
+
+## In a game: Lyra, UE 5.8 (2026-10-10)
+
+The bot runs in a real game project (`J:\UE4\Projects\LyraStarterGame58`, `Source/LyraGame/CoopBot/`, Perforce).
+The owner's constraint shaped it: **speech and command recognition happen on the client, the tool AI is server
+logic, and the bot replicates.**
+
+- **Client:** hold T to talk, the middle mouse button for the pin. The component on the player controller builds
+  the world for the planner (level markers with the vocabulary's words, the pin, what the crosshair is on, the
+  bot's stance), sends each line to `coop_cli --serve` next to the game, and turns the reply into one order:
+  an intent, a point, an actor, a direction with the view it is relative to.
+- **Server:** a new AI controller, with no behaviour tree: perception (sight, hearing, damage), standing orders
+  (move / look / fire / stance) and tools that carry them out through Lyra's own navigation and weapon abilities.
+  It summons the bot onto the player's team, checks every order, and sends back short callouts ("Contact,
+  left!", "In position.", "Clear.").
+- **What Lyra has no tool for** (smoke, flash, drone, rope, bomb) the bot refuses in words; breach, prone and
+  open are approximated and it says so.
+- **Checked** with a dedicated server process and a scripted client process, no graphics: every order group on
+  a demo map with marked doors, windows, stairs and a roof; the planner's question answered with "no", "yes" and
+  "the main one"; a fight against stock bots; death and respawn; the talk key with the real microphone. About
+  60 ms from a typed line to the order on the server's log (the classifier's 40 to 50, the pipes and the RPC).
+- **Not measured there:** a human talking in a match. The accuracy numbers above are still the only ones.
+
+### A map nobody has marked
+
+Markers for doors, windows and floors come later; first the bot had to take every line that needs none. What
+is left on such a map is the pin, the point the crosshair is on, a direction, "here", and the character under
+the crosshair. 546 such lines were put through the bot and the planner in three bare worlds (the crosshair on
+something, with a pin, on nothing), and what came out was read line by line.
+
+**What was wrong, and is fixed.**
+
+- "Stay here" and "hold here" sent the bot to the crosshair's point. Here is where the speaker is.
+- "That door" with the crosshair on a door was answered "I see no door". No door is marked, so what is pointed
+  at is the door.
+- The bot's "Where?" could not be answered: "over there" was a new order to move, "there" was not understood.
+  It is the place of the order the bot asked about.
+- "Go upstairs" and "get to the roof" walked the bot 15 m ahead in silence. It says it cannot find the place.
+- "Go there on my go": at "go" the bot went where the player looked then. It goes where they pointed.
+- An order with no place ("frag out", "check it") used a point 15 m ahead of the speaker. It means what the
+  speaker is looking at.
+- "Shoot him" with the crosshair on an enemy was a plain "open fire". That enemy is the target.
+- The grenade. Lyra's ability aims from the player's camera; a bot has none, and the grenade left along one
+  world axis whatever the bot looked at. Thrown at a wall 11 m away it came back and killed the bot. The bot now
+  gives its grenade the arc to the mark, refuses a throw that is too near, too far or blocked, and moves out of
+  the blast of a grenade a wall sends back. On open floor it goes off 0.6 to 0.9 m from the mark.
+
+**What is left** is the classifier's, not the game's. On about 26 of the 546 lines bot v54 asks to say again
+("wait here", "stay close", "let's move", "go take a look", "get behind me", "take point", "advance", "back
+up", "a bit to the left", ...); seven of them sit at two of the three ensemble members agreeing, just under the
+0.68 threshold. It misreads a few: "keep going" as hold position, "eyes on me" as cover me. Those are lines for
+the next bot's training set.
+
+**Checked** with the same two processes, the demo map with its markers hidden from the brain, and the real
+arena with four stock bots: seven scripts (`Source/LyraGame/CoopBot/Tests/E2E/unmarked_*.txt`), the planner's
+parity with its C++ twin on 5360 steps, 65 automation tests of the project.
+
+### A short context (2026-10-11)
+
+The owner's first live voice test showed the bot literal: with a pin out, "Shoot, shoot, shoot" did nothing
+because the line named no place; "Shoot here" meant the speaker's own spot; "No, here, on my pin." and "On my
+pin," after an order were not read as being about that order. Two research reports (`reports/`) came to the same
+answer for both halves of the question: no model, a small state and rules. Done so:
+
+- **One frame** of the order taken last, alive while the bot is busy with it and 8 seconds after. The pin and the
+  crosshair are world state, not memory.
+- **A place not said** is the standing pin for orders that need one (fire, move, check, push, flank); with the
+  crosshair on an enemy an order to fire is that enemy. The bot says what it assumed.
+- **A correction** ("no" and a place), **a repeat** ("again"), **a fragment** (a place and no action) are the
+  previous order, changed or not; a bare "no" stops the bot.
+- **Safety:** a grenade never goes to a guessed place; an assumed place gives way to an enemy the bot sees.
+
+Checked: the planner's parity with its C++ twin on 5338 steps (the owner's lines are a scripted scenario), the
+seven engine checks, and the lines themselves end to end in the game (`Tests/E2E/context.txt`). Not done from
+the reports' plan: training the classifier on recognition confusions, the bot's own lines as context ("Go find
+ammo."), a classifier with context in its input, anything with a language model.
 
 ## Recommendation
 

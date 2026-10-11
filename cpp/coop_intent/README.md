@@ -46,9 +46,19 @@ Other bots run with `--model-dir`:
   place records carry a pointer ("stay at my pin" -> `@pin`, "check that room" -> `@this`), and "on my
   mark" no longer queues the order for a go. The column "v53 bot" below; 39.2 ms per line on 3 cores;
 - `../../models/coop-deberta-v3-ens3-v54/cpp`: v54, 41 intents (COME_BACK, CROUCH, PRONE, STAND_UP and the
-  answers YES / NO / MAYBE / DONT_KNOW). **Not trained yet**: the owner trains it on the MacBook
-  (`HANDOFF.md`, section 5, step 13). The engine already has what it needs: the pointer and the answer
-  action.
+  answers YES / NO / MAYBE / DONT_KNOW; family gate, 0.68). Trained on the work machine on 2026-10-10 as the
+  teacher of the distillation study (`scripts/coop/stt/ensemble_bot_v54.py`: the threshold from the fold
+  teachers' out-of-fold run); the MacBook build the owner runs (`HANDOFF.md`, section 5, step 13) replaces its
+  `bot_config.json`. Checked: tokenizer 10912/10912, places 50869/50869 (13982 with a pointer), gates 6300/6300,
+  decisions 244/244 (the answer branch on a real bot), golden 2743/2743 (1.8e-6), dialogue 77/77, planner
+  5198/5198; 39.3 ms per line on 3 cores. On the owner's lines of his v53 test: 19/19 (7/19 live with v53);
+- `../../models/coop-deberta-v3-{base,small,xsmall}-kd-v54/cpp`: one-model students of v54 distilled from the
+  ensemble (`scripts/coop/stt/distill_v54.py`, `student_bot_v54.py`; family gate, 0.88 clamped from a fitted
+  0.96-0.98), the same seven checks equal for each. On one core: base 28.4 ms (808 MB), small 14.1 ms (618 MB),
+  xsmall 9.8 ms (355 MB); next to each a `cpp_int8_all` / `cpp_int8_per_channel` / `cpp_uint8_matmul_only`
+  directory with the dynamically quantized model (small int8: 8.0 ms, 216 MB, 2738/2743 golden argmax; base and
+  xsmall break under int8 except xsmall MatMul-only). What they cost in accuracy is in `COOP-BOT.md`, "Brains":
+  the ensemble stays the bot; one base is the cheap option (-1.4 / -5.7 criterion typed / unseen speakers).
 
 **The matcher follows the vocabulary a bot was exported with.** A config whose word lists include the
 `pin_*` and `point_*` lists runs rule set v5: a target may carry a pointer, `pin` (the player's 3D marker:
@@ -67,14 +77,18 @@ config holds an older vocabulary or older regexes.
 | `include/coop_intent/tokenizer.h`, `src/tokenizer.cpp` | the HF DebertaV2 tokenizer: added tokens, normalizer, Metaspace, Unigram/Viterbi | as is |
 | `include/coop_intent/bot_brain.h`, `src/bot_brain.cpp` | `coop_bot.py` `respond()`: top or family gate, threshold, negation guard, GO_NOW/WAIT, HOLD_FIRE (a bot that has the label: it acts at once and keeps the queued order; with the signal slot it queues OPEN_FIRE), the answers (a bot whose config lists `answer_intents`: YES / NO / MAYBE / DONT_KNOW are the action `answer` -- reported, never queued, the queued order left alone), queued order, regex slots | as is, or swap `SlotPatterns` for `FRegexPattern` |
 | `include/coop_intent/locations.h`, `src/locations.cpp` | `LocationMatcher`: the map places in a line (object, side or colour, floor, direction, and whether the line points at it with the pin or with this / that / here / there), whose place each is, which one the bot acts on; a twin of `scripts/coop/locations.py`, no regex and no Unicode tables | as is |
+| `include/coop_intent/world.h`, `src/world.cpp` | `Planner` over `BotBrain` (see "The world"): the place record grounded against the game's world state (which door, which pin, where the player looks), the conversation's memory, the question the bot asks when a place is ambiguous or missing and the yes / no / place that settles it, the priors the world puts on the probabilities; a twin of `scripts/coop/world.py` | as is: the game fills `WorldState` from its perception and reads `Order` |
 | `include/coop_intent/intent_model.h`, `src/intent_model.cpp` | `ILogitsBackend`, `EnsembleBackend` (averages the members' probabilities, one thread each or in turn), softmax, top-k | as is |
 | `src/ort_backend.cpp` | `OrtBackend`: one model in ONNX Runtime (C++ API; it asks the loaded runtime for that runtime's own API level, so the 1.30 build also runs on an older `onnxruntime.dll`) | replaced by an NNE backend |
 | `include/coop_intent/speech.h`, `src/speech_text.cpp` | `SpeechTextForClassifier`: the form of a transcript the voice-chain bots were trained on | as is |
 | `src/sherpa_speech.cpp` | `SpeechRecognizer`: Parakeet TDT through sherpa-onnx's C API (optional, see "Speech-to-text") | with sherpa-onnx as a third-party library |
 | `tools/mic_capture.h`, `tools/mic_capture_win.cpp` | the microphone of `coop_cli --voice` (Windows, waveIn) | no: the game has its own capture |
-| `tools/coop_cli.cpp` | terminal chat and the checks | no |
+| `tools/coop_cli.cpp` | terminal chat, the checks, and the bot as a service for a game (`--serve`) | as the game's helper process |
+| `tools/tts.h`, `tools/tts_win.cpp` | the bot's voice for `--serve --tts`: the system synthesizer (Windows SAPI, the first English voice) | with the helper process |
+| `tools/deploy_brain.ps1` | copies the exe, its DLLs, one bot and the speech model into one folder a game starts the service from | no |
 | `tools/gen_unicode_tables.py` | writes `unicode_tables.inc` from the HF `tokenizers` library itself | no |
 | `tools/gen_tests.py` | writes the test files (tokenizer, places, gates, decisions, dialogue) from the Python bot | no |
+| `tools/gen_world_tests.py` | writes `world_tests.jsonl` (worlds and conversations through the Python planner) | no |
 
 `scripts/coop/export_cpp.py <bot dir>` writes the model files to `<bot dir>/cpp/`. For the default
 bot that is `models/coop-deberta-v3-ens3-v31/cpp/`:
@@ -103,11 +117,16 @@ build\Release\coop_cli.exe --location-tests   # the place records vs locations.p
 build\Release\coop_cli.exe --dialogue         # C++ vs coop_bot.Bot on a 77-line conversation
 build\Release\coop_cli.exe --gate-tests       # both gates on 1666 probability rows (no model)
 build\Release\coop_cli.exe --decide-tests     # every branch of the bot's decision, both gates (no model)
+build\Release\coop_cli.exe --world-tests      # the planner on 600 worlds and conversations vs world.py (no model)
 build\Release\coop_cli.exe --bench --threads 1
 build\Release\coop_cli.exe --tokenize "hold the other angle"
+build\Release\coop_cli.exe --world ..\..\scripts\coop\world_example.json   # chat with a world state loaded
+build\Release\coop_cli.exe --serve --no-spin --threads 1 --tts   # the bot as a service: JSON lines on stdin / stdout
 ```
 
 - `--model-dir` picks another exported bot.
+- `--world FILE` loads a world state for the chat (`/world FILE` in the chat does the same); without one the
+  planner runs on an empty world and asks "where?" for every place it cannot ground.
 - `--threads` sets ONNX Runtime's intra-op threads per model.
 - `--sequential` runs an ensemble's members one after another instead of one thread each.
 - `--no-spin` lets idle worker threads sleep.
@@ -116,6 +135,114 @@ build\Release\coop_cli.exe --tokenize "hold the other angle"
 releases) and `nlohmann/json.hpp` (the CLI only). The build copies `onnxruntime.dll` next to the
 exe, because Windows ships an older `onnxruntime.dll` in System32. With speech-to-text the DLL next
 to the exe is sherpa-onnx's 1.28.2 instead (next section); the chat's first lines print which one runs.
+
+## The world (the brain's tier 0, 2026-10-10)
+
+The classifier says *what*; `Planner` (`world.h`) says *where* and *whether*, from a world state the game hands
+over before every line (`WorldState`: entities with the vocabulary's object / qualifier / zone ids, bearing in
+the player's view, distance, elevation, tags; the player's pin; what the player looks at; the bot's stance and
+items; whether the player is down). Nothing here touches the model; a step costs microseconds.
+
+- **Grounding.** Each target of the place record becomes an entity: "the door on the left" is the door in the
+  left sector, "stay at my pin" the pin, "check that window" the window under the crosshair, "the other door"
+  not the last one, "there" the gaze or else the last place settled. One candidate: resolved. Two doors at
+  8 and 11 m: *ambiguous* (one is resolved only when the next is 1.5 times as far). "The back door" (an
+  unknown modifier): always ambiguous, never the nearest. Nothing of the kind in sight: *missing*.
+- **The question.** On an ambiguous or missing primary target the bot asks instead of acting: "Which door?
+  The one ahead, 8 m?". YES takes it, NO offers the next, MAYBE / DONT_KNOW takes the nearest, a place
+  that narrows the candidates to one settles it ("the left one", "the north door") -- also when the line is
+  under the threshold. Any other order drops the question. An order given "on my go" that is ambiguous is
+  asked about first and queued with its entity once settled.
+- **Memory.** The last entity settled, the last order, the pending question, the queued order's entity; the
+  bot's own pin is set on the entity of every order it takes.
+- **A world without named places** (a map nobody has marked: the pin, the crosshair, directions and the two
+  people are all there is). The rules are about the words of the line, so they live here and not in the game:
+  - *"Here" is where the speaker is*, not what the crosshair is on. A lone this-pointer in a line with "here" and
+    no far word ("there", "that", "those", "looking", ...) is grounded `via: "here"` with no entity. "This ..."
+    without a far word is near too: the order says `near`, and the game decides ("hold this spot" stays, "check
+    this" goes to the crosshair).
+  - *A named place that is pointed at.* "That door" where no door is marked is the untyped thing the crosshair
+    is on; "the door at my pin" is the pin. Without a pointer the bot asks: "I see no door. Where?".
+  - *A floor it cannot find.* A zone with no place on it ("go upstairs", "get to the roof") is missing, not
+    resolved: "I can't find the way up. Where?".
+  - *"Where?" is answered by pointing*: "there", "over there", "that one", "at my pin", "on the left". The line
+    is the place of the order the bot asked about, also where the classifier reads another order into it ("over
+    there" alone looks like MOVE_TO): it is short and starts with a place word (`Elliptical`). "Yes" or "go"
+    settles it too, once the place the order named is there (the pin was put, the crosshair is on something).
+  - *A queued order keeps its place*, "here" included, whatever the crosshair is on at "go".
+- **Priors.** Multipliers on the probabilities before the gate (`DefaultPriors()`, the game can pass its own):
+  a bot already crouched (`CROUCH`), no window in sight (`VAULT_WINDOW`), no door (`OPEN`), no bomb on the
+  bot (`PLANT`), no bomb in sight (`DEFUSE`), the player up (`REVIVE_ME`), no question pending (the four
+  answers) -- x0.75 each. They only lower, never renormalize: a prior cannot lift another intent over the
+  threshold. Simulated on the v54 teachers' out-of-fold probabilities (`scripts/coop/stt/priors_v54.py`,
+  810 lines): a world consistent with the truth gains 0.5 criterion points and changes 2-4 picks; a world
+  drawn blind (the game's state wrong) costs 0.1-0.4 points at x0.75 and 4-5 points at the x0.4 ... x0.7 the
+  first table had, which is why 0.75 is the default.
+- **A short context** (2026-10-11). One frame of the order taken last (intent, place, time) and four readings of
+  the next line against it, all rules:
+  - *a place not said*: "Shoot!", "move up", "check it" take the standing pin (`via: "pin_default"`, and the bot
+    says "Open fire, on your pin."); an order to fire with the crosshair on an enemy (an entity tagged `enemy`)
+    takes none, the game has the enemy; the same order again within the window takes the same place; a grenade
+    never takes a guessed place;
+  - *"here" by the verb*: the speaker for "come here", the crosshair's point for "shoot here", "check here";
+  - *a correction*: a line that starts with "no" and names a place is the previous order at that place; a bare
+    "no" stops (`action: "negated"`);
+  - *a repeat*: "again", "once more" give the previous order as it was;
+  - *a fragment*: a place and no action right after an order ("on my pin", "over there") is that order's new
+    place; so is a line under the threshold that ends in "there" or "here" ("Should there." heard for "Shoot
+    there").
+  The frame lives while the game says the bot is busy and `CONTEXT_SECONDS` (8) after. The world state carries
+  `time` and `bot.busy`; a game that sends no time gets no context.
+- **Checked:** `gen_world_tests.py` writes 600 random worlds (entities with twins at similar distances, pins,
+  gazes, stances) and conversations of orders, answers and narrowing places through the Python planner;
+  `coop_cli --world-tests` compares action, words, grounding, order, question, queue and memory step by step.
+  With the rules for a world without named places and for the short context (the world moves on before every
+  line: time, the pin, the crosshair, an enemy under it; the lines include bare orders, repeats, corrections,
+  fragments and misheard pointers): 5338/5338 on bot v54 and on its three distilled students, 5343/5343 on the
+  v53 bot (33 labels, no answer intents); 12 worlds to refuse or accept. The three scripted checks of `world.py`
+  (`DEV`, `DEV_BARE` for the unmarked world, `DEV_TALK` for the owner's lines of the first live test) are the
+  first three scenarios of the file.
+
+What the game provides and gets back is in `world.h`; the rules and their reasons are in `scripts/coop/world.py`.
+
+## The bot as a service for a game (`--serve`, 2026-10-10)
+
+How the bot lives in a game today: the game's CLIENT starts `coop_cli --serve` and talks to it through its two
+pipes, one JSON object per line each way. Speech and command recognition are the client's business; what the
+game then sends to its server is an order, not this process's output.
+
+```
+{"cmd":"text","id":7,"text":"hold the door","world":{...}}     a typed line and the world it is said in
+{"cmd":"ptt_down"}  ...  {"cmd":"ptt_up","id":8,"world":{...}}  the talk key: the clip, then recognize, classify, plan
+{"cmd":"wav","id":9,"path":"clip.wav"}   {"cmd":"world","world":{...}}   {"cmd":"say","text":"Contact left!"}
+{"cmd":"reset"}  {"cmd":"threshold","value":0.7}  {"cmd":"ping"}  {"cmd":"hush"}  {"cmd":"quit"}
+
+{"event":"ready","labels":[...],"gate":"family","threshold":0.68,"stt":true,"mic":true,"tts":true,...}
+{"event":"reply","id":7,"heard":"hold the door","intent":"HOLD_ANGLE","prob":1.0,"action":"ask",
+ "say":"Which door? The one ahead, 8 m?","order":null,"question":{...},"top":[...],"ground":[...],...}
+{"event":"nothing"|"too_short"|"error", ...}
+```
+
+- `world` is `WorldState` as JSON (`scripts/coop/world_example.json`); `order` is what the game carries out now:
+  `{"intent","entity","candidates","direction","zone","pointer","other","via","near"}`, `entity` being an id of
+  the world the game sent, `via` how the place was found ("gaze", "pin", "direction", "here" = where the speaker
+  is, ...) and `near` that the line pointed with "this" or "here". `action` is the bot's (act, queued, execute, go, wait, negated, answer, say_again, ignore) or the
+  planner's (ask, resolved). The whole protocol is in the comment above `RunServe` in `tools/coop_cli.cpp`.
+- A stdout line that does not start with `{` is a log line. The service ends when its stdin closes: it never
+  outlives the game.
+- `--no-stt`: no recognizer and no microphone, typed lines only (headless tests). `--tts`: `say` speaks.
+- Measured through the pipes from Python: 0.5 ms over the classifier's own time per typed line; a 3 s clip
+  recognized in about 260 ms; ready in 5 s without speech and 7 to 12 s with it.
+- `tools/deploy_brain.ps1 -Target <dir>` writes the folder a game needs: `coop_cli.exe`, `onnxruntime.dll`,
+  `sherpa-onnx-c-api.dll`, `bot/` (one bot's `cpp/` files), `stt/` (the Parakeet export): 2.7 GB for bot v54.
+
+**In Lyra (UE 5.8).** The first game it runs in: `J:\UE4\Projects\LyraStarterGame58`, `Source/LyraGame/CoopBot/`
+(Perforce depot `//OlivaVanilla58`; its own `README.md` is the reference). The client component builds the
+world from level markers, the pin and the crosshair, sends each line to this service and turns the reply into
+an order RPC; the server's AI controller carries the order out; the pawn and the pins replicate. Checked end
+to end with a dedicated server and a client process. On a map without markers the client gives the planner the
+crosshair's point under a new id with every line (`gaze_<n>`) and keeps the ones the reply still names
+(`last_entity`, `pending_entity`), so a queued order goes where the player pointed then.
 
 ## Speech-to-text (optional)
 
@@ -223,6 +350,10 @@ were refreshed on Windows with `gen_tests.py --no-model`.
   `gen_tests.py BOT_DIR --decide-only` writes just this file and needs only `bot_config.json`.
 - The C++ twin of rule set v4 was also run with the v3 vocabulary over the 35,023 lines of a v4-rules
   test file against records from `scripts/coop/rules/v3/locations.py`: equal on all of them.
+- The planner (world.h): 601 scenarios per bot, 5306 steps on the v53 bot and 5187 on the 41-label scratch
+  bot (actions act, ask, answer, resolved, queued, execute, go, wait, negated, say again, ignore; groundings
+  by pin, gaze, memory, zone, direction, the only one, the nearest, ambiguous by distance or by an unknown
+  modifier, missing), plus 10 worlds the rules refuse and the example world they accept: all equal.
 
 The tokenizer lines are the golden lines plus lines generated to break a port:
 - every kind of whitespace;
@@ -282,6 +413,12 @@ The raw outputs are in `bench.txt` next to each bot's `intent_config.json`.
   on two of three folds, and the models that trained were not better than base.
 
 ## Porting to UE5 (plan)
+
+**What was done instead (2026-10-10):** the engine did NOT move into the game process. The game starts
+`coop_cli --serve` (section "The bot as a service for a game") and keeps only game code: the world state, the
+order, the bot's controller. The reason is the last bullet below, "Speech": one process cannot hold the
+recognizer's ONNX Runtime and the engine's. The notes below stay as the plan for an in-process port (the
+classifier on NNE, the recognizer in a statically linked module); `world.h` is already what the game would feed.
 
 - **Core files:** the five core pairs above plus `unicode_tables.inc` go into a runtime module. The
   only exceptions they rely on are `std::regex`'s: its constructor, and `regex_search`, which throws
