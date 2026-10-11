@@ -1,0 +1,16 @@
+teacher files: 3 seeds per line, 5265 test rows (a partial run until all 15 fold teachers are done)
+teacher ensemble OOF, gate family, threshold 0.68; vctkB: 810 lines, 139 under the threshold
+
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]
+Loading weights:   6%|▌         | 20/338 [00:00<00:01, 189.67it/s]
+Loading weights:  12%|█▏        | 39/338 [00:00<00:01, 165.03it/s]
+Loading weights:  17%|█▋        | 56/338 [00:00<00:01, 156.32it/s]
+Loading weights:  21%|██▏       | 72/338 [00:00<00:02, 123.26it/s]
+Loading weights:  25%|██▌       | 86/338 [00:00<00:02, 95.62it/s] 
+Loading weights:  30%|██▉       | 100/338 [00:00<00:02, 102.46it/s]
+Loading weights:  33%|███▎      | 112/338 [00:00<00:02, 106.65it/s]
+Loading weights: 100%|██████████| 338/338 [00:01<00:00, 328.44it/s]
+Qwen/Qwen2.5-1.5B-Instruct on 139 under-threshold vctkB lines (cuda; 248 ms per line, p95 291 ms):
+  decoder                        near  24.5  wrong family  71.2%  acts on non-order  95.7%  criterion -118.0
+  classifier's pick, gate off    near  39.6  wrong family  46.0%  acts on non-order  60.9%  criterion  -52.5
+  asking again (the bot today)   near  18.0  wrong family   0.0%  acts on non-order   0.0%  criterion   18.0

@@ -1,0 +1,845 @@
+{
+ "model": "Qwen/Qwen2.5-1.5B-Instruct",
+ "cond": "vctkB",
+ "gate": "family",
+ "threshold": 0.68,
+ "n": 139,
+ "ms": 247.71387841851492,
+ "device": "cuda",
+ "picks": {
+  "r6_039": {
+   "text": "blind room for me",
+   "truth": "FLASH",
+   "decoder": "ATTACK",
+   "classifier": "SMOKE"
+  },
+  "r6_043": {
+   "text": "when i yoga, look round the back",
+   "truth": "FLANK",
+   "decoder": "LOOK_AT",
+   "classifier": "LOOK_AT"
+  },
+  "r6_050": {
+   "text": "vandertricking the reinforced on main mole",
+   "truth": "NONE",
+   "decoder": "FLANK",
+   "classifier": "FRAG"
+  },
+  "r6_052": {
+   "text": "doug came top a stairs",
+   "truth": "NONE",
+   "decoder": "LOOK_AT",
+   "classifier": "NONE"
+  },
+  "r6_116": {
+   "text": "mirror on the wall, they're anchored in sight",
+   "truth": "NONE",
+   "decoder": "LOOK_AT",
+   "classifier": "NONE"
+  },
+  "r6v2_010": {
+   "text": "stop swinging and breathe finally",
+   "truth": "TAKE_COVER",
+   "decoder": "HOLD_POSITION",
+   "classifier": "HOLD_FIRE"
+  },
+  "r6v2_022": {
+   "text": "can i run the rotate before watch me from colour",
+   "truth": "COVER_ME",
+   "decoder": "LOOK_AT",
+   "classifier": "HOLD_ANGLE"
+  },
+  "r6v2_029": {
+   "text": "their spraying through the soft wall puts something that stops rounds between you and them",
+   "truth": "TAKE_COVER",
+   "decoder": "FLANK",
+   "classifier": "SUPPRESS"
+  },
+  "r6v2_035": {
+   "text": "det that winder open. i wanna shoot out of it from here",
+   "truth": "OPEN",
+   "decoder": "OPEN",
+   "classifier": "OPEN"
+  },
+  "r6v2_038": {
+   "text": "mirror on the door, they can see straight through",
+   "truth": "NONE",
+   "decoder": "LOOK_AT",
+   "classifier": "SMOKE"
+  },
+  "r6v3_008": {
+   "text": "higgers camping the coach on second floor, got his gadget right next to him",
+   "truth": "NONE",
+   "decoder": "FOLLOW_ME",
+   "classifier": "FRAG"
+  },
+  "r6v3_028": {
+   "text": "cook and ate and bounced it behind the couch he's been sitting there all round",
+   "truth": "FRAG",
+   "decoder": "FLANK",
+   "classifier": "FRAG"
+  },
+  "r6v3_036": {
+   "text": "and we hit it together. you go and when i say go",
+   "truth": "ENTRY",
+   "decoder": "ATTACK",
+   "classifier": "FOLLOW_ME"
+  },
+  "cs_027": {
+   "text": "andre reentry. ready",
+   "truth": "ENTRY",
+   "decoder": "ENTRY",
+   "classifier": "COME_BACK"
+  },
+  "cs_036": {
+   "text": "if he's it, you got time",
+   "truth": "DEFUSE",
+   "decoder": "FOLLOW_ME",
+   "classifier": "CHECK"
+  },
+  "cs_057": {
+   "text": "you're fine there. don't go anywhere",
+   "truth": "HOLD_POSITION",
+   "decoder": "FOLLOW_ME",
+   "classifier": "HOLD_POSITION"
+  },
+  "cs_075": {
+   "text": "need the other box that's where he is hiding",
+   "truth": "FRAG",
+   "decoder": "FOLLOW_ME",
+   "classifier": "FRAG"
+  },
+  "cs_078": {
+   "text": "hit them from behind whilst i give the word",
+   "truth": "FLANK",
+   "decoder": "ATTACK",
+   "classifier": "FLANK"
+  },
+  "cs_101": {
+   "text": "luck through my pin and get in their box",
+   "truth": "FLANK",
+   "decoder": "ATTACK",
+   "classifier": "VAULT_WINDOW"
+  },
+  "cs_102": {
+   "text": "pause up full depth",
+   "truth": "WAIT",
+   "decoder": "WAIT",
+   "classifier": "CHECK"
+  },
+  "cs_108": {
+   "text": "balm down a, the fault plap",
+   "truth": "NONE",
+   "decoder": "FLANK",
+   "classifier": "DEFUSE"
+  },
+  "csv2_020": {
+   "text": "unless the hatch on the floor will drop later",
+   "truth": "OPEN",
+   "decoder": "OPEN",
+   "classifier": "CHECK"
+  },
+  "r6v5_015": {
+   "text": "shiten, shuten he's reloading",
+   "truth": "OPEN_FIRE",
+   "decoder": "FOLLOW_ME",
+   "classifier": "HOLD_FIRE"
+  },
+  "r6v5_055": {
+   "text": "do not open up all then. keep your gun quiet",
+   "truth": "HOLD_FIRE",
+   "decoder": "HOLD_FIRE",
+   "classifier": "HOLD_FIRE"
+  },
+  "csv5_012": {
+   "text": "she threw the east door and sat on it",
+   "truth": "OPEN_FIRE",
+   "decoder": "FLANK",
+   "classifier": "NONE"
+  },
+  "csv5_044": {
+   "text": "i'm going left, you go right, meet you in the middle",
+   "truth": "MOVE_TO",
+   "decoder": "MOVE_TO",
+   "classifier": "FOLLOW_ME"
+  },
+  "r6v51_011": {
+   "text": "taste me real quick. i need to see which gadget you've got out",
+   "truth": "LOOK_AT_ME",
+   "decoder": "LOOK_AT",
+   "classifier": "NONE"
+  },
+  "csv51_004": {
+   "text": "turn around, man, check behind you. he's lit",
+   "truth": "LOOK_AT",
+   "decoder": "LOOK_AT",
+   "classifier": "CHECK"
+  },
+  "csv53_017": {
+   "text": "well that hatch opened then we drop on their heads",
+   "truth": "BREACH",
+   "decoder": "OPEN",
+   "classifier": "BREACH"
+  },
+  "csv53_029": {
+   "text": "jumper customy. actually naw don't forget i said that",
+   "truth": "NONE",
+   "decoder": "FLANK",
+   "classifier": "JUMP"
+  },
+  "r6v54_003": {
+   "text": "narnope got it wrong",
+   "truth": "NO",
+   "decoder": "NONE",
+   "classifier": "NO"
+  },
+  "r6v54_015": {
+   "text": "get fat on you, billy, right now",
+   "truth": "PRONE",
+   "decoder": "ATTACK",
+   "classifier": "PRONE"
+  },
+  "r6_001": {
+   "text": "her wide and tit them off their side while i bait frun",
+   "truth": "FLANK",
+   "decoder": "ATTACK",
+   "classifier": "FLANK"
+  },
+  "r6_015": {
+   "text": "can i trap",
+   "truth": "FALL_BACK",
+   "decoder": "FLANK",
+   "classifier": "NONE"
+  },
+  "r6_029": {
+   "text": "tell me, we're rushing this together",
+   "truth": "FOLLOW_ME",
+   "decoder": "FOLLOW_ME",
+   "classifier": "NONE"
+  },
+  "r6_030": {
+   "text": "bang the doorway then enter it with me",
+   "truth": "FLASH",
+   "decoder": "ATTACK",
+   "classifier": "FLASH"
+  },
+  "r6_058": {
+   "text": "drop a glass so we can cross",
+   "truth": "SMOKE",
+   "decoder": "OPEN",
+   "classifier": "FLASH"
+  },
+  "r6_095": {
+   "text": "made the room the second, i say now",
+   "truth": "FRAG",
+   "decoder": "ATTACK",
+   "classifier": "BREACH"
+  },
+  "r6v2_034": {
+   "text": "how stopped behind the door frame and locked that window",
+   "truth": "HOLD_ANGLE",
+   "decoder": "FLANK",
+   "classifier": "HOLD_ANGLE"
+  },
+  "r6v3_016": {
+   "text": "three of smoke at the yellow door, the one with the paint on it",
+   "truth": "SMOKE",
+   "decoder": "SMOKE",
+   "classifier": "NONE"
+  },
+  "r6v3_048": {
+   "text": "red stairs down in basement, lot foot down, nobody walks up it",
+   "truth": "HOLD_ANGLE",
+   "decoder": "OPEN",
+   "classifier": "NONE"
+  },
+  "cs_006": {
+   "text": "okay, dick",
+   "truth": "GO_NOW",
+   "decoder": "FOLLOW_ME",
+   "classifier": "GO_NOW"
+  },
+  "cs_010": {
+   "text": "malay to default",
+   "truth": "FRAG",
+   "decoder": "NONE",
+   "classifier": "PLANT"
+  },
+  "cs_032": {
+   "text": "washlong for me they love to peek it",
+   "truth": "HOLD_ANGLE",
+   "decoder": "LOOK_AT",
+   "classifier": "FLASH"
+  },
+  "cs_067": {
+   "text": "genia popfush into her mane",
+   "truth": "FLASH",
+   "decoder": "FLANK",
+   "classifier": "ENTRY"
+  },
+  "cs_076": {
+   "text": "bring them out of that corner",
+   "truth": "FRAG",
+   "decoder": "ATTACK",
+   "classifier": "FRAG"
+  },
+  "cs_090": {
+   "text": "roll in the little car and then spot for me",
+   "truth": "DRONE",
+   "decoder": "MOVE_TO",
+   "classifier": "RAPPEL"
+  },
+  "csv2_015": {
+   "text": "okay, the other window opened this one's jammed",
+   "truth": "OPEN",
+   "decoder": "FLANK",
+   "classifier": "HOLD_OTHER_ANGLE"
+  },
+  "csv2_032": {
+   "text": "you don't got hide man, last guy said",
+   "truth": "NONE",
+   "decoder": "COVER_ME",
+   "classifier": "NONE"
+  },
+  "csv2_038": {
+   "text": "have that gate for me, will ye",
+   "truth": "OPEN",
+   "decoder": "FOLLOW_ME",
+   "classifier": "OPEN"
+  },
+  "csv3_017": {
+   "text": "art setting an off window again",
+   "truth": "NONE",
+   "decoder": "OPEN",
+   "classifier": "NONE"
+  },
+  "csv3_041": {
+   "text": "this table the strata gets us killed every single round",
+   "truth": "NONE",
+   "decoder": "FOLLOW_ME",
+   "classifier": "ATTACK"
+  },
+  "r6v5_043": {
+   "text": "three of flash at nine o'clock elsewhere for it",
+   "truth": "FLASH",
+   "decoder": "FLASH",
+   "classifier": "FLASH"
+  },
+  "r6v5_050": {
+   "text": "go ahead and glad i've got the flank watched",
+   "truth": "PLANT",
+   "decoder": "FLANK",
+   "classifier": "HOLD_OTHER_ANGLE"
+  },
+  "csv5_020": {
+   "text": "of its brain, you burning the whole night",
+   "truth": "HOLD_FIRE",
+   "decoder": "FLASH",
+   "classifier": "ATTACK"
+  },
+  "csv5_032": {
+   "text": "google do it now",
+   "truth": "GO_NOW",
+   "decoder": "GO_NOW",
+   "classifier": "DEFUSE"
+  },
+  "csv5_037": {
+   "text": "tosenade down, they're stacked under us",
+   "truth": "FRAG",
+   "decoder": "OPEN",
+   "classifier": "RAPPEL"
+  },
+  "r6v51_015": {
+   "text": "that my way for a sec, i want to line something up",
+   "truth": "LOOK_AT_ME",
+   "decoder": "MOVE_TO",
+   "classifier": "LOOK_AT_ME"
+  },
+  "r6v53_004": {
+   "text": "fault over that sufferer and give him my side of the room",
+   "truth": "JUMP",
+   "decoder": "FLANK",
+   "classifier": "FLANK"
+  },
+  "r6v53_008": {
+   "text": "jump the railing and land next to me. we have to trade the roma",
+   "truth": "JUMP",
+   "decoder": "OPEN",
+   "classifier": "JUMP"
+  },
+  "csv53_007": {
+   "text": "hop the railing creek",
+   "truth": "JUMP",
+   "decoder": "FLANK",
+   "classifier": "JUMP"
+  },
+  "r6v54_012": {
+   "text": "crouch, you're way too loud walking around like that",
+   "truth": "CROUCH",
+   "decoder": "CROUCH",
+   "classifier": "TAKE_COVER"
+  },
+  "r6v54_031": {
+   "text": "slip inside through the east door, nice and quiet",
+   "truth": "MOVE_TO",
+   "decoder": "MOVE_TO",
+   "classifier": "VAULT_WINDOW"
+  },
+  "csv54_012": {
+   "text": "crutch man, your head's poking out like a free one tap",
+   "truth": "CROUCH",
+   "decoder": "FLANK",
+   "classifier": "NONE"
+  },
+  "csv54_013": {
+   "text": "they don't want you right where you're standing",
+   "truth": "CROUCH",
+   "decoder": "FOLLOW_ME",
+   "classifier": "NONE"
+  },
+  "r6_019": {
+   "text": "slapper charging the back eight",
+   "truth": "BREACH",
+   "decoder": "ATTACK",
+   "classifier": "ENTRY"
+  },
+  "r6_068": {
+   "text": "feel out they got members",
+   "truth": "FALL_BACK",
+   "decoder": "FOLLOW_ME",
+   "classifier": "NONE"
+  },
+  "r6_114": {
+   "text": "bolton and plant behind the desk",
+   "truth": "VAULT_WINDOW",
+   "decoder": "PLANT",
+   "classifier": "PLANT"
+  },
+  "r6_118": {
+   "text": "feel the diffuser on my pain, it's ticking",
+   "truth": "DEFUSE",
+   "decoder": "PLANT",
+   "classifier": "NONE"
+  },
+  "r6_120": {
+   "text": "your entry frag this round, get in the room",
+   "truth": "ENTRY",
+   "decoder": "ENTRY",
+   "classifier": "ENTRY"
+  },
+  "r6v2_005": {
+   "text": "hatches reinforced it had opened at the thermite",
+   "truth": "BREACH",
+   "decoder": "FLANK",
+   "classifier": "NONE"
+  },
+  "r6v2_033": {
+   "text": "hope the sky light up for me",
+   "truth": "OPEN",
+   "decoder": "NONE",
+   "classifier": "HOLD_ANGLE"
+  },
+  "r6v3_002": {
+   "text": "forget the roof, nothing's happening up there, get down to basement",
+   "truth": "MOVE_TO",
+   "decoder": "FALL_BACK",
+   "classifier": "MOVE_TO"
+  },
+  "r6v3_012": {
+   "text": "hang tight and the second i say so you jump in through east window",
+   "truth": "VAULT_WINDOW",
+   "decoder": "FLANK",
+   "classifier": "VAULT_WINDOW"
+  },
+  "cs_046": {
+   "text": "descend that thing before i blizz",
+   "truth": "DEFUSE",
+   "decoder": "OPEN",
+   "classifier": "BREACH"
+  },
+  "cs_051": {
+   "text": "unme and me, don't wonder off",
+   "truth": "FOLLOW_ME",
+   "decoder": "FOLLOW_ME",
+   "classifier": "FOLLOW_ME"
+  },
+  "cs_085": {
+   "text": "best me, bro",
+   "truth": "REVIVE_ME",
+   "decoder": "FOLLOW_ME",
+   "classifier": "FOLLOW_ME"
+  },
+  "cs_117": {
+   "text": "build my shadow this round, go where i go",
+   "truth": "FOLLOW_ME",
+   "decoder": "MOVE_TO",
+   "classifier": "FOLLOW_ME"
+  },
+  "csv2_022": {
+   "text": "her mic out tip behind the truck",
+   "truth": "TAKE_COVER",
+   "decoder": "FOLLOW_ME",
+   "classifier": "NONE"
+  },
+  "csv3_001": {
+   "text": "shotgun 8 downstairs, that guy is 1 hp",
+   "truth": "FRAG",
+   "decoder": "ATTACK",
+   "classifier": "NONE"
+  },
+  "r6v5_011": {
+   "text": "hit rounds in the main door they're about to swing",
+   "truth": "OPEN_FIRE",
+   "decoder": "ATTACK",
+   "classifier": "FLANK"
+  },
+  "csv5_003": {
+   "text": "it had come, my girl, not a second before",
+   "truth": "ATTACK",
+   "decoder": "FOLLOW_ME",
+   "classifier": "ENTRY"
+  },
+  "csv5_050": {
+   "text": "back up a little, huai overextended",
+   "truth": "FALL_BACK",
+   "decoder": "FALL_BACK",
+   "classifier": "FALL_BACK"
+  },
+  "r6v51_029": {
+   "text": "scratch that. you don't need to look at me, carry on",
+   "truth": "NONE",
+   "decoder": "FOLLOW_ME",
+   "classifier": "NONE"
+  },
+  "r6v52_021": {
+   "text": "shown out second floor first, see if it's clear before we go in",
+   "truth": "DRONE",
+   "decoder": "ENTRY",
+   "classifier": "CHECK"
+  },
+  "csv52_027": {
+   "text": "pushy man, you're giving us away",
+   "truth": "HOLD_FIRE",
+   "decoder": "ENTRY",
+   "classifier": "HOLD_FIRE"
+  },
+  "csv52_029": {
+   "text": "no, don't help me. i'm good. i can clutch it",
+   "truth": "NONE",
+   "decoder": "NO",
+   "classifier": "NONE"
+  },
+  "r6v53_024": {
+   "text": "chick fire, chick fire, you're shooting at me",
+   "truth": "HOLD_FIRE",
+   "decoder": "OPEN",
+   "classifier": "HOLD_FIRE"
+  },
+  "r6v54_014": {
+   "text": "go pran, the prefiring head height",
+   "truth": "PRONE",
+   "decoder": "LOOK_AT",
+   "classifier": "MOVE_TO"
+  },
+  "r6v54_022": {
+   "text": "true and out where i pinged before we commit",
+   "truth": "DRONE",
+   "decoder": "LOOK_AT",
+   "classifier": "DRONE"
+  },
+  "r6v54_033": {
+   "text": "tusmain and clea corner by corner",
+   "truth": "ENTRY",
+   "decoder": "FOLLOW_ME",
+   "classifier": "FLASH"
+  },
+  "r6_085": {
+   "text": "scrash bats stand by",
+   "truth": "WAIT",
+   "decoder": "OPEN",
+   "classifier": "JUMP"
+  },
+  "r6_113": {
+   "text": "pro default plan",
+   "truth": "PLANT",
+   "decoder": "NONE",
+   "classifier": "NONE"
+  },
+  "r6v2_000": {
+   "text": "i'd have cam up on the ceiling somewhere",
+   "truth": "NONE",
+   "decoder": "LOOK_AT",
+   "classifier": "NONE"
+  },
+  "r6v2_014": {
+   "text": "they just popped the hatch above sight",
+   "truth": "NONE",
+   "decoder": "OPEN",
+   "classifier": "NONE"
+  },
+  "r6v2_017": {
+   "text": "this van's getting sprayed through top behind the other one",
+   "truth": "TAKE_COVER",
+   "decoder": "FOLLOW_ME",
+   "classifier": "NONE"
+  },
+  "r6v3_037": {
+   "text": "trumus just ran up blue, they were tittin' fast",
+   "truth": "NONE",
+   "decoder": "FOLLOW_ME",
+   "classifier": "MOVE_TO"
+  },
+  "r6v3_046": {
+   "text": "you're getting swarmed, ditch that fight and get back to ground floor",
+   "truth": "FALL_BACK",
+   "decoder": "FALL_BACK",
+   "classifier": "FALL_BACK"
+  },
+  "cs_050": {
+   "text": "but treat, there's way too many",
+   "truth": "FALL_BACK",
+   "decoder": "NONE",
+   "classifier": "ATTACK"
+  },
+  "cs_055": {
+   "text": "save. save. don't take the fight",
+   "truth": "FALL_BACK",
+   "decoder": "FOLLOW_ME",
+   "classifier": "WAIT"
+  },
+  "cs_071": {
+   "text": "that whole soft btw, they can spray through it",
+   "truth": "NONE",
+   "decoder": "FOLLOW_ME",
+   "classifier": "SMOKE"
+  },
+  "cs_120": {
+   "text": "nope, no flash this time",
+   "truth": "NONE",
+   "decoder": "NO",
+   "classifier": "NO"
+  },
+  "csv2_039": {
+   "text": "had the pillar don't give them a free kill",
+   "truth": "TAKE_COVER",
+   "decoder": "FOLLOW_ME",
+   "classifier": "PLANT"
+  },
+  "csv3_035": {
+   "text": "my main got that banned last week so i'm stuck on this smoth",
+   "truth": "NONE",
+   "decoder": "NONE",
+   "classifier": "DEFUSE"
+  },
+  "csv3_042": {
+   "text": "bummed down in the basement. nobody picked it up",
+   "truth": "NONE",
+   "decoder": "REVIVE_ME",
+   "classifier": "HOLD_ANGLE"
+  },
+  "r6v5_035": {
+   "text": "look up and hold the ceiling. they're playing vertical",
+   "truth": "HOLD_ANGLE",
+   "decoder": "LOOK_AT",
+   "classifier": "LOOK_AT"
+  },
+  "r6v5_054": {
+   "text": "no, don't attack them, that's not the play",
+   "truth": "NO",
+   "decoder": "NO",
+   "classifier": "NONE"
+  },
+  "r6v5_059": {
+   "text": "reload and swap to your shotgun before the next push",
+   "truth": "NONE",
+   "decoder": "ATTACK",
+   "classifier": "FALL_BACK"
+  },
+  "csv5_002": {
+   "text": "take your proud, i don't care how you do it",
+   "truth": "ATTACK",
+   "decoder": "ATTACK",
+   "classifier": "ATTACK"
+  },
+  "csv5_058": {
+   "text": "buy me an ecknicks friend if you got the cash",
+   "truth": "NONE",
+   "decoder": "FRAG",
+   "classifier": "SUPPRESS"
+  },
+  "csv51_005": {
+   "text": "we'll give you a free cockreal quick",
+   "truth": "LOOK_AT",
+   "decoder": "FOLLOW_ME",
+   "classifier": "NONE"
+  },
+  "r6v52_016": {
+   "text": "and three covering five through main door",
+   "truth": "SUPPRESS",
+   "decoder": "COVER_ME",
+   "classifier": "NONE"
+  },
+  "r6v54_001": {
+   "text": "yep, exactly. you go to din one",
+   "truth": "YES",
+   "decoder": "MOVE_TO",
+   "classifier": "MOVE_TO"
+  },
+  "r6v54_007": {
+   "text": "ankon i can come from either way",
+   "truth": "DONT_KNOW",
+   "decoder": "FOLLOW_ME",
+   "classifier": "FLANK"
+  },
+  "r6v54_009": {
+   "text": "the group were setting for their take",
+   "truth": "COME_BACK",
+   "decoder": "ATTACK",
+   "classifier": "NONE"
+  },
+  "r6v54_013": {
+   "text": "take any rate where you are and stay low",
+   "truth": "CROUCH",
+   "decoder": "HOLD_POSITION",
+   "classifier": "HOLD_POSITION"
+  },
+  "r6_046": {
+   "text": "they're ready to tray me when i swing",
+   "truth": "COVER_ME",
+   "decoder": "ATTACK",
+   "classifier": "FOLLOW_ME"
+  },
+  "r6_091": {
+   "text": "craig out on default",
+   "truth": "FRAG",
+   "decoder": "FOLLOW_ME",
+   "classifier": "PLANT"
+  },
+  "r6_098": {
+   "text": "cross fire it you watch the opposite side from me",
+   "truth": "HOLD_OTHER_ANGLE",
+   "decoder": "ATTACK",
+   "classifier": "HOLD_OTHER_ANGLE"
+  },
+  "r6_115": {
+   "text": "volkamit on to sight, kill, whatever's in there",
+   "truth": "ENTRY",
+   "decoder": "ATTACK",
+   "classifier": "ENTRY"
+  },
+  "r6v2_023": {
+   "text": "when a seygir cracked the bathroom door,",
+   "truth": "OPEN",
+   "decoder": "OPEN",
+   "classifier": "NONE"
+  },
+  "r6v3_020": {
+   "text": "hit yourself up a floor the whole team's retasing",
+   "truth": "MOVE_TO",
+   "decoder": "FLANK",
+   "classifier": "MOVE_TO"
+  },
+  "r6v3_030": {
+   "text": "i'm posted on red stairs ego drone up top floor",
+   "truth": "DRONE",
+   "decoder": "DRONE",
+   "classifier": "DRONE"
+  },
+  "r6v3_041": {
+   "text": "yellow stairs is already smoked, but yours on the other staircase",
+   "truth": "SMOKE",
+   "decoder": "SMOKE",
+   "classifier": "SMOKE"
+  },
+  "cs_004": {
+   "text": "plant your feet and quit walking around",
+   "truth": "HOLD_POSITION",
+   "decoder": "PLANT",
+   "classifier": "HOLD_POSITION"
+  },
+  "cs_026": {
+   "text": "he then they all stacked up",
+   "truth": "FRAG",
+   "decoder": "NONE",
+   "classifier": "OPEN_FIRE"
+  },
+  "cs_028": {
+   "text": "rushby, i am right behind",
+   "truth": "ENTRY",
+   "decoder": "ATTACK",
+   "classifier": "FLANK"
+  },
+  "cs_040": {
+   "text": "rotate the connector quick",
+   "truth": "MOVE_TO",
+   "decoder": "MOVE_TO",
+   "classifier": "OPEN"
+  },
+  "cs_112": {
+   "text": "bop down the corridor with your gun up",
+   "truth": "HOLD_ANGLE",
+   "decoder": "OPEN",
+   "classifier": "RAPPEL"
+  },
+  "csv2_014": {
+   "text": "break line of sight the awp is looking right at you",
+   "truth": "TAKE_COVER",
+   "decoder": "ATTACK",
+   "classifier": "TAKE_COVER"
+  },
+  "csv3_004": {
+   "text": "and three bursts and three not all, not a second earlier",
+   "truth": "ENTRY",
+   "decoder": "FLANK",
+   "classifier": "ATTACK"
+  },
+  "csv5_053": {
+   "text": "clap right here, right now, we got twenty seconds",
+   "truth": "PLANT",
+   "decoder": "MOVE_TO",
+   "classifier": "LOOK_AT_ME"
+  },
+  "r6v51_026": {
+   "text": "help me look for the diffuser, it drops somewhere near the white stairs",
+   "truth": "NONE",
+   "decoder": "HELP",
+   "classifier": "HELP"
+  },
+  "r6v52_002": {
+   "text": "yo i could use a hand",
+   "truth": "HELP",
+   "decoder": "FOLLOW_ME",
+   "classifier": "REVIVE_ME"
+  },
+  "r6v53_000": {
+   "text": "trot down, trot down i'm holding a button for you",
+   "truth": "JUMP",
+   "decoder": "MOVE_TO",
+   "classifier": "RAPPEL"
+  },
+  "r6v53_009": {
+   "text": "just jump, it's not that high, you won't take fall damage",
+   "truth": "JUMP",
+   "decoder": "JUMP",
+   "classifier": "NONE"
+  },
+  "csv53_027": {
+   "text": "we're getting shot at from the left whole team stop",
+   "truth": "NONE",
+   "decoder": "FOLLOW_ME",
+   "classifier": "NONE"
+  },
+  "r6v54_024": {
+   "text": "rotate my pin fast",
+   "truth": "MOVE_TO",
+   "decoder": "FLANK",
+   "classifier": "DRONE"
+  },
+  "csv54_009": {
+   "text": "hit back here man, where are you even going",
+   "truth": "COME_BACK",
+   "decoder": "ATTACK",
+   "classifier": "COME_BACK"
+  }
+ }
+}

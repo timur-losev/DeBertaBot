@@ -1,0 +1,137 @@
+{
+ "model": "Qwen/Qwen2.5-1.5B-Instruct",
+ "cond": "vctkB",
+ "gate": "family",
+ "threshold": 0.68,
+ "n": 21,
+ "ms": 5424.603128568769,
+ "device": "cpu",
+ "picks": {
+  "r6_039": {
+   "text": "blind room for me",
+   "truth": "FLASH",
+   "decoder": "ATTACK",
+   "classifier": "SMOKE"
+  },
+  "r6_043": {
+   "text": "when i yoga, look round the back",
+   "truth": "FLANK",
+   "decoder": "LOOK_AT",
+   "classifier": "LOOK_AT"
+  },
+  "r6_050": {
+   "text": "vandertricking the reinforced on main mole",
+   "truth": "NONE",
+   "decoder": "FLANK",
+   "classifier": "FRAG"
+  },
+  "r6_052": {
+   "text": "doug came top a stairs",
+   "truth": "NONE",
+   "decoder": "LOOK_AT",
+   "classifier": "NONE"
+  },
+  "r6_116": {
+   "text": "mirror on the wall, they're anchored in sight",
+   "truth": "NONE",
+   "decoder": "LOOK_AT",
+   "classifier": "NONE"
+  },
+  "r6v2_010": {
+   "text": "stop swinging and breathe finally",
+   "truth": "TAKE_COVER",
+   "decoder": "HOLD_POSITION",
+   "classifier": "HOLD_FIRE"
+  },
+  "r6v2_022": {
+   "text": "can i run the rotate before watch me from colour",
+   "truth": "COVER_ME",
+   "decoder": "LOOK_AT",
+   "classifier": "HOLD_ANGLE"
+  },
+  "r6v2_029": {
+   "text": "their spraying through the soft wall puts something that stops rounds between you and them",
+   "truth": "TAKE_COVER",
+   "decoder": "FLANK",
+   "classifier": "SUPPRESS"
+  },
+  "r6v2_035": {
+   "text": "det that winder open. i wanna shoot out of it from here",
+   "truth": "OPEN",
+   "decoder": "OPEN",
+   "classifier": "OPEN"
+  },
+  "r6v2_038": {
+   "text": "mirror on the door, they can see straight through",
+   "truth": "NONE",
+   "decoder": "LOOK_AT",
+   "classifier": "SMOKE"
+  },
+  "r6v3_008": {
+   "text": "higgers camping the coach on second floor, got his gadget right next to him",
+   "truth": "NONE",
+   "decoder": "FOLLOW_ME",
+   "classifier": "FRAG"
+  },
+  "r6v3_028": {
+   "text": "cook and ate and bounced it behind the couch he's been sitting there all round",
+   "truth": "FRAG",
+   "decoder": "FLANK",
+   "classifier": "FRAG"
+  },
+  "r6v3_036": {
+   "text": "and we hit it together. you go and when i say go",
+   "truth": "ENTRY",
+   "decoder": "FLANK",
+   "classifier": "FOLLOW_ME"
+  },
+  "cs_027": {
+   "text": "andre reentry. ready",
+   "truth": "ENTRY",
+   "decoder": "ENTRY",
+   "classifier": "COME_BACK"
+  },
+  "cs_036": {
+   "text": "if he's it, you got time",
+   "truth": "DEFUSE",
+   "decoder": "FOLLOW_ME",
+   "classifier": "CHECK"
+  },
+  "cs_057": {
+   "text": "you're fine there. don't go anywhere",
+   "truth": "HOLD_POSITION",
+   "decoder": "FOLLOW_ME",
+   "classifier": "HOLD_POSITION"
+  },
+  "cs_075": {
+   "text": "need the other box that's where he is hiding",
+   "truth": "FRAG",
+   "decoder": "FOLLOW_ME",
+   "classifier": "FRAG"
+  },
+  "cs_078": {
+   "text": "hit them from behind whilst i give the word",
+   "truth": "FLANK",
+   "decoder": "ATTACK",
+   "classifier": "FLANK"
+  },
+  "cs_101": {
+   "text": "luck through my pin and get in their box",
+   "truth": "FLANK",
+   "decoder": "ATTACK",
+   "classifier": "VAULT_WINDOW"
+  },
+  "cs_102": {
+   "text": "pause up full depth",
+   "truth": "WAIT",
+   "decoder": "WAIT",
+   "classifier": "CHECK"
+  },
+  "cs_108": {
+   "text": "balm down a, the fault plap",
+   "truth": "NONE",
+   "decoder": "FLANK",
+   "classifier": "DEFUSE"
+  }
+ }
+}

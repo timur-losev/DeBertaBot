@@ -1,0 +1,103 @@
+==== student xsmall as a bot
+  tokenizer tests, 10912 lines: normalizer 10912/10912 equal, token ids 10912/10912 equal, regex slots 10908/10908 equal (+4 lines past std::regex's recursion limit, not compared; it gave up on 4 slot searches)
+  location tests, 50869 lines (39191 name a place, a direction or a pointer, 14634 of them a direction, 13982 a pointer): the C++ record equals the Python record on 50869/50869
+  gate tests, 3150 rows x 2 gates: C++ picked what the Python bot picked on 6300/6300
+  decide tests, 244 steps over both gates (2 of them built in: NaN probabilities): C++ decided what the Python bot decided on 244/244
+  golden, 2743 lines: token ids 2743/2743 equal, same argmax 2743/2743, probabilities within 1e-4 on 2743/2743, max |dp| 4.89e-06 ("naïve flank")
+  dialogue, 77 lines: the C++ bot did what the Python bot did on 77/77
+  world tests, 601 scenarios, 5187 steps and 11 worlds to accept or refuse: C++ planned what the Python planner planned on 5198/5198
+-- xsmall int8_all
+  golden, 2743 lines: token ids 2743/2743 equal, same argmax 1294/2743, probabilities within 1e-4 on 684/2743, max |dp| 1.00e+00 ("Check behind us, I'm hearing footsteps.")
+-- xsmall int8_per_channel
+  golden, 2743 lines: token ids 2743/2743 equal, same argmax 180/2743, probabilities within 1e-4 on 0/2743, max |dp| 1.00e+00 ("stop swinging and break line of sight")
+-- xsmall uint8_matmul_only
+  golden, 2743 lines: token ids 2743/2743 equal, same argmax 2739/2743, probabilities within 1e-4 on 1924/2743, max |dp| 7.59e-01 ("UPPERCASE BREACH NOW")
+==== student small as a bot
+  tokenizer tests, 10912 lines: normalizer 10912/10912 equal, token ids 10912/10912 equal, regex slots 10908/10908 equal (+4 lines past std::regex's recursion limit, not compared; it gave up on 4 slot searches)
+  location tests, 50869 lines (39191 name a place, a direction or a pointer, 14634 of them a direction, 13982 a pointer): the C++ record equals the Python record on 50869/50869
+  gate tests, 3150 rows x 2 gates: C++ picked what the Python bot picked on 6300/6300
+  decide tests, 244 steps over both gates (2 of them built in: NaN probabilities): C++ decided what the Python bot decided on 244/244
+  golden, 2743 lines: token ids 2743/2743 equal, same argmax 2743/2743, probabilities within 1e-4 on 2743/2743, max |dp| 5.54e-06 ("naïve flank")
+  dialogue, 77 lines: the C++ bot did what the Python bot did on 77/77
+  world tests, 601 scenarios, 5187 steps and 11 worlds to accept or refuse: C++ planned what the Python planner planned on 5198/5198
+-- small int8_all
+  golden, 2743 lines: token ids 2743/2743 equal, same argmax 2738/2743, probabilities within 1e-4 on 1963/2743, max |dp| 9.43e-01 ("прикрой меня")
+-- small int8_per_channel
+  golden, 2743 lines: token ids 2743/2743 equal, same argmax 68/2743, probabilities within 1e-4 on 0/2743, max |dp| 9.99e-01 ("bot you gonna repel on the north window but only when i tell you")
+-- small uint8_matmul_only
+  golden, 2743 lines: token ids 2743/2743 equal, same argmax 2735/2743, probabilities within 1e-4 on 1915/2743, max |dp| 9.43e-01 ("прикрой меня")
+==== latency, one intra-op thread per model, nothing else running (i9-10900K)
+-- coop-deberta-v3-ens3-v54\cpp
+  model load 4373 ms, working set +2311 MB (2332 MB total)
+  model:     median 39.3 ms, p90 47.9 ms, p99 55.4 ms, max 123.1 ms
+-- coop-deberta-v3-base-kd-v54\cpp
+  model load 1518 ms, working set +787 MB (808 MB total)
+  model:     median 28.4 ms, p90 38.4 ms, p99 47.2 ms, max 114.7 ms
+-- coop-deberta-v3-small-kd-v54\cpp
+  model load 982 ms, working set +597 MB (618 MB total)
+  model:     median 14.1 ms, p90 19.1 ms, p99 23.5 ms, max 58.3 ms
+-- coop-deberta-v3-small-kd-v54\cpp_int8_all
+  model load 598 ms, working set +196 MB (216 MB total)
+  model:     median 8.0 ms, p90 12.3 ms, p99 15.4 ms, max 39.8 ms
+-- coop-deberta-v3-small-kd-v54\cpp_uint8_matmul_only
+  model load 904 ms, working set +477 MB (498 MB total)
+  model:     median 9.0 ms, p90 13.9 ms, p99 17.7 ms, max 47.3 ms
+-- coop-deberta-v3-xsmall-kd-v54\cpp
+  model load 906 ms, working set +335 MB (355 MB total)
+  model:     median 9.8 ms, p90 13.1 ms, p99 15.9 ms, max 37.1 ms
+-- coop-deberta-v3-xsmall-kd-v54\cpp_uint8_matmul_only
+  model load 914 ms, working set +278 MB (299 MB total)
+  model:     median 7.2 ms, p90 10.4 ms, p99 12.8 ms, max 31.3 ms
+==== nearest neighbours (knn_v54.py)
+student xsmall kd seed 0: head gate family, threshold 0.96
+nearest-neighbour similarity gate (fitted on the training voices like the head's threshold): 0.96
+
+held-out lines, typed: 810 lines
+  system               near  wrong fam  acts on non-order  criterion
+  head                 81.7       3.1%               7.3%       75.6
+  knn-1 all            88.6      10.4%              23.9%       67.9
+  knn-5 all            88.9      10.1%              23.9%       68.6
+  knn-5 all, gated     83.2       2.7%               7.3%       77.8
+  knn-1 seeds          88.3      10.6%              22.9%       67.0
+  knn-5 seeds          88.6      10.4%              22.9%       67.9
+  hybrid               88.9      10.1%              23.9%       68.6
+  hybrid, gated        85.4       4.1%               8.3%       77.3
+  new command (seeds only know the intent): recognised 668/810 = 82.5%; worst: CROUCH 1/4, DEFUSE 5/10, COME_BACK 4/8, PLANT 9/15, YES 3/5, FALL_BACK 10/15
+
+held-out lines as VCTK pool B heard them (unseen speakers): 810 lines
+  system               near  wrong fam  acts on non-order  criterion
+  head                 67.9       5.4%               9.2%       57.0
+  knn-1 all            75.6      21.1%              31.2%       33.3
+  knn-5 all            76.7      20.0%              31.2%       36.7
+  knn-5 all, gated     70.5       5.1%               5.5%       60.4
+  knn-1 seeds          76.4      19.6%              29.4%       37.2
+  knn-5 seeds          77.3      19.4%              31.2%       38.5
+  hybrid               76.7      20.0%              31.2%       36.7
+  hybrid, gated        72.0       7.2%               9.2%       57.7
+  new command (seeds only know the intent): recognised 571/810 = 70.5%; worst: CROUCH 0/4, DEFUSE 1/10, PLANT 4/15, FRAG 9/23, DRONE 9/18, MAYBE 2/4
+student small kd seed 0: head gate family, threshold 0.98
+nearest-neighbour similarity gate (fitted on the training voices like the head's threshold): 0.95
+
+held-out lines, typed: 810 lines
+  system               near  wrong fam  acts on non-order  criterion
+  head                 86.3       2.6%               4.6%       81.1
+  knn-1 all            90.6       9.1%              20.2%       72.3
+  knn-5 all            90.9       8.9%              20.2%       73.1
+  knn-5 all, gated     83.8       2.5%               4.6%       78.9
+  knn-1 seeds          91.0       8.8%              20.2%       73.5
+  knn-5 seeds          90.7       9.0%              20.2%       72.7
+  hybrid               90.9       8.9%              20.2%       73.1
+  hybrid, gated        87.2       3.1%               5.5%       81.0
+  new command (seeds only know the intent): recognised 701/810 = 86.5%; worst: CROUCH 1/4, NO 4/6, HOLD_POSITION 8/11, FALL_BACK 11/15, SUPPRESS 9/12, ENTRY 22/28
+
+held-out lines as VCTK pool B heard them (unseen speakers): 810 lines
+  system               near  wrong fam  acts on non-order  criterion
+  head                 74.0       5.6%              11.9%       62.8
+  knn-1 all            78.4      17.5%              27.5%       43.3
+  knn-5 all            78.5      17.4%              26.6%       43.7
+  knn-5 all, gated     71.0       4.3%               6.4%       62.3
+  knn-1 seeds          78.5      17.4%              25.7%       43.7
+  knn-5 seeds          78.9      17.0%              25.7%       44.8
+  hybrid               78.5      17.4%              26.6%       43.7
+  hybrid, gated        74.2       6.2%              11.9%       61.9
+  new command (seeds only know the intent): recognised 596/810 = 73.6%; worst: CROUCH 0/4, FRAG 9/23, DEFUSE 5/10, NO 3/6, MAYBE 2/4, DRONE 10/18

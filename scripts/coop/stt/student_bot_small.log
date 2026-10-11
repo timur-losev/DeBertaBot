@@ -1,0 +1,15 @@
+wrote G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-small-kd-v54\cpp: 1 ONNX model(s), vocab 128000 pieces, golden 2743 lines
+gate tests: 3150 rows, the two gates pick different intents on 287
+decide tests, actions per gate: {'top': ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait'], 'family': ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait']} (242 steps in 6 conversations)
+dialogue actions: ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait'] 
+location tests: 50869 lines, 39191 name a place, a direction or a pointer, 14634 of them a direction, 13982 a pointer (3931 a pin; in 8715 a pointer is a target of its own)
+  rule set v5: 14447 of the lines are the pointer batch's (16000 generated from 108 pointer patterns among the direction patterns, and 65 written out; without the ones generated twice or already there)
+tokenizer tests: 10912 lines (5435 with [UNK], 836 cut at 64 tokens, slots on_signal/other/negation on [1895, 813, 696])
+world tests: 601 scenarios, 5187 steps; actions act 1124, answer 527, ask 1476, execute 8, go 60, ignore 86, negated 44, queued 304, resolved 181, say_again 1318, wait 59
+  groundings: missing/None 1500, resolved/direction 303, resolved/pin 244, resolved/only 218, missing/pin 179, resolved/zone 171, resolved/gaze 137, missing/this 133, ambiguous/distance 104, resolved/nearest 42, resolved/memory 25, ambiguous/unknown_modifier 24
+  priors applied on 5187 steps; 10 worlds to refuse
+G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-small-kd-v54: gate family, threshold 0.88 (fitted 0.98)
+fp32 ONNX vs PyTorch golden: same argmax 2743/2743, max |dp| 9.47e-06
+int8_all: same argmax 2738/2743, same gated pick 2739/2743, max |dp| 0.935, mean |dp| 0.0001, 172 MB
+int8_per_channel: same argmax 68/2743, same gated pick 451/2743, max |dp| 0.999, mean |dp| 0.0478, 173 MB
+uint8_matmul_only: same argmax 2735/2743, same gated pick 2735/2743, max |dp| 0.943, mean |dp| 0.0002, 467 MB

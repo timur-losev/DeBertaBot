@@ -1,0 +1,83 @@
+{
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "cond": "vctkB",
+ "gate": "family",
+ "threshold": 0.68,
+ "n": 12,
+ "ms": 201.71949166979175,
+ "device": "cuda",
+ "picks": {
+  "r6_039": {
+   "text": "blind room for me",
+   "truth": "FLASH",
+   "decoder": "FLANK",
+   "classifier": "SMOKE"
+  },
+  "r6_043": {
+   "text": "when i yoga, look round the back",
+   "truth": "FLANK",
+   "decoder": "FLANK",
+   "classifier": "LOOK_AT"
+  },
+  "r6_050": {
+   "text": "vandertricking the reinforced on main mole",
+   "truth": "NONE",
+   "decoder": "FLANK",
+   "classifier": "FRAG"
+  },
+  "r6_052": {
+   "text": "doug came top a stairs",
+   "truth": "NONE",
+   "decoder": "MOVE_TO",
+   "classifier": "NONE"
+  },
+  "r6_116": {
+   "text": "mirror on the wall, they're anchored in sight",
+   "truth": "NONE",
+   "decoder": "FLANK",
+   "classifier": "NONE"
+  },
+  "r6v2_010": {
+   "text": "stop swinging and breathe finally",
+   "truth": "TAKE_COVER",
+   "decoder": "FLANK",
+   "classifier": "HOLD_FIRE"
+  },
+  "r6v2_022": {
+   "text": "can i run the rotate before watch me from colour",
+   "truth": "COVER_ME",
+   "decoder": "MOVE_TO",
+   "classifier": "HOLD_ANGLE"
+  },
+  "r6v2_029": {
+   "text": "their spraying through the soft wall puts something that stops rounds between you and them",
+   "truth": "TAKE_COVER",
+   "decoder": "FLANK",
+   "classifier": "SUPPRESS"
+  },
+  "r6v2_035": {
+   "text": "det that winder open. i wanna shoot out of it from here",
+   "truth": "OPEN",
+   "decoder": "FLANK",
+   "classifier": "OPEN"
+  },
+  "r6v2_038": {
+   "text": "mirror on the door, they can see straight through",
+   "truth": "NONE",
+   "decoder": "FLANK",
+   "classifier": "SMOKE"
+  },
+  "r6v3_008": {
+   "text": "higgers camping the coach on second floor, got his gadget right next to him",
+   "truth": "NONE",
+   "decoder": "MOVE_TO",
+   "classifier": "FRAG"
+  },
+  "r6v3_028": {
+   "text": "cook and ate and bounced it behind the couch he's been sitting there all round",
+   "truth": "FRAG",
+   "decoder": "FLANK",
+   "classifier": "FRAG"
+  }
+ }
+}

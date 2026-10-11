@@ -1,0 +1,27 @@
+{
+ "int8_all": {
+  "same_argmax": 2738,
+  "same_pick": 2739,
+  "max_dp": 0.9345557248813875,
+  "mean_dp": 0.0001241421471285553,
+  "bytes": 172312172
+ },
+ "int8_per_channel": {
+  "same_argmax": 68,
+  "same_pick": 451,
+  "max_dp": 0.9991639639655666,
+  "mean_dp": 0.04776431541470091,
+  "bytes": 172523763
+ },
+ "uint8_matmul_only": {
+  "same_argmax": 2735,
+  "same_pick": 2735,
+  "max_dp": 0.9433746118156784,
+  "mean_dp": 0.0001567501393884292,
+  "bytes": 467454124
+ },
+ "fp32": {
+  "bytes": 568178286,
+  "max_dp_vs_torch": 9.471240114466983e-06
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "training_lines": 5765,
+ "student": "microsoft/deberta-v3-small",
+ "lr": 5e-05,
+ "T": 2.0,
+ "alpha": 0.5,
+ "epochs": 12,
+ "teachers": "G:\\Proj\\ollaya\\DeBertaBot\\models\\coop-deberta-v3-ens3-v54",
+ "device": "cuda"
+}

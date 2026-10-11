@@ -1,0 +1,6 @@
+teacher files: 3 seeds per line, 2305 test rows (a partial run until all 15 fold teachers are done)
+teacher ensemble OOF, gate family, threshold 0.68; vctkB: 356 lines, 65 under the threshold
+Qwen/Qwen2.5-1.5B-Instruct on 21 under-threshold vctkB lines (cpu; 5425 ms per line, p95 5804 ms):
+  decoder                        near  14.3  wrong family  85.7%  acts on non-order 100.0%  criterion -157.1
+  classifier's pick, gate off    near  42.9  wrong family  57.1%  acts on non-order  66.7%  criterion  -71.4
+  asking again (the bot today)   near  28.6  wrong family   0.0%  acts on non-order   0.0%  criterion   28.6
