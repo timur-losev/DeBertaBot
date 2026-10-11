@@ -122,6 +122,11 @@ public:
     const std::string& ObjectId(int i) const { return objects_[static_cast<size_t>(i)]; }
     const std::string& QualifierId(int i) const { return qualifiers_[static_cast<size_t>(i)]; }
     const std::string& ZoneId(int i) const { return zones_[static_cast<size_t>(i)]; }
+    // the index of an id, -1 if the vocabulary has none (world.h: the game's entities carry these ids)
+    int ObjectIndex(const std::string& id) const { return Find(objects_, id); }
+    int QualifierIndex(const std::string& id) const { return Find(qualifiers_, id); }
+    int ZoneIndex(const std::string& id) const { return Find(zones_, id); }
+    bool Vertical(int object) const { return object >= 0 && vertical_[static_cast<size_t>(object)]; }
 
 private:
     enum class Kind { Object, Qualifier, Named, Zone, Ignore, ZoneEnd };
@@ -130,6 +135,11 @@ private:
         int a = -1, b = -1;   // object / qualifier / zone index; Named: object and qualifier
     };
     bool In(const char* list, const std::string& word) const;
+    static int Find(const std::vector<std::string>& v, const std::string& id) {
+        for (size_t i = 0; i < v.size(); ++i)
+            if (v[i] == id) return static_cast<int>(i);
+        return -1;
+    }
 
     bool ready_ = false;
     bool directions_ = false;                  // rule set v4: the vocabulary has "directions"

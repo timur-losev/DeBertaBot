@@ -112,6 +112,12 @@ public:
         pending_places_ = PlaceRecord();
         pending_other_ = false;
     }
+    // the planner (world.h) queues the order a question settled, with its places and its "other" slot
+    void SetPending(int intent, const PlaceRecord& places, bool other) {
+        pending_ = intent;
+        pending_places_ = places;
+        pending_other_ = other;
+    }
     double threshold = 0.78;
     const IntentConfig& Config() const { return cfg_; }
     int LabelIndex(const std::string& label) const;

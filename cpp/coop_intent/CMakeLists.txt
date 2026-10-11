@@ -45,6 +45,7 @@ add_library(coop_intent_core STATIC
   src/tokenizer.cpp
   src/bot_brain.cpp
   src/locations.cpp
+  src/world.cpp
   src/intent_model.cpp
   src/speech_text.cpp)
 target_include_directories(coop_intent_core PUBLIC include)
@@ -68,7 +69,8 @@ target_link_libraries(coop_cli PRIVATE coop_intent_ort)
 get_filename_component(COOP_MODEL_DIR_ABS "${COOP_MODEL_DIR}" ABSOLUTE)
 target_compile_definitions(coop_cli PRIVATE COOP_DEFAULT_MODEL_DIR="${COOP_MODEL_DIR_ABS}")
 if(WIN32)
-  target_link_libraries(coop_cli PRIVATE psapi)
+  target_link_libraries(coop_cli PRIVATE psapi ole32)
+  target_sources(coop_cli PRIVATE tools/tts_win.cpp)   # the bot's voice of coop_cli --serve --tts (SAPI)
 else()
   # macOS / Linux: the executable finds the runtime library where it was linked from
   set_target_properties(coop_cli PROPERTIES BUILD_RPATH "${ORT_DIR}/lib")

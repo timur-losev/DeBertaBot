@@ -1,0 +1,803 @@
+#include "coop_intent/world.h"
+
+#include <algorithm>
+#include <cmath>
+
+namespace coop {
+
+namespace {
+
+// world.py: SECTORS, BACK_FROM, ELEVATION, CLEARLY_NEARER
+constexpr double kElevation = 1.5;
+constexpr double kBackFrom = 120.0;
+constexpr double kClearlyNearer = 1.5;
+constexpr double kPi = 3.14159265358979323846;
+
+bool InSector(PlaceDirection d, double bearing, double elevation) {
+    switch (d) {
+        case PlaceDirection::Up: return elevation >= kElevation;
+        case PlaceDirection::Down: return elevation <= -kElevation;
+        case PlaceDirection::Back: return std::fabs(bearing) >= kBackFrom;
+        case PlaceDirection::Left: return -150.0 <= bearing && bearing <= -20.0;
+        case PlaceDirection::Right: return 20.0 <= bearing && bearing <= 150.0;
+        case PlaceDirection::Forward: return -60.0 <= bearing && bearing <= 60.0;
+        case PlaceDirection::None: break;
+    }
+    return true;
+}
+
+const char* SectorWord(double b, double el) {
+    if (el >= kElevation) return "above";
+    if (el <= -kElevation) return "below";
+    if (std::fabs(b) <= 45.0) return "ahead";
+    if (std::fabs(b) >= 135.0) return "behind you";
+    return b < 0 ? "on the left" : "on the right";
+}
+
+void Xy(double bearing, double distance, double* x, double* y) {
+    const double r = bearing * kPi / 180.0;   // math.radians
+    *x = distance * std::sin(r);
+    *y = distance * std::cos(r);
+}
+
+double DistBetween(double b1, double d1, double b2, double d2) {
+    double ax, ay, bx, by;
+    Xy(b1, d1, &ax, &ay);
+    Xy(b2, d2, &bx, &by);
+    return std::hypot(ax - bx, ay - by);
+}
+
+Grounding Out(const char* status, std::string entity = {}, std::vector<std::string> candidates = {}, const char* via = "") {
+    Grounding g;
+    g.status = status;
+    g.entity = std::move(entity);
+    g.candidates = std::move(candidates);
+    g.via = via;
+    return g;
+}
+
+// world.py: NEAR_WORDS, NEAR_DET, FAR_WORDS, ANSWER_LEADS, ANSWER_MAX_TOKENS, ZONE_NAMES
+const char* const kNearWords[] = {"here"};
+const char* const kNearDet[] = {"this", "these"};
+const char* const kFarWords[] = {"there", "that", "those", "looking", "pointing", "aiming", "facing"};
+const char* const kAnswerLeads[] = {"there", "here", "over", "at", "on", "in", "by", "near", "to", "the", "that", "this", "those", "these", "my",
+                                    "right", "left", "behind", "up", "down", "where", "it", "its", "one", "ahead", "forward", "back", "straight",
+                                    "around", "next", "beside", "above", "below", "under", "inside", "outside", "toward", "towards", "just"};
+constexpr size_t kAnswerMaxTokens = 6;
+
+// world.py, "a short context": CONTEXT_SECONDS, FRAGMENT_UNSURE, FIRE, PIN_DEFAULT, CARRY, POINTED_HERE, PLACE_INTENTS,
+// NO_LEADS, LOST_POINTERS
+constexpr double kContextSeconds = 8.0;
+constexpr double kFragmentUnsure = 0.5;
+const char* const kFire[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK"};
+const char* const kPinDefault[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MOVE_TO", "CHECK", "ENTRY", "FLANK"};
+const char* const kCarry[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MOVE_TO", "CHECK", "ENTRY", "FLANK", "HOLD_ANGLE", "LOOK_AT"};
+const char* const kPointedHere[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "FRAG", "FLASH", "SMOKE", "LOOK_AT", "CHECK", "HOLD_ANGLE"};
+const char* const kPlaceIntents[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MOVE_TO", "CHECK", "ENTRY", "FLANK", "HOLD_ANGLE", "LOOK_AT",
+                                     "FRAG", "FLASH", "SMOKE", "HOLD_POSITION", "JUMP", "TAKE_COVER", "FALL_BACK", "COME_BACK",
+                                     "BREACH", "VAULT_WINDOW", "OPEN"};
+const char* const kNoLeads[] = {"no", "nope", "nah", "not", "negative", "wrong"};
+const char* const kLostPointers[] = {"there", "here"};
+
+template <size_t N>
+bool OneOf(std::string_view s, const char* const (&list)[N]) {
+    for (const char* x : list)
+        if (s == x) return true;
+    return false;
+}
+
+// "again", "once more", "one more time" among the words of the line
+bool SaysAgain(const std::vector<std::string>& w) {
+    for (size_t i = 0; i < w.size(); ++i) {
+        if (w[i] == "again") return true;
+        if (i + 1 < w.size() && (w[i] == "once" || w[i] == "one") && w[i + 1] == "more") return true;
+    }
+    return false;
+}
+
+const char* DirectionWords(PlaceDirection d) {
+    switch (d) {
+        case PlaceDirection::Left: return "to the left";
+        case PlaceDirection::Right: return "to the right";
+        case PlaceDirection::Forward: return "forward";
+        case PlaceDirection::Back: return "back";
+        case PlaceDirection::Up: return "up";
+        case PlaceDirection::Down: return "down";
+        case PlaceDirection::None: break;
+    }
+    return "";
+}
+
+// locations.tokenize: a token is a maximal run of ASCII letters and digits (A-Z lowercased), every other byte separates
+std::vector<std::string> Words(std::string_view text) {
+    std::vector<std::string> out;
+    std::string word;
+    for (unsigned char c : text) {
+        if (c >= 'A' && c <= 'Z') c = static_cast<unsigned char>(c - 'A' + 'a');
+        if ((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')) {
+            word.push_back(static_cast<char>(c));
+        } else if (!word.empty()) {
+            out.push_back(std::move(word));
+            word.clear();
+        }
+    }
+    if (!word.empty()) out.push_back(std::move(word));
+    return out;
+}
+
+template <size_t N>
+bool AnyOf(const std::vector<std::string>& words, const char* const (&list)[N]) {
+    for (const std::string& w : words)
+        for (const char* x : list)
+            if (w == x) return true;
+    return false;
+}
+
+std::string ZoneName(const std::string& zone) {
+    static const std::pair<const char*, const char*> kNames[] = {
+        {"basement", "the basement"}, {"floor_1", "the first floor"}, {"floor_2", "the second floor"}, {"top_floor", "the top floor"},
+        {"roof", "the roof"}, {"up", "the way up"}, {"down", "the way down"}};
+    for (const auto& n : kNames)
+        if (zone == n.first) return n.second;
+    return "that place";
+}
+
+std::string Capitalized(std::string s) {   // Python str.capitalize() on an ASCII phrase
+    for (size_t i = 0; i < s.size(); ++i) {
+        char& c = s[i];
+        if (i == 0 && c >= 'a' && c <= 'z') c = static_cast<char>(c - 'a' + 'A');
+        if (i > 0 && c >= 'A' && c <= 'Z') c = static_cast<char>(c - 'A' + 'a');
+    }
+    return s;
+}
+
+}  // namespace
+
+const std::vector<Prior>& DefaultPriors() {
+    // world.PRIORS: 0.75 everywhere (the simulation in stt/priors_v54.py: all of the gain of a right world, almost
+    // none of the cost of a wrong one)
+    constexpr double x = 0.75;
+    static const std::vector<Prior> kPriors = {
+        {"CROUCH", "stance=crouch", x}, {"PRONE", "stance=prone", x}, {"STAND_UP", "stance=stand", x},
+        {"VAULT_WINDOW", "no_object=window", x}, {"OPEN", "no_object=door", x},
+        {"DEFUSE", "no_tag=bomb", x}, {"PLANT", "bot_without=bomb", x}, {"REVIVE_ME", "player_up", x},
+        {"YES", "no_question", x}, {"NO", "no_question", x}, {"MAYBE", "no_question", x}, {"DONT_KNOW", "no_question", x},
+    };
+    return kPriors;
+}
+
+std::string Describe(const WorldEntity& e) {
+    // int(round(distance)): Python rounds half to even, as nearbyint does under the default rounding mode
+    return std::string(SectorWord(e.bearing, e.elevation)) + ", " + std::to_string(static_cast<long long>(std::nearbyint(e.distance))) + " m";
+}
+
+bool ValidateWorld(const WorldState& w, const LocationMatcher& places, std::string* error) {
+    auto fail = [&](const std::string& msg) {
+        if (error) *error = "world state refused: " + msg;
+        return false;
+    };
+    std::vector<std::string> ids;
+    for (const WorldEntity& e : w.entities) {
+        if (e.id.empty()) return fail("an entity without an id");
+        if (std::find(ids.begin(), ids.end(), e.id) != ids.end()) return fail("entity id " + e.id + " twice");
+        ids.push_back(e.id);
+        if (!e.object.empty() && places.ObjectIndex(e.object) < 0) return fail(e.id + ": unknown object " + e.object);
+        if (!e.qualifier.empty() && places.QualifierIndex(e.qualifier) < 0) return fail(e.id + ": unknown qualifier " + e.qualifier);
+        if (!e.zone.empty() && places.ZoneIndex(e.zone) < 0) return fail(e.id + ": unknown zone " + e.zone);
+        if (!(-180.0 < e.bearing && e.bearing <= 180.0)) return fail(e.id + ": bearing out of (-180, 180]");
+        if (!(e.distance >= 0.0)) return fail(e.id + ": negative distance");
+    }
+    for (const WorldPin* p : {w.has_player_pin ? &w.player_pin : nullptr, w.has_bot_pin ? &w.bot_pin : nullptr}) {
+        if (!p) continue;
+        if (!p->entity.empty() && std::find(ids.begin(), ids.end(), p->entity) == ids.end()) return fail("pin on an unknown entity " + p->entity);
+        if (!(-180.0 < p->bearing && p->bearing <= 180.0)) return fail("pin bearing out of (-180, 180]");
+    }
+    if (!w.player_gaze.empty() && std::find(ids.begin(), ids.end(), w.player_gaze) == ids.end()) return fail("gaze on an unknown entity " + w.player_gaze);
+    if (w.bot_stance != "stand" && w.bot_stance != "crouch" && w.bot_stance != "prone") return fail("unknown stance " + w.bot_stance);
+    if (w.has_time && !(w.time >= 0.0)) return fail("negative time");
+    return true;
+}
+
+std::string Deixis(std::string_view text) {
+    const std::vector<std::string> w = Words(text);
+    if (AnyOf(w, kFarWords)) return {};
+    if (AnyOf(w, kNearWords)) return "here";
+    if (AnyOf(w, kNearDet)) return "near";
+    return {};
+}
+
+bool Elliptical(std::string_view text) {
+    const std::vector<std::string> w = Words(text);
+    if (w.empty() || w.size() > kAnswerMaxTokens) return false;
+    for (const char* x : kAnswerLeads)
+        if (w[0] == x) return true;
+    return false;
+}
+
+bool Usable(const Grounding& g) {
+    return g.status == "resolved" && (!g.entity.empty() || g.via == "direction" || g.via == "here" || (g.via == "zone" && !g.candidates.empty()));
+}
+
+// world.ground_target
+static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, const Memory& memory, const LocationMatcher& places, bool here) {
+    const std::string obj = t.object >= 0 ? places.ObjectId(t.object) : std::string();
+    const std::string qual = t.qualifier >= 0 ? places.QualifierId(t.qualifier) : std::string();
+    const std::string zone = t.zone >= 0 ? places.ZoneId(t.zone) : std::string();
+    const WorldEntity* gaze = nullptr;
+    const WorldEntity* last = nullptr;
+    for (const WorldEntity& e : world.entities) {
+        if (!world.player_gaze.empty() && e.id == world.player_gaze) gaze = &e;
+        if (!memory.last_entity.empty() && e.id == memory.last_entity) last = &e;
+    }
+    auto ids_of = [](const std::vector<const WorldEntity*>& v) {
+        std::vector<std::string> ids;
+        for (const WorldEntity* e : v) ids.push_back(e->id);
+        return ids;
+    };
+
+    if (t.pointer == PlacePointer::Pin) {
+        if (!world.has_player_pin) return Out("missing", {}, {}, "pin");
+        const WorldPin& pin = world.player_pin;
+        if (obj.empty()) return Out("resolved", pin.entity.empty() ? pin.id : pin.entity, {}, "pin");
+        std::vector<const WorldEntity*> cands;
+        for (const WorldEntity& e : world.entities)
+            if (e.object == obj && (qual.empty() || e.qualifier == qual)) cands.push_back(&e);
+        // "the door at my pin" on a map without doors marked: what the pin is on is that door
+        if (cands.empty()) return Out("resolved", pin.entity.empty() ? pin.id : pin.entity, {}, "pin");
+        std::stable_sort(cands.begin(), cands.end(), [&](const WorldEntity* a, const WorldEntity* b) {
+            const double da = DistBetween(a->bearing, a->distance, pin.bearing, pin.distance);
+            const double db = DistBetween(b->bearing, b->distance, pin.bearing, pin.distance);
+            return da != db ? da < db : a->id < b->id;
+        });
+        return Out("resolved", cands[0]->id, ids_of(cands), "pin");
+    }
+    if (obj.empty()) {
+        if (t.pointer == PlacePointer::This) {
+            // "here": where the speaker stands, whatever the crosshair is on
+            if (here && zone.empty() && t.direction == PlaceDirection::None) return Out("resolved", {}, {}, "here");
+            if (gaze) return Out("resolved", gaze->id, {}, "gaze");
+            if (last) return Out("resolved", last->id, {}, "memory");
+            // the one place that is marked
+            if (world.has_player_pin) return Out("resolved", world.player_pin.entity.empty() ? world.player_pin.id : world.player_pin.entity, {}, "pin");
+            return Out("missing", {}, {}, "this");
+        }
+        if (!zone.empty()) {
+            std::vector<std::string> cands;
+            for (const WorldEntity& e : world.entities)
+                if (e.zone == zone) cands.push_back(e.id);
+            if (cands.empty()) return Out("missing", {}, {}, "zone");   // a floor the world has no place on
+            return Out("resolved", {}, cands, "zone");
+        }
+        if (t.direction != PlaceDirection::None) return Out("resolved", {}, {}, "direction");
+        return Out("missing");
+    }
+    std::vector<const WorldEntity*> cands;
+    for (const WorldEntity& e : world.entities)
+        if (e.object == obj) cands.push_back(&e);
+    if (cands.empty()) {
+        // "that door" where no door is marked: the thing the crosshair is on is that door, if it is not a marked place
+        // of another kind
+        if (t.pointer == PlacePointer::This && gaze && gaze->object.empty()) return Out("resolved", gaze->id, {}, "gaze");
+        return Out("missing");
+    }
+    auto keep = [&](auto pred) { cands.erase(std::remove_if(cands.begin(), cands.end(), [&](const WorldEntity* e) { return !pred(e); }), cands.end()); };
+    if (!qual.empty()) keep([&](const WorldEntity* e) { return e->qualifier == qual; });
+    if (!zone.empty()) keep([&](const WorldEntity* e) { return e->zone == zone; });
+    // "up the blue stairs": up is the way along a vertical object, not where it stands
+    const bool along = (t.direction == PlaceDirection::Up || t.direction == PlaceDirection::Down) && places.Vertical(t.object);
+    if (t.direction != PlaceDirection::None && !along)
+        keep([&](const WorldEntity* e) { return InSector(t.direction, e->bearing, e->elevation); });
+    if (t.flag == PlaceFlag::Other && last) keep([&](const WorldEntity* e) { return e->id != last->id; });
+    if (cands.empty()) return Out("missing");
+    std::stable_sort(cands.begin(), cands.end(), [](const WorldEntity* a, const WorldEntity* b) {
+        return a->distance != b->distance ? a->distance < b->distance : a->id < b->id;
+    });
+    std::vector<std::string> ids = ids_of(cands);
+    if (t.pointer == PlacePointer::This && gaze && std::find(ids.begin(), ids.end(), gaze->id) != ids.end())
+        return Out("resolved", gaze->id, ids, "gaze");
+    if (cands.size() == 1) return Out("resolved", ids[0], ids, "only");
+    if (t.flag == PlaceFlag::UnknownModifier) return Out("ambiguous", {}, ids, "unknown_modifier");
+    if (cands[1]->distance >= kClearlyNearer * cands[0]->distance) return Out("resolved", ids[0], ids, "nearest");
+    return Out("ambiguous", {}, ids, "distance");
+}
+
+std::vector<Grounding> Ground(const PlaceRecord& record, const WorldState& world, const Memory& memory, const LocationMatcher& places,
+                              std::string_view text, std::string_view intent) {
+    const bool here = Deixis(text) == "here" && !OneOf(intent, kPointedHere);
+    std::vector<Grounding> out;
+    for (const PlaceTarget& t : record.targets) out.push_back(GroundTarget(t, world, memory, places, here));
+    return out;
+}
+
+static bool ConditionHolds(const std::string& cond, const WorldState& world, const Memory& memory) {
+    auto starts = [&](const char* p) { return cond.rfind(p, 0) == 0; };
+    if (starts("stance=")) return world.bot_stance == cond.substr(7);
+    if (starts("no_object=")) {
+        const std::string o = cond.substr(10);
+        return std::none_of(world.entities.begin(), world.entities.end(), [&](const WorldEntity& e) { return e.object == o; });
+    }
+    if (starts("no_tag=")) {
+        const std::string tag = cond.substr(7);
+        return std::none_of(world.entities.begin(), world.entities.end(), [&](const WorldEntity& e) {
+            return std::find(e.tags.begin(), e.tags.end(), tag) != e.tags.end();
+        });
+    }
+    if (starts("bot_without=")) {
+        const std::string item = cond.substr(12);
+        return std::find(world.bot_items.begin(), world.bot_items.end(), item) == world.bot_items.end();
+    }
+    if (cond == "player_up") return !world.player_downed;
+    if (cond == "no_question") return !memory.has_question;
+    return false;   // an unknown condition never holds (world.py raises; the config is checked at load)
+}
+
+bool ApplyPriors(std::vector<double>* probs, const std::vector<std::string>& labels, const WorldState& world, const Memory& memory,
+                 const std::vector<Prior>& priors) {
+    bool changed = false;
+    for (size_t j = 0; j < labels.size() && j < probs->size(); ++j)
+        for (const Prior& p : priors)
+            if (p.label == labels[j] && ConditionHolds(p.condition, world, memory)) {
+                (*probs)[j] *= p.x;
+                changed = true;
+            }
+    return changed;   // not renormalized: a prior only lowers, it never lifts another intent over the threshold
+}
+
+// ---- the planner ---------------------------------------------------------------------------------
+
+void Planner::Init(BotBrain* brain, std::vector<Prior> priors) {
+    brain_ = brain;
+    priors_ = std::move(priors);
+    world_ = WorldState();
+    Reset();
+}
+
+bool Planner::SetWorld(const WorldState& world, std::string* error) {
+    if (!ValidateWorld(world, brain_->Places(), error)) return false;
+    world_ = world;
+    return true;
+}
+
+void Planner::Reset() {
+    brain_->Reset();
+    memory_ = Memory();
+    DropPending();
+}
+
+void Planner::DropPending() {
+    pending_entity_.clear();
+    pending_here_ = pending_near_ = false;
+}
+
+const WorldEntity* Planner::Entity(const std::string& id) const {
+    for (const WorldEntity& e : world_.entities)
+        if (e.id == id) return &e;
+    return nullptr;
+}
+
+const std::string& Planner::Label(int intent) const { return brain_->Config().labels[static_cast<size_t>(intent)]; }
+
+// world.Planner._alive
+bool Planner::Alive(const Memory::Frame& f) const {
+    if (!f.has || !world_.has_time || !f.has_time) return false;
+    const double age = world_.time - f.time;
+    return world_.bot_busy || (0.0 <= age && age <= kContextSeconds);
+}
+
+// world.Planner._known
+bool Planner::Known(const Grounding& g) const {
+    if (g.entity.empty()) return true;
+    if (Entity(g.entity)) return true;
+    return world_.has_player_pin && (g.entity == world_.player_pin.id || (!world_.player_pin.entity.empty() && g.entity == world_.player_pin.entity));
+}
+
+// world.Planner._where
+std::string Planner::Where(const PlaceTarget* t, const Grounding* g) const {
+    if (!g) return {};
+    const bool on_pin = world_.has_player_pin && !g->entity.empty() &&
+                        (g->entity == world_.player_pin.id || (!world_.player_pin.entity.empty() && g->entity == world_.player_pin.entity));
+    if (g->via == "pin" || g->via == "pin_default" || on_pin) return "on your pin";
+    if (g->via == "here") return "here";
+    if (!g->entity.empty()) return "there";
+    return t ? DirectionWords(t->direction) : "";
+}
+
+// world.Planner._echo
+std::string Planner::Echo(int intent, const PlaceTarget* t, const Grounding* g) const {
+    const std::string phrase = Capitalized(brain_->Config().phrases.at(Label(intent)));
+    const std::string where = Where(t, g);
+    return where.empty() ? phrase + "." : phrase + ", " + where + ".";
+}
+
+// world.Planner._default_place
+bool Planner::DefaultPlace(int intent, PlaceTarget* t, Grounding* g) const {
+    const std::string& label = Label(intent);
+    if (OneOf(label, kFire) && !world_.player_gaze.empty()) {
+        const WorldEntity* gaze = Entity(world_.player_gaze);
+        // the game takes the enemy under the crosshair
+        if (gaze && std::find(gaze->tags.begin(), gaze->tags.end(), "enemy") != gaze->tags.end()) return false;
+    }
+    const Memory::Frame& f = memory_.frame;
+    if (OneOf(label, kCarry) && f.has && f.intent == intent && f.has_target && Alive(f) && Known(f.ground)) {
+        *t = f.target;
+        *g = f.ground;
+        return true;
+    }
+    if (OneOf(label, kPinDefault) && world_.has_player_pin) {
+        *t = PlaceTarget();
+        t->pointer = PlacePointer::Pin;
+        *g = Out("resolved", world_.player_pin.entity.empty() ? world_.player_pin.id : world_.player_pin.entity, {}, "pin_default");
+        return true;
+    }
+    return false;
+}
+
+// world.Planner._reissue
+void Planner::Reissue(const Memory::Frame& f, const PlaceTarget* t, const Grounding* g, bool nearby, const char* lead, PlannerResult* out) {
+    PlaceRecord rec;
+    std::vector<Grounding> grounding;
+    if (t) {
+        rec.targets = {*t};
+        rec.primary = 0;
+        grounding = {*g};
+    }
+    const int intent = f.intent;
+    const bool other = f.other;
+    out->action = "resolved";
+    out->has_order = true;
+    out->order = MakeOrder(intent, rec, grounding, t ? 0 : -1, other, nearby);
+    out->say = std::string(lead) + Echo(intent, t, g);
+}
+
+// world.Planner._context
+bool Planner::Context(std::string_view text, const Decision& d, PlannerResult* out) {
+    const Memory::Frame f = memory_.frame;   // a copy: giving the order again replaces the frame
+    const std::vector<std::string> w = Words(text);
+    if (!f.has || w.empty()) return false;
+    const std::string& frame_label = Label(f.intent);
+    const bool alive = Alive(f);
+    const PlaceRecord& record = d.places;
+    const int k = record.targets.empty() ? -1 : record.primary;
+    const bool has_target = k >= 0;
+    const std::string deixis = Deixis(text);
+    PlaceTarget place_t;
+    Grounding place_g;
+    bool has_place = false;
+    if (has_target && record.targets[static_cast<size_t>(k)].role == PlaceRole::None) {
+        // the place as the previous order reads it: "here" after "shoot" is the crosshair's point
+        place_t = record.targets[static_cast<size_t>(k)];
+        place_g = GroundTarget(place_t, world_, memory_, brain_->Places(), deixis == "here" && !OneOf(frame_label, kPointedHere));
+        has_place = Usable(place_g);
+    }
+    const bool nearby = !deixis.empty();
+    const bool unsure = d.action == Action::SayAgain || d.action == Action::Ignore || d.action == Action::Answer;
+    if (!has_target && alive && d.action == Action::SayAgain && d.prob < kFragmentUnsure && OneOf(w.back(), kLostPointers) &&
+        OneOf(frame_label, kPlaceIntents)) {
+        // the place matcher takes "there" only after an order word; here the order word is what was misheard
+        PlaceTarget lost;
+        lost.pointer = PlacePointer::This;
+        const Grounding g = GroundTarget(lost, world_, memory_, brain_->Places(), w.back() == "here" && !OneOf(frame_label, kPointedHere));
+        if (Usable(g)) {
+            Reissue(f, &lost, &g, nearby, "Got it. ", out);
+            return true;
+        }
+    }
+    if (OneOf(w.front(), kNoLeads) && alive && d.action != Action::Negated) {
+        if (has_place && OneOf(frame_label, kPlaceIntents)) {
+            Reissue(f, &place_t, &place_g, nearby, "Got it. ", out);
+            return true;
+        }
+        if (!has_target && unsure) {
+            memory_.frame = Memory::Frame();
+            out->action = "negated";
+            out->say = "Copy, stopping.";
+            return true;
+        }
+    }
+    if (SaysAgain(w) && !has_place && !has_target) {
+        const bool same = d.action == Action::Act && d.intent == f.intent && f.has_target && Known(f.ground);
+        if (((unsure && alive) || same) && (!f.has_target || Known(f.ground))) {
+            Reissue(f, f.has_target ? &f.target : nullptr, f.has_target ? &f.ground : nullptr, f.nearby, "", out);
+            return true;
+        }
+    }
+    if (alive && has_place && OneOf(frame_label, kPlaceIntents) &&
+        ((Elliptical(text) && (unsure || d.action == Action::Act)) || (d.action == Action::SayAgain && d.prob < kFragmentUnsure))) {
+        Reissue(f, &place_t, &place_g, nearby, "Got it. ", out);
+        return true;
+    }
+    return false;
+}
+
+Order Planner::MakeOrder(int intent, const PlaceRecord& record, const std::vector<Grounding>& grounding, int k, bool other, bool nearby) {
+    Order o;
+    o.intent = intent;
+    o.other = other;
+    if (Label(intent) != "GO_NOW") {   // "go" with nothing queued is not an order to come back to
+        Memory::Frame f;
+        f.has = true;
+        f.intent = intent;
+        f.other = other;
+        f.nearby = nearby;
+        f.has_time = world_.has_time;
+        f.time = world_.time;
+        if (k >= 0) {
+            f.has_target = true;
+            f.target = record.targets[static_cast<size_t>(k)];
+            f.ground = grounding[static_cast<size_t>(k)];
+        }
+        memory_.frame = f;
+    }
+    if (k >= 0) {
+        const PlaceTarget& t = record.targets[static_cast<size_t>(k)];
+        const Grounding& g = grounding[static_cast<size_t>(k)];
+        o.entity = g.entity;
+        o.candidates = g.candidates;
+        o.direction = t.direction;
+        o.zone = t.zone;
+        o.pointer = t.pointer;
+        o.via = g.via;
+        o.nearby = nearby && t.pointer == PlacePointer::This;
+        if (!g.entity.empty()) memory_.last_entity = g.entity;
+    }
+    memory_.last_order = brain_->Config().labels[static_cast<size_t>(intent)];
+    return o;
+}
+
+void Planner::Ask(int intent, const PlaceRecord& record, const std::vector<Grounding>& grounding, int k, bool other, bool queued,
+                  PlannerResult* out) {
+    const Grounding& g = grounding[static_cast<size_t>(k)];
+    const PlaceTarget& t = record.targets[static_cast<size_t>(k)];
+    const std::string obj = t.object >= 0 ? brain_->Places().ObjectId(t.object) : "place";
+    Memory::Question& q = memory_.question;
+    q = Memory::Question();
+    q.intent = intent;
+    q.record = record;
+    q.k = k;
+    q.other = other;
+    q.queued = queued;
+    memory_.has_question = true;
+    out->action = "ask";
+    if (g.status == "missing") {
+        q.kind = "missing";
+        const std::string what = g.via == "pin" ? "I don't see a pin."
+                                 : g.via == "this" ? "I don't know where you mean."
+                                 : g.via == "zone" ? "I can't find " + ZoneName(t.zone >= 0 ? brain_->Places().ZoneId(t.zone) : std::string()) + "."
+                                                   : "I see no " + obj + ".";
+        out->say = what + " Where?";
+        return;
+    }
+    q.kind = "which";
+    q.candidates = g.candidates;
+    out->say = "Which " + obj + "? The one " + Describe(*Entity(g.candidates[0])) + "?";
+}
+
+void Planner::Settle(const Memory::Question& q, const std::string& entity, const std::string& say, PlannerResult* out) {
+    const std::string& phrase = brain_->Config().phrases.at(brain_->Config().labels[static_cast<size_t>(q.intent)]);
+    out->action = "resolved";
+    if (q.queued) {
+        brain_->SetPending(q.intent, q.record, q.other);
+        DropPending();
+        pending_entity_ = entity;
+        memory_.last_entity = entity;
+        out->say = say + " Ready to " + phrase + ". On your go.";
+        return;
+    }
+    std::vector<Grounding> grounding = {Out("resolved", entity, q.candidates, "answer")};
+    PlaceRecord rec;
+    rec.targets = {q.record.targets[static_cast<size_t>(q.k)]};
+    rec.primary = 0;
+    out->say = say + " " + Capitalized(phrase) + ".";
+    out->has_order = true;
+    out->order = MakeOrder(q.intent, rec, grounding, 0, q.other);
+}
+
+// world.Planner._settle_place
+void Planner::SettlePlace(const Memory::Question& q, const PlaceRecord& rec, const Grounding& g, bool queued, bool nearby, PlannerResult* out) {
+    memory_.has_question = false;
+    const std::string& phrase = brain_->Config().phrases.at(brain_->Config().labels[static_cast<size_t>(q.intent)]);
+    out->action = "resolved";
+    if (queued) {
+        brain_->SetPending(q.intent, rec, q.other);
+        pending_entity_ = g.entity;
+        pending_here_ = g.via == "here";
+        pending_near_ = nearby;
+        if (!g.entity.empty()) memory_.last_entity = g.entity;
+        out->say = "Got it. Ready to " + phrase + ". On your go.";
+        return;
+    }
+    out->say = "Got it. " + Capitalized(phrase) + ".";
+    out->has_order = true;
+    out->order = MakeOrder(q.intent, rec, {g}, 0, q.other, nearby);
+}
+
+// world.Planner._place_answer
+bool Planner::PlaceAnswer(std::string_view text, const Decision& d, PlannerResult* out) {
+    const Memory::Question q = memory_.question;   // a copy: settling drops the question
+    const PlaceRecord& record = d.places;
+    const int k = record.targets.empty() ? -1 : record.primary;
+    const bool nearby = !Deixis(text).empty();
+    if (k >= 0) {
+        const PlaceTarget t = record.targets[static_cast<size_t>(k)];
+        const Grounding g = out->ground[static_cast<size_t>(k)];
+        const bool answers = d.action == Action::SayAgain || d.action == Action::Ignore || d.action == Action::Answer ||
+                             ((d.action == Action::Act || d.action == Action::Queued) && (d.intent == q.intent || Elliptical(text)));
+        if (t.role != PlaceRole::None || !Usable(g) || !answers) return false;
+        if (d.action == Action::Queued) brain_->Reset();   // the line's own "on my go" queued another order
+        PlaceRecord rec;
+        rec.targets = {t};
+        rec.primary = 0;
+        SettlePlace(q, rec, g, q.queued || d.action == Action::Queued, nearby, out);
+        return true;
+    }
+    const bool yes = d.action == Action::Answer && d.intent >= 0 && brain_->Config().labels[static_cast<size_t>(d.intent)] == "YES";
+    if (d.action == Action::Go || yes) {
+        const PlaceTarget t0 = q.record.targets[static_cast<size_t>(q.k)];
+        const Grounding g = GroundTarget(t0, world_, memory_, brain_->Places(), false);
+        if (Usable(g)) {
+            PlaceRecord rec;
+            rec.targets = {t0};
+            rec.primary = 0;
+            SettlePlace(q, rec, g, q.queued, false, out);
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Planner::Answer(int intent, PlannerResult* out) {
+    const std::vector<std::string>& labels = brain_->Config().labels;
+    const std::string& name = labels[static_cast<size_t>(intent)];
+    const bool yes = name == "YES", no = name == "NO", unsure = name == "MAYBE" || name == "DONT_KNOW";
+    Memory::Question& q = memory_.question;
+    if (q.kind != "which") {
+        if (unsure || yes) return false;
+        memory_.has_question = false;
+        out->action = "resolved";
+        out->say = "Copy, never mind.";
+        return true;
+    }
+    if (yes || unsure) {
+        const std::string pick = yes ? q.candidates[static_cast<size_t>(q.offered)] : q.candidates[0];
+        const Memory::Question copy = q;
+        memory_.has_question = false;
+        Settle(copy, pick, yes ? "Got it." : "I'll take the one " + Describe(*Entity(pick)) + ".", out);
+        return true;
+    }
+    (void)no;
+    ++q.offered;
+    if (q.offered < static_cast<int>(q.candidates.size())) {
+        out->action = "ask";
+        out->say = "The one " + Describe(*Entity(q.candidates[static_cast<size_t>(q.offered)])) + "?";
+        return true;
+    }
+    memory_.has_question = false;
+    out->action = "resolved";
+    out->say = "Which one, then? Point at it.";
+    return true;
+}
+
+PlannerResult Planner::Step(std::string_view text, const std::vector<float>& probs) {
+    PlannerResult out;
+    std::vector<double> adjusted(probs.begin(), probs.end());
+    out.adjusted = ApplyPriors(&adjusted, brain_->Config().labels, world_, memory_, priors_);
+    std::vector<float> p2;
+    p2.reserve(adjusted.size());
+    for (double x : adjusted) p2.push_back(static_cast<float>(x));
+    const Decision d = brain_->Decide(text, out.adjusted ? p2 : probs);
+    out.decision = d;
+    out.intent = d.intent;
+    out.prob = d.prob;
+    out.action = ActionName(d.action);
+    PlaceRecord record = d.places;   // a copy: an order that names no place may get one from the context
+    const LocationMatcher& places = brain_->Places();
+    if (!record.targets.empty()) out.ground = Ground(record, world_, memory_, places, text, d.intent >= 0 ? Label(d.intent) : std::string());
+    const bool nearby = !Deixis(text).empty();
+    const bool had_question = memory_.has_question;
+
+    if (had_question && d.action == Action::Answer) {
+        if (Answer(d.intent, &out)) return out;
+    }
+    if (had_question && memory_.question.kind == "missing") {
+        if (PlaceAnswer(text, d, &out)) return out;
+    }
+    if (had_question && memory_.question.kind == "which" && !record.targets.empty() &&
+        (d.action == Action::SayAgain || d.action == Action::Ignore ||
+         ((d.action == Action::Act || d.action == Action::Queued) && d.intent == memory_.question.intent))) {
+        // a place instead of yes / no: "the left one", "the north door" -- if it narrows the candidates to one. A line
+        // the classifier reads as another order is that order, and the question is dropped below
+        const int k = record.primary;
+        if (k >= 0 && record.targets[static_cast<size_t>(k)].role == PlaceRole::None) {
+            const PlaceTarget& t = record.targets[static_cast<size_t>(k)];
+            const Memory::Question& q = memory_.question;
+            std::vector<std::string> left;
+            for (const std::string& c : q.candidates) {
+                const WorldEntity& e = *Entity(c);
+                if (t.object >= 0 && e.object != places.ObjectId(t.object)) continue;
+                if (t.qualifier >= 0 && e.qualifier != places.QualifierId(t.qualifier)) continue;
+                if (t.direction != PlaceDirection::None && !InSector(t.direction, e.bearing, e.elevation)) continue;
+                if (t.pointer == PlacePointer::This && !(world_.player_gaze.empty() || world_.player_gaze == c)) continue;
+                left.push_back(c);
+            }
+            if (left.size() == 1 && (t.object >= 0 || t.direction != PlaceDirection::None || t.pointer != PlacePointer::None)) {
+                const Memory::Question copy = q;
+                memory_.has_question = false;
+                Settle(copy, left[0], "Got it.", &out);
+                return out;
+            }
+        }
+    }
+    if (d.action != Action::SayAgain) memory_.has_question = false;   // any other line drops the question
+
+    // nothing was asked: the line may be about the previous order
+    if (!had_question && Context(text, d, &out)) return out;
+    bool defaulted = false;
+    PlaceTarget default_t;
+    Grounding default_g;
+    if ((d.action == Action::Act || d.action == Action::Queued) && record.targets.empty() && DefaultPlace(d.intent, &default_t, &default_g)) {
+        // an order that names no place: the context has one
+        defaulted = true;
+        record.targets = {default_t};
+        record.primary = 0;
+        out.ground = {default_g};
+        if (d.action == Action::Queued) brain_->SetPending(d.intent, record, d.other);   // it goes with the place it was given
+    }
+
+    if (d.action == Action::Act || d.action == Action::Queued) {
+        const int k = record.primary;
+        if (k >= 0 && record.targets[static_cast<size_t>(k)].role == PlaceRole::None) {
+            const Grounding& g = out.ground[static_cast<size_t>(k)];
+            if (g.status == "ambiguous" || g.status == "missing") {
+                if (d.action == Action::Queued) brain_->Reset();   // the question decides the queued order's place
+                Ask(d.intent, record, out.ground, k, d.other, d.action == Action::Queued, &out);
+                return out;
+            }
+        }
+        if (d.action == Action::Act) {
+            out.has_order = true;
+            out.order = MakeOrder(d.intent, record, out.ground, k, d.other, nearby);
+            if (defaulted) out.say = Echo(d.intent, &default_t, &default_g);   // the bot says what it assumed
+        } else {
+            DropPending();
+            if (k >= 0) {
+                pending_entity_ = out.ground[static_cast<size_t>(k)].entity;
+                pending_here_ = out.ground[static_cast<size_t>(k)].via == "here";
+                pending_near_ = nearby;
+            }
+        }
+    } else if (d.action == Action::Execute) {
+        const PlaceRecord& ex = d.executed_places;
+        const int k = ex.targets.empty() ? -1 : ex.primary;
+        out.has_order = true;
+        if (k >= 0 && (!pending_entity_.empty() || pending_here_)) {
+            // the place the queued order was given, not what the crosshair is on now
+            std::vector<Grounding> g = {Out("resolved", pending_entity_, {}, pending_here_ ? "here" : "queued")};
+            PlaceRecord rec2;
+            rec2.targets = {ex.targets[static_cast<size_t>(k)]};
+            rec2.primary = 0;
+            out.order = MakeOrder(d.executed, rec2, g, 0, d.executed_other, pending_near_);
+        } else if (!pending_entity_.empty()) {
+            out.order = MakeOrder(d.executed, PlaceRecord(), {}, -1, d.executed_other);
+        } else {
+            std::vector<Grounding> g2;
+            if (!ex.targets.empty()) g2 = Ground(ex, world_, memory_, places);
+            out.order = MakeOrder(d.executed, ex, g2, k, d.executed_other, pending_near_);
+        }
+        DropPending();
+    } else if (d.action == Action::Go) {
+        out.has_order = true;
+        out.order = MakeOrder(d.intent, record, out.ground, -1, false);
+    } else if (d.action == Action::Wait || d.action == Action::Negated) {
+        DropPending();
+        memory_.frame = Memory::Frame();
+    }
+    if (out.has_order && !out.order.entity.empty()) {   // the bot marks where it goes
+        world_.has_bot_pin = true;
+        world_.bot_pin = WorldPin();
+        world_.bot_pin.id = "bot_pin";
+        world_.bot_pin.entity = out.order.entity;
+    }
+    return out;
+}
+
+}  // namespace coop

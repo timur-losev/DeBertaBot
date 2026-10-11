@@ -15,6 +15,9 @@
 //                                 vocabulary, the directions; with a rule set v5 one, the pointers too (no model)
 //   coop_cli --bench              latency on the golden lines, load time, memory
 //   coop_cli --tokenize "text"    the words, pieces and ids of one line
+//   coop_cli --serve              the bot as a service for a game: JSON lines on stdin and stdout (see RunServe);
+//                                 with --no-stt without the recognizer and the microphone (typed lines only),
+//                                 with --tts the bot speaks the lines the game hands it (Windows)
 //   coop_cli --speech-text-tests FILE   SpeechTextForClassifier against the Python `norm` (no model)
 // with speech-to-text (a build that found sherpa-onnx under third_party/):
 //   coop_cli --voice              the chat with a microphone: hold SPACE and talk, release to send; a typed
@@ -62,9 +65,13 @@
 #include "coop_intent/speech.h"
 #include "coop_intent/tokenizer.h"
 #include "coop_intent/unicode.h"
+#include "coop_intent/world.h"
 #include "nlohmann/json.hpp"
 #if defined(COOP_WITH_STT) && defined(_WIN32)
 #include "mic_capture.h"
+#endif
+#ifdef _WIN32
+#include "tts.h"
 #endif
 
 using json = nlohmann::json;
@@ -344,7 +351,216 @@ std::string PlacesText(const coop::PlaceRecord& r, const coop::LocationMatcher& 
     return s;
 }
 
+// ---- the world state (world.h) as JSON: what the game hands over, and what the tests carry ----
+
+std::string StrOrEmpty(const json& j, const char* key) {
+    const auto it = j.find(key);
+    return it == j.end() || it->is_null() ? std::string() : it->get<std::string>();
+}
+
+bool ParsePin(const json& j, coop::WorldPin* p, std::string* err) {
+    try {
+        p->id = j.at("id").get<std::string>();
+        p->entity = StrOrEmpty(j, "entity");
+        p->bearing = j.value("bearing", 0.0);
+        p->distance = j.value("distance", 0.0);
+        p->elevation = j.value("elevation", 0.0);
+    } catch (const std::exception& e) {
+        return *err = std::string("pin: ") + e.what(), false;
+    }
+    return true;
+}
+
+bool ParseWorld(const json& j, coop::WorldState* w, std::string* err) {
+    *w = coop::WorldState();
+    try {
+        for (const json& e : j.value("entities", json::array())) {
+            coop::WorldEntity x;
+            x.id = e.at("id").get<std::string>();
+            x.object = StrOrEmpty(e, "object");
+            x.qualifier = StrOrEmpty(e, "qualifier");
+            x.zone = StrOrEmpty(e, "zone");
+            x.bearing = e.value("bearing", 0.0);
+            x.distance = e.value("distance", 0.0);
+            x.elevation = e.value("elevation", 0.0);
+            x.tags = e.value("tags", std::vector<std::string>{});
+            w->entities.push_back(std::move(x));
+        }
+        if (j.contains("player_pin") && !j["player_pin"].is_null()) {
+            w->has_player_pin = true;
+            if (!ParsePin(j["player_pin"], &w->player_pin, err)) return false;
+        }
+        if (j.contains("bot_pin") && !j["bot_pin"].is_null()) {
+            w->has_bot_pin = true;
+            if (!ParsePin(j["bot_pin"], &w->bot_pin, err)) return false;
+        }
+        w->player_gaze = StrOrEmpty(j, "player_gaze");
+        if (j.contains("player")) w->player_downed = j["player"].value("downed", false);
+        if (j.contains("bot")) {
+            w->bot_stance = j["bot"].value("stance", std::string("stand"));
+            w->bot_items = j["bot"].value("items", std::vector<std::string>{});
+            w->bot_busy = j["bot"].value("busy", false);
+        }
+        if (j.contains("time") && !j["time"].is_null()) {   // the game's clock: without it the planner keeps no context
+            w->has_time = true;
+            w->time = j["time"].get<double>();
+        }
+    } catch (const std::exception& e) {
+        return *err = std::string("world state: ") + e.what(), false;
+    }
+    return true;
+}
+
+// a grounding, an order, a question as one comparable string each
+std::string GroundStr(const std::vector<coop::Grounding>& g) {
+    std::string s;
+    for (const coop::Grounding& x : g) {
+        s += x.status + "/" + (x.entity.empty() ? "-" : x.entity) + "/" + (x.via.empty() ? "-" : x.via) + "/[";
+        for (size_t i = 0; i < x.candidates.size(); ++i) s += (i ? "," : "") + x.candidates[i];
+        s += "];";
+    }
+    return s;
+}
+std::string GroundStr(const json& g) {
+    std::string s;
+    for (const json& x : g) {
+        s += x["status"].get<std::string>() + "/" + LabelStr(x["entity"]) + "/" + LabelStr(x["via"]) + "/[";
+        const auto c = x["candidates"].get<std::vector<std::string>>();
+        for (size_t i = 0; i < c.size(); ++i) s += (i ? "," : "") + c[i];
+        s += "];";
+    }
+    return s;
+}
+std::string OrderStr(const coop::PlannerResult& r, const Model& m, const coop::LocationMatcher& places) {
+    if (!r.has_order) return "-";
+    const coop::Order& o = r.order;
+    std::string s = m.cfg.labels[static_cast<size_t>(o.intent)] + "/" + (o.entity.empty() ? "-" : o.entity) + "/[";
+    for (size_t i = 0; i < o.candidates.size(); ++i) s += (i ? "," : "") + o.candidates[i];
+    const char* dir = coop::PlaceDirectionName(o.direction);
+    const char* ptr = coop::PlacePointerName(o.pointer);
+    return s + "]/" + (*dir ? dir : "-") + "/" + (o.zone >= 0 ? places.ZoneId(o.zone) : "-") + "/" + (*ptr ? ptr : "-") + "/" + (o.other ? "1" : "0") +
+           "/" + (o.via.empty() ? "-" : o.via) + "/" + (o.nearby ? "1" : "0");
+}
+std::string OrderStr(const json& o) {
+    if (o.is_null()) return "-";
+    std::string s = o["intent"].get<std::string>() + "/" + LabelStr(o["entity"]) + "/[";
+    const auto c = o["candidates"].get<std::vector<std::string>>();
+    for (size_t i = 0; i < c.size(); ++i) s += (i ? "," : "") + c[i];
+    // a file written before the markerless rules has neither key: it is stale, and says so instead of crashing
+    return s + "]/" + LabelStr(o["direction"]) + "/" + LabelStr(o["zone"]) + "/" + LabelStr(o["pointer"]) + "/" + FlagStr(o["other"]) +
+           "/" + (o.contains("via") ? LabelStr(o["via"]) : std::string("(no via: regenerate world_tests.jsonl)")) + "/" +
+           (o.contains("near") ? FlagStr(o["near"]) : std::string("?"));
+}
+// the frame of the previous order: intent / it had a place / the place's entity / how it was found / when
+std::string FrameStr(const coop::Memory& mem, const Model& m) {
+    const coop::Memory::Frame& f = mem.frame;
+    if (!f.has) return "-";
+    char when[32];
+    std::snprintf(when, sizeof(when), "%.3f", f.time);
+    return m.cfg.labels[static_cast<size_t>(f.intent)] + "/" + (f.has_target ? "1" : "0") + "/" +
+           (f.has_target && !f.ground.entity.empty() ? f.ground.entity : "-") + "/" + (f.has_target && !f.ground.via.empty() ? f.ground.via : "-") + "/" +
+           (f.has_time ? when : "-");
+}
+std::string FrameStr(const json& f) {
+    if (f.is_null()) return "-";
+    char when[32];
+    if (!f["time"].is_null()) std::snprintf(when, sizeof(when), "%.3f", f["time"].get<double>());
+    return f["intent"].get<std::string>() + "/" + FlagStr(f["has_target"]) + "/" + LabelStr(f["entity"]) + "/" + LabelStr(f["via"]) + "/" +
+           (f["time"].is_null() ? "-" : when);
+}
+std::string QuestionStr(const coop::Memory& mem, const Model& m) {
+    if (!mem.has_question) return "-";
+    const coop::Memory::Question& q = mem.question;
+    std::string s = q.kind + "/" + m.cfg.labels[static_cast<size_t>(q.intent)] + "/" + std::to_string(q.k) + "/" + (q.other ? "1" : "0") + "/" +
+                    (q.queued ? "1" : "0") + "/[";
+    for (size_t i = 0; i < q.candidates.size(); ++i) s += (i ? "," : "") + q.candidates[i];
+    return s + "]/" + std::to_string(q.offered);
+}
+std::string QuestionStr(const json& q) {
+    if (q.is_null()) return "-";
+    std::string s = q["kind"].get<std::string>() + "/" + q["intent"].get<std::string>() + "/" + std::to_string(q["k"].get<int>()) + "/" +
+                    FlagStr(q["other"]) + "/" + FlagStr(q["queued"]) + "/[";
+    const auto c = q["candidates"].get<std::vector<std::string>>();
+    for (size_t i = 0; i < c.size(); ++i) s += (i ? "," : "") + c[i];
+    return s + "]/" + std::to_string(q["offered"].get<int>());
+}
+
 // ---- checks ----------------------------------------------------------------------------------
+
+// world_tests.jsonl (gen_world_tests.py): the planner on scripted worlds and conversations, no model
+int RunWorldTests(Model& m) {
+    const auto rows = ReadJsonl(m.dir + "/world_tests.jsonl");
+    std::string err;
+    size_t n = 0, ok = 0, scenarios = 0, refusals = 0;
+    for (const json& sc : rows) {
+        if (sc.contains("refused")) {   // a world the rules must refuse (or the example they must accept)
+            coop::BotBrain brain;
+            coop::Planner planner;
+            if (!brain.Init(m.cfg, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+            planner.Init(&brain);
+            coop::WorldState w;
+            const bool accepted = ParseWorld(sc["world"], &w, &err) && planner.SetWorld(w, &err);
+            ++n;
+            ++refusals;
+            ok += accepted == sc["accepted"].get<bool>();
+            if (accepted != sc["accepted"].get<bool>())
+                std::printf("  world \"%s\": python %s, c++ %s%s\n", sc["refused"].get<std::string>().c_str(),
+                            sc["accepted"].get<bool>() ? "accepted" : "refused", accepted ? "accepted" : "refused",
+                            accepted ? "" : (" (" + err + ")").c_str());
+            continue;
+        }
+        ++scenarios;
+        coop::IntentConfig cfg = m.cfg;
+        cfg.gate = sc["gate"].get<std::string>();
+        coop::BotBrain brain;
+        coop::Planner planner;
+        if (!brain.Init(cfg, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+        brain.threshold = sc["threshold"].get<double>();
+        planner.Init(&brain);
+        coop::WorldState w;
+        if (!ParseWorld(sc["world"], &w, &err) || !planner.SetWorld(w, &err))
+            return std::fprintf(stderr, "scenario %zu: %s\n", scenarios, err.c_str()), 1;
+        for (const json& s : sc["steps"]) {
+            std::vector<float> p;
+            for (double x : s["probs"].get<std::vector<double>>()) p.push_back(static_cast<float>(x));
+            const std::string text = s["text"];
+            if (s.contains("world")) {   // the world as the game sends it before this line: time passed, the pin moved
+                coop::WorldState ws;
+                if (!ParseWorld(s["world"], &ws, &err) || !planner.SetWorld(ws, &err))
+                    return std::fprintf(stderr, "scenario %zu, %s: %s\n", scenarios, Escaped(text).c_str(), err.c_str()), 1;
+            }
+            const coop::PlannerResult r = planner.Step(text, p);
+            const std::string intent = r.intent >= 0 ? cfg.labels[static_cast<size_t>(r.intent)] : "?";
+            const std::string pending = brain.Pending() >= 0 ? cfg.labels[static_cast<size_t>(brain.Pending())] : "-";
+            const coop::WorldState& world = planner.World();
+            std::string why;
+            auto same = [&](const char* what, const std::string& got, const std::string& want) {
+                if (got != want) why += std::string(why.empty() ? "" : "; ") + what + ": python " + want + ", c++ " + got;
+            };
+            same("action", r.action, s["action"].get<std::string>());
+            same("intent", intent, s["intent"].get<std::string>());
+            if (std::fabs(r.prob - s["prob"].get<double>()) > 1e-5) why += "; prob";
+            if (!s["say"].is_null()) same("say", r.say, s["say"].get<std::string>());
+            same("adjusted", r.adjusted ? "1" : "0", FlagStr(s["adjusted"]));
+            same("ground", GroundStr(r.ground), GroundStr(s["ground"]));
+            same("order", OrderStr(r, m, brain.Places()), OrderStr(s["order"]));
+            same("question", QuestionStr(planner.Mem(), m), QuestionStr(s["question"]));
+            same("pending", pending, LabelStr(s["pending"]));
+            same("pending_entity", planner.PendingEntity().empty() ? "-" : planner.PendingEntity(), LabelStr(s["pending_entity"]));
+            same("pending_here", planner.PendingHere() ? "1" : "0", s.contains("pending_here") ? FlagStr(s["pending_here"]) : std::string("?"));
+            same("pending_near", planner.PendingNear() ? "1" : "0", s.contains("pending_near") ? FlagStr(s["pending_near"]) : std::string("?"));
+            same("last_entity", planner.Mem().last_entity.empty() ? "-" : planner.Mem().last_entity, LabelStr(s["last_entity"]));
+            if (s.contains("frame")) same("frame", FrameStr(planner.Mem(), m), FrameStr(s["frame"]));
+            same("bot_pin", world.has_bot_pin ? world.bot_pin.entity : "-", LabelStr(s["bot_pin"]));
+            ++n;
+            ok += why.empty();
+            if (!why.empty()) std::printf("  scenario %zu, %s: %s\n", scenarios, Escaped(text).c_str(), why.c_str());
+        }
+    }
+    std::printf("world tests, %zu scenarios, %zu steps and %zu worlds to accept or refuse: C++ planned what the Python planner "
+                "planned on %zu/%zu\n", scenarios, n - refusals, refusals, ok, n);
+    return ok == n ? 0 : 1;
+}
 
 int RunTokenizerTests(Model& m) {
     const auto rows = ReadJsonl(m.dir + "/tokenizer_tests.jsonl");
@@ -748,14 +964,33 @@ struct Chat {
     bool why = true;
     std::vector<float> p;
 
+    coop::Planner planner;   // the world (world.h): grounding, memory, questions, priors; empty until /world FILE
+
     explicit Chat(Model& model) : m(model) {}
     bool Init(std::string* err) {
         if (!brain.Init(m.cfg, err)) return false;
+        planner.Init(&brain);
         return Classify(m, m.tok.Encode("warm up"), &p, err);
     }
     const std::string& Pick(const std::vector<std::string>& v) { return v[rng() % v.size()]; }
 
-    // /q /why /t: 0 not a command, 1 handled, 2 quit
+    // a world state file (world.py WORLD_EXAMPLE's shape) as the game would hand it over
+    bool LoadWorld(const std::string& path, std::string* err) {
+        std::string text;
+        if (!ReadFile(path, &text)) return *err = "cannot read " + path, false;
+        coop::WorldState w;
+        try {
+            if (!ParseWorld(json::parse(text), &w, err)) return false;
+        } catch (const std::exception& e) {
+            return *err = std::string("world file: ") + e.what(), false;
+        }
+        if (!planner.SetWorld(w, err)) return false;
+        std::printf("  world: %zu entities%s%s, bot %s\n", w.entities.size(), w.has_player_pin ? ", a pin" : "",
+                    w.player_gaze.empty() ? "" : (", looking at " + w.player_gaze).c_str(), w.bot_stance.c_str());
+        return true;
+    }
+
+    // /q /why /t /world: 0 not a command, 1 handled, 2 quit
     int Command(const std::string& line) {
         if (line == "/q" || line == "/quit") return 2;
         if (line == "/why") return why = !why, 1;
@@ -764,22 +999,47 @@ struct Chat {
             std::printf("  threshold %.2f\n", brain.threshold);
             return 1;
         }
+        if (line.rfind("/world ", 0) == 0) {
+            std::string err;
+            if (!LoadWorld(StripPy(line.substr(7)), &err)) std::printf("  %s\n", err.c_str());
+            return 1;
+        }
         return 0;
     }
+
+    // what one line led to: the planner's result, the words the bot answers with, the classifier's time
+    struct Turn {
+        coop::PlannerResult r;
+        std::string reply;
+        double ms = 0;
+    };
 
     // One line. `heard` is what the regex slots and the place matcher read; `text` is what the classifier
     // reads: the same string for a typed line, SpeechTextForClassifier(heard) for a spoken one
     bool Respond(const std::string& heard, const std::string& text, std::string* err) {
+        Turn t;
+        if (!Think(heard, text, &t, err)) return false;
+        Print(t);
+        return true;
+    }
+
+    // the line through the classifier and the planner, and the reply chosen for it; nothing is printed
+    bool Think(const std::string& heard, const std::string& text, Turn* turn, std::string* err) {
         const auto t0 = Clock::now();
         const auto ids = m.tok.Encode(text);
         if (!Classify(m, ids, &p, err)) return false;
-        const double ms = Ms(Clock::now() - t0);
+        turn->ms = Ms(Clock::now() - t0);
         const int pending_before = brain.Pending();
-        const coop::Decision d = brain.Decide(heard, p);
+        turn->r = planner.Step(heard, p);
+        const coop::PlannerResult& r = turn->r;
+        const coop::Decision& d = r.decision;
         if (d.intent < 0) return *err = "the model does not fit intent_config.json", false;
         const std::string& intent = m.cfg.labels[d.intent];
-        std::string reply;
-        switch (d.action) {
+        std::string& reply = turn->reply;
+        // the planner's own words: a question, a settled order, "Copy, stopping.", the place it assumed ("Open fire, on
+        // your pin."); otherwise the chat picks a line
+        if (r.action == "ask" || r.action == "resolved" || !r.say.empty()) reply = r.say;
+        else switch (d.action) {
             case coop::Action::Negated: reply = "Copy, standing down."; break;
             case coop::Action::SayAgain: reply = Pick(kAgain); break;
             case coop::Action::Ignore: reply = Pick(kAck); break;
@@ -794,9 +1054,18 @@ struct Chat {
         if (intent == "HOLD_FIRE" && d.action == coop::Action::Act && d.on_signal && brain.LabelIndex("OPEN_FIRE") >= 0)
             reply += " On your go.";
         if (d.other && (d.action == coop::Action::Act || d.action == coop::Action::Queued) && intent != "HOLD_OTHER_ANGLE" &&
-            intent != "HOLD_FIRE")
+            intent != "HOLD_FIRE" && r.action != "ask")
             reply += " Taking the other one.";
-        std::printf("bot> %s\n", reply.c_str());
+        return true;
+    }
+
+    // the chat's two lines for a turn: the reply, and under /why the debug line
+    void Print(const Turn& turn) {
+        const coop::PlannerResult& r = turn.r;
+        const coop::Decision& d = r.decision;
+        const std::string& intent = m.cfg.labels[d.intent];
+        const double ms = turn.ms;
+        std::printf("bot> %s\n", turn.reply.c_str());
         if (why) {
             const auto top = coop::TopK(p, 3);
             std::string slots;
@@ -816,16 +1085,28 @@ struct Chat {
                 std::printf("     place: %s\n", PlacesText(d.places, brain.Places()).c_str());
             if (!d.executed_places.targets.empty())
                 std::printf("     executes at: %s\n", PlacesText(d.executed_places, brain.Places()).c_str());
+            // the world: how each target was grounded, the order the game gets, the question pending
+            if (!r.ground.empty() || r.has_order || r.adjusted) {
+                std::string line;
+                for (const coop::Grounding& g : r.ground)
+                    line += (line.empty() ? "" : "; ") + g.status + (g.entity.empty() ? "" : " " + g.entity) + (g.via.empty() ? "" : " (" + g.via + ")");
+                if (r.has_order)
+                    line += std::string(line.empty() ? "" : " | ") + "order: " + m.cfg.labels[static_cast<size_t>(r.order.intent)] +
+                            (r.order.entity.empty() ? "" : " @ " + r.order.entity);
+                if (planner.Mem().has_question) line += std::string(line.empty() ? "" : " | ") + "asking";
+                if (r.adjusted) line += std::string(line.empty() ? "" : " | ") + "priors applied";
+                std::printf("     world: %s\n", line.c_str());
+            }
         }
-        return true;
     }
 };
 
-int RunChat(Model& m, int threads) {
+int RunChat(Model& m, int threads, const std::string& world_file) {
     Chat chat(m);
     std::string err;
     if (!chat.Init(&err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
-    std::printf("ready (C++, ONNX Runtime %s CPU, %d threads). threshold %.2f. Talk to your teammate in English; /why /t <x> /q\n\n",
+    if (!world_file.empty() && !chat.LoadWorld(world_file, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+    std::printf("ready (C++, ONNX Runtime %s CPU, %d threads). threshold %.2f. Talk to your teammate in English; /why /t <x> /world FILE /q\n\n",
                 coop::OrtBackend::RuntimeVersion().c_str(), threads, chat.brain.threshold);
     for (;;) {
         std::printf("you> ");
@@ -1014,7 +1295,7 @@ int RunMicTest(const coop::SpeechOptions& opt, double seconds) {
 
 // The chat with a microphone. The key is read from this console (so it does nothing while another window has
 // the keyboard); its release is read from the keyboard state, which the console does not report
-int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads) {
+int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads, const std::string& world_file) {
     const HANDLE in = GetStdHandle(STD_INPUT_HANDLE);
     DWORD mode = 0;
     if (!GetConsoleMode(in, &mode)) return std::fprintf(stderr, "--voice reads the key from a console: run it in a terminal, not through a pipe\n"), 1;
@@ -1023,8 +1304,9 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads) {
     MicCapture mic;
     std::string err;
     if (!LoadSpeech(stt, opt, &err) || !chat.Init(&err) || !mic.Start(&err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+    if (!world_file.empty() && !chat.LoadWorld(world_file, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
     std::printf("ready (C++, ONNX Runtime %s CPU, %d threads). threshold %.2f.\n"
-                "Hold SPACE and talk, release to send. Or type a line and press Enter; /why /t <x> /q. Esc quits.\n\n",
+                "Hold SPACE and talk, release to send. Or type a line and press Enter; /why /t <x> /world FILE /q. Esc quits.\n\n",
                 coop::OrtBackend::RuntimeVersion().c_str(), threads, chat.brain.threshold);
     for (;;) {
         std::printf("you> ");
@@ -1086,6 +1368,270 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads) {
 #endif   // _WIN32
 #endif   // COOP_WITH_STT
 
+// ---- the bot as a service for a game: JSON lines on stdin, JSON lines on stdout -----------------
+//
+// The game (the CLIENT side of it: speech and command recognition belong to the player's machine) starts
+// `coop_cli --serve` and talks to it through the two pipes. One request per line, one answer per line;
+// a line of stdout that does not start with '{' is a log line and the game skips it.
+//
+//   {"cmd":"text","id":7,"text":"hold the door","world":{...}}    a typed line; "world" (world.h, the shape of
+//                                                                scripts/coop/world_example.json) is the state
+//                                                                the planner grounds it in; without it the last
+//                                                                world stays
+//   {"cmd":"ptt_down"}                                           the talk key went down: the clip starts (with
+//                                                                its 0.2 s pre-roll), the bot's voice stops
+//   {"cmd":"ptt_up","id":8,"world":{...}}                        the key came up: recognize, classify, plan
+//   {"cmd":"ptt_cancel"}                                         drop the clip
+//   {"cmd":"wav","id":9,"path":"clip.wav","world":{...}}         a 16-bit PCM file instead of the microphone
+//   {"cmd":"world","world":{...}}                                the world alone
+//   {"cmd":"say","text":"Contact left!"}                         the bot's voice (--tts); {"cmd":"hush"} stops it
+//   {"cmd":"reset"} {"cmd":"threshold","value":0.7} {"cmd":"ping"} {"cmd":"quit"}
+//
+//   {"event":"ready","labels":[...],"gate":"family","threshold":0.68,"stt":true,"mic":true,"tts":true,...}
+//   {"event":"reply","id":7,"heard":"hold the door","spoken":false,"intent":"HOLD_ANGLE","prob":1.0,
+//    "action":"ask","say":"Which door? The one ahead, 8 m?","order":null,"question":{...},...}
+//        action: the bot's (act, queued, execute, go, wait, negated, answer, say_again, ignore) or the
+//        planner's (ask, resolved). "order" is what the game carries out NOW: {"intent","entity" (an id of
+//        the world the game sent, or null),"candidates","direction","zone","pointer","other","via" (how the
+//        place was found: "gaze", "pin", "here" = where the speaker is, "direction", ...),"near" (the line
+//        pointed with "this" / "here" and no far word)}; null: nothing
+//   {"event":"nothing","id":8,...}    the clip had no words;  {"event":"too_short","id":8}
+//   {"event":"error","id":7,"cmd":"text","message":"..."}        the request was refused; the service goes on
+// The service ends when stdin closes (the game is gone) or on "quit".
+json ReplyJson(Chat& chat, const Chat::Turn& t) {
+    const Model& m = chat.m;
+    const coop::PlannerResult& r = t.r;
+    const coop::Decision& d = r.decision;
+    const coop::LocationMatcher& places = chat.brain.Places();
+    auto label = [&](int i) { return i >= 0 ? json(m.cfg.labels[static_cast<size_t>(i)]) : json(nullptr); };
+    auto or_null = [](const std::string& s) { return s.empty() ? json(nullptr) : json(s); };
+    json j;
+    j["event"] = "reply";
+    j["intent"] = label(d.intent);
+    j["prob"] = d.prob;
+    j["action"] = r.action;
+    j["say"] = t.reply;
+    j["ms"] = t.ms;
+    j["on_signal"] = d.on_signal;
+    j["other"] = d.other;
+    j["negated"] = d.negated;
+    j["adjusted"] = r.adjusted;
+    json top = json::array();
+    for (int i : coop::TopK(chat.p, 3)) top.push_back({m.cfg.labels[static_cast<size_t>(i)], chat.p[static_cast<size_t>(i)]});
+    j["top"] = top;
+    j["places"] = d.places.targets.empty() ? std::string() : PlacesText(d.places, places);
+    json ground = json::array();
+    for (const coop::Grounding& g : r.ground)
+        ground.push_back({{"status", g.status}, {"entity", or_null(g.entity)}, {"via", or_null(g.via)}, {"candidates", g.candidates}});
+    j["ground"] = ground;
+    if (r.has_order) {
+        const coop::Order& o = r.order;
+        const char* dir = coop::PlaceDirectionName(o.direction);
+        const char* ptr = coop::PlacePointerName(o.pointer);
+        j["order"] = {{"intent", label(o.intent)}, {"entity", or_null(o.entity)}, {"candidates", o.candidates},
+                      {"direction", or_null(dir)}, {"zone", o.zone >= 0 ? json(places.ZoneId(o.zone)) : json(nullptr)},
+                      {"pointer", or_null(ptr)}, {"other", o.other}, {"via", or_null(o.via)}, {"near", o.nearby}};
+    } else {
+        j["order"] = nullptr;
+    }
+    const coop::Memory& mem = chat.planner.Mem();
+    if (mem.has_question)
+        j["question"] = {{"kind", mem.question.kind}, {"intent", label(mem.question.intent)}, {"candidates", mem.question.candidates},
+                         {"offered", mem.question.offered}, {"queued", mem.question.queued}};
+    else
+        j["question"] = nullptr;
+    j["pending"] = label(chat.brain.Pending());
+    j["pending_entity"] = or_null(chat.planner.PendingEntity());
+    j["last_entity"] = or_null(mem.last_entity);
+    return j;
+}
+
+int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want_stt, bool want_tts) {
+    Chat chat(m);
+    chat.why = false;
+    std::string err;
+    if (!chat.Init(&err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+    bool stt_ready = false, mic_ready = false, tts_ready = false;
+    std::string stt_note, mic_note, tts_note;
+#ifdef COOP_WITH_STT
+    coop::SpeechRecognizer stt;
+    if (want_stt) {
+        stt_ready = LoadSpeech(stt, speech, &err);
+        if (!stt_ready) stt_note = err;
+    } else {
+        stt_note = "switched off (--no-stt)";
+    }
+#ifdef _WIN32
+    MicCapture mic;
+    if (stt_ready) {
+        mic_ready = mic.Start(&err);
+        if (!mic_ready) mic_note = err;
+    }
+#else
+    mic_note = "the microphone is read only on Windows so far";
+#endif
+#else
+    (void)speech;
+    (void)want_stt;
+    stt_note = "this coop_cli was built without speech-to-text";
+#endif
+#ifdef _WIN32
+    Tts tts;
+    if (want_tts) {
+        tts_ready = tts.Start(&err);
+        tts_note = tts_ready ? tts.Voice() : err;
+    }
+#else
+    (void)want_tts;
+#endif
+    auto send = [](const json& j) {
+        const std::string s = j.dump(-1, ' ', false, json::error_handler_t::replace);
+        std::fputs(s.c_str(), stdout);
+        std::fputc('\n', stdout);
+        std::fflush(stdout);
+    };
+    send({{"event", "ready"}, {"bot", m.dir}, {"labels", m.cfg.labels}, {"gate", m.cfg.gate}, {"threshold", chat.brain.threshold},
+          {"threads", threads}, {"runtime", coop::OrtBackend::RuntimeVersion()}, {"stt", stt_ready}, {"stt_note", stt_note},
+          {"mic", mic_ready}, {"mic_note", mic_note}, {"tts", tts_ready}, {"tts_note", tts_note}});
+    bool listening = false;
+    Clock::time_point down = Clock::now();
+    for (std::string line; std::getline(std::cin, line);) {
+        if (!line.empty() && line.back() == '\r') line.pop_back();
+        if (line.empty()) continue;
+        json q;
+        try {
+            q = json::parse(line);
+        } catch (const std::exception& e) {
+            send({{"event", "error"}, {"id", nullptr}, {"cmd", ""}, {"message", std::string("not a JSON line: ") + e.what()}});
+            continue;
+        }
+        const std::string cmd = q.is_object() ? q.value("cmd", std::string()) : std::string();
+        const json id = q.is_object() && q.contains("id") ? q["id"] : json(nullptr);
+        auto fail = [&](const std::string& message) { send({{"event", "error"}, {"id", id}, {"cmd", cmd}, {"message", message}}); };
+        try {
+            if (q.contains("world") && !q["world"].is_null()) {   // the world the line is said in
+                coop::WorldState w;
+                if (!ParseWorld(q["world"], &w, &err) || !chat.planner.SetWorld(w, &err)) {
+                    fail(err);
+                    continue;
+                }
+            }
+            // a heard or typed line through the classifier and the planner
+            auto respond = [&](const std::string& raw, bool spoken, double audio_s, double stt_ms) {
+                const std::string heard = StripPy(raw);
+                if (heard.empty()) {
+                    send({{"event", "nothing"}, {"id", id}, {"audio_s", audio_s}, {"stt_ms", stt_ms}});
+                    return;
+                }
+                Chat::Turn t;
+                if (!chat.Think(heard, spoken ? coop::SpeechTextForClassifier(heard) : heard, &t, &err)) {
+                    fail(err);
+                    return;
+                }
+                json j = ReplyJson(chat, t);
+                j["id"] = id;
+                j["heard"] = heard;
+                j["spoken"] = spoken;
+                j["audio_s"] = audio_s;
+                j["stt_ms"] = stt_ms;
+                send(j);
+            };
+            if (cmd == "text") {
+                respond(q.at("text").get<std::string>(), false, 0, 0);
+            } else if (cmd == "world") {
+                send({{"event", "world"}, {"id", id}, {"entities", chat.planner.World().entities.size()}});
+            } else if (cmd == "ptt_down") {
+#ifdef _WIN32
+                if (tts_ready) tts.Stop();   // the microphone must not hear the bot
+#endif
+#if defined(COOP_WITH_STT) && defined(_WIN32)
+                if (!mic_ready) {
+                    fail(stt_ready ? "no microphone: " + mic_note : "no speech-to-text: " + stt_note);
+                    continue;
+                }
+                mic.Begin();
+                listening = true;
+                down = Clock::now();
+                send({{"event", "listening"}, {"id", id}});
+#else
+                fail("no microphone in this build");
+#endif
+            } else if (cmd == "ptt_up" || cmd == "ptt_cancel") {
+#if defined(COOP_WITH_STT) && defined(_WIN32)
+                if (!listening) {
+                    fail("the talk key was not down");
+                    continue;
+                }
+                listening = false;
+                const double held = Ms(Clock::now() - down);
+                const std::vector<float> clip = mic.End();
+                if (cmd == "ptt_cancel") {
+                    send({{"event", "cancelled"}, {"id", id}});
+                } else if (held < 200) {
+                    send({{"event", "too_short"}, {"id", id}, {"held_ms", held}});
+                } else {
+                    const auto t0 = Clock::now();
+                    std::string heard;
+                    if (!stt.Transcribe(clip.data(), clip.size(), MicCapture::kSampleRate, &heard, &err)) {
+                        fail(err);
+                        continue;
+                    }
+                    respond(heard, true, static_cast<double>(clip.size()) / MicCapture::kSampleRate, Ms(Clock::now() - t0));
+                }
+#else
+                fail("no microphone in this build");
+#endif
+            } else if (cmd == "wav") {
+#ifdef COOP_WITH_STT
+                if (!stt_ready) {
+                    fail("no speech-to-text: " + stt_note);
+                    continue;
+                }
+                std::vector<float> x;
+                int rate = 0;
+                if (!ReadWav(q.at("path").get<std::string>(), &x, &rate, &err)) {
+                    fail(err);
+                    continue;
+                }
+                const auto t0 = Clock::now();
+                std::string heard;
+                if (!stt.Transcribe(x.data(), x.size(), rate, &heard, &err)) {
+                    fail(err);
+                    continue;
+                }
+                respond(heard, true, static_cast<double>(x.size()) / rate, Ms(Clock::now() - t0));
+#else
+                fail("this coop_cli was built without speech-to-text");
+#endif
+            } else if (cmd == "say" || cmd == "hush") {
+#ifdef _WIN32
+                if (tts_ready) {
+                    if (cmd == "say") tts.Say(q.at("text").get<std::string>());
+                    else tts.Stop();
+                }
+#endif
+            } else if (cmd == "reset") {
+                chat.planner.Reset();
+                send({{"event", "reset"}, {"id", id}});
+            } else if (cmd == "threshold") {
+                chat.brain.threshold = q.at("value").get<double>();
+                send({{"event", "threshold"}, {"id", id}, {"value", chat.brain.threshold}});
+            } else if (cmd == "ping") {
+                send({{"event", "pong"}, {"id", id}});
+            } else if (cmd == "quit") {
+                break;
+            } else {
+                fail("unknown cmd");
+            }
+        } catch (const std::exception& e) {   // a missing key, a wrong type
+            fail(e.what());
+        }
+    }
+    (void)listening;
+    (void)down;
+    return 0;
+}
+
 }  // namespace
 
 int main(int argc, char** argv) {
@@ -1094,7 +1640,8 @@ int main(int argc, char** argv) {
 #endif
     Model m;
     m.dir = COOP_DEFAULT_MODEL_DIR;
-    std::string mode = "chat", tokenize_text, speech_text_file;
+    std::string mode = "chat", tokenize_text, speech_text_file, world_file;
+    bool serve_stt = true, serve_tts = false;
     coop::OrtBackend::Options opt;
     bool parallel = true;
     coop::SpeechOptions speech;
@@ -1110,8 +1657,12 @@ int main(int argc, char** argv) {
         else if (a == "--no-spin") opt.allow_spinning = false;
         else if (a == "--sequential") parallel = false;
         else if (a == "--golden" || a == "--tokenizer-tests" || a == "--dialogue" || a == "--bench" || a == "--gate-tests" ||
-                 a == "--decide-tests" || a == "--location-tests")
+                 a == "--decide-tests" || a == "--location-tests" || a == "--world-tests")
             mode = a.substr(2);
+        else if (a == "--world" && i + 1 < argc) world_file = argv[++i];
+        else if (a == "--serve") mode = "serve";
+        else if (a == "--no-stt") serve_stt = false;
+        else if (a == "--tts") serve_tts = true;
         else if (a == "--tokenize" && i + 1 < argc) mode = "tokenize", tokenize_text = argv[++i];
         else if (a == "--speech-text-tests" && i + 1 < argc) mode = "speech-text-tests", speech_text_file = argv[++i];
         else if (a == "--stt-model" && i + 1 < argc) speech.model_dir = argv[++i];
@@ -1122,9 +1673,10 @@ int main(int argc, char** argv) {
         else if (a == "--stt-tests" && i + 3 < argc) mode = "stt-tests", stt_test = {argv[i + 1], argv[i + 2], argv[i + 3]}, i += 3;
         else {
             std::fprintf(stderr, "usage: coop_cli [--golden | --tokenizer-tests | --dialogue | --gate-tests | --decide-tests |\n"
-                                 "                 --location-tests | --bench | --tokenize TEXT | --speech-text-tests FILE |\n"
-                                 "                 --voice | --mic-test SECONDS | --stt-wav FILE ... | --stt-tests LIST WAVDIR EXPECTED]\n"
-                                 "                [--model-dir DIR] [--threads N] [--no-spin] [--sequential]\n"
+                                 "                 --location-tests | --world-tests | --bench | --tokenize TEXT | --speech-text-tests FILE |\n"
+                                 "                 --voice | --mic-test SECONDS | --stt-wav FILE ... | --stt-tests LIST WAVDIR EXPECTED |\n"
+                                 "                 --serve [--no-stt] [--tts]]\n"
+                                 "                [--model-dir DIR] [--threads N] [--no-spin] [--sequential] [--world FILE]\n"
                                  "                [--stt-model DIR] [--stt-threads N]\n");
             return 2;
         }
@@ -1148,6 +1700,7 @@ int main(int argc, char** argv) {
     if (mode == "gate-tests") return RunGateTests(m);
     if (mode == "decide-tests") return RunDecideTests(m);
     if (mode == "location-tests") return RunLocationTests(m);
+    if (mode == "world-tests") return RunWorldTests(m);
     if (mode == "tokenize") {
         for (const auto& w : m.tok.Words(tokenize_text)) std::printf("word %s\n", Escaped(w).c_str());
         const auto ids = m.tok.Encode(tokenize_text);
@@ -1165,6 +1718,7 @@ int main(int argc, char** argv) {
             return std::fprintf(stderr, "the model gives %zu outputs, intent_config.json has %zu labels\n",
                                 logits.size(), m.cfg.labels.size()), 1;
     }
+    if (mode == "serve") return RunServe(m, speech, opt.threads, serve_stt, serve_tts);
     if (mode == "golden") return RunGolden(m);
     if (mode == "dialogue") return RunDialogue(m);
     if (mode == "bench") return RunBench(m, load_ms, mem0);
@@ -1172,11 +1726,11 @@ int main(int argc, char** argv) {
     if (mode == "stt-wav") return RunSttWav(m, speech, wavs);
     if (mode == "stt-tests") return RunSttTests(m, speech, stt_test[0], stt_test[1], stt_test[2]);
 #ifdef _WIN32
-    if (mode == "voice") return RunVoice(m, speech, opt.threads);
+    if (mode == "voice") return RunVoice(m, speech, opt.threads, world_file);
 #else
     if (mode == "voice" || mode == "mic-test")
         return std::fprintf(stderr, "the microphone is read only on Windows so far; --stt-wav reads a file\n"), 2;
 #endif
 #endif
-    return RunChat(m, opt.threads);
+    return RunChat(m, opt.threads, world_file);
 }
