@@ -1,0 +1,122 @@
+coop-deberta-v3-ens3-v54: gate family, threshold 0.68; owner_voice_20261009.json
+  ok  'Where is my shoes?'                       NONE           1.00   want NONE                   v51: NONE 0.99 ignore
+  ok  'Hi, talking to me.'                       NONE           1.00   want NONE                   v51: LOOK_AT_ME 0.45 say_again
+  ok  'Look at me.'                              LOOK_AT_ME     1.00   want LOOK_AT_ME             v51: LOOK_AT_ME 1.00 act
+  ok  'Kiss me.'                                 NONE           1.00   want NONE                   v51: FOLLOW_ME 0.58 say_again
+  ok  'Walk around.'                             FLANK          0.72   want FLANK/NONE/MOVE_TO     v51: FLANK 1.00 act
+  ok  "Don't make any noise."                    NONE           0.97   want NONE                   v51: NONE 0.93 ignore
+  ok  'Be silent.'                               NONE           1.00   want NONE                   v51: HOLD_FIRE 0.68 act
+  ok  'Revive me, revive me.'                    REVIVE_ME      1.00   want REVIVE_ME              v51: REVIVE_ME 0.99 act
+  ok  'Check that room.'                         CHECK          1.00   want CHECK                  v51: ENTRY 0.43 say_again  place:  @this
+  ok  'Check the room in front of us.'           CHECK          1.00   want CHECK                  v51: DRONE 0.68 act  place:  dir=forward
+  ok  'Sneak into that room.'                    MOVE_TO        1.00   want MOVE_TO/ENTRY          v51: VAULT_WINDOW 0.78 act  place:  @this
+  ok  'Jump in the window.'                      VAULT_WINDOW   1.00   want VAULT_WINDOW           v51: VAULT_WINDOW 1.00 act  place: window
+  ok  'Help me here.'                            HELP           1.00   want HELP                   v51: REVIVE_ME 1.00 act  place:  @this
+  ok  'Check the room.'                          CHECK          1.00   want CHECK                  v51: ENTRY 0.57 say_again
+  ok  'Open the door.'                           OPEN           1.00   want OPEN                   v51: OPEN 1.00 act  place: door
+  ok  'Go into the room.'                        MOVE_TO        1.00   want ENTRY/MOVE_TO          v51: ENTRY 0.72 act
+  ok  'Draw in the room.'                        DRONE          0.96   want DRONE                  v51: DRONE 0.98 act
+  ok  'Cover me from behind.'                    COVER_ME       1.00   want COVER_ME               v51: COVER_ME 1.00 act  place:  dir=back
+  ok  'Car my front.'                            (say again)    0.33   want COVER_ME/NONE          v51: DRONE 0.32 say_again
+  ok  'Cover my fraud.'                          COVER_ME       1.00   want COVER_ME               v51: COVER_ME 1.00 act
+  ok  'Cover my front.'                          COVER_ME       1.00   want COVER_ME               v51: COVER_ME 1.00 act  place:  dir=forward
+  ok  'Cover me from left.'                      COVER_ME       1.00   want COVER_ME               v51: COVER_ME 1.00 act  place:  dir=left
+  ok  'Cover me from right.'                     COVER_ME       1.00   want COVER_ME               v51: COVER_ME 1.00 act  place:  dir=right
+  ok  'Get back, get back.'                      FALL_BACK      1.00   want FALL_BACK              v51: FALL_BACK 1.00 act
+  ok  'jump into this hole.'                     JUMP           1.00   want VAULT_WINDOW/MOVE_TO/JUMP v51: VAULT_WINDOW 1.00 act  place:  @this
+  ok  'Open the window.'                         OPEN           1.00   want OPEN                   v51: OPEN 1.00 act  place: window
+  NO  'Go into the window.'                      (say again)    0.68   want VAULT_WINDOW           v51: VAULT_WINDOW 0.99 act  place: window
+  ok  'Open fire.'                               OPEN_FIRE      1.00   want OPEN_FIRE              v51: OPEN_FIRE 1.00 act
+  ok  'Suppressive fire.'                        SUPPRESS       1.00   want SUPPRESS               v51: HOLD_FIRE 0.98 act
+  ok  'Suppress them.'                           SUPPRESS       1.00   want SUPPRESS               v51: DEFUSE 0.68 act
+  ok  'Help me up.'                              REVIVE_ME      1.00   want REVIVE_ME              v51: REVIVE_ME 1.00 act
+  ok  'Can you see me?'                          NONE           1.00   want NONE                   v51: NONE 0.67 ignore
+  ok  'Look at that door.'                       LOOK_AT        1.00   want LOOK_AT                v51: LOOK_AT 1.00 act  place: door @this
+  ok  'Look left.'                               LOOK_AT        1.00   want LOOK_AT                v51: LOOK_AT 1.00 act  place:  dir=left
+  ok  'Look right.'                              LOOK_AT        1.00   want LOOK_AT                v51: LOOK_AT 1.00 act  place:  dir=right
+  ok  'Look into that hole.'                     LOOK_AT        1.00   want LOOK_AT/CHECK          v51: LOOK_AT 0.81 act  place:  @this
+  ok  'Kill them up. Kill kill all of them.'     ATTACK         1.00   want ATTACK                 v51: ATTACK 0.99 act
+  ok  "You're stupid."                           NONE           1.00   want NONE                   v51: TAKE_COVER 0.27 say_again
+coop-deberta-v3-ens3-v54: 37/38 as the owner wants (bot v51 in the live test: 30/38); acted on a wrong order: 0
+coop-deberta-v3-ens3-v54: gate family, threshold 0.68; owner_voice_20261009b.json
+  ok  'Another angle.'                           HOLD_OTHER_ANGLE 1.00   want HOLD_OTHER_ANGLE       v52: FLANK 0.31 say_again
+  ok  'Keep another angle.'                      HOLD_OTHER_ANGLE 1.00   want HOLD_OTHER_ANGLE       v52: HOLD_OTHER_ANGLE 1.00 act
+  ok  'Jump down.'                               JUMP           1.00   want JUMP                   v52: VAULT_WINDOW 1.00 act  place:  dir=down
+coop-deberta-v3-ens3-v54: 3/3 as the owner wants (bot v52 in the live test: 1/3); acted on a wrong order: 0
+coop-deberta-v3-ens3-v54: gate family, threshold 0.68; owner_voice_20261009c.json
+  ok  'Stay at my pin.'                          HOLD_POSITION  1.00   want HOLD_POSITION          v53: HOLD_POSITION 0.69 act  place:  @pin  pointer pin (want pin)
+  ok  'Stay on my mark.'                         HOLD_POSITION  1.00   want HOLD_POSITION          v53: FOLLOW_ME 0.58 say_again  place:  @pin  pointer pin (want pin)  not queued
+  ok  'check at my mark'                         CHECK          1.00   want CHECK                  v53: CHECK 1.00 queued  place:  @pin  pointer pin (want pin)  not queued
+  ok  'Check that room.'                         CHECK          1.00   want CHECK                  v53: CHECK 1.00 act  place:  @this  pointer this (want this)
+  ok  'Yes.'                                     YES            1.00   want YES                    v53: GO_NOW 0.38 say_again
+  ok  'No.'                                      NO             1.00   want NO                     v53: GO_NOW 0.22 say_again
+  ok  'Come back.'                               COME_BACK      1.00   want COME_BACK              v53: FALL_BACK 0.52 say_again
+  ok  'Return back.'                             COME_BACK      1.00   want COME_BACK              v53: FALL_BACK 0.99 act
+  ok  'Lie down.'                                PRONE          1.00   want PRONE                  v53: NONE 0.56 say_again
+  ok  'Sit down.'                                CROUCH         1.00   want CROUCH                 v53: NONE 1.00 ignore
+  ok  'go inside'                                MOVE_TO        1.00   want MOVE_TO                v53: ENTRY 0.57 say_again
+  ok  'get inside'                               MOVE_TO        1.00   want MOVE_TO                v53: ENTRY 0.50 say_again
+  ok  'Jump left.'                               JUMP           1.00   want JUMP                   v53: JUMP 0.69 act  place:  dir=left
+  ok  'Jump back.'                               JUMP           1.00   want JUMP                   v53: JUMP 0.66 say_again  place:  dir=back
+  ok  'Stand right here.'                        HOLD_POSITION  0.98   want HOLD_POSITION          v53: HOLD_POSITION 0.86 act  place:  @this  pointer this (want this)
+  ok  'Come here.'                               FOLLOW_ME      1.00   want FOLLOW_ME              v53: FOLLOW_ME 1.00 act  place:  @this
+  ok  "Don't move."                              HOLD_POSITION  1.00   want HOLD_POSITION          v53: HOLD_POSITION 0.99 act
+  ok  'Watch right side of the door.'            HOLD_ANGLE     1.00   want HOLD_ANGLE             v53: HOLD_ANGLE 1.00 act  place: door dir=right
+  ok  'enter'                                    ENTRY          1.00   want ENTRY                  v53: ENTRY 1.00 act
+coop-deberta-v3-ens3-v54: 19/19 as the owner wants (bot v53 in the live test: 7/19); acted on a wrong order: 0
+coop-deberta-v3-ens3-v54: gate family, threshold 0.68; probe_v54.txt, 54 lines
+  ok  "yep that's it"                                    YES              1.00 answer    want YES                             
+  ok  'that is correct'                                  YES              1.00 answer    want YES                             
+  ok  'sure thing'                                       YES              1.00 answer    want YES                             
+  ok  'negative ghost rider'                             NO               0.99 answer    want NO                              
+  ok  'nah not this one'                                 NO               1.00 answer    want NO                              
+  ok  "that's not right"                                 NO               1.00 answer    want NO                              
+  ok  'could be either'                                  MAYBE            1.00 answer    want MAYBE                           
+  ok  'possibly yeah'                                    MAYBE            1.00 answer    want MAYBE                           
+  ok  'i honestly have no idea'                          DONT_KNOW        1.00 answer    want DONT_KNOW                       
+  ok  'not a clue'                                       DONT_KNOW        1.00 answer    want DONT_KNOW                       
+  ok  'ten four good buddy'                              NONE             1.00 ignore    want NONE                            
+  ok  'roger that moving'                                NONE             1.00 ignore    want NONE                            
+  ok  'come back to my position'                         COME_BACK        1.00 act       want COME_BACK                       
+  ok  'get back over to me'                              COME_BACK        1.00 act       want COME_BACK                       
+  ok  'return to where you started'                      COME_BACK        1.00 act       want COME_BACK                       
+  ok  'fall back to the stairs'                          FALL_BACK        1.00 act       want FALL_BACK                       
+  ok  'come over here'                                   FOLLOW_ME        0.97 act       want FOLLOW_ME                       
+  ok  'go back to the red stairs'                        MOVE_TO          1.00 act       want MOVE_TO                         
+  ok  'get down on one knee'                             CROUCH           1.00 queued    want CROUCH                            on signal
+  ok  'stay low and crouch'                              CROUCH           1.00 act       want CROUCH                          
+  NO  'drop to the floor and lie flat'                   JUMP             0.60 say_again want PRONE                           
+  ok  'go prone right here'                              PRONE            1.00 act       want PRONE                           
+  ok  'okay you can get up now'                          STAND_UP         1.00 act       want STAND_UP                        
+  ok  'get on your feet soldier'                         STAND_UP         1.00 act       want STAND_UP                        
+  ok  'get behind cover and stay low'                    TAKE_COVER       1.00 act       want TAKE_COVER/CROUCH               
+  ok  'move up to my pin and hold'                       MOVE_TO          0.99 act       want MOVE_TO/HOLD_POSITION @pin        pointer pin (want pin)
+  ok  'throw a flash on my marker'                       FLASH            1.00 act       want FLASH @pin                        pointer pin (want pin)
+  ok  'watch the door by my pin'                         HOLD_ANGLE       1.00 act       want HOLD_ANGLE @pin                   pointer pin (want pin)
+  ok  'meet me at my mark'                               FOLLOW_ME        0.99 act       want MOVE_TO/FOLLOW_ME @pin now        pointer pin (want pin)
+  ok  'stay on the pin until i say'                      HOLD_POSITION    1.00 queued    want HOLD_POSITION @pin                pointer pin (want pin); on signal
+  ok  'breach at the mark i placed'                      BREACH           1.00 act       want BREACH @pin now                   pointer pin (want pin)
+  ok  'wait for my mark then breach'                     BREACH           1.00 queued    want BREACH/WAIT signal                on signal
+  ok  'get inside that container'                        MOVE_TO          1.00 act       want MOVE_TO @this                     pointer this (want this)
+  ok  'go in the vent'                                   MOVE_TO          1.00 act       want MOVE_TO                         
+  ok  'climb inside the box'                             MOVE_TO          1.00 act       want MOVE_TO/JUMP                    
+  ok  'push in and clear the room'                       ENTRY            1.00 act       want ENTRY                           
+  ok  'smoke that window'                                SMOKE            1.00 act       want SMOKE @this                       pointer this (want this)
+  ok  'put a frag over there'                            FRAG             1.00 act       want FRAG @this                        pointer this (want this)
+  ok  'check the fire exit on the left'                  CHECK            1.00 act       want CHECK                           
+  ok  "i'll watch this door you take the other one"      HOLD_OTHER_ANGLE 1.00 act       want HOLD_OTHER_ANGLE                
+  ok  "you stay on this door i'll watch the other"       HOLD_ANGLE       1.00 act       want HOLD_ANGLE                      
+  ok  'drop in through that hatch'                       JUMP             1.00 act       want JUMP                            
+  ok  'jump down'                                        JUMP             1.00 act       want JUMP                              [a seed]
+  ok  'jump to the right'                                JUMP             1.00 act       want JUMP                            
+  ok  'check fire'                                       HOLD_FIRE        1.00 act       want HOLD_FIRE                         [a seed]
+  ok  'another angle'                                    HOLD_OTHER_ANGLE 1.00 act       want HOLD_OTHER_ANGLE                  [a seed]
+  ok  'suppress them'                                    SUPPRESS         1.00 act       want SUPPRESS                          [a seed]
+  ok  'help me here'                                     HELP             1.00 act       want HELP                              [a seed]
+  ok  'open fire'                                        OPEN_FIRE        1.00 act       want OPEN_FIRE                         [a seed]
+  ok  'look left'                                        LOOK_AT          1.00 act       want LOOK_AT                           [a seed]
+  ok  'follow me'                                        FOLLOW_ME        1.00 act       want FOLLOW_ME                         [a seed]
+  ok  'breach the wall'                                  BREACH           1.00 act       want BREACH                            [a seed]
+  ok  "we're taking fire"                                NONE             1.00 ignore    want NONE                              [a seed]
+  ok  'do a backflip'                                    NONE             0.64 say_again want NONE/JUMP                       
+coop-deberta-v3-ens3-v54: 53/54 as wanted; acted on a wrong order: 0; 10 of the lines are its own seed commands

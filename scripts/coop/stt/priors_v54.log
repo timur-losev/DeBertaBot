@@ -1,0 +1,22 @@
+teacher ensemble out-of-fold (3 seeds): gate family, threshold 0.68
+
+typed: 810 lines
+                                       near  wrong fam  acts on non-order  criterion  changed picks
+  no priors (the bot today)            93.6       2.2%               5.5%       89.1
+  priors, world consistent with truth   93.6       2.0%               4.6%       89.6              4
+    won 1, lost 1: "go stick it, I'll cover" PLANT->NONE (truth DEFUSE)
+  priors, world drawn blind            93.2       2.0%               5.5%       89.3              6
+
+VCTK pool B, unseen speakers: 810 lines
+                                       near  wrong fam  acts on non-order  criterion  changed picks
+  no priors (the bot today)            79.8       4.3%               5.5%       71.1
+  priors, world consistent with truth   79.9       4.1%               5.5%       71.7              2
+    won 1, lost 0
+  priors, world drawn blind            79.4       4.1%               5.5%       71.2              6
+
+Windows voices: 810 lines
+                                       near  wrong fam  acts on non-order  criterion  changed picks
+  no priors (the bot today)            92.7       2.2%               4.6%       88.3
+  priors, world consistent with truth   92.7       2.0%               4.6%       88.8              3
+    won 1, lost 1: "go stick it, I'll cover" PLANT->NONE (truth DEFUSE)
+  priors, world drawn blind            92.3       2.0%               4.6%       88.4              6
