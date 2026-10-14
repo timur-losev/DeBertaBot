@@ -1,0 +1,12157 @@
+[
+ {
+  "id": "x_r6_000",
+  "voice": "r6",
+  "before": [
+   "Hold the west door."
+  ],
+  "bot": "Holding the west window.",
+  "line": "The door, not the window.",
+  "pieces": [
+   "Hold the west door."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "r6_p18",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_001",
+  "voice": "r6",
+  "before": [
+   "Drone the basement."
+  ],
+  "bot": "Drone is out.",
+  "line": "Never mind.",
+  "pieces": [
+   "Never mind."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_002",
+  "voice": "r6",
+  "before": [],
+  "bot": null,
+  "line": "Is the hatch reinforced?",
+  "pieces": [
+   "Is the hatch reinforced?"
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_003",
+  "voice": "r6",
+  "before": [
+   "Smoke the main door.",
+   "Go to the stairs."
+  ],
+  "bot": null,
+  "line": "Brown ones.",
+  "pieces": [
+   "Go to the brown stairs."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_004",
+  "voice": "r6",
+  "before": [],
+  "bot": null,
+  "line": "Suppress the north window.",
+  "pieces": [
+   "Suppress the north window."
+  ],
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pair": null,
+  "classifier": [
+   "SUPPRESS"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_005",
+  "voice": "r6",
+  "before": [
+   "Hold the yellow stairs."
+  ],
+  "bot": null,
+  "line": "Put a smoke on it.",
+  "pieces": [
+   "Put a smoke on the yellow stairs."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "r6_p32",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_006",
+  "voice": "r6",
+  "before": [
+   "Smoke the east door."
+  ],
+  "bot": null,
+  "line": "Check the basement.",
+  "pieces": [
+   "Check the basement."
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "r6_p00",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_007",
+  "voice": "r6",
+  "before": [
+   "Hold the main door."
+  ],
+  "bot": null,
+  "line": "Keep watching it, I'll take the other one.",
+  "pieces": [
+   "Keep watching the main door."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_008",
+  "voice": "r6",
+  "before": [
+   "Go to the second floor.",
+   "Hurry up."
+  ],
+  "bot": null,
+  "line": "No wait, the top floor.",
+  "pieces": [
+   "Go to the top floor."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_009",
+  "voice": "r6",
+  "before": [
+   "Hold the red stairs.",
+   "Smoke the east window."
+  ],
+  "bot": null,
+  "line": "No, the west one.",
+  "pieces": [
+   "Smoke the west window."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "r6_p10",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_010",
+  "voice": "r6",
+  "before": [
+   "Rappel to the window."
+  ],
+  "bot": "Which window?",
+  "line": "East.",
+  "pieces": [
+   "Rappel to the east window."
+  ],
+  "orders": [
+   "RAPPEL"
+  ],
+  "pair": "r6_p33",
+  "classifier": [
+   "RAPPEL"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_011",
+  "voice": "r6",
+  "before": [
+   "Flash the kitchen."
+  ],
+  "bot": null,
+  "line": "Smoke the west window.",
+  "pieces": [
+   "Smoke the west window."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "r6_p03",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_012",
+  "voice": "r6",
+  "before": [
+   "Hold the red stairs."
+  ],
+  "bot": "Want me to drone the top floor?",
+  "line": "Negative.",
+  "pieces": [
+   "Negative."
+  ],
+  "orders": [
+   "NO"
+  ],
+  "pair": null,
+  "classifier": [
+   "NO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_013",
+  "voice": "r6",
+  "before": [
+   "Watch the east window."
+  ],
+  "bot": null,
+  "line": "Open the east door.",
+  "pieces": [
+   "Open the east door."
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": "r6_p09",
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_014",
+  "voice": "r6",
+  "before": [
+   "Clear the basement."
+  ],
+  "bot": "Basement clear.",
+  "line": "Come back.",
+  "pieces": [
+   "Come back."
+  ],
+  "orders": [
+   "COME_BACK"
+  ],
+  "pair": null,
+  "classifier": [
+   "COME_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_015",
+  "voice": "r6",
+  "before": [
+   "Drone the basement.",
+   "Open the north door."
+  ],
+  "bot": null,
+  "line": "I meant the window.",
+  "pieces": [
+   "Open the north window."
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": "r6_p12",
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_016",
+  "voice": "r6",
+  "before": [
+   "Breach the east door."
+  ],
+  "bot": "East door is open.",
+  "line": "Then the main door.",
+  "pieces": [
+   "Breach the main door."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": "r6_p25",
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_017",
+  "voice": "r6",
+  "before": [],
+  "bot": "Want me to flash first?",
+  "line": "No, just go in.",
+  "pieces": [
+   "Go in."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_018",
+  "voice": "r6",
+  "before": [
+   "Smoke the east window.",
+   "Good smoke."
+  ],
+  "bot": null,
+  "line": "Smoke the west window.",
+  "pieces": [
+   "Smoke the west window."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "r6_p03",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_019",
+  "voice": "r6",
+  "before": [
+   "Frag the north window."
+  ],
+  "bot": "Frag out.",
+  "line": "One more time.",
+  "pieces": [
+   "One more time."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "r6_p39",
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_020",
+  "voice": "r6",
+  "before": [],
+  "bot": null,
+  "line": "Smoke the main door and hold the yellow stairs.",
+  "pieces": [
+   "Smoke the main door.",
+   "Hold the yellow stairs."
+  ],
+  "orders": [
+   "SMOKE",
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE",
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_021",
+  "voice": "r6",
+  "before": [
+   "Go to the red stairs.",
+   "Frag the kitchen."
+  ],
+  "bot": null,
+  "line": "Stop.",
+  "pieces": [
+   "Stop."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_022",
+  "voice": "r6",
+  "before": [
+   "Drone the kitchen."
+  ],
+  "bot": null,
+  "line": "Push in after you flash it.",
+  "pieces": [
+   "Flash the kitchen.",
+   "Push into the kitchen."
+  ],
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_023",
+  "voice": "r6",
+  "before": [
+   "Flash the south door."
+  ],
+  "bot": null,
+  "line": "Then the main door.",
+  "pieces": [
+   "Flash the main door."
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": "r6_p25",
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_024",
+  "voice": "r6",
+  "before": [
+   "Breach the hatch."
+  ],
+  "bot": "Hatch is open.",
+  "line": "Copy.",
+  "pieces": [
+   "Copy."
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_025",
+  "voice": "r6",
+  "before": [
+   "Rappel to the south window."
+  ],
+  "bot": null,
+  "line": "Sorry, north.",
+  "pieces": [
+   "Rappel to the north window."
+  ],
+  "orders": [
+   "RAPPEL"
+  ],
+  "pair": "r6_p15",
+  "classifier": [
+   "RAPPEL"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_026",
+  "voice": "r6",
+  "before": [
+   "Drone the basement."
+  ],
+  "bot": "Two in the basement.",
+  "line": "Now clear it.",
+  "pieces": [
+   "Clear the basement."
+  ],
+  "orders": [
+   "ENTRY"
+  ],
+  "pair": "r6_p26",
+  "classifier": [
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_027",
+  "voice": "r6",
+  "before": [],
+  "bot": null,
+  "line": "Plant the defuser.",
+  "pieces": [
+   "Plant the defuser."
+  ],
+  "orders": [
+   "PLANT"
+  ],
+  "pair": null,
+  "classifier": [
+   "PLANT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_028",
+  "voice": "r6",
+  "before": [
+   "Breach the north wall.",
+   "Damn, it's reinforced."
+  ],
+  "bot": null,
+  "line": "Hold the red stairs.",
+  "pieces": [
+   "Hold the red stairs."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "r6_p01",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_029",
+  "voice": "r6",
+  "before": [
+   "Check the garage.",
+   "Stay there."
+  ],
+  "bot": null,
+  "line": "Frag the south window.",
+  "pieces": [
+   "Frag the south window."
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null,
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_030",
+  "voice": "r6",
+  "before": [
+   "Check the garage."
+  ],
+  "bot": "Checking the garage.",
+  "line": "No, drone it.",
+  "pieces": [
+   "Drone the garage."
+  ],
+  "orders": [
+   "DRONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "DRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_031",
+  "voice": "r6",
+  "before": [
+   "Go to the red stairs."
+  ],
+  "bot": null,
+  "line": "Cover me.",
+  "pieces": [
+   "Cover me."
+  ],
+  "orders": [
+   "COVER_ME"
+  ],
+  "pair": "r6_p04",
+  "classifier": [
+   "COVER_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_032",
+  "voice": "r6",
+  "before": [
+   "Suppress the east window."
+  ],
+  "bot": "I'm out of ammo.",
+  "line": "Then fall back.",
+  "pieces": [
+   "Fall back."
+  ],
+  "orders": [
+   "FALL_BACK"
+  ],
+  "pair": null,
+  "classifier": [
+   "FALL_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_033",
+  "voice": "r6",
+  "before": [
+   "Go to the east wall."
+  ],
+  "bot": null,
+  "line": "Breach this wall.",
+  "pieces": [
+   "Breach this wall."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": "r6_p41",
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_034",
+  "voice": "r6",
+  "before": [
+   "Smoke the main door."
+  ],
+  "bot": "Smoke is fading.",
+  "line": "Do that again.",
+  "pieces": [
+   "Do that again."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "r6_p40",
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_035",
+  "voice": "r6",
+  "before": [
+   "Smoke the main door."
+  ],
+  "bot": null,
+  "line": "Stay at my pin.",
+  "pieces": [
+   "Stay at my pin."
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_036",
+  "voice": "r6",
+  "before": [
+   "Stun the garage."
+  ],
+  "bot": null,
+  "line": "Actually, frag it.",
+  "pieces": [
+   "Frag the garage."
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "r6_p14",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_037",
+  "voice": "r6",
+  "before": [
+   "Hide behind the table."
+  ],
+  "bot": null,
+  "line": "The sofa, I mean.",
+  "pieces": [
+   "Hide behind the sofa."
+  ],
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pair": null,
+  "classifier": [
+   "TAKE_COVER"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_038",
+  "voice": "r6",
+  "before": [
+   "Check the kitchen.",
+   "Frag the north window."
+  ],
+  "bot": null,
+  "line": "Same on the south one.",
+  "pieces": [
+   "Frag the south window."
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "r6_p20",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_039",
+  "voice": "r6",
+  "before": [
+   "Drone the kitchen.",
+   "Frag it."
+  ],
+  "bot": null,
+  "line": "Check the basement.",
+  "pieces": [
+   "Check the basement."
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "r6_p00",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_040",
+  "voice": "r6",
+  "before": [
+   "Hold the north door."
+  ],
+  "bot": "Can you hear me?",
+  "line": "Yes.",
+  "pieces": [
+   "Yes."
+  ],
+  "orders": [
+   "YES"
+  ],
+  "pair": "r6_p34",
+  "classifier": [
+   "YES"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_041",
+  "voice": "r6",
+  "before": [
+   "Smoke the stairs."
+  ],
+  "bot": "Which stairs, red or blue?",
+  "line": "The second one.",
+  "pieces": [
+   "Smoke the blue stairs."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "r6_p35",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_042",
+  "voice": "r6",
+  "before": [
+   "Check the second floor."
+  ],
+  "bot": null,
+  "line": "Top floor too.",
+  "pieces": [
+   "Check the top floor."
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "r6_p24",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_043",
+  "voice": "r6",
+  "before": [
+   "Check the top floor.",
+   "Breach the door."
+  ],
+  "bot": "Which door, east or west?",
+  "line": "East.",
+  "pieces": [
+   "Breach the east door."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": "r6_p33",
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_044",
+  "voice": "r6",
+  "before": [
+   "Breach the east wall."
+  ],
+  "bot": "Breach the east wall, confirm?",
+  "line": "No.",
+  "pieces": [
+   "No."
+  ],
+  "orders": [
+   "NO"
+  ],
+  "pair": null,
+  "classifier": [
+   "NO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_045",
+  "voice": "r6",
+  "before": [
+   "Smoke the basement."
+  ],
+  "bot": null,
+  "line": "Actually, frag it.",
+  "pieces": [
+   "Frag the basement."
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "r6_p14",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_046",
+  "voice": "r6",
+  "before": [],
+  "bot": null,
+  "line": "Take the other angle.",
+  "pieces": [
+   "Take the other angle."
+  ],
+  "orders": [
+   "HOLD_OTHER_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_OTHER_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_047",
+  "voice": "r6",
+  "before": [
+   "Hold the blue stairs."
+  ],
+  "bot": null,
+  "line": "Go prone.",
+  "pieces": [
+   "Go prone."
+  ],
+  "orders": [
+   "PRONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "PRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_048",
+  "voice": "r6",
+  "before": [
+   "Hold the north door."
+  ],
+  "bot": null,
+  "line": "Fall back.",
+  "pieces": [
+   "Fall back."
+  ],
+  "orders": [
+   "FALL_BACK"
+  ],
+  "pair": "r6_p06",
+  "classifier": [
+   "FALL_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_049",
+  "voice": "r6",
+  "before": [
+   "Look at the east window."
+  ],
+  "bot": null,
+  "line": "Not look, hold it.",
+  "pieces": [
+   "Hold the east window."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_050",
+  "voice": "r6",
+  "before": [
+   "Watch the west window."
+  ],
+  "bot": "Should I frag the west window?",
+  "line": "No, smoke it instead.",
+  "pieces": [
+   "Smoke the west window."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "r6_p37",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_051",
+  "voice": "r6",
+  "before": [
+   "Breach the east wall."
+  ],
+  "bot": "East wall is open.",
+  "line": "Breach the hatch.",
+  "pieces": [
+   "Breach the hatch."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": "r6_p05",
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_052",
+  "voice": "r6",
+  "before": [
+   "Plant the defuser."
+  ],
+  "bot": "I don't have the defuser.",
+  "line": "Cover me.",
+  "pieces": [
+   "Cover me."
+  ],
+  "orders": [
+   "COVER_ME"
+  ],
+  "pair": "r6_p04",
+  "classifier": [
+   "COVER_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_053",
+  "voice": "r6",
+  "before": [
+   "Throw a smoke at the white stairs."
+  ],
+  "bot": null,
+  "line": "No, a stun.",
+  "pieces": [
+   "Throw a stun at the white stairs."
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_054",
+  "voice": "r6",
+  "before": [
+   "Go to the top floor.",
+   "Suppress the red stairs."
+  ],
+  "bot": null,
+  "line": "One more time.",
+  "pieces": [
+   "One more time."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "r6_p39",
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_055",
+  "voice": "r6",
+  "before": [
+   "Hold the east door."
+  ],
+  "bot": null,
+  "line": "I'll take the west one myself.",
+  "pieces": [
+   "I'll take the west one myself."
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_056",
+  "voice": "r6",
+  "before": [
+   "Smoke the north door."
+  ],
+  "bot": null,
+  "line": "No, the other one.",
+  "pieces": [
+   "Smoke the other door."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_057",
+  "voice": "r6",
+  "before": [
+   "Vault the west window."
+  ],
+  "bot": null,
+  "line": "No, just open it.",
+  "pieces": [
+   "Open the west window."
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": "r6_p16",
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_058",
+  "voice": "r6",
+  "before": [
+   "Check the east window."
+  ],
+  "bot": null,
+  "line": "And the west window.",
+  "pieces": [
+   "Check the west window."
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "r6_p21",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_059",
+  "voice": "r6",
+  "before": [],
+  "bot": null,
+  "line": "Two on site, one roaming upstairs.",
+  "pieces": [
+   "Two on site, one roaming upstairs."
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_060",
+  "voice": "r6",
+  "before": [
+   "Vault the east window."
+  ],
+  "bot": null,
+  "line": "Rappel to the south window.",
+  "pieces": [
+   "Rappel to the south window."
+  ],
+  "orders": [
+   "RAPPEL"
+  ],
+  "pair": "r6_p08",
+  "classifier": [
+   "RAPPEL"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_061",
+  "voice": "r6",
+  "before": [
+   "Move to the east door."
+  ],
+  "bot": null,
+  "line": "And hold there.",
+  "pieces": [
+   "Hold position at the east door."
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": "r6_p28",
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_062",
+  "voice": "r6",
+  "before": [
+   "Drone the basement.",
+   "Stack up on the hatch."
+  ],
+  "bot": null,
+  "line": "Breach.",
+  "pieces": [
+   "Breach the hatch."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null,
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_063",
+  "voice": "r6",
+  "before": [
+   "Open the east door."
+  ],
+  "bot": "Door is locked.",
+  "line": "Then breach it.",
+  "pieces": [
+   "Breach the east door."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null,
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_064",
+  "voice": "r6",
+  "before": [
+   "Go to the south door."
+  ],
+  "bot": null,
+  "line": "Breach it, then push in.",
+  "pieces": [
+   "Breach the south door.",
+   "Push in through the south door."
+  ],
+  "orders": [
+   "BREACH",
+   "ENTRY"
+  ],
+  "pair": "r6_p31",
+  "classifier": [
+   "BREACH",
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_065",
+  "voice": "r6",
+  "before": [],
+  "bot": "I can rappel to the east window.",
+  "line": "Do it.",
+  "pieces": [
+   "Rappel to the east window."
+  ],
+  "orders": [
+   "RAPPEL"
+  ],
+  "pair": "r6_p36",
+  "classifier": [
+   "RAPPEL"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_066",
+  "voice": "r6",
+  "before": [
+   "Go to the white stairs.",
+   "Suppress the south door."
+  ],
+  "bot": null,
+  "line": "Sorry, north.",
+  "pieces": [
+   "Suppress the north door."
+  ],
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pair": "r6_p15",
+  "classifier": [
+   "SUPPRESS"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_067",
+  "voice": "r6",
+  "before": [
+   "Follow me.",
+   "Watch the door."
+  ],
+  "bot": null,
+  "line": "The east one.",
+  "pieces": [
+   "Watch the east door."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "r6_p23",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_068",
+  "voice": "r6",
+  "before": [
+   "Go to the blue stairs."
+  ],
+  "bot": null,
+  "line": "And hold there.",
+  "pieces": [
+   "Hold position at the blue stairs."
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": "r6_p28",
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_069",
+  "voice": "r6",
+  "before": [
+   "Frag the east window."
+  ],
+  "bot": null,
+  "line": "The door, not the window.",
+  "pieces": [
+   "Frag the east door."
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "r6_p18",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_070",
+  "voice": "r6",
+  "before": [
+   "Drone the basement."
+  ],
+  "bot": null,
+  "line": "Flash the kitchen, then clear it.",
+  "pieces": [
+   "Flash the kitchen.",
+   "Clear the kitchen."
+  ],
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "pair": "r6_p07",
+  "classifier": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_071",
+  "voice": "r6",
+  "before": [
+   "Hold the main door.",
+   "Smoke the east door."
+  ],
+  "bot": null,
+  "line": "Don't shoot.",
+  "pieces": [
+   "Don't shoot."
+  ],
+  "orders": [
+   "HOLD_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_072",
+  "voice": "r6",
+  "before": [
+   "Breach the east wall.",
+   "Go go go."
+  ],
+  "bot": null,
+  "line": "They're rotating to the basement.",
+  "pieces": [
+   "They're rotating to the basement."
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_073",
+  "voice": "r6",
+  "before": [
+   "Breach the west door."
+  ],
+  "bot": "I'm out of charges.",
+  "line": "Open the east door.",
+  "pieces": [
+   "Open the east door."
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": "r6_p09",
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_074",
+  "voice": "r6",
+  "before": [
+   "Open the hatch."
+  ],
+  "bot": "Hatch is open.",
+  "line": "Breach this wall.",
+  "pieces": [
+   "Breach this wall."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": "r6_p41",
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_075",
+  "voice": "r6",
+  "before": [
+   "Scout the basement."
+  ],
+  "bot": null,
+  "line": "Top floor too.",
+  "pieces": [
+   "Scout the top floor."
+  ],
+  "orders": [
+   "DRONE"
+  ],
+  "pair": "r6_p24",
+  "classifier": [
+   "DRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_076",
+  "voice": "r6",
+  "before": [
+   "Flash the main door."
+  ],
+  "bot": "Flashing the main door.",
+  "line": "Not a flash, smoke it.",
+  "pieces": [
+   "Smoke the main door."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "r6_p11",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_077",
+  "voice": "r6",
+  "before": [
+   "Go up the red stairs."
+  ],
+  "bot": null,
+  "line": "No, the blue ones.",
+  "pieces": [
+   "Go up the blue stairs."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": "r6_p13",
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_078",
+  "voice": "r6",
+  "before": [
+   "Flash the kitchen."
+  ],
+  "bot": null,
+  "line": "Not a flash, smoke it.",
+  "pieces": [
+   "Smoke the kitchen."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "r6_p11",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_079",
+  "voice": "r6",
+  "before": [
+   "Follow me."
+  ],
+  "bot": null,
+  "line": "Vault the north window and check the top floor.",
+  "pieces": [
+   "Vault the north window.",
+   "Check the top floor."
+  ],
+  "orders": [
+   "VAULT_WINDOW",
+   "CHECK"
+  ],
+  "pair": null,
+  "classifier": [
+   "VAULT_WINDOW",
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_080",
+  "voice": "r6",
+  "before": [
+   "Breach the east wall on my call."
+  ],
+  "bot": "Charge is set.",
+  "line": "Go!",
+  "pieces": [
+   "Go!"
+  ],
+  "orders": [
+   "GO_NOW"
+  ],
+  "pair": null,
+  "classifier": [
+   "GO_NOW"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_081",
+  "voice": "r6",
+  "before": [
+   "Smoke the main door."
+  ],
+  "bot": null,
+  "line": "Now flash it and go in.",
+  "pieces": [
+   "Flash the main door.",
+   "Go in through the main door."
+  ],
+  "orders": [
+   "FLASH",
+   "MOVE_TO"
+  ],
+  "pair": "r6_p29",
+  "classifier": [
+   "FLASH",
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_082",
+  "voice": "r6",
+  "before": [
+   "Blow that hatch."
+  ],
+  "bot": null,
+  "line": "Now drop through it.",
+  "pieces": [
+   "Drop through that hatch."
+  ],
+  "orders": [
+   "JUMP"
+  ],
+  "pair": "r6_p27",
+  "classifier": [
+   "JUMP"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_084",
+  "voice": "r6",
+  "before": [
+   "Go to the blue stairs."
+  ],
+  "bot": null,
+  "line": "Hold the red stairs.",
+  "pieces": [
+   "Hold the red stairs."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "r6_p01",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_085",
+  "voice": "r6",
+  "before": [
+   "Breach the east wall."
+  ],
+  "bot": "Charge failed.",
+  "line": "Try again.",
+  "pieces": [
+   "Try again."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_086",
+  "voice": "r6",
+  "before": [
+   "Hold the main door.",
+   "Flash the garage."
+  ],
+  "bot": null,
+  "line": "Now clear it.",
+  "pieces": [
+   "Clear the garage."
+  ],
+  "orders": [
+   "ENTRY"
+  ],
+  "pair": "r6_p26",
+  "classifier": [
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_087",
+  "voice": "r6",
+  "before": [
+   "Check the door."
+  ],
+  "bot": null,
+  "line": "The one on the left.",
+  "pieces": [
+   "Check the door on the left."
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": null,
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_088",
+  "voice": "r6",
+  "before": [
+   "Breach the door."
+  ],
+  "bot": "Breach the east door, confirm?",
+  "line": "No, the main one.",
+  "pieces": [
+   "Breach the main door."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null,
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_089",
+  "voice": "r6",
+  "before": [
+   "Suppress the south window."
+  ],
+  "bot": "Reloading.",
+  "line": "Put a smoke on it.",
+  "pieces": [
+   "Put a smoke on the south window."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "r6_p32",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_090",
+  "voice": "r6",
+  "before": [
+   "Hop over the table."
+  ],
+  "bot": null,
+  "line": "And the sofa.",
+  "pieces": [
+   "Hop over the sofa."
+  ],
+  "orders": [
+   "JUMP"
+  ],
+  "pair": null,
+  "classifier": [
+   "JUMP"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_091",
+  "voice": "r6",
+  "before": [
+   "Check the kitchen."
+  ],
+  "bot": "Three in the kitchen.",
+  "line": "Frag it.",
+  "pieces": [
+   "Frag the kitchen."
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "r6_p30",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_092",
+  "voice": "r6",
+  "before": [
+   "Rappel to the roof."
+  ],
+  "bot": "Rappelling.",
+  "line": "Cancel that.",
+  "pieces": [
+   "Cancel that."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_093",
+  "voice": "r6",
+  "before": [
+   "Smoke the main door.",
+   "Check the top floor."
+  ],
+  "bot": null,
+  "line": "Do that again.",
+  "pieces": [
+   "Do that again."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "r6_p40",
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_095",
+  "voice": "r6",
+  "before": [
+   "Flash the kitchen."
+  ],
+  "bot": null,
+  "line": "Again.",
+  "pieces": [
+   "Again."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "r6_p38",
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_096",
+  "voice": "r6",
+  "before": [
+   "Hold that angle."
+  ],
+  "bot": null,
+  "line": "The red stairs.",
+  "pieces": [
+   "Hold the red stairs."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "r6_p19",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_097",
+  "voice": "r6",
+  "before": [
+   "Check the second floor."
+  ],
+  "bot": null,
+  "line": "Wrong floor, the basement.",
+  "pieces": [
+   "Check the basement."
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "r6_p17",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_098",
+  "voice": "r6",
+  "before": [
+   "Flash the kitchen.",
+   "Hold the yellow stairs."
+  ],
+  "bot": null,
+  "line": "No, the blue ones.",
+  "pieces": [
+   "Hold the blue stairs."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "r6_p13",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_099",
+  "voice": "r6",
+  "before": [
+   "Hold the blue stairs.",
+   "Open the door."
+  ],
+  "bot": "Which door, main or south?",
+  "line": "The second one.",
+  "pieces": [
+   "Open the south door."
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": "r6_p35",
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_100",
+  "voice": "r6",
+  "before": [
+   "Check the garage.",
+   "Open the south door."
+  ],
+  "bot": null,
+  "line": "Flank through the north door.",
+  "pieces": [
+   "Flank through the north door."
+  ],
+  "orders": [
+   "FLANK"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLANK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_101",
+  "voice": "r6",
+  "before": [
+   "Hold the white stairs."
+  ],
+  "bot": "Holding the white stairs.",
+  "line": "Flash the kitchen, then clear it.",
+  "pieces": [
+   "Flash the kitchen.",
+   "Clear the kitchen."
+  ],
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "pair": "r6_p07",
+  "classifier": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_102",
+  "voice": "r6",
+  "before": [
+   "Smoke the east door.",
+   "Watch the window."
+  ],
+  "bot": null,
+  "line": "Go there.",
+  "pieces": [
+   "Go there."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_103",
+  "voice": "r6",
+  "before": [
+   "Clear the garage."
+  ],
+  "bot": "Garage clear.",
+  "line": "Now the kitchen.",
+  "pieces": [
+   "Clear the kitchen."
+  ],
+  "orders": [
+   "ENTRY"
+  ],
+  "pair": "r6_p22",
+  "classifier": [
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_104",
+  "voice": "r6",
+  "before": [
+   "Vault the window."
+  ],
+  "bot": null,
+  "line": "The east one.",
+  "pieces": [
+   "Vault the east window."
+  ],
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pair": "r6_p23",
+  "classifier": [
+   "VAULT_WINDOW"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_105",
+  "voice": "r6",
+  "before": [
+   "Push into the kitchen."
+  ],
+  "bot": "Want me to flash the kitchen first?",
+  "line": "Do it.",
+  "pieces": [
+   "Flash the kitchen."
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": "r6_p36",
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_106",
+  "voice": "r6",
+  "before": [
+   "Go to the roof.",
+   "Wait for me up there."
+  ],
+  "bot": null,
+  "line": "Rappel to the south window.",
+  "pieces": [
+   "Rappel to the south window."
+  ],
+  "orders": [
+   "RAPPEL"
+  ],
+  "pair": "r6_p08",
+  "classifier": [
+   "RAPPEL"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_107",
+  "voice": "r6",
+  "before": [
+   "Put a charge on the north door."
+  ],
+  "bot": null,
+  "line": "Same on the south one.",
+  "pieces": [
+   "Put a charge on the south door."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": "r6_p20",
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_108",
+  "voice": "r6",
+  "before": [
+   "Open the hatch."
+  ],
+  "bot": null,
+  "line": "Now drop through it.",
+  "pieces": [
+   "Drop through the hatch."
+  ],
+  "orders": [
+   "JUMP"
+  ],
+  "pair": "r6_p27",
+  "classifier": [
+   "JUMP"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_109",
+  "voice": "r6",
+  "before": [
+   "Rappel to the north window."
+  ],
+  "bot": null,
+  "line": "Open it and throw a stun through it.",
+  "pieces": [
+   "Open the north window.",
+   "Throw a stun through the north window."
+  ],
+  "orders": [
+   "OPEN",
+   "FLASH"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN",
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_110",
+  "voice": "r6",
+  "before": [
+   "Throw a stun at the south door.",
+   "Missed."
+  ],
+  "bot": null,
+  "line": "Another one.",
+  "pieces": [
+   "Throw a stun at the south door."
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_111",
+  "voice": "r6",
+  "before": [
+   "Breach the door."
+  ],
+  "bot": "Which door, east or west?",
+  "line": "Follow me.",
+  "pieces": [
+   "Follow me."
+  ],
+  "orders": [
+   "FOLLOW_ME"
+  ],
+  "pair": "r6_p02",
+  "classifier": [
+   "FOLLOW_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_112",
+  "voice": "r6",
+  "before": [
+   "Throw a smoke."
+  ],
+  "bot": null,
+  "line": "The red stairs.",
+  "pieces": [
+   "Throw a smoke at the red stairs."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "r6_p19",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_113",
+  "voice": "r6",
+  "before": [
+   "Open the door."
+  ],
+  "bot": "Which door, east or west?",
+  "line": "Your call.",
+  "pieces": [
+   "Your call."
+  ],
+  "orders": [
+   "MAYBE"
+  ],
+  "pair": null,
+  "classifier": [
+   "MAYBE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_114",
+  "voice": "r6",
+  "before": [
+   "Smoke the east window."
+  ],
+  "bot": null,
+  "line": "And the west window.",
+  "pieces": [
+   "Smoke the west window."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "r6_p21",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_115",
+  "voice": "r6",
+  "before": [
+   "Take cover."
+  ],
+  "bot": null,
+  "line": "Behind the sofa.",
+  "pieces": [
+   "Take cover behind the sofa."
+  ],
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pair": null,
+  "classifier": [
+   "TAKE_COVER"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_116",
+  "voice": "r6",
+  "before": [],
+  "bot": null,
+  "line": "Drone the top floor.",
+  "pieces": [
+   "Drone the top floor."
+  ],
+  "orders": [
+   "DRONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "DRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_117",
+  "voice": "r6",
+  "before": [
+   "Flash the kitchen and clear it."
+  ],
+  "bot": null,
+  "line": "Same for the basement.",
+  "pieces": [
+   "Flash the basement.",
+   "Clear the basement."
+  ],
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_118",
+  "voice": "r6",
+  "before": [
+   "Hold the west window."
+  ],
+  "bot": "I have one frag left.",
+  "line": "Don't frag.",
+  "pieces": [
+   "Don't frag."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_119",
+  "voice": "r6",
+  "before": [],
+  "bot": null,
+  "line": "I'm down, revive me!",
+  "pieces": [
+   "I'm down, revive me!"
+  ],
+  "orders": [
+   "REVIVE_ME"
+  ],
+  "pair": null,
+  "classifier": [
+   "REVIVE_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_120",
+  "voice": "r6",
+  "before": [
+   "Watch the east window."
+  ],
+  "bot": null,
+  "line": "Follow me.",
+  "pieces": [
+   "Follow me."
+  ],
+  "orders": [
+   "FOLLOW_ME"
+  ],
+  "pair": "r6_p02",
+  "classifier": [
+   "FOLLOW_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_121",
+  "voice": "r6",
+  "before": [
+   "Breach the east door."
+  ],
+  "bot": null,
+  "line": "No, the west one.",
+  "pieces": [
+   "Breach the west door."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": "r6_p10",
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_122",
+  "voice": "r6",
+  "before": [
+   "Push into the garage."
+  ],
+  "bot": "Want me to flash first?",
+  "line": "Fall back.",
+  "pieces": [
+   "Fall back."
+  ],
+  "orders": [
+   "FALL_BACK"
+  ],
+  "pair": "r6_p06",
+  "classifier": [
+   "FALL_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_123",
+  "voice": "r6",
+  "before": [
+   "Drone the basement.",
+   "I can't see anything."
+  ],
+  "bot": null,
+  "line": "Again.",
+  "pieces": [
+   "Again."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "r6_p38",
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_124",
+  "voice": "r6",
+  "before": [],
+  "bot": "Want me to flash the basement?",
+  "line": "No, smoke it instead.",
+  "pieces": [
+   "Smoke the basement."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "r6_p37",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_125",
+  "voice": "r6",
+  "before": [
+   "Go to the east door.",
+   "Open it."
+  ],
+  "bot": null,
+  "line": "Now go through it.",
+  "pieces": [
+   "Go through the east door."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_126",
+  "voice": "r6",
+  "before": [
+   "Drone the kitchen."
+  ],
+  "bot": "One enemy in the kitchen.",
+  "line": "Hold fire and fall back.",
+  "pieces": [
+   "Hold fire.",
+   "Fall back."
+  ],
+  "orders": [
+   "HOLD_FIRE",
+   "FALL_BACK"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_FIRE",
+   "FALL_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_127",
+  "voice": "r6",
+  "before": [
+   "Open the main door."
+  ],
+  "bot": null,
+  "line": "Breach the hatch.",
+  "pieces": [
+   "Breach the hatch."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": "r6_p05",
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_128",
+  "voice": "r6",
+  "before": [],
+  "bot": "Breach the hatch, confirm?",
+  "line": "Yes.",
+  "pieces": [
+   "Breach the hatch."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": "r6_p34",
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_129",
+  "voice": "r6",
+  "before": [
+   "Drone the top floor."
+  ],
+  "bot": null,
+  "line": "Wrong floor, the basement.",
+  "pieces": [
+   "Drone the basement."
+  ],
+  "orders": [
+   "DRONE"
+  ],
+  "pair": "r6_p17",
+  "classifier": [
+   "DRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_130",
+  "voice": "r6",
+  "before": [
+   "Breach the garage door."
+  ],
+  "bot": "Garage door is open.",
+  "line": "Now flash it and go in.",
+  "pieces": [
+   "Flash the garage door.",
+   "Go in through the garage door."
+  ],
+  "orders": [
+   "FLASH",
+   "MOVE_TO"
+  ],
+  "pair": "r6_p29",
+  "classifier": [
+   "FLASH",
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_131",
+  "voice": "r6",
+  "before": [
+   "Go up the brown stairs."
+  ],
+  "bot": null,
+  "line": "Watch the north door, then follow me.",
+  "pieces": [
+   "Watch the north door.",
+   "Follow me."
+  ],
+  "orders": [
+   "HOLD_ANGLE",
+   "FOLLOW_ME"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_ANGLE",
+   "FOLLOW_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_132",
+  "voice": "r6",
+  "before": [
+   "Stack up on the east wall."
+  ],
+  "bot": null,
+  "line": "Breach it, then push in.",
+  "pieces": [
+   "Breach the east wall.",
+   "Push in through the east wall."
+  ],
+  "orders": [
+   "BREACH",
+   "ENTRY"
+  ],
+  "pair": "r6_p31",
+  "classifier": [
+   "BREACH",
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_133",
+  "voice": "r6",
+  "before": [
+   "Suppress them."
+  ],
+  "bot": null,
+  "line": "The north window.",
+  "pieces": [
+   "Suppress the north window."
+  ],
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pair": null,
+  "classifier": [
+   "SUPPRESS"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_134",
+  "voice": "r6",
+  "before": [
+   "Drone the basement."
+  ],
+  "bot": "Basement is empty.",
+  "line": "Now the kitchen.",
+  "pieces": [
+   "Drone the kitchen."
+  ],
+  "orders": [
+   "DRONE"
+  ],
+  "pair": "r6_p22",
+  "classifier": [
+   "DRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_135",
+  "voice": "r6",
+  "before": [
+   "Breach the east door."
+  ],
+  "bot": null,
+  "line": "No, smoke the west window.",
+  "pieces": [
+   "Smoke the west window."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_136",
+  "voice": "r6",
+  "before": [
+   "Go to the east door.",
+   "Breach the east door."
+  ],
+  "bot": null,
+  "line": "Don't breach, just open it.",
+  "pieces": [
+   "Open the east door."
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_137",
+  "voice": "r6",
+  "before": [
+   "Breach the hatch."
+  ],
+  "bot": "Breach the hatch, confirm?",
+  "line": "Wait.",
+  "pieces": [
+   "Wait."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_138",
+  "voice": "r6",
+  "before": [
+   "Smoke the red stairs.",
+   "Watch the north window."
+  ],
+  "bot": null,
+  "line": "Frag it.",
+  "pieces": [
+   "Frag the north window."
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "r6_p30",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_r6_139",
+  "voice": "r6",
+  "before": [
+   "Watch the south door."
+  ],
+  "bot": null,
+  "line": "I meant the window.",
+  "pieces": [
+   "Watch the south window."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "r6_p12",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_000",
+  "voice": "cs",
+  "before": [
+   "go to the hatch",
+   "open it"
+  ],
+  "bot": null,
+  "line": "now drop through it",
+  "pieces": [
+   "drop through the hatch"
+  ],
+  "orders": [
+   "JUMP"
+  ],
+  "pair": null,
+  "classifier": [
+   "JUMP"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_001",
+  "voice": "cs",
+  "before": [
+   "flash kitchen",
+   "watch white stairs"
+  ],
+  "bot": null,
+  "line": "smoke it",
+  "pieces": [
+   "smoke white stairs"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "cs_p30",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_002",
+  "voice": "cs",
+  "before": [
+   "push into kitchen"
+  ],
+  "bot": "Pushing into the basement.",
+  "line": "i said kitchen",
+  "pieces": [
+   "push into kitchen"
+  ],
+  "orders": [
+   "ENTRY"
+  ],
+  "pair": "cs_p18",
+  "classifier": [
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_003",
+  "voice": "cs",
+  "before": [
+   "go to the stairs"
+  ],
+  "bot": null,
+  "line": "white ones",
+  "pieces": [
+   "go to the white stairs"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_004",
+  "voice": "cs",
+  "before": [
+   "throw a molly"
+  ],
+  "bot": null,
+  "line": "red stairs",
+  "pieces": [
+   "throw a molly at red stairs"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "cs_p19",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_005",
+  "voice": "cs",
+  "before": [
+   "go to the roof"
+  ],
+  "bot": null,
+  "line": "drop down",
+  "pieces": [
+   "drop down"
+  ],
+  "orders": [
+   "JUMP"
+  ],
+  "pair": "cs_p07",
+  "classifier": [
+   "JUMP"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_006",
+  "voice": "cs",
+  "before": [
+   "hold east door"
+  ],
+  "bot": null,
+  "line": "smoke west window then rotate to main",
+  "pieces": [
+   "smoke west window",
+   "rotate to main"
+  ],
+  "orders": [
+   "SMOKE",
+   "MOVE_TO"
+  ],
+  "pair": "cs_p08",
+  "classifier": [
+   "SMOKE",
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_007",
+  "voice": "cs",
+  "before": [
+   "nade red stairs"
+  ],
+  "bot": "Cooking a frag.",
+  "line": "make it a smoke",
+  "pieces": [
+   "smoke red stairs"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "cs_p11",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_008",
+  "voice": "cs",
+  "before": [
+   "drone basement"
+  ],
+  "bot": "Two in the basement.",
+  "line": "dont shoot, fall back",
+  "pieces": [
+   "dont shoot",
+   "fall back"
+  ],
+  "orders": [
+   "HOLD_FIRE",
+   "FALL_BACK"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_FIRE",
+   "FALL_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_009",
+  "voice": "cs",
+  "before": [
+   "check the kitchen"
+  ],
+  "bot": null,
+  "line": "the garage instead",
+  "pieces": [
+   "check the garage"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "cs_p17",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_010",
+  "voice": "cs",
+  "before": [
+   "hold main",
+   "smoke kitchen"
+  ],
+  "bot": null,
+  "line": "actually molly it",
+  "pieces": [
+   "molly kitchen"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "cs_p14",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_011",
+  "voice": "cs",
+  "before": [],
+  "bot": "Want me to smoke the main door?",
+  "line": "no, flash it",
+  "pieces": [
+   "flash the main door"
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": "cs_p37",
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_012",
+  "voice": "cs",
+  "before": [
+   "check basement"
+  ],
+  "bot": "Basement clear.",
+  "line": "drop down",
+  "pieces": [
+   "drop down"
+  ],
+  "orders": [
+   "JUMP"
+  ],
+  "pair": "cs_p07",
+  "classifier": [
+   "JUMP"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_013",
+  "voice": "cs",
+  "before": [],
+  "bot": null,
+  "line": "one kitchen, one red stairs",
+  "pieces": [
+   "one kitchen, one red stairs"
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_014",
+  "voice": "cs",
+  "before": [
+   "go to red stairs"
+  ],
+  "bot": null,
+  "line": "and stay there",
+  "pieces": [
+   "stay at red stairs"
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": "cs_p28",
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_015",
+  "voice": "cs",
+  "before": [
+   "flash kitchen"
+  ],
+  "bot": "Flashing the garage.",
+  "line": "i said kitchen",
+  "pieces": [
+   "flash kitchen"
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": "cs_p18",
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_016",
+  "voice": "cs",
+  "before": [
+   "drone the roof"
+  ],
+  "bot": "One on the roof.",
+  "line": "now clear it",
+  "pieces": [
+   "clear the roof"
+  ],
+  "orders": [
+   "ENTRY"
+  ],
+  "pair": "cs_p26",
+  "classifier": [
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_017",
+  "voice": "cs",
+  "before": [
+   "flash main"
+  ],
+  "bot": null,
+  "line": "again",
+  "pieces": [
+   "again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "cs_p38",
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_018",
+  "voice": "cs",
+  "before": [
+   "nade the window"
+  ],
+  "bot": null,
+  "line": "on the left",
+  "pieces": [
+   "nade the window on the left"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "cs_p23",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_019",
+  "voice": "cs",
+  "before": [
+   "open south door"
+  ],
+  "bot": null,
+  "line": "flash it and go in",
+  "pieces": [
+   "flash south door",
+   "go in through south door"
+  ],
+  "orders": [
+   "FLASH",
+   "MOVE_TO"
+  ],
+  "pair": "cs_p29",
+  "classifier": [
+   "FLASH",
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_020",
+  "voice": "cs",
+  "before": [
+   "flash kitchen",
+   "push in"
+  ],
+  "bot": null,
+  "line": "smoke west window then rotate to main",
+  "pieces": [
+   "smoke west window",
+   "rotate to main"
+  ],
+  "orders": [
+   "SMOKE",
+   "MOVE_TO"
+  ],
+  "pair": "cs_p08",
+  "classifier": [
+   "SMOKE",
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_021",
+  "voice": "cs",
+  "before": [
+   "open north door"
+  ],
+  "bot": null,
+  "line": "vault east window",
+  "pieces": [
+   "vault east window"
+  ],
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pair": null,
+  "classifier": [
+   "VAULT_WINDOW"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_022",
+  "voice": "cs",
+  "before": [
+   "open west door"
+  ],
+  "bot": null,
+  "line": "nade that door",
+  "pieces": [
+   "nade that door"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null,
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_023",
+  "voice": "cs",
+  "before": [
+   "push into garage"
+  ],
+  "bot": "Want me to flash first?",
+  "line": "fall back",
+  "pieces": [
+   "fall back"
+  ],
+  "orders": [
+   "FALL_BACK"
+  ],
+  "pair": "cs_p06",
+  "classifier": [
+   "FALL_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_024",
+  "voice": "cs",
+  "before": [
+   "check basement"
+  ],
+  "bot": "Two in the basement.",
+  "line": "nade it",
+  "pieces": [
+   "nade basement"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "cs_p27",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_025",
+  "voice": "cs",
+  "before": [
+   "throw a nade in kitchen"
+  ],
+  "bot": "Frag or molly?",
+  "line": "first one",
+  "pieces": [
+   "throw a frag in kitchen"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "cs_p35",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_026",
+  "voice": "cs",
+  "before": [
+   "nade east window"
+  ],
+  "bot": null,
+  "line": "nah flash west door",
+  "pieces": [
+   "flash west door"
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_027",
+  "voice": "cs",
+  "before": [
+   "look right"
+  ],
+  "bot": null,
+  "line": "no, left",
+  "pieces": [
+   "look left"
+  ],
+  "orders": [
+   "LOOK_AT"
+  ],
+  "pair": "cs_p13",
+  "classifier": [
+   "LOOK_AT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_028",
+  "voice": "cs",
+  "before": [
+   "hold red stairs"
+  ],
+  "bot": null,
+  "line": "not the stairs, main door",
+  "pieces": [
+   "hold main door"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_029",
+  "voice": "cs",
+  "before": [
+   "flash main",
+   "smoke east door"
+  ],
+  "bot": null,
+  "line": "smoke here",
+  "pieces": [
+   "smoke here"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_030",
+  "voice": "cs",
+  "before": [
+   "go to west window"
+  ],
+  "bot": null,
+  "line": "open it and vault in",
+  "pieces": [
+   "open west window",
+   "vault in through west window"
+  ],
+  "orders": [
+   "OPEN",
+   "VAULT_WINDOW"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN",
+   "VAULT_WINDOW"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_031",
+  "voice": "cs",
+  "before": [
+   "watch that door"
+  ],
+  "bot": null,
+  "line": "open it",
+  "pieces": [
+   "open that door"
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_032",
+  "voice": "cs",
+  "before": [
+   "flank them"
+  ],
+  "bot": null,
+  "line": "through main",
+  "pieces": [
+   "flank them through main"
+  ],
+  "orders": [
+   "FLANK"
+  ],
+  "pair": "cs_p25",
+  "classifier": [
+   "FLANK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_033",
+  "voice": "cs",
+  "before": [
+   "flash main"
+  ],
+  "bot": null,
+  "line": "make it a smoke",
+  "pieces": [
+   "smoke main"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "cs_p11",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_034",
+  "voice": "cs",
+  "before": [
+   "drone the roof"
+  ],
+  "bot": "Drone is out.",
+  "line": "never mind",
+  "pieces": [
+   "never mind"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": "cs_p41",
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_035",
+  "voice": "cs",
+  "before": [
+   "check garage",
+   "nade north window"
+  ],
+  "bot": null,
+  "line": "door i mean",
+  "pieces": [
+   "nade north door"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "cs_p12",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_036",
+  "voice": "cs",
+  "before": [
+   "drone top floor"
+  ],
+  "bot": "Top floor is empty.",
+  "line": "now basement",
+  "pieces": [
+   "drone basement"
+  ],
+  "orders": [
+   "DRONE"
+  ],
+  "pair": "cs_p22",
+  "classifier": [
+   "DRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_037",
+  "voice": "cs",
+  "before": [
+   "rotate to main",
+   "smoke blue stairs"
+  ],
+  "bot": null,
+  "line": "one more",
+  "pieces": [
+   "one more"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "cs_p39",
+  "classifier": [
+   "NONE"
+  ],
+  "kept": false
+ },
+ {
+  "id": "x_cs_038",
+  "voice": "cs",
+  "before": [
+   "smoke main"
+  ],
+  "bot": null,
+  "line": "that smoke was trash",
+  "pieces": [
+   "that smoke was trash"
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_039",
+  "voice": "cs",
+  "before": [],
+  "bot": null,
+  "line": "flash main and push into the site",
+  "pieces": [
+   "flash main",
+   "push into the site"
+  ],
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_040",
+  "voice": "cs",
+  "before": [
+   "molly the west window"
+  ],
+  "bot": "I'm out of mollies.",
+  "line": "smoke it",
+  "pieces": [
+   "smoke the west window"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "cs_p30",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_041",
+  "voice": "cs",
+  "before": [
+   "rotate to main door"
+  ],
+  "bot": null,
+  "line": "and stay there",
+  "pieces": [
+   "stay at main door"
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": "cs_p28",
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_042",
+  "voice": "cs",
+  "before": [
+   "open north door"
+  ],
+  "bot": null,
+  "line": "no just watch it",
+  "pieces": [
+   "watch north door"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "cs_p16",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_043",
+  "voice": "cs",
+  "before": [
+   "look at west window"
+  ],
+  "bot": null,
+  "line": "open west door",
+  "pieces": [
+   "open west door"
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": "cs_p09",
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_044",
+  "voice": "cs",
+  "before": [
+   "jump on the table"
+  ],
+  "bot": null,
+  "line": "the sofa, not the table",
+  "pieces": [
+   "jump on the sofa"
+  ],
+  "orders": [
+   "JUMP"
+  ],
+  "pair": null,
+  "classifier": [
+   "JUMP"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_045",
+  "voice": "cs",
+  "before": [
+   "open north door"
+  ],
+  "bot": "Door is locked.",
+  "line": "breach it then",
+  "pieces": [
+   "breach north door"
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null,
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_046",
+  "voice": "cs",
+  "before": [],
+  "bot": null,
+  "line": "im down, pick me up",
+  "pieces": [
+   "im down, pick me up"
+  ],
+  "orders": [
+   "REVIVE_ME"
+  ],
+  "pair": null,
+  "classifier": [
+   "REVIVE_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_047",
+  "voice": "cs",
+  "before": [
+   "breach the door"
+  ],
+  "bot": "Which door?",
+  "line": "main",
+  "pieces": [
+   "breach the main door"
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": "cs_p33",
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_048",
+  "voice": "cs",
+  "before": [
+   "hold main",
+   "nade kitchen"
+  ],
+  "bot": null,
+  "line": "garage too",
+  "pieces": [
+   "nade garage"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "cs_p24",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_049",
+  "voice": "cs",
+  "before": [
+   "flash basement then clear it"
+  ],
+  "bot": null,
+  "line": "same for kitchen",
+  "pieces": [
+   "flash kitchen",
+   "clear kitchen"
+  ],
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH",
+   "NONE"
+  ],
+  "kept": false
+ },
+ {
+  "id": "x_cs_050",
+  "voice": "cs",
+  "before": [
+   "rotate to main",
+   "smoke east door"
+  ],
+  "bot": null,
+  "line": "hold fire",
+  "pieces": [
+   "hold fire"
+  ],
+  "orders": [
+   "HOLD_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_051",
+  "voice": "cs",
+  "before": [
+   "breach east door"
+  ],
+  "bot": null,
+  "line": "never mind",
+  "pieces": [
+   "never mind"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": "cs_p41",
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_052",
+  "voice": "cs",
+  "before": [
+   "hold red stairs",
+   "smoke west door"
+  ],
+  "bot": null,
+  "line": "nah the east one",
+  "pieces": [
+   "smoke east door"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "cs_p10",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_053",
+  "voice": "cs",
+  "before": [
+   "go to yellow stairs"
+  ],
+  "bot": null,
+  "line": "hold blue stairs",
+  "pieces": [
+   "hold blue stairs"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "cs_p03",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_054",
+  "voice": "cs",
+  "before": [
+   "smoke main"
+  ],
+  "bot": null,
+  "line": "plant the bomb",
+  "pieces": [
+   "plant the bomb"
+  ],
+  "orders": [
+   "PLANT"
+  ],
+  "pair": "cs_p05",
+  "classifier": [
+   "PLANT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_055",
+  "voice": "cs",
+  "before": [
+   "flash main on my go"
+  ],
+  "bot": "Ready to flash.",
+  "line": "go go go",
+  "pieces": [
+   "go go go"
+  ],
+  "orders": [
+   "GO_NOW"
+  ],
+  "pair": null,
+  "classifier": [
+   "GO_NOW"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_056",
+  "voice": "cs",
+  "before": [
+   "watch red stairs"
+  ],
+  "bot": null,
+  "line": "on me",
+  "pieces": [
+   "on me"
+  ],
+  "orders": [
+   "FOLLOW_ME"
+  ],
+  "pair": "cs_p02",
+  "classifier": [
+   "FOLLOW_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_057",
+  "voice": "cs",
+  "before": [
+   "hold red stairs",
+   "nade kitchen"
+  ],
+  "bot": null,
+  "line": "stop stop",
+  "pieces": [
+   "stop stop"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_058",
+  "voice": "cs",
+  "before": [
+   "flank"
+  ],
+  "bot": "Left or right?",
+  "line": "left",
+  "pieces": [
+   "flank left"
+  ],
+  "orders": [
+   "FLANK"
+  ],
+  "pair": "cs_p36",
+  "classifier": [
+   "FLANK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_059",
+  "voice": "cs",
+  "before": [
+   "push into kitchen"
+  ],
+  "bot": "Kitchen clear.",
+  "line": "now basement",
+  "pieces": [
+   "push into basement"
+  ],
+  "orders": [
+   "ENTRY"
+  ],
+  "pair": "cs_p22",
+  "classifier": [
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_060",
+  "voice": "cs",
+  "before": [
+   "go to east wall"
+  ],
+  "bot": null,
+  "line": "breach it and push in",
+  "pieces": [
+   "breach east wall",
+   "push in through east wall"
+  ],
+  "orders": [
+   "BREACH",
+   "ENTRY"
+  ],
+  "pair": "cs_p31",
+  "classifier": [
+   "BREACH",
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_061",
+  "voice": "cs",
+  "before": [
+   "go in"
+  ],
+  "bot": null,
+  "line": "through main",
+  "pieces": [
+   "go in through main"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": "cs_p25",
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_062",
+  "voice": "cs",
+  "before": [
+   "hold an angle"
+  ],
+  "bot": null,
+  "line": "red stairs are clear btw",
+  "pieces": [
+   "red stairs are clear btw"
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_063",
+  "voice": "cs",
+  "before": [
+   "flash east window"
+  ],
+  "bot": null,
+  "line": "smoke main",
+  "pieces": [
+   "smoke main"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "cs_p01",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_064",
+  "voice": "cs",
+  "before": [
+   "check the garage"
+  ],
+  "bot": null,
+  "line": "stay on my pin",
+  "pieces": [
+   "stay on my pin"
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_065",
+  "voice": "cs",
+  "before": [
+   "watch south door",
+   "hes one hp"
+  ],
+  "bot": null,
+  "line": "nade south window",
+  "pieces": [
+   "nade south window"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "cs_p04",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_066",
+  "voice": "cs",
+  "before": [
+   "flash the garage"
+  ],
+  "bot": null,
+  "line": "actually molly it",
+  "pieces": [
+   "molly the garage"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "cs_p14",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_067",
+  "voice": "cs",
+  "before": [],
+  "bot": null,
+  "line": "weapons free",
+  "pieces": [
+   "weapons free"
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_069",
+  "voice": "cs",
+  "before": [
+   "nade south window"
+  ],
+  "bot": "Frag out.",
+  "line": "one more",
+  "pieces": [
+   "one more"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "cs_p39",
+  "classifier": [
+   "NONE"
+  ],
+  "kept": false
+ },
+ {
+  "id": "x_cs_070",
+  "voice": "cs",
+  "before": [
+   "breach the hatch"
+  ],
+  "bot": "Breach failed.",
+  "line": "try again",
+  "pieces": [
+   "try again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_071",
+  "voice": "cs",
+  "before": [
+   "flash the garage"
+  ],
+  "bot": null,
+  "line": "throw one in kitchen too",
+  "pieces": [
+   "throw a flash in kitchen"
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_072",
+  "voice": "cs",
+  "before": [
+   "check the roof",
+   "cant see him"
+  ],
+  "bot": null,
+  "line": "again",
+  "pieces": [
+   "again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "cs_p38",
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_073",
+  "voice": "cs",
+  "before": [
+   "hold an angle"
+  ],
+  "bot": null,
+  "line": "red stairs",
+  "pieces": [
+   "hold red stairs"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "cs_p19",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_074",
+  "voice": "cs",
+  "before": [
+   "check downstairs"
+  ],
+  "bot": null,
+  "line": "upstairs, not downstairs",
+  "pieces": [
+   "check upstairs"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "cs_p15",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_075",
+  "voice": "cs",
+  "before": [
+   "hold blue stairs",
+   "open fire"
+  ],
+  "bot": null,
+  "line": "east window",
+  "pieces": [
+   "open fire on east window"
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_076",
+  "voice": "cs",
+  "before": [
+   "suppress north window"
+  ],
+  "bot": "Reloading.",
+  "line": "then east window",
+  "pieces": [
+   "suppress east window"
+  ],
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pair": null,
+  "classifier": [
+   "SUPPRESS"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_077",
+  "voice": "cs",
+  "before": [
+   "check the garage",
+   "hide behind the sofa"
+  ],
+  "bot": null,
+  "line": "hop over it",
+  "pieces": [
+   "hop over the sofa"
+  ],
+  "orders": [
+   "JUMP"
+  ],
+  "pair": "cs_p32",
+  "classifier": [
+   "JUMP"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_078",
+  "voice": "cs",
+  "before": [
+   "flash basement"
+  ],
+  "bot": "Flash out.",
+  "line": "push into kitchen",
+  "pieces": [
+   "push into kitchen"
+  ],
+  "orders": [
+   "ENTRY"
+  ],
+  "pair": "cs_p00",
+  "classifier": [
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_079",
+  "voice": "cs",
+  "before": [],
+  "bot": null,
+  "line": "drone top floor",
+  "pieces": [
+   "drone top floor"
+  ],
+  "orders": [
+   "DRONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "DRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_080",
+  "voice": "cs",
+  "before": [
+   "check behind the sofa"
+  ],
+  "bot": null,
+  "line": "and the table",
+  "pieces": [
+   "check behind the table"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "cs_p21",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_081",
+  "voice": "cs",
+  "before": [
+   "drone basement"
+  ],
+  "bot": "Drone got destroyed.",
+  "line": "do that again",
+  "pieces": [
+   "do that again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "cs_p40",
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_082",
+  "voice": "cs",
+  "before": [
+   "hold yellow stairs"
+  ],
+  "bot": "I'm low on ammo.",
+  "line": "then take cover",
+  "pieces": [
+   "take cover"
+  ],
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pair": null,
+  "classifier": [
+   "TAKE_COVER"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_083",
+  "voice": "cs",
+  "before": [
+   "open the door"
+  ],
+  "bot": "Which door, north or south?",
+  "line": "on me",
+  "pieces": [
+   "on me"
+  ],
+  "orders": [
+   "FOLLOW_ME"
+  ],
+  "pair": "cs_p02",
+  "classifier": [
+   "FOLLOW_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_084",
+  "voice": "cs",
+  "before": [
+   "open main door"
+  ],
+  "bot": null,
+  "line": "north door as well",
+  "pieces": [
+   "open north door"
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_085",
+  "voice": "cs",
+  "before": [
+   "hold east door"
+  ],
+  "bot": null,
+  "line": "fall back",
+  "pieces": [
+   "fall back"
+  ],
+  "orders": [
+   "FALL_BACK"
+  ],
+  "pair": "cs_p06",
+  "classifier": [
+   "FALL_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_086",
+  "voice": "cs",
+  "before": [],
+  "bot": "Plant the bomb now?",
+  "line": "yeah",
+  "pieces": [
+   "plant the bomb"
+  ],
+  "orders": [
+   "PLANT"
+  ],
+  "pair": "cs_p34",
+  "classifier": [
+   "PLANT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_087",
+  "voice": "cs",
+  "before": [
+   "smoke main",
+   "go up the stairs"
+  ],
+  "bot": "Which stairs, white or brown?",
+  "line": "first one",
+  "pieces": [
+   "go up the white stairs"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": "cs_p35",
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_088",
+  "voice": "cs",
+  "before": [
+   "watch the door"
+  ],
+  "bot": null,
+  "line": "on the left",
+  "pieces": [
+   "watch the door on the left"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "cs_p23",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_089",
+  "voice": "cs",
+  "before": [
+   "hold blue stairs",
+   "check the door"
+  ],
+  "bot": "Which door, left or right?",
+  "line": "left",
+  "pieces": [
+   "check the left door"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "cs_p36",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_090",
+  "voice": "cs",
+  "before": [
+   "go to the sofa",
+   "suppress north door"
+  ],
+  "bot": null,
+  "line": "do that again",
+  "pieces": [
+   "do that again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "cs_p40",
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_091",
+  "voice": "cs",
+  "before": [],
+  "bot": "Where do you want the smoke?",
+  "line": "main",
+  "pieces": [
+   "smoke main"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "cs_p33",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_092",
+  "voice": "cs",
+  "before": [
+   "watch blue stairs",
+   "smoke east door"
+  ],
+  "bot": null,
+  "line": "same for west",
+  "pieces": [
+   "smoke west door"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "cs_p20",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_093",
+  "voice": "cs",
+  "before": [
+   "check garage"
+  ],
+  "bot": "Garage clear.",
+  "line": "ok cool",
+  "pieces": [
+   "ok cool"
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_094",
+  "voice": "cs",
+  "before": [
+   "go downstairs"
+  ],
+  "bot": null,
+  "line": "upstairs, not downstairs",
+  "pieces": [
+   "go upstairs"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": "cs_p15",
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_095",
+  "voice": "cs",
+  "before": [
+   "flank right"
+  ],
+  "bot": null,
+  "line": "no, left",
+  "pieces": [
+   "flank left"
+  ],
+  "orders": [
+   "FLANK"
+  ],
+  "pair": "cs_p13",
+  "classifier": [
+   "FLANK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_096",
+  "voice": "cs",
+  "before": [
+   "push into kitchen"
+  ],
+  "bot": "Push into the kitchen, confirm?",
+  "line": "nah",
+  "pieces": [
+   "nah"
+  ],
+  "orders": [
+   "NO"
+  ],
+  "pair": null,
+  "classifier": [
+   "NO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_097",
+  "voice": "cs",
+  "before": [
+   "drone garage"
+  ],
+  "bot": null,
+  "line": "clear it after you nade it",
+  "pieces": [
+   "nade garage",
+   "clear garage"
+  ],
+  "orders": [
+   "FRAG",
+   "ENTRY"
+  ],
+  "pair": null,
+  "classifier": [
+   "FRAG",
+   "NONE"
+  ],
+  "kept": false
+ },
+ {
+  "id": "x_cs_098",
+  "voice": "cs",
+  "before": [
+   "smoke west door",
+   "nice"
+  ],
+  "bot": null,
+  "line": "smoke main",
+  "pieces": [
+   "smoke main"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "cs_p01",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_099",
+  "voice": "cs",
+  "before": [
+   "hold east window"
+  ],
+  "bot": "Should I frag the east window?",
+  "line": "no, flash it",
+  "pieces": [
+   "flash the east window"
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": "cs_p37",
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_100",
+  "voice": "cs",
+  "before": [],
+  "bot": null,
+  "line": "defuse defuse",
+  "pieces": [
+   "defuse defuse"
+  ],
+  "orders": [
+   "DEFUSE"
+  ],
+  "pair": null,
+  "classifier": [
+   "DEFUSE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_101",
+  "voice": "cs",
+  "before": [
+   "check east window"
+  ],
+  "bot": null,
+  "line": "same for west",
+  "pieces": [
+   "check west window"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "cs_p20",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_102",
+  "voice": "cs",
+  "before": [
+   "go up white stairs"
+  ],
+  "bot": null,
+  "line": "look at the sofa",
+  "pieces": [
+   "look at the sofa"
+  ],
+  "orders": [
+   "LOOK_AT"
+  ],
+  "pair": null,
+  "classifier": [
+   "LOOK_AT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_103",
+  "voice": "cs",
+  "before": [
+   "hold yellow stairs",
+   "quick"
+  ],
+  "bot": null,
+  "line": "nah brown",
+  "pieces": [
+   "hold brown stairs"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_104",
+  "voice": "cs",
+  "before": [
+   "open south window"
+  ],
+  "bot": null,
+  "line": "door i mean",
+  "pieces": [
+   "open south door"
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": "cs_p12",
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_105",
+  "voice": "cs",
+  "before": [
+   "rotate"
+  ],
+  "bot": null,
+  "line": "top floor",
+  "pieces": [
+   "rotate to top floor"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_106",
+  "voice": "cs",
+  "before": [
+   "vault west window"
+  ],
+  "bot": null,
+  "line": "nah the east one",
+  "pieces": [
+   "vault east window"
+  ],
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pair": "cs_p10",
+  "classifier": [
+   "VAULT_WINDOW"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_107",
+  "voice": "cs",
+  "before": [
+   "check kitchen",
+   "watch west window"
+  ],
+  "bot": null,
+  "line": "flank through south door",
+  "pieces": [
+   "flank through south door"
+  ],
+  "orders": [
+   "FLANK"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLANK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_108",
+  "voice": "cs",
+  "before": [
+   "smoke main",
+   "hold east window"
+  ],
+  "bot": null,
+  "line": "nade it",
+  "pieces": [
+   "nade east window"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "cs_p27",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_109",
+  "voice": "cs",
+  "before": [],
+  "bot": "Want me to check the roof?",
+  "line": "no",
+  "pieces": [
+   "no"
+  ],
+  "orders": [
+   "NO"
+  ],
+  "pair": null,
+  "classifier": [
+   "NO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_110",
+  "voice": "cs",
+  "before": [
+   "breach east wall"
+  ],
+  "bot": "No charges left.",
+  "line": "open west door",
+  "pieces": [
+   "open west door"
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": "cs_p09",
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_111",
+  "voice": "cs",
+  "before": [
+   "hold main"
+  ],
+  "bot": null,
+  "line": "push into kitchen",
+  "pieces": [
+   "push into kitchen"
+  ],
+  "orders": [
+   "ENTRY"
+  ],
+  "pair": "cs_p00",
+  "classifier": [
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_112",
+  "voice": "cs",
+  "before": [
+   "check kitchen"
+  ],
+  "bot": null,
+  "line": "garage too",
+  "pieces": [
+   "check garage"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "cs_p24",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_113",
+  "voice": "cs",
+  "before": [
+   "check top floor"
+  ],
+  "bot": "Top floor clear.",
+  "line": "hold blue stairs",
+  "pieces": [
+   "hold blue stairs"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "cs_p03",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_114",
+  "voice": "cs",
+  "before": [
+   "look at the table"
+  ],
+  "bot": null,
+  "line": "hop over it",
+  "pieces": [
+   "hop over the table"
+  ],
+  "orders": [
+   "JUMP"
+  ],
+  "pair": "cs_p32",
+  "classifier": [
+   "JUMP"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_115",
+  "voice": "cs",
+  "before": [],
+  "bot": null,
+  "line": "lol nice shot",
+  "pieces": [
+   "lol nice shot"
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_116",
+  "voice": "cs",
+  "before": [
+   "follow me",
+   "drone kitchen"
+  ],
+  "bot": null,
+  "line": "the garage instead",
+  "pieces": [
+   "drone the garage"
+  ],
+  "orders": [
+   "DRONE"
+  ],
+  "pair": "cs_p17",
+  "classifier": [
+   "DRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_117",
+  "voice": "cs",
+  "before": [
+   "smoke north door"
+  ],
+  "bot": null,
+  "line": "flash it and go in",
+  "pieces": [
+   "flash north door",
+   "go in through north door"
+  ],
+  "orders": [
+   "FLASH",
+   "MOVE_TO"
+  ],
+  "pair": "cs_p29",
+  "classifier": [
+   "FLASH",
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_118",
+  "voice": "cs",
+  "before": [
+   "rotate to main"
+  ],
+  "bot": "Rotating.",
+  "line": "cancel that",
+  "pieces": [
+   "cancel that"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_119",
+  "voice": "cs",
+  "before": [
+   "smoke north window"
+  ],
+  "bot": null,
+  "line": "nade south window",
+  "pieces": [
+   "nade south window"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "cs_p04",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_120",
+  "voice": "cs",
+  "before": [
+   "pop a flash in kitchen",
+   "they turned away"
+  ],
+  "bot": null,
+  "line": "same again",
+  "pieces": [
+   "same again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_121",
+  "voice": "cs",
+  "before": [
+   "clear top floor"
+  ],
+  "bot": "Want me to drone first?",
+  "line": "no, just follow me",
+  "pieces": [
+   "follow me"
+  ],
+  "orders": [
+   "FOLLOW_ME"
+  ],
+  "pair": null,
+  "classifier": [
+   "FOLLOW_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_122",
+  "voice": "cs",
+  "before": [
+   "open fire on east window"
+  ],
+  "bot": null,
+  "line": "no, suppress it",
+  "pieces": [
+   "suppress east window"
+  ],
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pair": null,
+  "classifier": [
+   "SUPPRESS"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_123",
+  "voice": "cs",
+  "before": [
+   "pop a flash at east door"
+  ],
+  "bot": null,
+  "line": "take them out",
+  "pieces": [
+   "take them out"
+  ],
+  "orders": [
+   "ATTACK"
+  ],
+  "pair": null,
+  "classifier": [
+   "ATTACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_124",
+  "voice": "cs",
+  "before": [],
+  "bot": null,
+  "line": "crouch",
+  "pieces": [
+   "crouch"
+  ],
+  "orders": [
+   "CROUCH"
+  ],
+  "pair": null,
+  "classifier": [
+   "CROUCH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_125",
+  "voice": "cs",
+  "before": [
+   "nade the east window"
+  ],
+  "bot": null,
+  "line": "no just watch it",
+  "pieces": [
+   "watch the east window"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "cs_p16",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_126",
+  "voice": "cs",
+  "before": [
+   "get to main door"
+  ],
+  "bot": null,
+  "line": "breach it and push in",
+  "pieces": [
+   "breach main door",
+   "push in through main door"
+  ],
+  "orders": [
+   "BREACH",
+   "ENTRY"
+  ],
+  "pair": "cs_p31",
+  "classifier": [
+   "BREACH",
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_127",
+  "voice": "cs",
+  "before": [
+   "open the door"
+  ],
+  "bot": "Open the north door, confirm?",
+  "line": "no, south",
+  "pieces": [
+   "open the south door"
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_128",
+  "voice": "cs",
+  "before": [
+   "follow me"
+  ],
+  "bot": null,
+  "line": "check the roof then hold brown stairs",
+  "pieces": [
+   "check the roof",
+   "hold brown stairs"
+  ],
+  "orders": [
+   "CHECK",
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "CHECK",
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_129",
+  "voice": "cs",
+  "before": [
+   "nade basement"
+  ],
+  "bot": "Frag out.",
+  "line": "come back",
+  "pieces": [
+   "come back"
+  ],
+  "orders": [
+   "COME_BACK"
+  ],
+  "pair": null,
+  "classifier": [
+   "COME_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_130",
+  "voice": "cs",
+  "before": [
+   "cover me"
+  ],
+  "bot": "Covering you.",
+  "line": "plant the bomb",
+  "pieces": [
+   "plant the bomb"
+  ],
+  "orders": [
+   "PLANT"
+  ],
+  "pair": "cs_p05",
+  "classifier": [
+   "PLANT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_131",
+  "voice": "cs",
+  "before": [
+   "hold red stairs"
+  ],
+  "bot": null,
+  "line": "go there",
+  "pieces": [
+   "go there"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_132",
+  "voice": "cs",
+  "before": [
+   "hold east door"
+  ],
+  "bot": "Are you still alive?",
+  "line": "yeah",
+  "pieces": [
+   "yeah"
+  ],
+  "orders": [
+   "YES"
+  ],
+  "pair": "cs_p34",
+  "classifier": [
+   "YES"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_133",
+  "voice": "cs",
+  "before": [
+   "throw a flash at blue stairs"
+  ],
+  "bot": null,
+  "line": "no a smoke",
+  "pieces": [
+   "throw a smoke at blue stairs"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_134",
+  "voice": "cs",
+  "before": [
+   "breach west door"
+  ],
+  "bot": null,
+  "line": "nah the other one",
+  "pieces": [
+   "breach the other door"
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null,
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_135",
+  "voice": "cs",
+  "before": [
+   "hold main"
+  ],
+  "bot": null,
+  "line": "ill take the window",
+  "pieces": [
+   "ill take the window"
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_136",
+  "voice": "cs",
+  "before": [
+   "flash kitchen",
+   "go go"
+  ],
+  "bot": null,
+  "line": "last guy is behind the sofa",
+  "pieces": [
+   "last guy is behind the sofa"
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_137",
+  "voice": "cs",
+  "before": [
+   "jump over the sofa"
+  ],
+  "bot": null,
+  "line": "and the table",
+  "pieces": [
+   "jump over the table"
+  ],
+  "orders": [
+   "JUMP"
+  ],
+  "pair": "cs_p21",
+  "classifier": [
+   "JUMP"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_138",
+  "voice": "cs",
+  "before": [
+   "hold the stairs"
+  ],
+  "bot": "Which stairs, red or blue?",
+  "line": "dunno",
+  "pieces": [
+   "dunno"
+  ],
+  "orders": [
+   "DONT_KNOW"
+  ],
+  "pair": null,
+  "classifier": [
+   "DONT_KNOW"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_cs_139",
+  "voice": "cs",
+  "before": [
+   "flash kitchen"
+  ],
+  "bot": null,
+  "line": "now clear it",
+  "pieces": [
+   "clear kitchen"
+  ],
+  "orders": [
+   "ENTRY"
+  ],
+  "pair": "cs_p26",
+  "classifier": [
+   "NONE"
+  ],
+  "kept": false
+ },
+ {
+  "id": "x_stt_000",
+  "voice": "stt",
+  "before": [
+   "flash the kitchen"
+  ],
+  "bot": null,
+  "line": "not flash i mean smoke",
+  "pieces": [
+   "smoke the kitchen"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "stt_p11",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_001",
+  "voice": "stt",
+  "before": [],
+  "bot": "Want me to breach the door?",
+  "line": "no just open it",
+  "pieces": [
+   "open the door"
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_002",
+  "voice": "stt",
+  "before": [
+   "open the main door"
+  ],
+  "bot": null,
+  "line": "now go through it",
+  "pieces": [
+   "go through the main door"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": "stt_p27",
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_003",
+  "voice": "stt",
+  "before": [
+   "smoke the main door",
+   "go go go"
+  ],
+  "bot": null,
+  "line": "they are coming from the basement",
+  "pieces": [
+   "they are coming from the basement"
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_004",
+  "voice": "stt",
+  "before": [],
+  "bot": null,
+  "line": "plant the bomb plant the bomb",
+  "pieces": [
+   "plant the bomb plant the bomb"
+  ],
+  "orders": [
+   "PLANT"
+  ],
+  "pair": null,
+  "classifier": [
+   "PLANT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_005",
+  "voice": "stt",
+  "before": [
+   "open the east door"
+  ],
+  "bot": "Door is open.",
+  "line": "now look at me",
+  "pieces": [
+   "look at me"
+  ],
+  "orders": [
+   "LOOK_AT_ME"
+  ],
+  "pair": null,
+  "classifier": [
+   "LOOK_AT_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_006",
+  "voice": "stt",
+  "before": [],
+  "bot": "Should I go first?",
+  "line": "uh maybe",
+  "pieces": [
+   "uh maybe"
+  ],
+  "orders": [
+   "MAYBE"
+  ],
+  "pair": null,
+  "classifier": [
+   "MAYBE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_007",
+  "voice": "stt",
+  "before": [],
+  "bot": null,
+  "line": "i am down please revive me",
+  "pieces": [
+   "i am down please revive me"
+  ],
+  "orders": [
+   "REVIVE_ME"
+  ],
+  "pair": null,
+  "classifier": [
+   "REVIVE_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_008",
+  "voice": "stt",
+  "before": [
+   "jump on the chairs"
+  ],
+  "bot": null,
+  "line": "sorry i mean the table",
+  "pieces": [
+   "jump on the table"
+  ],
+  "orders": [
+   "JUMP"
+  ],
+  "pair": "stt_p12",
+  "classifier": [
+   "JUMP"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_009",
+  "voice": "stt",
+  "before": [
+   "breach the east door"
+  ],
+  "bot": null,
+  "line": "do not breach just open it",
+  "pieces": [
+   "open the east door"
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_010",
+  "voice": "stt",
+  "before": [
+   "smoke the south window"
+  ],
+  "bot": null,
+  "line": "look at it",
+  "pieces": [
+   "look at the south window"
+  ],
+  "orders": [
+   "LOOK_AT"
+  ],
+  "pair": "stt_p32",
+  "classifier": [
+   "LOOK_AT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_011",
+  "voice": "stt",
+  "before": [
+   "hide behind the so far"
+  ],
+  "bot": null,
+  "line": "okay go prone",
+  "pieces": [
+   "okay go prone"
+  ],
+  "orders": [
+   "PRONE"
+  ],
+  "pair": "stt_p07",
+  "classifier": [
+   "PRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_012",
+  "voice": "stt",
+  "before": [
+   "hold the main door",
+   "smoke the red stairs"
+  ],
+  "bot": null,
+  "line": "do not shoot do not shoot",
+  "pieces": [
+   "do not shoot do not shoot"
+  ],
+  "orders": [
+   "HOLD_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_013",
+  "voice": "stt",
+  "before": [
+   "follow me"
+  ],
+  "bot": null,
+  "line": "jump on the table and look at the east window",
+  "pieces": [
+   "jump on the table",
+   "look at the east window"
+  ],
+  "orders": [
+   "JUMP",
+   "LOOK_AT"
+  ],
+  "pair": null,
+  "classifier": [
+   "JUMP",
+   "LOOK_AT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_014",
+  "voice": "stt",
+  "before": [
+   "put the charge on the south door"
+  ],
+  "bot": null,
+  "line": "uh same on the north one",
+  "pieces": [
+   "put the charge on the north door"
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": "stt_p20",
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_015",
+  "voice": "stt",
+  "before": [
+   "jump over the table"
+  ],
+  "bot": null,
+  "line": "and the chairs",
+  "pieces": [
+   "jump over the chairs"
+  ],
+  "orders": [
+   "JUMP"
+  ],
+  "pair": null,
+  "classifier": [
+   "JUMP"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_017",
+  "voice": "stt",
+  "before": [
+   "go to the brown stairs"
+  ],
+  "bot": null,
+  "line": "please watch the white stairs",
+  "pieces": [
+   "please watch the white stairs"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "stt_p01",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_018",
+  "voice": "stt",
+  "before": [
+   "uh follow me",
+   "watch the door"
+  ],
+  "bot": null,
+  "line": "the north one",
+  "pieces": [
+   "watch the north door"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "stt_p23",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_019",
+  "voice": "stt",
+  "before": [
+   "go to the east window"
+  ],
+  "bot": null,
+  "line": "no no you just look at it",
+  "pieces": [
+   "look at the east window"
+  ],
+  "orders": [
+   "LOOK_AT"
+  ],
+  "pair": "stt_p16",
+  "classifier": [
+   "LOOK_AT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_020",
+  "voice": "stt",
+  "before": [
+   "hold the east door"
+  ],
+  "bot": null,
+  "line": "i will go to the west door myself",
+  "pieces": [
+   "i will go to the west door myself"
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_021",
+  "voice": "stt",
+  "before": [
+   "check the garage",
+   "go to the table"
+  ],
+  "bot": null,
+  "line": "look at it",
+  "pieces": [
+   "look at the table"
+  ],
+  "orders": [
+   "LOOK_AT"
+  ],
+  "pair": "stt_p32",
+  "classifier": [
+   "LOOK_AT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_022",
+  "voice": "stt",
+  "before": [
+   "look at the so far"
+  ],
+  "bot": null,
+  "line": "hide behind it",
+  "pieces": [
+   "hide behind the so far"
+  ],
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pair": null,
+  "classifier": [
+   "TAKE_COVER"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_023",
+  "voice": "stt",
+  "before": [
+   "breach the hatch"
+  ],
+  "bot": "Hatch is open.",
+  "line": "okay copy",
+  "pieces": [
+   "okay copy"
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_024",
+  "voice": "stt",
+  "before": [
+   "go to the north door"
+  ],
+  "bot": null,
+  "line": "open it and then go in",
+  "pieces": [
+   "open the north door",
+   "go in through the north door"
+  ],
+  "orders": [
+   "OPEN",
+   "MOVE_TO"
+  ],
+  "pair": "stt_p29",
+  "classifier": [
+   "OPEN",
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_025",
+  "voice": "stt",
+  "before": [
+   "throw the grenade"
+  ],
+  "bot": null,
+  "line": "behind the so far",
+  "pieces": [
+   "throw the grenade behind the so far"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "stt_p25",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_026",
+  "voice": "stt",
+  "before": [
+   "push in the garage"
+  ],
+  "bot": "Want me to flash the garage first?",
+  "line": "yes do it",
+  "pieces": [
+   "flash the garage"
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": "stt_p36",
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_027",
+  "voice": "stt",
+  "before": [
+   "smoke the west window"
+  ],
+  "bot": null,
+  "line": "and and the east window",
+  "pieces": [
+   "smoke the east window"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "stt_p21",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_028",
+  "voice": "stt",
+  "before": [
+   "throw grenade to the west window"
+  ],
+  "bot": "Frag out.",
+  "line": "one more time",
+  "pieces": [
+   "one more time"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "stt_p39",
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_029",
+  "voice": "stt",
+  "before": [
+   "clear the basement"
+  ],
+  "bot": "Basement clear.",
+  "line": "okay come back here",
+  "pieces": [
+   "okay come back here"
+  ],
+  "orders": [
+   "COME_BACK"
+  ],
+  "pair": null,
+  "classifier": [
+   "COME_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_030",
+  "voice": "stt",
+  "before": [
+   "check the garage",
+   "stay there"
+  ],
+  "bot": null,
+  "line": "throw grenade to the north window",
+  "pieces": [
+   "throw grenade to the north window"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null,
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_031",
+  "voice": "stt",
+  "before": [
+   "flash the main door"
+  ],
+  "bot": null,
+  "line": "then then the south door",
+  "pieces": [
+   "flash the south door"
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_032",
+  "voice": "stt",
+  "before": [
+   "go to the blue stairs",
+   "suppress them"
+  ],
+  "bot": null,
+  "line": "the the west window",
+  "pieces": [
+   "suppress the west window"
+  ],
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pair": null,
+  "classifier": [
+   "SUPPRESS"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_033",
+  "voice": "stt",
+  "before": [
+   "go to second floor",
+   "quick quick"
+  ],
+  "bot": null,
+  "line": "no wait the top floor",
+  "pieces": [
+   "go to top floor"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_034",
+  "voice": "stt",
+  "before": [
+   "go to the white stairs"
+  ],
+  "bot": null,
+  "line": "and then hold position there",
+  "pieces": [
+   "hold position at the white stairs"
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": "stt_p28",
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_035",
+  "voice": "stt",
+  "before": [
+   "follow me please",
+   "send drone to the basement"
+  ],
+  "bot": null,
+  "line": "not basement the top floor",
+  "pieces": [
+   "send drone to the top floor"
+  ],
+  "orders": [
+   "DRONE"
+  ],
+  "pair": "stt_p15",
+  "classifier": [
+   "DRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_036",
+  "voice": "stt",
+  "before": [
+   "volt the window"
+  ],
+  "bot": null,
+  "line": "the north one",
+  "pieces": [
+   "volt the north window"
+  ],
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pair": "stt_p23",
+  "classifier": [
+   "VAULT_WINDOW"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_037",
+  "voice": "stt",
+  "before": [
+   "go up the white stairs"
+  ],
+  "bot": null,
+  "line": "uh look at the so far",
+  "pieces": [
+   "uh look at the so far"
+  ],
+  "orders": [
+   "LOOK_AT"
+  ],
+  "pair": null,
+  "classifier": [
+   "LOOK_AT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_038",
+  "voice": "stt",
+  "before": [
+   "follow me"
+  ],
+  "bot": "Are you okay?",
+  "line": "yes yes",
+  "pieces": [
+   "yes yes"
+  ],
+  "orders": [
+   "YES"
+  ],
+  "pair": "stt_p34",
+  "classifier": [
+   "YES"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_039",
+  "voice": "stt",
+  "before": [
+   "watch the south door"
+  ],
+  "bot": "Should I frag the south door?",
+  "line": "no no smoke it",
+  "pieces": [
+   "smoke the south door"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "stt_p37",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_040",
+  "voice": "stt",
+  "before": [
+   "hold the east window"
+  ],
+  "bot": null,
+  "line": "you follow me okay",
+  "pieces": [
+   "you follow me okay"
+  ],
+  "orders": [
+   "FOLLOW_ME"
+  ],
+  "pair": "stt_p02",
+  "classifier": [
+   "FOLLOW_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_041",
+  "voice": "stt",
+  "before": [
+   "drone the garage"
+  ],
+  "bot": null,
+  "line": "you push in after you flash it",
+  "pieces": [
+   "flash the garage",
+   "push into the garage"
+  ],
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_042",
+  "voice": "stt",
+  "before": [
+   "take cover"
+  ],
+  "bot": null,
+  "line": "behind the so far",
+  "pieces": [
+   "take cover behind the so far"
+  ],
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pair": "stt_p25",
+  "classifier": [
+   "TAKE_COVER"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_043",
+  "voice": "stt",
+  "before": [
+   "watch the south door"
+  ],
+  "bot": null,
+  "line": "open the south window",
+  "pieces": [
+   "open the south window"
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": "stt_p09",
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_044",
+  "voice": "stt",
+  "before": [],
+  "bot": null,
+  "line": "uh send the drone to top floor",
+  "pieces": [
+   "uh send the drone to top floor"
+  ],
+  "orders": [
+   "DRONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "DRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_045",
+  "voice": "stt",
+  "before": [
+   "breach the the south wall",
+   "oh no it is reinforced"
+  ],
+  "bot": null,
+  "line": "please watch the white stairs",
+  "pieces": [
+   "please watch the white stairs"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "stt_p01",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_046",
+  "voice": "stt",
+  "before": [
+   "throw smoke to the east window"
+  ],
+  "bot": null,
+  "line": "no no the west one",
+  "pieces": [
+   "throw smoke to the west window"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "stt_p10",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_047",
+  "voice": "stt",
+  "before": [
+   "check the hatch"
+  ],
+  "bot": "Hatch is closed.",
+  "line": "breech the east wall",
+  "pieces": [
+   "breech the east wall"
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": "stt_p05",
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_048",
+  "voice": "stt",
+  "before": [],
+  "bot": "Want me to flash the red stairs?",
+  "line": "no no smoke it",
+  "pieces": [
+   "smoke the red stairs"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "stt_p37",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_049",
+  "voice": "stt",
+  "before": [
+   "throw the grenade to basement"
+  ],
+  "bot": "Frag or flash?",
+  "line": "the first one",
+  "pieces": [
+   "throw the frag to basement"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "stt_p35",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_050",
+  "voice": "stt",
+  "before": [
+   "open the door"
+  ],
+  "bot": "Open the east door, confirm?",
+  "line": "no not east the main door",
+  "pieces": [
+   "open the main door"
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_051",
+  "voice": "stt",
+  "before": [
+   "hold the stairs"
+  ],
+  "bot": "Which stairs?",
+  "line": "uh blue",
+  "pieces": [
+   "hold the blue stairs"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "stt_p33",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_052",
+  "voice": "stt",
+  "before": [],
+  "bot": "Defuse the bomb now?",
+  "line": "yes yes",
+  "pieces": [
+   "defuse the bomb"
+  ],
+  "orders": [
+   "DEFUSE"
+  ],
+  "pair": "stt_p34",
+  "classifier": [
+   "DEFUSE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_053",
+  "voice": "stt",
+  "before": [
+   "check the garage",
+   "watch the west window"
+  ],
+  "bot": null,
+  "line": "go around and attack them from behind",
+  "pieces": [
+   "go around and attack them from behind"
+  ],
+  "orders": [
+   "FLANK"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLANK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_054",
+  "voice": "stt",
+  "before": [
+   "smoke the east door"
+  ],
+  "bot": "Smoke out.",
+  "line": "go there",
+  "pieces": [
+   "go there"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": "stt_p41",
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_055",
+  "voice": "stt",
+  "before": [
+   "use smoke on the main door"
+  ],
+  "bot": null,
+  "line": "uh no use grenade",
+  "pieces": [
+   "use grenade on the main door"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "stt_p14",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_056",
+  "voice": "stt",
+  "before": [
+   "flank from the left"
+  ],
+  "bot": null,
+  "line": "from the right i mean",
+  "pieces": [
+   "flank from the right"
+  ],
+  "orders": [
+   "FLANK"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLANK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_057",
+  "voice": "stt",
+  "before": [
+   "hold the vest door"
+  ],
+  "bot": "Holding the west window.",
+  "line": "the door not the window",
+  "pieces": [
+   "hold the vest door"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "stt_p18",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_058",
+  "voice": "stt",
+  "before": [
+   "look at the table"
+  ],
+  "bot": "Looking at the table.",
+  "line": "okay go prone",
+  "pieces": [
+   "okay go prone"
+  ],
+  "orders": [
+   "PRONE"
+  ],
+  "pair": "stt_p07",
+  "classifier": [
+   "PRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_059",
+  "voice": "stt",
+  "before": [
+   "hold the brown stairs"
+  ],
+  "bot": null,
+  "line": "smoke it and then flash it",
+  "pieces": [
+   "smoke the brown stairs",
+   "flash the brown stairs"
+  ],
+  "orders": [
+   "SMOKE",
+   "FLASH"
+  ],
+  "pair": "stt_p31",
+  "classifier": [
+   "SMOKE",
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_060",
+  "voice": "stt",
+  "before": [
+   "check the kitchen",
+   "frag the south window"
+  ],
+  "bot": null,
+  "line": "uh same on the north one",
+  "pieces": [
+   "frag the north window"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "stt_p20",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_061",
+  "voice": "stt",
+  "before": [
+   "scout the second floor"
+  ],
+  "bot": null,
+  "line": "also the roof",
+  "pieces": [
+   "scout the roof"
+  ],
+  "orders": [
+   "DRONE"
+  ],
+  "pair": "stt_p24",
+  "classifier": [
+   "DRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_063",
+  "voice": "stt",
+  "before": [
+   "smoke the west door please"
+  ],
+  "bot": null,
+  "line": "uh check the the kitchen",
+  "pieces": [
+   "uh check the the kitchen"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "stt_p00",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_064",
+  "voice": "stt",
+  "before": [
+   "drone the basement",
+   "stand next to the east wall"
+  ],
+  "bot": null,
+  "line": "okay breach",
+  "pieces": [
+   "breach the east wall"
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null,
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_065",
+  "voice": "stt",
+  "before": [
+   "watch the west door"
+  ],
+  "bot": null,
+  "line": "smoke it and then flash it",
+  "pieces": [
+   "smoke the west door",
+   "flash the west door"
+  ],
+  "orders": [
+   "SMOKE",
+   "FLASH"
+  ],
+  "pair": "stt_p31",
+  "classifier": [
+   "SMOKE",
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_066",
+  "voice": "stt",
+  "before": [
+   "go to the red stairs",
+   "frag the kitchen"
+  ],
+  "bot": null,
+  "line": "stop stop stop",
+  "pieces": [
+   "stop stop stop"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_067",
+  "voice": "stt",
+  "before": [
+   "send the drone to basement",
+   "i cannot see"
+  ],
+  "bot": null,
+  "line": "again again",
+  "pieces": [
+   "send the drone to basement"
+  ],
+  "orders": [
+   "DRONE"
+  ],
+  "pair": "stt_p38",
+  "classifier": [
+   "DRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_068",
+  "voice": "stt",
+  "before": [
+   "volt the west window"
+  ],
+  "bot": null,
+  "line": "no rappel rappel to it",
+  "pieces": [
+   "rappel to the west window"
+  ],
+  "orders": [
+   "RAPPEL"
+  ],
+  "pair": null,
+  "classifier": [
+   "RAPPEL"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_069",
+  "voice": "stt",
+  "before": [
+   "um open the window"
+  ],
+  "bot": "Which window, north or south?",
+  "line": "you follow me okay",
+  "pieces": [
+   "you follow me okay"
+  ],
+  "orders": [
+   "FOLLOW_ME"
+  ],
+  "pair": "stt_p02",
+  "classifier": [
+   "FOLLOW_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_070",
+  "voice": "stt",
+  "before": [
+   "drone the basement"
+  ],
+  "bot": "Basement is empty.",
+  "line": "now the garage",
+  "pieces": [
+   "drone the garage"
+  ],
+  "orders": [
+   "DRONE"
+  ],
+  "pair": "stt_p22",
+  "classifier": [
+   "DRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_071",
+  "voice": "stt",
+  "before": [
+   "plant the bomb"
+  ],
+  "bot": "Planting.",
+  "line": "no no defuse i mean defuse",
+  "pieces": [
+   "defuse the bomb"
+  ],
+  "orders": [
+   "DEFUSE"
+  ],
+  "pair": null,
+  "classifier": [
+   "DEFUSE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_072",
+  "voice": "stt",
+  "before": [
+   "flesh the kitchen"
+  ],
+  "bot": null,
+  "line": "again again",
+  "pieces": [
+   "flesh the kitchen"
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": "stt_p38",
+  "classifier": [
+   "NONE"
+  ],
+  "kept": false
+ },
+ {
+  "id": "x_stt_073",
+  "voice": "stt",
+  "before": [
+   "hold yellow stairs"
+  ],
+  "bot": null,
+  "line": "help me i need help here",
+  "pieces": [
+   "help me i need help here"
+  ],
+  "orders": [
+   "HELP"
+  ],
+  "pair": null,
+  "classifier": [
+   "HELP"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_074",
+  "voice": "stt",
+  "before": [
+   "plant the bomb"
+  ],
+  "bot": "I don't have the bomb.",
+  "line": "cover me cover me",
+  "pieces": [
+   "cover me cover me"
+  ],
+  "orders": [
+   "COVER_ME"
+  ],
+  "pair": "stt_p04",
+  "classifier": [
+   "COVER_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_075",
+  "voice": "stt",
+  "before": [
+   "flash the main door"
+  ],
+  "bot": null,
+  "line": "take cover behind the table",
+  "pieces": [
+   "take cover behind the table"
+  ],
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pair": null,
+  "classifier": [
+   "TAKE_COVER"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_076",
+  "voice": "stt",
+  "before": [
+   "open the north window"
+  ],
+  "bot": null,
+  "line": "west window also",
+  "pieces": [
+   "open the west window"
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_077",
+  "voice": "stt",
+  "before": [
+   "frag the east window"
+  ],
+  "bot": null,
+  "line": "the door not the window",
+  "pieces": [
+   "frag the east door"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "stt_p18",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_078",
+  "voice": "stt",
+  "before": [
+   "drone the top floor"
+  ],
+  "bot": "Two on the top floor.",
+  "line": "okay now clear it",
+  "pieces": [
+   "clear the top floor"
+  ],
+  "orders": [
+   "ENTRY"
+  ],
+  "pair": "stt_p26",
+  "classifier": [
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_079",
+  "voice": "stt",
+  "before": [
+   "open the hatch"
+  ],
+  "bot": null,
+  "line": "no no you just look at it",
+  "pieces": [
+   "look at the hatch"
+  ],
+  "orders": [
+   "LOOK_AT"
+  ],
+  "pair": "stt_p16",
+  "classifier": [
+   "LOOK_AT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_080",
+  "voice": "stt",
+  "before": [
+   "hold the red stairs",
+   "watch the window"
+  ],
+  "bot": null,
+  "line": "go there",
+  "pieces": [
+   "go there"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": "stt_p41",
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_081",
+  "voice": "stt",
+  "before": [
+   "clear the kitchen"
+  ],
+  "bot": "Kitchen clear.",
+  "line": "now the garage",
+  "pieces": [
+   "clear the garage"
+  ],
+  "orders": [
+   "ENTRY"
+  ],
+  "pair": "stt_p22",
+  "classifier": [
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_082",
+  "voice": "stt",
+  "before": [
+   "breach the north wall"
+  ],
+  "bot": "Charge failed.",
+  "line": "try again try again",
+  "pieces": [
+   "breach the north wall"
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null,
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_083",
+  "voice": "stt",
+  "before": [
+   "smoke the north door"
+  ],
+  "bot": "Smoking the north door.",
+  "line": "i say south not north",
+  "pieces": [
+   "smoke the south door"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "stt_p17",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_084",
+  "voice": "stt",
+  "before": [
+   "smoke the main door",
+   "go up the stairs"
+  ],
+  "bot": "Which stairs, blue or red?",
+  "line": "uh blue",
+  "pieces": [
+   "go up the blue stairs"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": "stt_p33",
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_085",
+  "voice": "stt",
+  "before": [
+   "open the the north door"
+  ],
+  "bot": null,
+  "line": "breech the east wall",
+  "pieces": [
+   "breech the east wall"
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": "stt_p05",
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_086",
+  "voice": "stt",
+  "before": [],
+  "bot": null,
+  "line": "um stand up",
+  "pieces": [
+   "um stand up"
+  ],
+  "orders": [
+   "STAND_UP"
+  ],
+  "pair": null,
+  "classifier": [
+   "STAND_UP"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_087",
+  "voice": "stt",
+  "before": [
+   "smoke the basement and then check it"
+  ],
+  "bot": null,
+  "line": "same thing for the garage",
+  "pieces": [
+   "smoke the garage",
+   "check the garage"
+  ],
+  "orders": [
+   "SMOKE",
+   "CHECK"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE",
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_088",
+  "voice": "stt",
+  "before": [
+   "breach the east door"
+  ],
+  "bot": null,
+  "line": "no no smoke the west window",
+  "pieces": [
+   "smoke the west window"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_089",
+  "voice": "stt",
+  "before": [],
+  "bot": null,
+  "line": "open fire open fire",
+  "pieces": [
+   "open fire open fire"
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_090",
+  "voice": "stt",
+  "before": [
+   "smoke the main door"
+  ],
+  "bot": "Smoke is fading.",
+  "line": "uh do it again",
+  "pieces": [
+   "uh do it again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "stt_p40",
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_091",
+  "voice": "stt",
+  "before": [
+   "check the top floor"
+  ],
+  "bot": null,
+  "line": "also the roof",
+  "pieces": [
+   "check the roof"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "stt_p24",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_092",
+  "voice": "stt",
+  "before": [
+   "go to the roof"
+  ],
+  "bot": "Rappel to the roof, confirm?",
+  "line": "no",
+  "pieces": [
+   "no"
+  ],
+  "orders": [
+   "NO"
+  ],
+  "pair": null,
+  "classifier": [
+   "NO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_093",
+  "voice": "stt",
+  "before": [
+   "check the basement"
+  ],
+  "bot": "Three in the basement.",
+  "line": "throw grenade in it",
+  "pieces": [
+   "throw grenade in the basement"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "stt_p30",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_094",
+  "voice": "stt",
+  "before": [],
+  "bot": null,
+  "line": "smoke the east door and and hold the blue stairs",
+  "pieces": [
+   "smoke the east door",
+   "hold the blue stairs"
+  ],
+  "orders": [
+   "SMOKE",
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE",
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_095",
+  "voice": "stt",
+  "before": [
+   "check the west window"
+  ],
+  "bot": null,
+  "line": "and and the east window",
+  "pieces": [
+   "check the east window"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "stt_p21",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_096",
+  "voice": "stt",
+  "before": [
+   "go to yellow stairs"
+  ],
+  "bot": null,
+  "line": "cover me cover me",
+  "pieces": [
+   "cover me cover me"
+  ],
+  "orders": [
+   "COVER_ME"
+  ],
+  "pair": "stt_p04",
+  "classifier": [
+   "COVER_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_097",
+  "voice": "stt",
+  "before": [],
+  "bot": null,
+  "line": "there is two enemy in the kitchen",
+  "pieces": [
+   "there is two enemy in the kitchen"
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_098",
+  "voice": "stt",
+  "before": [
+   "open the door"
+  ],
+  "bot": "Which door, north or south?",
+  "line": "i do not know",
+  "pieces": [
+   "i do not know"
+  ],
+  "orders": [
+   "DONT_KNOW"
+  ],
+  "pair": null,
+  "classifier": [
+   "DONT_KNOW"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_099",
+  "voice": "stt",
+  "before": [
+   "hold the red stairs",
+   "breach the east door"
+  ],
+  "bot": null,
+  "line": "no no the west one",
+  "pieces": [
+   "breach the west door"
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": "stt_p10",
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_100",
+  "voice": "stt",
+  "before": [
+   "open the west door"
+  ],
+  "bot": "Door is locked.",
+  "line": "okay then breach it",
+  "pieces": [
+   "breach the west door"
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null,
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_102",
+  "voice": "stt",
+  "before": [
+   "smoke the main door",
+   "hold the white stairs"
+  ],
+  "bot": null,
+  "line": "no the red one",
+  "pieces": [
+   "hold the red stairs"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "stt_p13",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_103",
+  "voice": "stt",
+  "before": [
+   "hold the main door",
+   "flesh the kitchen"
+  ],
+  "bot": null,
+  "line": "okay now clear it",
+  "pieces": [
+   "clear the kitchen"
+  ],
+  "orders": [
+   "ENTRY"
+  ],
+  "pair": "stt_p26",
+  "classifier": [
+   "ENTRY"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_104",
+  "voice": "stt",
+  "before": [
+   "smoke the east door",
+   "yes good good"
+  ],
+  "bot": null,
+  "line": "throw smoke on the mean door",
+  "pieces": [
+   "throw smoke on the mean door"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "stt_p03",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_105",
+  "voice": "stt",
+  "before": [
+   "check the basement"
+  ],
+  "bot": null,
+  "line": "not basement the top floor",
+  "pieces": [
+   "check the top floor"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "stt_p15",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_106",
+  "voice": "stt",
+  "before": [
+   "throw a smoke"
+  ],
+  "bot": null,
+  "line": "the yellow stairs",
+  "pieces": [
+   "throw a smoke at the yellow stairs"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "stt_p19",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_107",
+  "voice": "stt",
+  "before": [
+   "go up the blue stairs"
+  ],
+  "bot": null,
+  "line": "no the red one",
+  "pieces": [
+   "go up the red stairs"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": "stt_p13",
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_108",
+  "voice": "stt",
+  "before": [
+   "hold this angle"
+  ],
+  "bot": null,
+  "line": "the yellow stairs",
+  "pieces": [
+   "hold the yellow stairs"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": "stt_p19",
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_109",
+  "voice": "stt",
+  "before": [
+   "flash the brown stairs"
+  ],
+  "bot": "Flashing the brown stairs.",
+  "line": "not flash i mean smoke",
+  "pieces": [
+   "smoke the brown stairs"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "stt_p11",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_110",
+  "voice": "stt",
+  "before": [],
+  "bot": "I can vault the north window.",
+  "line": "yes do it",
+  "pieces": [
+   "vault the north window"
+  ],
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pair": "stt_p36",
+  "classifier": [
+   "VAULT_WINDOW"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_111",
+  "voice": "stt",
+  "before": [
+   "go to the garage door"
+  ],
+  "bot": null,
+  "line": "open it and then go in",
+  "pieces": [
+   "open the garage door",
+   "go in through the garage door"
+  ],
+  "orders": [
+   "OPEN",
+   "MOVE_TO"
+  ],
+  "pair": "stt_p29",
+  "classifier": [
+   "OPEN",
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_112",
+  "voice": "stt",
+  "before": [
+   "go to the stares"
+  ],
+  "bot": null,
+  "line": "the brown one",
+  "pieces": [
+   "go to the brown stares"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_113",
+  "voice": "stt",
+  "before": [
+   "flash the east door",
+   "he is not blind"
+  ],
+  "bot": null,
+  "line": "one more flash",
+  "pieces": [
+   "flash the east door"
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_114",
+  "voice": "stt",
+  "before": [
+   "push in the kitchen"
+  ],
+  "bot": "Want me to flash first?",
+  "line": "fall back fall back",
+  "pieces": [
+   "fall back fall back"
+  ],
+  "orders": [
+   "FALL_BACK"
+  ],
+  "pair": "stt_p06",
+  "classifier": [
+   "FALL_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_115",
+  "voice": "stt",
+  "before": [
+   "hold north door"
+  ],
+  "bot": null,
+  "line": "fall back fall back",
+  "pieces": [
+   "fall back fall back"
+  ],
+  "orders": [
+   "FALL_BACK"
+  ],
+  "pair": "stt_p06",
+  "classifier": [
+   "FALL_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_116",
+  "voice": "stt",
+  "before": [
+   "throw the smoke to yellow stairs"
+  ],
+  "bot": null,
+  "line": "no no a flash",
+  "pieces": [
+   "throw a flash to yellow stairs"
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_117",
+  "voice": "stt",
+  "before": [
+   "go to the east wall"
+  ],
+  "bot": null,
+  "line": "breach that wall",
+  "pieces": [
+   "breach that wall"
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null,
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_118",
+  "voice": "stt",
+  "before": [
+   "move to the south door"
+  ],
+  "bot": null,
+  "line": "and then hold position there",
+  "pieces": [
+   "hold position at the south door"
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": "stt_p28",
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_119",
+  "voice": "stt",
+  "before": [
+   "smoke the main door",
+   "check the roof"
+  ],
+  "bot": null,
+  "line": "uh do it again",
+  "pieces": [
+   "uh do it again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "stt_p40",
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_120",
+  "voice": "stt",
+  "before": [
+   "use flash on the garage"
+  ],
+  "bot": null,
+  "line": "uh no use grenade",
+  "pieces": [
+   "use grenade on the garage"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "stt_p14",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_121",
+  "voice": "stt",
+  "before": [
+   "drone the kitchen"
+  ],
+  "bot": "One enemy in the kitchen.",
+  "line": "uh hold fire and fall back",
+  "pieces": [
+   "uh hold fire",
+   "fall back"
+  ],
+  "orders": [
+   "HOLD_FIRE",
+   "FALL_BACK"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_FIRE",
+   "FALL_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_122",
+  "voice": "stt",
+  "before": [
+   "flash the garage"
+  ],
+  "bot": null,
+  "line": "throw smoke on the mean door",
+  "pieces": [
+   "throw smoke on the mean door"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": "stt_p03",
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_123",
+  "voice": "stt",
+  "before": [
+   "drone the basement"
+  ],
+  "bot": "Drone is out.",
+  "line": "uh never mind",
+  "pieces": [
+   "uh never mind"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_124",
+  "voice": "stt",
+  "before": [],
+  "bot": null,
+  "line": "where where is the bomb",
+  "pieces": [
+   "where where is the bomb"
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_125",
+  "voice": "stt",
+  "before": [
+   "breach west door"
+  ],
+  "bot": "I'm out of charges.",
+  "line": "open the south window",
+  "pieces": [
+   "open the south window"
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": "stt_p09",
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_126",
+  "voice": "stt",
+  "before": [
+   "push in the garage"
+  ],
+  "bot": null,
+  "line": "wait wait",
+  "pieces": [
+   "wait wait"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_127",
+  "voice": "stt",
+  "before": [
+   "open the east door"
+  ],
+  "bot": null,
+  "line": "volt the north window",
+  "pieces": [
+   "volt the north window"
+  ],
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pair": null,
+  "classifier": [
+   "VAULT_WINDOW"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_128",
+  "voice": "stt",
+  "before": [
+   "rappel to the south window"
+  ],
+  "bot": null,
+  "line": "open it and throw flash through it",
+  "pieces": [
+   "open the south window",
+   "throw flash through the south window"
+  ],
+  "orders": [
+   "OPEN",
+   "FLASH"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN",
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_130",
+  "voice": "stt",
+  "before": [
+   "hold the red stairs"
+  ],
+  "bot": null,
+  "line": "now go up them",
+  "pieces": [
+   "go up the red stairs"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_131",
+  "voice": "stt",
+  "before": [
+   "send drone to basement",
+   "okay flesh it"
+  ],
+  "bot": null,
+  "line": "uh check the the kitchen",
+  "pieces": [
+   "uh check the the kitchen"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": "stt_p00",
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_132",
+  "voice": "stt",
+  "before": [
+   "hide behind the so far"
+  ],
+  "bot": null,
+  "line": "sorry i mean the table",
+  "pieces": [
+   "hide behind the table"
+  ],
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pair": "stt_p12",
+  "classifier": [
+   "TAKE_COVER"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_133",
+  "voice": "stt",
+  "before": [
+   "rappel to the roof"
+  ],
+  "bot": "Rappelling.",
+  "line": "cancel cancel that",
+  "pieces": [
+   "cancel cancel that"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_134",
+  "voice": "stt",
+  "before": [
+   "hold the red stairs"
+  ],
+  "bot": null,
+  "line": "stay on my mark",
+  "pieces": [
+   "stay on my mark"
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_135",
+  "voice": "stt",
+  "before": [
+   "hold the blue stairs",
+   "open the window"
+  ],
+  "bot": "Which window, north or south?",
+  "line": "the first one",
+  "pieces": [
+   "open the north window"
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": "stt_p35",
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_136",
+  "voice": "stt",
+  "before": [
+   "smoke the red stairs",
+   "watch the kitchen"
+  ],
+  "bot": null,
+  "line": "throw grenade in it",
+  "pieces": [
+   "throw grenade in the kitchen"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": "stt_p30",
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_137",
+  "voice": "stt",
+  "before": [
+   "smoke the north window"
+  ],
+  "bot": null,
+  "line": "no the other the other one",
+  "pieces": [
+   "smoke the other window"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_138",
+  "voice": "stt",
+  "before": [
+   "go to the roof",
+   "rappel to the north window"
+  ],
+  "bot": null,
+  "line": "i say south not north",
+  "pieces": [
+   "rappel to the south window"
+  ],
+  "orders": [
+   "RAPPEL"
+  ],
+  "pair": "stt_p17",
+  "classifier": [
+   "RAPPEL"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x_stt_139",
+  "voice": "stt",
+  "before": [
+   "go to the top floor",
+   "suppress the yellow stairs"
+  ],
+  "bot": null,
+  "line": "one more time",
+  "pieces": [
+   "one more time"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": "stt_p39",
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_000",
+  "voice": "r6",
+  "before": [
+   "One left, he's in Kitchen.",
+   "Frag the west window."
+  ],
+  "bot": "Frag out.",
+  "line": "Frag it again.",
+  "pieces": [
+   "Frag the west window again."
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null,
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_001",
+  "voice": "r6",
+  "before": [
+   "Check the basement."
+  ],
+  "bot": null,
+  "line": "Over there first.",
+  "pieces": [
+   "Check over there first."
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": null,
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_002",
+  "voice": "r6",
+  "before": [
+   "Stick with me.",
+   "Change of plan, I'm flanking solo."
+  ],
+  "bot": "Following.",
+  "line": "Don't follow me.",
+  "pieces": [
+   "Don't follow me."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_003",
+  "voice": "r6",
+  "before": [
+   "Nice, one down.",
+   "Reinforce the east wall.",
+   "Frag the south window."
+  ],
+  "bot": "Frag out.",
+  "line": "Again!",
+  "pieces": [
+   "Again!"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_004",
+  "voice": "r6",
+  "before": [
+   "Frag the south window."
+  ],
+  "bot": "Cooking.",
+  "line": "Don't frag it, the hostage is in there.",
+  "pieces": [
+   "Don't frag it, the hostage is in there."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_005",
+  "voice": "r6",
+  "before": [
+   "Get in the truck."
+  ],
+  "bot": "I'm in.",
+  "line": "Get out of the truck and wait here.",
+  "pieces": [
+   "Get out of the truck.",
+   "Wait here."
+  ],
+  "orders": [
+   "GET_OUT",
+   "HOLD_POSITION"
+  ],
+  "pair": null,
+  "classifier": [
+   "GET_OUT",
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_006",
+  "voice": "r6",
+  "before": [
+   "Frag the north window."
+  ],
+  "bot": "Frag out.",
+  "line": "Cover me, I'm vaulting in.",
+  "pieces": [
+   "Cover me, I'm vaulting in."
+  ],
+  "orders": [
+   "COVER_ME"
+  ],
+  "pair": null,
+  "classifier": [
+   "COVER_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_007",
+  "voice": "r6",
+  "before": [
+   "Valk cam's on the top floor.",
+   "Jump down through the hatch."
+  ],
+  "bot": "Nowhere to jump down here.",
+  "line": "Try it again, Sledge just opened it.",
+  "pieces": [
+   "Try it again, Sledge just opened it."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_008",
+  "voice": "r6",
+  "before": [
+   "Watch the Main door.",
+   "One down, Main."
+  ],
+  "bot": "Holding.",
+  "line": "Wait here.",
+  "pieces": [
+   "Wait here."
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_009",
+  "voice": "r6",
+  "before": [
+   "Two in Bar.",
+   "Open the door."
+  ],
+  "bot": "Which door? North, 6 m?",
+  "line": "That one over there.",
+  "pieces": [
+   "Open that door over there."
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_010",
+  "voice": "r6",
+  "before": [
+   "Mute's jammer is down.",
+   "Smoke the Main door."
+  ],
+  "bot": null,
+  "line": "No, that one by my ping.",
+  "pieces": [
+   "Smoke that door by my ping."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_011",
+  "voice": "r6",
+  "before": [
+   "Watch the stairs."
+  ],
+  "bot": "Which stairs? The red ones, 15 m?",
+  "line": "Those ones over there.",
+  "pieces": [
+   "Watch those stairs over there."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_012",
+  "voice": "r6",
+  "before": [
+   "Check behind the table."
+  ],
+  "bot": "Which table? The one on the left, 7 m?",
+  "line": "Negative, the one by my ping.",
+  "pieces": [
+   "Check behind the table by my ping."
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": null,
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_013",
+  "voice": "r6",
+  "before": [
+   "They're stacking Main.",
+   "Pin them down."
+  ],
+  "bot": null,
+  "line": "At this doorway.",
+  "pieces": [
+   "Pin them down at this doorway."
+  ],
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pair": null,
+  "classifier": [
+   "SUPPRESS"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_014",
+  "voice": "r6",
+  "before": [
+   "Flash the east window."
+  ],
+  "bot": "Flash out.",
+  "line": "Do that again.",
+  "pieces": [
+   "Do that again."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_015",
+  "voice": "r6",
+  "before": [
+   "Nice trade.",
+   "Watch the red stairs."
+  ],
+  "bot": "Watching the red stairs.",
+  "line": "Go grab a medkit.",
+  "pieces": [
+   "Go grab a medkit."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_016",
+  "voice": "r6",
+  "before": [
+   "Move up."
+  ],
+  "bot": null,
+  "line": "To that corner.",
+  "pieces": [
+   "Move up to that corner."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_017",
+  "voice": "r6",
+  "before": [],
+  "bot": null,
+  "line": "Hop in, I'm driving.",
+  "pieces": [
+   "Hop in, I'm driving."
+  ],
+  "orders": [
+   "GET_IN"
+  ],
+  "pair": null,
+  "classifier": [
+   "GET_IN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_018",
+  "voice": "r6",
+  "before": [
+   "Two pushing the basement.",
+   "Hold the blue stairs.",
+   "Good, keep it locked."
+  ],
+  "bot": null,
+  "line": "Find a weapon, then come back.",
+  "pieces": [
+   "Find a weapon.",
+   "Come back."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "COME_BACK"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO",
+   "COME_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_019",
+  "voice": "r6",
+  "before": [
+   "Spam the wall by the sofa."
+  ],
+  "bot": "Reloading.",
+  "line": "More.",
+  "pieces": [
+   "More."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_020",
+  "voice": "r6",
+  "before": [
+   "Careful, spawn peek on Main.",
+   "Weapons free."
+  ],
+  "bot": null,
+  "line": "At that window.",
+  "pieces": [
+   "Fire at that window."
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_021",
+  "voice": "r6",
+  "before": [
+   "Two in the basement, one on the stairs.",
+   "Head down to the basement."
+  ],
+  "bot": null,
+  "line": "Don't jump down.",
+  "pieces": [
+   "Don't jump down."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_022",
+  "voice": "r6",
+  "before": [
+   "Nice drone.",
+   "One on the stairs, one in Dining.",
+   "Flash the door."
+  ],
+  "bot": "Which door? West, 11 m?",
+  "line": "The one on my mark.",
+  "pieces": [
+   "Flash the door on my mark."
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_023",
+  "voice": "r6",
+  "before": [
+   "Kitchen's clear."
+  ],
+  "bot": "Dropping through the hatch.",
+  "line": "Don't do that.",
+  "pieces": [
+   "Don't do that."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_024",
+  "voice": "r6",
+  "before": [
+   "Rotate to the west window."
+  ],
+  "bot": "Moving.",
+  "line": "No, don't go there, Maestro's got eyes on it.",
+  "pieces": [
+   "No, don't go there, Maestro's got eyes on it."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_025",
+  "voice": "r6",
+  "before": [
+   "Watch the south window."
+  ],
+  "bot": "Watching the south window.",
+  "line": "Go there.",
+  "pieces": [
+   "Go there."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_026",
+  "voice": "r6",
+  "before": [
+   "Two on site, one roamer upstairs.",
+   "Get to the roof."
+  ],
+  "bot": "I can't get there.",
+  "line": "Give it another go.",
+  "pieces": [
+   "Give it another go."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_027",
+  "voice": "r6",
+  "before": [
+   "Hard breach the north door."
+  ],
+  "bot": "Charge didn't go.",
+  "line": "Once more.",
+  "pieces": [
+   "Once more."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_028",
+  "voice": "r6",
+  "before": [
+   "Start shooting at the window."
+  ],
+  "bot": "Which window? The north one, 16 m?",
+  "line": "On my pin.",
+  "pieces": [
+   "Start shooting at my pin."
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_029",
+  "voice": "r6",
+  "before": [
+   "Frag the window."
+  ],
+  "bot": "Which window? The south one, 14 m?",
+  "line": "That one, right there.",
+  "pieces": [
+   "Frag that window right there."
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null,
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_030",
+  "voice": "r6",
+  "before": [
+   "Toss a frag."
+  ],
+  "bot": null,
+  "line": "Over there.",
+  "pieces": [
+   "Toss a frag over there."
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null,
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_031",
+  "voice": "r6",
+  "before": [
+   "Frag the north window."
+  ],
+  "bot": "Too far for a frag.",
+  "line": "Try again.",
+  "pieces": [
+   "Try again."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_032",
+  "voice": "r6",
+  "before": [
+   "Watch the Main door."
+  ],
+  "bot": "Watching the Main door.",
+  "line": "Don't shoot until they push through.",
+  "pieces": [
+   "Don't shoot until they push through."
+  ],
+  "orders": [
+   "HOLD_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_033",
+  "voice": "r6",
+  "before": [
+   "I'm planting.",
+   "Lay down suppressing fire."
+  ],
+  "bot": null,
+  "line": "On my pin.",
+  "pieces": [
+   "Lay down suppressing fire on my pin."
+  ],
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pair": null,
+  "classifier": [
+   "SUPPRESS"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_034",
+  "voice": "r6",
+  "before": [
+   "Breach the east wall."
+  ],
+  "bot": "Charge set.",
+  "line": "Don't.",
+  "pieces": [
+   "Don't."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_035",
+  "voice": "r6",
+  "before": [
+   "Throw a smoke."
+  ],
+  "bot": null,
+  "line": "Right on my ping.",
+  "pieces": [
+   "Throw a smoke right on my ping."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_036",
+  "voice": "r6",
+  "before": [
+   "Smoke the Main door."
+  ],
+  "bot": "Smoke out.",
+  "line": "One more time.",
+  "pieces": [
+   "One more time."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_037",
+  "voice": "r6",
+  "before": [
+   "Push in through Main."
+  ],
+  "bot": null,
+  "line": "No, don't push. Smoke it first.",
+  "pieces": [
+   "No, don't push.",
+   "Smoke the Main door first."
+  ],
+  "orders": [
+   "WAIT",
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT",
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_038",
+  "voice": "r6",
+  "before": [
+   "Breach the door."
+  ],
+  "bot": "Which door? The one on the left, 8 m?",
+  "line": "No, the one by my pin.",
+  "pieces": [
+   "Breach the door by my pin."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null,
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_039",
+  "voice": "r6",
+  "before": [
+   "I'll anchor Kitchen.",
+   "Hold an angle."
+  ],
+  "bot": null,
+  "line": "That door.",
+  "pieces": [
+   "Hold an angle on that door."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_040",
+  "voice": "r6",
+  "before": [
+   "Drone's on site.",
+   "Two in the basement, one on the white stairs.",
+   "Clear above.",
+   "Set a breach charge."
+  ],
+  "bot": null,
+  "line": "On this wall, here.",
+  "pieces": [
+   "Set a breach charge on this wall here."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null,
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_041",
+  "voice": "r6",
+  "before": [
+   "Kapkan traps on the doors.",
+   "Get to the stairs."
+  ],
+  "bot": "Which stairs? Blue, 18 m?",
+  "line": "Where I marked.",
+  "pieces": [
+   "Get to the stairs where I marked."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_042",
+  "voice": "r6",
+  "before": [
+   "Breach the north door."
+  ],
+  "bot": "Charge ready.",
+  "line": "Don't breach yet, drone it first.",
+  "pieces": [
+   "Don't breach yet.",
+   "Drone the north door first."
+  ],
+  "orders": [
+   "WAIT",
+   "DRONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT",
+   "DRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_043",
+  "voice": "r6",
+  "before": [
+   "Pop a flash."
+  ],
+  "bot": null,
+  "line": "Through that window.",
+  "pieces": [
+   "Pop a flash through that window."
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_044",
+  "voice": "r6",
+  "before": [
+   "Vault through the window."
+  ],
+  "bot": "Which window? The one on the left, 5 m?",
+  "line": "This one here.",
+  "pieces": [
+   "Vault through this window here."
+  ],
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pair": null,
+  "classifier": [
+   "VAULT_WINDOW"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_045",
+  "voice": "r6",
+  "before": [
+   "Smoke the window."
+  ],
+  "bot": "Which window? East, 20 m?",
+  "line": "Here.",
+  "pieces": [
+   "Smoke the window here."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_046",
+  "voice": "r6",
+  "before": [
+   "Go to the yellow stairs.",
+   "Hold up, Claymore on the stairs."
+  ],
+  "bot": null,
+  "line": "Don't move.",
+  "pieces": [
+   "Don't move."
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_047",
+  "voice": "r6",
+  "before": [],
+  "bot": null,
+  "line": "Grab some ammo, then get in the truck.",
+  "pieces": [
+   "Grab some ammo.",
+   "Get in the truck."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "GET_IN"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO",
+   "GET_IN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_048",
+  "voice": "r6",
+  "before": [
+   "Roamer's dead.",
+   "Two left.",
+   "Go to the Main door."
+  ],
+  "bot": null,
+  "line": "No, that one.",
+  "pieces": [
+   "Go to that door."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_049",
+  "voice": "r6",
+  "before": [
+   "Smoke the east window.",
+   "Good smoke."
+  ],
+  "bot": "Smoke out.",
+  "line": "Drone the basement before we drop.",
+  "pieces": [
+   "Drone the basement before we drop."
+  ],
+  "orders": [
+   "DRONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "DRONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_050",
+  "voice": "r6",
+  "before": [
+   "Watch the red stairs.",
+   "One left, last seen top floor."
+  ],
+  "bot": "Watching the red stairs.",
+  "line": "Rotate to the west window.",
+  "pieces": [
+   "Rotate to the west window."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_051",
+  "voice": "r6",
+  "before": [
+   "Watch flank.",
+   "Smoke the blue stairs."
+  ],
+  "bot": "Smoke out.",
+  "line": "Smoke again.",
+  "pieces": [
+   "Smoke the blue stairs again."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_052",
+  "voice": "r6",
+  "before": [
+   "Clear.",
+   "Kitchen's clear, moving to Dining.",
+   "Breach the north door."
+  ],
+  "bot": "Charge set.",
+  "line": "Plant the defuser by the table.",
+  "pieces": [
+   "Plant the defuser by the table."
+  ],
+  "orders": [
+   "PLANT"
+  ],
+  "pair": null,
+  "classifier": [
+   "PLANT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_053",
+  "voice": "r6",
+  "before": [
+   "Drone's down.",
+   "Two on site, one roamer.",
+   "Reinforce the east wall.",
+   "Nice, the roamer's dead.",
+   "Hold the Main door."
+  ],
+  "bot": "Holding the Main door.",
+  "line": "Hard breach the north door on my go.",
+  "pieces": [
+   "Hard breach the north door on my go."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null,
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_054",
+  "voice": "r6",
+  "before": [
+   "Drone spotted two in Kitchen.",
+   "Reinforce the east wall.",
+   "Nice.",
+   "I'm going up the white stairs.",
+   "Top floor's clear."
+  ],
+  "bot": null,
+  "line": "Grab ammo and meet me at the white stairs.",
+  "pieces": [
+   "Grab ammo.",
+   "Meet me at the white stairs."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO",
+   "FOLLOW_ME"
+  ],
+  "kept": false
+ },
+ {
+  "id": "x55_r6_055",
+  "voice": "r6",
+  "before": [
+   "Watch the red stairs."
+  ],
+  "bot": "Watching the red stairs.",
+  "line": "No, that window.",
+  "pieces": [
+   "Watch that window."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_056",
+  "voice": "r6",
+  "before": [
+   "Get in the car.",
+   "They're rotating to Garage."
+  ],
+  "bot": "I'm in.",
+  "line": "Hop out and grab a shotgun.",
+  "pieces": [
+   "Hop out of the car.",
+   "Grab a shotgun."
+  ],
+  "orders": [
+   "GET_OUT",
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "GET_OUT",
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_057",
+  "voice": "r6",
+  "before": [
+   "Thermite's on the east wall.",
+   "Two on site, one in Bar.",
+   "Watch my back.",
+   "Okay, moving.",
+   "Go to the red stairs."
+  ],
+  "bot": "I can't get there.",
+  "line": "Go again.",
+  "pieces": [
+   "Go again."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_058",
+  "voice": "r6",
+  "before": [
+   "Start shooting."
+  ],
+  "bot": null,
+  "line": "Through this wall.",
+  "pieces": [
+   "Shoot through this wall."
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_r6_059",
+  "voice": "r6",
+  "before": [
+   "Drone's dead, they shot it.",
+   "Ela mines on the stairs.",
+   "Suppress the west window."
+  ],
+  "bot": "Suppressing.",
+  "line": "Same again.",
+  "pieces": [
+   "Same again."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_000",
+  "voice": "cs",
+  "before": [
+   "watch the stairs",
+   "frag the east window"
+  ],
+  "bot": "Frag out.",
+  "line": "frag it again",
+  "pieces": [
+   "frag the east window again"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null,
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_001",
+  "voice": "cs",
+  "before": [
+   "pop a smoke"
+  ],
+  "bot": null,
+  "line": "on this door man",
+  "pieces": [
+   "pop a smoke on this door"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_002",
+  "voice": "cs",
+  "before": [
+   "follow me"
+  ],
+  "bot": "On you.",
+  "line": "actually don't follow me",
+  "pieces": [
+   "actually don't follow me"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_003",
+  "voice": "cs",
+  "before": [
+   "they're on the stairs",
+   "suppress the red stairs"
+  ],
+  "bot": null,
+  "line": "more bro more",
+  "pieces": [
+   "more bro more"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_004",
+  "voice": "cs",
+  "before": [
+   "smoke the south window"
+  ],
+  "bot": null,
+  "line": "don't throw it yet",
+  "pieces": [
+   "don't throw it yet"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_005",
+  "voice": "cs",
+  "before": [
+   "eco round",
+   "follow me"
+  ],
+  "bot": null,
+  "line": "go find armor man",
+  "pieces": [
+   "go find armor man"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_006",
+  "voice": "cs",
+  "before": [
+   "hold the red stairs"
+  ],
+  "bot": null,
+  "line": "one left, he's low",
+  "pieces": [
+   "one left, he's low"
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_007",
+  "voice": "cs",
+  "before": [
+   "breach the west door"
+  ],
+  "bot": "Can't place a charge here.",
+  "line": "give it another go bro",
+  "pieces": [
+   "give it another go bro"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_008",
+  "voice": "cs",
+  "before": [
+   "get in the car",
+   "ok we're here"
+  ],
+  "bot": null,
+  "line": "get out and grab a rifle",
+  "pieces": [
+   "get out of the car",
+   "grab a rifle"
+  ],
+  "orders": [
+   "GET_OUT",
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "GET_OUT",
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_009",
+  "voice": "cs",
+  "before": [
+   "open the door"
+  ],
+  "bot": "Which door? The one on the right, 4 m?",
+  "line": "nah here",
+  "pieces": [
+   "open the door here"
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_010",
+  "voice": "cs",
+  "before": [
+   "follow me",
+   "move move"
+  ],
+  "bot": null,
+  "line": "to that car",
+  "pieces": [
+   "move to that car"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_011",
+  "voice": "cs",
+  "before": [
+   "smoke the window"
+  ],
+  "bot": "Which window? The one ahead, 12 m?",
+  "line": "nah that one over there",
+  "pieces": [
+   "smoke that window over there"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_012",
+  "voice": "cs",
+  "before": [
+   "watch the stairs"
+  ],
+  "bot": "Which stairs? The blue ones, 20 m?",
+  "line": "nah those over there",
+  "pieces": [
+   "watch those stairs over there"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_013",
+  "voice": "cs",
+  "before": [
+   "throw a frag"
+  ],
+  "bot": null,
+  "line": "on my pin",
+  "pieces": [
+   "throw a frag on my pin"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null,
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_014",
+  "voice": "cs",
+  "before": [
+   "gg",
+   "eco round boys",
+   "two on b site",
+   "follow me",
+   "smoke the main door"
+  ],
+  "bot": "Smoke out.",
+  "line": "one more time",
+  "pieces": [
+   "one more time"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_015",
+  "voice": "cs",
+  "before": [
+   "he's one shot",
+   "watch the white stairs"
+  ],
+  "bot": null,
+  "line": "wait here",
+  "pieces": [
+   "wait here"
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_016",
+  "voice": "cs",
+  "before": [
+   "pin em down"
+  ],
+  "bot": null,
+  "line": "at that door",
+  "pieces": [
+   "pin em down at that door"
+  ],
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pair": null,
+  "classifier": [
+   "SUPPRESS"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_017",
+  "voice": "cs",
+  "before": [
+   "i'm low af"
+  ],
+  "bot": null,
+  "line": "go get health bro",
+  "pieces": [
+   "go get health bro"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_018",
+  "voice": "cs",
+  "before": [
+   "get in the truck"
+  ],
+  "bot": "Getting in.",
+  "line": "jump out and wait here",
+  "pieces": [
+   "jump out of the truck",
+   "wait here"
+  ],
+  "orders": [
+   "GET_OUT",
+   "HOLD_POSITION"
+  ],
+  "pair": null,
+  "classifier": [
+   "GET_OUT",
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_019",
+  "voice": "cs",
+  "before": [
+   "flash that room"
+  ],
+  "bot": "Flash out.",
+  "line": "same again",
+  "pieces": [
+   "same again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_020",
+  "voice": "cs",
+  "before": [
+   "eco round lol",
+   "suppress"
+  ],
+  "bot": null,
+  "line": "that wall",
+  "pieces": [
+   "suppress that wall"
+  ],
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pair": null,
+  "classifier": [
+   "SUPPRESS"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_021",
+  "voice": "cs",
+  "before": [
+   "go up on the roof",
+   "ok now follow me"
+  ],
+  "bot": null,
+  "line": "don't jump down bro",
+  "pieces": [
+   "don't jump down bro"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_022",
+  "voice": "cs",
+  "before": [
+   "frag the window"
+  ],
+  "bot": "Which window? The one on the right, 18 m?",
+  "line": "right here man",
+  "pieces": [
+   "frag the window right here"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null,
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_023",
+  "voice": "cs",
+  "before": [
+   "check the basement",
+   "jump down that hole"
+  ],
+  "bot": null,
+  "line": "nah don't do that",
+  "pieces": [
+   "nah don't do that"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_024",
+  "voice": "cs",
+  "before": [
+   "go to the red stairs"
+  ],
+  "bot": "Moving.",
+  "line": "nah don't go there",
+  "pieces": [
+   "nah don't go there"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_025",
+  "voice": "cs",
+  "before": [
+   "frag the south window"
+  ],
+  "bot": "Too far for a frag.",
+  "line": "fall back man",
+  "pieces": [
+   "fall back man"
+  ],
+  "orders": [
+   "FALL_BACK"
+  ],
+  "pair": null,
+  "classifier": [
+   "FALL_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_026",
+  "voice": "cs",
+  "before": [
+   "follow me",
+   "go to the roof"
+  ],
+  "bot": "I can't get there.",
+  "line": "try again bro",
+  "pieces": [
+   "try again bro"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_027",
+  "voice": "cs",
+  "before": [
+   "jump on the table"
+  ],
+  "bot": "I can't get up there.",
+  "line": "once more",
+  "pieces": [
+   "once more"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_028",
+  "voice": "cs",
+  "before": [
+   "shoot this window"
+  ],
+  "bot": "Which window? The one on the left, 10 m?",
+  "line": "nah on my pin",
+  "pieces": [
+   "shoot at my pin"
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_029",
+  "voice": "cs",
+  "before": [
+   "check the car"
+  ],
+  "bot": "Which car? The one ahead, 25 m?",
+  "line": "nah the one on my ping",
+  "pieces": [
+   "check the car on my ping"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": null,
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_030",
+  "voice": "cs",
+  "before": [
+   "one left",
+   "he's hiding somewhere",
+   "go check"
+  ],
+  "bot": null,
+  "line": "that room",
+  "pieces": [
+   "go check that room"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": null,
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_031",
+  "voice": "cs",
+  "before": [
+   "frag the north window"
+  ],
+  "bot": "Too far for a frag.",
+  "line": "try again",
+  "pieces": [
+   "try again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_032",
+  "voice": "cs",
+  "before": [
+   "watch that door"
+  ],
+  "bot": "Contact at the door.",
+  "line": "nah don't shoot yet",
+  "pieces": [
+   "nah don't shoot yet"
+  ],
+  "orders": [
+   "HOLD_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_033",
+  "voice": "cs",
+  "before": [
+   "they're coming mid",
+   "throw a smoke"
+  ],
+  "bot": null,
+  "line": "over there",
+  "pieces": [
+   "throw a smoke over there"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_034",
+  "voice": "cs",
+  "before": [
+   "throw a molly on my pin"
+  ],
+  "bot": null,
+  "line": "don't",
+  "pieces": [
+   "don't"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_035",
+  "voice": "cs",
+  "before": [
+   "watch the stairs"
+  ],
+  "bot": "Watching the stairs.",
+  "line": "nah that window",
+  "pieces": [
+   "watch that window"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_036",
+  "voice": "cs",
+  "before": [
+   "throw a molly in there"
+  ],
+  "bot": "Frag out.",
+  "line": "again",
+  "pieces": [
+   "again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_037",
+  "voice": "cs",
+  "before": [
+   "go inside"
+  ],
+  "bot": null,
+  "line": "don't go in, wait here",
+  "pieces": [
+   "don't go in",
+   "wait here"
+  ],
+  "orders": [
+   "WAIT",
+   "HOLD_POSITION"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT",
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_038",
+  "voice": "cs",
+  "before": [
+   "breach the door"
+  ],
+  "bot": "Which door? The one on the left, 8 m?",
+  "line": "the one by my pin",
+  "pieces": [
+   "breach the door by my pin"
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null,
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_039",
+  "voice": "cs",
+  "before": [
+   "open fire"
+  ],
+  "bot": null,
+  "line": "on that car man",
+  "pieces": [
+   "open fire on that car"
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_040",
+  "voice": "cs",
+  "before": [
+   "check the stairs"
+  ],
+  "bot": "Checking the stairs.",
+  "line": "nah these over here",
+  "pieces": [
+   "check these stairs over here"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": null,
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_041",
+  "voice": "cs",
+  "before": [
+   "they're in there",
+   "flash the room"
+  ],
+  "bot": "Which room? The one on the left, 7 m?",
+  "line": "this one here",
+  "pieces": [
+   "flash this room here"
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_042",
+  "voice": "cs",
+  "before": [
+   "breach the east door"
+  ],
+  "bot": "Placing charge.",
+  "line": "nah don't breach, flash it",
+  "pieces": [
+   "nah don't breach",
+   "flash the east door"
+  ],
+  "orders": [
+   "WAIT",
+   "FLASH"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT",
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_043",
+  "voice": "cs",
+  "before": [
+   "run"
+  ],
+  "bot": null,
+  "line": "to my pin bro",
+  "pieces": [
+   "run to my pin"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_044",
+  "voice": "cs",
+  "before": [
+   "gg",
+   "nice",
+   "follow me",
+   "go to the door"
+  ],
+  "bot": "Which door? The north door?",
+  "line": "the one by my mark",
+  "pieces": [
+   "go to the door by my mark"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_045",
+  "voice": "cs",
+  "before": [
+   "eco",
+   "vault through the window"
+  ],
+  "bot": "Which window? The one behind you, 6 m?",
+  "line": "the one by my pin bro",
+  "pieces": [
+   "vault through the window by my pin"
+  ],
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pair": null,
+  "classifier": [
+   "VAULT_WINDOW"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_046",
+  "voice": "cs",
+  "before": [
+   "they're pushing b",
+   "two coming"
+  ],
+  "bot": null,
+  "line": "don't move bro",
+  "pieces": [
+   "don't move bro"
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_047",
+  "voice": "cs",
+  "before": [],
+  "bot": null,
+  "line": "hop in bro",
+  "pieces": [
+   "hop in bro"
+  ],
+  "orders": [
+   "GET_IN"
+  ],
+  "pair": null,
+  "classifier": [
+   "GET_IN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_048",
+  "voice": "cs",
+  "before": [
+   "bro what",
+   "they're stacking a",
+   "throw a nade"
+  ],
+  "bot": null,
+  "line": "through that window",
+  "pieces": [
+   "throw a nade through that window"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null,
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_049",
+  "voice": "cs",
+  "before": [
+   "smoke the east door"
+  ],
+  "bot": "Smoke out.",
+  "line": "check the basement bro",
+  "pieces": [
+   "check the basement bro"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": null,
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_050",
+  "voice": "cs",
+  "before": [
+   "follow me",
+   "nice",
+   "go to the blue stairs"
+  ],
+  "bot": null,
+  "line": "flash the main door",
+  "pieces": [
+   "flash the main door"
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_051",
+  "voice": "cs",
+  "before": [
+   "smoke the south door"
+  ],
+  "bot": "Smoke out.",
+  "line": "smoke it again bro",
+  "pieces": [
+   "smoke the south door again"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_052",
+  "voice": "cs",
+  "before": [],
+  "bot": "Reloading.",
+  "line": "cover me",
+  "pieces": [
+   "cover me"
+  ],
+  "orders": [
+   "COVER_ME"
+  ],
+  "pair": null,
+  "classifier": [
+   "COVER_ME"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_053",
+  "voice": "cs",
+  "before": [
+   "eco round lol",
+   "follow me",
+   "stop",
+   "two on b",
+   "watch the yellow stairs"
+  ],
+  "bot": "Watching the yellow stairs.",
+  "line": "crouch bro",
+  "pieces": [
+   "crouch bro"
+  ],
+  "orders": [
+   "CROUCH"
+  ],
+  "pair": null,
+  "classifier": [
+   "CROUCH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_054",
+  "voice": "cs",
+  "before": [
+   "smoke the east door",
+   "nice smoke"
+  ],
+  "bot": null,
+  "line": "pick up that rifle bro",
+  "pieces": [
+   "pick up that rifle bro"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_055",
+  "voice": "cs",
+  "before": [
+   "hold an angle"
+  ],
+  "bot": null,
+  "line": "that one",
+  "pieces": [
+   "hold that angle"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_056",
+  "voice": "cs",
+  "before": [
+   "nice",
+   "check the basement"
+  ],
+  "bot": "Basement clear.",
+  "line": "go grab some ammo then get in the car",
+  "pieces": [
+   "go grab some ammo",
+   "get in the car"
+  ],
+  "orders": [
+   "MOVE_TO",
+   "GET_IN"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO",
+   "GET_IN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_057",
+  "voice": "cs",
+  "before": [
+   "nice",
+   "drone the basement"
+  ],
+  "bot": "Drone lost.",
+  "line": "do that again",
+  "pieces": [
+   "do that again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_058",
+  "voice": "cs",
+  "before": [
+   "start shooting"
+  ],
+  "bot": "No target.",
+  "line": "at that window bro",
+  "pieces": [
+   "start shooting at that window"
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_cs_059",
+  "voice": "cs",
+  "before": [
+   "vault through that window"
+  ],
+  "bot": "Can't reach the window.",
+  "line": "do it again man",
+  "pieces": [
+   "do it again man"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_000",
+  "voice": "stt",
+  "before": [
+   "follow me",
+   "uh two in the kitchen",
+   "start shoot"
+  ],
+  "bot": null,
+  "line": "uh to this wall",
+  "pieces": [
+   "shoot at this wall"
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_001",
+  "voice": "stt",
+  "before": [
+   "follow me",
+   "frag the east window"
+  ],
+  "bot": "Too far for a frag.",
+  "line": "try again",
+  "pieces": [
+   "try again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_002",
+  "voice": "stt",
+  "before": [
+   "uh smoke the east door"
+  ],
+  "bot": "Smoke out.",
+  "line": "okay now check the basement",
+  "pieces": [
+   "okay now check the basement"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": null,
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_003",
+  "voice": "stt",
+  "before": [
+   "uh shoot that window"
+  ],
+  "bot": "Which window? The one on the left, 10 m?",
+  "line": "no on my pin",
+  "pieces": [
+   "shoot at my pin"
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_004",
+  "voice": "stt",
+  "before": [
+   "uh go to the east door"
+  ],
+  "bot": "Moving.",
+  "line": "dont",
+  "pieces": [
+   "dont"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_005",
+  "voice": "stt",
+  "before": [],
+  "bot": null,
+  "line": "go find armor and then get in the car",
+  "pieces": [
+   "go find armor",
+   "get in the car"
+  ],
+  "orders": [
+   "MOVE_TO",
+   "GET_IN"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO",
+   "GET_IN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_006",
+  "voice": "stt",
+  "before": [
+   "okay suppress"
+  ],
+  "bot": null,
+  "line": "at that window",
+  "pieces": [
+   "suppress that window"
+  ],
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pair": null,
+  "classifier": [
+   "SUPPRESS"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_007",
+  "voice": "stt",
+  "before": [
+   "follow me",
+   "nice one",
+   "where they at",
+   "check the stairs",
+   "uh go to the roof"
+  ],
+  "bot": "I can't get there.",
+  "line": "uh try again",
+  "pieces": [
+   "uh try again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_008",
+  "voice": "stt",
+  "before": [
+   "breach the door"
+  ],
+  "bot": "Which door? The east one, 6 m?",
+  "line": "the one by my pin",
+  "pieces": [
+   "breach the door by my pin"
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null,
+  "classifier": [
+   "BREACH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_009",
+  "voice": "stt",
+  "before": [
+   "breach the west door"
+  ],
+  "bot": "Placing a charge.",
+  "line": "dont do that",
+  "pieces": [
+   "dont do that"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_010",
+  "voice": "stt",
+  "before": [
+   "follow me",
+   "throw smoke"
+  ],
+  "bot": null,
+  "line": "on my pin",
+  "pieces": [
+   "throw smoke on my pin"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_011",
+  "voice": "stt",
+  "before": [
+   "get in the car"
+  ],
+  "bot": null,
+  "line": "uh get out and grab a rifle",
+  "pieces": [
+   "get out of the car",
+   "grab a rifle"
+  ],
+  "orders": [
+   "GET_OUT",
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "GET_OUT",
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_012",
+  "voice": "stt",
+  "before": [
+   "breach the main door",
+   "nice",
+   "throw smoke on my pin"
+  ],
+  "bot": "Smoke out.",
+  "line": "more",
+  "pieces": [
+   "more"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_013",
+  "voice": "stt",
+  "before": [
+   "follow me",
+   "go to the blue stairs"
+  ],
+  "bot": null,
+  "line": "watch the south window",
+  "pieces": [
+   "watch the south window"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_014",
+  "voice": "stt",
+  "before": [
+   "okay go to the stairs"
+  ],
+  "bot": "Which stairs? The blue ones, 14 m?",
+  "line": "uh no here",
+  "pieces": [
+   "go to the stairs here"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_015",
+  "voice": "stt",
+  "before": [
+   "frag them"
+  ],
+  "bot": null,
+  "line": "uh over there",
+  "pieces": [
+   "frag them over there"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null,
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_016",
+  "voice": "stt",
+  "before": [
+   "check the basement",
+   "uh go downstairs"
+  ],
+  "bot": null,
+  "line": "no dont go there",
+  "pieces": [
+   "no dont go there"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_017",
+  "voice": "stt",
+  "before": [
+   "okay nice",
+   "breach the west door"
+  ],
+  "bot": "Can't breach that.",
+  "line": "one more time",
+  "pieces": [
+   "one more time"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_018",
+  "voice": "stt",
+  "before": [
+   "smoke the east door",
+   "uh nice"
+  ],
+  "bot": null,
+  "line": "wait me here",
+  "pieces": [
+   "wait me here"
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_019",
+  "voice": "stt",
+  "before": [
+   "uh follow me",
+   "watch the blue stairs"
+  ],
+  "bot": "Watching.",
+  "line": "no no that door",
+  "pieces": [
+   "watch that door"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_020",
+  "voice": "stt",
+  "before": [
+   "nice shot",
+   "open the window"
+  ],
+  "bot": "Which window? The north one, 7 m?",
+  "line": "that one over there",
+  "pieces": [
+   "open that window over there"
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_021",
+  "voice": "stt",
+  "before": [
+   "frag the north window"
+  ],
+  "bot": "Frag out.",
+  "line": "frag it again",
+  "pieces": [
+   "frag the north window again"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null,
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_022",
+  "voice": "stt",
+  "before": [
+   "okay go to the balcony"
+  ],
+  "bot": null,
+  "line": "uh dont jump down",
+  "pieces": [
+   "uh dont jump down"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_023",
+  "voice": "stt",
+  "before": [
+   "frag the west window"
+  ],
+  "bot": "Too far for a frag.",
+  "line": "uh fall back fall back",
+  "pieces": [
+   "uh fall back fall back"
+  ],
+  "orders": [
+   "FALL_BACK"
+  ],
+  "pair": null,
+  "classifier": [
+   "FALL_BACK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_024",
+  "voice": "stt",
+  "before": [
+   "two on the left",
+   "okay",
+   "okay go to the door"
+  ],
+  "bot": null,
+  "line": "that one",
+  "pieces": [
+   "go to that door"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_025",
+  "voice": "stt",
+  "before": [],
+  "bot": null,
+  "line": "uh flash the room on my goal",
+  "pieces": [
+   "uh flash the room on my goal"
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null,
+  "classifier": [
+   "FLASH"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_026",
+  "voice": "stt",
+  "before": [
+   "jump down"
+  ],
+  "bot": "Nowhere to jump down here.",
+  "line": "okay again",
+  "pieces": [
+   "okay again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_027",
+  "voice": "stt",
+  "before": [
+   "frag the door"
+  ],
+  "bot": "Which door? The main one, 20 m?",
+  "line": "no the one i marked",
+  "pieces": [
+   "frag the door i marked"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null,
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_028",
+  "voice": "stt",
+  "before": [
+   "you go check room"
+  ],
+  "bot": null,
+  "line": "this one here",
+  "pieces": [
+   "check this room here"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": null,
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_029",
+  "voice": "stt",
+  "before": [
+   "cover me",
+   "okay im going in"
+  ],
+  "bot": null,
+  "line": "dont follow me",
+  "pieces": [
+   "dont follow me"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_030",
+  "voice": "stt",
+  "before": [
+   "go to the main door",
+   "uh okay",
+   "stack up here",
+   "flash the room"
+  ],
+  "bot": "Flash out.",
+  "line": "do that again",
+  "pieces": [
+   "do that again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_031",
+  "voice": "stt",
+  "before": [
+   "uh smoke"
+  ],
+  "bot": null,
+  "line": "at the door over there",
+  "pieces": [
+   "smoke the door over there"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_032",
+  "voice": "stt",
+  "before": [
+   "check the basement",
+   "hold the red stairs"
+  ],
+  "bot": "Holding here.",
+  "line": "uh go get some health",
+  "pieces": [
+   "uh go get some health"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_033",
+  "voice": "stt",
+  "before": [
+   "watch the window"
+  ],
+  "bot": "Which window? The one on the right, 9 m?",
+  "line": "this one here",
+  "pieces": [
+   "watch this window here"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_034",
+  "voice": "stt",
+  "before": [
+   "okay go",
+   "where are they",
+   "two upstairs",
+   "watch the stairs",
+   "nice"
+  ],
+  "bot": null,
+  "line": "calm back",
+  "pieces": [
+   "calm back"
+  ],
+  "orders": [
+   "COME_BACK"
+  ],
+  "pair": null,
+  "classifier": [
+   "FALL_BACK"
+  ],
+  "kept": false
+ },
+ {
+  "id": "x55_stt_035",
+  "voice": "stt",
+  "before": [
+   "go to the north window",
+   "watch the north window",
+   "two on the left"
+  ],
+  "bot": null,
+  "line": "dont shoot until they come closer",
+  "pieces": [
+   "dont shoot until they come closer"
+  ],
+  "orders": [
+   "HOLD_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_036",
+  "voice": "stt",
+  "before": [
+   "follow me",
+   "uh where they",
+   "two guys behind the car",
+   "shoot"
+  ],
+  "bot": null,
+  "line": "at that car",
+  "pieces": [
+   "shoot at that car"
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_037",
+  "voice": "stt",
+  "before": [
+   "okay so",
+   "watch the red stairs",
+   "two coming",
+   "frag the stairs"
+  ],
+  "bot": "Frag out.",
+  "line": "same again",
+  "pieces": [
+   "same again"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_038",
+  "voice": "stt",
+  "before": [
+   "check the basement",
+   "okay clear",
+   "smoke the stairs"
+  ],
+  "bot": "Which stairs? The red ones, 11 m?",
+  "line": "on my ping",
+  "pieces": [
+   "smoke the stairs on my ping"
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null,
+  "classifier": [
+   "SMOKE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_039",
+  "voice": "stt",
+  "before": [
+   "follow me",
+   "okay we done here"
+  ],
+  "bot": null,
+  "line": "okay jump in the truck",
+  "pieces": [
+   "okay jump in the truck"
+  ],
+  "orders": [
+   "GET_IN"
+  ],
+  "pair": null,
+  "classifier": [
+   "GET_IN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_040",
+  "voice": "stt",
+  "before": [
+   "they on the roof",
+   "suppress them"
+  ],
+  "bot": null,
+  "line": "on my ping",
+  "pieces": [
+   "suppress them on my ping"
+  ],
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pair": null,
+  "classifier": [
+   "SUPPRESS"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_041",
+  "voice": "stt",
+  "before": [
+   "take cover"
+  ],
+  "bot": "In cover.",
+  "line": "okay dont move",
+  "pieces": [
+   "okay dont move"
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_042",
+  "voice": "stt",
+  "before": [
+   "shoot at the south window"
+  ],
+  "bot": null,
+  "line": "uh shoot again",
+  "pieces": [
+   "shoot at the south window again"
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null,
+  "classifier": [
+   "OPEN_FIRE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_043",
+  "voice": "stt",
+  "before": [
+   "follow me",
+   "check the basement",
+   "okay nothing here",
+   "watch"
+  ],
+  "bot": null,
+  "line": "this door",
+  "pieces": [
+   "watch this door"
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_044",
+  "voice": "stt",
+  "before": [
+   "follow me",
+   "uh where they",
+   "check the room"
+  ],
+  "bot": "Which room? The one on the left, 8 m?",
+  "line": "over there",
+  "pieces": [
+   "check the room over there"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": null,
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_045",
+  "voice": "stt",
+  "before": [
+   "breach the main door"
+  ],
+  "bot": "Breaching.",
+  "line": "two on the left",
+  "pieces": [
+   "two on the left"
+  ],
+  "orders": [
+   "NONE"
+  ],
+  "pair": null,
+  "classifier": [
+   "NONE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_046",
+  "voice": "stt",
+  "before": [
+   "go to the blue stairs",
+   "uh two upstairs",
+   "frag the stairs"
+  ],
+  "bot": null,
+  "line": "no dont throw it just watch the stairs",
+  "pieces": [
+   "no dont throw it",
+   "watch the stairs"
+  ],
+  "orders": [
+   "WAIT",
+   "HOLD_ANGLE"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT",
+   "HOLD_ANGLE"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_047",
+  "voice": "stt",
+  "before": [
+   "frag the north window"
+  ],
+  "bot": "Frag out.",
+  "line": "get amor then wait here",
+  "pieces": [
+   "get amor",
+   "wait here"
+  ],
+  "orders": [
+   "MOVE_TO",
+   "HOLD_POSITION"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO",
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_048",
+  "voice": "stt",
+  "before": [
+   "vault the north window"
+  ],
+  "bot": "I can't get there.",
+  "line": "uh once more",
+  "pieces": [
+   "uh once more"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_049",
+  "voice": "stt",
+  "before": [
+   "follow me",
+   "okay hold up",
+   "nice",
+   "move up"
+  ],
+  "bot": "Moving.",
+  "line": "to that wall",
+  "pieces": [
+   "move up to that wall"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_050",
+  "voice": "stt",
+  "before": [
+   "vault the window"
+  ],
+  "bot": "Which window? The west one, 5 m?",
+  "line": "uh the one near my pin",
+  "pieces": [
+   "vault the window near my pin"
+  ],
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pair": null,
+  "classifier": [
+   "VAULT_WINDOW"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_051",
+  "voice": "stt",
+  "before": [
+   "uh go to the roof edge"
+  ],
+  "bot": null,
+  "line": "okay dont jump calm back",
+  "pieces": [
+   "dont jump",
+   "calm back"
+  ],
+  "orders": [
+   "WAIT",
+   "COME_BACK"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT",
+   "FALL_BACK"
+  ],
+  "kept": false
+ },
+ {
+  "id": "x55_stt_052",
+  "voice": "stt",
+  "before": [
+   "follow me",
+   "open the main door"
+  ],
+  "bot": "I can't open it.",
+  "line": "give it another go",
+  "pieces": [
+   "give it another go"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_053",
+  "voice": "stt",
+  "before": [
+   "go to the main door",
+   "uh okay",
+   "flash the room",
+   "nice flash",
+   "okay check"
+  ],
+  "bot": null,
+  "line": "behind that sofa",
+  "pieces": [
+   "check behind that sofa"
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": null,
+  "classifier": [
+   "CHECK"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_054",
+  "voice": "stt",
+  "before": [
+   "check the basement"
+  ],
+  "bot": "Clear.",
+  "line": "pick up that shotgun and wait me by the car",
+  "pieces": [
+   "pick up that shotgun",
+   "wait me by the car"
+  ],
+  "orders": [
+   "MOVE_TO",
+   "HOLD_POSITION"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO",
+   "HOLD_POSITION"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_055",
+  "voice": "stt",
+  "before": [
+   "go find armor",
+   "get in the car"
+  ],
+  "bot": "Which car? The one on the left, 15 m?",
+  "line": "the one by my pin",
+  "pieces": [
+   "get in the car by my pin"
+  ],
+  "orders": [
+   "GET_IN"
+  ],
+  "pair": null,
+  "classifier": [
+   "GET_IN"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_056",
+  "voice": "stt",
+  "before": [
+   "smoke the main door",
+   "nice"
+  ],
+  "bot": "Smoke out.",
+  "line": "uh dont breach yet",
+  "pieces": [
+   "uh dont breach yet"
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null,
+  "classifier": [
+   "WAIT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_057",
+  "voice": "stt",
+  "before": [
+   "go to the roof"
+  ],
+  "bot": "I can't get there.",
+  "line": "okay go up the red stairs",
+  "pieces": [
+   "okay go up the red stairs"
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null,
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_058",
+  "voice": "stt",
+  "before": [
+   "follow me",
+   "okay check the basement",
+   "suppress the east window"
+  ],
+  "bot": null,
+  "line": "more more",
+  "pieces": [
+   "more more"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null,
+  "classifier": [
+   "REPEAT"
+  ],
+  "kept": true
+ },
+ {
+  "id": "x55_stt_059",
+  "voice": "stt",
+  "before": [
+   "okay so",
+   "one in the window",
+   "frag"
+  ],
+  "bot": null,
+  "line": "uh at this window",
+  "pieces": [
+   "frag this window"
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null,
+  "classifier": [
+   "FRAG"
+  ],
+  "kept": true
+ }
+]

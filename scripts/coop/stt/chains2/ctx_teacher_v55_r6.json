@@ -1,0 +1,1018 @@
+[
+ {
+  "id": "x55_r6_000",
+  "voice": "r6",
+  "before": [
+   "One left, he's in Kitchen.",
+   "Frag the west window."
+  ],
+  "bot": "Frag out.",
+  "line": "Frag it again.",
+  "pieces": [
+   "Frag the west window again."
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_001",
+  "voice": "r6",
+  "before": [
+   "Check the basement."
+  ],
+  "bot": null,
+  "line": "Over there first.",
+  "pieces": [
+   "Check over there first."
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_002",
+  "voice": "r6",
+  "before": [
+   "Stick with me.",
+   "Change of plan, I'm flanking solo."
+  ],
+  "bot": "Following.",
+  "line": "Don't follow me.",
+  "pieces": [
+   "Don't follow me."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_003",
+  "voice": "r6",
+  "before": [
+   "Nice, one down.",
+   "Reinforce the east wall.",
+   "Frag the south window."
+  ],
+  "bot": "Frag out.",
+  "line": "Again!",
+  "pieces": [
+   "Again!"
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_004",
+  "voice": "r6",
+  "before": [
+   "Frag the south window."
+  ],
+  "bot": "Cooking.",
+  "line": "Don't frag it, the hostage is in there.",
+  "pieces": [
+   "Don't frag it, the hostage is in there."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_005",
+  "voice": "r6",
+  "before": [
+   "Get in the truck."
+  ],
+  "bot": "I'm in.",
+  "line": "Get out of the truck and wait here.",
+  "pieces": [
+   "Get out of the truck.",
+   "Wait here."
+  ],
+  "orders": [
+   "GET_OUT",
+   "HOLD_POSITION"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_006",
+  "voice": "r6",
+  "before": [
+   "Frag the north window."
+  ],
+  "bot": "Frag out.",
+  "line": "Cover me, I'm vaulting in.",
+  "pieces": [
+   "Cover me, I'm vaulting in."
+  ],
+  "orders": [
+   "COVER_ME"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_007",
+  "voice": "r6",
+  "before": [
+   "Valk cam's on the top floor.",
+   "Jump down through the hatch."
+  ],
+  "bot": "Nowhere to jump down here.",
+  "line": "Try it again, Sledge just opened it.",
+  "pieces": [
+   "Try it again, Sledge just opened it."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_008",
+  "voice": "r6",
+  "before": [
+   "Watch the Main door.",
+   "One down, Main."
+  ],
+  "bot": "Holding.",
+  "line": "Wait here.",
+  "pieces": [
+   "Wait here."
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_009",
+  "voice": "r6",
+  "before": [
+   "Two in Bar.",
+   "Open the door."
+  ],
+  "bot": "Which door? North, 6 m?",
+  "line": "That one over there.",
+  "pieces": [
+   "Open that door over there."
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_010",
+  "voice": "r6",
+  "before": [
+   "Mute's jammer is down.",
+   "Smoke the Main door."
+  ],
+  "bot": null,
+  "line": "No, that one by my ping.",
+  "pieces": [
+   "Smoke that door by my ping."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_011",
+  "voice": "r6",
+  "before": [
+   "Watch the stairs."
+  ],
+  "bot": "Which stairs? The red ones, 15 m?",
+  "line": "Those ones over there.",
+  "pieces": [
+   "Watch those stairs over there."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_012",
+  "voice": "r6",
+  "before": [
+   "Check behind the table."
+  ],
+  "bot": "Which table? The one on the left, 7 m?",
+  "line": "Negative, the one by my ping.",
+  "pieces": [
+   "Check behind the table by my ping."
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_013",
+  "voice": "r6",
+  "before": [
+   "They're stacking Main.",
+   "Pin them down."
+  ],
+  "bot": null,
+  "line": "At this doorway.",
+  "pieces": [
+   "Pin them down at this doorway."
+  ],
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_014",
+  "voice": "r6",
+  "before": [
+   "Flash the east window."
+  ],
+  "bot": "Flash out.",
+  "line": "Do that again.",
+  "pieces": [
+   "Do that again."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_015",
+  "voice": "r6",
+  "before": [
+   "Nice trade.",
+   "Watch the red stairs."
+  ],
+  "bot": "Watching the red stairs.",
+  "line": "Go grab a medkit.",
+  "pieces": [
+   "Go grab a medkit."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_016",
+  "voice": "r6",
+  "before": [
+   "Move up."
+  ],
+  "bot": null,
+  "line": "To that corner.",
+  "pieces": [
+   "Move up to that corner."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_017",
+  "voice": "r6",
+  "before": [],
+  "bot": null,
+  "line": "Hop in, I'm driving.",
+  "pieces": [
+   "Hop in, I'm driving."
+  ],
+  "orders": [
+   "GET_IN"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_018",
+  "voice": "r6",
+  "before": [
+   "Two pushing the basement.",
+   "Hold the blue stairs.",
+   "Good, keep it locked."
+  ],
+  "bot": null,
+  "line": "Find a weapon, then come back.",
+  "pieces": [
+   "Find a weapon.",
+   "Come back."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "COME_BACK"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_019",
+  "voice": "r6",
+  "before": [
+   "Spam the wall by the sofa."
+  ],
+  "bot": "Reloading.",
+  "line": "More.",
+  "pieces": [
+   "More."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_020",
+  "voice": "r6",
+  "before": [
+   "Careful, spawn peek on Main.",
+   "Weapons free."
+  ],
+  "bot": null,
+  "line": "At that window.",
+  "pieces": [
+   "Fire at that window."
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_021",
+  "voice": "r6",
+  "before": [
+   "Two in the basement, one on the stairs.",
+   "Head down to the basement."
+  ],
+  "bot": null,
+  "line": "Don't jump down.",
+  "pieces": [
+   "Don't jump down."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_022",
+  "voice": "r6",
+  "before": [
+   "Nice drone.",
+   "One on the stairs, one in Dining.",
+   "Flash the door."
+  ],
+  "bot": "Which door? West, 11 m?",
+  "line": "The one on my mark.",
+  "pieces": [
+   "Flash the door on my mark."
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_023",
+  "voice": "r6",
+  "before": [
+   "Kitchen's clear."
+  ],
+  "bot": "Dropping through the hatch.",
+  "line": "Don't do that.",
+  "pieces": [
+   "Don't do that."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_024",
+  "voice": "r6",
+  "before": [
+   "Rotate to the west window."
+  ],
+  "bot": "Moving.",
+  "line": "No, don't go there, Maestro's got eyes on it.",
+  "pieces": [
+   "No, don't go there, Maestro's got eyes on it."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_025",
+  "voice": "r6",
+  "before": [
+   "Watch the south window."
+  ],
+  "bot": "Watching the south window.",
+  "line": "Go there.",
+  "pieces": [
+   "Go there."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_026",
+  "voice": "r6",
+  "before": [
+   "Two on site, one roamer upstairs.",
+   "Get to the roof."
+  ],
+  "bot": "I can't get there.",
+  "line": "Give it another go.",
+  "pieces": [
+   "Give it another go."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_027",
+  "voice": "r6",
+  "before": [
+   "Hard breach the north door."
+  ],
+  "bot": "Charge didn't go.",
+  "line": "Once more.",
+  "pieces": [
+   "Once more."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_028",
+  "voice": "r6",
+  "before": [
+   "Start shooting at the window."
+  ],
+  "bot": "Which window? The north one, 16 m?",
+  "line": "On my pin.",
+  "pieces": [
+   "Start shooting at my pin."
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_029",
+  "voice": "r6",
+  "before": [
+   "Frag the window."
+  ],
+  "bot": "Which window? The south one, 14 m?",
+  "line": "That one, right there.",
+  "pieces": [
+   "Frag that window right there."
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_030",
+  "voice": "r6",
+  "before": [
+   "Toss a frag."
+  ],
+  "bot": null,
+  "line": "Over there.",
+  "pieces": [
+   "Toss a frag over there."
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_031",
+  "voice": "r6",
+  "before": [
+   "Frag the north window."
+  ],
+  "bot": "Too far for a frag.",
+  "line": "Try again.",
+  "pieces": [
+   "Try again."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_032",
+  "voice": "r6",
+  "before": [
+   "Watch the Main door."
+  ],
+  "bot": "Watching the Main door.",
+  "line": "Don't shoot until they push through.",
+  "pieces": [
+   "Don't shoot until they push through."
+  ],
+  "orders": [
+   "HOLD_FIRE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_033",
+  "voice": "r6",
+  "before": [
+   "I'm planting.",
+   "Lay down suppressing fire."
+  ],
+  "bot": null,
+  "line": "On my pin.",
+  "pieces": [
+   "Lay down suppressing fire on my pin."
+  ],
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_034",
+  "voice": "r6",
+  "before": [
+   "Breach the east wall."
+  ],
+  "bot": "Charge set.",
+  "line": "Don't.",
+  "pieces": [
+   "Don't."
+  ],
+  "orders": [
+   "WAIT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_035",
+  "voice": "r6",
+  "before": [
+   "Throw a smoke."
+  ],
+  "bot": null,
+  "line": "Right on my ping.",
+  "pieces": [
+   "Throw a smoke right on my ping."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_036",
+  "voice": "r6",
+  "before": [
+   "Smoke the Main door."
+  ],
+  "bot": "Smoke out.",
+  "line": "One more time.",
+  "pieces": [
+   "One more time."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_037",
+  "voice": "r6",
+  "before": [
+   "Push in through Main."
+  ],
+  "bot": null,
+  "line": "No, don't push. Smoke it first.",
+  "pieces": [
+   "No, don't push.",
+   "Smoke the Main door first."
+  ],
+  "orders": [
+   "WAIT",
+   "SMOKE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_038",
+  "voice": "r6",
+  "before": [
+   "Breach the door."
+  ],
+  "bot": "Which door? The one on the left, 8 m?",
+  "line": "No, the one by my pin.",
+  "pieces": [
+   "Breach the door by my pin."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_039",
+  "voice": "r6",
+  "before": [
+   "I'll anchor Kitchen.",
+   "Hold an angle."
+  ],
+  "bot": null,
+  "line": "That door.",
+  "pieces": [
+   "Hold an angle on that door."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_040",
+  "voice": "r6",
+  "before": [
+   "Drone's on site.",
+   "Two in the basement, one on the white stairs.",
+   "Clear above.",
+   "Set a breach charge."
+  ],
+  "bot": null,
+  "line": "On this wall, here.",
+  "pieces": [
+   "Set a breach charge on this wall here."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_041",
+  "voice": "r6",
+  "before": [
+   "Kapkan traps on the doors.",
+   "Get to the stairs."
+  ],
+  "bot": "Which stairs? Blue, 18 m?",
+  "line": "Where I marked.",
+  "pieces": [
+   "Get to the stairs where I marked."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_042",
+  "voice": "r6",
+  "before": [
+   "Breach the north door."
+  ],
+  "bot": "Charge ready.",
+  "line": "Don't breach yet, drone it first.",
+  "pieces": [
+   "Don't breach yet.",
+   "Drone the north door first."
+  ],
+  "orders": [
+   "WAIT",
+   "DRONE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_043",
+  "voice": "r6",
+  "before": [
+   "Pop a flash."
+  ],
+  "bot": null,
+  "line": "Through that window.",
+  "pieces": [
+   "Pop a flash through that window."
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_044",
+  "voice": "r6",
+  "before": [
+   "Vault through the window."
+  ],
+  "bot": "Which window? The one on the left, 5 m?",
+  "line": "This one here.",
+  "pieces": [
+   "Vault through this window here."
+  ],
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_045",
+  "voice": "r6",
+  "before": [
+   "Smoke the window."
+  ],
+  "bot": "Which window? East, 20 m?",
+  "line": "Here.",
+  "pieces": [
+   "Smoke the window here."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_046",
+  "voice": "r6",
+  "before": [
+   "Go to the yellow stairs.",
+   "Hold up, Claymore on the stairs."
+  ],
+  "bot": null,
+  "line": "Don't move.",
+  "pieces": [
+   "Don't move."
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_047",
+  "voice": "r6",
+  "before": [],
+  "bot": null,
+  "line": "Grab some ammo, then get in the truck.",
+  "pieces": [
+   "Grab some ammo.",
+   "Get in the truck."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "GET_IN"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_048",
+  "voice": "r6",
+  "before": [
+   "Roamer's dead.",
+   "Two left.",
+   "Go to the Main door."
+  ],
+  "bot": null,
+  "line": "No, that one.",
+  "pieces": [
+   "Go to that door."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_049",
+  "voice": "r6",
+  "before": [
+   "Smoke the east window.",
+   "Good smoke."
+  ],
+  "bot": "Smoke out.",
+  "line": "Drone the basement before we drop.",
+  "pieces": [
+   "Drone the basement before we drop."
+  ],
+  "orders": [
+   "DRONE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_050",
+  "voice": "r6",
+  "before": [
+   "Watch the red stairs.",
+   "One left, last seen top floor."
+  ],
+  "bot": "Watching the red stairs.",
+  "line": "Rotate to the west window.",
+  "pieces": [
+   "Rotate to the west window."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_051",
+  "voice": "r6",
+  "before": [
+   "Watch flank.",
+   "Smoke the blue stairs."
+  ],
+  "bot": "Smoke out.",
+  "line": "Smoke again.",
+  "pieces": [
+   "Smoke the blue stairs again."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_052",
+  "voice": "r6",
+  "before": [
+   "Clear.",
+   "Kitchen's clear, moving to Dining.",
+   "Breach the north door."
+  ],
+  "bot": "Charge set.",
+  "line": "Plant the defuser by the table.",
+  "pieces": [
+   "Plant the defuser by the table."
+  ],
+  "orders": [
+   "PLANT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_053",
+  "voice": "r6",
+  "before": [
+   "Drone's down.",
+   "Two on site, one roamer.",
+   "Reinforce the east wall.",
+   "Nice, the roamer's dead.",
+   "Hold the Main door."
+  ],
+  "bot": "Holding the Main door.",
+  "line": "Hard breach the north door on my go.",
+  "pieces": [
+   "Hard breach the north door on my go."
+  ],
+  "orders": [
+   "BREACH"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_054",
+  "voice": "r6",
+  "before": [
+   "Drone spotted two in Kitchen.",
+   "Reinforce the east wall.",
+   "Nice.",
+   "I'm going up the white stairs.",
+   "Top floor's clear."
+  ],
+  "bot": null,
+  "line": "Grab ammo and meet me at the white stairs.",
+  "pieces": [
+   "Grab ammo.",
+   "Meet me at the white stairs."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "MOVE_TO"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_055",
+  "voice": "r6",
+  "before": [
+   "Watch the red stairs."
+  ],
+  "bot": "Watching the red stairs.",
+  "line": "No, that window.",
+  "pieces": [
+   "Watch that window."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_056",
+  "voice": "r6",
+  "before": [
+   "Get in the car.",
+   "They're rotating to Garage."
+  ],
+  "bot": "I'm in.",
+  "line": "Hop out and grab a shotgun.",
+  "pieces": [
+   "Hop out of the car.",
+   "Grab a shotgun."
+  ],
+  "orders": [
+   "GET_OUT",
+   "MOVE_TO"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_057",
+  "voice": "r6",
+  "before": [
+   "Thermite's on the east wall.",
+   "Two on site, one in Bar.",
+   "Watch my back.",
+   "Okay, moving.",
+   "Go to the red stairs."
+  ],
+  "bot": "I can't get there.",
+  "line": "Go again.",
+  "pieces": [
+   "Go again."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_058",
+  "voice": "r6",
+  "before": [
+   "Start shooting."
+  ],
+  "bot": null,
+  "line": "Through this wall.",
+  "pieces": [
+   "Shoot through this wall."
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x55_r6_059",
+  "voice": "r6",
+  "before": [
+   "Drone's dead, they shot it.",
+   "Ela mines on the stairs.",
+   "Suppress the west window."
+  ],
+  "bot": "Suppressing.",
+  "line": "Same again.",
+  "pieces": [
+   "Same again."
+  ],
+  "orders": [
+   "REPEAT"
+  ],
+  "pair": null
+ }
+]

@@ -1,0 +1,3095 @@
+[
+ {
+  "i": 0,
+  "before": [],
+  "bot": null,
+  "line": "drone the other room first",
+  "route": 7.698666979763277e-05,
+  "older": [
+   "deny that plant before it pops",
+   "rotate over to where I marked",
+   "slide the gate open, keep it quiet",
+   "I'm going to flash the door and swing, wish me luck.",
+   "frag out on default"
+  ],
+  "file": "drone the other room first",
+  "base": "drone the other room first",
+  "five": "drone the other room first",
+  "tokens_base": 106,
+  "tokens_five": 158
+ },
+ {
+  "i": 1,
+  "before": [],
+  "bot": null,
+  "line": "get on the rope and climb up to roof",
+  "route": 0.00015932215915127795,
+  "older": [
+   "Suppress the north window.",
+   "Nah, never mind smoking red stairs, we don't need it.",
+   "you're entry frag this round, get in the room",
+   "don't breach that wall, it's reinforced",
+   "hold main door, anyone swings you drop 'em"
+  ],
+  "file": "get on the rope and climb up to roof",
+  "base": "get on the rope and climb up to roof",
+  "five": "get on the rope and climb up to roof",
+  "tokens_base": 110,
+  "tokens_five": 172
+ },
+ {
+  "i": 2,
+  "before": [],
+  "bot": null,
+  "line": "take the long way through my ping and pinch them",
+  "route": 3.788139314114635e-05,
+  "older": [
+   "slide the gate open, keep it quiet",
+   "get that window open, I wanna shoot out of it from here",
+   "Hit north door, go in hot and clean that room out.",
+   "full commit onto site, kill whatever's in there",
+   "Last guy is on the roof, I heard him run across."
+  ],
+  "file": "take the long way through my ping and pinch them",
+  "base": "take the long way through my ping and pinch them",
+  "five": "take the long way through my ping and pinch them",
+  "tokens_base": 111,
+  "tokens_five": 181
+ },
+ {
+  "i": 3,
+  "before": [],
+  "bot": null,
+  "line": "rez me please",
+  "route": 0.001264583635196664,
+  "older": [
+   "you're entry frag this round, get in the room",
+   "they rotated through the bedroom wall",
+   "That's the call, execute, go go go!",
+   "Plant is down by the table, forty seconds on the clock.",
+   "flip the skylight up for me"
+  ],
+  "file": "rez me please",
+  "base": "rez me please",
+  "five": "rez me please",
+  "tokens_base": 104,
+  "tokens_five": 166
+ },
+ {
+  "i": 4,
+  "before": [],
+  "bot": null,
+  "line": "they rotated through the bedroom wall",
+  "route": 0.00013747387670121533,
+  "older": [
+   "open the west door quietly, toss a frag in",
+   "Kali's got long locked down, get out of her lane and hide up",
+   "nah no need to hide, nobody's got eyes on you",
+   "Could be, it's your call.",
+   "Red stairs down in basement, lock that down, nobody walks up it."
+  ],
+  "file": "they rotated through the bedroom wall",
+  "base": "they rotated through the bedroom wall",
+  "five": "they rotated through the bedroom wall",
+  "tokens_base": 107,
+  "tokens_five": 181
+ },
+ {
+  "i": 5,
+  "before": [],
+  "bot": null,
+  "line": "cover default plant with smoke, Glaz is watching",
+  "route": 3.6720920284784705e-05,
+  "older": [
+   "Plant the defuser.",
+   "Push in and clear it out, room by room.",
+   "quietly pop that door open, I just want a sightline",
+   "they rotated through the bedroom wall",
+   "Smoke off yellow so we can cross without getting domed."
+  ],
+  "file": "cover default plant with smoke, Glaz is watching",
+  "base": "cover default plant with smoke, Glaz is watching",
+  "five": "cover default plant with smoke, Glaz is watching",
+  "tokens_base": 111,
+  "tokens_five": 169
+ },
+ {
+  "i": 6,
+  "before": [],
+  "bot": null,
+  "line": "smoke the doorway",
+  "route": 2.8491953064252747e-05,
+  "older": [
+   "I'm gonna hide behind the van, watch me till I get there",
+   "rez me please",
+   "You keep this door covered, I'm taking the other one upstairs.",
+   "Last guy is on the roof, I heard him run across.",
+   "wait wait, scratch that, don't open it yet"
+  ],
+  "file": "smoke the doorway",
+  "base": "smoke the doorway",
+  "five": "smoke the doorway",
+  "tokens_base": 104,
+  "tokens_five": 172
+ },
+ {
+  "i": 7,
+  "before": [],
+  "bot": null,
+  "line": "blind the room for me",
+  "route": 3.193588039840813e-05,
+  "older": [
+   "get the bomb down, we got 20 seconds",
+   "run up to the balcony and wait for me there",
+   "watch my back while I plant",
+   "nitro's coming over the top, get yourself somewhere safe",
+   "Hit north door, go in hot and clean that room out."
+  ],
+  "file": "blind the room for me",
+  "base": "blind the room for me",
+  "five": "blind the room for me",
+  "tokens_base": 106,
+  "tokens_five": 172
+ },
+ {
+  "i": 8,
+  "before": [],
+  "bot": null,
+  "line": "hold main door, anyone swings you drop 'em",
+  "route": 3.9763907509053337e-05,
+  "older": [
+   "Last guy is on the roof, I heard him run across.",
+   "roll the garage door up so I can see under it",
+   "That's the call, execute, go go go!",
+   "You keep this door covered, I'm taking the other one upstairs.",
+   "They're rotating to the basement, and one's still on the roof."
+  ],
+  "file": "hold main door, anyone swings you drop 'em",
+  "base": "hold main door, anyone swings you drop 'em",
+  "five": "hold main door, anyone swings you drop 'em",
+  "tokens_base": 111,
+  "tokens_five": 186
+ },
+ {
+  "i": 9,
+  "before": [],
+  "bot": null,
+  "line": "when I yell go, loop round the back",
+  "route": 5.682876357899851e-05,
+  "older": [
+   "you're entry frag this round, get in the room",
+   "get that window open, I wanna shoot out of it from here",
+   "Don't breach that wall, it's reinforced.",
+   "that's the call, execute, go go go",
+   "you're one tap, duck behind that car and let me take the fight"
+  ],
+  "file": "when I yell go, loop round the back",
+  "base": "when I yell go, loop round the back",
+  "five": "when I yell go, loop round the back",
+  "tokens_base": 110,
+  "tokens_five": 183
+ },
+ {
+  "i": 10,
+  "before": [],
+  "bot": null,
+  "line": "rotate over to where I marked",
+  "route": 5.19395836843697e-05,
+  "older": [
+   "full commit onto site, kill whatever's in there",
+   "Did you hear that? Was that a drone or footsteps?",
+   "frag out on default",
+   "get that window open, I wanna shoot out of it from here",
+   "drone the other room first"
+  ],
+  "file": "rotate over to where I marked",
+  "base": "rotate over to where I marked",
+  "five": "rotate over to where I marked",
+  "tokens_base": 107,
+  "tokens_five": 165
+ },
+ {
+  "i": 11,
+  "before": [],
+  "bot": null,
+  "line": "watch my back while I plant",
+  "route": 3.7872074000642385e-05,
+  "older": [
+   "smoke the doorway",
+   "Last guy is on the roof, I heard him run across.",
+   "Could be, it's your call.",
+   "drone the other room first",
+   "take the long way through my ping and pinch them"
+  ],
+  "file": "watch my back while I plant",
+  "base": "watch my back while I plant",
+  "five": "watch my back while I plant",
+  "tokens_base": 107,
+  "tokens_five": 159
+ },
+ {
+  "i": 12,
+  "before": [],
+  "bot": null,
+  "line": "get over to my ping",
+  "route": 3.241878768993924e-05,
+  "older": [
+   "I'm going to flash the door and swing, wish me luck.",
+   "cover default plant with smoke, Glaz is watching",
+   "get the bomb down, we got 20 seconds",
+   "frag out on default",
+   "They're rotating to the basement, and one's still on the roof."
+  ],
+  "file": "get over to my ping",
+  "base": "get over to my ping",
+  "five": "get over to my ping",
+  "tokens_base": 106,
+  "tokens_five": 173
+ },
+ {
+  "i": 13,
+  "before": [],
+  "bot": null,
+  "line": "run up to the balcony and wait for me there",
+  "route": 0.0020638804895275345,
+  "older": [
+   "slide the gate open, keep it quiet",
+   "get on the rope and climb up to roof",
+   "stay put, don't budge",
+   "get over to my ping",
+   "Plant the defuser."
+  ],
+  "file": "run up to the balcony and wait for me there",
+  "base": "run up to the balcony and wait for me there",
+  "five": "run up to the balcony and wait for me there",
+  "tokens_base": 111,
+  "tokens_five": 159
+ },
+ {
+  "i": 14,
+  "before": [],
+  "bot": null,
+  "line": "stay put, don't budge",
+  "route": 9.616342233650781e-05,
+  "older": [
+   "smoke the doorway",
+   "frag out on default",
+   "quietly pop that door open, I just want a sightline",
+   "post up behind the doorframe and lock that window",
+   "Smoke off yellow so we can cross without getting domed."
+  ],
+  "file": "stay put, don't budge",
+  "base": "stay put, don't budge",
+  "five": "stay put, don't budge",
+  "tokens_base": 108,
+  "tokens_five": 163
+ },
+ {
+  "i": 15,
+  "before": [],
+  "bot": null,
+  "line": "get the bomb down, we got 20 seconds",
+  "route": 3.830028734724929e-05,
+  "older": [
+   "you've got the C4, set it up on A",
+   "Did you hear that? Was that a drone or footsteps?",
+   "I'm gonna hide behind the van, watch me till I get there",
+   "Suppress the north window.",
+   "They're rotating to the basement, and one's still on the roof."
+  ],
+  "file": "get the bomb down, we got 20 seconds",
+  "base": "get the bomb down, we got 20 seconds",
+  "five": "get the bomb down, we got 20 seconds",
+  "tokens_base": 112,
+  "tokens_five": 182
+ },
+ {
+  "i": 16,
+  "before": [],
+  "bot": null,
+  "line": "frag out on default",
+  "route": 2.8826216788956498e-05,
+  "older": [
+   "that's the call, execute, go go go",
+   "Hit north door, go in hot and clean that room out.",
+   "when I yell go, loop round the back",
+   "you're one tap, duck behind that car and let me take the fight",
+   "they rotated through the bedroom wall"
+  ],
+  "file": "frag out on default",
+  "base": "frag out on default",
+  "five": "frag out on default",
+  "tokens_base": 105,
+  "tokens_five": 172
+ },
+ {
+  "i": 17,
+  "before": [],
+  "bot": null,
+  "line": "deny that plant before it pops",
+  "route": 0.0012116962065648635,
+  "older": [
+   "when I yell go, loop round the back",
+   "hold main door, anyone swings you drop 'em",
+   "I'm gonna hide behind the van, watch me till I get there",
+   "quietly pop that door open, I just want a sightline",
+   "flip the skylight up for me"
+  ],
+  "file": "deny that plant before it pops",
+  "base": "deny that plant before it pops",
+  "five": "deny that plant before it pops",
+  "tokens_base": 107,
+  "tokens_five": 175
+ },
+ {
+  "i": 18,
+  "before": [],
+  "bot": null,
+  "line": "full commit onto site, kill whatever's in there",
+  "route": 0.000441910000831355,
+  "older": [
+   "Last guy is on the roof, I heard him run across.",
+   "post up behind the doorframe and lock that window",
+   "rotate over to where I marked",
+   "take the long way through my ping and pinch them",
+   "push in and clear it out, room by room"
+  ],
+  "file": "full commit onto site, kill whatever's in there",
+  "base": "full commit onto site, kill whatever's in there",
+  "five": "full commit onto site, kill whatever's in there",
+  "tokens_base": 111,
+  "tokens_five": 174
+ },
+ {
+  "i": 19,
+  "before": [],
+  "bot": null,
+  "line": "you're entry frag this round, get in the room",
+  "route": 3.89083402246395e-05,
+  "older": [
+   "you're one tap, duck behind that car and let me take the fight",
+   "deny that plant before it pops",
+   "roll the garage door up so I can see under it",
+   "cover default plant with smoke, Glaz is watching",
+   "Smoke off yellow so we can cross without getting domed."
+  ],
+  "file": "you're entry frag this round, get in the room",
+  "base": "you're entry frag this round, get in the room",
+  "five": "you're entry frag this round, get in the room",
+  "tokens_base": 112,
+  "tokens_five": 180
+ },
+ {
+  "i": 20,
+  "before": [],
+  "bot": null,
+  "line": "one's playing behind the bed in master, that cover is soft",
+  "route": 3.775705620353724e-05,
+  "older": [
+   "run up to the balcony and wait for me there",
+   "That's the call, execute, go go go!",
+   "I'm going to flash the door and swing, wish me luck.",
+   "drone the other room first",
+   "you've got the C4, set it up on A"
+  ],
+  "file": "one's playing behind the bed in master, that cover is soft",
+  "base": "one's playing behind the bed in master, that cover is soft",
+  "five": "one's playing behind the bed in master, that cover is soft",
+  "tokens_base": 114,
+  "tokens_five": 179
+ },
+ {
+  "i": 21,
+  "before": [],
+  "bot": null,
+  "line": "quietly pop that door open, I just want a sightline",
+  "route": 4.600561892760104e-05,
+  "older": [
+   "drone the other room first",
+   "get on the rope and climb up to roof",
+   "smoke the doorway",
+   "Hit north door, go in hot and clean that room out.",
+   "Push in and clear it out, room by room."
+  ],
+  "file": "quietly pop that door open, I just want a sightline",
+  "base": "quietly pop that door open, I just want a sightline",
+  "five": "quietly pop that door open, I just want a sightline",
+  "tokens_base": 113,
+  "tokens_five": 167
+ },
+ {
+  "i": 22,
+  "before": [],
+  "bot": null,
+  "line": "Kali's got long locked down, get out of her lane and hide up",
+  "route": 3.491816919942492e-05,
+  "older": [
+   "Nah, never mind smoking red stairs, we don't need it.",
+   "wait wait, scratch that, don't open it yet",
+   "run up to the balcony and wait for me there",
+   "Hit north door, go in hot and clean that room out.",
+   "get that window open, I wanna shoot out of it from here"
+  ],
+  "file": "Kali's got long locked down, get out of her lane and hide up",
+  "base": "Kali's got long locked down, get out of her lane and hide up",
+  "five": "Kali's got long locked down, get out of her lane and hide up",
+  "tokens_base": 117,
+  "tokens_five": 191
+ },
+ {
+  "i": 23,
+  "before": [],
+  "bot": null,
+  "line": "wait wait, scratch that, don't open it yet",
+  "route": 8.820285626604541e-05,
+  "older": [
+   "Plant is down by the table, forty seconds on the clock.",
+   "when I yell go, loop round the back",
+   "hold main door, anyone swings you drop 'em",
+   "quietly pop that door open, I just want a sightline",
+   "Don't breach that wall, it's reinforced."
+  ],
+  "file": "wait wait, scratch that, don't open it yet",
+  "base": "wait wait, scratch that, don't open it yet",
+  "five": "wait wait, scratch that, don't open it yet",
+  "tokens_base": 112,
+  "tokens_five": 179
+ },
+ {
+  "i": 24,
+  "before": [],
+  "bot": null,
+  "line": "roll the garage door up so I can see under it",
+  "route": 4.470170137458284e-05,
+  "older": [
+   "Did you hear that? Was that a drone or footsteps?",
+   "that's the call, execute, go go go",
+   "Smoke off yellow so we can cross without getting domed.",
+   "run up to the balcony and wait for me there",
+   "That's the call, execute, go go go!"
+  ],
+  "file": "roll the garage door up so I can see under it",
+  "base": "roll the garage door up so I can see under it",
+  "five": "roll the garage door up so I can see under it",
+  "tokens_base": 112,
+  "tokens_five": 179
+ },
+ {
+  "i": 25,
+  "before": [],
+  "bot": null,
+  "line": "slide the gate open, keep it quiet",
+  "route": 6.155117848544892e-05,
+  "older": [
+   "post up behind the doorframe and lock that window",
+   "That's the call, execute, go go go!",
+   "get over to my ping",
+   "you've got the C4, set it up on A",
+   "Kali's got long locked down, get out of her lane and hide up"
+  ],
+  "file": "slide the gate open, keep it quiet",
+  "base": "slide the gate open, keep it quiet",
+  "five": "slide the gate open, keep it quiet",
+  "tokens_base": 109,
+  "tokens_five": 177
+ },
+ {
+  "i": 26,
+  "before": [],
+  "bot": null,
+  "line": "I'm gonna hide behind the van, watch me till I get there",
+  "route": 0.00015869120800419124,
+  "older": [
+   "Kali's got long locked down, get out of her lane and hide up",
+   "smoke the doorway",
+   "nah no need to hide, nobody's got eyes on you",
+   "Red stairs down in basement, lock that down, nobody walks up it.",
+   "push in and clear it out, room by room"
+  ],
+  "file": "I'm gonna hide behind the van, watch me till I get there",
+  "base": "I'm gonna hide behind the van, watch me till I get there",
+  "five": "I'm gonna hide behind the van, watch me till I get there",
+  "tokens_base": 115,
+  "tokens_five": 185
+ },
+ {
+  "i": 27,
+  "before": [],
+  "bot": null,
+  "line": "you're one tap, duck behind that car and let me take the fight",
+  "route": 0.00012642062103995408,
+  "older": [
+   "Last guy is on the roof, I heard him run across.",
+   "flip the skylight up for me",
+   "Red stairs down in basement, lock that down, nobody walks up it.",
+   "I'm going to flash the door and swing, wish me luck.",
+   "get over to my ping"
+  ],
+  "file": "you're one tap, duck behind that car and let me take the fight",
+  "base": "you're one tap, duck behind that car and let me take the fight",
+  "five": "you're one tap, duck behind that car and let me take the fight",
+  "tokens_base": 116,
+  "tokens_five": 183
+ },
+ {
+  "i": 28,
+  "before": [],
+  "bot": null,
+  "line": "nah no need to hide, nobody's got eyes on you",
+  "route": 3.944134551279479e-05,
+  "older": [
+   "wait wait, scratch that, don't open it yet",
+   "take the long way through my ping and pinch them",
+   "quietly pop that door open, I just want a sightline",
+   "post up behind the doorframe and lock that window",
+   "cover default plant with smoke, Glaz is watching"
+  ],
+  "file": "nah no need to hide, nobody's got eyes on you",
+  "base": "nah no need to hide, nobody's got eyes on you",
+  "five": "nah no need to hide, nobody's got eyes on you",
+  "tokens_base": 113,
+  "tokens_five": 181
+ },
+ {
+  "i": 29,
+  "before": [],
+  "bot": null,
+  "line": "flip the skylight up for me",
+  "route": 3.341029809519086e-05,
+  "older": [
+   "rotate over to where I marked",
+   "I'm gonna hide behind the van, watch me till I get there",
+   "Hit north door, go in hot and clean that room out.",
+   "when I yell go, loop round the back",
+   "don't breach that wall, it's reinforced"
+  ],
+  "file": "flip the skylight up for me",
+  "base": "flip the skylight up for me",
+  "five": "flip the skylight up for me",
+  "tokens_base": 109,
+  "tokens_five": 174
+ },
+ {
+  "i": 30,
+  "before": [],
+  "bot": null,
+  "line": "post up behind the doorframe and lock that window",
+  "route": 0.0007505867916343213,
+  "older": [
+   "You keep this door covered, I'm taking the other one upstairs.",
+   "rez me please",
+   "Did you hear that? Was that a drone or footsteps?",
+   "you're entry frag this round, get in the room",
+   "plant the defuser"
+  ],
+  "file": "post up behind the doorframe and lock that window",
+  "base": "post up behind the doorframe and lock that window",
+  "five": "post up behind the doorframe and lock that window",
+  "tokens_base": 111,
+  "tokens_five": 168
+ },
+ {
+  "i": 31,
+  "before": [],
+  "bot": null,
+  "line": "get that window open, I wanna shoot out of it from here",
+  "route": 3.693327133747048e-05,
+  "older": [
+   "Push in and clear it out, room by room.",
+   "you're entry frag this round, get in the room",
+   "I'm going to flash the door and swing, wish me luck.",
+   "Kali's got long locked down, get out of her lane and hide up",
+   "You keep this door covered, I'm taking the other one upstairs."
+  ],
+  "file": "get that window open, I wanna shoot out of it from here",
+  "base": "get that window open, I wanna shoot out of it from here",
+  "five": "get that window open, I wanna shoot out of it from here",
+  "tokens_base": 114,
+  "tokens_five": 192
+ },
+ {
+  "i": 32,
+  "before": [],
+  "bot": null,
+  "line": "nitro's coming over the top, get yourself somewhere safe",
+  "route": 4.27032225799534e-05,
+  "older": [
+   "slide the gate open, keep it quiet",
+   "Hit north door, go in hot and clean that room out.",
+   "Is the hatch reinforced?",
+   "don't breach that wall, it's reinforced",
+   "Yes, exactly, put a drone in there."
+  ],
+  "file": "nitro's coming over the top, get yourself somewhere safe",
+  "base": "nitro's coming over the top, get yourself somewhere safe",
+  "five": "nitro's coming over the top, get yourself somewhere safe",
+  "tokens_base": 113,
+  "tokens_five": 170
+ },
+ {
+  "i": 33,
+  "before": [],
+  "bot": null,
+  "line": "Smoke off yellow so we can cross without getting domed.",
+  "route": 3.680781631752761e-05,
+  "older": [
+   "nitro's coming over the top, get yourself somewhere safe",
+   "Plant is down by the table, forty seconds on the clock.",
+   "they rotated through the bedroom wall",
+   "quietly pop that door open, I just want a sightline",
+   "I'm gonna hide behind the van, watch me till I get there"
+  ],
+  "file": "Smoke off yellow so we can cross without getting domed.",
+  "base": "Smoke off yellow so we can cross without getting domed.",
+  "five": "Smoke off yellow so we can cross without getting domed.",
+  "tokens_base": 113,
+  "tokens_five": 184
+ },
+ {
+  "i": 34,
+  "before": [],
+  "bot": null,
+  "line": "Nah, never mind smoking red stairs, we don't need it.",
+  "route": 3.874516406835556e-05,
+  "older": [
+   "Plant is down by the table, forty seconds on the clock.",
+   "drone the other room first",
+   "hold main door, anyone swings you drop 'em",
+   "get that window open, I wanna shoot out of it from here",
+   "wait wait, scratch that, don't open it yet"
+  ],
+  "file": "Nah, never mind smoking red stairs, we don't need it.",
+  "base": "Nah, never mind smoking red stairs, we don't need it.",
+  "five": "Nah, never mind smoking red stairs, we don't need it.",
+  "tokens_base": 115,
+  "tokens_five": 181
+ },
+ {
+  "i": 35,
+  "before": [],
+  "bot": null,
+  "line": "Last guy is on the roof, I heard him run across.",
+  "route": 3.6610096672849633e-05,
+  "older": [
+   "They're rotating to the basement, and one's still on the roof.",
+   "Suppress the north window.",
+   "Rope up and hang outside the south window until I call it.",
+   "get on the rope and climb up to roof",
+   "Don't breach that wall, it's reinforced."
+  ],
+  "file": "Last guy is on the roof, I heard him run across.",
+  "base": "Last guy is on the roof, I heard him run across.",
+  "five": "Last guy is on the roof, I heard him run across.",
+  "tokens_base": 114,
+  "tokens_five": 177
+ },
+ {
+  "i": 36,
+  "before": [],
+  "bot": null,
+  "line": "Hit north door, go in hot and clean that room out.",
+  "route": 4.487419034509304e-05,
+  "older": [
+   "Plant the defuser.",
+   "Did you hear that? Was that a drone or footsteps?",
+   "they rotated through the bedroom wall",
+   "frag out on default",
+   "rez me please"
+  ],
+  "file": "Hit north door, go in hot and clean that room out.",
+  "base": "Hit north door, go in hot and clean that room out.",
+  "five": "Hit north door, go in hot and clean that room out.",
+  "tokens_base": 114,
+  "tokens_five": 157
+ },
+ {
+  "i": 37,
+  "before": [],
+  "bot": null,
+  "line": "Plant is down by the table, forty seconds on the clock.",
+  "route": 3.749256444334252e-05,
+  "older": [
+   "Could be, it's your call.",
+   "Rope up and hang outside the south window until I call it.",
+   "flip the skylight up for me",
+   "They're rotating to the basement, and one's still on the roof.",
+   "plant the defuser"
+  ],
+  "file": "Plant is down by the table, forty seconds on the clock.",
+  "base": "Plant is down by the table, forty seconds on the clock.",
+  "five": "Plant is down by the table, forty seconds on the clock.",
+  "tokens_base": 114,
+  "tokens_five": 174
+ },
+ {
+  "i": 38,
+  "before": [],
+  "bot": null,
+  "line": "Red stairs down in basement, lock that down, nobody walks up it.",
+  "route": 6.460834561780167e-05,
+  "older": [
+   "they rotated through the bedroom wall",
+   "They're rotating to the basement, and one's still on the roof.",
+   "flip the skylight up for me",
+   "Plant the defuser.",
+   "you're one tap, duck behind that car and let me take the fight"
+  ],
+  "file": "Red stairs down in basement, lock that down, nobody walks up it.",
+  "base": "Red stairs down in basement, lock that down, nobody walks up it.",
+  "five": "Red stairs down in basement, lock that down, nobody walks up it.",
+  "tokens_base": 116,
+  "tokens_five": 178
+ },
+ {
+  "i": 39,
+  "before": [],
+  "bot": null,
+  "line": "you've got the C4, set it up on A",
+  "route": 0.0002868426645366658,
+  "older": [
+   "plant the defuser",
+   "rotate over to where I marked",
+   "blind the room for me",
+   "Rope up and hang outside the south window until I call it.",
+   "drone the other room first"
+  ],
+  "file": "you've got the C4, set it up on A",
+  "base": "you've got the C4, set it up on A",
+  "five": "you've got the C4, set it up on A",
+  "tokens_base": 113,
+  "tokens_five": 160
+ },
+ {
+  "i": 40,
+  "before": [],
+  "bot": null,
+  "line": "They're rotating to the basement, and one's still on the roof.",
+  "route": 0.00012124098665785631,
+  "older": [
+   "Don't breach that wall, it's reinforced.",
+   "watch my back while I plant",
+   "you've got the C4, set it up on A",
+   "drone the other room first",
+   "You keep this door covered, I'm taking the other one upstairs."
+  ],
+  "file": "They're rotating to the basement, and one's still on the roof.",
+  "base": "They're rotating to the basement, and one's still on the roof.",
+  "five": "They're rotating to the basement, and one's still on the roof.",
+  "tokens_base": 116,
+  "tokens_five": 176
+ },
+ {
+  "i": 41,
+  "before": [],
+  "bot": null,
+  "line": "Don't breach that wall, it's reinforced.",
+  "route": 5.3739815709460896e-05,
+  "older": [
+   "push in and clear it out, room by room",
+   "take the long way through my ping and pinch them",
+   "smoke the doorway",
+   "you're one tap, duck behind that car and let me take the fight",
+   "Plant is down by the table, forty seconds on the clock."
+  ],
+  "file": "Don't breach that wall, it's reinforced.",
+  "base": "Don't breach that wall, it's reinforced.",
+  "five": "Don't breach that wall, it's reinforced.",
+  "tokens_base": 111,
+  "tokens_five": 176
+ },
+ {
+  "i": 42,
+  "before": [],
+  "bot": null,
+  "line": "Suppress the east window so I can cross, then follow me.",
+  "route": 0.9999751634045825,
+  "older": [
+   "run up to the balcony and wait for me there",
+   "hold main door, anyone swings you drop 'em",
+   "Plant the defuser.",
+   "I'm gonna hide behind the van, watch me till I get there",
+   "Don't breach that wall, it's reinforced."
+  ],
+  "file": "Suppress the east window so I can cross\nFollow me.",
+  "base": "Suppress the east window so I can cross\nFollow me.",
+  "five": "Suppress the east window so I can cross\nFollow me.",
+  "tokens_base": 114,
+  "tokens_five": 176
+ },
+ {
+  "i": 43,
+  "before": [],
+  "bot": null,
+  "line": "That's the call, execute, go go go!",
+  "route": 3.539192461876836e-05,
+  "older": [
+   "Suppress the north window.",
+   "nitro's coming over the top, get yourself somewhere safe",
+   "cover default plant with smoke, Glaz is watching",
+   "nah no need to hide, nobody's got eyes on you",
+   "you're entry frag this round, get in the room"
+  ],
+  "file": "That's the call, execute, go go go!",
+  "base": "That's the call, execute, go go go!",
+  "five": "That's the call, execute, go go go!",
+  "tokens_base": 112,
+  "tokens_five": 176
+ },
+ {
+  "i": 44,
+  "before": [],
+  "bot": null,
+  "line": "Wait for my count, then blow the east wall.",
+  "route": 4.489921008418336e-05,
+  "older": [
+   "hold main door, anyone swings you drop 'em",
+   "wait wait, scratch that, don't open it yet",
+   "they rotated through the bedroom wall",
+   "when I yell go, loop round the back",
+   "Is the hatch reinforced?"
+  ],
+  "file": "Blow the east wall.",
+  "base": "Blow the east wall.",
+  "five": "Blow the east wall.",
+  "tokens_base": 112,
+  "tokens_five": 167
+ },
+ {
+  "i": 45,
+  "before": [],
+  "bot": null,
+  "line": "Two in the kitchen and one behind the chairs, frag them.",
+  "route": 0.0005797206999151009,
+  "older": [
+   "deny that plant before it pops",
+   "that's the call, execute, go go go",
+   "Hit north door, go in hot and clean that room out.",
+   "get that window open, I wanna shoot out of it from here",
+   "watch my back while I plant"
+  ],
+  "file": "Frag the kitchen.\nFrag the chair behind the kitchen.",
+  "base": "Frag the kitchen.\nFrag the chair behind the kitchen.",
+  "five": "Frag the kitchen.\nFrag the chair behind the kitchen.",
+  "tokens_base": 114,
+  "tokens_five": 176
+ },
+ {
+  "i": 46,
+  "before": [],
+  "bot": null,
+  "line": "Check the top floor, and once it's clear come back here.",
+  "route": 0.9999760625923748,
+  "older": [
+   "Is the hatch reinforced?",
+   "I'm going to flash the door and swing, wish me luck.",
+   "cover default plant with smoke, Glaz is watching",
+   "drone the other room first",
+   "smoke the doorway"
+  ],
+  "file": "Check the top floor.\nCome back here.",
+  "base": "Check the top floor.\nCome back here.",
+  "five": "Check the top floor.\nCome back here.",
+  "tokens_base": 115,
+  "tokens_five": 165
+ },
+ {
+  "i": 47,
+  "before": [],
+  "bot": null,
+  "line": "After you check the basement, come back and cover me while I plant.",
+  "route": 0.999981021010062,
+  "older": [
+   "rotate over to where I marked",
+   "Last guy is on the roof, I heard him run across.",
+   "Suppress the north window.",
+   "they rotated through the bedroom wall",
+   "You keep this door covered, I'm taking the other one upstairs."
+  ],
+  "file": "Check the basement.\nCome back.\nCover me while I plant.",
+  "base": "Check the basement.\nCome back.\nCover me while I plant.",
+  "five": "Check the basement.\nCome back.\nCover me while I plant.",
+  "tokens_base": 116,
+  "tokens_five": 172
+ },
+ {
+  "i": 48,
+  "before": [],
+  "bot": null,
+  "line": "Open the west door quietly, toss a frag in.",
+  "route": 0.9954634808668389,
+  "older": [
+   "You keep this door covered, I'm taking the other one upstairs.",
+   "frag out on default",
+   "get the bomb down, we got 20 seconds",
+   "roll the garage door up so I can see under it",
+   "Suppress the north window."
+  ],
+  "file": "Open the west door quietly.\nToss a frag in through the west door.",
+  "base": "Open the west door quietly.\nToss a frag in through the west door.",
+  "five": "Open the west door quietly.\nToss a frag in through the west door.",
+  "tokens_base": 112,
+  "tokens_five": 170
+ },
+ {
+  "i": 49,
+  "before": [],
+  "bot": null,
+  "line": "I'll breach the wall, you flash through it.",
+  "route": 4.195352862067119e-05,
+  "older": [
+   "when I yell go, loop round the back",
+   "run up to the balcony and wait for me there",
+   "roll the garage door up so I can see under it",
+   "stay put, don't budge",
+   "Nah, never mind smoking red stairs, we don't need it."
+  ],
+  "file": "Flash through the wall.",
+  "base": "Flash through the wall.",
+  "five": "Flash through the wall.",
+  "tokens_base": 112,
+  "tokens_five": 177
+ },
+ {
+  "i": 50,
+  "before": [],
+  "bot": null,
+  "line": "Go prone, open fire on that window, then fall back to the stairs.",
+  "route": 0.9999723512277373,
+  "older": [
+   "That's the call, execute, go go go!",
+   "full commit onto site, kill whatever's in there",
+   "get that window open, I wanna shoot out of it from here",
+   "deny that plant before it pops",
+   "run up to the balcony and wait for me there"
+  ],
+  "file": "Go prone.\nOpen fire on that window.\nFall back to the stairs.",
+  "base": "Go prone.\nOpen fire on that window.\nFall back to the stairs.",
+  "five": "Go prone.\nOpen fire on that window.\nFall back to the stairs.",
+  "tokens_base": 117,
+  "tokens_five": 181
+ },
+ {
+  "i": 51,
+  "before": [],
+  "bot": null,
+  "line": "Breach the hatch and drop down through it.",
+  "route": 0.21274598913400627,
+  "older": [
+   "nitro's coming over the top, get yourself somewhere safe",
+   "take the long way through my ping and pinch them",
+   "nah no need to hide, nobody's got eyes on you",
+   "Nah, never mind smoking red stairs, we don't need it.",
+   "plant the defuser"
+  ],
+  "file": "Breach the hatch.\nDrop down through the hatch.",
+  "base": "Breach the hatch and drop down through it.",
+  "five": "Breach the hatch and drop down through it.",
+  "tokens_base": 111,
+  "tokens_five": 177
+ },
+ {
+  "i": 52,
+  "before": [],
+  "bot": null,
+  "line": "Drone the basement, and when you're done watch the red stairs.",
+  "route": 0.9999718674244772,
+  "older": [
+   "Plant is down by the table, forty seconds on the clock.",
+   "one's playing behind the bed in master, that cover is soft",
+   "they rotated through the bedroom wall",
+   "post up behind the doorframe and lock that window",
+   "run up to the balcony and wait for me there"
+  ],
+  "file": "Drone the basement.\nWatch the red stairs.",
+  "base": "Drone the basement.\nWatch the red stairs.",
+  "five": "Drone the basement.\nWatch the red stairs.",
+  "tokens_base": 115,
+  "tokens_five": 181
+ },
+ {
+  "i": 53,
+  "before": [],
+  "bot": null,
+  "line": "Push in and clear it out, room by room.",
+  "route": 4.2880920557121975e-05,
+  "older": [
+   "get that window open, I wanna shoot out of it from here",
+   "that's the call, execute, go go go",
+   "nah no need to hide, nobody's got eyes on you",
+   "Last guy is on the roof, I heard him run across.",
+   "drone the other room first"
+  ],
+  "file": "Push in and clear it out, room by room.",
+  "base": "Push in and clear it out, room by room.",
+  "five": "Push in and clear it out, room by room.",
+  "tokens_base": 112,
+  "tokens_five": 179
+ },
+ {
+  "i": 54,
+  "before": [],
+  "bot": null,
+  "line": "Stop shooting, get up, and follow me to the roof.",
+  "route": 0.9999825891368918,
+  "older": [
+   "wait wait, scratch that, don't open it yet",
+   "slide the gate open, keep it quiet",
+   "they rotated through the bedroom wall",
+   "flip the skylight up for me",
+   "Don't breach that wall, it's reinforced."
+  ],
+  "file": "Stop shooting.\nGet up.\nFollow me to the roof.",
+  "base": "Stop shooting.\nGet up.\nFollow me to the roof.",
+  "five": "Stop shooting.\nGet up.\nFollow me to the roof.",
+  "tokens_base": 114,
+  "tokens_five": 171
+ },
+ {
+  "i": 55,
+  "before": [],
+  "bot": null,
+  "line": "Frag the corner behind the sofa, then same thing on the other side.",
+  "route": 0.9999776279855835,
+  "older": [
+   "get on the rope and climb up to roof",
+   "Smoke off yellow so we can cross without getting domed.",
+   "cover default plant with smoke, Glaz is watching",
+   "they rotated through the bedroom wall",
+   "that's the call, execute, go go go"
+  ],
+  "file": "Frag the corner behind the sofa.\nFrag the other side of the sofa.",
+  "base": "Frag the corner behind the sofa.\nFrag the other side of the sofa.",
+  "five": "Frag the corner behind the sofa.\nFrag the other side of the sofa.",
+  "tokens_base": 116,
+  "tokens_five": 177
+ },
+ {
+  "i": 56,
+  "before": [],
+  "bot": null,
+  "line": "Vault in through the west window, check the room, then open the door for me.",
+  "route": 0.9999756896417209,
+  "older": [
+   "Yes, exactly, put a drone in there.",
+   "Push in and clear it out, room by room.",
+   "nitro's coming over the top, get yourself somewhere safe",
+   "open the west door quietly, toss a frag in",
+   "you've got the C4, set it up on A"
+  ],
+  "file": "Vault in through the west window.\nCheck the room.\nOpen the door for me.",
+  "base": "Vault in through the west window.\nCheck the room.\nOpen the door for me.",
+  "five": "Vault in through the west window.\nCheck the room.\nOpen the door for me.",
+  "tokens_base": 119,
+  "tokens_five": 187
+ },
+ {
+  "i": 57,
+  "before": [],
+  "bot": null,
+  "line": "I'm going to flash the door and swing, wish me luck.",
+  "route": 4.0991096664491496e-05,
+  "older": [
+   "flip the skylight up for me",
+   "Smoke off yellow so we can cross without getting domed.",
+   "watch my back while I plant",
+   "get the bomb down, we got 20 seconds",
+   "I'm gonna hide behind the van, watch me till I get there"
+  ],
+  "file": "I'm going to flash the door and swing, wish me luck.",
+  "base": "I'm going to flash the door and swing, wish me luck.",
+  "five": "I'm going to flash the door and swing, wish me luck.",
+  "tokens_base": 115,
+  "tokens_five": 180
+ },
+ {
+  "i": 58,
+  "before": [],
+  "bot": null,
+  "line": "Stun the room and then clear it out.",
+  "route": 0.9999812603463841,
+  "older": [
+   "Hit north door, go in hot and clean that room out.",
+   "get on the rope and climb up to roof",
+   "flip the skylight up for me",
+   "Smoke off yellow so we can cross without getting domed.",
+   "Red stairs down in basement, lock that down, nobody walks up it."
+  ],
+  "file": "Stun the room.\nClear the room out.",
+  "base": "Stun the room.\nClear the room out.",
+  "five": "Stun the room.\nClear the room out.",
+  "tokens_base": 111,
+  "tokens_five": 180
+ },
+ {
+  "i": 59,
+  "before": [],
+  "bot": null,
+  "line": "Hop over the sofa and hold the door from there.",
+  "route": 0.9999803124429336,
+  "older": [
+   "quietly pop that door open, I just want a sightline",
+   "Did you hear that? Was that a drone or footsteps?",
+   "Rope up and hang outside the south window until I call it.",
+   "run up to the balcony and wait for me there",
+   "full commit onto site, kill whatever's in there"
+  ],
+  "file": "Hop over the sofa.\nHold the door from there.",
+  "base": "Hop over the sofa.\nHold the door from there.",
+  "five": "Hop over the sofa and hold the door from there.",
+  "tokens_base": 112,
+  "tokens_five": 182
+ },
+ {
+  "i": 60,
+  "before": [],
+  "bot": null,
+  "line": "Rappel to the top floor, open the window, and frag the room.",
+  "route": 0.9999845907373922,
+  "older": [
+   "They're rotating to the basement, and one's still on the roof.",
+   "get the bomb down, we got 20 seconds",
+   "Nah, never mind smoking red stairs, we don't need it.",
+   "Did you hear that? Was that a drone or footsteps?",
+   "one's playing behind the bed in master, that cover is soft"
+  ],
+  "file": "Rappel to the top floor.\nOpen the window.\nFrag the room.",
+  "base": "Rappel to the top floor.\nOpen the window.\nFrag the room.",
+  "five": "Rappel to the top floor.\nOpen the window.\nFrag the room.",
+  "tokens_base": 118,
+  "tokens_five": 195
+ },
+ {
+  "i": 61,
+  "before": [],
+  "bot": null,
+  "line": "Go to the yellow stairs, watch the north door from there, and don't shoot until I say.",
+  "route": 0.9999772588084087,
+  "older": [
+   "Could be, it's your call.",
+   "you're one tap, duck behind that car and let me take the fight",
+   "get the bomb down, we got 20 seconds",
+   "Nah, never mind smoking red stairs, we don't need it.",
+   "get over to my ping"
+  ],
+  "file": "Go to the yellow stairs.\nWatch the north door.\nDon't shoot until I say.",
+  "base": "Go to the yellow stairs.\nWatch the north door.\nDon't shoot until I say.",
+  "five": "Go to the yellow stairs.\nWatch the north door.\nDon't shoot until I say.",
+  "tokens_base": 122,
+  "tokens_five": 188
+ },
+ {
+  "i": 62,
+  "before": [],
+  "bot": null,
+  "line": "You keep this door covered, I'm taking the other one upstairs.",
+  "route": 3.481743425154893e-05,
+  "older": [
+   "Suppress the north window.",
+   "full commit onto site, kill whatever's in there",
+   "rez me please",
+   "smoke the doorway",
+   "Plant the defuser."
+  ],
+  "file": "You keep this door covered, I'm taking the other one upstairs.",
+  "base": "You keep this door covered, I'm taking the other one upstairs.",
+  "five": "You keep this door covered, I'm taking the other one upstairs.",
+  "tokens_base": 115,
+  "tokens_five": 154
+ },
+ {
+  "i": 63,
+  "before": [],
+  "bot": null,
+  "line": "Cease fire, pull back to the brown stairs.",
+  "route": 0.999983170847797,
+  "older": [
+   "Did you hear that? Was that a drone or footsteps?",
+   "get over to my ping",
+   "plant the defuser",
+   "Kali's got long locked down, get out of her lane and hide up",
+   "stay put, don't budge"
+  ],
+  "file": "Cease fire.\nPull back to the brown stairs.",
+  "base": "Cease fire.\nPull back to the brown stairs.",
+  "five": "Cease fire.\nPull back to the brown stairs.",
+  "tokens_base": 112,
+  "tokens_five": 170
+ },
+ {
+  "i": 64,
+  "before": [],
+  "bot": null,
+  "line": "Smoke the Main door, plant behind the table, then watch the east window.",
+  "route": 0.9999681198044842,
+  "older": [
+   "I'm gonna hide behind the van, watch me till I get there",
+   "Kali's got long locked down, get out of her lane and hide up",
+   "get the bomb down, we got 20 seconds",
+   "cover default plant with smoke, Glaz is watching",
+   "wait wait, scratch that, don't open it yet"
+  ],
+  "file": "Smoke the Main door.\nPlant behind the table.\nWatch the east window.",
+  "base": "Smoke the Main door.\nPlant behind the table.\nWatch the east window.",
+  "five": "Smoke the Main door.\nPlant behind the table.\nWatch the east window.",
+  "tokens_base": 117,
+  "tokens_five": 194
+ },
+ {
+  "i": 65,
+  "before": [],
+  "bot": null,
+  "line": "Open the hatch, drone the basement, then drop down and plant.",
+  "route": 0.9999712450453568,
+  "older": [
+   "they rotated through the bedroom wall",
+   "watch my back while I plant",
+   "Push in and clear it out, room by room.",
+   "I'm gonna hide behind the van, watch me till I get there",
+   "stay put, don't budge"
+  ],
+  "file": "Open the hatch.\nDrone the basement.\nDrop down.\nPlant the defuser.",
+  "base": "Open the hatch.\nDrone the basement.\nDrop down.\nPlant the defuser.",
+  "five": "Open the hatch.\nDrone the basement.\nDrop down through the hatch.\nPlant the defuser.",
+  "tokens_base": 115,
+  "tokens_five": 173
+ },
+ {
+  "i": 66,
+  "before": [],
+  "bot": null,
+  "line": "Breach the wall... actually, scratch that, just open the door.",
+  "route": 0.007593491146913122,
+  "older": [
+   "Smoke off yellow so we can cross without getting domed.",
+   "get that window open, I wanna shoot out of it from here",
+   "Last guy is on the roof, I heard him run across.",
+   "they rotated through the bedroom wall",
+   "Nah, never mind smoking red stairs, we don't need it."
+  ],
+  "file": "Open the door.",
+  "base": "Open the door.",
+  "five": "Open the door.",
+  "tokens_base": 116,
+  "tokens_five": 186
+ },
+ {
+  "i": 67,
+  "before": [],
+  "bot": null,
+  "line": "Defuse it, I'll watch the door, and get behind cover as soon as you're done.",
+  "route": 0.9999825848691399,
+  "older": [
+   "get on the rope and climb up to roof",
+   "deny that plant before it pops",
+   "They're rotating to the basement, and one's still on the roof.",
+   "get that window open, I wanna shoot out of it from here",
+   "cover default plant with smoke, Glaz is watching"
+  ],
+  "file": "Defuse it, I'll watch the door\nGet behind cover as soon as you're done.",
+  "base": "Defuse it, I'll watch the door\nGet behind cover as soon as you're done.",
+  "five": "Defuse it, I'll watch the door\nGet behind cover as soon as you're done.",
+  "tokens_base": 122,
+  "tokens_five": 189
+ },
+ {
+  "i": 68,
+  "before": [],
+  "bot": null,
+  "line": "I'm going for the plant, cover me while I'm on it.",
+  "route": 4.551964124116423e-05,
+  "older": [
+   "take the long way through my ping and pinch them",
+   "rez me please",
+   "quietly pop that door open, I just want a sightline",
+   "You keep this door covered, I'm taking the other one upstairs.",
+   "post up behind the doorframe and lock that window"
+  ],
+  "file": "Cover me while I plant.",
+  "base": "Cover me while I plant.",
+  "five": "Cover me while I plant.",
+  "tokens_base": 116,
+  "tokens_five": 179
+ },
+ {
+  "i": 69,
+  "before": [],
+  "bot": null,
+  "line": "Give me a smoke on the Main door, followed by a flash over the top.",
+  "route": 0.9999816733590491,
+  "older": [
+   "they rotated through the bedroom wall",
+   "They're rotating to the basement, and one's still on the roof.",
+   "get over to my ping",
+   "Is the hatch reinforced?",
+   "nah no need to hide, nobody's got eyes on you"
+  ],
+  "file": "Give me a smoke on the Main door.\nFlash over the top of the Main door.",
+  "base": "Give me a smoke on the Main door.\nFlash over the top of the Main door.",
+  "five": "Give me a smoke on the Main door.\nFlash over the top of the Main door.",
+  "tokens_base": 118,
+  "tokens_five": 174
+ },
+ {
+  "i": 70,
+  "before": [],
+  "bot": null,
+  "line": "Rappel down to the east window and vault in.",
+  "route": 0.9999816678703468,
+  "older": [
+   "Kali's got long locked down, get out of her lane and hide up",
+   "plant the defuser",
+   "full commit onto site, kill whatever's in there",
+   "get the bomb down, we got 20 seconds",
+   "open the west door quietly, toss a frag in"
+  ],
+  "file": "Rappel down to the east window.\nVault in through the east window.",
+  "base": "Rappel down to the east window.\nVault in through the east window.",
+  "five": "Rappel down to the east window and vault in.",
+  "tokens_base": 113,
+  "tokens_five": 179
+ },
+ {
+  "i": 71,
+  "before": [],
+  "bot": null,
+  "line": "Before you breach, get a drone in there, and flash as soon as the wall is open.",
+  "route": 0.9999816590832549,
+  "older": [
+   "That's the call, execute, go go go!",
+   "they rotated through the bedroom wall",
+   "push in and clear it out, room by room",
+   "Smoke off yellow so we can cross without getting domed.",
+   "Rope up and hang outside the south window until I call it."
+  ],
+  "file": "Get a drone in there.\nFlash as soon as the wall is open.\nBreach.",
+  "base": "Get a drone in there.\nFlash as soon as the wall is open.\nBreach.",
+  "five": "Get a drone in there, and flash as soon as the wall is open.\nBreach.",
+  "tokens_base": 121,
+  "tokens_five": 185
+ },
+ {
+  "i": 72,
+  "before": [],
+  "bot": null,
+  "line": "Rope up and hang outside the south window until I call it.",
+  "route": 4.158410742743027e-05,
+  "older": [
+   "hold main door, anyone swings you drop 'em",
+   "nitro's coming over the top, get yourself somewhere safe",
+   "Last guy is on the roof, I heard him run across.",
+   "wait wait, scratch that, don't open it yet",
+   "get on the rope and climb up to roof"
+  ],
+  "file": "Rope up and hang outside the south window until I call it.",
+  "base": "Rope up and hang outside the south window until I call it.",
+  "five": "Rope up and hang outside the south window until I call it.",
+  "tokens_base": 114,
+  "tokens_five": 183
+ },
+ {
+  "i": 73,
+  "before": [],
+  "bot": null,
+  "line": "Yes, exactly, put a drone in there.",
+  "route": 5.8456009639190797e-05,
+  "older": [
+   "Plant the defuser.",
+   "take the long way through my ping and pinch them",
+   "Is the hatch reinforced?",
+   "get over to my ping",
+   "Suppress the north window."
+  ],
+  "file": "Yes, exactly, put a drone in there.",
+  "base": "Yes, exactly, put a drone in there.",
+  "five": "Yes, exactly, put a drone in there.",
+  "tokens_base": 111,
+  "tokens_five": 153
+ },
+ {
+  "i": 74,
+  "before": [],
+  "bot": null,
+  "line": "On your feet, move to the blue stairs.",
+  "route": 0.0002977123428393713,
+  "older": [
+   "get over to my ping",
+   "Smoke off yellow so we can cross without getting domed.",
+   "Plant the defuser.",
+   "watch my back while I plant",
+   "Could be, it's your call."
+  ],
+  "file": "On your feet.\nMove to the blue stairs.",
+  "base": "On your feet.\nMove to the blue stairs.",
+  "five": "On your feet.\nMove to the blue stairs.",
+  "tokens_base": 111,
+  "tokens_five": 159
+ },
+ {
+  "i": 75,
+  "before": [],
+  "bot": null,
+  "line": "Get low and keep eyes on that window.",
+  "route": 0.2539913331359124,
+  "older": [
+   "rotate over to where I marked",
+   "Did you hear that? Was that a drone or footsteps?",
+   "Rope up and hang outside the south window until I call it.",
+   "smoke the doorway",
+   "deny that plant before it pops"
+  ],
+  "file": "Get low.\nKeep eyes on that window.",
+  "base": "Get low.\nKeep eyes on that window.",
+  "five": "Get low.\nKeep eyes on that window.",
+  "tokens_base": 110,
+  "tokens_five": 163
+ },
+ {
+  "i": 76,
+  "before": [],
+  "bot": null,
+  "line": "Frag the white stairs, smoke them off, cross to the sofa and watch the north door.",
+  "route": 0.9999766625237987,
+  "older": [
+   "Yes, exactly, put a drone in there.",
+   "watch my back while I plant",
+   "You keep this door covered, I'm taking the other one upstairs.",
+   "get the bomb down, we got 20 seconds",
+   "one's playing behind the bed in master, that cover is soft"
+  ],
+  "file": "Frag the white stairs.\nSmoke them off.\nCross to the sofa.\nWatch the north door.",
+  "base": "Frag the white stairs.\nSmoke them off.\nCross to the sofa.\nWatch the north door.",
+  "five": "Frag the white stairs.\nSmoke the white stairs off.\nCross to the sofa.\nWatch the north door.",
+  "tokens_base": 120,
+  "tokens_five": 187
+ },
+ {
+  "i": 77,
+  "before": [],
+  "bot": null,
+  "line": "Smoke my ping, move up to the table, then lay down suppressive fire on the door.",
+  "route": 0.9999733258720814,
+  "older": [
+   "Suppress the north window.",
+   "I'm gonna hide behind the van, watch me till I get there",
+   "they rotated through the bedroom wall",
+   "You keep this door covered, I'm taking the other one upstairs.",
+   "cover default plant with smoke, Glaz is watching"
+  ],
+  "file": "Smoke my ping.\nMove up to the table.\nLay down suppressive fire on the door.",
+  "base": "Smoke my ping.\nMove up to the table.\nLay down suppressive fire on the door.",
+  "five": "Smoke my ping.\nMove up to the table.\nLay down suppressive fire on the door.",
+  "tokens_base": 121,
+  "tokens_five": 183
+ },
+ {
+  "i": 78,
+  "before": [],
+  "bot": null,
+  "line": "Did you hear that? Was that a drone or footsteps?",
+  "route": 0.0001968695578236916,
+  "older": [
+   "hold main door, anyone swings you drop 'em",
+   "Hit north door, go in hot and clean that room out.",
+   "cover default plant with smoke, Glaz is watching",
+   "You keep this door covered, I'm taking the other one upstairs.",
+   "that's the call, execute, go go go"
+  ],
+  "file": "Did you hear that? Was that a drone or footsteps?",
+  "base": "Did you hear that? Was that a drone or footsteps?",
+  "five": "Did you hear that? Was that a drone or footsteps?",
+  "tokens_base": 113,
+  "tokens_five": 183
+ },
+ {
+  "i": 79,
+  "before": [],
+  "bot": null,
+  "line": "Could be, it's your call.",
+  "route": 3.282186645803402e-05,
+  "older": [
+   "Nah, never mind smoking red stairs, we don't need it.",
+   "drone the other room first",
+   "full commit onto site, kill whatever's in there",
+   "roll the garage door up so I can see under it",
+   "when I yell go, loop round the back"
+  ],
+  "file": "Could be, it's your call.",
+  "base": "Could be, it's your call.",
+  "five": "Could be, it's your call.",
+  "tokens_base": 109,
+  "tokens_five": 172
+ },
+ {
+  "i": 80,
+  "before": [
+   "Hold the west door."
+  ],
+  "bot": "Holding the west window.",
+  "line": "The door, not the window.",
+  "route": 0.9999345450065558,
+  "older": [
+   "you've got the C4, set it up on A",
+   "watch my back while I plant",
+   "drone the other room first",
+   "open the west door quietly, toss a frag in"
+  ],
+  "file": "Hold the west door.",
+  "base": "Hold the west door.",
+  "five": "Open the west door quietly, toss a frag in.",
+  "tokens_base": 122,
+  "tokens_five": 167
+ },
+ {
+  "i": 81,
+  "before": [
+   "Drone the basement."
+  ],
+  "bot": "Drone is out.",
+  "line": "Never mind.",
+  "route": 3.360996284025583e-05,
+  "older": [
+   "Last guy is on the roof, I heard him run across.",
+   "drone the other room first",
+   "run up to the balcony and wait for me there",
+   "rez me please"
+  ],
+  "file": "Never mind.",
+  "base": "Never mind.",
+  "five": "Never mind.",
+  "tokens_base": 116,
+  "tokens_five": 158
+ },
+ {
+  "i": 82,
+  "before": [],
+  "bot": null,
+  "line": "Is the hatch reinforced?",
+  "route": 7.288949982353831e-05,
+  "older": [
+   "post up behind the doorframe and lock that window",
+   "full commit onto site, kill whatever's in there",
+   "get that window open, I wanna shoot out of it from here",
+   "nitro's coming over the top, get yourself somewhere safe",
+   "Push in and clear it out, room by room."
+  ],
+  "file": "Is the hatch reinforced?",
+  "base": "Is the hatch reinforced?",
+  "five": "Is the hatch reinforced?",
+  "tokens_base": 106,
+  "tokens_five": 176
+ },
+ {
+  "i": 83,
+  "before": [
+   "Smoke the main door.",
+   "Go to the stairs."
+  ],
+  "bot": null,
+  "line": "Brown ones.",
+  "route": 0.9999551795901571,
+  "older": [
+   "run up to the balcony and wait for me there",
+   "Suppress the north window.",
+   "when I yell go, loop round the back"
+  ],
+  "file": "Smoke the brown stairs.",
+  "base": "Smoke the brown stairs.",
+  "five": "Go to the brown stairs.",
+  "tokens_base": 118,
+  "tokens_five": 150
+ },
+ {
+  "i": 84,
+  "before": [],
+  "bot": null,
+  "line": "Suppress the north window.",
+  "route": 4.494946287831009e-05,
+  "older": [
+   "Nah, never mind smoking red stairs, we don't need it.",
+   "Don't breach that wall, it's reinforced.",
+   "run up to the balcony and wait for me there",
+   "drone the other room first",
+   "nah no need to hide, nobody's got eyes on you"
+  ],
+  "file": "Suppress the north window.",
+  "base": "Suppress the north window.",
+  "five": "Suppress the north window.",
+  "tokens_base": 106,
+  "tokens_five": 170
+ },
+ {
+  "i": 85,
+  "before": [
+   "Hold the yellow stairs."
+  ],
+  "bot": null,
+  "line": "Put a smoke on it.",
+  "route": 0.9949394254871103,
+  "older": [
+   "they rotated through the bedroom wall",
+   "wait wait, scratch that, don't open it yet",
+   "get over to my ping",
+   "cover default plant with smoke, Glaz is watching"
+  ],
+  "file": "Put a smoke on the yellow stairs.",
+  "base": "Put a smoke on the yellow stairs.",
+  "five": "Put a smoke on it.",
+  "tokens_base": 114,
+  "tokens_five": 158
+ },
+ {
+  "i": 86,
+  "before": [
+   "Smoke the east door."
+  ],
+  "bot": null,
+  "line": "Check the basement.",
+  "route": 3.981900593481425e-05,
+  "older": [
+   "run up to the balcony and wait for me there",
+   "They're rotating to the basement, and one's still on the roof.",
+   "I'm gonna hide behind the van, watch me till I get there",
+   "frag out on default"
+  ],
+  "file": "Check the basement.",
+  "base": "Check the basement.",
+  "five": "Check the basement.",
+  "tokens_base": 112,
+  "tokens_five": 166
+ },
+ {
+  "i": 87,
+  "before": [
+   "Hold the main door."
+  ],
+  "bot": null,
+  "line": "Keep watching it, I'll take the other one.",
+  "route": 0.9930741920604919,
+  "older": [
+   "you're one tap, duck behind that car and let me take the fight",
+   "That's the call, execute, go go go!",
+   "you're entry frag this round, get in the room",
+   "Hit north door, go in hot and clean that room out."
+  ],
+  "file": "Keep watching the main door.",
+  "base": "Keep watching the main door.",
+  "five": "Keep watching it, I'll take the other one.",
+  "tokens_base": 119,
+  "tokens_five": 179
+ },
+ {
+  "i": 88,
+  "before": [
+   "Go to the second floor.",
+   "Hurry up."
+  ],
+  "bot": null,
+  "line": "No wait, the top floor.",
+  "route": 0.9999302464660956,
+  "older": [
+   "cover default plant with smoke, Glaz is watching",
+   "get that window open, I wanna shoot out of it from here",
+   "watch my back while I plant"
+  ],
+  "file": "Go to the top floor.",
+  "base": "Go to the top floor.",
+  "five": "Go to the top floor.",
+  "tokens_base": 122,
+  "tokens_five": 160
+ },
+ {
+  "i": 89,
+  "before": [
+   "Hold the red stairs.",
+   "Smoke the east window."
+  ],
+  "bot": null,
+  "line": "No, the west one.",
+  "route": 0.9999452980073752,
+  "older": [
+   "I'm gonna hide behind the van, watch me till I get there",
+   "push in and clear it out, room by room",
+   "wait wait, scratch that, don't open it yet"
+  ],
+  "file": "Smoke the west window.",
+  "base": "Smoke the west window.",
+  "five": "Smoke the west window.",
+  "tokens_base": 121,
+  "tokens_five": 165
+ },
+ {
+  "i": 90,
+  "before": [
+   "Rappel to the window."
+  ],
+  "bot": "Which window?",
+  "line": "East.",
+  "route": 0.999770822274581,
+  "older": [
+   "Push in and clear it out, room by room.",
+   "one's playing behind the bed in master, that cover is soft",
+   "when I yell go, loop round the back",
+   "you're one tap, duck behind that car and let me take the fight"
+  ],
+  "file": "Rappel to the east window.",
+  "base": "Rappel to the east window.",
+  "five": "Rappel to the east window.",
+  "tokens_base": 117,
+  "tokens_five": 176
+ },
+ {
+  "i": 91,
+  "before": [
+   "Flash the kitchen."
+  ],
+  "bot": null,
+  "line": "Smoke the west window.",
+  "route": 3.3888875318207413e-05,
+  "older": [
+   "Kali's got long locked down, get out of her lane and hide up",
+   "stay put, don't budge",
+   "you're one tap, duck behind that car and let me take the fight",
+   "nah no need to hide, nobody's got eyes on you"
+  ],
+  "file": "Smoke the west window.",
+  "base": "Smoke the west window.",
+  "five": "Smoke the west window.",
+  "tokens_base": 112,
+  "tokens_five": 174
+ },
+ {
+  "i": 92,
+  "before": [
+   "Hold the red stairs."
+  ],
+  "bot": "Want me to drone the top floor?",
+  "line": "Negative.",
+  "route": 0.03802006067518567,
+  "older": [
+   "Red stairs down in basement, lock that down, nobody walks up it.",
+   "watch my back while I plant",
+   "Plant the defuser.",
+   "Suppress the north window."
+  ],
+  "file": "Negative.",
+  "base": "Negative.",
+  "five": "Negative.",
+  "tokens_base": 120,
+  "tokens_five": 160
+ },
+ {
+  "i": 93,
+  "before": [
+   "Watch the east window."
+  ],
+  "bot": null,
+  "line": "Open the east door.",
+  "route": 3.347480011758019e-05,
+  "older": [
+   "Red stairs down in basement, lock that down, nobody walks up it.",
+   "you're one tap, duck behind that car and let me take the fight",
+   "Could be, it's your call.",
+   "frag out on default"
+  ],
+  "file": "Open the east door.",
+  "base": "Open the east door.",
+  "five": "Open the east door.",
+  "tokens_base": 113,
+  "tokens_five": 165
+ },
+ {
+  "i": 94,
+  "before": [
+   "Clear the basement."
+  ],
+  "bot": "Basement clear.",
+  "line": "Come back.",
+  "route": 0.0001901570045675751,
+  "older": [
+   "rotate over to where I marked",
+   "Did you hear that? Was that a drone or footsteps?",
+   "plant the defuser",
+   "Could be, it's your call."
+  ],
+  "file": "Come back.",
+  "base": "Come back.",
+  "five": "Come back.",
+  "tokens_base": 115,
+  "tokens_five": 155
+ },
+ {
+  "i": 95,
+  "before": [
+   "Drone the basement.",
+   "Open the north door."
+  ],
+  "bot": null,
+  "line": "I meant the window.",
+  "route": 0.9999438626185584,
+  "older": [
+   "rez me please",
+   "They're rotating to the basement, and one's still on the roof.",
+   "get that window open, I wanna shoot out of it from here"
+  ],
+  "file": "Open the north window.",
+  "base": "Open the north window.",
+  "five": "Open the north window.",
+  "tokens_base": 119,
+  "tokens_five": 158
+ },
+ {
+  "i": 96,
+  "before": [
+   "Breach the east door."
+  ],
+  "bot": "East door is open.",
+  "line": "Then the main door.",
+  "route": 0.999977916585887,
+  "older": [
+   "cover default plant with smoke, Glaz is watching",
+   "nah no need to hide, nobody's got eyes on you",
+   "drone the other room first",
+   "Smoke off yellow so we can cross without getting domed."
+  ],
+  "file": "Breach the main door.",
+  "base": "Breach the main door.",
+  "five": "Breach the main door.",
+  "tokens_base": 121,
+  "tokens_five": 171
+ },
+ {
+  "i": 97,
+  "before": [],
+  "bot": "Want me to flash first?",
+  "line": "No, just go in.",
+  "route": 0.9999330310906447,
+  "older": [
+   "get over to my ping",
+   "flip the skylight up for me",
+   "they rotated through the bedroom wall",
+   "get the bomb down, we got 20 seconds",
+   "slide the gate open, keep it quiet"
+  ],
+  "file": "Go in.",
+  "base": "Go in.",
+  "five": "Go in.",
+  "tokens_base": 115,
+  "tokens_five": 168
+ },
+ {
+  "i": 98,
+  "before": [
+   "Smoke the east window.",
+   "Good smoke."
+  ],
+  "bot": null,
+  "line": "Smoke the west window.",
+  "route": 3.3888875318207413e-05,
+  "older": [
+   "rotate over to where I marked",
+   "plant the defuser",
+   "stay put, don't budge"
+  ],
+  "file": "Smoke the west window.",
+  "base": "Smoke the west window.",
+  "five": "Smoke the west window.",
+  "tokens_base": 118,
+  "tokens_five": 144
+ },
+ {
+  "i": 99,
+  "before": [
+   "Frag the north window."
+  ],
+  "bot": "Frag out.",
+  "line": "One more time.",
+  "route": 6.260715606177794e-05,
+  "older": [
+   "drone the other room first",
+   "Did you hear that? Was that a drone or footsteps?",
+   "cover default plant with smoke, Glaz is watching",
+   "when I yell go, loop round the back"
+  ],
+  "file": "One more time.",
+  "base": "One more time.",
+  "five": "One more time.",
+  "tokens_base": 117,
+  "tokens_five": 164
+ },
+ {
+  "i": 100,
+  "before": [],
+  "bot": null,
+  "line": "Smoke the main door and hold the yellow stairs.",
+  "route": 0.9999800369321564,
+  "older": [
+   "roll the garage door up so I can see under it",
+   "stay put, don't budge",
+   "Plant the defuser.",
+   "post up behind the doorframe and lock that window",
+   "frag out on default"
+  ],
+  "file": "Smoke the main door.\nHold the yellow stairs.",
+  "base": "Smoke the main door.\nHold the yellow stairs.",
+  "five": "Smoke the main door.\nHold the yellow stairs.",
+  "tokens_base": 111,
+  "tokens_five": 162
+ },
+ {
+  "i": 101,
+  "before": [
+   "Go to the red stairs.",
+   "Frag the kitchen."
+  ],
+  "bot": null,
+  "line": "Stop.",
+  "route": 0.0001454316313654448,
+  "older": [
+   "Rope up and hang outside the south window until I call it.",
+   "They're rotating to the basement, and one's still on the roof.",
+   "I'm gonna hide behind the van, watch me till I get there"
+  ],
+  "file": "Stop.",
+  "base": "Stop.",
+  "five": "Stop.",
+  "tokens_base": 117,
+  "tokens_five": 166
+ },
+ {
+  "i": 102,
+  "before": [
+   "Drone the kitchen."
+  ],
+  "bot": null,
+  "line": "Push in after you flash it.",
+  "route": 0.9999528017385497,
+  "older": [
+   "you're one tap, duck behind that car and let me take the fight",
+   "Push in and clear it out, room by room.",
+   "Last guy is on the roof, I heard him run across.",
+   "stay put, don't budge"
+  ],
+  "file": "Flash the kitchen.\nPush into the kitchen.",
+  "base": "Flash the kitchen.\nPush into the kitchen.",
+  "five": "Flash the kitchen.\nPush into the kitchen.",
+  "tokens_base": 114,
+  "tokens_five": 170
+ },
+ {
+  "i": 103,
+  "before": [
+   "Flash the south door."
+  ],
+  "bot": null,
+  "line": "Then the main door.",
+  "route": 0.999977916585887,
+  "older": [
+   "frag out on default",
+   "Could be, it's your call.",
+   "open the west door quietly, toss a frag in",
+   "That's the call, execute, go go go!"
+  ],
+  "file": "Flash the main door.",
+  "base": "Flash the main door.",
+  "five": "Flash the main door.",
+  "tokens_base": 113,
+  "tokens_five": 156
+ },
+ {
+  "i": 104,
+  "before": [
+   "Breach the hatch."
+  ],
+  "bot": "Hatch is open.",
+  "line": "Copy.",
+  "route": 0.00047456411523074294,
+  "older": [
+   "you're entry frag this round, get in the room",
+   "get on the rope and climb up to roof",
+   "Rope up and hang outside the south window until I call it.",
+   "get over to my ping"
+  ],
+  "file": "Copy.",
+  "base": "Copy.",
+  "five": "Copy.",
+  "tokens_base": 116,
+  "tokens_five": 165
+ },
+ {
+  "i": 105,
+  "before": [
+   "Rappel to the south window."
+  ],
+  "bot": null,
+  "line": "Sorry, north.",
+  "route": 0.9999425052883814,
+  "older": [
+   "Is the hatch reinforced?",
+   "Plant the defuser.",
+   "Red stairs down in basement, lock that down, nobody walks up it.",
+   "wait wait, scratch that, don't open it yet"
+  ],
+  "file": "Rappel to the north window.",
+  "base": "Rappel to the north window.",
+  "five": "Open the north window.",
+  "tokens_base": 115,
+  "tokens_five": 160
+ },
+ {
+  "i": 106,
+  "before": [
+   "Drone the basement."
+  ],
+  "bot": "Two in the basement.",
+  "line": "Now clear it.",
+  "route": 0.9999665997686151,
+  "older": [
+   "you're one tap, duck behind that car and let me take the fight",
+   "Suppress the north window.",
+   "Yes, exactly, put a drone in there.",
+   "you're entry frag this round, get in the room"
+  ],
+  "file": "Clear the basement.",
+  "base": "Clear the basement.",
+  "five": "Now clear it.",
+  "tokens_base": 118,
+  "tokens_five": 169
+ },
+ {
+  "i": 107,
+  "before": [],
+  "bot": null,
+  "line": "Plant the defuser.",
+  "route": 3.510645028371662e-05,
+  "older": [
+   "blind the room for me",
+   "when I yell go, loop round the back",
+   "Rope up and hang outside the south window until I call it.",
+   "Push in and clear it out, room by room.",
+   "That's the call, execute, go go go!"
+  ],
+  "file": "Plant the defuser.",
+  "base": "Plant the defuser.",
+  "five": "Plant the defuser.",
+  "tokens_base": 106,
+  "tokens_five": 167
+ },
+ {
+  "i": 108,
+  "before": [
+   "Breach the north wall.",
+   "Damn, it's reinforced."
+  ],
+  "bot": null,
+  "line": "Hold the red stairs.",
+  "route": 3.4597693622451645e-05,
+  "older": [
+   "post up behind the doorframe and lock that window",
+   "Kali's got long locked down, get out of her lane and hide up",
+   "full commit onto site, kill whatever's in there"
+  ],
+  "file": "Hold the red stairs.",
+  "base": "Hold the red stairs.",
+  "five": "Hold the red stairs.",
+  "tokens_base": 122,
+  "tokens_five": 167
+ },
+ {
+  "i": 109,
+  "before": [
+   "Check the garage.",
+   "Stay there."
+  ],
+  "bot": null,
+  "line": "Frag the south window.",
+  "route": 3.344037292791584e-05,
+  "older": [
+   "I'm gonna hide behind the van, watch me till I get there",
+   "smoke the doorway",
+   "Last guy is on the roof, I heard him run across."
+  ],
+  "file": "Frag the south window.",
+  "base": "Frag the south window.",
+  "five": "Frag the south window.",
+  "tokens_base": 117,
+  "tokens_five": 155
+ },
+ {
+  "i": 110,
+  "before": [
+   "Check the garage."
+  ],
+  "bot": "Checking the garage.",
+  "line": "No, drone it.",
+  "route": 0.9999452023836423,
+  "older": [
+   "Don't breach that wall, it's reinforced.",
+   "quietly pop that door open, I just want a sightline",
+   "watch my back while I plant",
+   "Is the hatch reinforced?"
+  ],
+  "file": "Drone the garage.",
+  "base": "Drone the garage.",
+  "five": "Drone the garage.",
+  "tokens_base": 118,
+  "tokens_five": 161
+ },
+ {
+  "i": 111,
+  "before": [
+   "Go to the red stairs."
+  ],
+  "bot": null,
+  "line": "Cover me.",
+  "route": 3.446596984690171e-05,
+  "older": [
+   "Could be, it's your call.",
+   "Rope up and hang outside the south window until I call it.",
+   "you're entry frag this round, get in the room",
+   "rez me please"
+  ],
+  "file": "Cover me.",
+  "base": "Cover me.",
+  "five": "Cover me.",
+  "tokens_base": 112,
+  "tokens_five": 157
+ },
+ {
+  "i": 112,
+  "before": [
+   "Suppress the east window."
+  ],
+  "bot": "I'm out of ammo.",
+  "line": "Then fall back.",
+  "route": 0.9999812031967046,
+  "older": [
+   "frag out on default",
+   "when I yell go, loop round the back",
+   "full commit onto site, kill whatever's in there",
+   "Could be, it's your call."
+  ],
+  "file": "Fall back.",
+  "base": "Fall back.",
+  "five": "Fall back.",
+  "tokens_base": 120,
+  "tokens_five": 162
+ },
+ {
+  "i": 113,
+  "before": [
+   "Go to the east wall."
+  ],
+  "bot": null,
+  "line": "Breach this wall.",
+  "route": 3.9454568597999365e-05,
+  "older": [
+   "when I yell go, loop round the back",
+   "quietly pop that door open, I just want a sightline",
+   "get on the rope and climb up to roof",
+   "full commit onto site, kill whatever's in there"
+  ],
+  "file": "Breach this wall.",
+  "base": "Breach this wall.",
+  "five": "Breach this wall.",
+  "tokens_base": 114,
+  "tokens_five": 166
+ },
+ {
+  "i": 114,
+  "before": [
+   "Smoke the main door."
+  ],
+  "bot": "Smoke is fading.",
+  "line": "Do that again.",
+  "route": 3.5108777147473277e-05,
+  "older": [
+   "Don't breach that wall, it's reinforced.",
+   "Did you hear that? Was that a drone or footsteps?",
+   "push in and clear it out, room by room",
+   "get that window open, I wanna shoot out of it from here"
+  ],
+  "file": "Do that again.",
+  "base": "Do that again.",
+  "five": "Do that again.",
+  "tokens_base": 118,
+  "tokens_five": 173
+ },
+ {
+  "i": 115,
+  "before": [
+   "Smoke the main door."
+  ],
+  "bot": null,
+  "line": "Stay at my pin.",
+  "route": 4.1641668321925264e-05,
+  "older": [
+   "Is the hatch reinforced?",
+   "plant the defuser",
+   "blind the room for me",
+   "you've got the C4, set it up on A"
+  ],
+  "file": "Stay at my pin.",
+  "base": "Stay at my pin.",
+  "five": "Stay at my pin.",
+  "tokens_base": 113,
+  "tokens_five": 150
+ },
+ {
+  "i": 116,
+  "before": [
+   "Stun the garage."
+  ],
+  "bot": null,
+  "line": "Actually, frag it.",
+  "route": 0.9999367097229519,
+  "older": [
+   "Kali's got long locked down, get out of her lane and hide up",
+   "Last guy is on the roof, I heard him run across.",
+   "Yes, exactly, put a drone in there.",
+   "when I yell go, loop round the back"
+  ],
+  "file": "Frag the garage.",
+  "base": "Frag the garage.",
+  "five": "Frag the garage.",
+  "tokens_base": 113,
+  "tokens_five": 171
+ },
+ {
+  "i": 117,
+  "before": [
+   "Hide behind the table."
+  ],
+  "bot": null,
+  "line": "The sofa, I mean.",
+  "route": 0.9999433936959151,
+  "older": [
+   "open the west door quietly, toss a frag in",
+   "plant the defuser",
+   "Last guy is on the roof, I heard him run across.",
+   "Plant the defuser."
+  ],
+  "file": "Hide behind the sofa.",
+  "base": "Hide behind the sofa.",
+  "five": "Plant the defuser in the sofa.",
+  "tokens_base": 114,
+  "tokens_five": 156
+ },
+ {
+  "i": 118,
+  "before": [
+   "Check the kitchen.",
+   "Frag the north window."
+  ],
+  "bot": null,
+  "line": "Same on the south one.",
+  "route": 0.9999751659861607,
+  "older": [
+   "you've got the C4, set it up on A",
+   "full commit onto site, kill whatever's in there",
+   "plant the defuser"
+  ],
+  "file": "Frag the south window.",
+  "base": "Frag the south window.",
+  "five": "Frag the south window.",
+  "tokens_base": 120,
+  "tokens_five": 155
+ },
+ {
+  "i": 119,
+  "before": [
+   "Drone the kitchen.",
+   "Frag it."
+  ],
+  "bot": null,
+  "line": "Check the basement.",
+  "route": 3.981900593481425e-05,
+  "older": [
+   "deny that plant before it pops",
+   "quietly pop that door open, I just want a sightline",
+   "Rope up and hang outside the south window until I call it."
+  ],
+  "file": "Check the basement.",
+  "base": "Check the basement.",
+  "five": "Check the basement.",
+  "tokens_base": 116,
+  "tokens_five": 155
+ },
+ {
+  "i": 120,
+  "before": [],
+  "bot": null,
+  "line": "they're rotating to the basement, and one's still on the roof",
+  "route": 0.0001531887344401696,
+  "older": [
+   "Plant the defuser.",
+   "Last guy is on the roof, I heard him run across.",
+   "Could be, it's your call.",
+   "push in and clear it out, room by room",
+   "Don't breach that wall, it's reinforced."
+  ],
+  "file": "They're rotating to the basement, and one's still on the roof.",
+  "base": "They're rotating to the basement, and one's still on the roof.",
+  "five": "They're rotating to the basement, and one's still on the roof.",
+  "tokens_base": 115,
+  "tokens_five": 172
+ },
+ {
+  "i": 121,
+  "before": [],
+  "bot": null,
+  "line": "don't breach that wall, it's reinforced",
+  "route": 4.1129495330712426e-05,
+  "older": [
+   "they rotated through the bedroom wall",
+   "That's the call, execute, go go go!",
+   "you're one tap, duck behind that car and let me take the fight",
+   "Kali's got long locked down, get out of her lane and hide up",
+   "nah no need to hide, nobody's got eyes on you"
+  ],
+  "file": "don't breach that wall, it's reinforced",
+  "base": "don't breach that wall, it's reinforced",
+  "five": "don't breach that wall, it's reinforced",
+  "tokens_base": 110,
+  "tokens_five": 184
+ },
+ {
+  "i": 122,
+  "before": [],
+  "bot": null,
+  "line": "suppress the east window so i can cross, then follow me",
+  "route": 0.9999759437987269,
+  "older": [
+   "nitro's coming over the top, get yourself somewhere safe",
+   "blind the room for me",
+   "Rope up and hang outside the south window until I call it.",
+   "Push in and clear it out, room by room.",
+   "nah no need to hide, nobody's got eyes on you"
+  ],
+  "file": "Suppress the east window so I can cross.\nFollow me.",
+  "base": "Suppress the east window.\nFollow me.",
+  "five": "Suppress the east window.\nFollow me.",
+  "tokens_base": 113,
+  "tokens_five": 179
+ },
+ {
+  "i": 123,
+  "before": [],
+  "bot": null,
+  "line": "that's the call, execute, go go go",
+  "route": 4.3210075321227155e-05,
+  "older": [
+   "you're one tap, duck behind that car and let me take the fight",
+   "you're entry frag this round, get in the room",
+   "when I yell go, loop round the back",
+   "watch my back while I plant",
+   "take the long way through my ping and pinch them"
+  ],
+  "file": "that's the call, execute, go go go",
+  "base": "that's the call, execute, go go go",
+  "five": "that's the call, execute, go go go",
+  "tokens_base": 111,
+  "tokens_five": 177
+ },
+ {
+  "i": 124,
+  "before": [],
+  "bot": null,
+  "line": "wait for my count, then blow the east wall",
+  "route": 4.118039842455449e-05,
+  "older": [
+   "when I yell go, loop round the back",
+   "hold main door, anyone swings you drop 'em",
+   "nitro's coming over the top, get yourself somewhere safe",
+   "watch my back while I plant",
+   "Push in and clear it out, room by room."
+  ],
+  "file": "Blow the east wall.",
+  "base": "Blow the east wall.",
+  "five": "Blow the east wall.",
+  "tokens_base": 111,
+  "tokens_five": 173
+ },
+ {
+  "i": 125,
+  "before": [],
+  "bot": null,
+  "line": "two in the kitchen and one behind the chairs, frag them",
+  "route": 0.0008208848768593587,
+  "older": [
+   "rez me please",
+   "stay put, don't budge",
+   "drone the other room first",
+   "that's the call, execute, go go go",
+   "Don't breach that wall, it's reinforced."
+  ],
+  "file": "Frag the kitchen.\nFrag the chair behind the kitchen.",
+  "base": "Frag the kitchen.\nFrag the chair behind the kitchen.",
+  "five": "Frag the kitchen.\nFrag the chair behind the kitchen.",
+  "tokens_base": 113,
+  "tokens_five": 162
+ },
+ {
+  "i": 126,
+  "before": [],
+  "bot": null,
+  "line": "check the top floor, and once it's clear come back here",
+  "route": 0.9999744579909028,
+  "older": [
+   "They're rotating to the basement, and one's still on the roof.",
+   "rez me please",
+   "slide the gate open, keep it quiet",
+   "open the west door quietly, toss a frag in",
+   "plant the defuser"
+  ],
+  "file": "Check the top floor.\nCome back here.",
+  "base": "Check the top floor.\nCome back here.",
+  "five": "Check the top floor.\nCome back here.",
+  "tokens_base": 114,
+  "tokens_five": 168
+ },
+ {
+  "i": 127,
+  "before": [],
+  "bot": null,
+  "line": "after you check the basement, come back and cover me while i plant",
+  "route": 0.9999805938144196,
+  "older": [
+   "take the long way through my ping and pinch them",
+   "rez me please",
+   "frag out on default",
+   "smoke the doorway",
+   "you're one tap, duck behind that car and let me take the fight"
+  ],
+  "file": "Check the basement.\nCome back.\nCover me while I plant.",
+  "base": "Check the basement.\nCome back.\nCover me while I plant.",
+  "five": "Check the basement.\nCome back.\nCover me while I plant.",
+  "tokens_base": 115,
+  "tokens_five": 165
+ },
+ {
+  "i": 128,
+  "before": [],
+  "bot": null,
+  "line": "open the west door quietly, toss a frag in",
+  "route": 0.9987912603254554,
+  "older": [
+   "Plant is down by the table, forty seconds on the clock.",
+   "I'm going to flash the door and swing, wish me luck.",
+   "Is the hatch reinforced?",
+   "get that window open, I wanna shoot out of it from here",
+   "Could be, it's your call."
+  ],
+  "file": "open the west door quietly, toss a frag in",
+  "base": "open the west door quietly, toss a frag in",
+  "five": "open the west door quietly, toss a frag in",
+  "tokens_base": 111,
+  "tokens_five": 175
+ },
+ {
+  "i": 129,
+  "before": [],
+  "bot": null,
+  "line": "i'll breach the wall, you flash through it",
+  "route": 6.611759036747537e-05,
+  "older": [
+   "Red stairs down in basement, lock that down, nobody walks up it.",
+   "Smoke off yellow so we can cross without getting domed.",
+   "don't breach that wall, it's reinforced",
+   "Did you hear that? Was that a drone or footsteps?",
+   "you're entry frag this round, get in the room"
+  ],
+  "file": "flash through the wall",
+  "base": "flash through the wall",
+  "five": "you flash through the wall",
+  "tokens_base": 111,
+  "tokens_five": 182
+ },
+ {
+  "i": 130,
+  "before": [],
+  "bot": null,
+  "line": "go prone, open fire on that window, then fall back to the stairs",
+  "route": 0.9999719786632301,
+  "older": [
+   "Could be, it's your call.",
+   "get that window open, I wanna shoot out of it from here",
+   "watch my back while I plant",
+   "when I yell go, loop round the back",
+   "flip the skylight up for me"
+  ],
+  "file": "Go prone.\nOpen fire on that window.\nFall back to the stairs.",
+  "base": "Go prone.\nOpen fire on that window.\nFall back to the stairs.",
+  "five": "Go prone.\nOpen fire on that window.\nFall back to the stairs.",
+  "tokens_base": 116,
+  "tokens_five": 174
+ },
+ {
+  "i": 131,
+  "before": [],
+  "bot": null,
+  "line": "breach the hatch and drop down through it",
+  "route": 0.39753025163518296,
+  "older": [
+   "nitro's coming over the top, get yourself somewhere safe",
+   "get that window open, I wanna shoot out of it from here",
+   "Kali's got long locked down, get out of her lane and hide up",
+   "Last guy is on the roof, I heard him run across.",
+   "plant the defuser"
+  ],
+  "file": "Breach the hatch.\nDrop down through the hatch.",
+  "base": "Breach the hatch.\nDrop down through the hatch.",
+  "five": "breach the hatch and drop down through it",
+  "tokens_base": 109,
+  "tokens_five": 181
+ },
+ {
+  "i": 132,
+  "before": [],
+  "bot": null,
+  "line": "drone the basement, and when you're done watch the red stairs",
+  "route": 0.9999710890308096,
+  "older": [
+   "run up to the balcony and wait for me there",
+   "Last guy is on the roof, I heard him run across.",
+   "wait wait, scratch that, don't open it yet",
+   "quietly pop that door open, I just want a sightline",
+   "stay put, don't budge"
+  ],
+  "file": "Drone the basement.\nWatch the red stairs.",
+  "base": "Drone the basement.\nWatch the red stairs.",
+  "five": "Drone the basement.\nWatch the red stairs.",
+  "tokens_base": 114,
+  "tokens_five": 181
+ },
+ {
+  "i": 133,
+  "before": [],
+  "bot": null,
+  "line": "push in and clear it out, room by room",
+  "route": 3.7304095828492894e-05,
+  "older": [
+   "run up to the balcony and wait for me there",
+   "Is the hatch reinforced?",
+   "one's playing behind the bed in master, that cover is soft",
+   "Red stairs down in basement, lock that down, nobody walks up it.",
+   "get over to my ping"
+  ],
+  "file": "push in and clear it out, room by room",
+  "base": "push in and clear it out, room by room",
+  "five": "push in and clear it out, room by room",
+  "tokens_base": 111,
+  "tokens_five": 172
+ },
+ {
+  "i": 134,
+  "before": [],
+  "bot": null,
+  "line": "stop shooting, get up, and follow me to the roof",
+  "route": 0.9999818118738218,
+  "older": [
+   "get on the rope and climb up to roof",
+   "Kali's got long locked down, get out of her lane and hide up",
+   "Hit north door, go in hot and clean that room out.",
+   "roll the garage door up so I can see under it",
+   "rotate over to where I marked"
+  ],
+  "file": "Stop shooting.\nGet up.\nFollow me to the roof.",
+  "base": "Stop shooting.\nGet up.\nFollow me to the roof.",
+  "five": "stop shooting\nget up\nfollow me to the roof",
+  "tokens_base": 113,
+  "tokens_five": 182
+ },
+ {
+  "i": 135,
+  "before": [],
+  "bot": null,
+  "line": "frag the corner behind the sofa, then same thing on the other side",
+  "route": 0.9999783363859458,
+  "older": [
+   "when I yell go, loop round the back",
+   "one's playing behind the bed in master, that cover is soft",
+   "run up to the balcony and wait for me there",
+   "I'm gonna hide behind the van, watch me till I get there",
+   "get on the rope and climb up to roof"
+  ],
+  "file": "frag the corner behind the sofa\nfrag the other side",
+  "base": "frag the corner behind the sofa\nfrag the other side",
+  "five": "frag the corner behind the sofa\nfrag the other side",
+  "tokens_base": 115,
+  "tokens_five": 185
+ },
+ {
+  "i": 136,
+  "before": [],
+  "bot": null,
+  "line": "vault in through the west window, check the room, then open the door for me",
+  "route": 0.9999759891566061,
+  "older": [
+   "plant the defuser",
+   "get that window open, I wanna shoot out of it from here",
+   "wait wait, scratch that, don't open it yet",
+   "Smoke off yellow so we can cross without getting domed.",
+   "flip the skylight up for me"
+  ],
+  "file": "vault in through the west window\ncheck the room\nopen the door for me",
+  "base": "vault in through the west window\ncheck the room\nopen the door for me",
+  "five": "vault in through the west window\ncheck the room\nopen the door for me",
+  "tokens_base": 118,
+  "tokens_five": 180
+ },
+ {
+  "i": 137,
+  "before": [],
+  "bot": null,
+  "line": "i'm going to flash the door and swing, wish me luck",
+  "route": 5.41736509292771e-05,
+  "older": [
+   "wait wait, scratch that, don't open it yet",
+   "nah no need to hide, nobody's got eyes on you",
+   "smoke the doorway",
+   "They're rotating to the basement, and one's still on the roof.",
+   "nitro's coming over the top, get yourself somewhere safe"
+  ],
+  "file": "I'm going to flash the door and swing, wish me luck.",
+  "base": "I'm going to flash the door and swing, wish me luck.",
+  "five": "i'm going to flash the door and swing, wish me luck",
+  "tokens_base": 114,
+  "tokens_five": 181
+ },
+ {
+  "i": 138,
+  "before": [],
+  "bot": null,
+  "line": "stun the room and then clear it out",
+  "route": 0.9999833106786291,
+  "older": [
+   "You keep this door covered, I'm taking the other one upstairs.",
+   "Is the hatch reinforced?",
+   "drone the other room first",
+   "deny that plant before it pops",
+   "take the long way through my ping and pinch them"
+  ],
+  "file": "Stun the room.\nClear the room out.",
+  "base": "Stun the room.\nClear the room out.",
+  "five": "stun the room\nclear the room out",
+  "tokens_base": 109,
+  "tokens_five": 162
+ },
+ {
+  "i": 139,
+  "before": [],
+  "bot": null,
+  "line": "hop over the sofa and hold the door from there",
+  "route": 0.9999801718525714,
+  "older": [
+   "push in and clear it out, room by room",
+   "They're rotating to the basement, and one's still on the roof.",
+   "Suppress the north window.",
+   "that's the call, execute, go go go",
+   "flip the skylight up for me"
+  ],
+  "file": "Hop over the sofa.\nHold the door from there.",
+  "base": "Hop over the sofa.\nHold the door from there.",
+  "five": "Hop over the sofa.\nHold the door from there.",
+  "tokens_base": 111,
+  "tokens_five": 172
+ },
+ {
+  "i": 140,
+  "before": [],
+  "bot": null,
+  "line": "smoke the main door and hold the yellow stairs",
+  "route": 0.9999802489464739,
+  "older": [
+   "get over to my ping",
+   "Don't breach that wall, it's reinforced.",
+   "you've got the C4, set it up on A",
+   "full commit onto site, kill whatever's in there",
+   "don't breach that wall, it's reinforced"
+  ],
+  "file": "Smoke the main door.\nHold the yellow stairs.",
+  "base": "Smoke the main door.\nHold the yellow stairs.",
+  "five": "Smoke the main door.\nHold the yellow stairs.",
+  "tokens_base": 110,
+  "tokens_five": 170
+ },
+ {
+  "i": 141,
+  "before": [
+   "go to the red stairs",
+   "frag the kitchen"
+  ],
+  "bot": null,
+  "line": "stop",
+  "route": 5.1254718546204336e-05,
+  "older": [
+   "quietly pop that door open, I just want a sightline",
+   "post up behind the doorframe and lock that window",
+   "Could be, it's your call."
+  ],
+  "file": "stop",
+  "base": "stop",
+  "five": "stop",
+  "tokens_base": 116,
+  "tokens_five": 154
+ },
+ {
+  "i": 142,
+  "before": [
+   "drone the kitchen"
+  ],
+  "bot": null,
+  "line": "push in after you flash it",
+  "route": 0.9999466288188569,
+  "older": [
+   "open the west door quietly, toss a frag in",
+   "Last guy is on the roof, I heard him run across.",
+   "plant the defuser",
+   "blind the room for me"
+  ],
+  "file": "Flash the kitchen.\nPush into the kitchen.",
+  "base": "Flash the kitchen.\nPush into the kitchen.",
+  "five": "Flash the room.\nPush into the room.",
+  "tokens_base": 113,
+  "tokens_five": 156
+ },
+ {
+  "i": 143,
+  "before": [
+   "flash the south door"
+  ],
+  "bot": null,
+  "line": "then the main door",
+  "route": 0.9999786955482535,
+  "older": [
+   "open the west door quietly, toss a frag in",
+   "push in and clear it out, room by room",
+   "hold main door, anyone swings you drop 'em",
+   "frag out on default"
+  ],
+  "file": "Flash the main door.",
+  "base": "Flash the main door.",
+  "five": "Flash the main door.",
+  "tokens_base": 112,
+  "tokens_five": 158
+ },
+ {
+  "i": 144,
+  "before": [
+   "breach the hatch"
+  ],
+  "bot": "Hatch is open.",
+  "line": "copy",
+  "route": 0.00011798482860153298,
+  "older": [
+   "Rope up and hang outside the south window until I call it.",
+   "don't breach that wall, it's reinforced",
+   "full commit onto site, kill whatever's in there",
+   "stay put, don't budge"
+  ],
+  "file": "Copy.",
+  "base": "Copy.",
+  "five": "copy",
+  "tokens_base": 114,
+  "tokens_five": 164
+ },
+ {
+  "i": 145,
+  "before": [
+   "rappel to the south window"
+  ],
+  "bot": null,
+  "line": "sorry, north",
+  "route": 0.9999385866323526,
+  "older": [
+   "wait wait, scratch that, don't open it yet",
+   "run up to the balcony and wait for me there",
+   "deny that plant before it pops",
+   "push in and clear it out, room by room"
+  ],
+  "file": "Rappel to the north window.",
+  "base": "Rappel to the north window.",
+  "five": "rappel to the north window",
+  "tokens_base": 113,
+  "tokens_five": 162
+ },
+ {
+  "i": 146,
+  "before": [
+   "drone the basement"
+  ],
+  "bot": "Two in the basement.",
+  "line": "now clear it",
+  "route": 0.9999651607941573,
+  "older": [
+   "Plant the defuser.",
+   "one's playing behind the bed in master, that cover is soft",
+   "Hit north door, go in hot and clean that room out.",
+   "get that window open, I wanna shoot out of it from here"
+  ],
+  "file": "Clear the basement.",
+  "base": "Clear the basement.",
+  "five": "clear it",
+  "tokens_base": 117,
+  "tokens_five": 171
+ },
+ {
+  "i": 147,
+  "before": [],
+  "bot": null,
+  "line": "plant the defuser",
+  "route": 3.089650242129891e-05,
+  "older": [
+   "smoke the doorway",
+   "cover default plant with smoke, Glaz is watching",
+   "get over to my ping",
+   "Don't breach that wall, it's reinforced.",
+   "nah no need to hide, nobody's got eyes on you"
+  ],
+  "file": "plant the defuser",
+  "base": "plant the defuser",
+  "five": "plant the defuser",
+  "tokens_base": 105,
+  "tokens_five": 159
+ },
+ {
+  "i": 148,
+  "before": [
+   "breach the north wall",
+   "damn, it's reinforced"
+  ],
+  "bot": null,
+  "line": "hold the red stairs",
+  "route": 4.141128956091222e-05,
+  "older": [
+   "You keep this door covered, I'm taking the other one upstairs.",
+   "flip the skylight up for me",
+   "post up behind the doorframe and lock that window"
+  ],
+  "file": "Hold the red stairs.",
+  "base": "Hold the red stairs.",
+  "five": "hold the red stairs",
+  "tokens_base": 120,
+  "tokens_five": 160
+ },
+ {
+  "i": 149,
+  "before": [
+   "check the garage",
+   "stay there"
+  ],
+  "bot": null,
+  "line": "frag the south window",
+  "route": 4.7229125648793166e-05,
+  "older": [
+   "Could be, it's your call.",
+   "Is the hatch reinforced?",
+   "Hit north door, go in hot and clean that room out."
+  ],
+  "file": "Frag the south window.",
+  "base": "Frag the south window.",
+  "five": "frag the south window",
+  "tokens_base": 116,
+  "tokens_five": 148
+ },
+ {
+  "i": 150,
+  "before": [
+   "check the garage"
+  ],
+  "bot": "Checking the garage.",
+  "line": "no, drone it",
+  "route": 0.9999260414221809,
+  "older": [
+   "Suppress the north window.",
+   "Red stairs down in basement, lock that down, nobody walks up it.",
+   "Is the hatch reinforced?",
+   "rez me please"
+  ],
+  "file": "Drone the garage.",
+  "base": "Drone the garage.",
+  "five": "Drone the garage.",
+  "tokens_base": 117,
+  "tokens_five": 154
+ },
+ {
+  "i": 151,
+  "before": [
+   "go to the red stairs"
+  ],
+  "bot": null,
+  "line": "cover me",
+  "route": 6.178906295455791e-05,
+  "older": [
+   "rotate over to where I marked",
+   "you've got the C4, set it up on A",
+   "Last guy is on the roof, I heard him run across.",
+   "take the long way through my ping and pinch them"
+  ],
+  "file": "cover me",
+  "base": "cover me",
+  "five": "cover me",
+  "tokens_base": 111,
+  "tokens_five": 163
+ },
+ {
+  "i": 152,
+  "before": [
+   "suppress the east window"
+  ],
+  "bot": "I'm out of ammo.",
+  "line": "then fall back",
+  "route": 0.9999807409016046,
+  "older": [
+   "get the bomb down, we got 20 seconds",
+   "Don't breach that wall, it's reinforced.",
+   "open the west door quietly, toss a frag in",
+   "nah no need to hide, nobody's got eyes on you"
+  ],
+  "file": "Fall back.",
+  "base": "Fall back.",
+  "five": "fall back",
+  "tokens_base": 119,
+  "tokens_five": 173
+ },
+ {
+  "i": 153,
+  "before": [
+   "go to the east wall"
+  ],
+  "bot": null,
+  "line": "breach this wall",
+  "route": 3.373460274762614e-05,
+  "older": [
+   "Yes, exactly, put a drone in there.",
+   "get that window open, I wanna shoot out of it from here",
+   "plant the defuser",
+   "Hit north door, go in hot and clean that room out."
+  ],
+  "file": "Breach this wall.",
+  "base": "Breach this wall.",
+  "five": "breach this wall",
+  "tokens_base": 112,
+  "tokens_five": 162
+ },
+ {
+  "i": 154,
+  "before": [
+   "smoke the main door"
+  ],
+  "bot": "Smoke is fading.",
+  "line": "do that again",
+  "route": 3.1732842459568544e-05,
+  "older": [
+   "hold main door, anyone swings you drop 'em",
+   "flip the skylight up for me",
+   "full commit onto site, kill whatever's in there",
+   "get the bomb down, we got 20 seconds"
+  ],
+  "file": "Do that again.",
+  "base": "Do that again.",
+  "five": "do that again",
+  "tokens_base": 117,
+  "tokens_five": 168
+ },
+ {
+  "i": 155,
+  "before": [
+   "smoke the main door"
+  ],
+  "bot": null,
+  "line": "stay at my pin",
+  "route": 3.540905748549615e-05,
+  "older": [
+   "Smoke off yellow so we can cross without getting domed.",
+   "Kali's got long locked down, get out of her lane and hide up",
+   "I'm gonna hide behind the van, watch me till I get there",
+   "Nah, never mind smoking red stairs, we don't need it."
+  ],
+  "file": "Stay at my pin.",
+  "base": "Stay at my pin.",
+  "five": "stay at my pin",
+  "tokens_base": 112,
+  "tokens_five": 178
+ },
+ {
+  "i": 156,
+  "before": [
+   "stun the garage"
+  ],
+  "bot": null,
+  "line": "actually, frag it",
+  "route": 0.9999384874314772,
+  "older": [
+   "Is the hatch reinforced?",
+   "Smoke off yellow so we can cross without getting domed.",
+   "cover default plant with smoke, Glaz is watching",
+   "rotate over to where I marked"
+  ],
+  "file": "Frag the garage.",
+  "base": "Frag the garage.",
+  "five": "frag the garage",
+  "tokens_base": 111,
+  "tokens_five": 154
+ },
+ {
+  "i": 157,
+  "before": [
+   "hide behind the table"
+  ],
+  "bot": null,
+  "line": "the sofa, i mean",
+  "route": 0.9999406981066475,
+  "older": [
+   "flip the skylight up for me",
+   "stay put, don't budge",
+   "you're one tap, duck behind that car and let me take the fight",
+   "one's playing behind the bed in master, that cover is soft"
+  ],
+  "file": "hide behind the sofa",
+  "base": "hide behind the sofa",
+  "five": "hide behind the sofa",
+  "tokens_base": 113,
+  "tokens_five": 168
+ },
+ {
+  "i": 158,
+  "before": [
+   "check the kitchen",
+   "frag the north window"
+  ],
+  "bot": null,
+  "line": "same on the south one",
+  "route": 0.9999761463723597,
+  "older": [
+   "quietly pop that door open, I just want a sightline",
+   "run up to the balcony and wait for me there",
+   "blind the room for me"
+  ],
+  "file": "Frag the south window.",
+  "base": "Frag the south window.",
+  "five": "frag the south window",
+  "tokens_base": 119,
+  "tokens_five": 155
+ },
+ {
+  "i": 159,
+  "before": [
+   "drone the kitchen",
+   "frag it"
+  ],
+  "bot": null,
+  "line": "check the basement",
+  "route": 5.038331454766456e-05,
+  "older": [
+   "They're rotating to the basement, and one's still on the roof.",
+   "deny that plant before it pops",
+   "Don't breach that wall, it's reinforced."
+  ],
+  "file": "Check the basement.",
+  "base": "Check the basement.",
+  "five": "check the basement",
+  "tokens_base": 115,
+  "tokens_five": 153
+ }
+]

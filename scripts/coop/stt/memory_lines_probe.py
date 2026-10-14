@@ -7,13 +7,14 @@ from an unread set), each asked twice on llama.cpp's server, CPU, one after the 
 The older lines are other test lines that stand alone and were written back as they are; one draw (seed 5405). Nothing
 is labelled: the two answers are compared with each other. Writes memory_lines_probe.json.
 
-    python memory_lines_probe.py        about 6 minutes on four threads"""
+    python memory_lines_probe.py        about 6 minutes on four threads
+    CHAIN=<a chain dir> PROBE_OUT=<file>   another decoder (bot v55: models/coop-chain-v55/cpp -> memory_lines_probe_v55.json)"""
 import io, json, os, random, subprocess, time, urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CHAIN = os.path.normpath(os.path.join(HERE, "..", "..", "..", "models", "coop-chain-v54", "cpp"))
+CHAIN = os.environ.get("CHAIN") or os.path.normpath(os.path.join(HERE, "..", "..", "..", "models", "coop-chain-v54", "cpp"))
 SERVER = os.path.join(HERE, "models", "llama.cpp", "b11429-cpu", "llama-server.exe")
-OUT = os.path.join(HERE, "memory_lines_probe.json")
+OUT = os.path.join(HERE, os.environ.get("PROBE_OUT", "memory_lines_probe.json"))
 PORT = 8731
 cfg = json.load(io.open(os.path.join(CHAIN, "chain_config.json"), encoding="utf-8"))
 rows = [json.loads(l) for l in io.open(os.path.join(CHAIN, "chain_tests.jsonl"), encoding="utf-8") if l.strip()]
