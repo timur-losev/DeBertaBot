@@ -85,7 +85,10 @@ config holds an older vocabulary or older regexes.
 | `tools/mic_capture.h`, `tools/mic_capture_win.cpp` | the microphone of `coop_cli --voice` (Windows, waveIn) | no: the game has its own capture |
 | `tools/coop_cli.cpp` | terminal chat, the checks, and the bot as a service for a game (`--serve`) | as the game's helper process |
 | `tools/tts.h`, `tools/tts_win.cpp` | the bot's voice for `--serve --tts`: the system synthesizer (Windows SAPI, the first English voice) | with the helper process |
-| `tools/deploy_brain.ps1` | copies the exe, its DLLs, one bot and the speech model into one folder a game starts the service from | no |
+| `include/coop_intent/rewriter.h`, `src/rewriter_text.cpp` | the text around the decoder (see "Lines with several orders or with a context"): the turn it is shown, the prompt, its answer as order lines, the router's probability | as is |
+| `src/llama_rewriter.cpp` | `Rewriter`: the decoder (a 4-bit GGUF) on llama.cpp's C API, greedy, the prompt's common prefix kept between lines (optional) | with llama.cpp as a third-party library, in the helper process |
+| `tools/setup_llama.ps1` | lays llama.cpp out under `third_party/` (headers, the release's DLLs, an import library made from `llama.dll`) | no |
+| `tools/deploy_brain.ps1` | copies the exe, its DLLs, one bot and the speech model into one folder a game starts the service from; with `-Chain` the router, the decoder and llama.cpp's DLLs too | no |
 | `tools/gen_unicode_tables.py` | writes `unicode_tables.inc` from the HF `tokenizers` library itself | no |
 | `tools/gen_tests.py` | writes the test files (tokenizer, places, gates, decisions, dialogue) from the Python bot | no |
 | `tools/gen_world_tests.py` | writes `world_tests.jsonl` (worlds and conversations through the Python planner) | no |
@@ -117,7 +120,7 @@ build\Release\coop_cli.exe --location-tests   # the place records vs locations.p
 build\Release\coop_cli.exe --dialogue         # C++ vs coop_bot.Bot on a 77-line conversation
 build\Release\coop_cli.exe --gate-tests       # both gates on 1666 probability rows (no model)
 build\Release\coop_cli.exe --decide-tests     # every branch of the bot's decision, both gates (no model)
-build\Release\coop_cli.exe --world-tests      # the planner on 600 worlds and conversations vs world.py (no model)
+build\Release\coop_cli.exe --world-tests      # the planner on 906 worlds and conversations vs world.py (no model)
 build\Release\coop_cli.exe --bench --threads 1
 build\Release\coop_cli.exe --tokenize "hold the other angle"
 build\Release\coop_cli.exe --world ..\..\scripts\coop\world_example.json   # chat with a world state loaded
@@ -193,15 +196,20 @@ items; whether the player is down). Nothing here touches the model; a step costs
     there").
   The frame lives while the game says the bot is busy and `CONTEXT_SECONDS` (8) after. The world state carries
   `time` and `bot.busy`; a game that sends no time gets no context.
+- **Floors by where they are** (2026-10-11). "Upstairs" and "downstairs" were zone ids no entity carried, so the
+  planner could not find them even on a map with every floor marked. Now they are any marked place at least
+  1.5 m above or below the speaker, narrowed to the nearest floor that way (the places within 1.5 m of the nearest
+  one in height: one floor up, not the roof); "the door upstairs" is a door on a floor above. The game still takes
+  the nearest of the candidates.
 - **Checked:** `gen_world_tests.py` writes 600 random worlds (entities with twins at similar distances, pins,
   gazes, stances) and conversations of orders, answers and narrowing places through the Python planner;
   `coop_cli --world-tests` compares action, words, grounding, order, question, queue and memory step by step.
   With the rules for a world without named places and for the short context (the world moves on before every
   line: time, the pin, the crosshair, an enemy under it; the lines include bare orders, repeats, corrections,
-  fragments and misheard pointers): 5338/5338 on bot v54 and on its three distilled students, 5343/5343 on the
-  v53 bot (33 labels, no answer intents); 12 worlds to refuse or accept. The three scripted checks of `world.py`
-  (`DEV`, `DEV_BARE` for the unmarked world, `DEV_TALK` for the owner's lines of the first live test) are the
-  first three scenarios of the file.
+  fragments and misheard pointers): 5509/5509 on bot v54 and on its three distilled students, 5351/5351 on the
+  v53 bot (33 labels, no answer intents); 12 worlds to refuse or accept. The four scripted checks of `world.py`
+  (`DEV`, `DEV_BARE` for the unmarked world, `DEV_TALK` for the owner's lines of the first live test,
+  `DEV_FLOORS` for a building with its floors marked) are the first four scenarios of the file.
 
 What the game provides and gets back is in `world.h`; the rules and their reasons are in `scripts/coop/world.py`.
 
@@ -243,6 +251,133 @@ an order RPC; the server's AI controller carries the order out; the pawn and the
 to end with a dedicated server and a client process. On a map without markers the client gives the planner the
 crosshair's point under a new id with every line (`gaze_<n>`) and keeps the ones the reply still names
 (`last_entity`, `pending_entity`), so a queued order goes where the player pointed then.
+
+## Lines with several orders or with a context (`--chain`, optional, 2026-10-13)
+
+The classifier reads one order in a line that stands by itself. With `--chain DIR` two more models sit in front of
+it (`include/coop_intent/rewriter.h`; how they were trained and measured:
+[the report](../../reports/Дообучение%20языковой%20модели%20и%20цепочки%20приказов.md)):
+
+```
+transcript --router--+--> one complete order ----------------------------------> classifier, slots, places, planner
+                     +--> several orders, or leans on the talk
+                            --decoder(earlier lines, the bot's line, the line)--> order lines, each one ----^
+```
+
+- **The router** is a two-class DeBERTa-v3-small in ONNX Runtime (`router.onnx`, 542 MB). It reads the token ids the
+  classifier reads; a line goes on to the decoder from a probability of 0.5.
+- **The decoder** is Qwen3-1.7B with its LoRA adapter merged in, as a 4-bit GGUF (`decoder.gguf`, 1,056 MB), run by
+  llama.cpp b11429 in this process: on the GPU with the Vulkan build (any vendor's card), or on the CPU with
+  `--decoder-cpu`. It is shown the player's last five lines (for 30 s) and the planner's own last words, and writes
+  the orders the player gives now as lines that stand by themselves: "smoke the north door then go in" becomes
+  "smoke the north door" and "go in through the north door"; "no, the other one" after "breach the north door"
+  becomes "Breach the other door." Each of those lines then goes through the classifier, the slots, the place
+  matcher and the planner as any line does. A line written back as it is stays the player's own line.
+- **How much it remembers** is `memory_lines` and `memory_seconds` in `chain_config.json`: five lines, 30 seconds.
+  Five is the owner's choice of 2026-10-14 (two before it); the decoder was trained with none, one or two earlier
+  lines, so the third to the fifth are a prompt it has not seen. What that costs, on the 160 lines of
+  `chain_tests.jsonl`, each asked as it is and again with older lines put in front until there are five
+  (`scripts/coop/stt/memory_lines_probe.py`: one draw of older lines, the CPU, nothing labelled, the two answers
+  compared with each other, capitals and punctuation aside): the 54 lines with earlier lines of their own are all
+  read the same; of the 68 lines the router sends on, 4 change, three of them a line of two orders written back
+  as one line (37 lines of several orders become 34). On the lines the router keeps from the decoder it would
+  twice have taken a place out of an older line ("cover me while I'm on it" became "... on the roof"). Asking the
+  same prompts in another order already changes 3 of the 160, so the effect is small and its size is not known
+  better than that. The longest prompt was 195 tokens of the 1,024. The 30 seconds still apply: at a line every
+  ten seconds the decoder sees three earlier lines, not five.
+- `scripts/coop/stt/export_chain_cpp.py` writes `models/coop-chain-v54/cpp/`: `chain_config.json`, `router.onnx`,
+  `decoder.gguf`, `chain_tests.jsonl`. Not in git, like every model file.
+
+```
+pwsh tools\setup_llama.ps1                       # once: llama.cpp under third_party\ (headers, DLLs, llama.lib)
+cmake -S . -B build -G "Visual Studio 17 2022" -A x64 && cmake --build build --config Release
+
+build\Release\coop_cli.exe --model-dir ..\..\models\coop-deberta-v3-ens3-v54\cpp --chain ..\..\models\coop-chain-v54\cpp --voice
+build\Release\coop_cli.exe --model-dir ... --chain ... --world ..\..\scripts\coop\world_example.json    # typed chat
+build\Release\coop_cli.exe --model-dir ... --chain ... --chain-tests --decoder-cpu                      # the checks
+build\Release\coop_cli.exe --model-dir ... --chain ... --serve                                          # the service
+```
+
+Under `/why` the chat shows where the line went (`chain: router 1.00 (10 ms), decoder 41 ms: rewritten`) and each
+order line before the bot's reply to it; `/chain` switches the two models off and on. A folder without a router
+sends every line to the decoder. Without `--chain`, and in a build that did not find llama.cpp, nothing changes.
+
+**How a line goes through** (`Chat::Hear` in `tools/coop_cli.cpp`). These rules are this file's own: the models
+were measured line by line, not in a conversation.
+
+- A line the decoder rewrote is kept, for the lines after it, as the orders it wrote; any other line as the
+  classifier read it. A line the bot asked to hear again is not kept. The bot's line the decoder is shown is the
+  planner's own (a question, "Got it. ..."), never one of the chat's acknowledgements.
+- While the planner's question is open, a line its rules for answers are made for goes to the planner as it is:
+  one the classifier takes for yes / no / maybe / don't know or for no order, or cannot read ("the left one",
+  "over there"). If the planner then cannot read it (say again) and the decoder read one order in it ("the north
+  one" after "Which door?" for "open the door" becomes "Open the north door."), that order goes to the planner
+  instead. Any other line takes the usual road.
+- An order line that makes the planner ask stops the rest of its line. They wait and go through after the line
+  that settles that order; a line with several orders replaces them, and so does a line about something else.
+- The second and later order lines of a line go to the planner as its further orders (`Planner::Step(...,
+  continued)`, next paragraph).
+- A decoder that fails on a line (longer than its 1,024-token context) leaves it to the classifier.
+
+**Two rules of the planner for such lines** (`world.h`, `scripts/coop/world.py`, "a line of several orders"; in
+both twins, checked against each other):
+
+- *The same place.* A place a further order of the line names as the order before it did, in the same words or
+  in fewer, is that order's place: "smoke the door then go in" with two doors asks "Which door?" once, and the
+  bot goes in through the door that got the smoke. So with no door marked at all ("I see no door. Where?" -
+  "there"), with "the door" after "the door on the right" (not the nearest door), and with "the other door" said
+  twice (the same door, not the other of the other). A direction or "here" is not carried over.
+- *The other one.* In answer to "Which door? The one ahead, 8 m?", "the other door" (the decoder's wording) and a
+  bare "the other one", "no, the other one" (which the classifier takes for nothing, for a no, or for the other
+  angle) leave out the door the bot just offered: one door left is the answer, several are what is left to
+  choose from. This rule works without the decoder too.
+
+**The service.** With `--chain` the reply's own fields stay the first order's, and it gains `turns` (one object per
+order line gone through, in the order to carry them out, each with the reply's fields and `line`) and `chain`
+(`route`, `decoded`, `rewritten`, `held`, `resumed`, `note`, the two times). `ready` says which chain is loaded.
+The game reads `turns`: its client sends the orders as one list and its server carries them out one after another
+(LyraStarterGame58, `Source/LyraGame/CoopBot/README.md`, "Several orders in one line").
+`tools/deploy_brain.ps1 -Chain coop-chain-v54` adds the two models and llama.cpp's DLLs to the game's folder.
+
+**Checked** (`--chain-tests`, 160 lines: single orders, chains, lines with a context, typed and in the form a
+transcript has): the decoder's turn text 160/160; the router's probability within 1e-4 of PyTorch on 160/160
+(largest difference 1.5e-6); the decoder's answers equal to those of llama.cpp's own server on the CPU on 160/160.
+On the GPU 157/160: a GPU rounds another way and a close call falls the other way, so there the count is reported
+and not required. The engine's other checks give the same numbers with this build.
+
+**Speed and memory** (i9-10900K, RTX 4090, no game running): the router 9 to 12 ms a line (17 to 19 ms as a
+service on one thread); the decoder on the CPU with 4 threads 450 ms a line (median 432, p95 750). Both models load
+in 2.2 s. The service's working set grows from 2.3 GB to 4.1 GB, plus 1.5 GB of video memory; with the decoder on
+the CPU to 4.8 GB.
+
+On the GPU the decoder's time depends on what the card was doing a moment before, and the number to plan with is
+not the back-to-back one:
+
+| The card | The decoder, a line of two orders | The whole reply |
+|---|---|---|
+| has just answered another line (the test file; lines under a second apart) | 30 to 38 ms | 120 to 160 ms |
+| has had nothing to do for 2 s or more, and nothing else uses it | 250 to 390 ms | 340 to 490 ms |
+| the same, with another process keeping it busy | 57 to 111 ms (182 once) | 170 to 300 ms |
+
+A card left alone for two seconds slows down, and the line that wakes it pays for that: every line of a
+conversation at human pace, in a chat on an idle desktop and in the game's headless runs (189 to 349 ms there).
+One token put through the model beforehand does not help (it takes 1 ms and the next line is as slow). Next to a
+game that draws on the same card the idle penalty is not paid: in the owner's session in Lyra (2026-10-13, 120
+spoken lines, the editor's play mode) the decoder took 25 to 107 ms, median 61, for the 23 lines it read, the
+router 19 ms and the classifier 59 ms an order.
+
+Traps and limits:
+- **A Vulkan build with no layers on the GPU is not the CPU.** With a GPU in its device list llama.cpp still sends
+  the prompt's large products there, and the answers are neither the CPU's nor the GPU's (151/160 on the test
+  file). `--decoder-cpu` therefore gives the model no device at all.
+- The release ships no import library: `setup_llama.ps1` makes `llama.lib` from `llama.dll`'s exports.
+- An order "on my go" at the end of a line keeps the place only if the decoder wrote it into that order: "go to
+  the north door and breach on my go" came out as "go to the north door" and "breach on my go", and the breach
+  then has no place of its own.
+- A place settled by a direction or by "here" is not carried over to the next order of the line: there the bot
+  asks again.
+- The decoder's own misses are in the report: on lines heard through the recognizer it loses most when the
+  recognizer changed the key word or the pronoun.
 
 ## Speech-to-text (optional)
 
@@ -350,10 +485,14 @@ were refreshed on Windows with `gen_tests.py --no-model`.
   `gen_tests.py BOT_DIR --decide-only` writes just this file and needs only `bot_config.json`.
 - The C++ twin of rule set v4 was also run with the v3 vocabulary over the 35,023 lines of a v4-rules
   test file against records from `scripts/coop/rules/v3/locations.py`: equal on all of them.
-- The planner (world.h): 601 scenarios per bot, 5306 steps on the v53 bot and 5187 on the 41-label scratch
-  bot (actions act, ask, answer, resolved, queued, execute, go, wait, negated, say again, ignore; groundings
-  by pin, gaze, memory, zone, direction, the only one, the nearest, ambiguous by distance or by an unknown
-  modifier, missing), plus 10 worlds the rules refuse and the example world they accept: all equal.
+- The planner (world.h): 906 scenarios per bot since 2026-10-13, 8508 steps on the v53 bot and 8253 on the
+  v54 bot and its three students (actions act, ask, answer, resolved, queued, execute, go, wait, negated, say
+  again, ignore; groundings by pin, gaze, memory, zone, direction, the only one, the nearest, ambiguous by
+  distance or by an unknown modifier, missing), plus 11 worlds the rules refuse and the example world they
+  accept: all equal. The last 302 scenarios are lines of several orders (`gen_world_tests.py`, `chain_scenario`,
+  with a random generator of its own, so the 604 before them are what they were): on the v54 bot 712 further
+  orders of a line, 277 of them given the place of the order before them, and "the other" in answer to
+  "Which ...?" 125 times. Each of eleven one-line mutants of the two new rules fails them.
 
 The tokenizer lines are the golden lines plus lines generated to break a port:
 - every kind of whitespace;

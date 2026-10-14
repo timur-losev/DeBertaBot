@@ -1159,6 +1159,75 @@ seven engine checks, and the lines themselves end to end in the game (`Tests/E2E
 the reports' plan: training the classifier on recognition confusions, the bot's own lines as context ("Go find
 ammo."), a classifier with context in its input, anything with a language model.
 
+### A marked arena and the way down (2026-10-11)
+
+The owner asked for Expanse to be marked and for a bot that jumps down wherever there is somewhere to land. Both
+are in the game (Lyra, `Source/LyraGame/CoopBot/README.md`, "Expanse" and "Down a ledge"); what they meant for the
+brain is small:
+
+- **Marking is measurement, not labelling by eye.** The 85 markers of Expanse come from the map's own actors and
+  from traces: stairs from the stair actors and the navmesh, doors and windows from tracing through every wall
+  panel, floors from the heights of the navmesh. Only what a player can see was given a word: red and blue stairs
+  (the rails are painted so), no "north door" (the game shows no compass).
+- **"Upstairs" and "downstairs"** were in the vocabulary and unreachable: no entity carried those zones. They are
+  now a floor named by where it is from the speaker. One rule in the planner, both engines, a fourth scripted
+  check.
+- **Jumping down is the game's**, not the brain's: the brain says "jump down", "go down" or names a place, and
+  the server finds a ledge. Nothing was added to the classifier.
+
+Checked: `world.py` 65/65; C++ against Python on 5509 steps (v54 and the three students) and 5351 (v53); the seven
+engine checks on v54; in the game, `expanse_places.txt` and `expanse_drops.txt` end to end.
+
+### Several orders in one line (2026-10-12 and 13)
+
+The classifier gives one intent a line, so "frag the window, then go in and hold the door" and "no, the other one"
+were out of its reach by construction: on a blind set of such lines the bot alone is right on a third. The owner
+opened the door to a 2-billion-parameter language model on the player's GPU, and three rounds of QLoRA on
+Qwen3-1.7B later it sits in front of the classifier, behind a small router. The whole study, with its caveats, is
+`reports/Дообучение языковой модели и цепочки приказов.md`; what matters here:
+
+- **The language model does not replace the classifier.** On single orders it is worse (criterion 83 against 89).
+  It rewrites: a line of several orders, or one that leans on the talk, comes out as orders that stand by
+  themselves, and each of those goes through the classifier, the slots, the places and the planner as before. A
+  two-class DeBERTa-v3-small decides which lines need it.
+- **What it buys**, on blind lines written and read by AI: lists of orders right on 93 % of typed lines and 68 %
+  of lines heard from unseen synthesized voices (the bot alone: 34 % and 27 %); lines with a context 92 % and
+  67 % (35 % and 24 %). As the 4-bit file the game runs, three points less. What it costs: single orders lose 2
+  to 4 criterion points typed and 8 to 10 heard, because the router hands some of them over; 1.5 GB of video
+  memory, and for a line it reads 30 ms when lines come back to back, a tenth of a second next to another load
+  on the card, a quarter to a third of a second when the card had idled (every line at human pace on a card
+  nothing else uses); or half a second on the CPU.
+- **The weak spot is the recognizer, not the model.** A model twice the size adds 2 to 4 points to typed and
+  heard lines alike.
+- **Two rules in the planner** came with it: a place named again in the next order of the same line is the same
+  place, and "the other one" in answer to "Which door? The one ahead?" is not the door just offered.
+- **In the game** the client sends the orders of a line as one list and the server carries them out one after
+  another (Lyra, `Source/LyraGame/CoopBot/README.md`, "Several orders in one line"). When an order counts as
+  done, and what a refusal, "wait" and "go" do to the rest, are the author's choices.
+
+Checked: `world.py` 95/95; C++ against Python on 8265 steps (v54 and the three students) and 8520 (v53); the
+router and the language model in the engine against PyTorch and llama.cpp's own server on 160 lines; in the game,
+`chain.txt` end to end.
+
+The owner then played it (2026-10-13: about 30 spoken lines in the console chat, 120 in the game), and three
+things changed:
+
+- **A real voice.** The verdict: "работает неплохо". What went wrong, read from the logs and not confirmed by
+  the owner: "go" is heard as "goal" or "call" ("on my goal" five times of five, so the order is carried out at once
+  instead of waiting for the signal); nine blue stairs offered one by one and nine times "No"; "Wait here." at
+  0.66 under a threshold of 0.68; "Wait me here." read as FOLLOW_ME. Next to the running game the language model
+  took 61 ms a line (median; 25 to 107, 23 lines): the card does not idle there.
+- **Nothing is timed.** The first queue held an order with no end of its own for five seconds before the next
+  one; the bot ran up to its commander, stood, and only then jumped down. The owner chose no hold at all: such an
+  order makes way for the next at once, and "hold until I say" is the next order given "when I say", then "go".
+- **Five earlier lines, not two.** The owner's choice (2026-10-14). The model was trained with at most two; on the 160
+  test lines of the engine the lines with a context of their own are read the same, and of the 68 lines the
+  router sends on 4 change, three of them a line of two orders written back as one
+  (`scripts/coop/stt/memory_lines_probe.py`).
+
+In the game the bot is an asset now (its name, its look, five numbers of its behaviour): the game's README,
+"The bot is an asset".
+
 ## Recommendation
 
 ```
