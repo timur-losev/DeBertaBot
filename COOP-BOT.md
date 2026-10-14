@@ -968,8 +968,8 @@ needed; "go inside" / "get inside" is just walking or climbing in.
   earlier lines were read again and six became YES, NO or PRONE, each 3 of 3.
 - **One change to the recipe.** A transcript that is, word for word, a typed command of another intent is left
   out of training: Parakeet heard "now now now" as "no, no, no", "stay" as "okay", "check" as "yeah". 12 of 3080.
-- **No model yet.** The voiced lines and Parakeet's transcripts were made on the work machine (the MacBook has
-  neither the audio nor the recognizer); the owner runs the training on the MacBook
+- **No model yet.** The voiced lines and Parakeet's transcripts were made on the work machine (the MacBook does
+  not have the audio); the owner runs the training on the MacBook
   ([scripts/coop/stt/README.md](scripts/coop/stt/README.md)). Bot v53 with rule set v5 and no retraining already
   gets 9 of the owner's 19 lines against 7 in his test: "Stay at my pin." carries the pin, "check at my mark" is
   no longer queued.

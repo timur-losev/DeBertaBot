@@ -42,6 +42,10 @@ public:
     bool Transcribe(const float* samples, size_t count, int sample_rate, std::string* text, std::string* error) const;
     // "sherpa-onnx 1.13.8"
     static std::string Backend();
+    // The ONNX Runtime the recognizer runs on, "1.28.2": the one the loader gave sherpa-onnx's library. On Windows
+    // that is the process's one onnxruntime.dll, the bot's too; on macOS the library brings its own and the bot
+    // keeps the engine's (OrtBackend::RuntimeVersion)
+    static std::string RuntimeVersion();
 
 private:
     struct Impl;

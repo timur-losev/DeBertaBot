@@ -25,6 +25,8 @@ bool SpeechRecognizer::Ready() const { return impl_->recognizer != nullptr; }
 
 std::string SpeechRecognizer::Backend() { return std::string("sherpa-onnx ") + SherpaOnnxGetVersionStr(); }
 
+std::string SpeechRecognizer::RuntimeVersion() { return SherpaOnnxGetOnnxruntimeVersionStr(); }
+
 bool SpeechRecognizer::Load(const SpeechOptions& options, std::string* error) {
     const std::string encoder = options.model_dir + "/encoder.int8.onnx", decoder = options.model_dir + "/decoder.int8.onnx",
                       joiner = options.model_dir + "/joiner.int8.onnx", tokens = options.model_dir + "/tokens.txt";

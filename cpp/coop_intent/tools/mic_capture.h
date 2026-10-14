@@ -1,4 +1,5 @@
-// The microphone for coop_cli --voice: the default input device at 16 kHz mono, open from Start() on.
+// The microphone for coop_cli --voice: the default input device at 16 kHz mono, open from Start() on
+// (mic_capture_win.cpp on Windows, mic_capture_mac.mm on macOS).
 // The device stays open between clips, so that a clip can begin a moment BEFORE the key went down
 // (people start talking as they press). Nothing is kept or handed out except between Begin() and End().
 #pragma once
