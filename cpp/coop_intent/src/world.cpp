@@ -12,6 +12,8 @@ constexpr double kElevation = 1.5;
 constexpr double kStorey = 1.5;   // "upstairs": the places within 1.5 m of the nearest one above, not the floors beyond
 constexpr double kBackFrom = 120.0;
 constexpr double kClearlyNearer = 1.5;
+// world.py FETCHED: things the bot fetches or rides; "go find ammo", "get in the car" mean the nearest one, never a question
+bool Fetched(const std::string& object) { return object == "ammo" || object == "weapon" || object == "health" || object == "car"; }
 constexpr double kPi = 3.14159265358979323846;
 
 bool InSector(PlaceDirection d, double bearing, double elevation) {
@@ -160,7 +162,7 @@ const std::vector<Prior>& DefaultPriors() {
     constexpr double x = 0.75;
     static const std::vector<Prior> kPriors = {
         {"CROUCH", "stance=crouch", x}, {"PRONE", "stance=prone", x}, {"STAND_UP", "stance=stand", x},
-        {"VAULT_WINDOW", "no_object=window", x}, {"OPEN", "no_object=door", x},
+        {"VAULT_WINDOW", "no_object=window", x}, {"OPEN", "no_object=door", x}, {"GET_IN", "no_object=car", x},
         {"DEFUSE", "no_tag=bomb", x}, {"PLANT", "bot_without=bomb", x}, {"REVIVE_ME", "player_up", x},
         {"YES", "no_question", x}, {"NO", "no_question", x}, {"MAYBE", "no_question", x}, {"DONT_KNOW", "no_question", x},
     };
@@ -313,7 +315,7 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
         return Out("resolved", gaze->id, ids, "gaze");
     if (cands.size() == 1) return Out("resolved", ids[0], ids, "only");
     if (t.flag == PlaceFlag::UnknownModifier) return Out("ambiguous", {}, ids, "unknown_modifier");
-    if (cands[1]->distance >= kClearlyNearer * cands[0]->distance) return Out("resolved", ids[0], ids, "nearest");
+    if (Fetched(obj) || cands[1]->distance >= kClearlyNearer * cands[0]->distance) return Out("resolved", ids[0], ids, "nearest");
     return Out("ambiguous", {}, ids, "distance");
 }
 

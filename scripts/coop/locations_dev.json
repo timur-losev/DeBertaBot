@@ -1370,8 +1370,13 @@ null
 "cat": "other-sense",
 "text": "throw it at the white van",
 "accept": [
+[
+"car",
+null,
 null
 ]
+],
+"note_v6": "rule set v6 (bot v55): a car is a place, so the van is the target; written as other-sense when it was not"
 },
 {
 "batch": "adversarial",

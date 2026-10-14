@@ -829,3 +829,40 @@ b098b6aeab91c2bb8d451cc4975d2e95e19ea1d50d3821983181c9147a9c2858 *stt/export_cha
 48105fd8a87d24d16c7de782dbbb8f496aebf87b03d0fbe31986d03e9b27ee0e *stt/router54_score.log
 582a0c01ac89c5a91fb4c7e0f126edb1bdb3fb92b42e64863ea3315c7a59520e *stt/gguf54_score.log
 2026-10-13T17:07:20+02:00
+# v55 (work machine), BEFORE any v55 test line exists; AFTER the owner's play with bot v54 and its language model in Lyra (2026-10-13 and 14) and his requests and answers of 2026-10-14 (make_spec_v55.py docstring): three new intents GET_IN, GET_OUT (the car; the owner chose a new intent) and REPEAT (try again / again / more: the developer's choice, carried out by the game); a negated order is WAIT, not NONE (the owner's choice; 73 seeds and 32 authored lines of v1-v54 relabelled by rule: a leading negation, coop_bot.NEGATION, and a NONE or NO reading; "don't shoot me" HOLD_FIRE); waiting at a place is HOLD_POSITION; items to fetch and going to a car are MOVE_TO; the timing rule takes "on my goal" (the owner: his "on my go" is heard so); place vocabulary version 6 (rule set v6): objects car, ammo (with "armor", "amor" as heard), weapon, health, and seven stat phrases about health on the ignore list; one development case moved ("throw it at the white van": the van is a car now). 174 new seeds (1482 -> 1656). locations.py --dev: 543 lines, the same 3 misses as rule set v5. Seeds are not blind.
+77a50a487c8c06497ac2d6511c351efc1b23487ec0682cdecf2deac304c7ecc5 *blind/spec_v55.json
+13125cb84b447c7ac001d426f3dcfcad931d8586e2a702e5dafff9b23c0aaa3b *intents_v55.json
+b912b6213e91fdf91212a6f111b51f8cb787de2ec17091cb8569a0ef3e7731ab *seed_commands_v55.json
+36f880bc7fbd1bfb7feb8401e16e00b40100ae411590c6badbece9ed6dc0f682 *annot/v55/relabel_v55.json
+a2ccf9658a51a73fb9003faa527011e8aa5b1d2a78be865aa196cb0ea92bce10 *make_spec_v55.py
+9f7eb98c017e46fd147281bec8d80a7ec20d92a2d16fa29cb1ddc2d5e560c947 *coop_v2.py
+f30ae98538697489ca8a8ff51a8b9ceaf7f65062b24c578cc1964ca255cff0ee *coop_bot.py
+8eca955ae37a948829debfd12838fbc707988fdc9a9a993529d04af0385a9d78 *export_cpp.py
+901127753d8f10ce60f0662f28601f27377b352b79834ecf61492a61a1a08f9b *locations.py
+d3022c77ff69509e3559dd8e52731322346faa2c116c28732a4f27ab49510227 *locations.json
+c54d3df88be339998faa7e722b1cef8b76bb2e95dede2f299d885a4916e34609 *locations_dev.json
+901127753d8f10ce60f0662f28601f27377b352b79834ecf61492a61a1a08f9b *rules/v6/locations.py
+d3022c77ff69509e3559dd8e52731322346faa2c116c28732a4f27ab49510227 *rules/v6/locations.json
+2026-10-14T09:06:09+02:00
+# v55 blind lines: three AI authors (personas r6, cs, stt; each read spec_v55.json only) wrote 40 lines each with quotas by kind (getin 6, getout 4, repeat 6, item 6, negated 6, waithere 4, signal 2, boundary 6); two AI annotators per author read only the spec and the label-free lines. Majority of author + 2 annotators: all 120 unanimous (one model family: weaker than it sounds). Labelling choices the authors flagged and left as they are: places on negated WAIT lines (two authors gave the forbidden place, one none), "the truck by the north door" (car, no qualifier).
+3e0931fd434598669cdce9c9d06f37baa9b2cb552009a28d5e33241d439bdeb6 *blind/v55/author_r6.json
+0e8d2b868796c8c7fdd1fc8c2a8c1bfa7213c6a5e94319925f47dcaa72458bb3 *blind/v55/author_cs.json
+5e6caa151a11584cdcfe6fc9bd3551c36ce6dd1d15addd9d4a60296d034b9a64 *blind/v55/author_stt.json
+155efd15e684ead30ce4415850297a3e6334692042ad48405fa8acbf14de0346 *blind/v55/author_r6_lines.json
+6ee555342c425758709b3cb742a8205273c0b0d9db12c0a7c9c9b088133a4e76 *blind/v55/author_cs_lines.json
+d647a9f44cac37a8bd5712feabc3461d73fe21fff2e72ca155c6290493d6f4e6 *blind/v55/author_stt_lines.json
+7e4eff86e68daab33f182bf3a6d6b1ab0779980cf909cb61000d4007f0bc4931 *annot/v55/author_r6_ann1.json
+1f9a8eef6842f16c499e57616e88029dbb1191a57fe9ed678c96b1ee95e348bf *annot/v55/author_r6_ann2.json
+66acdb97be2326eb701eaada4b2130c07a98a8eecf9fa573419161c2a22ce82f *annot/v55/author_cs_ann1.json
+5c114d6c170f4f1eaabf4c92627a537a306d1afcfa8357a39ee4d37d20a3d424 *annot/v55/author_cs_ann2.json
+e992877a31cd28f1ea601c22fb769cdb78c64c503665b5935eb5d6e9ba725f68 *annot/v55/author_stt_ann1.json
+3e606baac323c457730738380b74fe12e2f04fd9c2cd73efe7bc60df8d9112af *annot/v55/author_stt_ann2.json
+2026-10-14T09:12:38+02:00
+# v55 after tuning (2026-10-14, after the v55 ensemble was trained and probed with the owner's own lines of 2026-10-14, NOT with any blind line): twelve MOVE_TO seeds of a place with "to" in front and no verb ("to this wall", "to the left wall", "to that corner"; make_spec_v55.py FRAGMENTS_TO). The ensemble read the owner's "To this wall." as RAPPEL 0.70 and acted on it ("to that wall", "to the left wall" the same); v54 had read MOVE_TO 0.59. Seeds 1656 -> 1668; the final members are trained again on them, the gate and threshold stay those of the out-of-fold runs without them.
+e3e8e4081e532ca4a6ffd11d430c38cc7cacb2765e7d3ac046344d32e5259442 *make_spec_v55.py
+26448fe480c273f9fd87977f9b7ef3be599a31b588fde909c404ab1d7f46c485 *seed_commands_v55.json
+2026-10-14T10:31:07+02:00
+# v55 round four after tuning (2026-10-14, judged on the owner's episodes of 2026-10-14, ten pointing fragments and memory_lines_probe.py; round three's blind sets scored only afterwards, as aggregates, chains3_v55.py score): the rewriter's variants pieces4b_final (older unrelated lines also in front of the context items), pieces4c_final (and the v55 teachers' items in six copies), pieces4d_final (and without make_spec_v55.py's twelve FRAGMENTS_TO seeds among its singles: with them it wrote 'To this wall.' after 'Start shooting.' back as it is). The game takes pieces4d_final. The router is trained again without the same twelve seeds among its rows for the ensemble: with them it kept the owner's 'To this wall.' from the decoder (0.00) and the classifier walked the bot to the wall; now 0.80.
+0fbcca7d8c0778d903748db207340b9f053d301f57ad7b7e222978e64d1352a5 *stt/chains3_v55.py
+ae3c154ff38ab21014dbdbf2478f558b736fad1f9e90ea0479fb50841b8a814b *stt/router_v55.py
+2026-10-14T13:26:12+02:00

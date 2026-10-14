@@ -1,6 +1,6 @@
 {
- "_note": "Map vocabulary: the named places every map has (the owner's list) and the word lists the matcher's rules use. The classifier does not learn these names; locations.py finds them in the transcript and hands the planner a list of targets {object, qualifier, zone, role, flag}. A new callout is a new entry here, not a re-training. Phrases are lowercase ASCII tokens separated by single spaces; the longest phrase wins. locations.py refuses a malformed file (validate()). History: rules/v1 (frozen before any v3 test line), rules/v2 (after the first blind run), v3 (after the review of v2, see locations.py); only v1 has a blind number on the first v3 lines. Rule set v4 adds \"directions\": the direction a line gives the bot's action (up, down, left, right, forward, back), a fourth field of a target next to object, qualifier and zone. A direction word counts only in the contexts the dir_* word lists name (after a motion verb, in 'on the left', next to an object, around stairs or a floor); \"clock\" lists the hours of 'three o'clock' per direction. An object with \"vertical\": true (stairs) takes 'up' / 'down' written next to it. The six ids are fixed (the rules name them); the words, the clock hours and the dir_* lists are data.",
- "version": 5,
+ "_note": "Map vocabulary: the named places every map has (the owner's list) and the word lists the matcher's rules use. The classifier does not learn these names; locations.py finds them in the transcript and hands the planner a list of targets {object, qualifier, zone, role, flag}. A new callout is a new entry here, not a re-training. Phrases are lowercase ASCII tokens separated by single spaces; the longest phrase wins. locations.py refuses a malformed file (validate()). History: rules/v1 (frozen before any v3 test line), rules/v2 (after the first blind run), v3 (after the review of v2, see locations.py); only v1 has a blind number on the first v3 lines. Rule set v4 adds \"directions\": the direction a line gives the bot's action (up, down, left, right, forward, back), a fourth field of a target next to object, qualifier and zone. A direction word counts only in the contexts the dir_* word lists name (after a motion verb, in 'on the left', next to an object, around stairs or a floor); \"clock\" lists the hours of 'three o'clock' per direction. An object with \"vertical\": true (stairs) takes 'up' / 'down' written next to it. The six ids are fixed (the rules name them); the words, the clock hours and the dir_* lists are data. Version 6 (bot v55, 2026-10-14): four more objects, places that are things rather than parts of the house: car (the bot gets in, or takes cover behind it), ammo, weapon and health (the bot goes to the nearest place that gives one). \"armor\", \"armour\" and \"amor\" are ammo: the owner's \"go find ammo\" was heard so, and the game has no armour.",
+ "version": 6,
  "objects": [
   {
    "id": "door",
@@ -81,6 +81,65 @@
    "words": [
     "table",
     "tables"
+   ],
+   "qualifiers": []
+  },
+  {
+   "id": "car",
+   "words": [
+    "car",
+    "cars",
+    "vehicle",
+    "vehicles",
+    "truck",
+    "trucks",
+    "jeep",
+    "van"
+   ],
+   "qualifiers": []
+  },
+  {
+   "id": "ammo",
+   "words": [
+    "ammo",
+    "ammunition",
+    "mags",
+    "magazines",
+    "bullets",
+    "armor",
+    "armour",
+    "amor"
+   ],
+   "qualifiers": []
+  },
+  {
+   "id": "weapon",
+   "words": [
+    "weapon",
+    "weapons",
+    "gun",
+    "guns",
+    "rifle",
+    "rifles",
+    "pistol",
+    "pistols",
+    "shotgun",
+    "shotguns",
+    "launcher"
+   ],
+   "qualifiers": []
+  },
+  {
+   "id": "health",
+   "words": [
+    "health",
+    "medkit",
+    "medkits",
+    "med kit",
+    "health pack",
+    "health packs",
+    "healthpack",
+    "first aid"
    ],
    "qualifiers": []
   }
@@ -384,7 +443,14 @@
   "let s table",
   "lets table",
   "hold on second",
-  "hang on second"
+  "hang on second",
+  "half health",
+  "low health",
+  "full health",
+  "low on health",
+  "health left",
+  "his health",
+  "my health"
  ],
  "words": {
   "before_fill": [

@@ -1,0 +1,602 @@
+[
+ {
+  "id": "csv55_000",
+  "text": "one more behind the sofa, he's lit for 90",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "sofa",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "boundary"
+ },
+ {
+  "id": "csv55_001",
+  "text": "bro go find ammo, you're on your last mag",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "ammo",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "item"
+ },
+ {
+  "id": "csv55_002",
+  "text": "do not open the north door, they're holding it",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "north",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "csv55_003",
+  "text": "frag the north window again, they're still alive",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "north",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "boundary"
+ },
+ {
+  "id": "csv55_004",
+  "text": "get in that truck at my pin, we're driving out",
+  "intent": "GET_IN",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getin"
+ },
+ {
+  "id": "csv55_005",
+  "text": "wait for me by the red stairs man",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "red",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "waithere"
+ },
+ {
+  "id": "csv55_006",
+  "text": "give it another go, you were so close",
+  "intent": "REPEAT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "repeat"
+ },
+ {
+  "id": "csv55_007",
+  "text": "get behind the car dude, they're spraying",
+  "intent": "TAKE_COVER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "boundary"
+ },
+ {
+  "id": "csv55_008",
+  "text": "wait bro, not yet",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "boundary"
+ },
+ {
+  "id": "csv55_009",
+  "text": "bail out of the car, they're spraying it",
+  "intent": "GET_OUT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getout"
+ },
+ {
+  "id": "csv55_010",
+  "text": "nah don't follow me, i'm lurking solo",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "csv55_011",
+  "text": "hop in bro, we're rotating",
+  "intent": "GET_IN",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getin"
+ },
+ {
+  "id": "csv55_012",
+  "text": "get in the truck man, we're leaving",
+  "intent": "GET_IN",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getin"
+ },
+ {
+  "id": "csv55_013",
+  "text": "find some ammo upstairs man, we're both dry",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "ammo",
+   "qualifier": null,
+   "zone": "up",
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "item"
+ },
+ {
+  "id": "csv55_014",
+  "text": "smoke main on my call, not before",
+  "intent": "SMOKE",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "main",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "signal"
+ },
+ {
+  "id": "csv55_015",
+  "text": "get out of there bro, they're flooding in",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "boundary"
+ },
+ {
+  "id": "csv55_016",
+  "text": "jump out of the truck dude, we push on foot",
+  "intent": "GET_OUT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getout"
+ },
+ {
+  "id": "csv55_017",
+  "text": "don't move bro, he's got an angle on you",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "csv55_018",
+  "text": "run to the truck man, it's our ride out",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "boundary"
+ },
+ {
+  "id": "csv55_019",
+  "text": "jump in dude, i'm driving",
+  "intent": "GET_IN",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getin"
+ },
+ {
+  "id": "csv55_020",
+  "text": "try that again man, your nade bounced off the frame",
+  "intent": "REPEAT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "repeat"
+ },
+ {
+  "id": "csv55_021",
+  "text": "go grab a medkit before we push",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "health",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "item"
+ },
+ {
+  "id": "csv55_022",
+  "text": "do it again bro, the door's still shut",
+  "intent": "REPEAT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "repeat"
+ },
+ {
+  "id": "csv55_023",
+  "text": "wait here bro, i'll go take a look",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "waithere"
+ },
+ {
+  "id": "csv55_024",
+  "text": "run it back dude, one more time",
+  "intent": "REPEAT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "repeat"
+ },
+ {
+  "id": "csv55_025",
+  "text": "wait at my pin bro, i'm coming to you",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "waithere"
+ },
+ {
+  "id": "csv55_026",
+  "text": "wait over by the sofa till i rotate",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "sofa",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "waithere"
+ },
+ {
+  "id": "csv55_027",
+  "text": "grab a rifle man, the pistol ain't gonna cut it",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "weapon",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "item"
+ },
+ {
+  "id": "csv55_028",
+  "text": "get some health dude, you're one shot",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "health",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "item"
+ },
+ {
+  "id": "csv55_029",
+  "text": "get out of the car man, it's about to blow",
+  "intent": "GET_OUT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getout"
+ },
+ {
+  "id": "csv55_030",
+  "text": "don't shoot yet dude, let them walk into us",
+  "intent": "HOLD_FIRE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "csv55_031",
+  "text": "again bro",
+  "intent": "REPEAT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "repeat"
+ },
+ {
+  "id": "csv55_032",
+  "text": "jump in the car by the north door bro",
+  "intent": "GET_IN",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getin"
+ },
+ {
+  "id": "csv55_033",
+  "text": "no need to check the roof man, it's clear",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "roof",
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "csv55_034",
+  "text": "pick up that shotgun bro, it's free",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "weapon",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "item"
+ },
+ {
+  "id": "csv55_035",
+  "text": "same again, that worked",
+  "intent": "REPEAT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "repeat"
+ },
+ {
+  "id": "csv55_036",
+  "text": "take the car dude, i'm on foot",
+  "intent": "GET_IN",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getin"
+ },
+ {
+  "id": "csv55_037",
+  "text": "flash east window on my goal bro",
+  "intent": "FLASH",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "east",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "signal"
+ },
+ {
+  "id": "csv55_038",
+  "text": "don't jump down bro, you'll eat fall damage",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": "down",
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "csv55_039",
+  "text": "hop out bro, this is our stop",
+  "intent": "GET_OUT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getout"
+ }
+]

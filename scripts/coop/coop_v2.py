@@ -60,13 +60,15 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # added after the study showed the owner's "cover from behind" going to TAKE_COVER); results files and
 # outputs carry the tag, so the v2 study stays as it was
 TAG = os.environ.get("COOP_TAG", "v2")
-V5 = TAG in ("v5", "v51", "v52", "v53", "v54")    # 27 intents (intents_v5.json); every older tag keeps the 24 of intents_v2.json
-V51 = TAG in ("v51", "v52", "v53", "v54")         # 29 intents (intents_v51.json): v5 + LOOK_AT, LOOK_AT_ME
-V52 = TAG in ("v52", "v53", "v54")                # 32 intents (intents_v52.json): v51 + HELP, CHECK, SUPPRESS
-V53 = TAG in ("v53", "v54")                       # 33 intents (intents_v53.json): v52 + JUMP
-V54 = TAG == "v54"                                # 41 intents (intents_v54.json): v53 + COME_BACK, three stances, four answers
-_I = json.load(io.open(os.path.join(HERE, "intents_v54.json" if V54 else "intents_v53.json" if V53 else "intents_v52.json" if V52 else
-                                    "intents_v51.json" if V51 else "intents_v5.json" if V5 else "intents_v2.json"), encoding="utf-8"))
+V5 = TAG in ("v5", "v51", "v52", "v53", "v54", "v55")    # 27 intents (intents_v5.json); every older tag keeps the 24 of intents_v2.json
+V51 = TAG in ("v51", "v52", "v53", "v54", "v55")         # 29 intents (intents_v51.json): v5 + LOOK_AT, LOOK_AT_ME
+V52 = TAG in ("v52", "v53", "v54", "v55")                # 32 intents (intents_v52.json): v51 + HELP, CHECK, SUPPRESS
+V53 = TAG in ("v53", "v54", "v55")                       # 33 intents (intents_v53.json): v52 + JUMP
+V54 = TAG in ("v54", "v55")                              # 41 intents (intents_v54.json): v53 + COME_BACK, three stances, four answers
+V55 = TAG == "v55"                                       # 44 intents (intents_v55.json): v54 + GET_IN, GET_OUT, REPEAT
+_I = json.load(io.open(os.path.join(HERE, "intents_v55.json" if V55 else "intents_v54.json" if V54 else "intents_v53.json" if V53 else
+                                    "intents_v52.json" if V52 else "intents_v51.json" if V51 else "intents_v5.json" if V5 else
+                                    "intents_v2.json"), encoding="utf-8"))
 I = {k: v for k, v in _I.items() if not k.startswith("_")}
 INTENTS = list(I)
 NEW = {"TAKE_COVER", "OPEN"}
@@ -93,11 +95,14 @@ NEW54 = {"COME_BACK", "CROUCH", "PRONE", "STAND_UP", "YES", "NO", "MAYBE", "DONT
 if V54:     # coming back is a move; a posture is a posture; a yes is never added to a no; the two unsure answers go together
     FAMILY.update({"COME_BACK": "move", "CROUCH": "stance", "PRONE": "stance", "STAND_UP": "stance",
                    "YES": "yes", "NO": "no", "MAYBE": "unsure", "DONT_KNOW": "unsure"})
+NEW55 = {"GET_IN", "GET_OUT", "REPEAT"}
+if V55:     # getting in is never added to getting out; a repeat is no order of its own kind
+    FAMILY.update({"GET_IN": "get_in", "GET_OUT": "get_out", "REPEAT": "repeat"})
 assert set(FAMILY) == set(INTENTS), set(FAMILY) ^ set(INTENTS)
 AUTHORS = ["r6", "cs", "stt"]
 SEED_FILE = {"v2": "seed_commands_v2.json", "v21": "seed_commands_v21.json", "v3": "seed_commands_v3.json",
              "v31": "seed_commands_v31.json", "v5": "seed_commands_v5.json", "v51": "seed_commands_v51.json", "v52": "seed_commands_v52.json",
-             "v53": "seed_commands_v53.json", "v54": "seed_commands_v54.json"}[TAG]
+             "v53": "seed_commands_v53.json", "v54": "seed_commands_v54.json", "v55": "seed_commands_v55.json"}[TAG]
 # "v3": the lines that name map places (blind/v3, annot/v3) join the data, with the seed set that has
 # templated location seeds; the v2 / v21 studies load exactly what they loaded before.
 # "v31": the v3 data with the seed set corrected after the v3 review (make_seeds_v31.py), and with the
@@ -108,7 +113,8 @@ SEED_FILE = {"v2": "seed_commands_v2.json", "v21": "seed_commands_v21.json", "v3
 # "v52": the v51 data read under the 32-intent spec, the v52 lines and seeds
 # "v53": the v52 data read under the 33-intent spec, the v53 lines and seeds
 # "v54": the v53 data read under the 41-intent spec, the v54 lines and seeds
-PLACES = TAG in ("v3", "v31", "v5", "v51", "v52", "v53", "v54")
+# "v55": the v54 data with its negated orders as WAIT (annot/v55/relabel_v55.json), the v55 lines and seeds
+PLACES = TAG in ("v3", "v31", "v5", "v51", "v52", "v53", "v54", "v55")
 
 # the owner's own live-test lines with the reading they asked for, and the canonical probes the v1
 # live test failed on. Not a blind check: none is a training line verbatim, but most are near copies
@@ -124,6 +130,8 @@ PROBES = [
     ("do not come to me", {"NONE"}), ("don't blow that wall", {"NONE", "WAIT"}),
     ("dont breach", {"NONE", "WAIT"}), ("never flank", {"NONE", "WAIT"}),
 ]
+if V55:     # spec v55: a negated order is WAIT
+    PROBES = [(t, {"WAIT"}) if t == "do not come to me" else (t, w) for t, w in PROBES]
 
 
 def _read(a):
@@ -215,6 +223,21 @@ def _apply(items, ver, new):
     return out
 
 
+def _relabel_v55(items):
+    """COOP_TAG=v55: a negated order is WAIT (spec v55). The lines of v1 to v54 that start with a negation and were read as
+    NONE or NO (annot/v55/relabel_v55.json, made by make_spec_v55.py) take WAIT as their one reading; place and timing stay."""
+    lines = json.load(io.open(os.path.join(HERE, "annot", "v55", "relabel_v55.json"), encoding="utf-8"))["lines"]
+    assert set(lines) <= {it["id"] for it in items}, sorted(set(lines) - {it["id"] for it in items})
+    out = []
+    for it in items:
+        r = lines.get(it["id"])
+        if r is not None:
+            assert it["maj"] == r["from"] and it["text"] == r["text"], (it["id"], it["maj"], r)
+            it = dict(it, maj=r["to"], accept={r["to"]}, any=set(it["any"]) | {r["to"]}, version=it["version"] + "-relabel55")
+        out.append(it)
+    return out
+
+
 def load_items(with_v2=True, with_v3=None):
     """with_v3: the lines that name map places; by default only under COOP_TAG=v3 / v31 / v5."""
     with_v3 = PLACES if with_v3 is None else with_v3
@@ -250,7 +273,7 @@ def load_items(with_v2=True, with_v3=None):
         anns = [json.load(io.open(p, encoding="utf-8"))
                 for p in sorted(glob.glob(os.path.join(HERE, "annot", "v3", f"author_{key}_ann*.json")))]
         assert len(anns) == 2, (key, len(anns))
-        if TAG in ("v31", "v5", "v51", "v52", "v53", "v54") and key == "r6":
+        if TAG in ("v31", "v5", "v51", "v52", "v53", "v54", "v55") and key == "r6":
             anns[1] = json.load(io.open(os.path.join(HERE, "annot", "v3", "reann_r6.json"), encoding="utf-8"))
         for a in auth:
             items.append(_item(a, key, [_read(a)] + [_read(an[a["id"]]) for an in anns], "v3"))
@@ -264,6 +287,10 @@ def load_items(with_v2=True, with_v3=None):
         items = _apply(items, "v53", NEW53)
     if V54 and with_v2 and with_v3:
         items = _apply(items, "v54", NEW54)
+    if V55 and with_v2 and with_v3:
+        items = _relabel_v55(items)
+        if os.path.exists(os.path.join(HERE, "blind", "v55", "author_r6.json")):   # the v55 lines, once they are written
+            items = _apply(items, "v55", NEW55)
     for it in items:
         for r in it["reads"]:
             assert r["set"] <= set(INTENTS), (it["id"], r)

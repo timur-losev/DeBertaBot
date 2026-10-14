@@ -948,6 +948,9 @@ const std::unordered_map<std::string, std::vector<std::string>> kLines = {
     {"NO", {"No, got it.", "Understood: no.", "Copy, that's a no."}},
     {"MAYBE", {"Maybe, got it.", "Understood: not certain.", "Copy, I'll use my judgement."}},
     {"DONT_KNOW", {"You don't know, got it.", "Understood: no answer.", "Copy, you're not sure."}},
+    {"GET_IN", {"Getting in.", "Hopping in.", "In the car."}},
+    {"GET_OUT", {"Getting out.", "Hopping out.", "Out of the car."}},
+    {"REPEAT", {"Again.", "Trying again.", "One more time."}},
 };
 const std::vector<std::string> kAck = {"Copy.", "Noted.", "Heard."};
 
@@ -1188,19 +1191,26 @@ struct Chat {
         };
         std::vector<Line> todo;
         std::string second;   // while the question is open: the one order the decoder read in an answer
+        // the decoder on this line with the talk before it; false when it fails (a line too long for its context)
+        auto decode = [&](std::vector<std::string>* pieces) {
+            while (!said.empty() && Ms(now - said.front().at) > 1000 * c->memory_seconds) said.pop_front();
+            std::vector<std::string> before;
+            for (const Said& s : said) before.push_back(s.text);
+            const bool bot = !bot_said.text.empty() && Ms(now - bot_said.at) <= 1000 * c->memory_seconds;
+            const auto t1 = Clock::now();
+            const bool ok = c->Rewrite(before, bot ? bot_said.text : std::string(), text, pieces, &h->note);
+            h->rewrite_ms += Ms(Clock::now() - t1);
+            if (ok) h->decoded = true;
+            return ok;
+        };
         if (c) {
             const auto t0 = Clock::now();
             if (!c->Route(m.tok.Encode(text), &h->route, err)) return false;
             h->route_ms = Ms(Clock::now() - t0);
             if (!c->router || h->route >= c->cut) {
-                while (!said.empty() && Ms(now - said.front().at) > 1000 * c->memory_seconds) said.pop_front();
-                std::vector<std::string> before, pieces;
-                for (const Said& s : said) before.push_back(s.text);
-                const bool bot = !bot_said.text.empty() && Ms(now - bot_said.at) <= 1000 * c->memory_seconds;
-                const auto t1 = Clock::now();
-                // a decoder that fails (a line too long for its context) leaves the line to the classifier
-                if (c->Rewrite(before, bot ? bot_said.text : std::string(), text, &pieces, &h->note)) h->decoded = true;
-                h->rewrite_ms = Ms(Clock::now() - t1);
+                std::vector<std::string> pieces;
+                // a decoder that fails leaves the line to the classifier
+                decode(&pieces);
                 // a line written back as it is stays the player's own line
                 if (pieces.size() == 1 && coop::SpeechTextForClassifier(pieces[0]) == coop::SpeechTextForClassifier(text)) pieces.clear();
                 if (answering && pieces.size() == 1) {
@@ -1233,6 +1243,25 @@ struct Chat {
                 if (!Think(second, coop::SpeechTextForClassifier(second), &t, err)) return false;
                 h->rewritten = true;
                 kept = second;
+            } else if (k == 0 && c && !h->decoded && todo.size() == 1 && t.r.action == "say_again") {
+                // a second look (bot v55): the router kept the line from the decoder and the bot cannot read it alone. With
+                // talk to lean on -- the bot's open question, or earlier lines still in memory -- the decoder reads it in
+                // that talk: "on my pin." after "Which window?", "To this wall." after "start shooting"
+                bool talk = answering;
+                for (const Said& s : said) talk = talk || Ms(now - s.at) <= 1000 * c->memory_seconds;
+                std::vector<std::string> pieces;
+                if (talk && decode(&pieces) && !pieces.empty() &&
+                    !(pieces.size() == 1 && coop::SpeechTextForClassifier(pieces[0]) == coop::SpeechTextForClassifier(text))) {
+                    t = Turn();
+                    t.line = pieces[0];
+                    if (!Think(pieces[0], coop::SpeechTextForClassifier(pieces[0]), &t, err)) return false;
+                    h->rewritten = true;
+                    h->note = "a second look: the bot could not read the line alone";
+                    kept.clear();
+                    for (const std::string& piece : pieces)
+                        kept += (kept.empty() ? "" : " ") + piece + (std::string(".!?").find(piece.back()) == std::string::npos ? "." : "");
+                    for (size_t j = 1; j < pieces.size(); ++j) todo.push_back({pieces[j], coop::SpeechTextForClassifier(pieces[j])});
+                }
             }
             h->turns.push_back(std::move(t));
             each(*h, h->turns.back());

@@ -30,6 +30,9 @@ SECTORS = {"left": (-150.0, -20.0), "right": (20.0, 150.0), "forward": (-60.0, 6
 BACK_FROM = 120.0          # "back", "behind": |bearing| >= 120
 ELEVATION = 1.5            # "up" / "down": elevation beyond +-1.5 m
 CLEARLY_NEARER = 1.5       # the nearest candidate wins outright when the next one is 1.5 times as far
+# things the bot fetches or rides (bot v55, locations.json version 6): "go find ammo", "grab a gun", "get in the car" mean
+# the nearest one, never a question ("Which ammo?")
+FETCHED = ("ammo", "weapon", "health", "car")
 RELATIVE_ZONES = ("up", "down")   # "upstairs", "downstairs": a floor named by where it is from the speaker
 STOREY = 1.5               # ... the next floor that way: the places within 1.5 m of the nearest one in height
 STANCES = ("stand", "crouch", "prone")
@@ -47,6 +50,7 @@ PRIORS = {
     "STAND_UP": [("stance=stand", PRIOR_X)],
     "VAULT_WINDOW": [("no_object=window", PRIOR_X)],
     "OPEN": [("no_object=door", PRIOR_X)],
+    "GET_IN": [("no_object=car", PRIOR_X)],
     "DEFUSE": [("no_tag=bomb", PRIOR_X)],
     "PLANT": [("bot_without=bomb", PRIOR_X)],
     "REVIVE_ME": [("player_up", PRIOR_X)],
@@ -343,7 +347,7 @@ def ground_target(t, world, memory, here=False):
     if flag == "unknown_modifier":
         # "the back door": the player singled one out in a way the map names cannot express; never the nearest
         return out("ambiguous", None, ids, "unknown_modifier")
-    if float(cands[1].get("distance", 0.0)) >= CLEARLY_NEARER * float(cands[0].get("distance", 0.0)):
+    if obj in FETCHED or float(cands[1].get("distance", 0.0)) >= CLEARLY_NEARER * float(cands[0].get("distance", 0.0)):
         return out("resolved", ids[0], ids, "nearest")
     return out("ambiguous", None, ids, "distance")
 

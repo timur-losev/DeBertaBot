@@ -1,0 +1,722 @@
+[
+{
+"id": "r6v55_000",
+"author": "r6",
+"version": "v55",
+"text": "Hop in, we're rotating before they reinforce.",
+"maj": "GET_IN",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0000.wav"
+},
+{
+"id": "r6v55_001",
+"author": "r6",
+"version": "v55",
+"text": "Try that again, the charge didn't stick.",
+"maj": "REPEAT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0001.wav"
+},
+{
+"id": "r6v55_002",
+"author": "r6",
+"version": "v55",
+"text": "Restock on ammo before we hit site.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v55_0002.wav"
+},
+{
+"id": "r6v55_003",
+"author": "r6",
+"version": "v55",
+"text": "Don't come with me, I'm roaming solo this round.",
+"maj": "WAIT",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0003.wav"
+},
+{
+"id": "r6v55_004",
+"author": "r6",
+"version": "v55",
+"text": "Get behind the truck, they've got eyes on us.",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0004.wav"
+},
+{
+"id": "r6v55_005",
+"author": "r6",
+"version": "v55",
+"text": "Wait for me at red stairs, I'm thirty seconds out.",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft Mark",
+"wav": "v55_0005.wav"
+},
+{
+"id": "r6v55_006",
+"author": "r6",
+"version": "v55",
+"text": "Bail out of the car, it's about to blow.",
+"maj": "GET_OUT",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0006.wav"
+},
+{
+"id": "r6v55_007",
+"author": "r6",
+"version": "v55",
+"text": "Get in the car at my pin, we're repositioning.",
+"maj": "GET_IN",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0007.wav"
+},
+{
+"id": "r6v55_008",
+"author": "r6",
+"version": "v55",
+"text": "Flash the south door on my goal.",
+"maj": "FLASH",
+"voice": "Microsoft Mark",
+"wav": "v55_0008.wav"
+},
+{
+"id": "r6v55_009",
+"author": "r6",
+"version": "v55",
+"text": "Pick up that shotgun, it's better for the tight angles.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0009.wav"
+},
+{
+"id": "r6v55_010",
+"author": "r6",
+"version": "v55",
+"text": "Again, quicker this time.",
+"maj": "REPEAT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0010.wav"
+},
+{
+"id": "r6v55_011",
+"author": "r6",
+"version": "v55",
+"text": "Don't shoot yet, let them peek first.",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft Mark",
+"wav": "v55_0011.wav"
+},
+{
+"id": "r6v55_012",
+"author": "r6",
+"version": "v55",
+"text": "Get out of there, Fuze is dropping a cluster on you.",
+"maj": "FALL_BACK",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0012.wav"
+},
+{
+"id": "r6v55_013",
+"author": "r6",
+"version": "v55",
+"text": "Jump in that truck, I'm driving.",
+"maj": "GET_IN",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0013.wav"
+},
+{
+"id": "r6v55_014",
+"author": "r6",
+"version": "v55",
+"text": "Wait right here while I plant.",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft Mark",
+"wav": "v55_0014.wav"
+},
+{
+"id": "r6v55_015",
+"author": "r6",
+"version": "v55",
+"text": "Find a medkit, you're on twenty HP.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0015.wav"
+},
+{
+"id": "r6v55_016",
+"author": "r6",
+"version": "v55",
+"text": "One more time, Mute jammed your drone.",
+"maj": "REPEAT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0016.wav"
+},
+{
+"id": "r6v55_017",
+"author": "r6",
+"version": "v55",
+"text": "Hop out, we go on foot the rest of the way.",
+"maj": "GET_OUT",
+"voice": "Microsoft Mark",
+"wav": "v55_0017.wav"
+},
+{
+"id": "r6v55_018",
+"author": "r6",
+"version": "v55",
+"text": "No need to check basement, Valkyrie's cams have it covered.",
+"maj": "WAIT",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0018.wav"
+},
+{
+"id": "r6v55_019",
+"author": "r6",
+"version": "v55",
+"text": "Move up to the car at my pin.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0019.wav"
+},
+{
+"id": "r6v55_020",
+"author": "r6",
+"version": "v55",
+"text": "Take the car, it's quicker than running the long way round.",
+"maj": "GET_IN",
+"voice": "Microsoft Mark",
+"wav": "v55_0020.wav"
+},
+{
+"id": "r6v55_021",
+"author": "r6",
+"version": "v55",
+"text": "Grab some ammo upstairs, we're both running dry.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0021.wav"
+},
+{
+"id": "r6v55_022",
+"author": "r6",
+"version": "v55",
+"text": "Do it again, the smoke drifted off site.",
+"maj": "REPEAT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0022.wav"
+},
+{
+"id": "r6v55_023",
+"author": "r6",
+"version": "v55",
+"text": "Don't move, Kapkan's got the doorways trapped.",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft Mark",
+"wav": "v55_0023.wav"
+},
+{
+"id": "r6v55_024",
+"author": "r6",
+"version": "v55",
+"text": "Wait by the east window till I rotate back.",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0024.wav"
+},
+{
+"id": "r6v55_025",
+"author": "r6",
+"version": "v55",
+"text": "Smoke it again, the first one's fading.",
+"maj": "SMOKE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0025.wav"
+},
+{
+"id": "r6v55_026",
+"author": "r6",
+"version": "v55",
+"text": "Exit the vehicle, we're pushing site on foot.",
+"maj": "GET_OUT",
+"voice": "Microsoft Mark",
+"wav": "v55_0026.wav"
+},
+{
+"id": "r6v55_027",
+"author": "r6",
+"version": "v55",
+"text": "On three, smoke the west window.",
+"maj": "SMOKE",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0027.wav"
+},
+{
+"id": "r6v55_028",
+"author": "r6",
+"version": "v55",
+"text": "Get into the car on your left, we're pulling out.",
+"maj": "GET_IN",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0028.wav"
+},
+{
+"id": "r6v55_029",
+"author": "r6",
+"version": "v55",
+"text": "Don't breach yet, Bandit's still tricking the wall.",
+"maj": "WAIT",
+"voice": "Microsoft Mark",
+"wav": "v55_0029.wav"
+},
+{
+"id": "r6v55_030",
+"author": "r6",
+"version": "v55",
+"text": "Pick up the pistol by my ping, you dropped yours.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0030.wav"
+},
+{
+"id": "r6v55_031",
+"author": "r6",
+"version": "v55",
+"text": "Go again, Jager's ADS ate the last one.",
+"maj": "REPEAT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0031.wav"
+},
+{
+"id": "r6v55_032",
+"author": "r6",
+"version": "v55",
+"text": "One more on red stairs, he's one-shot.",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "v55_0032.wav"
+},
+{
+"id": "r6v55_033",
+"author": "r6",
+"version": "v55",
+"text": "Wait at my pin, I'll swing around and meet you.",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0033.wav"
+},
+{
+"id": "r6v55_034",
+"author": "r6",
+"version": "v55",
+"text": "Out of the truck, now, they're spawn peeking us.",
+"maj": "GET_OUT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0034.wav"
+},
+{
+"id": "r6v55_035",
+"author": "r6",
+"version": "v55",
+"text": "Don't drop through the hatch, it's a death trap.",
+"maj": "WAIT",
+"voice": "Microsoft Mark",
+"wav": "v55_0035.wav"
+},
+{
+"id": "r6v55_036",
+"author": "r6",
+"version": "v55",
+"text": "Climb into the truck by the north door, engine's running.",
+"maj": "GET_IN",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0036.wav"
+},
+{
+"id": "r6v55_037",
+"author": "r6",
+"version": "v55",
+"text": "Give it another go, we've still got time.",
+"maj": "REPEAT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0037.wav"
+},
+{
+"id": "r6v55_038",
+"author": "r6",
+"version": "v55",
+"text": "Get some health before the push, you're too low.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v55_0038.wav"
+},
+{
+"id": "r6v55_039",
+"author": "r6",
+"version": "v55",
+"text": "Wait, Echo's got a Yokai on us.",
+"maj": "WAIT",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0039.wav"
+},
+{
+"id": "csv55_000",
+"author": "cs",
+"version": "v55",
+"text": "one more behind the sofa, he's lit for 90",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0040.wav"
+},
+{
+"id": "csv55_001",
+"author": "cs",
+"version": "v55",
+"text": "bro go find ammo, you're on your last mag",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v55_0041.wav"
+},
+{
+"id": "csv55_002",
+"author": "cs",
+"version": "v55",
+"text": "do not open the north door, they're holding it",
+"maj": "WAIT",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0042.wav"
+},
+{
+"id": "csv55_003",
+"author": "cs",
+"version": "v55",
+"text": "frag the north window again, they're still alive",
+"maj": "FRAG",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0043.wav"
+},
+{
+"id": "csv55_004",
+"author": "cs",
+"version": "v55",
+"text": "get in that truck at my pin, we're driving out",
+"maj": "GET_IN",
+"voice": "Microsoft Mark",
+"wav": "v55_0044.wav"
+},
+{
+"id": "csv55_005",
+"author": "cs",
+"version": "v55",
+"text": "wait for me by the red stairs man",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0045.wav"
+},
+{
+"id": "csv55_006",
+"author": "cs",
+"version": "v55",
+"text": "give it another go, you were so close",
+"maj": "REPEAT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0046.wav"
+},
+{
+"id": "csv55_007",
+"author": "cs",
+"version": "v55",
+"text": "get behind the car dude, they're spraying",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Mark",
+"wav": "v55_0047.wav"
+},
+{
+"id": "csv55_008",
+"author": "cs",
+"version": "v55",
+"text": "wait bro, not yet",
+"maj": "WAIT",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0048.wav"
+},
+{
+"id": "csv55_009",
+"author": "cs",
+"version": "v55",
+"text": "bail out of the car, they're spraying it",
+"maj": "GET_OUT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0049.wav"
+},
+{
+"id": "csv55_010",
+"author": "cs",
+"version": "v55",
+"text": "nah don't follow me, i'm lurking solo",
+"maj": "WAIT",
+"voice": "Microsoft Mark",
+"wav": "v55_0050.wav"
+},
+{
+"id": "csv55_011",
+"author": "cs",
+"version": "v55",
+"text": "hop in bro, we're rotating",
+"maj": "GET_IN",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0051.wav"
+},
+{
+"id": "csv55_012",
+"author": "cs",
+"version": "v55",
+"text": "get in the truck man, we're leaving",
+"maj": "GET_IN",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0052.wav"
+},
+{
+"id": "csv55_013",
+"author": "cs",
+"version": "v55",
+"text": "find some ammo upstairs man, we're both dry",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v55_0053.wav"
+},
+{
+"id": "csv55_014",
+"author": "cs",
+"version": "v55",
+"text": "smoke main on my call, not before",
+"maj": "SMOKE",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0054.wav"
+},
+{
+"id": "csv55_015",
+"author": "cs",
+"version": "v55",
+"text": "get out of there bro, they're flooding in",
+"maj": "FALL_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0055.wav"
+},
+{
+"id": "csv55_016",
+"author": "cs",
+"version": "v55",
+"text": "jump out of the truck dude, we push on foot",
+"maj": "GET_OUT",
+"voice": "Microsoft Mark",
+"wav": "v55_0056.wav"
+},
+{
+"id": "csv55_017",
+"author": "cs",
+"version": "v55",
+"text": "don't move bro, he's got an angle on you",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0057.wav"
+},
+{
+"id": "csv55_018",
+"author": "cs",
+"version": "v55",
+"text": "run to the truck man, it's our ride out",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0058.wav"
+},
+{
+"id": "csv55_019",
+"author": "cs",
+"version": "v55",
+"text": "jump in dude, i'm driving",
+"maj": "GET_IN",
+"voice": "Microsoft Mark",
+"wav": "v55_0059.wav"
+},
+{
+"id": "csv55_020",
+"author": "cs",
+"version": "v55",
+"text": "try that again man, your nade bounced off the frame",
+"maj": "REPEAT",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0060.wav"
+},
+{
+"id": "csv55_021",
+"author": "cs",
+"version": "v55",
+"text": "go grab a medkit before we push",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0061.wav"
+},
+{
+"id": "csv55_022",
+"author": "cs",
+"version": "v55",
+"text": "do it again bro, the door's still shut",
+"maj": "REPEAT",
+"voice": "Microsoft Mark",
+"wav": "v55_0062.wav"
+},
+{
+"id": "csv55_023",
+"author": "cs",
+"version": "v55",
+"text": "wait here bro, i'll go take a look",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0063.wav"
+},
+{
+"id": "csv55_024",
+"author": "cs",
+"version": "v55",
+"text": "run it back dude, one more time",
+"maj": "REPEAT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0064.wav"
+},
+{
+"id": "csv55_025",
+"author": "cs",
+"version": "v55",
+"text": "wait at my pin bro, i'm coming to you",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft Mark",
+"wav": "v55_0065.wav"
+},
+{
+"id": "csv55_026",
+"author": "cs",
+"version": "v55",
+"text": "wait over by the sofa till i rotate",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0066.wav"
+},
+{
+"id": "csv55_027",
+"author": "cs",
+"version": "v55",
+"text": "grab a rifle man, the pistol ain't gonna cut it",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0067.wav"
+},
+{
+"id": "csv55_028",
+"author": "cs",
+"version": "v55",
+"text": "get some health dude, you're one shot",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v55_0068.wav"
+},
+{
+"id": "csv55_029",
+"author": "cs",
+"version": "v55",
+"text": "get out of the car man, it's about to blow",
+"maj": "GET_OUT",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0069.wav"
+},
+{
+"id": "csv55_030",
+"author": "cs",
+"version": "v55",
+"text": "don't shoot yet dude, let them walk into us",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0070.wav"
+},
+{
+"id": "csv55_031",
+"author": "cs",
+"version": "v55",
+"text": "again bro",
+"maj": "REPEAT",
+"voice": "Microsoft Mark",
+"wav": "v55_0071.wav"
+},
+{
+"id": "csv55_032",
+"author": "cs",
+"version": "v55",
+"text": "jump in the car by the north door bro",
+"maj": "GET_IN",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0072.wav"
+},
+{
+"id": "csv55_033",
+"author": "cs",
+"version": "v55",
+"text": "no need to check the roof man, it's clear",
+"maj": "WAIT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0073.wav"
+},
+{
+"id": "csv55_034",
+"author": "cs",
+"version": "v55",
+"text": "pick up that shotgun bro, it's free",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v55_0074.wav"
+},
+{
+"id": "csv55_035",
+"author": "cs",
+"version": "v55",
+"text": "same again, that worked",
+"maj": "REPEAT",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0075.wav"
+},
+{
+"id": "csv55_036",
+"author": "cs",
+"version": "v55",
+"text": "take the car dude, i'm on foot",
+"maj": "GET_IN",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0076.wav"
+},
+{
+"id": "csv55_037",
+"author": "cs",
+"version": "v55",
+"text": "flash east window on my goal bro",
+"maj": "FLASH",
+"voice": "Microsoft Mark",
+"wav": "v55_0077.wav"
+},
+{
+"id": "csv55_038",
+"author": "cs",
+"version": "v55",
+"text": "don't jump down bro, you'll eat fall damage",
+"maj": "WAIT",
+"voice": "Microsoft David Desktop",
+"wav": "v55_0078.wav"
+},
+{
+"id": "csv55_039",
+"author": "cs",
+"version": "v55",
+"text": "hop out bro, this is our stop",
+"maj": "GET_OUT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v55_0079.wav"
+}
+]

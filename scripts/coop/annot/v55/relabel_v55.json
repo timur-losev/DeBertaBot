@@ -1,0 +1,165 @@
+{
+ "_note": "make_spec_v55.py: the authored lines (v1 to v54) whose majority reading is NONE or NO and that start with a negation (coop_bot.NEGATION): a negated order is WAIT under spec v55. A rule, not a re-reading: the developer read the list before freezing it",
+ "lines": {
+  "r6_061": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "don't breach, they got Bandit on it"
+  },
+  "r6_100": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "don't nade it, I'm going in"
+  },
+  "r6v2_030": {
+   "from": "NO",
+   "to": "WAIT",
+   "text": "nah no need to hide, nobody's got eyes on you"
+  },
+  "r6v2_037": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "don't open that door, leave it closed"
+  },
+  "r6v3_003": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "Nah, never mind smoking red stairs, we don't need it."
+  },
+  "cs_007": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "don't breach, it's way too loud"
+  },
+  "csv2_012": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "don't open that door, they're stacked right behind it"
+  },
+  "csv3_008": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "nah don't waste your smoke on west window, keep it"
+  },
+  "stt_038": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "dont beach it"
+  },
+  "stt_102": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "uh dont frag theres a hostage in there"
+  },
+  "sttv2_016": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "dont open that door"
+  },
+  "r6v5_054": {
+   "from": "NO",
+   "to": "WAIT",
+   "text": "No, don't attack them, that's not the play."
+  },
+  "csv5_054": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "nah don't attack him, he's not worth the risk"
+  },
+  "sttv5_054": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "no no do not attack them i dont want attack"
+  },
+  "r6v51_028": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "Don't bother looking at the north window, that's a fake, nobody's coming from there."
+  },
+  "csv51_028": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "nah don't look at the west window, false alarm"
+  },
+  "csv51_029": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "never mind bro, no need to look at me, forget it"
+  },
+  "sttv51_028": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "no dont look at the yeast window there is nothing"
+  },
+  "r6v52_028": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "Never mind, I don't need help anymore, I traded him out."
+  },
+  "r6v52_029": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "Don't bother checking the roof, it's a waste of time."
+  },
+  "csv52_028": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "nah don't check blue stairs, forget it, waste of time"
+  },
+  "csv52_029": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "no don't help me, i'm good, i can clutch it"
+  },
+  "sttv52_028": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "do not chick the roof no need for that"
+  },
+  "r6v53_028": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "Don't jump down, they're holding the drop with a shotgun."
+  },
+  "csv53_028": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "don't jump man, it's a long fall and you'll lose half your hp"
+  },
+  "sttv53_028": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "no no dont jump uh do not jump it is too high"
+  },
+  "r6v54_042": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "Don't go prone, you'll lose every gunfight like that."
+  },
+  "r6v54_043": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "Don't come back, I never called a regroup."
+  },
+  "csv54_042": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "don't crouch bro, you can't see anything over the box like that"
+  },
+  "csv54_043": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "don't come back for me, i'm already dead"
+  },
+  "sttv54_042": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "uh dont come back yet do not come back"
+  },
+  "sttv54_043": {
+   "from": "NONE",
+   "to": "WAIT",
+   "text": "hey dont stand up do not get up yet"
+  }
+ }
+}

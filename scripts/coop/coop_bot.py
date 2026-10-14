@@ -43,8 +43,10 @@ import re  # noqa: E402
 # The bot's timing pattern is the measured one without "mark". The owner, 2026-10-10: "mark" is the 3D pin, so "stay
 # on my mark" and "check at my mark" name a place (the place matcher reports the pin) and do not wait for a go.
 # "wait for my mark" is still a signal, through the pattern's "wait for my" branch.
+# "goal" (2026-10-14): the recognizer hears the owner's "on my go" as "on my goal", five times out of five in his first
+# play with the chain; he asked for it to be fixed. Nothing else in this game is "on my goal".
 ON_SIGNAL = re.compile(_ON_SIGNAL_STUDY.pattern.replace("(go|call|mark|signal|count|word|command)",
-                                                        "(go|call|signal|count|word|command)"), re.I)
+                                                        "(go|goal|call|signal|count|word|command)"), re.I)
 assert ON_SIGNAL.pattern != _ON_SIGNAL_STUDY.pattern
 
 # the default bot: v31 (24 intents incl. TAKE_COVER and OPEN, trained with lines that name map places),
@@ -107,6 +109,9 @@ LINES = {
     "NO": ["No, got it.", "Understood: no.", "Copy, that's a no."],
     "MAYBE": ["Maybe, got it.", "Understood: not certain.", "Copy, I'll use my judgement."],
     "DONT_KNOW": ["You don't know, got it.", "Understood: no answer.", "Copy, you're not sure."],
+    "GET_IN": ["Getting in.", "Hopping in.", "In the car."],
+    "GET_OUT": ["Getting out.", "Hopping out.", "Out of the car."],
+    "REPEAT": ["Again.", "Trying again.", "One more time."],
 }
 ACK = ["Copy.", "Noted.", "Heard."]                   # NONE: a callout or chatter, nothing to do
 AGAIN = ["Say again?", "Didn't catch that.", "Come again?"]

@@ -1,0 +1,602 @@
+[
+ {
+  "id": "sttv55_000",
+  "text": "okay so uh you get in the car get in",
+  "intent": "GET_IN",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getin"
+ },
+ {
+  "id": "sttv55_001",
+  "text": "try again try again",
+  "intent": "REPEAT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "repeat"
+ },
+ {
+  "id": "sttv55_002",
+  "text": "go find some amor uh i am out of bullets",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "ammo",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "item"
+ },
+ {
+  "id": "sttv55_003",
+  "text": "no no dont follow me i go alone",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "sttv55_004",
+  "text": "okay so go to the car on the right side",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": "right",
+   "unknown_modifier": false
+  },
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv55_005",
+  "text": "wait me hear okay i come back",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "waithere"
+ },
+ {
+  "id": "sttv55_006",
+  "text": "okay get out of the car now get out",
+  "intent": "GET_OUT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getout"
+ },
+ {
+  "id": "sttv55_007",
+  "text": "uh you flash the east window on my goal",
+  "intent": "FLASH",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "east",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "signal"
+ },
+ {
+  "id": "sttv55_008",
+  "text": "grab a gun uh any gun you can find",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "weapon",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "item"
+ },
+ {
+  "id": "sttv55_009",
+  "text": "give it another goal you miss it",
+  "intent": "REPEAT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "repeat"
+ },
+ {
+  "id": "sttv55_010",
+  "text": "hop in hop in we are leaving",
+  "intent": "GET_IN",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getin"
+ },
+ {
+  "id": "sttv55_011",
+  "text": "get behind the car they shooting at us",
+  "intent": "TAKE_COVER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv55_012",
+  "text": "dont shoot dont shoot is friendly",
+  "intent": "HOLD_FIRE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "sttv55_013",
+  "text": "jump in the truck on the left uh the left one",
+  "intent": "GET_IN",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": "left",
+   "unknown_modifier": false
+  },
+  "kind": "getin"
+ },
+ {
+  "id": "sttv55_014",
+  "text": "uh you wait for me by the red stairs",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "red",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "waithere"
+ },
+ {
+  "id": "sttv55_015",
+  "text": "uh one more time please",
+  "intent": "REPEAT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "repeat"
+ },
+ {
+  "id": "sttv55_016",
+  "text": "okay so uh you go take armor at my ping there is boxes",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": "ammo",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "item"
+ },
+ {
+  "id": "sttv55_017",
+  "text": "hop out hop out uh quick",
+  "intent": "GET_OUT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getout"
+ },
+ {
+  "id": "sttv55_018",
+  "text": "get out of there now get out",
+  "intent": "FALL_BACK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv55_019",
+  "text": "uh dont jump you will break your legs",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "sttv55_020",
+  "text": "you take the car at my ping please",
+  "intent": "GET_IN",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getin"
+ },
+ {
+  "id": "sttv55_021",
+  "text": "pick up that shotgun over there",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "weapon",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "item"
+ },
+ {
+  "id": "sttv55_022",
+  "text": "you do one more time it was not working before",
+  "intent": "REPEAT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "repeat"
+ },
+ {
+  "id": "sttv55_023",
+  "text": "frag it again uh throw one more frag",
+  "intent": "FRAG",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv55_024",
+  "text": "no need to check uh i see already it is empty",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "sttv55_025",
+  "text": "wait right there uh dont go nowhere",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "waithere"
+ },
+ {
+  "id": "sttv55_026",
+  "text": "you leave the truck now we walk",
+  "intent": "GET_OUT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getout"
+ },
+ {
+  "id": "sttv55_027",
+  "text": "you go inside that car there",
+  "intent": "GET_IN",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getin"
+ },
+ {
+  "id": "sttv55_028",
+  "text": "you go get health uh medkit i am low",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "health",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "item"
+ },
+ {
+  "id": "sttv55_029",
+  "text": "when i say go you push in from main door",
+  "intent": "ENTRY",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "main",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "signal"
+ },
+ {
+  "id": "sttv55_030",
+  "text": "uh one more on your left one more",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": "left",
+   "unknown_modifier": false
+  },
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv55_031",
+  "text": "again uh do it again",
+  "intent": "REPEAT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "repeat"
+ },
+ {
+  "id": "sttv55_032",
+  "text": "dont move okay you stay in good spot",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "sttv55_033",
+  "text": "get in the vehicle uh the one downstairs",
+  "intent": "GET_IN",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": "down",
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getin"
+ },
+ {
+  "id": "sttv55_034",
+  "text": "go take the health pack in the basement",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "health",
+   "qualifier": null,
+   "zone": "basement",
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "item"
+ },
+ {
+  "id": "sttv55_035",
+  "text": "uh exit from vehicle please we are arrived",
+  "intent": "GET_OUT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "getout"
+ },
+ {
+  "id": "sttv55_036",
+  "text": "do not throw the smoke not yet",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "negated"
+ },
+ {
+  "id": "sttv55_037",
+  "text": "okay so wait at my ping i will come to you",
+  "intent": "HOLD_POSITION",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "waithere"
+ },
+ {
+  "id": "sttv55_038",
+  "text": "more uh more please",
+  "intent": "REPEAT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "repeat"
+ },
+ {
+  "id": "sttv55_039",
+  "text": "uh wait wait",
+  "intent": "WAIT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "kind": "boundary"
+ }
+]
