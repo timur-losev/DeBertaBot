@@ -47,7 +47,8 @@ add_library(coop_intent_core STATIC
   src/locations.cpp
   src/world.cpp
   src/intent_model.cpp
-  src/speech_text.cpp)
+  src/speech_text.cpp
+  src/rewriter_text.cpp)
 target_include_directories(coop_intent_core PUBLIC include)
 target_link_libraries(coop_intent_core PUBLIC Threads::Threads)
 
@@ -122,6 +123,25 @@ if(EXISTS "${SHERPA_DIR}/include/sherpa-onnx/c-api/c-api.h" AND EXISTS "${SHERPA
   endif()
 else()
   message(STATUS "sherpa-onnx is not in ${SHERPA_DIR}: coop_cli is built without speech-to-text (--voice, --stt-wav, --stt-tests)")
+endif()
+
+# The decoder for lines with several orders or with a context (rewriter.h), optional: llama.cpp's C API, laid out
+# under third_party/ by tools/setup_llama.ps1 (include/llama.h, lib/llama.lib made from the DLL's exports, bin/*.dll).
+# The Vulkan build serves any vendor's GPU and, with no layers on it, the CPU.
+set(LLAMA_BUILD "b11429" CACHE STRING "llama.cpp build tag")
+set(LLAMA_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party/llama.cpp-${LLAMA_BUILD}-win-x64" CACHE PATH "llama.cpp (include/, lib/, bin/)")
+if(WIN32 AND EXISTS "${LLAMA_DIR}/include/llama.h" AND EXISTS "${LLAMA_DIR}/lib/llama.lib")
+  add_library(coop_intent_llm STATIC src/llama_rewriter.cpp)
+  target_include_directories(coop_intent_llm PRIVATE "${LLAMA_DIR}/include")
+  target_compile_definitions(coop_intent_llm PRIVATE LLAMA_SHARED GGML_SHARED COOP_LLAMA_BUILD="${LLAMA_BUILD}")
+  target_link_libraries(coop_intent_llm PUBLIC coop_intent_core "${LLAMA_DIR}/lib/llama.lib")
+  target_link_libraries(coop_cli PRIVATE coop_intent_llm)
+  target_compile_definitions(coop_cli PRIVATE COOP_WITH_LLM)
+  file(GLOB COOP_LLAMA_DLLS "${LLAMA_DIR}/bin/*.dll")
+  add_custom_command(TARGET coop_cli POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${COOP_LLAMA_DLLS} $<TARGET_FILE_DIR:coop_cli>)
+else()
+  message(STATUS "llama.cpp is not in ${LLAMA_DIR}: coop_cli is built without the decoder (--chain, --rewrite-tests)")
 endif()
 
 if(WIN32)

@@ -20,7 +20,8 @@ intent_config.json.
   "check it"), repeats ("again", "shoot again", "once more"), corrections ("no", "no, here, on my pin"), fragments
   ("on my pin", "over there", "left") and lines whose words were lost ("should there"), with the confidence on
   either side of the threshold and of the "read it for its place alone" bound. Each step records the frame of the
-  previous order. The owner's lines of the first live test (world.DEV_TALK) are the third scenario.
+  previous order. The owner's lines of the first live test (world.DEV_TALK) are the third scenario, a building
+  with its floors marked ("upstairs", "downstairs", world.DEV_FLOORS) the fourth.
   The threshold is kept away from the adjusted confidence by 0.02 so that float32 cannot flip a step.
   A last block of worlds the rules must refuse (unknown object, duplicate id, bearing out of range, unknown stance).
 
@@ -275,12 +276,147 @@ def step_row(text, probs, res, pl, bot):
             "say": res["say"] if said else None, "adjusted": res["probs_adjusted"],
             "frame": None if f is None else {"intent": f["intent"], "has_target": f["t"] is not None,
                                              "entity": f["g"]["entity"] if f["g"] else None, "via": f["g"]["via"] if f["g"] else None,
-                                             "time": f["time"]},
+                                             "time": f["time"], "said": f["said"] is not None},
             "ground": res["ground"], "order": res["order"],
             "question": None if q is None else {"kind": q["kind"], "intent": q["intent"], "k": q["k"], "other": q["other"],
                                                 "queued": q["queued"], "candidates": q["candidates"], "offered": q["offered"]},
             "pending": bot.pending, "pending_entity": pl.pending_entity, "pending_here": pl.pending_here, "pending_near": pl.pending_near,
             "last_entity": pl.memory["last_entity"], "bot_pin": (pl.world.get("bot_pin") or {}).get("entity")}
+
+
+# ---- lines of several orders (world.py, "a line of several orders")
+CHAIN_VERBS = [(v, k) for v, k in (("smoke", "SMOKE"), ("flash", "FLASH"), ("frag", "FRAG"), ("go to", "MOVE_TO"), ("go in through", "MOVE_TO"),
+                                   ("hold", "HOLD_ANGLE"), ("watch", "HOLD_ANGLE"), ("check", "CHECK"), ("breach", "BREACH"), ("open", "OPEN"),
+                                   ("stay at", "HOLD_POSITION"), ("suppress", "SUPPRESS"), ("take cover at", "TAKE_COVER")) if k in CFG["labels"]]
+# a place, and the ways a further order of the same line names it again: in the same words, or in fewer
+CHAIN_PLACES = [("the door", ["the door"]), ("the north door", ["the north door", "the door"]), ("the door on the left", ["the door", "the door on the left"]),
+                ("the door on the right", ["the door"]), ("that door", ["the door", "that door"]), ("the main door", ["the door", "the main door"]),
+                ("the window", ["the window"]), ("the east window", ["the window", "the east window"]), ("that window", ["the window"]),
+                ("the stairs", ["the stairs"]), ("the blue stairs", ["the stairs", "the blue stairs"]), ("the table", ["the table"]),
+                ("the sofa", ["the sofa"]), ("the door upstairs", ["the door"]), ("the door at my pin", ["the door"]),
+                ("the other door", ["the other door", "the door"]), ("the other window", ["the other window", "the window"]),
+                ("the back door", ["the back door", "the door"])]
+CHAIN_ROLES = [("get away from", "FALL_BACK"), ("stay away from", "HOLD_POSITION"), ("not", "HOLD_ANGLE"), ("they are at", "NONE"),
+               ("contact at", "NONE"), ("i'm at", "COME_BACK"), ("move from", "MOVE_TO")]
+# ... and what it says instead: another thing, the other one, a pointer
+CHAIN_ELSEWHERE = ["the other door", "the other window", "the window", "the door", "the roof", "my pin", "there", "here", "the back door", "left",
+                   "the south door", "the chair"]
+# "the other one" in answer to "Which ...?", and what the classifier makes of it: with a place said it is the order
+# asked about or nothing; without one it is nothing, a no, or the other angle
+CHAIN_OTHER = ["the other one", "no, the other one", "the other", "the other one please", "no the other", "the other door", "no, the other door",
+               "the other window", "the other stairs", "not that one, the other one", "other one"]
+OTHER_READ = [k for k in ("NONE", "NO", "HOLD_OTHER_ANGLE") if k in CFG["labels"]]
+STATS = collections.Counter()      # what the new rules did, for the summary
+_same_place = W.Planner._same_place
+
+
+def _counted_same_place(self, record, grounding):
+    k = record["primary"] if record and record["targets"] else -1
+    before = grounding[k] if k >= 0 else None
+    _same_place(self, record, grounding)
+    STATS["same_place"] += k >= 0 and grounding[k] is not before
+
+
+W.Planner._same_place = _counted_same_place
+
+
+def chain_scenario(rng, n_lines, gate, threshold):
+    """A conversation of lines that give several orders, stepped as the engine steps the decoder's order lines
+    (coop_cli.cpp, Chat::Hear): a line is one to four order lines in one world, the second and later ones with
+    continued=True. A further order names the place of the order before it again (in the same words or in fewer) two
+    times in three. An order line that makes the planner ask stops its line; the next line answers (yes, no, a place,
+    "the other one", pointing), and what waited goes through after an answer that settles the order, continued."""
+    bot = Fake(gate, threshold)
+    world = random_world(rng)
+    if rng.random() < 0.5:
+        # a world where "Which ...?" comes up: two to four doors, and windows, none of them clearly the nearest
+        for obj, n in (("door", rng.choice([2, 2, 3, 4])), ("window", rng.choice([0, 2, 3]))):
+            base = float(rng.choice([6, 8, 11]))
+            for j in range(n):
+                world["entities"].append({
+                    "id": f"{obj}_c{j}", "object": obj, "qualifier": rng.choice(OBJECTS[obj] + [None, None]), "zone": None,
+                    "bearing": float(rng.choice([-70, -35, 0, 30, 70, 110, 180])), "distance": base * rng.choice([1.0, 1.1, 1.2, 1.3, 1.4]),
+                    "elevation": 0.0, "tags": []})
+    if rng.random() < 0.8:
+        world["time"] = float(rng.choice([0.0, 12.5, 100.0, 3600.0]))
+        world["bot"]["busy"] = False
+    pl = W.Planner(bot, world)
+    steps, held, now = [], [], world
+    for i in range(n_lines):
+        if i:
+            now = moved_on(rng, now)
+            pl.set_world(now)
+        q = pl.memory["question"]
+        answering = q is not None
+        asked = q["intent"] if answering else None
+        if answering and rng.random() < 0.85:
+            r = rng.random()
+            if q["kind"] == "which" and r < 0.4:
+                text = rng.choice(CHAIN_OTHER)
+                line = [(text, rng.choice(OTHER_READ + [q["intent"], q["intent"], rng.choice(PLACE_ORDERS)]))]
+            elif ANSWER_LABELS and r < 0.65:
+                intent = rng.choice(ANSWER_LABELS)
+                line = [(rng.choice(ANSWERS_TXT[intent]), intent)]
+            elif q["kind"] == "missing":
+                line = [(rng.choice(POINTING), rng.choice(["NONE", "NONE", q["intent"], rng.choice(PLACE_ORDERS)]))]
+            else:
+                # an answer that names a place: the classifier reads it as the order asked about, or not at all
+                line = [(rng.choice(NARROW), rng.choice([q["intent"], q["intent"], "NONE", rng.choice(PLACE_ORDERS)]))]
+        else:
+            place, again = rng.choice(CHAIN_PLACES)
+            line = []
+            for j in range(rng.choice([1, 2, 2, 3, 3, 4])):
+                verb, intent = rng.choice(CHAIN_VERBS)
+                if j and rng.random() < 0.08:
+                    # the same thing again, as something else than where to go: where the bot is to leave, where they are
+                    verb, intent = rng.choice(CHAIN_ROLES)
+                    intent = intent if intent in CFG["labels"] else "NONE"
+                    words = rng.choice(again)
+                elif j and rng.random() < 0.67:
+                    words = rng.choice(again)
+                elif j:
+                    words = rng.choice(CHAIN_ELSEWHERE)
+                    place, again = words, [words]
+                else:
+                    words = place
+                line.append((f"{verb} {words}{rng.choice(SUFFIX) if rng.random() < 0.1 else ''}", intent))
+        todo = list(line)
+        if not (answering and len(todo) == 1):
+            held = []
+        k = 0
+        while k < len(todo):
+            text, intent = todo[k]
+            for _try in range(50):
+                conf = rng.choice([0.45, 0.8, 0.9, 0.9, 0.95, 0.97, 0.99])
+                probs = probs_for(rng, bot.labels, intent, conf)
+                adj, _ = W.apply_priors(probs, bot.labels, pl.world, pl.memory)
+                _, c = bot.pick(adj)
+                if abs(c - threshold) > 0.02 and abs(c - W.FRAGMENT_UNSURE) > 0.02:
+                    break
+            which = pl.memory["question"] is not None and pl.memory["question"]["kind"] == "which"
+            res = pl.step(text, probs, continued=k > 0)
+            row = step_row(text, probs, res, pl, bot)
+            if k:
+                row["continued"] = True
+            elif i:
+                row["world"] = now
+            steps.append(row)
+            if which and "other" in W.words(text):
+                STATS["other"] += 1
+                STATS["other_settled"] += res["action"] == "resolved"
+                STATS["other_offered"] += res["action"] == "ask" and res["say"].startswith("The one ")
+            q = pl.memory["question"]
+            if k == 0 and answering and len(line) == 1:
+                if q is not None and q["intent"] == asked:
+                    break                      # that order is still being settled: what waits goes on waiting
+                if q is None and res["order"] is not None and res["order"]["intent"] == asked:
+                    todo += held               # settled: what waited goes through now
+                held = []
+            elif q is not None:
+                held = todo[k + 1:]
+                break
+            k += 1
+    return {"world": world, "gate": gate, "threshold": threshold, "steps": steps}
 
 
 def refused():
@@ -351,9 +487,40 @@ def main():
         row["world"] = before
         steps.append(row)
     rows.append({"world": W.WORLD_TALK, "gate": "top", "threshold": 0.6, "steps": steps})
+    # ... and of a building with its floors marked: "upstairs", "downstairs", "the door upstairs"
+    bot = Fake("top", 0.6)
+    pl = W.Planner(bot, W.WORLD_FLOORS)
+    steps = []
+    for text, intent, _ in W.DEV_FLOORS:
+        if intent not in CFG["labels"]:
+            continue
+        probs = probs_for(rng, bot.labels, intent, 0.9)
+        res = pl.step(text, probs)
+        steps.append(step_row(text, probs, res, pl, bot))
+    rows.append({"world": W.WORLD_FLOORS, "gate": "top", "threshold": 0.6, "steps": steps})
     for i in range(600):
         gate = "family" if i % 3 == 2 else "top"
         rows.append(scenario(rng, rng.choice([3, 6, 10, 16]), gate, rng.choice([0.5, 0.6, 0.66, 0.78])))
+    # lines of several orders, with a generator of their own: the scenarios above stay what they were. The scripted
+    # checks first (the example world and a world without named places), then conversations at random
+    rng2 = random.Random(5401)
+    for world, dev in ((W.WORLD_EXAMPLE, W.DEV_CHAIN), (W.WORLD_BARE, W.DEV_CHAIN_BARE)):
+        bot = Fake("top", 0.6)
+        pl = W.Planner(bot, world)
+        steps = []
+        for text, intent, continued, _ in dev:
+            if intent not in CFG["labels"]:
+                continue
+            probs = probs_for(rng2, bot.labels, intent, 0.9)
+            res = pl.step(text, probs, continued)
+            row = step_row(text, probs, res, pl, bot)
+            if continued:
+                row["continued"] = True
+            steps.append(row)
+        rows.append({"world": world, "gate": "top", "threshold": 0.6, "steps": steps})
+    for i in range(300):
+        gate = "family" if i % 3 == 2 else "top"
+        rows.append(chain_scenario(rng2, rng2.choice([3, 5, 8, 12]), gate, rng2.choice([0.5, 0.6, 0.66, 0.78])))
     n_steps = sum(len(r["steps"]) for r in rows)
     actions = {}
     for r in rows:
@@ -394,6 +561,9 @@ def main():
           f"; {sum(1 for r in rows if r['world'].get('time') is None)} scenarios without the game's clock")
     print(f"  {len(bare)} scenarios in a world without named places; {here} orders at \"here\"; {pointed} questions answered by pointing; "
           f"{sum(1 for r in rows for s in r['steps'] if s['pending_here'])} steps with a queued order at \"here\"")
+    print(f"  lines of several orders: {sum(1 for r in rows for s in r['steps'] if s.get('continued'))} further orders of a line, "
+          f"{STATS['same_place']} of them given the place of the order before them; \"the other\" in answer to \"Which ...?\" "
+          f"{STATS['other']} times, {STATS['other_settled']} of them settled by it and {STATS['other_offered']} answered with the next one")
 
 
 if __name__ == "__main__":

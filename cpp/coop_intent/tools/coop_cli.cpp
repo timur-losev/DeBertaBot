@@ -27,6 +27,14 @@
 //                                 (Windows; no bot is loaded)
 //   coop_cli --stt-tests LIST WAVDIR EXPECTED   the C++ transcripts against the Python package's: LIST is a
 //                                 list of {id, wav} (scripts/coop/stt/lines.json), EXPECTED a run_stt.py output
+// with the decoder (a build that found llama.cpp under third_party/, tools/setup_llama.ps1):
+//   --chain DIR                   in the chat, --voice, --stt-wav and --serve: a line that gives several orders, or
+//                                 leans on what was said before it, is rewritten as orders that stand by themselves
+//                                 (rewriter.h; DIR is export_chain_cpp.py's output); /chain switches it off and on.
+//                                 --decoder-cpu keeps the decoder off the GPU, --decoder-threads N (default 4)
+//   coop_cli --chain DIR --chain-tests   chain_tests.jsonl: the decoder's turn text, the router's probability against
+//                                 PyTorch's, the decoder's answers against llama.cpp's own server (with --decoder-cpu:
+//                                 the file's answers are the CPU's)
 // every mode first prints the bot it runs on (directory, labels, gate, threshold)
 // options: --model-dir DIR (export_cpp.py output: intent_config.json, vocab.tsv and the model files
 //          it lists under "members"), --threads N (per model, default 4),
@@ -39,6 +47,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
+#include <deque>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -62,6 +71,7 @@
 
 #include "coop_intent/bot_brain.h"
 #include "coop_intent/intent_model.h"
+#include "coop_intent/rewriter.h"
 #include "coop_intent/speech.h"
 #include "coop_intent/tokenizer.h"
 #include "coop_intent/unicode.h"
@@ -451,7 +461,8 @@ std::string OrderStr(const json& o) {
            "/" + (o.contains("via") ? LabelStr(o["via"]) : std::string("(no via: regenerate world_tests.jsonl)")) + "/" +
            (o.contains("near") ? FlagStr(o["near"]) : std::string("?"));
 }
-// the frame of the previous order: intent / it had a place / the place's entity / how it was found / when
+// the frame of the previous order: intent / it had a place / the place's entity / how it was found / when / it keeps
+// what the order's own line called the place
 std::string FrameStr(const coop::Memory& mem, const Model& m) {
     const coop::Memory::Frame& f = mem.frame;
     if (!f.has) return "-";
@@ -459,14 +470,14 @@ std::string FrameStr(const coop::Memory& mem, const Model& m) {
     std::snprintf(when, sizeof(when), "%.3f", f.time);
     return m.cfg.labels[static_cast<size_t>(f.intent)] + "/" + (f.has_target ? "1" : "0") + "/" +
            (f.has_target && !f.ground.entity.empty() ? f.ground.entity : "-") + "/" + (f.has_target && !f.ground.via.empty() ? f.ground.via : "-") + "/" +
-           (f.has_time ? when : "-");
+           (f.has_time ? when : "-") + "/" + (f.has_said ? "1" : "0");
 }
 std::string FrameStr(const json& f) {
     if (f.is_null()) return "-";
     char when[32];
     if (!f["time"].is_null()) std::snprintf(when, sizeof(when), "%.3f", f["time"].get<double>());
     return f["intent"].get<std::string>() + "/" + FlagStr(f["has_target"]) + "/" + LabelStr(f["entity"]) + "/" + LabelStr(f["via"]) + "/" +
-           (f["time"].is_null() ? "-" : when);
+           (f["time"].is_null() ? "-" : when) + "/" + (f.contains("said") ? FlagStr(f["said"]) : std::string("(no said: regenerate world_tests.jsonl)"));
 }
 std::string QuestionStr(const coop::Memory& mem, const Model& m) {
     if (!mem.has_question) return "-";
@@ -529,7 +540,7 @@ int RunWorldTests(Model& m) {
                 if (!ParseWorld(s["world"], &ws, &err) || !planner.SetWorld(ws, &err))
                     return std::fprintf(stderr, "scenario %zu, %s: %s\n", scenarios, Escaped(text).c_str(), err.c_str()), 1;
             }
-            const coop::PlannerResult r = planner.Step(text, p);
+            const coop::PlannerResult r = planner.Step(text, p, s.value("continued", false));   // a further order of one line
             const std::string intent = r.intent >= 0 ? cfg.labels[static_cast<size_t>(r.intent)] : "?";
             const std::string pending = brain.Pending() >= 0 ? cfg.labels[static_cast<size_t>(brain.Pending())] : "-";
             const coop::WorldState& world = planner.World();
@@ -956,6 +967,85 @@ std::string StripPy(const std::string& line) {
     return coop::EncodeUtf8(std::u32string_view(u).substr(b, e - b));
 }
 
+// ---- lines with several orders or with a context (rewriter.h): the router and the decoder of --chain DIR
+// (scripts/coop/stt/export_chain_cpp.py: chain_config.json, router.onnx, decoder.gguf, chain_tests.jsonl)
+struct Chain {
+    std::string dir;
+    std::unique_ptr<coop::OrtBackend> router;   // none in the folder: every line goes to the decoder
+    double cut = 0.5;                           // the router's probability from which a line goes to the decoder
+    size_t memory_lines = 2;                    // earlier lines the decoder is shown
+    double memory_seconds = 30;                 // and for how long a line counts as earlier
+    coop::RewriterOptions decoder_options;
+#ifdef COOP_WITH_LLM
+    coop::Rewriter decoder;
+#endif
+    double load_ms = 0;
+
+    // the router's probability that the line is for the decoder; -1 without a router
+    bool Route(const std::vector<int64_t>& ids, double* p, std::string* err) {
+        *p = -1;
+        if (!router) return true;
+        std::vector<float> logits;
+        if (!router->Run(ids, &logits, err)) return false;
+        if (logits.size() != 2) return *err = "the router gives " + std::to_string(logits.size()) + " outputs, not 2", false;
+        *p = coop::RouteProbability(logits);
+        return true;
+    }
+
+    bool Rewrite(const std::vector<std::string>& before, const std::string& bot, const std::string& line, std::vector<std::string>* pieces,
+                 std::string* err) {
+#ifdef COOP_WITH_LLM
+        return decoder.Rewrite(before, bot, line, pieces, err);
+#else
+        (void)before, (void)bot, (void)line, (void)pieces;
+        return *err = "this coop_cli was built without the decoder", false;
+#endif
+    }
+
+    static std::string Backend() {
+#ifdef COOP_WITH_LLM
+        return coop::Rewriter::Backend();
+#else
+        return std::string();
+#endif
+    }
+};
+
+Chain* g_chain = nullptr;   // set by --chain DIR; every Chat uses it
+
+bool LoadChain(Chain& c, const coop::OrtBackend::Options& opt, bool decoder_cpu, int decoder_threads, std::string* err) {
+    const auto t0 = Clock::now();
+    std::string text;
+    if (!ReadFile(c.dir + "/chain_config.json", &text)) return *err = "cannot read chain_config.json", false;
+    try {
+        const json j = json::parse(text);
+        c.cut = j.value("cut", 0.5);
+        c.memory_lines = j.value("memory_lines", size_t{2});
+        c.memory_seconds = j.value("memory_seconds", 30.0);
+        if (j.contains("router")) {
+            c.router = std::make_unique<coop::OrtBackend>();
+            if (!c.router->Load(c.dir + "/" + j.at("router").get<std::string>(), opt, err)) return *err = "router: " + *err, false;
+        }
+        c.decoder_options.model_path = c.dir + "/" + j.at("decoder").get<std::string>();
+        c.decoder_options.system = j.at("system").get<std::string>();
+        c.decoder_options.max_new = j.value("max_new", 96);
+        c.decoder_options.context = j.value("context", 1024);
+    } catch (const std::exception& e) {
+        return *err = std::string("chain_config.json: ") + e.what(), false;
+    }
+    c.decoder_options.gpu_layers = decoder_cpu ? 0 : 99;
+    c.decoder_options.threads = decoder_threads;
+#ifdef COOP_WITH_LLM
+    if (!c.decoder.Load(c.decoder_options, err)) return false;
+    std::string answer;   // the system turn goes into the context here, not on the player's first line
+    if (!c.decoder.Answer(coop::RewriterTurn({}, {}, "warm up"), &answer, nullptr, err)) return false;
+#else
+    return *err = "this coop_cli was built without the decoder: llama.cpp was not under third_party/ (tools/setup_llama.ps1)", false;
+#endif
+    c.load_ms = Ms(Clock::now() - t0);
+    return true;
+}
+
 // one bot in a conversation: the demo's replies and the debug line
 struct Chat {
     Model& m;
@@ -965,6 +1055,20 @@ struct Chat {
     std::vector<float> p;
 
     coop::Planner planner;   // the world (world.h): grounding, memory, questions, priors; empty until /world FILE
+
+    // the talk so far, as the decoder of --chain is shown it (chains2/spec_context.json: "before", "bot")
+    struct Said {
+        std::string text;
+        Clock::time_point at;
+    };
+    std::deque<Said> said;             // the player's earlier lines, oldest first: as the classifier read them, or, for
+                                       // a line the decoder rewrote, the orders it wrote
+    Said bot_said;                     // the planner's own words after them (a question, a settled order); empty: none
+    std::vector<std::string> held;     // order lines of a rewritten line that wait for the answer to the bot's question
+    bool chain_on = true;              // /chain
+    std::string read_text;             // Read(): the text `p` is for
+    bool has_read = false;
+    double read_ms = 0;                // ... what the classifier took for it; 0 once a turn has been charged with it
 
     explicit Chat(Model& model) : m(model) {}
     bool Init(std::string* err) {
@@ -990,10 +1094,17 @@ struct Chat {
         return true;
     }
 
-    // /q /why /t /world: 0 not a command, 1 handled, 2 quit
+    // /q /why /t /world /chain: 0 not a command, 1 handled, 2 quit
     int Command(const std::string& line) {
         if (line == "/q" || line == "/quit") return 2;
         if (line == "/why") return why = !why, 1;
+        if (line == "/chain") {
+            if (!g_chain) return std::printf("  no router and decoder are loaded (--chain DIR)\n"), 1;
+            chain_on = !chain_on;
+            Forget();
+            std::printf("  %s\n", chain_on ? "the router and the decoder are on" : "every line goes to the classifier as it is");
+            return 1;
+        }
         if (line.rfind("/t ", 0) == 0) {
             brain.threshold = std::atof(line.c_str() + 3);
             std::printf("  threshold %.2f\n", brain.threshold);
@@ -1009,28 +1120,187 @@ struct Chat {
 
     // what one line led to: the planner's result, the words the bot answers with, the classifier's time
     struct Turn {
+        std::string line;       // the order line it is about: the player's line, or one the decoder wrote from it
         coop::PlannerResult r;
         std::string reply;
+        std::vector<float> p;   // the classifier's probabilities
         double ms = 0;
     };
+
+    // what one line of the player led to: a turn per order line gone through, and how the line got there
+    struct Heard {
+        double route = -1;                // the router's probability that the line is for the decoder; -1: not asked
+        bool decoded = false;             // the decoder was asked
+        bool rewritten = false;           // ... and its order lines were taken in place of the line
+        size_t resumed = 0;               // order lines that had waited for this answer and went through after it
+        std::vector<Turn> turns;
+        std::vector<std::string> held;    // order lines still waiting: the bot asked a question first
+        std::string note;                 // why the router and the decoder were passed by
+        double route_ms = 0, rewrite_ms = 0;
+    };
+
+    void Forget() {
+        said.clear();
+        bot_said = Said();
+        held.clear();
+    }
 
     // One line. `heard` is what the regex slots and the place matcher read; `text` is what the classifier
     // reads: the same string for a typed line, SpeechTextForClassifier(heard) for a spoken one
     bool Respond(const std::string& heard, const std::string& text, std::string* err) {
-        Turn t;
-        if (!Think(heard, text, &t, err)) return false;
-        Print(t);
+        Heard h;
+        if (!Hear(heard, text, &h, err, [&](const Heard& now, const Turn& t) {
+                if (why && now.turns.size() == 1) PrintRoute(now);
+                if (why && (now.rewritten || now.turns.size() > 1)) std::printf("  %zu> %s\n", now.turns.size(), t.line.c_str());
+                Print(t);
+            }))
+            return false;
+        if (why && !h.held.empty()) {
+            std::string rest;
+            for (const std::string& s : h.held) rest += (rest.empty() ? "" : " | ") + s;
+            std::printf("     waiting for your answer: %s\n", rest.c_str());
+        }
         return true;
     }
 
-    // the line through the classifier and the planner, and the reply chosen for it; nothing is printed
-    bool Think(const std::string& heard, const std::string& text, Turn* turn, std::string* err) {
+    // The line through the router, the decoder if the router sends it on, and then each order line through the
+    // classifier and the planner as a line of its own (rewriter.h). `each(heard so far, turn)` is called right after an
+    // order line was planned, while the bot's state is that turn's. Without --chain: one turn, the line as it is.
+    //   - the decoder is shown the player's last lines and the planner's own last words, for memory_seconds. A line it
+    //     rewrote is kept as the orders it wrote (the earlier lines in a clean form are worth 6 to 8 points on heard
+    //     lines with a context: chains2_54_score.log, "the earlier lines as the player said them");
+    //   - while the planner's question is open, a line its rules for answers are made for (AnswerLike) goes to the
+    //     planner as it is: the planner knows the candidates it offered. If the planner cannot read it (say again, the
+    //     question still open) and the decoder read one order in it ("the north one" -> "open the north door"), that
+    //     order goes to the planner instead. Every other line takes the usual road;
+    //   - an order line that makes the planner ask stops the rest: they wait in `held`. They go through after a line
+    //     that settles that order and gives no other; a line with several orders replaces them (the decoder wrote it
+    //     with the earlier line in view), and so does a line about something else.
+    template <class Each>
+    bool Hear(const std::string& heard, const std::string& text, Heard* h, std::string* err, Each&& each) {
+        *h = Heard();
+        const auto now = Clock::now();
+        Chain* c = chain_on ? g_chain : nullptr;
+        const bool answering = planner.Mem().has_question;
+        const int asked = answering ? planner.Mem().question.intent : -1;   // the order the open question is about
+        struct Line {
+            std::string heard, text;
+        };
+        std::vector<Line> todo;
+        std::string second;   // while the question is open: the one order the decoder read in an answer
+        if (c) {
+            const auto t0 = Clock::now();
+            if (!c->Route(m.tok.Encode(text), &h->route, err)) return false;
+            h->route_ms = Ms(Clock::now() - t0);
+            if (!c->router || h->route >= c->cut) {
+                while (!said.empty() && Ms(now - said.front().at) > 1000 * c->memory_seconds) said.pop_front();
+                std::vector<std::string> before, pieces;
+                for (const Said& s : said) before.push_back(s.text);
+                const bool bot = !bot_said.text.empty() && Ms(now - bot_said.at) <= 1000 * c->memory_seconds;
+                const auto t1 = Clock::now();
+                // a decoder that fails (a line too long for its context) leaves the line to the classifier
+                if (c->Rewrite(before, bot ? bot_said.text : std::string(), text, &pieces, &h->note)) h->decoded = true;
+                h->rewrite_ms = Ms(Clock::now() - t1);
+                // a line written back as it is stays the player's own line
+                if (pieces.size() == 1 && coop::SpeechTextForClassifier(pieces[0]) == coop::SpeechTextForClassifier(text)) pieces.clear();
+                if (answering && pieces.size() == 1) {
+                    bool answer = false;
+                    if (!AnswerLike(text, &answer, err)) return false;
+                    if (answer) {
+                        second = pieces[0];
+                        pieces.clear();
+                        h->note = "the bot's question is open, the line is its answer";
+                    }
+                }
+                for (const std::string& piece : pieces) todo.push_back({piece, coop::SpeechTextForClassifier(piece)});
+                h->rewritten = !todo.empty();
+            }
+        }
+        const bool one = todo.size() <= 1;   // the line gives one order line: it may be what settles the open question
+        if (!(answering && one)) held.clear();
+        // the line as the next ones will be shown it: the orders the bot read in it, when it was rewritten
+        std::string kept;
+        for (const Line& l : todo) kept += (kept.empty() ? "" : " ") + l.heard + (std::string(".!?").find(l.heard.back()) == std::string::npos ? "." : "");
+        if (todo.empty()) todo.push_back({heard, text});
+        for (size_t k = 0; k < todo.size(); ++k) {
+            Turn t;
+            t.line = todo[k].heard;
+            if (!Think(todo[k].heard, todo[k].text, &t, err, k > 0)) return false;
+            if (k == 0 && !second.empty() && t.r.action == "say_again" && planner.Mem().has_question) {
+                // "say again" changed nothing in the bot or the planner: the decoder's reading of the answer goes instead
+                t = Turn();
+                t.line = second;
+                if (!Think(second, coop::SpeechTextForClassifier(second), &t, err)) return false;
+                h->rewritten = true;
+                kept = second;
+            }
+            h->turns.push_back(std::move(t));
+            each(*h, h->turns.back());
+            if (k == 0 && answering && one) {
+                const coop::PlannerResult& r = h->turns.back().r;
+                const bool open = planner.Mem().has_question;
+                if (open && planner.Mem().question.intent == asked) break;   // that order is still being settled: what waits goes on waiting
+                if (!open && r.has_order && r.order.intent == asked) {       // settled: what waited goes through now
+                    h->resumed = held.size();
+                    for (const std::string& piece : held) todo.push_back({piece, coop::SpeechTextForClassifier(piece)});
+                }
+                held.clear();
+            } else if (planner.Mem().has_question) {
+                held.clear();
+                for (size_t r = k + 1; r < todo.size(); ++r) held.push_back(todo[r].heard);
+                break;
+            }
+        }
+        h->held = held;
+        if (g_chain) {
+            // a line the bot asked to hear again was not dealt with: the talk so far stays as it was
+            bool again = true;
+            for (const Turn& t : h->turns) again = again && t.r.action == "say_again";
+            if (!again) {
+                said.push_back({kept.empty() ? text : kept, now});
+                while (said.size() > g_chain->memory_lines) said.pop_front();
+                const std::string& own = h->turns.back().r.say;
+                bot_said = own.empty() ? Said() : Said{own, now};
+            }
+        }
+        return true;
+    }
+
+    // the classifier's probabilities for a text, in `p`; kept for the text read last
+    bool Read(const std::string& text, std::string* err) {
+        if (has_read && read_text == text) return true;
+        has_read = false;
         const auto t0 = Clock::now();
-        const auto ids = m.tok.Encode(text);
-        if (!Classify(m, ids, &p, err)) return false;
-        turn->ms = Ms(Clock::now() - t0);
+        if (!Classify(m, m.tok.Encode(text), &p, err)) return false;
+        read_ms = Ms(Clock::now() - t0);
+        read_text = text;
+        return has_read = true;
+    }
+
+    // While the planner's question is open: is this a line its rules for answers are made for? Yes when the classifier
+    // takes it for an answer (yes, no, maybe, don't know) or for no order, or cannot read it: "yes", "the left one",
+    // "over there". A line it reads as an order is a line like any other. (On the classifier's own probabilities: the
+    // world's priors, which the planner applies, are not in them.)
+    bool AnswerLike(const std::string& text, bool* answer, std::string* err) {
+        if (!Read(text, err)) return false;
+        int intent = -1;
+        double conf = 0;
+        *answer = true;
+        if (!brain.Pick(p, &intent, &conf) || !(conf >= brain.threshold)) return true;
+        const std::string& label = m.cfg.labels[static_cast<size_t>(intent)];
+        *answer = label == "NONE" || std::find(m.cfg.answer_intents.begin(), m.cfg.answer_intents.end(), label) != m.cfg.answer_intents.end();
+        return true;
+    }
+
+    // the line through the classifier and the planner, and the reply chosen for it; nothing is printed. continued: a
+    // further order line of the line the player just said (world.h, "a line of several orders")
+    bool Think(const std::string& heard, const std::string& text, Turn* turn, std::string* err, bool continued = false) {
+        if (!Read(text, err)) return false;
+        turn->p = p;
+        turn->ms = read_ms;   // the classifier's time for this text, whichever step asked for it first
+        read_ms = 0;
         const int pending_before = brain.Pending();
-        turn->r = planner.Step(heard, p);
+        turn->r = planner.Step(heard, p, continued);
         const coop::PlannerResult& r = turn->r;
         const coop::Decision& d = r.decision;
         if (d.intent < 0) return *err = "the model does not fit intent_config.json", false;
@@ -1059,15 +1329,30 @@ struct Chat {
         return true;
     }
 
+    // under /why, where the line went before the classifier
+    void PrintRoute(const Heard& h) {
+        if (!g_chain || !chain_on) return;
+        char route[48] = "no router";
+        if (h.route >= 0) std::snprintf(route, sizeof route, "router %.2f (%.0f ms)", h.route, h.route_ms);
+        if (h.decoded)
+            std::printf("     chain: %s, decoder %.0f ms: %s\n", route, h.rewrite_ms,
+                        h.rewritten ? "rewritten" : h.note.empty() ? "written back as it is" : h.note.c_str());
+        else if (!h.note.empty())
+            std::printf("     chain: %s, the line as it is: %s\n", route, h.note.c_str());
+        else
+            std::printf("     chain: %s, the line as it is\n", route);
+    }
+
     // the chat's two lines for a turn: the reply, and under /why the debug line
     void Print(const Turn& turn) {
         const coop::PlannerResult& r = turn.r;
         const coop::Decision& d = r.decision;
         const std::string& intent = m.cfg.labels[d.intent];
         const double ms = turn.ms;
+        const std::vector<float>& probs = turn.p;
         std::printf("bot> %s\n", turn.reply.c_str());
         if (why) {
-            const auto top = coop::TopK(p, 3);
+            const auto top = coop::TopK(probs, 3);
             std::string slots;
             if (d.on_signal) slots += "on my signal";
             if (d.other) slots += std::string(slots.empty() ? "" : ", ") + "other";
@@ -1077,8 +1362,8 @@ struct Chat {
             if (m.cfg.gate == "family")
                 std::snprintf(mass, sizeof mass, " | %s mass %.2f", m.cfg.families[intent].c_str(), d.prob);
             std::printf("     %s (%s) %.2f | %s %.2f | %s %.2f%s | %s%s%s | %.0f ms\n", first.c_str(),
-                        m.cfg.families[first].c_str(), p[top[0]], m.cfg.labels[top[1]].c_str(), p[top[1]],
-                        m.cfg.labels[top[2]].c_str(), p[top[2]], mass, coop::ActionName(d.action),
+                        m.cfg.families[first].c_str(), probs[top[0]], m.cfg.labels[top[1]].c_str(), probs[top[1]],
+                        m.cfg.labels[top[2]].c_str(), probs[top[2]], mass, coop::ActionName(d.action),
                         slots.empty() ? "" : (" | slots: " + slots).c_str(),
                         brain.Pending() >= 0 ? (" | queued: " + m.cfg.labels[brain.Pending()]).c_str() : "", ms);
             if (!d.places.targets.empty())
@@ -1106,8 +1391,8 @@ int RunChat(Model& m, int threads, const std::string& world_file) {
     std::string err;
     if (!chat.Init(&err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
     if (!world_file.empty() && !chat.LoadWorld(world_file, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
-    std::printf("ready (C++, ONNX Runtime %s CPU, %d threads). threshold %.2f. Talk to your teammate in English; /why /t <x> /world FILE /q\n\n",
-                coop::OrtBackend::RuntimeVersion().c_str(), threads, chat.brain.threshold);
+    std::printf("ready (C++, ONNX Runtime %s CPU, %d threads). threshold %.2f. Talk to your teammate in English; /why /t <x> /world FILE%s /q\n\n",
+                coop::OrtBackend::RuntimeVersion().c_str(), threads, chat.brain.threshold, g_chain ? " /chain" : "");
     for (;;) {
         std::printf("you> ");
         std::fflush(stdout);
@@ -1121,6 +1406,66 @@ int RunChat(Model& m, int threads, const std::string& world_file) {
         }
         if (!chat.Respond(line, line, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
     }
+}
+
+// chain_tests.jsonl (export_chain_cpp.py): the turn's text, the line's token ids, the router's probability against
+// PyTorch's, the decoder's answer against the one llama.cpp's own server gave on the CPU, in file order
+int RunChainTests(Model& m, Chain& c) {
+#ifdef COOP_WITH_LLM
+    const auto rows = ReadJsonl(c.dir + "/chain_tests.jsonl");
+    size_t turn_ok = 0, ids_ok = 0, routed = 0, route_close = 0, route_side = 0, answer_ok = 0, pieces_ok = 0, shown = 0;
+    double worst = 0;
+    std::vector<double> ms;
+    std::string err;
+    for (const json& r : rows) {
+        const auto before = r.at("before").get<std::vector<std::string>>();
+        const std::string bot = r.at("bot").is_null() ? std::string() : r.at("bot").get<std::string>();
+        const std::string line = r.at("line").get<std::string>();
+        const std::string turn = coop::RewriterTurn(before, bot, line);
+        turn_ok += turn == r.at("turn").get<std::string>();
+        const auto ids = m.tok.Encode(line);
+        ids_ok += ids == r.at("ids").get<std::vector<int64_t>>();
+        if (c.router && r.contains("route")) {
+            double p = 0;
+            if (!c.Route(ids, &p, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+            const double want = r.at("route").get<double>();
+            ++routed;
+            worst = std::max(worst, std::fabs(p - want));
+            route_close += std::fabs(p - want) <= 1e-4;
+            route_side += (p >= c.cut) == (want >= c.cut);
+        }
+        std::string answer;
+        const auto t0 = Clock::now();
+        if (!c.decoder.Answer(turn, &answer, nullptr, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+        ms.push_back(Ms(Clock::now() - t0));
+        const std::string want = r.at("answer").get<std::string>();
+        answer_ok += answer == want;
+        const bool same = coop::RewriterPieces(answer) == coop::RewriterPieces(want);
+        pieces_ok += same;
+        if (!same && shown++ < 5)
+            std::printf("  %s\n    C++    %s\n    server %s\n", Escaped(turn).c_str(), Escaped(answer).c_str(), Escaped(want).c_str());
+    }
+    const size_t n = rows.size();
+    std::printf("chain tests, %zu lines: turn text %zu/%zu, token ids %zu/%zu\n", n, turn_ok, n, ids_ok, n);
+    if (routed)
+        std::printf("  router: probability within 1e-4 of PyTorch on %zu/%zu (largest difference %.2g), same side of the cut %.2f on %zu/%zu\n",
+                    route_close, routed, worst, c.cut, route_side, routed);
+    else
+        std::printf("  router: none in this folder\n");
+    // the file's answers are the CPU's: a GPU rounds another way and a close call falls the other way, so there the
+    // count is reported and not required
+    const bool exact = c.decoder_options.gpu_layers == 0;
+    std::printf("  decoder (%s, %s): answer equal to llama.cpp's server on the CPU on %zu/%zu, the same order lines on %zu/%zu%s; "
+                "%.0f ms a line (median %.0f, p95 %.0f)\n",
+                coop::Rewriter::Backend().c_str(), exact ? "CPU" : "GPU", answer_ok, n, pieces_ok, n,
+                exact ? "" : " (not required on a GPU: --decoder-cpu is the exact check)",
+                std::accumulate(ms.begin(), ms.end(), 0.0) / std::max<size_t>(n, 1), Percentile(ms, 0.5), Percentile(ms, 0.95));
+    return turn_ok == n && ids_ok == n && route_close == routed && (!exact || pieces_ok == n) ? 0 : 1;
+#else
+    (void)m;
+    (void)c;
+    return std::fprintf(stderr, "this coop_cli was built without the decoder\n"), 2;
+#endif
 }
 
 // SpeechTextForClassifier against scripts/coop/stt `norm`: a list of {text, norm} written by Python
@@ -1306,8 +1651,8 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads, const std::s
     if (!LoadSpeech(stt, opt, &err) || !chat.Init(&err) || !mic.Start(&err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
     if (!world_file.empty() && !chat.LoadWorld(world_file, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
     std::printf("ready (C++, ONNX Runtime %s CPU, %d threads). threshold %.2f.\n"
-                "Hold SPACE and talk, release to send. Or type a line and press Enter; /why /t <x> /world FILE /q. Esc quits.\n\n",
-                coop::OrtBackend::RuntimeVersion().c_str(), threads, chat.brain.threshold);
+                "Hold SPACE and talk, release to send. Or type a line and press Enter; /why /t <x> /world FILE%s /q. Esc quits.\n\n",
+                coop::OrtBackend::RuntimeVersion().c_str(), threads, chat.brain.threshold, g_chain ? " /chain" : "");
     for (;;) {
         std::printf("you> ");
         std::fflush(stdout);
@@ -1395,6 +1740,12 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads, const std::s
 //        the world the game sent, or null),"candidates","direction","zone","pointer","other","via" (how the
 //        place was found: "gaze", "pin", "here" = where the speaker is, "direction", ...),"near" (the line
 //        pointed with "this" / "here" and no far word)}; null: nothing
+//        With --chain DIR (rewriter.h) a line can give several orders. The reply's own fields stay the FIRST order's,
+//        and it gains "turns": one object per order line gone through, in the order to carry them out, each with the
+//        reply's fields and "line" (the order line: the player's, or one the decoder wrote from it); and "chain":
+//        {"route" (the router's probability, null when it was not asked),"decoded","rewritten","held" (order lines
+//        that wait for the answer to the question a turn asked; they come as turns of the reply to that answer,
+//        "resumed" of them),"note","route_ms","rewrite_ms"}
 //   {"event":"nothing","id":8,...}    the clip had no words;  {"event":"too_short","id":8}
 //   {"event":"error","id":7,"cmd":"text","message":"..."}        the request was refused; the service goes on
 // The service ends when stdin closes (the game is gone) or on "quit".
@@ -1417,7 +1768,7 @@ json ReplyJson(Chat& chat, const Chat::Turn& t) {
     j["negated"] = d.negated;
     j["adjusted"] = r.adjusted;
     json top = json::array();
-    for (int i : coop::TopK(chat.p, 3)) top.push_back({m.cfg.labels[static_cast<size_t>(i)], chat.p[static_cast<size_t>(i)]});
+    for (int i : coop::TopK(t.p, 3)) top.push_back({m.cfg.labels[static_cast<size_t>(i)], t.p[static_cast<size_t>(i)]});
     j["top"] = top;
     j["places"] = d.places.targets.empty() ? std::string() : PlacesText(d.places, places);
     json ground = json::array();
@@ -1492,7 +1843,11 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
     };
     send({{"event", "ready"}, {"bot", m.dir}, {"labels", m.cfg.labels}, {"gate", m.cfg.gate}, {"threshold", chat.brain.threshold},
           {"threads", threads}, {"runtime", coop::OrtBackend::RuntimeVersion()}, {"stt", stt_ready}, {"stt_note", stt_note},
-          {"mic", mic_ready}, {"mic_note", mic_note}, {"tts", tts_ready}, {"tts_note", tts_note}});
+          {"mic", mic_ready}, {"mic_note", mic_note}, {"tts", tts_ready}, {"tts_note", tts_note},
+          {"chain", g_chain ? json({{"dir", g_chain->dir}, {"router", g_chain->router != nullptr}, {"cut", g_chain->cut},
+                                    {"decoder", Chain::Backend()}, {"gpu", g_chain->decoder_options.gpu_layers != 0},
+                                    {"memory_lines", g_chain->memory_lines}, {"memory_seconds", g_chain->memory_seconds}})
+                            : json(nullptr)}});
     bool listening = false;
     Clock::time_point down = Clock::now();
     for (std::string line; std::getline(std::cin, line);) {
@@ -1523,12 +1878,25 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                     send({{"event", "nothing"}, {"id", id}, {"audio_s", audio_s}, {"stt_ms", stt_ms}});
                     return;
                 }
-                Chat::Turn t;
-                if (!chat.Think(heard, spoken ? coop::SpeechTextForClassifier(heard) : heard, &t, &err)) {
+                Chat::Heard h;
+                json turns = json::array();
+                if (!chat.Hear(heard, spoken ? coop::SpeechTextForClassifier(heard) : heard, &h, &err, [&](const Chat::Heard&, const Chat::Turn& t) {
+                        json turn = ReplyJson(chat, t);
+                        turn.erase("event");
+                        turn["line"] = t.line;
+                        turns.push_back(std::move(turn));
+                    })) {
                     fail(err);
                     return;
                 }
-                json j = ReplyJson(chat, t);
+                json j = turns.at(0);   // the reply as it was before --chain: the first order's
+                j.erase("line");
+                j["event"] = "reply";
+                if (g_chain) {
+                    j["turns"] = std::move(turns);
+                    j["chain"] = {{"route", h.route >= 0 ? json(h.route) : json(nullptr)}, {"decoded", h.decoded}, {"rewritten", h.rewritten},
+                                  {"resumed", h.resumed}, {"held", h.held}, {"note", h.note}, {"route_ms", h.route_ms}, {"rewrite_ms", h.rewrite_ms}};
+                }
                 j["id"] = id;
                 j["heard"] = heard;
                 j["spoken"] = spoken;
@@ -1612,6 +1980,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
 #endif
             } else if (cmd == "reset") {
                 chat.planner.Reset();
+                chat.Forget();
                 send({{"event", "reset"}, {"id", id}});
             } else if (cmd == "threshold") {
                 chat.brain.threshold = q.at("value").get<double>();
@@ -1650,9 +2019,16 @@ int main(int argc, char** argv) {
 #endif
     std::vector<std::string> wavs, stt_test;
     double mic_seconds = 0;
+    Chain chain;
+    bool decoder_cpu = false;
+    int decoder_threads = 4;
     for (int i = 1; i < argc; ++i) {
         const std::string a = argv[i];
         if (a == "--model-dir" && i + 1 < argc) m.dir = argv[++i];
+        else if (a == "--chain" && i + 1 < argc) chain.dir = argv[++i];
+        else if (a == "--decoder-cpu") decoder_cpu = true;
+        else if (a == "--decoder-threads" && i + 1 < argc) decoder_threads = std::atoi(argv[++i]);
+        else if (a == "--chain-tests") mode = "chain-tests";
         else if (a == "--threads" && i + 1 < argc) opt.threads = std::atoi(argv[++i]);
         else if (a == "--no-spin") opt.allow_spinning = false;
         else if (a == "--sequential") parallel = false;
@@ -1677,7 +2053,8 @@ int main(int argc, char** argv) {
                                  "                 --voice | --mic-test SECONDS | --stt-wav FILE ... | --stt-tests LIST WAVDIR EXPECTED |\n"
                                  "                 --serve [--no-stt] [--tts]]\n"
                                  "                [--model-dir DIR] [--threads N] [--no-spin] [--sequential] [--world FILE]\n"
-                                 "                [--stt-model DIR] [--stt-threads N]\n");
+                                 "                [--stt-model DIR] [--stt-threads N]\n"
+                                 "                [--chain DIR [--chain-tests] [--decoder-cpu] [--decoder-threads N]]\n");
             return 2;
         }
     }
@@ -1718,6 +2095,15 @@ int main(int argc, char** argv) {
             return std::fprintf(stderr, "the model gives %zu outputs, intent_config.json has %zu labels\n",
                                 logits.size(), m.cfg.labels.size()), 1;
     }
+    if (mode == "chain-tests" && chain.dir.empty()) return std::fprintf(stderr, "--chain-tests needs --chain DIR\n"), 2;
+    if (!chain.dir.empty()) {
+        if (!LoadChain(chain, opt, decoder_cpu, decoder_threads, &err)) return std::fprintf(stderr, "%s: %s\n", chain.dir.c_str(), err.c_str()), 1;
+        std::printf("chain: %s (%s, decoder on the %s, %d threads, loaded in %.0f ms)\n", chain.dir.c_str(),
+                    chain.router ? "router and decoder" : "decoder, no router: every line goes to it", decoder_cpu ? "CPU" : "GPU",
+                    decoder_threads, chain.load_ms);
+        g_chain = &chain;
+    }
+    if (mode == "chain-tests") return RunChainTests(m, chain);
     if (mode == "serve") return RunServe(m, speech, opt.threads, serve_stt, serve_tts);
     if (mode == "golden") return RunGolden(m);
     if (mode == "dialogue") return RunDialogue(m);

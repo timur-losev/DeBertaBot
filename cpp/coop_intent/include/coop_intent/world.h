@@ -25,6 +25,13 @@
 // crosshair's point for "shoot here". The game gives the time and whether the bot is still busy with the order; a
 // game that sends no time gets no context. The rules and their reasons: scripts/coop/world.py, "a short context".
 //
+// A line of several orders. The decoder in front of the classifier (rewriter.h) writes "smoke the door then go in" as
+// two order lines, and each goes through Step() as a line of its own, the second and later ones with continued = true.
+// A place a further order names as the order before it did, in the same words or in fewer, is then that order's
+// place: with two doors, or with none marked and the player pointing, the bot does not ask the same question twice.
+// And "the other one" in answer to "Which door? The one ahead, 8 m?" is not the door the bot just offered.
+// scripts/coop/world.py, "a line of several orders".
+//
 // Bearings are degrees in the player's view (0 ahead, positive to the right, (-180, 180]), distances and elevations
 // metres. Entities carry the vocabulary's object, qualifier and zone ids (locations.json): the game tags its actors
 // with the names the map callouts use.
@@ -96,6 +103,10 @@ struct Memory {
         bool other = false, nearby = false;
         bool has_time = false;
         double time = 0;
+        // what the place was called, when that is not `target`: the door of "smoke the door" when "there" answered the
+        // bot's "Where?" (target is the "there"), "the other door" when that settled "Which door?" (target is "the door")
+        bool has_said = false;
+        PlaceTarget said;
     } frame;
     bool has_question = false;
     struct Question {
@@ -160,14 +171,23 @@ public:
     bool PendingHere() const { return pending_here_; }   // the queued order's place is "here"
     bool PendingNear() const { return pending_near_; }   // ... and it pointed with "this" / "here"
     void Reset();
-    PlannerResult Step(std::string_view text, const std::vector<float>& probs);
+    // continued: the line is a further order of the line the player just said (the decoder's order lines)
+    PlannerResult Step(std::string_view text, const std::vector<float>& probs, bool continued = false);
 
 private:
-    Order MakeOrder(int intent, const PlaceRecord& record, const std::vector<Grounding>& grounding, int k, bool other, bool nearby = false);
+    Order MakeOrder(int intent, const PlaceRecord& record, const std::vector<Grounding>& grounding, int k, bool other, bool nearby = false,
+                    const PlaceTarget* said = nullptr);
+    // a further order of the line being read: a place it names as the order before it did is that order's place
+    void SamePlace(const PlaceRecord& record, std::vector<Grounding>* grounding) const;
     void Ask(int intent, const PlaceRecord& record, const std::vector<Grounding>& grounding, int k, bool other, bool queued,
              PlannerResult* out);
     bool Answer(int intent, PlannerResult* out);
-    void Settle(const Memory::Question& q, const std::string& entity, const std::string& say, PlannerResult* out);
+    // "the other one" in answer to "Which ...? The one ...?": not the one just offered. left: the candidates the line
+    // still fits; said: how the line named the place ("the other door"), if it did. False: no other is left, the line
+    // is something else
+    bool OtherOne(std::vector<std::string> left, const PlaceTarget* said, PlannerResult* out);
+    // said: how the line that settled the question named the place, when that is not how the order's own line did
+    void Settle(const Memory::Question& q, const std::string& entity, const std::string& say, PlannerResult* out, const PlaceTarget* said = nullptr);
     // a "Where?" answered by pointing, or by "yes" / "go" once the place the order named is there
     bool PlaceAnswer(std::string_view text, const Decision& d, PlannerResult* out);
     void SettlePlace(const Memory::Question& q, const PlaceRecord& rec, const Grounding& g, bool queued, bool nearby, PlannerResult* out);
@@ -189,6 +209,7 @@ private:
     Memory memory_;
     std::string pending_entity_;   // the queued order's resolved entity
     bool pending_here_ = false, pending_near_ = false;
+    bool frame_in_line_ = false;   // the frame is of an order of the line being read (Step(..., continued))
 };
 
 }  // namespace coop

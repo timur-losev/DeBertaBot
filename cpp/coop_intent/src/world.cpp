@@ -9,6 +9,7 @@ namespace {
 
 // world.py: SECTORS, BACK_FROM, ELEVATION, CLEARLY_NEARER
 constexpr double kElevation = 1.5;
+constexpr double kStorey = 1.5;   // "upstairs": the places within 1.5 m of the nearest one above, not the floors beyond
 constexpr double kBackFrom = 120.0;
 constexpr double kClearlyNearer = 1.5;
 constexpr double kPi = 3.14159265358979323846;
@@ -219,6 +220,15 @@ bool Usable(const Grounding& g) {
 }
 
 // world.ground_target
+// "upstairs", "downstairs": a floor named by where it is from the speaker
+static bool RelativeZone(const std::string& zone) { return zone == "up" || zone == "down"; }
+
+// whether an entity is on the floor the line names: its own zone, or any marked floor above / below the speaker
+static bool OnZone(const WorldEntity& e, const std::string& zone) {
+    if (RelativeZone(zone)) return !e.zone.empty() && InSector(zone == "up" ? PlaceDirection::Up : PlaceDirection::Down, 0.0, e.elevation);
+    return e.zone == zone;
+}
+
 static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, const Memory& memory, const LocationMatcher& places, bool here) {
     const std::string obj = t.object >= 0 ? places.ObjectId(t.object) : std::string();
     const std::string qual = t.qualifier >= 0 ? places.QualifierId(t.qualifier) : std::string();
@@ -262,11 +272,17 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
             return Out("missing", {}, {}, "this");
         }
         if (!zone.empty()) {
-            std::vector<std::string> cands;
+            std::vector<const WorldEntity*> on;
             for (const WorldEntity& e : world.entities)
-                if (e.zone == zone) cands.push_back(e.id);
-            if (cands.empty()) return Out("missing", {}, {}, "zone");   // a floor the world has no place on
-            return Out("resolved", {}, cands, "zone");
+                if (OnZone(e, zone)) on.push_back(&e);
+            if (RelativeZone(zone) && !on.empty()) {
+                // the next floor that way: "upstairs" is one floor up, not the roof
+                double nearest = std::abs(on[0]->elevation);
+                for (const WorldEntity* e : on) nearest = std::min(nearest, std::abs(e->elevation));
+                on.erase(std::remove_if(on.begin(), on.end(), [&](const WorldEntity* e) { return std::abs(e->elevation) > nearest + kStorey; }), on.end());
+            }
+            if (on.empty()) return Out("missing", {}, {}, "zone");   // a floor the world has no place on
+            return Out("resolved", {}, ids_of(on), "zone");
         }
         if (t.direction != PlaceDirection::None) return Out("resolved", {}, {}, "direction");
         return Out("missing");
@@ -282,7 +298,7 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
     }
     auto keep = [&](auto pred) { cands.erase(std::remove_if(cands.begin(), cands.end(), [&](const WorldEntity* e) { return !pred(e); }), cands.end()); };
     if (!qual.empty()) keep([&](const WorldEntity* e) { return e->qualifier == qual; });
-    if (!zone.empty()) keep([&](const WorldEntity* e) { return e->zone == zone; });
+    if (!zone.empty()) keep([&](const WorldEntity* e) { return OnZone(*e, zone); });   // "the door upstairs": a door on a floor above
     // "up the blue stairs": up is the way along a vertical object, not where it stands
     const bool along = (t.direction == PlaceDirection::Up || t.direction == PlaceDirection::Down) && places.Vertical(t.object);
     if (t.direction != PlaceDirection::None && !along)
@@ -362,6 +378,7 @@ void Planner::Reset() {
     brain_->Reset();
     memory_ = Memory();
     DropPending();
+    frame_in_line_ = false;
 }
 
 void Planner::DropPending() {
@@ -509,7 +526,25 @@ bool Planner::Context(std::string_view text, const Decision& d, PlannerResult* o
     return false;
 }
 
-Order Planner::MakeOrder(int intent, const PlaceRecord& record, const std::vector<Grounding>& grounding, int k, bool other, bool nearby) {
+// world.names_again
+static bool NamesAgain(const PlaceTarget& t, const PlaceTarget& said) {
+    return t.object >= 0 && t.object == said.object && (t.flag == PlaceFlag::None || t.flag == said.flag) && (t.qualifier < 0 || t.qualifier == said.qualifier) &&
+           (t.zone < 0 || t.zone == said.zone) && (t.direction == PlaceDirection::None || t.direction == said.direction) &&
+           (t.pointer == PlacePointer::None || t.pointer == said.pointer);
+}
+
+// world.Planner._same_place
+void Planner::SamePlace(const PlaceRecord& record, std::vector<Grounding>* grounding) const {
+    const Memory::Frame& f = memory_.frame;
+    const int k = record.targets.empty() ? -1 : record.primary;
+    if (!f.has || k < 0 || !f.has_target || f.ground.entity.empty() || !Known(f.ground)) return;
+    const PlaceTarget& t = record.targets[static_cast<size_t>(k)];
+    if (t.role != PlaceRole::None || !NamesAgain(t, f.has_said ? f.said : f.target)) return;
+    (*grounding)[static_cast<size_t>(k)] = f.ground;
+}
+
+Order Planner::MakeOrder(int intent, const PlaceRecord& record, const std::vector<Grounding>& grounding, int k, bool other, bool nearby,
+                         const PlaceTarget* said) {
     Order o;
     o.intent = intent;
     o.other = other;
@@ -526,7 +561,12 @@ Order Planner::MakeOrder(int intent, const PlaceRecord& record, const std::vecto
             f.target = record.targets[static_cast<size_t>(k)];
             f.ground = grounding[static_cast<size_t>(k)];
         }
+        if (said) {
+            f.has_said = true;
+            f.said = *said;
+        }
         memory_.frame = f;
+        frame_in_line_ = true;
     }
     if (k >= 0) {
         const PlaceTarget& t = record.targets[static_cast<size_t>(k)];
@@ -572,7 +612,25 @@ void Planner::Ask(int intent, const PlaceRecord& record, const std::vector<Groun
     out->say = "Which " + obj + "? The one " + Describe(*Entity(g.candidates[0])) + "?";
 }
 
-void Planner::Settle(const Memory::Question& q, const std::string& entity, const std::string& say, PlannerResult* out) {
+// world.Planner._other_one
+bool Planner::OtherOne(std::vector<std::string> left, const PlaceTarget* said, PlannerResult* out) {
+    Memory::Question& q = memory_.question;
+    left.erase(std::remove(left.begin(), left.end(), q.candidates[static_cast<size_t>(q.offered)]), left.end());
+    if (left.size() == 1) {
+        const Memory::Question copy = q;
+        memory_.has_question = false;
+        Settle(copy, left[0], "Got it.", out, said);
+        return true;
+    }
+    if (left.empty()) return false;
+    out->action = "ask";
+    out->say = "The one " + Describe(*Entity(left[0])) + "?";
+    q.candidates = std::move(left);
+    q.offered = 0;
+    return true;
+}
+
+void Planner::Settle(const Memory::Question& q, const std::string& entity, const std::string& say, PlannerResult* out, const PlaceTarget* said) {
     const std::string& phrase = brain_->Config().phrases.at(brain_->Config().labels[static_cast<size_t>(q.intent)]);
     out->action = "resolved";
     if (q.queued) {
@@ -589,7 +647,7 @@ void Planner::Settle(const Memory::Question& q, const std::string& entity, const
     rec.primary = 0;
     out->say = say + " " + Capitalized(phrase) + ".";
     out->has_order = true;
-    out->order = MakeOrder(q.intent, rec, grounding, 0, q.other);
+    out->order = MakeOrder(q.intent, rec, grounding, 0, q.other, false, said);
 }
 
 // world.Planner._settle_place
@@ -608,7 +666,7 @@ void Planner::SettlePlace(const Memory::Question& q, const PlaceRecord& rec, con
     }
     out->say = "Got it. " + Capitalized(phrase) + ".";
     out->has_order = true;
-    out->order = MakeOrder(q.intent, rec, {g}, 0, q.other, nearby);
+    out->order = MakeOrder(q.intent, rec, {g}, 0, q.other, nearby, &q.record.targets[static_cast<size_t>(q.k)]);
 }
 
 // world.Planner._place_answer
@@ -677,7 +735,8 @@ bool Planner::Answer(int intent, PlannerResult* out) {
     return true;
 }
 
-PlannerResult Planner::Step(std::string_view text, const std::vector<float>& probs) {
+PlannerResult Planner::Step(std::string_view text, const std::vector<float>& probs, bool continued) {
+    if (!continued) frame_in_line_ = false;
     PlannerResult out;
     std::vector<double> adjusted(probs.begin(), probs.end());
     out.adjusted = ApplyPriors(&adjusted, brain_->Config().labels, world_, memory_, priors_);
@@ -692,9 +751,17 @@ PlannerResult Planner::Step(std::string_view text, const std::vector<float>& pro
     PlaceRecord record = d.places;   // a copy: an order that names no place may get one from the context
     const LocationMatcher& places = brain_->Places();
     if (!record.targets.empty()) out.ground = Ground(record, world_, memory_, places, text, d.intent >= 0 ? Label(d.intent) : std::string());
+    if (continued && frame_in_line_) SamePlace(record, &out.ground);
     const bool nearby = !Deixis(text).empty();
     const bool had_question = memory_.has_question;
 
+    if (had_question && memory_.question.kind == "which" && d.other && record.targets.empty() &&
+        (d.action == Action::SayAgain || d.action == Action::Ignore || (d.action == Action::Answer && Label(d.intent) == "NO") ||
+         (d.action == Action::Act && (d.intent == memory_.question.intent || Label(d.intent) == "HOLD_OTHER_ANGLE")))) {
+        // "the other one", "no, the other one": no place said. The classifier reads the words as nothing, as a no, as
+        // the order asked about, or as the other angle
+        if (OtherOne(memory_.question.candidates, nullptr, &out)) return out;
+    }
     if (had_question && d.action == Action::Answer) {
         if (Answer(d.intent, &out)) return out;
     }
@@ -719,7 +786,9 @@ PlannerResult Planner::Step(std::string_view text, const std::vector<float>& pro
                 if (t.pointer == PlacePointer::This && !(world_.player_gaze.empty() || world_.player_gaze == c)) continue;
                 left.push_back(c);
             }
-            if (left.size() == 1 && (t.object >= 0 || t.direction != PlaceDirection::None || t.pointer != PlacePointer::None)) {
+            if (t.flag == PlaceFlag::Other) {
+                if (OtherOne(left, &t, &out)) return out;   // "the other door"
+            } else if (left.size() == 1 && (t.object >= 0 || t.direction != PlaceDirection::None || t.pointer != PlacePointer::None)) {
                 const Memory::Question copy = q;
                 memory_.has_question = false;
                 Settle(copy, left[0], "Got it.", &out);

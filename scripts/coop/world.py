@@ -30,6 +30,8 @@ SECTORS = {"left": (-150.0, -20.0), "right": (20.0, 150.0), "forward": (-60.0, 6
 BACK_FROM = 120.0          # "back", "behind": |bearing| >= 120
 ELEVATION = 1.5            # "up" / "down": elevation beyond +-1.5 m
 CLEARLY_NEARER = 1.5       # the nearest candidate wins outright when the next one is 1.5 times as far
+RELATIVE_ZONES = ("up", "down")   # "upstairs", "downstairs": a floor named by where it is from the speaker
+STOREY = 1.5               # ... the next floor that way: the places within 1.5 m of the nearest one in height
 STANCES = ("stand", "crouch", "prone")
 
 # the priors: label -> [(condition, multiplier)]; a condition is one of the CONDITIONS below. The game can tune the
@@ -136,6 +138,25 @@ def says_again(w):
     """"again", "once more", "one more time" among the words of the line."""
     return "again" in w or any(a in ("once", "one") and b == "more" for a, b in zip(w, w[1:]))
 
+
+# ---- a line of several orders. The decoder in front of the classifier (cpp/coop_intent, rewriter.h) writes "smoke
+# the door then go in" as two order lines, "smoke the door" and "go in through the door", and each goes through
+# step() as a line of its own; the second and later ones with continued=True. Two things follow from their being ONE
+# line of the player:
+#   the same place   a place a further order names as the order before it did, in the same words or in fewer, is that
+#                    place: the door to go in through is the door that got the smoke. It matters most where the place
+#                    had to be asked about: two doors ("Which door?", "yes"), or none marked ("I see no door. Where?",
+#                    "there"). Without this the bot asks the same question again for the second order.
+#   the other one    "the other one" in answer to "Which door? The one ahead, 8 m?" is not the door the bot just
+#                    offered. The decoder hands it over as "breach the other door"; without a decoder the line names
+#                    no place, and the classifier makes nothing of it, a no, or the other angle (_other_one).
+def names_again(t, said):
+    """A target that names the thing `said` named and adds nothing of its own: the same object, and no side, floor,
+    direction, pointer or "other" the first did not have ("the door" after "the door on the left", "the other door"
+    after "the other door"; not "the other door" after "the door")."""
+    return t["object"] is not None and t["object"] == said["object"] and t["flag"] in (None, said["flag"]) and \
+        all(t.get(k) is None or t.get(k) == said.get(k) for k in ("qualifier", "zone", "direction", "pointer"))
+
 WORLD_EXAMPLE = {
     "entities": [
         {"id": "door_a", "object": "door", "qualifier": "north", "zone": "floor_1", "bearing": -35.0, "distance": 8.0, "elevation": 0.0, "tags": ["closed"]},
@@ -198,6 +219,22 @@ def in_sector(direction, bearing, elevation):
         return abs(bearing) >= BACK_FROM
     lo, hi = SECTORS[direction]
     return lo <= bearing <= hi
+
+
+def on_zone(e, zone):
+    """Whether an entity is on the floor the line names. A named floor is the entity's own zone; "upstairs" and
+    "downstairs" are any marked floor at least ELEVATION above or below the speaker."""
+    if zone in RELATIVE_ZONES:
+        return e.get("zone") is not None and in_sector(zone, 0.0, float(e.get("elevation", 0.0)))
+    return e.get("zone") == zone
+
+
+def next_floor(cands):
+    """Of places above (or below), the ones on the nearest floor that way: "upstairs" is one floor up, not the roof."""
+    if not cands:
+        return cands
+    near = min(abs(float(e.get("elevation", 0.0))) for e in cands)
+    return [e for e in cands if abs(float(e.get("elevation", 0.0))) <= near + STOREY]
 
 
 def sector_word(e):
@@ -268,10 +305,12 @@ def ground_target(t, world, memory, here=False):
                 return out("resolved", pin["entity"] or pin["id"], via="pin")     # the one place that is marked
             return out("missing", via="this")
         if zone is not None:
-            cands = [e["id"] for e in ents if e.get("zone") == zone]
+            cands = [e for e in ents if on_zone(e, zone)]
+            if zone in RELATIVE_ZONES:
+                cands = next_floor(cands)
             if not cands:
                 return out("missing", via="zone")    # a floor the world has no place on: the bot cannot find it
-            return out("resolved", None, cands, "zone")
+            return out("resolved", None, [e["id"] for e in cands], "zone")
         if direction is not None:
             return out("resolved", None, [], "direction")
         return out("missing")
@@ -287,7 +326,7 @@ def ground_target(t, world, memory, here=False):
     if qual is not None:
         cands = [e for e in cands if e.get("qualifier") == qual]
     if zone is not None:
-        cands = [e for e in cands if e.get("zone") == zone]
+        cands = [e for e in cands if on_zone(e, zone)]     # "the door upstairs": a door on a floor above
     # "up the blue stairs": up is the way along a vertical object, not where it stands
     if direction is not None and not (direction in ("up", "down") and obj in LOC.VOCAB["vertical"]):
         cands = [e for e in cands if in_sector(direction, float(e.get("bearing", 0.0)), float(e.get("elevation", 0.0)))]
@@ -353,11 +392,13 @@ def apply_priors(probs, labels, world, memory, priors=PRIORS):
 # ---------------------------------------------------------------- the planner: memory, questions, orders
 
 ANSWER_YES, ANSWER_NO, ANSWER_UNSURE = "YES", "NO", ("MAYBE", "DONT_KNOW")
+OTHER_ANGLE = "HOLD_OTHER_ANGLE"     # what the classifier makes of a bare "the other one"
 
 
 def new_memory():
     # frame: the order taken last -- {"intent", "t" (its place target or None), "g" (that target's grounding or None),
-    # "other", "near", "time"}
+    # "other", "near", "time", "said" (what the order's own line called the place, when the place came from the answer
+    # to "Where?": the door of "smoke the door", where "t" is the "there" that answered; else None)}
     return {"last_entity": None, "last_order": None, "question": None, "frame": None}
 
 
@@ -394,6 +435,7 @@ class Planner:
         self.pending_entity = None     # the queued order's resolved entity
         self.pending_here = False      # ... or that its place is "here"
         self.pending_near = False      # ... and that it pointed with "this" / "here"
+        self.frame_in_line = False     # the frame is of an order of the line being read (step(..., continued=True))
 
     def set_world(self, world):
         self.world = validate_world(copy.deepcopy(world))
@@ -402,6 +444,7 @@ class Planner:
         self.bot.reset()
         self.memory = new_memory()
         self._drop_pending()
+        self.frame_in_line = False
 
     def _drop_pending(self):
         self.pending_entity, self.pending_here, self.pending_near = None, False, False
@@ -498,7 +541,22 @@ class Planner:
             return self._reissue(f, place[0], place[1], near, "Got it. ")
         return None
 
-    def _order(self, intent, record, grounding, k, other, near=False):
+    def _same_place(self, record, grounding):
+        """A further order of the line being read: a place it names as the order before it did is that order's place,
+        whatever the world would make of the words alone (two doors: a question; "the door" after "the door on the
+        right": the nearest; "the other door" twice: the first one again). Only a place that is a thing of the world:
+        a direction or "here" is not carried over."""
+        f = self.memory["frame"]
+        k = record["primary"] if record and record["targets"] else -1
+        if f is None or k < 0 or f["g"] is None or f["g"]["entity"] is None or not self._known(f["g"]):
+            return
+        t = record["targets"][k]
+        said = f["said"] or f["t"]
+        if t["role"] is not None or said is None or not names_again(t, said):
+            return
+        grounding[k] = copy.deepcopy(f["g"])
+
+    def _order(self, intent, record, grounding, k, other, near=False, said=None):
         t = record["targets"][k] if k >= 0 else None
         g = grounding[k] if k >= 0 else None
         ent = g["entity"] if g else None
@@ -508,7 +566,8 @@ class Planner:
         if intent != "GO_NOW":      # "go" with nothing queued is not an order to come back to
             now = self.world.get("time")
             self.memory["frame"] = {"intent": intent, "t": t, "g": g, "other": other, "near": bool(near),
-                                    "time": float(now) if now is not None else None}
+                                    "time": float(now) if now is not None else None, "said": said}
+            self.frame_in_line = True
         return {"intent": intent, "entity": ent, "candidates": g["candidates"] if g else [],
                 "direction": t.get("direction") if t else None, "zone": t["zone"] if t else None,
                 "pointer": t.get("pointer") if t else None, "other": other, "via": g["via"] if g else None,
@@ -552,8 +611,24 @@ class Planner:
         self.memory["question"] = None
         return "resolved", "Which one, then? Point at it.", None
 
-    def _settle(self, q, entity, say):
-        """The question's order with the entity the player confirmed."""
+    def _other_one(self, q, left, said=None):
+        """ "The other one" in answer to "Which door? The one ahead, 8 m?": not the door the bot just offered. left: the
+        candidates the line still fits; said: how the line named the place ("the other door"), if it did. One other:
+        that one. Several: they are what is left to choose from, and the nearest is offered, as after "no". None: the
+        line is something else."""
+        left = [c for c in left if c != q["candidates"][q["offered"]]]
+        if len(left) == 1:
+            self.memory["question"] = None
+            return self._settle(q, left[0], "Got it.", said)
+        if left:
+            by_id = {e["id"]: e for e in self.world["entities"]}
+            q["candidates"], q["offered"] = left, 0
+            return "ask", f"The one {describe(by_id[left[0]])}?", None
+        return None
+
+    def _settle(self, q, entity, say, said=None):
+        """The question's order with the entity the player confirmed. said: how the line that settled it named the
+        place, when that is not how the order's own line did."""
         grounding = [{"status": "resolved", "entity": entity, "candidates": q["candidates"], "via": "answer"}]
         rec = {"targets": [q["record"]["targets"][q["k"]]], "primary": 0}
         if q["queued"]:
@@ -562,7 +637,7 @@ class Planner:
             self.pending_entity = entity
             self.memory["last_entity"] = entity
             return "resolved", say + f" Ready to {self.bot.phrase[q['intent']]}. On your go.", None
-        return "resolved", say + f" {self.bot.phrase[q['intent']].capitalize()}.", self._order(q["intent"], rec, grounding, 0, q["other"])
+        return "resolved", say + f" {self.bot.phrase[q['intent']].capitalize()}.", self._order(q["intent"], rec, grounding, 0, q["other"], said=said)
 
     def _settle_place(self, q, rec, g, queued, near):
         """The "Where?" question's order with the place the player pointed at: rec is that place's record (one
@@ -575,7 +650,8 @@ class Planner:
             if g["entity"] is not None:
                 self.memory["last_entity"] = g["entity"]
             return "resolved", f"Got it. Ready to {phrase}. On your go.", None
-        return "resolved", f"Got it. {phrase.capitalize()}.", self._order(q["intent"], rec, [g], 0, q["other"], near)
+        return "resolved", f"Got it. {phrase.capitalize()}.", \
+            self._order(q["intent"], rec, [g], 0, q["other"], near, said=q["record"]["targets"][q["k"]])
 
     def _place_answer(self, q, text, action, intent, record, grounding):
         """A "Where?" answered by pointing ("there", "at my pin", "on the left", "that one"), or by "yes" / "go" once
@@ -599,17 +675,32 @@ class Planner:
                 return self._settle_place(q, {"targets": [t0], "primary": 0}, g, q["queued"], False)
         return None
 
-    def step(self, text, probs):
+    def step(self, text, probs, continued=False):
+        """continued: the line is a further order of the line the player just said (see "a line of several orders")."""
+        if not continued:
+            self.frame_in_line = False
         probs2, adjusted = apply_priors(probs, self.bot.labels, self.world, self.memory, self.priors)
         reply, rec = self.bot.decide(text, probs2)
         action, intent = rec["action"], rec["intent"]
         record = rec["places"]
         grounding = ground(record, self.world, self.memory, text, intent) if record and record["targets"] else []
+        if continued and self.frame_in_line:
+            self._same_place(record, grounding)
         near = deixis(text) is not None
         out = {"action": action, "say": reply, "ground": grounding, "order": None, "question": None, "intent": intent,
                "prob": rec["prob"], "probs_adjusted": adjusted}
         q = self.memory["question"]
 
+        if q is not None and q["kind"] == "which" and rec["other"] and not (record and record["targets"]) and \
+                (action in ("say_again", "ignore") or (action == "answer" and intent == ANSWER_NO) or
+                 (action == "act" and intent in (q["intent"], OTHER_ANGLE))):
+            # "the other one", "no, the other one": no place said. The classifier reads the words as nothing, as a no,
+            # as the order asked about, or as the other angle
+            r = self._other_one(q, q["candidates"])
+            if r is not None:
+                out["action"], out["say"], out["order"] = r
+                out["question"] = self.memory["question"]
+                return out
         if q is not None and action == "answer":
             r = self._answer(intent)
             if r is not None:
@@ -634,7 +725,13 @@ class Planner:
                         (t["qualifier"] is None or by_id[c].get("qualifier") == t["qualifier"]) and
                         (t.get("direction") is None or in_sector(t["direction"], float(by_id[c].get("bearing", 0.0)), float(by_id[c].get("elevation", 0.0)))) and
                         (t.get("pointer") != "this" or self.world.get("player_gaze") in (None, c))]
-                if len(left) == 1 and (t["object"] is not None or t.get("direction") is not None or t.get("pointer") is not None):
+                if t["flag"] == "other":
+                    r = self._other_one(q, left, t)      # "the other door"
+                    if r is not None:
+                        out["action"], out["say"], out["order"] = r
+                        out["question"] = self.memory["question"]
+                        return out
+                elif len(left) == 1 and (t["object"] is not None or t.get("direction") is not None or t.get("pointer") is not None):
                     self.memory["question"] = None
                     out["action"], out["say"], out["order"] = self._settle(q, left[0], "Got it.")
                     out["ground"] = grounding
@@ -791,6 +888,73 @@ DEV_TALK = [
 ]
 
 
+# a building with its floors marked, the speaker on the first floor: the basement 3 m below, the second floor 3.2 m
+# above, the roof 6.5 m above
+WORLD_FLOORS = {
+    "entities": [
+        {"id": "base_a", "object": None, "qualifier": None, "zone": "basement", "bearing": 10.0, "distance": 9.0, "elevation": -3.0, "tags": []},
+        {"id": "one_a", "object": None, "qualifier": None, "zone": "floor_1", "bearing": -80.0, "distance": 12.0, "elevation": 0.0, "tags": []},
+        {"id": "one_b", "object": None, "qualifier": None, "zone": "floor_1", "bearing": 150.0, "distance": 7.0, "elevation": 1.0, "tags": []},
+        {"id": "two_a", "object": None, "qualifier": None, "zone": "floor_2", "bearing": 30.0, "distance": 14.0, "elevation": 3.2, "tags": []},
+        {"id": "two_b", "object": None, "qualifier": None, "zone": "floor_2", "bearing": -120.0, "distance": 20.0, "elevation": 3.4, "tags": []},
+        {"id": "roof_a", "object": None, "qualifier": None, "zone": "roof", "bearing": 0.0, "distance": 16.0, "elevation": 6.5, "tags": []},
+        {"id": "door_one", "object": "door", "qualifier": None, "zone": "floor_1", "bearing": 40.0, "distance": 6.0, "elevation": 0.0, "tags": []},
+        {"id": "door_two", "object": "door", "qualifier": None, "zone": "floor_2", "bearing": -30.0, "distance": 11.0, "elevation": 3.2, "tags": []},
+        {"id": "stairs_red", "object": "stairs", "qualifier": "red", "zone": "floor_1", "bearing": 90.0, "distance": 10.0, "elevation": 0.0, "tags": []},
+    ],
+    "player_pin": None, "bot_pin": None, "player_gaze": None, "player": {"downed": False}, "bot": {"stance": "stand", "items": []},
+}
+DEV_FLOORS = [
+    ("go upstairs", "MOVE_TO", {"action": "act", "zone": "up", "candidates": ["two_a", "two_b", "door_two"]}),       # the next floor up, not the roof
+    ("go downstairs", "MOVE_TO", {"action": "act", "zone": "down", "candidates": ["base_a"]}),
+    ("go to the second floor", "MOVE_TO", {"action": "act", "zone": "floor_2", "candidates": ["two_a", "two_b", "door_two"]}),
+    ("get to the roof", "MOVE_TO", {"action": "act", "zone": "roof", "candidates": ["roof_a"]}),
+    ("watch the door upstairs", "HOLD_ANGLE", {"action": "act", "entity": "door_two"}),                             # one door is above
+    ("hold the door downstairs", "HOLD_ANGLE", {"action": "ask"}),                                                  # none below: "I see no door."
+]
+
+
+# a line of several orders, in the example world (two doors: 8 m ahead on the left, 11 m on the right). The third
+# element: the line is a further order of the line before it (the decoder's order lines).
+DEV_CHAIN = [
+    ("smoke the door", "SMOKE", False, {"action": "ask"}),                                    # two doors: "Which door?"
+    ("no", "NO", False, {"action": "ask"}),                                                   # not the one ahead
+    ("yes", "YES", False, {"action": "resolved", "entity": "door_b"}),
+    ("go in through the door", "MOVE_TO", True, {"action": "act", "entity": "door_b"}),       # the door that got the smoke
+    ("hold the door", "HOLD_ANGLE", False, {"action": "ask"}),                                # a new line: asked again
+    ("hold the other door", "HOLD_ANGLE", False, {"action": "resolved", "entity": "door_b"}),  # not the one just offered
+    ("flash the door on the left", "FLASH", False, {"action": "act", "entity": "door_a"}),
+    ("go in through the door", "MOVE_TO", True, {"action": "act", "entity": "door_a"}),       # fewer words, the same door
+    ("check that window", "CHECK", True, {"action": "act", "entity": "win_a"}),               # another thing: grounded by itself
+    ("frag the north door", "FRAG", False, {"action": "act", "entity": "door_a"}),
+    ("hold the other door", "HOLD_ANGLE", True, {"action": "act", "entity": "door_b"}),       # "other" is not "the same"
+    ("watch the door", "HOLD_ANGLE", True, {"action": "act", "entity": "door_b"}),            # the order before it, not the first
+    ("watch the door", "HOLD_ANGLE", False, {"action": "ask"}),                               # the same words as a new line
+    # "the other one" names no place; the classifier makes the other angle of it, nothing, or a no
+    ("no, the other one", "HOLD_OTHER_ANGLE", False, {"action": "resolved", "entity": "door_b", "intent": "HOLD_ANGLE"}),
+    ("breach the door", "BREACH", False, {"action": "ask"}),
+    ("the other one", "NONE", False, {"action": "resolved", "entity": "door_b", "intent": "BREACH"}),
+    ("open the door", "OPEN", False, {"action": "ask"}),
+    ("no, the other one", "NO", False, {"action": "resolved", "entity": "door_b", "intent": "OPEN"}),
+    ("hold the other angle", "HOLD_OTHER_ANGLE", False, {"action": "act", "intent": "HOLD_OTHER_ANGLE"}),   # nothing asked: the order
+    # the decoder writes the answer out for every order of the line: the same words are the same door
+    ("breach the door", "BREACH", False, {"action": "ask"}),
+    ("breach the other door", "BREACH", False, {"action": "resolved", "entity": "door_b"}),
+    ("frag the other door", "FRAG", True, {"action": "act", "entity": "door_b"}),             # not the other of the other
+    ("go in through the door", "MOVE_TO", True, {"action": "act", "entity": "door_b"}),
+]
+# ... and on a map nobody has marked: the door is what the player points at when asked
+DEV_CHAIN_BARE = [
+    ("smoke the door", "SMOKE", False, {"action": "ask"}),                                    # "I see no door. Where?"
+    ("there", "NONE", False, {"action": "resolved", "entity": "gaze_1"}),
+    ("go in through the door", "MOVE_TO", True, {"action": "act", "entity": "gaze_1"}),       # the door pointed at
+    ("frag the door", "FRAG", False, {"action": "ask"}),                                      # a new line: asked again
+    ("at my pin", "NONE", False, {"action": "resolved", "entity": "pin"}),
+    ("hold the door", "HOLD_ANGLE", True, {"action": "act", "entity": "pin"}),
+    ("check the window", "CHECK", True, {"action": "ask"}),                                   # another thing: "I see no window."
+]
+
+
 def talk_change(pl, change):
     """Applies a DEV_TALK change to the planner's world; returns whether the line is to be under the threshold."""
     w = copy.deepcopy(pl.world)
@@ -827,7 +991,7 @@ def run_dev():
         decide = coop_bot.Bot.decide
 
     ok = 0
-    for world, dev in ((WORLD_EXAMPLE, DEV), (WORLD_BARE, DEV_BARE), (WORLD_TALK, DEV_TALK)):
+    for world, dev in ((WORLD_EXAMPLE, DEV), (WORLD_BARE, DEV_BARE), (WORLD_TALK, DEV_TALK), (WORLD_FLOORS, DEV_FLOORS)):
         bot = Fake()
         pl = Planner(bot, world)
         for text, intent, want, *change in dev:
@@ -840,11 +1004,24 @@ def run_dev():
             got = {"action": r["action"]}
             if r["order"]:
                 got.update(entity=r["order"]["entity"], zone=r["order"]["zone"], via=r["order"]["via"], near=r["order"]["near"],
-                           direction=r["order"]["direction"], intent=r["order"]["intent"])
+                           direction=r["order"]["direction"], intent=r["order"]["intent"], candidates=r["order"]["candidates"])
             good = all(got.get(k) == v for k, v in want.items())
             ok += good
             print(f"{'ok ' if good else 'NO '} {text!r:36s} -> {r['action']:9s} {r['say']}" + (f"  order {r['order']}" if r["order"] else ""))
-    print(f"{ok}/{len(DEV) + len(DEV_BARE) + len(DEV_TALK)}")
+    for world, dev in ((WORLD_EXAMPLE, DEV_CHAIN), (WORLD_BARE, DEV_CHAIN_BARE)):
+        bot = Fake()
+        pl = Planner(bot, world)
+        for text, intent, continued, want in dev:
+            probs = [0.0] * len(bot.labels)
+            probs[bot.labels.index(intent)] = 0.9
+            r = pl.step(text, probs, continued)
+            got = {"action": r["action"]}
+            if r["order"]:
+                got.update(entity=r["order"]["entity"], intent=r["order"]["intent"])
+            good = all(got.get(k) == v for k, v in want.items())
+            ok += good
+            print(f"{'ok ' if good else 'NO '} {('+ ' if continued else '') + repr(text):36s} -> {r['action']:9s} {r['say']}" + (f"  order {r['order']}" if r["order"] else ""))
+    print(f"{ok}/{len(DEV) + len(DEV_BARE) + len(DEV_TALK) + len(DEV_FLOORS) + len(DEV_CHAIN) + len(DEV_CHAIN_BARE)}")
 
 
 if __name__ == "__main__":
