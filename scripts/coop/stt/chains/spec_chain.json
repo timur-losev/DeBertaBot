@@ -1,0 +1,14 @@
+{
+ "what": "An addendum to ../../blind/spec_v54.json for lines that give the bot more than one order. spec_v54.json maps a line to exactly one intent; here a line is read as the list of the orders the bot must carry out, in the order it must carry them out. The 41 intents and every boundary between them are spec_v54.json's and hold for each order of the list. Only the intents are listed: no timing, no reference, no target.",
+ "rules": [
+  "1. One entry per action the bot must do. Read each part of the line under spec_v54.json's definitions.",
+  "2. The list is in the order of EXECUTION, which can differ from the order of the words: 'flash the door after you smoke it' = [SMOKE, FLASH]; 'before you go in, toss a frag' = [FRAG, ENTRY].",
+  "3. A part that only says WHEN or HOW an action is done is not an order of its own. 'wait for my call, then smoke the door' = [SMOKE] (the wait is that order's timing); 'on my go, breach' = [BREACH]; 'go around the back and hit them from behind' = [FLANK]; 'push in and clear the room' = [ENTRY]. 'Wait for my call / my signal / my go / my count' is never an entry.",
+  "4. What the player says THEY do, callouts, chatter and questions are not orders and get no entry: 'I'll take the stairs, you watch the door and then follow me up' = [HOLD_ANGLE, FOLLOW_ME]; 'two in the kitchen, flash it and push' = [FLASH, ENTRY].",
+  "5. A part the player takes back or negates gets no entry: 'smoke the door, no wait, flash it' = [FLASH]; 'don't breach, just open it' = [OPEN]. HOLD_FIRE is an order although it is phrased as a negation: 'hold your fire and fall back' = [HOLD_FIRE, FALL_BACK].",
+  "6. The same intent appears twice when the line orders it twice: 'flash the door, then flash the window' = [FLASH, FLASH].",
+  "7. If no part of the line is an order to the bot the list is [NONE]; NONE never stands next to another intent. An answer (YES, NO, MAYBE, DONT_KNOW) is an entry only when the line gives no order: 'yes' = [YES]; 'yes, breach it and go in' = [BREACH, ENTRY].",
+  "8. Most lines a player says are still ONE order, and many of those contain 'and' or 'then'. Do not split what is one action."
+ ],
+ "format": "A list of intent names from spec_v54.json, e.g. [\"MOVE_TO\", \"FLASH\", \"ENTRY\"]. At most four entries."
+}

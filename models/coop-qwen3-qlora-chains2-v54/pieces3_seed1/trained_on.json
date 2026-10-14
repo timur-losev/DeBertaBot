@@ -1,0 +1,19 @@
+{
+ "base": "Qwen/Qwen3-1.7B",
+ "r": 16,
+ "alpha": 32,
+ "dropout": 0.05,
+ "lr": 0.0002,
+ "epochs": 3,
+ "system": "You are the AI teammate in a tactical co-op shooter. You get the player's line (\"now\") as a speech-to-text transcript that may be garbled, and sometimes what was said before it. Write what the player orders now as orders that stand by themselves, one per line, in the order you must carry them out. A line that gives one order or none is written back as it is.",
+ "rows": {
+  "singles": 4523,
+  "composed": 3000,
+  "teacher": 870,
+  "teacher_heard": 2340,
+  "context": 413,
+  "context_heard": 1108
+ },
+ "n_rows": 13950,
+ "train_s": 1412
+}

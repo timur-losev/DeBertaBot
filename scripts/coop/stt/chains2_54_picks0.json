@@ -1,0 +1,11217 @@
+{
+"a stairs west window pale out through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.996
+],
+"actually dont go in yet": [
+"WAIT",
+"WAIT",
+0.999
+],
+"actually scratch the molly": [
+"NONE",
+"WAIT",
+0.595
+],
+"actually scratched the molar": [
+"NONE",
+"NONE",
+0.774
+],
+"actually scratched the molly": [
+"NONE",
+"NONE",
+0.551
+],
+"actually, scratch the molly": [
+"WAIT",
+"WAIT",
+0.99
+],
+"afterwards give suppress fire to the left uh the left side": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"ah, never mind. scrapped that last call": [
+"WAIT",
+"WAIT",
+0.896
+],
+"all stack is sitting on yellow stairs": [
+"NONE",
+"NONE",
+0.984
+],
+"alpha reposition to garage like right now": [
+"MOVE_TO",
+"MOVE_TO",
+0.884
+],
+"alpha reposition to garage like right now okay": [
+"MOVE_TO",
+"MOVE_TO",
+0.882
+],
+"and afterwards": [
+"NONE",
+"FLANK",
+0.157
+],
+"and afterwards and we hit it together. you go": [
+"NONE",
+"FOLLOW_ME",
+0.581
+],
+"and afterwards hold where you are, don't move an inch": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.999
+],
+"and afterwards i got mains covered, you watched the other doll": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"and afterwards pushin and clear how": [
+"ENTRY",
+"ENTRY",
+0.998
+],
+"and afterwards slide the gate open keep it quiet": [
+"OPEN",
+"OPEN",
+0.998
+],
+"and afterwards when i say go, look at the south door, not before": [
+"LOOK_AT",
+"LOOK_AT",
+0.959
+],
+"and afterwards you're fine there. don't go anywhere": [
+"NONE",
+"HOLD_POSITION",
+0.422
+],
+"and cover me": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"and from there cook one and toss it in": [
+"FRAG",
+"FRAG",
+0.998
+],
+"and from there face mean for a sec pretty sure i heard steps": [
+"LOOK_AT",
+"LOOK_AT",
+0.965
+],
+"and from there ok let's regroup, you're way too deep for me to trade you": [
+"COME_BACK",
+"COME_BACK",
+0.985
+],
+"and from there okay attack them attack": [
+"ATTACK",
+"ATTACK",
+0.995
+],
+"and gonna run the rotate": [
+"NONE",
+"ENTRY",
+0.336
+],
+"and gonna run the rotate, overwatch me from cover": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"and hiding in the corner": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.998
+],
+"and hiding in the corner okay": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.998
+],
+"and hiding in the corner, get over to the table up on second, i'll meet you": [
+"MOVE_TO",
+"MOVE_TO",
+0.883
+],
+"and hold on the rape throw that wall open": [
+"BREACH",
+"BREACH",
+0.99
+],
+"and hold where you are, don't move an inch": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.999
+],
+"and i'll rotate left, you head right": [
+"MOVE_TO",
+"MOVE_TO",
+0.891
+],
+"and looking at and stand by it": [
+"LOOK_AT",
+"LOOK_AT",
+0.996
+],
+"and malay on my mark, he's lit and hiding in the corn": [
+"NONE",
+"ATTACK",
+0.431
+],
+"and michael come give me a hand not before": [
+"HELP",
+"HELP",
+0.998
+],
+"and michael come give me a hand not before okay": [
+"HELP",
+"HELP",
+0.998
+],
+"and michael come give me a hand not before you": [
+"HELP",
+"HELP",
+0.998
+],
+"and michael come give me a hand not before you one hb man": [
+"HELP",
+"HELP",
+0.998
+],
+"and my call come give me a hand, not before": [
+"HELP",
+"HELP",
+0.998
+],
+"and not the north window, i said smoke west door": [
+"SMOKE",
+"SMOKE",
+0.996
+],
+"and pop a smock on the stairs": [
+"NONE",
+"DRONE",
+0.353
+],
+"and right after that and we hit it together. you go": [
+"NONE",
+"FOLLOW_ME",
+0.428
+],
+"and run over to my ping, the one i just placed": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"and she threw the east door and sat on it": [
+"NONE",
+"FLASH",
+0.582
+],
+"and stop swinging": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.99
+],
+"and that's the hatch on the floor we'll drop later": [
+"NONE",
+"BREACH",
+0.432
+],
+"and they're spraying through the smoke, get down get down": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"and tibiano behind the bed": [
+"NONE",
+"TAKE_COVER",
+0.299
+],
+"and tibiano behind the bed neither hand": [
+"NONE",
+"NONE",
+0.554
+],
+"and uh the red door open it but stay outside": [
+"OPEN",
+"OPEN",
+0.999
+],
+"and we hit it together": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.945
+],
+"and we hit it together. you go": [
+"NONE",
+"FOLLOW_ME",
+0.679
+],
+"and we hit it together. you go and when i say go": [
+"NONE",
+"FOLLOW_ME",
+0.585
+],
+"and when i say go": [
+"NONE",
+"ATTACK",
+0.28
+],
+"andre": [
+"NONE",
+"YES",
+0.358
+],
+"andre reentry": [
+"NONE",
+"COME_BACK",
+0.648
+],
+"andre reentry. ready": [
+"NONE",
+"COME_BACK",
+0.666
+],
+"andre reentry. ready and i am on this handle, you cover whatever i am not looking at": [
+"NONE",
+"COME_BACK",
+0.468
+],
+"andre reentry. ready first": [
+"NONE",
+"COME_BACK",
+0.605
+],
+"any one peaks you drop him": [
+"NONE",
+"HOLD_ANGLE",
+0.589
+],
+"any one peeks you drop him": [
+"NONE",
+"HOLD_ANGLE",
+0.619
+],
+"anyone peeks you drop him": [
+"NONE",
+"NONE",
+0.423
+],
+"as soon as you breach the other hatch": [
+"BREACH",
+"BREACH",
+1.0
+],
+"as soon as you breach the other hatch instead": [
+"BREACH",
+"BREACH",
+0.999
+],
+"as soon as you cover me while i plant, anyone peeks you drop him": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"as soon as you get flat on your belly, right now": [
+"PRONE",
+"PRONE",
+0.997
+],
+"as soon as you get me back on my feet, i'm bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.998
+],
+"as soon as you get me up bro, i'm down and bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.998
+],
+"as soon as you get me up, bro. i'm down and bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.998
+],
+"as soon as you go ahead and shoot, you don't have to ask me": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"as soon as you go over to that window i'm looking at": [
+"MOVE_TO",
+"MOVE_TO",
+0.985
+],
+"as soon as you go over to that window i'm looking at and stand by it": [
+"MOVE_TO",
+"MOVE_TO",
+0.933
+],
+"as soon as you hit ready to plant, don't touch it till i say": [
+"PLANT",
+"PLANT",
+0.98
+],
+"as soon as you hit them with the molly, burn him out of the corner": [
+"FRAG",
+"FRAG",
+0.999
+],
+"as soon as you if he's it, you got time": [
+"NONE",
+"CHECK",
+0.422
+],
+"as soon as you istas still barricaded, slap the charge on it and blow it": [
+"BREACH",
+"BREACH",
+1.0
+],
+"as soon as you look at the sofa, i swear something just moved": [
+"LOOK_AT",
+"LOOK_AT",
+0.997
+],
+"as soon as you no not that one the other door open it": [
+"OPEN",
+"OPEN",
+0.999
+],
+"as soon as you not the north window, i said": [
+"NONE",
+"NONE",
+0.324
+],
+"as soon as you okay so just uh shadow me dont go wandering off": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.998
+],
+"as soon as you pop a flash over for me": [
+"FLASH",
+"FLASH",
+0.999
+],
+"as soon as you repel to the window above you": [
+"RAPPEL",
+"RAPPEL",
+0.998
+],
+"as soon as you rope down to the left hand window and hang on it": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"as soon as you seize fire seize fire uh friendlies crossing seize fire": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"as soon as you slide the gate open keep it quiet": [
+"OPEN",
+"OPEN",
+0.987
+],
+"as soon as you smoke the doorway": [
+"SMOKE",
+"SMOKE",
+0.999
+],
+"as soon as you start blasting, they're already nowhere here": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.996
+],
+"as soon as you stay looking on that door dont take eyes off it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"as soon as you throw that wall open": [
+"BREACH",
+"BREACH",
+0.999
+],
+"as soon as you unlatch the hatch on the floor, we'll drop later": [
+"OPEN",
+"OPEN",
+0.728
+],
+"as soon as you we lost this fight, pull back to second": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"as soon as you you're one hp man, get yourself somewhere safe": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"as soon as you you're way too exposed": [
+"NONE",
+"TAKE_COVER",
+0.539
+],
+"as soon as you you're way too exposed, go prone behind the bed": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.972
+],
+"attack site": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"attack sumain": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"attack sumain push in and clear the site": [
+"ENTRY",
+"ENTRY",
+0.998
+],
+"attack sumain push in and clear the site okay": [
+"ENTRY",
+"ENTRY",
+0.998
+],
+"attack them": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"attack them attack": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"attack them attack as soon as possible": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"attack them attack as soon as you no not that one": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"attack through main": [
+"ATTACK",
+"ATTACK",
+0.994
+],
+"attack through main potion and clear the site": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"attack through main, push in and clear the site": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"attack through main, push in and clear the site uh behind you": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"attack through main, push in and clear the site uh behind you behind you": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"attack through main, push in and clear the site. plan it plan it now": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"auntie bienner behind the pad": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.972
+],
+"auntie bienner behind the pad niederhan": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.983
+],
+"back off, back off, we lost it": [
+"FALL_BACK",
+"FALL_BACK",
+0.998
+],
+"back off, back off. we lost it": [
+"FALL_BACK",
+"FALL_BACK",
+0.998
+],
+"back off, back off. we lost it first": [
+"FALL_BACK",
+"FALL_BACK",
+0.998
+],
+"back off, back off. we lost it okay": [
+"FALL_BACK",
+"FALL_BACK",
+0.998
+],
+"back south door for me. just pull it don't walk in": [
+"OPEN",
+"OPEN",
+0.817
+],
+"back stab": [
+"FALL_BACK",
+"FALL_BACK",
+0.788
+],
+"backstab": [
+"FALL_BACK",
+"FALL_BACK",
+0.729
+],
+"backstab them": [
+"NONE",
+"SUPPRESS",
+0.465
+],
+"balm down a": [
+"NONE",
+"OPEN_FIRE",
+0.301
+],
+"balm down a, the fault plap": [
+"NONE",
+"DEFUSE",
+0.347
+],
+"bandit tricking the reinforce on main wall": [
+"NONE",
+"FRAG",
+0.502
+],
+"bandit tricking the reinforce on main war": [
+"NONE",
+"DRONE",
+0.353
+],
+"beach that wall": [
+"BREACH",
+"BREACH",
+1.0
+],
+"beach that wall on my go": [
+"BREACH",
+"BREACH",
+1.0
+],
+"behind you": [
+"NONE",
+"NONE",
+0.341
+],
+"behind you behind you turn": [
+"NONE",
+"LOOK_AT",
+0.328
+],
+"behind you behind you turn and look behind": [
+"LOOK_AT",
+"LOOK_AT",
+0.993
+],
+"behind you turn and look behind": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"billy, right now": [
+"NONE",
+"PLANT",
+0.491
+],
+"blan set the sofa for me. i think there's a trap top next to it": [
+"DRONE",
+"DRONE",
+0.711
+],
+"blind of room for me": [
+"FLASH",
+"FLASH",
+0.924
+],
+"blind room for me": [
+"NONE",
+"SMOKE",
+0.534
+],
+"blind room for me and you're getting sharp hide, get out of his line of sight": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.967
+],
+"blind room for me okay": [
+"NONE",
+"DRONE",
+0.539
+],
+"blind the room for me": [
+"FLASH",
+"FLASH",
+0.769
+],
+"blind the room for me okay": [
+"FLASH",
+"FLASH",
+0.696
+],
+"blind them for me before i peek": [
+"SMOKE",
+"SMOKE",
+0.726
+],
+"blind them for me before i peek hard": [
+"NONE",
+"FLASH",
+0.656
+],
+"blind them for me before i peek okay": [
+"NONE",
+"FLASH",
+0.671
+],
+"blind them for me before i peek, roamer's on you": [
+"NONE",
+"FLASH",
+0.665
+],
+"blind them for me me i peek": [
+"SMOKE",
+"SMOKE",
+0.799
+],
+"blow": [
+"BREACH",
+"BREACH",
+0.999
+],
+"blow open the other hatch, not this one": [
+"BREACH",
+"BREACH",
+1.0
+],
+"blow open the other hatch, not this one okay": [
+"BREACH",
+"BREACH",
+1.0
+],
+"blow room for me": [
+"BREACH",
+"BREACH",
+0.984
+],
+"blow that hatch open": [
+"BREACH",
+"BREACH",
+1.0
+],
+"blow that hatch open, then we drop on their head": [
+"BREACH",
+"BREACH",
+1.0
+],
+"blow that wall open": [
+"BREACH",
+"BREACH",
+1.0
+],
+"blow that wall open first": [
+"BREACH",
+"BREACH",
+0.999
+],
+"blow that wall opens": [
+"BREACH",
+"BREACH",
+1.0
+],
+"blow the door open, loud is fine": [
+"BREACH",
+"BREACH",
+0.999
+],
+"blow the door open, loud is fine okay": [
+"BREACH",
+"BREACH",
+0.999
+],
+"blow the door open, what is fine": [
+"BREACH",
+"BREACH",
+1.0
+],
+"blow the wall where i put the pin": [
+"BREACH",
+"BREACH",
+1.0
+],
+"bo down the side of the building on that rope thing": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"bo plaid default": [
+"NONE",
+"FRAG",
+0.581
+],
+"bo plaid default or watch": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.997
+],
+"bo plaid default or watch as soon as you your clear hearts": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.933
+],
+"bo plaid default or watch; i got lon, you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.998
+],
+"bolt in there": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.99
+],
+"bolt in there, the window on your left": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"bolt the door open": [
+"OPEN",
+"OPEN",
+0.988
+],
+"bolt the door open, light is fine": [
+"OPEN",
+"OPEN",
+0.997
+],
+"bolt the door open, light is fine and smith the dolly": [
+"OPEN",
+"OPEN",
+0.997
+],
+"bolt the door open, light is fine first": [
+"OPEN",
+"OPEN",
+0.998
+],
+"bolton there, the window on your left": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.693
+],
+"bomb down a default plant": [
+"PLANT",
+"PLANT",
+0.822
+],
+"bomb down a, default plant": [
+"PLANT",
+"PLANT",
+0.755
+],
+"bond eight a fault": [
+"NONE",
+"FRAG",
+0.317
+],
+"bond eight a fault plant": [
+"PLANT",
+"PLANT",
+0.981
+],
+"boo checked the door next to my marker. pretty sure i heard steps, but maybe i'm just hearing things": [
+"CHECK",
+"CHECK",
+1.0
+],
+"bounce it behind the couch": [
+"NONE",
+"PLANT",
+0.424
+],
+"bounced it behind the couch he's been sitting there all round": [
+"NONE",
+"TAKE_COVER",
+0.267
+],
+"breach the door": [
+"BREACH",
+"BREACH",
+1.0
+],
+"breach the other hatch": [
+"BREACH",
+"BREACH",
+1.0
+],
+"breach the other hatch instead": [
+"BREACH",
+"BREACH",
+0.999
+],
+"breach the other hatch instead and watch the back door. they'll rotate through it": [
+"BREACH",
+"BREACH",
+0.991
+],
+"breach the other hatch instead; throw that wall open": [
+"BREACH",
+"BREACH",
+1.0
+],
+"breach the reinforced wall": [
+"BREACH",
+"BREACH",
+1.0
+],
+"breach the reinforced wall on mamark first": [
+"BREACH",
+"BREACH",
+0.999
+],
+"breach the reinforced wall on my mark": [
+"BREACH",
+"BREACH",
+1.0
+],
+"breached the reinforced wall on mamark": [
+"BREACH",
+"BREACH",
+1.0
+],
+"breached the reinforced wall on mamark okay": [
+"BREACH",
+"BREACH",
+1.0
+],
+"break line of sight": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.998
+],
+"break line of sight okay": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.998
+],
+"breath finally": [
+"NONE",
+"NONE",
+0.252
+],
+"breathe": [
+"NONE",
+"STAND_UP",
+0.462
+],
+"breathe finally": [
+"NONE",
+"STAND_UP",
+0.264
+],
+"breathe finally okay": [
+"NONE",
+"STAND_UP",
+0.342
+],
+"bring him out of the corner": [
+"NONE",
+"FRAG",
+0.383
+],
+"bro did you see my one tap looked so clean": [
+"NONE",
+"NONE",
+1.0
+],
+"bro did you see my one tap, it looks so clean": [
+"NONE",
+"NONE",
+1.0
+],
+"bro did you see my one tap, it was clean": [
+"NONE",
+"NONE",
+1.0
+],
+"bro did you see my one tap, it was look so clean": [
+"NONE",
+"NONE",
+1.0
+],
+"bro did you see my one tap, look so clean": [
+"NONE",
+"NONE",
+1.0
+],
+"bro did you see my one tap, looked so clean": [
+"NONE",
+"NONE",
+1.0
+],
+"bro did you see my one tap, looks so clean": [
+"NONE",
+"NONE",
+1.0
+],
+"bro did you see my one tap? look so clean": [
+"NONE",
+"NONE",
+1.0
+],
+"bro did you see my one tap? looked so clean": [
+"NONE",
+"NONE",
+1.0
+],
+"bro did you see my one tap? looks so clean": [
+"NONE",
+"NONE",
+1.0
+],
+"bro, did you see my one tap? look so clean": [
+"NONE",
+"NONE",
+1.0
+],
+"bro, did you see my one tap? looked so clean": [
+"NONE",
+"NONE",
+1.0
+],
+"bro, did you see my one tap? looks so clean": [
+"NONE",
+"NONE",
+1.0
+],
+"bruce up, get yourself over there": [
+"MOVE_TO",
+"MOVE_TO",
+0.998
+],
+"bruce up, get yourself over there. i'll meet you by the hatch": [
+"MOVE_TO",
+"MOVE_TO",
+0.998
+],
+"budge": [
+"NONE",
+"FALL_BACK",
+0.394
+],
+"bum down a default plant": [
+"NONE",
+"FRAG",
+0.455
+],
+"burn him out of the corner": [
+"FRAG",
+"FRAG",
+0.999
+],
+"burn him out of the corner as soon as you look at the sofa, i swear something just moved": [
+"FRAG",
+"FRAG",
+0.999
+],
+"burn them down the corner": [
+"FRAG",
+"FRAG",
+0.995
+],
+"burn them out of the corner": [
+"FRAG",
+"FRAG",
+0.999
+],
+"bush": [
+"ENTRY",
+"ENTRY",
+0.989
+],
+"bush as soon as you can i run the rotate": [
+"ENTRY",
+"ENTRY",
+0.992
+],
+"bush as soon as you can i run the rotate before": [
+"ENTRY",
+"ENTRY",
+0.98
+],
+"bush as soon as you can i run the rotate before watch me from colour": [
+"NONE",
+"ENTRY",
+0.655
+],
+"bush as soon as you we'll open the other hatch, not this one": [
+"ENTRY",
+"ENTRY",
+0.985
+],
+"bush in there and clear it out": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"bush in there and clearly out": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"bush it": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"bush the table": [
+"ENTRY",
+"ENTRY",
+0.986
+],
+"but alpha reposition to garage like right now": [
+"MOVE_TO",
+"MOVE_TO",
+0.778
+],
+"but alpha reposition to garage like right now first": [
+"NONE",
+"COME_BACK",
+0.608
+],
+"but and we hit it together": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.957
+],
+"but and we hit it together. you go": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.718
+],
+"but andre reentry": [
+"NONE",
+"COME_BACK",
+0.661
+],
+"but andre reentry. ready first": [
+"NONE",
+"COME_BACK",
+0.587
+],
+"but back off, back off. we lost it first": [
+"FALL_BACK",
+"FALL_BACK",
+0.998
+],
+"but before that": [
+"NONE",
+"DRONE",
+0.325
+],
+"but before that smoke it and bush": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"but bolt the door open, light is fine": [
+"OPEN",
+"OPEN",
+0.997
+],
+"but bolt the door open, light is fine first": [
+"OPEN",
+"OPEN",
+0.998
+],
+"but check fire, check fire, i'm crossing": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"but check fire, check fire, i'm crossing, do not shoot first": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"but check left real quick. i had stepped first": [
+"CHECK",
+"CHECK",
+0.999
+],
+"but climb out over the cell and get outside first": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.857
+],
+"but climb out that window on your left, hurry up": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"but climb out that window on your left, hurry up first": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"but come to me and stick close. we're moving as a pair first": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.999
+],
+"but cover me i am going to plan the bomb cover me first": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"but crack south door for me, just pull it, don't walk in first": [
+"OPEN",
+"OPEN",
+0.999
+],
+"but first prep a flash for west window and send it on three": [
+"FLASH",
+"FLASH",
+0.986
+],
+"but go down the side of the building on that rope thing first": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"but hart breached the reinforced wall on mamark first": [
+"BREACH",
+"BREACH",
+0.999
+],
+"but i'll rotate left, you head right": [
+"MOVE_TO",
+"MOVE_TO",
+0.833
+],
+"but i'm going for the plant": [
+"PLANT",
+"PLANT",
+0.865
+],
+"but i'm going for the plant, keep your eyes on me": [
+"COVER_ME",
+"COVER_ME",
+0.985
+],
+"but keep your crosshair on my ping, somebody's gonna swing it first": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"but look at the sofa, i swear something just moved first": [
+"LOOK_AT",
+"LOOK_AT",
+0.996
+],
+"but lurk through my ping": [
+"FLANK",
+"FLANK",
+0.836
+],
+"but lurk through my ping and get in their backs first": [
+"FLANK",
+"FLANK",
+0.897
+],
+"but main, we hit it together": [
+"COME_BACK",
+"COME_BACK",
+0.762
+],
+"but main, we hit it together, you go in when i say go first": [
+"NONE",
+"ENTRY",
+0.564
+],
+"but okay go upstairs i meet you in a second first": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"but okay let's regroup you're way too deep for me to trade you first": [
+"COME_BACK",
+"COME_BACK",
+0.998
+],
+"but pushin and clear how first": [
+"ENTRY",
+"ENTRY",
+0.992
+],
+"but roma's on you": [
+"NONE",
+"COME_BACK",
+0.332
+],
+"but roma's on you, engage him, he's all yours first": [
+"ATTACK",
+"ATTACK",
+0.997
+],
+"but shoot straight ahead. he's wide swinging you first": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"but shoot through the east door, they're stacked on it first": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"but take him out with a nade, cook it and send it first": [
+"FRAG",
+"FRAG",
+0.969
+],
+"but they're swinging me from both sides": [
+"NONE",
+"NONE",
+0.995
+],
+"but they're swinging me from both sides i need help first": [
+"HELP",
+"HELP",
+0.995
+],
+"but up on the bomb and stick the diffuse first": [
+"DEFUSE",
+"DEFUSE",
+0.905
+],
+"but we lost this fight, pull back to second": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"but we lost this fight, pull back to second first": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"but we'll open the other hatch, not this one first": [
+"NONE",
+"OPEN",
+0.522
+],
+"but west is yours bot dont let nobody come through first": [
+"NONE",
+"HOLD_OTHER_ANGLE",
+0.408
+],
+"but when i yoga": [
+"NONE",
+"NONE",
+0.662
+],
+"but when i yoga, look round the back first": [
+"NONE",
+"FLANK",
+0.364
+],
+"but wrap around through yellow and hit them from behind first": [
+"FLANK",
+"FLANK",
+0.999
+],
+"but you're cleared hot, shoot anything that peeks": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"but you're cleared hot, shoot anything that peeks first": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.998
+],
+"but you've got the c4, set it up on a first": [
+"PLANT",
+"PLANT",
+0.99
+],
+"butt up, check every corner": [
+"NONE",
+"ENTRY",
+0.417
+],
+"calm": [
+"NONE",
+"CROUCH",
+0.435
+],
+"calm top of stairs": [
+"NONE",
+"HOLD_ANGLE",
+0.468
+],
+"can i run the rotate before": [
+"DRONE",
+"DRONE",
+0.987
+],
+"can i run the rotate before watch me from colour": [
+"NONE",
+"HOLD_ANGLE",
+0.509
+],
+"can you look at the red stares uh on second floor": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"can you look for the bomb i think he dropped it near the stable": [
+"NONE",
+"NONE",
+1.0
+],
+"cease fire": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"cease fire, weapons tight, you are giving away our position": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"cease fire, weapons tight, you're giving away our position": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"ceasefire": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.998
+],
+"ceasefire, weapons height, you are giving away our position": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"check back": [
+"CHECK",
+"CHECK",
+1.0
+],
+"check behind you, he's lit": [
+"CHECK",
+"CHECK",
+1.0
+],
+"check every corner": [
+"CHECK",
+"CHECK",
+0.789
+],
+"check every corner, split the angles": [
+"CHECK",
+"CHECK",
+0.825
+],
+"check every corner, split the angles, i take hatch, you take the other one": [
+"CHECK",
+"CHECK",
+0.779
+],
+"check fire check fire on crossing": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"check fire check fire on crossing. don't shoot": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"check fire, check fire": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"check fire, check fire i'm crossing": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"check fire, check fire i'm crossing, do not shoot": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"check fire, check fire, i'm crossing": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"check fire, check fire, i'm crossing, do not shoot": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"check fire, check fire, i'm crossing, do not shoot first": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"check fire, check fire, i'm crossing, do not shoot okay": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"check left real quick": [
+"CHECK",
+"CHECK",
+1.0
+],
+"check left real quick, i heard steps": [
+"CHECK",
+"CHECK",
+1.0
+],
+"check left real quick. i had stepped": [
+"CHECK",
+"CHECK",
+1.0
+],
+"check left real quick. i had stepped first": [
+"CHECK",
+"CHECK",
+1.0
+],
+"check one, take it, and toss it in": [
+"CHECK",
+"CHECK",
+0.694
+],
+"cheng left rio gwen. i heard steps": [
+"NONE",
+"NONE",
+0.746
+],
+"clear hearts": [
+"NONE",
+"NONE",
+0.988
+],
+"clear main": [
+"NONE",
+"NONE",
+0.69
+],
+"clear out sight": [
+"ENTRY",
+"ENTRY",
+0.992
+],
+"clear out site when i say go": [
+"ENTRY",
+"ENTRY",
+0.998
+],
+"clear out there": [
+"ENTRY",
+"ENTRY",
+0.755
+],
+"clear the house": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"clear the room": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"climb out or over the sill and get outside": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.996
+],
+"climb out over the cell": [
+"NONE",
+"JUMP",
+0.623
+],
+"climb out over the cell and get outside": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.973
+],
+"climb out over the cell and get outside first": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.958
+],
+"climb out over the sill": [
+"NONE",
+"JUMP",
+0.564
+],
+"climb out over the sill and get outside": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.992
+],
+"climb out over the sill and get outside so press the east window": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"climb out that window on your left": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"climb out that window on your left hurry up": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"climb out that window on your left, hurry up": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"climb out that window on your left, hurry up first": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"climb up the outside wall": [
+"JUMP",
+"JUMP",
+0.999
+],
+"clip onto the roof edge": [
+"RAPPEL",
+"RAPPEL",
+0.951
+],
+"clip onto the roof edge and go inverted on bedroom": [
+"RAPPEL",
+"RAPPEL",
+0.988
+],
+"clip onto the roof edge and go inverted on bedroom okay": [
+"RAPPEL",
+"RAPPEL",
+0.988
+],
+"coconut and bounce it behind the couch he's been sitting there all round": [
+"NONE",
+"FRAG",
+0.632
+],
+"come give me a hand not before": [
+"HELP",
+"HELP",
+0.998
+],
+"come give me a hand not before you one hb man, get yourself somewhere safe": [
+"HELP",
+"HELP",
+0.695
+],
+"come give me a hand, not before": [
+"HELP",
+"HELP",
+0.998
+],
+"come to me": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.999
+],
+"come to me and stay close, we're moving as a pair": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.999
+],
+"come to me and stick close we're moving as a pair": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.999
+],
+"come to me and stick close, we're moving as a pair": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.999
+],
+"come to me and stick close, we're moving as a pair okay": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.999
+],
+"come to me and stick close. we're moving as a pair": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.999
+],
+"come to me and stick close. we're moving as a pair first": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.999
+],
+"come to me and stick on my shoulder, i don't want you roaming alone": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.999
+],
+"come to me and stick on my shoulder. i don't want you roaming alone": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.999
+],
+"come to me, i'm on it": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.999
+],
+"cook a nade and bounce it behind the couch, he's been sitting there all round": [
+"FRAG",
+"FRAG",
+0.999
+],
+"cook a neighed and bounce it behind the couch. he's been sitting there all round": [
+"FRAG",
+"FRAG",
+0.979
+],
+"cook an eight and bounce it behind the couch, he's been sitting there all round": [
+"FRAG",
+"FRAG",
+0.993
+],
+"cook and ate": [
+"NONE",
+"NONE",
+0.512
+],
+"cook and ate and bounced it behind the couch he's been sitting there all round": [
+"NONE",
+"FRAG",
+0.668
+],
+"cook one and toss it in": [
+"FRAG",
+"FRAG",
+0.999
+],
+"cook one and toss it in as soon as you i need suppressing fire like now, they're pushing me": [
+"FRAG",
+"FRAG",
+0.702
+],
+"cook one and toss it in i'm opening this door": [
+"FRAG",
+"FRAG",
+0.999
+],
+"cook one and toss it in i'm opening this door, you got me if someone swings": [
+"FRAG",
+"FRAG",
+0.995
+],
+"cook one and toss it in okay": [
+"FRAG",
+"FRAG",
+0.998
+],
+"cover me": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me and going for the diffuse": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me first": [
+"COVER_ME",
+"COVER_ME",
+0.995
+],
+"cover me i am going to plan the bomb": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me i am going to plan the bomb cover me": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me i am going to plan the bomb cover me first": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me i am going to plant the bomb": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me i'm going for the diffuse": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me n going for the defuse": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me n going for the diffuse": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me take them out with a grenade": [
+"COVER_ME",
+"COVER_ME",
+0.866
+],
+"cover me while i plan anyone peeks you": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me while i plan anyone peeks you drop him": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me while i plant": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me while i plant any one peaks you drop him": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me while i plant any one peeks you drop him": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me while i plant, anyone peeks you drop him": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me, i'm going for the defuse": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me, i'm going for the defuse okay": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me, i'm going for the diffuse": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"cover me, take them out with a grenade": [
+"COVER_ME",
+"COVER_ME",
+0.921
+],
+"cover me; you've got the c4, set it up on e": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"crack south door for me": [
+"OPEN",
+"OPEN",
+0.999
+],
+"crack south door for me, just pull it": [
+"OPEN",
+"OPEN",
+0.999
+],
+"crack south door for me, just pull it, don't walk in": [
+"OPEN",
+"OPEN",
+0.999
+],
+"crack south door for me, just pull it, don't walk in first": [
+"OPEN",
+"OPEN",
+0.999
+],
+"crack south door for me, just pull it, don't walk in okay": [
+"OPEN",
+"OPEN",
+0.999
+],
+"crack south door for me. just bullet. don't walk in": [
+"OPEN",
+"OPEN",
+0.999
+],
+"crack that door open": [
+"OPEN",
+"OPEN",
+0.999
+],
+"crack that door open go ahead and shoot, you don't have to ask me": [
+"NONE",
+"OPEN",
+0.676
+],
+"defuse it, you've got time": [
+"DEFUSE",
+"DEFUSE",
+0.997
+],
+"defuse it, you've got time as soon as you climb out that window on your left, hurry up": [
+"NONE",
+"DEFUSE",
+0.519
+],
+"defuse the bomb": [
+"DEFUSE",
+"DEFUSE",
+0.996
+],
+"defuse the bomb, you've got time": [
+"DEFUSE",
+"DEFUSE",
+0.995
+],
+"defuse the flash": [
+"DEFUSE",
+"DEFUSE",
+0.955
+],
+"defuser's ticking on top floor, go get it off, i'll trade you": [
+"DEFUSE",
+"DEFUSE",
+0.995
+],
+"delaware lady luck": [
+"NONE",
+"NONE",
+0.842
+],
+"delaware lady luck we'll open the other hatch, not this one": [
+"OPEN",
+"OPEN",
+0.682
+],
+"delaware lady luck, but pushin and clear how first": [
+"ENTRY",
+"ENTRY",
+0.986
+],
+"det that winder open": [
+"NONE",
+"NONE",
+0.51
+],
+"det that winder open. i wanna shoot out of it": [
+"NONE",
+"OPEN",
+0.475
+],
+"det that winder open. i wanna shoot out of it from here": [
+"NONE",
+"OPEN",
+0.547
+],
+"dethe says ticking on top floor, go get it off, i'll trade you": [
+"DEFUSE",
+"DEFUSE",
+0.989
+],
+"diffuse it you've got time": [
+"DEFUSE",
+"DEFUSE",
+0.997
+],
+"diffuse it, you've got time": [
+"DEFUSE",
+"DEFUSE",
+0.997
+],
+"diffuser is ticking on top floor, go get it off, i'll trade you": [
+"DEFUSE",
+"DEFUSE",
+0.991
+],
+"diffuser sticking on top floor, go get it off, i'll trade you": [
+"DEFUSE",
+"DEFUSE",
+0.994
+],
+"diffusers ticking on top floor. go get it off. i'll trade you": [
+"DEFUSE",
+"DEFUSE",
+0.993
+],
+"dine dan for me before i peak": [
+"NONE",
+"COVER_ME",
+0.474
+],
+"do not open up all": [
+"NONE",
+"NONE",
+0.994
+],
+"do not open up all then": [
+"NONE",
+"NONE",
+0.989
+],
+"do not open up all then. keep your gun quiet": [
+"NONE",
+"HOLD_FIRE",
+0.626
+],
+"do not open up all, keep your gun quiet": [
+"NONE",
+"HOLD_FIRE",
+0.565
+],
+"do not open up on them keep your gun quiet": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.992
+],
+"do not open up on them, keep your gun quiet": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.944
+],
+"do not open up on them. keep your gun quiet": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.934
+],
+"do not shoot": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"do not shoot after you i need suppressing fire like now, they're pushing me": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.998
+],
+"do not shoot first": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"do not shoot okay": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"do not shoot you're fine there": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"do not shoot you're fine there. don't go anywhere": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"do not shoot. they're spraying through the smoke": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"don't bother checking the roof it's a waste of time": [
+"NONE",
+"NONE",
+0.996
+],
+"don't bother checking the roof, it's a waste of time": [
+"NONE",
+"NONE",
+0.994
+],
+"don't bother checking the roof. it's a waste of time": [
+"NONE",
+"NONE",
+0.992
+],
+"don't bother looking at the north window that's a fake nobody's coming from there": [
+"NONE",
+"NONE",
+1.0
+],
+"don't bother looking at the north window, that's a fake, nobody's coming from there": [
+"NONE",
+"NONE",
+1.0
+],
+"don't bother looking at the north window. that's a fake, nobody's coming from there": [
+"NONE",
+"NONE",
+1.0
+],
+"don't bother looking at the north window. that's a fake. nobody's coming from there": [
+"NONE",
+"NONE",
+1.0
+],
+"don't breach its way too loud": [
+"NONE",
+"NONE",
+0.997
+],
+"don't breach they got banded on it": [
+"NONE",
+"NONE",
+0.993
+],
+"don't breach they got bandits on it": [
+"NONE",
+"NONE",
+0.83
+],
+"don't breach, it's way too loud": [
+"NONE",
+"NONE",
+0.998
+],
+"don't breach, they got banded on it": [
+"NONE",
+"NONE",
+1.0
+],
+"don't breach, they got bandit on it": [
+"NONE",
+"NONE",
+0.99
+],
+"don't breach. they got banded on it": [
+"NONE",
+"NONE",
+0.999
+],
+"don't crouch a bro, you can't see anything over the box like that": [
+"NONE",
+"NONE",
+1.0
+],
+"don't crouch bro, you can't see anything over the box like that": [
+"NONE",
+"NONE",
+1.0
+],
+"don't crouch pro. you can't see anything over the box like that": [
+"NONE",
+"NONE",
+1.0
+],
+"don't crouch, bro. you can't see anything over the box like that": [
+"NONE",
+"NONE",
+1.0
+],
+"don't go anywhere": [
+"NONE",
+"NONE",
+1.0
+],
+"don't move an inch, and finally so press the east window keep them keep them inside": [
+"SUPPRESS",
+"SUPPRESS",
+0.717
+],
+"don't preach, it's way too loud": [
+"NONE",
+"NONE",
+0.998
+],
+"don't push it": [
+"NONE",
+"NONE",
+0.994
+],
+"don't push yet": [
+"WAIT",
+"WAIT",
+0.999
+],
+"don't shoot": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"don't touch it till i say": [
+"WAIT",
+"WAIT",
+0.787
+],
+"don't walk in, uh the red door open it but stay outside": [
+"NONE",
+"OPEN",
+0.592
+],
+"dont go in yet": [
+"WAIT",
+"WAIT",
+0.999
+],
+"dont open that door": [
+"NONE",
+"NONE",
+1.0
+],
+"dont plant the bomb till i say": [
+"PLANT",
+"PLANT",
+0.967
+],
+"dont take eyes off it": [
+"NONE",
+"NONE",
+1.0
+],
+"dont touch main until i say": [
+"NONE",
+"NONE",
+0.455
+],
+"doug came top a stairs": [
+"NONE",
+"NONE",
+0.645
+],
+"drone the floor": [
+"DRONE",
+"DRONE",
+0.999
+],
+"drone the floor hatch": [
+"DRONE",
+"DRONE",
+0.999
+],
+"drone the room for me": [
+"DRONE",
+"DRONE",
+0.999
+],
+"drop him": [
+"NONE",
+"OPEN_FIRE",
+0.504
+],
+"drop that bomb on the floor": [
+"PLANT",
+"PLANT",
+0.963
+],
+"drop the hatch on the floor": [
+"PLANT",
+"PLANT",
+0.868
+],
+"duck behind that car": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"duck behind that car and i got long, you take the other one": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"east door still barricaded, slap a charge on it and blow it": [
+"BREACH",
+"BREACH",
+1.0
+],
+"east door's still barricaded, slap a charge on it and blow it": [
+"BREACH",
+"BREACH",
+1.0
+],
+"easter": [
+"DRONE",
+"DRONE",
+0.691
+],
+"easter the back": [
+"NONE",
+"DRONE",
+0.406
+],
+"easto's still barcoded, slap a charge on it and blow it": [
+"BREACH",
+"BREACH",
+1.0
+],
+"eh perhaps i guess so": [
+"MAYBE",
+"MAYBE",
+0.999
+],
+"eh, perhaps i guess so": [
+"MAYBE",
+"MAYBE",
+0.998
+],
+"eh, perhaps, i guess so": [
+"MAYBE",
+"MAYBE",
+0.998
+],
+"engage him, he's all yours": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"engage him, he's all yours first": [
+"ATTACK",
+"ATTACK",
+0.997
+],
+"engage him, he's all yours okay": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"enter the room": [
+"ENTRY",
+"ENTRY",
+0.941
+],
+"entering": [
+"ENTRY",
+"ENTRY",
+0.895
+],
+"entering the room": [
+"ENTRY",
+"ENTRY",
+0.937
+],
+"entry": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"entry e": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"entry room": [
+"ENTRY",
+"ENTRY",
+0.982
+],
+"entry the room": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"entry. ready": [
+"ENTRY",
+"ENTRY",
+0.998
+],
+"face main for a sec pretty sure i heard steps": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"face main for a sec, pretty sure i heard steps": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"face main for a sec, pretty sure i heard steps go stick it, i'll cover": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"face main for a sec, pretty sure i heard steps okay": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"face me real quick i need to see which gadget you've got out": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.999
+],
+"face me real quick, i need to see which gadget you've got out": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.999
+],
+"face me real quick. i need to see which gadget you've got out": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.999
+],
+"face mean for a sec pretty sure i heard steps": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"face mean for a sec pretty sure i heard steps okay": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"face over there where i put the marker": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"face over there where i put the marker over there": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"felt kentop stairs": [
+"NONE",
+"NONE",
+0.42
+],
+"finally okay and pull back out of the fight bro, we're saving this round": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"fire at wheel": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+1.0
+],
+"fire at wheel fire at wheel": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.998
+],
+"fire at wheel fire at wheel and stop swinging": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.824
+],
+"firemount that window on your left, hurry up": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"first they're spraying through the smoke, get down get down": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"flake blue stairs": [
+"NONE",
+"DRONE",
+0.473
+],
+"flake him through south door": [
+"NONE",
+"FLASH",
+0.556
+],
+"flake him thru south door": [
+"NONE",
+"FLANK",
+0.616
+],
+"flake left through the uh garage": [
+"FLANK",
+"FLANK",
+0.69
+],
+"flake left through the uh garage as soon as you cover me while i plant": [
+"FLANK",
+"FLANK",
+0.685
+],
+"flake left through the uh garage as soon as you get me up bro, i'm down and bleeding out": [
+"FLANK",
+"FLANK",
+0.791
+],
+"flake left through the uh garage first": [
+"NONE",
+"FLANK",
+0.674
+],
+"flank him through south door": [
+"FLANK",
+"FLANK",
+0.999
+],
+"flank left": [
+"FLANK",
+"FLANK",
+0.999
+],
+"flank left at me": [
+"FLANK",
+"FLANK",
+0.999
+],
+"flank the room": [
+"FLANK",
+"FLANK",
+0.999
+],
+"flash it when i call it not before": [
+"FLASH",
+"FLASH",
+1.0
+],
+"flash it when i call it, not before": [
+"FLASH",
+"FLASH",
+1.0
+],
+"flash kitchen": [
+"FLASH",
+"FLASH",
+0.999
+],
+"flash room": [
+"FLASH",
+"FLASH",
+0.999
+],
+"flash the door": [
+"FLASH",
+"FLASH",
+0.999
+],
+"flash the other room": [
+"FLASH",
+"FLASH",
+1.0
+],
+"flash the room": [
+"FLASH",
+"FLASH",
+0.999
+],
+"flash the room when i call it": [
+"FLASH",
+"FLASH",
+1.0
+],
+"flash through room": [
+"FLASH",
+"FLASH",
+0.999
+],
+"flash to kitchen": [
+"FLASH",
+"FLASH",
+1.0
+],
+"flashed the room": [
+"FLASH",
+"FLASH",
+0.999
+],
+"flashy when i call it not before": [
+"FLASH",
+"FLASH",
+0.999
+],
+"flip onto the roof edge": [
+"JUMP",
+"JUMP",
+0.983
+],
+"flip onto the roof edge and go inverted on bedroom": [
+"NONE",
+"RAPPEL",
+0.582
+],
+"frag em": [
+"FRAG",
+"FRAG",
+0.996
+],
+"frag the roof": [
+"FRAG",
+"FRAG",
+0.999
+],
+"frag them": [
+"FRAG",
+"FRAG",
+0.997
+],
+"from cover": [
+"NONE",
+"TAKE_COVER",
+0.476
+],
+"from here": [
+"NONE",
+"FOLLOW_ME",
+0.38
+],
+"from here as soon as you hit them with the molly, burn him out of the corner": [
+"FRAG",
+"FRAG",
+0.999
+],
+"from here as soon as you when i yoga": [
+"NONE",
+"FOLLOW_ME",
+0.577
+],
+"from here look over here": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.998
+],
+"from here look over here, over here": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.995
+],
+"from here prep a flash for west window and send it on three": [
+"FLASH",
+"FLASH",
+0.998
+],
+"from there": [
+"MOVE_TO",
+"MOVE_TO",
+0.927
+],
+"from there andre reentry. ready": [
+"COME_BACK",
+"COME_BACK",
+0.712
+],
+"from there beach that wall on my go": [
+"BREACH",
+"BREACH",
+0.999
+],
+"from there bo plaid default or watch": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.998
+],
+"from there bolt in there, the window on your left": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"from there bolt the door open, light is fine": [
+"OPEN",
+"OPEN",
+0.998
+],
+"from there check fire, check fire, i'm crossing": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"from there check fire, check fire, i'm crossing, do not shoot": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"from there check left real quick. i had stepped": [
+"CHECK",
+"CHECK",
+0.999
+],
+"from there climb out over the cell and get outside": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.86
+],
+"from there climb out that window on your left, hurry up": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"from there cook one and toss it in": [
+"FRAG",
+"FRAG",
+0.998
+],
+"from there defuse it, you've got time": [
+"DEFUSE",
+"DEFUSE",
+0.998
+],
+"from there face mean for a sec pretty sure i heard steps": [
+"LOOK_AT",
+"LOOK_AT",
+0.954
+],
+"from there fire at wheel fire at wheel": [
+"NONE",
+"OPEN_FIRE",
+0.666
+],
+"from there flake left through the uh garage": [
+"FLANK",
+"FLANK",
+0.696
+],
+"from there get behind the other car this ones gonna blow": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"from there get fat on you, billy, right now": [
+"NONE",
+"PRONE",
+0.464
+],
+"from there get flat on your belly, right now": [
+"PRONE",
+"PRONE",
+0.997
+],
+"from there get me back on my feet, i am bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.998
+],
+"from there get me some info on what's inside first": [
+"DRONE",
+"DRONE",
+0.932
+],
+"from there get over to the table up on second, i'll meet you": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"from there get over to the table upon second. i'll meet you": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"from there give suppress fire to the left uh the left side": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"from there go clear the other room. i've got this one": [
+"ENTRY",
+"ENTRY",
+0.998
+],
+"from there go down the side of the building on that rope thing": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"from there go over to that window i'm looking at": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"from there go over to that window i'm looking at and stand by": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"from there hard breach the reinforced wall on my mark": [
+"BREACH",
+"BREACH",
+1.0
+],
+"from there hit ready to plant, don't touch it till i say": [
+"PLANT",
+"PLANT",
+0.997
+],
+"from there hit them from behind whilst i give the word": [
+"FLANK",
+"FLANK",
+0.707
+],
+"from there hit them with a molly, burn him out of the corner": [
+"FRAG",
+"FRAG",
+0.999
+],
+"from there i got lon, you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.991
+],
+"from there i got main covered, you watch the other door": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"from there i'll rotate left, you head right and meet me on site": [
+"MOVE_TO",
+"MOVE_TO",
+0.775
+],
+"from there i'm going for the plant keep your eyes on me": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.971
+],
+"from there i'm going for the plant keep your eyes on me and cover me": [
+"COVER_ME",
+"COVER_ME",
+0.987
+],
+"from there i'm going for the plant, keep your eyes on me": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.965
+],
+"from there i'm going left, you go right, meet you in the middle": [
+"NONE",
+"FOLLOW_ME",
+0.658
+],
+"from there i'm on it": [
+"NONE",
+"RAPPEL",
+0.307
+],
+"from there i'm on it if fuse protect me": [
+"COVER_ME",
+"COVER_ME",
+0.94
+],
+"from there i'm opening this door, you got me if someone swings": [
+"NONE",
+"COVER_ME",
+0.657
+],
+"from there keep your crosshair on my ping, somebody's gonna swing it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"from there keep your gun on that window": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.996
+],
+"from there kill their last defender, i don't care how you do it": [
+"ATTACK",
+"ATTACK",
+0.997
+],
+"from there lift the hatch up yourself no charges": [
+"OPEN",
+"OPEN",
+0.848
+],
+"from there look at the sofa, i swear something just moved": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"from there look over here, over here": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.996
+],
+"from there luck through my pin": [
+"NONE",
+"VAULT_WINDOW",
+0.554
+],
+"from there luck through my pin and get in their box": [
+"NONE",
+"MOVE_TO",
+0.586
+],
+"from there make us a hole in that wall": [
+"BREACH",
+"BREACH",
+0.998
+],
+"from there need a hand over here, man, come on": [
+"HELP",
+"HELP",
+0.997
+],
+"from there need the other box that's where he is hiding": [
+"NONE",
+"HOLD_OTHER_ANGLE",
+0.361
+],
+"from there ok let's regroup, you're way too deep for me to trade you": [
+"COME_BACK",
+"COME_BACK",
+0.993
+],
+"from there okay attack them attack": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"from there okay so just uh shadow me dont go wandering off": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.997
+],
+"from there okay uh blow the wall where i put the pin": [
+"BREACH",
+"BREACH",
+1.0
+],
+"from there open window on the left": [
+"NONE",
+"NONE",
+0.562
+],
+"from there open window on the left. hop through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"from there peep your crosshair on my pen somebody's gonna swing it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"from there prep a flash for west window and send it on three": [
+"FLASH",
+"FLASH",
+0.999
+],
+"from there push through the south door and clear the room go": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"from there rappel to the window above you": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"from there rappel to the window above you and hold on the rope": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"from there repel to the window above you": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"from there roamer's on you, engage him, he's all yours": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"from there roll the cam in there get me some eyes": [
+"DRONE",
+"DRONE",
+0.978
+],
+"from there run over to my pain, the one i just placed": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"from there run over to my ping, the one i just placed": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"from there shoot him, shoot him, he's reloading": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.974
+],
+"from there slide the gate open keep it quiet": [
+"OPEN",
+"OPEN",
+0.999
+],
+"from there smith the dolly": [
+"NONE",
+"FRAG",
+0.345
+],
+"from there smoke it": [
+"SMOKE",
+"SMOKE",
+0.999
+],
+"from there split the angles. i take catch, you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.831
+],
+"from there stay looking on that door dont take eyes off it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"from there stay put on budge": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.944
+],
+"from there stay put, don't budge": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.998
+],
+"from there stop standing in the open get somewhere they cant see you": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.998
+],
+"from there stop swinging": [
+"NONE",
+"HOLD_FIRE",
+0.588
+],
+"from there stop swinging and break line of sight": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.69
+],
+"from there take the flank through my marker, they're all looking at me": [
+"FLANK",
+"FLANK",
+0.999
+],
+"from there they're swinging me from both sides, i need help": [
+"HELP",
+"HELP",
+0.972
+],
+"from there those decades i'll cover": [
+"NONE",
+"HOLD_ANGLE",
+0.54
+],
+"from there toss a nade at the chairs somebody is hiding": [
+"FRAG",
+"FRAG",
+0.999
+],
+"from there uh hang on your rope outside that window": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"from there unlatch the hatch on the floor, we'll drop later": [
+"OPEN",
+"OPEN",
+0.724
+],
+"from there upstairs": [
+"MOVE_TO",
+"MOVE_TO",
+0.998
+],
+"from there upstairs west window, pale out through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.998
+],
+"from there walk down this hallway": [
+"MOVE_TO",
+"MOVE_TO",
+0.709
+],
+"from there walk down this hallway and rotate in to cover the other door": [
+"MOVE_TO",
+"MOVE_TO",
+0.794
+],
+"from there watch my back, i'm going for the awp": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"from there watch the back door, they'll rotate through it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"from there we lost this fight, pull back to second": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"from there we'll open the other hatch, not this one": [
+"OPEN",
+"OPEN",
+0.695
+],
+"from there when i yoga, look round the back": [
+"NONE",
+"FLANK",
+0.508
+],
+"from there wrap around through yellow and hit them from behind": [
+"FLANK",
+"FLANK",
+0.999
+],
+"from there yo turned to me": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.999
+],
+"from there you're fine there, don't go anywhere": [
+"NONE",
+"MOVE_TO",
+0.628
+],
+"from there you're fine there. don't go anywhere": [
+"NONE",
+"MOVE_TO",
+0.644
+],
+"from there you've got the c4, set it up on a": [
+"PLANT",
+"PLANT",
+0.925
+],
+"from there your clear hearts shoot anything that peaks": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.995
+],
+"fumon that window on your left, hurry up": [
+"NONE",
+"HOLD_ANGLE",
+0.33
+],
+"fumt that window on your left, hurry up": [
+"NONE",
+"OPEN",
+0.213
+],
+"fuse protect me": [
+"COVER_ME",
+"COVER_ME",
+0.967
+],
+"fuse protect me as soon as you come to me": [
+"COVER_ME",
+"COVER_ME",
+0.998
+],
+"get behind something and hide": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"get behind the other car this ones gonna blow": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"get behind the other car this ones gonna blow okay": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"get behind the other car this ones gonna blow they're swinging me from both sides": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"get done, get down": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.998
+],
+"get down": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"get down get down": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"get down, get down": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"get down, get down as soon as you when i say go": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"get fat on you": [
+"NONE",
+"TAKE_COVER",
+0.253
+],
+"get fat on you, billy": [
+"NONE",
+"PRONE",
+0.337
+],
+"get fat on you, billy, right now": [
+"NONE",
+"PRONE",
+0.618
+],
+"get fat on your belly right now": [
+"PRONE",
+"PRONE",
+0.788
+],
+"get flat on your belly right now": [
+"PRONE",
+"PRONE",
+0.999
+],
+"get flat on your belly, right now": [
+"PRONE",
+"PRONE",
+0.999
+],
+"get in their backs": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.773
+],
+"get in their backs first": [
+"NONE",
+"TAKE_COVER",
+0.328
+],
+"get in their box": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"get in there": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"get me back on my feet and bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.996
+],
+"get me back on my feet, i am bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.998
+],
+"get me back on my feet, i'm bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.998
+],
+"get me back on my feet, i'm bleeding out, yo": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.998
+],
+"get me back on my feet. i'm bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.998
+],
+"get me some eyes main, we hit it together": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.76
+],
+"get me some info on what's inside": [
+"NONE",
+"DRONE",
+0.428
+],
+"get me some info on what's inside first": [
+"DRONE",
+"DRONE",
+0.937
+],
+"get me some info on what's inside first first": [
+"DRONE",
+"DRONE",
+0.974
+],
+"get me some info on what's inside first okay": [
+"DRONE",
+"DRONE",
+0.968
+],
+"get me some info on what's inside first right after": [
+"DRONE",
+"DRONE",
+0.978
+],
+"get me some info on what's inside first, and from there cover me while i plant any one peaks you drop him": [
+"DRONE",
+"DRONE",
+0.908
+],
+"get me some info on what's inside first, but you've got the c4, set it up on e first": [
+"DRONE",
+"DRONE",
+0.997
+],
+"get me some info on what's inside the bomb": [
+"NONE",
+"DRONE",
+0.356
+],
+"get me some info on what's inside the house": [
+"NONE",
+"DRONE",
+0.456
+],
+"get me some info on what's inside the red door": [
+"NONE",
+"DRONE",
+0.324
+],
+"get me some info on what's inside the room first": [
+"DRONE",
+"DRONE",
+0.989
+],
+"get me up bro i'm down and bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.999
+],
+"get me up bro im down and bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.999
+],
+"get me up bro, i am down and bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.999
+],
+"get me up bro, i'm down and bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.999
+],
+"get me up, bro i'm down and bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.999
+],
+"get me up, bro im down and bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.999
+],
+"get me up, bro im down n bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.999
+],
+"get me up, bro. i'm down and bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.999
+],
+"get me up, bro. i'm down and bleeding out okay": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.999
+],
+"get out of his line of sight": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.977
+],
+"get outside": [
+"MOVE_TO",
+"MOVE_TO",
+0.993
+],
+"get outside so press the east window keep them keep them inside": [
+"SUPPRESS",
+"SUPPRESS",
+0.995
+],
+"get over to the table": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"get over to the table op on second i'll meet you": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"get over to the table up on second, i'll meet you": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"get over to the table up on second, i'll meet you okay": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"get over to the table up on second. i'll meet you": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"get over to the table upon second. i'll meet you": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"get over to the table upon second. i'll meet you as soon as you pick one": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"get over to the table upon second. i'll meet you as soon as you pick one and toss it in": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"get over to the table upon second. i'll meet you okay": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"get over to the table upon second. i'll meet you watch my back": [
+"MOVE_TO",
+"MOVE_TO",
+0.999
+],
+"get ready the plant, don't touch it till i say": [
+"PLANT",
+"PLANT",
+0.864
+],
+"get ready to plant, don't touch it till i say": [
+"PLANT",
+"PLANT",
+0.997
+],
+"get ready to plant. don't touch it till i say": [
+"PLANT",
+"PLANT",
+0.997
+],
+"get somewhere they cant see you": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"get that window open, i wanna shoot out of it": [
+"OPEN",
+"OPEN",
+0.999
+],
+"get that window open, i wanna shoot out of it from here": [
+"OPEN",
+"OPEN",
+0.999
+],
+"get that window open, i wanna shoot out of it from here okay": [
+"OPEN",
+"OPEN",
+0.999
+],
+"get that window open, i want to shoot out of it from here": [
+"OPEN",
+"OPEN",
+0.999
+],
+"get that window open. i wanna shoot out of it from here": [
+"OPEN",
+"OPEN",
+0.999
+],
+"get that window open. i want to shoot out of it from here": [
+"OPEN",
+"OPEN",
+0.999
+],
+"get the defuser down": [
+"PLANT",
+"PLANT",
+0.996
+],
+"get the defuser down as soon as you pull back out of the fight bro, we're saving this round": [
+"FALL_BACK",
+"FALL_BACK",
+0.815
+],
+"get up quick": [
+"NONE",
+"STAND_UP",
+0.666
+],
+"get yourself over there, i meet you by the hatch": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"get yourself over there, i'll meet you by the hatch": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"get yourself over there. i'll meet you by the hatch": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"get yourself somewhere safe": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"get yourself somewhere safe as soon as you if he's it, you got time": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"get yourself somewhere safe, you're one hp man": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"ghost ticket i'll cover": [
+"NONE",
+"COVER_ME",
+0.321
+],
+"give suppress fire to the left uh the left side": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"give the word, shoot there where i marked": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"glance at the sofa for me, i think there's a trap tucked next to it": [
+"LOOK_AT",
+"LOOK_AT",
+0.979
+],
+"glance at the sofa for me. i think there is a trap top next to it": [
+"LOOK_AT",
+"LOOK_AT",
+0.952
+],
+"glance at the sofa for me. i think there's a trap tucked next to it": [
+"LOOK_AT",
+"LOOK_AT",
+0.965
+],
+"go": [
+"GO_NOW",
+"GO_NOW",
+0.996
+],
+"go ahead and plan the bomb i watch": [
+"PLANT",
+"PLANT",
+0.943
+],
+"go ahead and shoot, you don't have to ask me": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"go ahead and shoot, you don't have to ask me and hit them from behind whilst i give the word": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"go ahead and shoot. you don't have to ask me": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"go all the way": [
+"NONE",
+"ENTRY",
+0.539
+],
+"go around": [
+"FLANK",
+"FLANK",
+0.999
+],
+"go around and overwatch me from cover": [
+"FLANK",
+"FLANK",
+0.927
+],
+"go around and rotate": [
+"FLANK",
+"FLANK",
+0.999
+],
+"go around the rotate": [
+"FLANK",
+"FLANK",
+0.999
+],
+"go check the door next to my marker": [
+"CHECK",
+"CHECK",
+1.0
+],
+"go check the door next to my marker, pretty sure i heard steps but maybe i'm just hearing things": [
+"CHECK",
+"CHECK",
+1.0
+],
+"go check the door next to my marker. pretty sure i heard steps but maybe i'm just hearing things": [
+"CHECK",
+"CHECK",
+1.0
+],
+"go check the door next to my marker. pretty sure i heard steps, but maybe i'm just hearing things": [
+"CHECK",
+"CHECK",
+1.0
+],
+"go check the door next to my mucker": [
+"CHECK",
+"CHECK",
+1.0
+],
+"go check the door next to my mucker. pretty sure i heard stats, but maybe i'm just hearing things": [
+"CHECK",
+"CHECK",
+1.0
+],
+"go clear second floor": [
+"ENTRY",
+"ENTRY",
+0.71
+],
+"go clear second floor gun up check every corner": [
+"ENTRY",
+"ENTRY",
+0.781
+],
+"go clear second floor, butt up, check every corner": [
+"ENTRY",
+"ENTRY",
+0.998
+],
+"go clear second floor, gonna check every corner": [
+"ENTRY",
+"ENTRY",
+0.976
+],
+"go clear second floor, gun up": [
+"ENTRY",
+"ENTRY",
+0.988
+],
+"go clear second floor, gun up check every corner": [
+"ENTRY",
+"ENTRY",
+0.997
+],
+"go clear second floor, gun up, check every corner": [
+"ENTRY",
+"ENTRY",
+0.998
+],
+"go clear the other room": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"go clear the other room i've got this one": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"go clear the other room, i've got this one": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"go clear the other room, i've got this one as soon as you shoot there": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"go clear the other room, i've got this one as soon as you shoot there where i marked": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"go clear the other room. i've got this one": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"go clear the other room. i've got this one as soon as you flash it when i call it not before": [
+"ENTRY",
+"ENTRY",
+0.991
+],
+"go clear the other room. i've got this one first": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"go clear the other room. i've got this one if he's it": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"go clear the other room. i've got this one okay": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"go down the side of the building on that rope thing": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"go down the side of the building on that rope thing first": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"go down the side of the building on that rope thing okay": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"go go go": [
+"GO_NOW",
+"GO_NOW",
+0.998
+],
+"go in through the back door": [
+"MOVE_TO",
+"MOVE_TO",
+0.994
+],
+"go in through the blue stairs": [
+"MOVE_TO",
+"MOVE_TO",
+0.997
+],
+"go inverted on bedroom": [
+"NONE",
+"JUMP",
+0.609
+],
+"go inverted on bedroom after you look at the sofa, i swear something just moved": [
+"NONE",
+"LOOK_AT",
+0.533
+],
+"go inverted on bedroom as soon as you pull back out of the fight bro, we're saving this round": [
+"FALL_BACK",
+"FALL_BACK",
+0.993
+],
+"go inverted on bedroom okay": [
+"NONE",
+"MOVE_TO",
+0.604
+],
+"go inverted on bedroom, but we'll open the other hatch, not this one first": [
+"NONE",
+"BREACH",
+0.413
+],
+"go okay": [
+"NONE",
+"GO_NOW",
+0.675
+],
+"go on the bomb and stick the diffuse": [
+"DEFUSE",
+"DEFUSE",
+0.997
+],
+"go on, spot it out before we go in, but up on the bomb and stick the diffuse first": [
+"DRONE",
+"DRONE",
+0.739
+],
+"go over me from cover": [
+"NONE",
+"COVER_ME",
+0.454
+],
+"go over to that window": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"go over to that window and looking at and stand by it": [
+"MOVE_TO",
+"MOVE_TO",
+0.935
+],
+"go over to that window i'm looking at": [
+"MOVE_TO",
+"MOVE_TO",
+0.999
+],
+"go over to that window i'm looking at and stand by": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"go over to that window i'm looking at and stand by it": [
+"MOVE_TO",
+"MOVE_TO",
+0.999
+],
+"go plant default i'll watch": [
+"PLANT",
+"PLANT",
+0.999
+],
+"go plant default, i'll watch": [
+"PLANT",
+"PLANT",
+0.999
+],
+"go plant default, i'll watch and check fire, check fire, i'm crossing, do not shoot": [
+"PLANT",
+"PLANT",
+0.986
+],
+"go plant the bomb for us": [
+"PLANT",
+"PLANT",
+0.997
+],
+"go plant the bomb when you hit ready": [
+"PLANT",
+"PLANT",
+0.998
+],
+"go prone behind the bed": [
+"PRONE",
+"PRONE",
+0.684
+],
+"go right": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"go stand by the table upstairs": [
+"MOVE_TO",
+"MOVE_TO",
+0.994
+],
+"go stand by the table upstairs and i'll rotate left": [
+"MOVE_TO",
+"MOVE_TO",
+0.978
+],
+"go stand by the table upstairs and i'll rotate left, you head right": [
+"MOVE_TO",
+"MOVE_TO",
+0.996
+],
+"go stick it": [
+"NONE",
+"PLANT",
+0.5
+],
+"go stick it i'll cover": [
+"PLANT",
+"PLANT",
+0.789
+],
+"go stick it, i'll cover": [
+"PLANT",
+"PLANT",
+0.829
+],
+"go stick it, i'll cover okay": [
+"PLANT",
+"PLANT",
+0.708
+],
+"go to cover": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"go to second floor": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"go to the bomb": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"go to the other room": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"go to the roof": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"go to the rotate": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"go to the top of the building": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"go up to second floor": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"go upstairs": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"go upstairs i meet you in a second": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"go upstairs i meet you in a second first": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"go upstairs through the west window": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.965
+],
+"go upstairs west window, bail out through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"go when i say go": [
+"GO_NOW",
+"GO_NOW",
+0.979
+],
+"go, but keep your crosshair on my ping, somebody's gonna swing it first": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"go, never mind, i'm down": [
+"NONE",
+"REVIVE_ME",
+0.241
+],
+"goal gonna run the rotate": [
+"NONE",
+"NONE",
+0.364
+],
+"goal run the rotate": [
+"NONE",
+"MOVE_TO",
+0.382
+],
+"goal the rotate": [
+"NONE",
+"MOVE_TO",
+0.598
+],
+"goaling the rotate": [
+"NONE",
+"MOVE_TO",
+0.6
+],
+"goalong the rotate": [
+"NONE",
+"MOVE_TO",
+0.637
+],
+"goalong the rotate, overwatch me from cover": [
+"COVER_ME",
+"COVER_ME",
+0.873
+],
+"going around the rotate, overwatch me from cover": [
+"FLANK",
+"FLANK",
+0.852
+],
+"going around, overwatch me from cover": [
+"FLANK",
+"FLANK",
+0.708
+],
+"going for default plants": [
+"PLANT",
+"PLANT",
+0.999
+],
+"going for default pled": [
+"PLANT",
+"PLANT",
+0.774
+],
+"going for the diffuse": [
+"DEFUSE",
+"DEFUSE",
+0.994
+],
+"going to run the rotate": [
+"NONE",
+"DRONE",
+0.337
+],
+"going to run the rotate, overwatch me from cover": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"goinging the rotate": [
+"MOVE_TO",
+"MOVE_TO",
+0.999
+],
+"gonna run the rotate": [
+"NONE",
+"NONE",
+0.599
+],
+"gonna run the rotate, overwatch me from cover": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"got me from cover": [
+"NONE",
+"REVIVE_ME",
+0.679
+],
+"got me, overwatch main": [
+"NONE",
+"HOLD_ANGLE",
+0.676
+],
+"got me, rotate, overwatch me from cover": [
+"COVER_ME",
+"COVER_ME",
+0.78
+],
+"grab a flash for west window and send it on tree": [
+"FLASH",
+"FLASH",
+0.999
+],
+"gun up, check every corner": [
+"NONE",
+"CHECK",
+0.502
+],
+"guo run the rotate overwatch me from cover": [
+"COVER_ME",
+"COVER_ME",
+0.983
+],
+"guo run the rotate, overwatch me from cover": [
+"COVER_ME",
+"COVER_ME",
+0.977
+],
+"guoing to run the rotate, overwatch me from cover": [
+"COVER_ME",
+"COVER_ME",
+0.998
+],
+"hall stack is sitting on yellow stairs": [
+"NONE",
+"NONE",
+0.998
+],
+"hall stack is sitting on yellow stairs wrap around through south durham pinched them": [
+"FLANK",
+"FLANK",
+0.998
+],
+"hang on it": [
+"NONE",
+"HOLD_POSITION",
+0.633
+],
+"hard breach the reinforced wall": [
+"BREACH",
+"BREACH",
+1.0
+],
+"hard breach the reinforced wall on my mark": [
+"BREACH",
+"BREACH",
+1.0
+],
+"hard breach the reinforced wall on my mark first": [
+"BREACH",
+"BREACH",
+0.999
+],
+"hard breach the reinforced wall on my mark okay": [
+"BREACH",
+"BREACH",
+1.0
+],
+"hard breach the reinforced wall on my mark watch my back": [
+"BREACH",
+"BREACH",
+0.998
+],
+"hard breach the reinforced wall on my mark watch my back, i'm going for the awp": [
+"BREACH",
+"BREACH",
+0.997
+],
+"hard breach the reinforced wall on my mark. i'm on the defuse, protect me": [
+"BREACH",
+"BREACH",
+1.0
+],
+"hard breached a reinforced wall on my mock": [
+"BREACH",
+"BREACH",
+0.867
+],
+"hard breached the reinforced wall on my mark": [
+"BREACH",
+"BREACH",
+0.999
+],
+"harp": [
+"JUMP",
+"JUMP",
+0.869
+],
+"hart": [
+"NONE",
+"PRONE",
+0.386
+],
+"hart breached the reinforced wall on mamark": [
+"BREACH",
+"BREACH",
+0.999
+],
+"hart breached the reinforced wall on mamark first": [
+"BREACH",
+"BREACH",
+0.999
+],
+"hart breached the reinforced wall on mamark okay": [
+"BREACH",
+"BREACH",
+0.999
+],
+"hatch you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"hatch, you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"have a knit ready for the chest and throw it the moment i call it": [
+"NONE",
+"FLASH",
+0.558
+],
+"have a nade ready for the chairs and throw it the moment i call it": [
+"FRAG",
+"FRAG",
+0.997
+],
+"have a nade ready for the chairs, and throw it the moment i call it": [
+"FRAG",
+"FRAG",
+0.998
+],
+"have a nade ready for the chest and throw it the moment i call it": [
+"FRAG",
+"FRAG",
+0.999
+],
+"have a nade ready for the stairs and throw it the moment i call it": [
+"FRAG",
+"FRAG",
+0.995
+],
+"have a nade ready for the stairs, and throw it the moment i call it": [
+"FRAG",
+"FRAG",
+0.996
+],
+"have a nap grenade ready for the chair, and throw it the moment i call it": [
+"FLASH",
+"FLASH",
+0.882
+],
+"have a nap ready for the stairs and throw it the moment i call it": [
+"NONE",
+"DRONE",
+0.541
+],
+"have a napde ready for the stairs and throw it the moment i call it": [
+"NONE",
+"DRONE",
+0.607
+],
+"have a napde ready for the stairs, and throw it the moment i call it": [
+"NONE",
+"DRONE",
+0.644
+],
+"have a need ready for the chest and throw it the moment i call it": [
+"FLASH",
+"FLASH",
+0.957
+],
+"have a stun ready for the chest, and throw it the moment i call it": [
+"FLASH",
+"FLASH",
+0.999
+],
+"he perhaps the guesser": [
+"MAYBE",
+"MAYBE",
+0.97
+],
+"he returned to me": [
+"NONE",
+"COME_BACK",
+0.66
+],
+"he's lit": [
+"NONE",
+"NONE",
+0.999
+],
+"he's lit as soon as you start blasting, they're already nowhere here": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.996
+],
+"he's lit, shoot him, shoot him, he's reloading": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.927
+],
+"head right": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"head right and meet me on sight": [
+"MOVE_TO",
+"MOVE_TO",
+0.885
+],
+"head right and meet me on site": [
+"MOVE_TO",
+"MOVE_TO",
+0.924
+],
+"heard footsteps right above us": [
+"NONE",
+"NONE",
+1.0
+],
+"her fridge to plants, don't touch it till i say": [
+"PLANT",
+"PLANT",
+0.935
+],
+"herdford sits right above us": [
+"NONE",
+"NONE",
+0.926
+],
+"hey": [
+"NONE",
+"YES",
+0.439
+],
+"hey buddy get on the rope and drop in when i give the word": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"hey can you look at the red stares uh on second floor": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"hey can you look at the red stares uh on second floor on three we entry, ready": [
+"LOOK_AT",
+"LOOK_AT",
+0.875
+],
+"hide in the corner": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"hiding in the corn": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.995
+],
+"hiding in the corner": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.998
+],
+"hiding in the corner as soon as you smoke the doorway": [
+"SMOKE",
+"SMOKE",
+0.997
+],
+"hiding in the corner okay": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.998
+],
+"hiding in the corner, get over to the table up on second, i'll meet you": [
+"MOVE_TO",
+"MOVE_TO",
+0.886
+],
+"higgers camping the coach on second floor, got his gadget right next to him": [
+"NONE",
+"FRAG",
+0.619
+],
+"hit ready to plant": [
+"PLANT",
+"PLANT",
+0.996
+],
+"hit ready to plant, don't touch it till i say": [
+"PLANT",
+"PLANT",
+0.998
+],
+"hit them from behind": [
+"NONE",
+"FLANK",
+0.545
+],
+"hit them from behind first": [
+"NONE",
+"FLANK",
+0.442
+],
+"hit them from behind once i give the word": [
+"NONE",
+"FLANK",
+0.585
+],
+"hit them from behind once, i give the word": [
+"NONE",
+"FLANK",
+0.546
+],
+"hit them from behind whilst i give the word": [
+"NONE",
+"FLANK",
+0.651
+],
+"hit them with a marley, burned him out of the corners": [
+"FRAG",
+"FRAG",
+0.999
+],
+"hit them with a molly": [
+"FRAG",
+"FRAG",
+0.784
+],
+"hit them with a molly bring him out of the corner": [
+"FRAG",
+"FRAG",
+0.951
+],
+"hit them with a molly, burn him out of the corner": [
+"FRAG",
+"FRAG",
+0.999
+],
+"hit them with a molly, burn him out of the corner okay": [
+"FRAG",
+"FRAG",
+0.999
+],
+"hit them with the molly": [
+"NONE",
+"FRAG",
+0.442
+],
+"hit them with the molly, burn him out of the corner": [
+"FRAG",
+"FRAG",
+0.999
+],
+"hold blue stairs or watch blue stairs": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"hold main": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"hold main stairs": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"hold on the rape": [
+"NONE",
+"WAIT",
+0.676
+],
+"hold on the rape throw that wall open": [
+"BREACH",
+"BREACH",
+0.99
+],
+"hold on the rope": [
+"NONE",
+"RAPPEL",
+0.575
+],
+"hold south door": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"hold the door open": [
+"NONE",
+"HOLD_ANGLE",
+0.653
+],
+"hold the door until they're inside": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.999
+],
+"hold up": [
+"WAIT",
+"WAIT",
+0.999
+],
+"hold up hold up": [
+"WAIT",
+"WAIT",
+0.999
+],
+"hold up poor dock": [
+"WAIT",
+"WAIT",
+0.942
+],
+"hold up, don't go in north door yet": [
+"WAIT",
+"WAIT",
+0.999
+],
+"hold up, don't go in north door yet, i'm not set": [
+"WAIT",
+"WAIT",
+0.999
+],
+"hold up, don't go in that door yet": [
+"WAIT",
+"WAIT",
+0.999
+],
+"hold up, don't go in that door yet, and that's it": [
+"WAIT",
+"WAIT",
+0.999
+],
+"hold up, don't go in the door yet": [
+"WAIT",
+"WAIT",
+0.999
+],
+"hold up, don't go in the door yet, i'm not set": [
+"WAIT",
+"WAIT",
+0.999
+],
+"hold up, don't go in through that door yet, and that's it": [
+"WAIT",
+"WAIT",
+0.999
+],
+"hold up, hold up": [
+"WAIT",
+"WAIT",
+0.999
+],
+"hold up, hold up, don't go in north door yet, i'm not set": [
+"WAIT",
+"WAIT",
+0.999
+],
+"hold up, hold up, don't go in the door yet, i'm not set": [
+"WAIT",
+"WAIT",
+0.999
+],
+"hold up, scrap that order": [
+"WAIT",
+"WAIT",
+0.999
+],
+"hold up, script that order": [
+"WAIT",
+"WAIT",
+0.999
+],
+"hold where you are, don't move an inch": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.999
+],
+"hold where you are. don't move an inch": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.999
+],
+"hold your fire until he walks into the open": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"hold your sharts until he walks into the open": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.997
+],
+"hold your shots until he walks into the open": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"hold your shots until he walks into the open first": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"hold your shots until he walks into the open okay": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"hop in the blue stairs": [
+"JUMP",
+"JUMP",
+0.997
+],
+"hop in the east door and sit on it": [
+"NONE",
+"VAULT_WINDOW",
+0.666
+],
+"hop on the bomb": [
+"JUMP",
+"JUMP",
+1.0
+],
+"hop on the bomb and stick the defuse": [
+"JUMP",
+"JUMP",
+0.984
+],
+"hop on the bomb and stick the defuse as soon as you okay": [
+"JUMP",
+"JUMP",
+0.863
+],
+"hop on the bomb and stick the defuser": [
+"JUMP",
+"JUMP",
+0.981
+],
+"hop on the bomb and stick the diffuse": [
+"JUMP",
+"JUMP",
+0.959
+],
+"hop the window on my mark": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"hop through it": [
+"JUMP",
+"JUMP",
+1.0
+],
+"hop through it as soon as you take sight": [
+"JUMP",
+"JUMP",
+0.999
+],
+"hop through it as soon as you take sight, check every corner": [
+"JUMP",
+"JUMP",
+0.803
+],
+"hop through it as soon as you we lost this fight": [
+"JUMP",
+"JUMP",
+1.0
+],
+"hop through it hit them with a molly, burn him out of the corner": [
+"JUMP",
+"JUMP",
+0.685
+],
+"hop through it, but stay put": [
+"JUMP",
+"JUMP",
+0.999
+],
+"hop through it, but stay put on budge first": [
+"JUMP",
+"JUMP",
+0.999
+],
+"hop through that window": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"hop through the left window": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"hop through the window": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"hop through the window on the left": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"how much time's left": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.723
+],
+"how'd breach the reinforced wall on my mark": [
+"BREACH",
+"BREACH",
+0.999
+],
+"how'd breached the reinforced wall on my mark": [
+"BREACH",
+"BREACH",
+0.995
+],
+"hunter run the rotate over": [
+"NONE",
+"MOVE_TO",
+0.486
+],
+"hunter run the rotate over watch me from cover": [
+"NONE",
+"COVER_ME",
+0.616
+],
+"hurry up": [
+"NONE",
+"STAND_UP",
+0.367
+],
+"i am on this handle, you cover whatever i am not looking at": [
+"COVER_ME",
+"COVER_ME",
+0.911
+],
+"i don't care how you do it": [
+"NONE",
+"DONT_KNOW",
+0.505
+],
+"i got lon, you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"i got lon, you take the other one and we'll open the other hatch, not this one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.878
+],
+"i got long he take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"i got long you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"i got long, you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"i got main cover, you watch the other door": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+1.0
+],
+"i got main covered you watch the other door": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+1.0
+],
+"i got main covered, you watch the other door": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+1.0
+],
+"i got mains covered, you watched the other doll": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"i got mine covered. you watched the other door": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"i got this door you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"i had stepped": [
+"NONE",
+"NONE",
+0.999
+],
+"i need help": [
+"HELP",
+"HELP",
+0.999
+],
+"i need help first": [
+"HELP",
+"HELP",
+0.96
+],
+"i need help yo": [
+"HELP",
+"HELP",
+0.999
+],
+"i need help, they're swinging me from both sides": [
+"HELP",
+"HELP",
+0.998
+],
+"i need suppress": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"i need suppress in fire like now, they are pushing me": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"i need suppressing fire like now": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"i need suppressing fire like now they're pushing me": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"i need suppressing fire like now, they're pushing me": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"i need suppressing fire like now, they're pushing me watch my back": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"i need suppressing firelight now, they're pushing me": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"i need suppressing firelight now, they're pushing me okay": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"i need suppressing firelight now, they're pushing me; you're fine there. don't go anywhere": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"i run the rotate before": [
+"DRONE",
+"DRONE",
+0.977
+],
+"i run the rotate before watch me from colour": [
+"COVER_ME",
+"COVER_ME",
+0.811
+],
+"i said": [
+"NONE",
+"YES",
+0.492
+],
+"i said smoke quest door": [
+"SMOKE",
+"SMOKE",
+0.832
+],
+"i said smoke west door": [
+"SMOKE",
+"SMOKE",
+0.999
+],
+"i say go": [
+"GO_NOW",
+"GO_NOW",
+0.983
+],
+"i swear something just moved": [
+"NONE",
+"NONE",
+0.995
+],
+"i swear something just moved, look at the sofa": [
+"NONE",
+"NONE",
+0.556
+],
+"i take catch, you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"i take hatch you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"i take hatch, you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"i wanna shoot out of it from here": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.996
+],
+"i wanna shoot out of it from here as soon as you hit them with the molly, burn him out of the corner": [
+"NONE",
+"OPEN_FIRE",
+0.594
+],
+"i yoga": [
+"NONE",
+"NONE",
+0.983
+],
+"i'd dbno behind the bed. need a hand": [
+"HELP",
+"HELP",
+0.925
+],
+"i'll cover as soon as you hit them with a molly, burn him out of the corner": [
+"FRAG",
+"FRAG",
+0.998
+],
+"i'll cover i got this door you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+1.0
+],
+"i'll cover, uh behind you": [
+"COVER_ME",
+"COVER_ME",
+0.998
+],
+"i'll cover, uh behind you behind you": [
+"COVER_ME",
+"COVER_ME",
+0.994
+],
+"i'll rotate left you head right": [
+"MOVE_TO",
+"MOVE_TO",
+0.895
+],
+"i'll rotate left you head right and meet me on sight": [
+"MOVE_TO",
+"MOVE_TO",
+0.78
+],
+"i'll rotate left, head right and meet me on sight": [
+"MOVE_TO",
+"MOVE_TO",
+0.699
+],
+"i'll rotate left, you head right": [
+"MOVE_TO",
+"MOVE_TO",
+0.89
+],
+"i'll rotate left, you head right and meet me on sight": [
+"MOVE_TO",
+"MOVE_TO",
+0.711
+],
+"i'll rotate left, you head right and meet me on site": [
+"MOVE_TO",
+"MOVE_TO",
+0.777
+],
+"i'll rotate left, you head right, and meet me on sight": [
+"NONE",
+"MOVE_TO",
+0.669
+],
+"i'll rotate left. you head right and meet me on sight": [
+"MOVE_TO",
+"MOVE_TO",
+0.794
+],
+"i'm bleeding out, get me back on my feet": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.998
+],
+"i'm crossing, do not shoot. they're spraying through the smoke": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"i'm db and o behind the beds need a hand": [
+"HELP",
+"HELP",
+0.997
+],
+"i'm dbno behind the bed, need a hand": [
+"HELP",
+"HELP",
+0.998
+],
+"i'm going for default plant": [
+"PLANT",
+"PLANT",
+0.968
+],
+"i'm going for the awp": [
+"NONE",
+"NONE",
+0.999
+],
+"i'm going for the awp yo": [
+"NONE",
+"NONE",
+0.99
+],
+"i'm going for the awp yo, turn to me": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.998
+],
+"i'm going for the fault plant": [
+"NONE",
+"NONE",
+0.764
+],
+"i'm going for the plant keep your eyes on me": [
+"COVER_ME",
+"COVER_ME",
+0.986
+],
+"i'm going for the plant keep your eyes on me and cover me": [
+"COVER_ME",
+"COVER_ME",
+0.997
+],
+"i'm going for the plant, keep your eyes on me": [
+"COVER_ME",
+"COVER_ME",
+0.987
+],
+"i'm going for the plant, keep your eyes on me and cover me": [
+"COVER_ME",
+"COVER_ME",
+0.998
+],
+"i'm going left, you go right": [
+"NONE",
+"HOLD_OTHER_ANGLE",
+0.587
+],
+"i'm going left, you go right, meet you in the middle": [
+"NONE",
+"FOLLOW_ME",
+0.518
+],
+"i'm on it": [
+"NONE",
+"NONE",
+0.667
+],
+"i'm on it if fuse": [
+"NONE",
+"NONE",
+0.664
+],
+"i'm on it if fuse protect me": [
+"COVER_ME",
+"COVER_ME",
+0.99
+],
+"i'm on it if fuse protect me as soon as you come to me": [
+"COVER_ME",
+"COVER_ME",
+0.997
+],
+"i'm on it, go protect me": [
+"COVER_ME",
+"COVER_ME",
+0.946
+],
+"i'm on it, if they breach, protect me": [
+"COVER_ME",
+"COVER_ME",
+0.998
+],
+"i'm on it, protect me": [
+"COVER_ME",
+"COVER_ME",
+0.998
+],
+"i'm on the defuse": [
+"NONE",
+"NONE",
+0.988
+],
+"i'm on the defuse protect me": [
+"COVER_ME",
+"COVER_ME",
+0.998
+],
+"i'm on the defuse, protect me": [
+"COVER_ME",
+"COVER_ME",
+0.998
+],
+"i'm on the defuse, protect me; stay put, don't budge": [
+"COVER_ME",
+"COVER_ME",
+0.995
+],
+"i'm on the diffuse protect me": [
+"COVER_ME",
+"COVER_ME",
+0.997
+],
+"i'm on this angle, you cover whatever i'm not looking at": [
+"COVER_ME",
+"COVER_ME",
+0.956
+],
+"i'm on this angle. you cover whatever i'm not looking at": [
+"COVER_ME",
+"COVER_ME",
+0.925
+],
+"i'm opening the star. you got me if someone swints": [
+"NONE",
+"COVER_ME",
+0.61
+],
+"i'm opening this door you got me if someone swings": [
+"COVER_ME",
+"COVER_ME",
+0.794
+],
+"i'm opening this door, you got me if someone swings": [
+"COVER_ME",
+"COVER_ME",
+0.731
+],
+"i'm opening this door. you got me as someone swings": [
+"COVER_ME",
+"COVER_ME",
+0.714
+],
+"i'm opening this door. you got me as someone swings first": [
+"COVER_ME",
+"COVER_ME",
+0.728
+],
+"i'm opening this door. you got me if someone swings": [
+"COVER_ME",
+"COVER_ME",
+0.693
+],
+"i've got this one": [
+"NONE",
+"HOLD_OTHER_ANGLE",
+0.488
+],
+"i've got this one as soon as you flash it when i call it not before": [
+"FLASH",
+"FLASH",
+0.999
+],
+"i've got this one if he's it": [
+"NONE",
+"NONE",
+0.575
+],
+"i've got this one if he's it, you got time": [
+"NONE",
+"ATTACK",
+0.298
+],
+"i've got this one okay": [
+"NONE",
+"NONE",
+0.503
+],
+"i've got this one, as soon as you shoot there where i marked": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.998
+],
+"i've got this one, but those decades i'll cover first": [
+"NONE",
+"HOLD_OTHER_ANGLE",
+0.407
+],
+"i've got this one, not the north window": [
+"NONE",
+"HOLD_OTHER_ANGLE",
+0.583
+],
+"i've got this one, not the north window, i said": [
+"NONE",
+"NONE",
+0.556
+],
+"if cleared hot, shoot anything that peaks": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"if fuse protect me": [
+"COVER_ME",
+"COVER_ME",
+0.981
+],
+"if fuse protect me as soon as you come to me and stick close. we're moving as a pair": [
+"NONE",
+"COVER_ME",
+0.679
+],
+"if he's it, you got time": [
+"NONE",
+"CHECK",
+0.334
+],
+"if he's it, you got time, and from there face mean for a sec pretty sure i heard steps": [
+"NONE",
+"LOOK_AT",
+0.459
+],
+"if you use it, you've got time": [
+"NONE",
+"CHECK",
+0.482
+],
+"in fire like now, they are pushing me": [
+"NONE",
+"OPEN_FIRE",
+0.642
+],
+"inside upstairs west window, bail out through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"instagage upstairs west window, bail out through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"instagame upstairs west window, pale out through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.998
+],
+"is a guy camping blue stares": [
+"NONE",
+"NONE",
+1.0
+],
+"is a guy camping blue stares so flake him through south door": [
+"NONE",
+"FLASH",
+0.654
+],
+"istas still barricaded, slap the charge on it and blow it": [
+"BREACH",
+"BREACH",
+1.0
+],
+"istas still barricaded, slap the charge on it and blow it and not the north window": [
+"BREACH",
+"BREACH",
+1.0
+],
+"jaeger's camping the couch on second floor, got his gadget right next to him": [
+"NONE",
+"NONE",
+0.419
+],
+"jaegers camping the couch on second floor got his gadget right next to him": [
+"NONE",
+"FRAG",
+0.32
+],
+"jaegers camping the couch on second floor, got his gadget right next to him": [
+"NONE",
+"FRAG",
+0.479
+],
+"jager's camping the couch on second floor, got his gadget right next to him": [
+"NONE",
+"FRAG",
+0.375
+],
+"jump across to me, actually nah don't, forget i said that": [
+"JUMP",
+"JUMP",
+1.0
+],
+"jump across to me, actually now don't forget i said that": [
+"JUMP",
+"JUMP",
+1.0
+],
+"jump across to me. actually no, don't forget i said that": [
+"JUMP",
+"JUMP",
+1.0
+],
+"jump down through that hatch": [
+"JUMP",
+"JUMP",
+1.0
+],
+"jumper customy. actually naw don't forget i said that": [
+"NONE",
+"JUMP",
+0.389
+],
+"just bullet. don't walk in": [
+"NONE",
+"OPEN_FIRE",
+0.668
+],
+"just jump down through that hatch": [
+"JUMP",
+"JUMP",
+1.0
+],
+"just jump down through that hatch and pin it site with me": [
+"JUMP",
+"JUMP",
+1.0
+],
+"just jump down through that hatch and pin them down with me": [
+"JUMP",
+"JUMP",
+0.994
+],
+"just jump down through that hatch and pin them site with me": [
+"JUMP",
+"JUMP",
+0.999
+],
+"just jump down through that hatch and plant the defuser": [
+"JUMP",
+"JUMP",
+0.999
+],
+"just jump down to that hatch and pin them down with me": [
+"JUMP",
+"JUMP",
+0.98
+],
+"just jump down to that hatch and pinch site with me": [
+"JUMP",
+"JUMP",
+1.0
+],
+"just jump off the balcony come on it is not high": [
+"JUMP",
+"JUMP",
+1.0
+],
+"just jump off the balcony come on it is not high okay": [
+"JUMP",
+"JUMP",
+1.0
+],
+"just pull it, don't walk in": [
+"NONE",
+"OPEN",
+0.364
+],
+"just pull it, don't walk in, uh the red door open it but stay outside": [
+"OPEN",
+"OPEN",
+0.992
+],
+"keep an eye on me while i plan default i can't watch my own flank": [
+"COVER_ME",
+"COVER_ME",
+0.996
+],
+"keep an eye on me while i plant default i can't watch my own flank": [
+"COVER_ME",
+"COVER_ME",
+0.997
+],
+"keep an eye on me while i plant default, i can't watch my own flank": [
+"COVER_ME",
+"COVER_ME",
+0.996
+],
+"keep an eye on me while i plant defaults, i can't watch my own flank": [
+"COVER_ME",
+"COVER_ME",
+0.995
+],
+"keep an eye on me while i plant the fault, i can't watch my own flink": [
+"COVER_ME",
+"COVER_ME",
+0.996
+],
+"keep eyes on the back door": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep eyes on the back door, shoot whoever peeks": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep eyes on the back door, shoot whoever peeks okay": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep eyes on the back door. shoot whoever peeks": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep eyes on the back stair, in case their roma rotates": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep eyes on the back stairs in case their roamer rotates": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep eyes on the back stairs in case their roma rotates": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep eyes on the backstairs in case the rum irritates": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep eyes on the backstairs in case their roamer rotates": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep them keep them inside": [
+"SUPPRESS",
+"SUPPRESS",
+0.99
+],
+"keep watching the stairs on no left. don't take your eyes off em": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep watching the stairs on your left don't take your eyes off m": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep watching the stairs on your left, don't take your eyes off": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep watching the stairs on your left, don't take your eyes off and": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep watching the stairs on your left, don't take your eyes off em": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep watching the stairs on your left, don't take your eyes off m": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep watching the stairs on your left. don't take your eyes off him": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep your cross here on the south door kill whoever walks through": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep your crossaker on the south door, kill whoever walks through": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep your crosshair on my ping somebody's gonna swing it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep your crosshair on my ping, somebody's gonna swing it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep your crosshair on my ping, somebody's gonna swing it first": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep your crosshair on my ping. somebody's gonna swing it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep your crosshair on the south door, kill whoever walks through": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep your eyes on me": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.996
+],
+"keep your eyes on me and cover me": [
+"COVER_ME",
+"COVER_ME",
+0.982
+],
+"keep your eyes on the right": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep your eyes on the right lower": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep your eyes on the right they love a late lurk": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep your eyes on the right, delaware lady luck": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep your eyes on the right, they love a late look": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep your eyes on the right, they love a late lurk": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"keep your gun on that window": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.998
+],
+"keep your gun on that window, on three we entry, ready": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.998
+],
+"keep your gun on that window, you're one hp man": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.992
+],
+"keep your gun quiet": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.996
+],
+"keep your gun quiet; hit them with the molly, burn him out of the corner": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.781
+],
+"kill the last defender. i don't care how you do it": [
+"ATTACK",
+"ATTACK",
+0.964
+],
+"kill the last defender. i don't care how you do it, but take him out with a nade, cook it and send it first": [
+"ATTACK",
+"ATTACK",
+0.932
+],
+"kill their last defender": [
+"ATTACK",
+"ATTACK",
+0.978
+],
+"kill their last defender, i don't care how you do it": [
+"ATTACK",
+"ATTACK",
+0.991
+],
+"kill their last offender, i don't care how you do it": [
+"ATTACK",
+"ATTACK",
+0.997
+],
+"lad is fine": [
+"NONE",
+"NONE",
+0.935
+],
+"last guy is on the roof i heard him run across": [
+"NONE",
+"NONE",
+1.0
+],
+"last guy is on the roof, i heard him run across": [
+"NONE",
+"NONE",
+1.0
+],
+"last guy is on the roof. i heard him run across": [
+"NONE",
+"NONE",
+1.0
+],
+"last one's crouched under the table on top floor i think": [
+"NONE",
+"NONE",
+1.0
+],
+"last one's crouched under the table on top floor, i think": [
+"NONE",
+"NONE",
+1.0
+],
+"last ones crouched under the table on top floor i think": [
+"NONE",
+"NONE",
+1.0
+],
+"last ones crouched under the table on top floor, i think": [
+"NONE",
+"NONE",
+1.0
+],
+"lastly back off, back off. we lost it": [
+"FALL_BACK",
+"FALL_BACK",
+0.998
+],
+"lastly go stick it, i'll cover": [
+"PLANT",
+"PLANT",
+0.78
+],
+"lastly i got lon, you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"lastly i'm going left, you go right, meet you in the middle": [
+"NONE",
+"FOLLOW_ME",
+0.607
+],
+"lastly i'm on it if fuse": [
+"NONE",
+"NONE",
+0.667
+],
+"lastly i'm on it if fuse protect me": [
+"NONE",
+"COVER_ME",
+0.665
+],
+"lastly luck through my pin and get in their box": [
+"NONE",
+"MOVE_TO",
+0.534
+],
+"lastly not the north window, i said smoke west door": [
+"SMOKE",
+"SMOKE",
+0.99
+],
+"lastly pick one and toss it in": [
+"FRAG",
+"FRAG",
+0.955
+],
+"lastly shoot through the east door, they're stacked on it": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"lastly start blasting, they're already nowhere here": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.998
+],
+"lastly uh hang on your rope outside that window": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"lastly uh look on that window the one on the left side": [
+"LOOK_AT",
+"LOOK_AT",
+0.765
+],
+"lastly uh open that door real quiet": [
+"OPEN",
+"OPEN",
+0.999
+],
+"lastly you're way too exposed, go prone behind the bed": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.974
+],
+"leap": [
+"JUMP",
+"JUMP",
+0.999
+],
+"leap in through the back door": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.821
+],
+"leap ran the back": [
+"JUMP",
+"JUMP",
+0.957
+],
+"lift the hatch up yourself no charges": [
+"OPEN",
+"OPEN",
+0.956
+],
+"light is fine": [
+"NONE",
+"NONE",
+0.955
+],
+"light is fine as soon as you hit ready to plant, don't touch it till i say": [
+"PLANT",
+"PLANT",
+0.774
+],
+"light main": [
+"NONE",
+"HOLD_ANGLE",
+0.633
+],
+"light the door": [
+"NONE",
+"HOLD_ANGLE",
+0.622
+],
+"listening for a sec, pretty sure i heard steth": [
+"NONE",
+"LOOK_AT",
+0.661
+],
+"lo open the other hatch, not this one": [
+"OPEN",
+"OPEN",
+0.941
+],
+"lock down this hallway i'm rotating to cover the other door": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"lock down this hallway, i'm rotating to cover the other door": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"locked down this hallway i'm rotating to cover the other door": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"look around the back": [
+"LOOK_AT",
+"LOOK_AT",
+0.68
+],
+"look at red stairs on second floor, i think their roamer just rotated": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"look at red stairs on second floor, i think their romer just rotated": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"look at red stairs on second floor. i think the aroma just rotated": [
+"LOOK_AT",
+"LOOK_AT",
+0.998
+],
+"look at red stairs on second floor. i think their roma just rotated": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"look at red stairs on second floor. i think their romer just rotated": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"look at red stairs on second floor. i think their rumma just rotated": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"look at that that thing i just pinged": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"look at the sofa": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"look at the sofa i swear something just moved": [
+"LOOK_AT",
+"LOOK_AT",
+0.933
+],
+"look at the sofa, i swear something just moved": [
+"LOOK_AT",
+"LOOK_AT",
+0.985
+],
+"look at the sofa, i swear something just moved first": [
+"LOOK_AT",
+"LOOK_AT",
+0.993
+],
+"look at the sofa, i swear something just moved okay": [
+"LOOK_AT",
+"LOOK_AT",
+0.994
+],
+"look at the soft oar, not before": [
+"LOOK_AT",
+"LOOK_AT",
+0.998
+],
+"look at the south door": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"look at the south door, not before": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"look at the surfer, i swear something just move": [
+"NONE",
+"LOOK_AT",
+0.679
+],
+"look behind": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"look behind you": [
+"LOOK_AT",
+"LOOK_AT",
+0.997
+],
+"look left": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"look on that window the one on the left side": [
+"LOOK_AT",
+"LOOK_AT",
+0.799
+],
+"look over here": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.998
+],
+"look over here to me": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.998
+],
+"look over here to me blind them for me before i peek": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.869
+],
+"look over here, over here": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.996
+],
+"look over here, over here first": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.97
+],
+"look over here, over here okay": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.995
+],
+"look round the back": [
+"NONE",
+"LOOK_AT",
+0.519
+],
+"look round the back first": [
+"NONE",
+"CHECK",
+0.33
+],
+"look round the back look over here, over here": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.734
+],
+"look through my ping and get in their backs": [
+"NONE",
+"FLANK",
+0.547
+],
+"look up": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"look write look write quick quick": [
+"NONE",
+"MOVE_TO",
+0.361
+],
+"look write look write quick quick defuse it, you've got time": [
+"NONE",
+"GO_NOW",
+0.364
+],
+"looking at and stand by it": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"loop around east door": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop around east door and back stub them": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop around east door and backstab them": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop around east side": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop around east side and backstab them": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop around the back": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop around the back and defuse the bomb": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop around the back door": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop around the back when i yell go": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop around the east door": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop around the east door and backstab them": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop around the front": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop around to the east door": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop round round the back when i yell go": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop round the back": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop round the back and defuse it, you've got time": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop round the back okay": [
+"FLANK",
+"FLANK",
+0.999
+],
+"loop round the back when i yell go": [
+"FLANK",
+"FLANK",
+0.999
+],
+"looper": [
+"NONE",
+"RAPPEL",
+0.436
+],
+"lopper": [
+"JUMP",
+"JUMP",
+0.745
+],
+"lost this fight, pull back to second": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"luck through my pin": [
+"NONE",
+"HOLD_ANGLE",
+0.489
+],
+"luck through my pin and get in their box": [
+"NONE",
+"VAULT_WINDOW",
+0.509
+],
+"luck through my pin and get in their box okay": [
+"NONE",
+"MOVE_TO",
+0.519
+],
+"lurch through my ping and get in their backs": [
+"NONE",
+"FLANK",
+0.579
+],
+"lurch through my ping and get in their backs first": [
+"NONE",
+"FLANK",
+0.636
+],
+"lurk through my ping": [
+"NONE",
+"FLANK",
+0.638
+],
+"lurk through my ping and get in their backs": [
+"FLANK",
+"FLANK",
+0.997
+],
+"lurk through my ping and get in their backs first": [
+"FLANK",
+"FLANK",
+0.841
+],
+"lurk through my ping and get in their backs okay": [
+"FLANK",
+"FLANK",
+0.996
+],
+"lurk through my ping and get in their box": [
+"NONE",
+"ENTRY",
+0.531
+],
+"main we hit it together": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.82
+],
+"main we hit it together, you go": [
+"NONE",
+"FOLLOW_ME",
+0.402
+],
+"main we hit it together, you go and when i say go": [
+"NONE",
+"GO_NOW",
+0.292
+],
+"main, we hit it together": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.703
+],
+"main, we hit it together, you go": [
+"NONE",
+"GO_NOW",
+0.286
+],
+"main, we hit it together, you go and when i say go": [
+"NONE",
+"GO_NOW",
+0.41
+],
+"main, we hit it together, you go in when i say": [
+"NONE",
+"ENTRY",
+0.602
+],
+"main, we hit it together, you go in when i say go": [
+"NONE",
+"ENTRY",
+0.654
+],
+"main, we hit it together, you go in when i say go first": [
+"ENTRY",
+"ENTRY",
+0.778
+],
+"main, we hit it together, you go in when i say go okay": [
+"NONE",
+"ENTRY",
+0.646
+],
+"make us a hole in that wall": [
+"BREACH",
+"BREACH",
+0.999
+],
+"make us a hole in this floor, lad is fine": [
+"BREACH",
+"BREACH",
+0.908
+],
+"make us a hole in this floor, lad is fine okay": [
+"BREACH",
+"BREACH",
+0.886
+],
+"make us a hole in this floor, loud as fine": [
+"BREACH",
+"BREACH",
+0.951
+],
+"make us a hole in this floor, loud is fine": [
+"BREACH",
+"BREACH",
+0.957
+],
+"malay on my mark, he's lit": [
+"NONE",
+"NONE",
+0.93
+],
+"malay on my mark, he's lit and hiding in the corn": [
+"NONE",
+"NONE",
+0.955
+],
+"mali amey mark islitan hiding in the corner": [
+"NONE",
+"FRAG",
+0.596
+],
+"meal quick": [
+"NONE",
+"MOVE_TO",
+0.621
+],
+"meat the kitchen": [
+"FRAG",
+"FRAG",
+0.843
+],
+"meet at the center": [
+"NONE",
+"FOLLOW_ME",
+0.344
+],
+"meet at the middle": [
+"NONE",
+"FOLLOW_ME",
+0.337
+],
+"meet in the middle": [
+"NONE",
+"JUMP",
+0.371
+],
+"meet me in the middle": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.994
+],
+"meet me on sight": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.992
+],
+"meet me on sight first": [
+"NONE",
+"FOLLOW_ME",
+0.64
+],
+"meet me on sight when i say go": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.993
+],
+"meet me on sight when i say go, swing mean": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.953
+],
+"meet me on sight when i say go, swing mean and clear out sight": [
+"ENTRY",
+"ENTRY",
+0.891
+],
+"meet me on site": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.993
+],
+"meet me on site first": [
+"NONE",
+"FOLLOW_ME",
+0.648
+],
+"meet me on site main, we hit it together": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.999
+],
+"meet me on site main, we hit it together, you go in when i say go": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.996
+],
+"meet the person on the east side": [
+"NONE",
+"NONE",
+0.519
+],
+"meet ur in the middle": [
+"NONE",
+"FOLLOW_ME",
+0.385
+],
+"meet ur there": [
+"NONE",
+"MOVE_TO",
+0.668
+],
+"meet you at the middle": [
+"NONE",
+"FOLLOW_ME",
+0.647
+],
+"meet you in the middle": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.745
+],
+"meet you in the middle as soon as you check left real quick": [
+"CHECK",
+"CHECK",
+0.727
+],
+"meet you in the middle as soon as you check left real quick. i had stepped": [
+"NONE",
+"CHECK",
+0.663
+],
+"meet you in the middle, but wrap around through yellow": [
+"FLANK",
+"FLANK",
+0.998
+],
+"mere on the wall, there anchored in sight": [
+"NONE",
+"JUMP",
+0.415
+],
+"michael come give me a hand not before": [
+"HELP",
+"HELP",
+0.998
+],
+"mira on the door, they can see straight through": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.844
+],
+"mira on the wall there anchored in sight": [
+"NONE",
+"NONE",
+0.284
+],
+"mira on the wall, they're anchored in site": [
+"NONE",
+"JUMP",
+0.363
+],
+"mirror on the door they can see straight through": [
+"NONE",
+"SMOKE",
+0.474
+],
+"mirror on the door, they can see straight through": [
+"NONE",
+"SMOKE",
+0.434
+],
+"mirror on the wall there anchored in sight": [
+"NONE",
+"NONE",
+0.301
+],
+"mirror on the wall, they're anchored in sight": [
+"NONE",
+"NONE",
+0.372
+],
+"molly kitchen": [
+"FRAG",
+"FRAG",
+0.861
+],
+"molly on my mark he's lit": [
+"FRAG",
+"FRAG",
+0.967
+],
+"molly on my mark he's lit and hiding in the corner": [
+"FRAG",
+"FRAG",
+0.929
+],
+"molly on my mark, he's lit": [
+"FRAG",
+"FRAG",
+0.913
+],
+"molly on my mark, he's lit and hiding in the corn": [
+"FRAG",
+"FRAG",
+0.86
+],
+"molly on my mark, he's lit and hiding in the corner": [
+"FRAG",
+"FRAG",
+0.905
+],
+"molly on my mark, he's lit and hiding in the corner okay": [
+"FRAG",
+"FRAG",
+0.724
+],
+"molly on the wall, there anchored in sight": [
+"NONE",
+"FRAG",
+0.679
+],
+"molly on the wall, they're there, and they're on me, i'm down": [
+"FRAG",
+"FRAG",
+0.803
+],
+"molly the blue stairs": [
+"FRAG",
+"FRAG",
+0.979
+],
+"molly the corner": [
+"FRAG",
+"FRAG",
+0.999
+],
+"molly the main door": [
+"FRAG",
+"FRAG",
+0.999
+],
+"molly the reinforced wall": [
+"FRAG",
+"FRAG",
+0.998
+],
+"mure on the wall, there anchored in sight": [
+"NONE",
+"JUMP",
+0.439
+],
+"myra on the door, they can see straight through": [
+"NONE",
+"HOLD_ANGLE",
+0.339
+],
+"myra on the wall, they're anchored in sight": [
+"NONE",
+"FRAG",
+0.49
+],
+"nade behind the pad": [
+"FRAG",
+"FRAG",
+0.986
+],
+"nade behind the pin": [
+"FRAG",
+"FRAG",
+0.996
+],
+"nade nade nade": [
+"FRAG",
+"FRAG",
+0.995
+],
+"nade the north window": [
+"FRAG",
+"FRAG",
+0.999
+],
+"nade the other box that's where he's hiding": [
+"FRAG",
+"FRAG",
+0.999
+],
+"nade the other box, and before that, that's where he's hiding": [
+"FRAG",
+"FRAG",
+0.999
+],
+"nade the other box, and he's hiding": [
+"FRAG",
+"FRAG",
+0.999
+],
+"nade the other box, that's where he's hiding": [
+"FRAG",
+"FRAG",
+0.999
+],
+"nade was wrong, got it wrong": [
+"NONE",
+"NO",
+0.497
+],
+"nade, the other box. that's where he's hiding": [
+"FRAG",
+"FRAG",
+0.999
+],
+"nah don't, forget i said that": [
+"NONE",
+"NONE",
+0.805
+],
+"nah forget what i said about east window you dont need to watch it": [
+"NONE",
+"NONE",
+0.999
+],
+"nah nah no": [
+"NO",
+"NO",
+0.731
+],
+"nah nah, don't jump across to me": [
+"NONE",
+"NONE",
+0.735
+],
+"nah never mind, scrap that last call": [
+"WAIT",
+"WAIT",
+0.989
+],
+"nah nope you've got it wrong": [
+"NO",
+"NO",
+0.952
+],
+"nah nope, your wrong": [
+"NO",
+"NO",
+0.948
+],
+"nah nope, youve got it wrong": [
+"NO",
+"NO",
+0.92
+],
+"nah, never mind smoking red stairs, we don't need it": [
+"NONE",
+"NONE",
+1.0
+],
+"nah, never mind smoking red stairs. we don't need it": [
+"NONE",
+"NONE",
+1.0
+],
+"nah, nope, you've got it wrong": [
+"NO",
+"NO",
+0.72
+],
+"nah, nope, your call": [
+"NONE",
+"MAYBE",
+0.639
+],
+"nah, nope, your got it wrong": [
+"NO",
+"NO",
+0.773
+],
+"nah, nope, youre got it wrong": [
+"NO",
+"NO",
+0.729
+],
+"narnope got it wrong": [
+"NONE",
+"NO",
+0.655
+],
+"narr never mind smoking red stairs. we don't need it": [
+"NONE",
+"NONE",
+0.992
+],
+"nate the other box, that's where he's hiding": [
+"FRAG",
+"FRAG",
+0.999
+],
+"near the other box, that's where he's hidin'": [
+"NONE",
+"NONE",
+0.393
+],
+"need a hand": [
+"HELP",
+"HELP",
+0.999
+],
+"need a hand behind the bed": [
+"NONE",
+"HELP",
+0.663
+],
+"need a hand over here man, come on": [
+"HELP",
+"HELP",
+0.998
+],
+"need a hand over here, man come on": [
+"HELP",
+"HELP",
+0.999
+],
+"need a hand over here, man, come on": [
+"HELP",
+"HELP",
+0.998
+],
+"need a hand over here, man. come on": [
+"HELP",
+"HELP",
+0.998
+],
+"need the other box that's where he is hiding": [
+"NONE",
+"FRAG",
+0.424
+],
+"need the other box that's where he is hiding okay": [
+"NONE",
+"HOLD_OTHER_ANGLE",
+0.419
+],
+"negative that's not what i meant": [
+"NO",
+"NO",
+0.998
+],
+"negative, that's not what i meant": [
+"NO",
+"NO",
+0.998
+],
+"neither hand": [
+"NONE",
+"WAIT",
+0.328
+],
+"never mind the drone bot": [
+"NONE",
+"WAIT",
+0.547
+],
+"never mind, scrap that lossical": [
+"WAIT",
+"WAIT",
+0.828
+],
+"never mind, strapped at last cool": [
+"NONE",
+"NONE",
+0.955
+],
+"next gonna run the rotate, overwatch me from cover": [
+"COVER_ME",
+"COVER_ME",
+0.995
+],
+"niederhan": [
+"NONE",
+"FRAG",
+0.223
+],
+"niederhan get me up, bro. i'm down and bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.999
+],
+"niederhan; bolt in there, the window on your left": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"no clue honestly i cant tell from here its too dark": [
+"DONT_KNOW",
+"DONT_KNOW",
+0.999
+],
+"no dont look at the yeast window there is nothing": [
+"NONE",
+"NONE",
+1.0
+],
+"no hold up scrap that order": [
+"WAIT",
+"WAIT",
+0.999
+],
+"no hold up, scrap that order": [
+"WAIT",
+"WAIT",
+0.999
+],
+"no idea, mate, i honestly can't tell": [
+"DONT_KNOW",
+"DONT_KNOW",
+0.999
+],
+"no idea, mate. i honestly can't tell": [
+"DONT_KNOW",
+"DONT_KNOW",
+0.999
+],
+"no no dont jump it is too high": [
+"NONE",
+"NONE",
+0.917
+],
+"no no dont jump uh do not jump it is too high": [
+"NONE",
+"NONE",
+0.999
+],
+"no no over here": [
+"NONE",
+"WAIT",
+0.55
+],
+"no no over here look over here to me": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.989
+],
+"no not that one the other door open it": [
+"OPEN",
+"OPEN",
+0.997
+],
+"no over here look over here to me": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.982
+],
+"no smoke no smoke": [
+"NONE",
+"NONE",
+1.0
+],
+"no, hold up, scrap that order": [
+"WAIT",
+"WAIT",
+0.999
+],
+"no, hold up, script that order": [
+"WAIT",
+"WAIT",
+0.999
+],
+"no, no": [
+"GO_NOW",
+"GO_NOW",
+0.953
+],
+"no, no, no": [
+"NO",
+"NO",
+0.836
+],
+"north window, i said smoke west door": [
+"SMOKE",
+"SMOKE",
+0.994
+],
+"not the north window": [
+"NO",
+"NO",
+0.725
+],
+"not the north window, i said": [
+"NONE",
+"NO",
+0.613
+],
+"not the north window, i said smoke": [
+"NONE",
+"NONE",
+0.658
+],
+"not the north window, i said smoke quest door": [
+"SMOKE",
+"SMOKE",
+0.95
+],
+"not the north window, i said smoke west door": [
+"SMOKE",
+"SMOKE",
+0.992
+],
+"not the north window. i said smackquest doll": [
+"NONE",
+"NO",
+0.578
+],
+"not this one first, we'll open the other hatch": [
+"NONE",
+"OPEN",
+0.429
+],
+"now never mind scrapped that last call": [
+"NONE",
+"NONE",
+0.719
+],
+"now never mind, scrap that lossical": [
+"WAIT",
+"WAIT",
+0.753
+],
+"now now": [
+"GO_NOW",
+"GO_NOW",
+0.997
+],
+"now now now": [
+"GO_NOW",
+"GO_NOW",
+0.995
+],
+"now, never mind, strapped at last cool": [
+"NONE",
+"WAIT",
+0.653
+],
+"now, now": [
+"GO_NOW",
+"GO_NOW",
+0.996
+],
+"ok": [
+"YES",
+"YES",
+0.99
+],
+"ok let's regroup": [
+"COME_BACK",
+"COME_BACK",
+0.999
+],
+"ok let's regroup, you're way too deep for me to trade you": [
+"COME_BACK",
+"COME_BACK",
+0.999
+],
+"ok, but main, we hit it together": [
+"NONE",
+"FOLLOW_ME",
+0.413
+],
+"okay": [
+"YES",
+"YES",
+0.989
+],
+"okay and do not open up on them, keep your gun quiet": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.99
+],
+"okay and face over there where i put the marker over there": [
+"LOOK_AT",
+"LOOK_AT",
+0.997
+],
+"okay and get me some info on what's inside first": [
+"DRONE",
+"DRONE",
+0.992
+],
+"okay and gonna run the rotate": [
+"NONE",
+"ENTRY",
+0.385
+],
+"okay and i'll rotate left you head right": [
+"MOVE_TO",
+"MOVE_TO",
+0.962
+],
+"okay and i'll rotate left, you head right": [
+"MOVE_TO",
+"MOVE_TO",
+0.929
+],
+"okay and i'm on this angle, you cover whatever i'm not looking at": [
+"COVER_ME",
+"COVER_ME",
+0.882
+],
+"okay and no not that one the other door open it": [
+"OPEN",
+"OPEN",
+0.998
+],
+"okay and okay go upstairs i meet you in a second": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"okay and pull back out of the fight bro, we're saving this round": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"okay and reposition to kitchen meal quick": [
+"MOVE_TO",
+"MOVE_TO",
+0.95
+],
+"okay and run over to my ping, the one i just placed": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"okay and scout it out before we go in": [
+"DRONE",
+"DRONE",
+0.999
+],
+"okay and she threw the east door and sat on it": [
+"NONE",
+"FLASH",
+0.402
+],
+"okay and slide the gate open keep it quiet": [
+"OPEN",
+"OPEN",
+0.998
+],
+"okay and stay put bot": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.998
+],
+"okay and stay put, don't budge": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.999
+],
+"okay and stop swinging": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.993
+],
+"okay and take him out with a nade, cook it and send it": [
+"NONE",
+"FRAG",
+0.662
+],
+"okay and take them out with a grenade": [
+"ATTACK",
+"ATTACK",
+0.697
+],
+"okay and they are shooting us get behind something and hide": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"okay and yo turned to me": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.999
+],
+"okay and you're one hp man, get yourself somewhere safe": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"okay attack them attack": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"okay attack them attack and blow the door open, loud is fine": [
+"BREACH",
+"BREACH",
+0.999
+],
+"okay attack them attack as soon as": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"okay attack them attack as soon as you": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"okay attack them attack as soon as you no not that one": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"okay attack them attack as soon as you no not that one the other door open it": [
+"NONE",
+"ATTACK",
+0.553
+],
+"okay attack them attack as soon as you we lost this fight, pull back to second": [
+"FALL_BACK",
+"FALL_BACK",
+0.73
+],
+"okay go upstairs i meet you in a second": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"okay go upstairs i meet you in a second first": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"okay let's regroup you're way too deep for me to trade you": [
+"COME_BACK",
+"COME_BACK",
+0.999
+],
+"okay let's regroup, you're way too deep for me to trade you": [
+"COME_BACK",
+"COME_BACK",
+0.999
+],
+"okay let's sugar you're way too deep for me to trade you": [
+"NONE",
+"CROUCH",
+0.243
+],
+"okay on three we push in": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"okay on three we push in and go stick it, i'll cover": [
+"ENTRY",
+"ENTRY",
+0.996
+],
+"okay on three we push in and push through the south door and clear the room": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"okay on three we push in and push through the south door and clear the room go": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"okay on three we push in okay": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"okay on three we push in okay and pop a smock on the stairs": [
+"ENTRY",
+"ENTRY",
+0.996
+],
+"okay on three we push in you uh you drop dawn off the ledge i am waiting below you": [
+"NONE",
+"JUMP",
+0.655
+],
+"okay on three we push in. make us a hole in that wall": [
+"BREACH",
+"BREACH",
+0.994
+],
+"okay on three we push in; okay attack them attack": [
+"NONE",
+"ENTRY",
+0.651
+],
+"okay so just uh shadow me dont go wandering off": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.999
+],
+"okay so look at that that thing i just pinged": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"okay so look at that that thing i just pinged; scout it out before we go in": [
+"NONE",
+"LOOK_AT",
+0.652
+],
+"okay stand back up now": [
+"STAND_UP",
+"STAND_UP",
+0.998
+],
+"okay stand back up now roamer's on you": [
+"STAND_UP",
+"STAND_UP",
+0.998
+],
+"okay stay put bot": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.998
+],
+"okay uh blow the wall where i put the pin": [
+"BREACH",
+"BREACH",
+1.0
+],
+"okay uh blow the wall where i put the pin, but hit them from behind once i give the word first": [
+"BREACH",
+"BREACH",
+0.999
+],
+"okay uh blow the wall where i put the pin, hit them with a molly": [
+"BREACH",
+"BREACH",
+1.0
+],
+"okay you go watch the other ankle uh i am staying on this one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+1.0
+],
+"okay, let's regroup, you way too deep for me to trade you": [
+"COME_BACK",
+"COME_BACK",
+0.998
+],
+"okay, shoot through the east door, they're stacked on it": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"okay, stand back up now": [
+"STAND_UP",
+"STAND_UP",
+0.998
+],
+"on 3 we entry ready": [
+"ENTRY",
+"ENTRY",
+0.997
+],
+"on 3wi entry, ready": [
+"ENTRY",
+"ENTRY",
+0.996
+],
+"on my call come give me a hand not before": [
+"HELP",
+"HELP",
+0.998
+],
+"on my call come give me a hand, not before": [
+"HELP",
+"HELP",
+0.998
+],
+"on my call, come give me a hand, not before": [
+"HELP",
+"HELP",
+0.998
+],
+"on my cool come give me a hand not before": [
+"HELP",
+"HELP",
+0.998
+],
+"on my go": [
+"NONE",
+"FOLLOW_ME",
+0.204
+],
+"on my go pop a flash over for me": [
+"FLASH",
+"FLASH",
+0.999
+],
+"on my mark crack that door open": [
+"OPEN",
+"OPEN",
+0.999
+],
+"on my mark roamer's on you, engage him, he's all yours": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"on my mark watch my back, i'm going for the awp": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"on site main, we hit it together": [
+"NONE",
+"FOLLOW_ME",
+0.625
+],
+"on three we entry": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"on three we entry, ready": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"on three we entry, ready okay": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"on three we entry, ready; i got long, you take the other one": [
+"ENTRY",
+"ENTRY",
+0.835
+],
+"on three we push in": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"on three, we enter, ready": [
+"ENTRY",
+"ENTRY",
+0.998
+],
+"on three, we entry, ready": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"on three, we're in, ready": [
+"ENTRY",
+"ENTRY",
+0.881
+],
+"on through we entry ready": [
+"ENTRY",
+"ENTRY",
+0.995
+],
+"once i give the word": [
+"NONE",
+"FOLLOW_ME",
+0.318
+],
+"once that's done and we hit it together. you go": [
+"NONE",
+"GO_NOW",
+0.338
+],
+"once that's done auntie bienner behind the pad": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.989
+],
+"once that's done back off, back off. we lost it": [
+"FALL_BACK",
+"FALL_BACK",
+0.998
+],
+"once that's done climb out over the sill and get outside": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.971
+],
+"once that's done cover me while i plant, anyone peeks you drop him": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"once that's done crack south door for me. just bullet. don't walk in": [
+"OPEN",
+"OPEN",
+0.999
+],
+"once that's done get me back on my feet, i am bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.998
+],
+"once that's done get me some info on what's inside first": [
+"DRONE",
+"DRONE",
+0.968
+],
+"once that's done go ahead and shoot, you don't have to ask me": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"once that's done go over to that window i'm looking at and stand by it": [
+"MOVE_TO",
+"MOVE_TO",
+0.996
+],
+"once that's done gonna run the rotate": [
+"NONE",
+"DRONE",
+0.525
+],
+"once that's done hard breach the reinforced wall on my mark": [
+"BREACH",
+"BREACH",
+1.0
+],
+"once that's done i'm opening this door, you got me if someone swings": [
+"NONE",
+"OPEN",
+0.473
+],
+"once that's done if he's it, you got time": [
+"NONE",
+"ATTACK",
+0.34
+],
+"once that's done look over here, over here": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.993
+],
+"once that's done no no over here look over here to me": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.987
+],
+"once that's done okay let's regroup you're way too deep for me to trade you": [
+"COME_BACK",
+"COME_BACK",
+0.998
+],
+"once that's done pull back out of the fight bro, we're saving this round": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"once that's done reposition to kitchen meal quick": [
+"MOVE_TO",
+"MOVE_TO",
+0.973
+],
+"once that's done rope down to the left hand window and hang on it": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"once that's done shoot straight ahead. he's wide swinging you": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"once that's done they are shooting us get behind something and hide": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"once that's done uh look on that window the one on the left side": [
+"LOOK_AT",
+"LOOK_AT",
+0.72
+],
+"once that's done west is yours bot dont let nobody come through": [
+"NONE",
+"ATTACK",
+0.329
+],
+"once that's done when i say go, look at the soft oar, not before": [
+"LOOK_AT",
+"LOOK_AT",
+0.989
+],
+"once that's done you uh you drop dawn off the ledge i am waiting below you": [
+"JUMP",
+"JUMP",
+0.995
+],
+"once that's done you're cleared hot, shoot anything that peeks": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"once that's done you're getting sharp hide, get out of his line of sight": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"once that's done you're getting shot, hide": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"once that's done you're getting shot, hide, get out of his line of sight": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"once that's done you're way too exposed. go prone behind the bed": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.987
+],
+"once that's done you've got the c4, set it up on a": [
+"PLANT",
+"PLANT",
+0.958
+],
+"one hb man, get yourself somewhere safe": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"one hiding behind the box is on a short": [
+"NONE",
+"NONE",
+1.0
+],
+"one hiding behind the boxes on a short": [
+"NONE",
+"NONE",
+1.0
+],
+"one peeking the left window he's got an accog": [
+"NONE",
+"NONE",
+1.0
+],
+"one peeking the left window he's got an accuracy": [
+"NONE",
+"NONE",
+1.0
+],
+"one peeking the left window, he's got an acog": [
+"NONE",
+"NONE",
+1.0
+],
+"one peeking the left window, he's got an acoge": [
+"NONE",
+"NONE",
+1.0
+],
+"one peeking the left window, he's got an akuk": [
+"NONE",
+"NONE",
+1.0
+],
+"only to you left we can win this route": [
+"NONE",
+"NONE",
+0.347
+],
+"only two left we can win this round": [
+"NONE",
+"NONE",
+0.998
+],
+"only two left, we can win this round": [
+"NONE",
+"NONE",
+0.999
+],
+"op on second i'll meet you": [
+"NONE",
+"FRAG",
+0.225
+],
+"open it the other door": [
+"OPEN",
+"OPEN",
+0.999
+],
+"open that door real quiet": [
+"OPEN",
+"OPEN",
+0.999
+],
+"open that door real quiet first": [
+"OPEN",
+"OPEN",
+0.998
+],
+"open the other door": [
+"OPEN",
+"OPEN",
+0.999
+],
+"open the other hatch, not this one": [
+"OPEN",
+"OPEN",
+0.819
+],
+"open the red door": [
+"OPEN",
+"OPEN",
+0.999
+],
+"open the red door but stay outside": [
+"OPEN",
+"OPEN",
+0.999
+],
+"open the window on the left": [
+"OPEN",
+"OPEN",
+0.999
+],
+"open window on the last hop": [
+"OPEN",
+"OPEN",
+0.791
+],
+"open window on the last hop turret": [
+"NONE",
+"OPEN",
+0.666
+],
+"open window on the left": [
+"NONE",
+"OPEN",
+0.663
+],
+"open window on the left harp through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.998
+],
+"open window on the left, hop through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.777
+],
+"open window on the left, hop through it and gonna run the rotate": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.769
+],
+"open window on the left. hop through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.759
+],
+"or watch": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.998
+],
+"or watch go over to that window i'm looking at": [
+"NONE",
+"HOLD_ANGLE",
+0.49
+],
+"over here": [
+"NONE",
+"FOLLOW_ME",
+0.55
+],
+"over here beach that wall on my go": [
+"BREACH",
+"BREACH",
+0.999
+],
+"over here look over here to me": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.996
+],
+"over here to me": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.99
+],
+"over there": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"over watch me from cover": [
+"COVER_ME",
+"COVER_ME",
+0.998
+],
+"overwatch main": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"overwatch me": [
+"COVER_ME",
+"COVER_ME",
+0.997
+],
+"overwatch me from cover": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"overwatch me from cover as soon as you molly on my mark, he's lit and hiding in the corner": [
+"COVER_ME",
+"COVER_ME",
+0.989
+],
+"overwatch me from cover blind the room for me": [
+"COVER_ME",
+"COVER_ME",
+0.994
+],
+"overwatch me from the roof": [
+"COVER_ME",
+"COVER_ME",
+0.998
+],
+"pale out through upstairs west window": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.996
+],
+"pandit tricking the reinforce on main wall": [
+"FRAG",
+"FRAG",
+0.733
+],
+"papa flash over for me": [
+"FLASH",
+"FLASH",
+0.999
+],
+"papa flash over for me okay": [
+"FLASH",
+"FLASH",
+0.999
+],
+"pause up full depth": [
+"NONE",
+"CHECK",
+0.26
+],
+"peep your crosshair on my pen somebody's gonna swing it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"peep your crosshair on my pin somebody's gonna swing it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"peepies on the back door": [
+"NONE",
+"HOLD_ANGLE",
+0.641
+],
+"pick an aid and bounce it behind the couch he's been sitting there all round": [
+"NONE",
+"FRAG",
+0.585
+],
+"pick one and toss it": [
+"FRAG",
+"FRAG",
+0.898
+],
+"pick one and toss it in": [
+"FRAG",
+"FRAG",
+0.931
+],
+"pick one and toss it in up on the bomb": [
+"FRAG",
+"FRAG",
+0.818
+],
+"pick one and toss it in, but and we hit it together": [
+"FRAG",
+"FRAG",
+0.817
+],
+"pick up a defuser": [
+"DEFUSE",
+"DEFUSE",
+0.954
+],
+"pick up the nade": [
+"NONE",
+"FRAG",
+0.378
+],
+"pick your crosshair mic and somebody's gonna swing it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.997
+],
+"pin them down": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"pin them down at blue stairs": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"pinch set with me": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.984
+],
+"pinch sight with me": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.977
+],
+"pinch site with me": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.993
+],
+"pinched them": [
+"NONE",
+"ATTACK",
+0.665
+],
+"plan it plan it now": [
+"PLANT",
+"PLANT",
+0.858
+],
+"plan it plan it now and hold your shots until he walks into the open": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.797
+],
+"plan it plan it now, but you've got the c4, set it up on a": [
+"PLANT",
+"PLANT",
+0.989
+],
+"plant": [
+"PLANT",
+"PLANT",
+0.999
+],
+"plant the bomb": [
+"PLANT",
+"PLANT",
+0.999
+],
+"plant the defuser": [
+"PLANT",
+"PLANT",
+0.999
+],
+"plant the defuser, slap the charge on it, and blow it": [
+"BREACH",
+"BREACH",
+0.963
+],
+"pop a flash over for me": [
+"FLASH",
+"FLASH",
+0.999
+],
+"pop a flash over for me first": [
+"FLASH",
+"FLASH",
+0.999
+],
+"pop a nade on the bomb and stick the defuser": [
+"FRAG",
+"FRAG",
+0.913
+],
+"pop a smock on the stairs": [
+"NONE",
+"DRONE",
+0.347
+],
+"pop a smock on the stairs, i got long, you take the other one": [
+"NONE",
+"OPEN",
+0.388
+],
+"prep a flash for west window and send it on 3": [
+"FLASH",
+"FLASH",
+0.999
+],
+"prep a flash for west window and send it on three": [
+"FLASH",
+"FLASH",
+0.999
+],
+"prepare a flash for the west window": [
+"FLASH",
+"FLASH",
+0.999
+],
+"prepare a flash for the west window and send it on three": [
+"FLASH",
+"FLASH",
+0.999
+],
+"pretty sure i heard stats, but maybe i'm just hearing things": [
+"MAYBE",
+"MAYBE",
+0.963
+],
+"pretty sure i heard steps but maybe i'm just hearing things": [
+"MAYBE",
+"MAYBE",
+0.841
+],
+"pretty sure i heard steps, but maybe i'm just hearing things": [
+"MAYBE",
+"MAYBE",
+0.842
+],
+"protect me": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"pull back out of the fight bro, was saving this round": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"pull back out of the fight bro, we're saving this round": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"pull back out of the fight, bro. we're saving this round": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"pull back to second": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"pull back to the south door": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"pull plant defaults, or watch": [
+"NONE",
+"PLANT",
+0.44
+],
+"push": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"push and i need suppressing fire like now, they're pushing me": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"push hard and clear hot zone first": [
+"ENTRY",
+"ENTRY",
+0.963
+],
+"push in": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push in and clear": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push in and clear ahead, but hold your shots until he walks into the open": [
+"ENTRY",
+"ENTRY",
+0.975
+],
+"push in and clear how": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push in and clear out": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push in and clear the room": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push in and clear the site": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push in and clear the site okay": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push in there": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"push in there and clear it out": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push in there and clear it out okay": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push in through that wall": [
+"ENTRY",
+"ENTRY",
+0.995
+],
+"push in through the east door": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push in through the hatch": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"push in thru that hole": [
+"ENTRY",
+"ENTRY",
+0.973
+],
+"push into kitchen": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push into room": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push into the hatch": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push into the house": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push into the room": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"push it": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push main": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push room": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push the door": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push through the south door and clear the room": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push through the south door and clear the room go": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"push through the south door and clear the room go, but keep your crosshair on my ping, somebody's gonna swing it first": [
+"ENTRY",
+"ENTRY",
+0.954
+],
+"push yellow stairs": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"pushin and clear how": [
+"ENTRY",
+"ENTRY",
+1.0
+],
+"pushin and clear how first": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"rap around to the right and catch them from the side": [
+"FLANK",
+"FLANK",
+0.998
+],
+"rap l to the window above you": [
+"RAPPEL",
+"RAPPEL",
+0.998
+],
+"rap l to the window above you and hold on the rope": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"rap out to the window above you": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"rap out to the window above you and hold on the rope": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"rappel around to the right and catch them from the side": [
+"NONE",
+"FLANK",
+0.582
+],
+"rappel to the right and catch them from the side": [
+"RAPPEL",
+"RAPPEL",
+0.99
+],
+"rappel to the roof": [
+"RAPPEL",
+"RAPPEL",
+1.0
+],
+"rappel to the window above the door": [
+"RAPPEL",
+"RAPPEL",
+1.0
+],
+"rappel to the window above you": [
+"RAPPEL",
+"RAPPEL",
+1.0
+],
+"rappel to the window above you and hold on the rape": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"rappel to the window above you and hold on the rope": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"rappel to the window above your head": [
+"RAPPEL",
+"RAPPEL",
+1.0
+],
+"reach the other hatch instead": [
+"BREACH",
+"BREACH",
+0.987
+],
+"ready": [
+"NONE",
+"CROUCH",
+0.345
+],
+"ready and i am on this handle, you cover whatever i am not looking at": [
+"COVER_ME",
+"COVER_ME",
+0.808
+],
+"ready crack south door for me": [
+"OPEN",
+"OPEN",
+0.999
+],
+"ready crack south door for me. just bullet. don't walk in": [
+"OPEN",
+"OPEN",
+0.998
+],
+"ready first": [
+"NONE",
+"DRONE",
+0.642
+],
+"ready, once that's done okay let's regroup you're way too deep for me to trade you": [
+"COME_BACK",
+"COME_BACK",
+0.998
+],
+"reentry": [
+"NONE",
+"COME_BACK",
+0.667
+],
+"repel to the window above you": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"repel to the window above you and hold on the rape": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"repel to the window above you and hold on the rape okay": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"repel to the window above you and hold on the rope": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"repel up the outside wall": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"repel up the outside wall uh repel up": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"repel up the outside wall uh repel up first": [
+"RAPPEL",
+"RAPPEL",
+0.998
+],
+"reposition the kitchen real quick": [
+"MOVE_TO",
+"MOVE_TO",
+0.993
+],
+"reposition to kitchen": [
+"MOVE_TO",
+"MOVE_TO",
+0.979
+],
+"reposition to kitchen meal quick": [
+"MOVE_TO",
+"MOVE_TO",
+0.992
+],
+"reposition to kitchen meal quick and watch the back door. they'll rotate through it": [
+"NONE",
+"HOLD_ANGLE",
+0.614
+],
+"reposition to kitchen real quick": [
+"MOVE_TO",
+"MOVE_TO",
+0.998
+],
+"right after that and we hit it together. you go": [
+"NONE",
+"FOLLOW_ME",
+0.561
+],
+"right after that come to me and stick close. we're moving as a pair": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.999
+],
+"right after that i'm on it if fuse protect me": [
+"COVER_ME",
+"COVER_ME",
+0.972
+],
+"right after that malay on my mark, he's lit and hiding in the corn": [
+"NONE",
+"NONE",
+0.928
+],
+"right after that okay go upstairs i meet you in a second": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"right after that start blasting, they're already nowhere here": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.993
+],
+"right now as soon as you get me up, bro. i'm down and bleeding out": [
+"REVIVE_ME",
+"REVIVE_ME",
+0.998
+],
+"right now as soon as you rope down to the left hand window and hang on it": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"roamer's on you": [
+"NONE",
+"NONE",
+0.347
+],
+"roamer's on you, engage him, he's all yours": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"roamer's on you, engage him, he's all yours okay": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"rofed up, get yourself over there, i'll meet you by the hatch": [
+"MOVE_TO",
+"MOVE_TO",
+0.999
+],
+"roger that copy i heard you": [
+"NONE",
+"NONE",
+1.0
+],
+"roger that, capri, i heard you": [
+"NONE",
+"NONE",
+1.0
+],
+"roger that, copy, i heard you": [
+"NONE",
+"NONE",
+1.0
+],
+"roger, that compy, i heard you": [
+"NONE",
+"NONE",
+0.999
+],
+"roll the cam in there": [
+"DRONE",
+"DRONE",
+0.997
+],
+"roll the cam in there get me some eyes": [
+"DRONE",
+"DRONE",
+0.974
+],
+"roll the cam in there get me some eyes main": [
+"DRONE",
+"DRONE",
+0.96
+],
+"roll the cam in there get me some eyes main, we hit it together": [
+"DRONE",
+"DRONE",
+0.997
+],
+"roma's on you": [
+"NONE",
+"NONE",
+0.641
+],
+"roma's on you engage him he's all yours": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"roma's on you, engage him, he's all yours": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"romer's on you engage him he's all yours": [
+"ATTACK",
+"ATTACK",
+0.999
+],
+"romer's on you, engage him, he's all yours": [
+"ATTACK",
+"ATTACK",
+0.998
+],
+"roofed up": [
+"NONE",
+"VAULT_WINDOW",
+0.323
+],
+"rooftop, get yourself over there, i meet you by the hatch": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"rooftop, get yourself over there, i'll meet you by the hatch": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"rooftop, get yourself over there. i'll meet you by the hatch": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"rooled up": [
+"RAPPEL",
+"RAPPEL",
+0.795
+],
+"rope": [
+"RAPPEL",
+"RAPPEL",
+0.998
+],
+"rope down to the left hand window": [
+"RAPPEL",
+"RAPPEL",
+1.0
+],
+"rope down to the left hand window and hang on it": [
+"RAPPEL",
+"RAPPEL",
+1.0
+],
+"rope down to the left hand window and hang on it and i'm on it": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"rope down to the left hand window and hang on it and i'm on it if fuse protect me": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"rope down to the left hand window and hang on it, but when i yoga, look round the back first": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"rope down to the left-hand window and hang on it": [
+"RAPPEL",
+"RAPPEL",
+1.0
+],
+"rope down to the left-hand window and hang on it and keep your gun on that window": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"rope down to the left-hand window and hang on it, i got long": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"rope down to the left-hand window and hang on it, keep your gun on that window": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"rope down to the left-hand window and hang on it, stop swinging": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"rope out to the window above you and hold on the rope": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"rope rooftop": [
+"RAPPEL",
+"RAPPEL",
+0.995
+],
+"rope rooftop, get yourself over there, i meet you by the hatch": [
+"NONE",
+"MOVE_TO",
+0.62
+],
+"rope rooftop, get yourself over there, i'll meet you by the hatch": [
+"NONE",
+"MOVE_TO",
+0.672
+],
+"rotate": [
+"MOVE_TO",
+"MOVE_TO",
+0.713
+],
+"rotate in to cover the other door": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.751
+],
+"rotate in to cover the other door as soon as you if he's it, you got time": [
+"NONE",
+"HOLD_OTHER_ANGLE",
+0.661
+],
+"rotate overwatch me": [
+"COVER_ME",
+"COVER_ME",
+0.751
+],
+"rotate overwatch me from cover": [
+"COVER_ME",
+"COVER_ME",
+0.96
+],
+"rotate to east door": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"rotate to the east door": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"rotop roof, get yourself over there, i'll meet you by the hatch": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"rotop roof, get yourself over there. i'll meet you by the hatch": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"rotopost, get yourself over there, i meet you by the hatch": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"rotopost, get yourself over there, i'll meet you by the hatch": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"rotopost, get yourself over there. i'll meet you by the hatch": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"rotoproof": [
+"NONE",
+"NONE",
+0.344
+],
+"run back": [
+"COME_BACK",
+"COME_BACK",
+0.989
+],
+"run over to my pain, the one i just placed": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"run over to my paint to": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"run over to my paint to when i just paste": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"run over to my ping, the one i just placed": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"run the rotate": [
+"NONE",
+"DRONE",
+0.526
+],
+"runover to my pain, the one i just placed": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"runover to my ping, the one i just placed": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"rush in through there": [
+"ENTRY",
+"ENTRY",
+0.992
+],
+"rush kitchen": [
+"ENTRY",
+"ENTRY",
+0.985
+],
+"scout it out before we go in": [
+"DRONE",
+"DRONE",
+0.999
+],
+"scout it out before we go in first": [
+"DRONE",
+"DRONE",
+0.999
+],
+"scout the room before we go in": [
+"DRONE",
+"DRONE",
+0.999
+],
+"scout the site": [
+"DRONE",
+"DRONE",
+0.999
+],
+"scrap that order": [
+"WAIT",
+"WAIT",
+0.988
+],
+"scrap the rapel call it off": [
+"NONE",
+"DEFUSE",
+0.543
+],
+"scrap the rappal, call itself": [
+"NONE",
+"FRAG",
+0.415
+],
+"scrap the rappel, call it itself": [
+"NONE",
+"PLANT",
+0.518
+],
+"scrap the rappel, call it off": [
+"DEFUSE",
+"DEFUSE",
+0.735
+],
+"scrap the rappel, call itself": [
+"NONE",
+"PLANT",
+0.514
+],
+"scrap the rappell, call it off": [
+"DEFUSE",
+"DEFUSE",
+0.753
+],
+"scrap the rappelle, call it off": [
+"DEFUSE",
+"DEFUSE",
+0.814
+],
+"scrapped that last call": [
+"WAIT",
+"WAIT",
+0.95
+],
+"scratch the molly": [
+"WAIT",
+"WAIT",
+0.975
+],
+"seize fire": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"seize fire seize fire": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"seize fire seize fire uh friendlies crossing": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"seize fire seize fire uh friendlies crossing seize fire": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"seize fire seize fire uh friendlies crossing seize fire and uh behind you behind you": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"seize fire seize fire uh friendlies crossing seize fire and uh behind you behind you turn and look behind": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"seize fire uh friendlies crossing": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"seize fire, molly on my mark, he's lit": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"send it": [
+"GO_NOW",
+"GO_NOW",
+0.998
+],
+"send it check left real quick. i had stepped": [
+"CHECK",
+"CHECK",
+0.994
+],
+"send it on three": [
+"GO_NOW",
+"GO_NOW",
+0.924
+],
+"send your little drone upstairs first, i wanna know who's home": [
+"DRONE",
+"DRONE",
+0.999
+],
+"send your little drone upstairs first. i want to know who's home": [
+"DRONE",
+"DRONE",
+0.999
+],
+"she threw the east door and sat on it": [
+"NONE",
+"NONE",
+0.346
+],
+"she threw the east door and sat on it if he's it": [
+"NONE",
+"FRAG",
+0.418
+],
+"she threw the east door and sat on it if he's it, you got time": [
+"NONE",
+"FLASH",
+0.245
+],
+"shift through the store there's that done it": [
+"MOVE_TO",
+"MOVE_TO",
+0.998
+],
+"shiten": [
+"NONE",
+"CROUCH",
+0.403
+],
+"shiten, shuten he's reloading": [
+"NONE",
+"HOLD_FIRE",
+0.389
+],
+"shiten, shuten he's reloading okay": [
+"NONE",
+"DEFUSE",
+0.318
+],
+"shoot": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot anything that peaks": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot anything that peeks": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot here a peeks": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot him he's reloading": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot him, shoot him he's reloading": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.989
+],
+"shoot him, shoot him, he's reliving": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.996
+],
+"shoot him, shoot him, he's reloading": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.972
+],
+"shoot straight ahead, he's wide swinging you": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot straight ahead, he's wide swinging you okay": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot straight ahead. he's wide swinging you": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot straight ahead. he's wide swinging you first": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot straight ahead. his white's winging you": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot straight hair he's wide swinging you": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot there where i marked": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot there where i marked start shooting": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot through the east door they're stacked on it": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot through the east door, they're stacked on it": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot through the east door, they're stacked on it first": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot through the east door, they're stacked on it. do not open up on them, keep your gun quiet": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shoot whoever peeks": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"shut the door behind me": [
+"NONE",
+"NONE",
+1.0
+],
+"shut the door behind you": [
+"NONE",
+"NONE",
+0.999
+],
+"shut the door behind youth": [
+"NONE",
+"NONE",
+0.999
+],
+"shuten he's reloading": [
+"NONE",
+"HOLD_FIRE",
+0.364
+],
+"shuten he's reloading okay": [
+"NONE",
+"NONE",
+0.335
+],
+"shuten he's reloading, but i'll rotate left": [
+"NONE",
+"NONE",
+0.334
+],
+"shuten he's reloading, but i'll rotate left you head right": [
+"NONE",
+"MOVE_TO",
+0.33
+],
+"shutn he's reloading": [
+"NONE",
+"NONE",
+0.541
+],
+"slap the charge on the barricade and blow it": [
+"BREACH",
+"BREACH",
+1.0
+],
+"slide the gate open keep it quiet": [
+"OPEN",
+"OPEN",
+0.999
+],
+"slide the gate open keep it quiet and i got mains covered": [
+"OPEN",
+"OPEN",
+0.998
+],
+"slide the gate open keep it quiet and i got mains covered, you watched the other doll": [
+"OPEN",
+"OPEN",
+0.996
+],
+"slide the gate open, keep it quiet": [
+"OPEN",
+"OPEN",
+0.999
+],
+"smell get im pushed": [
+"NONE",
+"NONE",
+0.678
+],
+"smell get impushed": [
+"NONE",
+"NONE",
+0.954
+],
+"smith the dolly": [
+"FRAG",
+"FRAG",
+0.848
+],
+"smoke": [
+"SMOKE",
+"SMOKE",
+0.999
+],
+"smoke blue stairs": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke everywhere": [
+"SMOKE",
+"SMOKE",
+0.999
+],
+"smoke get im pushed": [
+"SMOKE",
+"SMOKE",
+0.999
+],
+"smoke get pushed": [
+"SMOKE",
+"SMOKE",
+0.999
+],
+"smoke it": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke it and bush": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke it and bush and get over to the table upon second. i'll meet you": [
+"NONE",
+"SMOKE",
+0.668
+],
+"smoke it and bush as soon as you can": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke it and push": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke kitchen": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke main": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke on my march": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke on my march as soon as you you're one hp man, get yourself somewhere safe": [
+"SMOKE",
+"SMOKE",
+0.997
+],
+"smoke on my march. i got long, you take the other one": [
+"SMOKE",
+"SMOKE",
+0.999
+],
+"smoke quest door": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke room": [
+"SMOKE",
+"SMOKE",
+0.999
+],
+"smoke the bomb": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke the dolly": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke the door": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke the doorway": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke the doorway, but west is yours bot dont let nobody come through first": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke the doorway, get me some info on what's inside first": [
+"SMOKE",
+"SMOKE",
+0.999
+],
+"smoke the doorway, you're cleared hot": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke the east door": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke the hatch": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke the house": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke the north window": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke the room": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke the table": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke the west door": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke west door": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke where": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smoke yellow stairs": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"smokey and push": [
+"SMOKE",
+"SMOKE",
+0.95
+],
+"so flake him through south door": [
+"NONE",
+"FLASH",
+0.654
+],
+"so press the east window": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"so press the east window keep them keep them inside": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"so press the east window keep them keep them inside okay": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"so press the east window keep them keep them inside okay and stay put, don't budge": [
+"SUPPRESS",
+"SUPPRESS",
+0.996
+],
+"spam bullets at them so they can't pee": [
+"SUPPRESS",
+"SUPPRESS",
+0.994
+],
+"spam bullets at them so they can't pee, i'm going for the fault plant": [
+"SUPPRESS",
+"SUPPRESS",
+0.996
+],
+"spam bullets at them so they can't peek": [
+"SUPPRESS",
+"SUPPRESS",
+0.981
+],
+"spam bullets at them so they can't peek, i'm going for default plant": [
+"SUPPRESS",
+"SUPPRESS",
+0.981
+],
+"spam bullets at them so they can't peek. i'm going for default plant": [
+"SUPPRESS",
+"SUPPRESS",
+0.983
+],
+"span bullets at them so they can't peek": [
+"SUPPRESS",
+"SUPPRESS",
+0.968
+],
+"split the angles": [
+"NONE",
+"FLANK",
+0.658
+],
+"split the angles i take": [
+"NONE",
+"FLANK",
+0.664
+],
+"split the angles i take hatch you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.997
+],
+"split the angles i take hatch, you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.995
+],
+"split the angles, i take hatch, you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.982
+],
+"split the angles. i take catch, you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.963
+],
+"split the angles. i take hatch, you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.976
+],
+"stand back up now": [
+"STAND_UP",
+"STAND_UP",
+0.998
+],
+"stand by": [
+"NONE",
+"HOLD_POSITION",
+0.677
+],
+"stand by it": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.915
+],
+"stand by, once that's done": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.811
+],
+"start blasting they already know we're here": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"start blasting, they already know we're here": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"start blasting, they're already nowhere here": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"start shooting": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"start shooting when i say go": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"start shooting when i say go, ok": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"start shooting when i say go, okay": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"start shooting when i say go, okay, and finally check fire, check fire, i'm crossing, do not shoot": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.76
+],
+"stay in this place no moving": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.999
+],
+"stay in this place no moving okay": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.999
+],
+"stay looking on that door dont take eyes off it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"stay outside the red door": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.752
+],
+"stay outside, stay looking on that door dont take eyes off it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"stay put bot": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.999
+],
+"stay put bot, they are shooting us": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.998
+],
+"stay put bot, they are shooting us get behind something and hide": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.998
+],
+"stay put on budge": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.999
+],
+"stay put on budge and hit them from behind whilst i give the word": [
+"NONE",
+"HOLD_POSITION",
+0.38
+],
+"stay put on the roof": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.998
+],
+"stay put, don't budge": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.999
+],
+"stay put, don't bungee": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.998
+],
+"stick close, we're moving as a pair": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.853
+],
+"stick close. we're moving as a pair": [
+"FOLLOW_ME",
+"FOLLOW_ME",
+0.811
+],
+"stick the defuse": [
+"PLANT",
+"PLANT",
+0.995
+],
+"stick the defuser": [
+"PLANT",
+"PLANT",
+0.996
+],
+"stick the diffuse": [
+"PLANT",
+"PLANT",
+0.994
+],
+"stick the diffuse first": [
+"NONE",
+"PLANT",
+0.667
+],
+"stop cancel whatever you're doing": [
+"WAIT",
+"WAIT",
+0.984
+],
+"stop standing in the open": [
+"NONE",
+"WAIT",
+0.54
+],
+"stop standing in the open get somewhere they cant see you": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"stop swinging": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.998
+],
+"stop swinging and break line of sight": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.815
+],
+"stop swinging and break line of sight okay": [
+"NONE",
+"TAKE_COVER",
+0.659
+],
+"stop swinging and breathe": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.718
+],
+"stop swinging and breathe finally": [
+"NONE",
+"HOLD_FIRE",
+0.64
+],
+"stop, cancel whatever you're doing": [
+"WAIT",
+"WAIT",
+0.983
+],
+"store at the brown door": [
+"PLANT",
+"PLANT",
+0.718
+],
+"store the brown door": [
+"NONE",
+"HOLD_ANGLE",
+0.404
+],
+"suppressive fire on the left door": [
+"SUPPRESS",
+"SUPPRESS",
+0.999
+],
+"swing main and clear out sight": [
+"ENTRY",
+"ENTRY",
+0.94
+],
+"swing main and clear out site": [
+"ENTRY",
+"ENTRY",
+0.978
+],
+"swing main and clear out site. blind them for me": [
+"NONE",
+"ENTRY",
+0.545
+],
+"swing main and clear outsight": [
+"ENTRY",
+"ENTRY",
+0.891
+],
+"swing mean and clear out sight": [
+"ENTRY",
+"ENTRY",
+0.917
+],
+"take him out with a nade, cook it": [
+"FRAG",
+"FRAG",
+0.734
+],
+"take him out with a nade, cook it and send it": [
+"FRAG",
+"FRAG",
+0.927
+],
+"take him out with a nade, cook it and send it as soon as you blind room for me": [
+"FRAG",
+"FRAG",
+0.96
+],
+"take him out with a nade, cook it and send it first": [
+"FRAG",
+"FRAG",
+0.967
+],
+"take him out with a nade, cook it, and send it": [
+"FRAG",
+"FRAG",
+0.928
+],
+"take him out with a nade, cook it, and send it first": [
+"FRAG",
+"FRAG",
+0.969
+],
+"take him out with a nade, go in and send it": [
+"ATTACK",
+"ATTACK",
+0.723
+],
+"take him out with a night cook it and send it": [
+"ATTACK",
+"ATTACK",
+0.963
+],
+"take him out with an aid, cook it and send it": [
+"NONE",
+"ATTACK",
+0.586
+],
+"take sight": [
+"NONE",
+"MOVE_TO",
+0.436
+],
+"take sight check every corner": [
+"CHECK",
+"CHECK",
+0.973
+],
+"take sight on the left window": [
+"NONE",
+"NONE",
+0.338
+],
+"take sight, check every corner": [
+"CHECK",
+"CHECK",
+0.767
+],
+"take sight, check every corner and make us a hole in this floor": [
+"ENTRY",
+"ENTRY",
+0.683
+],
+"take sight, check every corner and make us a hole in this floor, lad is fine": [
+"NONE",
+"ENTRY",
+0.626
+],
+"take site": [
+"MOVE_TO",
+"MOVE_TO",
+0.689
+],
+"take site n check every corner": [
+"NONE",
+"ENTRY",
+0.581
+],
+"take site, check every corner": [
+"NONE",
+"CHECK",
+0.586
+],
+"take site, check every corner and you're fine there, don't go anywhere": [
+"NONE",
+"CHECK",
+0.483
+],
+"take site, check every corner, and you're fine there, don't go anywhere": [
+"NONE",
+"CHECK",
+0.465
+],
+"take site, check every corner, split the angles": [
+"NONE",
+"ENTRY",
+0.567
+],
+"take the flank through my marker they're all looking at me": [
+"FLANK",
+"FLANK",
+0.999
+],
+"take the flank through my marker, they are all looking at me": [
+"FLANK",
+"FLANK",
+0.999
+],
+"take the flank through my marker, they're all looking at me": [
+"FLANK",
+"FLANK",
+0.999
+],
+"take the flank through my marker, they're all looking at me; they're swinging me from both sides, i need help": [
+"FLANK",
+"FLANK",
+0.999
+],
+"take the flank through my marker. they're all looking at me": [
+"FLANK",
+"FLANK",
+0.999
+],
+"take the flanks through my marker they're all looking at me": [
+"FLANK",
+"FLANK",
+0.999
+],
+"take them out with a grenade": [
+"NONE",
+"ATTACK",
+0.671
+],
+"take them out with a grenade throw the flag in": [
+"NONE",
+"ATTACK",
+0.537
+],
+"taste me real quick. i need to see which gadget you've got out": [
+"NONE",
+"NONE",
+0.449
+],
+"that guy is on the roof. i heard him run across": [
+"NONE",
+"NONE",
+1.0
+],
+"that hatch is already open, just jump down through it": [
+"JUMP",
+"JUMP",
+0.999
+],
+"that hatch is already open, just jump down through it and pinch site with me": [
+"JUMP",
+"JUMP",
+1.0
+],
+"that hatch is already open. just jump down through it": [
+"JUMP",
+"JUMP",
+0.999
+],
+"that hatch is already open. just jump down to it": [
+"JUMP",
+"JUMP",
+1.0
+],
+"that hatch is already open. just jump down to it and pinch sight with me": [
+"JUMP",
+"JUMP",
+1.0
+],
+"that wall open": [
+"BREACH",
+"BREACH",
+0.999
+],
+"that's it": [
+"NONE",
+"NONE",
+0.998
+],
+"the couch on second floor got his gadget right next to him": [
+"NONE",
+"NONE",
+0.295
+],
+"the fault plap": [
+"NONE",
+"JUMP",
+0.479
+],
+"the other door open it": [
+"OPEN",
+"OPEN",
+0.999
+],
+"the other window": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"the other window instead": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"the red door open it but stay outside": [
+"OPEN",
+"OPEN",
+0.999
+],
+"the window on your left": [
+"NONE",
+"VAULT_WINDOW",
+0.23
+],
+"their spraying through the soft wall puts something that stops rounds between you and them": [
+"NONE",
+"SUPPRESS",
+0.654
+],
+"there were tape through it": [
+"NONE",
+"NONE",
+0.998
+],
+"they are shooting us get behind something and hide": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"they got an awp holding long": [
+"NONE",
+"NONE",
+0.852
+],
+"they got inatably pee holding wrong": [
+"NONE",
+"NONE",
+0.531
+],
+"they sprang through the smoke": [
+"NONE",
+"NONE",
+1.0
+],
+"they sprang through the smoke, get down, get down": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"they sprang through the smoke, get down, get down, once that's done": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"they'll rotate through it, gonna run the rotate": [
+"NONE",
+"FLANK",
+0.351
+],
+"they're pushing me watch my back, i'm going for the awp": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"they're spraying through the smoke": [
+"NONE",
+"NONE",
+1.0
+],
+"they're spraying through the smoke, get down get down": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"they're spraying through the smoke. get done, get down": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"they're spraying through the smoke. get down, get down": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"they're spraying through the soft wall, but something that stops rounds between you and them": [
+"NONE",
+"HOLD_FIRE",
+0.467
+],
+"they're spraying through the soft wall, put something that stops rounds between you and them": [
+"SUPPRESS",
+"SUPPRESS",
+0.709
+],
+"they're spraying through the soft wall. put something that stops rounds between you and them": [
+"SUPPRESS",
+"SUPPRESS",
+0.768
+],
+"they're swinging me from both sides": [
+"NONE",
+"NONE",
+1.0
+],
+"they're swinging me from both sides i need help": [
+"HELP",
+"HELP",
+0.928
+],
+"they're swinging me from both sides, i need help": [
+"HELP",
+"HELP",
+0.984
+],
+"they're swinging me from both sides, i need help yo": [
+"HELP",
+"HELP",
+0.991
+],
+"they're swinging me from both sides. i need help": [
+"HELP",
+"HELP",
+0.818
+],
+"those decades i'll cover": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.709
+],
+"those decades i'll cover and take the flank through my marker, they are all looking at me": [
+"FLANK",
+"FLANK",
+0.998
+],
+"those decades i'll cover first": [
+"NONE",
+"DRONE",
+0.41
+],
+"those decades i'll cover okay": [
+"COVER_ME",
+"COVER_ME",
+0.702
+],
+"those decades i'll cover okay and keep eyes on the back door": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"those decades i'll cover okay and keep eyes on the back door. shoot whoever peeks": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.999
+],
+"those decades i'll cover, but keep eyes on the back stairs in case their roma rotates first": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"those tickets are cover": [
+"NONE",
+"NONE",
+0.762
+],
+"three rushing on the right all together": [
+"NONE",
+"NONE",
+0.717
+],
+"three rushing on the right altogether": [
+"NONE",
+"NONE",
+0.994
+],
+"three rushing on the right, all together": [
+"NONE",
+"NONE",
+0.888
+],
+"three rushing on the right, altogether": [
+"NONE",
+"NONE",
+0.865
+],
+"three russian on the right altogether": [
+"NONE",
+"NONE",
+0.981
+],
+"three south door and pinch them": [
+"ATTACK",
+"ATTACK",
+0.772
+],
+"throw a flash bang over the table": [
+"FLASH",
+"FLASH",
+0.999
+],
+"throw a flash bang over the table okay": [
+"FLASH",
+"FLASH",
+0.999
+],
+"throw smoke on my march": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"throw smoke on my mark": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"throw smoke on my mark smoke on my march": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"throw that wall open": [
+"BREACH",
+"BREACH",
+0.999
+],
+"throw that wall open open window on the left": [
+"NONE",
+"OPEN",
+0.417
+],
+"throw the flag in": [
+"NONE",
+"DRONE",
+0.544
+],
+"throw the flag in and keep your crosshair on my ping, somebody's gonna swing it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.984
+],
+"throws that war open": [
+"BREACH",
+"BREACH",
+0.99
+],
+"thus one's crouched under the table on top floor i think": [
+"NONE",
+"NONE",
+0.972
+],
+"tit them with a molly burn him out of the corner": [
+"FRAG",
+"FRAG",
+0.999
+],
+"to second you": [
+"NONE",
+"CROUCH",
+0.322
+],
+"top floor blue stares keep your gun on it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+0.799
+],
+"top of stairs": [
+"NONE",
+"MOVE_TO",
+0.667
+],
+"toss a nade at the chairs somebody is hiding": [
+"FRAG",
+"FRAG",
+0.999
+],
+"toss a nade at the chairs somebody is hiding okay": [
+"FRAG",
+"FRAG",
+0.999
+],
+"toss the nade in the room": [
+"FRAG",
+"FRAG",
+0.997
+],
+"turn and look behind": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"turn and look behind you": [
+"LOOK_AT",
+"LOOK_AT",
+1.0
+],
+"turn and look behind you behind you": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"turn around man": [
+"LOOK_AT",
+"LOOK_AT",
+0.997
+],
+"turn around man, check behind you": [
+"NONE",
+"CHECK",
+0.624
+],
+"turn around man, check behind you he's lit": [
+"CHECK",
+"CHECK",
+0.697
+],
+"turn around man, check behind you, he's lit": [
+"CHECK",
+"CHECK",
+0.696
+],
+"turn around man, check behind you, his slip": [
+"CHECK",
+"CHECK",
+0.699
+],
+"turn around, man, check behind you": [
+"NONE",
+"CHECK",
+0.531
+],
+"turn around, man, check behind you, he's lit": [
+"NONE",
+"CHECK",
+0.567
+],
+"turn around, man, check behind you. he's lit": [
+"NONE",
+"CHECK",
+0.576
+],
+"turn to me": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.999
+],
+"turret": [
+"NONE",
+"NONE",
+0.27
+],
+"two in kitchen, one's mute": [
+"NONE",
+"NONE",
+1.0
+],
+"two in kitchen, one's mute,": [
+"NONE",
+"NONE",
+1.0
+],
+"two in kitchen, one's neep": [
+"NONE",
+"NONE",
+1.0
+],
+"u go prone behind the bed": [
+"NONE",
+"TAKE_COVER",
+0.417
+],
+"u nade behind the pin": [
+"FRAG",
+"FRAG",
+0.966
+],
+"u take the other door": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"uh behind you behind you": [
+"NONE",
+"TAKE_COVER",
+0.383
+],
+"uh behind you behind you turn": [
+"NONE",
+"LOOK_AT",
+0.34
+],
+"uh behind you behind you turn and look behind": [
+"LOOK_AT",
+"LOOK_AT",
+0.996
+],
+"uh behind you behind you turn and look behind right after": [
+"LOOK_AT",
+"LOOK_AT",
+0.998
+],
+"uh blow the wall where i put the pin": [
+"BREACH",
+"BREACH",
+1.0
+],
+"uh dont come back yet do not come back": [
+"NONE",
+"NONE",
+0.66
+],
+"uh dont frag theres a hostage in there": [
+"NONE",
+"NONE",
+0.994
+],
+"uh friendlies crossing": [
+"NONE",
+"NONE",
+0.997
+],
+"uh hang on your rope outside that window": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"uh hang on your rope outside that window okay": [
+"RAPPEL",
+"RAPPEL",
+0.999
+],
+"uh i dont no man i really dont no": [
+"DONT_KNOW",
+"DONT_KNOW",
+0.984
+],
+"uh look on that window the one on the left side": [
+"LOOK_AT",
+"LOOK_AT",
+0.759
+],
+"uh look on that window the one on the left side okay": [
+"LOOK_AT",
+"LOOK_AT",
+0.735
+],
+"uh on my mark": [
+"NONE",
+"HOLD_POSITION",
+0.497
+],
+"uh on my mark crack that door open": [
+"OPEN",
+"OPEN",
+0.999
+],
+"uh on my mark crack that door open as soon as you get flat on your belly, right now": [
+"OPEN",
+"OPEN",
+0.999
+],
+"uh on my mark crack that door open go ahead and shoot, you don't have to ask me": [
+"OPEN",
+"OPEN",
+0.768
+],
+"uh on my mark crack that door open okay": [
+"OPEN",
+"OPEN",
+0.999
+],
+"uh on my mark crack that door open okay and kill their last defender, i don't care how you do it": [
+"OPEN",
+"OPEN",
+0.998
+],
+"uh open that door real quiet": [
+"OPEN",
+"OPEN",
+0.999
+],
+"uh open that door real quiet on my call": [
+"OPEN",
+"OPEN",
+0.999
+],
+"uh the red door open it": [
+"OPEN",
+"OPEN",
+0.999
+],
+"uh the red door open it but stay outside": [
+"OPEN",
+"OPEN",
+0.999
+],
+"uh the red door open it but stay outside as soon as you get me some info on what's inside first": [
+"OPEN",
+"OPEN",
+0.999
+],
+"uh you drop dawn off the ledge i am waiting below you": [
+"JUMP",
+"JUMP",
+0.998
+],
+"unlatch the hatch on the floor will drop later": [
+"NONE",
+"OPEN",
+0.571
+],
+"unlatch the hatch on the floor, we'll drop later": [
+"OPEN",
+"OPEN",
+0.813
+],
+"unlatch the hatch on the floor, will drop later": [
+"OPEN",
+"OPEN",
+0.796
+],
+"unlatch the hatch on the floor, you'll drop later": [
+"OPEN",
+"OPEN",
+0.786
+],
+"unless the hatch on the floor will drop": [
+"NONE",
+"CHECK",
+0.281
+],
+"unless the hatch on the floor will drop later": [
+"NONE",
+"CHECK",
+0.348
+],
+"until you entry. ready": [
+"NONE",
+"ENTRY",
+0.5
+],
+"up on second, i'll meet you okay": [
+"NONE",
+"MOVE_TO",
+0.222
+],
+"up on the bomb": [
+"NONE",
+"DEFUSE",
+0.618
+],
+"up on the bomb and stick the diffuse": [
+"DEFUSE",
+"DEFUSE",
+0.994
+],
+"up on the bomb and stick the diffuse okay": [
+"DEFUSE",
+"DEFUSE",
+0.992
+],
+"upon second. i'll meet you": [
+"NONE",
+"NONE",
+0.549
+],
+"upon second. i'll meet you okay": [
+"NONE",
+"NONE",
+0.507
+],
+"upon second. i'll meet you watch my back, i'm going for the awp": [
+"COVER_ME",
+"COVER_ME",
+0.997
+],
+"upstairs west window bale out through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.998
+],
+"upstairs west window, bail out through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"upstairs west window, pale out through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"upstairs, west window, pale out through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"use it, you got time": [
+"NONE",
+"PLANT",
+0.321
+],
+"use the west window to bail out": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.971
+],
+"valk": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.896
+],
+"valk calm top of stairs": [
+"NONE",
+"ENTRY",
+0.428
+],
+"valk cam top of stairs": [
+"NONE",
+"VAULT_WINDOW",
+0.371
+],
+"vandertricking the reinforced on main mole": [
+"NONE",
+"FRAG",
+0.655
+],
+"vault in there": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.998
+],
+"vault in there, the window on your left": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"vault in through the window on your left": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"vault out through west window": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"vault the door open, light is fine": [
+"NONE",
+"OPEN",
+0.645
+],
+"voc cam top upstairs": [
+"NONE",
+"MOVE_TO",
+0.62
+],
+"wait wait, scratch that, don't open it yet": [
+"WAIT",
+"WAIT",
+0.999
+],
+"wait, wait, scratch that, don't open it yet": [
+"WAIT",
+"WAIT",
+0.999
+],
+"walk down this hallway": [
+"MOVE_TO",
+"MOVE_TO",
+0.997
+],
+"walk down this hallway and rotate in to cover the other door": [
+"MOVE_TO",
+"MOVE_TO",
+0.945
+],
+"walk down to the left hand window and hang on it": [
+"NONE",
+"RAPPEL",
+0.649
+],
+"watch me": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"watch me from colour": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"watch me from cover": [
+"COVER_ME",
+"COVER_ME",
+0.997
+],
+"watch my back": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"watch my back i'm going for the awps": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"watch my back, i'm going for the awp": [
+"COVER_ME",
+"COVER_ME",
+0.999
+],
+"watch the back door": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"watch the back door they rotate through it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"watch the back door, they'll rotate through it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"watch the back door, they'll rotate through it, gonna run the rotate": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"watch the back door. there were tape through it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"watch the back door. they'll rotate through it": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"watch the hatch in case they drop down on us": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"watch the window above you i think somebody is their": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"watch the window above you i think somebody is there": [
+"HOLD_ANGLE",
+"HOLD_ANGLE",
+1.0
+],
+"we are on the door they can see straight through": [
+"NONE",
+"NONE",
+0.585
+],
+"we drop on their head": [
+"NONE",
+"JUMP",
+0.568
+],
+"we drop on their heads": [
+"NONE",
+"JUMP",
+0.514
+],
+"we hit it together, you go in when i say go": [
+"NONE",
+"ENTRY",
+0.451
+],
+"we lost this fight pull back to second": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"we lost this fight, pull back": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"we lost this fight, pull back to second": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"we lost this fight, pull back to second keep your crosshair on my ping, somebody's gonna swing it": [
+"FALL_BACK",
+"FALL_BACK",
+0.995
+],
+"we lost this fight, pull back to second you": [
+"FALL_BACK",
+"FALL_BACK",
+0.999
+],
+"we lost this fight, pull back to second you uh you drop dawn off the ledge i am waiting below you": [
+"FALL_BACK",
+"FALL_BACK",
+0.995
+],
+"we'll open the other hatch, not this one": [
+"OPEN",
+"OPEN",
+0.874
+],
+"we'll open the other hatch, not this one first": [
+"NONE",
+"OPEN",
+0.54
+],
+"we'll open the other hatch, not this one okay": [
+"OPEN",
+"OPEN",
+0.935
+],
+"weapons height, you are giving away our position": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.829
+],
+"weapons tight, you are giving away our position": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"weapons tight, you're giving away our position": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.999
+],
+"weapons tight, you're giving away our position we'll open the other hatch, not this one": [
+"HOLD_FIRE",
+"HOLD_FIRE",
+0.998
+],
+"well that hatch opened then we drop on their heads": [
+"NONE",
+"BREACH",
+0.585
+],
+"well well, is he not yet": [
+"WAIT",
+"WAIT",
+0.985
+],
+"west is yours bot dont let nobody come through": [
+"NONE",
+"HOLD_ANGLE",
+0.46
+],
+"west window": [
+"NONE",
+"NONE",
+0.847
+],
+"west window's got a trap on it climb in the other window instead": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.998
+],
+"west window's got a trap on it, climb in the other window instead": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.998
+],
+"west window's got a trap on it. climb in the other window instead": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.998
+],
+"west window, bail out through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"west window, pale out through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"west window, pull out through it": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.998
+],
+"west windows got a trap on it climb in the other window instead": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.983
+],
+"west windows got a trap on it, climb in the other window instead": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.996
+],
+"westwind has got a trap on it, climb": [
+"NONE",
+"VAULT_WINDOW",
+0.609
+],
+"westwind has got a trap on it, climb and the other window instead": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.938
+],
+"what's your pain like by you lagging": [
+"NONE",
+"NONE",
+0.981
+],
+"what's your ping like, are you lagging": [
+"NONE",
+"NONE",
+0.984
+],
+"what's your ping like? are you lagging": [
+"NONE",
+"NONE",
+0.998
+],
+"what's your ping like? are you laggings": [
+"NONE",
+"NONE",
+0.996
+],
+"when i call a turn and look at the west door, i'll bait your mouth": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"when i call it turn and look at the west door, i'll bait him out": [
+"LOOK_AT",
+"LOOK_AT",
+0.997
+],
+"when i call it, turn and look at the west door, i'll bait him out": [
+"LOOK_AT",
+"LOOK_AT",
+0.995
+],
+"when i just paste": [
+"NONE",
+"NONE",
+0.374
+],
+"when i say go": [
+"NONE",
+"GO_NOW",
+0.229
+],
+"when i say go first": [
+"DRONE",
+"DRONE",
+0.816
+],
+"when i say go look at the south door and not before": [
+"LOOK_AT",
+"LOOK_AT",
+0.998
+],
+"when i say go look at the south door and not beforeth": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"when i say go look at the south door, not before": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"when i say go, look at the soft oar, not before": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"when i say go, look at the soft oar, not before okay": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"when i say go, look at the south door, not before": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"when i say go, look at the south door, not four": [
+"LOOK_AT",
+"LOOK_AT",
+0.999
+],
+"when i say go, swing main and clear out sight": [
+"ENTRY",
+"ENTRY",
+0.995
+],
+"when i say go, swing main and clear out site": [
+"ENTRY",
+"ENTRY",
+0.998
+],
+"when i say go, swing main and clear out site okay": [
+"ENTRY",
+"ENTRY",
+0.999
+],
+"when i say go, swing main and clear outsight": [
+"ENTRY",
+"ENTRY",
+0.995
+],
+"when i say go, swing main and clear site": [
+"ENTRY",
+"ENTRY",
+0.987
+],
+"when i say go, swing mean and clear out sight": [
+"ENTRY",
+"ENTRY",
+0.997
+],
+"when i say go, swing mean and clear out sight take sight": [
+"ENTRY",
+"ENTRY",
+0.992
+],
+"when i say go, swing mean and clear out sight take sight, check every corner": [
+"ENTRY",
+"ENTRY",
+0.997
+],
+"when i say go, swing mean and clear outsight": [
+"ENTRY",
+"ENTRY",
+0.993
+],
+"when i yell go loop round the back": [
+"FLANK",
+"FLANK",
+0.999
+],
+"when i yell go, loop round the back": [
+"FLANK",
+"FLANK",
+0.999
+],
+"when i yell go, loop round the back and defuse it, you've got time": [
+"FLANK",
+"FLANK",
+0.999
+],
+"when i yell go, loop round the back as soon as you stay looking on that door": [
+"FLANK",
+"FLANK",
+0.998
+],
+"when i yell go, loop round the back okay": [
+"FLANK",
+"FLANK",
+0.999
+],
+"when i yell go, loop round the back, is a guy camping blue stares": [
+"FLANK",
+"FLANK",
+0.999
+],
+"when i yelled go leap ran the back": [
+"JUMP",
+"JUMP",
+0.823
+],
+"when i yoga": [
+"NONE",
+"NONE",
+0.373
+],
+"when i yoga, look round the back": [
+"NONE",
+"LOOK_AT",
+0.5
+],
+"when i yoga, look round the back first": [
+"NONE",
+"DRONE",
+0.346
+],
+"when those ordiophen disclaimin": [
+"NONE",
+"DEFUSE",
+0.301
+],
+"where do that copy a handy": [
+"NONE",
+"NONE",
+1.0
+],
+"whoa whoa easy not yet": [
+"WAIT",
+"WAIT",
+0.999
+],
+"whoa whoa, easy, not yet": [
+"WAIT",
+"WAIT",
+0.999
+],
+"whoa, whoa, easy, not yet": [
+"WAIT",
+"WAIT",
+0.999
+],
+"whole stack is sitting on yellow stairs": [
+"NONE",
+"NONE",
+0.995
+],
+"whole stack is sitting on yellow stairs, wrap around through south door and pinch them": [
+"FLANK",
+"FLANK",
+0.998
+],
+"wholstack is sitting on yellow stairs": [
+"NONE",
+"NONE",
+0.995
+],
+"window's already open, just climb in": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"window's already open, just climb in okay": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"windows already open just climb ins": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"windows already open, just climb in": [
+"VAULT_WINDOW",
+"VAULT_WINDOW",
+0.999
+],
+"wrap around": [
+"FLANK",
+"FLANK",
+0.991
+],
+"wrap around three south door and pinch them": [
+"FLANK",
+"FLANK",
+0.999
+],
+"wrap around through south door and pin them": [
+"FLANK",
+"FLANK",
+0.999
+],
+"wrap around through south door and pinch them": [
+"FLANK",
+"FLANK",
+0.999
+],
+"wrap around through south durham": [
+"FLANK",
+"FLANK",
+0.999
+],
+"wrap around through yellow": [
+"FLANK",
+"FLANK",
+0.998
+],
+"wrap around through yellow and hit them from behind": [
+"FLANK",
+"FLANK",
+0.999
+],
+"wrap around through yellow and hit them from behind first": [
+"FLANK",
+"FLANK",
+0.999
+],
+"wrap around through yellow and hit them from behind okay": [
+"FLANK",
+"FLANK",
+0.999
+],
+"wrap around to the right and cache on from the side": [
+"FLANK",
+"FLANK",
+0.97
+],
+"wrap around to the right and catch them from the side": [
+"FLANK",
+"FLANK",
+0.999
+],
+"wrap around to the right and catch them from the side as soon as you okay so just uh shadow me dont go wandering off": [
+"FLANK",
+"FLANK",
+0.999
+],
+"wrap around to the right and catch them from the side, but lurk through my ping and get in their backs first": [
+"FLANK",
+"FLANK",
+0.999
+],
+"wrap around to yellow and hit them from behind": [
+"FLANK",
+"FLANK",
+0.999
+],
+"yegaskamping": [
+"NONE",
+"DRONE",
+0.332
+],
+"yegaskamping the couch on second floor got his gadget right next to him": [
+"NONE",
+"FRAG",
+0.372
+],
+"yo turned to me": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.999
+],
+"yo, turn to me": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.999
+],
+"yo, turn to me okay": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.999
+],
+"yo, turn to me okay and i'll rotate left": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.999
+],
+"yo, turn to me okay and i'll rotate left, you head right": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.998
+],
+"yo, turn to me; i need suppressing fire like now, they're pushing me": [
+"LOOK_AT_ME",
+"LOOK_AT_ME",
+0.983
+],
+"yoga": [
+"NONE",
+"DRONE",
+0.353
+],
+"you cover whatever i am not looking at": [
+"NONE",
+"COVER_ME",
+0.557
+],
+"you don't have to ask me": [
+"NONE",
+"NONE",
+1.0
+],
+"you drop dawn off the ledge i am waiting below": [
+"JUMP",
+"JUMP",
+0.998
+],
+"you drop dawn off the ledge i am waiting below you": [
+"JUMP",
+"JUMP",
+0.997
+],
+"you drop dawn off the ledge i am waiting below you, uh": [
+"JUMP",
+"JUMP",
+0.998
+],
+"you drop dawn off the ledge i am waiting below you, uh on my mark": [
+"JUMP",
+"JUMP",
+0.996
+],
+"you find i don't go anywhere": [
+"NONE",
+"NONE",
+0.343
+],
+"you go": [
+"GO_NOW",
+"GO_NOW",
+0.994
+],
+"you go in when i say go": [
+"MOVE_TO",
+"MOVE_TO",
+0.832
+],
+"you go in when i say go first": [
+"NONE",
+"ENTRY",
+0.505
+],
+"you got me if someone swings": [
+"NONE",
+"COVER_ME",
+0.579
+],
+"you got time": [
+"NONE",
+"PLANT",
+0.248
+],
+"you head right": [
+"MOVE_TO",
+"MOVE_TO",
+1.0
+],
+"you hit it": [
+"NONE",
+"ENTRY",
+0.443
+],
+"you hit it together": [
+"NONE",
+"MOVE_TO",
+0.407
+],
+"you one hb man": [
+"NONE",
+"NONE",
+0.628
+],
+"you one hb man, get yourself somewhere safe": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"you one hb man, get yourself somewhere safe as soon as you if he's it, you got time": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"you one hp man, get yourself somewhere safe": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"you smoke the doorway, you're cleared hot": [
+"SMOKE",
+"SMOKE",
+0.999
+],
+"you stay in this place no moving": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.999
+],
+"you stay in this place no moving okay": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.999
+],
+"you take the other door": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+0.999
+],
+"you take the other one": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+1.0
+],
+"you throw that wall open": [
+"BREACH",
+"BREACH",
+1.0
+],
+"you uh you drop dawn off the ledge i am waiting below": [
+"JUMP",
+"JUMP",
+0.998
+],
+"you uh you drop dawn off the ledge i am waiting below you": [
+"JUMP",
+"JUMP",
+0.997
+],
+"you uh you drop dawn off the ledge i am waiting below you, uh": [
+"JUMP",
+"JUMP",
+0.997
+],
+"you walk down this hallway": [
+"MOVE_TO",
+"MOVE_TO",
+0.972
+],
+"you watched the other doll": [
+"HOLD_OTHER_ANGLE",
+"HOLD_OTHER_ANGLE",
+1.0
+],
+"you you drop dawn off the ledge i am waiting below you": [
+"JUMP",
+"JUMP",
+0.993
+],
+"you you stay in this place no moving okay": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.999
+],
+"you you uh you drop dawn off the ledge i am waiting below you": [
+"JUMP",
+"JUMP",
+0.996
+],
+"you you're one hp man, get yourself somewhere safe": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"you you're way too exposed, go prone behind the bed": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.982
+],
+"you're cleared hot shoot anything that peaks": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"you're cleared hot, shoot anything that peaks": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"you're cleared hot, shoot anything that peeks": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"you're cleared hot, shoot anything that peeks first": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"you're cleared hot, shoot anything that peeks okay": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.999
+],
+"you're cleared hot, smoke the doorway": [
+"SMOKE",
+"SMOKE",
+1.0
+],
+"you're fine there, don't go anywhere": [
+"NONE",
+"HOLD_POSITION",
+0.397
+],
+"you're fine there, don't go anywhere you stay in this place no moving okay": [
+"HOLD_POSITION",
+"HOLD_POSITION",
+0.993
+],
+"you're fine there. don't go anywhere": [
+"NONE",
+"HOLD_POSITION",
+0.449
+],
+"you're fine there. don't go anywhere okay": [
+"NONE",
+"HOLD_POSITION",
+0.383
+],
+"you're getting sharp hide, get out of his line of sight": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"you're getting sharp, hide, get out of his line of sight": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"you're getting shot hard. get out of his line of sight": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.998
+],
+"you're getting shot hi, get out of islam's sight": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.976
+],
+"you're getting shot, hide": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.999
+],
+"you're getting shot, hide, get out of his line of sight": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"you're getting shot, hide. get out of his line of sight": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"you're one hp man, get yourself somewhere safe": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"you're one hp man. get yourself somewhere safe": [
+"TAKE_COVER",
+"TAKE_COVER",
+1.0
+],
+"you're the last offender, i don't care how you do it": [
+"NONE",
+"NONE",
+0.418
+],
+"you're way too deep for me to trade you": [
+"NONE",
+"NONE",
+0.673
+],
+"you're way too exposed to her prone behind bed": [
+"NONE",
+"TAKE_COVER",
+0.53
+],
+"you're way too exposed, go prone behind the bed": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.992
+],
+"you're way too exposed. go prone behind the bed": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.989
+],
+"you've got the c4 setted up on a": [
+"PLANT",
+"PLANT",
+0.926
+],
+"you've got the c4, set it up on a": [
+"PLANT",
+"PLANT",
+0.989
+],
+"you've got the c4, set it up on a first": [
+"PLANT",
+"PLANT",
+0.995
+],
+"you've got the c4, set it up on a stop swinging": [
+"PLANT",
+"PLANT",
+0.971
+],
+"you've got the c4, set it up on e": [
+"PLANT",
+"PLANT",
+0.993
+],
+"you've got the c4, set it up on e first": [
+"NONE",
+"PLANT",
+0.669
+],
+"your clear hearts": [
+"NONE",
+"TAKE_COVER",
+0.626
+],
+"your clear hearts shoot anything that peaks": [
+"OPEN_FIRE",
+"OPEN_FIRE",
+0.998
+],
+"your way too exposed. go prone behind the bed": [
+"TAKE_COVER",
+"TAKE_COVER",
+0.952
+]
+}

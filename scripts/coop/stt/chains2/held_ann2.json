@@ -1,0 +1,786 @@
+{
+ "r6_000": [
+  "RAPPEL"
+ ],
+ "r6_004": [
+  "HOLD_OTHER_ANGLE"
+ ],
+ "r6_008": [
+  "DEFUSE"
+ ],
+ "r6_024": [
+  "FRAG"
+ ],
+ "r6_031": [
+  "HOLD_OTHER_ANGLE"
+ ],
+ "r6_036": [
+  "SMOKE"
+ ],
+ "r6_039": [
+  "FLASH"
+ ],
+ "r6_043": [
+  "FLANK"
+ ],
+ "r6_050": [
+  "NONE"
+ ],
+ "r6_052": [
+  "NONE"
+ ],
+ "r6_061": [
+  "NONE"
+ ],
+ "r6_064": [
+  "BREACH"
+ ],
+ "r6_073": [
+  "ENTRY"
+ ],
+ "r6_075": [
+  "WAIT"
+ ],
+ "r6_077": [
+  "BREACH"
+ ],
+ "r6_082": [
+  "HOLD_POSITION"
+ ],
+ "r6_087": [
+  "PLANT"
+ ],
+ "r6_092": [
+  "WAIT"
+ ],
+ "r6_093": [
+  "MOVE_TO"
+ ],
+ "r6_094": [
+  "GO_NOW"
+ ],
+ "r6_103": [
+  "NONE"
+ ],
+ "r6_106": [
+  "FALL_BACK"
+ ],
+ "r6_111": [
+  "REVIVE_ME"
+ ],
+ "r6_112": [
+  "SMOKE",
+  "ENTRY"
+ ],
+ "r6_116": [
+  "NONE"
+ ],
+ "r6v2_010": [
+  "TAKE_COVER"
+ ],
+ "r6v2_011": [
+  "COVER_ME"
+ ],
+ "r6v2_013": [
+  "VAULT_WINDOW"
+ ],
+ "r6v2_015": [
+  "WAIT"
+ ],
+ "r6v2_018": [
+  "BREACH"
+ ],
+ "r6v2_019": [
+  "OPEN"
+ ],
+ "r6v2_022": [
+  "COVER_ME"
+ ],
+ "r6v2_029": [
+  "TAKE_COVER"
+ ],
+ "r6v2_031": [
+  "TAKE_COVER"
+ ],
+ "r6v2_035": [
+  "OPEN"
+ ],
+ "r6v2_038": [
+  "NONE"
+ ],
+ "r6v2_039": [
+  "VAULT_WINDOW"
+ ],
+ "r6v3_003": [
+  "WAIT"
+ ],
+ "r6v3_004": [
+  "RAPPEL"
+ ],
+ "r6v3_007": [
+  "VAULT_WINDOW"
+ ],
+ "r6v3_008": [
+  "NONE"
+ ],
+ "r6v3_009": [
+  "NONE"
+ ],
+ "r6v3_021": [
+  "BREACH"
+ ],
+ "r6v3_027": [
+  "WAIT"
+ ],
+ "r6v3_028": [
+  "FRAG"
+ ],
+ "r6v3_029": [
+  "FLANK"
+ ],
+ "r6v3_032": [
+  "FLASH"
+ ],
+ "r6v3_034": [
+  "DEFUSE"
+ ],
+ "r6v3_036": [
+  "ENTRY"
+ ],
+ "r6v3_038": [
+  "MOVE_TO"
+ ],
+ "r6v3_043": [
+  "ENTRY"
+ ],
+ "cs_000": [
+  "PLANT"
+ ],
+ "cs_007": [
+  "NONE"
+ ],
+ "cs_009": [
+  "HOLD_OTHER_ANGLE"
+ ],
+ "cs_011": [
+  "NONE"
+ ],
+ "cs_014": [
+  "FLASH",
+  "ENTRY"
+ ],
+ "cs_021": [
+  "WAIT"
+ ],
+ "cs_025": [
+  "BREACH"
+ ],
+ "cs_027": [
+  "ENTRY"
+ ],
+ "cs_035": [
+  "GO_NOW"
+ ],
+ "cs_036": [
+  "DEFUSE"
+ ],
+ "cs_043": [
+  "FLASH"
+ ],
+ "cs_044": [
+  "VAULT_WINDOW"
+ ],
+ "cs_048": [
+  "DRONE"
+ ],
+ "cs_049": [
+  "DEFUSE"
+ ],
+ "cs_052": [
+  "DRONE"
+ ],
+ "cs_054": [
+  "NONE"
+ ],
+ "cs_057": [
+  "HOLD_POSITION"
+ ],
+ "cs_059": [
+  "VAULT_WINDOW"
+ ],
+ "cs_064": [
+  "BREACH"
+ ],
+ "cs_069": [
+  "ENTRY"
+ ],
+ "cs_075": [
+  "FRAG"
+ ],
+ "cs_078": [
+  "FLANK"
+ ],
+ "cs_081": [
+  "FLASH"
+ ],
+ "cs_084": [
+  "PLANT"
+ ],
+ "cs_087": [
+  "WAIT"
+ ],
+ "cs_089": [
+  "COVER_ME"
+ ],
+ "cs_097": [
+  "COVER_ME"
+ ],
+ "cs_101": [
+  "FLANK"
+ ],
+ "cs_102": [
+  "WAIT"
+ ],
+ "cs_103": [
+  "FLASH"
+ ],
+ "cs_106": [
+  "RAPPEL"
+ ],
+ "cs_108": [
+  "NONE"
+ ],
+ "cs_115": [
+  "ENTRY"
+ ],
+ "cs_116": [
+  "WAIT"
+ ],
+ "csv2_002": [
+  "TAKE_COVER"
+ ],
+ "csv2_003": [
+  "TAKE_COVER"
+ ],
+ "csv2_020": [
+  "OPEN"
+ ],
+ "csv2_021": [
+  "NONE"
+ ],
+ "csv2_024": [
+  "NONE"
+ ],
+ "csv3_002": [
+  "NONE"
+ ],
+ "csv3_003": [
+  "VAULT_WINDOW"
+ ],
+ "csv3_005": [
+  "FALL_BACK"
+ ],
+ "csv3_009": [
+  "DRONE"
+ ],
+ "csv3_010": [
+  "FRAG"
+ ],
+ "csv3_019": [
+  "MOVE_TO"
+ ],
+ "csv3_029": [
+  "FLANK"
+ ],
+ "csv3_033": [
+  "FLANK"
+ ],
+ "csv3_034": [
+  "SMOKE"
+ ],
+ "csv3_046": [
+  "OPEN"
+ ],
+ "stt_003": [
+  "HOLD_OTHER_ANGLE"
+ ],
+ "stt_004": [
+  "WAIT"
+ ],
+ "stt_017": [
+  "HOLD_POSITION"
+ ],
+ "stt_019": [
+  "SMOKE"
+ ],
+ "stt_023": [
+  "RAPPEL"
+ ],
+ "stt_037": [
+  "RAPPEL"
+ ],
+ "stt_046": [
+  "FOLLOW_ME"
+ ],
+ "stt_054": [
+  "FRAG"
+ ],
+ "stt_055": [
+  "WAIT"
+ ],
+ "stt_057": [
+  "SMOKE"
+ ],
+ "stt_073": [
+  "PLANT"
+ ],
+ "stt_074": [
+  "BREACH"
+ ],
+ "stt_078": [
+  "HOLD_POSITION"
+ ],
+ "stt_081": [
+  "VAULT_WINDOW"
+ ],
+ "stt_091": [
+  "MOVE_TO"
+ ],
+ "stt_096": [
+  "DRONE"
+ ],
+ "stt_098": [
+  "GO_NOW"
+ ],
+ "stt_099": [
+  "ENTRY"
+ ],
+ "stt_102": [
+  "NONE"
+ ],
+ "stt_103": [
+  "NONE"
+ ],
+ "stt_106": [
+  "PLANT"
+ ],
+ "stt_108": [
+  "NONE"
+ ],
+ "stt_114": [
+  "BREACH"
+ ],
+ "stt_119": [
+  "FLANK"
+ ],
+ "sttv2_002": [
+  "HOLD_ANGLE"
+ ],
+ "sttv2_007": [
+  "TAKE_COVER"
+ ],
+ "sttv2_009": [
+  "OPEN"
+ ],
+ "sttv2_010": [
+  "OPEN"
+ ],
+ "sttv2_012": [
+  "HOLD_ANGLE"
+ ],
+ "sttv2_016": [
+  "NONE"
+ ],
+ "sttv2_024": [
+  "TAKE_COVER"
+ ],
+ "sttv2_034": [
+  "OPEN"
+ ],
+ "sttv2_038": [
+  "TAKE_COVER"
+ ],
+ "sttv3_001": [
+  "FRAG"
+ ],
+ "sttv3_002": [
+  "MOVE_TO"
+ ],
+ "sttv3_006": [
+  "FLANK"
+ ],
+ "sttv3_009": [
+  "OPEN"
+ ],
+ "sttv3_012": [
+  "WAIT"
+ ],
+ "sttv3_015": [
+  "HOLD_ANGLE"
+ ],
+ "sttv3_031": [
+  "HOLD_POSITION"
+ ],
+ "sttv3_040": [
+  "HOLD_ANGLE"
+ ],
+ "sttv3_042": [
+  "FLASH"
+ ],
+ "r6v5_001": [
+  "ATTACK"
+ ],
+ "r6v5_006": [
+  "ATTACK"
+ ],
+ "r6v5_008": [
+  "OPEN_FIRE"
+ ],
+ "r6v5_009": [
+  "OPEN_FIRE"
+ ],
+ "r6v5_012": [
+  "OPEN_FIRE"
+ ],
+ "r6v5_015": [
+  "OPEN_FIRE"
+ ],
+ "r6v5_018": [
+  "HOLD_FIRE"
+ ],
+ "r6v5_024": [
+  "ENTRY"
+ ],
+ "r6v5_026": [
+  "FRAG"
+ ],
+ "r6v5_033": [
+  "HOLD_POSITION"
+ ],
+ "r6v5_036": [
+  "FLANK"
+ ],
+ "r6v5_040": [
+  "RAPPEL"
+ ],
+ "r6v5_045": [
+  "MOVE_TO"
+ ],
+ "r6v5_046": [
+  "NONE"
+ ],
+ "r6v5_051": [
+  "NONE"
+ ],
+ "r6v5_053": [
+  "HOLD_ANGLE"
+ ],
+ "r6v5_055": [
+  "HOLD_FIRE"
+ ],
+ "r6v5_058": [
+  "NONE"
+ ],
+ "csv5_011": [
+  "OPEN_FIRE"
+ ],
+ "csv5_012": [
+  "OPEN_FIRE"
+ ],
+ "csv5_026": [
+  "FRAG"
+ ],
+ "csv5_029": [
+  "COVER_ME"
+ ],
+ "csv5_030": [
+  "HOLD_ANGLE"
+ ],
+ "csv5_031": [
+  "TAKE_COVER"
+ ],
+ "csv5_035": [
+  "HOLD_ANGLE"
+ ],
+ "csv5_044": [
+  "MOVE_TO"
+ ],
+ "csv5_046": [
+  "NONE"
+ ],
+ "csv5_052": [
+  "OPEN_FIRE"
+ ],
+ "sttv5_000": [
+  "ATTACK"
+ ],
+ "sttv5_014": [
+  "OPEN_FIRE"
+ ],
+ "sttv5_015": [
+  "OPEN_FIRE"
+ ],
+ "sttv5_026": [
+  "FRAG"
+ ],
+ "sttv5_031": [
+  "TAKE_COVER"
+ ],
+ "sttv5_040": [
+  "HOLD_ANGLE"
+ ],
+ "sttv5_052": [
+  "PLANT"
+ ],
+ "r6v51_000": [
+  "LOOK_AT"
+ ],
+ "r6v51_002": [
+  "LOOK_AT"
+ ],
+ "r6v51_008": [
+  "LOOK_AT"
+ ],
+ "r6v51_011": [
+  "LOOK_AT_ME"
+ ],
+ "r6v51_014": [
+  "LOOK_AT_ME"
+ ],
+ "r6v51_021": [
+  "FOLLOW_ME"
+ ],
+ "r6v51_022": [
+  "COVER_ME"
+ ],
+ "r6v51_028": [
+  "NONE"
+ ],
+ "csv51_001": [
+  "LOOK_AT"
+ ],
+ "csv51_002": [
+  "LOOK_AT"
+ ],
+ "csv51_004": [
+  "CHECK"
+ ],
+ "csv51_008": [
+  "LOOK_AT"
+ ],
+ "csv51_012": [
+  "LOOK_AT_ME"
+ ],
+ "csv51_017": [
+  "HOLD_ANGLE"
+ ],
+ "csv51_019": [
+  "HOLD_POSITION"
+ ],
+ "csv51_022": [
+  "COVER_ME"
+ ],
+ "csv51_023": [
+  "HOLD_OTHER_ANGLE"
+ ],
+ "csv51_025": [
+  "NONE"
+ ],
+ "sttv51_002": [
+  "LOOK_AT"
+ ],
+ "sttv51_003": [
+  "LOOK_AT"
+ ],
+ "sttv51_004": [
+  "LOOK_AT"
+ ],
+ "sttv51_006": [
+  "LOOK_AT"
+ ],
+ "sttv51_007": [
+  "LOOK_AT"
+ ],
+ "sttv51_009": [
+  "LOOK_AT"
+ ],
+ "sttv51_013": [
+  "LOOK_AT_ME"
+ ],
+ "sttv51_022": [
+  "HOLD_ANGLE"
+ ],
+ "sttv51_027": [
+  "NONE"
+ ],
+ "sttv51_028": [
+  "NONE"
+ ],
+ "r6v52_003": [
+  "HELP"
+ ],
+ "r6v52_004": [
+  "HELP"
+ ],
+ "r6v52_019": [
+  "SUPPRESS"
+ ],
+ "r6v52_022": [
+  "ENTRY"
+ ],
+ "r6v52_024": [
+  "HOLD_ANGLE"
+ ],
+ "r6v52_029": [
+  "NONE"
+ ],
+ "csv52_003": [
+  "HELP"
+ ],
+ "csv52_009": [
+  "CHECK"
+ ],
+ "csv52_019": [
+  "SUPPRESS"
+ ],
+ "csv52_024": [
+  "HOLD_ANGLE"
+ ],
+ "csv52_026": [
+  "COVER_ME"
+ ],
+ "sttv52_014": [
+  "SUPPRESS"
+ ],
+ "sttv52_015": [
+  "SUPPRESS"
+ ],
+ "sttv52_022": [
+  "ENTRY"
+ ],
+ "sttv52_026": [
+  "COVER_ME"
+ ],
+ "r6v53_001": [
+  "JUMP",
+  "ENTRY"
+ ],
+ "r6v53_023": [
+  "HOLD_ANGLE"
+ ],
+ "r6v53_025": [
+  "HOLD_FIRE"
+ ],
+ "csv53_011": [
+  "VAULT_WINDOW"
+ ],
+ "csv53_017": [
+  "BREACH",
+  "JUMP"
+ ],
+ "csv53_025": [
+  "HOLD_FIRE"
+ ],
+ "csv53_029": [
+  "NONE"
+ ],
+ "sttv53_001": [
+  "JUMP"
+ ],
+ "sttv53_007": [
+  "JUMP"
+ ],
+ "sttv53_013": [
+  "RAPPEL"
+ ],
+ "sttv53_019": [
+  "HOLD_OTHER_ANGLE"
+ ],
+ "sttv53_024": [
+  "HOLD_FIRE"
+ ],
+ "sttv53_028": [
+  "NONE"
+ ],
+ "r6v54_002": [
+  "NO"
+ ],
+ "r6v54_003": [
+  "NO"
+ ],
+ "r6v54_005": [
+  "MAYBE"
+ ],
+ "r6v54_006": [
+  "DONT_KNOW"
+ ],
+ "r6v54_015": [
+  "PRONE"
+ ],
+ "r6v54_018": [
+  "BREACH"
+ ],
+ "r6v54_023": [
+  "FLANK"
+ ],
+ "r6v54_034": [
+  "NONE"
+ ],
+ "r6v54_036": [
+  "WAIT"
+ ],
+ "r6v54_040": [
+  "REVIVE_ME"
+ ],
+ "csv54_010": [
+  "COME_BACK"
+ ],
+ "csv54_018": [
+  "MOVE_TO"
+ ],
+ "csv54_021": [
+  "FRAG"
+ ],
+ "csv54_022": [
+  "CHECK"
+ ],
+ "csv54_025": [
+  "HOLD_ANGLE"
+ ],
+ "csv54_036": [
+  "WAIT"
+ ],
+ "csv54_037": [
+  "FALL_BACK"
+ ],
+ "csv54_038": [
+  "FOLLOW_ME"
+ ],
+ "csv54_040": [
+  "REVIVE_ME"
+ ],
+ "csv54_042": [
+  "NONE"
+ ],
+ "sttv54_006": [
+  "DONT_KNOW"
+ ],
+ "sttv54_007": [
+  "DONT_KNOW"
+ ],
+ "sttv54_016": [
+  "STAND_UP"
+ ],
+ "sttv54_021": [
+  "SMOKE"
+ ],
+ "sttv54_025": [
+  "BREACH"
+ ],
+ "sttv54_026": [
+  "OPEN"
+ ],
+ "sttv54_042": [
+  "WAIT"
+ ]
+}

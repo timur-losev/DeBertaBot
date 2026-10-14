@@ -1,0 +1,5 @@
+decoder qwen3 r16 seed 0 fold 0: 4548 lines, 1180 test rows, training 346s, scoring 61s, peak 11.1 GB, 407s
+decoder qwen3 r16 seed 0 fold 1: 4632 lines, 1125 test rows, training 345s, scoring 59s, peak 11.1 GB, 811s
+decoder qwen3 r16 seed 0 fold 2: 4623 lines, 1061 test rows, training 343s, scoring 56s, peak 11.1 GB, 1210s
+decoder qwen3 r16 seed 0 fold 3: 4663 lines, 918 test rows, training 347s, scoring 48s, peak 11.1 GB, 1605s
+decoder qwen3 r16 seed 0 fold 4: 4620 lines, 981 test rows, training 343s, scoring 51s, peak 11.1 GB, 2000s

@@ -1,0 +1,18 @@
+{
+ "base": "Qwen/Qwen3-1.7B",
+ "r": 16,
+ "alpha": 32,
+ "dropout": 0.05,
+ "lr": 0.0002,
+ "epochs": 3,
+ "system": "You are the AI teammate in a tactical co-op shooter. The player's line is a speech-to-text transcript and may be garbled. Answer with the names of the orders it gives, in the order you must carry them out, separated by '>', or NONE.",
+ "rows": {
+  "singles": 4523,
+  "composed": 3000,
+  "teacher": 870,
+  "teacher_heard": 1170,
+  "context": 0
+ },
+ "n_rows": 10433,
+ "train_s": 1066
+}

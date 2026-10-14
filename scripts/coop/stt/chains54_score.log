@@ -1,0 +1,44 @@
+blind lines: 150, two of three readers agree on 150, all three on 150; by number of orders: 1: 54, 2: 60, 3: 28, 4: 8
+
+variant composed, seed 0: 4523 single rows + 3000 composed + 0 teacher lines x3, 775 s of training
+  lines with several orders                                n   exact  same set  right count not names
+  held-out lines, training patterns                      400    72.2      72.5         92.8         0
+  held-out lines, unseen patterns                        400    63.0      75.2         92.2         1
+    of them, the second order said first                  97    20.6      71.1         88.7         0
+  held-out lines heard from unseen voices, unseen patterns   400    36.2      44.5         81.5         6
+  blind natural lines                                    150    66.7      68.0         76.0         1
+    one order                                             54    68.5      68.5         85.2         1
+    two orders                                            60    78.3      81.7         85.0         0
+    three or four orders                                  36    44.4      44.4         47.2         0
+    voice r6                                              50    74.0      74.0         80.0         0
+    voice cs                                              50    60.0      62.0         68.0         1
+    voice stt                                             50    66.0      68.0         80.0         0
+  held-out single lines (no threshold)                     n  one intent   near  wrong fam  criterion
+  this variant, typed                                    260        96.5   88.5       8.8%       70.8
+  this variant, heard from unseen voices                 184        91.3   73.9      19.0%       35.9
+
+variant teacher, seed 0: 4523 single rows + 3000 composed + 292 teacher lines x3, 867 s of training
+  lines with several orders                                n   exact  same set  right count not names
+  held-out lines, training patterns                      400    75.2      75.2         90.8         0
+  held-out lines, unseen patterns                        400    69.8      78.2         92.0         0
+    of them, the second order said first                  97    34.0      69.1         82.5         0
+  held-out lines heard from unseen voices, unseen patterns   400    42.2      49.0         83.2         1
+  blind natural lines                                    150    83.3      84.7         88.7         1
+    one order                                             54    79.6      79.6         85.2         1
+    two orders                                            60    93.3      95.0         98.3         0
+    three or four orders                                  36    72.2      75.0         77.8         0
+    voice r6                                              50    90.0      92.0         98.0         0
+    voice cs                                              50    82.0      82.0         82.0         1
+    voice stt                                             50    78.0      80.0         86.0         0
+  held-out single lines (no threshold)                     n  one intent   near  wrong fam  criterion
+  this variant, typed                                    260        96.2   91.2       8.1%       75.0
+  this variant, heard from unseen voices                 184        90.2   75.0      21.2%       32.6
+
+  for comparison, on the same rows (no threshold)          n  one intent   near  wrong fam  criterion
+  the decoder taught on single lines (ql, typed          260       100.0   93.8       5.0%       83.8
+  the decoder taught on single lines (ql, heard from u   184       100.0   79.9      14.7%       50.5
+  the classifier ensemble's fold teacher, typed          260       100.0   93.1       6.5%       80.0
+  the classifier ensemble's fold teacher, heard from u   184       100.0   83.2      14.7%       53.8
+
+today's bot (the v54 ensemble, one intent per line) on the 96 blind lines with several orders: it does the first order on 55, a later one on 15, something else on 1, asks again or does nothing on 25
+  and on the 54 blind lines with one order it picks that order on 50

@@ -724,3 +724,108 @@ db8f4db630b8ecc77f2281a9a1927b25aa4ad098e8db3f8fd807410e13151c4b *../../models/c
 bece241fe7adeba99e76671f62ddf9505be2ac178f73df68cc9acf7263cdb34d *../../models/coop-deberta-v3-ens3-v53/cpp/tokenizer_tests.jsonl
 7e5f30857eea6df5a15c8f7aaf8c18402c93d607ad2623e45248bb36b0f660da *owner_voice_c_on_v53.log
 8b90c700f80daa63fcafbc87929016f235f7f27214b5e9d6b6a53ee9935afe03 *probe_v54_on_v53.log
+# the chains study (stt/qlora_v54.py, stt/chains_v54.py): the addendum the chain authors and annotators see, the generator of the composed lines with its patterns and sizes, and the blind author's lines, hashed before any script or I read a blind line (the lines-only copy for the two annotators was made by a script that prints nothing)
+e0688f9873397d8a37fae37c061abbc1a6361c5b8288db5fe0ddea73ca891592 *stt/chains/spec_chain.json
+8683944351432674177f5c60da88330e464f8b12edd2ab05b06e77e849a1d9d2 *stt/chains_v54.py
+cb2e0ead0ee1f2d683d0a5c06ab983eb2a737e16b46834faf8de537e59a77348 *stt/qlora_v54.py
+9406a81b92edb8f67030947e96fb6518d670e28de07ca2b527b78bb016840eaa *stt/chains/blind_author.json
+79aa73727392e9aa269f63a0854af75c5f79333f6944a4d82876ac21c6d01de1 *stt/chains/blind_lines.json
+2026-10-12T04:30:53+02:00
+# stt/qlora_v54.py and stt/chains_v54.py changed since the entry above, before any chain result: before the five single-order folds, 6 lines per scoring batch instead of 16 (memory only); after them, gradient checkpointing for the chain trainings (the first one swapped video memory at 27 GB and was stopped). No pattern, size or recipe changed. With them the two annotators' readings and the teacher's lines
+047f6bc346fdc1e1398dea7264a08f755f4c940068cd86e48bbaf317997f1034 *stt/qlora_v54.py
+87714b552b2f131fe4c0ade34c8b21b8a2bde9ce0a23707c616fe452c56f27c0 *stt/chains_v54.py
+e43384346d548638381a53eed7a174530987f90b27991aa158d92c67e463ff80 *stt/run_qlora_v54.ps1
+c1e580bb6c0d29e5581bdfb1276c7d288f8689e1d3926eb9877a14d6ef8d7907 *stt/chains/blind_ann1.json
+2365984e0714c8a4fa63dc7a0c8cfeb997059bb62cbb818ce76098322594cb58 *stt/chains/blind_ann2.json
+92f52ca8a6af6e24ea34415cddddf680c296d28d4f3a5a66d86a08f0fec1a7e2 *stt/chains/teacher_lines.json
+2026-10-12T05:09:28+02:00
+# round two of the chains study (stt/chains2_v54.py, stt/router_v54.py, stt/voice_chains.py): the context addendum, the scripts with their patterns, sizes and copies, and the second blind author's chain lines, hashed before any script or I read one of those lines (the readers' copy was made by a script that prints nothing). The first blind set (stt/chains/) has been read and is a development set from here on; the round-one router (router54_r1_*) was trained and scored before this entry and uses none of the new lines
+ca6c61f05bf6bb2cc03df23214d36459cf64f1cb1eb299a29854e1a977b805b9 *stt/chains2/spec_context.json
+2912710392c5676b49d39827b29569cab1481f5a68c11838961ee4eb5616f9f0 *stt/chains2_v54.py
+f18ae1d205375c84d59528b28b06541f0ba2441338ac40406b59b6a93771752b *stt/router_v54.py
+119c6fdf194e150b972d9ec6f45407ef9fb29d7090938069642cad6c7e6daad3 *stt/voice_chains.py
+f23c777b60a119b139016b1188e8eab481b88031b21d79d5b06e5d534bc93b82 *stt/qlora_v54.py
+fc8ddb839b29ab456368abb34079968811c38a014a009f75b36b3076a16ff950 *stt/chains_v54.py
+dce07c3dd26fccf0e3b78811f361a2e72ef4f9595dbcffc8c798772bc139d0eb *stt/chains2/blind_author.json
+602f01d33dcc152bccfa0ca5e3674df42c1e1d28d5c22ea136f640c35463ba53 *stt/chains2/blind_lines.json
+2026-10-12T20:09:24+02:00
+# round two: the blind author's context items, hashed before any script or I read one of them
+0e7a8af6e854fd6f57c005ed0665429dc13a8f74f6b4648362be11aa735fc82d *stt/chains2/ctx_blind_author.json
+cfc0f9ec4b6ab00be51d0b9dbede4f0f5c77e71906f2cac461db495c6c75df4e *stt/chains2/ctx_blind_lines.json
+4d712b9b4d9bb09ce392043f9ca3827cdce2c34f1610f28b94d8ce03ad337709 *stt/chains2_v54.py
+2026-10-12T20:11:26+02:00
+# round two, before any training of it: stt/chains2_v54.py and stt/router_v54.py changed since the entry above. No line of the second blind chain set and no blind context item has been read by me or printed by a script (only counts of agreement). chains2_v54.py: the typed held-out single lines of fold 0 are scored a second time against a re-reading as lists by two blind readers (held_ann*.json), because their one-intent labels mark a found chain as wrong; those are old lines, and I have seen the first round's answers on some of them and the four the readers call chains. compose() takes its sizes as an argument. router_v54.py: a row can carry its own route (a context item that leans on its context is for the decoder), and a variable that hid a function was renamed. With them the readers' files and the teacher's lines of this round
+4d712b9b4d9bb09ce392043f9ca3827cdce2c34f1610f28b94d8ce03ad337709 *stt/chains2_v54.py
+f18ae1d205375c84d59528b28b06541f0ba2441338ac40406b59b6a93771752b *stt/router_v54.py
+fb41fbf443b7b400a2574fd198ed06e43774475fb33f260535e938107c3b8e3d *stt/run_chains2_v54.ps1
+119c6fdf194e150b972d9ec6f45407ef9fb29d7090938069642cad6c7e6daad3 *stt/voice_chains.py
+f23c777b60a119b139016b1188e8eab481b88031b21d79d5b06e5d534bc93b82 *stt/qlora_v54.py
+fc8ddb839b29ab456368abb34079968811c38a014a009f75b36b3076a16ff950 *stt/chains_v54.py
+f3772408a8399c97c85dc294eb140d84839e6a81122810b05661aebeb23902c8 *stt/chains2/blind_ann1.json
+f3772408a8399c97c85dc294eb140d84839e6a81122810b05661aebeb23902c8 *stt/chains2/blind_ann2.json
+5864357216b66057f773a2dd6047c8565feea0d3e94fa8f97d8f2e95e9b5cb10 *stt/chains2/ctx_blind_ann1.json
+3641f12dd7c6743865364a2f71b1aa49189e4ed18d284f67f11f3d178519c5dc *stt/chains2/ctx_blind_ann2.json
+df5cde0f9ec2eebfd60b24f2ae313db68cfe917458fa977bbe94755054760582 *stt/chains2/held_lines.json
+f3f08679b11f4f916726f13e424e504e9a3c443ece139e92886f2bdb02a2152f *stt/chains2/held_ann1.json
+34ee748926f4dde7782c3e53988fbacb93f4a28a57061c4211230b599094cfc4 *stt/chains2/held_ann2.json
+c74d1cc811ae3171942115eae621c62c4d6c964ffad9139a421e95f7c55da732 *stt/chains2/teacher_a.json
+69be87b59f989138e2260f7ce4f895bcd01e9ce484121b3ef97eddb86eaa370f *stt/chains2/teacher_b.json
+d8251e4ccf062a383285a4bbdee3337e39526486fea3acf2a2df7bb0c129d393 *stt/chains2/ctx_teacher.json
+2026-10-12T20:28:45+02:00
+# stt/qlora_v54.py changed after the round-two routers and before any round-two decoder was trained to the end: with gradient checkpointing the loss is taken from the answer's positions alone (the same loss: 0.1381 both ways on a batch), because the first run of `chains2_v54.py train names` filled the card (22.6 GB and 2.4 GB spilled over) and was stopped after 13 minutes with no answer written. run_chains2_v54.ps1 got -From train. No pattern, size, recipe or data changed
+76af65956c7a3bcac8261217353274feeda634fbed358fe57983332e0f587d21 *stt/qlora_v54.py
+866829ffe50970178e9e9f1e16b8856eac530002d580979939becdabae89deef *stt/run_chains2_v54.ps1
+7a832d6160bb8d7151b580afc7273e4f4f708fcfe7ae7ea4eb705836a6e36915 *stt/chains2/teacher_checked.json
+aa316f17308375cf4c88989202fcf3f65408f3890d2dc2045d2edc5e018b5ce8 *stt/chains2/ctx_checked.json
+3b22fbbcf843184043ff390b334953cd3130db261d3234cf72f1cb55148d8712 *stt/chains2/teacher_heard.json
+562e8d8b2cf899df44780bb12aa460b78fb80f18dbb99f3fb77ff80cb7d2b66a *stt/chains2/blind_heard.json
+2026-10-12T21:42:04+02:00
+# round three (stt/chains2_v54.py: names3, pieces3; stt/router_v54.py: r3), before any of its trainings. What I had seen: the round-two tables of every seed (aggregates only; no line of the second blind chain set and no blind context item read by me or printed). What changed and why: round two lost 15-18 points between a typed blind line and the same line heard from an unseen voice, so the teacher lines are heard from four training voices instead of two and the context items are trained as heard too; the patterns, sizes, copies and recipe are round two's. New test sets are new hearings of the same blind lines: three unseen speakers a line (blind2_heard3) and the context items as heard (ctx_heard3); the round-two decoders are asked again on them (`answer`), so both rounds are measured on the same sets. chains2_v54.py also got: the fold's own teachers kept as weights to read what a decoder made of a held-out line (fold0), a table over the seeds. stt/gguf_v54.py: the decoder as GGUF in llama.cpp
+9044c6cbdd709fb472bcb91807ab7504c8aa483c436e22c2496336fd60de657f *stt/chains2_v54.py
+fbb470b6a4cd9b7e92ab4c259d127b87b7a1104da475fbda498eeccd2f5dd7bc *stt/router_v54.py
+53217d3823ba891196b54aafe573f25ba91a463507b11424e2724004ca619078 *stt/voice_chains.py
+76af65956c7a3bcac8261217353274feeda634fbed358fe57983332e0f587d21 *stt/qlora_v54.py
+c09f7003610cc797680e96ceb4cd8921fd7fb5c67a0e89cb7161e083bbf2c645 *stt/chains_v54.py
+30136206862f62632d06070ed2ebbeeb2fa5bfae29cbd2a4e401bbe981f910f9 *stt/gguf_v54.py
+4317e7b59e00ead7fe13a7856d700ba1cec5bc9e68395a5fba3bcd00fbeb4dfb *stt/chains2/blind_heard.json
+093030475c6feebf2e0628c231079efddff669115b2ab38d72d08863db99823f *stt/chains2/ctx_blind_heard.json
+e77a299c2108b4dc06084a029603d11f0f9c9b4b563d54c00c4ccbb175683e8b *stt/chains/blind_heard.json
+2026-10-13T00:08:07+02:00
+# after round three's tables over three seeds and the llama.cpp timings (aggregates; no blind line or item of rounds two and three read by me), two additions, neither planned before those tables. (1) chains2_v54.py: a test with only the line as heard and the earlier lines as the player said them (ctx_heardline3), to split what the heard context loses between the line and the memory; the decoders trained before it were asked again. (2) names3_4b, pieces3_4b: round three's rows and recipe on Qwen/Qwen3-4B, one seed, to see whether the loss on heard lines is a matter of the decoder's size. qlora_v54.py: the model's name added; gguf_v54.py: the base taken from the variant
+8cd9de6e3ff6818f563b5b318114d95bf58b04688f562d08b9f6d14c9b38ca35 *stt/chains2_v54.py
+2cd9a027d27f5d6acd585fe5bb5fc815f0531ea256f7c9300b8c8c83580165d1 *stt/qlora_v54.py
+f5eba87c934634b0aa85f78d85aaee7d1aebe0f189bf11b0d9a5392a9c64f9d5 *stt/gguf_v54.py
+fbb470b6a4cd9b7e92ab4c259d127b87b7a1104da475fbda498eeccd2f5dd7bc *stt/router_v54.py
+53217d3823ba891196b54aafe573f25ba91a463507b11424e2724004ca619078 *stt/voice_chains.py
+765e2d9240b5ef82fbf33bd515dd7e238aef3ce5aa138956f6b7c9c7de024ff5 *stt/chains2/teacher_heard.json
+90b29ac3447e2274757f825e673f01b540ca6ac38daf19fd45966adbae7e196c *stt/chains2/ctx_teacher_heard.json
+65ae3ba76a6f6031b3bddd88b8d0504e7f548d59208a1379a12f00c4ac9b4382 *stt/chains/teacher_heard.json
+2026-10-13T03:42:50+02:00
+# the scripts and results as they stand after rounds two and three, the llama.cpp timings and the 4B run. Since the entry above only docstrings and the run script changed (chains2_v54.py, router_v54.py, run_chains2_v54.ps1: -From round3, -Seeds). The lines of the second blind chain set and of the blind context set are still unread by me; the first blind set and the held-out single lines of fold 0 have been read
+c678975a763c64e60be5b66a623c8606ed99d9f38f87409ccbb26c6243dd9887 *stt/chains2_v54.py
+4dabf226b55618d89069ec279804b2cc66063b1a1d1c343d933532f6634e2efe *stt/router_v54.py
+2cd9a027d27f5d6acd585fe5bb5fc815f0531ea256f7c9300b8c8c83580165d1 *stt/qlora_v54.py
+c09f7003610cc797680e96ceb4cd8921fd7fb5c67a0e89cb7161e083bbf2c645 *stt/chains_v54.py
+f5eba87c934634b0aa85f78d85aaee7d1aebe0f189bf11b0d9a5392a9c64f9d5 *stt/gguf_v54.py
+53217d3823ba891196b54aafe573f25ba91a463507b11424e2724004ca619078 *stt/voice_chains.py
+e6617d25556b57a43d236f03848b1c6b5fd958cdffb33ecf26880da23895aa8c *stt/run_chains2_v54.ps1
+3287d1973fed9b69058becc6da8b6e44fbdf5d2f99db47afb4f73dd0fbd0c306 *stt/chains2_54_score.log
+94d58d52c55677b831191d53abd202be662efbfd918dd1911e2c7afad2f20190 *stt/chains2_54_score_rounds23.log
+1fa9a8ad342a7ced7b35106b42e9c6d368286451e7a07eca032e974805b8be34 *stt/router54_score.log
+38cf55673a847809450b284ba3921d51aaf732b275c5d61ee104d14af574c10c *stt/gguf54_score.log
+4330f69ae77de69ddb97ab2a5aae59589c6a53575c0b19da861149de80d9869a *stt/qlora54_score.log
+93637d88f16f1b5bb86309c02dbe19a1e2a4c179ed760bb9695b5cee126aeb1e *stt/chains54_score.log
+2026-10-13T05:16:23+02:00
+# the decoder and the router for the game, before their training: chains2_v54.py pieces3_final and router_v54.py final are round three's recipe and rows built from EVERY line (no fold held out), so fold 0's held-out tables do not apply to them and they are measured on the blind sets only; the router's weights are kept (models/coop-router-deberta-v3-small-v54). No recipe, pattern or size changed
+8242f66b387f714248f05fc52a16a42563bcd1eb1678cf2d0b2849961072a94d *stt/chains2_v54.py
+b5687b3fe663b56cdb507b8ff2ee41a1c17ad54d888162ba61bab56d2a7204fe *stt/router_v54.py
+2cd9a027d27f5d6acd585fe5bb5fc815f0531ea256f7c9300b8c8c83580165d1 *stt/qlora_v54.py
+f5eba87c934634b0aa85f78d85aaee7d1aebe0f189bf11b0d9a5392a9c64f9d5 *stt/gguf_v54.py
+2026-10-13T14:54:17+02:00
+# after the game's models were trained and measured (chains2_54_score.log, router54_score.log): gguf_v54.py score crashed on a model for the game, which has no PyTorch answers on the old single lines (it was trained on them); its "same as PyTorch" column is now left empty for such a set, and no other number changed. export_chain_cpp.py (new) writes the C++ engine's files and test lines (models/coop-chain-v54/cpp) and measures nothing
+5064e9127e68c4f8ca0f94463d12d808a64799aa158a1cd629e280d09d063aad *stt/gguf_v54.py
+b098b6aeab91c2bb8d451cc4975d2e95e19ea1d50d3821983181c9147a9c2858 *stt/export_chain_cpp.py
+7b5dab62146a83f126d63465f2a91af10f5f79e39afcc8d4775190d60856a41f *stt/chains2_54_score.log
+48105fd8a87d24d16c7de782dbbb8f496aebf87b03d0fbe31986d03e9b27ee0e *stt/router54_score.log
+582a0c01ac89c5a91fb4c7e0f126edb1bdb3fb92b42e64863ea3315c7a59520e *stt/gguf54_score.log
+2026-10-13T17:07:20+02:00

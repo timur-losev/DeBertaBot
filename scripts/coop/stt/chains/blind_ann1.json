@@ -1,0 +1,592 @@
+{
+ "ch_r6_000": [
+  "NONE"
+ ],
+ "ch_r6_001": [
+  "NONE"
+ ],
+ "ch_r6_002": [
+  "SUPPRESS",
+  "FOLLOW_ME"
+ ],
+ "ch_r6_003": [
+  "GO_NOW"
+ ],
+ "ch_r6_004": [
+  "BREACH"
+ ],
+ "ch_r6_005": [
+  "FRAG"
+ ],
+ "ch_r6_006": [
+  "CHECK",
+  "COME_BACK"
+ ],
+ "ch_r6_007": [
+  "CHECK",
+  "COME_BACK",
+  "COVER_ME"
+ ],
+ "ch_r6_008": [
+  "OPEN",
+  "FRAG"
+ ],
+ "ch_r6_009": [
+  "FLASH"
+ ],
+ "ch_r6_010": [
+  "PRONE",
+  "OPEN_FIRE",
+  "FALL_BACK"
+ ],
+ "ch_r6_011": [
+  "BREACH",
+  "JUMP"
+ ],
+ "ch_r6_012": [
+  "DRONE",
+  "HOLD_ANGLE"
+ ],
+ "ch_r6_013": [
+  "ENTRY"
+ ],
+ "ch_r6_014": [
+  "HOLD_FIRE",
+  "STAND_UP",
+  "FOLLOW_ME"
+ ],
+ "ch_r6_015": [
+  "FRAG",
+  "FRAG"
+ ],
+ "ch_r6_016": [
+  "VAULT_WINDOW",
+  "CHECK",
+  "OPEN"
+ ],
+ "ch_r6_017": [
+  "NONE"
+ ],
+ "ch_r6_018": [
+  "FLASH",
+  "ENTRY"
+ ],
+ "ch_r6_019": [
+  "JUMP",
+  "HOLD_ANGLE"
+ ],
+ "ch_r6_020": [
+  "RAPPEL",
+  "OPEN",
+  "FRAG"
+ ],
+ "ch_r6_021": [
+  "MOVE_TO",
+  "HOLD_ANGLE",
+  "HOLD_FIRE"
+ ],
+ "ch_r6_022": [
+  "HOLD_ANGLE"
+ ],
+ "ch_r6_023": [
+  "HOLD_FIRE",
+  "FALL_BACK"
+ ],
+ "ch_r6_024": [
+  "SMOKE",
+  "PLANT",
+  "HOLD_ANGLE"
+ ],
+ "ch_r6_025": [
+  "OPEN",
+  "DRONE",
+  "JUMP",
+  "PLANT"
+ ],
+ "ch_r6_026": [
+  "OPEN"
+ ],
+ "ch_r6_027": [
+  "DEFUSE",
+  "TAKE_COVER"
+ ],
+ "ch_r6_028": [
+  "COVER_ME"
+ ],
+ "ch_r6_029": [
+  "SMOKE",
+  "FLASH"
+ ],
+ "ch_r6_030": [
+  "RAPPEL",
+  "VAULT_WINDOW"
+ ],
+ "ch_r6_031": [
+  "DRONE",
+  "BREACH",
+  "FLASH"
+ ],
+ "ch_r6_032": [
+  "RAPPEL"
+ ],
+ "ch_r6_033": [
+  "DRONE"
+ ],
+ "ch_r6_034": [
+  "STAND_UP",
+  "MOVE_TO"
+ ],
+ "ch_r6_035": [
+  "CROUCH",
+  "HOLD_ANGLE"
+ ],
+ "ch_r6_036": [
+  "FRAG",
+  "SMOKE",
+  "MOVE_TO",
+  "HOLD_ANGLE"
+ ],
+ "ch_r6_037": [
+  "SMOKE",
+  "MOVE_TO",
+  "SUPPRESS"
+ ],
+ "ch_r6_038": [
+  "NONE"
+ ],
+ "ch_r6_039": [
+  "MAYBE"
+ ],
+ "ch_r6_040": [
+  "FLASH",
+  "HOLD_OTHER_ANGLE"
+ ],
+ "ch_r6_041": [
+  "SUPPRESS"
+ ],
+ "ch_r6_042": [
+  "HOLD_ANGLE"
+ ],
+ "ch_r6_043": [
+  "WAIT"
+ ],
+ "ch_r6_044": [
+  "VAULT_WINDOW",
+  "HOLD_POSITION"
+ ],
+ "ch_r6_045": [
+  "SMOKE",
+  "PLANT"
+ ],
+ "ch_r6_046": [
+  "DRONE",
+  "FLANK"
+ ],
+ "ch_r6_047": [
+  "MOVE_TO",
+  "RAPPEL"
+ ],
+ "ch_r6_048": [
+  "SMOKE",
+  "ENTRY"
+ ],
+ "ch_r6_049": [
+  "ATTACK",
+  "PLANT",
+  "HOLD_OTHER_ANGLE"
+ ],
+ "ch_cs_000": [
+  "VAULT_WINDOW",
+  "MOVE_TO"
+ ],
+ "ch_cs_001": [
+  "ATTACK"
+ ],
+ "ch_cs_002": [
+  "SMOKE",
+  "FRAG"
+ ],
+ "ch_cs_003": [
+  "SMOKE",
+  "FLANK"
+ ],
+ "ch_cs_004": [
+  "OPEN",
+  "FLASH"
+ ],
+ "ch_cs_005": [
+  "JUMP",
+  "PLANT"
+ ],
+ "ch_cs_006": [
+  "HOLD_ANGLE"
+ ],
+ "ch_cs_007": [
+  "CHECK"
+ ],
+ "ch_cs_008": [
+  "FALL_BACK",
+  "TAKE_COVER"
+ ],
+ "ch_cs_009": [
+  "SMOKE",
+  "FLASH",
+  "ENTRY"
+ ],
+ "ch_cs_010": [
+  "SMOKE",
+  "CHECK",
+  "PLANT"
+ ],
+ "ch_cs_011": [
+  "SUPPRESS",
+  "SMOKE",
+  "FOLLOW_ME"
+ ],
+ "ch_cs_012": [
+  "HOLD_FIRE"
+ ],
+ "ch_cs_013": [
+  "NONE"
+ ],
+ "ch_cs_014": [
+  "DONT_KNOW"
+ ],
+ "ch_cs_015": [
+  "FRAG",
+  "MOVE_TO"
+ ],
+ "ch_cs_016": [
+  "HOLD_FIRE",
+  "COME_BACK"
+ ],
+ "ch_cs_017": [
+  "COME_BACK",
+  "HOLD_OTHER_ANGLE"
+ ],
+ "ch_cs_018": [
+  "HELP",
+  "HOLD_ANGLE"
+ ],
+ "ch_cs_019": [
+  "FLASH",
+  "FRAG",
+  "ENTRY",
+  "PLANT"
+ ],
+ "ch_cs_020": [
+  "LOOK_AT_ME",
+  "MOVE_TO"
+ ],
+ "ch_cs_021": [
+  "FLASH",
+  "ENTRY",
+  "PLANT"
+ ],
+ "ch_cs_022": [
+  "PRONE",
+  "HOLD_ANGLE",
+  "HOLD_FIRE"
+ ],
+ "ch_cs_023": [
+  "CROUCH",
+  "HOLD_FIRE"
+ ],
+ "ch_cs_024": [
+  "MOVE_TO",
+  "PLANT",
+  "TAKE_COVER"
+ ],
+ "ch_cs_025": [
+  "FRAG",
+  "CHECK"
+ ],
+ "ch_cs_026": [
+  "COVER_ME"
+ ],
+ "ch_cs_027": [
+  "NONE"
+ ],
+ "ch_cs_028": [
+  "TAKE_COVER",
+  "ENTRY"
+ ],
+ "ch_cs_029": [
+  "FRAG"
+ ],
+ "ch_cs_030": [
+  "SMOKE",
+  "FLANK",
+  "COME_BACK"
+ ],
+ "ch_cs_031": [
+  "SMOKE",
+  "DEFUSE"
+ ],
+ "ch_cs_032": [
+  "LOOK_AT",
+  "OPEN_FIRE"
+ ],
+ "ch_cs_033": [
+  "TAKE_COVER"
+ ],
+ "ch_cs_034": [
+  "STAND_UP",
+  "FOLLOW_ME"
+ ],
+ "ch_cs_035": [
+  "JUMP",
+  "DEFUSE",
+  "VAULT_WINDOW",
+  "TAKE_COVER"
+ ],
+ "ch_cs_036": [
+  "FRAG",
+  "FRAG",
+  "ENTRY"
+ ],
+ "ch_cs_037": [
+  "PLANT"
+ ],
+ "ch_cs_038": [
+  "NONE"
+ ],
+ "ch_cs_039": [
+  "LOOK_AT",
+  "FLASH",
+  "VAULT_WINDOW",
+  "HOLD_ANGLE"
+ ],
+ "ch_cs_040": [
+  "HOLD_OTHER_ANGLE"
+ ],
+ "ch_cs_041": [
+  "SMOKE"
+ ],
+ "ch_cs_042": [
+  "SUPPRESS",
+  "FALL_BACK"
+ ],
+ "ch_cs_043": [
+  "WAIT"
+ ],
+ "ch_cs_044": [
+  "NO"
+ ],
+ "ch_cs_045": [
+  "FLASH",
+  "FOLLOW_ME",
+  "COVER_ME"
+ ],
+ "ch_cs_046": [
+  "FLASH",
+  "ENTRY"
+ ],
+ "ch_cs_047": [
+  "FLASH",
+  "FLASH"
+ ],
+ "ch_cs_048": [
+  "NONE"
+ ],
+ "ch_cs_049": [
+  "HOLD_POSITION"
+ ],
+ "ch_stt_000": [
+  "YES"
+ ],
+ "ch_stt_001": [
+  "DRONE"
+ ],
+ "ch_stt_002": [
+  "OPEN",
+  "HOLD_OTHER_ANGLE"
+ ],
+ "ch_stt_003": [
+  "ENTRY"
+ ],
+ "ch_stt_004": [
+  "MOVE_TO",
+  "CHECK",
+  "COME_BACK"
+ ],
+ "ch_stt_005": [
+  "CHECK",
+  "CHECK",
+  "HOLD_ANGLE"
+ ],
+ "ch_stt_006": [
+  "FLASH",
+  "ENTRY"
+ ],
+ "ch_stt_007": [
+  "RAPPEL",
+  "VAULT_WINDOW"
+ ],
+ "ch_stt_008": [
+  "MOVE_TO",
+  "HOLD_ANGLE"
+ ],
+ "ch_stt_009": [
+  "HOLD_FIRE",
+  "CROUCH"
+ ],
+ "ch_stt_010": [
+  "BREACH",
+  "SUPPRESS"
+ ],
+ "ch_stt_011": [
+  "DEFUSE"
+ ],
+ "ch_stt_012": [
+  "FRAG"
+ ],
+ "ch_stt_013": [
+  "REVIVE_ME",
+  "FALL_BACK"
+ ],
+ "ch_stt_014": [
+  "COME_BACK",
+  "COVER_ME"
+ ],
+ "ch_stt_015": [
+  "DRONE",
+  "DRONE"
+ ],
+ "ch_stt_016": [
+  "JUMP",
+  "LOOK_AT"
+ ],
+ "ch_stt_017": [
+  "FLASH"
+ ],
+ "ch_stt_018": [
+  "LOOK_AT_ME"
+ ],
+ "ch_stt_019": [
+  "FOLLOW_ME",
+  "HOLD_ANGLE"
+ ],
+ "ch_stt_020": [
+  "REVIVE_ME",
+  "SMOKE",
+  "FOLLOW_ME"
+ ],
+ "ch_stt_021": [
+  "SMOKE",
+  "ATTACK"
+ ],
+ "ch_stt_022": [
+  "NONE"
+ ],
+ "ch_stt_023": [
+  "FALL_BACK"
+ ],
+ "ch_stt_024": [
+  "NONE"
+ ],
+ "ch_stt_025": [
+  "HOLD_ANGLE"
+ ],
+ "ch_stt_026": [
+  "STAND_UP",
+  "MOVE_TO",
+  "OPEN",
+  "FRAG"
+ ],
+ "ch_stt_027": [
+  "DEFUSE",
+  "MOVE_TO"
+ ],
+ "ch_stt_028": [
+  "HELP",
+  "PLANT"
+ ],
+ "ch_stt_029": [
+  "FLASH",
+  "MOVE_TO",
+  "HOLD_ANGLE"
+ ],
+ "ch_stt_030": [
+  "SUPPRESS",
+  "HOLD_FIRE",
+  "FOLLOW_ME"
+ ],
+ "ch_stt_031": [
+  "GO_NOW"
+ ],
+ "ch_stt_032": [
+  "FLANK"
+ ],
+ "ch_stt_033": [
+  "HOLD_POSITION",
+  "LOOK_AT_ME"
+ ],
+ "ch_stt_034": [
+  "VAULT_WINDOW",
+  "CHECK"
+ ],
+ "ch_stt_035": [
+  "NONE"
+ ],
+ "ch_stt_036": [
+  "DRONE",
+  "OPEN"
+ ],
+ "ch_stt_037": [
+  "SMOKE"
+ ],
+ "ch_stt_038": [
+  "BREACH",
+  "FRAG",
+  "HOLD_ANGLE"
+ ],
+ "ch_stt_039": [
+  "PRONE"
+ ],
+ "ch_stt_040": [
+  "LOOK_AT",
+  "VAULT_WINDOW",
+  "OPEN"
+ ],
+ "ch_stt_041": [
+  "SMOKE",
+  "FLASH",
+  "VAULT_WINDOW"
+ ],
+ "ch_stt_042": [
+  "FLASH",
+  "SMOKE",
+  "PLANT",
+  "HOLD_ANGLE"
+ ],
+ "ch_stt_043": [
+  "OPEN_FIRE",
+  "FALL_BACK"
+ ],
+ "ch_stt_044": [
+  "REVIVE_ME"
+ ],
+ "ch_stt_045": [
+  "NONE"
+ ],
+ "ch_stt_046": [
+  "TAKE_COVER",
+  "SMOKE"
+ ],
+ "ch_stt_047": [
+  "OPEN",
+  "JUMP",
+  "DEFUSE"
+ ],
+ "ch_stt_048": [
+  "PRONE",
+  "OPEN_FIRE"
+ ],
+ "ch_stt_049": [
+  "MOVE_TO",
+  "RAPPEL",
+  "BREACH",
+  "ENTRY"
+ ]
+}

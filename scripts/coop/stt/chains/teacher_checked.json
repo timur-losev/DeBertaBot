@@ -1,0 +1,6602 @@
+[
+ {
+  "id": "t_r6_000",
+  "voice": "r6",
+  "text": "Cover me while I plant, and after that hold the north window.",
+  "orders": [
+   "COVER_ME",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Cover me while I plant.",
+   "Hold the north window."
+  ],
+  "classifier": [
+   "COVER_ME",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_001",
+  "voice": "r6",
+  "text": "Go prone and hold your fire until they're inside.",
+  "orders": [
+   "PRONE",
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "Go prone.",
+   "Hold your fire until they're inside."
+  ],
+  "classifier": [
+   "PRONE",
+   "HOLD_FIRE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_002",
+  "voice": "r6",
+  "text": "Push in and clear the room, I'm right behind you.",
+  "orders": [
+   "ENTRY"
+  ],
+  "pieces": [
+   "Push in and clear the room."
+  ],
+  "classifier": [
+   "ENTRY"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_003",
+  "voice": "r6",
+  "text": "Rope up on the west side, and on my call breach the wall.",
+  "orders": [
+   "RAPPEL",
+   "BREACH"
+  ],
+  "pieces": [
+   "Rope up on the west side.",
+   "On my call, breach the wall."
+  ],
+  "classifier": [
+   "RAPPEL",
+   "BREACH"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_004",
+  "voice": "r6",
+  "text": "Disable the defuser after you flash site and push in.",
+  "orders": [
+   "FLASH",
+   "ENTRY",
+   "DEFUSE"
+  ],
+  "pieces": [
+   "Flash site.",
+   "Push into site.",
+   "Disable the defuser."
+  ],
+  "classifier": [
+   "FLASH",
+   "ENTRY",
+   "DEFUSE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_005",
+  "voice": "r6",
+  "text": "Before you push the room, frag behind the table.",
+  "orders": [
+   "FRAG",
+   "ENTRY"
+  ],
+  "pieces": [
+   "Frag behind the table.",
+   "Push into the room."
+  ],
+  "classifier": [
+   "FRAG",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_006",
+  "voice": "r6",
+  "text": "Vault out the east window, rappel up to the roof, and finally check the hatch.",
+  "orders": [
+   "VAULT_WINDOW",
+   "RAPPEL",
+   "CHECK"
+  ],
+  "pieces": [
+   "Vault out the east window.",
+   "Rappel up to the roof.",
+   "Check the hatch on the roof."
+  ],
+  "classifier": [
+   "VAULT_WINDOW",
+   "RAPPEL",
+   "CHECK"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_007",
+  "voice": "r6",
+  "text": "Breach this wall, then do the same on the other side.",
+  "orders": [
+   "BREACH",
+   "BREACH"
+  ],
+  "pieces": [
+   "Breach this wall.",
+   "Breach the wall on the other side."
+  ],
+  "classifier": [
+   "BREACH",
+   "BREACH"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_008",
+  "voice": "r6",
+  "text": "Yes, open the shutter, then start shooting through it.",
+  "orders": [
+   "OPEN",
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "Open the shutter.",
+   "Start shooting through the shutter."
+  ],
+  "classifier": [
+   "OPEN",
+   "OPEN_FIRE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_009",
+  "voice": "r6",
+  "text": "Drone the basement, breach the hatch, flash down, and then drop in.",
+  "orders": [
+   "DRONE",
+   "BREACH",
+   "FLASH",
+   "JUMP"
+  ],
+  "pieces": [
+   "Drone the basement.",
+   "Breach the hatch.",
+   "Flash down through the hatch.",
+   "Drop in through the hatch."
+  ],
+  "classifier": [
+   "DRONE",
+   "BREACH",
+   "FLASH",
+   "JUMP"
+  ],
+  "unsure": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_010",
+  "voice": "r6",
+  "text": "Affirmative, yeah, that's correct.",
+  "orders": [
+   "YES"
+  ],
+  "pieces": [
+   "Affirmative, yeah, that's correct."
+  ],
+  "classifier": [
+   "YES"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_011",
+  "voice": "r6",
+  "text": "Look at me. See where I'm pointing? Go there and lie down.",
+  "orders": [
+   "LOOK_AT_ME",
+   "MOVE_TO",
+   "PRONE"
+  ],
+  "pieces": [
+   "Look at me.",
+   "Go there, where I'm pointing.",
+   "Lie down."
+  ],
+  "classifier": [
+   "LOOK_AT_ME",
+   "MOVE_TO",
+   "PRONE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_012",
+  "voice": "r6",
+  "text": "No idea, I can't tell from here.",
+  "orders": [
+   "DONT_KNOW"
+  ],
+  "pieces": [
+   "No idea, I can't tell from here."
+  ],
+  "classifier": [
+   "DONT_KNOW"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_013",
+  "voice": "r6",
+  "text": "Come back, get me up, then smoke the door and follow me out.",
+  "orders": [
+   "COME_BACK",
+   "REVIVE_ME",
+   "SMOKE",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "Come back.",
+   "Get me up.",
+   "Smoke the door.",
+   "Follow me out."
+  ],
+  "classifier": [
+   "COME_BACK",
+   "REVIVE_ME",
+   "SMOKE",
+   "FOLLOW_ME"
+  ],
+  "unsure": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_014",
+  "voice": "r6",
+  "text": "Pin them down in the corridor. When I call it, cease fire.",
+  "orders": [
+   "SUPPRESS",
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "Pin them down in the corridor.",
+   "Cease fire when I call it."
+  ],
+  "classifier": [
+   "SUPPRESS",
+   "HOLD_FIRE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_015",
+  "voice": "r6",
+  "text": "Two pushing the main door, one more on the red stairs.",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "Two pushing the main door, one more on the red stairs."
+  ],
+  "classifier": [
+   "NONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_016",
+  "voice": "r6",
+  "text": "Open the west door quietly, then hold that angle.",
+  "orders": [
+   "OPEN",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Open the west door quietly.",
+   "Hold the angle on the west door."
+  ],
+  "classifier": [
+   "OPEN",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_017",
+  "voice": "r6",
+  "text": "Flash the south door, then do the same for the window.",
+  "orders": [
+   "FLASH",
+   "FLASH"
+  ],
+  "pieces": [
+   "Flash the south door.",
+   "Flash the window."
+  ],
+  "classifier": [
+   "FLASH",
+   "FLASH"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_018",
+  "voice": "r6",
+  "text": "Go now, and once it's done, fall back and hold the stairs.",
+  "orders": [
+   "GO_NOW",
+   "FALL_BACK",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Go now.",
+   "Fall back.",
+   "Hold the stairs."
+  ],
+  "classifier": [
+   "GO_NOW",
+   "FALL_BACK",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_019",
+  "voice": "r6",
+  "text": "Yes, that's exactly right.",
+  "orders": [
+   "YES"
+  ],
+  "pieces": [
+   "Yes, that's exactly right."
+  ],
+  "classifier": [
+   "YES"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_020",
+  "voice": "r6",
+  "text": "Engage the two on site, plant when they're down, then get behind cover.",
+  "orders": [
+   "ATTACK",
+   "PLANT",
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "Engage the two on site.",
+   "Plant the defuser.",
+   "Get behind cover."
+  ],
+  "classifier": [
+   "ATTACK",
+   "PLANT",
+   "TAKE_COVER"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_021",
+  "voice": "r6",
+  "text": "Keep holding this angle, and I'll take the other one myself.",
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Keep holding this angle."
+  ],
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_022",
+  "voice": "r6",
+  "text": "Get on the ground and open fire on the main door.",
+  "orders": [
+   "PRONE",
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "Get on the ground.",
+   "Open fire on the main door."
+  ],
+  "classifier": [
+   "PRONE",
+   "OPEN_FIRE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_023",
+  "voice": "r6",
+  "text": "Revive me, then smoke the hallway and get to the stairs.",
+  "orders": [
+   "REVIVE_ME",
+   "SMOKE",
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "Revive me.",
+   "Smoke the hallway.",
+   "Get to the stairs."
+  ],
+  "classifier": [
+   "REVIVE_ME",
+   "SMOKE",
+   "MOVE_TO"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_024",
+  "voice": "r6",
+  "text": "Suppress the window while I move, then smoke it and push through the main door.",
+  "orders": [
+   "SUPPRESS",
+   "SMOKE",
+   "ENTRY"
+  ],
+  "pieces": [
+   "Suppress the window while I move.",
+   "Smoke the window.",
+   "Push through the main door."
+  ],
+  "classifier": [
+   "SUPPRESS",
+   "SMOKE",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_025",
+  "voice": "r6",
+  "text": "Breach the hatch and drop down once it's open.",
+  "orders": [
+   "BREACH",
+   "JUMP"
+  ],
+  "pieces": [
+   "Breach the hatch.",
+   "Drop down through the hatch."
+  ],
+  "classifier": [
+   "BREACH",
+   "JUMP"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_026",
+  "voice": "r6",
+  "text": "Smoke the main door, I'll plant, and you cover me.",
+  "orders": [
+   "SMOKE",
+   "COVER_ME"
+  ],
+  "pieces": [
+   "Smoke the main door.",
+   "You cover me while I plant."
+  ],
+  "classifier": [
+   "SMOKE",
+   "COVER_ME"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_027",
+  "voice": "r6",
+  "text": "I'll breach the hatch myself and then I'm dropping in.",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "I'll breach the hatch myself and then I'm dropping in."
+  ],
+  "classifier": [
+   "BREACH"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": false
+ },
+ {
+  "id": "t_r6_028",
+  "voice": "r6",
+  "text": "Go now, execute, then hold the east door once you're in.",
+  "orders": [
+   "GO_NOW",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Go now, execute.",
+   "Hold the east door."
+  ],
+  "classifier": [
+   "GO_NOW",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_029",
+  "voice": "r6",
+  "text": "Hit the deck and stay flat, there's a shield coming.",
+  "orders": [
+   "PRONE"
+  ],
+  "pieces": [
+   "Hit the deck and stay flat."
+  ],
+  "classifier": [
+   "PRONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_030",
+  "voice": "r6",
+  "text": "Get up, move to my ping, and go prone there.",
+  "orders": [
+   "STAND_UP",
+   "MOVE_TO",
+   "PRONE"
+  ],
+  "pieces": [
+   "Get up.",
+   "Move to my ping.",
+   "Go prone."
+  ],
+  "classifier": [
+   "STAND_UP",
+   "MOVE_TO",
+   "PRONE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_031",
+  "voice": "r6",
+  "text": "Do it now, go! Next, take cover by the brown stairs.",
+  "orders": [
+   "GO_NOW",
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "Do it now, go!",
+   "Take cover by the brown stairs."
+  ],
+  "classifier": [
+   "GO_NOW",
+   "TAKE_COVER"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_032",
+  "voice": "r6",
+  "text": "Flash the corner right after you frag it.",
+  "orders": [
+   "FRAG",
+   "FLASH"
+  ],
+  "pieces": [
+   "Frag the corner.",
+   "Flash the corner."
+  ],
+  "classifier": [
+   "FRAG",
+   "FLASH"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_033",
+  "voice": "r6",
+  "text": "Rope down to the north window after you get on the roof.",
+  "orders": [
+   "MOVE_TO",
+   "RAPPEL"
+  ],
+  "pieces": [
+   "Get on the roof.",
+   "Rope down to the north window."
+  ],
+  "classifier": [
+   "MOVE_TO",
+   "RAPPEL"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_034",
+  "voice": "r6",
+  "text": "Cease fire. Flank around through my ping.",
+  "orders": [
+   "HOLD_FIRE",
+   "FLANK"
+  ],
+  "pieces": [
+   "Cease fire.",
+   "Flank around through my ping."
+  ],
+  "classifier": [
+   "HOLD_FIRE",
+   "FLANK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_035",
+  "voice": "r6",
+  "text": "No, not that one.",
+  "orders": [
+   "NO"
+  ],
+  "pieces": [
+   "No, not that one."
+  ],
+  "classifier": [
+   "NO"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_036",
+  "voice": "r6",
+  "text": "Send your drone upstairs, then stay put.",
+  "orders": [
+   "DRONE",
+   "HOLD_POSITION"
+  ],
+  "pieces": [
+   "Send your drone upstairs.",
+   "Stay put."
+  ],
+  "classifier": [
+   "DRONE",
+   "HOLD_POSITION"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_037",
+  "voice": "r6",
+  "text": "Yes, go, go, go!",
+  "orders": [
+   "GO_NOW"
+  ],
+  "pieces": [
+   "Go, go, go!"
+  ],
+  "classifier": [
+   "GO_NOW"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_038",
+  "voice": "r6",
+  "text": "Take a knee, eyes on the north door, and check fire, friendlies coming through.",
+  "orders": [
+   "CROUCH",
+   "HOLD_ANGLE",
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "Take a knee.",
+   "Eyes on the north door.",
+   "Check fire, friendlies coming through."
+  ],
+  "classifier": [
+   "CROUCH",
+   "HOLD_ANGLE",
+   "HOLD_FIRE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_039",
+  "voice": "r6",
+  "text": "Pull back off site once you've got the defuser planted.",
+  "orders": [
+   "PLANT",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "Get the defuser planted.",
+   "Pull back off site."
+  ],
+  "classifier": [
+   "PLANT",
+   "FALL_BACK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_040",
+  "voice": "r6",
+  "text": "Plant behind the sofa after you vault the west window.",
+  "orders": [
+   "VAULT_WINDOW",
+   "PLANT"
+  ],
+  "pieces": [
+   "Vault the west window.",
+   "Plant behind the sofa."
+  ],
+  "classifier": [
+   "VAULT_WINDOW",
+   "PLANT"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_041",
+  "voice": "r6",
+  "text": "Why is nobody watching the defuser? Seriously.",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "Why is nobody watching the defuser? Seriously."
+  ],
+  "classifier": [
+   "NONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_042",
+  "voice": "r6",
+  "text": "Copy that, got it, moving up now.",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "Copy that, got it, moving up now."
+  ],
+  "classifier": [
+   "NONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_043",
+  "voice": "r6",
+  "text": "Follow me up, hold the top of the red stairs, and don't shoot unless they push.",
+  "orders": [
+   "FOLLOW_ME",
+   "HOLD_ANGLE",
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "Follow me up.",
+   "Hold the top of the red stairs.",
+   "Don't shoot unless they push."
+  ],
+  "classifier": [
+   "FOLLOW_ME",
+   "HOLD_ANGLE",
+   "HOLD_FIRE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_044",
+  "voice": "r6",
+  "text": "Flank through the basement, but check the red stairs first.",
+  "orders": [
+   "CHECK",
+   "FLANK"
+  ],
+  "pieces": [
+   "Check the red stairs.",
+   "Flank through the basement."
+  ],
+  "classifier": [
+   "CHECK",
+   "FLANK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_045",
+  "voice": "r6",
+  "text": "I need a hand here; after that, stay on my marker.",
+  "orders": [
+   "HELP",
+   "HOLD_POSITION"
+  ],
+  "pieces": [
+   "I need a hand here.",
+   "Stay on my marker."
+  ],
+  "classifier": [
+   "HELP",
+   "HOLD_POSITION"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_046",
+  "voice": "r6",
+  "text": "Get the defuser planted at my marker, but smoke site first.",
+  "orders": [
+   "SMOKE",
+   "PLANT"
+  ],
+  "pieces": [
+   "Smoke site.",
+   "Get the defuser planted at my marker."
+  ],
+  "classifier": [
+   "SMOKE",
+   "PLANT"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_047",
+  "voice": "r6",
+  "text": "Move to the yellow stairs, check upstairs, then open the east door and hold it.",
+  "orders": [
+   "MOVE_TO",
+   "CHECK",
+   "OPEN",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Move to the yellow stairs.",
+   "Check upstairs.",
+   "Open the east door.",
+   "Hold the east door."
+  ],
+  "classifier": [
+   "MOVE_TO",
+   "CHECK",
+   "OPEN",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_048",
+  "voice": "r6",
+  "text": "Crouch down and hold the south door.",
+  "orders": [
+   "CROUCH",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Crouch down.",
+   "Hold the south door."
+  ],
+  "classifier": [
+   "CROUCH",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_049",
+  "voice": "r6",
+  "text": "Cease fire, flank around through the west door, and then frag them from behind.",
+  "orders": [
+   "HOLD_FIRE",
+   "FLANK",
+   "FRAG"
+  ],
+  "pieces": [
+   "Cease fire.",
+   "Flank around through the west door.",
+   "Frag them from behind."
+  ],
+  "classifier": [
+   "HOLD_FIRE",
+   "FLANK",
+   "FLANK"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": false
+ },
+ {
+  "id": "t_r6_050",
+  "voice": "r6",
+  "text": "They're stacking on main, pull back and get out of there.",
+  "orders": [
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "Pull back and get out of there."
+  ],
+  "classifier": [
+   "FALL_BACK"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_051",
+  "voice": "r6",
+  "text": "Break off and fall back, then hold the stairs behind us.",
+  "orders": [
+   "FALL_BACK",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Break off and fall back.",
+   "Hold the stairs behind us."
+  ],
+  "classifier": [
+   "FALL_BACK",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_052",
+  "voice": "r6",
+  "text": "I'll hold them off, you get on the bomb and defuse it.",
+  "orders": [
+   "DEFUSE"
+  ],
+  "pieces": [
+   "Get on the bomb and defuse it."
+  ],
+  "classifier": [
+   "DEFUSE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_053",
+  "voice": "r6",
+  "text": "Frag the stairs, no, scratch that, smoke them.",
+  "orders": [
+   "SMOKE"
+  ],
+  "pieces": [
+   "Smoke the stairs."
+  ],
+  "classifier": [
+   "SMOKE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_054",
+  "voice": "r6",
+  "text": "Rope down to the west window, smoke the room, vault in and plant.",
+  "orders": [
+   "RAPPEL",
+   "SMOKE",
+   "VAULT_WINDOW",
+   "PLANT"
+  ],
+  "pieces": [
+   "Rope down to the west window.",
+   "Smoke the room.",
+   "Vault in through the west window.",
+   "Plant the defuser."
+  ],
+  "classifier": [
+   "RAPPEL",
+   "SMOKE",
+   "VAULT_WINDOW",
+   "PLANT"
+  ],
+  "unsure": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_055",
+  "voice": "r6",
+  "text": "Get down and find some cover, they're shooting through the wall.",
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "Get down and find some cover."
+  ],
+  "classifier": [
+   "TAKE_COVER"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_056",
+  "voice": "r6",
+  "text": "Lay down covering fire on the door, but revive me first.",
+  "orders": [
+   "REVIVE_ME",
+   "SUPPRESS"
+  ],
+  "pieces": [
+   "Revive me.",
+   "Lay down covering fire on the door."
+  ],
+  "classifier": [
+   "REVIVE_ME",
+   "SUPPRESS"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_057",
+  "voice": "r6",
+  "text": "Could be, it's your call.",
+  "orders": [
+   "MAYBE"
+  ],
+  "pieces": [
+   "Could be, it's your call."
+  ],
+  "classifier": [
+   "MAYBE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_058",
+  "voice": "r6",
+  "text": "Regroup once you've cleared the room and checked the basement.",
+  "orders": [
+   "ENTRY",
+   "CHECK",
+   "COME_BACK"
+  ],
+  "pieces": [
+   "Clear the room.",
+   "Check the basement.",
+   "Regroup."
+  ],
+  "classifier": [
+   "ENTRY",
+   "CHECK",
+   "COME_BACK"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_059",
+  "voice": "r6",
+  "text": "Open that door, toss a flash in, no wait, a frag, and fall back.",
+  "orders": [
+   "OPEN",
+   "FRAG",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "Open that door.",
+   "Toss a frag in through that door.",
+   "Fall back."
+  ],
+  "classifier": [
+   "OPEN",
+   "FRAG",
+   "FALL_BACK"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_060",
+  "voice": "r6",
+  "text": "I'm on the defuser, so check the hallway and see if it's clear.",
+  "orders": [
+   "CHECK"
+  ],
+  "pieces": [
+   "Check the hallway and see if it's clear."
+  ],
+  "classifier": [
+   "CHECK"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_061",
+  "voice": "r6",
+  "text": "Wait for my call, then rappel down the south side.",
+  "orders": [
+   "RAPPEL"
+  ],
+  "pieces": [
+   "Rappel down the south side on my call."
+  ],
+  "classifier": [
+   "RAPPEL"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_062",
+  "voice": "r6",
+  "text": "Hold up, hold up, don't push the door yet.",
+  "orders": [
+   "WAIT"
+  ],
+  "pieces": [
+   "Hold up, don't push the door yet."
+  ],
+  "classifier": [
+   "WAIT"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_063",
+  "voice": "r6",
+  "text": "One's holding the red stairs, lay down fire and keep him pinned.",
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pieces": [
+   "Lay down fire on the red stairs and keep him pinned."
+  ],
+  "classifier": [
+   "SUPPRESS"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_064",
+  "voice": "r6",
+  "text": "Before you follow me any further, check your six.",
+  "orders": [
+   "CHECK",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "Check your six.",
+   "Follow me."
+  ],
+  "classifier": [
+   "CHECK",
+   "FOLLOW_ME"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_065",
+  "voice": "r6",
+  "text": "Plant and then take cover behind the table, but smoke the door before any of that.",
+  "orders": [
+   "SMOKE",
+   "PLANT",
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "Smoke the door.",
+   "Plant the defuser.",
+   "Take cover behind the table."
+  ],
+  "classifier": [
+   "SMOKE",
+   "PLANT",
+   "TAKE_COVER"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_066",
+  "voice": "r6",
+  "text": "Come here and stay close to me.",
+  "orders": [
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "Come here and stay close to me."
+  ],
+  "classifier": [
+   "FOLLOW_ME"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_067",
+  "voice": "r6",
+  "text": "Plant the defuser... actually no, scratch that, don't.",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "Plant the defuser... actually no, scratch that, don't."
+  ],
+  "classifier": [
+   "PLANT"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": false
+ },
+ {
+  "id": "t_r6_068",
+  "voice": "r6",
+  "text": "Look at me. Okay, now look at that window on your left.",
+  "orders": [
+   "LOOK_AT_ME",
+   "LOOK_AT"
+  ],
+  "pieces": [
+   "Look at me.",
+   "Look at that window on your left."
+  ],
+  "classifier": [
+   "LOOK_AT_ME",
+   "LOOK_AT"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_069",
+  "voice": "r6",
+  "text": "Look at that wall. Breach it, then lay down suppressive fire through the hole.",
+  "orders": [
+   "LOOK_AT",
+   "BREACH",
+   "SUPPRESS"
+  ],
+  "pieces": [
+   "Look at that wall.",
+   "Breach that wall.",
+   "Lay down suppressive fire through the hole in that wall."
+  ],
+  "classifier": [
+   "LOOK_AT",
+   "BREACH",
+   "SUPPRESS"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_070",
+  "voice": "r6",
+  "text": "After you check the top floor, come back here.",
+  "orders": [
+   "CHECK",
+   "COME_BACK"
+  ],
+  "pieces": [
+   "Check the top floor.",
+   "Come back here."
+  ],
+  "classifier": [
+   "CHECK",
+   "COME_BACK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_071",
+  "voice": "r6",
+  "text": "Get into cover, and the second they peek, open fire.",
+  "orders": [
+   "TAKE_COVER",
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "Get into cover.",
+   "Open fire the second they peek."
+  ],
+  "classifier": [
+   "TAKE_COVER",
+   "OPEN_FIRE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_072",
+  "voice": "r6",
+  "text": "Stand up, we're moving. On me.",
+  "orders": [
+   "STAND_UP",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "Stand up.",
+   "On me, we're moving."
+  ],
+  "classifier": [
+   "STAND_UP",
+   "FOLLOW_ME"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_073",
+  "voice": "r6",
+  "text": "Rappel to the north window, throw a flash inside, and vault in.",
+  "orders": [
+   "RAPPEL",
+   "FLASH",
+   "VAULT_WINDOW"
+  ],
+  "pieces": [
+   "Rappel to the north window.",
+   "Throw a flash inside the north window.",
+   "Vault in through the north window."
+  ],
+  "classifier": [
+   "RAPPEL",
+   "FLASH",
+   "VAULT_WINDOW"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_074",
+  "voice": "r6",
+  "text": "Don't flash that, I'm standing right in the doorway.",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "Don't flash that, I'm standing right in the doorway."
+  ],
+  "classifier": [
+   "NONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_075",
+  "voice": "r6",
+  "text": "Loop around through the east door and catch them from the side.",
+  "orders": [
+   "FLANK"
+  ],
+  "pieces": [
+   "Loop around through the east door and catch them from the side."
+  ],
+  "classifier": [
+   "FLANK"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_076",
+  "voice": "r6",
+  "text": "Two on the top floor, drone it for me.",
+  "orders": [
+   "DRONE"
+  ],
+  "pieces": [
+   "Drone the top floor for me."
+  ],
+  "classifier": [
+   "DRONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_077",
+  "voice": "r6",
+  "text": "Move up to the top floor, and when you get there, open the hatch.",
+  "orders": [
+   "MOVE_TO",
+   "OPEN"
+  ],
+  "pieces": [
+   "Move up to the top floor.",
+   "Open the hatch on the top floor."
+  ],
+  "classifier": [
+   "MOVE_TO",
+   "OPEN"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_078",
+  "voice": "r6",
+  "text": "Come back and cover me after you check behind the sofa.",
+  "orders": [
+   "CHECK",
+   "COME_BACK",
+   "COVER_ME"
+  ],
+  "pieces": [
+   "Check behind the sofa.",
+   "Come back.",
+   "Cover me."
+  ],
+  "classifier": [
+   "CHECK",
+   "COME_BACK",
+   "COVER_ME"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_079",
+  "voice": "r6",
+  "text": "Come back here and look at me.",
+  "orders": [
+   "COME_BACK",
+   "LOOK_AT_ME"
+  ],
+  "pieces": [
+   "Come back here.",
+   "Look at me."
+  ],
+  "classifier": [
+   "COME_BACK",
+   "LOOK_AT_ME"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_080",
+  "voice": "r6",
+  "text": "Defuse the bomb as soon as you've smoked it.",
+  "orders": [
+   "SMOKE",
+   "DEFUSE"
+  ],
+  "pieces": [
+   "Smoke the bomb.",
+   "Defuse the bomb."
+  ],
+  "classifier": [
+   "SMOKE",
+   "DEFUSE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_081",
+  "voice": "r6",
+  "text": "On my go, vault the north window.",
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pieces": [
+   "On my go, vault the north window."
+  ],
+  "classifier": [
+   "VAULT_WINDOW"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_082",
+  "voice": "r6",
+  "text": "I've got the main door, so you watch the other one.",
+  "orders": [
+   "HOLD_OTHER_ANGLE"
+  ],
+  "pieces": [
+   "You watch the other door."
+  ],
+  "classifier": [
+   "HOLD_OTHER_ANGLE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_083",
+  "voice": "r6",
+  "text": "No, not the door. Breach the wall, then cover me while I go in.",
+  "orders": [
+   "BREACH",
+   "COVER_ME"
+  ],
+  "pieces": [
+   "Breach the wall.",
+   "Cover me while I go in."
+  ],
+  "classifier": [
+   "BREACH",
+   "COVER_ME"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_084",
+  "voice": "r6",
+  "text": "Rappel down to the east window and vault straight in.",
+  "orders": [
+   "RAPPEL",
+   "VAULT_WINDOW"
+  ],
+  "pieces": [
+   "Rappel down to the east window.",
+   "Vault straight in through the east window."
+  ],
+  "classifier": [
+   "RAPPEL",
+   "VAULT_WINDOW"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_085",
+  "voice": "r6",
+  "text": "Hop up on the table; afterwards, face the east window.",
+  "orders": [
+   "JUMP",
+   "LOOK_AT"
+  ],
+  "pieces": [
+   "Hop up on the table.",
+   "Face the east window."
+  ],
+  "classifier": [
+   "JUMP",
+   "LOOK_AT"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_086",
+  "voice": "r6",
+  "text": "Get low and hold up; don't do anything yet.",
+  "orders": [
+   "CROUCH",
+   "WAIT"
+  ],
+  "pieces": [
+   "Get low.",
+   "Hold up, don't do anything yet."
+  ],
+  "classifier": [
+   "CROUCH",
+   "WAIT"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_087",
+  "voice": "r6",
+  "text": "Don't vault it, just open the window and leave it.",
+  "orders": [
+   "OPEN"
+  ],
+  "pieces": [
+   "Just open the window and leave it."
+  ],
+  "classifier": [
+   "OPEN"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_088",
+  "voice": "r6",
+  "text": "I've got this door, you take the other one. Don't shoot until I open up.",
+  "orders": [
+   "HOLD_OTHER_ANGLE",
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "You take the other door.",
+   "Don't shoot until I open up."
+  ],
+  "classifier": [
+   "HOLD_OTHER_ANGLE",
+   "HOLD_FIRE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_089",
+  "voice": "r6",
+  "text": "Suppress the east window while I cross, then follow me.",
+  "orders": [
+   "SUPPRESS",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "Suppress the east window while I cross.",
+   "Follow me."
+  ],
+  "classifier": [
+   "SUPPRESS",
+   "FOLLOW_ME"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_090",
+  "voice": "r6",
+  "text": "Negative, that's not it.",
+  "orders": [
+   "NO"
+  ],
+  "pieces": [
+   "Negative, that's not it."
+  ],
+  "classifier": [
+   "NO"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_091",
+  "voice": "r6",
+  "text": "I'm down by the sofa. Flash them and get me up.",
+  "orders": [
+   "FLASH",
+   "REVIVE_ME"
+  ],
+  "pieces": [
+   "Flash them.",
+   "Get me up, I'm down by the sofa."
+  ],
+  "classifier": [
+   "FLASH",
+   "REVIVE_ME"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_092",
+  "voice": "r6",
+  "text": "You hold the opposite side, and stay crouched.",
+  "orders": [
+   "HOLD_OTHER_ANGLE",
+   "CROUCH"
+  ],
+  "pieces": [
+   "You hold the opposite side.",
+   "Stay crouched."
+  ],
+  "classifier": [
+   "HOLD_OTHER_ANGLE",
+   "CROUCH"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_093",
+  "voice": "r6",
+  "text": "Before you push site, frag the corner and flash; once it's clear, plant.",
+  "orders": [
+   "FRAG",
+   "FLASH",
+   "ENTRY",
+   "PLANT"
+  ],
+  "pieces": [
+   "Frag the corner.",
+   "Flash site.",
+   "Push site.",
+   "Plant the defuser."
+  ],
+  "classifier": [
+   "FRAG",
+   "FLASH",
+   "ENTRY",
+   "PLANT"
+  ],
+  "unsure": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_094",
+  "voice": "r6",
+  "text": "Take them out. When that's done, regroup.",
+  "orders": [
+   "ATTACK",
+   "COME_BACK"
+  ],
+  "pieces": [
+   "Take them out.",
+   "Regroup."
+  ],
+  "classifier": [
+   "ATTACK",
+   "COME_BACK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_095",
+  "voice": "r6",
+  "text": "Light them up through the hole once you've hard breached the wall.",
+  "orders": [
+   "BREACH",
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "Hard breach the wall.",
+   "Light them up through the hole in the wall."
+  ],
+  "classifier": [
+   "BREACH",
+   "OPEN_FIRE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_096",
+  "voice": "r6",
+  "text": "Before you breach the hatch, drone below it, and after it pops, drop in.",
+  "orders": [
+   "DRONE",
+   "BREACH",
+   "JUMP"
+  ],
+  "pieces": [
+   "Drone below the hatch.",
+   "Breach the hatch.",
+   "Drop in through the hatch."
+  ],
+  "classifier": [
+   "DRONE",
+   "BREACH",
+   "JUMP"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_097",
+  "voice": "r6",
+  "text": "I need backup here. Then take the other angle and stay low.",
+  "orders": [
+   "HELP",
+   "HOLD_OTHER_ANGLE",
+   "CROUCH"
+  ],
+  "pieces": [
+   "I need backup here.",
+   "Take the other angle.",
+   "Stay low."
+  ],
+  "classifier": [
+   "HELP",
+   "HOLD_OTHER_ANGLE",
+   "CROUCH"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_098",
+  "voice": "r6",
+  "text": "Before you go down the blue stairs, drone the basement.",
+  "orders": [
+   "DRONE",
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "Drone the basement.",
+   "Go down the blue stairs."
+  ],
+  "classifier": [
+   "DRONE",
+   "MOVE_TO"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_r6_099",
+  "voice": "r6",
+  "text": "Two in the room. Drone it, flash it, then push.",
+  "orders": [
+   "DRONE",
+   "FLASH",
+   "ENTRY"
+  ],
+  "pieces": [
+   "Drone the room.",
+   "Flash the room.",
+   "Push into the room."
+  ],
+  "classifier": [
+   "DRONE",
+   "FLASH",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_000",
+  "voice": "cs",
+  "text": "come here bro, then watch the red stairs",
+  "orders": [
+   "FOLLOW_ME",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "come here bro",
+   "watch the red stairs"
+  ],
+  "classifier": [
+   "FOLLOW_ME",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_001",
+  "voice": "cs",
+  "text": "get the bomb down n plant it, ill watch",
+  "orders": [
+   "PLANT"
+  ],
+  "pieces": [
+   "get the bomb down n plant it"
+  ],
+  "classifier": [
+   "PLANT"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_002",
+  "voice": "cs",
+  "text": "keep their heads down for a sec then fall back",
+  "orders": [
+   "SUPPRESS",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "keep their heads down for a sec",
+   "fall back"
+  ],
+  "classifier": [
+   "SUPPRESS",
+   "FALL_BACK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_003",
+  "voice": "cs",
+  "text": "smoke main, flash over, push n plant",
+  "orders": [
+   "SMOKE",
+   "FLASH",
+   "ENTRY",
+   "PLANT"
+  ],
+  "pieces": [
+   "smoke main",
+   "flash over main",
+   "push main",
+   "plant the bomb"
+  ],
+  "classifier": [
+   "SMOKE",
+   "FLASH",
+   "ENTRY",
+   "PLANT"
+  ],
+  "unsure": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_004",
+  "voice": "cs",
+  "text": "nope, wrong one man",
+  "orders": [
+   "NO"
+  ],
+  "pieces": [
+   "nope, wrong one man"
+  ],
+  "classifier": [
+   "NO"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_005",
+  "voice": "cs",
+  "text": "nade thru the wall once uve breached it",
+  "orders": [
+   "BREACH",
+   "FRAG"
+  ],
+  "pieces": [
+   "breach the wall",
+   "nade thru the wall"
+  ],
+  "classifier": [
+   "BREACH",
+   "FRAG"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_006",
+  "voice": "cs",
+  "text": "two main, one lit on the stairs",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "two main, one lit on the stairs"
+  ],
+  "classifier": [
+   "NONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_007",
+  "voice": "cs",
+  "text": "plant after u flash site n push in",
+  "orders": [
+   "FLASH",
+   "ENTRY",
+   "PLANT"
+  ],
+  "pieces": [
+   "flash site",
+   "push into site",
+   "plant the bomb"
+  ],
+  "classifier": [
+   "FLASH",
+   "ENTRY",
+   "PLANT"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_008",
+  "voice": "cs",
+  "text": "throw a smoke on me first, then pick me up n follow me",
+  "orders": [
+   "SMOKE",
+   "REVIVE_ME",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "throw a smoke on me",
+   "pick me up",
+   "follow me"
+  ],
+  "classifier": [
+   "SMOKE",
+   "REVIVE_ME",
+   "FOLLOW_ME"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_009",
+  "voice": "cs",
+  "text": "nade them, but revive me first bro",
+  "orders": [
+   "REVIVE_ME",
+   "FRAG"
+  ],
+  "pieces": [
+   "revive me bro",
+   "nade them"
+  ],
+  "classifier": [
+   "REVIVE_ME",
+   "FRAG"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_010",
+  "voice": "cs",
+  "text": "before u go up blue stairs check them, then watch the east door",
+  "orders": [
+   "CHECK",
+   "MOVE_TO",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "check blue stairs",
+   "go up blue stairs",
+   "watch the east door"
+  ],
+  "classifier": [
+   "CHECK",
+   "MOVE_TO",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_011",
+  "voice": "cs",
+  "text": "nice shot bro, that was clean",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "nice shot bro, that was clean"
+  ],
+  "classifier": [
+   "NONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_012",
+  "voice": "cs",
+  "text": "take cover after u drop down n flash for me",
+  "orders": [
+   "JUMP",
+   "FLASH",
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "drop down",
+   "flash for me",
+   "take cover"
+  ],
+  "classifier": [
+   "JUMP",
+   "FLASH",
+   "TAKE_COVER"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_013",
+  "voice": "cs",
+  "text": "move up to my marker, from there check the door",
+  "orders": [
+   "MOVE_TO",
+   "CHECK"
+  ],
+  "pieces": [
+   "move up to my marker",
+   "check the door"
+  ],
+  "classifier": [
+   "MOVE_TO",
+   "CHECK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_014",
+  "voice": "cs",
+  "text": "one low behind the sofa, take him out",
+  "orders": [
+   "ATTACK"
+  ],
+  "pieces": [
+   "take out the guy behind the sofa"
+  ],
+  "classifier": [
+   "ATTACK"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_015",
+  "voice": "cs",
+  "text": "maybe, up to u bro",
+  "orders": [
+   "MAYBE"
+  ],
+  "pieces": [
+   "maybe, up to u bro"
+  ],
+  "classifier": [
+   "MAYBE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_016",
+  "voice": "cs",
+  "text": "defuse it after u smoke the bomb",
+  "orders": [
+   "SMOKE",
+   "DEFUSE"
+  ],
+  "pieces": [
+   "smoke the bomb",
+   "defuse the bomb"
+  ],
+  "classifier": [
+   "SMOKE",
+   "DEFUSE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_017",
+  "voice": "cs",
+  "text": "breach the wall, nade the room n push in, but drone it first",
+  "orders": [
+   "DRONE",
+   "BREACH",
+   "FRAG",
+   "ENTRY"
+  ],
+  "pieces": [
+   "drone the room",
+   "breach the wall",
+   "nade the room",
+   "push into the room"
+  ],
+  "classifier": [
+   "DRONE",
+   "BREACH",
+   "FRAG",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_018",
+  "voice": "cs",
+  "text": "stop shooting n hold up a sec",
+  "orders": [
+   "HOLD_FIRE",
+   "WAIT"
+  ],
+  "pieces": [
+   "stop shooting",
+   "hold up a sec"
+  ],
+  "classifier": [
+   "HOLD_FIRE",
+   "WAIT"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_019",
+  "voice": "cs",
+  "text": "look behind u, then open fire",
+  "orders": [
+   "LOOK_AT",
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "look behind u",
+   "open fire"
+  ],
+  "classifier": [
+   "LOOK_AT",
+   "OPEN_FIRE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_020",
+  "voice": "cs",
+  "text": "look at that door, open it slowly",
+  "orders": [
+   "LOOK_AT",
+   "OPEN"
+  ],
+  "pieces": [
+   "look at that door",
+   "open that door slowly"
+  ],
+  "classifier": [
+   "LOOK_AT",
+   "OPEN"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_021",
+  "voice": "cs",
+  "text": "dunno man, no idea",
+  "orders": [
+   "DONT_KNOW"
+  ],
+  "pieces": [
+   "dunno man, no idea"
+  ],
+  "classifier": [
+   "DONT_KNOW"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_022",
+  "voice": "cs",
+  "text": "nah dont nade the room, smoke it and push in",
+  "orders": [
+   "SMOKE",
+   "ENTRY"
+  ],
+  "pieces": [
+   "smoke the room",
+   "push into the room"
+  ],
+  "classifier": [
+   "SMOKE",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_023",
+  "voice": "cs",
+  "text": "rush site n clear it out, im behind u",
+  "orders": [
+   "ENTRY"
+  ],
+  "pieces": [
+   "rush site n clear it out"
+  ],
+  "classifier": [
+   "ENTRY"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_024",
+  "voice": "cs",
+  "text": "wait for my call then send the drone",
+  "orders": [
+   "DRONE"
+  ],
+  "pieces": [
+   "send the drone on my call"
+  ],
+  "classifier": [
+   "DRONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_025",
+  "voice": "cs",
+  "text": "fall back, smoke main and hold the other angle",
+  "orders": [
+   "FALL_BACK",
+   "SMOKE",
+   "HOLD_OTHER_ANGLE"
+  ],
+  "pieces": [
+   "fall back",
+   "smoke main",
+   "hold the other angle"
+  ],
+  "classifier": [
+   "FALL_BACK",
+   "SMOKE",
+   "HOLD_OTHER_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_026",
+  "voice": "cs",
+  "text": "light them up, soon as ur done fall back to site",
+  "orders": [
+   "OPEN_FIRE",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "light them up",
+   "fall back to site"
+  ],
+  "classifier": [
+   "OPEN_FIRE",
+   "FALL_BACK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_027",
+  "voice": "cs",
+  "text": "open the door, molly inside, fall back, hold it from the sofa",
+  "orders": [
+   "OPEN",
+   "FRAG",
+   "FALL_BACK",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "open the door",
+   "molly inside the door",
+   "fall back",
+   "hold the door from the sofa"
+  ],
+  "classifier": [
+   "OPEN",
+   "FRAG",
+   "FALL_BACK",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_028",
+  "voice": "cs",
+  "text": "get up, go blue stairs, check upstairs, come back",
+  "orders": [
+   "STAND_UP",
+   "MOVE_TO",
+   "CHECK",
+   "COME_BACK"
+  ],
+  "pieces": [
+   "get up",
+   "go blue stairs",
+   "check upstairs",
+   "come back"
+  ],
+  "classifier": [
+   "STAND_UP",
+   "MOVE_TO",
+   "CHECK",
+   "COME_BACK"
+  ],
+  "unsure": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_029",
+  "voice": "cs",
+  "text": "im down bro, come pick me up",
+  "orders": [
+   "REVIVE_ME"
+  ],
+  "pieces": [
+   "come pick me up, im down"
+  ],
+  "classifier": [
+   "REVIVE_ME"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_030",
+  "voice": "cs",
+  "text": "awp on the window, get low n stay crouched",
+  "orders": [
+   "CROUCH"
+  ],
+  "pieces": [
+   "get low n stay crouched"
+  ],
+  "classifier": [
+   "CROUCH"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_031",
+  "voice": "cs",
+  "text": "stay low n follow me",
+  "orders": [
+   "CROUCH",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "stay low",
+   "follow me"
+  ],
+  "classifier": [
+   "CROUCH",
+   "FOLLOW_ME"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_032",
+  "voice": "cs",
+  "text": "drop down from there, i need help here",
+  "orders": [
+   "JUMP",
+   "HELP"
+  ],
+  "pieces": [
+   "drop down from there",
+   "i need help here"
+  ],
+  "classifier": [
+   "JUMP",
+   "HELP"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_033",
+  "voice": "cs",
+  "text": "get up lol, ok go go go",
+  "orders": [
+   "STAND_UP",
+   "GO_NOW"
+  ],
+  "pieces": [
+   "get up",
+   "go go go"
+  ],
+  "classifier": [
+   "STAND_UP",
+   "GO_NOW"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_034",
+  "voice": "cs",
+  "text": "stay right here n get low",
+  "orders": [
+   "HOLD_POSITION",
+   "CROUCH"
+  ],
+  "pieces": [
+   "stay right here",
+   "get low"
+  ],
+  "classifier": [
+   "HOLD_POSITION",
+   "CROUCH"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_035",
+  "voice": "cs",
+  "text": "open the door, flash through it right after",
+  "orders": [
+   "OPEN",
+   "FLASH"
+  ],
+  "pieces": [
+   "open the door",
+   "flash through the door"
+  ],
+  "classifier": [
+   "OPEN",
+   "FLASH"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_036",
+  "voice": "cs",
+  "text": "im pushing main then im planting",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "im pushing main then im planting"
+  ],
+  "classifier": [
+   "NONE"
+  ],
+  "unsure": [
+   true
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_037",
+  "voice": "cs",
+  "text": "look at me, k now jump on that box",
+  "orders": [
+   "LOOK_AT_ME",
+   "JUMP"
+  ],
+  "pieces": [
+   "look at me",
+   "jump on that box"
+  ],
+  "classifier": [
+   "LOOK_AT_ME",
+   "JUMP"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_038",
+  "voice": "cs",
+  "text": "yeah, weapons free, light em up",
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "weapons free, light em up"
+  ],
+  "classifier": [
+   "OPEN_FIRE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_039",
+  "voice": "cs",
+  "text": "go north window, open it n hold it",
+  "orders": [
+   "MOVE_TO",
+   "OPEN",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "go north window",
+   "open the north window",
+   "hold the north window"
+  ],
+  "classifier": [
+   "MOVE_TO",
+   "OPEN",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_040",
+  "voice": "cs",
+  "text": "attack them first, then hold position on site",
+  "orders": [
+   "ATTACK",
+   "HOLD_POSITION"
+  ],
+  "pieces": [
+   "attack them",
+   "hold position on site"
+  ],
+  "classifier": [
+   "ATTACK",
+   "HOLD_POSITION"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_041",
+  "voice": "cs",
+  "text": "probably, i guess so",
+  "orders": [
+   "MAYBE"
+  ],
+  "pieces": [
+   "probably, i guess so"
+  ],
+  "classifier": [
+   "MAYBE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_042",
+  "voice": "cs",
+  "text": "jump down, pick me up, then cover me n dont shoot first",
+  "orders": [
+   "JUMP",
+   "REVIVE_ME",
+   "COVER_ME",
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "jump down",
+   "pick me up",
+   "cover me",
+   "dont shoot first"
+  ],
+  "classifier": [
+   "JUMP",
+   "REVIVE_ME",
+   "COVER_ME",
+   "HOLD_FIRE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_043",
+  "voice": "cs",
+  "text": "plant for me after u jump down",
+  "orders": [
+   "JUMP",
+   "PLANT"
+  ],
+  "pieces": [
+   "jump down",
+   "plant the bomb for me"
+  ],
+  "classifier": [
+   "JUMP",
+   "PLANT"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_044",
+  "voice": "cs",
+  "text": "no, hold fire, thats me",
+  "orders": [
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "hold fire"
+  ],
+  "classifier": [
+   "HOLD_FIRE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_045",
+  "voice": "cs",
+  "text": "defuse, but hop thru the window first",
+  "orders": [
+   "VAULT_WINDOW",
+   "DEFUSE"
+  ],
+  "pieces": [
+   "hop thru the window",
+   "defuse the bomb"
+  ],
+  "classifier": [
+   "VAULT_WINDOW",
+   "DEFUSE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_046",
+  "voice": "cs",
+  "text": "fall back n lay down covering fire on blue stairs",
+  "orders": [
+   "FALL_BACK",
+   "SUPPRESS"
+  ],
+  "pieces": [
+   "fall back",
+   "lay down covering fire on blue stairs"
+  ],
+  "classifier": [
+   "FALL_BACK",
+   "SUPPRESS"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_047",
+  "voice": "cs",
+  "text": "duck behind the sofa then check ur six",
+  "orders": [
+   "TAKE_COVER",
+   "CHECK"
+  ],
+  "pieces": [
+   "duck behind the sofa",
+   "check ur six"
+  ],
+  "classifier": [
+   "TAKE_COVER",
+   "CHECK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_048",
+  "voice": "cs",
+  "text": "im planting, cover me n watch my back",
+  "orders": [
+   "COVER_ME"
+  ],
+  "pieces": [
+   "cover me n watch my back"
+  ],
+  "classifier": [
+   "COVER_ME"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_049",
+  "voice": "cs",
+  "text": "yeah yeah thats right",
+  "orders": [
+   "YES"
+  ],
+  "pieces": [
+   "yeah yeah thats right"
+  ],
+  "classifier": [
+   "YES"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_050",
+  "voice": "cs",
+  "text": "im pinned down behind the sofa, theyre spraying me",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "im pinned down behind the sofa, theyre spraying me"
+  ],
+  "classifier": [
+   "NONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_051",
+  "voice": "cs",
+  "text": "jump down, nah actually use the rope, rappel down",
+  "orders": [
+   "RAPPEL"
+  ],
+  "pieces": [
+   "use the rope, rappel down"
+  ],
+  "classifier": [
+   "RAPPEL"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_052",
+  "voice": "cs",
+  "text": "take them out then defuse n hide",
+  "orders": [
+   "ATTACK",
+   "DEFUSE",
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "take them out",
+   "defuse the bomb",
+   "hide"
+  ],
+  "classifier": [
+   "ATTACK",
+   "DEFUSE",
+   "TAKE_COVER"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_053",
+  "voice": "cs",
+  "text": "look at me, ok now come with me n check the roof",
+  "orders": [
+   "LOOK_AT_ME",
+   "FOLLOW_ME",
+   "CHECK"
+  ],
+  "pieces": [
+   "look at me",
+   "come with me",
+   "check the roof"
+  ],
+  "classifier": [
+   "LOOK_AT_ME",
+   "FOLLOW_ME",
+   "CHECK"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_054",
+  "voice": "cs",
+  "text": "smoke the door, same thing on the window",
+  "orders": [
+   "SMOKE",
+   "SMOKE"
+  ],
+  "pieces": [
+   "smoke the door",
+   "smoke the window"
+  ],
+  "classifier": [
+   "SMOKE",
+   "SMOKE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_055",
+  "voice": "cs",
+  "text": "flank thru the west door after u smoke main",
+  "orders": [
+   "SMOKE",
+   "FLANK"
+  ],
+  "pieces": [
+   "smoke main",
+   "flank thru the west door"
+  ],
+  "classifier": [
+   "SMOKE",
+   "FLANK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_056",
+  "voice": "cs",
+  "text": "stop stop, hold on a sec",
+  "orders": [
+   "WAIT"
+  ],
+  "pieces": [
+   "stop stop, hold on a sec"
+  ],
+  "classifier": [
+   "WAIT"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_057",
+  "voice": "cs",
+  "text": "pick me up bro im down, then hold position here",
+  "orders": [
+   "REVIVE_ME",
+   "HOLD_POSITION"
+  ],
+  "pieces": [
+   "pick me up bro im down",
+   "hold position here"
+  ],
+  "classifier": [
+   "REVIVE_ME",
+   "HOLD_POSITION"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_058",
+  "voice": "cs",
+  "text": "molly the west door, nah the east one, flash it, then push thru",
+  "orders": [
+   "FRAG",
+   "FLASH",
+   "ENTRY"
+  ],
+  "pieces": [
+   "molly the east door",
+   "flash the east door",
+   "push thru the east door"
+  ],
+  "classifier": [
+   "FRAG",
+   "FLASH",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_059",
+  "voice": "cs",
+  "text": "hold fire, go prone n watch the stairs",
+  "orders": [
+   "HOLD_FIRE",
+   "PRONE",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "hold fire",
+   "go prone",
+   "watch the stairs"
+  ],
+  "classifier": [
+   "HOLD_FIRE",
+   "PRONE",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_060",
+  "voice": "cs",
+  "text": "smoke the door, nah wait, molly it",
+  "orders": [
+   "FRAG"
+  ],
+  "pieces": [
+   "molly the door"
+  ],
+  "classifier": [
+   "FRAG"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_061",
+  "voice": "cs",
+  "text": "drone the basement before u push it",
+  "orders": [
+   "DRONE",
+   "ENTRY"
+  ],
+  "pieces": [
+   "drone the basement",
+   "push into the basement"
+  ],
+  "classifier": [
+   "DRONE",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_062",
+  "voice": "cs",
+  "text": "need help here bro, then follow me n stay low",
+  "orders": [
+   "HELP",
+   "FOLLOW_ME",
+   "CROUCH"
+  ],
+  "pieces": [
+   "need help here bro",
+   "follow me",
+   "stay low"
+  ],
+  "classifier": [
+   "HELP",
+   "FOLLOW_ME",
+   "CROUCH"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_063",
+  "voice": "cs",
+  "text": "get back here after u check upstairs",
+  "orders": [
+   "CHECK",
+   "COME_BACK"
+  ],
+  "pieces": [
+   "check upstairs",
+   "get back here"
+  ],
+  "classifier": [
+   "CHECK",
+   "COME_BACK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_064",
+  "voice": "cs",
+  "text": "flash over main after u throw a smoke there",
+  "orders": [
+   "SMOKE",
+   "FLASH"
+  ],
+  "pieces": [
+   "throw a smoke at main",
+   "flash over main"
+  ],
+  "classifier": [
+   "SMOKE",
+   "FLASH"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_065",
+  "voice": "cs",
+  "text": "cover me til im across then defuse",
+  "orders": [
+   "COVER_ME",
+   "DEFUSE"
+  ],
+  "pieces": [
+   "cover me til im across",
+   "defuse the bomb"
+  ],
+  "classifier": [
+   "COVER_ME",
+   "DEFUSE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_066",
+  "voice": "cs",
+  "text": "on three, flash the door",
+  "orders": [
+   "FLASH"
+  ],
+  "pieces": [
+   "on three, flash the door"
+  ],
+  "classifier": [
+   "FLASH"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_067",
+  "voice": "cs",
+  "text": "pin them down first, then move up to where i pinged",
+  "orders": [
+   "SUPPRESS",
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "pin them down",
+   "move up to where i pinged"
+  ],
+  "classifier": [
+   "SUPPRESS",
+   "MOVE_TO"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_068",
+  "voice": "cs",
+  "text": "smoke my pin n plant there",
+  "orders": [
+   "SMOKE",
+   "PLANT"
+  ],
+  "pieces": [
+   "smoke my pin",
+   "plant the bomb at my pin"
+  ],
+  "classifier": [
+   "SMOKE",
+   "PLANT"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_069",
+  "voice": "cs",
+  "text": "wrap around the back n catch them from behind",
+  "orders": [
+   "FLANK"
+  ],
+  "pieces": [
+   "wrap around the back n catch them from behind"
+  ],
+  "classifier": [
+   "FLANK"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_070",
+  "voice": "cs",
+  "text": "crouch, dont shoot yet",
+  "orders": [
+   "CROUCH",
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "crouch",
+   "dont shoot yet"
+  ],
+  "classifier": [
+   "CROUCH",
+   "HOLD_FIRE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_071",
+  "voice": "cs",
+  "text": "stop shooting, get back here",
+  "orders": [
+   "HOLD_FIRE",
+   "COME_BACK"
+  ],
+  "pieces": [
+   "stop shooting",
+   "get back here"
+  ],
+  "classifier": [
+   "HOLD_FIRE",
+   "COME_BACK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_072",
+  "voice": "cs",
+  "text": "dont jump down, just go down the red stairs",
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "just go down the red stairs"
+  ],
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_073",
+  "voice": "cs",
+  "text": "ill go main, u watch the stairs",
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "u watch the stairs"
+  ],
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_074",
+  "voice": "cs",
+  "text": "flash n clear the room but open the west door first",
+  "orders": [
+   "OPEN",
+   "FLASH",
+   "ENTRY"
+  ],
+  "pieces": [
+   "open the west door",
+   "flash the room",
+   "clear the room"
+  ],
+  "classifier": [
+   "OPEN",
+   "FLASH",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_075",
+  "voice": "cs",
+  "text": "get up, come back here, cover me",
+  "orders": [
+   "STAND_UP",
+   "COME_BACK",
+   "COVER_ME"
+  ],
+  "pieces": [
+   "get up",
+   "come back here",
+   "cover me"
+  ],
+  "classifier": [
+   "STAND_UP",
+   "COME_BACK",
+   "COVER_ME"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_076",
+  "voice": "cs",
+  "text": "rappel up, breach the roof hatch n jump in",
+  "orders": [
+   "RAPPEL",
+   "BREACH",
+   "JUMP"
+  ],
+  "pieces": [
+   "rappel up to the roof",
+   "breach the roof hatch",
+   "jump in thru the roof hatch"
+  ],
+  "classifier": [
+   "RAPPEL",
+   "BREACH",
+   "JUMP"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_077",
+  "voice": "cs",
+  "text": "dont nade that n dont flash it either",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "dont nade that n dont flash it either"
+  ],
+  "classifier": [
+   "NONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_078",
+  "voice": "cs",
+  "text": "look at me, ok vault that window n take cover",
+  "orders": [
+   "LOOK_AT_ME",
+   "VAULT_WINDOW",
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "look at me",
+   "vault that window",
+   "take cover"
+  ],
+  "classifier": [
+   "LOOK_AT_ME",
+   "VAULT_WINDOW",
+   "TAKE_COVER"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_079",
+  "voice": "cs",
+  "text": "come here, crouch, dont shoot",
+  "orders": [
+   "FOLLOW_ME",
+   "CROUCH",
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "come here",
+   "crouch",
+   "dont shoot"
+  ],
+  "classifier": [
+   "FOLLOW_ME",
+   "CROUCH",
+   "HOLD_FIRE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_080",
+  "voice": "cs",
+  "text": "push site but nade it first",
+  "orders": [
+   "FRAG",
+   "ENTRY"
+  ],
+  "pieces": [
+   "nade site",
+   "push site"
+  ],
+  "classifier": [
+   "FRAG",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_081",
+  "voice": "cs",
+  "text": "who has the bomb, anyone?",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "who has the bomb, anyone?"
+  ],
+  "classifier": [
+   "NONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_082",
+  "voice": "cs",
+  "text": "flank them thru the basement, after that hold the stairs",
+  "orders": [
+   "FLANK",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "flank them thru the basement",
+   "hold the stairs"
+  ],
+  "classifier": [
+   "FLANK",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_083",
+  "voice": "cs",
+  "text": "go prone then look at the north window",
+  "orders": [
+   "PRONE",
+   "LOOK_AT"
+  ],
+  "pieces": [
+   "go prone",
+   "look at the north window"
+  ],
+  "classifier": [
+   "PRONE",
+   "LOOK_AT"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_084",
+  "voice": "cs",
+  "text": "check behind the sofa after u molly it",
+  "orders": [
+   "FRAG",
+   "CHECK"
+  ],
+  "pieces": [
+   "molly behind the sofa",
+   "check behind the sofa"
+  ],
+  "classifier": [
+   "FRAG",
+   "CHECK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_085",
+  "voice": "cs",
+  "text": "open main door from inside after u vault the window",
+  "orders": [
+   "VAULT_WINDOW",
+   "OPEN"
+  ],
+  "pieces": [
+   "vault the window",
+   "open main door from inside"
+  ],
+  "classifier": [
+   "VAULT_WINDOW",
+   "OPEN"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_086",
+  "voice": "cs",
+  "text": "get up n stay on ur feet, we gotta move",
+  "orders": [
+   "STAND_UP"
+  ],
+  "pieces": [
+   "get up n stay on ur feet"
+  ],
+  "classifier": [
+   "STAND_UP"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_087",
+  "voice": "cs",
+  "text": "pop a flash at main, push it straight after",
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "pieces": [
+   "pop a flash at main",
+   "push main"
+  ],
+  "classifier": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_088",
+  "voice": "cs",
+  "text": "nah, not that one bro",
+  "orders": [
+   "NO"
+  ],
+  "pieces": [
+   "nah, not that one bro"
+  ],
+  "classifier": [
+   "NO"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_089",
+  "voice": "cs",
+  "text": "yeah plant it, then hide",
+  "orders": [
+   "PLANT",
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "plant the bomb",
+   "hide"
+  ],
+  "classifier": [
+   "PLANT",
+   "TAKE_COVER"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_090",
+  "voice": "cs",
+  "text": "help me out here, after that go plant",
+  "orders": [
+   "HELP",
+   "PLANT"
+  ],
+  "pieces": [
+   "help me out here",
+   "go plant the bomb"
+  ],
+  "classifier": [
+   "HELP",
+   "PLANT"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_091",
+  "voice": "cs",
+  "text": "smoke main, molly my ping, then open fire on the window",
+  "orders": [
+   "SMOKE",
+   "FRAG",
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "smoke main",
+   "molly my ping",
+   "open fire on the window"
+  ],
+  "classifier": [
+   "SMOKE",
+   "FRAG",
+   "OPEN_FIRE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_092",
+  "voice": "cs",
+  "text": "go to the stairs and stay there",
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pieces": [
+   "go to the stairs and stay there"
+  ],
+  "classifier": [
+   "MOVE_TO"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": false
+ },
+ {
+  "id": "t_cs_093",
+  "voice": "cs",
+  "text": "one at the door, pin him down, nade it, then push in",
+  "orders": [
+   "SUPPRESS",
+   "FRAG",
+   "ENTRY"
+  ],
+  "pieces": [
+   "pin him down at the door",
+   "nade the door",
+   "push in thru the door"
+  ],
+  "classifier": [
+   "SUPPRESS",
+   "FRAG",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_094",
+  "voice": "cs",
+  "text": "take them out, when ur done come plant",
+  "orders": [
+   "ATTACK",
+   "PLANT"
+  ],
+  "pieces": [
+   "take them out",
+   "come plant the bomb"
+  ],
+  "classifier": [
+   "ATTACK",
+   "PLANT"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_095",
+  "voice": "cs",
+  "text": "frag the room after u rappel down to the west window",
+  "orders": [
+   "RAPPEL",
+   "FRAG"
+  ],
+  "pieces": [
+   "rappel down to the west window",
+   "frag the room"
+  ],
+  "classifier": [
+   "RAPPEL",
+   "FRAG"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_096",
+  "voice": "cs",
+  "text": "go down n plant but drone the basement first",
+  "orders": [
+   "DRONE",
+   "MOVE_TO",
+   "PLANT"
+  ],
+  "pieces": [
+   "drone the basement",
+   "go down to the basement",
+   "plant the bomb"
+  ],
+  "classifier": [
+   "DRONE",
+   "MOVE_TO",
+   "PLANT"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_097",
+  "voice": "cs",
+  "text": "go now, then come back to me after",
+  "orders": [
+   "GO_NOW",
+   "COME_BACK"
+  ],
+  "pieces": [
+   "go now",
+   "come back to me"
+  ],
+  "classifier": [
+   "GO_NOW",
+   "COME_BACK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_098",
+  "voice": "cs",
+  "text": "smoke main then u hold the other angle",
+  "orders": [
+   "SMOKE",
+   "HOLD_OTHER_ANGLE"
+  ],
+  "pieces": [
+   "smoke main",
+   "u hold the other angle"
+  ],
+  "classifier": [
+   "SMOKE",
+   "HOLD_OTHER_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_cs_099",
+  "voice": "cs",
+  "text": "jump on the table then hold the south window, n dont shoot till i say",
+  "orders": [
+   "JUMP",
+   "HOLD_ANGLE",
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "jump on the table",
+   "hold the south window",
+   "dont shoot till i say"
+  ],
+  "classifier": [
+   "JUMP",
+   "HOLD_ANGLE",
+   "HOLD_FIRE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_000",
+  "voice": "stt",
+  "text": "come with me okay and when we go inside you watch the other side",
+  "orders": [
+   "FOLLOW_ME",
+   "HOLD_OTHER_ANGLE"
+  ],
+  "pieces": [
+   "come with me",
+   "you watch the other side"
+  ],
+  "classifier": [
+   "FOLLOW_ME",
+   "HOLD_OTHER_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_001",
+  "voice": "stt",
+  "text": "before you go up the blue stares uh check the basement",
+  "orders": [
+   "CHECK",
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "check the basement",
+   "go up the blue stares"
+  ],
+  "classifier": [
+   "CHECK",
+   "RAPPEL"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": false
+ },
+ {
+  "id": "t_stt_002",
+  "voice": "stt",
+  "text": "go back to the stairs but first you attack them and diffuse the bomb",
+  "orders": [
+   "ATTACK",
+   "DEFUSE",
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "attack them",
+   "diffuse the bomb",
+   "go back to the stairs"
+  ],
+  "classifier": [
+   "ATTACK",
+   "DEFUSE",
+   "MOVE_TO"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_003",
+  "voice": "stt",
+  "text": "open the window uh open it and throw smoke outside",
+  "orders": [
+   "OPEN",
+   "SMOKE"
+  ],
+  "pieces": [
+   "open the window",
+   "throw smoke outside the window"
+  ],
+  "classifier": [
+   "OPEN",
+   "SMOKE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_004",
+  "voice": "stt",
+  "text": "sit down sit down and when i say go you stand up",
+  "orders": [
+   "CROUCH",
+   "STAND_UP"
+  ],
+  "pieces": [
+   "sit down",
+   "stand up when i say go"
+  ],
+  "classifier": [
+   "CROUCH",
+   "STAND_UP"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_005",
+  "voice": "stt",
+  "text": "pin them down pin them down and when i am in the door you stop shooting and come with me",
+  "orders": [
+   "SUPPRESS",
+   "HOLD_FIRE",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "pin them down",
+   "stop shooting when i am in the door",
+   "come with me"
+  ],
+  "classifier": [
+   "SUPPRESS",
+   "HOLD_FIRE",
+   "FOLLOW_ME"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_006",
+  "voice": "stt",
+  "text": "there is one enemy on the roof and two in the basement",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "there is one enemy on the roof and two in the basement"
+  ],
+  "classifier": [
+   "NONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_007",
+  "voice": "stt",
+  "text": "turn around and look at me i am behind you",
+  "orders": [
+   "LOOK_AT_ME"
+  ],
+  "pieces": [
+   "turn around and look at me"
+  ],
+  "classifier": [
+   "LOOK_AT_ME"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_008",
+  "voice": "stt",
+  "text": "come back here and then uh wait do not do anything",
+  "orders": [
+   "COME_BACK",
+   "WAIT"
+  ],
+  "pieces": [
+   "come back here",
+   "wait do not do anything"
+  ],
+  "classifier": [
+   "COME_BACK",
+   "WAIT"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_009",
+  "voice": "stt",
+  "text": "attack them uh but first jump over the so far",
+  "orders": [
+   "JUMP",
+   "ATTACK"
+  ],
+  "pieces": [
+   "jump over the so far",
+   "attack them"
+  ],
+  "classifier": [
+   "JUMP",
+   "ATTACK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_010",
+  "voice": "stt",
+  "text": "do not bridge this wall okay do not touch it",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "do not bridge this wall okay do not touch it"
+  ],
+  "classifier": [
+   "NONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_011",
+  "voice": "stt",
+  "text": "okay go now go and uh then fall back to the stairs",
+  "orders": [
+   "GO_NOW",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "go now go",
+   "fall back to the stairs"
+  ],
+  "classifier": [
+   "GO_NOW",
+   "FALL_BACK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_012",
+  "voice": "stt",
+  "text": "do not open the door do not open just watch it",
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "just watch the door"
+  ],
+  "classifier": [
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_013",
+  "voice": "stt",
+  "text": "jump in through the window after you throw flesh in it",
+  "orders": [
+   "FLASH",
+   "VAULT_WINDOW"
+  ],
+  "pieces": [
+   "throw flesh in the window",
+   "jump in through the window"
+  ],
+  "classifier": [
+   "FLASH",
+   "VAULT_WINDOW"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_014",
+  "voice": "stt",
+  "text": "throw the grenade behind the so far then check it and plant the bomb there",
+  "orders": [
+   "FRAG",
+   "CHECK",
+   "PLANT"
+  ],
+  "pieces": [
+   "throw the grenade behind the so far",
+   "check behind the so far",
+   "plant the bomb behind the so far"
+  ],
+  "classifier": [
+   "FRAG",
+   "CHECK",
+   "PLANT"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_015",
+  "voice": "stt",
+  "text": "yes yes that is correct",
+  "orders": [
+   "YES"
+  ],
+  "pieces": [
+   "yes yes that is correct"
+  ],
+  "classifier": [
+   "YES"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_016",
+  "voice": "stt",
+  "text": "jump down from the roof then go to the east window and open it and throw the grenade inside",
+  "orders": [
+   "JUMP",
+   "MOVE_TO",
+   "OPEN",
+   "FRAG"
+  ],
+  "pieces": [
+   "jump down from the roof",
+   "go to the east window",
+   "open the east window",
+   "throw the grenade inside the east window"
+  ],
+  "classifier": [
+   "JUMP",
+   "MOVE_TO",
+   "OPEN",
+   "FRAG"
+  ],
+  "unsure": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_017",
+  "voice": "stt",
+  "text": "go to the top floor and breach the floor and then drop down on them",
+  "orders": [
+   "MOVE_TO",
+   "BREACH",
+   "JUMP"
+  ],
+  "pieces": [
+   "go to the top floor",
+   "breach the floor",
+   "drop down through the hole in the floor"
+  ],
+  "classifier": [
+   "MOVE_TO",
+   "BREACH",
+   "JUMP"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_018",
+  "voice": "stt",
+  "text": "revive me please and next you cover me i am weak",
+  "orders": [
+   "REVIVE_ME",
+   "COVER_ME"
+  ],
+  "pieces": [
+   "revive me please",
+   "you cover me i am weak"
+  ],
+  "classifier": [
+   "REVIVE_ME",
+   "COVER_ME"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_019",
+  "voice": "stt",
+  "text": "i do not see you uh come back here return to me",
+  "orders": [
+   "COME_BACK"
+  ],
+  "pieces": [
+   "come back here return to me"
+  ],
+  "classifier": [
+   "COME_BACK"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_020",
+  "voice": "stt",
+  "text": "i am under you so jump down from there okay",
+  "orders": [
+   "JUMP"
+  ],
+  "pieces": [
+   "jump down from there"
+  ],
+  "classifier": [
+   "JUMP"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_021",
+  "voice": "stt",
+  "text": "you crouch you crouch go slowly to my pin",
+  "orders": [
+   "CROUCH",
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "you crouch",
+   "go slowly to my pin"
+  ],
+  "classifier": [
+   "CROUCH",
+   "MOVE_TO"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_022",
+  "voice": "stt",
+  "text": "yes climb through the west window then open the main door from inside and cover me",
+  "orders": [
+   "VAULT_WINDOW",
+   "OPEN",
+   "COVER_ME"
+  ],
+  "pieces": [
+   "climb through the west window",
+   "open the main door from inside",
+   "cover me"
+  ],
+  "classifier": [
+   "VAULT_WINDOW",
+   "OPEN",
+   "COVER_ME"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_023",
+  "voice": "stt",
+  "text": "i am alone here i need help come and help me",
+  "orders": [
+   "HELP"
+  ],
+  "pieces": [
+   "i need help come and help me"
+  ],
+  "classifier": [
+   "HELP"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_024",
+  "voice": "stt",
+  "text": "crouch crouch and watch the door and when i call you you come back",
+  "orders": [
+   "CROUCH",
+   "HOLD_ANGLE",
+   "COME_BACK"
+  ],
+  "pieces": [
+   "crouch",
+   "watch the door",
+   "come back when i call you"
+  ],
+  "classifier": [
+   "CROUCH",
+   "HOLD_ANGLE",
+   "COME_BACK"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_025",
+  "voice": "stt",
+  "text": "use the rope to go up on the roof and then jump in the hole there",
+  "orders": [
+   "RAPPEL",
+   "JUMP"
+  ],
+  "pieces": [
+   "use the rope to go up on the roof",
+   "jump in the hole on the roof"
+  ],
+  "classifier": [
+   "RAPPEL",
+   "JUMP"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_026",
+  "voice": "stt",
+  "text": "you plant the bomb but first first you smoke the door okay",
+  "orders": [
+   "SMOKE",
+   "PLANT"
+  ],
+  "pieces": [
+   "you smoke the door",
+   "you plant the bomb"
+  ],
+  "classifier": [
+   "SMOKE",
+   "PLANT"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_027",
+  "voice": "stt",
+  "text": "look up look up at the ceiling and bridge it",
+  "orders": [
+   "LOOK_AT",
+   "BREACH"
+  ],
+  "pieces": [
+   "look up at the ceiling",
+   "bridge the ceiling"
+  ],
+  "classifier": [
+   "LOOK_AT",
+   "BREACH"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_028",
+  "voice": "stt",
+  "text": "follow me upstairs then you check the room on the left and come back",
+  "orders": [
+   "FOLLOW_ME",
+   "CHECK",
+   "COME_BACK"
+  ],
+  "pieces": [
+   "follow me upstairs",
+   "you check the room on the left",
+   "come back"
+  ],
+  "classifier": [
+   "FOLLOW_ME",
+   "CHECK",
+   "COME_BACK"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_029",
+  "voice": "stt",
+  "text": "there is three inside so bridge the wall and uh shoot through the hole and then clear the room",
+  "orders": [
+   "BREACH",
+   "OPEN_FIRE",
+   "ENTRY"
+  ],
+  "pieces": [
+   "bridge the wall",
+   "shoot through the hole in the wall",
+   "clear the room"
+  ],
+  "classifier": [
+   "BREACH",
+   "OPEN_FIRE",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_030",
+  "voice": "stt",
+  "text": "watch the south door after you throw the smoke on the so far",
+  "orders": [
+   "SMOKE",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "throw the smoke on the so far",
+   "watch the south door"
+  ],
+  "classifier": [
+   "SMOKE",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_031",
+  "voice": "stt",
+  "text": "jump down here and help me and after that attack them",
+  "orders": [
+   "JUMP",
+   "HELP",
+   "ATTACK"
+  ],
+  "pieces": [
+   "jump down here",
+   "help me",
+   "attack them"
+  ],
+  "classifier": [
+   "JUMP",
+   "HELP",
+   "ATTACK"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_032",
+  "voice": "stt",
+  "text": "uh lie down on the ground and keep shooting the door to pin them down",
+  "orders": [
+   "PRONE",
+   "SUPPRESS"
+  ],
+  "pieces": [
+   "lie down on the ground",
+   "keep shooting the door to pin them down"
+  ],
+  "classifier": [
+   "PRONE",
+   "SUPPRESS"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_033",
+  "voice": "stt",
+  "text": "check the basement then come back and follow me to the roof and repel down",
+  "orders": [
+   "CHECK",
+   "COME_BACK",
+   "FOLLOW_ME",
+   "RAPPEL"
+  ],
+  "pieces": [
+   "check the basement",
+   "come back",
+   "follow me to the roof",
+   "repel down from the roof"
+  ],
+  "classifier": [
+   "CHECK",
+   "COME_BACK",
+   "FOLLOW_ME",
+   "RAPPEL"
+  ],
+  "unsure": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_034",
+  "voice": "stt",
+  "text": "start shooting now start shooting and then you go clear the room",
+  "orders": [
+   "OPEN_FIRE",
+   "ENTRY"
+  ],
+  "pieces": [
+   "start shooting now",
+   "go clear the room"
+  ],
+  "classifier": [
+   "OPEN_FIRE",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_035",
+  "voice": "stt",
+  "text": "i will throw the flesh and then i go inside myself",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "i will throw the flesh and then i go inside myself"
+  ],
+  "classifier": [
+   "FLASH"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": false
+ },
+ {
+  "id": "t_stt_036",
+  "voice": "stt",
+  "text": "uh they are shooting me from the window i am pinned down",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "uh they are shooting me from the window i am pinned down"
+  ],
+  "classifier": [
+   "NONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_037",
+  "voice": "stt",
+  "text": "uh yeah okay sure",
+  "orders": [
+   "YES"
+  ],
+  "pieces": [
+   "uh yeah okay sure"
+  ],
+  "classifier": [
+   "NONE"
+  ],
+  "unsure": [
+   true
+  ],
+  "kept": false
+ },
+ {
+  "id": "t_stt_038",
+  "voice": "stt",
+  "text": "fall back after you throw smoke on the bomb and diffuse it",
+  "orders": [
+   "SMOKE",
+   "DEFUSE",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "throw smoke on the bomb",
+   "diffuse the bomb",
+   "fall back"
+  ],
+  "classifier": [
+   "SMOKE",
+   "DEFUSE",
+   "FALL_BACK"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_039",
+  "voice": "stt",
+  "text": "plant the bomb uh no no sorry diffuse the bomb",
+  "orders": [
+   "DEFUSE"
+  ],
+  "pieces": [
+   "diffuse the bomb"
+  ],
+  "classifier": [
+   "DEFUSE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_040",
+  "voice": "stt",
+  "text": "retreat retreat throw smoke behind you",
+  "orders": [
+   "FALL_BACK",
+   "SMOKE"
+  ],
+  "pieces": [
+   "retreat",
+   "throw smoke behind you"
+  ],
+  "classifier": [
+   "FALL_BACK",
+   "SMOKE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_041",
+  "voice": "stt",
+  "text": "stop stop wait do not do anything yet",
+  "orders": [
+   "WAIT"
+  ],
+  "pieces": [
+   "stop stop wait do not do anything yet"
+  ],
+  "classifier": [
+   "WAIT"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_042",
+  "voice": "stt",
+  "text": "follow me follow me and uh when we are there you watch the north window",
+  "orders": [
+   "FOLLOW_ME",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "follow me",
+   "you watch the north window"
+  ],
+  "classifier": [
+   "FOLLOW_ME",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_043",
+  "voice": "stt",
+  "text": "i do not know sorry",
+  "orders": [
+   "DONT_KNOW"
+  ],
+  "pieces": [
+   "i do not know sorry"
+  ],
+  "classifier": [
+   "DONT_KNOW"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_044",
+  "voice": "stt",
+  "text": "i need help here and after send the drown upstairs and watch the stairs",
+  "orders": [
+   "HELP",
+   "DRONE",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "i need help here",
+   "send the drown upstairs",
+   "watch the stairs"
+  ],
+  "classifier": [
+   "HELP",
+   "DRONE",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_045",
+  "voice": "stt",
+  "text": "okay so uh flesh the room and then clear it",
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "pieces": [
+   "flesh the room",
+   "clear the room"
+  ],
+  "classifier": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_046",
+  "voice": "stt",
+  "text": "throw the smoke uh no no sorry do not throw it",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "throw the smoke uh no no sorry do not throw it"
+  ],
+  "classifier": [
+   "SMOKE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": false
+ },
+ {
+  "id": "t_stt_047",
+  "voice": "stt",
+  "text": "keep shooting at the door to pin them and then uh push inside the room and clear it",
+  "orders": [
+   "SUPPRESS",
+   "ENTRY"
+  ],
+  "pieces": [
+   "keep shooting at the door to pin them",
+   "push inside the room and clear it"
+  ],
+  "classifier": [
+   "SUPPRESS",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_048",
+  "voice": "stt",
+  "text": "hide behind this wall and do not shoot until they come closer",
+  "orders": [
+   "TAKE_COVER",
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "hide behind this wall",
+   "do not shoot until they come closer"
+  ],
+  "classifier": [
+   "TAKE_COVER",
+   "HOLD_FIRE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_049",
+  "voice": "stt",
+  "text": "do not shoot okay and uh return to your position",
+  "orders": [
+   "HOLD_FIRE",
+   "COME_BACK"
+  ],
+  "pieces": [
+   "do not shoot",
+   "return to your position"
+  ],
+  "classifier": [
+   "HOLD_FIRE",
+   "COME_BACK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_050",
+  "voice": "stt",
+  "text": "wait for my signal okay wait and then you bridge the wall",
+  "orders": [
+   "BREACH"
+  ],
+  "pieces": [
+   "bridge the wall on my signal"
+  ],
+  "classifier": [
+   "BREACH"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_051",
+  "voice": "stt",
+  "text": "look if it is clear there after you throw the grenade",
+  "orders": [
+   "FRAG",
+   "CHECK"
+  ],
+  "pieces": [
+   "throw the grenade there",
+   "look if it is clear there"
+  ],
+  "classifier": [
+   "FRAG",
+   "CHECK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_052",
+  "voice": "stt",
+  "text": "check behind the table and the east door also",
+  "orders": [
+   "CHECK",
+   "CHECK"
+  ],
+  "pieces": [
+   "check behind the table",
+   "check the east door"
+  ],
+  "classifier": [
+   "CHECK",
+   "CHECK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_053",
+  "voice": "stt",
+  "text": "turn and look at the red stairs i think somebody is there",
+  "orders": [
+   "LOOK_AT"
+  ],
+  "pieces": [
+   "turn and look at the red stairs"
+  ],
+  "classifier": [
+   "LOOK_AT"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_054",
+  "voice": "stt",
+  "text": "fall back fall back to the stairs and throw smoke and then hold the angle on the door",
+  "orders": [
+   "FALL_BACK",
+   "SMOKE",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "fall back to the stairs",
+   "throw smoke",
+   "hold the angle on the door"
+  ],
+  "classifier": [
+   "FALL_BACK",
+   "SMOKE",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_055",
+  "voice": "stt",
+  "text": "i am down i am down please revive me and then fall back",
+  "orders": [
+   "REVIVE_ME",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "please revive me i am down",
+   "fall back"
+  ],
+  "classifier": [
+   "REVIVE_ME",
+   "FALL_BACK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_056",
+  "voice": "stt",
+  "text": "lie down first then uh look at the door no sorry the window and do not shoot",
+  "orders": [
+   "PRONE",
+   "LOOK_AT",
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "lie down",
+   "look at the window",
+   "do not shoot"
+  ],
+  "classifier": [
+   "PRONE",
+   "LOOK_AT",
+   "HOLD_FIRE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_057",
+  "voice": "stt",
+  "text": "stay at my pin do not shoot anybody okay",
+  "orders": [
+   "HOLD_POSITION",
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "stay at my pin",
+   "do not shoot anybody"
+  ],
+  "classifier": [
+   "HOLD_POSITION",
+   "HOLD_FIRE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_058",
+  "voice": "stt",
+  "text": "okay so go to the window uh and before you jump in throw the flesh inside",
+  "orders": [
+   "MOVE_TO",
+   "FLASH",
+   "VAULT_WINDOW"
+  ],
+  "pieces": [
+   "go to the window",
+   "throw the flesh inside the window",
+   "jump in through the window"
+  ],
+  "classifier": [
+   "MOVE_TO",
+   "FLASH",
+   "VAULT_WINDOW"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_059",
+  "voice": "stt",
+  "text": "go upstairs okay and there you hold the other angel not mine",
+  "orders": [
+   "MOVE_TO",
+   "HOLD_OTHER_ANGLE"
+  ],
+  "pieces": [
+   "go upstairs",
+   "you hold the other angel not mine"
+  ],
+  "classifier": [
+   "MOVE_TO",
+   "HOLD_OTHER_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_060",
+  "voice": "stt",
+  "text": "smoke the door and plant the bomb and after hide but first first revive me",
+  "orders": [
+   "REVIVE_ME",
+   "SMOKE",
+   "PLANT",
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "revive me",
+   "smoke the door",
+   "plant the bomb",
+   "hide"
+  ],
+  "classifier": [
+   "REVIVE_ME",
+   "SMOKE",
+   "PLANT",
+   "TAKE_COVER"
+  ],
+  "unsure": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_061",
+  "voice": "stt",
+  "text": "breach the north door but first uh first use the drone inside",
+  "orders": [
+   "DRONE",
+   "BREACH"
+  ],
+  "pieces": [
+   "use the drone inside the north door",
+   "breach the north door"
+  ],
+  "classifier": [
+   "DRONE",
+   "BREACH"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_062",
+  "voice": "stt",
+  "text": "uh maybe i think maybe",
+  "orders": [
+   "MAYBE"
+  ],
+  "pieces": [
+   "uh maybe i think maybe"
+  ],
+  "classifier": [
+   "MAYBE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_063",
+  "voice": "stt",
+  "text": "why you are lying stand up return to me",
+  "orders": [
+   "STAND_UP",
+   "COME_BACK"
+  ],
+  "pieces": [
+   "stand up",
+   "return to me"
+  ],
+  "classifier": [
+   "STAND_UP",
+   "COME_BACK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_064",
+  "voice": "stt",
+  "text": "attack the enemy on the stairs and uh after that take cover",
+  "orders": [
+   "ATTACK",
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "attack the enemy on the stairs",
+   "take cover"
+  ],
+  "classifier": [
+   "ATTACK",
+   "TAKE_COVER"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_065",
+  "voice": "stt",
+  "text": "go around behind them from the left and uh before that throw the flesh",
+  "orders": [
+   "FLASH",
+   "FLANK"
+  ],
+  "pieces": [
+   "throw the flesh",
+   "go around behind them from the left"
+  ],
+  "classifier": [
+   "FLASH",
+   "FLANK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_066",
+  "voice": "stt",
+  "text": "okay go now go and when it is done come back and take cover",
+  "orders": [
+   "GO_NOW",
+   "COME_BACK",
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "go now go",
+   "come back",
+   "take cover"
+  ],
+  "classifier": [
+   "GO_NOW",
+   "COME_BACK",
+   "TAKE_COVER"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_067",
+  "voice": "stt",
+  "text": "go to my marker go to my marker and lie down there",
+  "orders": [
+   "MOVE_TO",
+   "PRONE"
+  ],
+  "pieces": [
+   "go to my marker",
+   "lie down"
+  ],
+  "classifier": [
+   "MOVE_TO",
+   "PRONE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_068",
+  "voice": "stt",
+  "text": "plan the bomb here and after that stay here do not move",
+  "orders": [
+   "PLANT",
+   "HOLD_POSITION"
+  ],
+  "pieces": [
+   "plan the bomb here",
+   "stay here do not move"
+  ],
+  "classifier": [
+   "PLANT",
+   "HOLD_POSITION"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_069",
+  "voice": "stt",
+  "text": "smoke the window no no sorry flesh the window",
+  "orders": [
+   "FLASH"
+  ],
+  "pieces": [
+   "flesh the window"
+  ],
+  "classifier": [
+   "FLASH"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_070",
+  "voice": "stt",
+  "text": "i go to the stairs i go first and you cover me okay",
+  "orders": [
+   "COVER_ME"
+  ],
+  "pieces": [
+   "you cover me"
+  ],
+  "classifier": [
+   "COVER_ME"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_071",
+  "voice": "stt",
+  "text": "before you enter and clear the room open the door and throw the grenade inside",
+  "orders": [
+   "OPEN",
+   "FRAG",
+   "ENTRY"
+  ],
+  "pieces": [
+   "open the door",
+   "throw the grenade inside the door",
+   "enter and clear the room"
+  ],
+  "classifier": [
+   "OPEN",
+   "FRAG",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_072",
+  "voice": "stt",
+  "text": "stand up please then jump on the table and at the end look at the north window",
+  "orders": [
+   "STAND_UP",
+   "JUMP",
+   "LOOK_AT"
+  ],
+  "pieces": [
+   "stand up please",
+   "jump on the table",
+   "look at the north window"
+  ],
+  "classifier": [
+   "STAND_UP",
+   "JUMP",
+   "LOOK_AT"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_073",
+  "voice": "stt",
+  "text": "cover me when i open the door and then follow me inside",
+  "orders": [
+   "COVER_ME",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "cover me when i open the door",
+   "follow me inside"
+  ],
+  "classifier": [
+   "COVER_ME",
+   "FOLLOW_ME"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_074",
+  "voice": "stt",
+  "text": "help me here please and after we go you follow me",
+  "orders": [
+   "HELP",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "help me here please",
+   "you follow me"
+  ],
+  "classifier": [
+   "HELP",
+   "FOLLOW_ME"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_075",
+  "voice": "stt",
+  "text": "look at me okay look at me now follow me and stay low",
+  "orders": [
+   "LOOK_AT_ME",
+   "FOLLOW_ME",
+   "CROUCH"
+  ],
+  "pieces": [
+   "look at me",
+   "follow me",
+   "stay low"
+  ],
+  "classifier": [
+   "LOOK_AT_ME",
+   "FOLLOW_ME",
+   "CROUCH"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_076",
+  "voice": "stt",
+  "text": "i am down i am down help me up please",
+  "orders": [
+   "REVIVE_ME"
+  ],
+  "pieces": [
+   "help me up please i am down"
+  ],
+  "classifier": [
+   "REVIVE_ME"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_077",
+  "voice": "stt",
+  "text": "why you did not tell me he was there",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "why you did not tell me he was there"
+  ],
+  "classifier": [
+   "NONE"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_078",
+  "voice": "stt",
+  "text": "when i say go you jump through the window not before",
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pieces": [
+   "jump through the window when i say go"
+  ],
+  "classifier": [
+   "VAULT_WINDOW"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_079",
+  "voice": "stt",
+  "text": "you uh you breach this wall and after that you go inside",
+  "orders": [
+   "BREACH",
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "you breach this wall",
+   "you go inside there"
+  ],
+  "classifier": [
+   "BREACH",
+   "MOVE_TO"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_080",
+  "voice": "stt",
+  "text": "run to the yellow stairs uh but stand up first",
+  "orders": [
+   "STAND_UP",
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "stand up",
+   "run to the yellow stairs"
+  ],
+  "classifier": [
+   "STAND_UP",
+   "MOVE_TO"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_081",
+  "voice": "stt",
+  "text": "uh i am not sure about that",
+  "orders": [
+   "DONT_KNOW"
+  ],
+  "pieces": [
+   "uh i am not sure about that"
+  ],
+  "classifier": [
+   "DONT_KNOW"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_082",
+  "voice": "stt",
+  "text": "throw the grenade in the door and uh then another grenade on the stairs",
+  "orders": [
+   "FRAG",
+   "FRAG"
+  ],
+  "pieces": [
+   "throw the grenade in the door",
+   "throw another grenade on the stairs"
+  ],
+  "classifier": [
+   "FRAG",
+   "FRAG"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_083",
+  "voice": "stt",
+  "text": "you go down with the rope to the south window and you shoot inside",
+  "orders": [
+   "RAPPEL",
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "you go down with the rope to the south window",
+   "you shoot inside the south window"
+  ],
+  "classifier": [
+   "RAPPEL",
+   "OPEN_FIRE"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_084",
+  "voice": "stt",
+  "text": "use the drone in the basement then go down the red stairs and finally open the door",
+  "orders": [
+   "DRONE",
+   "MOVE_TO",
+   "OPEN"
+  ],
+  "pieces": [
+   "use the drone in the basement",
+   "go down the red stairs",
+   "open the door"
+  ],
+  "classifier": [
+   "DRONE",
+   "MOVE_TO",
+   "OPEN"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_085",
+  "voice": "stt",
+  "text": "go to the door open the door throw the flesh and clear the room",
+  "orders": [
+   "MOVE_TO",
+   "OPEN",
+   "FLASH",
+   "ENTRY"
+  ],
+  "pieces": [
+   "go to the door",
+   "open the door",
+   "throw the flesh in the room",
+   "clear the room"
+  ],
+  "classifier": [
+   "MOVE_TO",
+   "OPEN",
+   "FLASH",
+   "ENTRY"
+  ],
+  "unsure": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_086",
+  "voice": "stt",
+  "text": "go upstairs and stay there do not move from there",
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pieces": [
+   "go upstairs and stay there do not move from there"
+  ],
+  "classifier": [
+   "HOLD_POSITION"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_087",
+  "voice": "stt",
+  "text": "no no not that one",
+  "orders": [
+   "NO"
+  ],
+  "pieces": [
+   "no no not that one"
+  ],
+  "classifier": [
+   "NO"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_088",
+  "voice": "stt",
+  "text": "crouch and go to my marker then lie down and watch the stairs",
+  "orders": [
+   "CROUCH",
+   "MOVE_TO",
+   "PRONE",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "crouch",
+   "go to my marker",
+   "lie down",
+   "watch the stairs"
+  ],
+  "classifier": [
+   "CROUCH",
+   "MOVE_TO",
+   "PRONE",
+   "HOLD_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_089",
+  "voice": "stt",
+  "text": "open the west door for me after you jump down from here",
+  "orders": [
+   "JUMP",
+   "OPEN"
+  ],
+  "pieces": [
+   "jump down from here",
+   "open the west door for me"
+  ],
+  "classifier": [
+   "JUMP",
+   "OPEN"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_090",
+  "voice": "stt",
+  "text": "there is two enemy in the basement uh throw the grenade down",
+  "orders": [
+   "FRAG"
+  ],
+  "pieces": [
+   "throw the grenade down in the basement"
+  ],
+  "classifier": [
+   "FRAG"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_091",
+  "voice": "stt",
+  "text": "climb through the window okay and then stay there do not move",
+  "orders": [
+   "VAULT_WINDOW",
+   "HOLD_POSITION"
+  ],
+  "pieces": [
+   "climb through the window",
+   "stay there do not move"
+  ],
+  "classifier": [
+   "VAULT_WINDOW",
+   "HOLD_POSITION"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_092",
+  "voice": "stt",
+  "text": "run to the brown stairs when you finish to diffuse the bomb",
+  "orders": [
+   "DEFUSE",
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "diffuse the bomb",
+   "run to the brown stairs"
+  ],
+  "classifier": [
+   "DEFUSE",
+   "MOVE_TO"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_093",
+  "voice": "stt",
+  "text": "look at me look at me okay now go to the rough",
+  "orders": [
+   "LOOK_AT_ME",
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "look at me",
+   "go to the rough"
+  ],
+  "classifier": [
+   "LOOK_AT_ME",
+   "MOVE_TO"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_094",
+  "voice": "stt",
+  "text": "go to the so far and hide behind it",
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "go to the so far and hide behind it"
+  ],
+  "classifier": [
+   "TAKE_COVER"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_095",
+  "voice": "stt",
+  "text": "yes yes open the door slowly",
+  "orders": [
+   "OPEN"
+  ],
+  "pieces": [
+   "open the door slowly"
+  ],
+  "classifier": [
+   "OPEN"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_096",
+  "voice": "stt",
+  "text": "revive me first then throw smoke and you take the other angle i take this one",
+  "orders": [
+   "REVIVE_ME",
+   "SMOKE",
+   "HOLD_OTHER_ANGLE"
+  ],
+  "pieces": [
+   "revive me",
+   "throw smoke",
+   "you take the other angle"
+  ],
+  "classifier": [
+   "REVIVE_ME",
+   "SMOKE",
+   "HOLD_OTHER_ANGLE"
+  ],
+  "unsure": [
+   false,
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_097",
+  "voice": "stt",
+  "text": "use the drone in the top floor and after you go around and attack them from behind",
+  "orders": [
+   "DRONE",
+   "FLANK"
+  ],
+  "pieces": [
+   "use the drone in the top floor",
+   "go around and attack them from behind"
+  ],
+  "classifier": [
+   "DRONE",
+   "FLANK"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_098",
+  "voice": "stt",
+  "text": "uh open fire on the window and then help me here i need help",
+  "orders": [
+   "OPEN_FIRE",
+   "HELP"
+  ],
+  "pieces": [
+   "open fire on the window",
+   "help me here i need help"
+  ],
+  "classifier": [
+   "OPEN_FIRE",
+   "HELP"
+  ],
+  "unsure": [
+   false,
+   false
+  ],
+  "kept": true
+ },
+ {
+  "id": "t_stt_099",
+  "voice": "stt",
+  "text": "okay i am ready now go go do it now",
+  "orders": [
+   "GO_NOW"
+  ],
+  "pieces": [
+   "go go do it now"
+  ],
+  "classifier": [
+   "GO_NOW"
+  ],
+  "unsure": [
+   false
+  ],
+  "kept": true
+ }
+]

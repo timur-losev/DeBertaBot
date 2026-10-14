@@ -1,0 +1,24 @@
+
+pieces3 seed 0, Q4_K_M (1056 MB), llama.cpp b11429 cpu4: loaded in 1.5 s, 2006 MB of memory; Intel64 Family 6 Model 165 Stepping 5, GenuineIntel
+  lines                                 n  ms a line  median     p95  tokens in   out  out per s  same as PyTorch   right  (PyTorch)
+  old single lines, typed              50        525     521     821       19.7  11.7         32            84.0% 
+  this round's blind lines             50        589     588     809       22.4  13.1         32            84.0%    98.0       98.0
+  lines with a context                 50        405     392     568       25.9   7.2         34            98.0%    98.0       98.0
+
+pieces3 seed 0, Q4_K_M (1056 MB), llama.cpp b11429 cpu8: loaded in 1.5 s, 2009 MB of memory; Intel64 Family 6 Model 165 Stepping 5, GenuineIntel
+  lines                                 n  ms a line  median     p95  tokens in   out  out per s  same as PyTorch   right  (PyTorch)
+  old single lines, typed              50        416     416     653       19.7  11.7         36            84.0% 
+  this round's blind lines             50        467     477     665       22.4  13.1         36            84.0%    98.0       98.0
+  lines with a context                 50        300     282     445       25.9   7.2         39            98.0%    98.0       98.0
+
+pieces3 seed 0, Q4_K_M (1056 MB), llama.cpp b11429 vulkan: loaded in 2.5 s, 1322 MB of memory, 1436 MB of video memory; Intel64 Family 6 Model 165 Stepping 5, GenuineIntel
+  lines                                 n  ms a line  median     p95  tokens in   out  out per s  same as PyTorch   right  (PyTorch)
+  old single lines, typed             260         37      37      55       19.2  10.9        397            91.5% 
+  this round's blind lines            150         37      37      55       20.5  11.4        406            79.3%    91.3       92.7
+  lines with a context                150         25      24      39       24.8   6.3        410            92.0%    90.0       90.0
+
+pieces seed 0, Q4_K_M (1056 MB), llama.cpp b11429 vulkan: loaded in 2.5 s, 1334 MB of memory, 1372 MB of video memory; Intel64 Family 6 Model 165 Stepping 5, GenuineIntel
+  lines                                 n  ms a line  median     p95  tokens in   out  out per s  same as PyTorch   right  (PyTorch)
+  old single lines, typed             260         43      42      64       19.2  11.0        387            92.3% 
+  this round's blind lines            150         44      42      65       20.5  11.3        391            75.3%    91.3       92.0
+  lines with a context                150         29      26      48       24.8   6.3        394            90.0%    89.3       88.0

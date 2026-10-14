@@ -1,0 +1,4499 @@
+{
+ "variant": "pieces3_final",
+ "seed": 0,
+ "backend": "vulkan",
+ "build": "b11429",
+ "gguf_mb": 1056,
+ "load_s": 2.5,
+ "rss_mb": 1275,
+ "gpu_mb": 1448,
+ "cpu": "Intel64 Family 6 Model 165 Stepping 5, GenuineIntel",
+ "rows": {
+  "blind2": {
+   "c2_r6_000": {
+    "answer": "Push in and clear the site, top to bottom.",
+    "ms": 39.0,
+    "prompt_n": 20,
+    "prompt_ms": 7.459,
+    "predicted_n": 12,
+    "predicted_ms": 30.154
+   },
+   "c2_r6_001": {
+    "answer": "Rappel to the south window.\nFlash inside.\nVault in through the south window.",
+    "ms": 65.9,
+    "prompt_n": 23,
+    "prompt_ms": 7.355,
+    "predicted_n": 19,
+    "predicted_ms": 45.872
+   },
+   "c2_r6_002": {
+    "answer": "Suppress the north window while I cross.\nFollow me over.",
+    "ms": 39.6,
+    "prompt_n": 22,
+    "prompt_ms": 7.226,
+    "predicted_n": 13,
+    "predicted_ms": 31.105
+   },
+   "c2_r6_003": {
+    "answer": "Open that door.\nToss a stun in through that door.",
+    "ms": 42.7,
+    "prompt_n": 19,
+    "prompt_ms": 7.597,
+    "predicted_n": 14,
+    "predicted_ms": 33.788
+   },
+   "c2_r6_004": {
+    "answer": "Stun the site.\nPush into the site.\nHold the main door.",
+    "ms": 69.3,
+    "prompt_n": 28,
+    "prompt_ms": 7.549,
+    "predicted_n": 16,
+    "predicted_ms": 39.361
+   },
+   "c2_r6_005": {
+    "answer": "Face me.\nTake a knee.",
+    "ms": 40.4,
+    "prompt_n": 16,
+    "prompt_ms": 7.104,
+    "predicted_n": 8,
+    "predicted_ms": 18.807
+   },
+   "c2_r6_006": {
+    "answer": "Frag the left window.\nFrag the right window.",
+    "ms": 40.3,
+    "prompt_n": 19,
+    "prompt_ms": 7.472,
+    "predicted_n": 13,
+    "predicted_ms": 31.528
+   },
+   "c2_r6_007": {
+    "answer": "They just flashed main and pushed through the smoke.",
+    "ms": 46.0,
+    "prompt_n": 19,
+    "prompt_ms": 7.566,
+    "predicted_n": 11,
+    "predicted_ms": 26.149
+   },
+   "c2_r6_008": {
+    "answer": "Get up.\nVault the window.\nFrag behind the sofa.\nHold main.",
+    "ms": 50.2,
+    "prompt_n": 25,
+    "prompt_ms": 7.302,
+    "predicted_n": 17,
+    "predicted_ms": 41.473
+   },
+   "c2_r6_009": {
+    "answer": "Throw a stun through the east window.\nPush the site.",
+    "ms": 50.7,
+    "prompt_n": 27,
+    "prompt_ms": 7.61,
+    "predicted_n": 13,
+    "predicted_ms": 31.414
+   },
+   "c2_r6_010": {
+    "answer": "Pick me up, I'm down in main\nwatch the north door",
+    "ms": 68.6,
+    "prompt_n": 26,
+    "prompt_ms": 7.682,
+    "predicted_n": 15,
+    "predicted_ms": 37.398
+   },
+   "c2_r6_011": {
+    "answer": "Revive me.\nSmoke the stairs.\nFall back.",
+    "ms": 39.1,
+    "prompt_n": 21,
+    "prompt_ms": 7.585,
+    "predicted_n": 12,
+    "predicted_ms": 30.072
+   },
+   "c2_r6_012": {
+    "answer": "Check the basement.\nCome back.",
+    "ms": 28.3,
+    "prompt_n": 25,
+    "prompt_ms": 7.735,
+    "predicted_n": 8,
+    "predicted_ms": 19.117
+   },
+   "c2_r6_013": {
+    "answer": "Hard breach the wall on my marker.\nCover me while I plant.",
+    "ms": 46.1,
+    "prompt_n": 25,
+    "prompt_ms": 7.376,
+    "predicted_n": 15,
+    "predicted_ms": 37.296
+   },
+   "c2_r6_014": {
+    "answer": "Vault the south window.\nHold the hallway from inside.",
+    "ms": 39.2,
+    "prompt_n": 20,
+    "prompt_ms": 8.242,
+    "predicted_n": 12,
+    "predicted_ms": 29.584
+   },
+   "c2_r6_015": {
+    "answer": "Go up the white stairs.\nOpen the door.\nHold the corridor.",
+    "ms": 44.9,
+    "prompt_n": 23,
+    "prompt_ms": 7.281,
+    "predicted_n": 15,
+    "predicted_ms": 36.208
+   },
+   "c2_r6_016": {
+    "answer": "Pick me up.\nPop a smoke.\nPlant the defuser.\nHold the stairs.",
+    "ms": 77.6,
+    "prompt_n": 24,
+    "prompt_ms": 7.511,
+    "predicted_n": 18,
+    "predicted_ms": 44.424
+   },
+   "c2_r6_017": {
+    "answer": "Smoke the door.\nDefuse the bomb.",
+    "ms": 42.8,
+    "prompt_n": 18,
+    "prompt_ms": 7.594,
+    "predicted_n": 10,
+    "predicted_ms": 23.906
+   },
+   "c2_r6_018": {
+    "answer": "You watch the other door, I've got this one and the stairs.",
+    "ms": 61.9,
+    "prompt_n": 24,
+    "prompt_ms": 7.487,
+    "predicted_n": 16,
+    "predicted_ms": 39.227
+   },
+   "c2_r6_019": {
+    "answer": "Drone ahead.\nBreach the wall.\nFlash through the wall.\nPush in through the wall.",
+    "ms": 59.9,
+    "prompt_n": 23,
+    "prompt_ms": 7.285,
+    "predicted_n": 21,
+    "predicted_ms": 51.23
+   },
+   "c2_r6_020": {
+    "answer": "You just cover me.",
+    "ms": 43.6,
+    "prompt_n": 18,
+    "prompt_ms": 8.052,
+    "predicted_n": 6,
+    "predicted_ms": 14.073
+   },
+   "c2_r6_021": {
+    "answer": "Jump down off the balcony.",
+    "ms": 25.4,
+    "prompt_n": 21,
+    "prompt_ms": 7.512,
+    "predicted_n": 7,
+    "predicted_ms": 16.583
+   },
+   "c2_r6_022": {
+    "answer": "Drop through the hatch and clear the room below.",
+    "ms": 35.5,
+    "prompt_n": 19,
+    "prompt_ms": 8.0,
+    "predicted_n": 11,
+    "predicted_ms": 26.186
+   },
+   "c2_r6_023": {
+    "answer": "Flank through the basement.\nWeapons free.",
+    "ms": 33.3,
+    "prompt_n": 25,
+    "prompt_ms": 7.399,
+    "predicted_n": 10,
+    "predicted_ms": 24.616
+   },
+   "c2_r6_024": {
+    "answer": "Head up to the roof.\nRappel down to the west window.",
+    "ms": 70.3,
+    "prompt_n": 24,
+    "prompt_ms": 7.527,
+    "predicted_n": 16,
+    "predicted_ms": 38.877
+   },
+   "c2_r6_025": {
+    "answer": "Open the door by hand.",
+    "ms": 25.6,
+    "prompt_n": 20,
+    "prompt_ms": 7.574,
+    "predicted_n": 7,
+    "predicted_ms": 16.709
+   },
+   "c2_r6_026": {
+    "answer": "No idea, I can't tell from here.",
+    "ms": 57.4,
+    "prompt_n": 19,
+    "prompt_ms": 7.786,
+    "predicted_n": 11,
+    "predicted_ms": 26.734
+   },
+   "c2_r6_027": {
+    "answer": "Throw your drone in and tell me what's in there.",
+    "ms": 52.1,
+    "prompt_n": 21,
+    "prompt_ms": 7.398,
+    "predicted_n": 13,
+    "predicted_ms": 31.641
+   },
+   "c2_r6_028": {
+    "answer": "Smoke the door and plant. No, wait, just hold the door.",
+    "ms": 48.4,
+    "prompt_n": 28,
+    "prompt_ms": 7.718,
+    "predicted_n": 16,
+    "predicted_ms": 39.305
+   },
+   "c2_r6_029": {
+    "answer": "Drone the other side.\nBreach in.\nFrag the room.",
+    "ms": 70.6,
+    "prompt_n": 28,
+    "prompt_ms": 8.003,
+    "predicted_n": 16,
+    "predicted_ms": 39.445
+   },
+   "c2_r6_030": {
+    "answer": "Loop around through the west door and come at them from behind.",
+    "ms": 54.3,
+    "prompt_n": 22,
+    "prompt_ms": 7.263,
+    "predicted_n": 14,
+    "predicted_ms": 33.56
+   },
+   "c2_r6_031": {
+    "answer": "Open the window.\nThrow a smoke out the window.\nVault through the window.",
+    "ms": 71.6,
+    "prompt_n": 22,
+    "prompt_ms": 7.496,
+    "predicted_n": 17,
+    "predicted_ms": 40.791
+   },
+   "c2_r6_032": {
+    "answer": "Smoke the main door.\nPlant the defuser.\nWatch the east window.",
+    "ms": 48.5,
+    "prompt_n": 29,
+    "prompt_ms": 8.478,
+    "predicted_n": 16,
+    "predicted_ms": 38.718
+   },
+   "c2_r6_033": {
+    "answer": "I'm going up blue stairs, you hold this door.",
+    "ms": 39.5,
+    "prompt_n": 21,
+    "prompt_ms": 7.258,
+    "predicted_n": 13,
+    "predicted_ms": 31.01
+   },
+   "c2_r6_034": {
+    "answer": "Flash the window.",
+    "ms": 19.8,
+    "prompt_n": 21,
+    "prompt_ms": 7.202,
+    "predicted_n": 5,
+    "predicted_ms": 11.429
+   },
+   "c2_r6_035": {
+    "answer": "Yes, that's correct, exactly.",
+    "ms": 29.7,
+    "prompt_n": 17,
+    "prompt_ms": 7.372,
+    "predicted_n": 9,
+    "predicted_ms": 21.208
+   },
+   "c2_r6_036": {
+    "answer": "Get down and find some cover.",
+    "ms": 28.5,
+    "prompt_n": 25,
+    "prompt_ms": 7.302,
+    "predicted_n": 8,
+    "predicted_ms": 20.0
+   },
+   "c2_r6_037": {
+    "answer": "Drone what's under the hatch.\nBreach the hatch.",
+    "ms": 64.0,
+    "prompt_n": 22,
+    "prompt_ms": 8.099,
+    "predicted_n": 14,
+    "predicted_ms": 34.258
+   },
+   "c2_r6_038": {
+    "answer": "I'll drone the basement.\nRappel the east side myself.",
+    "ms": 46.4,
+    "prompt_n": 23,
+    "prompt_ms": 7.27,
+    "predicted_n": 15,
+    "predicted_ms": 37.844
+   },
+   "c2_r6_039": {
+    "answer": "Hold fire.\nMove to the red stairs.\nGo prone.",
+    "ms": 60.7,
+    "prompt_n": 22,
+    "prompt_ms": 7.505,
+    "predicted_n": 13,
+    "predicted_ms": 31.876
+   },
+   "c2_r6_040": {
+    "answer": "Take cover, they're prefiring\nDon't shoot until they swing",
+    "ms": 46.2,
+    "prompt_n": 25,
+    "prompt_ms": 7.495,
+    "predicted_n": 15,
+    "predicted_ms": 37.374
+   },
+   "c2_r6_041": {
+    "answer": "Cease fire, cease fire! Pull back to yellow stairs.",
+    "ms": 44.4,
+    "prompt_n": 22,
+    "prompt_ms": 7.294,
+    "predicted_n": 14,
+    "predicted_ms": 35.72
+   },
+   "c2_r6_042": {
+    "answer": "Stay right there and don't move, I'm coming to you.",
+    "ms": 55.1,
+    "prompt_n": 23,
+    "prompt_ms": 7.343,
+    "predicted_n": 15,
+    "predicted_ms": 37.092
+   },
+   "c2_r6_043": {
+    "answer": "On my go, hit that wall with the charge, not before.",
+    "ms": 45.8,
+    "prompt_n": 23,
+    "prompt_ms": 7.314,
+    "predicted_n": 15,
+    "predicted_ms": 37.112
+   },
+   "c2_r6_044": {
+    "answer": "Frag them.",
+    "ms": 38.8,
+    "prompt_n": 18,
+    "prompt_ms": 7.779,
+    "predicted_n": 5,
+    "predicted_ms": 11.741
+   },
+   "c2_r6_045": {
+    "answer": "Rappel down the south side.\nPut a charge on that wall.",
+    "ms": 47.9,
+    "prompt_n": 24,
+    "prompt_ms": 7.283,
+    "predicted_n": 16,
+    "predicted_ms": 39.322
+   },
+   "c2_r6_046": {
+    "answer": "Don't breach that wall, it's reinforced.",
+    "ms": 36.3,
+    "prompt_n": 19,
+    "prompt_ms": 7.854,
+    "predicted_n": 11,
+    "predicted_ms": 27.104
+   },
+   "c2_r6_047": {
+    "answer": "Open the hatch quietly.\nDrop a frag through the hatch.",
+    "ms": 60.2,
+    "prompt_n": 25,
+    "prompt_ms": 7.796,
+    "predicted_n": 13,
+    "predicted_ms": 32.572
+   },
+   "c2_r6_048": {
+    "answer": "Drone the basement.\nHead to the blue stairs.",
+    "ms": 38.5,
+    "prompt_n": 21,
+    "prompt_ms": 7.397,
+    "predicted_n": 12,
+    "predicted_ms": 29.764
+   },
+   "c2_r6_049": {
+    "answer": "Check the top floor.\nCheck the roof.\nCome back to me.",
+    "ms": 46.7,
+    "prompt_n": 24,
+    "prompt_ms": 7.751,
+    "predicted_n": 15,
+    "predicted_ms": 37.563
+   },
+   "c2_cs_000": {
+    "answer": "go blue stairs\njump down\nplant the bomb",
+    "ms": 36.5,
+    "prompt_n": 17,
+    "prompt_ms": 7.691,
+    "predicted_n": 11,
+    "predicted_ms": 27.507
+   },
+   "c2_cs_001": {
+    "answer": "kill them bro, take them out",
+    "ms": 28.9,
+    "prompt_n": 16,
+    "prompt_ms": 7.909,
+    "predicted_n": 8,
+    "predicted_ms": 19.689
+   },
+   "c2_cs_002": {
+    "answer": "stop shooting\nflank them thru the west door",
+    "ms": 46.3,
+    "prompt_n": 18,
+    "prompt_ms": 7.667,
+    "predicted_n": 11,
+    "predicted_ms": 37.293
+   },
+   "c2_cs_003": {
+    "answer": "smoke the window\nnade the window",
+    "ms": 40.0,
+    "prompt_n": 17,
+    "prompt_ms": 13.469,
+    "predicted_n": 10,
+    "predicted_ms": 25.171
+   },
+   "c2_cs_004": {
+    "answer": "molly behind the sofa\ncheck behind the sofa",
+    "ms": 36.2,
+    "prompt_n": 20,
+    "prompt_ms": 7.697,
+    "predicted_n": 11,
+    "predicted_ms": 27.205
+   },
+   "c2_cs_005": {
+    "answer": "Come here and stay with me.",
+    "ms": 28.2,
+    "prompt_n": 15,
+    "prompt_ms": 7.099,
+    "predicted_n": 8,
+    "predicted_ms": 19.803
+   },
+   "c2_cs_006": {
+    "answer": "nt bro, they had awp and two rifles",
+    "ms": 37.6,
+    "prompt_n": 19,
+    "prompt_ms": 7.802,
+    "predicted_n": 11,
+    "predicted_ms": 28.482
+   },
+   "c2_cs_007": {
+    "answer": "Open the north door.\nLight them up.",
+    "ms": 33.5,
+    "prompt_n": 17,
+    "prompt_ms": 7.546,
+    "predicted_n": 10,
+    "predicted_ms": 24.645
+   },
+   "c2_cs_008": {
+    "answer": "drone upstairs\ncome back",
+    "ms": 25.5,
+    "prompt_n": 14,
+    "prompt_ms": 7.055,
+    "predicted_n": 7,
+    "predicted_ms": 17.203
+   },
+   "c2_cs_009": {
+    "answer": "dont nade it and dont peek",
+    "ms": 28.4,
+    "prompt_n": 16,
+    "prompt_ms": 7.15,
+    "predicted_n": 8,
+    "predicted_ms": 19.935
+   },
+   "c2_cs_010": {
+    "answer": "reload and switch to your pistol",
+    "ms": 25.3,
+    "prompt_n": 15,
+    "prompt_ms": 7.062,
+    "predicted_n": 7,
+    "predicted_ms": 16.956
+   },
+   "c2_cs_011": {
+    "answer": "smoke it",
+    "ms": 17.9,
+    "prompt_n": 21,
+    "prompt_ms": 7.369,
+    "predicted_n": 4,
+    "predicted_ms": 9.316
+   },
+   "c2_cs_012": {
+    "answer": "flash\npush in\nplant\nwatch east door",
+    "ms": 36.0,
+    "prompt_n": 20,
+    "prompt_ms": 7.639,
+    "predicted_n": 11,
+    "predicted_ms": 27.093
+   },
+   "c2_cs_013": {
+    "answer": "nah, not that one",
+    "ms": 23.5,
+    "prompt_n": 14,
+    "prompt_ms": 7.041,
+    "predicted_n": 6,
+    "predicted_ms": 15.208
+   },
+   "c2_cs_014": {
+    "answer": "flash main\npush main",
+    "ms": 22.8,
+    "prompt_n": 15,
+    "prompt_ms": 7.087,
+    "predicted_n": 6,
+    "predicted_ms": 14.429
+   },
+   "c2_cs_015": {
+    "answer": "smoke the door\npush in",
+    "ms": 28.1,
+    "prompt_n": 21,
+    "prompt_ms": 7.362,
+    "predicted_n": 8,
+    "predicted_ms": 19.495
+   },
+   "c2_cs_016": {
+    "answer": "light them up bro, fire at will",
+    "ms": 30.9,
+    "prompt_n": 17,
+    "prompt_ms": 7.539,
+    "predicted_n": 9,
+    "predicted_ms": 22.088
+   },
+   "c2_cs_017": {
+    "answer": "rush main then fall back bro",
+    "ms": 26.2,
+    "prompt_n": 17,
+    "prompt_ms": 7.85,
+    "predicted_n": 7,
+    "predicted_ms": 17.01
+   },
+   "c2_cs_018": {
+    "answer": "go around and get behind them bro",
+    "ms": 27.8,
+    "prompt_n": 16,
+    "prompt_ms": 7.096,
+    "predicted_n": 8,
+    "predicted_ms": 19.425
+   },
+   "c2_cs_019": {
+    "answer": "smoke window\nmolly the corner\npush in and clear\ncome back",
+    "ms": 52.2,
+    "prompt_n": 25,
+    "prompt_ms": 7.417,
+    "predicted_n": 17,
+    "predicted_ms": 43.469
+   },
+   "c2_cs_020": {
+    "answer": "vault in, i hold the door\nfrag the stairs",
+    "ms": 38.4,
+    "prompt_n": 21,
+    "prompt_ms": 7.396,
+    "predicted_n": 12,
+    "predicted_ms": 29.702
+   },
+   "c2_cs_021": {
+    "answer": "i peek main, you watch the east window",
+    "ms": 34.2,
+    "prompt_n": 18,
+    "prompt_ms": 7.718,
+    "predicted_n": 10,
+    "predicted_ms": 25.167
+   },
+   "c2_cs_022": {
+    "answer": "check the roof\ncome back\nhold main with me",
+    "ms": 39.0,
+    "prompt_n": 21,
+    "prompt_ms": 7.401,
+    "predicted_n": 12,
+    "predicted_ms": 30.232
+   },
+   "c2_cs_023": {
+    "answer": "im down bro, come pick me up and hurry",
+    "ms": 36.1,
+    "prompt_n": 19,
+    "prompt_ms": 7.703,
+    "predicted_n": 11,
+    "predicted_ms": 27.141
+   },
+   "c2_cs_024": {
+    "answer": "yep exactly, thats the one",
+    "ms": 27.9,
+    "prompt_n": 16,
+    "prompt_ms": 7.057,
+    "predicted_n": 8,
+    "predicted_ms": 19.592
+   },
+   "c2_cs_025": {
+    "answer": "fall back to main\nlie down\nhold the door",
+    "ms": 65.0,
+    "prompt_n": 20,
+    "prompt_ms": 9.156,
+    "predicted_n": 12,
+    "predicted_ms": 29.776
+   },
+   "c2_cs_026": {
+    "answer": "drop down\nfollow me",
+    "ms": 22.7,
+    "prompt_n": 14,
+    "prompt_ms": 7.051,
+    "predicted_n": 6,
+    "predicted_ms": 14.366
+   },
+   "c2_cs_027": {
+    "answer": "hop through the window\nplant the bomb",
+    "ms": 30.8,
+    "prompt_n": 15,
+    "prompt_ms": 7.02,
+    "predicted_n": 9,
+    "predicted_ms": 22.5
+   },
+   "c2_cs_028": {
+    "answer": "stop, hold up, cancel that",
+    "ms": 27.9,
+    "prompt_n": 16,
+    "prompt_ms": 7.065,
+    "predicted_n": 8,
+    "predicted_ms": 19.504
+   },
+   "c2_cs_029": {
+    "answer": "get up\ntake them out bro",
+    "ms": 27.7,
+    "prompt_n": 16,
+    "prompt_ms": 7.041,
+    "predicted_n": 8,
+    "predicted_ms": 19.433
+   },
+   "c2_cs_030": {
+    "answer": "flash for me, i peek\nyou push in\nplant the bomb",
+    "ms": 46.2,
+    "prompt_n": 22,
+    "prompt_ms": 7.377,
+    "predicted_n": 15,
+    "predicted_ms": 37.539
+   },
+   "c2_cs_031": {
+    "answer": "maybe, your call bro",
+    "ms": 47.5,
+    "prompt_n": 14,
+    "prompt_ms": 8.539,
+    "predicted_n": 6,
+    "predicted_ms": 14.489
+   },
+   "c2_cs_032": {
+    "answer": "Stop shooting.\nCrouch.\nCome to my pin.",
+    "ms": 38.6,
+    "prompt_n": 19,
+    "prompt_ms": 7.636,
+    "predicted_n": 12,
+    "predicted_ms": 29.705
+   },
+   "c2_cs_033": {
+    "answer": "res me\nnade the stairs\non me",
+    "ms": 36.5,
+    "prompt_n": 20,
+    "prompt_ms": 7.7,
+    "predicted_n": 11,
+    "predicted_ms": 27.476
+   },
+   "c2_cs_034": {
+    "answer": "go to red stairs\ncrouch",
+    "ms": 28.6,
+    "prompt_n": 16,
+    "prompt_ms": 7.09,
+    "predicted_n": 8,
+    "predicted_ms": 20.111
+   },
+   "c2_cs_035": {
+    "answer": "check the corner before you defuse bro",
+    "ms": 30.9,
+    "prompt_n": 17,
+    "prompt_ms": 7.566,
+    "predicted_n": 9,
+    "predicted_ms": 22.08
+   },
+   "c2_cs_036": {
+    "answer": "look at that window\ngo there",
+    "ms": 29.2,
+    "prompt_n": 18,
+    "prompt_ms": 7.671,
+    "predicted_n": 8,
+    "predicted_ms": 20.182
+   },
+   "c2_cs_037": {
+    "answer": "smoke main\nflash\npush site",
+    "ms": 31.8,
+    "prompt_n": 16,
+    "prompt_ms": 8.475,
+    "predicted_n": 9,
+    "predicted_ms": 22.038
+   },
+   "c2_cs_038": {
+    "answer": "help me here bro\ngo back to brown stairs",
+    "ms": 36.0,
+    "prompt_n": 20,
+    "prompt_ms": 7.645,
+    "predicted_n": 11,
+    "predicted_ms": 27.116
+   },
+   "c2_cs_039": {
+    "answer": "jump on the table\nwatch main door",
+    "ms": 30.9,
+    "prompt_n": 17,
+    "prompt_ms": 7.515,
+    "predicted_n": 9,
+    "predicted_ms": 22.076
+   },
+   "c2_cs_040": {
+    "answer": "stay on my pin\nlook at the stairs",
+    "ms": 34.2,
+    "prompt_n": 18,
+    "prompt_ms": 7.982,
+    "predicted_n": 10,
+    "predicted_ms": 24.911
+   },
+   "c2_cs_041": {
+    "answer": "flash red stairs",
+    "ms": 17.6,
+    "prompt_n": 16,
+    "prompt_ms": 7.093,
+    "predicted_n": 4,
+    "predicted_ms": 9.297
+   },
+   "c2_cs_042": {
+    "answer": "smoke the bomb and defuse\nget behind cover",
+    "ms": 39.8,
+    "prompt_n": 21,
+    "prompt_ms": 7.345,
+    "predicted_n": 12,
+    "predicted_ms": 31.207
+   },
+   "c2_cs_043": {
+    "answer": "come back bro\nwatch the other door",
+    "ms": 31.8,
+    "prompt_n": 17,
+    "prompt_ms": 7.965,
+    "predicted_n": 9,
+    "predicted_ms": 22.5
+   },
+   "c2_cs_044": {
+    "answer": "molly the stairs",
+    "ms": 21.0,
+    "prompt_n": 18,
+    "prompt_ms": 7.732,
+    "predicted_n": 5,
+    "predicted_ms": 11.99
+   },
+   "c2_cs_045": {
+    "answer": "hold fire\nget behind the sofa",
+    "ms": 29.0,
+    "prompt_n": 19,
+    "prompt_ms": 7.767,
+    "predicted_n": 8,
+    "predicted_ms": 19.947
+   },
+   "c2_cs_046": {
+    "answer": "pick me up bro\nplant the bomb",
+    "ms": 31.5,
+    "prompt_n": 16,
+    "prompt_ms": 7.094,
+    "predicted_n": 9,
+    "predicted_ms": 23.092
+   },
+   "c2_cs_047": {
+    "answer": "im gonna flash and peek main",
+    "ms": 26.1,
+    "prompt_n": 15,
+    "prompt_ms": 7.258,
+    "predicted_n": 7,
+    "predicted_ms": 17.522
+   },
+   "c2_cs_048": {
+    "answer": "smoke main\ncheck behind the table\nplant the bomb",
+    "ms": 42.9,
+    "prompt_n": 20,
+    "prompt_ms": 7.883,
+    "predicted_n": 13,
+    "predicted_ms": 33.731
+   },
+   "c2_cs_049": {
+    "answer": "hop in the window bro check the corner\nhold the door",
+    "ms": 44.6,
+    "prompt_n": 21,
+    "prompt_ms": 8.829,
+    "predicted_n": 13,
+    "predicted_ms": 34.452
+   },
+   "c2_stt_000": {
+    "answer": "jump down from here\ncheck the basement\ncome back\nwatch the red stares",
+    "ms": 53.3,
+    "prompt_n": 24,
+    "prompt_ms": 7.582,
+    "predicted_n": 17,
+    "predicted_ms": 44.403
+   },
+   "c2_stt_001": {
+    "answer": "open the door\nsmoke inside the door\ngo to the blue stairs",
+    "ms": 52.5,
+    "prompt_n": 23,
+    "prompt_ms": 9.469,
+    "predicted_n": 16,
+    "predicted_ms": 41.628
+   },
+   "c2_stt_002": {
+    "answer": "when i say go you go through the window okay not now",
+    "ms": 44.1,
+    "prompt_n": 21,
+    "prompt_ms": 9.487,
+    "predicted_n": 13,
+    "predicted_ms": 33.305
+   },
+   "c2_stt_003": {
+    "answer": "you hold fire okay\nyou go to my marker\nyou look at the main door",
+    "ms": 57.1,
+    "prompt_n": 27,
+    "prompt_ms": 9.576,
+    "predicted_n": 18,
+    "predicted_ms": 46.105
+   },
+   "c2_stt_004": {
+    "answer": "uh dont plant the bomb dont plant",
+    "ms": 30.8,
+    "prompt_n": 16,
+    "prompt_ms": 9.05,
+    "predicted_n": 8,
+    "predicted_ms": 20.384
+   },
+   "c2_stt_005": {
+    "answer": "you send the drone okay send the drone first\ngo in to clear the room",
+    "ms": 55.2,
+    "prompt_n": 26,
+    "prompt_ms": 9.535,
+    "predicted_n": 17,
+    "predicted_ms": 44.27
+   },
+   "c2_stt_006": {
+    "answer": "you throw flash in the room\nyou push in and clear\nyou plant the bomb",
+    "ms": 55.4,
+    "prompt_n": 29,
+    "prompt_ms": 8.154,
+    "predicted_n": 18,
+    "predicted_ms": 45.923
+   },
+   "c2_stt_007": {
+    "answer": "go to the red stairs",
+    "ms": 24.6,
+    "prompt_n": 22,
+    "prompt_ms": 8.437,
+    "predicted_n": 6,
+    "predicted_ms": 14.891
+   },
+   "c2_stt_008": {
+    "answer": "follow me",
+    "ms": 16.8,
+    "prompt_n": 19,
+    "prompt_ms": 8.217,
+    "predicted_n": 3,
+    "predicted_ms": 7.236
+   },
+   "c2_stt_009": {
+    "answer": "help me up i am down\nthrow smoke\nyou follow me out",
+    "ms": 47.6,
+    "prompt_n": 25,
+    "prompt_ms": 7.967,
+    "predicted_n": 15,
+    "predicted_ms": 38.231
+   },
+   "c2_stt_010": {
+    "answer": "go go do it now",
+    "ms": 42.5,
+    "prompt_n": 16,
+    "prompt_ms": 7.783,
+    "predicted_n": 6,
+    "predicted_ms": 15.442
+   },
+   "c2_stt_011": {
+    "answer": "you follow me",
+    "ms": 19.3,
+    "prompt_n": 21,
+    "prompt_ms": 8.455,
+    "predicted_n": 4,
+    "predicted_ms": 9.483
+   },
+   "c2_stt_012": {
+    "answer": "no no not that one that is wrong",
+    "ms": 31.2,
+    "prompt_n": 17,
+    "prompt_ms": 7.702,
+    "predicted_n": 9,
+    "predicted_ms": 22.194
+   },
+   "c2_stt_013": {
+    "answer": "go on my pin and lie down on the ground there",
+    "ms": 41.1,
+    "prompt_n": 20,
+    "prompt_ms": 8.187,
+    "predicted_n": 12,
+    "predicted_ms": 31.546
+   },
+   "c2_stt_014": {
+    "answer": "fall back fall back\nthrow smoke on the stairs",
+    "ms": 37.5,
+    "prompt_n": 19,
+    "prompt_ms": 8.082,
+    "predicted_n": 11,
+    "predicted_ms": 28.055
+   },
+   "c2_stt_015": {
+    "answer": "you repel down the wall\nvolt in the window",
+    "ms": 38.8,
+    "prompt_n": 21,
+    "prompt_ms": 7.541,
+    "predicted_n": 12,
+    "predicted_ms": 29.953
+   },
+   "c2_stt_016": {
+    "answer": "the bomb is planted go the fuse it i watch the door",
+    "ms": 41.4,
+    "prompt_n": 21,
+    "prompt_ms": 7.558,
+    "predicted_n": 13,
+    "predicted_ms": 32.564
+   },
+   "c2_stt_017": {
+    "answer": "crouch crouch\ndont shoot until i say",
+    "ms": 37.0,
+    "prompt_n": 20,
+    "prompt_ms": 7.878,
+    "predicted_n": 11,
+    "predicted_ms": 27.79
+   },
+   "c2_stt_018": {
+    "answer": "send the drown in the room first\nthrow the grenade\npush in",
+    "ms": 46.7,
+    "prompt_n": 25,
+    "prompt_ms": 7.774,
+    "predicted_n": 15,
+    "predicted_ms": 37.569
+   },
+   "c2_stt_019": {
+    "answer": "Check the basement and ensure it's clear.\nGo to the white stairs.",
+    "ms": 49.2,
+    "prompt_n": 23,
+    "prompt_ms": 7.589,
+    "predicted_n": 16,
+    "predicted_ms": 40.278
+   },
+   "c2_stt_020": {
+    "answer": "go up to the roof\nrappel down\nbreach the wall on second floor",
+    "ms": 57.3,
+    "prompt_n": 25,
+    "prompt_ms": 7.623,
+    "predicted_n": 19,
+    "predicted_ms": 48.353
+   },
+   "c2_stt_021": {
+    "answer": "get up get up\nfollow me we go upstairs",
+    "ms": 36.6,
+    "prompt_n": 19,
+    "prompt_ms": 7.883,
+    "predicted_n": 11,
+    "predicted_ms": 27.341
+   },
+   "c2_stt_022": {
+    "answer": "make the suppressing fire on the men door and dont stop",
+    "ms": 40.4,
+    "prompt_n": 20,
+    "prompt_ms": 7.857,
+    "predicted_n": 12,
+    "predicted_ms": 31.198
+   },
+   "c2_stt_023": {
+    "answer": "go around from the left side and attack them from behind",
+    "ms": 39.2,
+    "prompt_n": 20,
+    "prompt_ms": 7.703,
+    "predicted_n": 12,
+    "predicted_ms": 30.14
+   },
+   "c2_stt_024": {
+    "answer": "what what did you say i dont hear you",
+    "ms": 34.0,
+    "prompt_n": 18,
+    "prompt_ms": 7.748,
+    "predicted_n": 10,
+    "predicted_ms": 24.926
+   },
+   "c2_stt_025": {
+    "answer": "throw the flash\nattack them attack but uh",
+    "ms": 33.9,
+    "prompt_n": 18,
+    "prompt_ms": 7.687,
+    "predicted_n": 10,
+    "predicted_ms": 24.854
+   },
+   "c2_stt_026": {
+    "answer": "stop shooting stop shooting\ncome back to me",
+    "ms": 34.0,
+    "prompt_n": 18,
+    "prompt_ms": 7.664,
+    "predicted_n": 10,
+    "predicted_ms": 25.049
+   },
+   "c2_stt_027": {
+    "answer": "you plant the bomb",
+    "ms": 20.6,
+    "prompt_n": 21,
+    "prompt_ms": 7.383,
+    "predicted_n": 5,
+    "predicted_ms": 11.903
+   },
+   "c2_stt_028": {
+    "answer": "you throw two things first the smoke\npush in",
+    "ms": 37.6,
+    "prompt_n": 24,
+    "prompt_ms": 8.756,
+    "predicted_n": 11,
+    "predicted_ms": 27.454
+   },
+   "c2_stt_029": {
+    "answer": "throw the grenade on the brown stairs",
+    "ms": 28.6,
+    "prompt_n": 21,
+    "prompt_ms": 7.417,
+    "predicted_n": 8,
+    "predicted_ms": 19.875
+   },
+   "c2_stt_030": {
+    "answer": "okay i will throw the flash and i go in first",
+    "ms": 39.6,
+    "prompt_n": 20,
+    "prompt_ms": 8.016,
+    "predicted_n": 12,
+    "predicted_ms": 30.252
+   },
+   "c2_stt_031": {
+    "answer": "Breach the hatch.\nDrop down through the hatch.\nClear the room.",
+    "ms": 49.9,
+    "prompt_n": 28,
+    "prompt_ms": 7.792,
+    "predicted_n": 16,
+    "predicted_ms": 40.779
+   },
+   "c2_stt_032": {
+    "answer": "watch the stairs\nshoot if somebody comes",
+    "ms": 31.6,
+    "prompt_n": 17,
+    "prompt_ms": 7.743,
+    "predicted_n": 9,
+    "predicted_ms": 22.536
+   },
+   "c2_stt_033": {
+    "answer": "okay so dont shoot dont shoot and hold your fire",
+    "ms": 38.8,
+    "prompt_n": 19,
+    "prompt_ms": 9.601,
+    "predicted_n": 11,
+    "predicted_ms": 27.862
+   },
+   "c2_stt_034": {
+    "answer": "open the door and i throw the flash\nyou push in and clear",
+    "ms": 46.9,
+    "prompt_n": 24,
+    "prompt_ms": 7.557,
+    "predicted_n": 15,
+    "predicted_ms": 38.053
+   },
+   "c2_stt_035": {
+    "answer": "i think they are in the base mint i hear the steps",
+    "ms": 42.6,
+    "prompt_n": 21,
+    "prompt_ms": 7.667,
+    "predicted_n": 13,
+    "predicted_ms": 33.526
+   },
+   "c2_stt_036": {
+    "answer": "check the room\ndont throw the grenade",
+    "ms": 31.6,
+    "prompt_n": 18,
+    "prompt_ms": 7.796,
+    "predicted_n": 9,
+    "predicted_ms": 22.432
+   },
+   "c2_stt_037": {
+    "answer": "go to my pin\ncrouch there\nthrow the frog\nattack",
+    "ms": 47.7,
+    "prompt_n": 27,
+    "prompt_ms": 7.582,
+    "predicted_n": 15,
+    "predicted_ms": 38.754
+   },
+   "c2_stt_038": {
+    "answer": "you bridge this wall\nthrow grenade inside the wall",
+    "ms": 37.8,
+    "prompt_n": 18,
+    "prompt_ms": 8.206,
+    "predicted_n": 11,
+    "predicted_ms": 28.254
+   },
+   "c2_stt_039": {
+    "answer": "you plan the bomb uh plant the bomb\nthrow smoke on it\nhide",
+    "ms": 49.3,
+    "prompt_n": 23,
+    "prompt_ms": 7.427,
+    "predicted_n": 16,
+    "predicted_ms": 40.54
+   },
+   "c2_stt_040": {
+    "answer": "follow me to the stairs\nyou hold the other angle",
+    "ms": 39.0,
+    "prompt_n": 22,
+    "prompt_ms": 7.41,
+    "predicted_n": 12,
+    "predicted_ms": 30.288
+   },
+   "c2_stt_041": {
+    "answer": "Throw a flash in this room.\nDo the same in the other room.",
+    "ms": 49.7,
+    "prompt_n": 24,
+    "prompt_ms": 7.575,
+    "predicted_n": 16,
+    "predicted_ms": 40.829
+   },
+   "c2_stt_042": {
+    "answer": "please open the window\nthrow the molotov inside the window",
+    "ms": 69.0,
+    "prompt_n": 20,
+    "prompt_ms": 8.974,
+    "predicted_n": 14,
+    "predicted_ms": 35.679
+   },
+   "c2_stt_043": {
+    "answer": "uh jump over the so far and hide behind the table",
+    "ms": 39.0,
+    "prompt_n": 20,
+    "prompt_ms": 7.743,
+    "predicted_n": 12,
+    "predicted_ms": 29.958
+   },
+   "c2_stt_044": {
+    "answer": "review me review me i am down\ncover me please",
+    "ms": 39.5,
+    "prompt_n": 21,
+    "prompt_ms": 7.616,
+    "predicted_n": 12,
+    "predicted_ms": 30.498
+   },
+   "c2_stt_045": {
+    "answer": "open the door\nthrow the flash",
+    "ms": 44.3,
+    "prompt_n": 19,
+    "prompt_ms": 7.779,
+    "predicted_n": 8,
+    "predicted_ms": 19.723
+   },
+   "c2_stt_046": {
+    "answer": "keep shooting at the window to pin them\nthrow the smoke",
+    "ms": 42.3,
+    "prompt_n": 23,
+    "prompt_ms": 7.388,
+    "predicted_n": 13,
+    "predicted_ms": 33.591
+   },
+   "c2_stt_047": {
+    "answer": "you flesh the room\nyou clear the room",
+    "ms": 58.4,
+    "prompt_n": 22,
+    "prompt_ms": 9.384,
+    "predicted_n": 10,
+    "predicted_ms": 24.84
+   },
+   "c2_stt_048": {
+    "answer": "get down get down hide behind something",
+    "ms": 28.6,
+    "prompt_n": 16,
+    "prompt_ms": 7.584,
+    "predicted_n": 8,
+    "predicted_ms": 19.668
+   },
+   "c2_stt_049": {
+    "answer": "breach the wall\nflash inside the wall\npush in clear it\nwatch the window",
+    "ms": 58.4,
+    "prompt_n": 26,
+    "prompt_ms": 7.887,
+    "predicted_n": 19,
+    "predicted_ms": 49.125
+   }
+  },
+  "ctx": {
+   "xb_r6_000": {
+    "answer": "Smoke the main door.\nHold the white stairs.",
+    "ms": 37.0,
+    "prompt_n": 32,
+    "prompt_ms": 7.787,
+    "predicted_n": 11,
+    "predicted_ms": 27.842
+   },
+   "xb_r6_001": {
+    "answer": "Breach the hatch.",
+    "ms": 23.9,
+    "prompt_n": 26,
+    "prompt_ms": 8.052,
+    "predicted_n": 6,
+    "predicted_ms": 14.561
+   },
+   "xb_r6_002": {
+    "answer": "Open the west window.",
+    "ms": 25.1,
+    "prompt_n": 25,
+    "prompt_ms": 7.538,
+    "predicted_n": 6,
+    "predicted_ms": 16.155
+   },
+   "xb_r6_003": {
+    "answer": "Rappel to the north window.",
+    "ms": 33.0,
+    "prompt_n": 32,
+    "prompt_ms": 8.177,
+    "predicted_n": 9,
+    "predicted_ms": 23.444
+   },
+   "xb_r6_004": {
+    "answer": "Hold the red stairs.",
+    "ms": 24.1,
+    "prompt_n": 22,
+    "prompt_ms": 7.473,
+    "predicted_n": 6,
+    "predicted_ms": 15.247
+   },
+   "xb_r6_005": {
+    "answer": "Nice, that got one of them.",
+    "ms": 31.7,
+    "prompt_n": 29,
+    "prompt_ms": 7.856,
+    "predicted_n": 9,
+    "predicted_ms": 22.453
+   },
+   "xb_r6_006": {
+    "answer": "I'm taking the east window myself.",
+    "ms": 51.2,
+    "prompt_n": 33,
+    "prompt_ms": 9.007,
+    "predicted_n": 9,
+    "predicted_ms": 23.09
+   },
+   "xb_r6_007": {
+    "answer": "Hold the yellow stairs.",
+    "ms": 24.3,
+    "prompt_n": 25,
+    "prompt_ms": 7.969,
+    "predicted_n": 6,
+    "predicted_ms": 14.824
+   },
+   "xb_r6_008": {
+    "answer": "Drone out the top floor.\nHard breach the hatch.",
+    "ms": 43.3,
+    "prompt_n": 23,
+    "prompt_ms": 7.576,
+    "predicted_n": 13,
+    "predicted_ms": 34.314
+   },
+   "xb_r6_009": {
+    "answer": "Hold position.",
+    "ms": 19.2,
+    "prompt_n": 29,
+    "prompt_ms": 8.074,
+    "predicted_n": 4,
+    "predicted_ms": 9.765
+   },
+   "xb_r6_010": {
+    "answer": "Smoke the window.",
+    "ms": 22.3,
+    "prompt_n": 21,
+    "prompt_ms": 7.598,
+    "predicted_n": 5,
+    "predicted_ms": 13.329
+   },
+   "xb_r6_011": {
+    "answer": "Frag the brown stairs.",
+    "ms": 27.2,
+    "prompt_n": 30,
+    "prompt_ms": 7.903,
+    "predicted_n": 7,
+    "predicted_ms": 17.946
+   },
+   "xb_r6_012": {
+    "answer": "Plant the defuser.",
+    "ms": 25.4,
+    "prompt_n": 25,
+    "prompt_ms": 9.076,
+    "predicted_n": 6,
+    "predicted_ms": 14.892
+   },
+   "xb_r6_013": {
+    "answer": "Watch the east window.",
+    "ms": 24.1,
+    "prompt_n": 17,
+    "prompt_ms": 7.956,
+    "predicted_n": 6,
+    "predicted_ms": 14.813
+   },
+   "xb_r6_014": {
+    "answer": "Frag the top floor.",
+    "ms": 44.4,
+    "prompt_n": 27,
+    "prompt_ms": 7.745,
+    "predicted_n": 7,
+    "predicted_ms": 17.585
+   },
+   "xb_r6_015": {
+    "answer": "Smoke the main door.",
+    "ms": 23.8,
+    "prompt_n": 24,
+    "prompt_ms": 7.603,
+    "predicted_n": 6,
+    "predicted_ms": 14.789
+   },
+   "xb_r6_016": {
+    "answer": "Smoke the south window.",
+    "ms": 36.5,
+    "prompt_n": 27,
+    "prompt_ms": 7.693,
+    "predicted_n": 6,
+    "predicted_ms": 15.05
+   },
+   "xb_r6_017": {
+    "answer": "Flash the main door.\nPush in through the main door.",
+    "ms": 42.9,
+    "prompt_n": 21,
+    "prompt_ms": 7.36,
+    "predicted_n": 13,
+    "predicted_ms": 34.219
+   },
+   "xb_r6_018": {
+    "answer": "Frag the south window.",
+    "ms": 38.8,
+    "prompt_n": 33,
+    "prompt_ms": 8.027,
+    "predicted_n": 7,
+    "predicted_ms": 16.918
+   },
+   "xb_r6_019": {
+    "answer": "Plant the defuser.",
+    "ms": 23.1,
+    "prompt_n": 27,
+    "prompt_ms": 7.491,
+    "predicted_n": 6,
+    "predicted_ms": 14.313
+   },
+   "xb_r6_020": {
+    "answer": "Vault the east window.",
+    "ms": 23.5,
+    "prompt_n": 25,
+    "prompt_ms": 7.499,
+    "predicted_n": 6,
+    "predicted_ms": 14.597
+   },
+   "xb_r6_021": {
+    "answer": "Hold position at the white stairs.",
+    "ms": 28.1,
+    "prompt_n": 21,
+    "prompt_ms": 7.381,
+    "predicted_n": 8,
+    "predicted_ms": 19.377
+   },
+   "xb_r6_022": {
+    "answer": "Breach the west door.",
+    "ms": 26.0,
+    "prompt_n": 23,
+    "prompt_ms": 7.635,
+    "predicted_n": 7,
+    "predicted_ms": 17.058
+   },
+   "xb_r6_023": {
+    "answer": "Suppress the blue stairs.",
+    "ms": 23.0,
+    "prompt_n": 21,
+    "prompt_ms": 7.548,
+    "predicted_n": 6,
+    "predicted_ms": 14.257
+   },
+   "xb_r6_024": {
+    "answer": "Cancel that.",
+    "ms": 17.8,
+    "prompt_n": 27,
+    "prompt_ms": 7.488,
+    "predicted_n": 4,
+    "predicted_ms": 9.209
+   },
+   "xb_r6_025": {
+    "answer": "Stun the main door.\nFall back.",
+    "ms": 32.8,
+    "prompt_n": 25,
+    "prompt_ms": 7.344,
+    "predicted_n": 10,
+    "predicted_ms": 24.306
+   },
+   "xb_r6_026": {
+    "answer": "Frag the basement.",
+    "ms": 22.8,
+    "prompt_n": 21,
+    "prompt_ms": 7.323,
+    "predicted_n": 6,
+    "predicted_ms": 14.277
+   },
+   "xb_r6_027": {
+    "answer": "Clear the top floor.",
+    "ms": 23.6,
+    "prompt_n": 32,
+    "prompt_ms": 7.974,
+    "predicted_n": 6,
+    "predicted_ms": 14.351
+   },
+   "xb_r6_028": {
+    "answer": "Vault the north window.",
+    "ms": 23.4,
+    "prompt_n": 28,
+    "prompt_ms": 7.595,
+    "predicted_n": 6,
+    "predicted_ms": 14.46
+   },
+   "xb_r6_029": {
+    "answer": "Yes.",
+    "ms": 16.7,
+    "prompt_n": 25,
+    "prompt_ms": 8.693,
+    "predicted_n": 3,
+    "predicted_ms": 6.715
+   },
+   "xb_r6_030": {
+    "answer": "Watch the west window.",
+    "ms": 23.4,
+    "prompt_n": 36,
+    "prompt_ms": 7.677,
+    "predicted_n": 6,
+    "predicted_ms": 14.505
+   },
+   "xb_r6_031": {
+    "answer": "Drone the top floor.",
+    "ms": 25.8,
+    "prompt_n": 23,
+    "prompt_ms": 7.421,
+    "predicted_n": 7,
+    "predicted_ms": 17.11
+   },
+   "xb_r6_032": {
+    "answer": "Negative.",
+    "ms": 15.5,
+    "prompt_n": 24,
+    "prompt_ms": 7.381,
+    "predicted_n": 3,
+    "predicted_ms": 6.806
+   },
+   "xb_r6_033": {
+    "answer": "Hold the red stairs.",
+    "ms": 23.2,
+    "prompt_n": 26,
+    "prompt_ms": 7.651,
+    "predicted_n": 6,
+    "predicted_ms": 14.279
+   },
+   "xb_r6_034": {
+    "answer": "Hide behind the table.",
+    "ms": 23.0,
+    "prompt_n": 17,
+    "prompt_ms": 7.502,
+    "predicted_n": 6,
+    "predicted_ms": 14.268
+   },
+   "xb_r6_035": {
+    "answer": "Stun the east door.",
+    "ms": 25.8,
+    "prompt_n": 25,
+    "prompt_ms": 7.755,
+    "predicted_n": 7,
+    "predicted_ms": 16.81
+   },
+   "xb_r6_036": {
+    "answer": "Move to the top floor.",
+    "ms": 25.6,
+    "prompt_n": 32,
+    "prompt_ms": 7.665,
+    "predicted_n": 7,
+    "predicted_ms": 16.764
+   },
+   "xb_r6_037": {
+    "answer": "Throw a frag on the yellow stairs.",
+    "ms": 31.2,
+    "prompt_n": 19,
+    "prompt_ms": 7.635,
+    "predicted_n": 9,
+    "predicted_ms": 22.38
+   },
+   "xb_r6_038": {
+    "answer": "Smoke that door.",
+    "ms": 20.7,
+    "prompt_n": 20,
+    "prompt_ms": 7.685,
+    "predicted_n": 5,
+    "predicted_ms": 11.745
+   },
+   "xb_r6_039": {
+    "answer": "Open fire on the west window.",
+    "ms": 28.1,
+    "prompt_n": 29,
+    "prompt_ms": 7.604,
+    "predicted_n": 8,
+    "predicted_ms": 19.282
+   },
+   "xb_r6_040": {
+    "answer": "Breach the east door.",
+    "ms": 26.0,
+    "prompt_n": 24,
+    "prompt_ms": 7.359,
+    "predicted_n": 7,
+    "predicted_ms": 17.414
+   },
+   "xb_r6_041": {
+    "answer": "Hard breach the reinforced wall.",
+    "ms": 25.9,
+    "prompt_n": 26,
+    "prompt_ms": 7.555,
+    "predicted_n": 7,
+    "predicted_ms": 17.121
+   },
+   "xb_r6_042": {
+    "answer": "Clear the basement.",
+    "ms": 20.8,
+    "prompt_n": 26,
+    "prompt_ms": 7.87,
+    "predicted_n": 5,
+    "predicted_ms": 11.753
+   },
+   "xb_r6_043": {
+    "answer": "Smoke the main door.\nHold the white stairs.",
+    "ms": 35.5,
+    "prompt_n": 27,
+    "prompt_ms": 7.476,
+    "predicted_n": 11,
+    "predicted_ms": 26.851
+   },
+   "xb_r6_044": {
+    "answer": "Flash the south door.\nPush in through the south door.",
+    "ms": 40.7,
+    "prompt_n": 30,
+    "prompt_ms": 7.612,
+    "predicted_n": 13,
+    "predicted_ms": 31.869
+   },
+   "xb_r6_045": {
+    "answer": "Open the east door.",
+    "ms": 23.0,
+    "prompt_n": 24,
+    "prompt_ms": 7.337,
+    "predicted_n": 6,
+    "predicted_ms": 14.532
+   },
+   "xb_r6_046": {
+    "answer": "Smoke down the brown stairs.",
+    "ms": 26.0,
+    "prompt_n": 26,
+    "prompt_ms": 7.466,
+    "predicted_n": 7,
+    "predicted_ms": 17.289
+   },
+   "xb_r6_047": {
+    "answer": "Contact, two of them coming up the red stairs!",
+    "ms": 38.3,
+    "prompt_n": 27,
+    "prompt_ms": 7.513,
+    "predicted_n": 12,
+    "predicted_ms": 29.438
+   },
+   "xb_r6_048": {
+    "answer": "Rappel to the north window.",
+    "ms": 30.7,
+    "prompt_n": 28,
+    "prompt_ms": 7.598,
+    "predicted_n": 9,
+    "predicted_ms": 21.792
+   },
+   "xb_r6_049": {
+    "answer": "Put a breach charge on the south door.",
+    "ms": 33.6,
+    "prompt_n": 28,
+    "prompt_ms": 7.554,
+    "predicted_n": 10,
+    "predicted_ms": 24.745
+   },
+   "xb_cs_000": {
+    "answer": "flank them through main",
+    "ms": 23.4,
+    "prompt_n": 23,
+    "prompt_ms": 7.877,
+    "predicted_n": 6,
+    "predicted_ms": 14.283
+   },
+   "xb_cs_001": {
+    "answer": "molly blue stairs",
+    "ms": 20.3,
+    "prompt_n": 22,
+    "prompt_ms": 7.321,
+    "predicted_n": 5,
+    "predicted_ms": 11.728
+   },
+   "xb_cs_002": {
+    "answer": "molly the basement",
+    "ms": 20.1,
+    "prompt_n": 21,
+    "prompt_ms": 7.26,
+    "predicted_n": 5,
+    "predicted_ms": 11.713
+   },
+   "xb_cs_003": {
+    "answer": "flash east door",
+    "ms": 17.6,
+    "prompt_n": 21,
+    "prompt_ms": 7.286,
+    "predicted_n": 4,
+    "predicted_ms": 9.19
+   },
+   "xb_cs_004": {
+    "answer": "hop through the north window",
+    "ms": 24.1,
+    "prompt_n": 29,
+    "prompt_ms": 8.179,
+    "predicted_n": 6,
+    "predicted_ms": 14.725
+   },
+   "xb_cs_005": {
+    "answer": "yeah do it",
+    "ms": 18.8,
+    "prompt_n": 24,
+    "prompt_ms": 7.506,
+    "predicted_n": 4,
+    "predicted_ms": 9.964
+   },
+   "xb_cs_006": {
+    "answer": "Smoke the north door.",
+    "ms": 46.4,
+    "prompt_n": 22,
+    "prompt_ms": 7.704,
+    "predicted_n": 6,
+    "predicted_ms": 15.895
+   },
+   "xb_cs_007": {
+    "answer": "molly the red stairs",
+    "ms": 23.4,
+    "prompt_n": 20,
+    "prompt_ms": 7.766,
+    "predicted_n": 6,
+    "predicted_ms": 14.365
+   },
+   "xb_cs_008": {
+    "answer": "Check the basement.",
+    "ms": 20.6,
+    "prompt_n": 24,
+    "prompt_ms": 7.45,
+    "predicted_n": 5,
+    "predicted_ms": 11.861
+   },
+   "xb_cs_009": {
+    "answer": "go go go",
+    "ms": 18.2,
+    "prompt_n": 24,
+    "prompt_ms": 7.442,
+    "predicted_n": 4,
+    "predicted_ms": 9.429
+   },
+   "xb_cs_010": {
+    "answer": "smoke main\nhold the blue stairs",
+    "ms": 31.3,
+    "prompt_n": 18,
+    "prompt_ms": 7.971,
+    "predicted_n": 9,
+    "predicted_ms": 22.051
+   },
+   "xb_cs_011": {
+    "answer": "flash west window\nfall back",
+    "ms": 26.1,
+    "prompt_n": 26,
+    "prompt_ms": 7.76,
+    "predicted_n": 7,
+    "predicted_ms": 17.1
+   },
+   "xb_cs_012": {
+    "answer": "Check the top floor.",
+    "ms": 23.3,
+    "prompt_n": 22,
+    "prompt_ms": 7.434,
+    "predicted_n": 6,
+    "predicted_ms": 14.585
+   },
+   "xb_cs_013": {
+    "answer": "open the hatch",
+    "ms": 19.2,
+    "prompt_n": 23,
+    "prompt_ms": 8.638,
+    "predicted_n": 4,
+    "predicted_ms": 9.282
+   },
+   "xb_cs_014": {
+    "answer": "Throw a flash at the west door.",
+    "ms": 31.3,
+    "prompt_n": 19,
+    "prompt_ms": 7.745,
+    "predicted_n": 9,
+    "predicted_ms": 22.263
+   },
+   "xb_cs_015": {
+    "answer": "defuse the bomb",
+    "ms": 20.7,
+    "prompt_n": 24,
+    "prompt_ms": 7.509,
+    "predicted_n": 5,
+    "predicted_ms": 11.849
+   },
+   "xb_cs_016": {
+    "answer": "on me",
+    "ms": 15.5,
+    "prompt_n": 25,
+    "prompt_ms": 7.461,
+    "predicted_n": 3,
+    "predicted_ms": 6.754
+   },
+   "xb_cs_017": {
+    "answer": "plant\ntake cover",
+    "ms": 20.5,
+    "prompt_n": 21,
+    "prompt_ms": 7.383,
+    "predicted_n": 5,
+    "predicted_ms": 11.843
+   },
+   "xb_cs_018": {
+    "answer": "Flash over there.",
+    "ms": 20.5,
+    "prompt_n": 24,
+    "prompt_ms": 7.423,
+    "predicted_n": 5,
+    "predicted_ms": 11.825
+   },
+   "xb_cs_019": {
+    "answer": "molly the red stairs",
+    "ms": 24.5,
+    "prompt_n": 24,
+    "prompt_ms": 7.451,
+    "predicted_n": 6,
+    "predicted_ms": 15.803
+   },
+   "xb_cs_020": {
+    "answer": "on me",
+    "ms": 15.6,
+    "prompt_n": 22,
+    "prompt_ms": 7.439,
+    "predicted_n": 3,
+    "predicted_ms": 6.854
+   },
+   "xb_cs_021": {
+    "answer": "Breach the hatch.\nDrop through the hatch.",
+    "ms": 36.5,
+    "prompt_n": 28,
+    "prompt_ms": 7.858,
+    "predicted_n": 11,
+    "predicted_ms": 27.259
+   },
+   "xb_cs_022": {
+    "answer": "Hop over the sofa.",
+    "ms": 23.3,
+    "prompt_n": 17,
+    "prompt_ms": 7.594,
+    "predicted_n": 6,
+    "predicted_ms": 14.442
+   },
+   "xb_cs_023": {
+    "answer": "defuse the bomb",
+    "ms": 21.1,
+    "prompt_n": 18,
+    "prompt_ms": 7.899,
+    "predicted_n": 5,
+    "predicted_ms": 11.896
+   },
+   "xb_cs_024": {
+    "answer": "watch the west door",
+    "ms": 20.6,
+    "prompt_n": 23,
+    "prompt_ms": 7.439,
+    "predicted_n": 5,
+    "predicted_ms": 11.89
+   },
+   "xb_cs_025": {
+    "answer": "stop stop",
+    "ms": 16.0,
+    "prompt_n": 23,
+    "prompt_ms": 7.537,
+    "predicted_n": 3,
+    "predicted_ms": 7.167
+   },
+   "xb_cs_026": {
+    "answer": "smoke the top floor",
+    "ms": 24.1,
+    "prompt_n": 20,
+    "prompt_ms": 8.388,
+    "predicted_n": 6,
+    "predicted_ms": 14.421
+   },
+   "xb_cs_027": {
+    "answer": "Hold fire.",
+    "ms": 43.1,
+    "prompt_n": 24,
+    "prompt_ms": 7.475,
+    "predicted_n": 4,
+    "predicted_ms": 9.303
+   },
+   "xb_cs_028": {
+    "answer": "Smoke the north window.",
+    "ms": 23.4,
+    "prompt_n": 27,
+    "prompt_ms": 7.644,
+    "predicted_n": 6,
+    "predicted_ms": 14.416
+   },
+   "xb_cs_029": {
+    "answer": "hold a west window",
+    "ms": 21.0,
+    "prompt_n": 25,
+    "prompt_ms": 7.753,
+    "predicted_n": 5,
+    "predicted_ms": 11.93
+   },
+   "xb_cs_030": {
+    "answer": "Open the south door.",
+    "ms": 23.7,
+    "prompt_n": 27,
+    "prompt_ms": 7.727,
+    "predicted_n": 6,
+    "predicted_ms": 14.655
+   },
+   "xb_cs_031": {
+    "answer": "open main door",
+    "ms": 18.3,
+    "prompt_n": 27,
+    "prompt_ms": 7.657,
+    "predicted_n": 4,
+    "predicted_ms": 9.308
+   },
+   "xb_cs_032": {
+    "answer": "Smoke the east window.",
+    "ms": 24.1,
+    "prompt_n": 26,
+    "prompt_ms": 8.366,
+    "predicted_n": 6,
+    "predicted_ms": 14.405
+   },
+   "xb_cs_033": {
+    "answer": "how much time left",
+    "ms": 20.6,
+    "prompt_n": 24,
+    "prompt_ms": 7.454,
+    "predicted_n": 5,
+    "predicted_ms": 11.87
+   },
+   "xb_cs_034": {
+    "answer": "hold yellow stairs",
+    "ms": 18.2,
+    "prompt_n": 18,
+    "prompt_ms": 7.711,
+    "predicted_n": 4,
+    "predicted_ms": 9.284
+   },
+   "xb_cs_035": {
+    "answer": "frag west window",
+    "ms": 18.1,
+    "prompt_n": 20,
+    "prompt_ms": 7.604,
+    "predicted_n": 4,
+    "predicted_ms": 9.296
+   },
+   "xb_cs_036": {
+    "answer": "Frag the basement.",
+    "ms": 23.8,
+    "prompt_n": 27,
+    "prompt_ms": 7.642,
+    "predicted_n": 6,
+    "predicted_ms": 14.855
+   },
+   "xb_cs_037": {
+    "answer": "go up the yellow stairs",
+    "ms": 23.5,
+    "prompt_n": 20,
+    "prompt_ms": 7.801,
+    "predicted_n": 6,
+    "predicted_ms": 14.394
+   },
+   "xb_cs_038": {
+    "answer": "check behind the sofa",
+    "ms": 20.6,
+    "prompt_n": 25,
+    "prompt_ms": 7.464,
+    "predicted_n": 5,
+    "predicted_ms": 11.859
+   },
+   "xb_cs_039": {
+    "answer": "Check the top floor.",
+    "ms": 24.5,
+    "prompt_n": 25,
+    "prompt_ms": 8.808,
+    "predicted_n": 6,
+    "predicted_ms": 14.411
+   },
+   "xb_cs_040": {
+    "answer": "get behind the sofa",
+    "ms": 20.9,
+    "prompt_n": 17,
+    "prompt_ms": 7.609,
+    "predicted_n": 5,
+    "predicted_ms": 11.985
+   },
+   "xb_cs_041": {
+    "answer": "molly the white stairs",
+    "ms": 23.7,
+    "prompt_n": 25,
+    "prompt_ms": 7.799,
+    "predicted_n": 6,
+    "predicted_ms": 14.51
+   },
+   "xb_cs_042": {
+    "answer": "jump down",
+    "ms": 15.6,
+    "prompt_n": 23,
+    "prompt_ms": 7.501,
+    "predicted_n": 3,
+    "predicted_ms": 6.753
+   },
+   "xb_cs_043": {
+    "answer": "go to the second floor",
+    "ms": 23.1,
+    "prompt_n": 24,
+    "prompt_ms": 7.461,
+    "predicted_n": 6,
+    "predicted_ms": 14.363
+   },
+   "xb_cs_044": {
+    "answer": "flash west window\nfall back",
+    "ms": 25.7,
+    "prompt_n": 22,
+    "prompt_ms": 7.432,
+    "predicted_n": 7,
+    "predicted_ms": 16.928
+   },
+   "xb_cs_045": {
+    "answer": "haha nice one",
+    "ms": 43.3,
+    "prompt_n": 22,
+    "prompt_ms": 7.636,
+    "predicted_n": 5,
+    "predicted_ms": 12.471
+   },
+   "xb_cs_046": {
+    "answer": "dunno",
+    "ms": 19.2,
+    "prompt_n": 20,
+    "prompt_ms": 8.099,
+    "predicted_n": 4,
+    "predicted_ms": 9.672
+   },
+   "xb_cs_047": {
+    "answer": "flash the top floor\nclear the top floor",
+    "ms": 56.5,
+    "prompt_n": 29,
+    "prompt_ms": 7.966,
+    "predicted_n": 10,
+    "predicted_ms": 25.239
+   },
+   "xb_cs_048": {
+    "answer": "open the window",
+    "ms": 19.1,
+    "prompt_n": 27,
+    "prompt_ms": 7.883,
+    "predicted_n": 4,
+    "predicted_ms": 9.882
+   },
+   "xb_cs_049": {
+    "answer": "yeah do it",
+    "ms": 19.1,
+    "prompt_n": 29,
+    "prompt_ms": 7.947,
+    "predicted_n": 4,
+    "predicted_ms": 9.757
+   },
+   "xb_stt_000": {
+    "answer": "oh nice nice very good",
+    "ms": 24.4,
+    "prompt_n": 27,
+    "prompt_ms": 7.805,
+    "predicted_n": 6,
+    "predicted_ms": 15.105
+   },
+   "xb_stt_001": {
+    "answer": "yes yes",
+    "ms": 16.2,
+    "prompt_n": 25,
+    "prompt_ms": 8.008,
+    "predicted_n": 3,
+    "predicted_ms": 6.849
+   },
+   "xb_stt_002": {
+    "answer": "uh the the east window",
+    "ms": 23.6,
+    "prompt_n": 21,
+    "prompt_ms": 7.541,
+    "predicted_n": 6,
+    "predicted_ms": 14.71
+   },
+   "xb_stt_003": {
+    "answer": "look at the south window",
+    "ms": 23.8,
+    "prompt_n": 17,
+    "prompt_ms": 7.736,
+    "predicted_n": 6,
+    "predicted_ms": 14.771
+   },
+   "xb_stt_004": {
+    "answer": "throw the frag on red stairs\ncome back",
+    "ms": 34.1,
+    "prompt_n": 27,
+    "prompt_ms": 7.696,
+    "predicted_n": 10,
+    "predicted_ms": 25.048
+   },
+   "xb_stt_005": {
+    "answer": "suppress the main door",
+    "ms": 45.6,
+    "prompt_n": 24,
+    "prompt_ms": 7.738,
+    "predicted_n": 5,
+    "predicted_ms": 11.823
+   },
+   "xb_stt_006": {
+    "answer": "uh you go to the roof please",
+    "ms": 29.1,
+    "prompt_n": 30,
+    "prompt_ms": 7.746,
+    "predicted_n": 8,
+    "predicted_ms": 19.977
+   },
+   "xb_stt_007": {
+    "answer": "on my pin on my pin",
+    "ms": 30.6,
+    "prompt_n": 22,
+    "prompt_ms": 8.243,
+    "predicted_n": 7,
+    "predicted_ms": 20.758
+   },
+   "xb_stt_008": {
+    "answer": "bridge the hatch now",
+    "ms": 24.3,
+    "prompt_n": 24,
+    "prompt_ms": 9.072,
+    "predicted_n": 5,
+    "predicted_ms": 13.709
+   },
+   "xb_stt_009": {
+    "answer": "uh check the base meant please",
+    "ms": 27.2,
+    "prompt_n": 29,
+    "prompt_ms": 8.001,
+    "predicted_n": 7,
+    "predicted_ms": 17.851
+   },
+   "xb_stt_010": {
+    "answer": "hold the white stars",
+    "ms": 21.0,
+    "prompt_n": 26,
+    "prompt_ms": 7.635,
+    "predicted_n": 5,
+    "predicted_ms": 12.038
+   },
+   "xb_stt_011": {
+    "answer": "go to the south door",
+    "ms": 23.4,
+    "prompt_n": 26,
+    "prompt_ms": 7.686,
+    "predicted_n": 6,
+    "predicted_ms": 14.448
+   },
+   "xb_stt_012": {
+    "answer": "um lie down lie down",
+    "ms": 25.2,
+    "prompt_n": 30,
+    "prompt_ms": 7.778,
+    "predicted_n": 6,
+    "predicted_ms": 16.093
+   },
+   "xb_stt_013": {
+    "answer": "smoke the east door\npush in through the east door",
+    "ms": 42.2,
+    "prompt_n": 25,
+    "prompt_ms": 7.485,
+    "predicted_n": 13,
+    "predicted_ms": 33.364
+   },
+   "xb_stt_014": {
+    "answer": "go to the second floor",
+    "ms": 23.5,
+    "prompt_n": 24,
+    "prompt_ms": 7.546,
+    "predicted_n": 6,
+    "predicted_ms": 14.569
+   },
+   "xb_stt_015": {
+    "answer": "okay bridge",
+    "ms": 15.8,
+    "prompt_n": 21,
+    "prompt_ms": 7.621,
+    "predicted_n": 3,
+    "predicted_ms": 6.802
+   },
+   "xb_stt_016": {
+    "answer": "enemy enemy he is on the roof i see him",
+    "ms": 36.5,
+    "prompt_n": 26,
+    "prompt_ms": 7.582,
+    "predicted_n": 11,
+    "predicted_ms": 27.583
+   },
+   "xb_stt_017": {
+    "answer": "you check the sofa\nfollow me",
+    "ms": 28.8,
+    "prompt_n": 24,
+    "prompt_ms": 7.543,
+    "predicted_n": 8,
+    "predicted_ms": 19.952
+   },
+   "xb_stt_018": {
+    "answer": "cover me cover me",
+    "ms": 21.5,
+    "prompt_n": 22,
+    "prompt_ms": 8.066,
+    "predicted_n": 5,
+    "predicted_ms": 12.089
+   },
+   "xb_stt_019": {
+    "answer": "Frag the blue stairs.",
+    "ms": 26.1,
+    "prompt_n": 28,
+    "prompt_ms": 7.771,
+    "predicted_n": 7,
+    "predicted_ms": 16.984
+   },
+   "xb_stt_020": {
+    "answer": "bridge the south door",
+    "ms": 21.1,
+    "prompt_n": 21,
+    "prompt_ms": 7.716,
+    "predicted_n": 5,
+    "predicted_ms": 12.025
+   },
+   "xb_stt_021": {
+    "answer": "look at the chairs",
+    "ms": 21.0,
+    "prompt_n": 27,
+    "prompt_ms": 7.684,
+    "predicted_n": 5,
+    "predicted_ms": 11.964
+   },
+   "xb_stt_022": {
+    "answer": "cover me cover me",
+    "ms": 21.4,
+    "prompt_n": 23,
+    "prompt_ms": 7.752,
+    "predicted_n": 5,
+    "predicted_ms": 12.298
+   },
+   "xb_stt_023": {
+    "answer": "throw the flash in the window north",
+    "ms": 28.9,
+    "prompt_n": 28,
+    "prompt_ms": 7.873,
+    "predicted_n": 8,
+    "predicted_ms": 19.624
+   },
+   "xb_stt_024": {
+    "answer": "uh you go to the roof please",
+    "ms": 30.2,
+    "prompt_n": 31,
+    "prompt_ms": 9.291,
+    "predicted_n": 8,
+    "predicted_ms": 19.502
+   },
+   "xb_stt_025": {
+    "answer": "you check the west door",
+    "ms": 23.4,
+    "prompt_n": 24,
+    "prompt_ms": 7.413,
+    "predicted_n": 6,
+    "predicted_ms": 14.68
+   },
+   "xb_stt_026": {
+    "answer": "no no stop stop",
+    "ms": 20.5,
+    "prompt_n": 26,
+    "prompt_ms": 7.5,
+    "predicted_n": 5,
+    "predicted_ms": 11.757
+   },
+   "xb_stt_027": {
+    "answer": "Put smoke on the blue stairs.",
+    "ms": 28.4,
+    "prompt_n": 25,
+    "prompt_ms": 7.379,
+    "predicted_n": 8,
+    "predicted_ms": 19.771
+   },
+   "xb_stt_028": {
+    "answer": "rappel to the east window",
+    "ms": 51.0,
+    "prompt_n": 25,
+    "prompt_ms": 7.447,
+    "predicted_n": 8,
+    "predicted_ms": 19.642
+   },
+   "xb_stt_029": {
+    "answer": "smoke the main door",
+    "ms": 23.4,
+    "prompt_n": 24,
+    "prompt_ms": 7.404,
+    "predicted_n": 6,
+    "predicted_ms": 14.687
+   },
+   "xb_stt_030": {
+    "answer": "okay attack attack",
+    "ms": 18.1,
+    "prompt_n": 24,
+    "prompt_ms": 7.403,
+    "predicted_n": 4,
+    "predicted_ms": 9.429
+   },
+   "xb_stt_031": {
+    "answer": "volt the west window",
+    "ms": 20.8,
+    "prompt_n": 28,
+    "prompt_ms": 7.598,
+    "predicted_n": 5,
+    "predicted_ms": 11.859
+   },
+   "xb_stt_032": {
+    "answer": "throw one smoke at the east window",
+    "ms": 28.8,
+    "prompt_n": 20,
+    "prompt_ms": 7.812,
+    "predicted_n": 8,
+    "predicted_ms": 19.64
+   },
+   "xb_stt_033": {
+    "answer": "uh flesh it flesh it",
+    "ms": 46.3,
+    "prompt_n": 29,
+    "prompt_ms": 7.775,
+    "predicted_n": 6,
+    "predicted_ms": 14.747
+   },
+   "xb_stt_034": {
+    "answer": "you check it",
+    "ms": 41.7,
+    "prompt_n": 27,
+    "prompt_ms": 7.55,
+    "predicted_n": 4,
+    "predicted_ms": 9.633
+   },
+   "xb_stt_035": {
+    "answer": "drown the second floor",
+    "ms": 23.3,
+    "prompt_n": 22,
+    "prompt_ms": 7.356,
+    "predicted_n": 6,
+    "predicted_ms": 14.605
+   },
+   "xb_stt_036": {
+    "answer": "bridge the hatch now",
+    "ms": 24.6,
+    "prompt_n": 28,
+    "prompt_ms": 7.681,
+    "predicted_n": 5,
+    "predicted_ms": 15.313
+   },
+   "xb_stt_037": {
+    "answer": "you open the mane door\nyou check the the basement",
+    "ms": 42.6,
+    "prompt_n": 24,
+    "prompt_ms": 8.145,
+    "predicted_n": 12,
+    "predicted_ms": 32.217
+   },
+   "xb_stt_038": {
+    "answer": "copy copy got it",
+    "ms": 38.7,
+    "prompt_n": 27,
+    "prompt_ms": 8.858,
+    "predicted_n": 5,
+    "predicted_ms": 12.428
+   },
+   "xb_stt_039": {
+    "answer": "uh the hatch the hatch",
+    "ms": 47.8,
+    "prompt_n": 27,
+    "prompt_ms": 7.611,
+    "predicted_n": 6,
+    "predicted_ms": 14.28
+   },
+   "xb_stt_040": {
+    "answer": "you go there",
+    "ms": 17.8,
+    "prompt_n": 22,
+    "prompt_ms": 7.295,
+    "predicted_n": 4,
+    "predicted_ms": 9.298
+   },
+   "xb_stt_041": {
+    "answer": "throw frag in the basement",
+    "ms": 47.6,
+    "prompt_n": 28,
+    "prompt_ms": 8.803,
+    "predicted_n": 6,
+    "predicted_ms": 14.526
+   },
+   "xb_stt_042": {
+    "answer": "eh no not table the sofa",
+    "ms": 48.1,
+    "prompt_n": 23,
+    "prompt_ms": 7.368,
+    "predicted_n": 7,
+    "predicted_ms": 16.814
+   },
+   "xb_stt_043": {
+    "answer": "eh up to you",
+    "ms": 20.5,
+    "prompt_n": 24,
+    "prompt_ms": 7.427,
+    "predicted_n": 5,
+    "predicted_ms": 11.78
+   },
+   "xb_stt_044": {
+    "answer": "uh flesh it flesh it",
+    "ms": 23.3,
+    "prompt_n": 30,
+    "prompt_ms": 7.699,
+    "predicted_n": 6,
+    "predicted_ms": 14.33
+   },
+   "xb_stt_045": {
+    "answer": "not smoke not smoke uh frag",
+    "ms": 25.7,
+    "prompt_n": 22,
+    "prompt_ms": 7.321,
+    "predicted_n": 7,
+    "predicted_ms": 17.051
+   },
+   "xb_stt_046": {
+    "answer": "smoke it\npush in",
+    "ms": 41.7,
+    "prompt_n": 26,
+    "prompt_ms": 7.517,
+    "predicted_n": 7,
+    "predicted_ms": 17.403
+   },
+   "xb_stt_047": {
+    "answer": "no no wrong wrong the east",
+    "ms": 25.9,
+    "prompt_n": 32,
+    "prompt_ms": 7.692,
+    "predicted_n": 7,
+    "predicted_ms": 16.98
+   },
+   "xb_stt_048": {
+    "answer": "open the south window",
+    "ms": 20.7,
+    "prompt_n": 29,
+    "prompt_ms": 7.652,
+    "predicted_n": 5,
+    "predicted_ms": 11.785
+   },
+   "xb_stt_049": {
+    "answer": "you check the sofa\nfollow me",
+    "ms": 27.8,
+    "prompt_n": 22,
+    "prompt_ms": 7.323,
+    "predicted_n": 8,
+    "predicted_ms": 19.269
+   }
+  },
+  "singles": {
+   "typed|r6_000": {
+    "answer": "clip onto the roof edge and go inverted on bedroom",
+    "ms": 35.3,
+    "prompt_n": 21,
+    "prompt_ms": 7.296,
+    "predicted_n": 11,
+    "predicted_ms": 26.86
+   },
+   "typed|r6_004": {
+    "answer": "split the angles, I take hatch, you take the other one",
+    "ms": 44.3,
+    "prompt_n": 22,
+    "prompt_ms": 7.306,
+    "predicted_n": 14,
+    "predicted_ms": 35.776
+   },
+   "typed|r6_008": {
+    "answer": "hop on the bomb and stick the defuse",
+    "ms": 54.4,
+    "prompt_n": 18,
+    "prompt_ms": 7.64,
+    "predicted_n": 10,
+    "predicted_ms": 24.819
+   },
+   "typed|r6_024": {
+    "answer": "cook one and toss it in",
+    "ms": 38.9,
+    "prompt_n": 15,
+    "prompt_ms": 7.06,
+    "predicted_n": 7,
+    "predicted_ms": 17.202
+   },
+   "typed|r6_031": {
+    "answer": "I'm on this angle, you cover whatever I'm not looking at",
+    "ms": 46.1,
+    "prompt_n": 23,
+    "prompt_ms": 7.615,
+    "predicted_n": 15,
+    "predicted_ms": 37.189
+   },
+   "typed|r6_036": {
+    "answer": "smoke the doorway",
+    "ms": 20.2,
+    "prompt_n": 12,
+    "prompt_ms": 6.699,
+    "predicted_n": 5,
+    "predicted_ms": 12.205
+   },
+   "typed|r6_039": {
+    "answer": "blind the room for me",
+    "ms": 42.4,
+    "prompt_n": 14,
+    "prompt_ms": 7.286,
+    "predicted_n": 6,
+    "predicted_ms": 14.911
+   },
+   "typed|r6_043": {
+    "answer": "when I yell go, loop round the back",
+    "ms": 34.5,
+    "prompt_n": 18,
+    "prompt_ms": 7.782,
+    "predicted_n": 10,
+    "predicted_ms": 25.416
+   },
+   "typed|r6_050": {
+    "answer": "Bandit tricking the reinforce on main wall",
+    "ms": 35.4,
+    "prompt_n": 18,
+    "prompt_ms": 9.35,
+    "predicted_n": 10,
+    "predicted_ms": 24.7
+   },
+   "typed|r6_052": {
+    "answer": "Valk cam top of stairs",
+    "ms": 26.1,
+    "prompt_n": 14,
+    "prompt_ms": 7.253,
+    "predicted_n": 7,
+    "predicted_ms": 17.484
+   },
+   "typed|r6_061": {
+    "answer": "don't breach, they got Bandit on it",
+    "ms": 36.7,
+    "prompt_n": 19,
+    "prompt_ms": 7.82,
+    "predicted_n": 11,
+    "predicted_ms": 27.517
+   },
+   "typed|r6_064": {
+    "answer": "make us a hole in this floor, loud is fine",
+    "ms": 40.1,
+    "prompt_n": 20,
+    "prompt_ms": 8.143,
+    "predicted_n": 12,
+    "predicted_ms": 30.623
+   },
+   "typed|r6_073": {
+    "answer": "take site, check every corner",
+    "ms": 27.7,
+    "prompt_n": 15,
+    "prompt_ms": 7.446,
+    "predicted_n": 7,
+    "predicted_ms": 18.859
+   },
+   "typed|r6_075": {
+    "answer": "scrap the rappel, call it off",
+    "ms": 36.0,
+    "prompt_n": 17,
+    "prompt_ms": 7.926,
+    "predicted_n": 10,
+    "predicted_ms": 26.704
+   },
+   "typed|r6_077": {
+    "answer": "breach the other hatch instead",
+    "ms": 25.6,
+    "prompt_n": 14,
+    "prompt_ms": 7.138,
+    "predicted_n": 7,
+    "predicted_ms": 17.113
+   },
+   "typed|r6_082": {
+    "answer": "stay put, don't budge",
+    "ms": 28.9,
+    "prompt_n": 16,
+    "prompt_ms": 7.295,
+    "predicted_n": 8,
+    "predicted_ms": 20.21
+   },
+   "typed|r6_087": {
+    "answer": "get ready to plant, don't touch it till I say",
+    "ms": 42.5,
+    "prompt_n": 21,
+    "prompt_ms": 7.788,
+    "predicted_n": 13,
+    "predicted_ms": 33.397
+   },
+   "typed|r6_092": {
+    "answer": "whoa whoa, easy, not yet",
+    "ms": 34.1,
+    "prompt_n": 18,
+    "prompt_ms": 7.78,
+    "predicted_n": 10,
+    "predicted_ms": 24.988
+   },
+   "typed|r6_093": {
+    "answer": "reposition to kitchen real quick",
+    "ms": 26.3,
+    "prompt_n": 15,
+    "prompt_ms": 7.117,
+    "predicted_n": 7,
+    "predicted_ms": 17.802
+   },
+   "typed|r6_094": {
+    "answer": "now now now",
+    "ms": 17.3,
+    "prompt_n": 12,
+    "prompt_ms": 6.806,
+    "predicted_n": 4,
+    "predicted_ms": 9.253
+   },
+   "typed|r6_103": {
+    "answer": "two in kitchen, one's Mute",
+    "ms": 31.3,
+    "prompt_n": 17,
+    "prompt_ms": 7.55,
+    "predicted_n": 9,
+    "predicted_ms": 22.448
+   },
+   "typed|r6_106": {
+    "answer": "back off, back off, we lost it",
+    "ms": 58.8,
+    "prompt_n": 18,
+    "prompt_ms": 8.015,
+    "predicted_n": 10,
+    "predicted_ms": 25.007
+   },
+   "typed|r6_111": {
+    "answer": "I'm DBNO behind the bed, need a hand",
+    "ms": 51.5,
+    "prompt_n": 20,
+    "prompt_ms": 7.845,
+    "predicted_n": 12,
+    "predicted_ms": 30.134
+   },
+   "typed|r6_112": {
+    "answer": "smoke it and push",
+    "ms": 23.2,
+    "prompt_n": 13,
+    "prompt_ms": 6.869,
+    "predicted_n": 6,
+    "predicted_ms": 15.043
+   },
+   "typed|r6_116": {
+    "answer": "Mira on the wall, they're anchored in site",
+    "ms": 55.9,
+    "prompt_n": 20,
+    "prompt_ms": 8.011,
+    "predicted_n": 12,
+    "predicted_ms": 30.132
+   },
+   "typed|r6v2_010": {
+    "answer": "stop swinging and break line of sight",
+    "ms": 28.3,
+    "prompt_n": 16,
+    "prompt_ms": 7.262,
+    "predicted_n": 8,
+    "predicted_ms": 19.778
+   },
+   "typed|r6v2_011": {
+    "answer": "I'm opening this door, you got me if someone swings?",
+    "ms": 45.7,
+    "prompt_n": 22,
+    "prompt_ms": 8.34,
+    "predicted_n": 14,
+    "predicted_ms": 36.016
+   },
+   "typed|r6v2_013": {
+    "answer": "open window on the left, hop through it",
+    "ms": 46.0,
+    "prompt_n": 18,
+    "prompt_ms": 7.81,
+    "predicted_n": 10,
+    "predicted_ms": 24.951
+   },
+   "typed|r6v2_015": {
+    "answer": "wait wait, scratch that, don't open it yet",
+    "ms": 39.7,
+    "prompt_n": 20,
+    "prompt_ms": 7.756,
+    "predicted_n": 12,
+    "predicted_ms": 30.618
+   },
+   "typed|r6v2_018": {
+    "answer": "blow the door open, loud is fine",
+    "ms": 34.3,
+    "prompt_n": 17,
+    "prompt_ms": 8.059,
+    "predicted_n": 10,
+    "predicted_ms": 24.982
+   },
+   "typed|r6v2_019": {
+    "answer": "slide the gate open, keep it quiet",
+    "ms": 49.7,
+    "prompt_n": 17,
+    "prompt_ms": 7.903,
+    "predicted_n": 9,
+    "predicted_ms": 22.305
+   },
+   "typed|r6v2_022": {
+    "answer": "gonna run the rotate, overwatch me from cover",
+    "ms": 57.2,
+    "prompt_n": 19,
+    "prompt_ms": 7.972,
+    "predicted_n": 12,
+    "predicted_ms": 31.685
+   },
+   "typed|r6v2_029": {
+    "answer": "they're spraying through the soft wall, put something that stops rounds between you and them",
+    "ms": 77.1,
+    "prompt_n": 26,
+    "prompt_ms": 7.829,
+    "predicted_n": 18,
+    "predicted_ms": 45.466
+   },
+   "typed|r6v2_031": {
+    "answer": "you're way too exposed, go prone behind the bed",
+    "ms": 39.5,
+    "prompt_n": 20,
+    "prompt_ms": 7.637,
+    "predicted_n": 12,
+    "predicted_ms": 30.469
+   },
+   "typed|r6v2_035": {
+    "answer": "get that window open, I wanna shoot out of it from here",
+    "ms": 60.0,
+    "prompt_n": 22,
+    "prompt_ms": 7.507,
+    "predicted_n": 14,
+    "predicted_ms": 34.394
+   },
+   "typed|r6v2_038": {
+    "answer": "Mira on the door, they can see straight through",
+    "ms": 38.1,
+    "prompt_n": 20,
+    "prompt_ms": 7.598,
+    "predicted_n": 12,
+    "predicted_ms": 29.294
+   },
+   "typed|r6v2_039": {
+    "answer": "window's already open, just climb in",
+    "ms": 32.4,
+    "prompt_n": 17,
+    "prompt_ms": 9.249,
+    "predicted_n": 9,
+    "predicted_ms": 21.906
+   },
+   "typed|r6v3_003": {
+    "answer": "Nah, never mind smoking red stairs, we don't need it.",
+    "ms": 48.1,
+    "prompt_n": 23,
+    "prompt_ms": 7.337,
+    "predicted_n": 16,
+    "predicted_ms": 39.489
+   },
+   "typed|r6v3_004": {
+    "answer": "Rope down to the left-hand window and hang on it.",
+    "ms": 43.9,
+    "prompt_n": 21,
+    "prompt_ms": 7.341,
+    "predicted_n": 14,
+    "predicted_ms": 35.222
+   },
+   "typed|r6v3_007": {
+    "answer": "West window's got a trap on it, climb in the other window instead.",
+    "ms": 64.7,
+    "prompt_n": 25,
+    "prompt_ms": 7.615,
+    "predicted_n": 17,
+    "predicted_ms": 41.984
+   },
+   "typed|r6v3_008": {
+    "answer": "Jager's camping the couch on second floor, got his gadget right next to him.",
+    "ms": 56.6,
+    "prompt_n": 27,
+    "prompt_ms": 7.748,
+    "predicted_n": 19,
+    "predicted_ms": 47.576
+   },
+   "typed|r6v3_009": {
+    "answer": "Last guy is on the roof, I heard him run across.",
+    "ms": 43.5,
+    "prompt_n": 22,
+    "prompt_ms": 7.504,
+    "predicted_n": 14,
+    "predicted_ms": 34.653
+   },
+   "typed|r6v3_021": {
+    "answer": "East door's still barricaded, slap a charge on it and blow it.",
+    "ms": 51.4,
+    "prompt_n": 25,
+    "prompt_ms": 7.385,
+    "predicted_n": 17,
+    "predicted_ms": 42.679
+   },
+   "typed|r6v3_027": {
+    "answer": "Hold up, hold up, don't go in north door yet, I'm not set.",
+    "ms": 75.6,
+    "prompt_n": 28,
+    "prompt_ms": 7.748,
+    "predicted_n": 20,
+    "predicted_ms": 50.387
+   },
+   "typed|r6v3_028": {
+    "answer": "Cook a nade and bounce it behind the couch, he's been sitting there all round.",
+    "ms": 78.3,
+    "prompt_n": 28,
+    "prompt_ms": 9.022,
+    "predicted_n": 20,
+    "predicted_ms": 50.058
+   },
+   "typed|r6v3_029": {
+    "answer": "Whole stack is sitting on yellow stairs, wrap around through south door and pinch them.",
+    "ms": 53.8,
+    "prompt_n": 26,
+    "prompt_ms": 7.87,
+    "predicted_n": 18,
+    "predicted_ms": 44.586
+   },
+   "typed|r6v3_032": {
+    "answer": "Prep a flash for west window and send it on three.",
+    "ms": 54.5,
+    "prompt_n": 21,
+    "prompt_ms": 7.354,
+    "predicted_n": 14,
+    "predicted_ms": 34.607
+   },
+   "typed|r6v3_034": {
+    "answer": "Defuser's ticking on top floor, go get it off, I'll trade you.",
+    "ms": 76.7,
+    "prompt_n": 27,
+    "prompt_ms": 7.73,
+    "predicted_n": 19,
+    "predicted_ms": 47.262
+   },
+   "typed|r6v3_036": {
+    "answer": "Main, we hit it together, you go in when I say go.",
+    "ms": 48.6,
+    "prompt_n": 24,
+    "prompt_ms": 7.362,
+    "predicted_n": 16,
+    "predicted_ms": 39.999
+   },
+   "typed|r6v3_038": {
+    "answer": "Rooftop, get yourself over there, I'll meet you by the hatch.",
+    "ms": 78.9,
+    "prompt_n": 26,
+    "prompt_ms": 7.513,
+    "predicted_n": 19,
+    "predicted_ms": 49.529
+   },
+   "typed|r6v3_043": {
+    "answer": "Go clear second floor, gun up, check every corner.",
+    "ms": 61.9,
+    "prompt_n": 21,
+    "prompt_ms": 7.409,
+    "predicted_n": 13,
+    "predicted_ms": 32.695
+   },
+   "typed|cs_000": {
+    "answer": "you've got the C4, set it up on A",
+    "ms": 42.9,
+    "prompt_n": 21,
+    "prompt_ms": 7.496,
+    "predicted_n": 13,
+    "predicted_ms": 34.078
+   },
+   "typed|cs_007": {
+    "answer": "don't breach, it's way too loud",
+    "ms": 33.6,
+    "prompt_n": 18,
+    "prompt_ms": 7.758,
+    "predicted_n": 10,
+    "predicted_ms": 24.51
+   },
+   "typed|cs_009": {
+    "answer": "I got long, you take the other one",
+    "ms": 33.9,
+    "prompt_n": 18,
+    "prompt_ms": 7.708,
+    "predicted_n": 10,
+    "predicted_ms": 24.837
+   },
+   "typed|cs_011": {
+    "answer": "heard footsteps right above us",
+    "ms": 23.0,
+    "prompt_n": 14,
+    "prompt_ms": 7.107,
+    "predicted_n": 6,
+    "predicted_ms": 14.497
+   },
+   "typed|cs_014": {
+    "answer": "flash the room\nentry",
+    "ms": 23.3,
+    "prompt_n": 15,
+    "prompt_ms": 7.484,
+    "predicted_n": 6,
+    "predicted_ms": 14.479
+   },
+   "typed|cs_021": {
+    "answer": "don't push yet",
+    "ms": 19.9,
+    "prompt_n": 13,
+    "prompt_ms": 6.776,
+    "predicted_n": 5,
+    "predicted_ms": 11.829
+   },
+   "typed|cs_025": {
+    "answer": "blow open the other hatch, not this one",
+    "ms": 37.3,
+    "prompt_n": 18,
+    "prompt_ms": 7.781,
+    "predicted_n": 11,
+    "predicted_ms": 28.2
+   },
+   "typed|cs_027": {
+    "answer": "on three we entry, ready?",
+    "ms": 28.8,
+    "prompt_n": 16,
+    "prompt_ms": 7.423,
+    "predicted_n": 8,
+    "predicted_ms": 20.081
+   },
+   "typed|cs_035": {
+    "answer": "now, now!",
+    "ms": 19.8,
+    "prompt_n": 13,
+    "prompt_ms": 6.778,
+    "predicted_n": 5,
+    "predicted_ms": 11.801
+   },
+   "typed|cs_036": {
+    "answer": "defuse it, you've got time",
+    "ms": 30.7,
+    "prompt_n": 17,
+    "prompt_ms": 7.594,
+    "predicted_n": 9,
+    "predicted_ms": 21.962
+   },
+   "typed|cs_043": {
+    "answer": "flash it when I call it, not before",
+    "ms": 33.4,
+    "prompt_n": 18,
+    "prompt_ms": 7.685,
+    "predicted_n": 10,
+    "predicted_ms": 24.477
+   },
+   "typed|cs_044": {
+    "answer": "vault in there, the window on your left",
+    "ms": 34.2,
+    "prompt_n": 18,
+    "prompt_ms": 7.744,
+    "predicted_n": 10,
+    "predicted_ms": 25.125
+   },
+   "typed|cs_048": {
+    "answer": "get me some info on what's inside first",
+    "ms": 33.9,
+    "prompt_n": 18,
+    "prompt_ms": 7.865,
+    "predicted_n": 10,
+    "predicted_ms": 24.732
+   },
+   "typed|cs_049": {
+    "answer": "go stick it, I'll cover",
+    "ms": 28.5,
+    "prompt_n": 16,
+    "prompt_ms": 7.753,
+    "predicted_n": 8,
+    "predicted_ms": 19.445
+   },
+   "typed|cs_052": {
+    "answer": "scout it out before we go in",
+    "ms": 30.7,
+    "prompt_n": 16,
+    "prompt_ms": 7.113,
+    "predicted_n": 9,
+    "predicted_ms": 22.308
+   },
+   "typed|cs_054": {
+    "answer": "they got an AWP holding long",
+    "ms": 28.0,
+    "prompt_n": 16,
+    "prompt_ms": 7.252,
+    "predicted_n": 8,
+    "predicted_ms": 19.464
+   },
+   "typed|cs_057": {
+    "answer": "you're fine there, don't go anywhere",
+    "ms": 33.4,
+    "prompt_n": 18,
+    "prompt_ms": 7.687,
+    "predicted_n": 10,
+    "predicted_ms": 24.485
+   },
+   "typed|cs_059": {
+    "answer": "climb out over the sill and get outside",
+    "ms": 33.8,
+    "prompt_n": 17,
+    "prompt_ms": 7.632,
+    "predicted_n": 10,
+    "predicted_ms": 24.843
+   },
+   "typed|cs_064": {
+    "answer": "blow that wall open",
+    "ms": 43.7,
+    "prompt_n": 13,
+    "prompt_ms": 6.982,
+    "predicted_n": 6,
+    "predicted_ms": 14.397
+   },
+   "typed|cs_069": {
+    "answer": "go clear the other room, I've got this one",
+    "ms": 40.0,
+    "prompt_n": 20,
+    "prompt_ms": 7.686,
+    "predicted_n": 12,
+    "predicted_ms": 31.033
+   },
+   "typed|cs_075": {
+    "answer": "nade the other box, that's where he's hiding",
+    "ms": 41.4,
+    "prompt_n": 21,
+    "prompt_ms": 7.469,
+    "predicted_n": 13,
+    "predicted_ms": 32.665
+   },
+   "typed|cs_078": {
+    "answer": "hit them from behind once I give the word",
+    "ms": 34.0,
+    "prompt_n": 18,
+    "prompt_ms": 7.756,
+    "predicted_n": 10,
+    "predicted_ms": 24.909
+   },
+   "typed|cs_081": {
+    "answer": "blind them for me before I peek",
+    "ms": 27.9,
+    "prompt_n": 16,
+    "prompt_ms": 7.164,
+    "predicted_n": 8,
+    "predicted_ms": 19.445
+   },
+   "typed|cs_084": {
+    "answer": "go plant default, I'll watch",
+    "ms": 28.4,
+    "prompt_n": 16,
+    "prompt_ms": 7.106,
+    "predicted_n": 8,
+    "predicted_ms": 19.969
+   },
+   "typed|cs_087": {
+    "answer": "actually scratch the molly",
+    "ms": 22.8,
+    "prompt_n": 14,
+    "prompt_ms": 7.098,
+    "predicted_n": 6,
+    "predicted_ms": 14.382
+   },
+   "typed|cs_089": {
+    "answer": "watch my back, I'm going for the AWP",
+    "ms": 40.7,
+    "prompt_n": 20,
+    "prompt_ms": 7.755,
+    "predicted_n": 12,
+    "predicted_ms": 31.681
+   },
+   "typed|cs_097": {
+    "answer": "I'm on the defuse, protect me",
+    "ms": 45.7,
+    "prompt_n": 18,
+    "prompt_ms": 7.77,
+    "predicted_n": 10,
+    "predicted_ms": 25.084
+   },
+   "typed|cs_101": {
+    "answer": "lurk through my ping and get in their backs",
+    "ms": 38.7,
+    "prompt_n": 19,
+    "prompt_ms": 7.789,
+    "predicted_n": 12,
+    "predicted_ms": 29.583
+   },
+   "typed|cs_102": {
+    "answer": "hold up hold up",
+    "ms": 19.8,
+    "prompt_n": 13,
+    "prompt_ms": 6.778,
+    "predicted_n": 5,
+    "predicted_ms": 11.795
+   },
+   "typed|cs_103": {
+    "answer": "pop a flash over for me",
+    "ms": 42.6,
+    "prompt_n": 15,
+    "prompt_ms": 7.277,
+    "predicted_n": 7,
+    "predicted_ms": 17.168
+   },
+   "typed|cs_106": {
+    "answer": "go down the side of the building on that rope thing",
+    "ms": 39.3,
+    "prompt_n": 20,
+    "prompt_ms": 7.88,
+    "predicted_n": 12,
+    "predicted_ms": 30.043
+   },
+   "typed|cs_108": {
+    "answer": "bomb down A, default plant",
+    "ms": 26.3,
+    "prompt_n": 15,
+    "prompt_ms": 7.19,
+    "predicted_n": 7,
+    "predicted_ms": 17.884
+   },
+   "typed|cs_115": {
+    "answer": "push in there and clear it out",
+    "ms": 27.9,
+    "prompt_n": 16,
+    "prompt_ms": 7.1,
+    "predicted_n": 8,
+    "predicted_ms": 19.53
+   },
+   "typed|cs_116": {
+    "answer": "stop, cancel whatever you're doing",
+    "ms": 50.7,
+    "prompt_n": 16,
+    "prompt_ms": 7.255,
+    "predicted_n": 8,
+    "predicted_ms": 19.463
+   },
+   "typed|csv2_002": {
+    "answer": "they're spraying through the smoke, get down get down",
+    "ms": 38.7,
+    "prompt_n": 20,
+    "prompt_ms": 7.73,
+    "predicted_n": 12,
+    "predicted_ms": 29.629
+   },
+   "typed|csv2_003": {
+    "answer": "you're one hp man, get yourself somewhere safe",
+    "ms": 37.1,
+    "prompt_n": 19,
+    "prompt_ms": 8.071,
+    "predicted_n": 11,
+    "predicted_ms": 27.739
+   },
+   "typed|csv2_020": {
+    "answer": "unlatch the hatch on the floor, we'll drop later",
+    "ms": 43.4,
+    "prompt_n": 21,
+    "prompt_ms": 7.446,
+    "predicted_n": 14,
+    "predicted_ms": 34.657
+   },
+   "typed|csv2_021": {
+    "answer": "one hiding behind the boxes on A short",
+    "ms": 32.1,
+    "prompt_n": 17,
+    "prompt_ms": 8.29,
+    "predicted_n": 9,
+    "predicted_ms": 22.504
+   },
+   "typed|csv2_024": {
+    "answer": "shut the door behind you",
+    "ms": 25.3,
+    "prompt_n": 14,
+    "prompt_ms": 7.109,
+    "predicted_n": 7,
+    "predicted_ms": 16.872
+   },
+   "typed|csv3_002": {
+    "answer": "last one's crouched under the table on top floor I think",
+    "ms": 45.9,
+    "prompt_n": 23,
+    "prompt_ms": 7.46,
+    "predicted_n": 15,
+    "predicted_ms": 37.193
+   },
+   "typed|csv3_003": {
+    "answer": "upstairs west window, bail out through it",
+    "ms": 34.0,
+    "prompt_n": 17,
+    "prompt_ms": 7.642,
+    "predicted_n": 10,
+    "predicted_ms": 25.012
+   },
+   "typed|csv3_005": {
+    "answer": "we lost this fight, pull back to second",
+    "ms": 33.6,
+    "prompt_n": 18,
+    "prompt_ms": 7.74,
+    "predicted_n": 10,
+    "predicted_ms": 24.521
+   },
+   "typed|csv3_009": {
+    "answer": "send your little drone upstairs first, I wanna know who's home",
+    "ms": 45.7,
+    "prompt_n": 22,
+    "prompt_ms": 7.482,
+    "predicted_n": 14,
+    "predicted_ms": 36.818
+   },
+   "typed|csv3_010": {
+    "answer": "have a nade ready for the chairs and throw it the moment I call it",
+    "ms": 63.0,
+    "prompt_n": 25,
+    "prompt_ms": 7.735,
+    "predicted_n": 17,
+    "predicted_ms": 43.093
+   },
+   "typed|csv3_019": {
+    "answer": "get over to the table up on second, I'll meet you",
+    "ms": 44.4,
+    "prompt_n": 22,
+    "prompt_ms": 7.505,
+    "predicted_n": 14,
+    "predicted_ms": 35.532
+   },
+   "typed|csv3_029": {
+    "answer": "wrap around through yellow and hit them from behind",
+    "ms": 33.9,
+    "prompt_n": 18,
+    "prompt_ms": 7.737,
+    "predicted_n": 10,
+    "predicted_ms": 24.811
+   },
+   "typed|csv3_033": {
+    "answer": "they're all stacked on brown, so loop around east door and backstab them",
+    "ms": 52.5,
+    "prompt_n": 25,
+    "prompt_ms": 7.54,
+    "predicted_n": 17,
+    "predicted_ms": 43.653
+   },
+   "typed|csv3_034": {
+    "answer": "not the north window, I said smoke west door",
+    "ms": 38.3,
+    "prompt_n": 19,
+    "prompt_ms": 9.309,
+    "predicted_n": 11,
+    "predicted_ms": 27.55
+   },
+   "typed|csv3_046": {
+    "answer": "crack south door for me, just pull it, don't walk in",
+    "ms": 49.8,
+    "prompt_n": 23,
+    "prompt_ms": 7.632,
+    "predicted_n": 16,
+    "predicted_ms": 40.855
+   },
+   "typed|stt_003": {
+    "answer": "i got this door you take the other one",
+    "ms": 34.0,
+    "prompt_n": 18,
+    "prompt_ms": 7.779,
+    "predicted_n": 10,
+    "predicted_ms": 24.88
+   },
+   "typed|stt_004": {
+    "answer": "actually dont go in yet",
+    "ms": 48.3,
+    "prompt_n": 14,
+    "prompt_ms": 7.2,
+    "predicted_n": 6,
+    "predicted_ms": 15.19
+   },
+   "typed|stt_017": {
+    "answer": "you stay in this place no moving okay",
+    "ms": 30.8,
+    "prompt_n": 17,
+    "prompt_ms": 7.541,
+    "predicted_n": 9,
+    "predicted_ms": 21.904
+   },
+   "typed|stt_019": {
+    "answer": "smoke it",
+    "ms": 17.4,
+    "prompt_n": 11,
+    "prompt_ms": 6.891,
+    "predicted_n": 4,
+    "predicted_ms": 9.255
+   },
+   "typed|stt_023": {
+    "answer": "hey buddy get on the rope and drop in when i give the word",
+    "ms": 47.7,
+    "prompt_n": 23,
+    "prompt_ms": 8.501,
+    "predicted_n": 15,
+    "predicted_ms": 37.864
+   },
+   "typed|stt_037": {
+    "answer": "uh hang on your rope outside that window",
+    "ms": 30.8,
+    "prompt_n": 17,
+    "prompt_ms": 7.515,
+    "predicted_n": 9,
+    "predicted_ms": 21.935
+   },
+   "typed|stt_046": {
+    "answer": "okay so just uh shadow me dont go wandering off",
+    "ms": 57.3,
+    "prompt_n": 19,
+    "prompt_ms": 7.827,
+    "predicted_n": 11,
+    "predicted_ms": 27.671
+   },
+   "typed|stt_054": {
+    "answer": "frag em",
+    "ms": 15.4,
+    "prompt_n": 16,
+    "prompt_ms": 7.158,
+    "predicted_n": 3,
+    "predicted_ms": 6.943
+   },
+   "typed|stt_055": {
+    "answer": "never mind the drone bot",
+    "ms": 23.0,
+    "prompt_n": 14,
+    "prompt_ms": 6.991,
+    "predicted_n": 6,
+    "predicted_ms": 14.704
+   },
+   "typed|stt_057": {
+    "answer": "pop a smock on the stairs",
+    "ms": 27.7,
+    "prompt_n": 16,
+    "prompt_ms": 7.075,
+    "predicted_n": 8,
+    "predicted_ms": 19.347
+   },
+   "typed|stt_073": {
+    "answer": "get the defuser down",
+    "ms": 23.0,
+    "prompt_n": 14,
+    "prompt_ms": 7.029,
+    "predicted_n": 6,
+    "predicted_ms": 14.702
+   },
+   "typed|stt_074": {
+    "answer": "beach that wall on my go",
+    "ms": 45.0,
+    "prompt_n": 15,
+    "prompt_ms": 7.376,
+    "predicted_n": 8,
+    "predicted_ms": 19.807
+   },
+   "typed|stt_078": {
+    "answer": "stay put bot",
+    "ms": 17.6,
+    "prompt_n": 12,
+    "prompt_ms": 6.758,
+    "predicted_n": 4,
+    "predicted_ms": 9.534
+   },
+   "typed|stt_081": {
+    "answer": "hop the window on my mark",
+    "ms": 25.5,
+    "prompt_n": 15,
+    "prompt_ms": 7.108,
+    "predicted_n": 7,
+    "predicted_ms": 17.018
+   },
+   "typed|stt_091": {
+    "answer": "alpha reposition to garage like right now",
+    "ms": 31.3,
+    "prompt_n": 17,
+    "prompt_ms": 7.541,
+    "predicted_n": 9,
+    "predicted_ms": 22.392
+   },
+   "typed|stt_096": {
+    "answer": "roll the cam in there get me some eyes",
+    "ms": 56.4,
+    "prompt_n": 18,
+    "prompt_ms": 7.691,
+    "predicted_n": 10,
+    "predicted_ms": 24.814
+   },
+   "typed|stt_098": {
+    "answer": "now now now",
+    "ms": 31.4,
+    "prompt_n": 12,
+    "prompt_ms": 6.751,
+    "predicted_n": 4,
+    "predicted_ms": 9.239
+   },
+   "typed|stt_099": {
+    "answer": "okay on three we push in",
+    "ms": 25.4,
+    "prompt_n": 15,
+    "prompt_ms": 7.302,
+    "predicted_n": 7,
+    "predicted_ms": 16.842
+   },
+   "typed|stt_102": {
+    "answer": "uh dont frag theres a hostage in there",
+    "ms": 31.6,
+    "prompt_n": 17,
+    "prompt_ms": 8.575,
+    "predicted_n": 9,
+    "predicted_ms": 21.802
+   },
+   "typed|stt_103": {
+    "answer": "how much time's left",
+    "ms": 22.6,
+    "prompt_n": 14,
+    "prompt_ms": 6.969,
+    "predicted_n": 6,
+    "predicted_ms": 14.414
+   },
+   "typed|stt_106": {
+    "answer": "plan it plan it now",
+    "ms": 23.1,
+    "prompt_n": 14,
+    "prompt_ms": 7.391,
+    "predicted_n": 6,
+    "predicted_ms": 14.355
+   },
+   "typed|stt_108": {
+    "answer": "no smoke no smoke",
+    "ms": 40.9,
+    "prompt_n": 13,
+    "prompt_ms": 6.872,
+    "predicted_n": 5,
+    "predicted_ms": 11.764
+   },
+   "typed|stt_114": {
+    "answer": "make us a hole in that wall",
+    "ms": 27.5,
+    "prompt_n": 16,
+    "prompt_ms": 7.012,
+    "predicted_n": 8,
+    "predicted_ms": 19.329
+   },
+   "typed|stt_119": {
+    "answer": "flake left through the uh garage",
+    "ms": 25.0,
+    "prompt_n": 16,
+    "prompt_ms": 7.004,
+    "predicted_n": 7,
+    "predicted_ms": 16.798
+   },
+   "typed|sttv2_002": {
+    "answer": "keep your gun on that window",
+    "ms": 48.3,
+    "prompt_n": 15,
+    "prompt_ms": 7.147,
+    "predicted_n": 7,
+    "predicted_ms": 16.962
+   },
+   "typed|sttv2_007": {
+    "answer": "stop standing in the open get somewhere they cant see you",
+    "ms": 59.3,
+    "prompt_n": 20,
+    "prompt_ms": 7.715,
+    "predicted_n": 12,
+    "predicted_ms": 29.722
+   },
+   "typed|sttv2_009": {
+    "answer": "lift the hatch up yourself no charges",
+    "ms": 28.6,
+    "prompt_n": 16,
+    "prompt_ms": 7.388,
+    "predicted_n": 8,
+    "predicted_ms": 19.868
+   },
+   "typed|sttv2_010": {
+    "answer": "uh on my mark crack that door open",
+    "ms": 30.8,
+    "prompt_n": 17,
+    "prompt_ms": 7.602,
+    "predicted_n": 9,
+    "predicted_ms": 21.942
+   },
+   "typed|sttv2_012": {
+    "answer": "watch the hatch in case they drop down on us",
+    "ms": 35.7,
+    "prompt_n": 19,
+    "prompt_ms": 7.606,
+    "predicted_n": 11,
+    "predicted_ms": 26.842
+   },
+   "typed|sttv2_016": {
+    "answer": "dont open that door",
+    "ms": 19.6,
+    "prompt_n": 13,
+    "prompt_ms": 6.7,
+    "predicted_n": 5,
+    "predicted_ms": 11.726
+   },
+   "typed|sttv2_024": {
+    "answer": "duck behind that car",
+    "ms": 19.6,
+    "prompt_n": 13,
+    "prompt_ms": 6.66,
+    "predicted_n": 5,
+    "predicted_ms": 11.829
+   },
+   "typed|sttv2_034": {
+    "answer": "no not that one the other door open it",
+    "ms": 33.1,
+    "prompt_n": 18,
+    "prompt_ms": 7.656,
+    "predicted_n": 10,
+    "predicted_ms": 24.317
+   },
+   "typed|sttv2_038": {
+    "answer": "get behind the other car this ones gonna blow",
+    "ms": 34.2,
+    "prompt_n": 18,
+    "prompt_ms": 8.72,
+    "predicted_n": 10,
+    "predicted_ms": 24.331
+   },
+   "typed|sttv3_001": {
+    "answer": "toss a nade at the chairs somebody is hiding",
+    "ms": 38.3,
+    "prompt_n": 19,
+    "prompt_ms": 7.66,
+    "predicted_n": 12,
+    "predicted_ms": 29.398
+   },
+   "typed|sttv3_002": {
+    "answer": "okay go upstairs i meet you in a second",
+    "ms": 34.2,
+    "prompt_n": 18,
+    "prompt_ms": 7.722,
+    "predicted_n": 10,
+    "predicted_ms": 25.16
+   },
+   "typed|sttv3_006": {
+    "answer": "is a guy camping blue stares so flake him through south door",
+    "ms": 44.2,
+    "prompt_n": 22,
+    "prompt_ms": 7.498,
+    "predicted_n": 14,
+    "predicted_ms": 35.323
+   },
+   "typed|sttv3_009": {
+    "answer": "uh the red door open it but stay outside",
+    "ms": 34.4,
+    "prompt_n": 18,
+    "prompt_ms": 7.8,
+    "predicted_n": 10,
+    "predicted_ms": 25.323
+   },
+   "typed|sttv3_012": {
+    "answer": "nah forget what i said about east window you dont need to watch it",
+    "ms": 48.8,
+    "prompt_n": 23,
+    "prompt_ms": 8.718,
+    "predicted_n": 15,
+    "predicted_ms": 38.731
+   },
+   "typed|sttv3_015": {
+    "answer": "top floor blue stares keep your gun on it",
+    "ms": 35.5,
+    "prompt_n": 18,
+    "prompt_ms": 8.201,
+    "predicted_n": 10,
+    "predicted_ms": 25.909
+   },
+   "typed|sttv3_031": {
+    "answer": "go stand by the table upstairs",
+    "ms": 31.1,
+    "prompt_n": 15,
+    "prompt_ms": 7.121,
+    "predicted_n": 7,
+    "predicted_ms": 22.653
+   },
+   "typed|sttv3_040": {
+    "answer": "west is yours bot dont let nobody come through",
+    "ms": 48.8,
+    "prompt_n": 18,
+    "prompt_ms": 8.07,
+    "predicted_n": 10,
+    "predicted_ms": 27.007
+   },
+   "typed|sttv3_042": {
+    "answer": "throw a flash bang over the table okay",
+    "ms": 33.3,
+    "prompt_n": 17,
+    "prompt_ms": 8.115,
+    "predicted_n": 9,
+    "predicted_ms": 23.75
+   },
+   "typed|r6v5_001": {
+    "answer": "Roamer's on you, engage him, he's all yours.",
+    "ms": 49.5,
+    "prompt_n": 23,
+    "prompt_ms": 7.668,
+    "predicted_n": 15,
+    "predicted_ms": 40.491
+   },
+   "typed|r6v5_006": {
+    "answer": "Kill their last defender, I don't care how you do it.",
+    "ms": 48.5,
+    "prompt_n": 23,
+    "prompt_ms": 7.817,
+    "predicted_n": 15,
+    "predicted_ms": 39.317
+   },
+   "typed|r6v5_008": {
+    "answer": "You're cleared hot, shoot anything that peeks.",
+    "ms": 40.0,
+    "prompt_n": 20,
+    "prompt_ms": 7.779,
+    "predicted_n": 12,
+    "predicted_ms": 30.862
+   },
+   "typed|r6v5_009": {
+    "answer": "Start blasting, they already know we're here.",
+    "ms": 37.5,
+    "prompt_n": 19,
+    "prompt_ms": 7.874,
+    "predicted_n": 11,
+    "predicted_ms": 28.233
+   },
+   "typed|r6v5_012": {
+    "answer": "Shoot straight ahead, he's wide swinging you!",
+    "ms": 37.5,
+    "prompt_n": 19,
+    "prompt_ms": 7.807,
+    "predicted_n": 11,
+    "predicted_ms": 28.319
+   },
+   "typed|r6v5_015": {
+    "answer": "Shoot him, shoot him, he's reloading!",
+    "ms": 37.6,
+    "prompt_n": 18,
+    "prompt_ms": 8.38,
+    "predicted_n": 11,
+    "predicted_ms": 27.918
+   },
+   "typed|r6v5_018": {
+    "answer": "Hold your shots until he walks into the open.",
+    "ms": 36.7,
+    "prompt_n": 19,
+    "prompt_ms": 7.71,
+    "predicted_n": 11,
+    "predicted_ms": 27.618
+   },
+   "typed|r6v5_024": {
+    "answer": "Attack through main, push in and clear the site.",
+    "ms": 39.7,
+    "prompt_n": 20,
+    "prompt_ms": 8.201,
+    "predicted_n": 12,
+    "predicted_ms": 30.194
+   },
+   "typed|r6v5_026": {
+    "answer": "Take him out with a nade, cook it and send it.",
+    "ms": 47.3,
+    "prompt_n": 23,
+    "prompt_ms": 7.501,
+    "predicted_n": 15,
+    "predicted_ms": 38.47
+   },
+   "typed|r6v5_033": {
+    "answer": "Hold where you are, don't move an inch.",
+    "ms": 40.0,
+    "prompt_n": 20,
+    "prompt_ms": 7.781,
+    "predicted_n": 12,
+    "predicted_ms": 30.858
+   },
+   "typed|r6v5_036": {
+    "answer": "Wrap around to the right and catch them from the side.",
+    "ms": 63.7,
+    "prompt_n": 21,
+    "prompt_ms": 8.992,
+    "predicted_n": 13,
+    "predicted_ms": 33.274
+   },
+   "typed|r6v5_040": {
+    "answer": "Rappel to the window above you and hold on the rope.",
+    "ms": 46.9,
+    "prompt_n": 23,
+    "prompt_ms": 7.456,
+    "predicted_n": 15,
+    "predicted_ms": 38.123
+   },
+   "typed|r6v5_045": {
+    "answer": "I'll rotate left, you head right and meet me on site.",
+    "ms": 47.7,
+    "prompt_n": 23,
+    "prompt_ms": 7.779,
+    "predicted_n": 15,
+    "predicted_ms": 38.543
+   },
+   "typed|r6v5_046": {
+    "answer": "One peeking the left window, he's got an ACOG.",
+    "ms": 49.8,
+    "prompt_n": 24,
+    "prompt_ms": 7.516,
+    "predicted_n": 16,
+    "predicted_ms": 40.907
+   },
+   "typed|r6v5_051": {
+    "answer": "Only two left, we can win this round.",
+    "ms": 37.4,
+    "prompt_n": 19,
+    "prompt_ms": 8.09,
+    "predicted_n": 11,
+    "predicted_ms": 27.929
+   },
+   "typed|r6v5_053": {
+    "answer": "Watch the back door, they'll rotate through it.",
+    "ms": 39.7,
+    "prompt_n": 20,
+    "prompt_ms": 8.158,
+    "predicted_n": 12,
+    "predicted_ms": 30.165
+   },
+   "typed|r6v5_055": {
+    "answer": "Do not open up on them, keep your gun quiet.",
+    "ms": 41.6,
+    "prompt_n": 21,
+    "prompt_ms": 7.467,
+    "predicted_n": 13,
+    "predicted_ms": 32.794
+   },
+   "typed|r6v5_058": {
+    "answer": "What's your ping like, are you lagging?",
+    "ms": 39.4,
+    "prompt_n": 20,
+    "prompt_ms": 7.806,
+    "predicted_n": 12,
+    "predicted_ms": 30.334
+   },
+   "typed|csv5_011": {
+    "answer": "start shooting when i say go, ok",
+    "ms": 31.9,
+    "prompt_n": 17,
+    "prompt_ms": 7.948,
+    "predicted_n": 9,
+    "predicted_ms": 22.625
+   },
+   "typed|csv5_012": {
+    "answer": "shoot through the east door, they're stacked on it",
+    "ms": 39.8,
+    "prompt_n": 20,
+    "prompt_ms": 8.124,
+    "predicted_n": 12,
+    "predicted_ms": 30.304
+   },
+   "typed|csv5_026": {
+    "answer": "hit them with a molly, burn him out of the corner",
+    "ms": 44.3,
+    "prompt_n": 22,
+    "prompt_ms": 7.48,
+    "predicted_n": 14,
+    "predicted_ms": 35.502
+   },
+   "typed|csv5_029": {
+    "answer": "cover me while i plant, anyone peeks you drop him",
+    "ms": 41.8,
+    "prompt_n": 21,
+    "prompt_ms": 7.72,
+    "predicted_n": 13,
+    "predicted_ms": 32.762
+   },
+   "typed|csv5_030": {
+    "answer": "keep your crosshair on the south door, kill whoever walks through",
+    "ms": 43.9,
+    "prompt_n": 22,
+    "prompt_ms": 7.47,
+    "predicted_n": 14,
+    "predicted_ms": 35.01
+   },
+   "typed|csv5_031": {
+    "answer": "you're getting shot, hide, get out of his line of sight",
+    "ms": 47.7,
+    "prompt_n": 23,
+    "prompt_ms": 7.459,
+    "predicted_n": 15,
+    "predicted_ms": 38.909
+   },
+   "typed|csv5_035": {
+    "answer": "keep your eyes on the right, they love a late lurk",
+    "ms": 44.0,
+    "prompt_n": 22,
+    "prompt_ms": 7.445,
+    "predicted_n": 14,
+    "predicted_ms": 35.208
+   },
+   "typed|csv5_044": {
+    "answer": "i'm going left, you go right, meet you in the middle",
+    "ms": 46.5,
+    "prompt_n": 23,
+    "prompt_ms": 7.736,
+    "predicted_n": 15,
+    "predicted_ms": 37.453
+   },
+   "typed|csv5_046": {
+    "answer": "three rushing on the right, all together",
+    "ms": 31.3,
+    "prompt_n": 17,
+    "prompt_ms": 7.649,
+    "predicted_n": 9,
+    "predicted_ms": 22.298
+   },
+   "typed|csv5_052": {
+    "answer": "go ahead and shoot, you don't have to ask me",
+    "ms": 41.6,
+    "prompt_n": 21,
+    "prompt_ms": 7.684,
+    "predicted_n": 13,
+    "predicted_ms": 32.51
+   },
+   "typed|sttv5_000": {
+    "answer": "okay attack them attack",
+    "ms": 19.9,
+    "prompt_n": 13,
+    "prompt_ms": 6.807,
+    "predicted_n": 5,
+    "predicted_ms": 11.857
+   },
+   "typed|sttv5_014": {
+    "answer": "shoot there where i marked start shooting",
+    "ms": 28.4,
+    "prompt_n": 16,
+    "prompt_ms": 7.342,
+    "predicted_n": 8,
+    "predicted_ms": 19.824
+   },
+   "typed|sttv5_015": {
+    "answer": "fire at wheel fire at wheel",
+    "ms": 25.6,
+    "prompt_n": 15,
+    "prompt_ms": 7.112,
+    "predicted_n": 7,
+    "predicted_ms": 17.226
+   },
+   "typed|sttv5_026": {
+    "answer": "take them out with a grenade throw the flag in",
+    "ms": 36.4,
+    "prompt_n": 19,
+    "prompt_ms": 7.754,
+    "predicted_n": 11,
+    "predicted_ms": 27.34
+   },
+   "typed|sttv5_031": {
+    "answer": "they are shooting us get behind something and hide",
+    "ms": 48.5,
+    "prompt_n": 18,
+    "prompt_ms": 7.741,
+    "predicted_n": 10,
+    "predicted_ms": 24.739
+   },
+   "typed|sttv5_040": {
+    "answer": "watch the window above you i think somebody is their",
+    "ms": 36.5,
+    "prompt_n": 19,
+    "prompt_ms": 7.739,
+    "predicted_n": 11,
+    "predicted_ms": 27.477
+   },
+   "typed|sttv5_052": {
+    "answer": "go ahead and plan the bomb i watch",
+    "ms": 31.3,
+    "prompt_n": 17,
+    "prompt_ms": 7.861,
+    "predicted_n": 9,
+    "predicted_ms": 22.077
+   },
+   "typed|r6v51_000": {
+    "answer": "Look at red stairs on second floor, I think their roamer just rotated.",
+    "ms": 52.6,
+    "prompt_n": 25,
+    "prompt_ms": 8.458,
+    "predicted_n": 17,
+    "predicted_ms": 42.838
+   },
+   "typed|r6v51_002": {
+    "answer": "Glance at the sofa for me, I think there's a trap tucked next to it.",
+    "ms": 59.9,
+    "prompt_n": 28,
+    "prompt_ms": 7.719,
+    "predicted_n": 20,
+    "predicted_ms": 50.8
+   },
+   "typed|r6v51_008": {
+    "answer": "When I call it, turn and look at the west door, I'll bait him out.",
+    "ms": 60.3,
+    "prompt_n": 28,
+    "prompt_ms": 9.135,
+    "predicted_n": 20,
+    "predicted_ms": 49.822
+   },
+   "typed|r6v51_011": {
+    "answer": "Face me real quick, I need to see which gadget you've got out.",
+    "ms": 54.7,
+    "prompt_n": 25,
+    "prompt_ms": 8.899,
+    "predicted_n": 17,
+    "predicted_ms": 44.456
+   },
+   "typed|r6v51_014": {
+    "answer": "Yo, turn to me.",
+    "ms": 26.7,
+    "prompt_n": 15,
+    "prompt_ms": 8.539,
+    "predicted_n": 7,
+    "predicted_ms": 16.882
+   },
+   "typed|r6v51_021": {
+    "answer": "Come to me and stick on my shoulder, I don't want you roaming alone.",
+    "ms": 54.9,
+    "prompt_n": 26,
+    "prompt_ms": 8.975,
+    "predicted_n": 18,
+    "predicted_ms": 44.609
+   },
+   "typed|r6v51_022": {
+    "answer": "Keep an eye on me while I plant default, I can't watch my own flank.",
+    "ms": 60.3,
+    "prompt_n": 27,
+    "prompt_ms": 9.044,
+    "predicted_n": 19,
+    "predicted_ms": 49.883
+   },
+   "typed|r6v51_028": {
+    "answer": "Don't bother looking at the north window, that's a fake, nobody's coming from there.",
+    "ms": 64.4,
+    "prompt_n": 29,
+    "prompt_ms": 9.006,
+    "predicted_n": 21,
+    "predicted_ms": 54.057
+   },
+   "typed|csv51_001": {
+    "answer": "face main for a sec, pretty sure i heard steps",
+    "ms": 51.9,
+    "prompt_n": 20,
+    "prompt_ms": 8.317,
+    "predicted_n": 12,
+    "predicted_ms": 30.286
+   },
+   "typed|csv51_002": {
+    "answer": "look at the sofa, i swear something just moved",
+    "ms": 37.4,
+    "prompt_n": 19,
+    "prompt_ms": 8.285,
+    "predicted_n": 11,
+    "predicted_ms": 27.737
+   },
+   "typed|csv51_004": {
+    "answer": "turn around man, check behind you, he's lit",
+    "ms": 58.6,
+    "prompt_n": 20,
+    "prompt_ms": 8.199,
+    "predicted_n": 12,
+    "predicted_ms": 30.455
+   },
+   "typed|csv51_008": {
+    "answer": "when i say go, look at the south door, not before",
+    "ms": 44.2,
+    "prompt_n": 22,
+    "prompt_ms": 7.755,
+    "predicted_n": 14,
+    "predicted_ms": 35.117
+   },
+   "typed|csv51_012": {
+    "answer": "look over here, over here",
+    "ms": 37.1,
+    "prompt_n": 15,
+    "prompt_ms": 7.324,
+    "predicted_n": 7,
+    "predicted_ms": 17.126
+   },
+   "typed|csv51_017": {
+    "answer": "keep watching the stairs on your left, don't take your eyes off em",
+    "ms": 50.0,
+    "prompt_n": 24,
+    "prompt_ms": 7.56,
+    "predicted_n": 16,
+    "predicted_ms": 41.069
+   },
+   "typed|csv51_019": {
+    "answer": "go over to that window i'm looking at and stand by it",
+    "ms": 44.5,
+    "prompt_n": 22,
+    "prompt_ms": 7.751,
+    "predicted_n": 14,
+    "predicted_ms": 35.418
+   },
+   "typed|csv51_022": {
+    "answer": "i'm going for the plant, keep your eyes on me and cover me",
+    "ms": 48.9,
+    "prompt_n": 24,
+    "prompt_ms": 7.594,
+    "predicted_n": 16,
+    "predicted_ms": 39.967
+   },
+   "typed|csv51_023": {
+    "answer": "i got main covered, you watch the other door",
+    "ms": 36.3,
+    "prompt_n": 18,
+    "prompt_ms": 7.819,
+    "predicted_n": 11,
+    "predicted_ms": 27.21
+   },
+   "typed|csv51_025": {
+    "answer": "bro did you see my one tap? looked so clean",
+    "ms": 38.7,
+    "prompt_n": 20,
+    "prompt_ms": 7.79,
+    "predicted_n": 12,
+    "predicted_ms": 29.579
+   },
+   "typed|sttv51_002": {
+    "answer": "hey can you look at the red stares uh on second floor",
+    "ms": 41.1,
+    "prompt_n": 21,
+    "prompt_ms": 7.588,
+    "predicted_n": 13,
+    "predicted_ms": 32.239
+   },
+   "typed|sttv51_003": {
+    "answer": "look write look write quick quick",
+    "ms": 26.0,
+    "prompt_n": 15,
+    "prompt_ms": 7.332,
+    "predicted_n": 7,
+    "predicted_ms": 17.294
+   },
+   "typed|sttv51_004": {
+    "answer": "uh behind you behind you turn and look behind",
+    "ms": 33.7,
+    "prompt_n": 18,
+    "prompt_ms": 7.753,
+    "predicted_n": 10,
+    "predicted_ms": 24.614
+   },
+   "typed|sttv51_006": {
+    "answer": "okay so look at that that thing i just pinged",
+    "ms": 40.1,
+    "prompt_n": 20,
+    "prompt_ms": 7.844,
+    "predicted_n": 12,
+    "predicted_ms": 30.908
+   },
+   "typed|sttv51_007": {
+    "answer": "face over there where i put the marker over there",
+    "ms": 36.1,
+    "prompt_n": 19,
+    "prompt_ms": 7.773,
+    "predicted_n": 11,
+    "predicted_ms": 27.073
+   },
+   "typed|sttv51_009": {
+    "answer": "uh look on that window the one on the left side",
+    "ms": 38.6,
+    "prompt_n": 20,
+    "prompt_ms": 7.852,
+    "predicted_n": 12,
+    "predicted_ms": 29.506
+   },
+   "typed|sttv51_013": {
+    "answer": "no no over here look over here to me",
+    "ms": 33.5,
+    "prompt_n": 18,
+    "prompt_ms": 7.83,
+    "predicted_n": 10,
+    "predicted_ms": 24.392
+   },
+   "typed|sttv51_022": {
+    "answer": "stay looking on that door dont take eyes off it",
+    "ms": 36.1,
+    "prompt_n": 19,
+    "prompt_ms": 7.669,
+    "predicted_n": 11,
+    "predicted_ms": 27.07
+   },
+   "typed|sttv51_027": {
+    "answer": "can you look for the bomb i think he dropped it near the stable",
+    "ms": 47.1,
+    "prompt_n": 23,
+    "prompt_ms": 7.739,
+    "predicted_n": 15,
+    "predicted_ms": 38.007
+   },
+   "typed|sttv51_028": {
+    "answer": "no dont look at the yeast window there is nothing",
+    "ms": 35.9,
+    "prompt_n": 19,
+    "prompt_ms": 7.696,
+    "predicted_n": 11,
+    "predicted_ms": 26.907
+   },
+   "typed|r6v52_003": {
+    "answer": "They're swinging me from both sides, I need help!",
+    "ms": 41.2,
+    "prompt_n": 21,
+    "prompt_ms": 7.361,
+    "predicted_n": 13,
+    "predicted_ms": 32.507
+   },
+   "typed|r6v52_004": {
+    "answer": "On my call, come give me a hand, not before.",
+    "ms": 43.6,
+    "prompt_n": 22,
+    "prompt_ms": 7.393,
+    "predicted_n": 14,
+    "predicted_ms": 34.909
+   },
+   "typed|r6v52_019": {
+    "answer": "Spam bullets at them so they can't peek, I'm going for default plant.",
+    "ms": 56.3,
+    "prompt_n": 26,
+    "prompt_ms": 7.645,
+    "predicted_n": 19,
+    "predicted_ms": 47.279
+   },
+   "typed|r6v52_022": {
+    "answer": "When I say go, swing main and clear out site.",
+    "ms": 42.5,
+    "prompt_n": 21,
+    "prompt_ms": 8.482,
+    "predicted_n": 13,
+    "predicted_ms": 32.733
+   },
+   "typed|r6v52_024": {
+    "answer": "Keep eyes on the back stairs in case their roamer rotates.",
+    "ms": 55.2,
+    "prompt_n": 22,
+    "prompt_ms": 7.43,
+    "predicted_n": 14,
+    "predicted_ms": 34.461
+   },
+   "typed|r6v52_029": {
+    "answer": "Don't bother checking the roof, it's a waste of time.",
+    "ms": 45.9,
+    "prompt_n": 23,
+    "prompt_ms": 7.343,
+    "predicted_n": 15,
+    "predicted_ms": 37.293
+   },
+   "typed|csv52_003": {
+    "answer": "need a hand over here man, come on",
+    "ms": 33.6,
+    "prompt_n": 18,
+    "prompt_ms": 7.821,
+    "predicted_n": 10,
+    "predicted_ms": 24.425
+   },
+   "typed|csv52_009": {
+    "answer": "check left real quick, i heard steps",
+    "ms": 30.6,
+    "prompt_n": 17,
+    "prompt_ms": 7.526,
+    "predicted_n": 9,
+    "predicted_ms": 21.848
+   },
+   "typed|csv52_019": {
+    "answer": "i need suppressing fire like now, they're pushing me",
+    "ms": 39.6,
+    "prompt_n": 20,
+    "prompt_ms": 8.863,
+    "predicted_n": 12,
+    "predicted_ms": 29.445
+   },
+   "typed|csv52_024": {
+    "answer": "keep eyes on the back door, shoot whoever peeks",
+    "ms": 38.9,
+    "prompt_n": 20,
+    "prompt_ms": 7.973,
+    "predicted_n": 12,
+    "predicted_ms": 29.595
+   },
+   "typed|csv52_026": {
+    "answer": "cover me, i'm going for the defuse",
+    "ms": 59.5,
+    "prompt_n": 19,
+    "prompt_ms": 7.941,
+    "predicted_n": 11,
+    "predicted_ms": 27.399
+   },
+   "typed|sttv52_014": {
+    "answer": "so press the east window keep them keep them inside",
+    "ms": 36.3,
+    "prompt_n": 19,
+    "prompt_ms": 7.659,
+    "predicted_n": 11,
+    "predicted_ms": 27.283
+   },
+   "typed|sttv52_015": {
+    "answer": "give suppress fire to the left uh the left side",
+    "ms": 56.6,
+    "prompt_n": 19,
+    "prompt_ms": 7.858,
+    "predicted_n": 11,
+    "predicted_ms": 26.869
+   },
+   "typed|sttv52_022": {
+    "answer": "push through the south door and clear the room go",
+    "ms": 36.9,
+    "prompt_n": 19,
+    "prompt_ms": 8.847,
+    "predicted_n": 11,
+    "predicted_ms": 26.848
+   },
+   "typed|sttv52_026": {
+    "answer": "cover me i am going to plan the bomb cover me",
+    "ms": 38.9,
+    "prompt_n": 20,
+    "prompt_ms": 7.663,
+    "predicted_n": 12,
+    "predicted_ms": 29.99
+   },
+   "typed|r6v53_001": {
+    "answer": "That hatch is already open, just jump down through it and pinch site with me.",
+    "ms": 53.3,
+    "prompt_n": 26,
+    "prompt_ms": 7.506,
+    "predicted_n": 18,
+    "predicted_ms": 44.514
+   },
+   "typed|r6v53_023": {
+    "answer": "Lock down this hallway, I'm rotating to cover the other door.",
+    "ms": 45.9,
+    "prompt_n": 23,
+    "prompt_ms": 7.323,
+    "predicted_n": 15,
+    "predicted_ms": 37.329
+   },
+   "typed|r6v53_025": {
+    "answer": "Cease fire, weapons tight, you're giving away our position.",
+    "ms": 46.6,
+    "prompt_n": 23,
+    "prompt_ms": 7.725,
+    "predicted_n": 15,
+    "predicted_ms": 37.485
+   },
+   "typed|csv53_011": {
+    "answer": "climb out that window on your left, hurry up",
+    "ms": 49.0,
+    "prompt_n": 19,
+    "prompt_ms": 7.73,
+    "predicted_n": 12,
+    "predicted_ms": 30.066
+   },
+   "typed|csv53_017": {
+    "answer": "blow that hatch open, then we drop on their heads",
+    "ms": 67.3,
+    "prompt_n": 20,
+    "prompt_ms": 8.088,
+    "predicted_n": 13,
+    "predicted_ms": 34.271
+   },
+   "typed|csv53_025": {
+    "answer": "check fire, check fire, i'm crossing, do not shoot",
+    "ms": 46.1,
+    "prompt_n": 22,
+    "prompt_ms": 7.614,
+    "predicted_n": 14,
+    "predicted_ms": 37.001
+   },
+   "typed|csv53_029": {
+    "answer": "jump across to me, actually nah don't, forget i said that",
+    "ms": 47.2,
+    "prompt_n": 23,
+    "prompt_ms": 7.474,
+    "predicted_n": 15,
+    "predicted_ms": 38.358
+   },
+   "typed|sttv53_001": {
+    "answer": "you uh you drop dawn off the ledge i am waiting below you",
+    "ms": 62.8,
+    "prompt_n": 22,
+    "prompt_ms": 7.642,
+    "predicted_n": 14,
+    "predicted_ms": 34.883
+   },
+   "typed|sttv53_007": {
+    "answer": "just jump off the balcony come on it is not high",
+    "ms": 38.8,
+    "prompt_n": 20,
+    "prompt_ms": 7.684,
+    "predicted_n": 12,
+    "predicted_ms": 29.788
+   },
+   "typed|sttv53_013": {
+    "answer": "repel up the outside wall uh repel up",
+    "ms": 36.3,
+    "prompt_n": 19,
+    "prompt_ms": 7.97,
+    "predicted_n": 11,
+    "predicted_ms": 26.997
+   },
+   "typed|sttv53_019": {
+    "answer": "okay you go watch the other ankle uh i am staying on this one",
+    "ms": 46.5,
+    "prompt_n": 23,
+    "prompt_ms": 7.351,
+    "predicted_n": 15,
+    "predicted_ms": 37.761
+   },
+   "typed|sttv53_024": {
+    "answer": "seize fire seize fire uh friendlies crossing seize fire",
+    "ms": 38.9,
+    "prompt_n": 19,
+    "prompt_ms": 7.692,
+    "predicted_n": 12,
+    "predicted_ms": 29.824
+   },
+   "typed|sttv53_028": {
+    "answer": "no no dont jump uh do not jump it is too high",
+    "ms": 41.3,
+    "prompt_n": 21,
+    "prompt_ms": 7.383,
+    "predicted_n": 13,
+    "predicted_ms": 32.58
+   },
+   "typed|r6v54_002": {
+    "answer": "Negative, that's not what I meant.",
+    "ms": 34.2,
+    "prompt_n": 18,
+    "prompt_ms": 7.747,
+    "predicted_n": 10,
+    "predicted_ms": 25.145
+   },
+   "typed|r6v54_003": {
+    "answer": "Nah, nope, you've got it wrong.",
+    "ms": 41.4,
+    "prompt_n": 20,
+    "prompt_ms": 7.613,
+    "predicted_n": 13,
+    "predicted_ms": 32.457
+   },
+   "typed|r6v54_005": {
+    "answer": "Eh, perhaps, I guess so.",
+    "ms": 33.9,
+    "prompt_n": 17,
+    "prompt_ms": 7.686,
+    "predicted_n": 10,
+    "predicted_ms": 24.832
+   },
+   "typed|r6v54_006": {
+    "answer": "No idea, mate, I honestly can't tell.",
+    "ms": 39.7,
+    "prompt_n": 20,
+    "prompt_ms": 8.038,
+    "predicted_n": 12,
+    "predicted_ms": 30.335
+   },
+   "typed|r6v54_015": {
+    "answer": "Get flat on your belly, right now.",
+    "ms": 35.0,
+    "prompt_n": 18,
+    "prompt_ms": 8.152,
+    "predicted_n": 10,
+    "predicted_ms": 25.502
+   },
+   "typed|r6v54_018": {
+    "answer": "Hard breach the reinforced wall on my mark.",
+    "ms": 34.9,
+    "prompt_n": 18,
+    "prompt_ms": 7.872,
+    "predicted_n": 10,
+    "predicted_ms": 25.652
+   },
+   "typed|r6v54_023": {
+    "answer": "Take the flank through my marker, they're all looking at me.",
+    "ms": 47.9,
+    "prompt_n": 23,
+    "prompt_ms": 7.626,
+    "predicted_n": 15,
+    "predicted_ms": 38.877
+   },
+   "typed|r6v54_034": {
+    "answer": "Roger that, copy, I heard you.",
+    "ms": 34.8,
+    "prompt_n": 18,
+    "prompt_ms": 7.935,
+    "predicted_n": 10,
+    "predicted_ms": 25.485
+   },
+   "typed|r6v54_036": {
+    "answer": "No, hold up, scrap that order.",
+    "ms": 34.9,
+    "prompt_n": 18,
+    "prompt_ms": 7.844,
+    "predicted_n": 10,
+    "predicted_ms": 25.715
+   },
+   "typed|r6v54_040": {
+    "answer": "Get me back on my feet, I'm bleeding out!",
+    "ms": 41.8,
+    "prompt_n": 21,
+    "prompt_ms": 7.598,
+    "predicted_n": 13,
+    "predicted_ms": 32.834
+   },
+   "typed|csv54_010": {
+    "answer": "ok let's regroup, you're way too deep for me to trade you",
+    "ms": 52.5,
+    "prompt_n": 25,
+    "prompt_ms": 7.576,
+    "predicted_n": 17,
+    "predicted_ms": 43.602
+   },
+   "typed|csv54_018": {
+    "answer": "run over to my ping, the one i just placed",
+    "ms": 39.8,
+    "prompt_n": 20,
+    "prompt_ms": 8.395,
+    "predicted_n": 12,
+    "predicted_ms": 30.056
+   },
+   "typed|csv54_021": {
+    "answer": "molly on my mark, he's lit and hiding in the corner",
+    "ms": 52.5,
+    "prompt_n": 23,
+    "prompt_ms": 7.704,
+    "predicted_n": 15,
+    "predicted_ms": 43.39
+   },
+   "typed|csv54_022": {
+    "answer": "go check the door next to my marker, pretty sure i heard steps but maybe i'm just hearing things",
+    "ms": 67.7,
+    "prompt_n": 30,
+    "prompt_ms": 8.407,
+    "predicted_n": 22,
+    "predicted_ms": 57.81
+   },
+   "typed|csv54_025": {
+    "answer": "keep your crosshair on my ping, somebody's gonna swing it",
+    "ms": 43.7,
+    "prompt_n": 22,
+    "prompt_ms": 7.583,
+    "predicted_n": 14,
+    "predicted_ms": 34.761
+   },
+   "typed|csv54_036": {
+    "answer": "nah never mind, scrap that last call",
+    "ms": 31.0,
+    "prompt_n": 17,
+    "prompt_ms": 7.693,
+    "predicted_n": 9,
+    "predicted_ms": 21.949
+   },
+   "typed|csv54_037": {
+    "answer": "pull back out of the fight bro, we're saving this round",
+    "ms": 43.5,
+    "prompt_n": 22,
+    "prompt_ms": 7.458,
+    "predicted_n": 14,
+    "predicted_ms": 34.745
+   },
+   "typed|csv54_038": {
+    "answer": "come to me and stick close, we're moving as a pair",
+    "ms": 44.3,
+    "prompt_n": 22,
+    "prompt_ms": 8.353,
+    "predicted_n": 14,
+    "predicted_ms": 34.646
+   },
+   "typed|csv54_040": {
+    "answer": "get me up bro, i'm down and bleeding out",
+    "ms": 38.6,
+    "prompt_n": 20,
+    "prompt_ms": 7.727,
+    "predicted_n": 12,
+    "predicted_ms": 29.576
+   },
+   "typed|csv54_042": {
+    "answer": "don't crouch bro, you can't see anything over the box like that",
+    "ms": 51.9,
+    "prompt_n": 25,
+    "prompt_ms": 7.582,
+    "predicted_n": 17,
+    "predicted_ms": 42.917
+   },
+   "typed|sttv54_006": {
+    "answer": "uh i dont no man i really dont no",
+    "ms": 33.9,
+    "prompt_n": 18,
+    "prompt_ms": 7.758,
+    "predicted_n": 10,
+    "predicted_ms": 24.804
+   },
+   "typed|sttv54_007": {
+    "answer": "no clue honestly i cant tell from here its too dark",
+    "ms": 40.6,
+    "prompt_n": 20,
+    "prompt_ms": 7.886,
+    "predicted_n": 12,
+    "predicted_ms": 31.353
+   },
+   "typed|sttv54_016": {
+    "answer": "okay stand back up now",
+    "ms": 36.9,
+    "prompt_n": 14,
+    "prompt_ms": 7.284,
+    "predicted_n": 6,
+    "predicted_ms": 14.429
+   },
+   "typed|sttv54_021": {
+    "answer": "throw smoke on my mark smoke on my march",
+    "ms": 33.7,
+    "prompt_n": 18,
+    "prompt_ms": 7.766,
+    "predicted_n": 10,
+    "predicted_ms": 24.602
+   },
+   "typed|sttv54_025": {
+    "answer": "okay uh blow the wall where i put the pin",
+    "ms": 36.7,
+    "prompt_n": 19,
+    "prompt_ms": 7.727,
+    "predicted_n": 11,
+    "predicted_ms": 27.574
+   },
+   "typed|sttv54_026": {
+    "answer": "uh open that door real quiet",
+    "ms": 40.2,
+    "prompt_n": 15,
+    "prompt_ms": 7.279,
+    "predicted_n": 7,
+    "predicted_ms": 16.954
+   },
+   "typed|sttv54_042": {
+    "answer": "uh dont come back yet do not come back",
+    "ms": 34.4,
+    "prompt_n": 17,
+    "prompt_ms": 7.867,
+    "predicted_n": 10,
+    "predicted_ms": 25.156
+   }
+  }
+ }
+}

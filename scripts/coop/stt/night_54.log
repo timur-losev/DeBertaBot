@@ -1,0 +1,61 @@
+00:12:49     280 s  start
+00:13:36     327 s  gguf_v54.py bench pieces 0 vulkan (exit 0)
+00:15:45     457 s  router_v54.py train r2 small 0 (exit 0)
+00:17:48     580 s  chains2_v54.py answer names 0 (exit 0)
+00:22:41     872 s  chains2_v54.py answer pieces 0 (exit 0)
+00:24:44     996 s  chains2_v54.py answer names 1 (exit 0)
+00:29:32   1,284 s  chains2_v54.py answer pieces 1 (exit 0)
+00:31:36   1,408 s  chains2_v54.py answer names 2 (exit 0)
+00:36:21   1,692 s  chains2_v54.py answer pieces 2 (exit 0)
+00:36:58   1,729 s  chains2_v54.py read (exit 0)
+00:37:09   1,741 s  chains2_v54.py score (exit 0)
+00:37:09   1,741 s  round two measured
+00:37:09   1,741 s  voices done
+00:58:51   3,042 s  chains2_v54.py train names3 0 (exit 0)
+01:27:19   4,751 s  chains2_v54.py train pieces3 0 (exit 0)
+01:29:44   4,896 s  router_v54.py train r3 small 0 (exit 0)
+01:30:21   4,933 s  chains2_v54.py read (exit 0)
+01:30:33   4,944 s  chains2_v54.py score (exit 0)
+01:30:33   4,944 s  round three, seed 0 measured
+01:52:24   6,256 s  chains2_v54.py train names3 1 (exit 0)
+02:21:10   7,982 s  chains2_v54.py train pieces3 1 (exit 0)
+02:43:02   9,294 s  chains2_v54.py train names3 2 (exit 0)
+03:11:48  11,020 s  chains2_v54.py train pieces3 2 (exit 0)
+03:12:27  11,058 s  chains2_v54.py read (exit 0)
+03:12:39  11,070 s  router_v54.py score (exit 0)
+03:12:51  11,083 s  chains2_v54.py score (exit 0)
+03:12:51  11,083 s  round three measured
+03:13:37  11,129 s  gguf_v54.py make pieces3 0 (exit 0)
+03:14:20  11,171 s  gguf_v54.py bench pieces3 0 vulkan (exit 0)
+03:15:32  11,243 s  gguf_v54.py bench pieces3 0 cpu8 (exit 0)
+03:17:01  11,333 s  gguf_v54.py bench pieces3 0 cpu4 (exit 0)
+03:17:27  11,359 s  gguf_v54.py score (exit 0)
+03:17:27  11,359 s  done
+03:17:31  followup  start
+03:22:28  followup  answer pieces3 0 (exit 0)
+03:27:20  followup  answer pieces 0 (exit 0)
+03:32:14  followup  answer pieces 1 (exit 0)
+03:37:07  followup  answer pieces 2 (exit 0)
+03:37:58  followup  score (exit 0)
+03:38:24  followup  done
+03:42:51  4b  start
+04:12:17  4b  chains2_v54.py train names3_4b 0 (exit 0)
+05:07:35  4b  chains2_v54.py train pieces3_4b 0 (exit 0)
+05:08:14  4b  chains2_v54.py read (exit 0)
+05:08:39  4b  chains2_v54.py score (exit 0)
+05:10:15  4b  gguf_v54.py make pieces3_4b 0 (exit 0)
+05:11:12  4b  gguf_v54.py bench pieces3_4b 0 vulkan (exit 0)
+05:13:49  4b  gguf_v54.py bench pieces3_4b 0 cpu8 (exit 0)
+05:14:16  4b  gguf_v54.py score (exit 0)
+05:14:16  4b  done
+14:54:19  final  start
+16:27:53  final  start
+16:55:56  final  chains2_v54.py train pieces3_final 0 (exit 0)
+16:58:44  final  router_v54.py train final small 0 (exit 0)
+16:59:43  final  chains2_v54.py read (exit 0)
+17:00:14  final  chains2_v54.py score (exit 0)
+17:00:38  final  router_v54.py score (exit 0)
+17:01:38  final  gguf_v54.py make pieces3_final 0 (exit 0)
+17:02:24  final  gguf_v54.py bench pieces3_final 0 vulkan (exit 0)
+17:02:50  final  gguf_v54.py score (exit 1)
+17:02:50  final  done

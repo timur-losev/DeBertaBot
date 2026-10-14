@@ -1,0 +1,10 @@
+teacher_a.json: 300 lines, 795 pieces; the classifier reads 778 as labelled (97.9%); kept 284 (94.7%)
+  kept by number of orders: 1: 59/60, 2: 60/60, 3: 99/105, 4: 66/75
+  the commonest disagreements (teacher -> classifier): OPEN -> unsure x5; FLASH -> unsure x2; MOVE_TO -> PLANT x1; NONE -> VAULT_WINDOW x1; ENTRY -> unsure x1; VAULT_WINDOW -> unsure x1; FRAG -> unsure x1; PRONE -> unsure x1; DRONE -> unsure x1; REVIVE_ME -> unsure x1
+teacher_b.json: 300 lines, 480 pieces; the classifier reads 474 as labelled (98.8%); kept 294 (98.0%)
+  kept by number of orders: 1: 146/150, 2: 118/120, 3: 30/30
+  the commonest disagreements (teacher -> classifier): NONE -> BREACH x3; OPEN -> unsure x1; NONE -> FLASH x1; VAULT_WINDOW -> unsure x1
+ctx_teacher.json: 420 items, 457 pieces; the classifier reads 450 as labelled (98.5%); kept 413 (98.3%)
+  kept by number of orders: 1: 378/383, 2: 35/37
+  the commonest disagreements (teacher -> classifier): OPEN -> unsure x2; FLASH -> unsure x2; NONE -> FLASH x1; NONE -> NO x1; MOVE_TO -> VAULT_WINDOW x1
+  items whose pieces differ from the line: 274; kept of them 269

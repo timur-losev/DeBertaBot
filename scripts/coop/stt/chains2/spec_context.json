@@ -1,0 +1,24 @@
+{
+ "what": "An addendum to ../../blind/spec_v54.json and ../chains/spec_chain.json for a line that cannot be read without what came before it. With the player's line the bot now gets a short context: the last one or two lines the player said and the bot's own last line, if it said one. The task is to say what the player orders NOW, as order lines that stand by themselves.",
+ "input": {
+  "before": "a list of 0, 1 or 2 earlier lines of the player, oldest first; orders or chatter the bot has already dealt with",
+  "bot": "the bot's own last line (a question, a report, an offer), said after the lines of 'before', or null",
+  "line": "what the player says now"
+ },
+ "output": {
+  "pieces": "the orders the player gives NOW, each as a line of its own that needs no context: the words the player would have used had they said the whole order, with the action, the place and the other details filled in from the context where the line leaves them out, in the player's own wording as far as possible. In the order of execution, at most four. If the line gives no order, one piece: the line itself, unchanged.",
+  "orders": "the intent of each piece under spec_v54.json, same length and order as the pieces. A line that is no order: [\"NONE\"], or the answer intent (YES, NO, MAYBE, DONT_KNOW) when it only answers the bot."
+ },
+ "rules": [
+  "1. Only what the player orders NOW is listed. An earlier order is not repeated in the pieces unless the line asks for it again ('again', 'one more time', 'do that again').",
+  "2. Most lines need no context. A complete order stays as the player said it, whatever came before; no place and no action is carried over into a line that has its own. before: ['smoke the east door']; line: 'check the basement' -> 'check the basement'.",
+  "3. A correction replaces only what it names and keeps the rest of the order it corrects. before: ['breach the east door']; line: 'no, the west one' -> 'breach the west door'. before: ['flash the kitchen']; line: 'not a flash, smoke it' -> 'smoke the kitchen'.",
+  "4. A fragment that names only a place, a side or a thing completes the last order. before: ['hold that angle']; line: 'the red stairs' -> 'hold the red stairs'. The same action somewhere else: before: ['frag the north window']; line: 'same on the south one' -> 'frag the south window'.",
+  "5. A pronoun or a missing object is filled in from the context. before: ['open the hatch']; line: 'now drop through it' -> 'drop through the hatch'. before: ['go to the blue stairs']; line: 'and hold there' -> 'hold position at the blue stairs'.",
+  "6. An answer to the bot's question becomes the order it settles, when the context spells that order out. before: ['breach the door']; bot: 'Which door, east or west?'; line: 'east' -> 'breach the east door'. bot: 'Want me to flash the room first?'; line: 'yeah do it' -> 'flash the room'. A yes that settles nothing the context spells out, and every bare no, stays as it is: 'no' -> 'no'. A no followed by an order is that order: bot: 'Want me to flash first?'; line: 'no, just go in' -> 'go in'.",
+  "7. Stopping and cancelling are not rewritten: 'stop', 'cancel that', 'never mind', 'wait' stay as the player said them.",
+  "8. Words that point at the world and not at the talk stay as they are: 'here', 'there', 'over there', 'this wall', 'that door', 'my pin', 'my mark'. The planner knows where the player looks and where the marker is. before: ['watch the window']; line: 'go there' -> 'go there'.",
+  "9. The line can still give several orders (spec_chain.json). before: ['smoke the main door']; line: 'now flash it and go in' -> 'flash the main door', 'go in through the main door'.",
+  "10. What the bot said is context only; its reports and offers are never orders. bot: 'I'm out of ammo'; line: 'then fall back' -> 'fall back'."
+ ]
+}

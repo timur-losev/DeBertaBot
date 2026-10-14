@@ -1,0 +1,761 @@
+pieces of held-out lines are read by the fold's own three teachers
+blind: 150 items, two of three readers agree on the intents of 150
+blind2: 150 items, two of three readers agree on the intents of 150
+ctx: 150 items, two of three readers agree on the intents of 150, and on every place of 150; 103 lean on the context
+the 260 typed held-out single lines read as lists: two blind readers agree on 257, 4 of them several orders
+
+variant names3, seed 0: 11603 rows ({'singles': 4523, 'composed': 3000, 'teacher': 870, 'teacher_heard': 2340, 'context': 0}), 1178 s of training, 104 s of answers
+  lines with several orders: the list exact                        n   exact  right count
+  this round's blind lines, typed                                150    94.7         95.3
+      one order                                                   54    90.7         92.6
+      two orders                                                  60    98.3         98.3
+      three orders                                                28    92.9         92.9
+      four orders                                                  8   100.0        100.0
+    this round's blind lines (r6, cs) heard from an unseen voice   100    78.0         84.0
+    the same heard from three unseen voices                      300    73.3         87.0
+      one order                                                  108    75.0         87.0
+      two orders                                                 120    74.2         91.7
+      three orders                                                57    71.9         82.5
+      four orders                                                 15    60.0         66.7
+  the first blind lines (development), typed                     150    89.3         93.3
+      one order                                                   54    85.2         87.0
+      two orders                                                  60    95.0        100.0
+      three orders                                                28    85.7         92.9
+      four orders                                                  8    87.5         87.5
+    the first blind lines (r6, cs) heard from an unseen voice    100    69.0         81.0
+  held-out lines, training patterns                              400    66.8         80.2
+  held-out lines, unseen patterns                                400    68.0         87.0
+  held-out lines heard from unseen voices, unseen patterns       400    40.8         74.5
+  held-out single lines against their reading as lists, the decoder alone     n   exact   (the ensemble alone)
+  typed                                                          257    87.2   (89.1)
+      one order                                                  253    87.7   (90.5)
+      several orders                                               4    50.0   (0.0)
+  heard from unseen voices                                       182    72.0   (74.7)
+      one order                                                  178    72.5   (76.4)
+      several orders                                               4    50.0   (0.0)
+  held-out single lines (no threshold)                             n  one intent   near  wrong fam  criterion
+  typed                                                          260        96.2   88.5      10.4%       67.7
+  heard from unseen voices                                       184        89.7   73.4      21.7%       29.9
+
+variant names3, seed 1: 11603 rows ({'singles': 4523, 'composed': 3000, 'teacher': 870, 'teacher_heard': 2340, 'context': 0}), 1189 s of training, 102 s of answers
+  lines with several orders: the list exact                        n   exact  right count
+  this round's blind lines, typed                                150    96.0         97.3
+      one order                                                   54    94.4         98.1
+      two orders                                                  60    95.0         95.0
+      three orders                                                28   100.0        100.0
+      four orders                                                  8   100.0        100.0
+    this round's blind lines (r6, cs) heard from an unseen voice   100    78.0         86.0
+    the same heard from three unseen voices                      300    71.0         84.3
+      one order                                                  108    73.1         86.1
+      two orders                                                 120    74.2         88.3
+      three orders                                                57    64.9         78.9
+      four orders                                                 15    53.3         60.0
+  the first blind lines (development), typed                     150    92.7         96.0
+      one order                                                   54    94.4         96.3
+      two orders                                                  60    93.3         98.3
+      three orders                                                28    89.3         92.9
+      four orders                                                  8    87.5         87.5
+    the first blind lines (r6, cs) heard from an unseen voice    100    71.0         84.0
+  held-out lines, training patterns                              400    74.5         87.8
+  held-out lines, unseen patterns                                400    70.5         88.8
+  held-out lines heard from unseen voices, unseen patterns       400    38.8         76.0
+  held-out single lines against their reading as lists, the decoder alone     n   exact   (the ensemble alone)
+  typed                                                          257    88.7   (89.1)
+      one order                                                  253    89.3   (90.5)
+      several orders                                               4    50.0   (0.0)
+  heard from unseen voices                                       182    73.1   (74.7)
+      one order                                                  178    74.2   (76.4)
+      several orders                                               4    25.0   (0.0)
+  held-out single lines (no threshold)                             n  one intent   near  wrong fam  criterion
+  typed                                                          260        96.5   92.7       6.9%       78.8
+  heard from unseen voices                                       184        88.6   76.1      19.6%       37.0
+
+variant names3, seed 2: 11603 rows ({'singles': 4523, 'composed': 3000, 'teacher': 870, 'teacher_heard': 2340, 'context': 0}), 1188 s of training, 103 s of answers
+  lines with several orders: the list exact                        n   exact  right count
+  this round's blind lines, typed                                150    96.0         96.7
+      one order                                                   54    94.4         96.3
+      two orders                                                  60    96.7         96.7
+      three orders                                                28    96.4         96.4
+      four orders                                                  8   100.0        100.0
+    this round's blind lines (r6, cs) heard from an unseen voice   100    82.0         89.0
+    the same heard from three unseen voices                      300    76.0         87.0
+      one order                                                  108    78.7         89.8
+      two orders                                                 120    79.2         90.8
+      three orders                                                57    70.2         80.7
+      four orders                                                 15    53.3         60.0
+  the first blind lines (development), typed                     150    92.0         96.0
+      one order                                                   54    92.6         92.6
+      two orders                                                  60    98.3        100.0
+      three orders                                                28    85.7        100.0
+      four orders                                                  8    62.5         75.0
+    the first blind lines (r6, cs) heard from an unseen voice    100    69.0         84.0
+  held-out lines, training patterns                              400    72.5         85.8
+  held-out lines, unseen patterns                                400    70.8         89.0
+  held-out lines heard from unseen voices, unseen patterns       400    44.0         75.5
+  held-out single lines against their reading as lists, the decoder alone     n   exact   (the ensemble alone)
+  typed                                                          257    89.1   (89.1)
+      one order                                                  253    89.3   (90.5)
+      several orders                                               4    75.0   (0.0)
+  heard from unseen voices                                       182    73.6   (74.7)
+      one order                                                  178    74.2   (76.4)
+      several orders                                               4    50.0   (0.0)
+  held-out single lines (no threshold)                             n  one intent   near  wrong fam  criterion
+  typed                                                          260        95.4   90.8       7.3%       76.2
+  heard from unseen voices                                       184        89.7   73.9      18.5%       37.0
+
+variant names, seed 0: 10433 rows ({'singles': 4523, 'composed': 3000, 'teacher': 870, 'teacher_heard': 1170, 'context': 0}), 1074 s of training, 97 s of answers
+  lines with several orders: the list exact                        n   exact  right count
+  this round's blind lines, typed                                150    96.0         97.3
+      one order                                                   54    90.7         92.6
+      two orders                                                  60   100.0        100.0
+      three orders                                                28    96.4        100.0
+      four orders                                                  8   100.0        100.0
+    this round's blind lines (r6, cs) heard from an unseen voice   100    78.0         87.0
+    the same heard from three unseen voices                      300    71.7         86.3
+      one order                                                  108    74.1         88.9
+      two orders                                                 120    75.8         88.3
+      three orders                                                57    66.7         84.2
+      four orders                                                 15    40.0         60.0
+  the first blind lines (development), typed                     150    93.3         95.3
+      one order                                                   54    90.7         90.7
+      two orders                                                  60    95.0         98.3
+      three orders                                                28    96.4        100.0
+      four orders                                                  8    87.5         87.5
+    the first blind lines (r6, cs) heard from an unseen voice    100    68.0         82.0
+  held-out lines, training patterns                              400    68.0         84.0
+  held-out lines, unseen patterns                                400    67.5         84.8
+  held-out lines heard from unseen voices, unseen patterns       400    42.0         73.8
+  held-out single lines against their reading as lists, the decoder alone     n   exact   (the ensemble alone)
+  typed                                                          257    88.7   (89.1)
+      one order                                                  253    89.7   (90.5)
+      several orders                                               4    25.0   (0.0)
+  heard from unseen voices                                       182    72.0   (74.7)
+      one order                                                  178    72.5   (76.4)
+      several orders                                               4    50.0   (0.0)
+  held-out single lines (no threshold)                             n  one intent   near  wrong fam  criterion
+  typed                                                          260        96.2   90.4       8.5%       73.5
+  heard from unseen voices                                       184        89.7   72.8      21.2%       30.4
+
+variant names, seed 1: 10433 rows ({'singles': 4523, 'composed': 3000, 'teacher': 870, 'teacher_heard': 1170, 'context': 0}), 1069 s of training, 98 s of answers
+  lines with several orders: the list exact                        n   exact  right count
+  this round's blind lines, typed                                150    95.3         97.3
+      one order                                                   54    94.4         96.3
+      two orders                                                  60    95.0         96.7
+      three orders                                                28    96.4        100.0
+      four orders                                                  8   100.0        100.0
+    this round's blind lines (r6, cs) heard from an unseen voice   100    78.0         91.0
+    the same heard from three unseen voices                      300    71.7         87.0
+      one order                                                  108    77.8         91.7
+      two orders                                                 120    73.3         89.2
+      three orders                                                57    63.2         80.7
+      four orders                                                 15    46.7         60.0
+  the first blind lines (development), typed                     150    92.0         96.0
+      one order                                                   54    90.7         92.6
+      two orders                                                  60    96.7        100.0
+      three orders                                                28    89.3         96.4
+      four orders                                                  8    75.0         87.5
+    the first blind lines (r6, cs) heard from an unseen voice    100    68.0         80.0
+  held-out lines, training patterns                              400    69.2         83.8
+  held-out lines, unseen patterns                                400    70.5         85.5
+  held-out lines heard from unseen voices, unseen patterns       400    39.8         76.0
+  held-out single lines against their reading as lists, the decoder alone     n   exact   (the ensemble alone)
+  typed                                                          257    88.3   (89.1)
+      one order                                                  253    88.9   (90.5)
+      several orders                                               4    50.0   (0.0)
+  heard from unseen voices                                       182    73.6   (74.7)
+      one order                                                  178    74.7   (76.4)
+      several orders                                               4    25.0   (0.0)
+  held-out single lines (no threshold)                             n  one intent   near  wrong fam  criterion
+  typed                                                          260        96.9   90.8       7.7%       75.4
+  heard from unseen voices                                       184        92.9   76.1      17.4%       41.3
+
+variant names, seed 2: 10433 rows ({'singles': 4523, 'composed': 3000, 'teacher': 870, 'teacher_heard': 1170, 'context': 0}), 1066 s of training, 98 s of answers
+  lines with several orders: the list exact                        n   exact  right count
+  this round's blind lines, typed                                150    96.0         96.7
+      one order                                                   54    96.3         96.3
+      two orders                                                  60    96.7         96.7
+      three orders                                                28    96.4        100.0
+      four orders                                                  8    87.5         87.5
+    this round's blind lines (r6, cs) heard from an unseen voice   100    74.0         84.0
+    the same heard from three unseen voices                      300    70.0         83.7
+      one order                                                  108    76.9         88.9
+      two orders                                                 120    70.8         86.7
+      three orders                                                57    61.4         75.4
+      four orders                                                 15    46.7         53.3
+  the first blind lines (development), typed                     150    92.7         95.3
+      one order                                                   54    90.7         92.6
+      two orders                                                  60    98.3        100.0
+      three orders                                                28    89.3         96.4
+      four orders                                                  8    75.0         75.0
+    the first blind lines (r6, cs) heard from an unseen voice    100    64.0         78.0
+  held-out lines, training patterns                              400    72.0         86.2
+  held-out lines, unseen patterns                                400    69.5         88.5
+  held-out lines heard from unseen voices, unseen patterns       400    42.5         78.5
+  held-out single lines against their reading as lists, the decoder alone     n   exact   (the ensemble alone)
+  typed                                                          257    87.2   (89.1)
+      one order                                                  253    87.7   (90.5)
+      several orders                                               4    50.0   (0.0)
+  heard from unseen voices                                       182    70.9   (74.7)
+      one order                                                  178    71.9   (76.4)
+      several orders                                               4    25.0   (0.0)
+  held-out single lines (no threshold)                             n  one intent   near  wrong fam  criterion
+  typed                                                          260        96.5   89.2       8.5%       72.3
+  heard from unseen voices                                       184        92.9   72.8      20.1%       32.6
+
+variant pieces3, seed 0: 13950 rows ({'singles': 4523, 'composed': 3000, 'teacher': 870, 'teacher_heard': 2340, 'context': 413, 'context_heard': 1108}), 1415 s of training, 273 s of answers
+  lines with several orders: the list exact                        n   exact  right count
+  this round's blind lines, typed                                150    92.7         93.3
+      one order                                                   54    92.6         94.4
+      two orders                                                  60    93.3         93.3
+      three orders                                                28    89.3         89.3
+      four orders                                                  8   100.0        100.0
+    this round's blind lines (r6, cs) heard from an unseen voice   100    73.0         86.0
+    the same heard from three unseen voices                      300    69.3         82.7
+      one order                                                  108    76.9         93.5
+      two orders                                                 120    64.2         74.2
+      three orders                                                57    70.2         78.9
+      four orders                                                 15    53.3         86.7
+  the first blind lines (development), typed                     150    83.3         87.3
+      one order                                                   54    92.6         96.3
+      two orders                                                  60    81.7         81.7
+      three orders                                                28    82.1         92.9
+      four orders                                                  8    37.5         50.0
+    the first blind lines (r6, cs) heard from an unseen voice    100    65.0         77.0
+  held-out lines, training patterns                              400    68.8         79.5
+  held-out lines, unseen patterns                                400    67.8         80.8
+  held-out lines heard from unseen voices, unseen patterns       400    38.5         60.0
+  held-out lines joined: the parts written back word for word      n   exact
+  joined                                                         400    70.2
+  unseen                                                         400    52.2
+  heard                                                          400    43.5
+  held-out single lines through the decoder                        n  one piece  unchanged   near  wrong fam  criterion   (the ensemble alone)
+  typed                                                          260       96.2       90.8   89.6       7.3%       75.0   (87.3)
+  heard from unseen voices                                       184       90.2       81.5   71.7      15.2%       41.3   (69.0)
+  typed, an unrelated earlier line in front                      260       95.0       88.5   89.2       8.1%       73.1   (87.3)
+  held-out single lines against their reading as lists, the decoder alone     n   exact   (the ensemble alone)
+  typed                                                          257    87.5   (89.1)
+      one order                                                  253    88.5   (90.5)
+      several orders                                               4    25.0   (0.0)
+  heard from unseen voices                                       182    72.0   (74.7)
+      one order                                                  178    73.0   (76.4)
+      several orders                                               4    25.0   (0.0)
+  lines with a context, typed                                      n  intents  and places   (the bot today on the bare line: intents, and places)
+  all items                                                      150     93.3        90.0   (45.3, 34.7)
+    the line leans on its context                                103     90.3        85.4   (20.4, 4.9)
+    the line stands by itself                                     47    100.0       100.0   (100.0, 100.0)
+    pairs (one line, two contexts) with both items right          45                 80.0
+  lines with a context (r6, cs) heard from three unseen voices     n  intents  and places   (the bot today on the bare line: intents, and places)
+  all items                                                      299     72.6        64.5   (36.8, 24.1)
+    the line leans on its context                                206     69.4        61.2   (17.5, 3.4)
+    the line stands by itself                                     93     79.6        72.0   (79.6, 69.9)
+    pairs (one line, two contexts) with both items right          89                 44.9
+  the bot wired through the router (r3 small): a line it sends on is rewritten by this decoder, every other line goes to the ensemble as today
+                                                                   n  sent on   exact   (the ensemble alone)
+  this round's blind lines, typed                                150    63.3%    89.3   (34.0)
+    this round's blind lines (r6, cs) heard from an unseen voice   100    64.0%    68.0   (27.0)
+    the same heard from three unseen voices                      300    61.0%    63.7   (26.7)
+  lines with a context, typed (intents and places)               150    62.0%    87.3   (34.7)
+    lines with a context heard from three unseen voices          299    54.8%    60.2   (24.1)
+  held-out single lines                                            n  sent on   near  wrong fam  criterion   (the ensemble alone)
+  typed                                                          260     6.2%   91.9       4.6%       82.7   (87.3)
+  heard from unseen voices                                       184     9.2%   76.6       9.2%       58.2   (69.0)
+  held-out single lines against their reading as lists, wired through the router     n   exact   (the ensemble alone)
+  typed                                                          257    89.1   (89.1)
+      one order                                                  253    90.1   (90.5)
+      several orders                                               4    25.0   (0.0)
+  heard from unseen voices                                       182    74.2   (74.7)
+      one order                                                  178    75.3   (76.4)
+      several orders                                               4    25.0   (0.0)
+
+variant pieces3, seed 1: 13950 rows ({'singles': 4523, 'composed': 3000, 'teacher': 870, 'teacher_heard': 2340, 'context': 413, 'context_heard': 1108}), 1412 s of training, 293 s of answers
+  lines with several orders: the list exact                        n   exact  right count
+  this round's blind lines, typed                                150    92.7         93.3
+      one order                                                   54    94.4         96.3
+      two orders                                                  60    90.0         90.0
+      three orders                                                28    92.9         92.9
+      four orders                                                  8   100.0        100.0
+    this round's blind lines (r6, cs) heard from an unseen voice   100    78.0         86.0
+    the same heard from three unseen voices                      300    72.0         83.0
+      one order                                                  108    80.6         97.2
+      two orders                                                 120    68.3         74.2
+      three orders                                                57    68.4         78.9
+      four orders                                                 15    53.3         66.7
+  the first blind lines (development), typed                     150    82.0         85.3
+      one order                                                   54    90.7         94.4
+      two orders                                                  60    80.0         81.7
+      three orders                                                28    82.1         85.7
+      four orders                                                  8    37.5         50.0
+    the first blind lines (r6, cs) heard from an unseen voice    100    64.0         75.0
+  held-out lines, training patterns                              400    70.5         82.2
+  held-out lines, unseen patterns                                400    66.8         80.5
+  held-out lines heard from unseen voices, unseen patterns       400    36.2         58.8
+  held-out lines joined: the parts written back word for word      n   exact
+  joined                                                         400    73.5
+  unseen                                                         400    53.8
+  heard                                                          400    46.8
+  held-out single lines through the decoder                        n  one piece  unchanged   near  wrong fam  criterion   (the ensemble alone)
+  typed                                                          260       97.3       90.4   90.8       5.4%       80.0   (87.3)
+  heard from unseen voices                                       184       91.8       82.6   72.8      13.6%       45.7   (69.0)
+  typed, an unrelated earlier line in front                      260       96.2       89.2   90.4       6.5%       77.3   (87.3)
+  held-out single lines against their reading as lists, the decoder alone     n   exact   (the ensemble alone)
+  typed                                                          257    88.7   (89.1)
+      one order                                                  253    89.7   (90.5)
+      several orders                                               4    25.0   (0.0)
+  heard from unseen voices                                       182    72.5   (74.7)
+      one order                                                  178    73.6   (76.4)
+      several orders                                               4    25.0   (0.0)
+  lines with a context, typed                                      n  intents  and places   (the bot today on the bare line: intents, and places)
+  all items                                                      150     92.0        88.7   (45.3, 34.7)
+    the line leans on its context                                103     88.3        83.5   (20.4, 4.9)
+    the line stands by itself                                     47    100.0       100.0   (100.0, 100.0)
+    pairs (one line, two contexts) with both items right          45                 80.0
+  lines with a context (r6, cs) heard from three unseen voices     n  intents  and places   (the bot today on the bare line: intents, and places)
+  all items                                                      299     74.9        67.2   (36.8, 24.1)
+    the line leans on its context                                206     71.8        63.6   (17.5, 3.4)
+    the line stands by itself                                     93     81.7        75.3   (79.6, 69.9)
+    pairs (one line, two contexts) with both items right          89                 47.2
+  the same, the earlier lines as the player said them              n  intents  and places   (the bot today on the bare line: intents, and places)
+  all items                                                      299     77.6        72.6   (36.8, 24.1)
+    the line leans on its context                                206     75.7        71.4   (17.5, 3.4)
+    the line stands by itself                                     93     81.7        75.3   (79.6, 69.9)
+    pairs (one line, two contexts) with both items right          89                 57.3
+  the bot wired through the router (r3 small): a line it sends on is rewritten by this decoder, every other line goes to the ensemble as today
+                                                                   n  sent on   exact   (the ensemble alone)
+  this round's blind lines, typed                                150    63.3%    89.3   (34.0)
+    this round's blind lines (r6, cs) heard from an unseen voice   100    64.0%    73.0   (27.0)
+    the same heard from three unseen voices                      300    61.0%    67.0   (26.7)
+  lines with a context, typed (intents and places)               150    62.0%    86.0   (34.7)
+    lines with a context heard from three unseen voices          299    54.8%    61.5   (24.1)
+  held-out single lines                                            n  sent on   near  wrong fam  criterion   (the ensemble alone)
+  typed                                                          260     6.2%   92.7       4.2%       84.2   (87.3)
+  heard from unseen voices                                       184     9.2%   77.7       8.2%       61.4   (69.0)
+  held-out single lines against their reading as lists, wired through the router     n   exact   (the ensemble alone)
+  typed                                                          257    89.9   (89.1)
+      one order                                                  253    90.9   (90.5)
+      several orders                                               4    25.0   (0.0)
+  heard from unseen voices                                       182    74.2   (74.7)
+      one order                                                  178    75.3   (76.4)
+      several orders                                               4    25.0   (0.0)
+
+variant pieces3, seed 2: 13950 rows ({'singles': 4523, 'composed': 3000, 'teacher': 870, 'teacher_heard': 2340, 'context': 413, 'context_heard': 1108}), 1424 s of training, 281 s of answers
+  lines with several orders: the list exact                        n   exact  right count
+  this round's blind lines, typed                                150    90.7         92.0
+      one order                                                   54    94.4         96.3
+      two orders                                                  60    86.7         86.7
+      three orders                                                28    89.3         92.9
+      four orders                                                  8   100.0        100.0
+    this round's blind lines (r6, cs) heard from an unseen voice   100    78.0         86.0
+    the same heard from three unseen voices                      300    69.7         81.7
+      one order                                                  108    76.9         94.4
+      two orders                                                 120    65.0         72.5
+      three orders                                                57    68.4         80.7
+      four orders                                                 15    60.0         66.7
+  the first blind lines (development), typed                     150    82.7         86.7
+      one order                                                   54    90.7         92.6
+      two orders                                                  60    81.7         81.7
+      three orders                                                28    82.1         96.4
+      four orders                                                  8    37.5         50.0
+    the first blind lines (r6, cs) heard from an unseen voice    100    65.0         74.0
+  held-out lines, training patterns                              400    70.2         80.5
+  held-out lines, unseen patterns                                400    69.5         80.8
+  held-out lines heard from unseen voices, unseen patterns       400    38.5         55.8
+  held-out lines joined: the parts written back word for word      n   exact
+  joined                                                         400    73.0
+  unseen                                                         400    53.2
+  heard                                                          400    48.8
+  held-out single lines through the decoder                        n  one piece  unchanged   near  wrong fam  criterion   (the ensemble alone)
+  typed                                                          260       95.4       88.5   89.2       7.7%       73.8   (87.3)
+  heard from unseen voices                                       184       89.1       80.4   69.6      17.4%       34.8   (69.0)
+  typed, an unrelated earlier line in front                      260       94.2       86.5   88.5       8.1%       72.3   (87.3)
+  held-out single lines against their reading as lists, the decoder alone     n   exact   (the ensemble alone)
+  typed                                                          257    88.3   (89.1)
+      one order                                                  253    89.3   (90.5)
+      several orders                                               4    25.0   (0.0)
+  heard from unseen voices                                       182    70.9   (74.7)
+      one order                                                  178    71.9   (76.4)
+      several orders                                               4    25.0   (0.0)
+  lines with a context, typed                                      n  intents  and places   (the bot today on the bare line: intents, and places)
+  all items                                                      150     92.0        90.0   (45.3, 34.7)
+    the line leans on its context                                103     89.3        86.4   (20.4, 4.9)
+    the line stands by itself                                     47     97.9        97.9   (100.0, 100.0)
+    pairs (one line, two contexts) with both items right          45                 84.4
+  lines with a context (r6, cs) heard from three unseen voices     n  intents  and places   (the bot today on the bare line: intents, and places)
+  all items                                                      299     74.6        64.2   (36.8, 24.1)
+    the line leans on its context                                206     72.3        62.1   (17.5, 3.4)
+    the line stands by itself                                     93     79.6        68.8   (79.6, 69.9)
+    pairs (one line, two contexts) with both items right          89                 43.8
+  the same, the earlier lines as the player said them              n  intents  and places   (the bot today on the bare line: intents, and places)
+  all items                                                      299     79.9        71.2   (36.8, 24.1)
+    the line leans on its context                                206     80.1        72.3   (17.5, 3.4)
+    the line stands by itself                                     93     79.6        68.8   (79.6, 69.9)
+    pairs (one line, two contexts) with both items right          89                 56.2
+  the bot wired through the router (r3 small): a line it sends on is rewritten by this decoder, every other line goes to the ensemble as today
+                                                                   n  sent on   exact   (the ensemble alone)
+  this round's blind lines, typed                                150    63.3%    88.0   (34.0)
+    this round's blind lines (r6, cs) heard from an unseen voice   100    64.0%    72.0   (27.0)
+    the same heard from three unseen voices                      300    61.0%    65.0   (26.7)
+  lines with a context, typed (intents and places)               150    62.0%    88.0   (34.7)
+    lines with a context heard from three unseen voices          299    54.8%    60.2   (24.1)
+  held-out single lines                                            n  sent on   near  wrong fam  criterion   (the ensemble alone)
+  typed                                                          260     6.2%   92.3       4.2%       83.8   (87.3)
+  heard from unseen voices                                       184     9.2%   76.1       9.8%       56.5   (69.0)
+  held-out single lines against their reading as lists, wired through the router     n   exact   (the ensemble alone)
+  typed                                                          257    89.5   (89.1)
+      one order                                                  253    90.5   (90.5)
+      several orders                                               4    25.0   (0.0)
+  heard from unseen voices                                       182    73.6   (74.7)
+      one order                                                  178    74.7   (76.4)
+      several orders                                               4    25.0   (0.0)
+
+variant pieces, seed 0: 11672 rows ({'singles': 4523, 'composed': 3000, 'teacher': 870, 'teacher_heard': 1170, 'context': 413}), 1195 s of training, 267 s of answers
+  lines with several orders: the list exact                        n   exact  right count
+  this round's blind lines, typed                                150    92.0         92.7
+      one order                                                   54    92.6         94.4
+      two orders                                                  60    91.7         91.7
+      three orders                                                28    89.3         89.3
+      four orders                                                  8   100.0        100.0
+    this round's blind lines (r6, cs) heard from an unseen voice   100    77.0         88.0
+    the same heard from three unseen voices                      300    68.0         81.0
+      one order                                                  108    75.9         97.2
+      two orders                                                 120    65.8         75.0
+      three orders                                                57    66.7         73.7
+      four orders                                                 15    33.3         40.0
+  the first blind lines (development), typed                     150    82.7         85.3
+      one order                                                   54    88.9         92.6
+      two orders                                                  60    83.3         83.3
+      three orders                                                28    85.7         89.3
+      four orders                                                  8    25.0         37.5
+    the first blind lines (r6, cs) heard from an unseen voice    100    64.0         71.0
+  held-out lines, training patterns                              400    69.2         79.2
+  held-out lines, unseen patterns                                400    64.0         78.2
+  held-out lines heard from unseen voices, unseen patterns       400    36.8         59.0
+  held-out lines joined: the parts written back word for word      n   exact
+  joined                                                         400    73.5
+  unseen                                                         400    47.2
+  heard                                                          400    45.2
+  held-out single lines through the decoder                        n  one piece  unchanged   near  wrong fam  criterion   (the ensemble alone)
+  typed                                                          260       96.5       90.8   90.8       6.2%       78.5   (87.3)
+  heard from unseen voices                                       184       91.3       85.9   72.8      13.6%       45.7   (69.0)
+  typed, an unrelated earlier line in front                      260       93.8       89.6   88.8       8.5%       71.9   (87.3)
+  held-out single lines against their reading as lists, the decoder alone     n   exact   (the ensemble alone)
+  typed                                                          257    89.1   (89.1)
+      one order                                                  253    90.1   (90.5)
+      several orders                                               4    25.0   (0.0)
+  heard from unseen voices                                       182    72.5   (74.7)
+      one order                                                  178    73.6   (76.4)
+      several orders                                               4    25.0   (0.0)
+  lines with a context, typed                                      n  intents  and places   (the bot today on the bare line: intents, and places)
+  all items                                                      150     92.0        88.0   (45.3, 34.7)
+    the line leans on its context                                103     88.3        82.5   (20.4, 4.9)
+    the line stands by itself                                     47    100.0       100.0   (100.0, 100.0)
+    pairs (one line, two contexts) with both items right          45                 80.0
+  lines with a context (r6, cs) heard from three unseen voices     n  intents  and places   (the bot today on the bare line: intents, and places)
+  all items                                                      299     65.6        55.2   (36.8, 24.1)
+    the line leans on its context                                206     59.2        48.5   (17.5, 3.4)
+    the line stands by itself                                     93     79.6        69.9   (79.6, 69.9)
+    pairs (one line, two contexts) with both items right          89                 27.0
+  the bot wired through the router (r2 small): a line it sends on is rewritten by this decoder, every other line goes to the ensemble as today
+                                                                   n  sent on   exact   (the ensemble alone)
+  this round's blind lines, typed                                150    61.3%    88.7   (34.0)
+    this round's blind lines (r6, cs) heard from an unseen voice   100    59.0%    71.0   (27.0)
+    the same heard from three unseen voices                      300    55.0%    62.3   (26.7)
+  lines with a context, typed (intents and places)               150    60.7%    82.7   (34.7)
+    lines with a context heard from three unseen voices          299    42.5%    50.5   (24.1)
+  held-out single lines                                            n  sent on   near  wrong fam  criterion   (the ensemble alone)
+  typed                                                          260     2.3%   93.1       3.5%       86.2   (87.3)
+  heard from unseen voices                                       184     5.4%   77.2       8.7%       59.8   (69.0)
+  held-out single lines against their reading as lists, wired through the router     n   exact   (the ensemble alone)
+  typed                                                          257    89.5   (89.1)
+      one order                                                  253    90.5   (90.5)
+      several orders                                               4    25.0   (0.0)
+  heard from unseen voices                                       182    73.6   (74.7)
+      one order                                                  178    74.7   (76.4)
+      several orders                                               4    25.0   (0.0)
+
+variant pieces, seed 1: 11672 rows ({'singles': 4523, 'composed': 3000, 'teacher': 870, 'teacher_heard': 1170, 'context': 413}), 1193 s of training, 263 s of answers
+  lines with several orders: the list exact                        n   exact  right count
+  this round's blind lines, typed                                150    87.3         88.7
+      one order                                                   54    90.7         94.4
+      two orders                                                  60    83.3         83.3
+      three orders                                                28    85.7         85.7
+      four orders                                                  8   100.0        100.0
+    this round's blind lines (r6, cs) heard from an unseen voice   100    72.0         83.0
+    the same heard from three unseen voices                      300    66.7         78.7
+      one order                                                  108    76.9         97.2
+      two orders                                                 120    61.7         68.3
+      three orders                                                57    63.2         73.7
+      four orders                                                 15    46.7         46.7
+  the first blind lines (development), typed                     150    86.0         88.7
+      one order                                                   54    92.6         96.3
+      two orders                                                  60    85.0         86.7
+      three orders                                                28    89.3         89.3
+      four orders                                                  8    37.5         50.0
+    the first blind lines (r6, cs) heard from an unseen voice    100    67.0         75.0
+  held-out lines, training patterns                              400    72.0         82.0
+  held-out lines, unseen patterns                                400    68.8         80.8
+  held-out lines heard from unseen voices, unseen patterns       400    37.0         57.2
+  held-out lines joined: the parts written back word for word      n   exact
+  joined                                                         400    75.8
+  unseen                                                         400    59.8
+  heard                                                          400    54.2
+  held-out single lines through the decoder                        n  one piece  unchanged   near  wrong fam  criterion   (the ensemble alone)
+  typed                                                          260       96.5       90.8   90.4       6.9%       76.5   (87.3)
+  heard from unseen voices                                       184       92.4       89.7   73.9      12.5%       48.9   (69.0)
+  typed, an unrelated earlier line in front                      260       95.8       88.5   89.2       8.1%       73.1   (87.3)
+  held-out single lines against their reading as lists, the decoder alone     n   exact   (the ensemble alone)
+  typed                                                          257    89.9   (89.1)
+      one order                                                  253    90.9   (90.5)
+      several orders                                               4    25.0   (0.0)
+  heard from unseen voices                                       182    74.2   (74.7)
+      one order                                                  178    75.3   (76.4)
+      several orders                                               4    25.0   (0.0)
+  lines with a context, typed                                      n  intents  and places   (the bot today on the bare line: intents, and places)
+  all items                                                      150     92.7        88.0   (45.3, 34.7)
+    the line leans on its context                                103     89.3        82.5   (20.4, 4.9)
+    the line stands by itself                                     47    100.0       100.0   (100.0, 100.0)
+    pairs (one line, two contexts) with both items right          45                 75.6
+  lines with a context (r6, cs) heard from three unseen voices     n  intents  and places   (the bot today on the bare line: intents, and places)
+  all items                                                      299     64.2        52.8   (36.8, 24.1)
+    the line leans on its context                                206     57.3        45.1   (17.5, 3.4)
+    the line stands by itself                                     93     79.6        69.9   (79.6, 69.9)
+    pairs (one line, two contexts) with both items right          89                 27.0
+  the bot wired through the router (r2 small): a line it sends on is rewritten by this decoder, every other line goes to the ensemble as today
+                                                                   n  sent on   exact   (the ensemble alone)
+  this round's blind lines, typed                                150    61.3%    86.7   (34.0)
+    this round's blind lines (r6, cs) heard from an unseen voice   100    59.0%    68.0   (27.0)
+    the same heard from three unseen voices                      300    55.0%    62.3   (26.7)
+  lines with a context, typed (intents and places)               150    60.7%    83.3   (34.7)
+    lines with a context heard from three unseen voices          299    42.5%    48.2   (24.1)
+  held-out single lines                                            n  sent on   near  wrong fam  criterion   (the ensemble alone)
+  typed                                                          260     2.3%   93.1       3.8%       85.4   (87.3)
+  heard from unseen voices                                       184     5.4%   77.7       8.2%       61.4   (69.0)
+  held-out single lines against their reading as lists, wired through the router     n   exact   (the ensemble alone)
+  typed                                                          257    89.5   (89.1)
+      one order                                                  253    90.5   (90.5)
+      several orders                                               4    25.0   (0.0)
+  heard from unseen voices                                       182    74.2   (74.7)
+      one order                                                  178    75.3   (76.4)
+      several orders                                               4    25.0   (0.0)
+
+variant pieces, seed 2: 11672 rows ({'singles': 4523, 'composed': 3000, 'teacher': 870, 'teacher_heard': 1170, 'context': 413}), 1191 s of training, 260 s of answers
+  lines with several orders: the list exact                        n   exact  right count
+  this round's blind lines, typed                                150    90.0         91.3
+      one order                                                   54    92.6         96.3
+      two orders                                                  60    85.0         85.0
+      three orders                                                28    92.9         92.9
+      four orders                                                  8   100.0        100.0
+    this round's blind lines (r6, cs) heard from an unseen voice   100    73.0         84.0
+    the same heard from three unseen voices                      300    66.7         80.0
+      one order                                                  108    76.9         97.2
+      two orders                                                 120    63.3         71.7
+      three orders                                                57    61.4         73.7
+      four orders                                                 15    40.0         46.7
+  the first blind lines (development), typed                     150    83.3         87.3
+      one order                                                   54    88.9         92.6
+      two orders                                                  60    85.0         86.7
+      three orders                                                28    82.1         89.3
+      four orders                                                  8    37.5         50.0
+    the first blind lines (r6, cs) heard from an unseen voice    100    65.0         76.0
+  held-out lines, training patterns                              400    69.8         79.5
+  held-out lines, unseen patterns                                400    66.0         79.2
+  held-out lines heard from unseen voices, unseen patterns       400    35.2         57.0
+  held-out lines joined: the parts written back word for word      n   exact
+  joined                                                         400    71.0
+  unseen                                                         400    49.5
+  heard                                                          400    48.2
+  held-out single lines through the decoder                        n  one piece  unchanged   near  wrong fam  criterion   (the ensemble alone)
+  typed                                                          260       95.8       90.0   90.0       6.9%       76.2   (87.3)
+  heard from unseen voices                                       184       91.3       87.5   72.8      13.6%       45.7   (69.0)
+  typed, an unrelated earlier line in front                      260       95.0       89.2   90.0       7.3%       75.4   (87.3)
+  held-out single lines against their reading as lists, the decoder alone     n   exact   (the ensemble alone)
+  typed                                                          257    88.7   (89.1)
+      one order                                                  253    89.7   (90.5)
+      several orders                                               4    25.0   (0.0)
+  heard from unseen voices                                       182    72.0   (74.7)
+      one order                                                  178    73.0   (76.4)
+      several orders                                               4    25.0   (0.0)
+  lines with a context, typed                                      n  intents  and places   (the bot today on the bare line: intents, and places)
+  all items                                                      150     91.3        86.7   (45.3, 34.7)
+    the line leans on its context                                103     87.4        80.6   (20.4, 4.9)
+    the line stands by itself                                     47    100.0       100.0   (100.0, 100.0)
+    pairs (one line, two contexts) with both items right          45                 73.3
+  lines with a context (r6, cs) heard from three unseen voices     n  intents  and places   (the bot today on the bare line: intents, and places)
+  all items                                                      299     64.9        55.2   (36.8, 24.1)
+    the line leans on its context                                206     58.3        48.5   (17.5, 3.4)
+    the line stands by itself                                     93     79.6        69.9   (79.6, 69.9)
+    pairs (one line, two contexts) with both items right          89                 29.2
+  the bot wired through the router (r2 small): a line it sends on is rewritten by this decoder, every other line goes to the ensemble as today
+                                                                   n  sent on   exact   (the ensemble alone)
+  this round's blind lines, typed                                150    61.3%    86.7   (34.0)
+    this round's blind lines (r6, cs) heard from an unseen voice   100    59.0%    67.0   (27.0)
+    the same heard from three unseen voices                      300    55.0%    61.0   (26.7)
+  lines with a context, typed (intents and places)               150    60.7%    83.3   (34.7)
+    lines with a context heard from three unseen voices          299    42.5%    49.2   (24.1)
+  held-out single lines                                            n  sent on   near  wrong fam  criterion   (the ensemble alone)
+  typed                                                          260     2.3%   92.7       4.2%       84.2   (87.3)
+  heard from unseen voices                                       184     5.4%   77.7       8.2%       61.4   (69.0)
+  held-out single lines against their reading as lists, wired through the router     n   exact   (the ensemble alone)
+  typed                                                          257    89.1   (89.1)
+      one order                                                  253    90.1   (90.5)
+      several orders                                               4    25.0   (0.0)
+  heard from unseen voices                                       182    73.6   (74.7)
+      one order                                                  178    74.7   (76.4)
+      several orders                                               4    25.0   (0.0)
+
+over the seeds (mean, lowest to highest); the ensemble alone has no seed
+  names3: this round's blind lines, typed                                                                    95.6    94.7 ..  96.0   (3 seeds)
+  names3: this round's blind lines, typed / one order                                                        93.2    90.7 ..  94.4   (3 seeds)
+  names3: this round's blind lines, typed / two orders                                                       96.7    95.0 ..  98.3   (3 seeds)
+  names3: this round's blind lines, typed / three orders                                                     96.4    92.9 .. 100.0   (3 seeds)
+  names3: this round's blind lines, typed / four orders                                                     100.0   100.0 .. 100.0   (3 seeds)
+  names3: this round's blind lines (r6, cs) heard from an unseen voice                                       79.3    78.0 ..  82.0   (3 seeds)
+  names3: the same heard from three unseen voices                                                            73.4    71.0 ..  76.0   (3 seeds)
+  names3: the same heard from three unseen voices / one order                                                75.6    73.1 ..  78.7   (3 seeds)
+  names3: the same heard from three unseen voices / two orders                                               75.8    74.2 ..  79.2   (3 seeds)
+  names3: the same heard from three unseen voices / three orders                                             69.0    64.9 ..  71.9   (3 seeds)
+  names3: the same heard from three unseen voices / four orders                                              55.6    53.3 ..  60.0   (3 seeds)
+  names3: the first blind lines (development), typed                                                         91.3    89.3 ..  92.7   (3 seeds)
+  names3: the first blind lines (development), typed / one order                                             90.7    85.2 ..  94.4   (3 seeds)
+  names3: the first blind lines (development), typed / two orders                                            95.6    93.3 ..  98.3   (3 seeds)
+  names3: the first blind lines (development), typed / three orders                                          86.9    85.7 ..  89.3   (3 seeds)
+  names3: the first blind lines (development), typed / four orders                                           79.2    62.5 ..  87.5   (3 seeds)
+  names3: the first blind lines (r6, cs) heard from an unseen voice                                          69.7    69.0 ..  71.0   (3 seeds)
+  names3: held-out lines, training patterns                                                                  71.2    66.8 ..  74.5   (3 seeds)
+  names3: held-out lines, unseen patterns                                                                    69.8    68.0 ..  70.8   (3 seeds)
+  names3: held-out lines heard from unseen voices, unseen patterns                                           41.2    38.8 ..  44.0   (3 seeds)
+  names3: old single lines as lists, the decoder alone, typed                                                88.3    87.2 ..  89.1   (3 seeds)
+  the ensemble alone: old single lines as lists, typed                                                       89.1
+  names3: old single lines as lists, the decoder alone, heard from unseen voices                             72.9    72.0 ..  73.6   (3 seeds)
+  the ensemble alone: old single lines as lists, heard from unseen voices                                    74.7
+  names: this round's blind lines, typed                                                                     95.8    95.3 ..  96.0   (3 seeds)
+  names: this round's blind lines, typed / one order                                                         93.8    90.7 ..  96.3   (3 seeds)
+  names: this round's blind lines, typed / two orders                                                        97.2    95.0 .. 100.0   (3 seeds)
+  names: this round's blind lines, typed / three orders                                                      96.4    96.4 ..  96.4   (3 seeds)
+  names: this round's blind lines, typed / four orders                                                       95.8    87.5 .. 100.0   (3 seeds)
+  names: this round's blind lines (r6, cs) heard from an unseen voice                                        76.7    74.0 ..  78.0   (3 seeds)
+  names: the same heard from three unseen voices                                                             71.1    70.0 ..  71.7   (3 seeds)
+  names: the same heard from three unseen voices / one order                                                 76.2    74.1 ..  77.8   (3 seeds)
+  names: the same heard from three unseen voices / two orders                                                73.3    70.8 ..  75.8   (3 seeds)
+  names: the same heard from three unseen voices / three orders                                              63.7    61.4 ..  66.7   (3 seeds)
+  names: the same heard from three unseen voices / four orders                                               44.4    40.0 ..  46.7   (3 seeds)
+  names: the first blind lines (development), typed                                                          92.7    92.0 ..  93.3   (3 seeds)
+  names: the first blind lines (development), typed / one order                                              90.7    90.7 ..  90.7   (3 seeds)
+  names: the first blind lines (development), typed / two orders                                             96.7    95.0 ..  98.3   (3 seeds)
+  names: the first blind lines (development), typed / three orders                                           91.7    89.3 ..  96.4   (3 seeds)
+  names: the first blind lines (development), typed / four orders                                            79.2    75.0 ..  87.5   (3 seeds)
+  names: the first blind lines (r6, cs) heard from an unseen voice                                           66.7    64.0 ..  68.0   (3 seeds)
+  names: held-out lines, training patterns                                                                   69.8    68.0 ..  72.0   (3 seeds)
+  names: held-out lines, unseen patterns                                                                     69.2    67.5 ..  70.5   (3 seeds)
+  names: held-out lines heard from unseen voices, unseen patterns                                            41.4    39.8 ..  42.5   (3 seeds)
+  names: old single lines as lists, the decoder alone, typed                                                 88.1    87.2 ..  88.7   (3 seeds)
+  names: old single lines as lists, the decoder alone, heard from unseen voices                              72.2    70.9 ..  73.6   (3 seeds)
+  pieces3: this round's blind lines, typed                                                                   92.0    90.7 ..  92.7   (3 seeds)
+  pieces3: this round's blind lines, typed / one order                                                       93.8    92.6 ..  94.4   (3 seeds)
+  pieces3: this round's blind lines, typed / two orders                                                      90.0    86.7 ..  93.3   (3 seeds)
+  pieces3: this round's blind lines, typed / three orders                                                    90.5    89.3 ..  92.9   (3 seeds)
+  pieces3: this round's blind lines, typed / four orders                                                    100.0   100.0 .. 100.0   (3 seeds)
+  pieces3: this round's blind lines (r6, cs) heard from an unseen voice                                      76.3    73.0 ..  78.0   (3 seeds)
+  pieces3: the same heard from three unseen voices                                                           70.3    69.3 ..  72.0   (3 seeds)
+  pieces3: the same heard from three unseen voices / one order                                               78.1    76.9 ..  80.6   (3 seeds)
+  pieces3: the same heard from three unseen voices / two orders                                              65.8    64.2 ..  68.3   (3 seeds)
+  pieces3: the same heard from three unseen voices / three orders                                            69.0    68.4 ..  70.2   (3 seeds)
+  pieces3: the same heard from three unseen voices / four orders                                             55.6    53.3 ..  60.0   (3 seeds)
+  pieces3: the first blind lines (development), typed                                                        82.7    82.0 ..  83.3   (3 seeds)
+  pieces3: the first blind lines (development), typed / one order                                            91.4    90.7 ..  92.6   (3 seeds)
+  pieces3: the first blind lines (development), typed / two orders                                           81.1    80.0 ..  81.7   (3 seeds)
+  pieces3: the first blind lines (development), typed / three orders                                         82.1    82.1 ..  82.1   (3 seeds)
+  pieces3: the first blind lines (development), typed / four orders                                          37.5    37.5 ..  37.5   (3 seeds)
+  pieces3: the first blind lines (r6, cs) heard from an unseen voice                                         64.7    64.0 ..  65.0   (3 seeds)
+  pieces3: held-out lines, training patterns                                                                 69.8    68.8 ..  70.5   (3 seeds)
+  pieces3: held-out lines, unseen patterns                                                                   68.0    66.8 ..  69.5   (3 seeds)
+  pieces3: held-out lines heard from unseen voices, unseen patterns                                          37.8    36.2 ..  38.5   (3 seeds)
+  pieces3: old single lines through the decoder, criterion, typed                                            76.3    73.8 ..  80.0   (3 seeds)
+  pieces3: old single lines written back unchanged, typed                                                    89.9    88.5 ..  90.8   (3 seeds)
+  the ensemble alone: old single lines, criterion, typed                                                     87.3
+  pieces3: old single lines through the decoder, criterion, heard from unseen voices                         40.6    34.8 ..  45.7   (3 seeds)
+  pieces3: old single lines written back unchanged, heard from unseen voices                                 81.5    80.4 ..  82.6   (3 seeds)
+  the ensemble alone: old single lines, criterion, heard from unseen voices                                  69.0
+  pieces3: old single lines through the decoder, criterion, typed, an unrelated earlier line in front        74.2    72.3 ..  77.3   (3 seeds)
+  pieces3: old single lines written back unchanged, typed, an unrelated earlier line in front                88.1    86.5 ..  89.2   (3 seeds)
+  pieces3: old single lines as lists, the decoder alone, typed                                               88.2    87.5 ..  88.7   (3 seeds)
+  pieces3: old single lines as lists, the decoder alone, heard from unseen voices                            71.8    70.9 ..  72.5   (3 seeds)
+  pieces3: lines with a context, typed: intents and places / all items                                       89.6    88.7 ..  90.0   (3 seeds)
+  the ensemble alone: lines with a context, typed: intents and places / all items                            34.7
+  pieces3: lines with a context, typed: intents and places / the line leans on its context                   85.1    83.5 ..  86.4   (3 seeds)
+  the ensemble alone: lines with a context, typed: intents and places / the line leans on its context         4.9
+  pieces3: lines with a context, typed: intents and places / the line stands by itself                       99.3    97.9 .. 100.0   (3 seeds)
+  the ensemble alone: lines with a context, typed: intents and places / the line stands by itself           100.0
+  pieces3: lines with a context, typed: pairs with both items right                                          81.5    80.0 ..  84.4   (3 seeds)
+  pieces3: lines with a context (r6, cs) heard from three unseen voices: intents and places / all items      65.3    64.2 ..  67.2   (3 seeds)
+  the ensemble alone: lines with a context (r6, cs) heard from three unseen voices: intents and places / all items   24.1
+  pieces3: lines with a context (r6, cs) heard from three unseen voices: intents and places / the line leans on its context   62.3    61.2 ..  63.6   (3 seeds)
+  the ensemble alone: lines with a context (r6, cs) heard from three unseen voices: intents and places / the line leans on its context    3.4
+  pieces3: lines with a context (r6, cs) heard from three unseen voices: intents and places / the line stands by itself   72.0    68.8 ..  75.3   (3 seeds)
+  the ensemble alone: lines with a context (r6, cs) heard from three unseen voices: intents and places / the line stands by itself   69.9
+  pieces3: lines with a context (r6, cs) heard from three unseen voices: pairs with both items right         45.3    43.8 ..  47.2   (3 seeds)
+  pieces3: wired through the router / this round's blind lines, typed                                        88.9    88.0 ..  89.3   (3 seeds)
+  the ensemble alone: this round's blind lines, typed                                                        34.0
+  pieces3: wired through the router / this round's blind lines (r6, cs) heard from an unseen voice           71.0    68.0 ..  73.0   (3 seeds)
+  the ensemble alone: this round's blind lines (r6, cs) heard from an unseen voice                           27.0
+  pieces3: wired through the router / the same heard from three unseen voices                                65.2    63.7 ..  67.0   (3 seeds)
+  the ensemble alone: the same heard from three unseen voices                                                26.7
+  pieces3: wired through the router / lines with a context, typed (intents and places)                       87.1    86.0 ..  88.0   (3 seeds)
+  the ensemble alone: lines with a context, typed (intents and places)                                       34.7
+  pieces3: wired through the router / lines with a context heard from three unseen voices                    60.6    60.2 ..  61.5   (3 seeds)
+  the ensemble alone: lines with a context heard from three unseen voices                                    24.1
+  pieces3: wired through the router / old single lines, criterion, typed                                     83.6    82.7 ..  84.2   (3 seeds)
+  pieces3: wired through the router / old single lines, criterion, heard from unseen voices                  58.7    56.5 ..  61.4   (3 seeds)
+  pieces3: old single lines as lists, wired through the router, typed                                        89.5    89.1 ..  89.9   (3 seeds)
+  pieces3: old single lines as lists, wired through the router, heard from unseen voices                     74.0    73.6 ..  74.2   (3 seeds)
+  pieces3: the same, the earlier lines as the player said them: intents and places / all items               71.9    71.2 ..  72.6   (2 seeds)
+  the ensemble alone: the same, the earlier lines as the player said them: intents and places / all items    24.1
+  pieces3: the same, the earlier lines as the player said them: intents and places / the line leans on its context   71.8    71.4 ..  72.3   (2 seeds)
+  the ensemble alone: the same, the earlier lines as the player said them: intents and places / the line leans on its context    3.4
+  pieces3: the same, the earlier lines as the player said them: intents and places / the line stands by itself   72.0    68.8 ..  75.3   (2 seeds)
+  the ensemble alone: the same, the earlier lines as the player said them: intents and places / the line stands by itself   69.9
+  pieces3: the same, the earlier lines as the player said them: pairs with both items right                  56.7    56.2 ..  57.3   (2 seeds)
+  pieces: this round's blind lines, typed                                                                    89.8    87.3 ..  92.0   (3 seeds)
+  pieces: this round's blind lines, typed / one order                                                        92.0    90.7 ..  92.6   (3 seeds)
+  pieces: this round's blind lines, typed / two orders                                                       86.7    83.3 ..  91.7   (3 seeds)
+  pieces: this round's blind lines, typed / three orders                                                     89.3    85.7 ..  92.9   (3 seeds)
+  pieces: this round's blind lines, typed / four orders                                                     100.0   100.0 .. 100.0   (3 seeds)
+  pieces: this round's blind lines (r6, cs) heard from an unseen voice                                       74.0    72.0 ..  77.0   (3 seeds)
+  pieces: the same heard from three unseen voices                                                            67.1    66.7 ..  68.0   (3 seeds)
+  pieces: the same heard from three unseen voices / one order                                                76.5    75.9 ..  76.9   (3 seeds)
+  pieces: the same heard from three unseen voices / two orders                                               63.6    61.7 ..  65.8   (3 seeds)
+  pieces: the same heard from three unseen voices / three orders                                             63.7    61.4 ..  66.7   (3 seeds)
+  pieces: the same heard from three unseen voices / four orders                                              40.0    33.3 ..  46.7   (3 seeds)
+  pieces: the first blind lines (development), typed                                                         84.0    82.7 ..  86.0   (3 seeds)
+  pieces: the first blind lines (development), typed / one order                                             90.1    88.9 ..  92.6   (3 seeds)
+  pieces: the first blind lines (development), typed / two orders                                            84.4    83.3 ..  85.0   (3 seeds)
+  pieces: the first blind lines (development), typed / three orders                                          85.7    82.1 ..  89.3   (3 seeds)
+  pieces: the first blind lines (development), typed / four orders                                           33.3    25.0 ..  37.5   (3 seeds)
+  pieces: the first blind lines (r6, cs) heard from an unseen voice                                          65.3    64.0 ..  67.0   (3 seeds)
+  pieces: held-out lines, training patterns                                                                  70.3    69.2 ..  72.0   (3 seeds)
+  pieces: held-out lines, unseen patterns                                                                    66.2    64.0 ..  68.8   (3 seeds)
+  pieces: held-out lines heard from unseen voices, unseen patterns                                           36.3    35.2 ..  37.0   (3 seeds)
+  pieces: old single lines through the decoder, criterion, typed                                             77.1    76.2 ..  78.5   (3 seeds)
+  pieces: old single lines written back unchanged, typed                                                     90.5    90.0 ..  90.8   (3 seeds)
+  pieces: old single lines through the decoder, criterion, heard from unseen voices                          46.8    45.7 ..  48.9   (3 seeds)
+  pieces: old single lines written back unchanged, heard from unseen voices                                  87.7    85.9 ..  89.7   (3 seeds)
+  pieces: old single lines through the decoder, criterion, typed, an unrelated earlier line in front         73.5    71.9 ..  75.4   (3 seeds)
+  pieces: old single lines written back unchanged, typed, an unrelated earlier line in front                 89.1    88.5 ..  89.6   (3 seeds)
+  pieces: old single lines as lists, the decoder alone, typed                                                89.2    88.7 ..  89.9   (3 seeds)
+  pieces: old single lines as lists, the decoder alone, heard from unseen voices                             72.9    72.0 ..  74.2   (3 seeds)
+  pieces: lines with a context, typed: intents and places / all items                                        87.6    86.7 ..  88.0   (3 seeds)
+  pieces: lines with a context, typed: intents and places / the line leans on its context                    81.9    80.6 ..  82.5   (3 seeds)
+  pieces: lines with a context, typed: intents and places / the line stands by itself                       100.0   100.0 .. 100.0   (3 seeds)
+  pieces: lines with a context, typed: pairs with both items right                                           76.3    73.3 ..  80.0   (3 seeds)
+  pieces: lines with a context (r6, cs) heard from three unseen voices: intents and places / all items       54.4    52.8 ..  55.2   (3 seeds)
+  pieces: lines with a context (r6, cs) heard from three unseen voices: intents and places / the line leans on its context   47.4    45.1 ..  48.5   (3 seeds)
+  pieces: lines with a context (r6, cs) heard from three unseen voices: intents and places / the line stands by itself   69.9    69.9 ..  69.9   (3 seeds)
+  pieces: lines with a context (r6, cs) heard from three unseen voices: pairs with both items right          27.7    27.0 ..  29.2   (3 seeds)
+  pieces: wired through the router / this round's blind lines, typed                                         87.3    86.7 ..  88.7   (3 seeds)
+  pieces: wired through the router / this round's blind lines (r6, cs) heard from an unseen voice            68.7    67.0 ..  71.0   (3 seeds)
+  pieces: wired through the router / the same heard from three unseen voices                                 61.9    61.0 ..  62.3   (3 seeds)
+  pieces: wired through the router / lines with a context, typed (intents and places)                        83.1    82.7 ..  83.3   (3 seeds)
+  pieces: wired through the router / lines with a context heard from three unseen voices                     49.3    48.2 ..  50.5   (3 seeds)
+  pieces: wired through the router / old single lines, criterion, typed                                      85.3    84.2 ..  86.2   (3 seeds)
+  pieces: wired through the router / old single lines, criterion, heard from unseen voices                   60.9    59.8 ..  61.4   (3 seeds)
+  pieces: old single lines as lists, wired through the router, typed                                         89.4    89.1 ..  89.5   (3 seeds)
+  pieces: old single lines as lists, wired through the router, heard from unseen voices                      73.8    73.6 ..  74.2   (3 seeds)

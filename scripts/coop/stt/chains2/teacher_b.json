@@ -1,0 +1,3662 @@
+[
+ {
+  "id": "t2b_r6_000",
+  "voice": "r6",
+  "text": "Kill the last one, then disable the defuser.",
+  "orders": [
+   "ATTACK",
+   "DEFUSE"
+  ],
+  "pieces": [
+   "Kill the last one.",
+   "Disable the defuser."
+  ]
+ },
+ {
+  "id": "t2b_r6_001",
+  "voice": "r6",
+  "text": "Engage them, then pull back to the white stairs.",
+  "orders": [
+   "ATTACK",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "Engage them.",
+   "Pull back to the white stairs."
+  ]
+ },
+ {
+  "id": "t2b_r6_002",
+  "voice": "r6",
+  "text": "Once I'm set on the stairs I'll say now, and then you open that door.",
+  "orders": [
+   "OPEN"
+  ],
+  "pieces": [
+   "Open that door."
+  ]
+ },
+ {
+  "id": "t2b_r6_003",
+  "voice": "r6",
+  "text": "Plant the defuser and then get behind the sofa.",
+  "orders": [
+   "PLANT",
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "Plant the defuser.",
+   "Get behind the sofa."
+  ]
+ },
+ {
+  "id": "t2b_r6_004",
+  "voice": "r6",
+  "text": "No, not the blue stairs. Smoke the red ones and move up to the top floor.",
+  "orders": [
+   "SMOKE",
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "Smoke the red stairs.",
+   "Move up to the top floor."
+  ]
+ },
+ {
+  "id": "t2b_r6_005",
+  "voice": "r6",
+  "text": "Stop shooting, come back here, and cover me while I plant.",
+  "orders": [
+   "HOLD_FIRE",
+   "COME_BACK",
+   "COVER_ME"
+  ],
+  "pieces": [
+   "Stop shooting.",
+   "Come back here.",
+   "Cover me."
+  ]
+ },
+ {
+  "id": "t2b_r6_006",
+  "voice": "r6",
+  "text": "On my count of three, blow the hatch.",
+  "orders": [
+   "BREACH"
+  ],
+  "pieces": [
+   "Blow the hatch."
+  ]
+ },
+ {
+  "id": "t2b_r6_007",
+  "voice": "r6",
+  "text": "Check that room properly, make sure nobody is hiding in the corners.",
+  "orders": [
+   "CHECK"
+  ],
+  "pieces": [
+   "Check that room properly, make sure nobody is hiding in the corners."
+  ]
+ },
+ {
+  "id": "t2b_r6_008",
+  "voice": "r6",
+  "text": "After I throw my flash, vault the window and frag the back corner.",
+  "orders": [
+   "VAULT_WINDOW",
+   "FRAG"
+  ],
+  "pieces": [
+   "Vault the window.",
+   "Frag the back corner."
+  ]
+ },
+ {
+  "id": "t2b_r6_009",
+  "voice": "r6",
+  "text": "Two on site. Frag it, clear it, then plant the defuser.",
+  "orders": [
+   "FRAG",
+   "ENTRY",
+   "PLANT"
+  ],
+  "pieces": [
+   "Frag the site.",
+   "Clear the site.",
+   "Plant the defuser."
+  ]
+ },
+ {
+  "id": "t2b_r6_010",
+  "voice": "r6",
+  "text": "Don't throw yet. When I call it, frag the west window.",
+  "orders": [
+   "FRAG"
+  ],
+  "pieces": [
+   "Frag the west window."
+  ]
+ },
+ {
+  "id": "t2b_r6_011",
+  "voice": "r6",
+  "text": "I'm going up the white stairs. Watch the corridor, then follow me up.",
+  "orders": [
+   "HOLD_ANGLE",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "Watch the corridor.",
+   "Follow me up."
+  ]
+ },
+ {
+  "id": "t2b_r6_012",
+  "voice": "r6",
+  "text": "Wait for my go, then breach the hatch and drop in.",
+  "orders": [
+   "BREACH",
+   "JUMP"
+  ],
+  "pieces": [
+   "Breach the hatch.",
+   "Drop in through the hatch."
+  ]
+ },
+ {
+  "id": "t2b_r6_013",
+  "voice": "r6",
+  "text": "I got dropped by the red stairs. Smoke them, then come pick me up.",
+  "orders": [
+   "SMOKE",
+   "REVIVE_ME"
+  ],
+  "pieces": [
+   "Smoke the red stairs.",
+   "Come pick me up."
+  ]
+ },
+ {
+  "id": "t2b_r6_014",
+  "voice": "r6",
+  "text": "Vault out the south window and regroup.",
+  "orders": [
+   "VAULT_WINDOW",
+   "COME_BACK"
+  ],
+  "pieces": [
+   "Vault out the south window.",
+   "Regroup."
+  ]
+ },
+ {
+  "id": "t2b_r6_015",
+  "voice": "r6",
+  "text": "Jump over the sofa and hold the brown stairs.",
+  "orders": [
+   "JUMP",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Jump over the sofa.",
+   "Hold the brown stairs."
+  ]
+ },
+ {
+  "id": "t2b_r6_016",
+  "voice": "r6",
+  "text": "Frag the room. Wait, scratch that, the hostage is in there. Drone it.",
+  "orders": [
+   "DRONE"
+  ],
+  "pieces": [
+   "Drone the room."
+  ]
+ },
+ {
+  "id": "t2b_r6_017",
+  "voice": "r6",
+  "text": "I'm getting shot from the east window and I can't move. Help me out here.",
+  "orders": [
+   "HELP"
+  ],
+  "pieces": [
+   "Help me out here."
+  ]
+ },
+ {
+  "id": "t2b_r6_018",
+  "voice": "r6",
+  "text": "Not the window, I said the door. Watch the door.",
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Watch the door."
+  ]
+ },
+ {
+  "id": "t2b_r6_019",
+  "voice": "r6",
+  "text": "Smoke the brown stairs, wait for my call, and then check the basement.",
+  "orders": [
+   "SMOKE",
+   "CHECK"
+  ],
+  "pieces": [
+   "Smoke the brown stairs.",
+   "Check the basement."
+  ]
+ },
+ {
+  "id": "t2b_r6_020",
+  "voice": "r6",
+  "text": "Breach the east wall, then the hatch.",
+  "orders": [
+   "BREACH",
+   "BREACH"
+  ],
+  "pieces": [
+   "Breach the east wall.",
+   "Breach the hatch."
+  ]
+ },
+ {
+  "id": "t2b_r6_021",
+  "voice": "r6",
+  "text": "Wait, hold on. No, never mind, it's clear. Go, execute.",
+  "orders": [
+   "GO_NOW"
+  ],
+  "pieces": [
+   "Go, execute."
+  ]
+ },
+ {
+  "id": "t2b_r6_022",
+  "voice": "r6",
+  "text": "That's the last one, he's in the basement. Flash the stairs and take him out.",
+  "orders": [
+   "FLASH",
+   "ATTACK"
+  ],
+  "pieces": [
+   "Flash the stairs.",
+   "Take him out."
+  ]
+ },
+ {
+  "id": "t2b_r6_023",
+  "voice": "r6",
+  "text": "Not yet, not yet. On my go, open fire on the door.",
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "Open fire on the door."
+  ]
+ },
+ {
+  "id": "t2b_r6_024",
+  "voice": "r6",
+  "text": "They know we're here. Stop shooting and get behind the table.",
+  "orders": [
+   "HOLD_FIRE",
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "Stop shooting.",
+   "Get behind the table."
+  ]
+ },
+ {
+  "id": "t2b_r6_025",
+  "voice": "r6",
+  "text": "Push in and clear the room, check your corners.",
+  "orders": [
+   "ENTRY"
+  ],
+  "pieces": [
+   "Push in and clear the room, check your corners."
+  ]
+ },
+ {
+  "id": "t2b_r6_026",
+  "voice": "r6",
+  "text": "Check the basement and then come back.",
+  "orders": [
+   "CHECK",
+   "COME_BACK"
+  ],
+  "pieces": [
+   "Check the basement.",
+   "Come back."
+  ]
+ },
+ {
+  "id": "t2b_r6_027",
+  "voice": "r6",
+  "text": "I'm breaching the hatch and dropping into the basement, wish me luck.",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "I'm breaching the hatch and dropping into the basement, wish me luck."
+  ]
+ },
+ {
+  "id": "t2b_r6_028",
+  "voice": "r6",
+  "text": "They're rotating off site, this is our window. Go, go, go.",
+  "orders": [
+   "GO_NOW"
+  ],
+  "pieces": [
+   "Go, go, go."
+  ]
+ },
+ {
+  "id": "t2b_r6_029",
+  "voice": "r6",
+  "text": "Come back here and then cover me.",
+  "orders": [
+   "COME_BACK",
+   "COVER_ME"
+  ],
+  "pieces": [
+   "Come back here.",
+   "Cover me."
+  ]
+ },
+ {
+  "id": "t2b_r6_030",
+  "voice": "r6",
+  "text": "Hold up, let me drone it out first and then I'll call it.",
+  "orders": [
+   "WAIT"
+  ],
+  "pieces": [
+   "Hold up."
+  ]
+ },
+ {
+  "id": "t2b_r6_031",
+  "voice": "r6",
+  "text": "How many drones do you have left, and where did the first one go?",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "How many drones do you have left, and where did the first one go?"
+  ]
+ },
+ {
+  "id": "t2b_r6_032",
+  "voice": "r6",
+  "text": "Stand up and open fire on the window.",
+  "orders": [
+   "STAND_UP",
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "Stand up.",
+   "Open fire on the window."
+  ]
+ },
+ {
+  "id": "t2b_r6_033",
+  "voice": "r6",
+  "text": "Rappel to the west window, then frag the room.",
+  "orders": [
+   "RAPPEL",
+   "FRAG"
+  ],
+  "pieces": [
+   "Rappel to the west window.",
+   "Frag the room."
+  ]
+ },
+ {
+  "id": "t2b_r6_034",
+  "voice": "r6",
+  "text": "I'll pull the barricade off myself, you throw the flash through the door.",
+  "orders": [
+   "FLASH"
+  ],
+  "pieces": [
+   "Throw the flash through the door."
+  ]
+ },
+ {
+  "id": "t2b_r6_035",
+  "voice": "r6",
+  "text": "Three of them roaming the top floor. Drone it, and then frag the stairs.",
+  "orders": [
+   "DRONE",
+   "FRAG"
+  ],
+  "pieces": [
+   "Drone the top floor.",
+   "Frag the stairs."
+  ]
+ },
+ {
+  "id": "t2b_r6_036",
+  "voice": "r6",
+  "text": "I'm about to peek him from the window, don't shoot.",
+  "orders": [
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "Don't shoot."
+  ]
+ },
+ {
+  "id": "t2b_r6_037",
+  "voice": "r6",
+  "text": "I'm nearly out of ammo. Cover me while I reload, then follow me.",
+  "orders": [
+   "COVER_ME",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "Cover me.",
+   "Follow me."
+  ]
+ },
+ {
+  "id": "t2b_r6_038",
+  "voice": "r6",
+  "text": "I'll flash and swing off it, you just hold the north door.",
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Hold the north door."
+  ]
+ },
+ {
+  "id": "t2b_r6_039",
+  "voice": "r6",
+  "text": "Cover me, I'm getting the defuser down and then I'll back off.",
+  "orders": [
+   "COVER_ME"
+  ],
+  "pieces": [
+   "Cover me."
+  ]
+ },
+ {
+  "id": "t2b_r6_040",
+  "voice": "r6",
+  "text": "Go to the top of the blue stairs and watch the corridor.",
+  "orders": [
+   "MOVE_TO",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Go to the top of the blue stairs.",
+   "Watch the corridor."
+  ]
+ },
+ {
+  "id": "t2b_r6_041",
+  "voice": "r6",
+  "text": "Get low, and then look at the east window.",
+  "orders": [
+   "CROUCH",
+   "LOOK_AT"
+  ],
+  "pieces": [
+   "Get low.",
+   "Look at the east window."
+  ]
+ },
+ {
+  "id": "t2b_r6_042",
+  "voice": "r6",
+  "text": "Fall back, get behind the sofa, and hold the main door.",
+  "orders": [
+   "FALL_BACK",
+   "TAKE_COVER",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Fall back.",
+   "Get behind the sofa.",
+   "Hold the main door."
+  ]
+ },
+ {
+  "id": "t2b_r6_043",
+  "voice": "r6",
+  "text": "Before you vault the window, drone the room.",
+  "orders": [
+   "DRONE",
+   "VAULT_WINDOW"
+  ],
+  "pieces": [
+   "Drone the room.",
+   "Vault the window."
+  ]
+ },
+ {
+  "id": "t2b_r6_044",
+  "voice": "r6",
+  "text": "I just heard glass break behind you, turn around.",
+  "orders": [
+   "LOOK_AT"
+  ],
+  "pieces": [
+   "Turn around."
+  ]
+ },
+ {
+  "id": "t2b_r6_045",
+  "voice": "r6",
+  "text": "He's holding the window. Suppress it, and once I'm across, fall back.",
+  "orders": [
+   "SUPPRESS",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "Suppress the window.",
+   "Fall back."
+  ]
+ },
+ {
+  "id": "t2b_r6_046",
+  "voice": "r6",
+  "text": "I'll open the door on three. You flash it, then clear the room.",
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "pieces": [
+   "Flash the door.",
+   "Clear the room."
+  ]
+ },
+ {
+  "id": "t2b_r6_047",
+  "voice": "r6",
+  "text": "When you hear my charge go off, flash the room.",
+  "orders": [
+   "FLASH"
+  ],
+  "pieces": [
+   "Flash the room."
+  ]
+ },
+ {
+  "id": "t2b_r6_048",
+  "voice": "r6",
+  "text": "On my go, open the door, throw a frag, and suppress the corridor.",
+  "orders": [
+   "OPEN",
+   "FRAG",
+   "SUPPRESS"
+  ],
+  "pieces": [
+   "Open the door.",
+   "Throw a frag through the door.",
+   "Suppress the corridor."
+  ]
+ },
+ {
+  "id": "t2b_r6_049",
+  "voice": "r6",
+  "text": "No charge on that door, it's too loud. Just open it by hand.",
+  "orders": [
+   "OPEN"
+  ],
+  "pieces": [
+   "Just open that door by hand."
+  ]
+ },
+ {
+  "id": "t2b_r6_050",
+  "voice": "r6",
+  "text": "Reinforce the wall behind us, and put your barbed wire on the stairs.",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "Reinforce the wall behind us, and put your barbed wire on the stairs."
+  ]
+ },
+ {
+  "id": "t2b_r6_051",
+  "voice": "r6",
+  "text": "Defuser's down by the table, twenty seconds left, go disable it.",
+  "orders": [
+   "DEFUSE"
+  ],
+  "pieces": [
+   "Go disable the defuser."
+  ]
+ },
+ {
+  "id": "t2b_r6_052",
+  "voice": "r6",
+  "text": "Smoke the door, flash the room, then push in.",
+  "orders": [
+   "SMOKE",
+   "FLASH",
+   "ENTRY"
+  ],
+  "pieces": [
+   "Smoke the door.",
+   "Flash the room.",
+   "Push into the room."
+  ]
+ },
+ {
+  "id": "t2b_r6_053",
+  "voice": "r6",
+  "text": "Breach the east wall after you smoke it.",
+  "orders": [
+   "SMOKE",
+   "BREACH"
+  ],
+  "pieces": [
+   "Smoke the east wall.",
+   "Breach the east wall."
+  ]
+ },
+ {
+  "id": "t2b_r6_054",
+  "voice": "r6",
+  "text": "I'm on the defuser. Check the top floor, come back down, and take the other angle.",
+  "orders": [
+   "CHECK",
+   "COME_BACK",
+   "HOLD_OTHER_ANGLE"
+  ],
+  "pieces": [
+   "Check the top floor.",
+   "Come back down.",
+   "Take the other angle."
+  ]
+ },
+ {
+  "id": "t2b_r6_055",
+  "voice": "r6",
+  "text": "Disable the defuser once you've flashed the site.",
+  "orders": [
+   "FLASH",
+   "DEFUSE"
+  ],
+  "pieces": [
+   "Flash the site.",
+   "Disable the defuser."
+  ]
+ },
+ {
+  "id": "t2b_r6_056",
+  "voice": "r6",
+  "text": "Breach the wall. Actually, no, don't, leave it alone.",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "Breach the wall. Actually, no, don't, leave it alone."
+  ]
+ },
+ {
+  "id": "t2b_r6_057",
+  "voice": "r6",
+  "text": "While I rappel the south window and get an angle, you push main and clear.",
+  "orders": [
+   "ENTRY"
+  ],
+  "pieces": [
+   "Push main and clear."
+  ]
+ },
+ {
+  "id": "t2b_r6_058",
+  "voice": "r6",
+  "text": "Lie down flat right there and stay on your belly.",
+  "orders": [
+   "PRONE"
+  ],
+  "pieces": [
+   "Lie down flat right there and stay on your belly."
+  ]
+ },
+ {
+  "id": "t2b_r6_059",
+  "voice": "r6",
+  "text": "Drone the basement, then breach the hatch and drop down.",
+  "orders": [
+   "DRONE",
+   "BREACH",
+   "JUMP"
+  ],
+  "pieces": [
+   "Drone the basement.",
+   "Breach the hatch.",
+   "Drop down through the hatch."
+  ]
+ },
+ {
+  "id": "t2b_r6_060",
+  "voice": "r6",
+  "text": "I've got the red stairs, you take the other side.",
+  "orders": [
+   "HOLD_OTHER_ANGLE"
+  ],
+  "pieces": [
+   "You take the other side."
+  ]
+ },
+ {
+  "id": "t2b_r6_061",
+  "voice": "r6",
+  "text": "I'll drone it myself. You open the east door, then hold that angle.",
+  "orders": [
+   "OPEN",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Open the east door.",
+   "Hold the angle on the east door."
+  ]
+ },
+ {
+  "id": "t2b_r6_062",
+  "voice": "r6",
+  "text": "Take cover behind the sofa, then suppress the door.",
+  "orders": [
+   "TAKE_COVER",
+   "SUPPRESS"
+  ],
+  "pieces": [
+   "Take cover behind the sofa.",
+   "Suppress the door."
+  ]
+ },
+ {
+  "id": "t2b_r6_063",
+  "voice": "r6",
+  "text": "I'm heading up to the roof to set my rappel, come with me.",
+  "orders": [
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "Come with me."
+  ]
+ },
+ {
+  "id": "t2b_r6_064",
+  "voice": "r6",
+  "text": "Reloading, then I'm moving up to the table. Suppress them.",
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pieces": [
+   "Suppress them."
+  ]
+ },
+ {
+  "id": "t2b_r6_065",
+  "voice": "r6",
+  "text": "I'm planting. Flash the door, then cover me.",
+  "orders": [
+   "FLASH",
+   "COVER_ME"
+  ],
+  "pieces": [
+   "Flash the door.",
+   "Cover me."
+  ]
+ },
+ {
+  "id": "t2b_r6_066",
+  "voice": "r6",
+  "text": "Look at me, then go where I pinged.",
+  "orders": [
+   "LOOK_AT_ME",
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "Look at me.",
+   "Go where I pinged."
+  ]
+ },
+ {
+  "id": "t2b_r6_067",
+  "voice": "r6",
+  "text": "I'm going prone right here, you too.",
+  "orders": [
+   "PRONE"
+  ],
+  "pieces": [
+   "Go prone right here."
+  ]
+ },
+ {
+  "id": "t2b_r6_068",
+  "voice": "r6",
+  "text": "As soon as my smoke pops, move to the yellow stairs.",
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "Move to the yellow stairs."
+  ]
+ },
+ {
+  "id": "t2b_r6_069",
+  "voice": "r6",
+  "text": "Nice flash, that blinded both of them. Okay, come back here.",
+  "orders": [
+   "COME_BACK"
+  ],
+  "pieces": [
+   "Come back here."
+  ]
+ },
+ {
+  "id": "t2b_r6_070",
+  "voice": "r6",
+  "text": "Give it a second. When I ping the window, rappel down to it.",
+  "orders": [
+   "RAPPEL"
+  ],
+  "pieces": [
+   "Rappel down to the window."
+  ]
+ },
+ {
+  "id": "t2b_r6_071",
+  "voice": "r6",
+  "text": "Crouch down and stay low, right where you are.",
+  "orders": [
+   "CROUCH"
+  ],
+  "pieces": [
+   "Crouch down and stay low, right where you are."
+  ]
+ },
+ {
+  "id": "t2b_r6_072",
+  "voice": "r6",
+  "text": "Put the charge on the east wall and blow it.",
+  "orders": [
+   "BREACH"
+  ],
+  "pieces": [
+   "Put the charge on the east wall and blow it."
+  ]
+ },
+ {
+  "id": "t2b_r6_073",
+  "voice": "r6",
+  "text": "He's behind the sofa and he's one HP, frag him.",
+  "orders": [
+   "FRAG"
+  ],
+  "pieces": [
+   "Frag him behind the sofa."
+  ]
+ },
+ {
+  "id": "t2b_r6_074",
+  "voice": "r6",
+  "text": "Last roamer's upstairs and he's weak, take him out.",
+  "orders": [
+   "ATTACK"
+  ],
+  "pieces": [
+   "Take him out."
+  ]
+ },
+ {
+  "id": "t2b_r6_075",
+  "voice": "r6",
+  "text": "Vault the north window, but wait for my signal first.",
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pieces": [
+   "Vault the north window."
+  ]
+ },
+ {
+  "id": "t2b_r6_076",
+  "voice": "r6",
+  "text": "Rappel down to the west window, frag the room, and then vault in.",
+  "orders": [
+   "RAPPEL",
+   "FRAG",
+   "VAULT_WINDOW"
+  ],
+  "pieces": [
+   "Rappel down to the west window.",
+   "Frag the room.",
+   "Vault in through the west window."
+  ]
+ },
+ {
+  "id": "t2b_r6_077",
+  "voice": "r6",
+  "text": "I'm going to breach from above. Stay here, and on my call push in and clear.",
+  "orders": [
+   "HOLD_POSITION",
+   "ENTRY"
+  ],
+  "pieces": [
+   "Stay here.",
+   "Push in and clear."
+  ]
+ },
+ {
+  "id": "t2b_r6_078",
+  "voice": "r6",
+  "text": "Go around through the west door and hit them from behind.",
+  "orders": [
+   "FLANK"
+  ],
+  "pieces": [
+   "Go around through the west door and hit them from behind."
+  ]
+ },
+ {
+  "id": "t2b_r6_079",
+  "voice": "r6",
+  "text": "Two in the basement, one of them is lit. Smoke the brown stairs.",
+  "orders": [
+   "SMOKE"
+  ],
+  "pieces": [
+   "Smoke the brown stairs."
+  ]
+ },
+ {
+  "id": "t2b_r6_080",
+  "voice": "r6",
+  "text": "Stand up, move to the yellow stairs, and watch the north window.",
+  "orders": [
+   "STAND_UP",
+   "MOVE_TO",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Stand up.",
+   "Move to the yellow stairs.",
+   "Watch the north window."
+  ]
+ },
+ {
+  "id": "t2b_r6_081",
+  "voice": "r6",
+  "text": "Open the door and toss a flash in.",
+  "orders": [
+   "OPEN",
+   "FLASH"
+  ],
+  "pieces": [
+   "Open the door.",
+   "Toss a flash in through the door."
+  ]
+ },
+ {
+  "id": "t2b_r6_082",
+  "voice": "r6",
+  "text": "Did you see where he went, was it the red stairs?",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "Did you see where he went, was it the red stairs?"
+  ]
+ },
+ {
+  "id": "t2b_r6_083",
+  "voice": "r6",
+  "text": "Hold fire and look at the west door.",
+  "orders": [
+   "HOLD_FIRE",
+   "LOOK_AT"
+  ],
+  "pieces": [
+   "Hold fire.",
+   "Look at the west door."
+  ]
+ },
+ {
+  "id": "t2b_r6_084",
+  "voice": "r6",
+  "text": "Fall back and take the other angle.",
+  "orders": [
+   "FALL_BACK",
+   "HOLD_OTHER_ANGLE"
+  ],
+  "pieces": [
+   "Fall back.",
+   "Take the other angle."
+  ]
+ },
+ {
+  "id": "t2b_r6_085",
+  "voice": "r6",
+  "text": "That flash was awful, I blinded myself and half the team.",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "That flash was awful, I blinded myself and half the team."
+  ]
+ },
+ {
+  "id": "t2b_r6_086",
+  "voice": "r6",
+  "text": "Drop down here, then pick me up.",
+  "orders": [
+   "JUMP",
+   "REVIVE_ME"
+  ],
+  "pieces": [
+   "Drop down here.",
+   "Pick me up."
+  ]
+ },
+ {
+  "id": "t2b_r6_087",
+  "voice": "r6",
+  "text": "When I say go, smoke the main door and plant.",
+  "orders": [
+   "SMOKE",
+   "PLANT"
+  ],
+  "pieces": [
+   "Smoke the main door.",
+   "Plant the defuser."
+  ]
+ },
+ {
+  "id": "t2b_r6_088",
+  "voice": "r6",
+  "text": "I'll get the defuser down and then hold from behind the chairs.",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "I'll get the defuser down and then hold from behind the chairs."
+  ]
+ },
+ {
+  "id": "t2b_r6_089",
+  "voice": "r6",
+  "text": "Before you plant, smoke the stairs and check behind the table.",
+  "orders": [
+   "SMOKE",
+   "CHECK",
+   "PLANT"
+  ],
+  "pieces": [
+   "Smoke the stairs.",
+   "Check behind the table.",
+   "Plant the defuser."
+  ]
+ },
+ {
+  "id": "t2b_r6_090",
+  "voice": "r6",
+  "text": "Don't go in yet, stay at my pin.",
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pieces": [
+   "Stay at my pin."
+  ]
+ },
+ {
+  "id": "t2b_r6_091",
+  "voice": "r6",
+  "text": "I'm dropping through the hatch to plant, so flank through the basement.",
+  "orders": [
+   "FLANK"
+  ],
+  "pieces": [
+   "Flank through the basement."
+  ]
+ },
+ {
+  "id": "t2b_r6_092",
+  "voice": "r6",
+  "text": "I'll hold this one. You take the other angle, and if they push you, fall back.",
+  "orders": [
+   "HOLD_OTHER_ANGLE",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "You take the other angle.",
+   "Fall back."
+  ]
+ },
+ {
+  "id": "t2b_r6_093",
+  "voice": "r6",
+  "text": "Go prone, and don't shoot.",
+  "orders": [
+   "PRONE",
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "Go prone.",
+   "Don't shoot."
+  ]
+ },
+ {
+  "id": "t2b_r6_094",
+  "voice": "r6",
+  "text": "Watch that door and drop anyone who comes through it.",
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Watch that door and drop anyone who comes through it."
+  ]
+ },
+ {
+  "id": "t2b_r6_095",
+  "voice": "r6",
+  "text": "I'm going to hard breach this wall and push through it. Stay here.",
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pieces": [
+   "Stay here."
+  ]
+ },
+ {
+  "id": "t2b_r6_096",
+  "voice": "r6",
+  "text": "Rappel the, no, forget the rope. Go up the blue stairs to the top floor.",
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "Go up the blue stairs to the top floor."
+  ]
+ },
+ {
+  "id": "t2b_r6_097",
+  "voice": "r6",
+  "text": "Marcus, your mic is cutting out again, and stop roaming every round.",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "Marcus, your mic is cutting out again, and stop roaming every round."
+  ]
+ },
+ {
+  "id": "t2b_r6_098",
+  "voice": "r6",
+  "text": "Rope down the south side and hang outside the window.",
+  "orders": [
+   "RAPPEL"
+  ],
+  "pieces": [
+   "Rope down the south side and hang outside the window."
+  ]
+ },
+ {
+  "id": "t2b_r6_099",
+  "voice": "r6",
+  "text": "Kapkan trap on the main door, don't open it. Vault the south window and hold the stairs from inside.",
+  "orders": [
+   "VAULT_WINDOW",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "Vault the south window.",
+   "Hold the stairs from inside."
+  ]
+ },
+ {
+  "id": "t2b_cs_000",
+  "voice": "cs",
+  "text": "hold up hold up, i hear steps on the stairs",
+  "orders": [
+   "WAIT"
+  ],
+  "pieces": [
+   "hold up hold up"
+  ]
+ },
+ {
+  "id": "t2b_cs_001",
+  "voice": "cs",
+  "text": "stop shooting, get behind the sofa, look at me",
+  "orders": [
+   "HOLD_FIRE",
+   "TAKE_COVER",
+   "LOOK_AT_ME"
+  ],
+  "pieces": [
+   "stop shooting",
+   "get behind the sofa",
+   "look at me"
+  ]
+ },
+ {
+  "id": "t2b_cs_002",
+  "voice": "cs",
+  "text": "don't push, just hold the angle",
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "just hold the angle"
+  ]
+ },
+ {
+  "id": "t2b_cs_003",
+  "voice": "cs",
+  "text": "bomb's ticking, like ten seconds, defuse it",
+  "orders": [
+   "DEFUSE"
+  ],
+  "pieces": [
+   "defuse the bomb"
+  ]
+ },
+ {
+  "id": "t2b_cs_004",
+  "voice": "cs",
+  "text": "gonna jump peek him real quick, don't shoot yet",
+  "orders": [
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "don't shoot yet"
+  ]
+ },
+ {
+  "id": "t2b_cs_005",
+  "voice": "cs",
+  "text": "suppress them, wait for my call, then fall back",
+  "orders": [
+   "SUPPRESS",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "suppress them",
+   "fall back"
+  ]
+ },
+ {
+  "id": "t2b_cs_006",
+  "voice": "cs",
+  "text": "check the basement, check the stairs, then plant",
+  "orders": [
+   "CHECK",
+   "CHECK",
+   "PLANT"
+  ],
+  "pieces": [
+   "check the basement",
+   "check the stairs",
+   "plant the bomb"
+  ]
+ },
+ {
+  "id": "t2b_cs_007",
+  "voice": "cs",
+  "text": "i'm planting for main, go check behind the sofa",
+  "orders": [
+   "CHECK"
+  ],
+  "pieces": [
+   "go check behind the sofa"
+  ]
+ },
+ {
+  "id": "t2b_cs_008",
+  "voice": "cs",
+  "text": "i'm opening this door, you open that one",
+  "orders": [
+   "OPEN"
+  ],
+  "pieces": [
+   "open that door"
+  ]
+ },
+ {
+  "id": "t2b_cs_009",
+  "voice": "cs",
+  "text": "come with me, actually nah, stay there",
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pieces": [
+   "stay there"
+  ]
+ },
+ {
+  "id": "t2b_cs_010",
+  "voice": "cs",
+  "text": "i'm crossing now, smoke window then follow me",
+  "orders": [
+   "SMOKE",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "smoke window",
+   "follow me"
+  ]
+ },
+ {
+  "id": "t2b_cs_011",
+  "voice": "cs",
+  "text": "nade the door, nah nah, flash it",
+  "orders": [
+   "FLASH"
+  ],
+  "pieces": [
+   "flash the door"
+  ]
+ },
+ {
+  "id": "t2b_cs_012",
+  "voice": "cs",
+  "text": "when you hear me shooting, flank them",
+  "orders": [
+   "FLANK"
+  ],
+  "pieces": [
+   "flank them"
+  ]
+ },
+ {
+  "id": "t2b_cs_013",
+  "voice": "cs",
+  "text": "i throw the flash, you throw the nade",
+  "orders": [
+   "FRAG"
+  ],
+  "pieces": [
+   "throw the nade"
+  ]
+ },
+ {
+  "id": "t2b_cs_014",
+  "voice": "cs",
+  "text": "flash site then rush in",
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "pieces": [
+   "flash site",
+   "rush site"
+  ]
+ },
+ {
+  "id": "t2b_cs_015",
+  "voice": "cs",
+  "text": "when i say now, pop flash over the wall",
+  "orders": [
+   "FLASH"
+  ],
+  "pieces": [
+   "pop flash over the wall"
+  ]
+ },
+ {
+  "id": "t2b_cs_016",
+  "voice": "cs",
+  "text": "on three you jump through the window, ok",
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pieces": [
+   "jump through the window"
+  ]
+ },
+ {
+  "id": "t2b_cs_017",
+  "voice": "cs",
+  "text": "i'm going window. you smoke main, cross to yellow stairs, then hold the other side",
+  "orders": [
+   "SMOKE",
+   "MOVE_TO",
+   "HOLD_OTHER_ANGLE"
+  ],
+  "pieces": [
+   "smoke main",
+   "cross to yellow stairs",
+   "hold the other side"
+  ]
+ },
+ {
+  "id": "t2b_cs_018",
+  "voice": "cs",
+  "text": "jump on the table then hop through the window",
+  "orders": [
+   "JUMP",
+   "VAULT_WINDOW"
+  ],
+  "pieces": [
+   "jump on the table",
+   "hop through the window"
+  ]
+ },
+ {
+  "id": "t2b_cs_019",
+  "voice": "cs",
+  "text": "wait for my flash, then open the door and clear the room",
+  "orders": [
+   "OPEN",
+   "ENTRY"
+  ],
+  "pieces": [
+   "open the door",
+   "clear the room"
+  ]
+ },
+ {
+  "id": "t2b_cs_020",
+  "voice": "cs",
+  "text": "i'm lurking through basement, you stay on site",
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pieces": [
+   "stay on site"
+  ]
+ },
+ {
+  "id": "t2b_cs_021",
+  "voice": "cs",
+  "text": "scout the top floor, come back, then follow me up",
+  "orders": [
+   "DRONE",
+   "COME_BACK",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "scout the top floor",
+   "come back",
+   "follow me up"
+  ]
+ },
+ {
+  "id": "t2b_cs_022",
+  "voice": "cs",
+  "text": "wait for my call, then plant the bomb",
+  "orders": [
+   "PLANT"
+  ],
+  "pieces": [
+   "plant the bomb"
+  ]
+ },
+ {
+  "id": "t2b_cs_023",
+  "voice": "cs",
+  "text": "help me here first, then go plant",
+  "orders": [
+   "HELP",
+   "PLANT"
+  ],
+  "pieces": [
+   "help me here",
+   "go plant the bomb"
+  ]
+ },
+ {
+  "id": "t2b_cs_024",
+  "voice": "cs",
+  "text": "i'll open, you flash it and go in and clear",
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "pieces": [
+   "flash the door",
+   "go in and clear"
+  ]
+ },
+ {
+  "id": "t2b_cs_025",
+  "voice": "cs",
+  "text": "ok i'm on the roof. rope up here and watch the east window",
+  "orders": [
+   "RAPPEL",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "rope up here",
+   "watch the east window"
+  ]
+ },
+ {
+  "id": "t2b_cs_026",
+  "voice": "cs",
+  "text": "i'm watching window, you watch the other side",
+  "orders": [
+   "HOLD_OTHER_ANGLE"
+  ],
+  "pieces": [
+   "you watch the other side"
+  ]
+ },
+ {
+  "id": "t2b_cs_027",
+  "voice": "cs",
+  "text": "got the kit, i'm sticking it, smoke the bomb",
+  "orders": [
+   "SMOKE"
+  ],
+  "pieces": [
+   "smoke the bomb"
+  ]
+ },
+ {
+  "id": "t2b_cs_028",
+  "voice": "cs",
+  "text": "he's one shot behind the table, nade it then go finish him",
+  "orders": [
+   "FRAG",
+   "ATTACK"
+  ],
+  "pieces": [
+   "nade the table",
+   "go finish him"
+  ]
+ },
+ {
+  "id": "t2b_cs_029",
+  "voice": "cs",
+  "text": "open the hatch and drop in",
+  "orders": [
+   "OPEN",
+   "JUMP"
+  ],
+  "pieces": [
+   "open the hatch",
+   "drop in through the hatch"
+  ]
+ },
+ {
+  "id": "t2b_cs_030",
+  "voice": "cs",
+  "text": "they got me, i'm down by the table, come revive me",
+  "orders": [
+   "REVIVE_ME"
+  ],
+  "pieces": [
+   "come revive me"
+  ]
+ },
+ {
+  "id": "t2b_cs_031",
+  "voice": "cs",
+  "text": "nice one. now come back and take the other angle",
+  "orders": [
+   "COME_BACK",
+   "HOLD_OTHER_ANGLE"
+  ],
+  "pieces": [
+   "come back",
+   "take the other angle"
+  ]
+ },
+ {
+  "id": "t2b_cs_032",
+  "voice": "cs",
+  "text": "jump down, kill the last guy, then defuse",
+  "orders": [
+   "JUMP",
+   "ATTACK",
+   "DEFUSE"
+  ],
+  "pieces": [
+   "jump down",
+   "kill the last guy",
+   "defuse the bomb"
+  ]
+ },
+ {
+  "id": "t2b_cs_033",
+  "voice": "cs",
+  "text": "plant it at my pin, in the open, so i can see it",
+  "orders": [
+   "PLANT"
+  ],
+  "pieces": [
+   "plant it at my pin, in the open, so i can see it"
+  ]
+ },
+ {
+  "id": "t2b_cs_034",
+  "voice": "cs",
+  "text": "dude you're standing in the open, crouch",
+  "orders": [
+   "CROUCH"
+  ],
+  "pieces": [
+   "crouch"
+  ]
+ },
+ {
+  "id": "t2b_cs_035",
+  "voice": "cs",
+  "text": "not yet, not yet, when i ping it, molly the stairs",
+  "orders": [
+   "FRAG"
+  ],
+  "pieces": [
+   "molly the stairs"
+  ]
+ },
+ {
+  "id": "t2b_cs_036",
+  "voice": "cs",
+  "text": "look at me, then jump down",
+  "orders": [
+   "LOOK_AT_ME",
+   "JUMP"
+  ],
+  "pieces": [
+   "look at me",
+   "jump down"
+  ]
+ },
+ {
+  "id": "t2b_cs_037",
+  "voice": "cs",
+  "text": "smoke it, nah forget it, i'll smoke, you just cover me",
+  "orders": [
+   "COVER_ME"
+  ],
+  "pieces": [
+   "just cover me"
+  ]
+ },
+ {
+  "id": "t2b_cs_038",
+  "voice": "cs",
+  "text": "on three, nade the door then light them up",
+  "orders": [
+   "FRAG",
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "nade the door",
+   "light them up"
+  ]
+ },
+ {
+  "id": "t2b_cs_039",
+  "voice": "cs",
+  "text": "open the door, molly inside, fall back",
+  "orders": [
+   "OPEN",
+   "FRAG",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "open the door",
+   "molly inside the door",
+   "fall back"
+  ]
+ },
+ {
+  "id": "t2b_cs_040",
+  "voice": "cs",
+  "text": "rush the window, nah don't, bad idea",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "rush the window, nah don't, bad idea"
+  ]
+ },
+ {
+  "id": "t2b_cs_041",
+  "voice": "cs",
+  "text": "when i say go, jump down and plant",
+  "orders": [
+   "JUMP",
+   "PLANT"
+  ],
+  "pieces": [
+   "jump down",
+   "plant the bomb"
+  ]
+ },
+ {
+  "id": "t2b_cs_042",
+  "voice": "cs",
+  "text": "breach the wall and fall back",
+  "orders": [
+   "BREACH",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "breach the wall",
+   "fall back"
+  ]
+ },
+ {
+  "id": "t2b_cs_043",
+  "voice": "cs",
+  "text": "i'm jumping down first, then you",
+  "orders": [
+   "JUMP"
+  ],
+  "pieces": [
+   "jump down"
+  ]
+ },
+ {
+  "id": "t2b_cs_044",
+  "voice": "cs",
+  "text": "soon as he peeks the door, light him up",
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "light him up"
+  ]
+ },
+ {
+  "id": "t2b_cs_045",
+  "voice": "cs",
+  "text": "not window, bro, the door. smoke the door then go to site",
+  "orders": [
+   "SMOKE",
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "smoke the door",
+   "go to site"
+  ]
+ },
+ {
+  "id": "t2b_cs_046",
+  "voice": "cs",
+  "text": "they're saving, don't chase. come back and plant",
+  "orders": [
+   "COME_BACK",
+   "PLANT"
+  ],
+  "pieces": [
+   "come back",
+   "plant the bomb"
+  ]
+ },
+ {
+  "id": "t2b_cs_047",
+  "voice": "cs",
+  "text": "push push, no wait, stop, hold up",
+  "orders": [
+   "WAIT"
+  ],
+  "pieces": [
+   "stop, hold up"
+  ]
+ },
+ {
+  "id": "t2b_cs_048",
+  "voice": "cs",
+  "text": "don't plant here bro, go to my pin",
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "go to my pin"
+  ]
+ },
+ {
+  "id": "t2b_cs_049",
+  "voice": "cs",
+  "text": "pick me up then smoke the door",
+  "orders": [
+   "REVIVE_ME",
+   "SMOKE"
+  ],
+  "pieces": [
+   "pick me up",
+   "smoke the door"
+  ]
+ },
+ {
+  "id": "t2b_cs_050",
+  "voice": "cs",
+  "text": "yeah yeah good idea, open that door and check inside",
+  "orders": [
+   "OPEN",
+   "CHECK"
+  ],
+  "pieces": [
+   "open that door",
+   "check inside that door"
+  ]
+ },
+ {
+  "id": "t2b_cs_051",
+  "voice": "cs",
+  "text": "defuse after you smoke the bomb",
+  "orders": [
+   "SMOKE",
+   "DEFUSE"
+  ],
+  "pieces": [
+   "smoke the bomb",
+   "defuse the bomb"
+  ]
+ },
+ {
+  "id": "t2b_cs_052",
+  "voice": "cs",
+  "text": "jake you there? drop me an awp next round and call your rotates",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "jake you there? drop me an awp next round and call your rotates"
+  ]
+ },
+ {
+  "id": "t2b_cs_053",
+  "voice": "cs",
+  "text": "i'm smoking window then i'm crossing, whatever happens happens",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "i'm smoking window then i'm crossing, whatever happens happens"
+  ]
+ },
+ {
+  "id": "t2b_cs_054",
+  "voice": "cs",
+  "text": "i'll smoke the window and cross, then you rush the site",
+  "orders": [
+   "ENTRY"
+  ],
+  "pieces": [
+   "rush the site"
+  ]
+ },
+ {
+  "id": "t2b_cs_055",
+  "voice": "cs",
+  "text": "nade the corner, flash the door, then rush in",
+  "orders": [
+   "FRAG",
+   "FLASH",
+   "ENTRY"
+  ],
+  "pieces": [
+   "nade the corner",
+   "flash the door",
+   "rush in through the door"
+  ]
+ },
+ {
+  "id": "t2b_cs_056",
+  "voice": "cs",
+  "text": "stop shooting and go hide somewhere",
+  "orders": [
+   "HOLD_FIRE",
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "stop shooting",
+   "go hide somewhere"
+  ]
+ },
+ {
+  "id": "t2b_cs_057",
+  "voice": "cs",
+  "text": "it's quiet, too quiet. scout ahead and then hold the door",
+  "orders": [
+   "DRONE",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "scout ahead",
+   "hold the door"
+  ]
+ },
+ {
+  "id": "t2b_cs_058",
+  "voice": "cs",
+  "text": "one on stairs, one on site. flash stairs and kill him",
+  "orders": [
+   "FLASH",
+   "ATTACK"
+  ],
+  "pieces": [
+   "flash stairs",
+   "kill the one on stairs"
+  ]
+ },
+ {
+  "id": "t2b_cs_059",
+  "voice": "cs",
+  "text": "open the door then nade inside",
+  "orders": [
+   "OPEN",
+   "FRAG"
+  ],
+  "pieces": [
+   "open the door",
+   "nade inside the door"
+  ]
+ },
+ {
+  "id": "t2b_cs_060",
+  "voice": "cs",
+  "text": "crouch first, then look at the door on the left",
+  "orders": [
+   "CROUCH",
+   "LOOK_AT"
+  ],
+  "pieces": [
+   "crouch",
+   "look at the door on the left"
+  ]
+ },
+ {
+  "id": "t2b_cs_061",
+  "voice": "cs",
+  "text": "lol nice smoke, landed perfect, anyway follow me",
+  "orders": [
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "follow me"
+  ]
+ },
+ {
+  "id": "t2b_cs_062",
+  "voice": "cs",
+  "text": "watch main and one tap whoever peeks",
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "watch main and one tap whoever peeks"
+  ]
+ },
+ {
+  "id": "t2b_cs_063",
+  "voice": "cs",
+  "text": "nt bro that was unlucky, ok come back",
+  "orders": [
+   "COME_BACK"
+  ],
+  "pieces": [
+   "come back"
+  ]
+ },
+ {
+  "id": "t2b_cs_064",
+  "voice": "cs",
+  "text": "he's planting, he's planting, kill him",
+  "orders": [
+   "ATTACK"
+  ],
+  "pieces": [
+   "kill him"
+  ]
+ },
+ {
+  "id": "t2b_cs_065",
+  "voice": "cs",
+  "text": "throw me your kit, and buy armor next round",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "throw me your kit, and buy armor next round"
+  ]
+ },
+ {
+  "id": "t2b_cs_066",
+  "voice": "cs",
+  "text": "no no don't peek, get down and hold fire",
+  "orders": [
+   "TAKE_COVER",
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "get down",
+   "hold fire"
+  ]
+ },
+ {
+  "id": "t2b_cs_067",
+  "voice": "cs",
+  "text": "ok i'm in position and i'm flashing now, go go go",
+  "orders": [
+   "GO_NOW"
+  ],
+  "pieces": [
+   "go go go"
+  ]
+ },
+ {
+  "id": "t2b_cs_068",
+  "voice": "cs",
+  "text": "pin them down at the door, then flank left",
+  "orders": [
+   "SUPPRESS",
+   "FLANK"
+  ],
+  "pieces": [
+   "pin them down at the door",
+   "flank left"
+  ]
+ },
+ {
+  "id": "t2b_cs_069",
+  "voice": "cs",
+  "text": "i'm baiting main, go through the window and check the stairs",
+  "orders": [
+   "VAULT_WINDOW",
+   "CHECK"
+  ],
+  "pieces": [
+   "go through the window",
+   "check the stairs"
+  ]
+ },
+ {
+  "id": "t2b_cs_070",
+  "voice": "cs",
+  "text": "hide behind the sofa then light them up",
+  "orders": [
+   "TAKE_COVER",
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "hide behind the sofa",
+   "light them up"
+  ]
+ },
+ {
+  "id": "t2b_cs_071",
+  "voice": "cs",
+  "text": "on my go you blow the wall, not before",
+  "orders": [
+   "BREACH"
+  ],
+  "pieces": [
+   "blow the wall"
+  ]
+ },
+ {
+  "id": "t2b_cs_072",
+  "voice": "cs",
+  "text": "hide behind the table and don't peek",
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "hide behind the table and don't peek"
+  ]
+ },
+ {
+  "id": "t2b_cs_073",
+  "voice": "cs",
+  "text": "get up and come with me",
+  "orders": [
+   "STAND_UP",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "get up",
+   "come with me"
+  ]
+ },
+ {
+  "id": "t2b_cs_074",
+  "voice": "cs",
+  "text": "where are you man, i can't see you, look at me",
+  "orders": [
+   "LOOK_AT_ME"
+  ],
+  "pieces": [
+   "look at me"
+  ]
+ },
+ {
+  "id": "t2b_cs_075",
+  "voice": "cs",
+  "text": "how much money you got, can you buy next round?",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "how much money you got, can you buy next round?"
+  ]
+ },
+ {
+  "id": "t2b_cs_076",
+  "voice": "cs",
+  "text": "i'm trying to hold main alone here, i need a hand",
+  "orders": [
+   "HELP"
+  ],
+  "pieces": [
+   "i need a hand here"
+  ]
+ },
+ {
+  "id": "t2b_cs_077",
+  "voice": "cs",
+  "text": "scout ahead with the drone then come back",
+  "orders": [
+   "DRONE",
+   "COME_BACK"
+  ],
+  "pieces": [
+   "scout ahead with the drone",
+   "come back"
+  ]
+ },
+ {
+  "id": "t2b_cs_078",
+  "voice": "cs",
+  "text": "move to my pin, then go prone",
+  "orders": [
+   "MOVE_TO",
+   "PRONE"
+  ],
+  "pieces": [
+   "move to my pin",
+   "go prone"
+  ]
+ },
+ {
+  "id": "t2b_cs_079",
+  "voice": "cs",
+  "text": "before you plant, check behind the box",
+  "orders": [
+   "CHECK",
+   "PLANT"
+  ],
+  "pieces": [
+   "check behind the box",
+   "plant the bomb"
+  ]
+ },
+ {
+  "id": "t2b_cs_080",
+  "voice": "cs",
+  "text": "vault the window then clear the room",
+  "orders": [
+   "VAULT_WINDOW",
+   "ENTRY"
+  ],
+  "pieces": [
+   "vault the window",
+   "clear the room"
+  ]
+ },
+ {
+  "id": "t2b_cs_081",
+  "voice": "cs",
+  "text": "spray the window, keep spraying, keep them pinned",
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pieces": [
+   "spray the window, keep spraying, keep them pinned"
+  ]
+ },
+ {
+  "id": "t2b_cs_082",
+  "voice": "cs",
+  "text": "bro did they smoke the window or was that us?",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "bro did they smoke the window or was that us?"
+  ]
+ },
+ {
+  "id": "t2b_cs_083",
+  "voice": "cs",
+  "text": "i'll hold the plant from site, you go hide",
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "go hide"
+  ]
+ },
+ {
+  "id": "t2b_cs_084",
+  "voice": "cs",
+  "text": "count three after my smoke lands, then cross to red stairs",
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "cross to red stairs"
+  ]
+ },
+ {
+  "id": "t2b_cs_085",
+  "voice": "cs",
+  "text": "on my go flash them, light them up, then fall back",
+  "orders": [
+   "FLASH",
+   "OPEN_FIRE",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "flash them",
+   "light them up",
+   "fall back"
+  ]
+ },
+ {
+  "id": "t2b_cs_086",
+  "voice": "cs",
+  "text": "i'll plant for main then go hide on the stairs",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "i'll plant for main then go hide on the stairs"
+  ]
+ },
+ {
+  "id": "t2b_cs_087",
+  "voice": "cs",
+  "text": "this game is so rigged, i hit him four times",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "this game is so rigged, i hit him four times"
+  ]
+ },
+ {
+  "id": "t2b_cs_088",
+  "voice": "cs",
+  "text": "get up, come back here, and watch main",
+  "orders": [
+   "STAND_UP",
+   "COME_BACK",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "get up",
+   "come back here",
+   "watch main"
+  ]
+ },
+ {
+  "id": "t2b_cs_089",
+  "voice": "cs",
+  "text": "go prone and stay flat, don't get up",
+  "orders": [
+   "PRONE"
+  ],
+  "pieces": [
+   "go prone and stay flat, don't get up"
+  ]
+ },
+ {
+  "id": "t2b_cs_090",
+  "voice": "cs",
+  "text": "i'm planting. crouch so they don't see you, then cover me",
+  "orders": [
+   "CROUCH",
+   "COVER_ME"
+  ],
+  "pieces": [
+   "crouch",
+   "cover me"
+  ]
+ },
+ {
+  "id": "t2b_cs_091",
+  "voice": "cs",
+  "text": "flash the door, then the window too",
+  "orders": [
+   "FLASH",
+   "FLASH"
+  ],
+  "pieces": [
+   "flash the door",
+   "flash the window too"
+  ]
+ },
+ {
+  "id": "t2b_cs_092",
+  "voice": "cs",
+  "text": "send your drone ahead and scout the site for me",
+  "orders": [
+   "DRONE"
+  ],
+  "pieces": [
+   "send your drone ahead and scout the site for me"
+  ]
+ },
+ {
+  "id": "t2b_cs_093",
+  "voice": "cs",
+  "text": "go kill him then come back here",
+  "orders": [
+   "ATTACK",
+   "COME_BACK"
+  ],
+  "pieces": [
+   "go kill him",
+   "come back here"
+  ]
+ },
+ {
+  "id": "t2b_cs_094",
+  "voice": "cs",
+  "text": "vault the window, breach the wall inside, then plant",
+  "orders": [
+   "VAULT_WINDOW",
+   "BREACH",
+   "PLANT"
+  ],
+  "pieces": [
+   "vault the window",
+   "breach the wall inside",
+   "plant the bomb"
+  ]
+ },
+ {
+  "id": "t2b_cs_095",
+  "voice": "cs",
+  "text": "jump down and hold main",
+  "orders": [
+   "JUMP",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "jump down",
+   "hold main"
+  ]
+ },
+ {
+  "id": "t2b_cs_096",
+  "voice": "cs",
+  "text": "they're pushing main, fall back and hold red stairs",
+  "orders": [
+   "FALL_BACK",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "fall back",
+   "hold red stairs"
+  ]
+ },
+ {
+  "id": "t2b_cs_097",
+  "voice": "cs",
+  "text": "wrap around through basement and come out behind them",
+  "orders": [
+   "FLANK"
+  ],
+  "pieces": [
+   "wrap around through basement and come out behind them"
+  ]
+ },
+ {
+  "id": "t2b_cs_098",
+  "voice": "cs",
+  "text": "smoke the door and then plant",
+  "orders": [
+   "SMOKE",
+   "PLANT"
+  ],
+  "pieces": [
+   "smoke the door",
+   "plant the bomb"
+  ]
+ },
+ {
+  "id": "t2b_cs_099",
+  "voice": "cs",
+  "text": "back off and save your gun, just get out of there",
+  "orders": [
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "back off and save your gun, just get out of there"
+  ]
+ },
+ {
+  "id": "t2b_stt_000",
+  "voice": "stt",
+  "text": "check the room then uh open the window and climb out",
+  "orders": [
+   "CHECK",
+   "OPEN",
+   "VAULT_WINDOW"
+  ],
+  "pieces": [
+   "check the room",
+   "open the window",
+   "climb out the window"
+  ]
+ },
+ {
+  "id": "t2b_stt_001",
+  "voice": "stt",
+  "text": "this gun is so bad i shoot and shoot and nothing happens",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "this gun is so bad i shoot and shoot and nothing happens"
+  ]
+ },
+ {
+  "id": "t2b_stt_002",
+  "voice": "stt",
+  "text": "do not go now wait for my signal and then you bridge the wall",
+  "orders": [
+   "BREACH"
+  ],
+  "pieces": [
+   "you bridge the wall"
+  ]
+ },
+ {
+  "id": "t2b_stt_003",
+  "voice": "stt",
+  "text": "yes yes exactly bridge it and then go in and clear",
+  "orders": [
+   "BREACH",
+   "ENTRY"
+  ],
+  "pieces": [
+   "bridge the wall",
+   "go in and clear"
+  ]
+ },
+ {
+  "id": "t2b_stt_004",
+  "voice": "stt",
+  "text": "two guys are in the room so throw grenade then push in and after that hold the window",
+  "orders": [
+   "FRAG",
+   "ENTRY",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "throw grenade in the room",
+   "push in the room",
+   "hold the window"
+  ]
+ },
+ {
+  "id": "t2b_stt_005",
+  "voice": "stt",
+  "text": "throw the smoke far uh far to the main door so they do not see",
+  "orders": [
+   "SMOKE"
+  ],
+  "pieces": [
+   "throw the smoke far uh far to the main door so they do not see"
+  ]
+ },
+ {
+  "id": "t2b_stt_006",
+  "voice": "stt",
+  "text": "i am coming to you i am coming so stand up",
+  "orders": [
+   "STAND_UP"
+  ],
+  "pieces": [
+   "stand up"
+  ]
+ },
+ {
+  "id": "t2b_stt_007",
+  "voice": "stt",
+  "text": "open the hatch slowly slowly and do not go down",
+  "orders": [
+   "OPEN"
+  ],
+  "pieces": [
+   "open the hatch slowly slowly and do not go down"
+  ]
+ },
+ {
+  "id": "t2b_stt_008",
+  "voice": "stt",
+  "text": "fall back fall back and then give me covering fire",
+  "orders": [
+   "FALL_BACK",
+   "SUPPRESS"
+  ],
+  "pieces": [
+   "fall back fall back",
+   "give me covering fire"
+  ]
+ },
+ {
+  "id": "t2b_stt_009",
+  "voice": "stt",
+  "text": "first throw smoke on main door then go to the red stairs and watch the north window from there",
+  "orders": [
+   "SMOKE",
+   "MOVE_TO",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "throw smoke on main door",
+   "go to the red stairs",
+   "watch the north window"
+  ]
+ },
+ {
+  "id": "t2b_stt_010",
+  "voice": "stt",
+  "text": "i have no bullets i need to reload cover me and then attack",
+  "orders": [
+   "COVER_ME",
+   "ATTACK"
+  ],
+  "pieces": [
+   "cover me",
+   "attack"
+  ]
+ },
+ {
+  "id": "t2b_stt_011",
+  "voice": "stt",
+  "text": "okay this floor is clear good job now stand up and check the top floor",
+  "orders": [
+   "STAND_UP",
+   "CHECK"
+  ],
+  "pieces": [
+   "stand up",
+   "check the top floor"
+  ]
+ },
+ {
+  "id": "t2b_stt_012",
+  "voice": "stt",
+  "text": "the bomb is planted we have no time go go go",
+  "orders": [
+   "GO_NOW"
+  ],
+  "pieces": [
+   "go go go"
+  ]
+ },
+ {
+  "id": "t2b_stt_013",
+  "voice": "stt",
+  "text": "uh i am going to check the basement myself you check the top floor",
+  "orders": [
+   "CHECK"
+  ],
+  "pieces": [
+   "you check the top floor"
+  ]
+ },
+ {
+  "id": "t2b_stt_014",
+  "voice": "stt",
+  "text": "check the base man and after that you stay there",
+  "orders": [
+   "CHECK",
+   "HOLD_POSITION"
+  ],
+  "pieces": [
+   "check the base man",
+   "you stay in the base man"
+  ]
+ },
+ {
+  "id": "t2b_stt_015",
+  "voice": "stt",
+  "text": "throw smoke on the window no no not smoke uh grenade throw grenade",
+  "orders": [
+   "FRAG"
+  ],
+  "pieces": [
+   "throw grenade on the window"
+  ]
+ },
+ {
+  "id": "t2b_stt_016",
+  "voice": "stt",
+  "text": "hey pedro pedro can you hear me your microphone is very loud",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "hey pedro pedro can you hear me your microphone is very loud"
+  ]
+ },
+ {
+  "id": "t2b_stt_017",
+  "voice": "stt",
+  "text": "okay so i am going to throw flash and go in and you you hold the door okay",
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "you hold the door"
+  ]
+ },
+ {
+  "id": "t2b_stt_018",
+  "voice": "stt",
+  "text": "first you crouch and then uh you open the door",
+  "orders": [
+   "CROUCH",
+   "OPEN"
+  ],
+  "pieces": [
+   "you crouch",
+   "you open the door"
+  ]
+ },
+ {
+  "id": "t2b_stt_019",
+  "voice": "stt",
+  "text": "before you defuse you throw smoke on the bomb and kill the guy on the stairs",
+  "orders": [
+   "SMOKE",
+   "ATTACK",
+   "DEFUSE"
+  ],
+  "pieces": [
+   "you throw smoke on the bomb",
+   "kill the guy on the stairs",
+   "you defuse the bomb"
+  ]
+ },
+ {
+  "id": "t2b_stt_020",
+  "voice": "stt",
+  "text": "look at me look at me and then uh come with me",
+  "orders": [
+   "LOOK_AT_ME",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "look at me look at me",
+   "come with me"
+  ]
+ },
+ {
+  "id": "t2b_stt_021",
+  "voice": "stt",
+  "text": "throw grenade in the window and then one more in the door",
+  "orders": [
+   "FRAG",
+   "FRAG"
+  ],
+  "pieces": [
+   "throw grenade in the window",
+   "throw one more grenade in the door"
+  ]
+ },
+ {
+  "id": "t2b_stt_022",
+  "voice": "stt",
+  "text": "there is three guys upstairs so first send the drone and then throw grenade",
+  "orders": [
+   "DRONE",
+   "FRAG"
+  ],
+  "pieces": [
+   "send the drone upstairs",
+   "throw grenade upstairs"
+  ]
+ },
+ {
+  "id": "t2b_stt_023",
+  "voice": "stt",
+  "text": "on my go you breach the wall throw flash and push inside to clear",
+  "orders": [
+   "BREACH",
+   "FLASH",
+   "ENTRY"
+  ],
+  "pieces": [
+   "you breach the wall",
+   "throw flash through the wall",
+   "push inside to clear"
+  ]
+ },
+ {
+  "id": "t2b_stt_024",
+  "voice": "stt",
+  "text": "i am planting now you go prone here and watch the main door",
+  "orders": [
+   "PRONE",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "you go prone here",
+   "watch the main door"
+  ]
+ },
+ {
+  "id": "t2b_stt_025",
+  "voice": "stt",
+  "text": "enemy is in the window suppress him and when i am across you move to my marker",
+  "orders": [
+   "SUPPRESS",
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "suppress the enemy in the window",
+   "you move to my marker"
+  ]
+ },
+ {
+  "id": "t2b_stt_026",
+  "voice": "stt",
+  "text": "i hold this door you take the other one and uh crouch they can see your head",
+  "orders": [
+   "HOLD_OTHER_ANGLE",
+   "CROUCH"
+  ],
+  "pieces": [
+   "you take the other one",
+   "crouch"
+  ]
+ },
+ {
+  "id": "t2b_stt_027",
+  "voice": "stt",
+  "text": "how many grenades you have do you have two or one",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "how many grenades you have do you have two or one"
+  ]
+ },
+ {
+  "id": "t2b_stt_028",
+  "voice": "stt",
+  "text": "after you flash the stairs you attack them",
+  "orders": [
+   "FLASH",
+   "ATTACK"
+  ],
+  "pieces": [
+   "you flash the stairs",
+   "you attack them"
+  ]
+ },
+ {
+  "id": "t2b_stt_029",
+  "voice": "stt",
+  "text": "wait until i say go and then you open fire and after that you fall back",
+  "orders": [
+   "OPEN_FIRE",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "you open fire",
+   "you fall back"
+  ]
+ },
+ {
+  "id": "t2b_stt_030",
+  "voice": "stt",
+  "text": "go prone on the floor and then start shooting at the door",
+  "orders": [
+   "PRONE",
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "go prone on the floor",
+   "start shooting at the door"
+  ]
+ },
+ {
+  "id": "t2b_stt_031",
+  "voice": "stt",
+  "text": "i will go from the top and you stay at my marker and when i call you bridge the door",
+  "orders": [
+   "HOLD_POSITION",
+   "BREACH"
+  ],
+  "pieces": [
+   "you stay at my marker",
+   "you bridge the door"
+  ]
+ },
+ {
+  "id": "t2b_stt_032",
+  "voice": "stt",
+  "text": "stand up stand up and then go down with the rope to south window",
+  "orders": [
+   "STAND_UP",
+   "RAPPEL"
+  ],
+  "pieces": [
+   "stand up stand up",
+   "go down with the rope to south window"
+  ]
+ },
+ {
+  "id": "t2b_stt_033",
+  "voice": "stt",
+  "text": "i am gonna plant the bomb and then i hide behind the chairs",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "i am gonna plant the bomb and then i hide behind the chairs"
+  ]
+ },
+ {
+  "id": "t2b_stt_034",
+  "voice": "stt",
+  "text": "jump over the so far and land on the other side",
+  "orders": [
+   "JUMP"
+  ],
+  "pieces": [
+   "jump over the so far and land on the other side"
+  ]
+ },
+ {
+  "id": "t2b_stt_035",
+  "voice": "stt",
+  "text": "when i put the mark you go down with the rope",
+  "orders": [
+   "RAPPEL"
+  ],
+  "pieces": [
+   "you go down with the rope"
+  ]
+ },
+ {
+  "id": "t2b_stt_036",
+  "voice": "stt",
+  "text": "i will make the plant now uh cover me cover me",
+  "orders": [
+   "COVER_ME"
+  ],
+  "pieces": [
+   "cover me"
+  ]
+ },
+ {
+  "id": "t2b_stt_037",
+  "voice": "stt",
+  "text": "you jump down and then wait wait for my signal and throw flash in the basement",
+  "orders": [
+   "JUMP",
+   "FLASH"
+  ],
+  "pieces": [
+   "you jump down",
+   "throw flash in the basement"
+  ]
+ },
+ {
+  "id": "t2b_stt_038",
+  "voice": "stt",
+  "text": "where is he where did he go did you see him",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "where is he where did he go did you see him"
+  ]
+ },
+ {
+  "id": "t2b_stt_039",
+  "voice": "stt",
+  "text": "i am going down with the rope on south side and you climb through the east window",
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pieces": [
+   "you climb through the east window"
+  ]
+ },
+ {
+  "id": "t2b_stt_040",
+  "voice": "stt",
+  "text": "stop stop there is a trap on the door stop",
+  "orders": [
+   "WAIT"
+  ],
+  "pieces": [
+   "stop stop"
+  ]
+ },
+ {
+  "id": "t2b_stt_041",
+  "voice": "stt",
+  "text": "go to the blue stars and watch the door from there",
+  "orders": [
+   "MOVE_TO",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "go to the blue stars",
+   "watch the door"
+  ]
+ },
+ {
+  "id": "t2b_stt_042",
+  "voice": "stt",
+  "text": "wait wait for my call and then you plan the bomb",
+  "orders": [
+   "PLANT"
+  ],
+  "pieces": [
+   "you plan the bomb"
+  ]
+ },
+ {
+  "id": "t2b_stt_043",
+  "voice": "stt",
+  "text": "i am jumping down to the basement so uh you go around and hit them from behind",
+  "orders": [
+   "FLANK"
+  ],
+  "pieces": [
+   "you go around and hit them from behind"
+  ]
+ },
+ {
+  "id": "t2b_stt_044",
+  "voice": "stt",
+  "text": "i am stuck here they shoot me from two sides help me please",
+  "orders": [
+   "HELP"
+  ],
+  "pieces": [
+   "help me please"
+  ]
+ },
+ {
+  "id": "t2b_stt_045",
+  "voice": "stt",
+  "text": "i will look from the window first do not shoot do not shoot",
+  "orders": [
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "do not shoot"
+  ]
+ },
+ {
+  "id": "t2b_stt_046",
+  "voice": "stt",
+  "text": "watch this door and if somebody comes you shoot him",
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "watch this door and if somebody comes you shoot him"
+  ]
+ },
+ {
+  "id": "t2b_stt_047",
+  "voice": "stt",
+  "text": "send the drone upstairs then go to my marker and lie down",
+  "orders": [
+   "DRONE",
+   "MOVE_TO",
+   "PRONE"
+  ],
+  "pieces": [
+   "send the drone upstairs",
+   "go to my marker",
+   "lie down"
+  ]
+ },
+ {
+  "id": "t2b_stt_048",
+  "voice": "stt",
+  "text": "open fire uh no no no do not shoot hold fire",
+  "orders": [
+   "HOLD_FIRE"
+  ],
+  "pieces": [
+   "do not shoot hold fire"
+  ]
+ },
+ {
+  "id": "t2b_stt_049",
+  "voice": "stt",
+  "text": "do not jump from there it is too high go down by the blue stairs",
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "go down by the blue stairs"
+  ]
+ },
+ {
+  "id": "t2b_stt_050",
+  "voice": "stt",
+  "text": "what are you doing why you look at the wall look at me",
+  "orders": [
+   "LOOK_AT_ME"
+  ],
+  "pieces": [
+   "look at me"
+  ]
+ },
+ {
+  "id": "t2b_stt_051",
+  "voice": "stt",
+  "text": "come back to me then crouch and look at the east window",
+  "orders": [
+   "COME_BACK",
+   "CROUCH",
+   "LOOK_AT"
+  ],
+  "pieces": [
+   "come back to me",
+   "crouch",
+   "look at the east window"
+  ]
+ },
+ {
+  "id": "t2b_stt_052",
+  "voice": "stt",
+  "text": "okay i will bridge the wall and go inside and i clear it myself",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "okay i will bridge the wall and go inside and i clear it myself"
+  ]
+ },
+ {
+  "id": "t2b_stt_053",
+  "voice": "stt",
+  "text": "the last one is behind the cable i think throw grenade and then check if he is dead",
+  "orders": [
+   "FRAG",
+   "CHECK"
+  ],
+  "pieces": [
+   "throw grenade behind the cable",
+   "check behind the cable if he is dead"
+  ]
+ },
+ {
+  "id": "t2b_stt_054",
+  "voice": "stt",
+  "text": "open the vest door uh no sorry the main door open the main door",
+  "orders": [
+   "OPEN"
+  ],
+  "pieces": [
+   "open the main door"
+  ]
+ },
+ {
+  "id": "t2b_stt_055",
+  "voice": "stt",
+  "text": "uh two enemies two enemies on the top floor throw grenade on the wide stairs",
+  "orders": [
+   "FRAG"
+  ],
+  "pieces": [
+   "throw grenade on the wide stairs"
+  ]
+ },
+ {
+  "id": "t2b_stt_056",
+  "voice": "stt",
+  "text": "when you hear the explosion you throw flash in the room",
+  "orders": [
+   "FLASH"
+  ],
+  "pieces": [
+   "you throw flash in the room"
+  ]
+ },
+ {
+  "id": "t2b_stt_057",
+  "voice": "stt",
+  "text": "i am going to the basement now uh stay with me stay close",
+  "orders": [
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "stay with me stay close"
+  ]
+ },
+ {
+  "id": "t2b_stt_058",
+  "voice": "stt",
+  "text": "i will check the room myself you rope up to the roof and watch the west window",
+  "orders": [
+   "RAPPEL",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "you rope up to the roof",
+   "watch the west window"
+  ]
+ },
+ {
+  "id": "t2b_stt_059",
+  "voice": "stt",
+  "text": "flank from the left side and after that plant the bomb",
+  "orders": [
+   "FLANK",
+   "PLANT"
+  ],
+  "pieces": [
+   "flank from the left side",
+   "plant the bomb"
+  ]
+ },
+ {
+  "id": "t2b_stt_060",
+  "voice": "stt",
+  "text": "i will plant the bomb uh you get up smoke the stairs and cover me",
+  "orders": [
+   "STAND_UP",
+   "SMOKE",
+   "COVER_ME"
+  ],
+  "pieces": [
+   "you get up",
+   "smoke the stairs",
+   "cover me"
+  ]
+ },
+ {
+  "id": "t2b_stt_061",
+  "voice": "stt",
+  "text": "after i throw my flesh you climb in the window and start shooting",
+  "orders": [
+   "VAULT_WINDOW",
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "you climb in the window",
+   "start shooting"
+  ]
+ },
+ {
+  "id": "t2b_stt_062",
+  "voice": "stt",
+  "text": "no no not this door uh flash the other door and push in",
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ],
+  "pieces": [
+   "flash the other door",
+   "push in through the other door"
+  ]
+ },
+ {
+  "id": "t2b_stt_063",
+  "voice": "stt",
+  "text": "come to me and pick me up i am on the ground i cannot move",
+  "orders": [
+   "REVIVE_ME"
+  ],
+  "pieces": [
+   "come to me and pick me up i am on the ground i cannot move"
+  ]
+ },
+ {
+  "id": "t2b_stt_064",
+  "voice": "stt",
+  "text": "they do not know we are here so do not shoot and stay low",
+  "orders": [
+   "HOLD_FIRE",
+   "CROUCH"
+  ],
+  "pieces": [
+   "do not shoot",
+   "stay low"
+  ]
+ },
+ {
+  "id": "t2b_stt_065",
+  "voice": "stt",
+  "text": "i count to three and on three you push in and clear okay",
+  "orders": [
+   "ENTRY"
+  ],
+  "pieces": [
+   "you push in and clear"
+  ]
+ },
+ {
+  "id": "t2b_stt_066",
+  "voice": "stt",
+  "text": "revive me first then smoke the door and fall back",
+  "orders": [
+   "REVIVE_ME",
+   "SMOKE",
+   "FALL_BACK"
+  ],
+  "pieces": [
+   "revive me",
+   "smoke the door",
+   "fall back"
+  ]
+ },
+ {
+  "id": "t2b_stt_067",
+  "voice": "stt",
+  "text": "turn around turn around and then crouch down",
+  "orders": [
+   "LOOK_AT",
+   "CROUCH"
+  ],
+  "pieces": [
+   "turn around turn around",
+   "crouch down"
+  ]
+ },
+ {
+  "id": "t2b_stt_068",
+  "voice": "stt",
+  "text": "i am going to bridge the wall by myself and you you stay at my marker",
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pieces": [
+   "you stay at my marker"
+  ]
+ },
+ {
+  "id": "t2b_stt_069",
+  "voice": "stt",
+  "text": "revive me revive me and then throw smoke on the door",
+  "orders": [
+   "REVIVE_ME",
+   "SMOKE"
+  ],
+  "pieces": [
+   "revive me revive me",
+   "throw smoke on the door"
+  ]
+ },
+ {
+  "id": "t2b_stt_070",
+  "voice": "stt",
+  "text": "i am holding this corridor so you hold another angle",
+  "orders": [
+   "HOLD_OTHER_ANGLE"
+  ],
+  "pieces": [
+   "you hold another angle"
+  ]
+ },
+ {
+  "id": "t2b_stt_071",
+  "voice": "stt",
+  "text": "can you give me some bullets and uh also give me your helmet",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "can you give me some bullets and uh also give me your helmet"
+  ]
+ },
+ {
+  "id": "t2b_stt_072",
+  "voice": "stt",
+  "text": "jump down from here and hide behind the so far",
+  "orders": [
+   "JUMP",
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "jump down from here",
+   "hide behind the so far"
+  ]
+ },
+ {
+  "id": "t2b_stt_073",
+  "voice": "stt",
+  "text": "after my smoke is out you run to the yellow stairs",
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "you run to the yellow stairs"
+  ]
+ },
+ {
+  "id": "t2b_stt_074",
+  "voice": "stt",
+  "text": "okay listen when i shout go you jump down from there",
+  "orders": [
+   "JUMP"
+  ],
+  "pieces": [
+   "you jump down from there"
+  ]
+ },
+ {
+  "id": "t2b_stt_075",
+  "voice": "stt",
+  "text": "open the door and throw one flesh inside",
+  "orders": [
+   "OPEN",
+   "FLASH"
+  ],
+  "pieces": [
+   "open the door",
+   "throw one flesh inside the door"
+  ]
+ },
+ {
+  "id": "t2b_stt_076",
+  "voice": "stt",
+  "text": "the door is closed and i hear them inside so bridge it and throw grenade",
+  "orders": [
+   "BREACH",
+   "FRAG"
+  ],
+  "pieces": [
+   "bridge the door",
+   "throw grenade inside the door"
+  ]
+ },
+ {
+  "id": "t2b_stt_077",
+  "voice": "stt",
+  "text": "help me here help me and then you watch the stairs",
+  "orders": [
+   "HELP",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "help me here help me",
+   "you watch the stairs"
+  ]
+ },
+ {
+  "id": "t2b_stt_078",
+  "voice": "stt",
+  "text": "throw smoke in the corridor and then push in and clear the room",
+  "orders": [
+   "SMOKE",
+   "ENTRY"
+  ],
+  "pieces": [
+   "throw smoke in the corridor",
+   "push in and clear the room"
+  ]
+ },
+ {
+  "id": "t2b_stt_079",
+  "voice": "stt",
+  "text": "i will break the window and you throw smoke inside and then climb through it",
+  "orders": [
+   "SMOKE",
+   "VAULT_WINDOW"
+  ],
+  "pieces": [
+   "you throw smoke inside the window",
+   "climb through the window"
+  ]
+ },
+ {
+  "id": "t2b_stt_080",
+  "voice": "stt",
+  "text": "i open the door i open it and then you throw the flesh inside",
+  "orders": [
+   "FLASH"
+  ],
+  "pieces": [
+   "you throw the flesh inside"
+  ]
+ },
+ {
+  "id": "t2b_stt_081",
+  "voice": "stt",
+  "text": "uh when i say now you open the door not before",
+  "orders": [
+   "OPEN"
+  ],
+  "pieces": [
+   "you open the door"
+  ]
+ },
+ {
+  "id": "t2b_stt_082",
+  "voice": "stt",
+  "text": "defuse the bomb no no wait it is a trap uh take cover take cover",
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pieces": [
+   "take cover take cover"
+  ]
+ },
+ {
+  "id": "t2b_stt_083",
+  "voice": "stt",
+  "text": "he is shooting from the roof so take cover and uh when i move you give covering fire",
+  "orders": [
+   "TAKE_COVER",
+   "SUPPRESS"
+  ],
+  "pieces": [
+   "take cover",
+   "you give covering fire"
+  ]
+ },
+ {
+  "id": "t2b_stt_084",
+  "voice": "stt",
+  "text": "first smoke the stars and after that you plan the bomb",
+  "orders": [
+   "SMOKE",
+   "PLANT"
+  ],
+  "pieces": [
+   "smoke the stars",
+   "you plan the bomb"
+  ]
+ },
+ {
+  "id": "t2b_stt_085",
+  "voice": "stt",
+  "text": "throw the flash uh no no do not throw it we do not need it",
+  "orders": [
+   "NONE"
+  ],
+  "pieces": [
+   "throw the flash uh no no do not throw it we do not need it"
+  ]
+ },
+ {
+  "id": "t2b_stt_086",
+  "voice": "stt",
+  "text": "do not go inside the room just uh look at the north window",
+  "orders": [
+   "LOOK_AT"
+  ],
+  "pieces": [
+   "look at the north window"
+  ]
+ },
+ {
+  "id": "t2b_stt_087",
+  "voice": "stt",
+  "text": "it is very quiet i do not like it uh send the drown first",
+  "orders": [
+   "DRONE"
+  ],
+  "pieces": [
+   "send the drown first"
+  ]
+ },
+ {
+  "id": "t2b_stt_088",
+  "voice": "stt",
+  "text": "before you go through the window you send the drone inside",
+  "orders": [
+   "DRONE",
+   "VAULT_WINDOW"
+  ],
+  "pieces": [
+   "you send the drone inside",
+   "you go through the window"
+  ]
+ },
+ {
+  "id": "t2b_stt_089",
+  "voice": "stt",
+  "text": "stop shooting and uh go back go back to the stairs",
+  "orders": [
+   "HOLD_FIRE",
+   "MOVE_TO"
+  ],
+  "pieces": [
+   "stop shooting",
+   "go back to the stairs"
+  ]
+ },
+ {
+  "id": "t2b_stt_090",
+  "voice": "stt",
+  "text": "shoot on the window all the time uh so they cannot look out pin them down",
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pieces": [
+   "shoot on the window all the time uh so they cannot look out pin them down"
+  ]
+ },
+ {
+  "id": "t2b_stt_091",
+  "voice": "stt",
+  "text": "take cover behind the table throw the flesh and then open fire",
+  "orders": [
+   "TAKE_COVER",
+   "FLASH",
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "take cover behind the table",
+   "throw the flesh",
+   "open fire"
+  ]
+ },
+ {
+  "id": "t2b_stt_092",
+  "voice": "stt",
+  "text": "i will shoot the guy on the stairs and you you go the fuse the bomb",
+  "orders": [
+   "DEFUSE"
+  ],
+  "pieces": [
+   "you go the fuse the bomb"
+  ]
+ },
+ {
+  "id": "t2b_stt_093",
+  "voice": "stt",
+  "text": "you are too high they will see you from window lie down",
+  "orders": [
+   "PRONE"
+  ],
+  "pieces": [
+   "lie down"
+  ]
+ },
+ {
+  "id": "t2b_stt_094",
+  "voice": "stt",
+  "text": "get low and stay low do not stand",
+  "orders": [
+   "CROUCH"
+  ],
+  "pieces": [
+   "get low and stay low do not stand"
+  ]
+ },
+ {
+  "id": "t2b_stt_095",
+  "voice": "stt",
+  "text": "he is behind the so far he is behind so far shoot him",
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pieces": [
+   "shoot him behind the so far"
+  ]
+ },
+ {
+  "id": "t2b_stt_096",
+  "voice": "stt",
+  "text": "i go to the stairs now you check this room and then you come with me",
+  "orders": [
+   "CHECK",
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "you check this room",
+   "you come with me"
+  ]
+ },
+ {
+  "id": "t2b_stt_097",
+  "voice": "stt",
+  "text": "defuse the bomb but before that check behind the so far",
+  "orders": [
+   "CHECK",
+   "DEFUSE"
+  ],
+  "pieces": [
+   "check behind the so far",
+   "defuse the bomb"
+  ]
+ },
+ {
+  "id": "t2b_stt_098",
+  "voice": "stt",
+  "text": "volt the window and hold the corridor inside",
+  "orders": [
+   "VAULT_WINDOW",
+   "HOLD_ANGLE"
+  ],
+  "pieces": [
+   "volt the window",
+   "hold the corridor inside"
+  ]
+ },
+ {
+  "id": "t2b_stt_099",
+  "voice": "stt",
+  "text": "stay near me and go where i go okay",
+  "orders": [
+   "FOLLOW_ME"
+  ],
+  "pieces": [
+   "stay near me and go where i go okay"
+  ]
+ }
+]

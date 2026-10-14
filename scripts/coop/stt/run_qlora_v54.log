@@ -1,0 +1,7 @@
+   853 s  chains_v54.py train composed 0 (exit 0)
+   871 s  chains_v54.py check (exit 0)
+ 1,818 s  chains_v54.py train teacher 0 (exit 0)
+ 2,255 s  qlora_v54.py final qwen3 0 (exit 0)
+ 2,304 s  qlora_v54.py timing qwen3 0 (exit 0)
+ 2,323 s  qlora_v54.py score (exit 0)
+ 2,333 s  chains_v54.py score (exit 0)

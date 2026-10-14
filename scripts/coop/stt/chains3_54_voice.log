@@ -1,0 +1,25 @@
+== test3 chains2\blind_heard.json chains2\blind_author.json
+vctkB: 100 lines, 1s
+vctkB2: 100 lines, 35s
+vctkB3: 100 lines, 69s
+== test3 chains2\ctx_blind_heard.json chains2\ctx_blind_author.json
+vctkB: 200 lines, 39s
+vctkB2: 200 lines, 77s
+vctkB3: 200 lines, 116s
+== test3 chains\blind_heard.json chains\blind_author.json
+vctkB: 100 lines, 1s
+vctkB2: 100 lines, 36s
+vctkB3: 100 lines, 72s
+== train chains2\ctx_teacher_heard.json chains2\ctx_teacher.json
+vctkA: 591 lines, 112s
+kokoro: 591 lines, 445s
+== train2 chains\teacher_heard.json chains\teacher_lines.json
+vctkA2: 200 lines, 65s
+kokorox: 200 lines, 260s
+== train2 chains2\teacher_heard.json chains2\teacher_a.json chains2\teacher_b.json
+vctkA2: 400 lines, 147s
+kokorox: 400 lines, 592s
+== train2 chains2\ctx_teacher_heard.json chains2\ctx_teacher.json
+vctkA2: 591 lines, 104s
+kokorox: 591 lines, 422s
+== done

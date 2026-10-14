@@ -1,0 +1,7 @@
+the teacher's 300 lines, 600 pieces, read by the v54 ensemble (gate family, threshold 0.68):
+  pieces the classifier reads as the teacher labelled them: 592 (98.7%); of the 8 others, 1 are under the threshold
+  lines kept (every piece agrees): 292 (97.3%)
+  kept by orders in the line: 1: 84/90, 2: 134/135, 3+: 74/75
+  kept by voice: cs: 99/100, r6: 97/100, stt: 96/100
+  the commonest disagreements (teacher -> classifier): NONE -> BREACH x1; FRAG -> FLANK x1; NONE -> PLANT x1; HOLD_POSITION -> MOVE_TO x1; MOVE_TO -> RAPPEL x1; NONE -> FLASH x1; YES -> unsure, would be YES x1; NONE -> SMOKE x1
+  the blind lines read by the same bot: 150 -> chains/blind_bot.json

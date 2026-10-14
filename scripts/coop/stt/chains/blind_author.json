@@ -1,0 +1,1342 @@
+[
+ {
+  "id": "ch_r6_000",
+  "voice": "r6",
+  "text": "They're rotating to the basement, and one's still on the roof.",
+  "orders": [
+   "NONE"
+  ]
+ },
+ {
+  "id": "ch_r6_001",
+  "voice": "r6",
+  "text": "Don't breach that wall, it's reinforced.",
+  "orders": [
+   "NONE"
+  ]
+ },
+ {
+  "id": "ch_r6_002",
+  "voice": "r6",
+  "text": "Suppress the east window so I can cross, then follow me.",
+  "orders": [
+   "SUPPRESS",
+   "FOLLOW_ME"
+  ]
+ },
+ {
+  "id": "ch_r6_003",
+  "voice": "r6",
+  "text": "That's the call, execute, go go go!",
+  "orders": [
+   "GO_NOW"
+  ]
+ },
+ {
+  "id": "ch_r6_004",
+  "voice": "r6",
+  "text": "Wait for my count, then blow the east wall.",
+  "orders": [
+   "BREACH"
+  ]
+ },
+ {
+  "id": "ch_r6_005",
+  "voice": "r6",
+  "text": "Two in the kitchen and one behind the chairs, frag them.",
+  "orders": [
+   "FRAG"
+  ]
+ },
+ {
+  "id": "ch_r6_006",
+  "voice": "r6",
+  "text": "Check the top floor, and once it's clear come back here.",
+  "orders": [
+   "CHECK",
+   "COME_BACK"
+  ]
+ },
+ {
+  "id": "ch_r6_007",
+  "voice": "r6",
+  "text": "After you check the basement, come back and cover me while I plant.",
+  "orders": [
+   "CHECK",
+   "COME_BACK",
+   "COVER_ME"
+  ]
+ },
+ {
+  "id": "ch_r6_008",
+  "voice": "r6",
+  "text": "Open the west door quietly, toss a frag in.",
+  "orders": [
+   "OPEN",
+   "FRAG"
+  ]
+ },
+ {
+  "id": "ch_r6_009",
+  "voice": "r6",
+  "text": "I'll breach the wall, you flash through it.",
+  "orders": [
+   "FLASH"
+  ]
+ },
+ {
+  "id": "ch_r6_010",
+  "voice": "r6",
+  "text": "Go prone, open fire on that window, then fall back to the stairs.",
+  "orders": [
+   "PRONE",
+   "OPEN_FIRE",
+   "FALL_BACK"
+  ]
+ },
+ {
+  "id": "ch_r6_011",
+  "voice": "r6",
+  "text": "Breach the hatch and drop down through it.",
+  "orders": [
+   "BREACH",
+   "JUMP"
+  ]
+ },
+ {
+  "id": "ch_r6_012",
+  "voice": "r6",
+  "text": "Drone the basement, and when you're done watch the red stairs.",
+  "orders": [
+   "DRONE",
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_r6_013",
+  "voice": "r6",
+  "text": "Push in and clear it out, room by room.",
+  "orders": [
+   "ENTRY"
+  ]
+ },
+ {
+  "id": "ch_r6_014",
+  "voice": "r6",
+  "text": "Stop shooting, get up, and follow me to the roof.",
+  "orders": [
+   "HOLD_FIRE",
+   "STAND_UP",
+   "FOLLOW_ME"
+  ]
+ },
+ {
+  "id": "ch_r6_015",
+  "voice": "r6",
+  "text": "Frag the corner behind the sofa, then same thing on the other side.",
+  "orders": [
+   "FRAG",
+   "FRAG"
+  ]
+ },
+ {
+  "id": "ch_r6_016",
+  "voice": "r6",
+  "text": "Vault in through the west window, check the room, then open the door for me.",
+  "orders": [
+   "VAULT_WINDOW",
+   "CHECK",
+   "OPEN"
+  ]
+ },
+ {
+  "id": "ch_r6_017",
+  "voice": "r6",
+  "text": "I'm going to flash the door and swing, wish me luck.",
+  "orders": [
+   "NONE"
+  ]
+ },
+ {
+  "id": "ch_r6_018",
+  "voice": "r6",
+  "text": "Stun the room and then clear it out.",
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ]
+ },
+ {
+  "id": "ch_r6_019",
+  "voice": "r6",
+  "text": "Hop over the sofa and hold the door from there.",
+  "orders": [
+   "JUMP",
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_r6_020",
+  "voice": "r6",
+  "text": "Rappel to the top floor, open the window, and frag the room.",
+  "orders": [
+   "RAPPEL",
+   "OPEN",
+   "FRAG"
+  ]
+ },
+ {
+  "id": "ch_r6_021",
+  "voice": "r6",
+  "text": "Go to the yellow stairs, watch the north door from there, and don't shoot until I say.",
+  "orders": [
+   "MOVE_TO",
+   "HOLD_ANGLE",
+   "HOLD_FIRE"
+  ]
+ },
+ {
+  "id": "ch_r6_022",
+  "voice": "r6",
+  "text": "You keep this door covered, I'm taking the other one upstairs.",
+  "orders": [
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_r6_023",
+  "voice": "r6",
+  "text": "Cease fire, pull back to the brown stairs.",
+  "orders": [
+   "HOLD_FIRE",
+   "FALL_BACK"
+  ]
+ },
+ {
+  "id": "ch_r6_024",
+  "voice": "r6",
+  "text": "Smoke the Main door, plant behind the table, then watch the east window.",
+  "orders": [
+   "SMOKE",
+   "PLANT",
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_r6_025",
+  "voice": "r6",
+  "text": "Open the hatch, drone the basement, then drop down and plant.",
+  "orders": [
+   "OPEN",
+   "DRONE",
+   "JUMP",
+   "PLANT"
+  ]
+ },
+ {
+  "id": "ch_r6_026",
+  "voice": "r6",
+  "text": "Breach the wall... actually, scratch that, just open the door.",
+  "orders": [
+   "OPEN"
+  ]
+ },
+ {
+  "id": "ch_r6_027",
+  "voice": "r6",
+  "text": "Defuse it, I'll watch the door, and get behind cover as soon as you're done.",
+  "orders": [
+   "DEFUSE",
+   "TAKE_COVER"
+  ]
+ },
+ {
+  "id": "ch_r6_028",
+  "voice": "r6",
+  "text": "I'm going for the plant, cover me while I'm on it.",
+  "orders": [
+   "COVER_ME"
+  ]
+ },
+ {
+  "id": "ch_r6_029",
+  "voice": "r6",
+  "text": "Give me a smoke on the Main door, followed by a flash over the top.",
+  "orders": [
+   "SMOKE",
+   "FLASH"
+  ]
+ },
+ {
+  "id": "ch_r6_030",
+  "voice": "r6",
+  "text": "Rappel down to the east window and vault in.",
+  "orders": [
+   "RAPPEL",
+   "VAULT_WINDOW"
+  ]
+ },
+ {
+  "id": "ch_r6_031",
+  "voice": "r6",
+  "text": "Before you breach, get a drone in there, and flash as soon as the wall is open.",
+  "orders": [
+   "DRONE",
+   "BREACH",
+   "FLASH"
+  ]
+ },
+ {
+  "id": "ch_r6_032",
+  "voice": "r6",
+  "text": "Rope up and hang outside the south window until I call it.",
+  "orders": [
+   "RAPPEL"
+  ]
+ },
+ {
+  "id": "ch_r6_033",
+  "voice": "r6",
+  "text": "Yes, exactly, put a drone in there.",
+  "orders": [
+   "DRONE"
+  ]
+ },
+ {
+  "id": "ch_r6_034",
+  "voice": "r6",
+  "text": "On your feet, move to the blue stairs.",
+  "orders": [
+   "STAND_UP",
+   "MOVE_TO"
+  ]
+ },
+ {
+  "id": "ch_r6_035",
+  "voice": "r6",
+  "text": "Get low and keep eyes on that window.",
+  "orders": [
+   "CROUCH",
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_r6_036",
+  "voice": "r6",
+  "text": "Frag the white stairs, smoke them off, cross to the sofa and watch the north door.",
+  "orders": [
+   "FRAG",
+   "SMOKE",
+   "MOVE_TO",
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_r6_037",
+  "voice": "r6",
+  "text": "Smoke my ping, move up to the table, then lay down suppressive fire on the door.",
+  "orders": [
+   "SMOKE",
+   "MOVE_TO",
+   "SUPPRESS"
+  ]
+ },
+ {
+  "id": "ch_r6_038",
+  "voice": "r6",
+  "text": "Did you hear that? Was that a drone or footsteps?",
+  "orders": [
+   "NONE"
+  ]
+ },
+ {
+  "id": "ch_r6_039",
+  "voice": "r6",
+  "text": "Could be, it's your call.",
+  "orders": [
+   "MAYBE"
+  ]
+ },
+ {
+  "id": "ch_r6_040",
+  "voice": "r6",
+  "text": "Take the other angle, but first throw a stun down the hallway.",
+  "orders": [
+   "FLASH",
+   "HOLD_OTHER_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_r6_041",
+  "voice": "r6",
+  "text": "Lay down fire on that window and keep their heads down.",
+  "orders": [
+   "SUPPRESS"
+  ]
+ },
+ {
+  "id": "ch_r6_042",
+  "voice": "r6",
+  "text": "Don't push in, just watch the door from where you are.",
+  "orders": [
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_r6_043",
+  "voice": "r6",
+  "text": "Hold up, stop, I hear a drone. Don't move in yet.",
+  "orders": [
+   "WAIT"
+  ]
+ },
+ {
+  "id": "ch_r6_044",
+  "voice": "r6",
+  "text": "Vault the north window, then stay on my ping.",
+  "orders": [
+   "VAULT_WINDOW",
+   "HOLD_POSITION"
+  ]
+ },
+ {
+  "id": "ch_r6_045",
+  "voice": "r6",
+  "text": "Plant the defuser after you smoke off the north door.",
+  "orders": [
+   "SMOKE",
+   "PLANT"
+  ]
+ },
+ {
+  "id": "ch_r6_046",
+  "voice": "r6",
+  "text": "Flank around through the east door once you've droned it out.",
+  "orders": [
+   "DRONE",
+   "FLANK"
+  ]
+ },
+ {
+  "id": "ch_r6_047",
+  "voice": "r6",
+  "text": "Head up to the roof, I'm right behind you, and rope down the south side.",
+  "orders": [
+   "MOVE_TO",
+   "RAPPEL"
+  ]
+ },
+ {
+  "id": "ch_r6_048",
+  "voice": "r6",
+  "text": "Before you push the site, smoke the Main door.",
+  "orders": [
+   "SMOKE",
+   "ENTRY"
+  ]
+ },
+ {
+  "id": "ch_r6_049",
+  "voice": "r6",
+  "text": "Engage on my go, then get the plant down and take the other angle.",
+  "orders": [
+   "ATTACK",
+   "PLANT",
+   "HOLD_OTHER_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_cs_000",
+  "voice": "cs",
+  "text": "hop through the east window and take the yellow stairs up",
+  "orders": [
+   "VAULT_WINDOW",
+   "MOVE_TO"
+  ]
+ },
+ {
+  "id": "ch_cs_001",
+  "voice": "cs",
+  "text": "hes one hp behind the table, finish him",
+  "orders": [
+   "ATTACK"
+  ]
+ },
+ {
+  "id": "ch_cs_002",
+  "voice": "cs",
+  "text": "smoke ct, plus a molly on the ramp",
+  "orders": [
+   "SMOKE",
+   "FRAG"
+  ]
+ },
+ {
+  "id": "ch_cs_003",
+  "voice": "cs",
+  "text": "wrap around through the basement after you smoke mid",
+  "orders": [
+   "SMOKE",
+   "FLANK"
+  ]
+ },
+ {
+  "id": "ch_cs_004",
+  "voice": "cs",
+  "text": "open that door real quiet and flash in",
+  "orders": [
+   "OPEN",
+   "FLASH"
+  ]
+ },
+ {
+  "id": "ch_cs_005",
+  "voice": "cs",
+  "text": "drop down and plant where i pinged",
+  "orders": [
+   "JUMP",
+   "PLANT"
+  ]
+ },
+ {
+  "id": "ch_cs_006",
+  "voice": "cs",
+  "text": "one mid, one long, hold your angle",
+  "orders": [
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_cs_007",
+  "voice": "cs",
+  "text": "go look in the basement and see if its clear",
+  "orders": [
+   "CHECK"
+  ]
+ },
+ {
+  "id": "ch_cs_008",
+  "voice": "cs",
+  "text": "fall back fall back, get behind something",
+  "orders": [
+   "FALL_BACK",
+   "TAKE_COVER"
+  ]
+ },
+ {
+  "id": "ch_cs_009",
+  "voice": "cs",
+  "text": "smoke main, flash over it, then push",
+  "orders": [
+   "SMOKE",
+   "FLASH",
+   "ENTRY"
+  ]
+ },
+ {
+  "id": "ch_cs_010",
+  "voice": "cs",
+  "text": "before you plant, smoke the door and check behind the sofa",
+  "orders": [
+   "SMOKE",
+   "CHECK",
+   "PLANT"
+  ]
+ },
+ {
+  "id": "ch_cs_011",
+  "voice": "cs",
+  "text": "suppress long, i cross, then smoke and come to me",
+  "orders": [
+   "SUPPRESS",
+   "SMOKE",
+   "FOLLOW_ME"
+  ]
+ },
+ {
+  "id": "ch_cs_012",
+  "voice": "cs",
+  "text": "hold fire, dont shoot bro, thats me",
+  "orders": [
+   "HOLD_FIRE"
+  ]
+ },
+ {
+  "id": "ch_cs_013",
+  "voice": "cs",
+  "text": "nt nt, unlucky bro",
+  "orders": [
+   "NONE"
+  ]
+ },
+ {
+  "id": "ch_cs_014",
+  "voice": "cs",
+  "text": "dunno bro, cant tell",
+  "orders": [
+   "DONT_KNOW"
+  ]
+ },
+ {
+  "id": "ch_cs_015",
+  "voice": "cs",
+  "text": "nade red stairs before you go up",
+  "orders": [
+   "FRAG",
+   "MOVE_TO"
+  ]
+ },
+ {
+  "id": "ch_cs_016",
+  "voice": "cs",
+  "text": "stop shooting and get back here",
+  "orders": [
+   "HOLD_FIRE",
+   "COME_BACK"
+  ]
+ },
+ {
+  "id": "ch_cs_017",
+  "voice": "cs",
+  "text": "come back bro, hold the other angle",
+  "orders": [
+   "COME_BACK",
+   "HOLD_OTHER_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_cs_018",
+  "voice": "cs",
+  "text": "i need a hand here bro, then go watch red stairs",
+  "orders": [
+   "HELP",
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_cs_019",
+  "voice": "cs",
+  "text": "flash long, molly the corner, push site and plant",
+  "orders": [
+   "FLASH",
+   "FRAG",
+   "ENTRY",
+   "PLANT"
+  ]
+ },
+ {
+  "id": "ch_cs_020",
+  "voice": "cs",
+  "text": "look at me bro, ok now go over there",
+  "orders": [
+   "LOOK_AT_ME",
+   "MOVE_TO"
+  ]
+ },
+ {
+  "id": "ch_cs_021",
+  "voice": "cs",
+  "text": "plant after you clear site, but flash first",
+  "orders": [
+   "FLASH",
+   "ENTRY",
+   "PLANT"
+  ]
+ },
+ {
+  "id": "ch_cs_022",
+  "voice": "cs",
+  "text": "lie down, watch the door, no shooting till i say",
+  "orders": [
+   "PRONE",
+   "HOLD_ANGLE",
+   "HOLD_FIRE"
+  ]
+ },
+ {
+  "id": "ch_cs_023",
+  "voice": "cs",
+  "text": "crouch, dont shoot yet",
+  "orders": [
+   "CROUCH",
+   "HOLD_FIRE"
+  ]
+ },
+ {
+  "id": "ch_cs_024",
+  "voice": "cs",
+  "text": "go a, plant default, then hide",
+  "orders": [
+   "MOVE_TO",
+   "PLANT",
+   "TAKE_COVER"
+  ]
+ },
+ {
+  "id": "ch_cs_025",
+  "voice": "cs",
+  "text": "molly that corner, then check it",
+  "orders": [
+   "FRAG",
+   "CHECK"
+  ]
+ },
+ {
+  "id": "ch_cs_026",
+  "voice": "cs",
+  "text": "im planting, cover me bro",
+  "orders": [
+   "COVER_ME"
+  ]
+ },
+ {
+  "id": "ch_cs_027",
+  "voice": "cs",
+  "text": "drop me your gun and buy armor next round",
+  "orders": [
+   "NONE"
+  ]
+ },
+ {
+  "id": "ch_cs_028",
+  "voice": "cs",
+  "text": "take cover behind the table, when i flash you push",
+  "orders": [
+   "TAKE_COVER",
+   "ENTRY"
+  ]
+ },
+ {
+  "id": "ch_cs_029",
+  "voice": "cs",
+  "text": "wait till i say go, then nade the window",
+  "orders": [
+   "FRAG"
+  ]
+ },
+ {
+  "id": "ch_cs_030",
+  "voice": "cs",
+  "text": "smoke the door, go around the back and hit them from behind, then come back",
+  "orders": [
+   "SMOKE",
+   "FLANK",
+   "COME_BACK"
+  ]
+ },
+ {
+  "id": "ch_cs_031",
+  "voice": "cs",
+  "text": "defuse bro, no wait, smoke it first",
+  "orders": [
+   "SMOKE",
+   "DEFUSE"
+  ]
+ },
+ {
+  "id": "ch_cs_032",
+  "voice": "cs",
+  "text": "turn around and shoot bro, hes behind you",
+  "orders": [
+   "LOOK_AT",
+   "OPEN_FIRE"
+  ]
+ },
+ {
+  "id": "ch_cs_033",
+  "voice": "cs",
+  "text": "hide bro, get behind the sofa and stay down",
+  "orders": [
+   "TAKE_COVER"
+  ]
+ },
+ {
+  "id": "ch_cs_034",
+  "voice": "cs",
+  "text": "get up bro, come with me",
+  "orders": [
+   "STAND_UP",
+   "FOLLOW_ME"
+  ]
+ },
+ {
+  "id": "ch_cs_035",
+  "voice": "cs",
+  "text": "drop down, defuse, then hop out the window and hide",
+  "orders": [
+   "JUMP",
+   "DEFUSE",
+   "VAULT_WINDOW",
+   "TAKE_COVER"
+  ]
+ },
+ {
+  "id": "ch_cs_036",
+  "voice": "cs",
+  "text": "molly the chairs, nade behind them, then clear",
+  "orders": [
+   "FRAG",
+   "FRAG",
+   "ENTRY"
+  ]
+ },
+ {
+  "id": "ch_cs_037",
+  "voice": "cs",
+  "text": "yeah yeah, plant it",
+  "orders": [
+   "PLANT"
+  ]
+ },
+ {
+  "id": "ch_cs_038",
+  "voice": "cs",
+  "text": "two long and one pushing mid",
+  "orders": [
+   "NONE"
+  ]
+ },
+ {
+  "id": "ch_cs_039",
+  "voice": "cs",
+  "text": "look at the east window bro, ok flash it, then jump through and watch the door",
+  "orders": [
+   "LOOK_AT",
+   "FLASH",
+   "VAULT_WINDOW",
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_cs_040",
+  "voice": "cs",
+  "text": "i got long, you take the other angle",
+  "orders": [
+   "HOLD_OTHER_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_cs_041",
+  "voice": "cs",
+  "text": "molly it, nah nah, just smoke it",
+  "orders": [
+   "SMOKE"
+  ]
+ },
+ {
+  "id": "ch_cs_042",
+  "voice": "cs",
+  "text": "pin them down on long, then fall back to site",
+  "orders": [
+   "SUPPRESS",
+   "FALL_BACK"
+  ]
+ },
+ {
+  "id": "ch_cs_043",
+  "voice": "cs",
+  "text": "stop, stop, hold up, dont go yet",
+  "orders": [
+   "WAIT"
+  ]
+ },
+ {
+  "id": "ch_cs_044",
+  "voice": "cs",
+  "text": "nah not that one bro",
+  "orders": [
+   "NO"
+  ]
+ },
+ {
+  "id": "ch_cs_045",
+  "voice": "cs",
+  "text": "flash me in, then follow, watch my back bro",
+  "orders": [
+   "FLASH",
+   "FOLLOW_ME",
+   "COVER_ME"
+  ]
+ },
+ {
+  "id": "ch_cs_046",
+  "voice": "cs",
+  "text": "pop a flash then push long",
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ]
+ },
+ {
+  "id": "ch_cs_047",
+  "voice": "cs",
+  "text": "flash main, flash the window too",
+  "orders": [
+   "FLASH",
+   "FLASH"
+  ]
+ },
+ {
+  "id": "ch_cs_048",
+  "voice": "cs",
+  "text": "im gonna plant then hide in the corner",
+  "orders": [
+   "NONE"
+  ]
+ },
+ {
+  "id": "ch_cs_049",
+  "voice": "cs",
+  "text": "stay there and dont move bro",
+  "orders": [
+   "HOLD_POSITION"
+  ]
+ },
+ {
+  "id": "ch_stt_000",
+  "voice": "stt",
+  "text": "yes yes that is right",
+  "orders": [
+   "YES"
+  ]
+ },
+ {
+  "id": "ch_stt_001",
+  "voice": "stt",
+  "text": "send the drawn inside and look what is there",
+  "orders": [
+   "DRONE"
+  ]
+ },
+ {
+  "id": "ch_stt_002",
+  "voice": "stt",
+  "text": "you take the other angle the other one but first open the west door",
+  "orders": [
+   "OPEN",
+   "HOLD_OTHER_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_stt_003",
+  "voice": "stt",
+  "text": "push inside and and clear the room clear everything",
+  "orders": [
+   "ENTRY"
+  ]
+ },
+ {
+  "id": "ch_stt_004",
+  "voice": "stt",
+  "text": "go to the white stairs wait no the red stairs then check the basement and come back",
+  "orders": [
+   "MOVE_TO",
+   "CHECK",
+   "COME_BACK"
+  ]
+ },
+ {
+  "id": "ch_stt_005",
+  "voice": "stt",
+  "text": "check the top floor uh then the roof and then you watch the brown stars okay",
+  "orders": [
+   "CHECK",
+   "CHECK",
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_stt_006",
+  "voice": "stt",
+  "text": "uh flesh that room and after that you push inside okay",
+  "orders": [
+   "FLASH",
+   "ENTRY"
+  ]
+ },
+ {
+  "id": "ch_stt_007",
+  "voice": "stt",
+  "text": "you repel down from the roof and uh go in through the window the north one",
+  "orders": [
+   "RAPPEL",
+   "VAULT_WINDOW"
+  ]
+ },
+ {
+  "id": "ch_stt_008",
+  "voice": "stt",
+  "text": "you go to the so far and then you watch the main door",
+  "orders": [
+   "MOVE_TO",
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_stt_009",
+  "voice": "stt",
+  "text": "stop shooting stop shooting crouch down they do not see us",
+  "orders": [
+   "HOLD_FIRE",
+   "CROUCH"
+  ]
+ },
+ {
+  "id": "ch_stt_010",
+  "voice": "stt",
+  "text": "bridge the wall bridge it and then uh suppress them through the hole",
+  "orders": [
+   "BREACH",
+   "SUPPRESS"
+  ]
+ },
+ {
+  "id": "ch_stt_011",
+  "voice": "stt",
+  "text": "plant the bomb no no no not plant uh defuse defuse it",
+  "orders": [
+   "DEFUSE"
+  ]
+ },
+ {
+  "id": "ch_stt_012",
+  "voice": "stt",
+  "text": "there is two guys behind the so far uh throw grenade",
+  "orders": [
+   "FRAG"
+  ]
+ },
+ {
+  "id": "ch_stt_013",
+  "voice": "stt",
+  "text": "i am down i am down revive me and then uh you fall back",
+  "orders": [
+   "REVIVE_ME",
+   "FALL_BACK"
+  ]
+ },
+ {
+  "id": "ch_stt_014",
+  "voice": "stt",
+  "text": "come back come back to me you cover me i am reloading",
+  "orders": [
+   "COME_BACK",
+   "COVER_ME"
+  ]
+ },
+ {
+  "id": "ch_stt_015",
+  "voice": "stt",
+  "text": "drone the top floor uh send the drone and then the basement also",
+  "orders": [
+   "DRONE",
+   "DRONE"
+  ]
+ },
+ {
+  "id": "ch_stt_016",
+  "voice": "stt",
+  "text": "jump down from there jump and uh look at the east window",
+  "orders": [
+   "JUMP",
+   "LOOK_AT"
+  ]
+ },
+ {
+  "id": "ch_stt_017",
+  "voice": "stt",
+  "text": "you wait for my count okay and then you flesh the room",
+  "orders": [
+   "FLASH"
+  ]
+ },
+ {
+  "id": "ch_stt_018",
+  "voice": "stt",
+  "text": "uh look at me turn and look at me",
+  "orders": [
+   "LOOK_AT_ME"
+  ]
+ },
+ {
+  "id": "ch_stt_019",
+  "voice": "stt",
+  "text": "follow me follow me to the roof and when we are there you watch the door",
+  "orders": [
+   "FOLLOW_ME",
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_stt_020",
+  "voice": "stt",
+  "text": "revive me please i am down then you throw smoke and uh you follow me",
+  "orders": [
+   "REVIVE_ME",
+   "SMOKE",
+   "FOLLOW_ME"
+  ]
+ },
+ {
+  "id": "ch_stt_021",
+  "voice": "stt",
+  "text": "attack them attack after you throw the smoke",
+  "orders": [
+   "SMOKE",
+   "ATTACK"
+  ]
+ },
+ {
+  "id": "ch_stt_022",
+  "voice": "stt",
+  "text": "they are coming from the main door and one more on the stairs",
+  "orders": [
+   "NONE"
+  ]
+ },
+ {
+  "id": "ch_stt_023",
+  "voice": "stt",
+  "text": "fall back fall back and get out from there quickly",
+  "orders": [
+   "FALL_BACK"
+  ]
+ },
+ {
+  "id": "ch_stt_024",
+  "voice": "stt",
+  "text": "okay okay i throw the flash now and i go inside",
+  "orders": [
+   "NONE"
+  ]
+ },
+ {
+  "id": "ch_stt_025",
+  "voice": "stt",
+  "text": "do not go inside do not go just watch the window",
+  "orders": [
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_stt_026",
+  "voice": "stt",
+  "text": "stand up uh go upstairs open the door slowly and throw the frog inside",
+  "orders": [
+   "STAND_UP",
+   "MOVE_TO",
+   "OPEN",
+   "FRAG"
+  ]
+ },
+ {
+  "id": "ch_stt_027",
+  "voice": "stt",
+  "text": "the fuse the bomb quickly when you finish run to the main door",
+  "orders": [
+   "DEFUSE",
+   "MOVE_TO"
+  ]
+ },
+ {
+  "id": "ch_stt_028",
+  "voice": "stt",
+  "text": "help me help me here after this you go plant",
+  "orders": [
+   "HELP",
+   "PLANT"
+  ]
+ },
+ {
+  "id": "ch_stt_029",
+  "voice": "stt",
+  "text": "before you go up the stairs you must to throw flash up there and uh after that you watch the door",
+  "orders": [
+   "FLASH",
+   "MOVE_TO",
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_stt_030",
+  "voice": "stt",
+  "text": "you suppress the door uh i go around then you stop shooting and come to me",
+  "orders": [
+   "SUPPRESS",
+   "HOLD_FIRE",
+   "FOLLOW_ME"
+  ]
+ },
+ {
+  "id": "ch_stt_031",
+  "voice": "stt",
+  "text": "go now go go do it",
+  "orders": [
+   "GO_NOW"
+  ]
+ },
+ {
+  "id": "ch_stt_032",
+  "voice": "stt",
+  "text": "go around from the back side and and shoot them from behind",
+  "orders": [
+   "FLANK"
+  ]
+ },
+ {
+  "id": "ch_stt_033",
+  "voice": "stt",
+  "text": "hold here hold this position and uh look at me i show you something",
+  "orders": [
+   "HOLD_POSITION",
+   "LOOK_AT_ME"
+  ]
+ },
+ {
+  "id": "ch_stt_034",
+  "voice": "stt",
+  "text": "volt the window and and check the room if somebody is there",
+  "orders": [
+   "VAULT_WINDOW",
+   "CHECK"
+  ]
+ },
+ {
+  "id": "ch_stt_035",
+  "voice": "stt",
+  "text": "why you are so slow today and where is my drone",
+  "orders": [
+   "NONE"
+  ]
+ },
+ {
+  "id": "ch_stt_036",
+  "voice": "stt",
+  "text": "before you open the door you must to send the drone under it",
+  "orders": [
+   "DRONE",
+   "OPEN"
+  ]
+ },
+ {
+  "id": "ch_stt_037",
+  "voice": "stt",
+  "text": "i will open the door and you you throw the smoke okay",
+  "orders": [
+   "SMOKE"
+  ]
+ },
+ {
+  "id": "ch_stt_038",
+  "voice": "stt",
+  "text": "after you breach the door throw the grenade inside and uh then hold the angle",
+  "orders": [
+   "BREACH",
+   "FRAG",
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_stt_039",
+  "voice": "stt",
+  "text": "lie down lie down on the floor and stay like that",
+  "orders": [
+   "PRONE"
+  ]
+ },
+ {
+  "id": "ch_stt_040",
+  "voice": "stt",
+  "text": "look at the south window the south one okay now jump through and open the door for me",
+  "orders": [
+   "LOOK_AT",
+   "VAULT_WINDOW",
+   "OPEN"
+  ]
+ },
+ {
+  "id": "ch_stt_041",
+  "voice": "stt",
+  "text": "okay so first you smoke the window then flesh it and then you jump through it",
+  "orders": [
+   "SMOKE",
+   "FLASH",
+   "VAULT_WINDOW"
+  ]
+ },
+ {
+  "id": "ch_stt_042",
+  "voice": "stt",
+  "text": "first flesh then smoke then you go plant and after that uh you watch the stairs",
+  "orders": [
+   "FLASH",
+   "SMOKE",
+   "PLANT",
+   "HOLD_ANGLE"
+  ]
+ },
+ {
+  "id": "ch_stt_043",
+  "voice": "stt",
+  "text": "open fire open fire on the window then you go back you retreat",
+  "orders": [
+   "OPEN_FIRE",
+   "FALL_BACK"
+  ]
+ },
+ {
+  "id": "ch_stt_044",
+  "voice": "stt",
+  "text": "help me up help i am down come here quickly",
+  "orders": [
+   "REVIVE_ME"
+  ]
+ },
+ {
+  "id": "ch_stt_045",
+  "voice": "stt",
+  "text": "uh do not bridge the wall no do not bridge",
+  "orders": [
+   "NONE"
+  ]
+ },
+ {
+  "id": "ch_stt_046",
+  "voice": "stt",
+  "text": "take cover take cover uh throw smoke on the door",
+  "orders": [
+   "TAKE_COVER",
+   "SMOKE"
+  ]
+ },
+ {
+  "id": "ch_stt_047",
+  "voice": "stt",
+  "text": "you open the hedge the hatch and uh jump down and defuse the bomb",
+  "orders": [
+   "OPEN",
+   "JUMP",
+   "DEFUSE"
+  ]
+ },
+ {
+  "id": "ch_stt_048",
+  "voice": "stt",
+  "text": "okay now you lie down on the floor when you are down shoot the door shoot them",
+  "orders": [
+   "PRONE",
+   "OPEN_FIRE"
+  ]
+ },
+ {
+  "id": "ch_stt_049",
+  "voice": "stt",
+  "text": "okay go up to the roof repel to the east window bridge it and push inside",
+  "orders": [
+   "MOVE_TO",
+   "RAPPEL",
+   "BREACH",
+   "ENTRY"
+  ]
+ }
+]
