@@ -1228,6 +1228,36 @@ things changed:
 In the game the bot is an asset now (its name, its look, five numbers of its behaviour): the game's README,
 "The bot is an asset".
 
+### v55: the car, "again", negations, fetching (2026-10-14)
+
+After a longer play the owner listed what to fix and retrain: "wait here" not understood, "on my go" always heard
+as "on my goal", "go find ammo" (heard as "armor", "amor") and weapons, "get into the car", "try again", and
+"the bot does not understand don't, don't move, don't shoot". Three episodes of the log on top: "To this wall."
+after "start shooting" (wanted: fire at the wall), "More" after firing (wanted: keep firing; the bot went to
+check), "on my pin." in answer to "Which window?" (wanted: fire at the pin). Their decisions: the car is an intent
+of its own; ammo, weapons and health are places to walk to; a negated order is "wait".
+
+- **Intents: 41 -> 44** ([make_spec_v55.py](scripts/coop/make_spec_v55.py)): GET_IN and GET_OUT (the bot takes the
+  car's only seat, the driver's, and cannot drive), REPEAT ("try again", "again", "more": the game repeats the
+  refused order with the rest of its line, else the last order). "don't follow me", "don't jump down" are WAIT;
+  "don't shoot" stays HOLD_FIRE and "don't move" HOLD_POSITION; "wait here" is HOLD_POSITION. Places: rule set v6
+  with `car`, `ammo` (with "armor", "amor"), `weapon`, `health`, each the nearest one without a question. "goal"
+  counts as the signal word.
+- **The classifier** ([ensemble_bot_v55.py](scripts/coop/stt/ensemble_bot_v55.py)): family gate, 0.64. Criterion
+  on its own out-of-fold runs: typed 87.5, the new typed lines 93.3, unseen voices (VCTK B) 69.0. After the first
+  probe, twelve seeds "to this wall" -> MOVE_TO (it read the fragment as RAPPEL and acted).
+- **The language model, round four** (the report, "Раунд 4"): repeats and negations written back as they are, a
+  fragment with a pointing word completes the last order, a pointing answer to "Which ...?" is the asked order there.
+  Four variants; the game's is the one trained without those twelve seeds, and so is the router: with them the
+  router kept "To this wall." from the model and the bot walked to the wall. On round three's blind sets, through
+  the router, it is level with round three's model; alone, it loses 9 points on typed lines with a context.
+- **The engine:** a line the planner would ask to hear again goes to the language model when there is fresh talk
+  ("a second look").
+- **In the game:** GET_IN through the car's own enter ability (the bot possesses the car), GET_OUT, any order but
+  weapons, stance, wait and hold gets the bot out first; REPEAT in the order queue; weapon spawners and free cars in the
+  client's world. End to end: `v55.txt` (every request above, including "start shooting" then "to this wall" firing
+  where the player looks), `v55_car.txt`, `chain.txt`.
+
 ## Recommendation
 
 ```

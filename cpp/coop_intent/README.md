@@ -59,6 +59,14 @@ Other bots run with `--model-dir`:
   directory with the dynamically quantized model (small int8: 8.0 ms, 216 MB, 2738/2743 golden argmax; base and
   xsmall break under int8 except xsmall MatMul-only). What they cost in accuracy is in `COOP-BOT.md`, "Brains":
   the ensemble stays the bot; one base is the cheap option (-1.4 / -5.7 criterion typed / unseen speakers).
+- `../../models/coop-deberta-v3-ens3-v55/cpp`: v55, 44 intents (v54 plus GET_IN and GET_OUT for a car, and REPEAT
+  for "try again" / "again" / "more"; family gate, 0.64), trained on 2026-10-14 after the owner's play
+  (`scripts/coop/make_spec_v55.py`, `stt/build_v55.py`, `stt/ensemble_bot_v55.py`). A negated order ("don't follow
+  me", "don't jump down") is WAIT, "don't shoot" stays HOLD_FIRE and "don't move" HOLD_POSITION; "wait here" is
+  HOLD_POSITION; "go find ammo" (heard as "armor", "amor"), "get a weapon", "find health" are MOVE_TO with the place
+  `ammo` / `weapon` / `health` (`car` for the car), which the planner takes as the nearest one without asking; "on
+  my goal" (what the recognizer hears for "on my go") waits for the go. Checked: golden 3049/3049, tokenizer
+  11218/11218, places 51332/51332, gates 6912/6912, decisions 244/244, dialogue 77/77, planner 8142/8142.
 
 **The matcher follows the vocabulary a bot was exported with.** A config whose word lists include the
 `pin_*` and `point_*` lists runs rule set v5: a target may carry a pointer, `pin` (the player's 3D marker:
@@ -273,26 +281,33 @@ transcript --router--+--> one complete order ---------------------------------->
   "smoke the north door" and "go in through the north door"; "no, the other one" after "breach the north door"
   becomes "Breach the other door." Each of those lines then goes through the classifier, the slots, the place
   matcher and the planner as any line does. A line written back as it is stays the player's own line.
+- **Round four, for bot v55** (2026-10-14, `scripts/coop/stt/chains3_v55.py`, decoder `pieces4d_final`): "try again",
+  "more", "again" are written back as they are (the classifier reads REPEAT and the game repeats), and so is a negated
+  order ("don't follow me": WAIT); a fragment with a pointing word completes the last order ("To this wall." after
+  "Start shooting." becomes "Start shooting at this wall.", after "Watch the window." "Watch this wall."); a pointing
+  answer to "Which window?" is the asked order there ("on my pin" becomes "Shoot at my pin."). The router sends such
+  a fragment on (0.80 for "to this wall"); alone, the decoder writes it back and the classifier reads MOVE_TO.
 - **How much it remembers** is `memory_lines` and `memory_seconds` in `chain_config.json`: five lines, 30 seconds.
-  Five is the owner's choice of 2026-10-14 (two before it); the decoder was trained with none, one or two earlier
-  lines, so the third to the fifth are a prompt it has not seen. What that costs, on the 160 lines of
-  `chain_tests.jsonl`, each asked as it is and again with older lines put in front until there are five
-  (`scripts/coop/stt/memory_lines_probe.py`: one draw of older lines, the CPU, nothing labelled, the two answers
-  compared with each other, capitals and punctuation aside): the 54 lines with earlier lines of their own are all
-  read the same; of the 68 lines the router sends on, 4 change, three of them a line of two orders written back
-  as one line (37 lines of several orders become 34). On the lines the router keeps from the decoder it would
-  twice have taken a place out of an older line ("cover me while I'm on it" became "... on the roof"). Asking the
-  same prompts in another order already changes 3 of the 160, so the effect is small and its size is not known
-  better than that. The longest prompt was 195 tokens of the 1,024. The 30 seconds still apply: at a line every
-  ten seconds the decoder sees three earlier lines, not five.
-- `scripts/coop/stt/export_chain_cpp.py` writes `models/coop-chain-v54/cpp/`: `chain_config.json`, `router.onnx`,
-  `decoder.gguf`, `chain_tests.jsonl`. Not in git, like every model file.
+  Five is the owner's choice of 2026-10-14 (two before it). The v54 decoder was trained with none, one or two earlier
+  lines; the v55 decoder with up to five, also in front of the lines whose context is their own. What five cost, on
+  the 160 lines of `chain_tests.jsonl`, each asked as it is and again with older lines put in front until there are
+  five (`scripts/coop/stt/memory_lines_probe.py`: one draw of older lines, the CPU, nothing labelled, the two answers
+  compared with each other, capitals and punctuation aside): with the v55 decoder none of the 54 lines with earlier
+  lines of their own changes, and 9 of the 63 the router sends on do, most of them reworded ("clear it out" / "clear
+  the room out"), two a line about three targets written as "Frag them."; 36 lines of several orders become 37. The
+  v54 decoder: 0 of 54, 4 of 68 (37 lines of several orders became 34). Asking the same prompts in another order
+  already changes 3 to 6 of the 160, so the effect is small and its size is not known better than that. The longest
+  prompt was 197 tokens of the 1,024. The 30 seconds still apply: at a line every ten seconds the decoder sees three
+  earlier lines, not five.
+- `scripts/coop/stt/export_chain_cpp.py` writes the folder (`models/coop-chain-v54/cpp/`; for v55 `chains3_v55.py
+  export` writes `models/coop-chain-v55/cpp/`): `chain_config.json`, `router.onnx`, `decoder.gguf`,
+  `chain_tests.jsonl`. Not in git, like every model file.
 
 ```
 pwsh tools\setup_llama.ps1                       # once: llama.cpp under third_party\ (headers, DLLs, llama.lib)
 cmake -S . -B build -G "Visual Studio 17 2022" -A x64 && cmake --build build --config Release
 
-build\Release\coop_cli.exe --model-dir ..\..\models\coop-deberta-v3-ens3-v54\cpp --chain ..\..\models\coop-chain-v54\cpp --voice
+build\Release\coop_cli.exe --model-dir ..\..\models\coop-deberta-v3-ens3-v55\cpp --chain ..\..\models\coop-chain-v55\cpp --voice
 build\Release\coop_cli.exe --model-dir ... --chain ... --world ..\..\scripts\coop\world_example.json    # typed chat
 build\Release\coop_cli.exe --model-dir ... --chain ... --chain-tests --decoder-cpu                      # the checks
 build\Release\coop_cli.exe --model-dir ... --chain ... --serve                                          # the service
@@ -313,6 +328,12 @@ were measured line by line, not in a conversation.
   "over there"). If the planner then cannot read it (say again) and the decoder read one order in it ("the north
   one" after "Which door?" for "open the door" becomes "Open the north door."), that order goes to the planner
   instead. Any other line takes the usual road.
+- *A second look* (2026-10-14): a line the router kept from the decoder, which the planner would answer with "Say
+  again?", goes to the decoder after all when there is talk to read it by (the bot's question is open, or the
+  player spoke within `memory_seconds`). If the decoder writes something else, its first order line goes to the
+  planner and the rest follow as above; `/why` shows "a second look". A fallback for what the router misses: in the
+  owner's play of 2026-10-14 "on my pin." after "Which window?" got "Come again?"; the v55 router sends that line on
+  itself.
 - An order line that makes the planner ask stops the rest of its line. They wait and go through after the line
   that settles that order; a line with several orders replaces them, and so does a line about something else.
 - The second and later order lines of a line go to the planner as its further orders (`Planner::Step(...,
@@ -337,13 +358,16 @@ order line gone through, in the order to carry them out, each with the reply's f
 (`route`, `decoded`, `rewritten`, `held`, `resumed`, `note`, the two times). `ready` says which chain is loaded.
 The game reads `turns`: its client sends the orders as one list and its server carries them out one after another
 (LyraStarterGame58, `Source/LyraGame/CoopBot/README.md`, "Several orders in one line").
-`tools/deploy_brain.ps1 -Chain coop-chain-v54` adds the two models and llama.cpp's DLLs to the game's folder.
+`tools/deploy_brain.ps1 -Bot coop-deberta-v3-ens3-v55 -Chain coop-chain-v55` adds the two models and llama.cpp's DLLs
+to the game's folder (a chain belongs with its bot: v55's decoder writes lines for v55's labels).
 
 **Checked** (`--chain-tests`, 160 lines: single orders, chains, lines with a context, typed and in the form a
 transcript has): the decoder's turn text 160/160; the router's probability within 1e-4 of PyTorch on 160/160
 (largest difference 1.5e-6); the decoder's answers equal to those of llama.cpp's own server on the CPU on 160/160.
 On the GPU 157/160: a GPU rounds another way and a close call falls the other way, so there the count is reported
-and not required. The engine's other checks give the same numbers with this build.
+and not required. The engine's other checks give the same numbers with this build. The v55 chain (2026-10-14):
+turn text and token ids 160/160, the router within 1e-4 on 160/160 (largest difference 4.8e-6), the decoder on the
+CPU 160/160 (474 ms a line, p95 746).
 
 **Speed and memory** (i9-10900K, RTX 4090, no game running): the router 9 to 12 ms a line (17 to 19 ms as a
 service on one thread); the decoder on the CPU with 4 threads 450 ms a line (median 432, p95 750). Both models load
