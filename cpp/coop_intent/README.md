@@ -67,6 +67,14 @@ Other bots run with `--model-dir`:
   `ammo` / `weapon` / `health` (`car` for the car), which the planner takes as the nearest one without asking; "on
   my goal" (what the recognizer hears for "on my go") waits for the go. Checked: golden 3049/3049, tokenizer
   11218/11218, places 51332/51332, gates 6912/6912, decisions 244/244, dialogue 77/77, planner 8142/8142.
+- `../../models/coop-deberta-v3-ens3-v56/cpp`: v56, 45 intents (v55 without REVIVE_ME; HELP_INTERACTION in its place,
+  "let me out", "get me out of here", "press the button for me"; GO_BACK after REPEAT, "go back" to where the bot was;
+  family gate, 0.60), trained on 2026-10-15 after the owner's play (`scripts/coop/make_spec_v56.py`,
+  `stt/build_v56.py`, `stt/ensemble_bot_v56.py`). Being revived is HELP; COME_BACK is coming back to the player;
+  "stand here", "stand on my pin" are HOLD_POSITION; "go down the ramp", "stairs on my pin" are MOVE_TO. Exported with
+  the place vocabulary of rule set v7 (the zone `inside`). Checked: golden 3327/3327, tokenizer 11496/11496, places
+  51549/51549, gates 7468/7468, decisions 244/244, dialogue 77/77, planner 8389/8389; with the v55 chain, chain tests
+  160/160 on the CPU.
 
 **The matcher follows the vocabulary a bot was exported with.** A config whose word lists include the
 `pin_*` and `point_*` lists runs rule set v5: a target may carry a pointer, `pin` (the player's 3D marker:
@@ -76,6 +84,11 @@ rule set v3 -- each exactly as before, so the bots exported earlier keep their r
 files. `export_cpp.py <bot> --config-only` moves a bot to the current vocabulary (rule set v5) and the
 current timing pattern ("mark" is the pin, not the go-signal), and `gen_tests.py` refuses a bot whose
 config holds an older vocabulary or older regexes.
+
+Rule set v7 (bot v56, 2026-10-15) is rule set v5's code with one step more, taken only by a vocabulary with the
+zone `inside` (locations.json version 7): "inside" said on the way to a map object is that object's preposition, not
+a place of its own ("get inside the car" = the car, "go inside through the west door" = the west door); a bare
+"inside", "indoors", "in the building" is the zone. The bots exported before keep their records.
 
 ## Layout
 
@@ -359,7 +372,10 @@ order line gone through, in the order to carry them out, each with the reply's f
 The game reads `turns`: its client sends the orders as one list and its server carries them out one after another
 (LyraStarterGame58, `Source/LyraGame/CoopBot/README.md`, "Several orders in one line").
 `tools/deploy_brain.ps1 -Bot coop-deberta-v3-ens3-v55 -Chain coop-chain-v55` adds the two models and llama.cpp's DLLs
-to the game's folder (a chain belongs with its bot: v55's decoder writes lines for v55's labels).
+to the game's folder (a chain belongs with its bot: v55's decoder writes lines for v55's labels). Bot v56 runs with the
+v55 chain (`-Bot coop-deberta-v3-ens3-v56 -Chain coop-chain-v55`): the router and the decoder read and write text, not
+labels, and were not trained again; the v55 decoder learned v55's words for "go back" (then COME_BACK) and has never
+seen "let me out", so a line of several orders with them is written as v55 would.
 
 **Checked** (`--chain-tests`, 160 lines: single orders, chains, lines with a context, typed and in the form a
 transcript has): the decoder's turn text 160/160; the router's probability within 1e-4 of PyTorch on 160/160

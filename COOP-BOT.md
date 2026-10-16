@@ -1258,6 +1258,34 @@ of its own; ammo, weapons and health are places to walk to; a negated order is "
   client's world. End to end: `v55.txt` (every request above, including "start shooting" then "to this wall" firing
   where the player looks), `v55_car.txt`, `chain.txt`.
 
+### v56: going back, letting the player out, ways up and down (2026-10-15)
+
+The owner's notes after playing v55 on Expanse: "go up by the stairs" (and "by the steps") must take the bot up,
+by the stairs or a ramp, not end in "Which stairs?"; "go down" where the player sees a way down; "go inside"; "stand
+here" and "stand on my pin" must be understood; REVIVE_ME is not needed; "let me out" is a new intent the game will
+build on; "go back" returns the bot to where it was, and COME_BACK is "come back to me". Their answers: GO_BACK is a
+new intent and the game keeps the place; HELP_INTERACTION walks the bot to the speaker and raises a gameplay event;
+"inside" is the nearest covered spot where the player looks.
+
+- **Intents: 44 -> 45** ([make_spec_v56.py](scripts/coop/make_spec_v56.py)): HELP_INTERACTION takes REVIVE_ME's index
+  (being revived is HELP: 19 authored lines and 10 seeds relabelled by rule), GO_BACK comes after REPEAT (3 authored
+  lines and 10 seeds that sent the bot to its own earlier place, read one by one). "Stand here", "stand on my pin"
+  are HOLD_POSITION, as "stay here" is; "go down the ramp" (read as RAPPEL) and "stairs on my pin" (say again) are
+  MOVE_TO. 158 new seeds; 120 blind lines from three AI authors, all unanimous.
+- **Places, rule set v7**: the zone `inside` and one rule ("inside" before a map object is its preposition), in both
+  matchers. **The planner** (both twins): a way up or down by the stairs with none singled out is the direction, never
+  a question, the stairs going with it as candidates; `inside` is handed to the game; a pin in the answer to "Which
+  ...?" picks the one nearest the pin; GO_BACK and HELP_INTERACTION take no place from the line; the order carries the
+  object the line named.
+- **The classifier** ([ensemble_bot_v56.py](scripts/coop/stt/ensemble_bot_v56.py)): family gate, 0.60. Criterion on
+  its own out-of-fold runs: typed 90.3, the new typed lines 97.5, unseen voices (VCTK B) 69.2, the new lines in them
+  62.5. Seven engine checks pass; the v55 chain is kept (not retrained).
+- **In the game:** GO_BACK (the controller keeps where the bot stood when an order set it moving), HELP_INTERACTION
+  (the bot walks to the speaker and raises `OV.CoopBot.HelpInteraction` on its pawn and the controller's
+  `OnHelpInteraction`), ways up and down (what the crosshair is on first, then the marked stairs and floors with a way
+  in view counting as nearer, then a navmesh search round the bot; no jumping down when the line said stairs), "go
+  inside" (the nearest covered spot along the view). End to end: `v56.txt` on Expanse.
+
 ## Recommendation
 
 ```

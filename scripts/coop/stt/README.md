@@ -1,4 +1,4 @@
-# Голосовая цепочка: Parakeet → бот v4, затем v51, v52, v53, v54 и v55
+# Голосовая цепочка: Parakeet → бот v4, затем v51, v52, v53, v54, v55 и v56
 
 Состояние на 2026-10-09, рабочая машина (Windows, RTX 4090, i9-10900K). Здесь лежит всё, из чего собран бот v4:
 списки фраз, транскрипты, скрипты, результаты проверок. Сам бот — в `models/coop-deberta-v3-ens3-v4`.
@@ -6,6 +6,24 @@
 **Бот по умолчанию по-прежнему v31.** v4, v51, v52 и v53 — версии для цепочки «голос → распознавание → бот». v51, v52
 и v53 собраны тем же способом, что v4, в тот же день; всё, что ниже раздела «v51», описывает v4 и сравнения, на
 которых выбран способ.
+
+## v56: «go back», «let me out», пути вверх и вниз, «inside» (2026-10-15, рабочая машина)
+
+Владелец поиграл с v55 на Expanse; решения — `HANDOFF.md`, блок «Бот v56». Намерений 45: REVIVE_ME убран (поднять
+упавшего — HELP), на его индексе `HELP_INTERACTION` («let me out», «get me out of here», «press the button for me»),
+после REPEAT — `GO_BACK` («go back» туда, где бот стоял до приказа; «come back to me» — COME_BACK). «stand here»,
+«stand on my pin» — HOLD_POSITION; «go down the ramp», «stairs on my pin», «go indoors» — MOVE_TO (правила мест v7:
+зона `inside`).
+
+- `../make_spec_v56.py` → `blind/spec_v56.json`, `intents_v56.json`, `seed_commands_v56.json` (1826 команд: 158
+  новых; 10 REVIVE_ME → HELP и 10 «go back»-строк → GO_BACK с прежними номерами и звуком), `annot/v56/relabel_v56.json`.
+  Новые реплики авторов: `blind/v56/author_{r6,cs,stt}.json` по 40, по два прочтения в `annot/v56/` (все 120
+  единогласны).
+- `export_v56.py`, `synth_v56.py`, `synth_windows_v56.ps1` — озвучка 158 затравок и 80 строк r6 и cs теми же голосами
+  (с 890-й строки и 1668-й команды), Parakeet, `out_parakeet-0.6b-v2_*_v56.json`.
+- `build_v56.py`, `run_build_v56.ps1` — три проверочных прогона и три итоговые модели, 52 минуты на RTX 4090.
+  `ensemble_bot_v56.py`: семейный гейт, 0,60. Критерий: печатные 90,3, новые печатные 97,5, VCTK B (r6 и cs) 69,2,
+  новые строки VCTK B 62,5.
 
 ## v55: машина, «ещё раз», отрицания, патроны (2026-10-14, рабочая машина)
 
@@ -511,6 +529,8 @@ Moonshine по умолчанию занимает все ядра; одним �
 | `lines_v55.json`, `seeds_v55.json`, `voices_v55_*.json`, `export_v55.py`, `synth_v55.py`, `synth_windows_v55.ps1`, `out_parakeet-0.6b-v2_*_v55.json` | Добавки v55: что озвучено, какими голосами, синтез и транскрипты |
 | `build_v55.py`, `run_build_v55.ps1`, `ensemble_bot_v55.py`, `finaloof55_<сид>.json` | Сборка v55, гейт и порог, экспорт бота |
 | `chains3_v55.py`, `router_v55.py`, `chains3_55_*.json`, `chains3_55_score.log`, `router55_final_small_s0.json`, `memory_lines_probe_v55*.json` | Раунд 4 переписчика и маршрутизатор для v55, их ответы на тестах, сводка, опыты с пятью репликами |
+| `lines_v56.json`, `seeds_v56.json`, `voices_v56_*.json`, `voices_v56_*.log`, `export_v56.py`, `synth_v56.py`, `synth_windows_v56.ps1`, `out_parakeet-0.6b-v2_*_v56.json` | Добавки v56: что озвучено, какими голосами, синтез и транскрипты |
+| `build_v56.py`, `run_build_v56.ps1`, `ensemble_bot_v56.py`, `finaloof56_<сид>.json`, `build_v56_*.log` | Сборка v56, гейт и порог, экспорт бота |
 | `score.py`, `score_accents.py`, `score.json`, `score_accents.json` | Сравнение движков через бота v31 |
 | `exp_stt_aug.py`, `score_aug.py`, `aug_*.json` | Первая проба обучения на транскриптах (Zipformer) |
 | `r6_build.py`, `r6_score.py`, `r6_epochs.py`, `r6oof_*.json` | Сравнения по данным и числу эпох |
