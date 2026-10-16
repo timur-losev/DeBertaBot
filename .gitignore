@@ -27,6 +27,9 @@ scripts/coop/stt/venv/
 
 # stderr of the training processes (library warnings); their summaries are in build_*.log
 scripts/coop/stt/*.log.err
+# stdout and stderr of the voicing tools, one pair per voice and recognizer; the summary of the run is in voices_*.log
+scripts/coop/stt/*.log.*.out
+scripts/coop/stt/*.log.*.err
 # llama.cpp's server talking to itself while gguf_v54.py measures a GGUF; the measurements are in gguf54_*.json
 scripts/coop/stt/*.server.log
 

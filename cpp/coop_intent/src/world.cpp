@@ -79,6 +79,9 @@ const char* const kPointedHere[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "FRAG", "
 const char* const kPlaceIntents[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MOVE_TO", "CHECK", "ENTRY", "FLANK", "HOLD_ANGLE", "LOOK_AT",
                                      "FRAG", "FLASH", "SMOKE", "HOLD_POSITION", "JUMP", "TAKE_COVER", "FALL_BACK", "COME_BACK",
                                      "BREACH", "VAULT_WINDOW", "OPEN"};
+// world.NO_PLACE (bot v56): orders whose place is not the line's: going back (the bot's own earlier place, the game keeps
+// it), letting the player out (where the player is). Their lines' places are neither grounded nor asked about
+const char* const kNoPlace[] = {"GO_BACK", "HELP_INTERACTION"};
 const char* const kNoLeads[] = {"no", "nope", "nah", "not", "negative", "wrong"};
 const char* const kLostPointers[] = {"there", "here"};
 
@@ -139,7 +142,7 @@ bool AnyOf(const std::vector<std::string>& words, const char* const (&list)[N]) 
 std::string ZoneName(const std::string& zone) {
     static const std::pair<const char*, const char*> kNames[] = {
         {"basement", "the basement"}, {"floor_1", "the first floor"}, {"floor_2", "the second floor"}, {"top_floor", "the top floor"},
-        {"roof", "the roof"}, {"up", "the way up"}, {"down", "the way down"}};
+        {"roof", "the roof"}, {"up", "the way up"}, {"down", "the way down"}, {"inside", "the way in"}};
     for (const auto& n : kNames)
         if (zone == n.first) return n.second;
     return "that place";
@@ -163,7 +166,7 @@ const std::vector<Prior>& DefaultPriors() {
     static const std::vector<Prior> kPriors = {
         {"CROUCH", "stance=crouch", x}, {"PRONE", "stance=prone", x}, {"STAND_UP", "stance=stand", x},
         {"VAULT_WINDOW", "no_object=window", x}, {"OPEN", "no_object=door", x}, {"GET_IN", "no_object=car", x},
-        {"DEFUSE", "no_tag=bomb", x}, {"PLANT", "bot_without=bomb", x}, {"REVIVE_ME", "player_up", x},
+        {"DEFUSE", "no_tag=bomb", x}, {"PLANT", "bot_without=bomb", x}, {"REVIVE_ME", "player_up", x},   // REVIVE_ME: bots up to v55
         {"YES", "no_question", x}, {"NO", "no_question", x}, {"MAYBE", "no_question", x}, {"DONT_KNOW", "no_question", x},
     };
     return kPriors;
@@ -218,12 +221,16 @@ bool Elliptical(std::string_view text) {
 }
 
 bool Usable(const Grounding& g) {
-    return g.status == "resolved" && (!g.entity.empty() || g.via == "direction" || g.via == "here" || (g.via == "zone" && !g.candidates.empty()));
+    return g.status == "resolved" && (!g.entity.empty() || g.via == "direction" || g.via == "here" || g.via == "inside" ||
+                                      (g.via == "zone" && !g.candidates.empty()));
 }
 
 // world.ground_target
 // "upstairs", "downstairs": a floor named by where it is from the speaker
 static bool RelativeZone(const std::string& zone) { return zone == "up" || zone == "down"; }
+// world.INSIDE (bot v56): indoors, where the player looks. No entity is "inside": the game finds the way in, and an object
+// said with it is not narrowed by it
+static const char* const kInside = "inside";
 
 // whether an entity is on the floor the line names: its own zone, or any marked floor above / below the speaker
 static bool OnZone(const WorldEntity& e, const std::string& zone) {
@@ -273,6 +280,7 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
             if (world.has_player_pin) return Out("resolved", world.player_pin.entity.empty() ? world.player_pin.id : world.player_pin.entity, {}, "pin");
             return Out("missing", {}, {}, "this");
         }
+        if (zone == kInside) return Out("resolved", {}, {}, "inside");   // the game finds the way in, where the player looks
         if (!zone.empty()) {
             std::vector<const WorldEntity*> on;
             for (const WorldEntity& e : world.entities)
@@ -292,6 +300,20 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
     std::vector<const WorldEntity*> cands;
     for (const WorldEntity& e : world.entities)
         if (e.object == obj) cands.push_back(&e);
+    // a way up or down (bot v56): "go up by the stairs", "take the steps down", "go up these stairs" with no stairs singled
+    // out is the direction, and the game takes the nearest way that way, the one the player looks at first; the stairs the
+    // world has go with it as the candidates. Only the stairs under the crosshair are those stairs. Never a question:
+    // stairs the world does not have are no reason to ask either
+    if ((t.direction == PlaceDirection::Up || t.direction == PlaceDirection::Down) && places.Vertical(t.object) && qual.empty() &&
+        (zone.empty() || zone == kInside) && t.flag == PlaceFlag::None) {
+        std::stable_sort(cands.begin(), cands.end(), [](const WorldEntity* a, const WorldEntity* b) {
+            return a->distance != b->distance ? a->distance < b->distance : a->id < b->id;
+        });
+        const std::vector<std::string> ids = ids_of(cands);
+        if (t.pointer == PlacePointer::This && gaze && std::find(ids.begin(), ids.end(), gaze->id) != ids.end())
+            return Out("resolved", gaze->id, ids, "gaze");
+        return Out("resolved", {}, ids, "direction");
+    }
     if (cands.empty()) {
         // "that door" where no door is marked: the thing the crosshair is on is that door, if it is not a marked place
         // of another kind
@@ -300,7 +322,7 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
     }
     auto keep = [&](auto pred) { cands.erase(std::remove_if(cands.begin(), cands.end(), [&](const WorldEntity* e) { return !pred(e); }), cands.end()); };
     if (!qual.empty()) keep([&](const WorldEntity* e) { return e->qualifier == qual; });
-    if (!zone.empty()) keep([&](const WorldEntity* e) { return OnZone(*e, zone); });   // "the door upstairs": a door on a floor above
+    if (!zone.empty() && zone != kInside) keep([&](const WorldEntity* e) { return OnZone(*e, zone); });   // "the door upstairs": a door on a floor above
     // "up the blue stairs": up is the way along a vertical object, not where it stands
     const bool along = (t.direction == PlaceDirection::Up || t.direction == PlaceDirection::Down) && places.Vertical(t.object);
     if (t.direction != PlaceDirection::None && !along)
@@ -577,6 +599,7 @@ Order Planner::MakeOrder(int intent, const PlaceRecord& record, const std::vecto
         o.candidates = g.candidates;
         o.direction = t.direction;
         o.zone = t.zone;
+        o.object = t.object;
         o.pointer = t.pointer;
         o.via = g.via;
         o.nearby = nearby && t.pointer == PlacePointer::This;
@@ -745,11 +768,13 @@ PlannerResult Planner::Step(std::string_view text, const std::vector<float>& pro
     std::vector<float> p2;
     p2.reserve(adjusted.size());
     for (double x : adjusted) p2.push_back(static_cast<float>(x));
-    const Decision d = brain_->Decide(text, out.adjusted ? p2 : probs);
+    Decision d = brain_->Decide(text, out.adjusted ? p2 : probs);
     out.decision = d;
     out.intent = d.intent;
     out.prob = d.prob;
     out.action = ActionName(d.action);
+    if (d.intent >= 0 && (d.action == Action::Act || d.action == Action::Queued) && OneOf(Label(d.intent), kNoPlace))
+        d.places = PlaceRecord();   // going back, letting the player out: the line's place is not the order's
     PlaceRecord record = d.places;   // a copy: an order that names no place may get one from the context
     const LocationMatcher& places = brain_->Places();
     if (!record.targets.empty()) out.ground = Ground(record, world_, memory_, places, text, d.intent >= 0 ? Label(d.intent) : std::string());
@@ -787,6 +812,21 @@ PlannerResult Planner::Step(std::string_view text, const std::vector<float>& pro
                 if (t.direction != PlaceDirection::None && !InSector(t.direction, e.bearing, e.elevation)) continue;
                 if (t.pointer == PlacePointer::This && !(world_.player_gaze.empty() || world_.player_gaze == c)) continue;
                 left.push_back(c);
+            }
+            if (t.pointer == PlacePointer::Pin && world_.has_player_pin && !left.empty()) {
+                // "Stairs on my pin.": of the candidates, the one nearest the pin (as GroundTarget takes it)
+                const WorldPin& pin = world_.player_pin;
+                std::string best;
+                double best_d = 0.0;
+                for (const std::string& c : left) {
+                    const WorldEntity& e = *Entity(c);
+                    const double dd = DistBetween(e.bearing, e.distance, pin.bearing, pin.distance);
+                    if (best.empty() || dd < best_d || (dd == best_d && c < best)) {
+                        best = c;
+                        best_d = dd;
+                    }
+                }
+                left = {best};
             }
             if (t.flag == PlaceFlag::Other) {
                 if (OtherOne(left, &t, &out)) return out;   // "the other door"

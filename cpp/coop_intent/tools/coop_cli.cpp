@@ -460,7 +460,8 @@ std::string GroundStr(const json& g) {
     }
     return s;
 }
-std::string OrderStr(const coop::PlannerResult& r, const Model& m, const coop::LocationMatcher& places) {
+// with_object: the test row has the order's "object" (bot v56); an older row is compared without it
+std::string OrderStr(const coop::PlannerResult& r, const Model& m, const coop::LocationMatcher& places, bool with_object) {
     if (!r.has_order) return "-";
     const coop::Order& o = r.order;
     std::string s = m.cfg.labels[static_cast<size_t>(o.intent)] + "/" + (o.entity.empty() ? "-" : o.entity) + "/[";
@@ -468,7 +469,8 @@ std::string OrderStr(const coop::PlannerResult& r, const Model& m, const coop::L
     const char* dir = coop::PlaceDirectionName(o.direction);
     const char* ptr = coop::PlacePointerName(o.pointer);
     return s + "]/" + (*dir ? dir : "-") + "/" + (o.zone >= 0 ? places.ZoneId(o.zone) : "-") + "/" + (*ptr ? ptr : "-") + "/" + (o.other ? "1" : "0") +
-           "/" + (o.via.empty() ? "-" : o.via) + "/" + (o.nearby ? "1" : "0");
+           "/" + (o.via.empty() ? "-" : o.via) + "/" + (o.nearby ? "1" : "0") +
+           (with_object ? "/" + (o.object >= 0 ? places.ObjectId(o.object) : std::string("-")) : std::string());
 }
 std::string OrderStr(const json& o) {
     if (o.is_null()) return "-";
@@ -478,7 +480,7 @@ std::string OrderStr(const json& o) {
     // a file written before the markerless rules has neither key: it is stale, and says so instead of crashing
     return s + "]/" + LabelStr(o["direction"]) + "/" + LabelStr(o["zone"]) + "/" + LabelStr(o["pointer"]) + "/" + FlagStr(o["other"]) +
            "/" + (o.contains("via") ? LabelStr(o["via"]) : std::string("(no via: regenerate world_tests.jsonl)")) + "/" +
-           (o.contains("near") ? FlagStr(o["near"]) : std::string("?"));
+           (o.contains("near") ? FlagStr(o["near"]) : std::string("?")) + (o.contains("object") ? "/" + LabelStr(o["object"]) : std::string());
 }
 // the frame of the previous order: intent / it had a place / the place's entity / how it was found / when / it keeps
 // what the order's own line called the place
@@ -573,7 +575,7 @@ int RunWorldTests(Model& m) {
             if (!s["say"].is_null()) same("say", r.say, s["say"].get<std::string>());
             same("adjusted", r.adjusted ? "1" : "0", FlagStr(s["adjusted"]));
             same("ground", GroundStr(r.ground), GroundStr(s["ground"]));
-            same("order", OrderStr(r, m, brain.Places()), OrderStr(s["order"]));
+            same("order", OrderStr(r, m, brain.Places(), !s["order"].is_null() && s["order"].contains("object")), OrderStr(s["order"]));
             same("question", QuestionStr(planner.Mem(), m), QuestionStr(s["question"]));
             same("pending", pending, LabelStr(s["pending"]));
             same("pending_entity", planner.PendingEntity().empty() ? "-" : planner.PendingEntity(), LabelStr(s["pending_entity"]));
@@ -946,7 +948,9 @@ const std::unordered_map<std::string, std::vector<std::string>> kLines = {
     {"FALL_BACK", {"Falling back.", "Pulling out.", "Backing off."}},
     {"PLANT", {"Planting.", "Getting the plant down.", "Plant going down, cover me."}},
     {"DEFUSE", {"Defusing.", "On the defuser.", "Working on it."}},
-    {"REVIVE_ME", {"Coming to get you!", "Hold on, reviving.", "On my way, stay down."}},
+    {"REVIVE_ME", {"Coming to get you!", "Hold on, reviving.", "On my way, stay down."}},   // bots v4 ... v55
+    {"HELP_INTERACTION", {"Coming to help.", "On my way to you.", "Hold on, coming."}},     // bot v56
+    {"GO_BACK", {"Going back.", "Heading back.", "Back to where I was."}},                  // bot v56
     {"WAIT", {"Holding up.", "Standing by.", "Copy, waiting."}},
     {"TAKE_COVER", {"Getting into cover.", "Finding cover.", "Hiding."}},
     {"OPEN", {"Opening it.", "Getting it open.", "Opening, not going in."}},
@@ -1959,8 +1963,9 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads, const std::s
 //        action: the bot's (act, queued, execute, go, wait, negated, answer, say_again, ignore) or the
 //        planner's (ask, resolved). "order" is what the game carries out NOW: {"intent","entity" (an id of
 //        the world the game sent, or null),"candidates","direction","zone","pointer","other","via" (how the
-//        place was found: "gaze", "pin", "here" = where the speaker is, "direction", ...),"near" (the line
-//        pointed with "this" / "here" and no far word)}; null: nothing
+//        place was found: "gaze", "pin", "here" = where the speaker is, "direction", "inside" = indoors where
+//        the speaker looks, ...),"near" (the line pointed with "this" / "here" and no far word),"object" (the
+//        object the line named, bot v56: "go up by the stairs" has no entity and the way is a staircase)}; null: nothing
 //        With --chain DIR (rewriter.h) a line can give several orders. The reply's own fields stay the FIRST order's,
 //        and it gains "turns": one object per order line gone through, in the order to carry them out, each with the
 //        reply's fields and "line" (the order line: the player's, or one the decoder wrote from it); and "chain":
@@ -2002,7 +2007,8 @@ json ReplyJson(Chat& chat, const Chat::Turn& t) {
         const char* ptr = coop::PlacePointerName(o.pointer);
         j["order"] = {{"intent", label(o.intent)}, {"entity", or_null(o.entity)}, {"candidates", o.candidates},
                       {"direction", or_null(dir)}, {"zone", o.zone >= 0 ? json(places.ZoneId(o.zone)) : json(nullptr)},
-                      {"pointer", or_null(ptr)}, {"other", o.other}, {"via", or_null(o.via)}, {"near", o.nearby}};
+                      {"pointer", or_null(ptr)}, {"other", o.other}, {"via", or_null(o.via)}, {"near", o.nearby},
+                      {"object", o.object >= 0 ? json(places.ObjectId(o.object)) : json(nullptr)}};
     } else {
         j["order"] = nullptr;
     }

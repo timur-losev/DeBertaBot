@@ -1,0 +1,45 @@
+{
+ "_note": "make_spec_v56.py: the authored lines (v1 to v55) whose reading changes under spec v56. 'revive': every reading of REVIVE_ME is HELP (a rule: the label is gone and being revived is HELP); the lines are listed for the record. 'lines': three COME_BACK lines that send the bot to its own earlier place are GO_BACK (read one by one by the developer before freezing)",
+ "revive": {
+  "from": "REVIVE_ME",
+  "to": "HELP",
+  "ids": [
+   "cs_083",
+   "cs_085",
+   "cs_092",
+   "cs_094",
+   "csv52_020",
+   "csv54_040",
+   "r6_012",
+   "r6_026",
+   "r6_047",
+   "r6_111",
+   "r6v52_020",
+   "r6v54_040",
+   "stt_028",
+   "stt_032",
+   "stt_035",
+   "stt_120",
+   "sttv52_020",
+   "sttv54_040",
+   "sttv5_050"
+  ]
+ },
+ "lines": {
+  "r6v54_011": {
+   "from": "COME_BACK",
+   "to": "GO_BACK",
+   "text": "Return to where you were anchoring, I'll finish the roam clear myself."
+  },
+  "csv54_011": {
+   "from": "COME_BACK",
+   "to": "GO_BACK",
+   "text": "return to your post, nobody told you to peek"
+  },
+  "sttv54_008": {
+   "from": "COME_BACK",
+   "to": "GO_BACK",
+   "text": "okay so uh you can return now return to where you was before i sent you"
+  }
+ }
+}

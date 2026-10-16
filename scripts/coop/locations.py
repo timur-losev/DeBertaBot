@@ -45,6 +45,11 @@ Rule sets (the word lists are in locations.json "words"):
       rules/v5 holds the frozen bytes; this file differs from them by one condition: a demonstrative before a pin
       noun is the pin's determiner and no longer also a "this" of its own ("go to that marker" gave two targets;
       found by the C++ port's generated lines, the primary of no study line changes).
+  v6  rule set v5 with the vocabulary of locations.json version 6 (bot v55: car, ammo, weapon, health). Same code.
+  v7  this file (bot v56, 2026-10-15, after the owner's play with bot v55): locations.json version 7 has the zone
+      "inside" ("go inside", "get indoors", "get in the building"), relative like "up" and "down". One rule, step 8:
+      "inside" said on the way to a map object is that object's preposition, not a place ("get inside the car" = the
+      car, "go inside through the west door" = the west door). rules/v7 holds the frozen bytes.
 
   mentions    left to right, the longest vocabulary phrase at each token: object, qualifier, named
               place (object + qualifier in one phrase), zone, or an "ignore" phrase ("off the table").
@@ -1296,6 +1301,21 @@ def find(text, vocab=VOCAB):
             if joins:
                 u["pointer"], t["joined"] = t["pointer"], True
         targets = sorted(targets + [t for t in ptr if "joined" not in t], key=lambda t: t["first"])
+
+    # 8. (rule set v7) "inside" said on the way to a map object is that object's preposition, not a place of its own:
+    # "get inside the car" = the car, "go inside through the west door" = the west door. The object's target must come
+    # next, with only prepositions and determiners and no punctuation between. A bare "inside" stays the zone ("go
+    # inside", "get inside that room": a room is no map object)
+    drop = set()
+    for k, t in enumerate(targets[:-1]):
+        u = targets[k + 1]
+        if t["zone"] != "inside" or "ptr" in t or any(t[x] is not None for x in ("object", "qualifier", "direction", "pointer")) \
+                or u["object"] is None or u["first"] <= t["last"] or u["first"] >= n:
+            continue
+        breaks = [toks[j][3] for j in range(t["last"] + 1, u["first"] + 1) if toks[j][3]]
+        if not breaks and all(words[j] in W["preposition"] or words[j] in W["determiner"] for j in range(t["last"] + 1, np_first(u))):
+            drop.add(k)
+    targets = [t for k, t in enumerate(targets) if k not in drop]
 
     # a "this" with no place of its own never takes the primary from a place or a direction: only a pin does
     named = [k for k, t in enumerate(targets) if "ptr" not in t or t["pointer"] == "pin"]

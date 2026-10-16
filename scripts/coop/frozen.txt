@@ -881,3 +881,33 @@ ae3c154ff38ab21014dbdbf2478f558b736fad1f9e90ea0479fb50841b8a814b *stt/router_v55
 # merged on the work machine: origin's aa256c1 (the MacBook's voice chat on macOS, merged there with 208f3a4) into main at 4c067be (bot v55). Conflicts in coop_cli.cpp, the engine's README and this file. coop_cli.cpp keeps both sides: the Windows synthesizer's include and the macOS terminal's; --voice runs where there is a MicCapture (Windows, macOS) and both RunVoice take --world (the macOS one now loads the world and lists /world and /chain, as the Windows one does). This file: the MacBook's entry of 2026-10-10 before the entries from 2026-10-12 on, by date. No rule, vocabulary, spec, seed, label or model was edited. Checked on Windows with the merged engine on v55: golden 3049/3049, dialogue 77/77, planner 8142/8142, decisions 244/244, gates 6912/6912, chain tests 160/160 (router, decoder on the CPU). NOT checked: the macOS build (coop_cli.cpp's macOS branch and everything the work machine added since 2026-10-10: the chain, the service, the synthesizer guard) -- no Mac here
 39bb68dd05a511d03338ab62b5b1e3b5b4f9d17847a3d66ac91159fbb9870a57 *../../cpp/coop_intent/tools/coop_cli.cpp
 2026-10-14T22:51:07+02:00
+# v56 (work machine), BEFORE any v56 test line exists; AFTER the owner's play with bot v55 in Lyra and their notes and answers of 2026-10-15 (make_spec_v56.py docstring): REVIVE_ME is gone (the owner) and its index goes to HELP_INTERACTION ('let me out': the owner's new intent; the game walks the bot to the speaker and raises an event); a new GO_BACK after REPEAT ('go back' is the bot's own earlier place, the game keeps it; COME_BACK is coming back to the player, the owner's 'come back TO ME'); 45 intents. Relabelled by rule: every REVIVE_ME reading of the authored lines (19 lines) and the 10 REVIVE_ME seeds are HELP; read one by one: 3 COME_BACK lines and 10 going-back seeds (9 COME_BACK, 1 MOVE_TO) are GO_BACK. Standing at a place is HOLD_POSITION ('stand here', 'stand on my pin'); ways up and down by stairs, steps or a ramp and going indoors are MOVE_TO. Place vocabulary version 7 (rule set v7): the zone 'inside' (relative, the game's), 'next floor' / 'level above' upstairs, 'level below' downstairs; one rule, step 8: 'inside' on the way to a map object is that object's preposition. The planner (world.py and world.cpp): a way up or down by the stairs with none singled out is the direction, never a question; 'inside' is handed to the game; a pin in the answer to 'Which ...?' picks the one nearest the pin; GO_BACK and HELP_INTERACTION take no place from the line (C++ planned what Python planned on 8389/8389 steps of a provisional v56 config). 158 new seeds (1668 -> 1826). locations.py --dev: 547 lines (4 new, inside), the same 3 misses. Seeds are not blind.
+5d7d1614644118a5a945506a7d09de16cb0c57944f33f3e5376ec14516deb388 *blind/spec_v56.json
+0d2d85413cd5e49e6388c09381e6c56f46991fd1e516b0c4407b024ccde32d4b *intents_v56.json
+b5df3d34b995615957a91197454ac7ec0c21a5a27ae6c3c2e9822bc4c15257f8 *seed_commands_v56.json
+4a7548cba64e8f8e782c400e9c86d1828aa6dc73579e5628e4b3b62c70cca0ad *annot/v56/relabel_v56.json
+9d8255ecf984b49c582f495a32ae155468a87e5fe4e6fcabbf37a0dc7eba762c *make_spec_v56.py
+aaea91b4a18a37e312ccbc63860a2d99fb58b94b27c139878a0907de1932afd3 *coop_v2.py
+21ec4d0dba3e0e654614586ec4e8baedbcc033b0ede4c37fd39c94105ca1161a *coop_bot.py
+8eca955ae37a948829debfd12838fbc707988fdc9a9a993529d04af0385a9d78 *export_cpp.py
+da3d43713b99b429428ce107733f422af7b27443ad0a52de0a592981bf37bc49 *locations.py
+f58cb0322072b997eece25be07d3ce850e3fb3407c1d9c8546f14665eb179e42 *locations.json
+b34d6f871b053a622d170ab29cffb08edf0a389cd74a398b9a8ee6b6f2d9bacb *locations_dev.json
+da3d43713b99b429428ce107733f422af7b27443ad0a52de0a592981bf37bc49 *rules/v7/locations.py
+f58cb0322072b997eece25be07d3ce850e3fb3407c1d9c8546f14665eb179e42 *rules/v7/locations.json
+f5a5cbcd2d48a434fab23181bb2ee5d3a9c632b508c83c87a35a531354fe2fc4 *world.py
+2026-10-15T03:07:06+02:00
+# v56 blind lines: three AI authors (personas r6, cs, stt; each read spec_v56.json only) wrote 40 lines each with quotas by kind (goback 6, comeback 4, helpinteract 6, revive 3, standhere 5, way 7, inside 4, boundary 5); two AI annotators per author read only the spec and the label-free lines. Majority of author + 2 annotators: all 120 unanimous on the intent (one model family: weaker than it sounds). Labelling choices the authors and annotators flagged and left as they are: 'get back' bare is FALL_BACK, 'get back here' COME_BACK; 'here' about the player's own place is reference none; HELP_INTERACTION targets all null even where a door or a floor is named; 'steps' read as stairs; 'get up there' MOVE_TO with JUMP accepted by some; 'get yourself in there' zone inside (some would give null).
+c61e8a5d8210c7f541228364712bc419fbea3ef296c177b3935fd66830ac99cf *blind/v56/author_r6.json
+aaa55e6b5de4effd9b5326985a5dccbf68de56c627923a3e26ffa2737c57e598 *blind/v56/author_cs.json
+5ef27ac934dcac8b1211afbd05b73d0272308b41fe8c3a22a562b8539f7f3f35 *blind/v56/author_stt.json
+2cd3b98f592b30735edbdce9aec968f005577666894dc18d8a9ad6f592ae9b9f *blind/v56/author_r6_lines.json
+198079c912f178525870276edd3ce98a8104b89ce2b1b412b13114525c3f30fa *blind/v56/author_cs_lines.json
+78afe9c60698972f7b85f573653a159bf0a4d83865b82b8612d6a17e183d62a0 *blind/v56/author_stt_lines.json
+6e6286be29393e565ae7267831a825d91661f90ff0f1d9e790c82754921ba593 *annot/v56/author_r6_ann1.json
+6e6286be29393e565ae7267831a825d91661f90ff0f1d9e790c82754921ba593 *annot/v56/author_r6_ann2.json
+132dce10946c7f49cbf8b989a819ad94a8b173fc3e624a6b8e85d88c42fbb36e *annot/v56/author_cs_ann1.json
+9ffa788d8d3759212e8d7a9c7f892f73bdd7c240806adeb96433fb19b536f2e1 *annot/v56/author_cs_ann2.json
+3d11d6d2d9dd12bce69525559f6e0efa5188a02c3a786069ff5faf5e47b1da1a *annot/v56/author_stt_ann1.json
+3d11d6d2d9dd12bce69525559f6e0efa5188a02c3a786069ff5faf5e47b1da1a *annot/v56/author_stt_ann2.json
+2026-10-15T03:14:42+02:00

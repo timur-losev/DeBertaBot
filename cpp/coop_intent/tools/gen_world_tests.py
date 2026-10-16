@@ -102,6 +102,21 @@ PLAIN = [("go", "GO_NOW"), ("go go go", "GO_NOW"), ("wait", "WAIT"), ("hold on",
          ("contact left", "NONE"), ("go prone", "PRONE"), ("get down", "CROUCH"), ("get up", "STAND_UP"), ("revive me", "REVIVE_ME"),
          ("plant it", "PLANT"), ("defuse", "DEFUSE"), ("vault the window", "VAULT_WINDOW"), ("open it", "OPEN"), ("hold fire", "HOLD_FIRE"),
          ("don't shoot", "HOLD_FIRE"), ("follow me", "FOLLOW_ME"), ("come back", "COME_BACK"), ("hold position", "HOLD_POSITION")]
+# bot v56: REVIVE_ME is gone (being revived is HELP); going back and letting the player out take no place from the line; ways
+# up and down by the stairs are the direction, never a question; "inside" is the game's; "stairs on my pin" answers "Which
+# stairs?". Drawn only for a bot that has those labels, so the scenarios of an older bot stay what they were
+V56 = "GO_BACK" in CFG["labels"]
+if V56:
+    PLAIN = [(t, "HELP" if i == "REVIVE_ME" else i) for t, i in PLAIN] + [
+        ("go back", "GO_BACK"), ("go back there", "GO_BACK"), ("go back on my go", "GO_BACK"), ("let me out", "HELP_INTERACTION"),
+        ("get me out of here", "HELP_INTERACTION")]
+    NARROW = NARROW + ["stairs on my pin", "the stairs on my pin", "the door on my pin", "the window by my pin"]
+WAYS = [("go up by the stairs", "MOVE_TO"), ("take the steps down", "MOVE_TO"), ("go up these stairs", "MOVE_TO"),
+        ("go down the ramp", "MOVE_TO"), ("go up the stairs on my go", "MOVE_TO"), ("go down by the blue stairs", "MOVE_TO"),
+        ("go up the other stairs", "MOVE_TO"), ("go down the stairs upstairs", "MOVE_TO"), ("go inside", "MOVE_TO"),
+        ("get indoors", "MOVE_TO"), ("get inside the car", "GET_IN"), ("check inside", "CHECK"), ("go inside through the west door", "MOVE_TO"),
+        ("stand on my pin", "HOLD_POSITION"), ("stand here", "HOLD_POSITION"), ("stairs on my pin", "MOVE_TO"), ("go up", "MOVE_TO"),
+        ("hold inside the room", "HOLD_POSITION"), ("go up the steps behind you", "MOVE_TO")]
 
 
 def bare_world(rng):
@@ -239,6 +254,10 @@ def scenario(rng, n_steps, gate, threshold):
         elif r < 0.65:
             text = f"{rng.choice(VERBS)} {rng.choice(PLACES)}{rng.choice(SUFFIX)}"
             intent = rng.choice(PLACE_ORDERS + [rng.choice(ORDERS)])
+            if V56 and rng.random() < 0.25:
+                text, intent = rng.choice(WAYS)
+                if intent not in CFG["labels"]:
+                    intent = "MOVE_TO"
         elif r < 0.8:
             text, intent = rng.choice(PLAIN)
             if intent not in CFG["labels"]:
@@ -498,6 +517,21 @@ def main():
         res = pl.step(text, probs)
         steps.append(step_row(text, probs, res, pl, bot))
     rows.append({"world": W.WORLD_FLOORS, "gate": "top", "threshold": 0.6, "steps": steps})
+    if V56:
+        # ... and bot v56's: ways up and down by the stairs, "inside", "stairs on my pin" as the answer, going back
+        bot = Fake("top", 0.6)
+        pl = W.Planner(bot, W.WORLD_V56)
+        steps = []
+        for text, intent, _, *change in W.DEV_V56:
+            pl.world["bot_pin"] = None     # the game sends its own; the planner's mark of where the bot goes is no entity
+            low = W.talk_change(pl, change[0]) if change else False
+            probs = probs_for(rng, bot.labels, intent, 0.45 if low else 0.9)
+            before = json.loads(json.dumps(pl.world))
+            res = pl.step(text, probs)
+            row = step_row(text, probs, res, pl, bot)
+            row["world"] = before
+            steps.append(row)
+        rows.append({"world": W.WORLD_V56, "gate": "top", "threshold": 0.6, "steps": steps})
     for i in range(600):
         gate = "family" if i % 3 == 2 else "top"
         rows.append(scenario(rng, rng.choice([3, 6, 10, 16]), gate, rng.choice([0.5, 0.6, 0.66, 0.78])))

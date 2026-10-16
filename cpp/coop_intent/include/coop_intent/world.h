@@ -126,6 +126,8 @@ struct Order {
     std::vector<std::string> candidates;
     PlaceDirection direction = PlaceDirection::None;
     int zone = -1;
+    // the object the line named (bot v56): with no entity, "go up by the stairs" still says the way is a staircase
+    int object = -1;
     PlacePointer pointer = PlacePointer::None;
     bool other = false;
     std::string via;                       // how the place was found (Grounding::via); "here": where the speaker is

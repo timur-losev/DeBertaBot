@@ -1,6 +1,6 @@
 {
- "_note": "Map vocabulary: the named places every map has (the owner's list) and the word lists the matcher's rules use. The classifier does not learn these names; locations.py finds them in the transcript and hands the planner a list of targets {object, qualifier, zone, role, flag}. A new callout is a new entry here, not a re-training. Phrases are lowercase ASCII tokens separated by single spaces; the longest phrase wins. locations.py refuses a malformed file (validate()). History: rules/v1 (frozen before any v3 test line), rules/v2 (after the first blind run), v3 (after the review of v2, see locations.py); only v1 has a blind number on the first v3 lines. Rule set v4 adds \"directions\": the direction a line gives the bot's action (up, down, left, right, forward, back), a fourth field of a target next to object, qualifier and zone. A direction word counts only in the contexts the dir_* word lists name (after a motion verb, in 'on the left', next to an object, around stairs or a floor); \"clock\" lists the hours of 'three o'clock' per direction. An object with \"vertical\": true (stairs) takes 'up' / 'down' written next to it. The six ids are fixed (the rules name them); the words, the clock hours and the dir_* lists are data. Version 6 (bot v55, 2026-10-14): four more objects, places that are things rather than parts of the house: car (the bot gets in, or takes cover behind it), ammo, weapon and health (the bot goes to the nearest place that gives one). \"armor\", \"armour\" and \"amor\" are ammo: the owner's \"go find ammo\" was heard so, and the game has no armour.",
- "version": 6,
+ "_note": "Map vocabulary: the named places every map has (the owner's list) and the word lists the matcher's rules use. The classifier does not learn these names; locations.py finds them in the transcript and hands the planner a list of targets {object, qualifier, zone, role, flag}. A new callout is a new entry here, not a re-training. Phrases are lowercase ASCII tokens separated by single spaces; the longest phrase wins. locations.py refuses a malformed file (validate()). History: rules/v1 (frozen before any v3 test line), rules/v2 (after the first blind run), v3 (after the review of v2, see locations.py); only v1 has a blind number on the first v3 lines. Rule set v4 adds \"directions\": the direction a line gives the bot's action (up, down, left, right, forward, back), a fourth field of a target next to object, qualifier and zone. A direction word counts only in the contexts the dir_* word lists name (after a motion verb, in 'on the left', next to an object, around stairs or a floor); \"clock\" lists the hours of 'three o'clock' per direction. An object with \"vertical\": true (stairs) takes 'up' / 'down' written next to it. The six ids are fixed (the rules name them); the words, the clock hours and the dir_* lists are data. Version 6 (bot v55, 2026-10-14): four more objects, places that are things rather than parts of the house: car (the bot gets in, or takes cover behind it), ammo, weapon and health (the bot goes to the nearest place that gives one). \"armor\", \"armour\" and \"amor\" are ammo: the owner's \"go find ammo\" was heard so, and the game has no armour. Version 7 (bot v56, 2026-10-15): the zone 'inside', relative like 'up' and 'down': indoors, under a roof; the planner leaves it to the game, which takes the nearest covered spot where the player looks ('go inside', 'get indoors', 'get in the building'). 'next floor' and 'level above' are upstairs, 'level below' downstairs.",
+ "version": 7,
  "objects": [
   {
    "id": "door",
@@ -337,7 +337,15 @@
     "upstairs",
     "floor above",
     "up a floor",
-    "one floor up"
+    "one floor up",
+    "next floor",
+    "next level",
+    "level above",
+    "a level up",
+    "one level up",
+    "up a level",
+    "up one level",
+    "up one floor"
    ]
   },
   {
@@ -346,7 +354,27 @@
     "downstairs",
     "floor below",
     "down a floor",
-    "one floor down"
+    "one floor down",
+    "level below",
+    "a level down",
+    "one level down",
+    "down a level",
+    "down one level",
+    "down one floor"
+   ]
+  },
+  {
+   "id": "inside",
+   "words": [
+    "inside",
+    "indoors",
+    "in doors",
+    "in the building",
+    "into the building",
+    "inside the building",
+    "in the house",
+    "into the house",
+    "inside the house"
    ]
   }
  ],

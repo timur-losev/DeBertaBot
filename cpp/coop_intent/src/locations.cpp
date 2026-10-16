@@ -1333,6 +1333,29 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
                 std::stable_sort(targets.begin(), targets.end(), by_first);
             }
         }
+        // 8. (rule set v7) "inside" said on the way to a map object is that object's preposition, not a place of its
+        // own: "get inside the car" = the car, "go inside through the west door" = the west door. The object's target
+        // must come next, with only prepositions and determiners and no punctuation between. A bare "inside" stays the
+        // zone ("go inside", "get inside that room": a room is no map object)
+        const int inside = Find(zones_, "inside");
+        if (inside >= 0 && targets.size() > 1) {
+            std::vector<Work*> kept;
+            for (size_t k = 0; k < targets.size(); ++k) {
+                Work* t = targets[k];
+                const Work* u = k + 1 < targets.size() ? targets[k + 1] : nullptr;
+                bool drop = false;
+                if (u && t->t.zone == inside && !t->ptr && t->t.object < 0 && t->t.qualifier < 0 && t->t.direction == kNone &&
+                    t->t.pointer == PlacePointer::None && u->t.object >= 0 && u->first > t->last && u->first < n) {
+                    bool breaks = false, links = true;
+                    for (int j = t->last + 1; j <= u->first; ++j) breaks = breaks || tbrk(j) != 0;
+                    for (int j = t->last + 1; j < np_first(u); ++j)
+                        links = links && (In("preposition", word(j)) || In("determiner", word(j)));
+                    drop = !breaks && links;
+                }
+                if (!drop) kept.push_back(t);
+            }
+            targets = std::move(kept);
+        }
     }
 
     for (const Work* t : targets) rec.targets.push_back(t->t);

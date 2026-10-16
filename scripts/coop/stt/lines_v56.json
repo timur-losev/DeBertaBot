@@ -1,0 +1,722 @@
+[
+{
+"id": "r6v56_000",
+"author": "r6",
+"version": "v56",
+"text": "Go back to where you were anchoring, you're roaming too deep.",
+"maj": "GO_BACK",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0000.wav"
+},
+{
+"id": "r6v56_001",
+"author": "r6",
+"version": "v56",
+"text": "Go up the stairs on your left.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0001.wav"
+},
+{
+"id": "r6v56_002",
+"author": "r6",
+"version": "v56",
+"text": "I'm locked in, Kaid's got the door electrified, get me outta here.",
+"maj": "HELP_INTERACTION",
+"voice": "Microsoft Mark",
+"wav": "v56_0002.wav"
+},
+{
+"id": "r6v56_003",
+"author": "r6",
+"version": "v56",
+"text": "Stand on my ping until they commit.",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0003.wav"
+},
+{
+"id": "r6v56_004",
+"author": "r6",
+"version": "v56",
+"text": "Come back to my position, you're overextending.",
+"maj": "COME_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0004.wav"
+},
+{
+"id": "r6v56_005",
+"author": "r6",
+"version": "v56",
+"text": "Move indoors, Kali's holding the long sightline.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v56_0005.wav"
+},
+{
+"id": "r6v56_006",
+"author": "r6",
+"version": "v56",
+"text": "I got dropped in the hallway, come pick me up quick.",
+"maj": "HELP",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0006.wav"
+},
+{
+"id": "r6v56_007",
+"author": "r6",
+"version": "v56",
+"text": "Pull back off the site, Fuze is about to cluster us.",
+"maj": "FALL_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0007.wav"
+},
+{
+"id": "r6v56_008",
+"author": "r6",
+"version": "v56",
+"text": "Take blue stairs down, I'll stay up top.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v56_0008.wav"
+},
+{
+"id": "r6v56_009",
+"author": "r6",
+"version": "v56",
+"text": "Head back, nobody's watching your angle now.",
+"maj": "GO_BACK",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0009.wav"
+},
+{
+"id": "r6v56_010",
+"author": "r6",
+"version": "v56",
+"text": "Flip the switch for me, I can't reach it from my side.",
+"maj": "HELP_INTERACTION",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0010.wav"
+},
+{
+"id": "r6v56_011",
+"author": "r6",
+"version": "v56",
+"text": "Stand right there.",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft Mark",
+"wav": "v56_0011.wav"
+},
+{
+"id": "r6v56_012",
+"author": "r6",
+"version": "v56",
+"text": "Get up there, we're running out of time.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0012.wav"
+},
+{
+"id": "r6v56_013",
+"author": "r6",
+"version": "v56",
+"text": "Open main for me, I'll take the first peek.",
+"maj": "OPEN",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0013.wav"
+},
+{
+"id": "r6v56_014",
+"author": "r6",
+"version": "v56",
+"text": "Come on back here, I need you for the retake.",
+"maj": "COME_BACK",
+"voice": "Microsoft Mark",
+"wav": "v56_0014.wav"
+},
+{
+"id": "r6v56_015",
+"author": "r6",
+"version": "v56",
+"text": "Return to your old position, their Thermite is setting up on the wall.",
+"maj": "GO_BACK",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0015.wav"
+},
+{
+"id": "r6v56_016",
+"author": "r6",
+"version": "v56",
+"text": "Get into the building before they spawn peek you.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0016.wav"
+},
+{
+"id": "r6v56_017",
+"author": "r6",
+"version": "v56",
+"text": "Can you let me back in? I'm stuck out on the balcony.",
+"maj": "HELP_INTERACTION",
+"voice": "Microsoft Mark",
+"wav": "v56_0017.wav"
+},
+{
+"id": "r6v56_018",
+"author": "r6",
+"version": "v56",
+"text": "Head down the ramp, Lion's scan is coming.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0018.wav"
+},
+{
+"id": "r6v56_019",
+"author": "r6",
+"version": "v56",
+"text": "Can you revive me? Glaz got me through the smoke.",
+"maj": "HELP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0019.wav"
+},
+{
+"id": "r6v56_020",
+"author": "r6",
+"version": "v56",
+"text": "Stand at the east door, no roaming this round.",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft Mark",
+"wav": "v56_0020.wav"
+},
+{
+"id": "r6v56_021",
+"author": "r6",
+"version": "v56",
+"text": "On my go, drop down through the hatch.",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0021.wav"
+},
+{
+"id": "r6v56_022",
+"author": "r6",
+"version": "v56",
+"text": "On my call, go back to your spot.",
+"maj": "GO_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0022.wav"
+},
+{
+"id": "r6v56_023",
+"author": "r6",
+"version": "v56",
+"text": "Run up the steps, quick.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v56_0023.wav"
+},
+{
+"id": "r6v56_024",
+"author": "r6",
+"version": "v56",
+"text": "I'm trapped down here, the hatch shut on me, help me out of here.",
+"maj": "HELP_INTERACTION",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0024.wav"
+},
+{
+"id": "r6v56_025",
+"author": "r6",
+"version": "v56",
+"text": "Regroup with me before we rotate.",
+"maj": "COME_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0025.wav"
+},
+{
+"id": "r6v56_026",
+"author": "r6",
+"version": "v56",
+"text": "Get yourself in there, Ela's mines are all over outside.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v56_0026.wav"
+},
+{
+"id": "r6v56_027",
+"author": "r6",
+"version": "v56",
+"text": "Stand here while I drone them out.",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0027.wav"
+},
+{
+"id": "r6v56_028",
+"author": "r6",
+"version": "v56",
+"text": "Get back on your feet, nobody's pushing yet.",
+"maj": "STAND_UP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0028.wav"
+},
+{
+"id": "r6v56_029",
+"author": "r6",
+"version": "v56",
+"text": "You drifted off site, get back to your anchor spot.",
+"maj": "GO_BACK",
+"voice": "Microsoft Mark",
+"wav": "v56_0029.wav"
+},
+{
+"id": "r6v56_030",
+"author": "r6",
+"version": "v56",
+"text": "Head downstairs, they're planting below us.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0030.wav"
+},
+{
+"id": "r6v56_031",
+"author": "r6",
+"version": "v56",
+"text": "Can you pull the lever for me? I'm on the plant.",
+"maj": "HELP_INTERACTION",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0031.wav"
+},
+{
+"id": "r6v56_032",
+"author": "r6",
+"version": "v56",
+"text": "Get me back up, I'm bleeding out behind the sofa.",
+"maj": "HELP",
+"voice": "Microsoft Mark",
+"wav": "v56_0032.wav"
+},
+{
+"id": "r6v56_033",
+"author": "r6",
+"version": "v56",
+"text": "Go down there, I've got top floor.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0033.wav"
+},
+{
+"id": "r6v56_034",
+"author": "r6",
+"version": "v56",
+"text": "Get inside to the basement before they rotate.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0034.wav"
+},
+{
+"id": "r6v56_035",
+"author": "r6",
+"version": "v56",
+"text": "Stand where I marked, next to the red stairs.",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft Mark",
+"wav": "v56_0035.wav"
+},
+{
+"id": "r6v56_036",
+"author": "r6",
+"version": "v56",
+"text": "Hurry back to me, Jackal's tracking your prints.",
+"maj": "COME_BACK",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0036.wav"
+},
+{
+"id": "r6v56_037",
+"author": "r6",
+"version": "v56",
+"text": "Ash is on the rope by the north window.",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0037.wav"
+},
+{
+"id": "r6v56_038",
+"author": "r6",
+"version": "v56",
+"text": "I'm stuck behind the barricade, get me through.",
+"maj": "HELP_INTERACTION",
+"voice": "Microsoft Mark",
+"wav": "v56_0038.wav"
+},
+{
+"id": "r6v56_039",
+"author": "r6",
+"version": "v56",
+"text": "Back to where you started.",
+"maj": "GO_BACK",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0039.wav"
+},
+{
+"id": "csv56_000",
+"author": "cs",
+"version": "v56",
+"text": "go back to where you were bro youre blocking my angle",
+"maj": "GO_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0040.wav"
+},
+{
+"id": "csv56_001",
+"author": "cs",
+"version": "v56",
+"text": "stand right here bro",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft Mark",
+"wav": "v56_0041.wav"
+},
+{
+"id": "csv56_002",
+"author": "cs",
+"version": "v56",
+"text": "take the stairs up man",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0042.wav"
+},
+{
+"id": "csv56_003",
+"author": "cs",
+"version": "v56",
+"text": "bro im stuck in here let me out",
+"maj": "HELP_INTERACTION",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0043.wav"
+},
+{
+"id": "csv56_004",
+"author": "cs",
+"version": "v56",
+"text": "come back bro",
+"maj": "COME_BACK",
+"voice": "Microsoft Mark",
+"wav": "v56_0044.wav"
+},
+{
+"id": "csv56_005",
+"author": "cs",
+"version": "v56",
+"text": "get inside bro",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0045.wav"
+},
+{
+"id": "csv56_006",
+"author": "cs",
+"version": "v56",
+"text": "im down bro pick me up",
+"maj": "HELP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0046.wav"
+},
+{
+"id": "csv56_007",
+"author": "cs",
+"version": "v56",
+"text": "open the door for me bro",
+"maj": "OPEN",
+"voice": "Microsoft Mark",
+"wav": "v56_0047.wav"
+},
+{
+"id": "csv56_008",
+"author": "cs",
+"version": "v56",
+"text": "go down there bro its quieter",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0048.wav"
+},
+{
+"id": "csv56_009",
+"author": "cs",
+"version": "v56",
+"text": "nah return to your post man",
+"maj": "GO_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0049.wav"
+},
+{
+"id": "csv56_010",
+"author": "cs",
+"version": "v56",
+"text": "door locked behind me man get me outta here",
+"maj": "HELP_INTERACTION",
+"voice": "Microsoft Mark",
+"wav": "v56_0050.wav"
+},
+{
+"id": "csv56_011",
+"author": "cs",
+"version": "v56",
+"text": "stand on my ping and dont move",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0051.wav"
+},
+{
+"id": "csv56_012",
+"author": "cs",
+"version": "v56",
+"text": "get back here man youre way too far",
+"maj": "COME_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0052.wav"
+},
+{
+"id": "csv56_013",
+"author": "cs",
+"version": "v56",
+"text": "head down the ramp",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v56_0053.wav"
+},
+{
+"id": "csv56_014",
+"author": "cs",
+"version": "v56",
+"text": "get back theyre pushing",
+"maj": "FALL_BACK",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0054.wav"
+},
+{
+"id": "csv56_015",
+"author": "cs",
+"version": "v56",
+"text": "go indoors man theyre spamming nades out here",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0055.wav"
+},
+{
+"id": "csv56_016",
+"author": "cs",
+"version": "v56",
+"text": "head back",
+"maj": "GO_BACK",
+"voice": "Microsoft Mark",
+"wav": "v56_0056.wav"
+},
+{
+"id": "csv56_017",
+"author": "cs",
+"version": "v56",
+"text": "yo let me in, the east door is locked",
+"maj": "HELP_INTERACTION",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0057.wav"
+},
+{
+"id": "csv56_018",
+"author": "cs",
+"version": "v56",
+"text": "go up there man, need you high",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0058.wav"
+},
+{
+"id": "csv56_019",
+"author": "cs",
+"version": "v56",
+"text": "revive me quick theyre coming",
+"maj": "HELP",
+"voice": "Microsoft Mark",
+"wav": "v56_0059.wav"
+},
+{
+"id": "csv56_020",
+"author": "cs",
+"version": "v56",
+"text": "just stand over there man",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0060.wav"
+},
+{
+"id": "csv56_021",
+"author": "cs",
+"version": "v56",
+"text": "get back up man we gotta move",
+"maj": "STAND_UP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0061.wav"
+},
+{
+"id": "csv56_022",
+"author": "cs",
+"version": "v56",
+"text": "back to me back to me",
+"maj": "COME_BACK",
+"voice": "Microsoft Mark",
+"wav": "v56_0062.wav"
+},
+{
+"id": "csv56_023",
+"author": "cs",
+"version": "v56",
+"text": "ok get back to your spot, i got this",
+"maj": "GO_BACK",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0063.wav"
+},
+{
+"id": "csv56_024",
+"author": "cs",
+"version": "v56",
+"text": "take the blue stairs up",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0064.wav"
+},
+{
+"id": "csv56_025",
+"author": "cs",
+"version": "v56",
+"text": "hit the switch for me i cant reach it",
+"maj": "HELP_INTERACTION",
+"voice": "Microsoft Mark",
+"wav": "v56_0065.wav"
+},
+{
+"id": "csv56_026",
+"author": "cs",
+"version": "v56",
+"text": "get in through the main door its open",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0066.wav"
+},
+{
+"id": "csv56_027",
+"author": "cs",
+"version": "v56",
+"text": "stand at the north door nobody gets past",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0067.wav"
+},
+{
+"id": "csv56_028",
+"author": "cs",
+"version": "v56",
+"text": "just jump down bro its faster than the stairs",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "v56_0068.wav"
+},
+{
+"id": "csv56_029",
+"author": "cs",
+"version": "v56",
+"text": "you were fine before, go back",
+"maj": "GO_BACK",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0069.wav"
+},
+{
+"id": "csv56_030",
+"author": "cs",
+"version": "v56",
+"text": "go up the stairs on the right, theres a guy watching the left ones",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0070.wav"
+},
+{
+"id": "csv56_031",
+"author": "cs",
+"version": "v56",
+"text": "can you press the button for me, gate wont open",
+"maj": "HELP_INTERACTION",
+"voice": "Microsoft Mark",
+"wav": "v56_0071.wav"
+},
+{
+"id": "csv56_032",
+"author": "cs",
+"version": "v56",
+"text": "man i got dropped, get me up",
+"maj": "HELP",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0072.wav"
+},
+{
+"id": "csv56_033",
+"author": "cs",
+"version": "v56",
+"text": "yo return to me theyre flanking us",
+"maj": "COME_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0073.wav"
+},
+{
+"id": "csv56_034",
+"author": "cs",
+"version": "v56",
+"text": "get in the building on my call",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v56_0074.wav"
+},
+{
+"id": "csv56_035",
+"author": "cs",
+"version": "v56",
+"text": "stand by the red stairs til i get back",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0075.wav"
+},
+{
+"id": "csv56_036",
+"author": "cs",
+"version": "v56",
+"text": "head downstairs bro quick",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0076.wav"
+},
+{
+"id": "csv56_037",
+"author": "cs",
+"version": "v56",
+"text": "im trapped down in the basement bro cant get out",
+"maj": "HELP_INTERACTION",
+"voice": "Microsoft Mark",
+"wav": "v56_0077.wav"
+},
+{
+"id": "csv56_038",
+"author": "cs",
+"version": "v56",
+"text": "lol one guy stuck behind the east door",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "v56_0078.wav"
+},
+{
+"id": "csv56_039",
+"author": "cs",
+"version": "v56",
+"text": "back to your position on my go bro",
+"maj": "GO_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v56_0079.wav"
+}
+]

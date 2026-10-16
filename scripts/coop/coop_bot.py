@@ -112,6 +112,8 @@ LINES = {
     "GET_IN": ["Getting in.", "Hopping in.", "In the car."],
     "GET_OUT": ["Getting out.", "Hopping out.", "Out of the car."],
     "REPEAT": ["Again.", "Trying again.", "One more time."],
+    "HELP_INTERACTION": ["Coming to help.", "On my way to you.", "Hold on, coming."],
+    "GO_BACK": ["Going back.", "Heading back.", "Back to where I was."],
 }
 ACK = ["Copy.", "Noted.", "Heard."]                   # NONE: a callout or chatter, nothing to do
 AGAIN = ["Say again?", "Didn't catch that.", "Come again?"]

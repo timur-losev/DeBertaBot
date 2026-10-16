@@ -34,6 +34,9 @@ CLEARLY_NEARER = 1.5       # the nearest candidate wins outright when the next o
 # the nearest one, never a question ("Which ammo?")
 FETCHED = ("ammo", "weapon", "health", "car")
 RELATIVE_ZONES = ("up", "down")   # "upstairs", "downstairs": a floor named by where it is from the speaker
+# "inside" (bot v56, locations.json version 7): indoors, where the player looks. No entity is "inside": the planner hands
+# it to the game as it is (via "inside"), and an object said with it is not narrowed by it
+INSIDE = "inside"
 STOREY = 1.5               # ... the next floor that way: the places within 1.5 m of the nearest one in height
 STANCES = ("stand", "crouch", "prone")
 
@@ -53,7 +56,7 @@ PRIORS = {
     "GET_IN": [("no_object=car", PRIOR_X)],
     "DEFUSE": [("no_tag=bomb", PRIOR_X)],
     "PLANT": [("bot_without=bomb", PRIOR_X)],
-    "REVIVE_ME": [("player_up", PRIOR_X)],
+    "REVIVE_ME": [("player_up", PRIOR_X)],       # bots v4 ... v55 (v56 has no REVIVE_ME: a prior of a label it lacks is never used)
     "YES": [("no_question", PRIOR_X)], "NO": [("no_question", PRIOR_X)],
     "MAYBE": [("no_question", PRIOR_X)], "DONT_KNOW": [("no_question", PRIOR_X)],
 }
@@ -79,7 +82,8 @@ ANSWER_LEADS = ("there", "here", "over", "at", "on", "in", "by", "near", "to", "
 ANSWER_MAX_TOKENS = 6
 # what the bot calls a floor it has no place for ("I can't find the roof.")
 ZONE_NAMES = {"basement": "the basement", "floor_1": "the first floor", "floor_2": "the second floor",
-              "top_floor": "the top floor", "roof": "the roof", "up": "the way up", "down": "the way down"}
+              "top_floor": "the top floor", "roof": "the roof", "up": "the way up", "down": "the way down",
+              "inside": "the way in"}
 
 
 def words(text):
@@ -105,8 +109,9 @@ def elliptical(text):
 
 
 def usable(g):
-    """A grounding the game can act on: an entity, a direction, "here", or a floor that has places."""
-    return g["status"] == "resolved" and (g["entity"] is not None or g["via"] in ("direction", "here") or
+    """A grounding the game can act on: an entity, a direction (a way up or down too), "here", "inside", or a floor that
+    has places."""
+    return g["status"] == "resolved" and (g["entity"] is not None or g["via"] in ("direction", "here", INSIDE) or
                                           (g["via"] == "zone" and bool(g["candidates"])))
 
 
@@ -131,6 +136,9 @@ FIRE = ("OPEN_FIRE", "SUPPRESS", "ATTACK")                       # the enemy und
 PIN_DEFAULT = FIRE + ("MOVE_TO", "CHECK", "ENTRY", "FLANK")      # a place not said is the standing pin
 CARRY = PIN_DEFAULT + ("HOLD_ANGLE", "LOOK_AT")                  # ... or where the same order was a moment ago
 POINTED_HERE = FIRE + ("FRAG", "FLASH", "SMOKE", "LOOK_AT", "CHECK", "HOLD_ANGLE")   # "here" is the crosshair's point
+# orders whose place is not the line's (bot v56): going back is to the bot's own earlier place, which the game keeps; letting
+# the player out is where the player is. Their lines' places are neither grounded nor asked about ("go back there")
+NO_PLACE = ("GO_BACK", "HELP_INTERACTION")
 PLACE_INTENTS = CARRY + ("FRAG", "FLASH", "SMOKE", "HOLD_POSITION", "JUMP", "TAKE_COVER", "FALL_BACK", "COME_BACK",
                          "BREACH", "VAULT_WINDOW", "OPEN")       # orders that can be given again at another place
 NO_LEADS = ("no", "nope", "nah", "not", "negative", "wrong")
@@ -308,6 +316,8 @@ def ground_target(t, world, memory, here=False):
             if pin is not None:
                 return out("resolved", pin["entity"] or pin["id"], via="pin")     # the one place that is marked
             return out("missing", via="this")
+        if zone == INSIDE:
+            return out("resolved", None, [], INSIDE)     # the game finds the way in, where the player looks
         if zone is not None:
             cands = [e for e in ents if on_zone(e, zone)]
             if zone in RELATIVE_ZONES:
@@ -321,6 +331,17 @@ def ground_target(t, world, memory, here=False):
 
     # an object: the entities of its kind, narrowed by the qualifier, the zone, the direction
     cands = [e for e in ents if e.get("object") == obj]
+    # a way up or down (bot v56): "go up by the stairs", "take the steps down", "go up these stairs" with no stairs singled
+    # out is the direction, and the game takes the nearest way that way, the one the player looks at first; the stairs
+    # the world has go with it as the candidates. Only the stairs under the crosshair are those stairs ("go up these
+    # stairs" looking at them). Never a question: stairs the world does not have are no reason to ask either
+    if direction in ("up", "down") and obj in LOC.VOCAB["vertical"] and qual is None and zone in (None, INSIDE) and \
+            flag is None:
+        cands.sort(key=lambda e: (float(e.get("distance", 0.0)), e["id"]))
+        ids = [e["id"] for e in cands]
+        if pointer == "this" and gaze in ids:
+            return out("resolved", gaze, ids, "gaze")
+        return out("resolved", None, ids, "direction")
     if not cands:
         # "that door" where no door is marked: the thing the crosshair is on is that door, if it is not a marked
         # place of another kind
@@ -329,7 +350,7 @@ def ground_target(t, world, memory, here=False):
         return out("missing")
     if qual is not None:
         cands = [e for e in cands if e.get("qualifier") == qual]
-    if zone is not None:
+    if zone is not None and zone != INSIDE:
         cands = [e for e in cands if on_zone(e, zone)]     # "the door upstairs": a door on a floor above
     # "up the blue stairs": up is the way along a vertical object, not where it stands
     if direction is not None and not (direction in ("up", "down") and obj in LOC.VOCAB["vertical"]):
@@ -574,6 +595,7 @@ class Planner:
             self.frame_in_line = True
         return {"intent": intent, "entity": ent, "candidates": g["candidates"] if g else [],
                 "direction": t.get("direction") if t else None, "zone": t["zone"] if t else None,
+                "object": t["object"] if t else None,
                 "pointer": t.get("pointer") if t else None, "other": other, "via": g["via"] if g else None,
                 "near": bool(near and t is not None and t.get("pointer") == "this")}
 
@@ -687,6 +709,8 @@ class Planner:
         reply, rec = self.bot.decide(text, probs2)
         action, intent = rec["action"], rec["intent"]
         record = rec["places"]
+        if intent in NO_PLACE and action in ("act", "queued"):
+            record = {"targets": [], "primary": -1}
         grounding = ground(record, self.world, self.memory, text, intent) if record and record["targets"] else []
         if continued and self.frame_in_line:
             self._same_place(record, grounding)
@@ -729,6 +753,10 @@ class Planner:
                         (t["qualifier"] is None or by_id[c].get("qualifier") == t["qualifier"]) and
                         (t.get("direction") is None or in_sector(t["direction"], float(by_id[c].get("bearing", 0.0)), float(by_id[c].get("elevation", 0.0)))) and
                         (t.get("pointer") != "this" or self.world.get("player_gaze") in (None, c))]
+                pin = self.world.get("player_pin")
+                if t.get("pointer") == "pin" and pin is not None and left:
+                    # "Stairs on my pin.": of the candidates, the one nearest the pin (as ground_target takes it)
+                    left = [min(left, key=lambda c: (dist_between(by_id[c], pin), c))]
                 if t["flag"] == "other":
                     r = self._other_one(q, left, t)      # "the other door"
                     if r is not None:
@@ -918,6 +946,35 @@ DEV_FLOORS = [
 ]
 
 
+# bot v56: two stairs and a pin, the crosshair on a wall. A way up or down by the stairs is the direction, never a question
+# (the game takes the way); "inside" is the game's; "stairs on my pin" answers "Which stairs?"; going back and letting the
+# player out take no place from the line
+WORLD_V56 = {
+    "entities": [
+        {"id": "stairs_a", "object": "stairs", "qualifier": None, "zone": "floor_1", "bearing": 160.0, "distance": 6.0, "elevation": 0.0, "tags": []},
+        {"id": "stairs_b", "object": "stairs", "qualifier": None, "zone": "floor_1", "bearing": 40.0, "distance": 7.0, "elevation": 0.0, "tags": []},
+        {"id": "gaze_1", "object": None, "qualifier": None, "zone": None, "bearing": 0.0, "distance": 12.0, "elevation": 0.3, "tags": []},
+    ],
+    "player_pin": {"id": "pin", "entity": None, "bearing": 45.0, "distance": 8.0, "elevation": 0.0},
+    "bot_pin": None, "player_gaze": "gaze_1", "player": {"downed": False}, "bot": {"stance": "stand", "items": []},
+}
+DEV_V56 = [
+    ("go up by the stairs", "MOVE_TO", {"action": "act", "entity": None, "via": "direction", "direction": "up", "candidates": ["stairs_a", "stairs_b"]}),
+    ("take the steps down", "MOVE_TO", {"action": "act", "entity": None, "via": "direction", "direction": "down"}),
+    ("go up these stairs", "MOVE_TO", {"action": "act", "entity": None, "via": "direction", "direction": "up"}),   # not looked at
+    ("go up", "MOVE_TO", {"action": "act", "entity": None, "via": "direction", "direction": "up", "candidates": []}),
+    ("go inside", "MOVE_TO", {"action": "act", "entity": None, "via": "inside", "zone": "inside"}),
+    ("get indoors", "MOVE_TO", {"action": "act", "entity": None, "via": "inside"}),
+    ("go to the next floor", "MOVE_TO", {"action": "ask"}),                       # no place is marked on the floor above
+    ("go by these stairs", "MOVE_TO", {"action": "ask"}),                         # the crosshair is not on stairs: which?
+    ("stairs on my pin", "VAULT_WINDOW", {"action": "resolved", "entity": "stairs_b", "intent": "MOVE_TO"}, {"low": True}),
+    ("stand on my pin", "HOLD_POSITION", {"action": "act", "entity": "pin", "via": "pin"}),
+    ("stand here", "HOLD_POSITION", {"action": "act", "entity": None, "via": "here"}),
+    ("go back there", "GO_BACK", {"action": "act", "intent": "GO_BACK", "entity": None, "via": None}),
+    ("let me out of here", "HELP_INTERACTION", {"action": "act", "intent": "HELP_INTERACTION", "entity": None, "via": None}),
+]
+
+
 # a line of several orders, in the example world (two doors: 8 m ahead on the left, 11 m on the right). The third
 # element: the line is a further order of the line before it (the decoder's order lines).
 DEV_CHAIN = [
@@ -995,7 +1052,8 @@ def run_dev():
         decide = coop_bot.Bot.decide
 
     ok = 0
-    for world, dev in ((WORLD_EXAMPLE, DEV), (WORLD_BARE, DEV_BARE), (WORLD_TALK, DEV_TALK), (WORLD_FLOORS, DEV_FLOORS)):
+    for world, dev in ((WORLD_EXAMPLE, DEV), (WORLD_BARE, DEV_BARE), (WORLD_TALK, DEV_TALK), (WORLD_FLOORS, DEV_FLOORS),
+                       (WORLD_V56, DEV_V56 if "GO_BACK" in labels else [])):
         bot = Fake()
         pl = Planner(bot, world)
         for text, intent, want, *change in dev:
@@ -1025,7 +1083,7 @@ def run_dev():
             good = all(got.get(k) == v for k, v in want.items())
             ok += good
             print(f"{'ok ' if good else 'NO '} {('+ ' if continued else '') + repr(text):36s} -> {r['action']:9s} {r['say']}" + (f"  order {r['order']}" if r["order"] else ""))
-    print(f"{ok}/{len(DEV) + len(DEV_BARE) + len(DEV_TALK) + len(DEV_FLOORS) + len(DEV_CHAIN) + len(DEV_CHAIN_BARE)}")
+    print(f"{ok}/{len(DEV) + len(DEV_BARE) + len(DEV_TALK) + len(DEV_FLOORS) + len(DEV_CHAIN) + len(DEV_CHAIN_BARE) + (len(DEV_V56) if 'GO_BACK' in labels else 0)}")
 
 
 if __name__ == "__main__":
