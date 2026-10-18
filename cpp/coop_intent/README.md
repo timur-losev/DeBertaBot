@@ -67,6 +67,18 @@ Other bots run with `--model-dir`:
   `ammo` / `weapon` / `health` (`car` for the car), which the planner takes as the nearest one without asking; "on
   my goal" (what the recognizer hears for "on my go") waits for the go. Checked: golden 3049/3049, tokenizer
   11218/11218, places 51332/51332, gates 6912/6912, decisions 244/244, dialogue 77/77, planner 8142/8142.
+- `../../models/coop-deberta-v3-ens3-v58/cpp`: v58, v57's 47 intents with 75 more seeds of going on with a way, a
+  side or a place ("keep moving forward", "further up", "keep coming back"); a going-on with no way ("keep moving",
+  "carry on") is mostly MOVE_TO with no place, which the planner and the game take as the same move a moment ago or
+  where the player looks (the owner's choice, 2026-10-18); family gate, 0.66 (`scripts/coop/make_spec_v58.py`,
+  `stt/build_v58.py`, `stt/ensemble_bot_v58.py`). Checked: golden 3633/3633, tokenizer 11802/11802, places
+  51824/51824, gates 8080/8080, decisions 244/244, dialogue 77/77, planner 8292/8292; with the v58 chain, chain tests
+  160/160 (CPU). Deployed with `-Chain coop-chain-v58` (decoder v58, router v55).
+- `../../models/coop-deberta-v3-ens3-v57/cpp`: v57, 47 intents (v56 with SWITCH_WEAPON, "switch weapons", "switch to
+  your pistol", and RELOAD; a bare "get out" is GET_OUT; family gate, 0.68), trained on 2026-10-17 after the owner's
+  play (`scripts/coop/make_spec_v57.py`, `stt/build_v57.py`, `stt/ensemble_bot_v57.py`). The planner gives the two new
+  intents no place. Checked: golden 3558/3558, tokenizer 11727/11727, places 51733/51733, gates 7930/7930, decisions
+  244/244, dialogue 77/77, planner 8100/8100; with the v55 chain, chain tests 160/160 (CPU).
 - `../../models/coop-deberta-v3-ens3-v56/cpp`: v56, 45 intents (v55 without REVIVE_ME; HELP_INTERACTION in its place,
   "let me out", "get me out of here", "press the button for me"; GO_BACK after REPEAT, "go back" to where the bot was;
   family gate, 0.60), trained on 2026-10-15 after the owner's play (`scripts/coop/make_spec_v56.py`,
@@ -105,7 +117,8 @@ a place of its own ("get inside the car" = the car, "go inside through the west 
 | `src/sherpa_speech.cpp` | `SpeechRecognizer`: Parakeet TDT through sherpa-onnx's C API (optional, see "Speech-to-text") | with sherpa-onnx as a third-party library |
 | `tools/mic_capture.h`, `tools/mic_capture_win.cpp`, `tools/mic_capture_mac.mm` | the microphone of `coop_cli --voice` (Windows: waveIn; macOS: an AudioQueue) | no: the game has its own capture |
 | `tools/coop_cli.cpp` | terminal chat, the checks, and the bot as a service for a game (`--serve`) | as the game's helper process |
-| `tools/tts.h`, `tools/tts_win.cpp` | the bot's voice for `--serve --tts`: the system synthesizer (Windows SAPI, the first English voice) | with the helper process |
+| `tools/tts.h`, `tools/tts_win.cpp` | the bot's voice for `--serve --tts`: the system synthesizer (Windows SAPI, the first English voice); since 2026-10-17 the fallback of the one below | with the helper process |
+| `include/coop_intent/voice.h`, `src/sherpa_voice.cpp` | `PiperVoice`: the bot's voice as audio, a Piper (VITS) model through sherpa-onnx's C API, for `--serve --tts-piper` (the game plays it from the bot) and `--tts-demo` | with sherpa-onnx, in the helper process |
 | `include/coop_intent/rewriter.h`, `src/rewriter_text.cpp` | the text around the decoder (see "Lines with several orders or with a context"): the turn it is shown, the prompt, its answer as order lines, the router's probability | as is |
 | `src/llama_rewriter.cpp` | `Rewriter`: the decoder (a 4-bit GGUF) on llama.cpp's C API, greedy, the prompt's common prefix kept between lines (optional) | with llama.cpp as a third-party library, in the helper process |
 | `tools/setup_llama.ps1` | lays llama.cpp out under `third_party/` (headers, the release's DLLs, an import library made from `llama.dll`) | no |
@@ -210,7 +223,8 @@ items; whether the player is down). Nothing here touches the model; a step costs
     never takes a guessed place;
   - *"here" by the verb*: the speaker for "come here", the crosshair's point for "shoot here", "check here";
   - *a correction*: a line that starts with "no" and names a place is the previous order at that place; a bare
-    "no" stops (`action: "negated"`);
+    "no" stops (`action: "negated"`). What follows the "no" (and an "I said" / "I meant") must be a place alone:
+    "no, come here" is a new order read as it stands (`AfterNo`, world.py `after_no`, 2026-10-18);
   - *a repeat*: "again", "once more" give the previous order as it was;
   - *a fragment*: a place and no action right after an order ("on my pin", "over there") is that order's new
     place; so is a line under the threshold that ends in "there" or "here" ("Should there." heard for "Shoot
@@ -260,10 +274,23 @@ game then sends to its server is an order, not this process's output.
 - A stdout line that does not start with `{` is a log line. The service ends when its stdin closes: it never
   outlives the game.
 - `--no-stt`: no recognizer and no microphone, typed lines only (headless tests). `--tts`: `say` speaks.
+- `--tts-piper DIR` (a sherpa-onnx Piper export: `<name>.onnx`, its `.onnx.json`, `tokens.txt`, `espeak-ng-data/`;
+  ours is `scripts/coop/stt/tts/vits-piper-en_GB-vctk-medium`, 109 speakers, 22050 Hz), `--tts-speaker p311`,
+  `--tts-speed 1.0`: a `say` with an id is answered with the line as audio, and the game plays it where the bot is:
+  `{"cmd":"say","id":12,"text":"Contact left!","speaker":"p311","speed":1.0}` ->
+  `{"event":"speech","id":12,"text":...,"rate":22050,"audio_s":0.8,"ms":88,"pcm16":"<16-bit mono, base64>"}`. The
+  lines are made on a thread of their own, one at a time, three waiting at most (the oldest goes, answered
+  `{"event":"hushed","id":..}`, as are the waiting ones at `hush` and `ptt_down`); a warm-up line at start keeps the
+  first real one from paying the model's first run (1.7 s; then 70 to 185 ms a line, about a tenth of its length,
+  on one core). With `--tts` too, the system's voice speaks when the Piper voice does not load. `ready` says which:
+  `"tts_kind":"piper"|"system"` and `"tts_note"` (`piper en_GB-vctk-medium, p311 (38 of 109)`).
+- `--tts-piper DIR --tts-demo OUTDIR [--tts-text "..."] [--tts-speaker p254,p311]`: one WAV per speaker saying
+  the line, to choose the bot's voice by ear (`scripts/coop/stt/tts_demo_piper/`, all 109, is not in git).
 - Measured through the pipes from Python: 0.5 ms over the classifier's own time per typed line; a 3 s clip
   recognized in about 260 ms; ready in 5 s without speech and 7 to 12 s with it.
 - `tools/deploy_brain.ps1 -Target <dir>` writes the folder a game needs: `coop_cli.exe`, `onnxruntime.dll`,
-  `sherpa-onnx-c-api.dll`, `bot/` (one bot's `cpp/` files), `stt/` (the Parakeet export): 2.7 GB for bot v54.
+  `sherpa-onnx-c-api.dll`, `bot/` (one bot's `cpp/` files), `stt/` (the Parakeet export): 2.7 GB for bot v54;
+  `voice/` (the Piper voice, 90 MB) unless `-Voice ''`.
 
 **In Lyra (UE 5.8).** The first game it runs in: `J:\UE4\Projects\LyraStarterGame58`, `Source/LyraGame/CoopBot/`
 (Perforce depot `//OlivaVanilla58`; its own `README.md` is the reference). The client component builds the
@@ -375,7 +402,9 @@ The game reads `turns`: its client sends the orders as one list and its server c
 to the game's folder (a chain belongs with its bot: v55's decoder writes lines for v55's labels). Bot v56 runs with the
 v55 chain (`-Bot coop-deberta-v3-ens3-v56 -Chain coop-chain-v55`): the router and the decoder read and write text, not
 labels, and were not trained again; the v55 decoder learned v55's words for "go back" (then COME_BACK) and has never
-seen "let me out", so a line of several orders with them is written as v55 would.
+seen "let me out", so a line of several orders with them is written as v55 would. Bot v58 runs with the v58 chain
+(`-Bot coop-deberta-v3-ens3-v58 -Chain coop-chain-v58`): round five's decoder (`scripts/coop/stt/chains4_v58.py`)
+with round four's router, which routed the blind sets and the owner's lines better than the one trained with it.
 
 **Checked** (`--chain-tests`, 160 lines: single orders, chains, lines with a context, typed and in the form a
 transcript has): the decoder's turn text 160/160; the router's probability within 1e-4 of PyTorch on 160/160

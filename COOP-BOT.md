@@ -1151,7 +1151,10 @@ answer for both halves of the question: no model, a small state and rules. Done 
 - **A place not said** is the standing pin for orders that need one (fire, move, check, push, flank); with the
   crosshair on an enemy an order to fire is that enemy. The bot says what it assumed.
 - **A correction** ("no" and a place), **a repeat** ("again"), **a fragment** (a place and no action) are the
-  previous order, changed or not; a bare "no" stops the bot.
+  previous order, changed or not; a bare "no" stops the bot. Since 2026-10-18 "no" followed by words of an order
+  of its own ("No, come here.", "No, go left.") is a new order read as it stands, not the previous one at a new place
+  (`world.after_no`; the owner's "No, cam come here." after "Get down, find cover" had become "Take cover, here").
+  "Try again at my pin" is the previous order at the pin: the game does that (`RepeatLastLine`).
 - **Safety:** a grenade never goes to a guessed place; an assumed place gives way to an enemy the bot sees.
 
 Checked: the planner's parity with its C++ twin on 5338 steps (the owner's lines are a scripted scenario), the
@@ -1257,6 +1260,82 @@ of its own; ammo, weapons and health are places to walk to; a negated order is "
   weapons, stance, wait and hold gets the bot out first; REPEAT in the order queue; weapon spawners and free cars in the
   client's world. End to end: `v55.txt` (every request above, including "start shooting" then "to this wall" firing
   where the player looks), `v55_car.txt`, `chain.txt`.
+
+### v58: going on with a movement, and the talk before a line (2026-10-18)
+
+The developer's audit of the owner's 689 spoken lines (2026-10-16..18, bots v56 and v57): answers and repeats work;
+about fifteen orders that lean on the line before them failed, ten because the language model wrote them back as
+they were: going on with a movement ("Keep moving.", "Further up.", "More up."), a pronoun for the thing the last
+order named ("Get inside of it." after "Get to the car." sent the bot indoors), getting out of the car the bot sits
+in ("Move out."), "another". The owner: "делай изменение в планировщике, потом подготовься к обучениям", then
+"обучай заодно классификатор v58, свободно"; after the results, "Декодер + Классификатор", and a going-on with no way
+named goes "куда я смотрю".
+
+- **The planner** (both twins, before the round): "No, come here." right after an order is that order alone
+  (`after_no`); a REPEAT that names a place ("try again relocating to my pin") repeats the last order there (the
+  game's `RepeatLastLine`).
+- **The language model, round five** ([chains4_v58.py](scripts/coop/stt/chains4_v58.py), rules in
+  `chains2/spec_context_v58.json`): a pronoun for the last order's thing; in and out of the vehicle the talk is
+  about; going on, written back with "further" / "more" and the earlier way; a repeat with a place written back as it
+  is; "no" and an order of its own; "another". 172 new items from three blind AI authors (60 each, kept when the v57
+  ensemble reads them as labelled, 11 mended), voiced by four voices. Round three's blind sets through the router:
+  context typed 80.7 -> 86.7, heard 59.9 -> 60.9; chains level (82.0 -> 82.7 typed, 60.0 -> 59.7 heard). The owner's 30
+  lines that lean on the talk (`chains2/owner_ctx_v58.json`, never trained on, the developer's expected readings):
+  17/30 -> 23/30 with the v57 classifier.
+- **The router stays v55's.** The one trained on round five's rows was 1 to 3 points worse on every blind set and
+  kept "Step up here and find cover.", "jump up and shoot that wall.", "Now this." from the model.
+  `models/coop-chain-v58` is decoder v58 with router v55 (byte-identical); the v58 router is kept in
+  `models/coop-router-deberta-v3-small-v58`.
+- **The classifier** ([make_spec_v58.py](scripts/coop/make_spec_v58.py)): v57's 47 intents and lines; 75 new seeds of
+  going on with a way, a side or a place (MOVE_TO: "keep moving forward", "further up", "more down", "and up",
+  "advance"; COME_BACK: "keep coming", "keep coming back"; FOLLOW_ME: "keep coming closer"). Four are the owner's own
+  words, so the owner's set is not blind for them. Family gate 0.66: on its out-of-fold runs the two gates tied, and
+  the family gate read round three's chains better (81.3 against 79.3 typed). Criterion: typed 90.2 (v57 90.3),
+  unseen voices 67.5 (69.0). A blind test of going on (`blind/v58/test_cont_r6.json`, one AI author who read only
+  the spec, 61 lines; [score_cont_v58.py](scripts/coop/stt/score_cont_v58.py)): orders with a way, back to the
+  player and lookalikes 47/49 (v57 31/49). A going-on with no way ("carry on", "keep going") is now mostly MOVE_TO
+  with no place: the same move if it was said under 8 s ago, else where the player looks (the owner's choice); v57
+  asked again. Seven engine checks pass, chain tests 160/160. The owner's 30 lines with both: 26/30.
+- **On the owner's 689 lines**, replayed session by session through the engine: the decoder alone changes 26
+  readings, nearly all for the better ("Keep moving." after "Move up." is "move up more"; "Further up.", "More up.";
+  three "get inside of it" are GET_IN; "Another window." fires). With the v58 classifier too, 100 change. Lost to
+  it: garbled lines it now asks again ("Shut down these windows.", "Should this" for "shoot this", "Hiding my
+  pin."), "Come back to the last position." (COME_BACK; v57 GO_BACK), "Move up and check." no longer split. Not read
+  yet: "Move out." in the car, "Another." alone.
+- **In the game:** no code changes. End to end (server + client): `v58.txt` on the gym ("keep moving" after "move
+  forward" is MOVE_TO forward again, "keep coming" COME_BACK, a bare "keep going" after 40 s of silence goes where the
+  crosshair is), `v58_car.txt` on Expanse ("get inside of it" after "get to the car" puts the bot in the car through
+  the language model; "move out" gets it out on a second look). `orders_basic`, `chain`, `repeat_place`, `v56`,
+  `v55_car` read every line as before; `v57` and `pin_done` as their headers say. A miss found there: after
+  "shoot", "shoot here", "go there", decoder v58 writes "no, here, on my pin" as "shoot here, on my pin" (v55's: "go
+  to my pin"): it takes the correction to the order said most, not the last one. For round six's data.
+
+### v57: changing weapons, reloading, and the words the recognizer got wrong (2026-10-17)
+
+The owner's notes after playing v56 on Expanse: the bot does not switch weapons when it runs out of ammo, and there
+is no intent for switching; the transcripts the recognizer got wrong in their log are to be trained on. Their
+answers: a bare "get out" is GET_OUT (said to the bot in a car; v56 read it FALL_BACK, so the bot got out and ran
+off), and with the bot on foot the game falls back; "Height." was "Hide.", "Hi there." "Hide there.", "Jammed out."
+"Jump down.", "Down here." "Jump down here."; named weapons and a RELOAD intent join the round.
+
+- **Intents: 45 -> 47** ([make_spec_v57.py](scripts/coop/make_spec_v57.py)): SWITCH_WEAPON and RELOAD after GO_BACK,
+  each in a family of its own. 111 new seeds (52 SWITCH_WEAPON, 31 RELOAD, bare GET_OUT, and the owner's misheard
+  words under their readings: "height", "hide there", "jammed out", "jam down", "down here", "you doubt", "sim dub",
+  "should that windows"); the seeds "get out" (FALL_BACK) and "hi there" (NONE, a greeting) take GET_OUT and
+  TAKE_COVER; one authored line of two weapon orders is RELOAD. 120 blind lines from three AI authors, all unanimous.
+- **The planner** (both twins): SWITCH_WEAPON and RELOAD take no place from the line ("switch to your pistol" names a
+  weapon the bot carries, not one lying in the world). Place rules unchanged (v7).
+- **The classifier** ([ensemble_bot_v57.py](scripts/coop/stt/ensemble_bot_v57.py)): family gate, 0.68. Criterion on
+  its own out-of-fold runs: typed 90.3, the new typed lines 95.8, unseen voices (VCTK B) 69.0, the new lines in them
+  60.0. Seven engine checks pass; the v55 chain is kept (chain tests 160/160). On the owner's log: "Jammed out.",
+  "Jam down." JUMP; "You doubt.", "Get out." GET_OUT; "Height.", "Hi there." TAKE_COVER; "Switch weapons.", "Change
+  weapon.", "Use your pistol.", "Swap to the rifle." SWITCH_WEAPON; "Reload." RELOAD; "Get out of there." still
+  FALL_BACK. Below the gate: "Sim dub." (STAND_UP 0.59) and "Take this." (MOVE_TO 0.54; v56 had 0.67 and a lower
+  threshold): the bot asks again.
+- **In the game:** the bot switches by itself when the weapon in hand is empty (it is spawned with the pistol only, so
+  after it has fetched a second one); "switch to your pistol / rifle / shotgun" (the kind read from the line's
+  words), "switch weapons" (the next one with ammo), "reload"; both taken at once like the stance. End to end:
+  `v57.txt` on the gym.
 
 ### v56: going back, letting the player out, ways up and down (2026-10-15)
 
