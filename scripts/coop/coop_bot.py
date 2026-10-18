@@ -114,6 +114,8 @@ LINES = {
     "REPEAT": ["Again.", "Trying again.", "One more time."],
     "HELP_INTERACTION": ["Coming to help.", "On my way to you.", "Hold on, coming."],
     "GO_BACK": ["Going back.", "Heading back.", "Back to where I was."],
+    "SWITCH_WEAPON": ["Switching weapons.", "Swapping.", "Changing guns."],
+    "RELOAD": ["Reloading.", "Changing mags.", "Reloading, cover me."],
 }
 ACK = ["Copy.", "Noted.", "Heard."]                   # NONE: a callout or chatter, nothing to do
 AGAIN = ["Say again?", "Didn't catch that.", "Come again?"]

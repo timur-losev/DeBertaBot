@@ -17,7 +17,9 @@
 //   coop_cli --tokenize "text"    the words, pieces and ids of one line
 //   coop_cli --serve              the bot as a service for a game: JSON lines on stdin and stdout (see RunServe);
 //                                 with --no-stt without the recognizer and the microphone (typed lines only),
-//                                 with --tts the bot speaks the lines the game hands it (Windows)
+//                                 with --tts the bot speaks the lines the game hands it (Windows, the system's voice),
+//                                 with --tts-piper DIR it hands the game each line as audio instead (Piper, voice.h);
+//                                 with both, the system's voice is there for a Piper voice that does not load
 //   coop_cli --speech-text-tests FILE   SpeechTextForClassifier against the Python `norm` (no model)
 // with speech-to-text (a build that found sherpa-onnx under third_party/):
 //   coop_cli --voice              the chat with a microphone: hold SPACE and talk, release to send; a typed
@@ -27,6 +29,10 @@
 //                                 (Windows, macOS; no bot is loaded)
 //   coop_cli --stt-tests LIST WAVDIR EXPECTED   the C++ transcripts against the Python package's: LIST is a
 //                                 list of {id, wav} (scripts/coop/stt/lines.json), EXPECTED a run_stt.py output
+//   coop_cli --tts-piper DIR --tts-demo OUTDIR [--tts-text TEXT] [--tts-speaker A,B,...]   one WAV per speaker of a
+//                                 Piper voice saying TEXT (no bot is loaded): to choose the bot's voice by ear
+// the bot's voice (voice.h): --tts-piper DIR (a sherpa-onnx Piper export), --tts-speaker NAME ("p311" or a number),
+//          --tts-speed X (> 1 faster), --tts-threads N (default 1)
 // with the decoder (a build that found llama.cpp under third_party/, tools/setup_llama.ps1):
 //   --chain DIR                   in the chat, --voice, --stt-wav and --serve: a line that gives several orders, or
 //                                 leans on what was said before it, is rewritten as orders that stand by themselves
@@ -45,15 +51,18 @@
 #include <chrono>
 #include <clocale>
 #include <cmath>
+#include <condition_variable>
 #include <cstdio>
 #include <cstdlib>
 #include <deque>
 #include <filesystem>
+#include <functional>
 #include <fstream>
 #include <iostream>
 #include <iterator>
 #include <limits>
 #include <memory>
+#include <mutex>
 #include <numeric>
 #include <random>
 #include <sstream>
@@ -78,6 +87,7 @@
 #include "coop_intent/speech.h"
 #include "coop_intent/tokenizer.h"
 #include "coop_intent/unicode.h"
+#include "coop_intent/voice.h"
 #include "coop_intent/world.h"
 #include "nlohmann/json.hpp"
 // the microphone modes (--voice, --mic-test) exist where tools/ has a MicCapture
@@ -951,6 +961,8 @@ const std::unordered_map<std::string, std::vector<std::string>> kLines = {
     {"REVIVE_ME", {"Coming to get you!", "Hold on, reviving.", "On my way, stay down."}},   // bots v4 ... v55
     {"HELP_INTERACTION", {"Coming to help.", "On my way to you.", "Hold on, coming."}},     // bot v56
     {"GO_BACK", {"Going back.", "Heading back.", "Back to where I was."}},                  // bot v56
+    {"SWITCH_WEAPON", {"Switching weapons.", "Swapping.", "Changing guns."}},             // bot v57
+    {"RELOAD", {"Reloading.", "Changing mags.", "Reloading, cover me."}},
     {"WAIT", {"Holding up.", "Standing by.", "Copy, waiting."}},
     {"TAKE_COVER", {"Getting into cover.", "Finding cover.", "Hiding."}},
     {"OPEN", {"Opening it.", "Getting it open.", "Opening, not going in."}},
@@ -1536,7 +1548,93 @@ int RunSpeechTextTests(const std::string& path) {
     return same == rows.size() ? 0 : 1;
 }
 
+// samples in -1..1 as 16-bit little-endian PCM
+std::string Pcm16(const std::vector<float>& samples) {
+    std::string bytes(samples.size() * 2, '\0');
+    for (size_t i = 0; i < samples.size(); ++i) {
+        const float x = std::clamp(samples[i], -1.0f, 1.0f);
+        const int v = static_cast<int>(std::lround(x * 32767.0f));
+        bytes[2 * i] = static_cast<char>(v & 0xff);
+        bytes[2 * i + 1] = static_cast<char>((v >> 8) & 0xff);
+    }
+    return bytes;
+}
+
+std::string Base64(const std::string& bytes) {
+    static const char* kAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    std::string out;
+    out.reserve((bytes.size() + 2) / 3 * 4);
+    for (size_t i = 0; i < bytes.size(); i += 3) {
+        const uint32_t b0 = static_cast<uint8_t>(bytes[i]);
+        const uint32_t b1 = i + 1 < bytes.size() ? static_cast<uint8_t>(bytes[i + 1]) : 0;
+        const uint32_t b2 = i + 2 < bytes.size() ? static_cast<uint8_t>(bytes[i + 2]) : 0;
+        const uint32_t n = (b0 << 16) | (b1 << 8) | b2;
+        out += kAlphabet[(n >> 18) & 63];
+        out += kAlphabet[(n >> 12) & 63];
+        out += i + 1 < bytes.size() ? kAlphabet[(n >> 6) & 63] : '=';
+        out += i + 2 < bytes.size() ? kAlphabet[n & 63] : '=';
+    }
+    return out;
+}
+
+// a 16-bit mono PCM WAV file
+bool WriteWav(const std::string& path, const std::vector<float>& samples, int sample_rate, std::string* err) {
+    std::ofstream out(std::filesystem::u8path(path), std::ios::binary);
+    if (!out) return *err = "cannot write " + path, false;
+    const std::string data = Pcm16(samples);
+    auto u32 = [&](uint32_t v) { for (int k = 0; k < 4; ++k) out.put(static_cast<char>((v >> (8 * k)) & 0xff)); };
+    auto u16 = [&](uint16_t v) { out.put(static_cast<char>(v & 0xff)); out.put(static_cast<char>(v >> 8)); };
+    out.write("RIFF", 4);
+    u32(static_cast<uint32_t>(36 + data.size()));
+    out.write("WAVEfmt ", 8);
+    u32(16);
+    u16(1);   // PCM
+    u16(1);   // mono
+    u32(static_cast<uint32_t>(sample_rate));
+    u32(static_cast<uint32_t>(sample_rate * 2));
+    u16(2);
+    u16(16);
+    out.write("data", 4);
+    u32(static_cast<uint32_t>(data.size()));
+    out.write(data.data(), static_cast<std::streamsize>(data.size()));
+    return out ? true : (*err = "cannot write " + path, false);
+}
+
 #ifdef COOP_WITH_STT
+// one WAV per speaker of a Piper voice saying the same line, to choose the bot's voice by ear
+int RunTtsDemo(const coop::VoiceOptions& options, const std::string& out_dir, const std::string& text, const std::string& only) {
+    coop::PiperVoice voice;
+    std::string err;
+    const auto t0 = Clock::now();
+    if (!voice.Load(options, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+    std::printf("voice: %s, %d Hz, loaded in %.0f ms\n", voice.Describe().c_str(), voice.SampleRate(), Ms(Clock::now() - t0));
+    std::vector<std::string> speakers;
+    if (!only.empty()) {
+        std::stringstream list(only);
+        for (std::string s; std::getline(list, s, ',');)
+            if (!s.empty()) speakers.push_back(s);
+    } else {
+        speakers = voice.Speakers();
+        if (speakers.empty()) speakers.push_back("0");
+    }
+    std::filesystem::create_directories(std::filesystem::u8path(out_dir));
+    double total_ms = 0, total_s = 0;
+    for (const std::string& s : speakers) {
+        std::vector<float> x;
+        const auto t1 = Clock::now();
+        if (!voice.Speak(text, &x, &err, s)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+        const double ms = Ms(Clock::now() - t1), seconds = static_cast<double>(x.size()) / voice.SampleRate();
+        total_ms += ms;
+        total_s += seconds;
+        const std::string path = out_dir + "/" + s + ".wav";
+        if (!WriteWav(path, x, voice.SampleRate(), &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+        std::printf("%-6s %.2f s of audio in %.0f ms\n", s.c_str(), seconds, ms);
+    }
+    std::printf("%zu speakers: %.2f s of audio a line on average, made in %.0f ms (%.3f of real time)\n", speakers.size(),
+                total_s / speakers.size(), total_ms / speakers.size(), total_s > 0 ? total_ms / 1000.0 / total_s : 0.0);
+    return 0;
+}
+
 // a 16-bit PCM WAV file: its first channel as samples in -1..1
 bool ReadWav(const std::string& path, std::vector<float>* samples, int* sample_rate, std::string* err) {
     std::string raw;
@@ -1955,6 +2053,10 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads, const std::s
 //   {"cmd":"wav","id":9,"path":"clip.wav","world":{...}}         a 16-bit PCM file instead of the microphone
 //   {"cmd":"world","world":{...}}                                the world alone
 //   {"cmd":"say","text":"Contact left!"}                         the bot's voice (--tts); {"cmd":"hush"} stops it
+//   {"cmd":"say","id":12,"text":"Contact left!","speaker":"p311","speed":1.0}   with --tts-piper: the line as audio,
+//                                                                answered by "speech" (speaker and speed optional:
+//                                                                the ones the service was started with); "hush" and
+//                                                                "ptt_down" drop the lines not made yet
 //   {"cmd":"reset"} {"cmd":"threshold","value":0.7} {"cmd":"ping"} {"cmd":"quit"}
 //
 //   {"event":"ready","labels":[...],"gate":"family","threshold":0.68,"stt":true,"mic":true,"tts":true,...}
@@ -1973,6 +2075,10 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads, const std::s
 //        that wait for the answer to the question a turn asked; they come as turns of the reply to that answer,
 //        "resumed" of them),"note","route_ms","rewrite_ms"}
 //   {"event":"nothing","id":8,...}    the clip had no words;  {"event":"too_short","id":8}
+//   {"event":"speech","id":12,"text":"Contact left!","rate":22050,"audio_s":0.9,"ms":61,"pcm16":"<base64>"}
+//        the line as 16-bit little-endian mono samples (--tts-piper); the game plays it from the bot.
+//        {"event":"hushed","id":12}: the line was dropped before it was made ("hush", "ptt_down", a queue of three)
+//        "ready" says which voice: "tts_kind" "piper" (the lines come back as audio) or "system" (the process speaks)
 //   {"event":"error","id":7,"cmd":"text","message":"..."}        the request was refused; the service goes on
 // The service ends when stdin closes (the game is gone) or on "quit".
 json ReplyJson(Chat& chat, const Chat::Turn& t) {
@@ -2024,13 +2130,37 @@ json ReplyJson(Chat& chat, const Chat::Turn& t) {
     return j;
 }
 
-int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want_stt, bool want_tts) {
+int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want_stt, bool want_tts, const coop::VoiceOptions* piper) {
     Chat chat(m);
     chat.why = false;
     std::string err;
     if (!chat.Init(&err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
     bool stt_ready = false, mic_ready = false, tts_ready = false;
-    std::string stt_note, mic_note, tts_note;
+    std::string stt_note, mic_note, tts_note, tts_kind;
+    // the bot's voice as audio for the game (Piper): made on a thread of its own, so that a line being made never
+    // holds up the talk key; one line at a time, three waiting at most
+    bool piper_ready = false;
+#ifdef COOP_WITH_STT
+    coop::PiperVoice voice;
+    if (piper) {
+        piper_ready = voice.Load(*piper, &err);
+        tts_ready = piper_ready;
+        tts_note = piper_ready ? voice.Describe() : err;
+        if (piper_ready) tts_kind = "piper";
+    }
+#else
+    if (piper) tts_note = "this coop_cli was built without sherpa-onnx: no Piper voice";
+#endif
+    struct SpeechJob {
+        json id;
+        std::string text, speaker;
+        float speed = 0;
+    };
+    std::mutex out_mutex, jobs_mutex;
+    std::condition_variable jobs_cv;
+    std::deque<SpeechJob> jobs;
+    bool jobs_done = false;
+    std::thread speaker;
 #ifdef COOP_WITH_STT
     coop::SpeechRecognizer stt;
     if (want_stt) {
@@ -2055,22 +2185,78 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
 #endif
 #ifdef _WIN32
     Tts tts;
-    if (want_tts) {
+    // the system's voice (--tts): when no Piper voice was asked for, or the one asked for did not load
+    const bool system_voice = want_tts && !piper_ready;
+    if (system_voice) {
+        const std::string piper_failed = piper ? tts_note : std::string();
         tts_ready = tts.Start(&err);
-        tts_note = tts_ready ? tts.Voice() : err;
+        tts_note = (tts_ready ? tts.Voice() : err) + (piper_failed.empty() ? "" : " (the Piper voice did not load: " + piper_failed + ")");
+        if (tts_ready) tts_kind = "system";
     }
 #else
+    const bool system_voice = false;
     (void)want_tts;
 #endif
-    auto send = [](const json& j) {
+    // the speaker thread writes too: one line at a time on stdout
+    auto send = [&out_mutex](const json& j) {
         const std::string s = j.dump(-1, ' ', false, json::error_handler_t::replace);
+        std::lock_guard<std::mutex> lock(out_mutex);
         std::fputs(s.c_str(), stdout);
         std::fputc('\n', stdout);
         std::fflush(stdout);
     };
+#ifdef COOP_WITH_STT
+    if (piper_ready) {
+        speaker = std::thread([&] {
+            {   // the first line a fresh model makes takes four times as long as the next ones: not the player's
+                std::vector<float> x;
+                std::string warm_err;
+                voice.Speak("Ready.", &x, &warm_err);
+            }
+            for (;;) {
+                SpeechJob job;
+                {
+                    std::unique_lock<std::mutex> lock(jobs_mutex);
+                    jobs_cv.wait(lock, [&] { return jobs_done || !jobs.empty(); });
+                    if (jobs.empty()) return;   // done, and nothing left to say
+                    job = std::move(jobs.front());
+                    jobs.pop_front();
+                }
+                const auto t0 = Clock::now();
+                std::vector<float> x;
+                std::string speak_err;
+                if (!voice.Speak(job.text, &x, &speak_err, job.speaker, job.speed)) {
+                    send({{"event", "error"}, {"id", job.id}, {"cmd", "say"}, {"message", speak_err}});
+                    continue;
+                }
+                const int rate = voice.SampleRate();
+                send({{"event", "speech"}, {"id", job.id}, {"text", job.text}, {"rate", rate},
+                      {"audio_s", rate > 0 ? static_cast<double>(x.size()) / rate : 0.0}, {"ms", Ms(Clock::now() - t0)}, {"pcm16", Base64(Pcm16(x))}});
+            }
+        });
+    }
+#endif
+    // the lines not made yet are dropped, and whoever asked for them is told
+    auto drop_lines = [&]() {
+        std::lock_guard<std::mutex> lock(jobs_mutex);
+        for (const SpeechJob& j : jobs) send({{"event", "hushed"}, {"id", j.id}});
+        jobs.clear();
+    };
+    struct JoinSpeaker {   // every way out of the loop below ends the speaker thread
+        std::function<void()> f;
+        ~JoinSpeaker() { f(); }
+    } join_speaker{[&] {
+        {
+            std::lock_guard<std::mutex> lock(jobs_mutex);
+            jobs_done = true;
+        }
+        jobs_cv.notify_all();
+        if (speaker.joinable()) speaker.join();
+    }};
     send({{"event", "ready"}, {"bot", m.dir}, {"labels", m.cfg.labels}, {"gate", m.cfg.gate}, {"threshold", chat.brain.threshold},
           {"threads", threads}, {"runtime", coop::OrtBackend::RuntimeVersion()}, {"stt", stt_ready}, {"stt_note", stt_note},
           {"mic", mic_ready}, {"mic_note", mic_note}, {"tts", tts_ready}, {"tts_note", tts_note},
+          {"tts_kind", tts_kind.empty() ? json(nullptr) : json(tts_kind)},
           {"chain", g_chain ? json({{"dir", g_chain->dir}, {"router", g_chain->router != nullptr}, {"cut", g_chain->cut},
                                     {"decoder", Chain::Backend()}, {"gpu", g_chain->decoder_options.gpu_layers != 0},
                                     {"memory_lines", g_chain->memory_lines}, {"memory_seconds", g_chain->memory_seconds}})
@@ -2137,8 +2323,9 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 send({{"event", "world"}, {"id", id}, {"entities", chat.planner.World().entities.size()}});
             } else if (cmd == "ptt_down") {
 #ifdef _WIN32
-                if (tts_ready) tts.Stop();   // the microphone must not hear the bot
+                if (system_voice && tts_ready) tts.Stop();   // the microphone must not hear the bot
 #endif
+                if (piper_ready) drop_lines();   // the game stops what it is playing itself
 #if defined(COOP_WITH_STT) && defined(_WIN32)
                 if (!mic_ready) {
                     fail(stt_ready ? "no microphone: " + mic_note : "no speech-to-text: " + stt_note);
@@ -2199,8 +2386,23 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 fail("this coop_cli was built without speech-to-text");
 #endif
             } else if (cmd == "say" || cmd == "hush") {
+                if (piper_ready) {
+                    if (cmd == "hush") {
+                        drop_lines();
+                    } else {
+                        std::lock_guard<std::mutex> lock(jobs_mutex);
+                        if (jobs.size() >= 3) {   // a burst of callouts: the oldest that is not being made yet goes
+                            send({{"event", "hushed"}, {"id", jobs.front().id}});
+                            jobs.pop_front();
+                        }
+                        jobs.push_back({id, q.at("text").get<std::string>(), q.value("speaker", std::string()), q.value("speed", 0.0f)});
+                        jobs_cv.notify_one();
+                    }
+                } else if (cmd == "say" && !id.is_null()) {
+                    send({{"event", "hushed"}, {"id", id}});   // asked for audio, and there is no voice to make it
+                }
 #ifdef _WIN32
-                if (tts_ready) {
+                if (system_voice && tts_ready) {
                     if (cmd == "say") tts.Say(q.at("text").get<std::string>());
                     else tts.Stop();
                 }
@@ -2249,9 +2451,17 @@ int main(int argc, char** argv) {
     Chain chain;
     bool decoder_cpu = false;
     int decoder_threads = 4;
+    coop::VoiceOptions piper;
+    std::string tts_demo_dir, tts_text = "Contact left! Moving to the ping. Which door? The one ahead, 8 m?";
     for (int i = 1; i < argc; ++i) {
         const std::string a = argv[i];
         if (a == "--model-dir" && i + 1 < argc) m.dir = argv[++i];
+        else if (a == "--tts-piper" && i + 1 < argc) piper.model_dir = argv[++i];
+        else if (a == "--tts-speaker" && i + 1 < argc) piper.speaker = argv[++i];
+        else if (a == "--tts-speed" && i + 1 < argc) piper.speed = static_cast<float>(std::atof(argv[++i]));
+        else if (a == "--tts-threads" && i + 1 < argc) piper.threads = std::atoi(argv[++i]);
+        else if (a == "--tts-demo" && i + 1 < argc) mode = "tts-demo", tts_demo_dir = argv[++i];
+        else if (a == "--tts-text" && i + 1 < argc) tts_text = argv[++i];
         else if (a == "--chain" && i + 1 < argc) chain.dir = argv[++i];
         else if (a == "--decoder-cpu") decoder_cpu = true;
         else if (a == "--decoder-threads" && i + 1 < argc) decoder_threads = std::atoi(argv[++i]);
@@ -2278,15 +2488,26 @@ int main(int argc, char** argv) {
             std::fprintf(stderr, "usage: coop_cli [--golden | --tokenizer-tests | --dialogue | --gate-tests | --decide-tests |\n"
                                  "                 --location-tests | --world-tests | --bench | --tokenize TEXT | --speech-text-tests FILE |\n"
                                  "                 --voice | --mic-test SECONDS | --stt-wav FILE ... | --stt-tests LIST WAVDIR EXPECTED |\n"
-                                 "                 --serve [--no-stt] [--tts]]\n"
+                                 "                 --serve [--no-stt] [--tts | --tts-piper DIR] | --tts-piper DIR --tts-demo OUTDIR [--tts-text TEXT]]\n"
                                  "                [--model-dir DIR] [--threads N] [--no-spin] [--sequential] [--world FILE]\n"
                                  "                [--stt-model DIR] [--stt-threads N]\n"
+                                 "                [--tts-speaker NAME[,NAME...]] [--tts-speed X] [--tts-threads N]\n"
                                  "                [--chain DIR [--chain-tests] [--decoder-cpu] [--decoder-threads N]]\n");
             return 2;
         }
     }
     std::string err;
     if (mode == "speech-text-tests") return RunSpeechTextTests(speech_text_file);
+    if (mode == "tts-demo") {
+#ifdef COOP_WITH_STT
+        if (piper.model_dir.empty()) return std::fprintf(stderr, "--tts-demo needs --tts-piper DIR\n"), 2;
+        const std::string only = piper.speaker;   // a list here: the demo's speakers, not one to load
+        piper.speaker.clear();
+        return RunTtsDemo(piper, tts_demo_dir, tts_text, only);
+#else
+        return std::fprintf(stderr, "this coop_cli was built without sherpa-onnx: no Piper voice\n"), 2;
+#endif
+    }
 #ifdef COOP_WITH_MIC
     if (mode == "mic-test") return RunMicTest(speech, mic_seconds);
 #endif
@@ -2331,7 +2552,7 @@ int main(int argc, char** argv) {
         g_chain = &chain;
     }
     if (mode == "chain-tests") return RunChainTests(m, chain);
-    if (mode == "serve") return RunServe(m, speech, opt.threads, serve_stt, serve_tts);
+    if (mode == "serve") return RunServe(m, speech, opt.threads, serve_stt, serve_tts, piper.model_dir.empty() ? nullptr : &piper);
     if (mode == "golden") return RunGolden(m);
     if (mode == "dialogue") return RunDialogue(m);
     if (mode == "bench") return RunBench(m, load_ms, mem0);

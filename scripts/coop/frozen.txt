@@ -911,3 +911,30 @@ aaa55e6b5de4effd9b5326985a5dccbf68de56c627923a3e26ffa2737c57e598 *blind/v56/auth
 3d11d6d2d9dd12bce69525559f6e0efa5188a02c3a786069ff5faf5e47b1da1a *annot/v56/author_stt_ann1.json
 3d11d6d2d9dd12bce69525559f6e0efa5188a02c3a786069ff5faf5e47b1da1a *annot/v56/author_stt_ann2.json
 2026-10-15T03:14:42+02:00
+
+# v57 (work machine), BEFORE any v57 test line exists; AFTER the owner's play with bot v56 in Lyra and their notes and answers of 2026-10-17 (make_spec_v57.py docstring): two new intents after GO_BACK, SWITCH_WEAPON (take another weapon the bot carries; a weapon named is that one; the owner: 'нет интента для SWITCH WEAPON') and RELOAD (the owner chose it with the round); 47 intents, each new one in a family of its own. A bare 'get out' is GET_OUT (the owner: said to the bot in a car; the seed 'get out' FALL_BACK -> GET_OUT, the game takes GET_OUT with no car as falling back); 'get out of there' stays FALL_BACK. The owner's transcripts the recognizer got wrong are seeds under the readings they confirmed or the log makes plain: 'height', 'hi there' (the greeting seed NONE -> TAKE_COVER), 'hide there' TAKE_COVER; 'jammed out', 'jam down', 'down here' JUMP; 'you doubt' GET_OUT; 'sim dub' STAND_UP; 'should that windows' OPEN_FIRE. Read one by one: 1 authored line of two weapon orders, NONE -> RELOAD (SWITCH_WEAPON accepted). Place rules unchanged (v7): a weapon named for SWITCH_WEAPON / RELOAD is no place (target all null). 111 new seeds (1826 -> 1937). Seeds are not blind.
+d69960ad1c231f992017b1e9a3f19f73151112836c1e5ad7d5c501942b9388a2 *blind/spec_v57.json
+82951c6abac0a1ef3239669d0e713ecd5205bbafd9ca8b443dffac7a3b65f03f *intents_v57.json
+327b68c7f05211a6703cd00ef81a4a026aa4170647eeecfbf048a3bfddeb14e4 *seed_commands_v57.json
+966124c3adfe9d685338883af0c28fbc3800d810fa8142b93f2ea3c6028fbab2 *annot/v57/relabel_v57.json
+a735d7dd4e9516701059135b7950c4eb490c059e4013d4f416cb4463ae827d0a *make_spec_v57.py
+# v57 blind lines: three AI authors (personas r6, cs, stt; each read spec_v57.json only) wrote 40 lines each with quotas by kind (switchweapon 9, reload 6, getout 6, pickup 5, cover 3, jumpdown 3, boundary 8); two AI annotators per author read only the spec and the label-free lines. Majority of author + 2 annotators: all 120 unanimous on the intent (one model family: weaker than it sounds). Labelling choices the authors and annotators flagged and left as they are: 'get out of there' is FALL_BACK with reference none or this (they differ on the reference, not the intent); 'grab your shotgun', 'go back to your primary', 'go to your secondary' are SWITCH_WEAPON (a weapon the bot carries); 'take that shotgun on the floor' is MOVE_TO (weapon, this); 'jump out, we walk the rest' is GET_OUT; 'get behind the truck' is TAKE_COVER (car); 'spare ammo's on the second floor if you need it' NONE with MOVE_TO accepted by both annotators; a car named only as a reason ('get out, the car's on fire') is GET_OUT's target.
+cd280632d4abe2b5872eb2eaf0f029a797bb2ad8364b2a2bb9196d2f3e522b1e *blind/v57/author_r6.json
+ef7e703a469936e64cf1be20ca3b6a1261ec196d42c14287923d3fe9d398f8cc *blind/v57/author_cs.json
+4a0f003c803580b04d5815bd3751e9e164c264d9976a7660f590e50ee5e1e99c *blind/v57/author_stt.json
+84d8364980ef11935bf9d7efe7a0c19e49400870b3a52500ee007d33928696fe *blind/v57/author_r6_lines.json
+a651cc6b2234801cefa82242dbdaaff9d1ad262de57f0118fd895bf99ffee14b *blind/v57/author_cs_lines.json
+742333ac225d6fdf51625a9ad69c58c48f871a702fa2e54b506e8fbbf99cbde3 *blind/v57/author_stt_lines.json
+b02b29fc3abb48243d7751fdedeb97017f37fd1f547e8925a0ae8a9dca28cb5e *annot/v57/author_r6_ann1.json
+a7c7805ec5d76e2ce7620c5b024586cabc9b6c1d52796b5a69887e2640e1369c *annot/v57/author_r6_ann2.json
+b100c62bfdba79866b560bb63fbb65d0ac1598ac533a71a1a2b731b15c795755 *annot/v57/author_cs_ann1.json
+a2f72811d977373b0f7c7ce62c33c0c73c28890f59360aa9a3d790eff440c5c2 *annot/v57/author_cs_ann2.json
+845b66933415fd1a118651ea3ac694010169bab85dc9344e5a6c2d55ac05308b *annot/v57/author_stt_ann1.json
+845b66933415fd1a118651ea3ac694010169bab85dc9344e5a6c2d55ac05308b *annot/v57/author_stt_ann2.json
+# (v57) the two annotations of the stt author's lines are byte-identical, as v56's r6 and stt ones were: one model family reads the same way; the agreement above counts them as two readings anyway.
+# v58 (work machine), BEFORE any v58 test line exists; AFTER the owner's play with bots v56 and v57 in Lyra (2026-10-16..18, 689 lines) and the developer's audit of them (make_spec_v58.py docstring): the same 47 intents, no authored line relabelled; 75 new seeds (1937 -> 2012) of going on with a movement that names its way, side or place ('keep moving forward', 'further up', 'more down', 'and up', 'advance' MOVE_TO; 'keep coming', 'keep coming back' COME_BACK; 'keep coming closer' FOLLOW_ME). A bare going-on ('keep moving', 'continue') gets no seed: the bot must stay unsure of it so that the decoder gets a second look. spec_v58 = spec_v57 with MOVE_TO, COME_BACK and NONE saying so. Seeds are not blind: four are the owner's own words ('further up', 'more up', 'more down', 'and up').
+7390f3746ad9d0ed85e2db12b3a76038dad3820adcb8aa09a1d99d52bb0748e0 *blind/spec_v58.json
+4291789f5f62a08659cb8b19d95a33000bef89c4e98112d16fd8b4254d9a5433 *seed_commands_v58.json
+c43daef56c79f49d2b4eafcf3bb06b14d11180a4f08e6aa7aa5299b46f0591f2 *make_spec_v58.py
+# v58 test lines (2026-10-18): one AI author (persona r6, read spec_v58.json only: not the seeds, not the owner's lines) wrote 64 lines of going on with a movement and its boundaries (goon_way 30, goon_back 6, goon_bare 12, boundary 16; 24 as a recognizer writes); 9 marked unsure with an alternative. A test set only, never trained on (stt/score_cont_v58.py). The developer read all 64 and agreed with every intent, accepting ENTRY besides MOVE_TO for 'Push on forward, slowly.'; three lines are seeds word for word ('further left', 'and down', 'Yeah, go ahead.') and are not counted.
+a2b9382bf219951e5e87cb8871a969e0472321deaae54840700c1d029fc286a7 *blind/v58/test_cont_r6.json

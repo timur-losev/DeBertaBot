@@ -1,0 +1,12 @@
+{
+ "rows": 16827,
+ "for_the_decoder": 7217,
+ "epochs": 4,
+ "cut": 0.5,
+ "labels": [
+  "ensemble",
+  "decoder"
+ ],
+ "base_model": "microsoft/deberta-v3-small",
+ "seed": 0
+}

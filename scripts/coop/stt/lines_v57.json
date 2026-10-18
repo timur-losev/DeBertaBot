@@ -1,0 +1,722 @@
+[
+{
+"id": "r6v57_000",
+"author": "r6",
+"version": "v57",
+"text": "Switch weapons.",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0000.wav"
+},
+{
+"id": "r6v57_001",
+"author": "r6",
+"version": "v57",
+"text": "Hop out of the car, we're pushing in on foot.",
+"maj": "GET_OUT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0001.wav"
+},
+{
+"id": "r6v57_002",
+"author": "r6",
+"version": "v57",
+"text": "Reload.",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "v57_0002.wav"
+},
+{
+"id": "r6v57_003",
+"author": "r6",
+"version": "v57",
+"text": "Go grab some ammo, you're nearly dry.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0003.wav"
+},
+{
+"id": "r6v57_004",
+"author": "r6",
+"version": "v57",
+"text": "Cover me while I reload, I'm empty.",
+"maj": "COVER_ME",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0004.wav"
+},
+{
+"id": "r6v57_005",
+"author": "r6",
+"version": "v57",
+"text": "Get behind the truck, there's a Glaz holding the long sightline.",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Mark",
+"wav": "v57_0005.wav"
+},
+{
+"id": "r6v57_006",
+"author": "r6",
+"version": "v57",
+"text": "You're out of ammo, pull your sidearm.",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0006.wav"
+},
+{
+"id": "r6v57_007",
+"author": "r6",
+"version": "v57",
+"text": "Jump down here.",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0007.wav"
+},
+{
+"id": "r6v57_008",
+"author": "r6",
+"version": "v57",
+"text": "Get out.",
+"maj": "GET_OUT",
+"voice": "Microsoft Mark",
+"wav": "v57_0008.wav"
+},
+{
+"id": "r6v57_009",
+"author": "r6",
+"version": "v57",
+"text": "You're on like three bullets, swap mags.",
+"maj": "RELOAD",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0009.wav"
+},
+{
+"id": "r6v57_010",
+"author": "r6",
+"version": "v57",
+"text": "Get out of there, Ying's about to flash you!",
+"maj": "FALL_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0010.wav"
+},
+{
+"id": "r6v57_011",
+"author": "r6",
+"version": "v57",
+"text": "Primary's dry, go to your secondary.",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "v57_0011.wav"
+},
+{
+"id": "r6v57_012",
+"author": "r6",
+"version": "v57",
+"text": "Pick up that shotgun, it's way better for anchoring.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0012.wav"
+},
+{
+"id": "r6v57_013",
+"author": "r6",
+"version": "v57",
+"text": "He's reloading, he's reloading!",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0013.wav"
+},
+{
+"id": "r6v57_014",
+"author": "r6",
+"version": "v57",
+"text": "Bail out of the truck, it's about to get blown up.",
+"maj": "GET_OUT",
+"voice": "Microsoft Mark",
+"wav": "v57_0014.wav"
+},
+{
+"id": "r6v57_015",
+"author": "r6",
+"version": "v57",
+"text": "Get the shotgun out, it's all close quarters from now on.",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0015.wav"
+},
+{
+"id": "r6v57_016",
+"author": "r6",
+"version": "v57",
+"text": "Hide right here till their drone's gone.",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0016.wav"
+},
+{
+"id": "r6v57_017",
+"author": "r6",
+"version": "v57",
+"text": "Top off before we push.",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "v57_0017.wav"
+},
+{
+"id": "r6v57_018",
+"author": "r6",
+"version": "v57",
+"text": "Grab your shotgun, they're coming through the hatch.",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0018.wav"
+},
+{
+"id": "r6v57_019",
+"author": "r6",
+"version": "v57",
+"text": "On my call, swap to your pistol.",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0019.wav"
+},
+{
+"id": "r6v57_020",
+"author": "r6",
+"version": "v57",
+"text": "There's a rifle on my pin, go get it.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v57_0020.wav"
+},
+{
+"id": "r6v57_021",
+"author": "r6",
+"version": "v57",
+"text": "Get out, get out, they're lighting up the car!",
+"maj": "GET_OUT",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0021.wav"
+},
+{
+"id": "r6v57_022",
+"author": "r6",
+"version": "v57",
+"text": "Just shoot, no time to swap guns!",
+"maj": "OPEN_FIRE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0022.wav"
+},
+{
+"id": "r6v57_023",
+"author": "r6",
+"version": "v57",
+"text": "Drop down through that hatch, I'll watch the stairs.",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "v57_0023.wav"
+},
+{
+"id": "r6v57_024",
+"author": "r6",
+"version": "v57",
+"text": "Get a fresh mag in while they're rotating.",
+"maj": "RELOAD",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0024.wav"
+},
+{
+"id": "r6v57_025",
+"author": "r6",
+"version": "v57",
+"text": "Mag's empty and there's no time, just swap to the pistol.",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0025.wav"
+},
+{
+"id": "r6v57_026",
+"author": "r6",
+"version": "v57",
+"text": "Find ammo upstairs before we hit site.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v57_0026.wav"
+},
+{
+"id": "r6v57_027",
+"author": "r6",
+"version": "v57",
+"text": "Go find a shotgun, your SMG isn't cutting it.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0027.wav"
+},
+{
+"id": "r6v57_028",
+"author": "r6",
+"version": "v57",
+"text": "Jump out, we walk the rest of the way.",
+"maj": "GET_OUT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0028.wav"
+},
+{
+"id": "r6v57_029",
+"author": "r6",
+"version": "v57",
+"text": "Find cover over there behind the sofa, Ash is spraying through the wall.",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Mark",
+"wav": "v57_0029.wav"
+},
+{
+"id": "r6v57_030",
+"author": "r6",
+"version": "v57",
+"text": "Switch back to your rifle, Smoke's dead.",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0030.wav"
+},
+{
+"id": "r6v57_031",
+"author": "r6",
+"version": "v57",
+"text": "Throw a new mag in, quick, they're about to swing.",
+"maj": "RELOAD",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0031.wav"
+},
+{
+"id": "r6v57_032",
+"author": "r6",
+"version": "v57",
+"text": "Jump out the south window.",
+"maj": "VAULT_WINDOW",
+"voice": "Microsoft Mark",
+"wav": "v57_0032.wav"
+},
+{
+"id": "r6v57_033",
+"author": "r6",
+"version": "v57",
+"text": "Jump off the balcony down to the first floor, it's faster than the stairs.",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0033.wav"
+},
+{
+"id": "r6v57_034",
+"author": "r6",
+"version": "v57",
+"text": "Restock at the ammo crate in the basement.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0034.wav"
+},
+{
+"id": "r6v57_035",
+"author": "r6",
+"version": "v57",
+"text": "Next weapon.",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "v57_0035.wav"
+},
+{
+"id": "r6v57_036",
+"author": "r6",
+"version": "v57",
+"text": "Leave the vehicle when I say go, not before.",
+"maj": "GET_OUT",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0036.wav"
+},
+{
+"id": "r6v57_037",
+"author": "r6",
+"version": "v57",
+"text": "Change mags, I've got the door covered.",
+"maj": "RELOAD",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0037.wav"
+},
+{
+"id": "r6v57_038",
+"author": "r6",
+"version": "v57",
+"text": "Spare ammo's on the second floor if you need it.",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "v57_0038.wav"
+},
+{
+"id": "r6v57_039",
+"author": "r6",
+"version": "v57",
+"text": "Go back to your primary, the Jager's down.",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0039.wav"
+},
+{
+"id": "csv57_000",
+"author": "cs",
+"version": "v57",
+"text": "switch to pistol",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0040.wav"
+},
+{
+"id": "csv57_001",
+"author": "cs",
+"version": "v57",
+"text": "reload bro",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "v57_0041.wav"
+},
+{
+"id": "csv57_002",
+"author": "cs",
+"version": "v57",
+"text": "hop outta the car",
+"maj": "GET_OUT",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0042.wav"
+},
+{
+"id": "csv57_003",
+"author": "cs",
+"version": "v57",
+"text": "go grab some ammo ur running low",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0043.wav"
+},
+{
+"id": "csv57_004",
+"author": "cs",
+"version": "v57",
+"text": "cover me bro im reloading",
+"maj": "COVER_ME",
+"voice": "Microsoft Mark",
+"wav": "v57_0044.wav"
+},
+{
+"id": "csv57_005",
+"author": "cs",
+"version": "v57",
+"text": "get behind the car man theyre spraying",
+"maj": "TAKE_COVER",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0045.wav"
+},
+{
+"id": "csv57_006",
+"author": "cs",
+"version": "v57",
+"text": "ur rifle is dry bro switch",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0046.wav"
+},
+{
+"id": "csv57_007",
+"author": "cs",
+"version": "v57",
+"text": "get out bro",
+"maj": "GET_OUT",
+"voice": "Microsoft Mark",
+"wav": "v57_0047.wav"
+},
+{
+"id": "csv57_008",
+"author": "cs",
+"version": "v57",
+"text": "fresh mag now ur almost dry",
+"maj": "RELOAD",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0048.wav"
+},
+{
+"id": "csv57_009",
+"author": "cs",
+"version": "v57",
+"text": "yo get out of there theyre flanking you",
+"maj": "FALL_BACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0049.wav"
+},
+{
+"id": "csv57_010",
+"author": "cs",
+"version": "v57",
+"text": "pull out the shotgun man its close quarters",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "v57_0050.wav"
+},
+{
+"id": "csv57_011",
+"author": "cs",
+"version": "v57",
+"text": "just jump down bro its faster",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0051.wav"
+},
+{
+"id": "csv57_012",
+"author": "cs",
+"version": "v57",
+"text": "pick up that shotgun",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0052.wav"
+},
+{
+"id": "csv57_013",
+"author": "cs",
+"version": "v57",
+"text": "change mags while its quiet",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "v57_0053.wav"
+},
+{
+"id": "csv57_014",
+"author": "cs",
+"version": "v57",
+"text": "grab ur sidearm",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0054.wav"
+},
+{
+"id": "csv57_015",
+"author": "cs",
+"version": "v57",
+"text": "on my call jump out of the truck",
+"maj": "GET_OUT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0055.wav"
+},
+{
+"id": "csv57_016",
+"author": "cs",
+"version": "v57",
+"text": "swap guns",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "v57_0056.wav"
+},
+{
+"id": "csv57_017",
+"author": "cs",
+"version": "v57",
+"text": "im out of ammo man",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0057.wav"
+},
+{
+"id": "csv57_018",
+"author": "cs",
+"version": "v57",
+"text": "find cover over there",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0058.wav"
+},
+{
+"id": "csv57_019",
+"author": "cs",
+"version": "v57",
+"text": "use ur rifle theyre way too far for a pistol",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "v57_0059.wav"
+},
+{
+"id": "csv57_020",
+"author": "cs",
+"version": "v57",
+"text": "theres a rifle by my ping go get it",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0060.wav"
+},
+{
+"id": "csv57_021",
+"author": "cs",
+"version": "v57",
+"text": "exit the vehicle man were here",
+"maj": "GET_OUT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0061.wav"
+},
+{
+"id": "csv57_022",
+"author": "cs",
+"version": "v57",
+"text": "top off before we push",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "v57_0062.wav"
+},
+{
+"id": "csv57_023",
+"author": "cs",
+"version": "v57",
+"text": "forget the pistol just start shooting",
+"maj": "OPEN_FIRE",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0063.wav"
+},
+{
+"id": "csv57_024",
+"author": "cs",
+"version": "v57",
+"text": "drop down there on three",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0064.wav"
+},
+{
+"id": "csv57_025",
+"author": "cs",
+"version": "v57",
+"text": "youre out of ammo just switch weapons",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "v57_0065.wav"
+},
+{
+"id": "csv57_026",
+"author": "cs",
+"version": "v57",
+"text": "dude on the right has a shotgun careful",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0066.wav"
+},
+{
+"id": "csv57_027",
+"author": "cs",
+"version": "v57",
+"text": "get out, the cars on fire",
+"maj": "GET_OUT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0067.wav"
+},
+{
+"id": "csv57_028",
+"author": "cs",
+"version": "v57",
+"text": "go secondary",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "v57_0068.wav"
+},
+{
+"id": "csv57_029",
+"author": "cs",
+"version": "v57",
+"text": "find a gun bro youre empty",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0069.wav"
+},
+{
+"id": "csv57_030",
+"author": "cs",
+"version": "v57",
+"text": "reload real quick nobodys here",
+"maj": "RELOAD",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0070.wav"
+},
+{
+"id": "csv57_031",
+"author": "cs",
+"version": "v57",
+"text": "jump in the truck",
+"maj": "GET_IN",
+"voice": "Microsoft Mark",
+"wav": "v57_0071.wav"
+},
+{
+"id": "csv57_032",
+"author": "cs",
+"version": "v57",
+"text": "hide here quick",
+"maj": "TAKE_COVER",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0072.wav"
+},
+{
+"id": "csv57_033",
+"author": "cs",
+"version": "v57",
+"text": "back to primary man",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0073.wav"
+},
+{
+"id": "csv57_034",
+"author": "cs",
+"version": "v57",
+"text": "reloading, hold that door for me",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "v57_0074.wav"
+},
+{
+"id": "csv57_035",
+"author": "cs",
+"version": "v57",
+"text": "leave the truck we walk from here",
+"maj": "GET_OUT",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0075.wav"
+},
+{
+"id": "csv57_036",
+"author": "cs",
+"version": "v57",
+"text": "get the ammo upstairs",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0076.wav"
+},
+{
+"id": "csv57_037",
+"author": "cs",
+"version": "v57",
+"text": "throw a new mag in",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "v57_0077.wav"
+},
+{
+"id": "csv57_038",
+"author": "cs",
+"version": "v57",
+"text": "hop off the ledge",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "v57_0078.wav"
+},
+{
+"id": "csv57_039",
+"author": "cs",
+"version": "v57",
+"text": "take out ur sidearm its faster than reloading",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "v57_0079.wav"
+}
+]

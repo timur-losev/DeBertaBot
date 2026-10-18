@@ -80,9 +80,11 @@ const char* const kPlaceIntents[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MOVE_TO
                                      "FRAG", "FLASH", "SMOKE", "HOLD_POSITION", "JUMP", "TAKE_COVER", "FALL_BACK", "COME_BACK",
                                      "BREACH", "VAULT_WINDOW", "OPEN"};
 // world.NO_PLACE (bot v56): orders whose place is not the line's: going back (the bot's own earlier place, the game keeps
-// it), letting the player out (where the player is). Their lines' places are neither grounded nor asked about
-const char* const kNoPlace[] = {"GO_BACK", "HELP_INTERACTION"};
+// it), letting the player out (where the player is). Their lines' places are neither grounded nor asked about. Bot v57:
+// taking out or reloading a weapon the bot carries ("switch to your pistol" names no weapon lying in the world)
+const char* const kNoPlace[] = {"GO_BACK", "HELP_INTERACTION", "SWITCH_WEAPON", "RELOAD"};
 const char* const kNoLeads[] = {"no", "nope", "nah", "not", "negative", "wrong"};
+const char* const kSaidWords[] = {"said", "meant", "mean"};   // world.py SAID_WORDS
 const char* const kLostPointers[] = {"there", "here"};
 
 template <size_t N>
@@ -218,6 +220,14 @@ bool Elliptical(std::string_view text) {
     for (const char* x : kAnswerLeads)
         if (w[0] == x) return true;
     return false;
+}
+
+// world.after_no: the words of a line after its "no"s and an "I said" / "I meant" / "I mean"
+std::vector<std::string> AfterNo(const std::vector<std::string>& w) {
+    size_t i = 0;
+    while (i < w.size() && OneOf(w[i], kNoLeads)) ++i;
+    if (i + 1 < w.size() && w[i] == "i" && OneOf(w[i + 1], kSaidWords)) i += 2;
+    return std::vector<std::string>(w.begin() + static_cast<std::ptrdiff_t>(i), w.end());
 }
 
 bool Usable(const Grounding& g) {
@@ -512,6 +522,12 @@ bool Planner::Context(std::string_view text, const Decision& d, PlannerResult* o
     }
     const bool nearby = !deixis.empty();
     const bool unsure = d.action == Action::SayAgain || d.action == Action::Ignore || d.action == Action::Answer;
+    if (OneOf(w.front(), kNoLeads) && has_target) {
+        // "No, come here.": an order of its own after the "no", read as it stands; a place alone is the correction
+        const std::vector<std::string> rest = AfterNo(w);
+        const bool place_only = !rest.empty() && rest.size() <= kAnswerMaxTokens && OneOf(rest.front(), kAnswerLeads);
+        if (!rest.empty() && !place_only) return false;
+    }
     if (!has_target && alive && d.action == Action::SayAgain && d.prob < kFragmentUnsure && OneOf(w.back(), kLostPointers) &&
         OneOf(frame_label, kPlaceIntents)) {
         // the place matcher takes "there" only after an order word; here the order word is what was misheard

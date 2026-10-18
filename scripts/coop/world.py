@@ -125,6 +125,7 @@ def usable(g):
 #                      A grenade is never thrown at a guessed place.
 #   here, by the verb  "come here" is the speaker; "shoot here", "look here", "check here" is the crosshair's point.
 #   a correction       "No, here, on my pin.": the previous order, at the place the line names. A bare "no" stops.
+#                      "No, come here.": words of an order of their own after the "no" make a new order (after_no).
 #   a repeat           "Shoot again", "again", "once more": the previous order as it was.
 #   a fragment         "On my pin.", "over there", "left": a place and no action is the previous order's new place.
 #                      So is a line the classifier could not read when its place is clear ("Should there." heard for
@@ -137,11 +138,27 @@ PIN_DEFAULT = FIRE + ("MOVE_TO", "CHECK", "ENTRY", "FLANK")      # a place not s
 CARRY = PIN_DEFAULT + ("HOLD_ANGLE", "LOOK_AT")                  # ... or where the same order was a moment ago
 POINTED_HERE = FIRE + ("FRAG", "FLASH", "SMOKE", "LOOK_AT", "CHECK", "HOLD_ANGLE")   # "here" is the crosshair's point
 # orders whose place is not the line's (bot v56): going back is to the bot's own earlier place, which the game keeps; letting
-# the player out is where the player is. Their lines' places are neither grounded nor asked about ("go back there")
-NO_PLACE = ("GO_BACK", "HELP_INTERACTION")
+# the player out is where the player is. Their lines' places are neither grounded nor asked about ("go back there"). Bot v57:
+# a weapon named for taking it out or reloading is one the bot carries, not a weapon lying in the world ("switch to your
+# pistol"; the game reads the kind from the words)
+NO_PLACE = ("GO_BACK", "HELP_INTERACTION", "SWITCH_WEAPON", "RELOAD")
 PLACE_INTENTS = CARRY + ("FRAG", "FLASH", "SMOKE", "HOLD_POSITION", "JUMP", "TAKE_COVER", "FALL_BACK", "COME_BACK",
                          "BREACH", "VAULT_WINDOW", "OPEN")       # orders that can be given again at another place
 NO_LEADS = ("no", "nope", "nah", "not", "negative", "wrong")
+SAID_WORDS = ("said", "meant", "mean")   # "No, I said the north door": the correction's own words
+
+
+def after_no(w):
+    """The words of a line after its "no"s and an "I said" / "I meant" / "I mean": what the correction names. A place
+    alone ("no, here, on my pin", "no, I said the north door") is a correction; words that are an order of their own ("no,
+    come here", "no, go left") are a new order (the owner's line "No, cam come here." after "Get down, find cover"
+    became "Take cover, here", 2026-10-18)."""
+    i = 0
+    while i < len(w) and w[i] in NO_LEADS:
+        i += 1
+    if i + 1 < len(w) and w[i] == "i" and w[i + 1] in SAID_WORDS:
+        i += 2
+    return w[i:]
 DIRECTION_WORDS = {"left": "to the left", "right": "to the right", "forward": "forward", "back": "back", "up": "up",
                    "down": "down"}
 
@@ -546,6 +563,10 @@ class Planner:
                 place = (t, g)
         near = deixis(text) is not None
         unsure = action in ("say_again", "ignore", "answer")
+        if w[0] in NO_LEADS and t is not None:
+            rest = after_no(w)
+            if rest and not (len(rest) <= ANSWER_MAX_TOKENS and rest[0] in ANSWER_LEADS):
+                return None   # "No, come here.": an order of its own after the "no", read as it stands
         if t is None and alive and action == "say_again" and prob < FRAGMENT_UNSURE and w[-1] in LOST_POINTERS and                 f["intent"] in PLACE_INTENTS:
             # the place matcher takes "there" only after an order word; here the order word is what was misheard
             g = ground_target(THIS_TARGET, self.world, self.memory, w[-1] == "here" and f["intent"] not in POINTED_HERE)
@@ -915,6 +936,13 @@ DEV_TALK = [
     ("frag", "FRAG", {"action": "act", "entity": None}, {"time": 530.0}),                         # never a grenade at a guess
     ("go there", "MOVE_TO", {"action": "act", "entity": "gaze_1"}, {"time": 560.0}),
     ("no", "NO", {"action": "negated"}, {"time": 562.0}),                                         # stop
+    # 2026-10-18: "No, cam come here." after "Get down, find cover" was "Take cover, here". An order of its own after the
+    # "no" is a new order, read as it stands; a place alone is still the correction, "I said" or not
+    ("take cover", "TAKE_COVER", {"action": "act"}, {"time": 570.0}),
+    ("no cam come here", "WAIT", {"action": "say_again"}, {"time": 573.0, "low": True}),          # unsure of it: asks, does not hide
+    ("no come here", "FOLLOW_ME", {"action": "act", "intent": "FOLLOW_ME", "via": "here"}, {"time": 576.0}),
+    ("jump there", "JUMP", {"action": "act", "entity": "gaze_1"}, {"time": 580.0}),
+    ("no i said on my pin", "WAIT", {"action": "resolved", "entity": "pin", "intent": "JUMP"}, {"time": 583.0, "low": True, "player_pin": PIN_A}),
     ("move up", "MOVE_TO", {"action": "act", "entity": "pin", "via": "pin_default"}, {"time": 600.0}),
     ("move up", "MOVE_TO", {"action": "act", "entity": None}, {"time": 640.0, "player_pin": None}),   # the pin is gone
 ]
@@ -972,6 +1000,11 @@ DEV_V56 = [
     ("stand here", "HOLD_POSITION", {"action": "act", "entity": None, "via": "here"}),
     ("go back there", "GO_BACK", {"action": "act", "intent": "GO_BACK", "entity": None, "via": None}),
     ("let me out of here", "HELP_INTERACTION", {"action": "act", "intent": "HELP_INTERACTION", "entity": None, "via": None}),
+]
+DEV_V57 = [
+    ("switch to your pistol", "SWITCH_WEAPON", {"action": "act", "intent": "SWITCH_WEAPON", "entity": None, "via": None}),
+    ("switch weapons", "SWITCH_WEAPON", {"action": "act", "intent": "SWITCH_WEAPON", "entity": None, "via": None}),
+    ("reload your rifle", "RELOAD", {"action": "act", "intent": "RELOAD", "entity": None, "via": None}),
 ]
 
 
@@ -1053,7 +1086,8 @@ def run_dev():
 
     ok = 0
     for world, dev in ((WORLD_EXAMPLE, DEV), (WORLD_BARE, DEV_BARE), (WORLD_TALK, DEV_TALK), (WORLD_FLOORS, DEV_FLOORS),
-                       (WORLD_V56, DEV_V56 if "GO_BACK" in labels else [])):
+                       (WORLD_V56, DEV_V56 if "GO_BACK" in labels else []),
+                       (WORLD_V56, DEV_V57 if "SWITCH_WEAPON" in labels else [])):
         bot = Fake()
         pl = Planner(bot, world)
         for text, intent, want, *change in dev:
@@ -1083,7 +1117,7 @@ def run_dev():
             good = all(got.get(k) == v for k, v in want.items())
             ok += good
             print(f"{'ok ' if good else 'NO '} {('+ ' if continued else '') + repr(text):36s} -> {r['action']:9s} {r['say']}" + (f"  order {r['order']}" if r["order"] else ""))
-    print(f"{ok}/{len(DEV) + len(DEV_BARE) + len(DEV_TALK) + len(DEV_FLOORS) + len(DEV_CHAIN) + len(DEV_CHAIN_BARE) + (len(DEV_V56) if 'GO_BACK' in labels else 0)}")
+    print(f"{ok}/{len(DEV) + len(DEV_BARE) + len(DEV_TALK) + len(DEV_FLOORS) + len(DEV_CHAIN) + len(DEV_CHAIN_BARE) + (len(DEV_V56) if 'GO_BACK' in labels else 0) + (len(DEV_V57) if 'SWITCH_WEAPON' in labels else 0)}")
 
 
 if __name__ == "__main__":

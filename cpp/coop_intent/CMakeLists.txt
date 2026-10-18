@@ -104,8 +104,9 @@ set(SHERPA_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party/${SHERPA_NAME}" CACHE PA
 set(COOP_STT_MODEL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../scripts/coop/stt/models/sherpa-onnx-nemo-parakeet-tdt-0.6b-v2-int8"
     CACHE PATH "sherpa-onnx export of Parakeet TDT 0.6B v2 (scripts/coop/stt/README.md)")
 if(EXISTS "${SHERPA_DIR}/include/sherpa-onnx/c-api/c-api.h" AND EXISTS "${SHERPA_DIR}/${SHERPA_LIB}")
-  add_library(coop_intent_stt STATIC src/sherpa_speech.cpp)
-  target_include_directories(coop_intent_stt PRIVATE "${SHERPA_DIR}/include")
+  # the recognizer and, on the same library, the bot's voice (Piper, coop_cli --serve --tts-piper)
+  add_library(coop_intent_stt STATIC src/sherpa_speech.cpp src/sherpa_voice.cpp)
+  target_include_directories(coop_intent_stt PRIVATE "${SHERPA_DIR}/include" third_party)
   target_link_libraries(coop_intent_stt PUBLIC coop_intent_core "${SHERPA_DIR}/${SHERPA_LIB}")
   target_link_libraries(coop_cli PRIVATE coop_intent_stt)
   get_filename_component(COOP_STT_MODEL_DIR_ABS "${COOP_STT_MODEL_DIR}" ABSOLUTE)

@@ -1,0 +1,9 @@
+15:24:34  start lines
+15:24:36  windows                  exit 0  1 s  wav_clean: 80 new files
+15:29:11  piper_kokoro             exit 0  275 s  kokoro 275s
+15:29:32  stt_clean                exit 0  21 s      "Go grab some ammo, you're nearly dry." | None
+15:29:52  stt_kokoro               exit 0  21 s      "Go grab some ammo, you're nearly dry." | None
+15:30:13  stt_kokorox              exit 0  21 s      "Go grab some ammo. You're nearly dry." | None
+15:30:32  stt_vctkA                exit 0  19 s      'But grab some ammo you nearly dry.' | None
+15:30:51  stt_vctkB                exit 0  19 s      "Go grab some animal, you're nearly dry." | None
+15:30:51  done

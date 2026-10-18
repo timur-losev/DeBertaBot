@@ -1,0 +1,1312 @@
+{
+ "test": "blind/v58/test_cont_r6.json",
+ "lines": [
+  {
+   "id": "t58_000",
+   "text": "Keep heading left.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_001",
+   "text": "further left",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_002",
+   "text": "More to the right, bro.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_003",
+   "text": "and down",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_004",
+   "text": "Yeah, carry on up the stairs.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_005",
+   "text": "keep going down the ramp",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_006",
+   "text": "Continue toward the car.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_007",
+   "text": "keep walking to my pen",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_008",
+   "text": "Go on to the north door.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_009",
+   "text": "Keep moving along the wall, nice and quiet.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_010",
+   "text": "ok a little more forward",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_011",
+   "text": "Push on forward, slowly.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "ENTRY",
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_012",
+   "text": "keep advancing to the east window",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_013",
+   "text": "Keep going straight ahead.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_014",
+   "text": "carry on downstairs",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_015",
+   "text": "Continue on to the roof.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_016",
+   "text": "Keep running right.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_017",
+   "text": "further down the hallway",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_018",
+   "text": "Yeah, keep moving up on the left side.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_019",
+   "text": "go on up",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_020",
+   "text": "Keep heading that way.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": true,
+   "alt": "NONE",
+   "accept": [
+    "MOVE_TO",
+    "NONE"
+   ]
+  },
+  {
+   "id": "t58_021",
+   "text": "keep on toward the blue stares",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_022",
+   "text": "Proceed down to the basement.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_023",
+   "text": "A bit farther toward my marker.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_024",
+   "text": "Keep it moving, a little further up the yellow stairs.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_025",
+   "text": "Onward, up to the second floor.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_026",
+   "text": "nice nice keep pushing left",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": true,
+   "alt": "ENTRY",
+   "accept": [
+    "ENTRY",
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_027",
+   "text": "Don't stop, keep going forward to the main door.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_028",
+   "text": "Keep moving deeper inside, bro.",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_029",
+   "text": "right now carry on to the west window",
+   "intent": "MOVE_TO",
+   "kind": "goon_way",
+   "unsure": false,
+   "accept": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_030",
+   "text": "Keep heading back to me.",
+   "intent": "COME_BACK",
+   "kind": "goon_back",
+   "unsure": false,
+   "accept": [
+    "COME_BACK"
+   ]
+  },
+  {
+   "id": "t58_031",
+   "text": "yeah keep on coming my way",
+   "intent": "COME_BACK",
+   "kind": "goon_back",
+   "unsure": false,
+   "accept": [
+    "COME_BACK"
+   ]
+  },
+  {
+   "id": "t58_032",
+   "text": "Keep coming back toward me, you're nearly here.",
+   "intent": "COME_BACK",
+   "kind": "goon_back",
+   "unsure": false,
+   "accept": [
+    "COME_BACK"
+   ]
+  },
+  {
+   "id": "t58_033",
+   "text": "carry on back to me",
+   "intent": "COME_BACK",
+   "kind": "goon_back",
+   "unsure": false,
+   "accept": [
+    "COME_BACK"
+   ]
+  },
+  {
+   "id": "t58_034",
+   "text": "A little closer to me, keep it up.",
+   "intent": "FOLLOW_ME",
+   "kind": "goon_back",
+   "unsure": false,
+   "accept": [
+    "FOLLOW_ME"
+   ]
+  },
+  {
+   "id": "t58_035",
+   "text": "Keep closing the distance to me.",
+   "intent": "FOLLOW_ME",
+   "kind": "goon_back",
+   "unsure": true,
+   "alt": "COME_BACK",
+   "accept": [
+    "COME_BACK",
+    "FOLLOW_ME"
+   ]
+  },
+  {
+   "id": "t58_036",
+   "text": "Carry on.",
+   "intent": "NONE",
+   "kind": "goon_bare",
+   "unsure": false,
+   "accept": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "t58_037",
+   "text": "dont stop",
+   "intent": "NONE",
+   "kind": "goon_bare",
+   "unsure": true,
+   "alt": "WAIT",
+   "accept": [
+    "NONE",
+    "WAIT"
+   ]
+  },
+  {
+   "id": "t58_038",
+   "text": "Keep it rolling, you're fine.",
+   "intent": "NONE",
+   "kind": "goon_bare",
+   "unsure": false,
+   "accept": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "t58_039",
+   "text": "just keep walking",
+   "intent": "NONE",
+   "kind": "goon_bare",
+   "unsure": false,
+   "accept": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "t58_040",
+   "text": "Yeah, continue on.",
+   "intent": "NONE",
+   "kind": "goon_bare",
+   "unsure": false,
+   "accept": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "t58_041",
+   "text": "a bit further",
+   "intent": "NONE",
+   "kind": "goon_bare",
+   "unsure": true,
+   "alt": "REPEAT",
+   "accept": [
+    "NONE",
+    "REPEAT"
+   ]
+  },
+  {
+   "id": "t58_042",
+   "text": "Keep on going, man, don't stop now.",
+   "intent": "NONE",
+   "kind": "goon_bare",
+   "unsure": false,
+   "accept": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "t58_043",
+   "text": "Stay on the move.",
+   "intent": "NONE",
+   "kind": "goon_bare",
+   "unsure": false,
+   "accept": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "t58_044",
+   "text": "Go on, carry on.",
+   "intent": "NONE",
+   "kind": "goon_bare",
+   "unsure": true,
+   "alt": "GO_NOW",
+   "accept": [
+    "GO_NOW",
+    "NONE"
+   ]
+  },
+  {
+   "id": "t58_045",
+   "text": "okay resume moving",
+   "intent": "NONE",
+   "kind": "goon_bare",
+   "unsure": false,
+   "accept": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "t58_046",
+   "text": "Press on.",
+   "intent": "NONE",
+   "kind": "goon_bare",
+   "unsure": true,
+   "alt": "MOVE_TO",
+   "accept": [
+    "MOVE_TO",
+    "NONE"
+   ]
+  },
+  {
+   "id": "t58_047",
+   "text": "Don't slow down now, keep at it.",
+   "intent": "NONE",
+   "kind": "goon_bare",
+   "unsure": false,
+   "accept": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "t58_048",
+   "text": "Keep holding the north door.",
+   "intent": "HOLD_ANGLE",
+   "kind": "boundary",
+   "unsure": false,
+   "accept": [
+    "HOLD_ANGLE"
+   ]
+  },
+  {
+   "id": "t58_049",
+   "text": "keep suppressing that window",
+   "intent": "SUPPRESS",
+   "kind": "boundary",
+   "unsure": false,
+   "accept": [
+    "SUPPRESS"
+   ]
+  },
+  {
+   "id": "t58_050",
+   "text": "Keep low, bro.",
+   "intent": "CROUCH",
+   "kind": "boundary",
+   "unsure": false,
+   "accept": [
+    "CROUCH"
+   ]
+  },
+  {
+   "id": "t58_051",
+   "text": "Keep covering me, I'm moving up.",
+   "intent": "COVER_ME",
+   "kind": "boundary",
+   "unsure": false,
+   "accept": [
+    "COVER_ME"
+   ]
+  },
+  {
+   "id": "t58_052",
+   "text": "they keep coming down the red stairs",
+   "intent": "NONE",
+   "kind": "boundary",
+   "unsure": false,
+   "accept": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "t58_053",
+   "text": "theres more of them further up the hall",
+   "intent": "NONE",
+   "kind": "boundary",
+   "unsure": false,
+   "accept": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "t58_054",
+   "text": "Okay, more.",
+   "intent": "REPEAT",
+   "kind": "boundary",
+   "unsure": false,
+   "accept": [
+    "REPEAT"
+   ]
+  },
+  {
+   "id": "t58_055",
+   "text": "go go go now",
+   "intent": "GO_NOW",
+   "kind": "boundary",
+   "unsure": false,
+   "accept": [
+    "GO_NOW"
+   ]
+  },
+  {
+   "id": "t58_056",
+   "text": "Keep pushing in and clear that room.",
+   "intent": "ENTRY",
+   "kind": "boundary",
+   "unsure": false,
+   "accept": [
+    "ENTRY"
+   ]
+  },
+  {
+   "id": "t58_057",
+   "text": "Keep pulling back, they're flanking us.",
+   "intent": "FALL_BACK",
+   "kind": "boundary",
+   "unsure": false,
+   "accept": [
+    "FALL_BACK"
+   ]
+  },
+  {
+   "id": "t58_058",
+   "text": "keep backing up",
+   "intent": "FALL_BACK",
+   "kind": "boundary",
+   "unsure": true,
+   "alt": "MOVE_TO",
+   "accept": [
+    "FALL_BACK",
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "t58_059",
+   "text": "Keep going back to your post.",
+   "intent": "GO_BACK",
+   "kind": "boundary",
+   "unsure": false,
+   "accept": [
+    "GO_BACK"
+   ]
+  },
+  {
+   "id": "t58_060",
+   "text": "And jump down.",
+   "intent": "JUMP",
+   "kind": "boundary",
+   "unsure": false,
+   "accept": [
+    "JUMP"
+   ]
+  },
+  {
+   "id": "t58_061",
+   "text": "hold up dont keep going",
+   "intent": "WAIT",
+   "kind": "boundary",
+   "unsure": false,
+   "accept": [
+    "WAIT"
+   ]
+  },
+  {
+   "id": "t58_062",
+   "text": "Stay there, no further.",
+   "intent": "HOLD_POSITION",
+   "kind": "boundary",
+   "unsure": true,
+   "alt": "WAIT",
+   "accept": [
+    "HOLD_POSITION",
+    "WAIT"
+   ]
+  },
+  {
+   "id": "t58_063",
+   "text": "Yeah, go ahead.",
+   "intent": "GO_NOW",
+   "kind": "boundary",
+   "unsure": true,
+   "alt": "YES",
+   "accept": [
+    "GO_NOW",
+    "YES"
+   ]
+  }
+ ],
+ "picks": {
+  "coop-deberta-v3-ens3-v57": {
+   "t58_000": {
+    "pick": "NONE",
+    "top": "MOVE_TO",
+    "p": 0.4263682990967936
+   },
+   "t58_001": {
+    "pick": "NONE",
+    "top": "HOLD_OTHER_ANGLE",
+    "p": 0.287029159975494
+   },
+   "t58_002": {
+    "pick": "NONE",
+    "top": "MOVE_TO",
+    "p": 0.6668277209457756
+   },
+   "t58_003": {
+    "pick": "NONE",
+    "top": "HELP",
+    "p": 0.6571045005694032
+   },
+   "t58_004": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9954737118771995
+   },
+   "t58_005": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.8700644826958525
+   },
+   "t58_006": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.7612727478220523
+   },
+   "t58_007": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9287397346489664
+   },
+   "t58_008": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.999766602898885
+   },
+   "t58_009": {
+    "pick": "HOLD_POSITION",
+    "top": "HOLD_POSITION",
+    "p": 0.8057767737933925
+   },
+   "t58_010": {
+    "pick": "NONE",
+    "top": "MOVE_TO",
+    "p": 0.6364918747889495
+   },
+   "t58_011": {
+    "pick": "ENTRY",
+    "top": "ENTRY",
+    "p": 0.9989550899162699
+   },
+   "t58_012": {
+    "pick": "ENTRY",
+    "top": "ENTRY",
+    "p": 0.9567944510102583
+   },
+   "t58_013": {
+    "pick": "NONE",
+    "top": "REPEAT",
+    "p": 0.5156640858628331
+   },
+   "t58_014": {
+    "pick": "NONE",
+    "top": "MOVE_TO",
+    "p": 0.4850366992942365
+   },
+   "t58_015": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9984261341098845
+   },
+   "t58_016": {
+    "pick": "HOLD_ANGLE",
+    "top": "HOLD_ANGLE",
+    "p": 0.8171910845558159
+   },
+   "t58_017": {
+    "pick": "NONE",
+    "top": "HOLD_ANGLE",
+    "p": 0.3403063766719848
+   },
+   "t58_018": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.7314828775375494
+   },
+   "t58_019": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9960390862674301
+   },
+   "t58_020": {
+    "pick": "NONE",
+    "top": "MOVE_TO",
+    "p": 0.45324615296946535
+   },
+   "t58_021": {
+    "pick": "NONE",
+    "top": "MOVE_TO",
+    "p": 0.5813950986375858
+   },
+   "t58_022": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9997257411510082
+   },
+   "t58_023": {
+    "pick": "NONE",
+    "top": "MOVE_TO",
+    "p": 0.5417604683424695
+   },
+   "t58_024": {
+    "pick": "NONE",
+    "top": "MOVE_TO",
+    "p": 0.48927813511090784
+   },
+   "t58_025": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9955980322845903
+   },
+   "t58_026": {
+    "pick": "NONE",
+    "top": "NONE",
+    "p": 0.6382537881533304
+   },
+   "t58_027": {
+    "pick": "WAIT",
+    "top": "WAIT",
+    "p": 0.8043359021345774
+   },
+   "t58_028": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.933726250131978
+   },
+   "t58_029": {
+    "pick": "NONE",
+    "top": "MOVE_TO",
+    "p": 0.5879855315709694
+   },
+   "t58_030": {
+    "pick": "COME_BACK",
+    "top": "COME_BACK",
+    "p": 0.9987540019963793
+   },
+   "t58_031": {
+    "pick": "NONE",
+    "top": "FOLLOW_ME",
+    "p": 0.5550260703988291
+   },
+   "t58_032": {
+    "pick": "COME_BACK",
+    "top": "COME_BACK",
+    "p": 0.9975374353151097
+   },
+   "t58_033": {
+    "pick": "COME_BACK",
+    "top": "COME_BACK",
+    "p": 0.9992762021653998
+   },
+   "t58_034": {
+    "pick": "FOLLOW_ME",
+    "top": "FOLLOW_ME",
+    "p": 0.9927622573392796
+   },
+   "t58_035": {
+    "pick": "NONE",
+    "top": "SUPPRESS",
+    "p": 0.5131723474163058
+   },
+   "t58_036": {
+    "pick": "NONE",
+    "top": "GO_NOW",
+    "p": 0.6173885464668274
+   },
+   "t58_037": {
+    "pick": "WAIT",
+    "top": "WAIT",
+    "p": 0.9976713458697001
+   },
+   "t58_038": {
+    "pick": "NONE",
+    "top": "SUPPRESS",
+    "p": 0.3637265011833127
+   },
+   "t58_039": {
+    "pick": "NONE",
+    "top": "HOLD_POSITION",
+    "p": 0.6466862982608176
+   },
+   "t58_040": {
+    "pick": "GO_NOW",
+    "top": "GO_NOW",
+    "p": 0.9857992927233378
+   },
+   "t58_041": {
+    "pick": "NONE",
+    "top": "REPEAT",
+    "p": 0.5070431981390963
+   },
+   "t58_042": {
+    "pick": "NONE",
+    "top": "GO_NOW",
+    "p": 0.4388311157623927
+   },
+   "t58_043": {
+    "pick": "NONE",
+    "top": "STAND_UP",
+    "p": 0.39050455793039873
+   },
+   "t58_044": {
+    "pick": "GO_NOW",
+    "top": "GO_NOW",
+    "p": 0.9948592185974121
+   },
+   "t58_045": {
+    "pick": "NONE",
+    "top": "FALL_BACK",
+    "p": 0.4457560082276662
+   },
+   "t58_046": {
+    "pick": "SUPPRESS",
+    "top": "SUPPRESS",
+    "p": 0.9986289185035275
+   },
+   "t58_047": {
+    "pick": "WAIT",
+    "top": "WAIT",
+    "p": 0.9959109822909037
+   },
+   "t58_048": {
+    "pick": "HOLD_ANGLE",
+    "top": "HOLD_ANGLE",
+    "p": 0.999894509075754
+   },
+   "t58_049": {
+    "pick": "SUPPRESS",
+    "top": "SUPPRESS",
+    "p": 0.9994329804843195
+   },
+   "t58_050": {
+    "pick": "CROUCH",
+    "top": "CROUCH",
+    "p": 0.9982686575798047
+   },
+   "t58_051": {
+    "pick": "COVER_ME",
+    "top": "COVER_ME",
+    "p": 0.9996267088896882
+   },
+   "t58_052": {
+    "pick": "NONE",
+    "top": "NONE",
+    "p": 0.999801238377889
+   },
+   "t58_053": {
+    "pick": "NONE",
+    "top": "NONE",
+    "p": 0.9998500148455302
+   },
+   "t58_054": {
+    "pick": "REPEAT",
+    "top": "REPEAT",
+    "p": 0.9895154237747192
+   },
+   "t58_055": {
+    "pick": "GO_NOW",
+    "top": "GO_NOW",
+    "p": 0.9983726541201273
+   },
+   "t58_056": {
+    "pick": "ENTRY",
+    "top": "ENTRY",
+    "p": 0.9996627523338949
+   },
+   "t58_057": {
+    "pick": "FALL_BACK",
+    "top": "FALL_BACK",
+    "p": 0.9979897936185201
+   },
+   "t58_058": {
+    "pick": "NONE",
+    "top": "FALL_BACK",
+    "p": 0.618628720442454
+   },
+   "t58_059": {
+    "pick": "GO_BACK",
+    "top": "GO_BACK",
+    "p": 0.9995588518116753
+   },
+   "t58_060": {
+    "pick": "JUMP",
+    "top": "JUMP",
+    "p": 0.9988708498908826
+   },
+   "t58_061": {
+    "pick": "WAIT",
+    "top": "WAIT",
+    "p": 0.9984422326087952
+   },
+   "t58_062": {
+    "pick": "HOLD_POSITION",
+    "top": "HOLD_POSITION",
+    "p": 0.9996659700801576
+   },
+   "t58_063": {
+    "pick": "GO_NOW",
+    "top": "GO_NOW",
+    "p": 0.9983168045679728
+   }
+  },
+  "coop-deberta-v3-ens3-v58": {
+   "t58_000": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9998989502588908
+   },
+   "t58_001": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9998831550280253
+   },
+   "t58_002": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9999180237452189
+   },
+   "t58_003": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9998099009195963
+   },
+   "t58_004": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9998933474222819
+   },
+   "t58_005": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9998968442281088
+   },
+   "t58_006": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9998650749524435
+   },
+   "t58_007": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9999154408772787
+   },
+   "t58_008": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9998633861541748
+   },
+   "t58_009": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9974752068519592
+   },
+   "t58_010": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9999132951100668
+   },
+   "t58_011": {
+    "pick": "ENTRY",
+    "top": "ENTRY",
+    "p": 0.9821504751841227
+   },
+   "t58_012": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.999867300192515
+   },
+   "t58_013": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9999106327692667
+   },
+   "t58_014": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9999047120412191
+   },
+   "t58_015": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9998972018559774
+   },
+   "t58_016": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9998525182406107
+   },
+   "t58_017": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9996687769889832
+   },
+   "t58_018": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9998342196146647
+   },
+   "t58_019": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9998462796211243
+   },
+   "t58_020": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9998340209325155
+   },
+   "t58_021": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9998895724614462
+   },
+   "t58_022": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9998937845230103
+   },
+   "t58_023": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9999049107233683
+   },
+   "t58_024": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9999131759007772
+   },
+   "t58_025": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.999836285909017
+   },
+   "t58_026": {
+    "pick": "ENTRY",
+    "top": "ENTRY",
+    "p": 0.6989443128307661
+   },
+   "t58_027": {
+    "pick": "WAIT",
+    "top": "WAIT",
+    "p": 0.8068780501683553
+   },
+   "t58_028": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9999129772186279
+   },
+   "t58_029": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9996661941210429
+   },
+   "t58_030": {
+    "pick": "COME_BACK",
+    "top": "COME_BACK",
+    "p": 0.998003363609314
+   },
+   "t58_031": {
+    "pick": "COME_BACK",
+    "top": "COME_BACK",
+    "p": 0.7653725445270538
+   },
+   "t58_032": {
+    "pick": "COME_BACK",
+    "top": "COME_BACK",
+    "p": 0.9991485476493835
+   },
+   "t58_033": {
+    "pick": "COME_BACK",
+    "top": "COME_BACK",
+    "p": 0.9987781246503195
+   },
+   "t58_034": {
+    "pick": "FOLLOW_ME",
+    "top": "FOLLOW_ME",
+    "p": 0.9980826377868652
+   },
+   "t58_035": {
+    "pick": "NONE",
+    "top": "FOLLOW_ME",
+    "p": 0.6541075306013227
+   },
+   "t58_036": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9911394317944845
+   },
+   "t58_037": {
+    "pick": "WAIT",
+    "top": "WAIT",
+    "p": 0.9983028372128805
+   },
+   "t58_038": {
+    "pick": "NONE",
+    "top": "REPEAT",
+    "p": 0.3328378992591752
+   },
+   "t58_039": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9997037649154663
+   },
+   "t58_040": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.8912003437678019
+   },
+   "t58_041": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9998838504155477
+   },
+   "t58_042": {
+    "pick": "MOVE_TO",
+    "top": "MOVE_TO",
+    "p": 0.9977890451749166
+   },
+   "t58_043": {
+    "pick": "NONE",
+    "top": "MOVE_TO",
+    "p": 0.3235449446365237
+   },
+   "t58_044": {
+    "pick": "GO_NOW",
+    "top": "GO_NOW",
+    "p": 0.9681108991305033
+   },
+   "t58_045": {
+    "pick": "NONE",
+    "top": "MOVE_TO",
+    "p": 0.6389176313920567
+   },
+   "t58_046": {
+    "pick": "NONE",
+    "top": "SUPPRESS",
+    "p": 0.4416353175668822
+   },
+   "t58_047": {
+    "pick": "WAIT",
+    "top": "WAIT",
+    "p": 0.9670208891232809
+   },
+   "t58_048": {
+    "pick": "HOLD_ANGLE",
+    "top": "HOLD_ANGLE",
+    "p": 0.9997148315111796
+   },
+   "t58_049": {
+    "pick": "SUPPRESS",
+    "top": "SUPPRESS",
+    "p": 0.9991857012112936
+   },
+   "t58_050": {
+    "pick": "CROUCH",
+    "top": "CROUCH",
+    "p": 0.9975878198941549
+   },
+   "t58_051": {
+    "pick": "COVER_ME",
+    "top": "COVER_ME",
+    "p": 0.9993969798088074
+   },
+   "t58_052": {
+    "pick": "NONE",
+    "top": "NONE",
+    "p": 0.9995679060618082
+   },
+   "t58_053": {
+    "pick": "NONE",
+    "top": "NONE",
+    "p": 0.5781690351044139
+   },
+   "t58_054": {
+    "pick": "REPEAT",
+    "top": "REPEAT",
+    "p": 0.9914783438046774
+   },
+   "t58_055": {
+    "pick": "GO_NOW",
+    "top": "GO_NOW",
+    "p": 0.9987833301226298
+   },
+   "t58_056": {
+    "pick": "ENTRY",
+    "top": "ENTRY",
+    "p": 0.9996073246002197
+   },
+   "t58_057": {
+    "pick": "FALL_BACK",
+    "top": "FALL_BACK",
+    "p": 0.9992067813873291
+   },
+   "t58_058": {
+    "pick": "FALL_BACK",
+    "top": "FALL_BACK",
+    "p": 0.9957172075907389
+   },
+   "t58_059": {
+    "pick": "GO_BACK",
+    "top": "GO_BACK",
+    "p": 0.999500056107839
+   },
+   "t58_060": {
+    "pick": "JUMP",
+    "top": "JUMP",
+    "p": 0.9996868173281351
+   },
+   "t58_061": {
+    "pick": "WAIT",
+    "top": "WAIT",
+    "p": 0.9992230733235677
+   },
+   "t58_062": {
+    "pick": "HOLD_POSITION",
+    "top": "HOLD_POSITION",
+    "p": 0.9996758898099264
+   },
+   "t58_063": {
+    "pick": "GO_NOW",
+    "top": "GO_NOW",
+    "p": 0.9986198941866556
+   }
+  }
+ }
+}

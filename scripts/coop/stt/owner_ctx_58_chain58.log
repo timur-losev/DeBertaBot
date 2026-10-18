@@ -1,0 +1,31 @@
+NO  owner_040  "And continue moving." -> ['continue moving'] [('say_again', 'REPEAT')]  route 0.99 rewritten
+ok  owner_041  "Continue moving." -> ['move further down'] [('act', 'MOVE_TO')]  route 0.94 rewritten
+ok  owner_060  "And up." -> ['move up more here'] [('act', 'MOVE_TO')]  route 1.00 rewritten
+NO  owner_073  "Another." -> ['shoot at that window'] [('ask', 'OPEN_FIRE')]  route 1.00 rewritten
+ok  owner_074  "Another window." -> ['shoot at another window'] [('resolved', 'OPEN_FIRE')]  route 1.00 rewritten
+ok  owner_088  "By these stairs." -> ['step up by these stairs'] [('act', 'MOVE_TO')]  route 0.94 rewritten
+NO  owner_103  "Keep moving." -> ['keep moving'] [('say_again', 'STAND_UP')]  route 0.92 as it is
+ok  owner_105  "Do the same." -> ['do the same'] [('act', 'REPEAT')]  route 0.05
+ok  owner_166  "No, cam come here." -> ['come here'] [('act', 'FOLLOW_ME')]  route 0.94 rewritten
+ok  owner_176  "No, come here." -> ['come here'] [('act', 'FOLLOW_ME')]  route 1.00 rewritten
+ok  owner_183  "and come here." -> ['come here'] [('act', 'FOLLOW_ME')]  route 1.00 rewritten
+ok  owner_191  "No, no come back." -> ['come back'] [('act', 'COME_BACK')]  route 1.00 rewritten
+ok  owner_231  "Get out." -> ['get out'] [('act', 'GET_OUT')]  route 0.00
+ok  owner_236  "Jump up and shoot on my pin." -> ['jump up', 'shoot on my pin'] [('act', 'JUMP'), ('act', 'OPEN_FIRE')]  route 0.54 rewritten
+ok  owner_237  "Again." -> ['again'] [('act', 'REPEAT')]  route 0.00
+ok  owner_258  "Now back to me." -> ['back to me'] [('act', 'COME_BACK')]  route 0.58 rewritten
+ok  owner_304  "And hold this door." -> ['and hold this door'] [('act', 'HOLD_ANGLE')]  route 1.00 as it is
+ok  owner_428  "Do the same for pin as you did before." -> ['do the same for pin as you did before'] [('act', 'REPEAT')]  route 0.00
+ok  owner_430  "try again relocating to my pin," -> ['try again relocating to my pin,'] [('act', 'REPEAT')]  route 0.00
+ok  owner_450  "Get into the car, get out, and shoot this wall" -> ['get into the car', 'get out of the car', 'shoot this wall'] [('act', 'GET_IN'), ('act', 'GET_OUT'), ('act', 'OPEN_FIRE')]  route 1.00 rewritten
+ok  owner_496  "Further up." -> ['go further up by the stairs'] [('act', 'MOVE_TO')]  route 1.00 rewritten
+NO  owner_528  "More up." -> ['more up'] [('say_again', 'REPEAT')]  route 1.00 as it is
+ok  owner_545  "More" -> ['more'] [('act', 'REPEAT')]  route 0.03
+ok  owner_573  "And start shooting." -> ['start shooting'] [('act', 'OPEN_FIRE')]  route 1.00 rewritten
+ok  owner_615  "jump down and get into the car." -> ['jump down', 'get into the car'] [('act', 'JUMP'), ('act', 'GET_IN')]  route 1.00 rewritten
+NO  owner_616  "Move out." -> ['move out'] [('say_again', 'GET_OUT')]  route 0.99 as it is
+ok  owner_636  "Now uh another window." -> ['open fire on another window'] [('act', 'OPEN_FIRE')]  route 1.00 rewritten
+NO  owner_668  "get into it and start start riding." -> ['get into the car', 'start riding in the car'] [('act', 'GET_IN'), ('act', 'GET_IN')]  route 1.00 rewritten
+ok  owner_669  "Get inside of it and start riding." -> ['get inside the car and start riding'] [('act', 'GET_IN')]  route 0.99 rewritten
+ok  owner_689  "Get inside of it." -> ['get in the car'] [('act', 'GET_IN')]  route 0.82 rewritten
+24/30 read as expected

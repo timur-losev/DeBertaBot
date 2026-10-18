@@ -1,0 +1,641 @@
+[
+ {
+  "id": "owner_040",
+  "line": "And continue moving.",
+  "want": [
+   "MOVE_TO"
+  ],
+  "got": [],
+  "ok": false,
+  "lines": [
+   "continue moving"
+  ],
+  "actions": [
+   "say_again"
+  ],
+  "route": 0.99,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ },
+ {
+  "id": "owner_041",
+  "line": "Continue moving.",
+  "want": [
+   "MOVE_TO"
+  ],
+  "got": [
+   "MOVE_TO"
+  ],
+  "ok": true,
+  "lines": [
+   "move further down"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 0.94,
+  "decoded": true,
+  "rewritten": true,
+  "asked": true
+ },
+ {
+  "id": "owner_060",
+  "line": "And up.",
+  "want": [
+   "MOVE_TO"
+  ],
+  "got": [
+   "MOVE_TO"
+  ],
+  "ok": true,
+  "lines": [
+   "move up more here"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 1.0,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ },
+ {
+  "id": "owner_073",
+  "line": "Another.",
+  "want": [
+   "OPEN_FIRE"
+  ],
+  "got": [],
+  "ok": false,
+  "lines": [
+   "shoot at that window"
+  ],
+  "actions": [
+   "ask"
+  ],
+  "route": 1.0,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ },
+ {
+  "id": "owner_074",
+  "line": "Another window.",
+  "want": [
+   "OPEN_FIRE"
+  ],
+  "got": [
+   "OPEN_FIRE"
+  ],
+  "ok": true,
+  "lines": [
+   "shoot at another window"
+  ],
+  "actions": [
+   "resolved"
+  ],
+  "route": 1.0,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ },
+ {
+  "id": "owner_088",
+  "line": "By these stairs.",
+  "want": [
+   "MOVE_TO"
+  ],
+  "got": [
+   "MOVE_TO"
+  ],
+  "ok": true,
+  "lines": [
+   "step up by these stairs"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 0.94,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ },
+ {
+  "id": "owner_103",
+  "line": "Keep moving.",
+  "want": [
+   "MOVE_TO"
+  ],
+  "got": [],
+  "ok": false,
+  "lines": [
+   "keep moving"
+  ],
+  "actions": [
+   "say_again"
+  ],
+  "route": 0.92,
+  "decoded": true,
+  "rewritten": false,
+  "asked": false
+ },
+ {
+  "id": "owner_105",
+  "line": "Do the same.",
+  "want": [
+   "REPEAT"
+  ],
+  "got": [
+   "REPEAT"
+  ],
+  "ok": true,
+  "lines": [
+   "do the same"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 0.05,
+  "decoded": false,
+  "rewritten": false,
+  "asked": false
+ },
+ {
+  "id": "owner_166",
+  "line": "No, cam come here.",
+  "want": [
+   "FOLLOW_ME"
+  ],
+  "got": [
+   "FOLLOW_ME"
+  ],
+  "ok": true,
+  "lines": [
+   "come here"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 0.94,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ },
+ {
+  "id": "owner_176",
+  "line": "No, come here.",
+  "want": [
+   "FOLLOW_ME"
+  ],
+  "got": [
+   "FOLLOW_ME"
+  ],
+  "ok": true,
+  "lines": [
+   "come here"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 1.0,
+  "decoded": true,
+  "rewritten": true,
+  "asked": true
+ },
+ {
+  "id": "owner_183",
+  "line": "and come here.",
+  "want": [
+   "FOLLOW_ME"
+  ],
+  "got": [
+   "FOLLOW_ME"
+  ],
+  "ok": true,
+  "lines": [
+   "come here"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 1.0,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ },
+ {
+  "id": "owner_191",
+  "line": "No, no come back.",
+  "want": [
+   "COME_BACK"
+  ],
+  "got": [
+   "COME_BACK"
+  ],
+  "ok": true,
+  "lines": [
+   "come back"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 1.0,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ },
+ {
+  "id": "owner_231",
+  "line": "Get out.",
+  "want": [
+   "GET_OUT"
+  ],
+  "got": [
+   "GET_OUT"
+  ],
+  "ok": true,
+  "lines": [
+   "get out"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 0.0,
+  "decoded": false,
+  "rewritten": false,
+  "asked": true
+ },
+ {
+  "id": "owner_236",
+  "line": "Jump up and shoot on my pin.",
+  "want": [
+   "JUMP",
+   "OPEN_FIRE"
+  ],
+  "got": [
+   "JUMP",
+   "OPEN_FIRE"
+  ],
+  "ok": true,
+  "lines": [
+   "jump up",
+   "shoot on my pin"
+  ],
+  "actions": [
+   "act",
+   "act"
+  ],
+  "route": 0.54,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ },
+ {
+  "id": "owner_237",
+  "line": "Again.",
+  "want": [
+   "REPEAT"
+  ],
+  "got": [
+   "REPEAT"
+  ],
+  "ok": true,
+  "lines": [
+   "again"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 0.0,
+  "decoded": false,
+  "rewritten": false,
+  "asked": false
+ },
+ {
+  "id": "owner_258",
+  "line": "Now back to me.",
+  "want": [
+   "COME_BACK"
+  ],
+  "got": [
+   "COME_BACK"
+  ],
+  "ok": true,
+  "lines": [
+   "back to me"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 0.58,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ },
+ {
+  "id": "owner_304",
+  "line": "And hold this door.",
+  "want": [
+   "HOLD_ANGLE"
+  ],
+  "got": [
+   "HOLD_ANGLE"
+  ],
+  "ok": true,
+  "lines": [
+   "and hold this door"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 1.0,
+  "decoded": true,
+  "rewritten": false,
+  "asked": false
+ },
+ {
+  "id": "owner_428",
+  "line": "Do the same for pin as you did before.",
+  "want": [
+   "REPEAT"
+  ],
+  "got": [
+   "REPEAT"
+  ],
+  "ok": true,
+  "lines": [
+   "do the same for pin as you did before"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 0.0,
+  "decoded": false,
+  "rewritten": false,
+  "asked": true
+ },
+ {
+  "id": "owner_430",
+  "line": "try again relocating to my pin,",
+  "want": [
+   "REPEAT"
+  ],
+  "got": [
+   "REPEAT"
+  ],
+  "ok": true,
+  "lines": [
+   "try again relocating to my pin,"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 0.0,
+  "decoded": false,
+  "rewritten": false,
+  "asked": false
+ },
+ {
+  "id": "owner_450",
+  "line": "Get into the car, get out, and shoot this wall",
+  "want": [
+   "GET_IN",
+   "GET_OUT",
+   "OPEN_FIRE"
+  ],
+  "got": [
+   "GET_IN",
+   "GET_OUT",
+   "OPEN_FIRE"
+  ],
+  "ok": true,
+  "lines": [
+   "get into the car",
+   "get out of the car",
+   "shoot this wall"
+  ],
+  "actions": [
+   "act",
+   "act",
+   "act"
+  ],
+  "route": 1.0,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ },
+ {
+  "id": "owner_496",
+  "line": "Further up.",
+  "want": [
+   "MOVE_TO"
+  ],
+  "got": [
+   "MOVE_TO"
+  ],
+  "ok": true,
+  "lines": [
+   "go further up by the stairs"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 1.0,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ },
+ {
+  "id": "owner_528",
+  "line": "More up.",
+  "want": [
+   "MOVE_TO"
+  ],
+  "got": [],
+  "ok": false,
+  "lines": [
+   "more up"
+  ],
+  "actions": [
+   "say_again"
+  ],
+  "route": 1.0,
+  "decoded": true,
+  "rewritten": false,
+  "asked": false
+ },
+ {
+  "id": "owner_545",
+  "line": "More",
+  "want": [
+   "REPEAT"
+  ],
+  "got": [
+   "REPEAT"
+  ],
+  "ok": true,
+  "lines": [
+   "more"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 0.03,
+  "decoded": false,
+  "rewritten": false,
+  "asked": false
+ },
+ {
+  "id": "owner_573",
+  "line": "And start shooting.",
+  "want": [
+   "OPEN_FIRE"
+  ],
+  "got": [
+   "OPEN_FIRE"
+  ],
+  "ok": true,
+  "lines": [
+   "start shooting"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 1.0,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ },
+ {
+  "id": "owner_615",
+  "line": "jump down and get into the car.",
+  "want": [
+   "JUMP",
+   "GET_IN"
+  ],
+  "got": [
+   "JUMP",
+   "GET_IN"
+  ],
+  "ok": true,
+  "lines": [
+   "jump down",
+   "get into the car"
+  ],
+  "actions": [
+   "act",
+   "act"
+  ],
+  "route": 1.0,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ },
+ {
+  "id": "owner_616",
+  "line": "Move out.",
+  "want": [
+   "GET_OUT"
+  ],
+  "got": [],
+  "ok": false,
+  "lines": [
+   "move out"
+  ],
+  "actions": [
+   "say_again"
+  ],
+  "route": 0.99,
+  "decoded": true,
+  "rewritten": false,
+  "asked": false
+ },
+ {
+  "id": "owner_636",
+  "line": "Now uh another window.",
+  "want": [
+   "OPEN_FIRE"
+  ],
+  "got": [
+   "OPEN_FIRE"
+  ],
+  "ok": true,
+  "lines": [
+   "open fire on another window"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 1.0,
+  "decoded": true,
+  "rewritten": true,
+  "asked": true
+ },
+ {
+  "id": "owner_668",
+  "line": "get into it and start start riding.",
+  "want": [
+   "GET_IN"
+  ],
+  "got": [
+   "GET_IN",
+   "GET_IN"
+  ],
+  "ok": false,
+  "lines": [
+   "get into the car",
+   "start riding in the car"
+  ],
+  "actions": [
+   "act",
+   "act"
+  ],
+  "route": 1.0,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ },
+ {
+  "id": "owner_669",
+  "line": "Get inside of it and start riding.",
+  "want": [
+   "GET_IN"
+  ],
+  "got": [
+   "GET_IN"
+  ],
+  "ok": true,
+  "lines": [
+   "get inside the car and start riding"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 0.99,
+  "decoded": true,
+  "rewritten": true,
+  "asked": true
+ },
+ {
+  "id": "owner_689",
+  "line": "Get inside of it.",
+  "want": [
+   "GET_IN"
+  ],
+  "got": [
+   "GET_IN"
+  ],
+  "ok": true,
+  "lines": [
+   "get in the car"
+  ],
+  "actions": [
+   "act"
+  ],
+  "route": 0.82,
+  "decoded": true,
+  "rewritten": true,
+  "asked": false
+ }
+]

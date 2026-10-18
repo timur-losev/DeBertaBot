@@ -1,0 +1,460 @@
+[
+ {
+  "id": "t58_000",
+  "text": "Keep heading left.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_001",
+  "text": "further left",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_002",
+  "text": "More to the right, bro.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_003",
+  "text": "and down",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_004",
+  "text": "Yeah, carry on up the stairs.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_005",
+  "text": "keep going down the ramp",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_006",
+  "text": "Continue toward the car.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_007",
+  "text": "keep walking to my pen",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_008",
+  "text": "Go on to the north door.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_009",
+  "text": "Keep moving along the wall, nice and quiet.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_010",
+  "text": "ok a little more forward",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_011",
+  "text": "Push on forward, slowly.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_012",
+  "text": "keep advancing to the east window",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_013",
+  "text": "Keep going straight ahead.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_014",
+  "text": "carry on downstairs",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_015",
+  "text": "Continue on to the roof.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_016",
+  "text": "Keep running right.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_017",
+  "text": "further down the hallway",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_018",
+  "text": "Yeah, keep moving up on the left side.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_019",
+  "text": "go on up",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_020",
+  "text": "Keep heading that way.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": true,
+  "alt": "NONE"
+ },
+ {
+  "id": "t58_021",
+  "text": "keep on toward the blue stares",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_022",
+  "text": "Proceed down to the basement.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_023",
+  "text": "A bit farther toward my marker.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_024",
+  "text": "Keep it moving, a little further up the yellow stairs.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_025",
+  "text": "Onward, up to the second floor.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_026",
+  "text": "nice nice keep pushing left",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": true,
+  "alt": "ENTRY"
+ },
+ {
+  "id": "t58_027",
+  "text": "Don't stop, keep going forward to the main door.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_028",
+  "text": "Keep moving deeper inside, bro.",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_029",
+  "text": "right now carry on to the west window",
+  "intent": "MOVE_TO",
+  "kind": "goon_way",
+  "unsure": false
+ },
+ {
+  "id": "t58_030",
+  "text": "Keep heading back to me.",
+  "intent": "COME_BACK",
+  "kind": "goon_back",
+  "unsure": false
+ },
+ {
+  "id": "t58_031",
+  "text": "yeah keep on coming my way",
+  "intent": "COME_BACK",
+  "kind": "goon_back",
+  "unsure": false
+ },
+ {
+  "id": "t58_032",
+  "text": "Keep coming back toward me, you're nearly here.",
+  "intent": "COME_BACK",
+  "kind": "goon_back",
+  "unsure": false
+ },
+ {
+  "id": "t58_033",
+  "text": "carry on back to me",
+  "intent": "COME_BACK",
+  "kind": "goon_back",
+  "unsure": false
+ },
+ {
+  "id": "t58_034",
+  "text": "A little closer to me, keep it up.",
+  "intent": "FOLLOW_ME",
+  "kind": "goon_back",
+  "unsure": false
+ },
+ {
+  "id": "t58_035",
+  "text": "Keep closing the distance to me.",
+  "intent": "FOLLOW_ME",
+  "kind": "goon_back",
+  "unsure": true,
+  "alt": "COME_BACK"
+ },
+ {
+  "id": "t58_036",
+  "text": "Carry on.",
+  "intent": "NONE",
+  "kind": "goon_bare",
+  "unsure": false
+ },
+ {
+  "id": "t58_037",
+  "text": "dont stop",
+  "intent": "NONE",
+  "kind": "goon_bare",
+  "unsure": true,
+  "alt": "WAIT"
+ },
+ {
+  "id": "t58_038",
+  "text": "Keep it rolling, you're fine.",
+  "intent": "NONE",
+  "kind": "goon_bare",
+  "unsure": false
+ },
+ {
+  "id": "t58_039",
+  "text": "just keep walking",
+  "intent": "NONE",
+  "kind": "goon_bare",
+  "unsure": false
+ },
+ {
+  "id": "t58_040",
+  "text": "Yeah, continue on.",
+  "intent": "NONE",
+  "kind": "goon_bare",
+  "unsure": false
+ },
+ {
+  "id": "t58_041",
+  "text": "a bit further",
+  "intent": "NONE",
+  "kind": "goon_bare",
+  "unsure": true,
+  "alt": "REPEAT"
+ },
+ {
+  "id": "t58_042",
+  "text": "Keep on going, man, don't stop now.",
+  "intent": "NONE",
+  "kind": "goon_bare",
+  "unsure": false
+ },
+ {
+  "id": "t58_043",
+  "text": "Stay on the move.",
+  "intent": "NONE",
+  "kind": "goon_bare",
+  "unsure": false
+ },
+ {
+  "id": "t58_044",
+  "text": "Go on, carry on.",
+  "intent": "NONE",
+  "kind": "goon_bare",
+  "unsure": true,
+  "alt": "GO_NOW"
+ },
+ {
+  "id": "t58_045",
+  "text": "okay resume moving",
+  "intent": "NONE",
+  "kind": "goon_bare",
+  "unsure": false
+ },
+ {
+  "id": "t58_046",
+  "text": "Press on.",
+  "intent": "NONE",
+  "kind": "goon_bare",
+  "unsure": true,
+  "alt": "MOVE_TO"
+ },
+ {
+  "id": "t58_047",
+  "text": "Don't slow down now, keep at it.",
+  "intent": "NONE",
+  "kind": "goon_bare",
+  "unsure": false
+ },
+ {
+  "id": "t58_048",
+  "text": "Keep holding the north door.",
+  "intent": "HOLD_ANGLE",
+  "kind": "boundary",
+  "unsure": false
+ },
+ {
+  "id": "t58_049",
+  "text": "keep suppressing that window",
+  "intent": "SUPPRESS",
+  "kind": "boundary",
+  "unsure": false
+ },
+ {
+  "id": "t58_050",
+  "text": "Keep low, bro.",
+  "intent": "CROUCH",
+  "kind": "boundary",
+  "unsure": false
+ },
+ {
+  "id": "t58_051",
+  "text": "Keep covering me, I'm moving up.",
+  "intent": "COVER_ME",
+  "kind": "boundary",
+  "unsure": false
+ },
+ {
+  "id": "t58_052",
+  "text": "they keep coming down the red stairs",
+  "intent": "NONE",
+  "kind": "boundary",
+  "unsure": false
+ },
+ {
+  "id": "t58_053",
+  "text": "theres more of them further up the hall",
+  "intent": "NONE",
+  "kind": "boundary",
+  "unsure": false
+ },
+ {
+  "id": "t58_054",
+  "text": "Okay, more.",
+  "intent": "REPEAT",
+  "kind": "boundary",
+  "unsure": false
+ },
+ {
+  "id": "t58_055",
+  "text": "go go go now",
+  "intent": "GO_NOW",
+  "kind": "boundary",
+  "unsure": false
+ },
+ {
+  "id": "t58_056",
+  "text": "Keep pushing in and clear that room.",
+  "intent": "ENTRY",
+  "kind": "boundary",
+  "unsure": false
+ },
+ {
+  "id": "t58_057",
+  "text": "Keep pulling back, they're flanking us.",
+  "intent": "FALL_BACK",
+  "kind": "boundary",
+  "unsure": false
+ },
+ {
+  "id": "t58_058",
+  "text": "keep backing up",
+  "intent": "FALL_BACK",
+  "kind": "boundary",
+  "unsure": true,
+  "alt": "MOVE_TO"
+ },
+ {
+  "id": "t58_059",
+  "text": "Keep going back to your post.",
+  "intent": "GO_BACK",
+  "kind": "boundary",
+  "unsure": false
+ },
+ {
+  "id": "t58_060",
+  "text": "And jump down.",
+  "intent": "JUMP",
+  "kind": "boundary",
+  "unsure": false
+ },
+ {
+  "id": "t58_061",
+  "text": "hold up dont keep going",
+  "intent": "WAIT",
+  "kind": "boundary",
+  "unsure": false
+ },
+ {
+  "id": "t58_062",
+  "text": "Stay there, no further.",
+  "intent": "HOLD_POSITION",
+  "kind": "boundary",
+  "unsure": true,
+  "alt": "WAIT"
+ },
+ {
+  "id": "t58_063",
+  "text": "Yeah, go ahead.",
+  "intent": "GO_NOW",
+  "kind": "boundary",
+  "unsure": true,
+  "alt": "YES"
+ }
+]

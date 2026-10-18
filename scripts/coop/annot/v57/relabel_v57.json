@@ -1,0 +1,13 @@
+{
+ "_note": "make_spec_v57.py: the authored lines (v1 to v56) whose reading changes under spec v57, read one by one by the developer before freezing. 'also': readings accepted besides the new one (a line of two orders: the classifier is right on either; the chain splits it)",
+ "lines": {
+  "r6v5_059": {
+   "from": "NONE",
+   "to": "RELOAD",
+   "also": [
+    "SWITCH_WEAPON"
+   ],
+   "text": "Reload and swap to your shotgun before the next push."
+  }
+ }
+}

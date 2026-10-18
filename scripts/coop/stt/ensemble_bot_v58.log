@@ -1,0 +1,19 @@
+wrote G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-ens3-v58\cpp: 3 ONNX model(s), vocab 128000 pieces, golden 3633 lines
+gate tests: 4040 rows, the two gates pick different intents on 292
+decide tests, actions per gate: {'top': ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait'], 'family': ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait']} (242 steps in 6 conversations)
+dialogue actions: ['act', 'answer', 'execute', 'go', 'ignore', 'queued', 'say_again', 'wait'] 
+location tests: 51824 lines, 40258 name a place, a direction or a pointer, 14698 of them a direction, 14027 a pointer (3880 a pin; in 8613 a pointer is a target of its own)
+  rule set v5: 14460 of the lines are the pointer batch's (16000 generated from 108 pointer patterns among the direction patterns, and 65 written out; without the ones generated twice or already there)
+tokenizer tests: 11802 lines (5392 with [UNK], 793 cut at 64 tokens, slots on_signal/other/negation on [1900, 783, 803])
+world tests: 907 scenarios, 8280 steps; actions act 2257, answer 542, ask 1757, execute 19, go 74, ignore 277, negated 130, queued 261, resolved 854, say_again 1943, wait 166
+  groundings: missing/None 1556, resolved/pin 551, resolved/direction 473, resolved/gaze 438, resolved/pin_default 396, ambiguous/distance 341, resolved/only 287, resolved/here 224, missing/pin 184, missing/zone 130, resolved/nearest 96, resolved/memory 63, resolved/answer 62, resolved/inside 55, ambiguous/unknown_modifier 49, missing/this 46, resolved/zone 41
+  priors applied on 8280 steps; 11 worlds to refuse
+  the short context: a bare no stopped the bot 98, corrections and fragments 226, repeats 55, the standing pin as the place not said 352; 182 scenarios without the game's clock
+  272 scenarios in a world without named places; 87 orders at "here"; 500 questions answered by pointing; 81 steps with a queued order at "here"
+  lines of several orders: 710 further orders of a line, 276 of them given the place of the order before them; "the other" in answer to "Which ...?" 116 times, 33 of them settled by it and 38 answered with the next one
+v58 ensemble, build_v58.py out-of-fold (three seeds): gate family, threshold 0.66
+  VCTK pool B, r6+cs       n=1050  near 79.1  wrong family 5.8%  criterion 67.5
+  typed, all lines         n=1575  near 94.2  wrong family 2.0%  criterion 90.2
+  typed, v57 lines         n= 120  near 98.3  wrong family 0.8%  criterion 96.7
+  VCTK pool B, v57 lines   n=  80  near 70.0  wrong family 10.0%  criterion 50.0
+  typed, v1-v56 lines      n=1455  near 93.8  wrong family 2.1%  criterion 89.7

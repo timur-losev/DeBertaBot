@@ -1,0 +1,779 @@
+[
+{
+"id": "seed_WAIT_55",
+"text": "don't reload",
+"maj": "WAIT",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0000.wav"
+},
+{
+"id": "seed_WAIT_56",
+"text": "don't reload yet",
+"maj": "WAIT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0001.wav"
+},
+{
+"id": "seed_WAIT_57",
+"text": "don't switch weapons",
+"maj": "WAIT",
+"voice": "Microsoft Mark",
+"wav": "s57_0002.wav"
+},
+{
+"id": "seed_WAIT_58",
+"text": "don't switch guns",
+"maj": "WAIT",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0003.wav"
+},
+{
+"id": "seed_TAKE_COVER_27",
+"text": "height",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0004.wav"
+},
+{
+"id": "seed_TAKE_COVER_28",
+"text": "hide there",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Mark",
+"wav": "s57_0005.wav"
+},
+{
+"id": "seed_TAKE_COVER_29",
+"text": "hide over there",
+"maj": "TAKE_COVER",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0006.wav"
+},
+{
+"id": "seed_TAKE_COVER_30",
+"text": "hide right there",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0007.wav"
+},
+{
+"id": "seed_TAKE_COVER_31",
+"text": "fine colour",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Mark",
+"wav": "s57_0008.wav"
+},
+{
+"id": "seed_TAKE_COVER_32",
+"text": "find colour",
+"maj": "TAKE_COVER",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0009.wav"
+},
+{
+"id": "seed_OPEN_FIRE_29",
+"text": "should that windows",
+"maj": "OPEN_FIRE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0010.wav"
+},
+{
+"id": "seed_OPEN_FIRE_30",
+"text": "should that window",
+"maj": "OPEN_FIRE",
+"voice": "Microsoft Mark",
+"wav": "s57_0011.wav"
+},
+{
+"id": "seed_OPEN_FIRE_31",
+"text": "shoot that windows",
+"maj": "OPEN_FIRE",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0012.wav"
+},
+{
+"id": "seed_OPEN_FIRE_32",
+"text": "shoot that window",
+"maj": "OPEN_FIRE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0013.wav"
+},
+{
+"id": "seed_JUMP_92",
+"text": "jammed out",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s57_0014.wav"
+},
+{
+"id": "seed_JUMP_93",
+"text": "jam down",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0015.wav"
+},
+{
+"id": "seed_JUMP_94",
+"text": "jammed down",
+"maj": "JUMP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0016.wav"
+},
+{
+"id": "seed_JUMP_95",
+"text": "down here",
+"maj": "JUMP",
+"voice": "Microsoft Mark",
+"wav": "s57_0017.wav"
+},
+{
+"id": "seed_JUMP_96",
+"text": "jump down over here",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0018.wav"
+},
+{
+"id": "seed_STAND_UP_13",
+"text": "sim dub",
+"maj": "STAND_UP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0019.wav"
+},
+{
+"id": "seed_GET_OUT_21",
+"text": "get out now",
+"maj": "GET_OUT",
+"voice": "Microsoft Mark",
+"wav": "s57_0020.wav"
+},
+{
+"id": "seed_GET_OUT_22",
+"text": "ok get out",
+"maj": "GET_OUT",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0021.wav"
+},
+{
+"id": "seed_GET_OUT_23",
+"text": "you can get out",
+"maj": "GET_OUT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0022.wav"
+},
+{
+"id": "seed_GET_OUT_24",
+"text": "get out quick",
+"maj": "GET_OUT",
+"voice": "Microsoft Mark",
+"wav": "s57_0023.wav"
+},
+{
+"id": "seed_GET_OUT_25",
+"text": "just get out",
+"maj": "GET_OUT",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0024.wav"
+},
+{
+"id": "seed_GET_OUT_26",
+"text": "get out bro",
+"maj": "GET_OUT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0025.wav"
+},
+{
+"id": "seed_GET_OUT_27",
+"text": "step out",
+"maj": "GET_OUT",
+"voice": "Microsoft Mark",
+"wav": "s57_0026.wav"
+},
+{
+"id": "seed_GET_OUT_28",
+"text": "you doubt",
+"maj": "GET_OUT",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0027.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_0",
+"text": "switch weapons",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0028.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_1",
+"text": "switch weapon",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0029.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_2",
+"text": "switch your weapon",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0030.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_3",
+"text": "change weapon",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0031.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_4",
+"text": "change weapons",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0032.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_5",
+"text": "change your weapon",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0033.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_6",
+"text": "swap weapons",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0034.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_7",
+"text": "swap guns",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0035.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_8",
+"text": "switch guns",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0036.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_9",
+"text": "change guns",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0037.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_10",
+"text": "next weapon",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0038.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_11",
+"text": "other weapon",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0039.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_12",
+"text": "use your other gun",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0040.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_13",
+"text": "switch to your other gun",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0041.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_14",
+"text": "switch to your pistol",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0042.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_15",
+"text": "switch to pistol",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0043.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_16",
+"text": "switch to the pistol",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0044.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_17",
+"text": "switch to your rifle",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0045.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_18",
+"text": "switch to the rifle",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0046.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_19",
+"text": "switch to your shotgun",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0047.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_20",
+"text": "switch to the shotgun",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0048.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_21",
+"text": "swap to the rifle",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0049.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_22",
+"text": "swap to your pistol",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0050.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_23",
+"text": "swap to your shotgun",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0051.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_24",
+"text": "change to the shotgun",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0052.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_25",
+"text": "change to your rifle",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0053.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_26",
+"text": "pull out your pistol",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0054.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_27",
+"text": "pull out your sidearm",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0055.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_28",
+"text": "go to your sidearm",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0056.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_29",
+"text": "go to your pistol",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0057.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_30",
+"text": "use your pistol",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0058.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_31",
+"text": "use the rifle",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0059.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_32",
+"text": "use your shotgun",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0060.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_33",
+"text": "use your rifle",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0061.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_34",
+"text": "take out your pistol",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0062.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_35",
+"text": "get your rifle out",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0063.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_36",
+"text": "get your shotgun out",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0064.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_37",
+"text": "equip your pistol",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0065.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_38",
+"text": "equip the rifle",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0066.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_39",
+"text": "draw your pistol",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0067.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_40",
+"text": "switch to secondary",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0068.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_41",
+"text": "switch to primary",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0069.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_42",
+"text": "go primary",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0070.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_43",
+"text": "go secondary",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0071.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_44",
+"text": "switch weapons now",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0072.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_45",
+"text": "you're out of ammo switch weapons",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0073.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_46",
+"text": "out of ammo switch guns",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0074.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_47",
+"text": "switch to something with ammo",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0075.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_48",
+"text": "use a gun with ammo",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0076.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_49",
+"text": "switch weapons quick",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "s57_0077.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_50",
+"text": "switch weapons on my go",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0078.wav"
+},
+{
+"id": "seed_SWITCH_WEAPON_51",
+"text": "switch to your pistol when i say",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0079.wav"
+},
+{
+"id": "seed_RELOAD_0",
+"text": "reload",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "s57_0080.wav"
+},
+{
+"id": "seed_RELOAD_1",
+"text": "reload now",
+"maj": "RELOAD",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0081.wav"
+},
+{
+"id": "seed_RELOAD_2",
+"text": "reload your weapon",
+"maj": "RELOAD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0082.wav"
+},
+{
+"id": "seed_RELOAD_3",
+"text": "reload your gun",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "s57_0083.wav"
+},
+{
+"id": "seed_RELOAD_4",
+"text": "reload your rifle",
+"maj": "RELOAD",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0084.wav"
+},
+{
+"id": "seed_RELOAD_5",
+"text": "reload your pistol",
+"maj": "RELOAD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0085.wav"
+},
+{
+"id": "seed_RELOAD_6",
+"text": "reload quick",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "s57_0086.wav"
+},
+{
+"id": "seed_RELOAD_7",
+"text": "go reload",
+"maj": "RELOAD",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0087.wav"
+},
+{
+"id": "seed_RELOAD_8",
+"text": "reload it",
+"maj": "RELOAD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0088.wav"
+},
+{
+"id": "seed_RELOAD_9",
+"text": "quick reload",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "s57_0089.wav"
+},
+{
+"id": "seed_RELOAD_10",
+"text": "reload up",
+"maj": "RELOAD",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0090.wav"
+},
+{
+"id": "seed_RELOAD_11",
+"text": "you need to reload",
+"maj": "RELOAD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0091.wav"
+},
+{
+"id": "seed_RELOAD_12",
+"text": "reload while you can",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "s57_0092.wav"
+},
+{
+"id": "seed_RELOAD_13",
+"text": "reload before they push",
+"maj": "RELOAD",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0093.wav"
+},
+{
+"id": "seed_RELOAD_14",
+"text": "reload real quick",
+"maj": "RELOAD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0094.wav"
+},
+{
+"id": "seed_RELOAD_15",
+"text": "change mags",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "s57_0095.wav"
+},
+{
+"id": "seed_RELOAD_16",
+"text": "swap mags",
+"maj": "RELOAD",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0096.wav"
+},
+{
+"id": "seed_RELOAD_17",
+"text": "change magazine",
+"maj": "RELOAD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0097.wav"
+},
+{
+"id": "seed_RELOAD_18",
+"text": "change your mag",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "s57_0098.wav"
+},
+{
+"id": "seed_RELOAD_19",
+"text": "new mag",
+"maj": "RELOAD",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0099.wav"
+},
+{
+"id": "seed_RELOAD_20",
+"text": "get a new mag in",
+"maj": "RELOAD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0100.wav"
+},
+{
+"id": "seed_RELOAD_21",
+"text": "get a fresh mag in",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "s57_0101.wav"
+},
+{
+"id": "seed_RELOAD_22",
+"text": "top off",
+"maj": "RELOAD",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0102.wav"
+},
+{
+"id": "seed_RELOAD_23",
+"text": "top off your mag",
+"maj": "RELOAD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0103.wav"
+},
+{
+"id": "seed_RELOAD_24",
+"text": "top up your mag",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "s57_0104.wav"
+},
+{
+"id": "seed_RELOAD_25",
+"text": "reload buddy",
+"maj": "RELOAD",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0105.wav"
+},
+{
+"id": "seed_RELOAD_26",
+"text": "ok reload",
+"maj": "RELOAD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0106.wav"
+},
+{
+"id": "seed_RELOAD_27",
+"text": "reload reload",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "s57_0107.wav"
+},
+{
+"id": "seed_RELOAD_28",
+"text": "reload your weapon now",
+"maj": "RELOAD",
+"voice": "Microsoft David Desktop",
+"wav": "s57_0108.wav"
+},
+{
+"id": "seed_RELOAD_29",
+"text": "time to reload",
+"maj": "RELOAD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s57_0109.wav"
+},
+{
+"id": "seed_RELOAD_30",
+"text": "reload on my go",
+"maj": "RELOAD",
+"voice": "Microsoft Mark",
+"wav": "s57_0110.wav"
+}
+]

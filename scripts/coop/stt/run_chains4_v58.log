@@ -1,0 +1,30 @@
+    15 s  chains4_v58.py check (exit 0)
+ 2,152 s  chains4_v58.py train 0 (exit 0)
+ 2,324 s  router_v58.py train final small 0 (exit 0)
+ 2,372 s  chains4_v58.py gguf 0 (exit 0)
+ 2,473 s  chains4_v58.py export 0 (exit 0)
+ 2,489 s  chains4_v58.py score (exit 0)
+ 2,518 s  owner_ctx_score.py G:\Proj\ollaya\DeBertaBot\cpp\coop_intent\build\Release\coop_cli.exe G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-ens3-v57\cpp G:\Proj\ollaya\DeBertaBot\models\coop-chain-v55\cpp chains2\owner_ctx_v58_score_chain55.json (exit 0)
+ 2,547 s  owner_ctx_score.py G:\Proj\ollaya\DeBertaBot\cpp\coop_intent\build\Release\coop_cli.exe G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-ens3-v57\cpp G:\Proj\ollaya\DeBertaBot\models\coop-chain-v58\cpp chains2\owner_ctx_v58_score_chain58.json (exit 0)
+                                                            pieces4d_final (round 4,             pieces5_final
+chains, typed: all 150                                                          85.3                      85.3
+chains, typed: all 150, through the router                                      82.0                      81.3
+  without the 4 repeats and negations                                           87.0                      87.0
+  without the 4 repeats and negations, through the router                       84.2                      83.6
+chains, three unseen voices: all 300                                            64.7                      63.7
+chains, three unseen voices: all 300, through the router                        60.0                      58.7
+  without the 6 repeats and negations                                           65.0                      63.9
+  without the 6 repeats and negations, through the router                       61.2                      59.9
+context, typed (intents and places): all 150                                    80.7                      88.7
+context, typed (intents and places): all 150, through the router                      80.7                      83.3
+  without the 4 repeats and negations                                           82.9                      89.7
+  without the 4 repeats and negations, through the router                       82.9                      84.2
+context, three unseen voices: all 299                                           62.5                      64.9
+context, three unseen voices: all 299, through the router                       59.9                      58.9
+  without the 9 repeats and negations                                           64.5                      65.9
+  without the 9 repeats and negations, through the router                       61.7                      59.7
+
+owner_ctx_58_chain55.log:31:17/30 read as expected
+owner_ctx_58_chain58.log:31:24/30 read as expected
+2,547 s in all
+

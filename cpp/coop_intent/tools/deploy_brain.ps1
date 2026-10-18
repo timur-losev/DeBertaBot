@@ -13,12 +13,16 @@
 # with -Chain (rewriter.h; the game then starts the service with `--chain <Target>\chain`):
 #                  <Target>\llama.dll, ggml*.dll, libomp.dll      llama.cpp, from a build that found it (setup_llama.ps1)
 #                  <Target>\chain\    chain_config.json, router.onnx, decoder.gguf (1 GB)
+# the bot's voice (voice.h; the game then starts the service with `--tts-piper <Target>\voice`), when -Voice is there:
+#                  <Target>\voice\    <name>.onnx, <name>.onnx.json, tokens.txt, espeak-ng-data\, MODEL_CARD (90 MB)
 param(
     [Parameter(Mandatory = $true)][string]$Target,
     [string]$Bot = 'coop-deberta-v3-ens3-v54',
     [string]$Build = (Join-Path $PSScriptRoot '..\build\Release'),
     [string]$Stt = (Join-Path $PSScriptRoot '..\..\..\scripts\coop\stt\models\sherpa-onnx-nemo-parakeet-tdt-0.6b-v2-int8'),
-    [string]$Chain = ''
+    [string]$Chain = '',
+    # a sherpa-onnx Piper export; '' leaves the voice out (the game falls back to the system's voice)
+    [string]$Voice = (Join-Path $PSScriptRoot '..\..\..\scripts\coop\stt\tts\vits-piper-en_GB-vctk-medium')
 )
 $ErrorActionPreference = 'Stop'
 $repo = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
@@ -49,8 +53,24 @@ if ($Chain) {
     foreach ($f in $chainFiles) { Copy-Item "$chainDir\$f" "$Target\chain" -Force }
     $chainFrom = [ordered]@{ chain = $Chain; decoder = $ccfg.decoder_from; router = $ccfg.router_from; cut = $ccfg.cut }
 }
+$voiceFrom = $null
+if ($Voice -and (Test-Path $Voice)) {
+    $Voice = (Resolve-Path $Voice).Path
+    $model = Get-ChildItem $Voice -Filter '*.onnx' | Select-Object -First 1
+    foreach ($need in @($model.FullName, "$($model.FullName).json", "$Voice\tokens.txt", "$Voice\espeak-ng-data")) {
+        if (-not $need -or -not (Test-Path $need)) { throw "missing: $need" }
+    }
+    if (Test-Path "$Target\voice") { Remove-Item "$Target\voice" -Recurse -Force }   # another voice's model
+    New-Item -ItemType Directory -Force "$Target\voice" | Out-Null
+    Copy-Item $model.FullName, "$($model.FullName).json", "$Voice\tokens.txt" "$Target\voice" -Force
+    Copy-Item "$Voice\espeak-ng-data" "$Target\voice" -Recurse -Force
+    if (Test-Path "$Voice\MODEL_CARD") { Copy-Item "$Voice\MODEL_CARD" "$Target\voice" -Force }   # the voice's data and its licence
+    $voiceFrom = $model.BaseName
+} elseif ($Voice) {
+    "no voice at ${Voice}: the game will use the system's voice"
+}
 $cfg = Get-Content "$botDir\intent_config.json" -Raw | ConvertFrom-Json
-[ordered]@{ bot = $Bot; labels = $cfg.labels.Count; gate = $cfg.gate; threshold = $cfg.threshold; members = $members; chain = $chainFrom
+[ordered]@{ bot = $Bot; labels = $cfg.labels.Count; gate = $cfg.gate; threshold = $cfg.threshold; members = $members; chain = $chainFrom; voice = $voiceFrom
             exe_built = (Get-Item "$Build\coop_cli.exe").LastWriteTime.ToString('s'); from = $repo; deployed = (Get-Date).ToString('s') } |
     ConvertTo-Json | Set-Content "$Target\deployed.json" -Encoding UTF8
 "deployed {0} ({1} labels, {2} gate, threshold {3}) to {4}: {5:n1} GB" -f $Bot, $cfg.labels.Count, $cfg.gate, $cfg.threshold, $Target,
