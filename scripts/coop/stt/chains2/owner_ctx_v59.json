@@ -1,0 +1,1094 @@
+{
+ "what": "The owner's spoken lines that lean on the talk, from the game's logs of 2026-10-16..18 (the context audit, scratchpad talk_*.py). A TEST set for the decoder of bot v58's chains (v58, v59): never trained on, never shown to the authors of training items. 'pieces' and 'orders' are the reading expected (Claude's, not confirmed by the owner); 'strict' says what is scored: the orders of the pieces, as the v57 ensemble reads them. Round six adds 20 of the owner's lines of a movement and another order (owner59_*), 14 of them read as one order in play.",
+ "items": [
+  {
+   "id": "owner_040",
+   "log": "LyraStarterGame-backup-2026.10.16-15.56.24.log",
+   "before": [
+    "Jump right.",
+    "Jump left.",
+    "Jump left again.",
+    "Come back.",
+    "Jump down."
+   ],
+   "bot": null,
+   "line": "And continue moving.",
+   "pieces": [
+    "Continue moving."
+   ],
+   "orders": [
+    "MOVE_TO"
+   ],
+   "tests": "a movement going on",
+   "strict": "orders",
+   "in_play": "say_again GET_IN 0.28"
+  },
+  {
+   "id": "owner_041",
+   "log": "LyraStarterGame-backup-2026.10.16-15.56.24.log",
+   "before": [
+    "Jump left.",
+    "Jump left again.",
+    "Come back.",
+    "Jump down.",
+    "And continue moving."
+   ],
+   "bot": "Say again?",
+   "line": "Continue moving.",
+   "pieces": [
+    "Continue moving."
+   ],
+   "orders": [
+    "MOVE_TO"
+   ],
+   "tests": "a movement going on (said again after 'Say again?')",
+   "strict": "orders",
+   "in_play": "say_again GET_IN 0.28"
+  },
+  {
+   "id": "owner_060",
+   "log": "LyraStarterGame-backup-2026.10.16-16.29.20.log",
+   "before": [
+    "Move up here."
+   ],
+   "bot": null,
+   "line": "And up.",
+   "pieces": [
+    "Move further up."
+   ],
+   "orders": [
+    "MOVE_TO"
+   ],
+   "tests": "a movement going on",
+   "strict": "orders",
+   "in_play": "say_again HELP 0.55"
+  },
+  {
+   "id": "owner_073",
+   "log": "LyraStarterGame-backup-2026.10.16-16.29.20.log",
+   "before": [
+    "Come back to me.",
+    "Jump down.",
+    "Get up to me.",
+    "Come back to me.",
+    "Shoot that windows."
+   ],
+   "bot": null,
+   "line": "Another.",
+   "pieces": [
+    "Shoot another window."
+   ],
+   "orders": [
+    "OPEN_FIRE"
+   ],
+   "tests": "another thing of that kind",
+   "strict": "orders",
+   "in_play": "say_again HOLD_OTHER_ANGLE 0.59"
+  },
+  {
+   "id": "owner_074",
+   "log": "LyraStarterGame-backup-2026.10.16-16.29.20.log",
+   "before": [
+    "Jump down.",
+    "Get up to me.",
+    "Come back to me.",
+    "Shoot that windows.",
+    "Another."
+   ],
+   "bot": null,
+   "line": "Another window.",
+   "pieces": [
+    "Shoot another window."
+   ],
+   "orders": [
+    "OPEN_FIRE"
+   ],
+   "tests": "another thing of that kind",
+   "strict": "orders",
+   "in_play": "act OPEN_FIRE 0.83 -> order OPEN_FIRE @ window"
+  },
+  {
+   "id": "owner_088",
+   "log": "LyraStarterGame-backup-2026.10.16-16.29.20.log",
+   "before": [
+    "Woke up.",
+    "Get up.",
+    "Come to me.",
+    "You are idiot.",
+    "Step up by the stairs."
+   ],
+   "bot": null,
+   "line": "By these stairs.",
+   "pieces": [
+    "Step up by these stairs."
+   ],
+   "orders": [
+    "MOVE_TO"
+   ],
+   "tests": "a fragment completing the order",
+   "strict": "orders",
+   "in_play": "act MOVE_TO 1.00 -> order MOVE_TO @ blue stairs, basement near aim on nothing"
+  },
+  {
+   "id": "owner_103",
+   "log": "LyraStarterGame-backup-2026.10.16-16.29.20.log",
+   "before": [
+    "Move there.",
+    "Come back.",
+    "Move up.",
+    "Walk.",
+    "Move up."
+   ],
+   "bot": null,
+   "line": "Keep moving.",
+   "pieces": [
+    "Keep moving up."
+   ],
+   "orders": [
+    "MOVE_TO"
+   ],
+   "tests": "a movement going on",
+   "strict": "orders",
+   "in_play": "say_again GET_IN 0.28"
+  },
+  {
+   "id": "owner_105",
+   "log": "LyraStarterGame-backup-2026.10.16-16.29.20.log",
+   "before": [
+    "Move up.",
+    "Walk.",
+    "Move up.",
+    "Keep moving.",
+    "Keep moving."
+   ],
+   "bot": null,
+   "line": "Do the same.",
+   "pieces": [
+    "Do the same."
+   ],
+   "orders": [
+    "REPEAT"
+   ],
+   "tests": "a bare repeat, as it is",
+   "strict": "orders",
+   "in_play": "act REPEAT 1.00 -> order REPEAT"
+  },
+  {
+   "id": "owner_166",
+   "log": "LyraStarterGame-backup-2026.10.16-17.01.45.log",
+   "before": [
+    "Move up.",
+    "Go up.",
+    "Get down the fine cover."
+   ],
+   "bot": null,
+   "line": "No, cam come here.",
+   "pieces": [
+    "Come here."
+   ],
+   "orders": [
+    "FOLLOW_ME"
+   ],
+   "tests": "a 'no' and an order of its own",
+   "strict": "orders",
+   "in_play": "resolved FOLLOW_ME 0.65 -> order TAKE_COVER @ here near"
+  },
+  {
+   "id": "owner_176",
+   "log": "LyraStarterGame-backup-2026.10.16-17.01.45.log",
+   "before": [
+    "Come back.",
+    "Shut this window.",
+    "Open fire to this window."
+   ],
+   "bot": "Which window? The one below, 33 m?",
+   "line": "No, come here.",
+   "pieces": [
+    "Come here."
+   ],
+   "orders": [
+    "FOLLOW_ME"
+   ],
+   "tests": "a 'no' and an order of its own",
+   "strict": "orders",
+   "in_play": "act FOLLOW_ME 0.79 -> order FOLLOW_ME @ here near"
+  },
+  {
+   "id": "owner_183",
+   "log": "LyraStarterGame-backup-2026.10.16-17.01.45.log",
+   "before": [
+    "Shut down these windows.",
+    "Shut down shut down shoot",
+    "Open fire to these windows.",
+    "Shut down this window.",
+    "Shut through this window."
+   ],
+   "bot": null,
+   "line": "and come here.",
+   "pieces": [
+    "Come here."
+   ],
+   "orders": [
+    "FOLLOW_ME"
+   ],
+   "tests": "'and' + an order",
+   "strict": "orders",
+   "in_play": "act FOLLOW_ME 0.99 -> order FOLLOW_ME @ here near"
+  },
+  {
+   "id": "owner_191",
+   "log": "LyraStarterGame-backup-2026.10.16-17.01.45.log",
+   "before": [
+    "Open fire to CPU.",
+    "Open fire to this window.",
+    "Go down there."
+   ],
+   "bot": null,
+   "line": "No, no come back.",
+   "pieces": [
+    "Come back."
+   ],
+   "orders": [
+    "COME_BACK"
+   ],
+   "tests": "a 'no' and an order of its own",
+   "strict": "orders",
+   "in_play": "act COME_BACK 0.96 -> order COME_BACK"
+  },
+  {
+   "id": "owner_231",
+   "log": "LyraStarterGame-backup-2026.10.16-22.17.01.log",
+   "before": [
+    "Take this.",
+    "Follow me.",
+    "Get into the car.",
+    "You doubt."
+   ],
+   "bot": "Come again?",
+   "line": "Get out.",
+   "pieces": [
+    "Get out of the car."
+   ],
+   "orders": [
+    "GET_OUT"
+   ],
+   "tests": "out of the vehicle (v56 read FALL_BACK; v57 alone reads GET_OUT)",
+   "strict": "orders",
+   "in_play": "act FALL_BACK 1.00 -> order FALL_BACK"
+  },
+  {
+   "id": "owner_236",
+   "log": "LyraStarterGame-backup-2026.10.16-22.17.01.log",
+   "before": [
+    "Come here.",
+    "Shoot that windows.",
+    "Jump down.",
+    "Come back to me."
+   ],
+   "bot": null,
+   "line": "Jump up and shoot on my pin.",
+   "pieces": [
+    "Jump up.",
+    "Shoot on my pin."
+   ],
+   "orders": [
+    "JUMP",
+    "OPEN_FIRE"
+   ],
+   "tests": "a chain",
+   "strict": "orders",
+   "in_play": "act JUMP 1.00 (2 order lines) -> orders JUMP up; then OPEN_FIRE @ your pin"
+  },
+  {
+   "id": "owner_237",
+   "log": "LyraStarterGame-backup-2026.10.16-22.17.01.log",
+   "before": [
+    "Jump down.",
+    "Come back to me.",
+    "Jump up and shoot on my pin."
+   ],
+   "bot": null,
+   "line": "Again.",
+   "pieces": [
+    "Again."
+   ],
+   "orders": [
+    "REPEAT"
+   ],
+   "tests": "a bare repeat, as it is",
+   "strict": "orders",
+   "in_play": "act REPEAT 1.00 -> order REPEAT aim on the bot"
+  },
+  {
+   "id": "owner_258",
+   "log": "LyraStarterGame-backup-2026.10.16-22.17.01.log",
+   "before": [
+    "Come back to me.",
+    "Go down up the stairs."
+   ],
+   "bot": null,
+   "line": "Now back to me.",
+   "pieces": [
+    "Come back to me."
+   ],
+   "orders": [
+    "COME_BACK"
+   ],
+   "tests": "a fragment",
+   "strict": "orders",
+   "in_play": "act COME_BACK 1.00 -> order COME_BACK"
+  },
+  {
+   "id": "owner_304",
+   "log": "LyraStarterGame-backup-2026.10.16-23.01.53.log",
+   "before": [
+    "Hold here.",
+    "Get out and hold this door.",
+    "Get out.",
+    "Sand up.",
+    "Stand up."
+   ],
+   "bot": null,
+   "line": "And hold this door.",
+   "pieces": [
+    "Hold this door."
+   ],
+   "orders": [
+    "HOLD_ANGLE"
+   ],
+   "tests": "'and' + an order",
+   "strict": "orders",
+   "in_play": "act HOLD_ANGLE 1.00 -> order HOLD_ANGLE @ door, floor 1 near"
+  },
+  {
+   "id": "owner_428",
+   "log": "LyraStarterGame-backup-2026.10.17-13.24.05.log",
+   "before": [
+    "You are you must follow my pin.",
+    "You must follow position of my pin.",
+    "Go back to me.",
+    "Pin."
+   ],
+   "bot": "Say again?",
+   "line": "Do the same for pin as you did before.",
+   "pieces": [
+    "Do the same for pin as you did before."
+   ],
+   "orders": [
+    "REPEAT"
+   ],
+   "tests": "a repeat with a place, as it is",
+   "strict": "orders",
+   "in_play": "act REPEAT 0.99 -> order REPEAT"
+  },
+  {
+   "id": "owner_430",
+   "log": "LyraStarterGame-backup-2026.10.17-13.24.05.log",
+   "before": [
+    "You must follow position of my pin.",
+    "Go back to me.",
+    "Pin.",
+    "Do the same for pin as you did before.",
+    "Trying again but catin."
+   ],
+   "bot": null,
+   "line": "try again relocating to my pin,",
+   "pieces": [
+    "try again relocating to my pin,"
+   ],
+   "orders": [
+    "REPEAT"
+   ],
+   "tests": "a repeat with a place, as it is",
+   "strict": "orders",
+   "in_play": "act REPEAT 1.00 -> order REPEAT @ your pin"
+  },
+  {
+   "id": "owner_450",
+   "log": "LyraStarterGame-backup-2026.10.17-13.24.05.log",
+   "before": [
+    "Oh no, go up, go up.",
+    "More, one, more.",
+    "Shoot that will.",
+    "Go up here.",
+    "Follow me."
+   ],
+   "bot": null,
+   "line": "Get into the car, get out, and shoot this wall",
+   "pieces": [
+    "Get into the car.",
+    "Get out of the car.",
+    "Shoot this wall."
+   ],
+   "orders": [
+    "GET_IN",
+    "GET_OUT",
+    "OPEN_FIRE"
+   ],
+   "tests": "a chain with the car",
+   "strict": "orders",
+   "in_play": "act GET_IN 1.00 (3 order lines) -> orders GET_IN @ car; then GET_OUT @ car; then OPEN_FIRE @ basement near"
+  },
+  {
+   "id": "owner_496",
+   "log": "LyraStarterGame-backup-2026.10.17-20.37.09.log",
+   "before": [
+    "Roll down here.",
+    "go down here.",
+    "Follow me.",
+    "Go up by the stairs.",
+    "Father"
+   ],
+   "bot": null,
+   "line": "Further up.",
+   "pieces": [
+    "Go further up by the stairs."
+   ],
+   "orders": [
+    "MOVE_TO"
+   ],
+   "tests": "a movement going on",
+   "strict": "orders",
+   "in_play": "say_again MOVE_TO 0.41"
+  },
+  {
+   "id": "owner_528",
+   "log": "LyraStarterGame-backup-2026.10.17-20.37.09.log",
+   "before": [
+    "Move up."
+   ],
+   "bot": null,
+   "line": "More up.",
+   "pieces": [
+    "Move up more."
+   ],
+   "orders": [
+    "MOVE_TO"
+   ],
+   "tests": "a movement going on (heard 'more up')",
+   "strict": "orders",
+   "in_play": "say_again REPEAT 0.67"
+  },
+  {
+   "id": "owner_545",
+   "log": "LyraStarterGame-backup-2026.10.17-20.37.09.log",
+   "before": [
+    "Jump down to me.",
+    "Come back to me.",
+    "Open fire to this wall."
+   ],
+   "bot": null,
+   "line": "More",
+   "pieces": [
+    "More"
+   ],
+   "orders": [
+    "REPEAT"
+   ],
+   "tests": "a bare repeat, as it is",
+   "strict": "orders",
+   "in_play": "act REPEAT 1.00 -> order REPEAT"
+  },
+  {
+   "id": "owner_573",
+   "log": "LyraStarterGame-backup-2026.10.17-20.37.09.log",
+   "before": [
+    "I'm back.",
+    "Take this shotgun.",
+    "Shoot this world again.",
+    "Get closer.",
+    "Get closer to the wall."
+   ],
+   "bot": null,
+   "line": "And start shooting.",
+   "pieces": [
+    "Start shooting."
+   ],
+   "orders": [
+    "OPEN_FIRE"
+   ],
+   "tests": "'and' + an order",
+   "strict": "orders",
+   "in_play": "act OPEN_FIRE 1.00 -> order OPEN_FIRE"
+  },
+  {
+   "id": "owner_615",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Come here to me.",
+    "Go for this tunnel.",
+    "Come here."
+   ],
+   "bot": null,
+   "line": "jump down and get into the car.",
+   "pieces": [
+    "Jump down.",
+    "Get in the car."
+   ],
+   "orders": [
+    "JUMP",
+    "GET_IN"
+   ],
+   "tests": "a chain with the car",
+   "strict": "orders",
+   "in_play": "act JUMP 1.00 (2 order lines) -> orders JUMP down; then GET_IN @ car"
+  },
+  {
+   "id": "owner_616",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Go for this tunnel.",
+    "Come here.",
+    "jump down and get into the car."
+   ],
+   "bot": null,
+   "line": "Move out.",
+   "pieces": [
+    "Get out of the car."
+   ],
+   "orders": [
+    "GET_OUT"
+   ],
+   "tests": "out of the vehicle the bot sits in",
+   "strict": "orders",
+   "in_play": "say_again GET_OUT 0.67"
+  },
+  {
+   "id": "owner_636",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Come back to me.",
+    "Shoot that panel again.",
+    "Stop, stop, stop.",
+    "Now this windows.",
+    "Yes."
+   ],
+   "bot": "Got it. Open fire.",
+   "line": "Now uh another window.",
+   "pieces": [
+    "Shoot another window."
+   ],
+   "orders": [
+    "OPEN_FIRE"
+   ],
+   "tests": "another thing of that kind",
+   "strict": "orders",
+   "in_play": "act OPEN_FIRE 1.00 -> order OPEN_FIRE @ window"
+  },
+  {
+   "id": "owner_668",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Come back.",
+    "Get to the car.",
+    "Should sit inside.",
+    "Come here.",
+    "Get to the car."
+   ],
+   "bot": null,
+   "line": "get into it and start start riding.",
+   "pieces": [
+    "Get in the car."
+   ],
+   "orders": [
+    "GET_IN"
+   ],
+   "tests": "a pronoun for the car",
+   "strict": "orders",
+   "in_play": "say_again GET_IN 0.35"
+  },
+  {
+   "id": "owner_669",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Get to the car.",
+    "Should sit inside.",
+    "Come here.",
+    "Get to the car.",
+    "get into it and start start riding."
+   ],
+   "bot": "Say again?",
+   "line": "Get inside of it and start riding.",
+   "pieces": [
+    "Get in the car."
+   ],
+   "orders": [
+    "GET_IN"
+   ],
+   "tests": "a pronoun for the car",
+   "strict": "orders",
+   "in_play": "act MOVE_TO 0.73 -> order MOVE_TO aim on the bot"
+  },
+  {
+   "id": "owner_689",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Get to the car."
+   ],
+   "bot": null,
+   "line": "Get inside of it.",
+   "pieces": [
+    "Get in the car."
+   ],
+   "orders": [
+    "GET_IN"
+   ],
+   "tests": "a pronoun for the car",
+   "strict": "orders",
+   "in_play": "act MOVE_TO 1.00 -> order MOVE_TO aim on the bot"
+  },
+  {
+   "id": "owner59_00",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Come back.",
+    "Go up by these stairs and open fire.",
+    "Go back."
+   ],
+   "bot": null,
+   "line": "Go up by these stairs and jump up.",
+   "pieces": [
+    "Go up by these stairs.",
+    "Jump up."
+   ],
+   "orders": [
+    "MOVE_TO",
+    "JUMP"
+   ],
+   "tests": "a move and a jump",
+   "strict": "orders",
+   "in_play": "act MOVE_TO 1.00 -> order MOVE_TO up near"
+  },
+  {
+   "id": "owner59_01",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Get back to me."
+   ],
+   "bot": null,
+   "line": "Go up by the stairs and jump up.",
+   "pieces": [
+    "Go up by the stairs.",
+    "Jump up."
+   ],
+   "orders": [
+    "MOVE_TO",
+    "JUMP"
+   ],
+   "tests": "a move and a jump",
+   "strict": "orders",
+   "in_play": "act MOVE_TO 1.00 -> order MOVE_TO up"
+  },
+  {
+   "id": "owner59_02",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Get back to me.",
+    "Go up by the stairs and jump up.",
+    "World back game back.",
+    "Go back.",
+    "Go b uh by these stairs and jump down."
+   ],
+   "bot": null,
+   "line": "Go up by these stairs and jump down.",
+   "pieces": [
+    "Go up by these stairs.",
+    "Jump down."
+   ],
+   "orders": [
+    "MOVE_TO",
+    "JUMP"
+   ],
+   "tests": "a move and a jump",
+   "strict": "orders",
+   "in_play": "act MOVE_TO 1.00 -> order MOVE_TO up near"
+  },
+  {
+   "id": "owner59_03",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Get back to me.",
+    "Go up by the stairs and jump up.",
+    "World back game back.",
+    "Go back."
+   ],
+   "bot": null,
+   "line": "Go b uh by these stairs and jump down.",
+   "pieces": [
+    "Go by these stairs.",
+    "Jump down."
+   ],
+   "orders": [
+    "MOVE_TO",
+    "JUMP"
+   ],
+   "tests": "a move and a jump",
+   "strict": "orders",
+   "in_play": "act MOVE_TO 0.99 -> order MOVE_TO @ red stairs, floor 1 near"
+  },
+  {
+   "id": "owner59_04",
+   "log": "LyraStarterGame-backup-2026.10.17-13.24.05.log",
+   "before": [
+    "Jump down and come back to me by these stairs.",
+    "Come back, come back, uh mo move up."
+   ],
+   "bot": null,
+   "line": "Move up by these stairs and jump down here.",
+   "pieces": [
+    "Move up by these stairs.",
+    "Jump down here."
+   ],
+   "orders": [
+    "MOVE_TO",
+    "JUMP"
+   ],
+   "tests": "a move and a jump",
+   "strict": "orders",
+   "in_play": "act MOVE_TO 1.00 (2 order lines) -> orders MOVE_TO up near; then JUMP @ there down near"
+  },
+  {
+   "id": "owner59_05",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "jump up and open fire.",
+    "Go up by these stairs and open fire.",
+    "Go back.",
+    "Sit down.",
+    "Get up."
+   ],
+   "bot": null,
+   "line": "Go up by these stairs and sit down.",
+   "pieces": [
+    "Go up by these stairs.",
+    "Sit down."
+   ],
+   "orders": [
+    "MOVE_TO",
+    "CROUCH"
+   ],
+   "tests": "a move and a stance",
+   "strict": "orders",
+   "in_play": "act MOVE_TO 1.00 -> order MOVE_TO @ red stairs, floor 1, up near"
+  },
+  {
+   "id": "owner59_06",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Take shotgun.",
+    "Go it take shuggle here.",
+    "They're grateful here.",
+    "Go and take rifle here.",
+    "Come here."
+   ],
+   "bot": null,
+   "line": "Go up up the stairs and find cover.",
+   "pieces": [
+    "Go up the stairs.",
+    "Find cover."
+   ],
+   "orders": [
+    "MOVE_TO",
+    "TAKE_COVER"
+   ],
+   "tests": "a move and cover",
+   "strict": "orders",
+   "in_play": "act MOVE_TO 0.80 -> order MOVE_TO up"
+  },
+  {
+   "id": "owner59_07",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "They're grateful here.",
+    "Go and take rifle here.",
+    "Come here.",
+    "Go up up the stairs and find cover.",
+    "Go back."
+   ],
+   "bot": null,
+   "line": "Go up by these stairs and go find cover.",
+   "pieces": [
+    "Go up by these stairs.",
+    "Go find cover."
+   ],
+   "orders": [
+    "MOVE_TO",
+    "TAKE_COVER"
+   ],
+   "tests": "a move and cover",
+   "strict": "orders",
+   "in_play": "act MOVE_TO 0.66 -> order MOVE_TO @ red stairs, floor 1, up near"
+  },
+  {
+   "id": "owner59_08",
+   "log": "LyraStarterGame-backup-2026.10.17-23.37.09.log",
+   "before": [
+    "Yes.",
+    "Now uh another window.",
+    "Drop down to me.",
+    "Come back to me.",
+    "Mo move uh up by the stairs."
+   ],
+   "bot": null,
+   "line": "Move up and check.",
+   "pieces": [
+    "Move up.",
+    "Check."
+   ],
+   "orders": [
+    "MOVE_TO",
+    "CHECK"
+   ],
+   "tests": "a move and a check",
+   "strict": "orders",
+   "in_play": "act MOVE_TO 1.00 (2 order lines) -> orders MOVE_TO up; then CHECK @ your pin assumed"
+  },
+  {
+   "id": "owner59_09",
+   "log": "LyraStarterGame-backup-2026.10.16-23.01.53.log",
+   "before": [
+    "Shoot that well.",
+    "Go check that stairs.",
+    "Move up.",
+    "And and check there, check.",
+    "Go back to me."
+   ],
+   "bot": null,
+   "line": "Go up and check there.",
+   "pieces": [
+    "Go up.",
+    "Check there."
+   ],
+   "orders": [
+    "MOVE_TO",
+    "CHECK"
+   ],
+   "tests": "a move and a check",
+   "strict": "orders",
+   "in_play": "act CHECK 0.99 -> order CHECK up"
+  },
+  {
+   "id": "owner59_10",
+   "log": "LyraStarterGame-backup-2026.10.16-23.01.53.log",
+   "before": [
+    "And and check there, check.",
+    "Go back to me.",
+    "Go up and check there.",
+    "Go up and check there.",
+    "Go up to my opinion check there."
+   ],
+   "bot": null,
+   "line": "Go up to my pin and check there.",
+   "pieces": [
+    "Go up to my pin.",
+    "Check there."
+   ],
+   "orders": [
+    "MOVE_TO",
+    "CHECK"
+   ],
+   "tests": "a move and a check",
+   "strict": "orders",
+   "in_play": "ask MOVE_TO 0.84"
+  },
+  {
+   "id": "owner59_11",
+   "log": "LyraStarterGame-backup-2026.10.17-13.24.05.log",
+   "before": [
+    "Follow me.",
+    "Get into the car, get out, and shoot this wall",
+    "Get out."
+   ],
+   "bot": null,
+   "line": "Get into the car and get out.",
+   "pieces": [
+    "Get into the car.",
+    "Get out of the car."
+   ],
+   "orders": [
+    "GET_IN",
+    "GET_OUT"
+   ],
+   "tests": "in and out of the car",
+   "strict": "orders",
+   "in_play": "act GET_IN 0.99 -> order GET_IN @ car"
+  },
+  {
+   "id": "owner59_12",
+   "log": "LyraStarterGame-backup-2026.10.17-13.24.05.log",
+   "before": [
+    "You don't know.",
+    "Get out and I'll",
+    "Sh shoot that car."
+   ],
+   "bot": null,
+   "line": "go up and shoot that car.",
+   "pieces": [
+    "Go up.",
+    "Shoot that car."
+   ],
+   "orders": [
+    "MOVE_TO",
+    "OPEN_FIRE"
+   ],
+   "tests": "a move and fire",
+   "strict": "orders",
+   "in_play": "act MOVE_TO 1.00 (2 order lines) -> orders MOVE_TO up; then OPEN_FIRE @ car"
+  },
+  {
+   "id": "owner59_13",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Go back.",
+    "Go up by these stairs and go find cover.",
+    "Come back.",
+    "jump up and open fire."
+   ],
+   "bot": null,
+   "line": "Go up by these stairs and open fire.",
+   "pieces": [
+    "Go up by these stairs.",
+    "Open fire."
+   ],
+   "orders": [
+    "MOVE_TO",
+    "OPEN_FIRE"
+   ],
+   "tests": "a move and fire",
+   "strict": "orders",
+   "in_play": "act MOVE_TO 1.00 (2 order lines) -> orders MOVE_TO @ red stairs, floor 1, up near; then OPEN_FIRE @ your pin assumed"
+  },
+  {
+   "id": "owner59_14",
+   "log": "LyraStarterGame-backup-2026.10.16-23.01.53.log",
+   "before": [
+    "Move down.",
+    "Move down. Come here come here."
+   ],
+   "bot": null,
+   "line": "jump up and shoot that wall.",
+   "pieces": [
+    "Jump up.",
+    "Shoot that wall."
+   ],
+   "orders": [
+    "JUMP",
+    "OPEN_FIRE"
+   ],
+   "tests": "a jump and fire",
+   "strict": "orders",
+   "in_play": "act JUMP 1.00 (2 order lines) -> orders JUMP up; then OPEN_FIRE @ there"
+  },
+  {
+   "id": "owner59_15",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Come here.",
+    "Go up up the stairs and find cover.",
+    "Go back.",
+    "Go up by these stairs and go find cover.",
+    "Come back."
+   ],
+   "bot": null,
+   "line": "jump up and open fire.",
+   "pieces": [
+    "Jump up.",
+    "Open fire."
+   ],
+   "orders": [
+    "JUMP",
+    "OPEN_FIRE"
+   ],
+   "tests": "a jump and fire",
+   "strict": "orders",
+   "in_play": "act JUMP 1.00 (2 order lines) -> orders JUMP up aim on the bot; then OPEN_FIRE @ your pin assumed aim on the bot"
+  },
+  {
+   "id": "owner59_16",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Follow me."
+   ],
+   "bot": null,
+   "line": "Uh jump down here and find cover.",
+   "pieces": [
+    "Jump down here.",
+    "Find cover."
+   ],
+   "orders": [
+    "JUMP",
+    "TAKE_COVER"
+   ],
+   "tests": "a jump and cover",
+   "strict": "orders",
+   "in_play": "act JUMP 1.00 (2 order lines) -> orders JUMP @ there down near; then TAKE_COVER"
+  },
+  {
+   "id": "owner59_17",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Get up to me.",
+    "Stand up come to me in find cover.",
+    "Send up.",
+    "Stand up."
+   ],
+   "bot": null,
+   "line": "Jump down, jump up and start shooting the car.",
+   "pieces": [
+    "Jump down.",
+    "Jump up.",
+    "Start shooting the car."
+   ],
+   "orders": [
+    "JUMP",
+    "JUMP",
+    "OPEN_FIRE"
+   ],
+   "tests": "a chain",
+   "strict": "orders",
+   "in_play": "act JUMP 1.00 (3 order lines) -> orders JUMP down; then JUMP up; then OPEN_FIRE @ car"
+  },
+  {
+   "id": "owner59_18",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "Jump down, jump up and start shooting the car.",
+    "Shoot that windows."
+   ],
+   "bot": null,
+   "line": "Come closer to me and shoot again.",
+   "pieces": [
+    "Come closer to me.",
+    "Shoot again."
+   ],
+   "orders": [
+    "FOLLOW_ME",
+    "OPEN_FIRE"
+   ],
+   "tests": "a move and fire",
+   "strict": "orders",
+   "in_play": "act FOLLOW_ME 1.00 (2 order lines) -> orders FOLLOW_ME; then OPEN_FIRE"
+  },
+  {
+   "id": "owner59_19",
+   "log": "LyraStarterGame.log",
+   "before": [
+    "through this wall and then that wall.",
+    "Come back to me."
+   ],
+   "bot": null,
+   "line": "Open fire to this wall and then to that wall.",
+   "pieces": [
+    "Open fire to this wall.",
+    "Open fire to that wall."
+   ],
+   "orders": [
+    "OPEN_FIRE",
+    "OPEN_FIRE"
+   ],
+   "tests": "the same order twice",
+   "strict": "orders",
+   "in_play": "act OPEN_FIRE 1.00 (2 order lines) -> orders OPEN_FIRE @ there near; then OPEN_FIRE @ there"
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+calculator: G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-ens3-v58 (gate family, threshold 0.66)
+  round five's items: 751 items, 801 pieces; read as labelled 798 (99.6%); kept 748 (99.6%)
+  v59 items: 116 items, 185 pieces; read as labelled 173 (93.5%); kept 104 (89.7%)
+    left out x_r6_125: 'Now go through it.' -> ['Go through the east door.'] labelled ['MOVE_TO'], read ['FLANK']
+    left out x58_cs_008: 'go through it' -> ['go through the west door'] labelled ['MOVE_TO'], read ['FLANK']
+    left out x58_stt_008: 'uh go through it' -> ['go through the east door'] labelled ['MOVE_TO'], read ['FLANK']
+    left out x59_r6_008: 'Go through the north door, then smoke the hallway.' -> ['Go through the north door.', 'Smoke the hallway.'] labelled ['MOVE_TO', 'SMOKE'], read ['FLANK', 'SMOKE']
+    left out x59_r6_011: 'Head over to the west window, and then light up the courtyard.' -> ['Head over to the west window.', 'Light up the courtyard.'] labelled ['MOVE_TO', 'OPEN_FIRE'], read ['MOVE_TO', 'FLASH']
+    left out x59_r6_017: 'Go out the south door, jump up on the crates and then take cover.' -> ['Go out the south door.', 'Jump up on the crates.', 'Take cover.'] labelled ['MOVE_TO', 'JUMP', 'TAKE_COVER'], read ['VAULT_WINDOW', 'JUMP', 'TAKE_COVER']
+    left out x59_r6_020: 'Head to the east door and wait there.' -> ['Head to the east door and wait there.'] labelled ['HOLD_POSITION'], read ['MOVE_TO']
+    left out x59_r6_025: 'Get up the yellow stairs and stay put up there.' -> ['Get up the yellow stairs and stay put up there.'] labelled ['HOLD_POSITION'], read ['MOVE_TO']
+    left out x59_cs_017: 'go out the north door, frag the yard and then hold the corner' -> ['Go out the north door.', 'Frag the yard.', 'Hold the corner.'] labelled ['MOVE_TO', 'FRAG', 'HOLD_ANGLE'], read ['NONE', 'FRAG', 'HOLD_ANGLE']
+    left out x59_cs_020: 'move to my pin and wait there' -> ['Move to my pin and wait there.'] labelled ['HOLD_POSITION'], read ['MOVE_TO']
+    left out x59_cs_025: 'head up to the second floor and stay put' -> ['Head up to the second floor and stay put.'] labelled ['HOLD_POSITION'], read ['MOVE_TO']
+    left out x59_cs_031: 'to my ping' -> ['Push up to my ping.'] labelled ['MOVE_TO'], read ['ENTRY']
+    left out x59_stt_013: 'go through it and um check the hallway' -> ['Go through the west door.', 'Check the hallway.'] labelled ['MOVE_TO', 'CHECK'], read ['FLANK', 'CHECK']
+    left out x59_stt_020: 'head up to the roof and um stay put up there' -> ['Head up to the roof and stay put up there.'] labelled ['HOLD_POSITION'], read ['MOVE_TO']
+    left out x59_stt_025: 'go to the west window and wait there' -> ['Go to the west window and wait there.'] labelled ['HOLD_POSITION'], read ['MOVE_TO']
+wrote G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains2\ctx_checked_v59.json

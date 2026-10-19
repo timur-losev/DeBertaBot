@@ -1,0 +1,714 @@
+[
+ {
+  "id": "x59_stt_000",
+  "voice": "stt",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "uh go up the blue stairs and and jump down",
+  "pieces": [
+   "Go up the blue stairs.",
+   "Jump down."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "JUMP"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_001",
+  "voice": "stt",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "go right then um find some cover",
+  "pieces": [
+   "Go right.",
+   "Find some cover."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "TAKE_COVER"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_002",
+  "voice": "stt",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "okay take the ladder up then look left",
+  "pieces": [
+   "Take the ladder up.",
+   "Look left."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "LOOK_AT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_003",
+  "voice": "stt",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "run over to the truck and um smoke the south window.",
+  "pieces": [
+   "Run over to the truck.",
+   "Smoke the south window."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "SMOKE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_004",
+  "voice": "stt",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "go to the second floor switch to your pistil",
+  "pieces": [
+   "Go to the second floor.",
+   "Switch to your pistol."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "SWITCH_WEAPON"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_005",
+  "voice": "stt",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "move right and go prawn",
+  "pieces": [
+   "Move right.",
+   "Go prone."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "PRONE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_006",
+  "voice": "stt",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "go down the red stairs and after that shoot over there",
+  "pieces": [
+   "Go down the red stairs.",
+   "Shoot over there."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "OPEN_FIRE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_007",
+  "voice": "stt",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "move up hop in the car and then hop out",
+  "pieces": [
+   "Move up.",
+   "Hop in the car.",
+   "Hop out of the car."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "GET_IN",
+   "GET_OUT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_008",
+  "voice": "stt",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "go left hop over the the table then crouch",
+  "pieces": [
+   "Go left.",
+   "Hop over the table.",
+   "Crouch."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "JUMP",
+   "CROUCH"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_009",
+  "voice": "stt",
+  "kind": "split",
+  "before": [
+   "watch the east window"
+  ],
+  "bot": null,
+  "line": "okay uh go to my pen and shoot it",
+  "pieces": [
+   "Go to my pin.",
+   "Shoot the east window."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "OPEN_FIRE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_010",
+  "voice": "stt",
+  "kind": "split",
+  "before": [
+   "stay here"
+  ],
+  "bot": null,
+  "line": "uh okay head down the steps then follow me",
+  "pieces": [
+   "Head down the steps.",
+   "Follow me."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "FOLLOW_ME"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_011",
+  "voice": "stt",
+  "kind": "split",
+  "before": [
+   "theyre upstairs",
+   "two on the top floor"
+  ],
+  "bot": null,
+  "line": "go up the yellow stairs and flash flash the top floor",
+  "pieces": [
+   "Go up the yellow stairs.",
+   "Flash the top floor."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "FLASH"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_012",
+  "voice": "stt",
+  "kind": "split",
+  "before": [
+   "crouch"
+  ],
+  "bot": null,
+  "line": "uh move forward a bit then stand up",
+  "pieces": [
+   "Move forward a bit.",
+   "Stand up."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "STAND_UP"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_013",
+  "voice": "stt",
+  "kind": "split",
+  "before": [
+   "open the west door"
+  ],
+  "bot": null,
+  "line": "go through it and um check the hallway",
+  "pieces": [
+   "Go through the west door.",
+   "Check the hallway."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "CHECK"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_014",
+  "voice": "stt",
+  "kind": "split",
+  "before": [
+   "check the basement"
+  ],
+  "bot": "Basement's clear.",
+  "line": "okay go down the brown stairs and watch the south door",
+  "pieces": [
+   "Go down the brown stairs.",
+   "Watch the south door."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "HOLD_ANGLE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_015",
+  "voice": "stt",
+  "kind": "split",
+  "before": [
+   "nice",
+   "theyre falling back",
+   "uh keep watching the door"
+  ],
+  "bot": null,
+  "line": "move up into the kitchen and then reload",
+  "pieces": [
+   "Move up into the kitchen.",
+   "Reload."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "RELOAD"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_016",
+  "voice": "stt",
+  "kind": "split",
+  "before": [
+   "follow me"
+  ],
+  "bot": null,
+  "line": "actually go up the ramp and jump on the crates",
+  "pieces": [
+   "Go up the ramp.",
+   "Jump on the crates."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "JUMP"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_017",
+  "voice": "stt",
+  "kind": "split",
+  "before": [
+   "theres someone in the attic"
+  ],
+  "bot": null,
+  "line": "go up the white stairs and uh frack the attic",
+  "pieces": [
+   "Go up the white stairs.",
+   "Frag the attic."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "FRAG"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_018",
+  "voice": "stt",
+  "kind": "keep",
+  "before": [
+   "theyre camping the hallway"
+  ],
+  "bot": null,
+  "line": "uh loop around through the east door and take em from the side",
+  "pieces": [
+   "Loop around through the east door and take them from the side."
+  ],
+  "orders": [
+   "FLANK"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_019",
+  "voice": "stt",
+  "kind": "keep",
+  "before": [],
+  "bot": null,
+  "line": "push in through the main door and and clear the room.",
+  "pieces": [
+   "Push in through the main door and clear the room."
+  ],
+  "orders": [
+   "ENTRY"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_020",
+  "voice": "stt",
+  "kind": "keep",
+  "before": [],
+  "bot": null,
+  "line": "head up to the roof and um stay put up there",
+  "pieces": [
+   "Head up to the roof and stay put up there."
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_021",
+  "voice": "stt",
+  "kind": "keep",
+  "before": [
+   "were taking fire"
+  ],
+  "bot": null,
+  "line": "get over to the truck and duck behind it",
+  "pieces": [
+   "Get over to the truck and duck behind it."
+  ],
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_022",
+  "voice": "stt",
+  "kind": "keep",
+  "before": [],
+  "bot": null,
+  "line": "get down get down and stay out of sight",
+  "pieces": [
+   "Get down and stay out of sight."
+  ],
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_023",
+  "voice": "stt",
+  "kind": "keep",
+  "before": [
+   "hold the north door"
+  ],
+  "bot": null,
+  "line": "okay go flash the north door",
+  "pieces": [
+   "Go flash the north door."
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_024",
+  "voice": "stt",
+  "kind": "keep",
+  "before": [],
+  "bot": null,
+  "line": "come on um get in the truck",
+  "pieces": [
+   "Come on, get in the truck."
+  ],
+  "orders": [
+   "GET_IN"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_025",
+  "voice": "stt",
+  "kind": "keep",
+  "before": [
+   "smoke the courtyard"
+  ],
+  "bot": null,
+  "line": "go to the west window and wait there",
+  "pieces": [
+   "Go to the west window and wait there."
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_026",
+  "voice": "stt",
+  "kind": "recency",
+  "before": [
+   "uh frag the kitchen",
+   "frag the hallway",
+   "get to the blue stairs"
+  ],
+  "bot": null,
+  "line": "uh no the red ones",
+  "pieces": [
+   "Get to the red stairs."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_027",
+  "voice": "stt",
+  "kind": "recency",
+  "before": [
+   "smoke the yard",
+   "smoke it again",
+   "check the east door"
+  ],
+  "bot": null,
+  "line": "no no the west one",
+  "pieces": [
+   "Check the west door."
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_028",
+  "voice": "stt",
+  "kind": "recency",
+  "before": [
+   "go left",
+   "move left more",
+   "shoot there"
+  ],
+  "bot": null,
+  "line": "no at that car",
+  "pieces": [
+   "Shoot at that car."
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_029",
+  "voice": "stt",
+  "kind": "recency",
+  "before": [
+   "take cover",
+   "find cover",
+   "get behind something",
+   "flash the main door"
+  ],
+  "bot": null,
+  "line": "uh the north door",
+  "pieces": [
+   "Flash the north door."
+  ],
+  "orders": [
+   "FLASH"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_030",
+  "voice": "stt",
+  "kind": "recency",
+  "before": [
+   "hold the door",
+   "hold that door",
+   "open the window"
+  ],
+  "bot": "Which window?",
+  "line": "the east one um the east",
+  "pieces": [
+   "Open the east window."
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_031",
+  "voice": "stt",
+  "kind": "recency",
+  "before": [
+   "watch the stairs",
+   "eyes on the stairs",
+   "smoke"
+  ],
+  "bot": "Where?",
+  "line": "the west window",
+  "pieces": [
+   "Smoke the west window."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_032",
+  "voice": "stt",
+  "kind": "recency",
+  "before": [
+   "check the basement and check the garage",
+   "move to the north door"
+  ],
+  "bot": null,
+  "line": "no uh to my pin",
+  "pieces": [
+   "Move to my pin."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_033",
+  "voice": "stt",
+  "kind": "recency",
+  "before": [
+   "flash the kitchen",
+   "flash it",
+   "throw another flash",
+   "open the south door"
+  ],
+  "bot": null,
+  "line": "uh no the other one",
+  "pieces": [
+   "Open the other door."
+  ],
+  "orders": [
+   "OPEN"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_034",
+  "voice": "stt",
+  "kind": "plain",
+  "before": [],
+  "bot": null,
+  "line": "get low and uh change mags.",
+  "pieces": [
+   "Get low.",
+   "Change mags."
+  ],
+  "orders": [
+   "CROUCH",
+   "RELOAD"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_035",
+  "voice": "stt",
+  "kind": "plain",
+  "before": [],
+  "bot": null,
+  "line": "frag the garage and then um suppress the stairs",
+  "pieces": [
+   "Frag the garage.",
+   "Suppress the stairs."
+  ],
+  "orders": [
+   "FRAG",
+   "SUPPRESS"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_036",
+  "voice": "stt",
+  "kind": "plain",
+  "before": [
+   "theres one in the bathroom"
+  ],
+  "bot": null,
+  "line": "flash the bathroom and then open fire",
+  "pieces": [
+   "Flash the bathroom.",
+   "Open fire."
+  ],
+  "orders": [
+   "FLASH",
+   "OPEN_FIRE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_037",
+  "voice": "stt",
+  "kind": "plain",
+  "before": [],
+  "bot": null,
+  "line": "lie down and and shoot the west door",
+  "pieces": [
+   "Lie down.",
+   "Shoot the west door."
+  ],
+  "orders": [
+   "PRONE",
+   "OPEN_FIRE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_038",
+  "voice": "stt",
+  "kind": "plain",
+  "before": [],
+  "bot": null,
+  "line": "cover me and watch my back while i plant",
+  "pieces": [
+   "Cover me and watch my back while I plant."
+  ],
+  "orders": [
+   "COVER_ME"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_stt_039",
+  "voice": "stt",
+  "kind": "plain",
+  "before": [],
+  "bot": null,
+  "line": "hold your fire and um let them get closer",
+  "pieces": [
+   "Hold your fire and let them get closer."
+  ],
+  "orders": [
+   "HOLD_FIRE"
+  ],
+  "pair": null
+ }
+]

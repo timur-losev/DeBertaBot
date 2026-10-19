@@ -1,0 +1,32 @@
+   163 s  voice_chains.py train chains2\ctx_teacher_v59_heard.json chains2\ctx_teacher_v59_r6.json chains2\ctx_teacher_v59_cs.json (exit 0)
+   391 s  voice_chains.py train2 chains2\ctx_teacher_v59_heard.json chains2\ctx_teacher_v59_r6.json chains2\ctx_teacher_v59_cs.json (exit 0)
+   406 s  chains5_v59.py check (exit 0)
+ 2,592 s  chains5_v59.py train 0 (exit 0)
+ 2,762 s  router_v59.py train final small 0 (exit 0)
+ 2,808 s  chains5_v59.py gguf 0 (exit 0)
+ 2,903 s  chains5_v59.py export 0 (exit 0)
+ 2,918 s  chains5_v59.py score (exit 0)
+ 2,965 s  owner_ctx_score.py G:\Proj\ollaya\DeBertaBot\cpp\coop_intent\build\Release\coop_cli.exe G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-ens3-v58\cpp G:\Proj\ollaya\DeBertaBot\models\coop-chain-v58\cpp chains2\owner_ctx_v59_score_chain58.json (exit 0)
+ 3,011 s  owner_ctx_score.py G:\Proj\ollaya\DeBertaBot\cpp\coop_intent\build\Release\coop_cli.exe G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-ens3-v58\cpp G:\Proj\ollaya\DeBertaBot\models\coop-chain-v59\cpp chains2\owner_ctx_v59_score_chain59.json (exit 0)
+                                                            round 5, router v55 (the game'       pieces6_final, router v55       pieces6_final, router v59
+chains, typed: all 150                                                                82.7                            83.3                            83.3
+chains, typed: all 150, through the router                                            81.3                            80.7                            78.7
+  without the 4 repeats and negations                                                 84.2                            84.2                            84.2
+  without the 4 repeats and negations, through the router                             83.6                            82.9                            80.8
+chains, three unseen voices: all 300                                                  62.3                            63.7                            63.7
+chains, three unseen voices: all 300, through the router                              58.3                            59.3                            59.0
+  without the 6 repeats and negations                                                 62.6                            63.9                            63.9
+  without the 6 repeats and negations, through the router                             59.5                            60.5                            60.2
+context, typed (intents and places): all 150                                          88.7                            88.7                            88.7
+context, typed (intents and places): all 150, through the router                            86.7                            86.7                            86.7
+  without the 4 repeats and negations                                                 89.7                            90.4                            90.4
+  without the 4 repeats and negations, through the router                             87.7                            88.4                            88.4
+context, three unseen voices: all 299                                                 64.5                            63.2                            63.2
+context, three unseen voices: all 299, through the router                             60.5                            58.2                            58.5
+  without the 9 repeats and negations                                                 65.5                            65.2                            65.2
+  without the 9 repeats and negations, through the router                             61.4                            60.0                            60.3
+
+owner_ctx_59_chain58.log:51:34/50 read as expected
+owner_ctx_59_chain59.log:51:38/50 read as expected
+3,011 s in all
+

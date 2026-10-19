@@ -11,7 +11,7 @@ final .!?: coop::SpeechTextForClassifier)."""
 import io, json, os, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SET = os.path.join(HERE, "chains2", "owner_ctx_v58.json")
+SET = os.environ.get("OWNER_CTX_SET", os.path.join(HERE, "chains2", "owner_ctx_v58.json"))   # round six: chains2/owner_ctx_v59.json
 WORLD = {"entities": [
     {"id": "car", "object": "car", "qualifier": None, "zone": "floor_1", "bearing": 10.0, "distance": 4.0, "elevation": 0.0, "tags": []},
     {"id": "win_a", "object": "window", "qualifier": None, "zone": "floor_1", "bearing": -20.0, "distance": 9.0, "elevation": 1.0, "tags": []},

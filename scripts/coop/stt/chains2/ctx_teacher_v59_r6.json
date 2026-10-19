@@ -1,0 +1,716 @@
+[
+ {
+  "id": "x59_r6_000",
+  "voice": "r6",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "Go up the blue stairs and hop over the table.",
+  "pieces": [
+   "Go up the blue stairs.",
+   "Hop over the table."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "JUMP"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_001",
+  "voice": "r6",
+  "kind": "split",
+  "before": [
+   "Jager's got ADS on the stairs, don't trust it."
+  ],
+  "bot": null,
+  "line": "Move left, then sit down.",
+  "pieces": [
+   "Move left.",
+   "Sit down."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "CROUCH"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_002",
+  "voice": "r6",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "Take the ramp down into Garage, then find some cover.",
+  "pieces": [
+   "Take the ramp down into Garage.",
+   "Find some cover."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "TAKE_COVER"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_003",
+  "voice": "r6",
+  "kind": "split",
+  "before": [
+   "Clear on my side.",
+   "Ash is dead, Sledge is two floors up."
+  ],
+  "bot": null,
+  "line": "Head up to the balcony and then drop down to the patio.",
+  "pieces": [
+   "Head up to the balcony.",
+   "Drop down to the patio."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "JUMP"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_004",
+  "voice": "r6",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "Get over to my ping and swap mags.",
+  "pieces": [
+   "Get over to my ping.",
+   "Swap mags."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "RELOAD"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_005",
+  "voice": "r6",
+  "kind": "split",
+  "before": [
+   "Mira on Kitchen, can't see through it."
+  ],
+  "bot": null,
+  "line": "Move forward to Bar then frag Kitchen.",
+  "pieces": [
+   "Move forward to Bar.",
+   "Frag Kitchen."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "FRAG"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_006",
+  "voice": "r6",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "Take the steps down to the basement and after that check the wine cellar.",
+  "pieces": [
+   "Take the steps down to the basement.",
+   "Check the wine cellar."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "CHECK"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_007",
+  "voice": "r6",
+  "kind": "split",
+  "before": [
+   "Cav's roaming outside, watch yourself."
+  ],
+  "bot": null,
+  "line": "Head down the brown stairs and get in the truck.",
+  "pieces": [
+   "Head down the brown stairs.",
+   "Get in the truck."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "GET_IN"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_008",
+  "voice": "r6",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "Go through the north door, then smoke the hallway.",
+  "pieces": [
+   "Go through the north door.",
+   "Smoke the hallway."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "SMOKE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_009",
+  "voice": "r6",
+  "kind": "split",
+  "before": [
+   "Plant's going in Kids' bedroom.",
+   "Thatcher's out, no EMPs left."
+  ],
+  "bot": null,
+  "line": "Go up to the top floor then flash CEO office.",
+  "pieces": [
+   "Go up to the top floor.",
+   "Flash CEO office."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "FLASH"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_010",
+  "voice": "r6",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "Take the ladder up to the roof, go prone.",
+  "pieces": [
+   "Take the ladder up to the roof.",
+   "Go prone."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "PRONE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_011",
+  "voice": "r6",
+  "kind": "split",
+  "before": [
+   "Two left, one on Kitchen, one roaming."
+  ],
+  "bot": null,
+  "line": "Head over to the west window, and then light up the courtyard.",
+  "pieces": [
+   "Head over to the west window.",
+   "Light up the courtyard."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "OPEN_FIRE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_012",
+  "voice": "r6",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "Move right, look at the yellow stairs.",
+  "pieces": [
+   "Move right.",
+   "Look at the yellow stairs."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "LOOK_AT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_013",
+  "voice": "r6",
+  "kind": "split",
+  "before": [
+   "Echo's drone is on the ceiling, shoot it if you see it."
+  ],
+  "bot": null,
+  "line": "Head down the white stairs, then pull out your sidearm.",
+  "pieces": [
+   "Head down the white stairs.",
+   "Pull out your sidearm."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "SWITCH_WEAPON"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_014",
+  "voice": "r6",
+  "kind": "split",
+  "before": [
+   "Stay low, Maestro's got eyes on us."
+  ],
+  "bot": null,
+  "line": "Move forward to the car, then stand up.",
+  "pieces": [
+   "Move forward to the car.",
+   "Stand up."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "STAND_UP"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_015",
+  "voice": "r6",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "Go left past Bar and then follow me.",
+  "pieces": [
+   "Go left past Bar.",
+   "Follow me."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "FOLLOW_ME"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_016",
+  "voice": "r6",
+  "kind": "split",
+  "before": [
+   "They're holding Main from the stairs."
+  ],
+  "bot": null,
+  "line": "Move up the red stairs, crouch and watch the Main door.",
+  "pieces": [
+   "Move up the red stairs.",
+   "Crouch.",
+   "Watch the Main door."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "CROUCH",
+   "HOLD_ANGLE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_017",
+  "voice": "r6",
+  "kind": "split",
+  "before": [],
+  "bot": null,
+  "line": "Go out the south door, jump up on the crates and then take cover.",
+  "pieces": [
+   "Go out the south door.",
+   "Jump up on the crates.",
+   "Take cover."
+  ],
+  "orders": [
+   "MOVE_TO",
+   "JUMP",
+   "TAKE_COVER"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_018",
+  "voice": "r6",
+  "kind": "keep",
+  "before": [],
+  "bot": null,
+  "line": "Swing around through Garage and hit them from the back.",
+  "pieces": [
+   "Swing around through Garage and hit them from the back."
+  ],
+  "orders": [
+   "FLANK"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_019",
+  "voice": "r6",
+  "kind": "keep",
+  "before": [
+   "Two in Bar, both anchoring."
+  ],
+  "bot": null,
+  "line": "Push into Bar and clear it out.",
+  "pieces": [
+   "Push into Bar and clear it out."
+  ],
+  "orders": [
+   "ENTRY"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_020",
+  "voice": "r6",
+  "kind": "keep",
+  "before": [],
+  "bot": null,
+  "line": "Head to the east door and wait there.",
+  "pieces": [
+   "Head to the east door and wait there."
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_021",
+  "voice": "r6",
+  "kind": "keep",
+  "before": [
+   "Glaz is on the shed roof, he's got the angle."
+  ],
+  "bot": null,
+  "line": "Run to the truck and get behind it.",
+  "pieces": [
+   "Run to the truck and get behind it."
+  ],
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_022",
+  "voice": "r6",
+  "kind": "keep",
+  "before": [],
+  "bot": null,
+  "line": "Duck down and find something solid.",
+  "pieces": [
+   "Duck down and find something solid."
+  ],
+  "orders": [
+   "TAKE_COVER"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_023",
+  "voice": "r6",
+  "kind": "keep",
+  "before": [
+   "Valk cam above the east window."
+  ],
+  "bot": null,
+  "line": "Go frag the east window.",
+  "pieces": [
+   "Go frag the east window."
+  ],
+  "orders": [
+   "FRAG"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_024",
+  "voice": "r6",
+  "kind": "keep",
+  "before": [],
+  "bot": null,
+  "line": "Come on, smoke the Main door.",
+  "pieces": [
+   "Come on, smoke the Main door."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_025",
+  "voice": "r6",
+  "kind": "keep",
+  "before": [
+   "Lion scan in five."
+  ],
+  "bot": null,
+  "line": "Get up the yellow stairs and stay put up there.",
+  "pieces": [
+   "Get up the yellow stairs and stay put up there."
+  ],
+  "orders": [
+   "HOLD_POSITION"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_026",
+  "voice": "r6",
+  "kind": "recency",
+  "before": [
+   "Smoke the west window.",
+   "Smoke Kitchen too.",
+   "Head over to Bar."
+  ],
+  "bot": null,
+  "line": "No, to my ping.",
+  "pieces": [
+   "Head over to my ping."
+  ],
+  "orders": [
+   "MOVE_TO"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_027",
+  "voice": "r6",
+  "kind": "recency",
+  "before": [
+   "Shoot the hatch.",
+   "Shoot the hatch again.",
+   "Watch the blue stairs."
+  ],
+  "bot": null,
+  "line": "The white stairs.",
+  "pieces": [
+   "Watch the white stairs."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_028",
+  "voice": "r6",
+  "kind": "recency",
+  "before": [
+   "Go to the east door.",
+   "Get to the east door, now.",
+   "Check Kids' bedroom."
+  ],
+  "bot": null,
+  "line": "Over there.",
+  "pieces": [
+   "Check over there."
+  ],
+  "orders": [
+   "CHECK"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_029",
+  "voice": "r6",
+  "kind": "recency",
+  "before": [
+   "Open fire on Bar.",
+   "Keep shooting Bar.",
+   "Smoke the south door."
+  ],
+  "bot": null,
+  "line": "No, the other one.",
+  "pieces": [
+   "Smoke the other door."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_030",
+  "voice": "r6",
+  "kind": "recency",
+  "before": [
+   "Hold the yellow stairs.",
+   "Hold the yellow stairs, I said.",
+   "Vault through the window."
+  ],
+  "bot": "Which window?",
+  "line": "The east one.",
+  "pieces": [
+   "Vault through the east window."
+  ],
+  "orders": [
+   "VAULT_WINDOW"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_031",
+  "voice": "r6",
+  "kind": "recency",
+  "before": [
+   "Flash the stairs.",
+   "Flash the stairs again.",
+   "Throw a smoke."
+  ],
+  "bot": "Where?",
+  "line": "On the north window.",
+  "pieces": [
+   "Throw a smoke on the north window."
+  ],
+  "orders": [
+   "SMOKE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_032",
+  "voice": "r6",
+  "kind": "recency",
+  "before": [
+   "Hold the Main door.",
+   "Drone out Kitchen.",
+   "Hold Main, they're peeking.",
+   "Shoot that window."
+  ],
+  "bot": null,
+  "line": "No, the east one.",
+  "pieces": [
+   "Shoot the east window."
+  ],
+  "orders": [
+   "OPEN_FIRE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_033",
+  "voice": "r6",
+  "kind": "recency",
+  "before": [
+   "Go prone.",
+   "Take cover behind the car.",
+   "Take cover behind the car, now!",
+   "Look at the brown stairs."
+  ],
+  "bot": null,
+  "line": "No, at my mark.",
+  "pieces": [
+   "Look at my mark."
+  ],
+  "orders": [
+   "LOOK_AT"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_034",
+  "voice": "r6",
+  "kind": "plain",
+  "before": [],
+  "bot": null,
+  "line": "Get low and top off.",
+  "pieces": [
+   "Get low.",
+   "Top off."
+  ],
+  "orders": [
+   "CROUCH",
+   "RELOAD"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_035",
+  "voice": "r6",
+  "kind": "plain",
+  "before": [
+   "Two in Kitchen, one's Smoke."
+  ],
+  "bot": null,
+  "line": "Frag Kitchen once you've flashed it.",
+  "pieces": [
+   "Flash Kitchen.",
+   "Frag Kitchen."
+  ],
+  "orders": [
+   "FLASH",
+   "FRAG"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_036",
+  "voice": "r6",
+  "kind": "plain",
+  "before": [],
+  "bot": null,
+  "line": "Cease fire, then pop a smoke on the Main door.",
+  "pieces": [
+   "Cease fire.",
+   "Pop a smoke on the Main door."
+  ],
+  "orders": [
+   "HOLD_FIRE",
+   "SMOKE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_037",
+  "voice": "r6",
+  "kind": "plain",
+  "before": [],
+  "bot": null,
+  "line": "Suppress the red stairs and keep them pinned.",
+  "pieces": [
+   "Suppress the red stairs and keep them pinned."
+  ],
+  "orders": [
+   "SUPPRESS"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_038",
+  "voice": "r6",
+  "kind": "plain",
+  "before": [
+   "They're rotating through Lobby."
+  ],
+  "bot": null,
+  "line": "Watch the north door and keep your eyes on it.",
+  "pieces": [
+   "Watch the north door and keep your eyes on it."
+  ],
+  "orders": [
+   "HOLD_ANGLE"
+  ],
+  "pair": null
+ },
+ {
+  "id": "x59_r6_039",
+  "voice": "r6",
+  "kind": "plain",
+  "before": [],
+  "bot": null,
+  "line": "Drone out CEO, then breach the north wall.",
+  "pieces": [
+   "Drone out CEO.",
+   "Breach the north wall."
+  ],
+  "orders": [
+   "DRONE",
+   "BREACH"
+  ],
+  "pair": null
+ }
+]
