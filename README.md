@@ -1,144 +1,184 @@
 # DeBertaBot
 
-A co-op game bot that turns a player's voice order into one of 24 intents plus a place on the map:
-three fine-tuned DeBERTa-v3-base models, a rule matcher for the map's named places, and a C++17 engine
-checked line by line against the Python bot. Start with [HANDOFF.md](HANDOFF.md) (the current state, in
-Russian), [COOP-BOT.md](COOP-BOT.md) (the study) and [cpp/coop_intent/README.md](cpp/coop_intent/README.md).
+DeBertaBot is the brain of a voice-controlled AI teammate for a co-op shooter.
+The player speaks an order.
+The brain changes the speech into one or more orders that the game can do.
+Each order has an intent (for example, MOVE_TO or OPEN_FIRE) and a place on the map.
 
-This repository is the co-op bot part of a larger research folder, `project_synth`; the rest of this file
-is that folder's README. The documents FINDINGS.md, MODELS.md, GAME-BOT.md and NPC-DECISIONS.md and the
-scripts outside `scripts/coop` that it lists are not in this repository. Model weights are not in git
-either (HANDOFF.md, section 1).
+The brain is a C++17 program (`coop_cli`).
+The game starts it as a helper process and sends it JSON lines.
+The models are trained and tested with the Python scripts in this repository.
 
----
+## Status (2026-10-19)
 
-# project_synth
+| Part | Version | Note |
+|---|---|---|
+| Classifier | bot v58 | 47 intents, ensemble of three DeBERTa-v3-base models |
+| Router and decoder | chain v59 | DeBERTa-v3-small router, Qwen3-1.7B decoder |
+| Speech to text | Parakeet TDT 0.6B v2 (int8) | through sherpa-onnx |
+| Voice | Piper, `en_GB-vctk-medium` | through sherpa-onnx |
+| Game | Lyra, Unreal Engine 5.8 | in a separate Perforce project, not in this repository |
 
-Research notes and measurement harnesses from one session of evaluating ollaya: how it compares with
-a Qwen-based constrained-decoding engine, which model in the catalogue suits which job, and whether a
-`laya` model can serve as the natural-language front door for a game bot.
+The engine is built and checked on Windows x64.
+An earlier version of the engine was also built on macOS arm64.
+The Linux build is not tested.
 
-Nothing here is part of the ollaya build. No Rust, no `convert/` dependency, no effect on
-`cargo test`, `cargo fmt` or `cargo clippy`. It is an untracked folder of documents and Python
-scripts; add it to git or delete it as you see fit.
+## How the brain works
 
-## Documents
+The brain does these steps for each line that the player speaks:
 
-| | |
+1. **Speech to text.** Parakeet TDT changes the audio into text.
+2. **Router.** A small classifier finds lines that need the decoder.
+   These are lines with two or more orders, and lines that refer to earlier lines.
+3. **Decoder.** A language model writes each order as a separate line.
+   It uses the last five lines that the player spoke in the last 30 seconds.
+   Example: "Get to the car." and then "Get inside of it." becomes "Get in the car."
+4. **Classifier.** Three DeBERTa-v3-base models give the intent of each order.
+   If the models are not sure, the bot asks the player to say the order again.
+5. **Place matcher.** Rules find the places in the order: an object, a side or a colour, a floor, a direction, a pin.
+6. **Planner.** The planner compares the places with the world state that the game sends.
+   If a place is not clear, the bot asks a question (for example, "Which window?").
+7. **Voice.** Piper changes the bot's reply into audio.
+   The game plays the audio from the bot's head.
+
+The Python scripts have a copy (a "twin") of each C++ part.
+The engine checks compare the C++ result with the Python result, line by line.
+
+## Measured results
+
+Machine: Intel i9-10900K, NVIDIA RTX 4090.
+
+| Item | Result |
 |---|---|
-| [FINDINGS.md](FINDINGS.md) | Every measured number, with the method and the caveats. Includes a table of the claims that were corrected during the session, so earlier figures are not trusted by accident. |
-| [MODELS.md](MODELS.md) | Which of the 13 published models to use for what, grouped by how each reads its answer out, plus the traps a newcomer hits. |
-| [GAME-BOT.md](GAME-BOT.md) | The game-bot design: the recommendation, the constraints, the test set, and the two designs that were built, measured and rejected. |
-| [NPC-DECISIONS.md](NPC-DECISIONS.md) | Can a model make an enemy soldier's tactical decision from game factors? 325 states, three independent judges, 15 factor forms: no (best model 38% vs 58-61% for a hand-written utility AI). Where it helps: reading the overheard player line, 80% on blind lines with keywords + laya:en + a negation guard. |
-| [COOP-BOT.md](COOP-BOT.md) | Co-op bot voice orders to one enum (Siege/CS style), 363 blind lines, 7 models, reviewed: decision:eos is the only model that works zero-shot (62% near-correct at 2.2% wrong-family actions); a char n-gram classifier on playtest lines works only as a second key (0.3% wrong family); timing and "the other one" are regex. Fine-tuned DeBERTa-v3-base and a fine-tuned laya (rebuilt in PyTorch, menu still flexible) both reach ~88-90% near-correct. v2 adds TAKE_COVER and OPEN: an ensemble of three fine-tuned DeBERTa-v3-base reaches 90.5% near-correct at 1.9% wrong family; deberta-v3-large collapsed on this data. v3 adds map places: a dictionary matcher gives the planner the target (88% exact on 150 blind lines with the rules frozen before them; the later rule sets are fitted to those lines and have no blind number yet), and re-training lifts intent accuracy on place lines from 83% to 91%, almost all of it on one of the three authors. |
-| [DEBERTA-BOT.md](DEBERTA-BOT.md) | The co-op bot on fine-tuned DeBERTa-v3-base, on CPU (~70 ms): how to run it and a step-by-step walkthrough of how it was made, evaluated and calibrated, with the traps we hit (in Russian). |
-| [cpp/coop_intent/README.md](cpp/coop_intent/README.md) | The co-op bot as a C++17 engine for UE5: own tokenizer (no ICU), ONNX Runtime backend with ensembles, the bot logic. The default v31 bot (24 intents incl. TAKE_COVER and OPEN, three DeBERTa-v3-base models re-trained with lines that name map places) is identical to the Python bot on 1259 golden lines (probabilities within 2.2e-6), 9428 tokenizer lines, 20204 place records, 3332 gate decisions, 140 decision steps and a 77-line conversation; ~40 ms per line on 3 CPU cores, 2.3 GB. Built on Windows and macOS. |
+| From the release of the talk key to the bot's voice, in the game | median 557 ms, 90th percentile 775 ms (572 spoken lines) |
+| Speech to text | approximately 0.09 × the length of the audio (2.4 s of speech in 212 ms) |
+| Classifier | 35 ms to 50 ms per order (one thread per model) |
+| Router | 11 ms to 16 ms |
+| Decoder on the GPU | approximately 30 ms (the first line after the start: approximately 340 ms) |
+| Decoder on the CPU | 0.5 s to 0.6 s |
+| Voice | approximately 0.09 × the length of the audio (0.6 s of audio in 65 ms) |
+| Memory, all parts, decoder on the GPU | 4.9 GB RAM and 1.5 GB VRAM |
+| Memory, all parts, decoder on the CPU | 5.6 GB RAM |
+| Memory, classifier only | 2.3 GB RAM |
+| Real spoken lines of the owner that need the decoder (test set, not used for training) | 45 of 50 give the expected orders |
 
-## Headline results
+[COOP-BOT.md](COOP-BOT.md) gives all the results, the methods and the known problems.
 
-- `laya:multilingual` answers the same 28-field structured-decision workload **3.5–5.4× faster** than
-  the Qwen parallel engine, at **73.4 % against 74.7 %** accuracy on identical ground truth, using
-  **1.5 GB of VRAM against 4.3 GB**. `laya:en` is 1.5–2.4× faster but less accurate than either.
-- The Qwen engine wins in exactly two places: schemas beyond roughly 57–112 fields, where its flat
-  latency overtakes laya's linear growth, and high option counts, where both laya models refuse with
-  `422 TOO_MANY_OPTIONS`.
-- On CPU `laya:multilingual` costs **zero VRAM**, 1.7 GB of RAM and 170 ms for one question — but
-  **165 ms for every additional question**, where on GPU extra questions are nearly free. Schemas
-  designed against GPU numbers must be re-costed.
-- For the game bot (English only): a single flat `choice` on **`laya:en`** with the option keys written
-  as the phrase a player would say reaches **38/46 = 83 %**, 389 ms on CPU, zero VRAM. The label style
-  alone is worth +9 to +11 points and costs nothing; the descriptions everyone reaches for first are
-  worth +2. The same change on the Qwen engine is worth **+34** (46 % → 80 %). None of it transfers:
-  on `laya:multilingual` phrase labels make things worse.
-- Every elaboration tried did worse than one flat question: a two-model cascade scored **36 %** because
-  its gate rejected 70 % of real commands, and `nli` as a veto behind `laya` scored **57 %** or
-  **50 %**. `nli`'s rejection strength failed to transfer to three different roles. The transferable
-  lesson: a number measured in one question shape, or on one model, predicts nothing about another.
-- Accuracy hides what matters in a shooter. Split by consequence, the Qwen counterpart makes **zero**
-  dangerous errors on the same set — every miss is a refusal — while the laya bot makes three.
+## Repository layout
 
-## Which Python
+| Path | Contents |
+|---|---|
+| `cpp/coop_intent/` | The C++17 engine and `coop_cli`: chat, engine checks, service mode for a game |
+| `scripts/coop/` | Python: label specifications, training data, the bot, the place matcher (`locations.py`), the planner (`world.py`) |
+| `scripts/coop/stt/` | The voice chain: synthesized voices, transcripts, classifier builds, decoder and router rounds |
+| `models/` | Model configurations, engine test files and training records. The model weights are not in git |
+| [COOP-BOT.md](COOP-BOT.md) | The full study, version by version (English) |
+| [HANDOFF.md](HANDOFF.md) | The current state and the work procedures (Russian) |
+| [DEBERTA-BOT.md](DEBERTA-BOT.md) | A walkthrough of how the classifier was made (Russian) |
+| [cpp/coop_intent/README.md](cpp/coop_intent/README.md) | The engine: layout, build, service protocol, checks |
+| `reports/`, `research_notes/` | Research reports (Russian) |
 
-**Any Python 3.8+.** Every script here imports only the standard library — `json`, `io`, `os`, `re`,
-`sys`, `time`, `urllib`, `statistics`, `collections`, `subprocess`, `concurrent.futures`. All the work
-happens over HTTP against the ollaya daemon, so there is nothing to install and no virtual environment
-to activate. On this machine `python` in PATH resolves to `C:\Users\void\anaconda3\python.exe` (3.11.7)
-and that is enough.
+## Build the engine (Windows)
 
-The conda environment `D:\Program\anaconda3\envs\jev` (3.11.16) is needed for exactly one thing: it is
-where `torch 2.14.0+cu130` lives, so it runs the **Qwen server** that `clean_qwen.py` and
-`burst_qwen.py` measure. Those two scripts only speak HTTP to it and do not need torch themselves.
+You need:
 
-## Running the scripts
+- Visual Studio 2022 Build Tools and CMake.
+- The ONNX Runtime 1.30 release for Windows x64 in `cpp/coop_intent/third_party/`.
+- For speech to text and the voice (optional): the sherpa-onnx C API in `cpp/coop_intent/third_party/`.
+- For the decoder (optional): llama.cpp. Run `cpp/coop_intent/tools/setup_llama.ps1` to install it in `third_party/`.
 
-They all talk to a local daemon over HTTP and assume the models are pulled.
+[cpp/coop_intent/README.md](cpp/coop_intent/README.md) gives the exact versions and folders.
 
-```powershell
-$env:OLLAYA_MODELS = 'G:\Proj\ollaya\install\models'
-$env:OLLAYA_DEVICE = 'cpu'          # omit for CUDA
-G:\Proj\ollaya\install\bin\ollaya.exe serve
+Do these steps in `cpp/coop_intent`:
 
-G:\Proj\ollaya\install\bin\ollaya.exe pull laya:multilingual
-G:\Proj\ollaya\install\bin\ollaya.exe pull nli          # only for the head-to-head
-
-cd scripts
-python .\chat.py laya:multilingual off      # talk to the bot
-python .\run_testset.py laya:multilingual   # score it on the 60 cases
+```
+cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+cmake --build build --config Release
 ```
 
-Paths are absolute: each script resolves its data files from its own directory, so the folder can be
-moved, but the scripts that also read the Qwen presets expect that project at
-`G:\Proj\Qwen-2.5-1B-RLCD`. Check `ollaya ps` before timing anything — it prints the device and
-precision actually in use, and a failed CUDA warm-up silently demotes `auto` to CPU.
+## Get the model weights
 
-## Scripts
+The weights are not in git because the files are too large.
+Each classifier member is a 739 MB ONNX file.
+The decoder is a 1.1 GB GGUF file.
 
-Comparison against the Qwen engine:
+Use one of these procedures:
 
-| | |
-|---|---|
-| `compare_ollaya.py` | Converts a Qwen preset into an ollaya question set and scores answers with the same rules as the Qwen repo's `score_against_expected`. Imported by several others. |
-| `clean.py` / `clean_qwen.py` | Each engine measured alone on a quiet machine: VRAM, latency, accuracy, scaling. |
-| `ab3.py` | Three-way interleaved wall-clock A/B over HTTP, which is how the corrected latency ratio was obtained. |
-| `scaling2.py` | Latency versus number of questions, 15 repeats, minimum as the uncontended estimate. |
-| `burst.py` / `burst_qwen.py` | How VRAM grows with concurrent requests on each engine. |
-| `vram_growth.py` | Whether the ONNX Runtime arena grows per request shape. It does not. |
-| `style.py` | How much the `noul` phrasing moves accuracy. |
-| `cpu_test.py` | CPU mode: accuracy, RAM, latency versus question count. |
+- Copy the weights from the work machine. [HANDOFF.md](HANDOFF.md), section 1, gives the files and the folders.
+- Train the models again with the scripts. The section "Train a new version" gives the scripts.
 
-Game bot:
+The base models come from Hugging Face: `microsoft/deberta-v3-base`, `microsoft/deberta-v3-small`, `Qwen/Qwen3-1.7B`.
+The speech model and the voice come from the sherpa-onnx releases.
 
-| | |
-|---|---|
-| `chat.py` | **Interactive REPL: talk to the laya bot from a terminal.** Implements the recommended configuration and prints the winning order, its probability and the latency after every reply. `/v` shows the full distribution, `/model` switches model, `/t` moves the threshold, `/veto` toggles the nli second opinion. |
-| `qwen_bot.py` | **The same bot on the Qwen engine**, for side-by-side comparison. `--score` runs the test set under both label encodings; `--phrase` / `/enc` switch them live. Needs the Qwen server on :8000. |
-| `commands.json` | The command vocabulary: intent name, the label the model is shown, and the description. Single source for the bot and every harness. Its header records what each field is worth. |
-| `label_ablation.py` | The 2×2 that found the label style: label as code or phrase × description present or absent, per model. Run it before changing model. |
-| `testset.json` | The 60-case set: 15 commands plus `NONE`, STT-style input, confusable pairs, nine kinds of rejection. |
-| `run_testset.py` | The flat head-to-head. This is where 62 % comes from. |
-| `bot_matrix.py` | 12 prompt configurations: two models × three description styles × two state wrappers. Accuracy ranged 2/11 to 10/11. |
-| `cascade.py` | The `nli`-gate + `laya`-pick cascade, with umbrella collapsing and code-side negation. Measured at 36 %. Kept as a closed hypothesis, with the reasoning errors documented in its docstring. |
-| `measure_reinforce.py` | The inverse of the cascade: `laya` picks, `nli` may veto with NONE. Two veto shapes against two baselines. Also a closed hypothesis — 62 % plain, 57 % with the full veto, 50 % with the cheap one. |
-| `bot_questions.json` | The first schema tried, whose `noul` gate was discarded. Historic. |
-| `testset_results.json`, `cascade_results.json`, `ollaya_results.json` | Per-case output of the three runs. |
+## Run the brain
 
-## reference/
+Start a chat in the terminal with bot v58:
 
-| | |
-|---|---|
-| `fams.json` | All 11 families characterised from `docs/families/` and the registry manifests: architecture, context, option ceilings, readout mechanism, calibration, licence, gotchas, with file-and-line citations. |
-| `workflow-model-catalogue.json` | Raw output of the run that produced `fams.json` and the selection guide. |
-| `workflow-qwen-mapping.json` | Raw output of the run that established how the Qwen presets map onto ollaya's question schema, including the live probing of the option-count ceilings. |
+```
+build\Release\coop_cli.exe --model-dir ..\..\models\coop-deberta-v3-ens3-v58\cpp
+```
 
-## What is not here
+Add the router and the decoder:
 
-The other half of the comparison lives in `G:\Proj\Qwen-2.5-1B-RLCD` as an **uncommitted working
-tree**: a pinned CUDA requirements file, a `REQUIRE_CUDA` startup guard, a fixed baseline JSON parser,
-exact full-sequence rescoring for fields whose choices share a first token, hand-labelled ground truth
-in all four presets with the destroyed monetary figures reconstructed, accuracy reporting with
-`--repeat`, and reworked UI badges. That work is described in the session it came from, not here.
-One defect was found there and left unfixed: `_gpu_lock` is declared at `core/engine_torch.py:29` and
-never used, so the torch backend does not serialise GPU access the way the MLX backend does.
+```
+build\Release\coop_cli.exe --model-dir ..\..\models\coop-deberta-v3-ens3-v58\cpp --chain ..\..\models\coop-chain-v59\cpp
+```
 
-No STT component was measured. ollaya does nothing with speech — there is not a line about it in the
-repository — and the end-to-end budget for a voice-driven bot is unknown until that is benchmarked.
+Run the engine checks. Each check compares the C++ engine with the Python twin:
+
+```
+build\Release\coop_cli.exe --model-dir <bot cpp dir> --golden
+build\Release\coop_cli.exe --model-dir <bot cpp dir> --tokenizer-tests
+build\Release\coop_cli.exe --model-dir <bot cpp dir> --location-tests
+build\Release\coop_cli.exe --model-dir <bot cpp dir> --gate-tests
+build\Release\coop_cli.exe --model-dir <bot cpp dir> --decide-tests
+build\Release\coop_cli.exe --model-dir <bot cpp dir> --dialogue
+build\Release\coop_cli.exe --model-dir <bot cpp dir> --world-tests
+build\Release\coop_cli.exe --model-dir <bot cpp dir> --chain <chain cpp dir> --chain-tests --decoder-cpu
+```
+
+All checks must pass.
+
+### Use the brain in a game
+
+1. Copy the brain into the game folder:
+   ```
+   pwsh cpp/coop_intent/tools/deploy_brain.ps1 -Target <game>\Binaries\CoopBrain -Bot coop-deberta-v3-ens3-v58 -Chain coop-chain-v59
+   ```
+2. Start `coop_cli.exe --serve` from the game.
+3. Send one JSON command per line on stdin. Read one JSON event per line on stdout.
+
+[cpp/coop_intent/README.md](cpp/coop_intent/README.md), section "The bot as a service for a game", gives the protocol.
+
+## Train a new version
+
+Use a Python environment with PyTorch and CUDA.
+The speech tools use their own environment in `scripts/coop/stt/venv`.
+
+To train a classifier (example: v58):
+
+1. Run `scripts/coop/make_spec_v58.py`. It writes the label specification and the seed commands.
+2. Run `scripts/coop/stt/export_v58.py seeds`. It writes the list of the new seed commands.
+3. Run `scripts/coop/stt/synth_v58.py seeds` and `synth_windows_v58.ps1 seeds`. They make the audio of the new seed commands.
+4. Run `scripts/coop/stt/run_build_v58.ps1`. It trains three out-of-fold runs and three final models.
+5. Run `scripts/coop/stt/ensemble_bot_v58.py`. It sets the gate, exports the ONNX files and writes the engine test files.
+6. Run the engine checks.
+
+To train the router and the decoder (example: chain v59):
+
+1. Write the new rules in `scripts/coop/stt/chains2/spec_context_v59.json`.
+2. Put the new training items in `scripts/coop/stt/chains2/`.
+3. Run `scripts/coop/stt/run_chains5_v59.ps1`. It voices the items, checks them, trains, exports and scores.
+4. Run the chain checks (`--chain-tests`).
+
+## Rules for changes
+
+- Do not put model weights in git.
+- If you change a Python twin, change the C++ twin also. All engine checks must pass.
+- Do not make a tolerance larger to make a check pass.
+- Do not train on a test set. The owner's real lines are test sets only.
+
+## Licence
+
+The code in this repository has the Apache License 2.0 ([LICENSE](LICENSE)).
+Each model has its own licence. Read the model card of each model before you use or distribute it.
