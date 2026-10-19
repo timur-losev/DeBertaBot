@@ -405,6 +405,9 @@ labels, and were not trained again; the v55 decoder learned v55's words for "go 
 seen "let me out", so a line of several orders with them is written as v55 would. Bot v58 runs with the v58 chain
 (`-Bot coop-deberta-v3-ens3-v58 -Chain coop-chain-v58`): round five's decoder (`scripts/coop/stt/chains4_v58.py`)
 with round four's router, which routed the blind sets and the owner's lines better than the one trained with it.
+Since the evening of 2026-10-18 the game runs bot v58 with chain v59 (`-Chain coop-chain-v59`): round six's decoder
+(`scripts/coop/stt/chains5_v59.py`: a movement and another order are two orders) with its own router v59, which sends
+the owner's "go up by these stairs and ..." lines to the model; chain tests 160/160 (CPU).
 
 **Checked** (`--chain-tests`, 160 lines: single orders, chains, lines with a context, typed and in the form a
 transcript has): the decoder's turn text 160/160; the router's probability within 1e-4 of PyTorch on 160/160

@@ -1310,6 +1310,31 @@ named goes "куда я смотрю".
   "shoot", "shoot here", "go there", decoder v58 writes "no, here, on my pin" as "shoot here, on my pin" (v55's: "go
   to my pin"): it takes the correction to the order said most, not the last one. For round six's data.
 
+### Chain v59: a movement and another order (2026-10-18, evening)
+
+The owner tested "Go up by these stairs and jump up / jump down / sit down / find cover" after v58 was deployed: each
+became one move, the second order lost (the router kept the lines from the model, and with every line sent to it both
+decoders v55 and v58 still kept them whole: spec_chain.json's rule 3 and items like "go upstairs and stay there" taught
+"go X and do Y" as one order). The owner: "да" to round six, then "ставляй v59".
+
+- **The language model, round six** ([chains5_v59.py](scripts/coop/stt/chains5_v59.py), rules in
+  `chains2/spec_context_v59.json`): rule 9, a movement that names its own way or place and then another action is two
+  orders (a flank, a push in and clear, staying or hiding at the very place stay one); rule 3b, a correction is for the
+  last order. 104 new items from three blind AI authors kept by the v58 ensemble (4 with recognizer slips out: nothing
+  downstream knows "pistil", "prawn", "pen", "frack"). The owner's 50 lines (`chains2/owner_ctx_v59.json`: round five's
+  30 and 20 of a movement and another order): chain v58 34/50, decoder v59 with router v55 38/50, with router v59 45/50.
+  Round three's blind sets: level, router v59 3 of 150 worse on typed chains.
+- **The router is v59's** (the owner's choice): it sends all of the owner's "go up by these stairs and ..." to the
+  model (v55: 0.00 to 0.13). Chain tests 160/160. Deployed: `-Bot coop-deberta-v3-ens3-v58 -Chain coop-chain-v59`.
+- **On the owner's 730 lines** (today's play included): 38 readings change. Gained: the eight "go up by these stairs
+  and ..." lines, "Move up and check.", "Go up and check there." twice, "go up and shoot that car.", "Move out." in the
+  car. Lost: "Now uh another window." (after "Stop" and "Yes" the last order is no shot: rule 3b), "This stairs, this."
+  (taken as the last order "stay in front of me"), "From here." after "Get out." (GET_IN), "Step up here and find cover."
+  and "Uh jump down here and find cover." (one order: the exception "get down and find cover" taught too widely),
+  "By these stairs." (router 0.42), and two garbled ones. Not read yet: "Get into the car and get out." (router 0.00).
+- **End to end:** `v59.txt` on Expanse (sit down, find cover, check, jump after a move: two orders each, in order);
+  `context.txt`'s "no, here, on my pin" after shots and "go there" is a move again; every other script as on chain v58.
+
 ### v57: changing weapons, reloading, and the words the recognizer got wrong (2026-10-17)
 
 The owner's notes after playing v56 on Expanse: the bot does not switch weapons when it runs out of ammo, and there
