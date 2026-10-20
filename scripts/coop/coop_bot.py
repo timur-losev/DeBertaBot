@@ -116,6 +116,17 @@ LINES = {
     "GO_BACK": ["Going back.", "Heading back.", "Back to where I was."],
     "SWITCH_WEAPON": ["Switching weapons.", "Swapping.", "Changing guns."],
     "RELOAD": ["Reloading.", "Changing mags.", "Reloading, cover me."],
+    # the v60 bots: the farmer and the builder
+    "PLANT_CROP": ["Planting.", "Getting it in the ground.", "Sowing."],
+    "WATER": ["Watering.", "On the watering.", "Giving them water."],
+    "HARVEST": ["Harvesting.", "Bringing it in.", "Picking it."],
+    "TILL": ["Working the ground.", "On the soil.", "Getting the ground ready."],
+    "FEED": ["Feeding them.", "On the feeding.", "Getting them fed."],
+    "COLLECT": ["Collecting.", "Gathering it up.", "On it, collecting."],
+    "DELIVER": ["Bringing it.", "On the way with it.", "Carrying it over."],
+    "BUILD": ["Building.", "Putting it up.", "On the build."],
+    "REPAIR": ["Repairing.", "Fixing it.", "Patching it up."],
+    "DEMOLISH": ["Tearing it down.", "Taking it apart.", "Demolishing."],
 }
 ACK = ["Copy.", "Noted.", "Heard."]                   # NONE: a callout or chatter, nothing to do
 AGAIN = ["Say again?", "Didn't catch that.", "Come again?"]

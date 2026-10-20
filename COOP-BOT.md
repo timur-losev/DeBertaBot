@@ -1261,6 +1261,97 @@ of its own; ammo, weapons and health are places to walk to; a negated order is "
   client's world. End to end: `v55.txt` (every request above, including "start shooting" then "to this wall" firing
   where the player looks), `v55_car.txt`, `chain.txt`.
 
+### v60: the farmer and the builder, a second line of brains (2026-10-19)
+
+The owner asked what it would cost to add a farmer's and a builder's intents, and decided:
+
+- Modes are mixed: farming, building and fighting happen on one map at the same time.
+- The builder builds only what the build mechanic has: "build a wall" works if the menu has a wall; "build a
+  pillar" is refused when there is no pillar. COLLECT and the others work the same way.
+- The brain comes first; the game's mechanics come later.
+- v60 is a new line next to v5x, and the game switches between the two.
+
+The v5x line (bot v58, chain v59) stays as it is. Every v5x file and test is byte-identical; the 7 engine checks of
+bot v58 pass with the new code.
+
+- **Intents: 47 -> 57** ([make_spec_v60.py](scripts/coop/make_spec_v60.py)). Ten new intents come after RELOAD:
+  PLANT_CROP, WATER, HARVEST, TILL, FEED, COLLECT, DELIVER, BUILD, REPAIR and DEMOLISH. Each one is a family of its
+  own.
+- **Boundaries with the shooter's intents:**
+  - A bare "plant" stays PLANT (the bomb).
+  - "Clear the room" is ENTRY; "clear the weeds" is TILL.
+  - "Breach the wall" is BREACH; "tear down the wall" is DEMOLISH.
+  - "Build cover" is BUILD; "take cover" is TAKE_COVER.
+  - Picking up ammo, a weapon or health stays MOVE_TO. Eggs, wood and honey are COLLECT.
+  - "Dig in" is HOLD_POSITION.
+  - "Help me harvest" is HARVEST.
+  - "Cover me while I build" is COVER_ME.
+  - What the player says they do themselves is NONE.
+- **Seeds:** 502 new seeds (2012 -> 2514), with the crops of the UltimateFarming pack that the project has.
+- **Old lines:** none of the v1 to v58 authored lines names farm or build work (checked by a word search), so no
+  line is relabelled.
+- **The item: what the order acts on.** The intent is the verb. The item is the thing as the player said it: "build
+  a pillar" gives "pillar", "give the cows some hay" gives "cows", "carry the crate to the barn" gives "crate". The
+  rules are [items.py](scripts/coop/items.py) with the word lists in
+  [items_v60.json](scripts/coop/items_v60.json), and `cpp/coop_intent/src/items.cpp` is their C++ twin.
+  - Rule set i1 was frozen before it was run on the test lines: 174/180 v60 lines.
+  - i2, after that run, gives 180/180.
+  - Not blind: before i1 was written, the authors' and annotators' summaries had quoted about 50 of the 180 lines.
+- **The planner** (world.py and world.cpp, "the farmer's and the builder's orders"):
+  - The game can send a catalogue per intent (`"catalog"` in the world state). An item the catalogue does not have
+    is refused with the reason, and no order goes out.
+  - A found item comes back as `item_id`, matched with plurals aside.
+  - For BUILD, COLLECT and DELIVER, a place that is the item itself is not where the order goes: "carry the crate
+    to the barn" goes to the barn.
+  - A bare "plant" plants a crop when the bot has no bomb and has seeds.
+  - A correction keeps the item: "no, by the barn".
+  - The planner dev check passes 130/130 steps.
+- **The places.** [locations_v60.json](scripts/coop/locations_v60.json) is vocabulary version 8, made by
+  [make_locations_v60.py](scripts/coop/make_locations_v60.py). It adds 11 objects: field, bed, greenhouse, barn,
+  coop, beehive, well, fence, tree, crate and foundation. The rule set is still v7. `locations.vocab_file()` picks
+  the file by `COOP_TAG`. On the v60 lines, the place matcher gets 168/180 places right, and 174/180 when the item's
+  own place is passed over.
+- **Test lines:** three blind AI authors (personas r6, cs, stt) wrote 60 lines each, and two annotators read each
+  author's lines. All 180 lines are unanimous on the intent, and 179 on the item and on the place. The authors and
+  annotators are one model family, so this is weaker than it sounds.
+- **C++ against Python** (a stub v60 config, before training):
+  - items: 92,037/92,037 lines and intents;
+  - world: 10,005/10,005 steps and worlds, including the refusals;
+  - decide: 244/244.
+- **Training:** `stt/build_v60.py` and `stt/ensemble_bot_v60.py` use v58's recipe, and the voices come from
+  `stt/synth_v60.py`. The training set has 9037 rows: 1755 lines and 2514 seeds typed, and 4768 transcripts. It took
+  67 min on the RTX 4090. Gate: family, threshold 0.66, as v58.
+- **Out-of-fold numbers** (criterion near - 2 x wrong family):
+
+  | Lines | v60 | v58 |
+  |---|---|---|
+  | The 180 v60 lines, typed | 99.4 | - |
+  | The 120 v60 lines, unseen voices (VCTK B) | 70.8 | - |
+  | The 1575 older lines, typed | 90.0 | 90.2 |
+  | The older lines, unseen voices | 67.9 | 67.5 |
+
+  The shooter lost nothing measurable on its own lines.
+- **Engine checks:** all 8 pass on bot v60, the 7 usual ones and `--item-tests` (92,037/92,037).
+- **The owner's lines** (730 heard lines of 2026-10-16..18, 436 different; v58 against v60, classifier only): v60
+  picks another reading on 50 lines.
+  - One line goes to a farmer's or builder's intent, and it is wrong: "Should this wall?" (the owner's "Shoot this
+    wall", misheard) is REPAIR 0.72.
+  - The misheard "should ..." lines that v58 read as OPEN_FIRE ("Should this fall", "Should this well", "Should this
+    ball", "Should that wall", ...) are mostly "say again" now. The new wall, well and fence orders pulled them away.
+  - "Shotgun." and "Another." also lost their readings.
+  - Gains: "Take shotgun." (SWITCH_WEAPON), "Go inside of the car." (GET_IN), "Now this windows." (OPEN_FIRE).
+  - A fix round would add the owner's misheard "should <thing>" lines as OPEN_FIRE seeds, as v57 did.
+- **Deploy:** `deploy_brain.ps1` now copies llama.cpp's DLLs whenever the exe links them. A brain deployed without
+  `-Chain` used to end at once with STATUS_DLL_NOT_FOUND.
+- **In the game:** a second brain folder, `Binaries/CoopBrainV6`, and the switch `ov.CoopBot.Brain.Line 5|6`. The
+  ten orders are understood and spoken back with their item. The game has no farming or building mechanics yet.
+  End to end (`Tests/E2E/v60.txt`, dedicated server and client):
+  - v5x starts, line 6 brings up v6x in 5.4 s, and line 5 brings back v5x.
+  - The ten orders come back as "Understood: build pillar. No farming or building on this map yet.", "Understood:
+    feed cows." and so on.
+  - Move, come back, crouch and stand up are carried out through the v6x brain.
+  - "Build a wall" under v5x is "say again".
+
 ### v58: going on with a movement, and the talk before a line (2026-10-18)
 
 The developer's audit of the owner's 689 spoken lines (2026-10-16..18, bots v56 and v57): answers and repeats work;

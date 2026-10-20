@@ -32,6 +32,14 @@
 // And "the other one" in answer to "Which door? The one ahead, 8 m?" is not the door the bot just offered.
 // scripts/coop/world.py, "a line of several orders".
 //
+// The farmer and the builder (the v60 bots, a config with "items"). The intent is the verb; what it acts on is the item
+// the line names (items.h: "build a pillar" = "pillar"). The game may send, per intent, what it has (WorldState::catalog:
+// its build menu, the seeds the bot carries, what lies around): an item the intent's catalogue lacks is refused with the
+// reason ("I can't build that: no pillar in my build menu.") and no order goes out; an intent without a catalogue passes
+// the item on as said. For BUILD, COLLECT and DELIVER a place of the line that is the item itself ("carry the crate to the
+// barn") is not where the order goes. A bare "plant" is planting a crop when the bot carries no bomb and has seeds.
+// scripts/coop/world.py, "the farmer's and the builder's orders".
+//
 // Bearings are degrees in the player's view (0 ahead, positive to the right, (-180, 180]), distances and elevations
 // metres. Entities carry the vocabulary's object, qualifier and zone ids (locations.json): the game tags its actors
 // with the names the map callouts use.
@@ -59,6 +67,12 @@ struct WorldPin {
     double bearing = 0, distance = 0, elevation = 0;
 };
 
+// one thing the game has for an intent: its id and the words players use for it (lowercase tokens, one space between)
+struct CatalogEntry {
+    std::string id;
+    std::vector<std::string> words;
+};
+
 struct WorldState {
     std::vector<WorldEntity> entities;
     bool has_player_pin = false;
@@ -72,6 +86,18 @@ struct WorldState {
     bool bot_busy = false;     // the bot is still carrying out the order it took last
     bool has_time = false;     // the game sends its clock: without it there is no context
     double time = 0;           // seconds
+    // per intent with an item ("BUILD", "PLANT_CROP", ...), what the game has; an intent not listed has no catalogue
+    std::vector<std::pair<std::string, std::vector<CatalogEntry>>> catalog;
+    const std::vector<CatalogEntry>* Catalog(const std::string& intent) const {
+        for (const auto& c : catalog)
+            if (c.first == intent) return &c.second;
+        return nullptr;
+    }
+};
+
+// what an order acts on: the words said and the catalogue entry they name; empty: none
+struct ItemInfo {
+    std::string said, id;
 };
 
 // the world state the game hands over; false with a message on anything the rules cannot read
@@ -107,6 +133,7 @@ struct Memory {
         // bot's "Where?" (target is the "there"), "the other door" when that settled "Which door?" (target is "the door")
         bool has_said = false;
         PlaceTarget said;
+        ItemInfo item;             // what the order acts on: a correction gives the same order with it
     } frame;
     bool has_question = false;
     struct Question {
@@ -117,6 +144,7 @@ struct Memory {
         bool other = false, queued = false;   // the order's "other" slot; it was given "on my go"
         std::vector<std::string> candidates;
         int offered = 0;    // the candidate last offered ("The one on the left, 8 m?")
+        ItemInfo item;      // what the order asked about acts on
     } question;
 };
 
@@ -132,6 +160,10 @@ struct Order {
     bool other = false;
     std::string via;                       // how the place was found (Grounding::via); "here": where the speaker is
     bool nearby = false;                     // the line pointed with "this" / "here" and no far word ("hold this spot")
+    // the farmer's and the builder's orders (an intent with an item): what it acts on -- the words said and the game's
+    // catalogue entry, each empty when there is none
+    bool has_item = false;
+    std::string item, item_id;
 };
 
 struct PlannerResult {
@@ -161,6 +193,9 @@ bool Usable(const Grounding& g);
 bool ApplyPriors(std::vector<double>* probs, const std::vector<std::string>& labels, const WorldState& world,
                  const Memory& memory, const std::vector<Prior>& priors);
 std::string Describe(const WorldEntity& e);   // "on the left, 8 m"
+// world.match_catalog: the id of the entry an item names (its words, plurals aside; else its last word; else, for one
+// word, the first entry ending in it), or empty
+std::string MatchCatalog(const std::string& item, const std::vector<CatalogEntry>& entries);
 
 class Planner {
 public:
@@ -178,11 +213,14 @@ public:
 
 private:
     Order MakeOrder(int intent, const PlaceRecord& record, const std::vector<Grounding>& grounding, int k, bool other, bool nearby = false,
-                    const PlaceTarget* said = nullptr);
+                    const PlaceTarget* said = nullptr, const ItemInfo* item = nullptr);
+    bool PlantsCrops() const;   // a bare "plant" is planting a crop: no bomb on the bot, seeds in its bag
+    // what the order acts on; false with *refused set when the intent's catalogue lacks it
+    bool ItemOf(std::string_view text, const std::string& intent, ItemInfo* item, std::string* refused) const;
     // a further order of the line being read: a place it names as the order before it did is that order's place
     void SamePlace(const PlaceRecord& record, std::vector<Grounding>* grounding) const;
     void Ask(int intent, const PlaceRecord& record, const std::vector<Grounding>& grounding, int k, bool other, bool queued,
-             PlannerResult* out);
+             PlannerResult* out, const ItemInfo* item = nullptr);
     bool Answer(int intent, PlannerResult* out);
     // "the other one" in answer to "Which ...? The one ...?": not the one just offered. left: the candidates the line
     // still fits; said: how the line named the place ("the other door"), if it did. False: no other is left, the line
@@ -211,6 +249,7 @@ private:
     Memory memory_;
     std::string pending_entity_;   // the queued order's resolved entity
     bool pending_here_ = false, pending_near_ = false;
+    ItemInfo pending_item_;        // ... and what it acts on
     bool frame_in_line_ = false;   // the frame is of an order of the line being read (Step(..., continued))
 };
 

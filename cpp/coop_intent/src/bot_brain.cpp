@@ -156,6 +156,8 @@ bool BotBrain::Init(IntentConfig config, std::string* error) {
     }
     places_ = LocationMatcher();   // a config without "locations" must not keep the matcher of the one before
     if (cfg_.has_locations && !places_.Init(cfg_.locations, error)) return false;
+    items_ = ItemMatcher();
+    if (cfg_.has_items && !items_.Init(cfg_.items, error)) return false;
     return slots_.Init(cfg_, error);
 }
 

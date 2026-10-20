@@ -167,6 +167,27 @@ const char* PlacePointerName(PlacePointer p) {
     return "";
 }
 
+std::vector<PlaceToken> PlaceTokens(std::string_view utf8) {
+    std::vector<PlaceToken> out;
+    for (Tok& t : Tokenize(utf8)) out.push_back({std::move(t.word), t.brk});
+    return out;
+}
+
+const char* LocationMatcher::PhraseKind(const std::string& joined, int* index) const {
+    auto it = phrases_.find(joined);
+    if (it == phrases_.end()) return nullptr;
+    if (index) *index = it->second.a;
+    switch (it->second.kind) {
+        case Kind::Object: return "object";
+        case Kind::Qualifier: return "qualifier";
+        case Kind::Named: return "named";
+        case Kind::Zone: return "zone";
+        case Kind::ZoneEnd: return "zone_end";
+        case Kind::Ignore: return "ignore";
+    }
+    return nullptr;
+}
+
 bool LocationMatcher::In(const char* list, const std::string& word) const {
     auto it = lists_.find(list);
     return it != lists_.end() && it->second.count(word) != 0;

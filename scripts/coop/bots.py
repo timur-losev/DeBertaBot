@@ -16,7 +16,7 @@ Then the tools take FALLBACK and say so on stderr.
 To switch the default: change DEFAULT here and the same name in cpp/coop_intent/CMakeLists.txt
 (COOP_MODEL_DIR is a CMake cache variable: an existing build directory keeps the old value).
 """
-import io, json, os, sys
+import io, json, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 MODELS = os.path.normpath(os.path.join(HERE, "..", "..", "models"))
@@ -40,3 +40,12 @@ def default_bot():
               file=sys.stderr)
         return f
     return d
+
+
+def tag_of(model_dir):
+    """The COOP_TAG a bot was trained under: its bot_config names its seed file (seed_commands_<tag>.json); None if none."""
+    cfg = os.path.join(model_dir, "bot_config.json")
+    if not os.path.exists(cfg):
+        return None
+    m = re.search(r"seed_commands_(v[0-9]+)", json.load(io.open(cfg, encoding="utf-8")).get("trained_on", ""))
+    return m.group(1) if m else None

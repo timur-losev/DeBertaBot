@@ -44,6 +44,7 @@ add_library(coop_intent_core STATIC
   src/unicode.cpp
   src/tokenizer.cpp
   src/bot_brain.cpp
+  src/items.cpp
   src/locations.cpp
   src/world.cpp
   src/intent_model.cpp

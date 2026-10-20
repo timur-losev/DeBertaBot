@@ -50,6 +50,8 @@ Rule sets (the word lists are in locations.json "words"):
       "inside" ("go inside", "get indoors", "get in the building"), relative like "up" and "down". One rule, step 8:
       "inside" said on the way to a map object is that object's preposition, not a place ("get inside the car" = the
       car, "go inside through the west door" = the west door). rules/v7 holds the frozen bytes.
+      The v60 bots (farmer and builder, COOP_TAG v60) read rule set v7 with locations_v60.json, version 8 (the farm's and
+      the building site's places, make_locations_v60.py); every other tag reads locations.json, version 7. Same code.
 
   mentions    left to right, the longest vocabulary phrase at each token: object, qualifier, named
               place (object + qualifier in one phrase), zone, or an "ignore" phrase ("off the table").
@@ -440,8 +442,17 @@ def _no_duplicate_keys(pairs):
     return dict(pairs)
 
 
+V60_TAGS = ("v60",)
+
+
+def vocab_file(tag=None):
+    """The place vocabulary of a study tag (default: COOP_TAG): locations_v60.json for the v60 bots, else locations.json."""
+    tag = tag or os.environ.get("COOP_TAG", "")
+    return os.path.join(HERE, "locations_v60.json" if tag in V60_TAGS else "locations.json")
+
+
 def load_vocab(path=None):
-    v = json.load(io.open(path or os.path.join(HERE, "locations.json"), encoding="utf-8"),
+    v = json.load(io.open(path or vocab_file(), encoding="utf-8"),
                   object_pairs_hook=_no_duplicate_keys)
     errs = validate(v)
     if errs:

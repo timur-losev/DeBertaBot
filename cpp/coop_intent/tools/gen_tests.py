@@ -83,8 +83,11 @@ import bots  # noqa: E402
 _ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
 NO_MODEL = "--no-model" in sys.argv
 DECIDE_ONLY = "--decide-only" in sys.argv
+ITEMS_ONLY = "--items-only" in sys.argv     # item_tests.jsonl alone (a v60 bot's config, no model)
 MODEL = os.path.normpath(_ARGS[0] if _ARGS else bots.default_bot())
 OUT = os.path.join(MODEL, "cpp")
+if bots.tag_of(MODEL) in ("v60",):     # a v60 bot reads its own place vocabulary (locations.vocab_file)
+    os.environ["COOP_TAG"] = bots.tag_of(MODEL)
 import coop_bot  # noqa: E402
 import locations as LOC  # noqa: E402
 from timing_rule import OTHER  # noqa: E402
@@ -760,7 +763,7 @@ def place_lines(n, seed=23, patterns=0.0, use=DIR_PATTERNS):
     every rule branch many times. Some lines run past locations.MAX_TOKENS. `patterns` is the share of
     parts that are one of `use` (DIR_PATTERNS: rule set v4), a third of them with one word dropped, added
     or swapped, or a punctuation mark put in: the lines next to the ones a rule is written for."""
-    v = json.load(io.open(os.path.join(COOP, "locations.json"), encoding="utf-8"))
+    v = json.load(io.open(LOC.vocab_file(), encoding="utf-8"))
     phrases = [w for o in v["objects"] for w in o["words"]] + [w for q in v["qualifiers"] for w in q["words"]] + \
         [t["phrase"] for t in v["named"]] + [w for z in v["zones"] for w in z["words"] + z.get("words_end", [])] + v["ignore"]
     rule = sorted({w for ws in v["words"].values() for w in ws})
@@ -854,7 +857,7 @@ def location_tests(texts):
     # and both go through the roles and the primary rule together). Only a vocabulary with the pointer lists gets
     # them, after every other line: those do not depend on these
     pointers = []
-    if has_pointers(json.load(io.open(os.path.join(COOP, "locations.json"), encoding="utf-8"))):
+    if has_pointers(json.load(io.open(LOC.vocab_file(), encoding="utf-8"))):
         pointers = PTR_TARGETED + place_lines(PTR_LINES, seed=31, patterns=0.75, use=2 * PTR_PATTERNS + DIR_PATTERNS)
     older = set(texts) | set(more)
     # how many lines the pointer batch adds (None: the vocabulary has no pointer lists), for main()'s summary
@@ -929,10 +932,10 @@ def check_vocabulary():
         return
     cfg = json.load(io.open(p, encoding="utf-8"))
     mine = cfg.get("locations")
-    now = {k: v for k, v in json.load(io.open(os.path.join(COOP, "locations.json"), encoding="utf-8")).items()
+    now = {k: v for k, v in json.load(io.open(LOC.vocab_file(), encoding="utf-8")).items()
            if not k.startswith("_")}
     if mine is not None and mine != now:
-        sys.exit(f"{p} holds the place vocabulary of rule set {mine.get('version')}, scripts/coop/locations.json is "
+        sys.exit(f"{p} holds the place vocabulary of rule set {mine.get('version')}, scripts/coop/{os.path.basename(LOC.vocab_file())} is "
                  f"rule set {now.get('version')}: the bot's test files stay as they are. To move the bot to today's "
                  f"rules: export_cpp.py {MODEL} --config-only, then this again")
     # the same for the three regexes: the slots written here are the Python bot's of today (since rule set v5 its
@@ -943,6 +946,83 @@ def check_vocabulary():
         sys.exit(f"{p} holds other slot patterns than the Python bot uses today ({', '.join(other)}): the bot's test "
                  f"files stay as they are. To move the bot to today's patterns: export_cpp.py {MODEL} --config-only, "
                  f"then this again")
+
+
+def has_items():
+    """The bot's config has the item word lists (export_cpp.py: a v60 bot, scripts/coop/items_v60.json)."""
+    p = os.path.join(OUT, "intent_config.json")
+    return os.path.exists(p) and "items" in json.load(io.open(p, encoding="utf-8"))
+
+
+def item_lines(n, seed=61):
+    """Random sequences of the item rules' words (verbs, determiners, amounts, recipients, links, stop words, things),
+    place phrases, fillers, repeats and punctuation: every branch of items.find many times."""
+    import items as IT
+    rng = random.Random(seed)
+    S = IT.ITEMS
+    v = json.load(io.open(LOC.vocab_file(), encoding="utf-8"))
+    places = [w for o in v["objects"] for w in o["words"]] + [w for z in v["zones"] for w in z["words"]] + \
+        [w for q in v["qualifiers"] for w in q["words"]] + v["ignore"][:5]
+    things = ["wall", "wooden wall", "carrots", "tomato seedlings", "eggs", "wood", "planks", "hay", "pillar", "cows", "chickens",
+              "barricade", "fence", "crate", "roof", "hole", "breach", "water", "seeds", "plants", "stuff", "animals", "corn",
+              "sandbag wall", "dragon fruit", "uranium", "scrap metal", "kitchens", "fans", "trough", "rid", "of"]
+    pools = [sorted(S["all_verbs"]), sorted(S["determiner"]), sorted(S["amount"]), sorted(S["recipient"]), sorted(S["dem_determiner"]),
+             sorted(S["anaphor"]), sorted(S["particle"]), sorted(S["stop"]), sorted(S["not_kind"]), sorted(S["damage"]),
+             sorted(S["damage_link"] | S["with_link"] | {"to", "for"}), things, places, ["uh", "um", "2", "3", "go", "bro", "please"],
+             sorted(S["generic"] | S["generic_crop"] | S["generic_feed"] | S["feed_not"])]
+    weights = [6, 5, 3, 2, 1, 2, 2, 4, 2, 1, 2, 6, 4, 2, 2]
+    punct = [" ", " ", " ", " ", " ", ", ", ". ", "! ", "? "]
+    out = []
+    for _ in range(n):
+        parts = []
+        for _ in range(rng.randint(1, 9)):
+            pool = rng.choices(pools, weights)[0]
+            w = rng.choice(pool)
+            parts.append(w)
+            r = rng.random()
+            if r < 0.05:
+                parts.append(w)                       # the recogniser's repeat
+            elif r < 0.08 and len(parts) >= 2:
+                parts += parts[-2:]                   # a pair repeated
+        line = ""
+        for i, w in enumerate(parts):
+            line += (rng.choice(punct) if i else "") + w
+        out.append(line)
+    return out
+
+
+def item_tests():
+    """items.find per line and intent: the v60 seeds, the v60 test lines, the developer's item lines and generated
+    lines, each under every intent with an item and two without (TILL, MOVE_TO)."""
+    import items as IT
+    texts = []
+    seeds = os.path.join(COOP, "seed_commands_v60.json")
+    if os.path.exists(seeds):
+        texts += [t for k, v in json.load(io.open(seeds, encoding="utf-8")).items() if not k.startswith("_") for t in v]
+    for key in ("r6", "cs", "stt"):
+        pa = os.path.join(COOP, "blind", "v60", f"author_{key}_lines.json")
+        if os.path.exists(pa):
+            texts += [x["text"] for x in json.load(io.open(pa, encoding="utf-8"))]
+    texts += [x["text"] for x in json.load(io.open(os.path.join(COOP, "items_dev.json"), encoding="utf-8"))["lines"]]
+    texts += item_lines(6000)
+    seen, rows = set(), []
+    for t in texts:
+        if t in seen:
+            continue
+        seen.add(t)
+        for intent in IT.ITEMS["intents"] + ["TILL", "MOVE_TO"]:
+            r = IT.find(t, intent)
+            rows.append({"text": t, "intent": intent, "item": r["item"], "first": r["first"], "last": r["last"], "verb": r["verb"]})
+    return rows
+
+
+def write_item_tests():
+    rows = item_tests()
+    with io.open(os.path.join(OUT, "item_tests.jsonl"), "w", encoding="utf-8", newline="\n") as f:
+        for r in rows:
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+    print(f"item tests: {len(rows)} lines and intents, {sum(r['item'] is not None for r in rows)} with an item "
+          f"({len({r['text'] for r in rows})} lines)")
 
 
 def write_decide_tests(bot, dt):
@@ -956,6 +1036,11 @@ def write_decide_tests(bot, dt):
 
 def main():
     check_vocabulary()
+    if ITEMS_ONLY:
+        if not has_items():
+            sys.exit(f"{OUT}: intent_config.json has no \"items\" (a v60 bot's, export_cpp.py)")
+        write_item_tests()
+        return
     if DECIDE_ONLY:
         bot = bare_bot(tokenizer=False)
         os.makedirs(OUT, exist_ok=True)
@@ -1012,6 +1097,8 @@ def main():
         print(f"  rule set v5: {location_tests.pointer_lines} of the lines are the pointer batch's ({PTR_LINES} generated from "
               f"{len(PTR_PATTERNS)} pointer patterns among the direction patterns, and {len(PTR_TARGETED)} written out; "
               f"without the ones generated twice or already there)")
+    if has_items():          # a v60 bot: what the farmer's and the builder's orders act on
+        write_item_tests()
     raised = [r["text"] for r in lt if r.get("python_error")]
     if raised:
         print(f"  locations.record() raises IndexError on {len(raised)} of them (written without a record, not compared), "

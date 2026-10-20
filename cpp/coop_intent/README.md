@@ -110,6 +110,7 @@ a place of its own ("get inside the car" = the car, "go inside through the west 
 | `include/coop_intent/tokenizer.h`, `src/tokenizer.cpp` | the HF DebertaV2 tokenizer: added tokens, normalizer, Metaspace, Unigram/Viterbi | as is |
 | `include/coop_intent/bot_brain.h`, `src/bot_brain.cpp` | `coop_bot.py` `respond()`: top or family gate, threshold, negation guard, GO_NOW/WAIT, HOLD_FIRE (a bot that has the label: it acts at once and keeps the queued order; with the signal slot it queues OPEN_FIRE), the answers (a bot whose config lists `answer_intents`: YES / NO / MAYBE / DONT_KNOW are the action `answer` -- reported, never queued, the queued order left alone), queued order, regex slots | as is, or swap `SlotPatterns` for `FRegexPattern` |
 | `include/coop_intent/locations.h`, `src/locations.cpp` | `LocationMatcher`: the map places in a line (object, side or colour, floor, direction, and whether the line points at it with the pin or with this / that / here / there), whose place each is, which one the bot acts on; a twin of `scripts/coop/locations.py`, no regex and no Unicode tables | as is |
+| `include/coop_intent/items.h`, `src/items.cpp` | `ItemMatcher` (a v60 bot, a config with `"items"`): what the farmer's and the builder's orders act on, as the player said it ("build a pillar" = "pillar"); a twin of `scripts/coop/items.py` | as is |
 | `include/coop_intent/world.h`, `src/world.cpp` | `Planner` over `BotBrain` (see "The world"): the place record grounded against the game's world state (which door, which pin, where the player looks), the conversation's memory, the question the bot asks when a place is ambiguous or missing and the yes / no / place that settles it, the priors the world puts on the probabilities; a twin of `scripts/coop/world.py` | as is: the game fills `WorldState` from its perception and reads `Order` |
 | `include/coop_intent/intent_model.h`, `src/intent_model.cpp` | `ILogitsBackend`, `EnsembleBackend` (averages the members' probabilities, one thread each or in turn), softmax, top-k | as is |
 | `src/ort_backend.cpp` | `OrtBackend`: one model in ONNX Runtime (C++ API; it asks the loaded runtime for that runtime's own API level, so the 1.30 build also runs on an older `onnxruntime.dll`) | replaced by an NNE backend |
@@ -155,6 +156,7 @@ build\Release\coop_cli.exe --dialogue         # C++ vs coop_bot.Bot on a 77-line
 build\Release\coop_cli.exe --gate-tests       # both gates on 1666 probability rows (no model)
 build\Release\coop_cli.exe --decide-tests     # every branch of the bot's decision, both gates (no model)
 build\Release\coop_cli.exe --world-tests      # the planner on 906 worlds and conversations vs world.py (no model)
+build\Release\coop_cli.exe --item-tests       # a v60 bot: the items of the farmer's and the builder's orders vs items.py (no model)
 build\Release\coop_cli.exe --bench --threads 1
 build\Release\coop_cli.exe --tokenize "hold the other angle"
 build\Release\coop_cli.exe --world ..\..\scripts\coop\world_example.json   # chat with a world state loaded

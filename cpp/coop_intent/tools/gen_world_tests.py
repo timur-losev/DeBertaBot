@@ -37,6 +37,8 @@ import bots  # noqa: E402
 _ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
 MODEL = os.path.normpath(_ARGS[0] if _ARGS else bots.default_bot())
 OUT = os.path.join(MODEL, "cpp")
+if bots.tag_of(MODEL) in ("v60",):     # a v60 bot reads its own place vocabulary (locations.vocab_file)
+    os.environ["COOP_TAG"] = bots.tag_of(MODEL)
 import coop_bot  # noqa: E402
 import locations as LOC  # noqa: E402
 import world as W  # noqa: E402
@@ -117,6 +119,132 @@ WAYS = [("go up by the stairs", "MOVE_TO"), ("take the steps down", "MOVE_TO"), 
         ("get indoors", "MOVE_TO"), ("get inside the car", "GET_IN"), ("check inside", "CHECK"), ("go inside through the west door", "MOVE_TO"),
         ("stand on my pin", "HOLD_POSITION"), ("stand here", "HOLD_POSITION"), ("stairs on my pin", "MOVE_TO"), ("go up", "MOVE_TO"),
         ("hold inside the room", "HOLD_POSITION"), ("go up the steps behind you", "MOVE_TO")]
+
+
+# bot v60: the farmer and the builder (world.py, "the farmer's and the builder's orders"). A world with the farm's places and
+# the game's catalogues; orders with things the catalogue has and things it lacks, queued, asked about and corrected; a bare
+# "plant it" with and without a bomb. Drawn only for a bot with those labels, so the scenarios of an older bot stay what they were
+V60 = "BUILD" in CFG["labels"]
+FARM_OBJECTS = [o for o in ("field", "bed", "greenhouse", "barn", "coop", "beehive", "well", "fence", "tree", "crate", "foundation",
+                            "door", "window") if o in OBJECTS]
+CATALOG_POOL = {
+    "BUILD": [("wall_wood", ["wall", "wooden wall"]), ("wall_stone", ["stone wall"]), ("fence", ["fence"]), ("barricade", ["barricade", "sandbag wall"]),
+              ("ramp", ["ramp"]), ("ladder", ["ladder"]), ("watchtower", ["watchtower", "watch tower"]), ("door", ["door"]), ("roof", ["roof"]),
+              ("crate", ["crate"])],
+    "PLANT_CROP": [("seed_carrot", ["carrot", "carrot seeds"]), ("seed_wheat", ["wheat"]), ("seed_tomato", ["tomato", "tomato seedlings"]),
+                   ("seed_corn", ["corn"]), ("seed_potato", ["potato"]), ("berries", ["strawberry", "berries"])],
+    "COLLECT": [("eggs", ["egg"]), ("wood", ["wood", "log", "planks"]), ("honey", ["honey"]), ("stone", ["stone", "rock"]), ("milk", ["milk", "cow"])],
+    "HARVEST": [("wheat", ["wheat"]), ("carrot", ["carrot"]), ("tomato", ["tomato"]), ("corn", ["corn"]), ("potato", ["potato"])],
+    "FEED": [("chickens", ["chicken", "hen"]), ("cows", ["cow"]), ("pigs", ["pig"])],
+    "DELIVER": [("wood", ["wood", "log", "plank"]), ("eggs", ["egg"]), ("seeds", ["seed"]), ("crate", ["crate"]), ("hay", ["hay"])],
+    "REPAIR": [("wall", ["wall"]), ("barricade", ["barricade"]), ("gate", ["gate"])],
+    "DEMOLISH": [("wall", ["wall"]), ("barricade", ["barricade"]), ("ramp", ["ramp"])],
+    "WATER": [("carrot", ["carrot"]), ("tomato", ["tomato"])],
+}
+FARM_LINES = [
+    ("build a wall", "BUILD"), ("build a wooden wall here", "BUILD"), ("build a stone wall at the north door", "BUILD"),
+    ("put up a fence around the field", "BUILD"), ("build a pillar", "BUILD"), ("build a ramp up to the roof", "BUILD"),
+    ("place a barricade on my pin", "BUILD"), ("build a watchtower over there", "BUILD"), ("put a roof on it", "BUILD"), ("build it", "BUILD"),
+    ("build a gazebo by the barn", "BUILD"), ("make a crate", "BUILD"), ("build a fence by the well", "BUILD"), ("build a door", "BUILD"),
+    ("plant carrots in the north field", "PLANT_CROP"), ("plant some dragon fruit", "PLANT_CROP"), ("sow the field with wheat", "PLANT_CROP"),
+    ("plant the tomato seedlings in the bed", "PLANT_CROP"), ("plant potatoes over there", "PLANT_CROP"), ("plant them", "PLANT_CROP"),
+    ("plant it", "PLANT"), ("plant it here", "PLANT"), ("plant the bomb", "PLANT"), ("plant it on my go", "PLANT"),
+    ("water the south field", "WATER"), ("water the carrots", "WATER"), ("water the plants", "WATER"), ("give the tomatoes some water", "WATER"),
+    ("harvest the wheat", "HARVEST"), ("pick the strawberries in the greenhouse", "HARVEST"), ("reap the corn field", "HARVEST"),
+    ("dig up the potatoes", "HARVEST"), ("harvest the rice", "HARVEST"),
+    ("till the field", "TILL"), ("pull the weeds in the carrot bed", "TILL"), ("plow the north field", "TILL"),
+    ("feed the chickens", "FEED"), ("give the cows some hay", "FEED"), ("throw some grain to the pigs in the coop", "FEED"),
+    ("feed the animals", "FEED"), ("fill the troughs", "FEED"), ("feed the goats", "FEED"),
+    ("collect the eggs", "COLLECT"), ("chop some wood", "COLLECT"), ("get the honey from the hives", "COLLECT"), ("go mine some uranium", "COLLECT"),
+    ("cut down that tree", "COLLECT"), ("grab the crate", "COLLECT"), ("milk the cow", "COLLECT"),
+    ("bring me the wood", "DELIVER"), ("carry the crate to the barn", "DELIVER"), ("take the eggs to the coop", "DELIVER"),
+    ("grab the seeds and bring em to me", "DELIVER"), ("drop the planks at my pin", "DELIVER"), ("bring me the gold", "DELIVER"),
+    ("fix the wall", "REPAIR"), ("fix the fence", "REPAIR"), ("patch the hole in the wall", "REPAIR"), ("repair the barricade on the east door", "REPAIR"),
+    ("reinforce the north wall", "REPAIR"), ("fix it", "REPAIR"), ("fix the bridge", "REPAIR"),
+    ("tear down the fence", "DEMOLISH"), ("demolish that wall", "DEMOLISH"), ("knock down the old shed", "DEMOLISH"),
+    ("remove the barricade", "DEMOLISH"), ("tear it down", "DEMOLISH"), ("tear down the tower", "DEMOLISH"),
+    ("go to the barn", "MOVE_TO"), ("take cover behind the fence", "TAKE_COVER"), ("dig in", "HOLD_POSITION"), ("cover me while i build", "COVER_ME")]
+FARM_AFTER = ["no, by the barn", "no, in the north field", "no, here", "there", "on my pin", "again", "no", "the other one", "at the south field",
+              "no, the other field", "over there"]
+
+
+def farm_world(rng):
+    w = W.empty_world()
+    for i in range(rng.choice([1, 2, 3, 4, 5, 6])):
+        obj = rng.choice(FARM_OBJECTS)
+        qual = rng.choice(OBJECTS[obj] + [None, None]) if OBJECTS[obj] else None
+        w["entities"].append({
+            "id": f"{obj}_{i}", "object": obj, "qualifier": qual, "zone": None,
+            "bearing": float(rng.choice([0, 5, -35, 40, -60, 70, 90, -90, 120, -150, 180])),
+            "distance": float(rng.choice([2, 4, 8, 11, 14, 20, 30])), "elevation": 0.0, "tags": rng.sample(TAGS, rng.choice([0, 0, 1]))})
+    for e in list(w["entities"]):       # twins: two fields, two barns, so that "Which field?" comes up
+        if rng.random() < 0.35:
+            t = json.loads(json.dumps(e))
+            t["id"] = e["id"] + "_twin"
+            t["qualifier"] = rng.choice(OBJECTS[e["object"]] + [None]) if OBJECTS[e["object"]] else None
+            t["bearing"] = float(rng.choice([-70, -30, 30, 70, 110, 180]))
+            t["distance"] = float(e["distance"]) * rng.choice([1.0, 1.2, 2.0])
+            w["entities"].append(t)
+    ids = [e["id"] for e in w["entities"]]
+    if rng.random() < 0.6:
+        w["player_pin"] = {"id": "pin_1", "entity": rng.choice(ids + [None, None]), "bearing": float(rng.choice([0, 30, -45, 60])),
+                           "distance": float(rng.choice([3, 9, 25])), "elevation": 0.0}
+    if rng.random() < 0.5:
+        w["player_gaze"] = rng.choice(ids)
+    w["bot"]["items"] = rng.choice([[], [], ["bomb"]])
+    cat = {}
+    for intent, pool in CATALOG_POOL.items():
+        if intent in CFG["labels"] and rng.random() < 0.6:
+            cat[intent] = [{"id": i, "words": ws} for i, ws in rng.sample(pool, rng.choice([0, 1, 2, len(pool) // 2, len(pool)]))]
+    if cat or rng.random() < 0.5:
+        w["catalog"] = cat
+    if rng.random() < 0.8:
+        w["time"] = float(rng.choice([0.0, 100.0]))
+        w["bot"]["busy"] = False
+    return w
+
+
+def farm_scenario(rng, n_steps, gate, threshold):
+    bot = Fake(gate, threshold)
+    world = farm_world(rng)
+    pl = W.Planner(bot, world)
+    steps = []
+    now = world
+    for i in range(n_steps):
+        if i:
+            now = moved_on(rng, now)
+            pl.set_world(now)
+        r = rng.random()
+        q = pl.memory["question"]
+        if q is not None and r < 0.6:
+            if ANSWER_LABELS and rng.random() < 0.4:
+                intent = rng.choice(ANSWER_LABELS)
+                text = rng.choice(ANSWERS_TXT[intent])
+            else:
+                text, intent = rng.choice(POINTING + NARROW), rng.choice(["NONE", q["intent"], q["intent"]])
+        elif bot.pending and r < 0.4:
+            text, intent = rng.choice([("go", "GO_NOW"), ("now", "GO_NOW"), ("wait", "WAIT")])
+        elif pl.memory["frame"] is not None and r < 0.3:
+            text = rng.choice(FARM_AFTER)
+            intent = rng.choice([pl.memory["frame"]["intent"], "NONE", "NONE"])
+        else:
+            text, intent = rng.choice(FARM_LINES)
+            text += rng.choice(SUFFIX) if " on my go" not in text else ""
+        if intent not in CFG["labels"]:
+            intent = "NONE"
+        for _try in range(50):
+            conf = rng.choice([0.3, 0.45, 0.55, 0.7, 0.8, 0.9, 0.95, 0.99])
+            probs = probs_for(rng, bot.labels, intent, conf)
+            adj, _ = W.apply_priors(probs, bot.labels, pl.world, pl.memory)
+            _, c = bot.pick(adj)
+            if abs(c - threshold) > 0.02 and abs(c - W.FRAGMENT_UNSURE) > 0.02:
+                break
+        res = pl.step(text, probs)
+        row = step_row(text, probs, res, pl, bot)
+        if i:
+            row["world"] = now
+        steps.append(row)
+    return {"world": world, "gate": gate, "threshold": threshold, "steps": steps}
 
 
 def bare_world(rng):
@@ -288,7 +416,7 @@ def step_row(text, probs, res, pl, bot):
     q = pl.memory["question"]
     f = pl.memory["frame"]
     # what the planner itself said (a question, a settled order, a stop, an assumed place); the rest is the chat's pick
-    said = res["action"] in ("ask", "resolved") or (res["action"] == "negated" and res["say"] == "Copy, stopping.") or \
+    said = res["action"] in ("ask", "resolved", "refused") or (res["action"] == "negated" and res["say"] == "Copy, stopping.") or \
         (res["order"] is not None and res["order"]["via"] == "pin_default" and res["action"] == "act") or \
         (res["order"] is not None and f is not None and f["g"] is not None and res["action"] == "act" and res["say"] == pl._echo(f["intent"], f["t"], f["g"]))
     return {"text": text, "probs": probs, "action": res["action"], "intent": res["intent"], "prob": f32(res["prob"]),
@@ -452,6 +580,14 @@ def refused():
     w = json.loads(json.dumps(base)); w["entities"][0]["qualifier"] = "purple"; bad.append(("unknown qualifier", w))
     w = json.loads(json.dumps(base)); w["entities"][0]["zone"] = "attic"; bad.append(("unknown zone", w))
     w = json.loads(json.dumps(base)); w["time"] = -1.0; bad.append(("negative time", w))
+    if V60:   # the game's catalogues (bot v60)
+        w = json.loads(json.dumps(base)); w["catalog"] = {"TILL": [{"id": "x", "words": ["x"]}]}; bad.append(("catalog of an intent without items", w))
+        w = json.loads(json.dumps(base)); w["catalog"] = {"BUILD": [{"id": "a", "words": ["wall"]}, {"id": "a", "words": ["fence"]}]}; bad.append(("catalog id twice", w))
+        w = json.loads(json.dumps(base)); w["catalog"] = {"BUILD": [{"id": "a", "words": []}]}; bad.append(("catalog entry without words", w))
+        w = json.loads(json.dumps(base)); w["catalog"] = {"BUILD": [{"id": "a", "words": ["Stone Wall"]}]}; bad.append(("catalog word not lowercase", w))
+        w = json.loads(json.dumps(base)); w["catalog"] = {"BUILD": [{"id": "a", "words": ["stone  wall"]}]}; bad.append(("catalog word with two spaces", w))
+        w = json.loads(json.dumps(base)); w["catalog"] = {"BUILD": [{"id": "", "words": ["wall"]}]}; bad.append(("catalog entry without an id", w))
+        w = json.loads(json.dumps(base)); w["catalog"] = {"BUILD": [{"id": "a", "words": ["wall"]}], "PLANT_CROP": []}; bad.append(("catalogs (accepted)", w))
     rows = []
     for why, w in bad:
         try:
@@ -465,7 +601,7 @@ def refused():
 
 
 def main():
-    vocab_mine = {k: v for k, v in json.load(io.open(os.path.join(COOP, "locations.json"), encoding="utf-8")).items() if not k.startswith("_")}
+    vocab_mine = {k: v for k, v in json.load(io.open(LOC.vocab_file(), encoding="utf-8")).items() if not k.startswith("_")}
     assert vocab_mine == VOC, "the bot's intent_config.json carries another vocabulary than locations.json: export_cpp.py --config-only first"
     rng = random.Random(54)
     rows = []
@@ -535,6 +671,21 @@ def main():
     for i in range(600):
         gate = "family" if i % 3 == 2 else "top"
         rows.append(scenario(rng, rng.choice([3, 6, 10, 16]), gate, rng.choice([0.5, 0.6, 0.66, 0.78])))
+    if V60:
+        # ... and the farmer and the builder: the scripted check first, then conversations at random (a generator of their
+        # own: the scenarios above stay what they were)
+        bot = Fake("top", 0.6)
+        pl = W.Planner(bot, W.WORLD_FARM)
+        steps = []
+        for text, intent, _ in W.DEV_V60:
+            probs = probs_for(rng, bot.labels, intent, 0.9)
+            res = pl.step(text, probs)
+            steps.append(step_row(text, probs, res, pl, bot))
+        rows.append({"world": W.WORLD_FARM, "gate": "top", "threshold": 0.6, "steps": steps})
+        rng3 = random.Random(6001)
+        for i in range(300):
+            gate = "family" if i % 3 == 2 else "top"
+            rows.append(farm_scenario(rng3, rng3.choice([3, 6, 10]), gate, rng3.choice([0.5, 0.6, 0.66, 0.78])))
     # lines of several orders, with a generator of their own: the scenarios above stay what they were. The scripted
     # checks first (the example world and a world without named places), then conversations at random
     rng2 = random.Random(5401)

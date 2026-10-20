@@ -13,6 +13,8 @@
 //                                 Reset() on every queued order
 //   coop_cli --location-tests     location_tests.jsonl: the map places found in each line and, with a rule set v4
 //                                 vocabulary, the directions; with a rule set v5 one, the pointers too (no model)
+//   coop_cli --item-tests         item_tests.jsonl: what the farmer's and the builder's orders act on, per line and
+//                                 intent (a v60 bot's config has "items"; no model)
 //   coop_cli --bench              latency on the golden lines, load time, memory
 //   coop_cli --tokenize "text"    the words, pieces and ids of one line
 //   coop_cli --serve              the bot as a service for a game: JSON lines on stdin and stdout (see RunServe);
@@ -286,6 +288,19 @@ bool LoadConfig(Model& m, std::string* err) {
             for (const auto& list : c.locations.words)
                 c.locations.has_pointers = c.locations.has_pointers || coop::LocationVocab::PointerList(list.first);
         }
+        if (j.contains("items")) {   // what the farmer's and the builder's orders act on (scripts/coop/items_v60.json): v60 bots
+            const json& I = j.at("items");
+            c.has_items = true;
+            c.items.version = I.at("version").get<int>();
+            c.items.intents = I.at("intents").get<std::vector<std::string>>();
+            c.items.verbs = I.at("verbs").get<std::unordered_map<std::string, std::vector<std::string>>>();
+            c.items.keeps_object = I.at("item_keeps_object").get<std::vector<std::string>>();
+            c.items.crop_intents = I.at("crop_intents").get<std::vector<std::string>>();
+            c.items.max_words = I.at("max_words").get<int>();
+            for (auto& [key, value] : I.items())   // every other list is a word list the rules read by its name
+                if (value.is_array() && key != "intents" && key != "item_keeps_object" && key != "crop_intents")
+                    c.items.lists[key] = value.get<std::vector<std::string>>();
+        }
         o.cls_id = j.at("cls_id").get<int32_t>();
         o.sep_id = j.at("sep_id").get<int32_t>();
         o.unk_id = j.at("unk_id").get<int32_t>();
@@ -444,6 +459,13 @@ bool ParseWorld(const json& j, coop::WorldState* w, std::string* err) {
             w->has_time = true;
             w->time = j["time"].get<double>();
         }
+        if (j.contains("catalog") && !j["catalog"].is_null()) {   // per intent with an item, what the game has (the v60 bots)
+            for (auto& [intent, entries] : j["catalog"].items()) {
+                std::vector<coop::CatalogEntry> list;
+                for (const json& e : entries) list.push_back({e.at("id").get<std::string>(), e.at("words").get<std::vector<std::string>>()});
+                w->catalog.emplace_back(intent, std::move(list));
+            }
+        }
     } catch (const std::exception& e) {
         return *err = std::string("world state: ") + e.what(), false;
     }
@@ -470,7 +492,8 @@ std::string GroundStr(const json& g) {
     }
     return s;
 }
-// with_object: the test row has the order's "object" (bot v56); an older row is compared without it
+// with_object: the test row has the order's "object" (bot v56); an older row is compared without it. An order with an
+// item (the v60 bots) adds it and its catalogue entry
 std::string OrderStr(const coop::PlannerResult& r, const Model& m, const coop::LocationMatcher& places, bool with_object) {
     if (!r.has_order) return "-";
     const coop::Order& o = r.order;
@@ -480,7 +503,8 @@ std::string OrderStr(const coop::PlannerResult& r, const Model& m, const coop::L
     const char* ptr = coop::PlacePointerName(o.pointer);
     return s + "]/" + (*dir ? dir : "-") + "/" + (o.zone >= 0 ? places.ZoneId(o.zone) : "-") + "/" + (*ptr ? ptr : "-") + "/" + (o.other ? "1" : "0") +
            "/" + (o.via.empty() ? "-" : o.via) + "/" + (o.nearby ? "1" : "0") +
-           (with_object ? "/" + (o.object >= 0 ? places.ObjectId(o.object) : std::string("-")) : std::string());
+           (with_object ? "/" + (o.object >= 0 ? places.ObjectId(o.object) : std::string("-")) : std::string()) +
+           (o.has_item ? "/item:" + (o.item.empty() ? std::string("-") : o.item) + "/" + (o.item_id.empty() ? std::string("-") : o.item_id) : std::string());
 }
 std::string OrderStr(const json& o) {
     if (o.is_null()) return "-";
@@ -490,7 +514,8 @@ std::string OrderStr(const json& o) {
     // a file written before the markerless rules has neither key: it is stale, and says so instead of crashing
     return s + "]/" + LabelStr(o["direction"]) + "/" + LabelStr(o["zone"]) + "/" + LabelStr(o["pointer"]) + "/" + FlagStr(o["other"]) +
            "/" + (o.contains("via") ? LabelStr(o["via"]) : std::string("(no via: regenerate world_tests.jsonl)")) + "/" +
-           (o.contains("near") ? FlagStr(o["near"]) : std::string("?")) + (o.contains("object") ? "/" + LabelStr(o["object"]) : std::string());
+           (o.contains("near") ? FlagStr(o["near"]) : std::string("?")) + (o.contains("object") ? "/" + LabelStr(o["object"]) : std::string()) +
+           (o.contains("item") ? "/item:" + LabelStr(o["item"]) + "/" + LabelStr(o["item_id"]) : std::string());
 }
 // the frame of the previous order: intent / it had a place / the place's entity / how it was found / when / it keeps
 // what the order's own line called the place
@@ -776,6 +801,32 @@ int RunGateTests(Model& m) {
 }
 
 // LocationMatcher::Find against locations.record() of the Python bot, line by line (no model)
+// item_tests.jsonl (gen_tests.py, a bot with "items"): items.find per line and intent against the Python rules
+int RunItemTests(Model& m) {
+    const auto rows = ReadJsonl(m.dir + "/item_tests.jsonl");
+    std::string err;
+    coop::LocationMatcher places;
+    coop::ItemMatcher items;
+    if (!m.cfg.has_locations || !m.cfg.has_items) return std::fprintf(stderr, "intent_config.json has no \"locations\" or no \"items\"\n"), 1;
+    if (!places.Init(m.cfg.locations, &err) || !items.Init(m.cfg.items, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+    size_t ok = 0, with_item = 0;
+    int shown = 0;
+    for (const json& r : rows) {
+        const std::string text = r["text"], intent = r["intent"];
+        const coop::ItemFound f = items.Find(text, intent, places);
+        const std::string got = (f.has_item ? f.item : "-") + "/" + std::to_string(f.first) + "/" + std::to_string(f.last) + "/" + std::to_string(f.verb);
+        const std::string want = LabelStr(r["item"]) + "/" + std::to_string(r["first"].get<int>()) + "/" + std::to_string(r["last"].get<int>()) + "/" +
+                                 std::to_string(r["verb"].get<int>());
+        with_item += f.has_item;
+        if (got == want)
+            ++ok;
+        else if (shown++ < 12)
+            std::printf("  %s (%s)\n    python %s\n    c++    %s\n", Escaped(text).c_str(), intent.c_str(), want.c_str(), got.c_str());
+    }
+    std::printf("item tests: %zu lines and intents, %zu with an item: C++ found what Python found on %zu/%zu\n", rows.size(), with_item, ok, rows.size());
+    return ok == rows.size() && !rows.empty() ? 0 : 1;
+}
+
 int RunLocationTests(Model& m) {
     const auto rows = ReadJsonl(m.dir + "/location_tests.jsonl");
     coop::LocationMatcher matcher;
@@ -986,6 +1037,17 @@ const std::unordered_map<std::string, std::vector<std::string>> kLines = {
     {"GET_IN", {"Getting in.", "Hopping in.", "In the car."}},
     {"GET_OUT", {"Getting out.", "Hopping out.", "Out of the car."}},
     {"REPEAT", {"Again.", "Trying again.", "One more time."}},
+    // the v60 bots: the farmer and the builder
+    {"PLANT_CROP", {"Planting.", "Getting it in the ground.", "Sowing."}},
+    {"WATER", {"Watering.", "On the watering.", "Giving them water."}},
+    {"HARVEST", {"Harvesting.", "Bringing it in.", "Picking it."}},
+    {"TILL", {"Working the ground.", "On the soil.", "Getting the ground ready."}},
+    {"FEED", {"Feeding them.", "On the feeding.", "Getting them fed."}},
+    {"COLLECT", {"Collecting.", "Gathering it up.", "On it, collecting."}},
+    {"DELIVER", {"Bringing it.", "On the way with it.", "Carrying it over."}},
+    {"BUILD", {"Building.", "Putting it up.", "On the build."}},
+    {"REPAIR", {"Repairing.", "Fixing it.", "Patching it up."}},
+    {"DEMOLISH", {"Tearing it down.", "Taking it apart.", "Demolishing."}},
 };
 const std::vector<std::string> kAck = {"Copy.", "Noted.", "Heard."};
 
@@ -2115,6 +2177,10 @@ json ReplyJson(Chat& chat, const Chat::Turn& t) {
                       {"direction", or_null(dir)}, {"zone", o.zone >= 0 ? json(places.ZoneId(o.zone)) : json(nullptr)},
                       {"pointer", or_null(ptr)}, {"other", o.other}, {"via", or_null(o.via)}, {"near", o.nearby},
                       {"object", o.object >= 0 ? json(places.ObjectId(o.object)) : json(nullptr)}};
+        if (o.has_item) {   // the farmer's and the builder's orders: what it acts on, as said, and the game's catalogue entry
+            j["order"]["item"] = or_null(o.item);
+            j["order"]["item_id"] = or_null(o.item_id);
+        }
     } else {
         j["order"] = nullptr;
     }
@@ -2470,7 +2536,7 @@ int main(int argc, char** argv) {
         else if (a == "--no-spin") opt.allow_spinning = false;
         else if (a == "--sequential") parallel = false;
         else if (a == "--golden" || a == "--tokenizer-tests" || a == "--dialogue" || a == "--bench" || a == "--gate-tests" ||
-                 a == "--decide-tests" || a == "--location-tests" || a == "--world-tests")
+                 a == "--decide-tests" || a == "--location-tests" || a == "--world-tests" || a == "--item-tests")
             mode = a.substr(2);
         else if (a == "--world" && i + 1 < argc) world_file = argv[++i];
         else if (a == "--serve") mode = "serve";
@@ -2486,7 +2552,7 @@ int main(int argc, char** argv) {
         else if (a == "--stt-tests" && i + 3 < argc) mode = "stt-tests", stt_test = {argv[i + 1], argv[i + 2], argv[i + 3]}, i += 3;
         else {
             std::fprintf(stderr, "usage: coop_cli [--golden | --tokenizer-tests | --dialogue | --gate-tests | --decide-tests |\n"
-                                 "                 --location-tests | --world-tests | --bench | --tokenize TEXT | --speech-text-tests FILE |\n"
+                                 "                 --location-tests | --world-tests | --item-tests | --bench | --tokenize TEXT | --speech-text-tests FILE |\n"
                                  "                 --voice | --mic-test SECONDS | --stt-wav FILE ... | --stt-tests LIST WAVDIR EXPECTED |\n"
                                  "                 --serve [--no-stt] [--tts | --tts-piper DIR] | --tts-piper DIR --tts-demo OUTDIR [--tts-text TEXT]]\n"
                                  "                [--model-dir DIR] [--threads N] [--no-spin] [--sequential] [--world FILE]\n"
@@ -2526,6 +2592,7 @@ int main(int argc, char** argv) {
     if (mode == "decide-tests") return RunDecideTests(m);
     if (mode == "location-tests") return RunLocationTests(m);
     if (mode == "world-tests") return RunWorldTests(m);
+    if (mode == "item-tests") return RunItemTests(m);
     if (mode == "tokenize") {
         for (const auto& w : m.tok.Words(tokenize_text)) std::printf("word %s\n", Escaped(w).c_str());
         const auto ids = m.tok.Encode(tokenize_text);

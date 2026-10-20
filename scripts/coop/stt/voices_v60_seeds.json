@@ -1,0 +1,5028 @@
+{
+"wav_seedvctkA": {
+"seed_MOVE_TO_310": {
+"voice": "p313",
+"group": "Irish"
+},
+"seed_MOVE_TO_311": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_MOVE_TO_312": {
+"voice": "p252",
+"group": "Scottish"
+},
+"seed_MOVE_TO_313": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_MOVE_TO_314": {
+"voice": "p310",
+"group": "American"
+},
+"seed_MOVE_TO_315": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_MOVE_TO_316": {
+"voice": "p302",
+"group": "Canadian"
+},
+"seed_MOVE_TO_317": {
+"voice": "p231",
+"group": "English"
+},
+"seed_MOVE_TO_318": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_MOVE_TO_319": {
+"voice": "p364",
+"group": "Irish"
+},
+"seed_MOVE_TO_320": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_HOLD_POSITION_68": {
+"voice": "p260",
+"group": "Scottish"
+},
+"seed_HOLD_POSITION_69": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_HOLD_POSITION_70": {
+"voice": "p318",
+"group": "American"
+},
+"seed_BREACH_24": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_BREACH_25": {
+"voice": "p307",
+"group": "Canadian"
+},
+"seed_BREACH_26": {
+"voice": "p233",
+"group": "English"
+},
+"seed_COVER_ME_23": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_COVER_ME_24": {
+"voice": "p245",
+"group": "Irish"
+},
+"seed_COVER_ME_25": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_COVER_ME_26": {
+"voice": "p263",
+"group": "Scottish"
+},
+"seed_ENTRY_33": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_ENTRY_34": {
+"voice": "p330",
+"group": "American"
+},
+"seed_ENTRY_35": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_PLANT_18": {
+"voice": "p316",
+"group": "Canadian"
+},
+"seed_PLANT_19": {
+"voice": "p239",
+"group": "English"
+},
+"seed_PLANT_20": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_PLANT_21": {
+"voice": "p283",
+"group": "Irish"
+},
+"seed_WAIT_59": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_WAIT_60": {
+"voice": "p265",
+"group": "Scottish"
+},
+"seed_WAIT_61": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_WAIT_62": {
+"voice": "p334",
+"group": "American"
+},
+"seed_WAIT_63": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_WAIT_64": {
+"voice": "p343",
+"group": "Canadian"
+},
+"seed_WAIT_65": {
+"voice": "p243",
+"group": "English"
+},
+"seed_WAIT_66": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_TAKE_COVER_33": {
+"voice": "p295",
+"group": "Irish"
+},
+"seed_TAKE_COVER_34": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_TAKE_COVER_35": {
+"voice": "p272",
+"group": "Scottish"
+},
+"seed_TAKE_COVER_36": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_TAKE_COVER_37": {
+"voice": "p341",
+"group": "American"
+},
+"seed_NONE_272": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_NONE_273": {
+"voice": "p302",
+"group": "Canadian"
+},
+"seed_NONE_274": {
+"voice": "p250",
+"group": "English"
+},
+"seed_NONE_275": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_NONE_276": {
+"voice": "p313",
+"group": "Irish"
+},
+"seed_NONE_277": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_NONE_278": {
+"voice": "p281",
+"group": "Scottish"
+},
+"seed_NONE_279": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_NONE_280": {
+"voice": "p360",
+"group": "American"
+},
+"seed_NONE_281": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_NONE_282": {
+"voice": "p307",
+"group": "Canadian"
+},
+"seed_NONE_283": {
+"voice": "p254",
+"group": "English"
+},
+"seed_NONE_284": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_CHECK_71": {
+"voice": "p364",
+"group": "Irish"
+},
+"seed_CHECK_72": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_CHECK_73": {
+"voice": "p285",
+"group": "Scottish"
+},
+"seed_CHECK_74": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_CHECK_75": {
+"voice": "p362",
+"group": "American"
+},
+"seed_CHECK_76": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_CHECK_77": {
+"voice": "p316",
+"group": "Canadian"
+},
+"seed_PLANT_CROP_0": {
+"voice": "p257",
+"group": "English"
+},
+"seed_PLANT_CROP_1": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_PLANT_CROP_2": {
+"voice": "p245",
+"group": "Irish"
+},
+"seed_PLANT_CROP_3": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_PLANT_CROP_4": {
+"voice": "p234",
+"group": "Scottish"
+},
+"seed_PLANT_CROP_5": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_PLANT_CROP_6": {
+"voice": "p294",
+"group": "American"
+},
+"seed_PLANT_CROP_7": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_PLANT_CROP_8": {
+"voice": "p343",
+"group": "Canadian"
+},
+"seed_PLANT_CROP_9": {
+"voice": "p259",
+"group": "English"
+},
+"seed_PLANT_CROP_10": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_PLANT_CROP_11": {
+"voice": "p283",
+"group": "Irish"
+},
+"seed_PLANT_CROP_12": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_PLANT_CROP_13": {
+"voice": "p241",
+"group": "Scottish"
+},
+"seed_PLANT_CROP_14": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_PLANT_CROP_15": {
+"voice": "p299",
+"group": "American"
+},
+"seed_PLANT_CROP_16": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_PLANT_CROP_17": {
+"voice": "p302",
+"group": "Canadian"
+},
+"seed_PLANT_CROP_18": {
+"voice": "p268",
+"group": "English"
+},
+"seed_PLANT_CROP_19": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_PLANT_CROP_20": {
+"voice": "p295",
+"group": "Irish"
+},
+"seed_PLANT_CROP_21": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_PLANT_CROP_22": {
+"voice": "p247",
+"group": "Scottish"
+},
+"seed_PLANT_CROP_23": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_PLANT_CROP_24": {
+"voice": "p301",
+"group": "American"
+},
+"seed_PLANT_CROP_25": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_PLANT_CROP_26": {
+"voice": "p307",
+"group": "Canadian"
+},
+"seed_PLANT_CROP_27": {
+"voice": "p270",
+"group": "English"
+},
+"seed_PLANT_CROP_28": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_PLANT_CROP_29": {
+"voice": "p313",
+"group": "Irish"
+},
+"seed_PLANT_CROP_30": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_PLANT_CROP_31": {
+"voice": "p252",
+"group": "Scottish"
+},
+"seed_PLANT_CROP_32": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_PLANT_CROP_33": {
+"voice": "p306",
+"group": "American"
+},
+"seed_PLANT_CROP_34": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_PLANT_CROP_35": {
+"voice": "p316",
+"group": "Canadian"
+},
+"seed_PLANT_CROP_36": {
+"voice": "p274",
+"group": "English"
+},
+"seed_PLANT_CROP_37": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_PLANT_CROP_38": {
+"voice": "p364",
+"group": "Irish"
+},
+"seed_PLANT_CROP_39": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_PLANT_CROP_40": {
+"voice": "p260",
+"group": "Scottish"
+},
+"seed_PLANT_CROP_41": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_PLANT_CROP_42": {
+"voice": "p310",
+"group": "American"
+},
+"seed_PLANT_CROP_43": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_PLANT_CROP_44": {
+"voice": "p343",
+"group": "Canadian"
+},
+"seed_PLANT_CROP_45": {
+"voice": "p277",
+"group": "English"
+},
+"seed_PLANT_CROP_46": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_PLANT_CROP_47": {
+"voice": "p245",
+"group": "Irish"
+},
+"seed_PLANT_CROP_48": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_PLANT_CROP_49": {
+"voice": "p263",
+"group": "Scottish"
+},
+"seed_WATER_0": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_WATER_1": {
+"voice": "p318",
+"group": "American"
+},
+"seed_WATER_2": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_WATER_3": {
+"voice": "p302",
+"group": "Canadian"
+},
+"seed_WATER_4": {
+"voice": "p279",
+"group": "English"
+},
+"seed_WATER_5": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_WATER_6": {
+"voice": "p283",
+"group": "Irish"
+},
+"seed_WATER_7": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_WATER_8": {
+"voice": "p265",
+"group": "Scottish"
+},
+"seed_WATER_9": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_WATER_10": {
+"voice": "p330",
+"group": "American"
+},
+"seed_WATER_11": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_WATER_12": {
+"voice": "p307",
+"group": "Canadian"
+},
+"seed_WATER_13": {
+"voice": "p286",
+"group": "English"
+},
+"seed_WATER_14": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_WATER_15": {
+"voice": "p295",
+"group": "Irish"
+},
+"seed_WATER_16": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_WATER_17": {
+"voice": "p272",
+"group": "Scottish"
+},
+"seed_WATER_18": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_WATER_19": {
+"voice": "p334",
+"group": "American"
+},
+"seed_WATER_20": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_WATER_21": {
+"voice": "p316",
+"group": "Canadian"
+},
+"seed_WATER_22": {
+"voice": "p225",
+"group": "English"
+},
+"seed_WATER_23": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_WATER_24": {
+"voice": "p313",
+"group": "Irish"
+},
+"seed_WATER_25": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_WATER_26": {
+"voice": "p281",
+"group": "Scottish"
+},
+"seed_WATER_27": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_WATER_28": {
+"voice": "p341",
+"group": "American"
+},
+"seed_WATER_29": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_WATER_30": {
+"voice": "p343",
+"group": "Canadian"
+},
+"seed_WATER_31": {
+"voice": "p227",
+"group": "English"
+},
+"seed_WATER_32": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_WATER_33": {
+"voice": "p364",
+"group": "Irish"
+},
+"seed_WATER_34": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_WATER_35": {
+"voice": "p285",
+"group": "Scottish"
+},
+"seed_WATER_36": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_WATER_37": {
+"voice": "p360",
+"group": "American"
+},
+"seed_WATER_38": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_WATER_39": {
+"voice": "p302",
+"group": "Canadian"
+},
+"seed_HARVEST_0": {
+"voice": "p229",
+"group": "English"
+},
+"seed_HARVEST_1": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_HARVEST_2": {
+"voice": "p245",
+"group": "Irish"
+},
+"seed_HARVEST_3": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_HARVEST_4": {
+"voice": "p234",
+"group": "Scottish"
+},
+"seed_HARVEST_5": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_HARVEST_6": {
+"voice": "p362",
+"group": "American"
+},
+"seed_HARVEST_7": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_HARVEST_8": {
+"voice": "p307",
+"group": "Canadian"
+},
+"seed_HARVEST_9": {
+"voice": "p231",
+"group": "English"
+},
+"seed_HARVEST_10": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_HARVEST_11": {
+"voice": "p283",
+"group": "Irish"
+},
+"seed_HARVEST_12": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_HARVEST_13": {
+"voice": "p241",
+"group": "Scottish"
+},
+"seed_HARVEST_14": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_HARVEST_15": {
+"voice": "p294",
+"group": "American"
+},
+"seed_HARVEST_16": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_HARVEST_17": {
+"voice": "p316",
+"group": "Canadian"
+},
+"seed_HARVEST_18": {
+"voice": "p233",
+"group": "English"
+},
+"seed_HARVEST_19": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_HARVEST_20": {
+"voice": "p295",
+"group": "Irish"
+},
+"seed_HARVEST_21": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_HARVEST_22": {
+"voice": "p247",
+"group": "Scottish"
+},
+"seed_HARVEST_23": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_HARVEST_24": {
+"voice": "p299",
+"group": "American"
+},
+"seed_HARVEST_25": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_HARVEST_26": {
+"voice": "p343",
+"group": "Canadian"
+},
+"seed_HARVEST_27": {
+"voice": "p239",
+"group": "English"
+},
+"seed_HARVEST_28": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_HARVEST_29": {
+"voice": "p313",
+"group": "Irish"
+},
+"seed_HARVEST_30": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_HARVEST_31": {
+"voice": "p252",
+"group": "Scottish"
+},
+"seed_HARVEST_32": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_HARVEST_33": {
+"voice": "p301",
+"group": "American"
+},
+"seed_HARVEST_34": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_HARVEST_35": {
+"voice": "p302",
+"group": "Canadian"
+},
+"seed_HARVEST_36": {
+"voice": "p243",
+"group": "English"
+},
+"seed_HARVEST_37": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_HARVEST_38": {
+"voice": "p364",
+"group": "Irish"
+},
+"seed_HARVEST_39": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_HARVEST_40": {
+"voice": "p260",
+"group": "Scottish"
+},
+"seed_HARVEST_41": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_HARVEST_42": {
+"voice": "p306",
+"group": "American"
+},
+"seed_HARVEST_43": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_HARVEST_44": {
+"voice": "p307",
+"group": "Canadian"
+},
+"seed_HARVEST_45": {
+"voice": "p250",
+"group": "English"
+},
+"seed_HARVEST_46": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_TILL_0": {
+"voice": "p245",
+"group": "Irish"
+},
+"seed_TILL_1": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_TILL_2": {
+"voice": "p263",
+"group": "Scottish"
+},
+"seed_TILL_3": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_TILL_4": {
+"voice": "p310",
+"group": "American"
+},
+"seed_TILL_5": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_TILL_6": {
+"voice": "p316",
+"group": "Canadian"
+},
+"seed_TILL_7": {
+"voice": "p254",
+"group": "English"
+},
+"seed_TILL_8": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_TILL_9": {
+"voice": "p283",
+"group": "Irish"
+},
+"seed_TILL_10": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_TILL_11": {
+"voice": "p265",
+"group": "Scottish"
+},
+"seed_TILL_12": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_TILL_13": {
+"voice": "p318",
+"group": "American"
+},
+"seed_TILL_14": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_TILL_15": {
+"voice": "p343",
+"group": "Canadian"
+},
+"seed_TILL_16": {
+"voice": "p257",
+"group": "English"
+},
+"seed_TILL_17": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_TILL_18": {
+"voice": "p295",
+"group": "Irish"
+},
+"seed_TILL_19": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_TILL_20": {
+"voice": "p272",
+"group": "Scottish"
+},
+"seed_TILL_21": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_TILL_22": {
+"voice": "p330",
+"group": "American"
+},
+"seed_TILL_23": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_TILL_24": {
+"voice": "p302",
+"group": "Canadian"
+},
+"seed_TILL_25": {
+"voice": "p259",
+"group": "English"
+},
+"seed_TILL_26": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_TILL_27": {
+"voice": "p313",
+"group": "Irish"
+},
+"seed_TILL_28": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_TILL_29": {
+"voice": "p281",
+"group": "Scottish"
+},
+"seed_TILL_30": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_TILL_31": {
+"voice": "p334",
+"group": "American"
+},
+"seed_TILL_32": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_TILL_33": {
+"voice": "p307",
+"group": "Canadian"
+},
+"seed_TILL_34": {
+"voice": "p268",
+"group": "English"
+},
+"seed_TILL_35": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_TILL_36": {
+"voice": "p364",
+"group": "Irish"
+},
+"seed_TILL_37": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_TILL_38": {
+"voice": "p285",
+"group": "Scottish"
+},
+"seed_TILL_39": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_FEED_0": {
+"voice": "p341",
+"group": "American"
+},
+"seed_FEED_1": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_FEED_2": {
+"voice": "p316",
+"group": "Canadian"
+},
+"seed_FEED_3": {
+"voice": "p270",
+"group": "English"
+},
+"seed_FEED_4": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_FEED_5": {
+"voice": "p245",
+"group": "Irish"
+},
+"seed_FEED_6": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_FEED_7": {
+"voice": "p234",
+"group": "Scottish"
+},
+"seed_FEED_8": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_FEED_9": {
+"voice": "p360",
+"group": "American"
+},
+"seed_FEED_10": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_FEED_11": {
+"voice": "p343",
+"group": "Canadian"
+},
+"seed_FEED_12": {
+"voice": "p274",
+"group": "English"
+},
+"seed_FEED_13": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_FEED_14": {
+"voice": "p283",
+"group": "Irish"
+},
+"seed_FEED_15": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_FEED_16": {
+"voice": "p241",
+"group": "Scottish"
+},
+"seed_FEED_17": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_FEED_18": {
+"voice": "p362",
+"group": "American"
+},
+"seed_FEED_19": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_FEED_20": {
+"voice": "p302",
+"group": "Canadian"
+},
+"seed_FEED_21": {
+"voice": "p277",
+"group": "English"
+},
+"seed_FEED_22": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_FEED_23": {
+"voice": "p295",
+"group": "Irish"
+},
+"seed_FEED_24": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_FEED_25": {
+"voice": "p247",
+"group": "Scottish"
+},
+"seed_FEED_26": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_FEED_27": {
+"voice": "p294",
+"group": "American"
+},
+"seed_FEED_28": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_FEED_29": {
+"voice": "p307",
+"group": "Canadian"
+},
+"seed_FEED_30": {
+"voice": "p279",
+"group": "English"
+},
+"seed_FEED_31": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_FEED_32": {
+"voice": "p313",
+"group": "Irish"
+},
+"seed_FEED_33": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_FEED_34": {
+"voice": "p252",
+"group": "Scottish"
+},
+"seed_COLLECT_0": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_COLLECT_1": {
+"voice": "p299",
+"group": "American"
+},
+"seed_COLLECT_2": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_COLLECT_3": {
+"voice": "p316",
+"group": "Canadian"
+},
+"seed_COLLECT_4": {
+"voice": "p286",
+"group": "English"
+},
+"seed_COLLECT_5": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_COLLECT_6": {
+"voice": "p364",
+"group": "Irish"
+},
+"seed_COLLECT_7": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_COLLECT_8": {
+"voice": "p260",
+"group": "Scottish"
+},
+"seed_COLLECT_9": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_COLLECT_10": {
+"voice": "p301",
+"group": "American"
+},
+"seed_COLLECT_11": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_COLLECT_12": {
+"voice": "p343",
+"group": "Canadian"
+},
+"seed_COLLECT_13": {
+"voice": "p225",
+"group": "English"
+},
+"seed_COLLECT_14": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_COLLECT_15": {
+"voice": "p245",
+"group": "Irish"
+},
+"seed_COLLECT_16": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_COLLECT_17": {
+"voice": "p263",
+"group": "Scottish"
+},
+"seed_COLLECT_18": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_COLLECT_19": {
+"voice": "p306",
+"group": "American"
+},
+"seed_COLLECT_20": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_COLLECT_21": {
+"voice": "p302",
+"group": "Canadian"
+},
+"seed_COLLECT_22": {
+"voice": "p227",
+"group": "English"
+},
+"seed_COLLECT_23": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_COLLECT_24": {
+"voice": "p283",
+"group": "Irish"
+},
+"seed_COLLECT_25": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_COLLECT_26": {
+"voice": "p265",
+"group": "Scottish"
+},
+"seed_COLLECT_27": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_COLLECT_28": {
+"voice": "p310",
+"group": "American"
+},
+"seed_COLLECT_29": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_COLLECT_30": {
+"voice": "p307",
+"group": "Canadian"
+},
+"seed_COLLECT_31": {
+"voice": "p229",
+"group": "English"
+},
+"seed_COLLECT_32": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_COLLECT_33": {
+"voice": "p295",
+"group": "Irish"
+},
+"seed_COLLECT_34": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_COLLECT_35": {
+"voice": "p272",
+"group": "Scottish"
+},
+"seed_COLLECT_36": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_COLLECT_37": {
+"voice": "p318",
+"group": "American"
+},
+"seed_COLLECT_38": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_COLLECT_39": {
+"voice": "p316",
+"group": "Canadian"
+},
+"seed_COLLECT_40": {
+"voice": "p231",
+"group": "English"
+},
+"seed_COLLECT_41": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_COLLECT_42": {
+"voice": "p313",
+"group": "Irish"
+},
+"seed_COLLECT_43": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_COLLECT_44": {
+"voice": "p281",
+"group": "Scottish"
+},
+"seed_DELIVER_0": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_DELIVER_1": {
+"voice": "p330",
+"group": "American"
+},
+"seed_DELIVER_2": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_DELIVER_3": {
+"voice": "p343",
+"group": "Canadian"
+},
+"seed_DELIVER_4": {
+"voice": "p233",
+"group": "English"
+},
+"seed_DELIVER_5": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_DELIVER_6": {
+"voice": "p364",
+"group": "Irish"
+},
+"seed_DELIVER_7": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_DELIVER_8": {
+"voice": "p285",
+"group": "Scottish"
+},
+"seed_DELIVER_9": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_DELIVER_10": {
+"voice": "p334",
+"group": "American"
+},
+"seed_DELIVER_11": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_DELIVER_12": {
+"voice": "p302",
+"group": "Canadian"
+},
+"seed_DELIVER_13": {
+"voice": "p239",
+"group": "English"
+},
+"seed_DELIVER_14": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_DELIVER_15": {
+"voice": "p245",
+"group": "Irish"
+},
+"seed_DELIVER_16": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_DELIVER_17": {
+"voice": "p234",
+"group": "Scottish"
+},
+"seed_DELIVER_18": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_DELIVER_19": {
+"voice": "p341",
+"group": "American"
+},
+"seed_DELIVER_20": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_DELIVER_21": {
+"voice": "p307",
+"group": "Canadian"
+},
+"seed_DELIVER_22": {
+"voice": "p243",
+"group": "English"
+},
+"seed_DELIVER_23": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_DELIVER_24": {
+"voice": "p283",
+"group": "Irish"
+},
+"seed_DELIVER_25": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_DELIVER_26": {
+"voice": "p241",
+"group": "Scottish"
+},
+"seed_DELIVER_27": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_DELIVER_28": {
+"voice": "p360",
+"group": "American"
+},
+"seed_DELIVER_29": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_DELIVER_30": {
+"voice": "p316",
+"group": "Canadian"
+},
+"seed_DELIVER_31": {
+"voice": "p250",
+"group": "English"
+},
+"seed_DELIVER_32": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_DELIVER_33": {
+"voice": "p295",
+"group": "Irish"
+},
+"seed_DELIVER_34": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_DELIVER_35": {
+"voice": "p247",
+"group": "Scottish"
+},
+"seed_DELIVER_36": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_DELIVER_37": {
+"voice": "p362",
+"group": "American"
+},
+"seed_DELIVER_38": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_DELIVER_39": {
+"voice": "p343",
+"group": "Canadian"
+},
+"seed_BUILD_0": {
+"voice": "p254",
+"group": "English"
+},
+"seed_BUILD_1": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_BUILD_2": {
+"voice": "p313",
+"group": "Irish"
+},
+"seed_BUILD_3": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_BUILD_4": {
+"voice": "p252",
+"group": "Scottish"
+},
+"seed_BUILD_5": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_BUILD_6": {
+"voice": "p294",
+"group": "American"
+},
+"seed_BUILD_7": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_BUILD_8": {
+"voice": "p302",
+"group": "Canadian"
+},
+"seed_BUILD_9": {
+"voice": "p257",
+"group": "English"
+},
+"seed_BUILD_10": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_BUILD_11": {
+"voice": "p364",
+"group": "Irish"
+},
+"seed_BUILD_12": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_BUILD_13": {
+"voice": "p260",
+"group": "Scottish"
+},
+"seed_BUILD_14": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_BUILD_15": {
+"voice": "p299",
+"group": "American"
+},
+"seed_BUILD_16": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_BUILD_17": {
+"voice": "p307",
+"group": "Canadian"
+},
+"seed_BUILD_18": {
+"voice": "p259",
+"group": "English"
+},
+"seed_BUILD_19": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_BUILD_20": {
+"voice": "p245",
+"group": "Irish"
+},
+"seed_BUILD_21": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_BUILD_22": {
+"voice": "p263",
+"group": "Scottish"
+},
+"seed_BUILD_23": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_BUILD_24": {
+"voice": "p301",
+"group": "American"
+},
+"seed_BUILD_25": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_BUILD_26": {
+"voice": "p316",
+"group": "Canadian"
+},
+"seed_BUILD_27": {
+"voice": "p268",
+"group": "English"
+},
+"seed_BUILD_28": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_BUILD_29": {
+"voice": "p283",
+"group": "Irish"
+},
+"seed_BUILD_30": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_BUILD_31": {
+"voice": "p265",
+"group": "Scottish"
+},
+"seed_BUILD_32": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_BUILD_33": {
+"voice": "p306",
+"group": "American"
+},
+"seed_BUILD_34": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_BUILD_35": {
+"voice": "p343",
+"group": "Canadian"
+},
+"seed_BUILD_36": {
+"voice": "p270",
+"group": "English"
+},
+"seed_BUILD_37": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_BUILD_38": {
+"voice": "p295",
+"group": "Irish"
+},
+"seed_BUILD_39": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_BUILD_40": {
+"voice": "p272",
+"group": "Scottish"
+},
+"seed_BUILD_41": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_BUILD_42": {
+"voice": "p310",
+"group": "American"
+},
+"seed_BUILD_43": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_BUILD_44": {
+"voice": "p302",
+"group": "Canadian"
+},
+"seed_BUILD_45": {
+"voice": "p274",
+"group": "English"
+},
+"seed_BUILD_46": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_BUILD_47": {
+"voice": "p313",
+"group": "Irish"
+},
+"seed_BUILD_48": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_BUILD_49": {
+"voice": "p281",
+"group": "Scottish"
+},
+"seed_BUILD_50": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_BUILD_51": {
+"voice": "p318",
+"group": "American"
+},
+"seed_BUILD_52": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_BUILD_53": {
+"voice": "p307",
+"group": "Canadian"
+},
+"seed_BUILD_54": {
+"voice": "p277",
+"group": "English"
+},
+"seed_BUILD_55": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_BUILD_56": {
+"voice": "p364",
+"group": "Irish"
+},
+"seed_BUILD_57": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_REPAIR_0": {
+"voice": "p285",
+"group": "Scottish"
+},
+"seed_REPAIR_1": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_REPAIR_2": {
+"voice": "p330",
+"group": "American"
+},
+"seed_REPAIR_3": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_REPAIR_4": {
+"voice": "p316",
+"group": "Canadian"
+},
+"seed_REPAIR_5": {
+"voice": "p279",
+"group": "English"
+},
+"seed_REPAIR_6": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_REPAIR_7": {
+"voice": "p245",
+"group": "Irish"
+},
+"seed_REPAIR_8": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_REPAIR_9": {
+"voice": "p234",
+"group": "Scottish"
+},
+"seed_REPAIR_10": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_REPAIR_11": {
+"voice": "p334",
+"group": "American"
+},
+"seed_REPAIR_12": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_REPAIR_13": {
+"voice": "p343",
+"group": "Canadian"
+},
+"seed_REPAIR_14": {
+"voice": "p286",
+"group": "English"
+},
+"seed_REPAIR_15": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_REPAIR_16": {
+"voice": "p283",
+"group": "Irish"
+},
+"seed_REPAIR_17": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_REPAIR_18": {
+"voice": "p241",
+"group": "Scottish"
+},
+"seed_REPAIR_19": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_REPAIR_20": {
+"voice": "p341",
+"group": "American"
+},
+"seed_REPAIR_21": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_REPAIR_22": {
+"voice": "p302",
+"group": "Canadian"
+},
+"seed_REPAIR_23": {
+"voice": "p225",
+"group": "English"
+},
+"seed_REPAIR_24": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_REPAIR_25": {
+"voice": "p295",
+"group": "Irish"
+},
+"seed_REPAIR_26": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_REPAIR_27": {
+"voice": "p247",
+"group": "Scottish"
+},
+"seed_REPAIR_28": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_REPAIR_29": {
+"voice": "p360",
+"group": "American"
+},
+"seed_REPAIR_30": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_REPAIR_31": {
+"voice": "p307",
+"group": "Canadian"
+},
+"seed_REPAIR_32": {
+"voice": "p227",
+"group": "English"
+},
+"seed_REPAIR_33": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_REPAIR_34": {
+"voice": "p313",
+"group": "Irish"
+},
+"seed_REPAIR_35": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_REPAIR_36": {
+"voice": "p252",
+"group": "Scottish"
+},
+"seed_REPAIR_37": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_REPAIR_38": {
+"voice": "p362",
+"group": "American"
+},
+"seed_REPAIR_39": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_REPAIR_40": {
+"voice": "p316",
+"group": "Canadian"
+},
+"seed_REPAIR_41": {
+"voice": "p229",
+"group": "English"
+},
+"seed_REPAIR_42": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_REPAIR_43": {
+"voice": "p364",
+"group": "Irish"
+},
+"seed_REPAIR_44": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_DEMOLISH_0": {
+"voice": "p260",
+"group": "Scottish"
+},
+"seed_DEMOLISH_1": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_DEMOLISH_2": {
+"voice": "p294",
+"group": "American"
+},
+"seed_DEMOLISH_3": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_DEMOLISH_4": {
+"voice": "p343",
+"group": "Canadian"
+},
+"seed_DEMOLISH_5": {
+"voice": "p231",
+"group": "English"
+},
+"seed_DEMOLISH_6": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_DEMOLISH_7": {
+"voice": "p245",
+"group": "Irish"
+},
+"seed_DEMOLISH_8": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_DEMOLISH_9": {
+"voice": "p263",
+"group": "Scottish"
+},
+"seed_DEMOLISH_10": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_DEMOLISH_11": {
+"voice": "p299",
+"group": "American"
+},
+"seed_DEMOLISH_12": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_DEMOLISH_13": {
+"voice": "p302",
+"group": "Canadian"
+},
+"seed_DEMOLISH_14": {
+"voice": "p233",
+"group": "English"
+},
+"seed_DEMOLISH_15": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_DEMOLISH_16": {
+"voice": "p283",
+"group": "Irish"
+},
+"seed_DEMOLISH_17": {
+"voice": "p238",
+"group": "Northern Irish"
+},
+"seed_DEMOLISH_18": {
+"voice": "p265",
+"group": "Scottish"
+},
+"seed_DEMOLISH_19": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_DEMOLISH_20": {
+"voice": "p301",
+"group": "American"
+},
+"seed_DEMOLISH_21": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_DEMOLISH_22": {
+"voice": "p307",
+"group": "Canadian"
+},
+"seed_DEMOLISH_23": {
+"voice": "p239",
+"group": "English"
+},
+"seed_DEMOLISH_24": {
+"voice": "p376",
+"group": "Indian"
+},
+"seed_DEMOLISH_25": {
+"voice": "p295",
+"group": "Irish"
+},
+"seed_DEMOLISH_26": {
+"voice": "p292",
+"group": "Northern Irish"
+},
+"seed_DEMOLISH_27": {
+"voice": "p272",
+"group": "Scottish"
+},
+"seed_DEMOLISH_28": {
+"voice": "p336",
+"group": "South African"
+},
+"seed_DEMOLISH_29": {
+"voice": "p306",
+"group": "American"
+},
+"seed_DEMOLISH_30": {
+"voice": "p326",
+"group": "Australian/NZ"
+},
+"seed_DEMOLISH_31": {
+"voice": "p316",
+"group": "Canadian"
+},
+"seed_DEMOLISH_32": {
+"voice": "p243",
+"group": "English"
+},
+"seed_DEMOLISH_33": {
+"voice": "p248",
+"group": "Indian"
+},
+"seed_DEMOLISH_34": {
+"voice": "p313",
+"group": "Irish"
+},
+"seed_DEMOLISH_35": {
+"voice": "p304",
+"group": "Northern Irish"
+},
+"seed_DEMOLISH_36": {
+"voice": "p281",
+"group": "Scottish"
+},
+"seed_DEMOLISH_37": {
+"voice": "p314",
+"group": "South African"
+},
+"seed_DEMOLISH_38": {
+"voice": "p310",
+"group": "American"
+},
+"seed_DEMOLISH_39": {
+"voice": "p374",
+"group": "Australian/NZ"
+},
+"seed_DEMOLISH_40": {
+"voice": "p343",
+"group": "Canadian"
+}
+},
+"wav_seedkokoro": {
+"seed_MOVE_TO_310": {
+"voice": "bm_daniel"
+},
+"seed_MOVE_TO_311": {
+"voice": "bm_fable"
+},
+"seed_MOVE_TO_312": {
+"voice": "bm_george"
+},
+"seed_MOVE_TO_313": {
+"voice": "bm_lewis"
+},
+"seed_MOVE_TO_314": {
+"voice": "af_alloy"
+},
+"seed_MOVE_TO_315": {
+"voice": "af_aoede"
+},
+"seed_MOVE_TO_316": {
+"voice": "af_bella"
+},
+"seed_MOVE_TO_317": {
+"voice": "af_heart"
+},
+"seed_MOVE_TO_318": {
+"voice": "af_jessica"
+},
+"seed_MOVE_TO_319": {
+"voice": "af_kore"
+},
+"seed_MOVE_TO_320": {
+"voice": "af_nicole"
+},
+"seed_HOLD_POSITION_68": {
+"voice": "af_nova"
+},
+"seed_HOLD_POSITION_69": {
+"voice": "af_river"
+},
+"seed_HOLD_POSITION_70": {
+"voice": "af_sarah"
+},
+"seed_BREACH_24": {
+"voice": "af_sky"
+},
+"seed_BREACH_25": {
+"voice": "am_adam"
+},
+"seed_BREACH_26": {
+"voice": "am_echo"
+},
+"seed_COVER_ME_23": {
+"voice": "am_eric"
+},
+"seed_COVER_ME_24": {
+"voice": "am_fenrir"
+},
+"seed_COVER_ME_25": {
+"voice": "am_liam"
+},
+"seed_COVER_ME_26": {
+"voice": "am_michael"
+},
+"seed_ENTRY_33": {
+"voice": "am_onyx"
+},
+"seed_ENTRY_34": {
+"voice": "am_puck"
+},
+"seed_ENTRY_35": {
+"voice": "am_santa"
+},
+"seed_PLANT_18": {
+"voice": "bf_alice"
+},
+"seed_PLANT_19": {
+"voice": "bf_emma"
+},
+"seed_PLANT_20": {
+"voice": "bf_isabella"
+},
+"seed_PLANT_21": {
+"voice": "bf_lily"
+},
+"seed_WAIT_59": {
+"voice": "bm_daniel"
+},
+"seed_WAIT_60": {
+"voice": "bm_fable"
+},
+"seed_WAIT_61": {
+"voice": "bm_george"
+},
+"seed_WAIT_62": {
+"voice": "bm_lewis"
+},
+"seed_WAIT_63": {
+"voice": "af_alloy"
+},
+"seed_WAIT_64": {
+"voice": "af_aoede"
+},
+"seed_WAIT_65": {
+"voice": "af_bella"
+},
+"seed_WAIT_66": {
+"voice": "af_heart"
+},
+"seed_TAKE_COVER_33": {
+"voice": "af_jessica"
+},
+"seed_TAKE_COVER_34": {
+"voice": "af_kore"
+},
+"seed_TAKE_COVER_35": {
+"voice": "af_nicole"
+},
+"seed_TAKE_COVER_36": {
+"voice": "af_nova"
+},
+"seed_TAKE_COVER_37": {
+"voice": "af_river"
+},
+"seed_NONE_272": {
+"voice": "af_sarah"
+},
+"seed_NONE_273": {
+"voice": "af_sky"
+},
+"seed_NONE_274": {
+"voice": "am_adam"
+},
+"seed_NONE_275": {
+"voice": "am_echo"
+},
+"seed_NONE_276": {
+"voice": "am_eric"
+},
+"seed_NONE_277": {
+"voice": "am_fenrir"
+},
+"seed_NONE_278": {
+"voice": "am_liam"
+},
+"seed_NONE_279": {
+"voice": "am_michael"
+},
+"seed_NONE_280": {
+"voice": "am_onyx"
+},
+"seed_NONE_281": {
+"voice": "am_puck"
+},
+"seed_NONE_282": {
+"voice": "am_santa"
+},
+"seed_NONE_283": {
+"voice": "bf_alice"
+},
+"seed_NONE_284": {
+"voice": "bf_emma"
+},
+"seed_CHECK_71": {
+"voice": "bf_isabella"
+},
+"seed_CHECK_72": {
+"voice": "bf_lily"
+},
+"seed_CHECK_73": {
+"voice": "bm_daniel"
+},
+"seed_CHECK_74": {
+"voice": "bm_fable"
+},
+"seed_CHECK_75": {
+"voice": "bm_george"
+},
+"seed_CHECK_76": {
+"voice": "bm_lewis"
+},
+"seed_CHECK_77": {
+"voice": "af_alloy"
+},
+"seed_PLANT_CROP_0": {
+"voice": "af_aoede"
+},
+"seed_PLANT_CROP_1": {
+"voice": "af_bella"
+},
+"seed_PLANT_CROP_2": {
+"voice": "af_heart"
+},
+"seed_PLANT_CROP_3": {
+"voice": "af_jessica"
+},
+"seed_PLANT_CROP_4": {
+"voice": "af_kore"
+},
+"seed_PLANT_CROP_5": {
+"voice": "af_nicole"
+},
+"seed_PLANT_CROP_6": {
+"voice": "af_nova"
+},
+"seed_PLANT_CROP_7": {
+"voice": "af_river"
+},
+"seed_PLANT_CROP_8": {
+"voice": "af_sarah"
+},
+"seed_PLANT_CROP_9": {
+"voice": "af_sky"
+},
+"seed_PLANT_CROP_10": {
+"voice": "am_adam"
+},
+"seed_PLANT_CROP_11": {
+"voice": "am_echo"
+},
+"seed_PLANT_CROP_12": {
+"voice": "am_eric"
+},
+"seed_PLANT_CROP_13": {
+"voice": "am_fenrir"
+},
+"seed_PLANT_CROP_14": {
+"voice": "am_liam"
+},
+"seed_PLANT_CROP_15": {
+"voice": "am_michael"
+},
+"seed_PLANT_CROP_16": {
+"voice": "am_onyx"
+},
+"seed_PLANT_CROP_17": {
+"voice": "am_puck"
+},
+"seed_PLANT_CROP_18": {
+"voice": "am_santa"
+},
+"seed_PLANT_CROP_19": {
+"voice": "bf_alice"
+},
+"seed_PLANT_CROP_20": {
+"voice": "bf_emma"
+},
+"seed_PLANT_CROP_21": {
+"voice": "bf_isabella"
+},
+"seed_PLANT_CROP_22": {
+"voice": "bf_lily"
+},
+"seed_PLANT_CROP_23": {
+"voice": "bm_daniel"
+},
+"seed_PLANT_CROP_24": {
+"voice": "bm_fable"
+},
+"seed_PLANT_CROP_25": {
+"voice": "bm_george"
+},
+"seed_PLANT_CROP_26": {
+"voice": "bm_lewis"
+},
+"seed_PLANT_CROP_27": {
+"voice": "af_alloy"
+},
+"seed_PLANT_CROP_28": {
+"voice": "af_aoede"
+},
+"seed_PLANT_CROP_29": {
+"voice": "af_bella"
+},
+"seed_PLANT_CROP_30": {
+"voice": "af_heart"
+},
+"seed_PLANT_CROP_31": {
+"voice": "af_jessica"
+},
+"seed_PLANT_CROP_32": {
+"voice": "af_kore"
+},
+"seed_PLANT_CROP_33": {
+"voice": "af_nicole"
+},
+"seed_PLANT_CROP_34": {
+"voice": "af_nova"
+},
+"seed_PLANT_CROP_35": {
+"voice": "af_river"
+},
+"seed_PLANT_CROP_36": {
+"voice": "af_sarah"
+},
+"seed_PLANT_CROP_37": {
+"voice": "af_sky"
+},
+"seed_PLANT_CROP_38": {
+"voice": "am_adam"
+},
+"seed_PLANT_CROP_39": {
+"voice": "am_echo"
+},
+"seed_PLANT_CROP_40": {
+"voice": "am_eric"
+},
+"seed_PLANT_CROP_41": {
+"voice": "am_fenrir"
+},
+"seed_PLANT_CROP_42": {
+"voice": "am_liam"
+},
+"seed_PLANT_CROP_43": {
+"voice": "am_michael"
+},
+"seed_PLANT_CROP_44": {
+"voice": "am_onyx"
+},
+"seed_PLANT_CROP_45": {
+"voice": "am_puck"
+},
+"seed_PLANT_CROP_46": {
+"voice": "am_santa"
+},
+"seed_PLANT_CROP_47": {
+"voice": "bf_alice"
+},
+"seed_PLANT_CROP_48": {
+"voice": "bf_emma"
+},
+"seed_PLANT_CROP_49": {
+"voice": "bf_isabella"
+},
+"seed_WATER_0": {
+"voice": "bf_lily"
+},
+"seed_WATER_1": {
+"voice": "bm_daniel"
+},
+"seed_WATER_2": {
+"voice": "bm_fable"
+},
+"seed_WATER_3": {
+"voice": "bm_george"
+},
+"seed_WATER_4": {
+"voice": "bm_lewis"
+},
+"seed_WATER_5": {
+"voice": "af_alloy"
+},
+"seed_WATER_6": {
+"voice": "af_aoede"
+},
+"seed_WATER_7": {
+"voice": "af_bella"
+},
+"seed_WATER_8": {
+"voice": "af_heart"
+},
+"seed_WATER_9": {
+"voice": "af_jessica"
+},
+"seed_WATER_10": {
+"voice": "af_kore"
+},
+"seed_WATER_11": {
+"voice": "af_nicole"
+},
+"seed_WATER_12": {
+"voice": "af_nova"
+},
+"seed_WATER_13": {
+"voice": "af_river"
+},
+"seed_WATER_14": {
+"voice": "af_sarah"
+},
+"seed_WATER_15": {
+"voice": "af_sky"
+},
+"seed_WATER_16": {
+"voice": "am_adam"
+},
+"seed_WATER_17": {
+"voice": "am_echo"
+},
+"seed_WATER_18": {
+"voice": "am_eric"
+},
+"seed_WATER_19": {
+"voice": "am_fenrir"
+},
+"seed_WATER_20": {
+"voice": "am_liam"
+},
+"seed_WATER_21": {
+"voice": "am_michael"
+},
+"seed_WATER_22": {
+"voice": "am_onyx"
+},
+"seed_WATER_23": {
+"voice": "am_puck"
+},
+"seed_WATER_24": {
+"voice": "am_santa"
+},
+"seed_WATER_25": {
+"voice": "bf_alice"
+},
+"seed_WATER_26": {
+"voice": "bf_emma"
+},
+"seed_WATER_27": {
+"voice": "bf_isabella"
+},
+"seed_WATER_28": {
+"voice": "bf_lily"
+},
+"seed_WATER_29": {
+"voice": "bm_daniel"
+},
+"seed_WATER_30": {
+"voice": "bm_fable"
+},
+"seed_WATER_31": {
+"voice": "bm_george"
+},
+"seed_WATER_32": {
+"voice": "bm_lewis"
+},
+"seed_WATER_33": {
+"voice": "af_alloy"
+},
+"seed_WATER_34": {
+"voice": "af_aoede"
+},
+"seed_WATER_35": {
+"voice": "af_bella"
+},
+"seed_WATER_36": {
+"voice": "af_heart"
+},
+"seed_WATER_37": {
+"voice": "af_jessica"
+},
+"seed_WATER_38": {
+"voice": "af_kore"
+},
+"seed_WATER_39": {
+"voice": "af_nicole"
+},
+"seed_HARVEST_0": {
+"voice": "af_nova"
+},
+"seed_HARVEST_1": {
+"voice": "af_river"
+},
+"seed_HARVEST_2": {
+"voice": "af_sarah"
+},
+"seed_HARVEST_3": {
+"voice": "af_sky"
+},
+"seed_HARVEST_4": {
+"voice": "am_adam"
+},
+"seed_HARVEST_5": {
+"voice": "am_echo"
+},
+"seed_HARVEST_6": {
+"voice": "am_eric"
+},
+"seed_HARVEST_7": {
+"voice": "am_fenrir"
+},
+"seed_HARVEST_8": {
+"voice": "am_liam"
+},
+"seed_HARVEST_9": {
+"voice": "am_michael"
+},
+"seed_HARVEST_10": {
+"voice": "am_onyx"
+},
+"seed_HARVEST_11": {
+"voice": "am_puck"
+},
+"seed_HARVEST_12": {
+"voice": "am_santa"
+},
+"seed_HARVEST_13": {
+"voice": "bf_alice"
+},
+"seed_HARVEST_14": {
+"voice": "bf_emma"
+},
+"seed_HARVEST_15": {
+"voice": "bf_isabella"
+},
+"seed_HARVEST_16": {
+"voice": "bf_lily"
+},
+"seed_HARVEST_17": {
+"voice": "bm_daniel"
+},
+"seed_HARVEST_18": {
+"voice": "bm_fable"
+},
+"seed_HARVEST_19": {
+"voice": "bm_george"
+},
+"seed_HARVEST_20": {
+"voice": "bm_lewis"
+},
+"seed_HARVEST_21": {
+"voice": "af_alloy"
+},
+"seed_HARVEST_22": {
+"voice": "af_aoede"
+},
+"seed_HARVEST_23": {
+"voice": "af_bella"
+},
+"seed_HARVEST_24": {
+"voice": "af_heart"
+},
+"seed_HARVEST_25": {
+"voice": "af_jessica"
+},
+"seed_HARVEST_26": {
+"voice": "af_kore"
+},
+"seed_HARVEST_27": {
+"voice": "af_nicole"
+},
+"seed_HARVEST_28": {
+"voice": "af_nova"
+},
+"seed_HARVEST_29": {
+"voice": "af_river"
+},
+"seed_HARVEST_30": {
+"voice": "af_sarah"
+},
+"seed_HARVEST_31": {
+"voice": "af_sky"
+},
+"seed_HARVEST_32": {
+"voice": "am_adam"
+},
+"seed_HARVEST_33": {
+"voice": "am_echo"
+},
+"seed_HARVEST_34": {
+"voice": "am_eric"
+},
+"seed_HARVEST_35": {
+"voice": "am_fenrir"
+},
+"seed_HARVEST_36": {
+"voice": "am_liam"
+},
+"seed_HARVEST_37": {
+"voice": "am_michael"
+},
+"seed_HARVEST_38": {
+"voice": "am_onyx"
+},
+"seed_HARVEST_39": {
+"voice": "am_puck"
+},
+"seed_HARVEST_40": {
+"voice": "am_santa"
+},
+"seed_HARVEST_41": {
+"voice": "bf_alice"
+},
+"seed_HARVEST_42": {
+"voice": "bf_emma"
+},
+"seed_HARVEST_43": {
+"voice": "bf_isabella"
+},
+"seed_HARVEST_44": {
+"voice": "bf_lily"
+},
+"seed_HARVEST_45": {
+"voice": "bm_daniel"
+},
+"seed_HARVEST_46": {
+"voice": "bm_fable"
+},
+"seed_TILL_0": {
+"voice": "bm_george"
+},
+"seed_TILL_1": {
+"voice": "bm_lewis"
+},
+"seed_TILL_2": {
+"voice": "af_alloy"
+},
+"seed_TILL_3": {
+"voice": "af_aoede"
+},
+"seed_TILL_4": {
+"voice": "af_bella"
+},
+"seed_TILL_5": {
+"voice": "af_heart"
+},
+"seed_TILL_6": {
+"voice": "af_jessica"
+},
+"seed_TILL_7": {
+"voice": "af_kore"
+},
+"seed_TILL_8": {
+"voice": "af_nicole"
+},
+"seed_TILL_9": {
+"voice": "af_nova"
+},
+"seed_TILL_10": {
+"voice": "af_river"
+},
+"seed_TILL_11": {
+"voice": "af_sarah"
+},
+"seed_TILL_12": {
+"voice": "af_sky"
+},
+"seed_TILL_13": {
+"voice": "am_adam"
+},
+"seed_TILL_14": {
+"voice": "am_echo"
+},
+"seed_TILL_15": {
+"voice": "am_eric"
+},
+"seed_TILL_16": {
+"voice": "am_fenrir"
+},
+"seed_TILL_17": {
+"voice": "am_liam"
+},
+"seed_TILL_18": {
+"voice": "am_michael"
+},
+"seed_TILL_19": {
+"voice": "am_onyx"
+},
+"seed_TILL_20": {
+"voice": "am_puck"
+},
+"seed_TILL_21": {
+"voice": "am_santa"
+},
+"seed_TILL_22": {
+"voice": "bf_alice"
+},
+"seed_TILL_23": {
+"voice": "bf_emma"
+},
+"seed_TILL_24": {
+"voice": "bf_isabella"
+},
+"seed_TILL_25": {
+"voice": "bf_lily"
+},
+"seed_TILL_26": {
+"voice": "bm_daniel"
+},
+"seed_TILL_27": {
+"voice": "bm_fable"
+},
+"seed_TILL_28": {
+"voice": "bm_george"
+},
+"seed_TILL_29": {
+"voice": "bm_lewis"
+},
+"seed_TILL_30": {
+"voice": "af_alloy"
+},
+"seed_TILL_31": {
+"voice": "af_aoede"
+},
+"seed_TILL_32": {
+"voice": "af_bella"
+},
+"seed_TILL_33": {
+"voice": "af_heart"
+},
+"seed_TILL_34": {
+"voice": "af_jessica"
+},
+"seed_TILL_35": {
+"voice": "af_kore"
+},
+"seed_TILL_36": {
+"voice": "af_nicole"
+},
+"seed_TILL_37": {
+"voice": "af_nova"
+},
+"seed_TILL_38": {
+"voice": "af_river"
+},
+"seed_TILL_39": {
+"voice": "af_sarah"
+},
+"seed_FEED_0": {
+"voice": "af_sky"
+},
+"seed_FEED_1": {
+"voice": "am_adam"
+},
+"seed_FEED_2": {
+"voice": "am_echo"
+},
+"seed_FEED_3": {
+"voice": "am_eric"
+},
+"seed_FEED_4": {
+"voice": "am_fenrir"
+},
+"seed_FEED_5": {
+"voice": "am_liam"
+},
+"seed_FEED_6": {
+"voice": "am_michael"
+},
+"seed_FEED_7": {
+"voice": "am_onyx"
+},
+"seed_FEED_8": {
+"voice": "am_puck"
+},
+"seed_FEED_9": {
+"voice": "am_santa"
+},
+"seed_FEED_10": {
+"voice": "bf_alice"
+},
+"seed_FEED_11": {
+"voice": "bf_emma"
+},
+"seed_FEED_12": {
+"voice": "bf_isabella"
+},
+"seed_FEED_13": {
+"voice": "bf_lily"
+},
+"seed_FEED_14": {
+"voice": "bm_daniel"
+},
+"seed_FEED_15": {
+"voice": "bm_fable"
+},
+"seed_FEED_16": {
+"voice": "bm_george"
+},
+"seed_FEED_17": {
+"voice": "bm_lewis"
+},
+"seed_FEED_18": {
+"voice": "af_alloy"
+},
+"seed_FEED_19": {
+"voice": "af_aoede"
+},
+"seed_FEED_20": {
+"voice": "af_bella"
+},
+"seed_FEED_21": {
+"voice": "af_heart"
+},
+"seed_FEED_22": {
+"voice": "af_jessica"
+},
+"seed_FEED_23": {
+"voice": "af_kore"
+},
+"seed_FEED_24": {
+"voice": "af_nicole"
+},
+"seed_FEED_25": {
+"voice": "af_nova"
+},
+"seed_FEED_26": {
+"voice": "af_river"
+},
+"seed_FEED_27": {
+"voice": "af_sarah"
+},
+"seed_FEED_28": {
+"voice": "af_sky"
+},
+"seed_FEED_29": {
+"voice": "am_adam"
+},
+"seed_FEED_30": {
+"voice": "am_echo"
+},
+"seed_FEED_31": {
+"voice": "am_eric"
+},
+"seed_FEED_32": {
+"voice": "am_fenrir"
+},
+"seed_FEED_33": {
+"voice": "am_liam"
+},
+"seed_FEED_34": {
+"voice": "am_michael"
+},
+"seed_COLLECT_0": {
+"voice": "am_onyx"
+},
+"seed_COLLECT_1": {
+"voice": "am_puck"
+},
+"seed_COLLECT_2": {
+"voice": "am_santa"
+},
+"seed_COLLECT_3": {
+"voice": "bf_alice"
+},
+"seed_COLLECT_4": {
+"voice": "bf_emma"
+},
+"seed_COLLECT_5": {
+"voice": "bf_isabella"
+},
+"seed_COLLECT_6": {
+"voice": "bf_lily"
+},
+"seed_COLLECT_7": {
+"voice": "bm_daniel"
+},
+"seed_COLLECT_8": {
+"voice": "bm_fable"
+},
+"seed_COLLECT_9": {
+"voice": "bm_george"
+},
+"seed_COLLECT_10": {
+"voice": "bm_lewis"
+},
+"seed_COLLECT_11": {
+"voice": "af_alloy"
+},
+"seed_COLLECT_12": {
+"voice": "af_aoede"
+},
+"seed_COLLECT_13": {
+"voice": "af_bella"
+},
+"seed_COLLECT_14": {
+"voice": "af_heart"
+},
+"seed_COLLECT_15": {
+"voice": "af_jessica"
+},
+"seed_COLLECT_16": {
+"voice": "af_kore"
+},
+"seed_COLLECT_17": {
+"voice": "af_nicole"
+},
+"seed_COLLECT_18": {
+"voice": "af_nova"
+},
+"seed_COLLECT_19": {
+"voice": "af_river"
+},
+"seed_COLLECT_20": {
+"voice": "af_sarah"
+},
+"seed_COLLECT_21": {
+"voice": "af_sky"
+},
+"seed_COLLECT_22": {
+"voice": "am_adam"
+},
+"seed_COLLECT_23": {
+"voice": "am_echo"
+},
+"seed_COLLECT_24": {
+"voice": "am_eric"
+},
+"seed_COLLECT_25": {
+"voice": "am_fenrir"
+},
+"seed_COLLECT_26": {
+"voice": "am_liam"
+},
+"seed_COLLECT_27": {
+"voice": "am_michael"
+},
+"seed_COLLECT_28": {
+"voice": "am_onyx"
+},
+"seed_COLLECT_29": {
+"voice": "am_puck"
+},
+"seed_COLLECT_30": {
+"voice": "am_santa"
+},
+"seed_COLLECT_31": {
+"voice": "bf_alice"
+},
+"seed_COLLECT_32": {
+"voice": "bf_emma"
+},
+"seed_COLLECT_33": {
+"voice": "bf_isabella"
+},
+"seed_COLLECT_34": {
+"voice": "bf_lily"
+},
+"seed_COLLECT_35": {
+"voice": "bm_daniel"
+},
+"seed_COLLECT_36": {
+"voice": "bm_fable"
+},
+"seed_COLLECT_37": {
+"voice": "bm_george"
+},
+"seed_COLLECT_38": {
+"voice": "bm_lewis"
+},
+"seed_COLLECT_39": {
+"voice": "af_alloy"
+},
+"seed_COLLECT_40": {
+"voice": "af_aoede"
+},
+"seed_COLLECT_41": {
+"voice": "af_bella"
+},
+"seed_COLLECT_42": {
+"voice": "af_heart"
+},
+"seed_COLLECT_43": {
+"voice": "af_jessica"
+},
+"seed_COLLECT_44": {
+"voice": "af_kore"
+},
+"seed_DELIVER_0": {
+"voice": "af_nicole"
+},
+"seed_DELIVER_1": {
+"voice": "af_nova"
+},
+"seed_DELIVER_2": {
+"voice": "af_river"
+},
+"seed_DELIVER_3": {
+"voice": "af_sarah"
+},
+"seed_DELIVER_4": {
+"voice": "af_sky"
+},
+"seed_DELIVER_5": {
+"voice": "am_adam"
+},
+"seed_DELIVER_6": {
+"voice": "am_echo"
+},
+"seed_DELIVER_7": {
+"voice": "am_eric"
+},
+"seed_DELIVER_8": {
+"voice": "am_fenrir"
+},
+"seed_DELIVER_9": {
+"voice": "am_liam"
+},
+"seed_DELIVER_10": {
+"voice": "am_michael"
+},
+"seed_DELIVER_11": {
+"voice": "am_onyx"
+},
+"seed_DELIVER_12": {
+"voice": "am_puck"
+},
+"seed_DELIVER_13": {
+"voice": "am_santa"
+},
+"seed_DELIVER_14": {
+"voice": "bf_alice"
+},
+"seed_DELIVER_15": {
+"voice": "bf_emma"
+},
+"seed_DELIVER_16": {
+"voice": "bf_isabella"
+},
+"seed_DELIVER_17": {
+"voice": "bf_lily"
+},
+"seed_DELIVER_18": {
+"voice": "bm_daniel"
+},
+"seed_DELIVER_19": {
+"voice": "bm_fable"
+},
+"seed_DELIVER_20": {
+"voice": "bm_george"
+},
+"seed_DELIVER_21": {
+"voice": "bm_lewis"
+},
+"seed_DELIVER_22": {
+"voice": "af_alloy"
+},
+"seed_DELIVER_23": {
+"voice": "af_aoede"
+},
+"seed_DELIVER_24": {
+"voice": "af_bella"
+},
+"seed_DELIVER_25": {
+"voice": "af_heart"
+},
+"seed_DELIVER_26": {
+"voice": "af_jessica"
+},
+"seed_DELIVER_27": {
+"voice": "af_kore"
+},
+"seed_DELIVER_28": {
+"voice": "af_nicole"
+},
+"seed_DELIVER_29": {
+"voice": "af_nova"
+},
+"seed_DELIVER_30": {
+"voice": "af_river"
+},
+"seed_DELIVER_31": {
+"voice": "af_sarah"
+},
+"seed_DELIVER_32": {
+"voice": "af_sky"
+},
+"seed_DELIVER_33": {
+"voice": "am_adam"
+},
+"seed_DELIVER_34": {
+"voice": "am_echo"
+},
+"seed_DELIVER_35": {
+"voice": "am_eric"
+},
+"seed_DELIVER_36": {
+"voice": "am_fenrir"
+},
+"seed_DELIVER_37": {
+"voice": "am_liam"
+},
+"seed_DELIVER_38": {
+"voice": "am_michael"
+},
+"seed_DELIVER_39": {
+"voice": "am_onyx"
+},
+"seed_BUILD_0": {
+"voice": "am_puck"
+},
+"seed_BUILD_1": {
+"voice": "am_santa"
+},
+"seed_BUILD_2": {
+"voice": "bf_alice"
+},
+"seed_BUILD_3": {
+"voice": "bf_emma"
+},
+"seed_BUILD_4": {
+"voice": "bf_isabella"
+},
+"seed_BUILD_5": {
+"voice": "bf_lily"
+},
+"seed_BUILD_6": {
+"voice": "bm_daniel"
+},
+"seed_BUILD_7": {
+"voice": "bm_fable"
+},
+"seed_BUILD_8": {
+"voice": "bm_george"
+},
+"seed_BUILD_9": {
+"voice": "bm_lewis"
+},
+"seed_BUILD_10": {
+"voice": "af_alloy"
+},
+"seed_BUILD_11": {
+"voice": "af_aoede"
+},
+"seed_BUILD_12": {
+"voice": "af_bella"
+},
+"seed_BUILD_13": {
+"voice": "af_heart"
+},
+"seed_BUILD_14": {
+"voice": "af_jessica"
+},
+"seed_BUILD_15": {
+"voice": "af_kore"
+},
+"seed_BUILD_16": {
+"voice": "af_nicole"
+},
+"seed_BUILD_17": {
+"voice": "af_nova"
+},
+"seed_BUILD_18": {
+"voice": "af_river"
+},
+"seed_BUILD_19": {
+"voice": "af_sarah"
+},
+"seed_BUILD_20": {
+"voice": "af_sky"
+},
+"seed_BUILD_21": {
+"voice": "am_adam"
+},
+"seed_BUILD_22": {
+"voice": "am_echo"
+},
+"seed_BUILD_23": {
+"voice": "am_eric"
+},
+"seed_BUILD_24": {
+"voice": "am_fenrir"
+},
+"seed_BUILD_25": {
+"voice": "am_liam"
+},
+"seed_BUILD_26": {
+"voice": "am_michael"
+},
+"seed_BUILD_27": {
+"voice": "am_onyx"
+},
+"seed_BUILD_28": {
+"voice": "am_puck"
+},
+"seed_BUILD_29": {
+"voice": "am_santa"
+},
+"seed_BUILD_30": {
+"voice": "bf_alice"
+},
+"seed_BUILD_31": {
+"voice": "bf_emma"
+},
+"seed_BUILD_32": {
+"voice": "bf_isabella"
+},
+"seed_BUILD_33": {
+"voice": "bf_lily"
+},
+"seed_BUILD_34": {
+"voice": "bm_daniel"
+},
+"seed_BUILD_35": {
+"voice": "bm_fable"
+},
+"seed_BUILD_36": {
+"voice": "bm_george"
+},
+"seed_BUILD_37": {
+"voice": "bm_lewis"
+},
+"seed_BUILD_38": {
+"voice": "af_alloy"
+},
+"seed_BUILD_39": {
+"voice": "af_aoede"
+},
+"seed_BUILD_40": {
+"voice": "af_bella"
+},
+"seed_BUILD_41": {
+"voice": "af_heart"
+},
+"seed_BUILD_42": {
+"voice": "af_jessica"
+},
+"seed_BUILD_43": {
+"voice": "af_kore"
+},
+"seed_BUILD_44": {
+"voice": "af_nicole"
+},
+"seed_BUILD_45": {
+"voice": "af_nova"
+},
+"seed_BUILD_46": {
+"voice": "af_river"
+},
+"seed_BUILD_47": {
+"voice": "af_sarah"
+},
+"seed_BUILD_48": {
+"voice": "af_sky"
+},
+"seed_BUILD_49": {
+"voice": "am_adam"
+},
+"seed_BUILD_50": {
+"voice": "am_echo"
+},
+"seed_BUILD_51": {
+"voice": "am_eric"
+},
+"seed_BUILD_52": {
+"voice": "am_fenrir"
+},
+"seed_BUILD_53": {
+"voice": "am_liam"
+},
+"seed_BUILD_54": {
+"voice": "am_michael"
+},
+"seed_BUILD_55": {
+"voice": "am_onyx"
+},
+"seed_BUILD_56": {
+"voice": "am_puck"
+},
+"seed_BUILD_57": {
+"voice": "am_santa"
+},
+"seed_REPAIR_0": {
+"voice": "bf_alice"
+},
+"seed_REPAIR_1": {
+"voice": "bf_emma"
+},
+"seed_REPAIR_2": {
+"voice": "bf_isabella"
+},
+"seed_REPAIR_3": {
+"voice": "bf_lily"
+},
+"seed_REPAIR_4": {
+"voice": "bm_daniel"
+},
+"seed_REPAIR_5": {
+"voice": "bm_fable"
+},
+"seed_REPAIR_6": {
+"voice": "bm_george"
+},
+"seed_REPAIR_7": {
+"voice": "bm_lewis"
+},
+"seed_REPAIR_8": {
+"voice": "af_alloy"
+},
+"seed_REPAIR_9": {
+"voice": "af_aoede"
+},
+"seed_REPAIR_10": {
+"voice": "af_bella"
+},
+"seed_REPAIR_11": {
+"voice": "af_heart"
+},
+"seed_REPAIR_12": {
+"voice": "af_jessica"
+},
+"seed_REPAIR_13": {
+"voice": "af_kore"
+},
+"seed_REPAIR_14": {
+"voice": "af_nicole"
+},
+"seed_REPAIR_15": {
+"voice": "af_nova"
+},
+"seed_REPAIR_16": {
+"voice": "af_river"
+},
+"seed_REPAIR_17": {
+"voice": "af_sarah"
+},
+"seed_REPAIR_18": {
+"voice": "af_sky"
+},
+"seed_REPAIR_19": {
+"voice": "am_adam"
+},
+"seed_REPAIR_20": {
+"voice": "am_echo"
+},
+"seed_REPAIR_21": {
+"voice": "am_eric"
+},
+"seed_REPAIR_22": {
+"voice": "am_fenrir"
+},
+"seed_REPAIR_23": {
+"voice": "am_liam"
+},
+"seed_REPAIR_24": {
+"voice": "am_michael"
+},
+"seed_REPAIR_25": {
+"voice": "am_onyx"
+},
+"seed_REPAIR_26": {
+"voice": "am_puck"
+},
+"seed_REPAIR_27": {
+"voice": "am_santa"
+},
+"seed_REPAIR_28": {
+"voice": "bf_alice"
+},
+"seed_REPAIR_29": {
+"voice": "bf_emma"
+},
+"seed_REPAIR_30": {
+"voice": "bf_isabella"
+},
+"seed_REPAIR_31": {
+"voice": "bf_lily"
+},
+"seed_REPAIR_32": {
+"voice": "bm_daniel"
+},
+"seed_REPAIR_33": {
+"voice": "bm_fable"
+},
+"seed_REPAIR_34": {
+"voice": "bm_george"
+},
+"seed_REPAIR_35": {
+"voice": "bm_lewis"
+},
+"seed_REPAIR_36": {
+"voice": "af_alloy"
+},
+"seed_REPAIR_37": {
+"voice": "af_aoede"
+},
+"seed_REPAIR_38": {
+"voice": "af_bella"
+},
+"seed_REPAIR_39": {
+"voice": "af_heart"
+},
+"seed_REPAIR_40": {
+"voice": "af_jessica"
+},
+"seed_REPAIR_41": {
+"voice": "af_kore"
+},
+"seed_REPAIR_42": {
+"voice": "af_nicole"
+},
+"seed_REPAIR_43": {
+"voice": "af_nova"
+},
+"seed_REPAIR_44": {
+"voice": "af_river"
+},
+"seed_DEMOLISH_0": {
+"voice": "af_sarah"
+},
+"seed_DEMOLISH_1": {
+"voice": "af_sky"
+},
+"seed_DEMOLISH_2": {
+"voice": "am_adam"
+},
+"seed_DEMOLISH_3": {
+"voice": "am_echo"
+},
+"seed_DEMOLISH_4": {
+"voice": "am_eric"
+},
+"seed_DEMOLISH_5": {
+"voice": "am_fenrir"
+},
+"seed_DEMOLISH_6": {
+"voice": "am_liam"
+},
+"seed_DEMOLISH_7": {
+"voice": "am_michael"
+},
+"seed_DEMOLISH_8": {
+"voice": "am_onyx"
+},
+"seed_DEMOLISH_9": {
+"voice": "am_puck"
+},
+"seed_DEMOLISH_10": {
+"voice": "am_santa"
+},
+"seed_DEMOLISH_11": {
+"voice": "bf_alice"
+},
+"seed_DEMOLISH_12": {
+"voice": "bf_emma"
+},
+"seed_DEMOLISH_13": {
+"voice": "bf_isabella"
+},
+"seed_DEMOLISH_14": {
+"voice": "bf_lily"
+},
+"seed_DEMOLISH_15": {
+"voice": "bm_daniel"
+},
+"seed_DEMOLISH_16": {
+"voice": "bm_fable"
+},
+"seed_DEMOLISH_17": {
+"voice": "bm_george"
+},
+"seed_DEMOLISH_18": {
+"voice": "bm_lewis"
+},
+"seed_DEMOLISH_19": {
+"voice": "af_alloy"
+},
+"seed_DEMOLISH_20": {
+"voice": "af_aoede"
+},
+"seed_DEMOLISH_21": {
+"voice": "af_bella"
+},
+"seed_DEMOLISH_22": {
+"voice": "af_heart"
+},
+"seed_DEMOLISH_23": {
+"voice": "af_jessica"
+},
+"seed_DEMOLISH_24": {
+"voice": "af_kore"
+},
+"seed_DEMOLISH_25": {
+"voice": "af_nicole"
+},
+"seed_DEMOLISH_26": {
+"voice": "af_nova"
+},
+"seed_DEMOLISH_27": {
+"voice": "af_river"
+},
+"seed_DEMOLISH_28": {
+"voice": "af_sarah"
+},
+"seed_DEMOLISH_29": {
+"voice": "af_sky"
+},
+"seed_DEMOLISH_30": {
+"voice": "am_adam"
+},
+"seed_DEMOLISH_31": {
+"voice": "am_echo"
+},
+"seed_DEMOLISH_32": {
+"voice": "am_eric"
+},
+"seed_DEMOLISH_33": {
+"voice": "am_fenrir"
+},
+"seed_DEMOLISH_34": {
+"voice": "am_liam"
+},
+"seed_DEMOLISH_35": {
+"voice": "am_michael"
+},
+"seed_DEMOLISH_36": {
+"voice": "am_onyx"
+},
+"seed_DEMOLISH_37": {
+"voice": "am_puck"
+},
+"seed_DEMOLISH_38": {
+"voice": "am_santa"
+},
+"seed_DEMOLISH_39": {
+"voice": "bf_alice"
+},
+"seed_DEMOLISH_40": {
+"voice": "bf_emma"
+}
+},
+"wav_seedkokorox": {
+"seed_MOVE_TO_310": {
+"voice": "jf_gongitsune"
+},
+"seed_MOVE_TO_311": {
+"voice": "jf_nezumi"
+},
+"seed_MOVE_TO_312": {
+"voice": "jf_tebukuro"
+},
+"seed_MOVE_TO_313": {
+"voice": "jm_kumo"
+},
+"seed_MOVE_TO_314": {
+"voice": "pf_dora"
+},
+"seed_MOVE_TO_315": {
+"voice": "pm_alex"
+},
+"seed_MOVE_TO_316": {
+"voice": "pm_santa"
+},
+"seed_MOVE_TO_317": {
+"voice": "zf_xiaobei"
+},
+"seed_MOVE_TO_318": {
+"voice": "zf_xiaoni"
+},
+"seed_MOVE_TO_319": {
+"voice": "zf_xiaoxiao"
+},
+"seed_MOVE_TO_320": {
+"voice": "zf_xiaoyi"
+},
+"seed_HOLD_POSITION_68": {
+"voice": "zm_yunjian"
+},
+"seed_HOLD_POSITION_69": {
+"voice": "zm_yunxi"
+},
+"seed_HOLD_POSITION_70": {
+"voice": "zm_yunxia"
+},
+"seed_BREACH_24": {
+"voice": "zm_yunyang"
+},
+"seed_BREACH_25": {
+"voice": "em_santar"
+},
+"seed_BREACH_26": {
+"voice": "ef_dora"
+},
+"seed_COVER_ME_23": {
+"voice": "em_alex"
+},
+"seed_COVER_ME_24": {
+"voice": "ff_siwis"
+},
+"seed_COVER_ME_25": {
+"voice": "hf_alpha"
+},
+"seed_COVER_ME_26": {
+"voice": "hf_beta"
+},
+"seed_ENTRY_33": {
+"voice": "hm_omega"
+},
+"seed_ENTRY_34": {
+"voice": "hm_psi"
+},
+"seed_ENTRY_35": {
+"voice": "if_sara"
+},
+"seed_PLANT_18": {
+"voice": "im_nicola"
+},
+"seed_PLANT_19": {
+"voice": "jf_alpha"
+},
+"seed_PLANT_20": {
+"voice": "jf_gongitsune"
+},
+"seed_PLANT_21": {
+"voice": "jf_nezumi"
+},
+"seed_WAIT_59": {
+"voice": "jf_tebukuro"
+},
+"seed_WAIT_60": {
+"voice": "jm_kumo"
+},
+"seed_WAIT_61": {
+"voice": "pf_dora"
+},
+"seed_WAIT_62": {
+"voice": "pm_alex"
+},
+"seed_WAIT_63": {
+"voice": "pm_santa"
+},
+"seed_WAIT_64": {
+"voice": "zf_xiaobei"
+},
+"seed_WAIT_65": {
+"voice": "zf_xiaoni"
+},
+"seed_WAIT_66": {
+"voice": "zf_xiaoxiao"
+},
+"seed_TAKE_COVER_33": {
+"voice": "zf_xiaoyi"
+},
+"seed_TAKE_COVER_34": {
+"voice": "zm_yunjian"
+},
+"seed_TAKE_COVER_35": {
+"voice": "zm_yunxi"
+},
+"seed_TAKE_COVER_36": {
+"voice": "zm_yunxia"
+},
+"seed_TAKE_COVER_37": {
+"voice": "zm_yunyang"
+},
+"seed_NONE_272": {
+"voice": "em_santar"
+},
+"seed_NONE_273": {
+"voice": "ef_dora"
+},
+"seed_NONE_274": {
+"voice": "em_alex"
+},
+"seed_NONE_275": {
+"voice": "ff_siwis"
+},
+"seed_NONE_276": {
+"voice": "hf_alpha"
+},
+"seed_NONE_277": {
+"voice": "hf_beta"
+},
+"seed_NONE_278": {
+"voice": "hm_omega"
+},
+"seed_NONE_279": {
+"voice": "hm_psi"
+},
+"seed_NONE_280": {
+"voice": "if_sara"
+},
+"seed_NONE_281": {
+"voice": "im_nicola"
+},
+"seed_NONE_282": {
+"voice": "jf_alpha"
+},
+"seed_NONE_283": {
+"voice": "jf_gongitsune"
+},
+"seed_NONE_284": {
+"voice": "jf_nezumi"
+},
+"seed_CHECK_71": {
+"voice": "jf_tebukuro"
+},
+"seed_CHECK_72": {
+"voice": "jm_kumo"
+},
+"seed_CHECK_73": {
+"voice": "pf_dora"
+},
+"seed_CHECK_74": {
+"voice": "pm_alex"
+},
+"seed_CHECK_75": {
+"voice": "pm_santa"
+},
+"seed_CHECK_76": {
+"voice": "zf_xiaobei"
+},
+"seed_CHECK_77": {
+"voice": "zf_xiaoni"
+},
+"seed_PLANT_CROP_0": {
+"voice": "zf_xiaoxiao"
+},
+"seed_PLANT_CROP_1": {
+"voice": "zf_xiaoyi"
+},
+"seed_PLANT_CROP_2": {
+"voice": "zm_yunjian"
+},
+"seed_PLANT_CROP_3": {
+"voice": "zm_yunxi"
+},
+"seed_PLANT_CROP_4": {
+"voice": "zm_yunxia"
+},
+"seed_PLANT_CROP_5": {
+"voice": "zm_yunyang"
+},
+"seed_PLANT_CROP_6": {
+"voice": "em_santar"
+},
+"seed_PLANT_CROP_7": {
+"voice": "ef_dora"
+},
+"seed_PLANT_CROP_8": {
+"voice": "em_alex"
+},
+"seed_PLANT_CROP_9": {
+"voice": "ff_siwis"
+},
+"seed_PLANT_CROP_10": {
+"voice": "hf_alpha"
+},
+"seed_PLANT_CROP_11": {
+"voice": "hf_beta"
+},
+"seed_PLANT_CROP_12": {
+"voice": "hm_omega"
+},
+"seed_PLANT_CROP_13": {
+"voice": "hm_psi"
+},
+"seed_PLANT_CROP_14": {
+"voice": "if_sara"
+},
+"seed_PLANT_CROP_15": {
+"voice": "im_nicola"
+},
+"seed_PLANT_CROP_16": {
+"voice": "jf_alpha"
+},
+"seed_PLANT_CROP_17": {
+"voice": "jf_gongitsune"
+},
+"seed_PLANT_CROP_18": {
+"voice": "jf_nezumi"
+},
+"seed_PLANT_CROP_19": {
+"voice": "jf_tebukuro"
+},
+"seed_PLANT_CROP_20": {
+"voice": "jm_kumo"
+},
+"seed_PLANT_CROP_21": {
+"voice": "pf_dora"
+},
+"seed_PLANT_CROP_22": {
+"voice": "pm_alex"
+},
+"seed_PLANT_CROP_23": {
+"voice": "pm_santa"
+},
+"seed_PLANT_CROP_24": {
+"voice": "zf_xiaobei"
+},
+"seed_PLANT_CROP_25": {
+"voice": "zf_xiaoni"
+},
+"seed_PLANT_CROP_26": {
+"voice": "zf_xiaoxiao"
+},
+"seed_PLANT_CROP_27": {
+"voice": "zf_xiaoyi"
+},
+"seed_PLANT_CROP_28": {
+"voice": "zm_yunjian"
+},
+"seed_PLANT_CROP_29": {
+"voice": "zm_yunxi"
+},
+"seed_PLANT_CROP_30": {
+"voice": "zm_yunxia"
+},
+"seed_PLANT_CROP_31": {
+"voice": "zm_yunyang"
+},
+"seed_PLANT_CROP_32": {
+"voice": "em_santar"
+},
+"seed_PLANT_CROP_33": {
+"voice": "ef_dora"
+},
+"seed_PLANT_CROP_34": {
+"voice": "em_alex"
+},
+"seed_PLANT_CROP_35": {
+"voice": "ff_siwis"
+},
+"seed_PLANT_CROP_36": {
+"voice": "hf_alpha"
+},
+"seed_PLANT_CROP_37": {
+"voice": "hf_beta"
+},
+"seed_PLANT_CROP_38": {
+"voice": "hm_omega"
+},
+"seed_PLANT_CROP_39": {
+"voice": "hm_psi"
+},
+"seed_PLANT_CROP_40": {
+"voice": "if_sara"
+},
+"seed_PLANT_CROP_41": {
+"voice": "im_nicola"
+},
+"seed_PLANT_CROP_42": {
+"voice": "jf_alpha"
+},
+"seed_PLANT_CROP_43": {
+"voice": "jf_gongitsune"
+},
+"seed_PLANT_CROP_44": {
+"voice": "jf_nezumi"
+},
+"seed_PLANT_CROP_45": {
+"voice": "jf_tebukuro"
+},
+"seed_PLANT_CROP_46": {
+"voice": "jm_kumo"
+},
+"seed_PLANT_CROP_47": {
+"voice": "pf_dora"
+},
+"seed_PLANT_CROP_48": {
+"voice": "pm_alex"
+},
+"seed_PLANT_CROP_49": {
+"voice": "pm_santa"
+},
+"seed_WATER_0": {
+"voice": "zf_xiaobei"
+},
+"seed_WATER_1": {
+"voice": "zf_xiaoni"
+},
+"seed_WATER_2": {
+"voice": "zf_xiaoxiao"
+},
+"seed_WATER_3": {
+"voice": "zf_xiaoyi"
+},
+"seed_WATER_4": {
+"voice": "zm_yunjian"
+},
+"seed_WATER_5": {
+"voice": "zm_yunxi"
+},
+"seed_WATER_6": {
+"voice": "zm_yunxia"
+},
+"seed_WATER_7": {
+"voice": "zm_yunyang"
+},
+"seed_WATER_8": {
+"voice": "em_santar"
+},
+"seed_WATER_9": {
+"voice": "ef_dora"
+},
+"seed_WATER_10": {
+"voice": "em_alex"
+},
+"seed_WATER_11": {
+"voice": "ff_siwis"
+},
+"seed_WATER_12": {
+"voice": "hf_alpha"
+},
+"seed_WATER_13": {
+"voice": "hf_beta"
+},
+"seed_WATER_14": {
+"voice": "hm_omega"
+},
+"seed_WATER_15": {
+"voice": "hm_psi"
+},
+"seed_WATER_16": {
+"voice": "if_sara"
+},
+"seed_WATER_17": {
+"voice": "im_nicola"
+},
+"seed_WATER_18": {
+"voice": "jf_alpha"
+},
+"seed_WATER_19": {
+"voice": "jf_gongitsune"
+},
+"seed_WATER_20": {
+"voice": "jf_nezumi"
+},
+"seed_WATER_21": {
+"voice": "jf_tebukuro"
+},
+"seed_WATER_22": {
+"voice": "jm_kumo"
+},
+"seed_WATER_23": {
+"voice": "pf_dora"
+},
+"seed_WATER_24": {
+"voice": "pm_alex"
+},
+"seed_WATER_25": {
+"voice": "pm_santa"
+},
+"seed_WATER_26": {
+"voice": "zf_xiaobei"
+},
+"seed_WATER_27": {
+"voice": "zf_xiaoni"
+},
+"seed_WATER_28": {
+"voice": "zf_xiaoxiao"
+},
+"seed_WATER_29": {
+"voice": "zf_xiaoyi"
+},
+"seed_WATER_30": {
+"voice": "zm_yunjian"
+},
+"seed_WATER_31": {
+"voice": "zm_yunxi"
+},
+"seed_WATER_32": {
+"voice": "zm_yunxia"
+},
+"seed_WATER_33": {
+"voice": "zm_yunyang"
+},
+"seed_WATER_34": {
+"voice": "em_santar"
+},
+"seed_WATER_35": {
+"voice": "ef_dora"
+},
+"seed_WATER_36": {
+"voice": "em_alex"
+},
+"seed_WATER_37": {
+"voice": "ff_siwis"
+},
+"seed_WATER_38": {
+"voice": "hf_alpha"
+},
+"seed_WATER_39": {
+"voice": "hf_beta"
+},
+"seed_HARVEST_0": {
+"voice": "hm_omega"
+},
+"seed_HARVEST_1": {
+"voice": "hm_psi"
+},
+"seed_HARVEST_2": {
+"voice": "if_sara"
+},
+"seed_HARVEST_3": {
+"voice": "im_nicola"
+},
+"seed_HARVEST_4": {
+"voice": "jf_alpha"
+},
+"seed_HARVEST_5": {
+"voice": "jf_gongitsune"
+},
+"seed_HARVEST_6": {
+"voice": "jf_nezumi"
+},
+"seed_HARVEST_7": {
+"voice": "jf_tebukuro"
+},
+"seed_HARVEST_8": {
+"voice": "jm_kumo"
+},
+"seed_HARVEST_9": {
+"voice": "pf_dora"
+},
+"seed_HARVEST_10": {
+"voice": "pm_alex"
+},
+"seed_HARVEST_11": {
+"voice": "pm_santa"
+},
+"seed_HARVEST_12": {
+"voice": "zf_xiaobei"
+},
+"seed_HARVEST_13": {
+"voice": "zf_xiaoni"
+},
+"seed_HARVEST_14": {
+"voice": "zf_xiaoxiao"
+},
+"seed_HARVEST_15": {
+"voice": "zf_xiaoyi"
+},
+"seed_HARVEST_16": {
+"voice": "zm_yunjian"
+},
+"seed_HARVEST_17": {
+"voice": "zm_yunxi"
+},
+"seed_HARVEST_18": {
+"voice": "zm_yunxia"
+},
+"seed_HARVEST_19": {
+"voice": "zm_yunyang"
+},
+"seed_HARVEST_20": {
+"voice": "em_santar"
+},
+"seed_HARVEST_21": {
+"voice": "ef_dora"
+},
+"seed_HARVEST_22": {
+"voice": "em_alex"
+},
+"seed_HARVEST_23": {
+"voice": "ff_siwis"
+},
+"seed_HARVEST_24": {
+"voice": "hf_alpha"
+},
+"seed_HARVEST_25": {
+"voice": "hf_beta"
+},
+"seed_HARVEST_26": {
+"voice": "hm_omega"
+},
+"seed_HARVEST_27": {
+"voice": "hm_psi"
+},
+"seed_HARVEST_28": {
+"voice": "if_sara"
+},
+"seed_HARVEST_29": {
+"voice": "im_nicola"
+},
+"seed_HARVEST_30": {
+"voice": "jf_alpha"
+},
+"seed_HARVEST_31": {
+"voice": "jf_gongitsune"
+},
+"seed_HARVEST_32": {
+"voice": "jf_nezumi"
+},
+"seed_HARVEST_33": {
+"voice": "jf_tebukuro"
+},
+"seed_HARVEST_34": {
+"voice": "jm_kumo"
+},
+"seed_HARVEST_35": {
+"voice": "pf_dora"
+},
+"seed_HARVEST_36": {
+"voice": "pm_alex"
+},
+"seed_HARVEST_37": {
+"voice": "pm_santa"
+},
+"seed_HARVEST_38": {
+"voice": "zf_xiaobei"
+},
+"seed_HARVEST_39": {
+"voice": "zf_xiaoni"
+},
+"seed_HARVEST_40": {
+"voice": "zf_xiaoxiao"
+},
+"seed_HARVEST_41": {
+"voice": "zf_xiaoyi"
+},
+"seed_HARVEST_42": {
+"voice": "zm_yunjian"
+},
+"seed_HARVEST_43": {
+"voice": "zm_yunxi"
+},
+"seed_HARVEST_44": {
+"voice": "zm_yunxia"
+},
+"seed_HARVEST_45": {
+"voice": "zm_yunyang"
+},
+"seed_HARVEST_46": {
+"voice": "em_santar"
+},
+"seed_TILL_0": {
+"voice": "ef_dora"
+},
+"seed_TILL_1": {
+"voice": "em_alex"
+},
+"seed_TILL_2": {
+"voice": "ff_siwis"
+},
+"seed_TILL_3": {
+"voice": "hf_alpha"
+},
+"seed_TILL_4": {
+"voice": "hf_beta"
+},
+"seed_TILL_5": {
+"voice": "hm_omega"
+},
+"seed_TILL_6": {
+"voice": "hm_psi"
+},
+"seed_TILL_7": {
+"voice": "if_sara"
+},
+"seed_TILL_8": {
+"voice": "im_nicola"
+},
+"seed_TILL_9": {
+"voice": "jf_alpha"
+},
+"seed_TILL_10": {
+"voice": "jf_gongitsune"
+},
+"seed_TILL_11": {
+"voice": "jf_nezumi"
+},
+"seed_TILL_12": {
+"voice": "jf_tebukuro"
+},
+"seed_TILL_13": {
+"voice": "jm_kumo"
+},
+"seed_TILL_14": {
+"voice": "pf_dora"
+},
+"seed_TILL_15": {
+"voice": "pm_alex"
+},
+"seed_TILL_16": {
+"voice": "pm_santa"
+},
+"seed_TILL_17": {
+"voice": "zf_xiaobei"
+},
+"seed_TILL_18": {
+"voice": "zf_xiaoni"
+},
+"seed_TILL_19": {
+"voice": "zf_xiaoxiao"
+},
+"seed_TILL_20": {
+"voice": "zf_xiaoyi"
+},
+"seed_TILL_21": {
+"voice": "zm_yunjian"
+},
+"seed_TILL_22": {
+"voice": "zm_yunxi"
+},
+"seed_TILL_23": {
+"voice": "zm_yunxia"
+},
+"seed_TILL_24": {
+"voice": "zm_yunyang"
+},
+"seed_TILL_25": {
+"voice": "em_santar"
+},
+"seed_TILL_26": {
+"voice": "ef_dora"
+},
+"seed_TILL_27": {
+"voice": "em_alex"
+},
+"seed_TILL_28": {
+"voice": "ff_siwis"
+},
+"seed_TILL_29": {
+"voice": "hf_alpha"
+},
+"seed_TILL_30": {
+"voice": "hf_beta"
+},
+"seed_TILL_31": {
+"voice": "hm_omega"
+},
+"seed_TILL_32": {
+"voice": "hm_psi"
+},
+"seed_TILL_33": {
+"voice": "if_sara"
+},
+"seed_TILL_34": {
+"voice": "im_nicola"
+},
+"seed_TILL_35": {
+"voice": "jf_alpha"
+},
+"seed_TILL_36": {
+"voice": "jf_gongitsune"
+},
+"seed_TILL_37": {
+"voice": "jf_nezumi"
+},
+"seed_TILL_38": {
+"voice": "jf_tebukuro"
+},
+"seed_TILL_39": {
+"voice": "jm_kumo"
+},
+"seed_FEED_0": {
+"voice": "pf_dora"
+},
+"seed_FEED_1": {
+"voice": "pm_alex"
+},
+"seed_FEED_2": {
+"voice": "pm_santa"
+},
+"seed_FEED_3": {
+"voice": "zf_xiaobei"
+},
+"seed_FEED_4": {
+"voice": "zf_xiaoni"
+},
+"seed_FEED_5": {
+"voice": "zf_xiaoxiao"
+},
+"seed_FEED_6": {
+"voice": "zf_xiaoyi"
+},
+"seed_FEED_7": {
+"voice": "zm_yunjian"
+},
+"seed_FEED_8": {
+"voice": "zm_yunxi"
+},
+"seed_FEED_9": {
+"voice": "zm_yunxia"
+},
+"seed_FEED_10": {
+"voice": "zm_yunyang"
+},
+"seed_FEED_11": {
+"voice": "em_santar"
+},
+"seed_FEED_12": {
+"voice": "ef_dora"
+},
+"seed_FEED_13": {
+"voice": "em_alex"
+},
+"seed_FEED_14": {
+"voice": "ff_siwis"
+},
+"seed_FEED_15": {
+"voice": "hf_alpha"
+},
+"seed_FEED_16": {
+"voice": "hf_beta"
+},
+"seed_FEED_17": {
+"voice": "hm_omega"
+},
+"seed_FEED_18": {
+"voice": "hm_psi"
+},
+"seed_FEED_19": {
+"voice": "if_sara"
+},
+"seed_FEED_20": {
+"voice": "im_nicola"
+},
+"seed_FEED_21": {
+"voice": "jf_alpha"
+},
+"seed_FEED_22": {
+"voice": "jf_gongitsune"
+},
+"seed_FEED_23": {
+"voice": "jf_nezumi"
+},
+"seed_FEED_24": {
+"voice": "jf_tebukuro"
+},
+"seed_FEED_25": {
+"voice": "jm_kumo"
+},
+"seed_FEED_26": {
+"voice": "pf_dora"
+},
+"seed_FEED_27": {
+"voice": "pm_alex"
+},
+"seed_FEED_28": {
+"voice": "pm_santa"
+},
+"seed_FEED_29": {
+"voice": "zf_xiaobei"
+},
+"seed_FEED_30": {
+"voice": "zf_xiaoni"
+},
+"seed_FEED_31": {
+"voice": "zf_xiaoxiao"
+},
+"seed_FEED_32": {
+"voice": "zf_xiaoyi"
+},
+"seed_FEED_33": {
+"voice": "zm_yunjian"
+},
+"seed_FEED_34": {
+"voice": "zm_yunxi"
+},
+"seed_COLLECT_0": {
+"voice": "zm_yunxia"
+},
+"seed_COLLECT_1": {
+"voice": "zm_yunyang"
+},
+"seed_COLLECT_2": {
+"voice": "em_santar"
+},
+"seed_COLLECT_3": {
+"voice": "ef_dora"
+},
+"seed_COLLECT_4": {
+"voice": "em_alex"
+},
+"seed_COLLECT_5": {
+"voice": "ff_siwis"
+},
+"seed_COLLECT_6": {
+"voice": "hf_alpha"
+},
+"seed_COLLECT_7": {
+"voice": "hf_beta"
+},
+"seed_COLLECT_8": {
+"voice": "hm_omega"
+},
+"seed_COLLECT_9": {
+"voice": "hm_psi"
+},
+"seed_COLLECT_10": {
+"voice": "if_sara"
+},
+"seed_COLLECT_11": {
+"voice": "im_nicola"
+},
+"seed_COLLECT_12": {
+"voice": "jf_alpha"
+},
+"seed_COLLECT_13": {
+"voice": "jf_gongitsune"
+},
+"seed_COLLECT_14": {
+"voice": "jf_nezumi"
+},
+"seed_COLLECT_15": {
+"voice": "jf_tebukuro"
+},
+"seed_COLLECT_16": {
+"voice": "jm_kumo"
+},
+"seed_COLLECT_17": {
+"voice": "pf_dora"
+},
+"seed_COLLECT_18": {
+"voice": "pm_alex"
+},
+"seed_COLLECT_19": {
+"voice": "pm_santa"
+},
+"seed_COLLECT_20": {
+"voice": "zf_xiaobei"
+},
+"seed_COLLECT_21": {
+"voice": "zf_xiaoni"
+},
+"seed_COLLECT_22": {
+"voice": "zf_xiaoxiao"
+},
+"seed_COLLECT_23": {
+"voice": "zf_xiaoyi"
+},
+"seed_COLLECT_24": {
+"voice": "zm_yunjian"
+},
+"seed_COLLECT_25": {
+"voice": "zm_yunxi"
+},
+"seed_COLLECT_26": {
+"voice": "zm_yunxia"
+},
+"seed_COLLECT_27": {
+"voice": "zm_yunyang"
+},
+"seed_COLLECT_28": {
+"voice": "em_santar"
+},
+"seed_COLLECT_29": {
+"voice": "ef_dora"
+},
+"seed_COLLECT_30": {
+"voice": "em_alex"
+},
+"seed_COLLECT_31": {
+"voice": "ff_siwis"
+},
+"seed_COLLECT_32": {
+"voice": "hf_alpha"
+},
+"seed_COLLECT_33": {
+"voice": "hf_beta"
+},
+"seed_COLLECT_34": {
+"voice": "hm_omega"
+},
+"seed_COLLECT_35": {
+"voice": "hm_psi"
+},
+"seed_COLLECT_36": {
+"voice": "if_sara"
+},
+"seed_COLLECT_37": {
+"voice": "im_nicola"
+},
+"seed_COLLECT_38": {
+"voice": "jf_alpha"
+},
+"seed_COLLECT_39": {
+"voice": "jf_gongitsune"
+},
+"seed_COLLECT_40": {
+"voice": "jf_nezumi"
+},
+"seed_COLLECT_41": {
+"voice": "jf_tebukuro"
+},
+"seed_COLLECT_42": {
+"voice": "jm_kumo"
+},
+"seed_COLLECT_43": {
+"voice": "pf_dora"
+},
+"seed_COLLECT_44": {
+"voice": "pm_alex"
+},
+"seed_DELIVER_0": {
+"voice": "pm_santa"
+},
+"seed_DELIVER_1": {
+"voice": "zf_xiaobei"
+},
+"seed_DELIVER_2": {
+"voice": "zf_xiaoni"
+},
+"seed_DELIVER_3": {
+"voice": "zf_xiaoxiao"
+},
+"seed_DELIVER_4": {
+"voice": "zf_xiaoyi"
+},
+"seed_DELIVER_5": {
+"voice": "zm_yunjian"
+},
+"seed_DELIVER_6": {
+"voice": "zm_yunxi"
+},
+"seed_DELIVER_7": {
+"voice": "zm_yunxia"
+},
+"seed_DELIVER_8": {
+"voice": "zm_yunyang"
+},
+"seed_DELIVER_9": {
+"voice": "em_santar"
+},
+"seed_DELIVER_10": {
+"voice": "ef_dora"
+},
+"seed_DELIVER_11": {
+"voice": "em_alex"
+},
+"seed_DELIVER_12": {
+"voice": "ff_siwis"
+},
+"seed_DELIVER_13": {
+"voice": "hf_alpha"
+},
+"seed_DELIVER_14": {
+"voice": "hf_beta"
+},
+"seed_DELIVER_15": {
+"voice": "hm_omega"
+},
+"seed_DELIVER_16": {
+"voice": "hm_psi"
+},
+"seed_DELIVER_17": {
+"voice": "if_sara"
+},
+"seed_DELIVER_18": {
+"voice": "im_nicola"
+},
+"seed_DELIVER_19": {
+"voice": "jf_alpha"
+},
+"seed_DELIVER_20": {
+"voice": "jf_gongitsune"
+},
+"seed_DELIVER_21": {
+"voice": "jf_nezumi"
+},
+"seed_DELIVER_22": {
+"voice": "jf_tebukuro"
+},
+"seed_DELIVER_23": {
+"voice": "jm_kumo"
+},
+"seed_DELIVER_24": {
+"voice": "pf_dora"
+},
+"seed_DELIVER_25": {
+"voice": "pm_alex"
+},
+"seed_DELIVER_26": {
+"voice": "pm_santa"
+},
+"seed_DELIVER_27": {
+"voice": "zf_xiaobei"
+},
+"seed_DELIVER_28": {
+"voice": "zf_xiaoni"
+},
+"seed_DELIVER_29": {
+"voice": "zf_xiaoxiao"
+},
+"seed_DELIVER_30": {
+"voice": "zf_xiaoyi"
+},
+"seed_DELIVER_31": {
+"voice": "zm_yunjian"
+},
+"seed_DELIVER_32": {
+"voice": "zm_yunxi"
+},
+"seed_DELIVER_33": {
+"voice": "zm_yunxia"
+},
+"seed_DELIVER_34": {
+"voice": "zm_yunyang"
+},
+"seed_DELIVER_35": {
+"voice": "em_santar"
+},
+"seed_DELIVER_36": {
+"voice": "ef_dora"
+},
+"seed_DELIVER_37": {
+"voice": "em_alex"
+},
+"seed_DELIVER_38": {
+"voice": "ff_siwis"
+},
+"seed_DELIVER_39": {
+"voice": "hf_alpha"
+},
+"seed_BUILD_0": {
+"voice": "hf_beta"
+},
+"seed_BUILD_1": {
+"voice": "hm_omega"
+},
+"seed_BUILD_2": {
+"voice": "hm_psi"
+},
+"seed_BUILD_3": {
+"voice": "if_sara"
+},
+"seed_BUILD_4": {
+"voice": "im_nicola"
+},
+"seed_BUILD_5": {
+"voice": "jf_alpha"
+},
+"seed_BUILD_6": {
+"voice": "jf_gongitsune"
+},
+"seed_BUILD_7": {
+"voice": "jf_nezumi"
+},
+"seed_BUILD_8": {
+"voice": "jf_tebukuro"
+},
+"seed_BUILD_9": {
+"voice": "jm_kumo"
+},
+"seed_BUILD_10": {
+"voice": "pf_dora"
+},
+"seed_BUILD_11": {
+"voice": "pm_alex"
+},
+"seed_BUILD_12": {
+"voice": "pm_santa"
+},
+"seed_BUILD_13": {
+"voice": "zf_xiaobei"
+},
+"seed_BUILD_14": {
+"voice": "zf_xiaoni"
+},
+"seed_BUILD_15": {
+"voice": "zf_xiaoxiao"
+},
+"seed_BUILD_16": {
+"voice": "zf_xiaoyi"
+},
+"seed_BUILD_17": {
+"voice": "zm_yunjian"
+},
+"seed_BUILD_18": {
+"voice": "zm_yunxi"
+},
+"seed_BUILD_19": {
+"voice": "zm_yunxia"
+},
+"seed_BUILD_20": {
+"voice": "zm_yunyang"
+},
+"seed_BUILD_21": {
+"voice": "em_santar"
+},
+"seed_BUILD_22": {
+"voice": "ef_dora"
+},
+"seed_BUILD_23": {
+"voice": "em_alex"
+},
+"seed_BUILD_24": {
+"voice": "ff_siwis"
+},
+"seed_BUILD_25": {
+"voice": "hf_alpha"
+},
+"seed_BUILD_26": {
+"voice": "hf_beta"
+},
+"seed_BUILD_27": {
+"voice": "hm_omega"
+},
+"seed_BUILD_28": {
+"voice": "hm_psi"
+},
+"seed_BUILD_29": {
+"voice": "if_sara"
+},
+"seed_BUILD_30": {
+"voice": "im_nicola"
+},
+"seed_BUILD_31": {
+"voice": "jf_alpha"
+},
+"seed_BUILD_32": {
+"voice": "jf_gongitsune"
+},
+"seed_BUILD_33": {
+"voice": "jf_nezumi"
+},
+"seed_BUILD_34": {
+"voice": "jf_tebukuro"
+},
+"seed_BUILD_35": {
+"voice": "jm_kumo"
+},
+"seed_BUILD_36": {
+"voice": "pf_dora"
+},
+"seed_BUILD_37": {
+"voice": "pm_alex"
+},
+"seed_BUILD_38": {
+"voice": "pm_santa"
+},
+"seed_BUILD_39": {
+"voice": "zf_xiaobei"
+},
+"seed_BUILD_40": {
+"voice": "zf_xiaoni"
+},
+"seed_BUILD_41": {
+"voice": "zf_xiaoxiao"
+},
+"seed_BUILD_42": {
+"voice": "zf_xiaoyi"
+},
+"seed_BUILD_43": {
+"voice": "zm_yunjian"
+},
+"seed_BUILD_44": {
+"voice": "zm_yunxi"
+},
+"seed_BUILD_45": {
+"voice": "zm_yunxia"
+},
+"seed_BUILD_46": {
+"voice": "zm_yunyang"
+},
+"seed_BUILD_47": {
+"voice": "em_santar"
+},
+"seed_BUILD_48": {
+"voice": "ef_dora"
+},
+"seed_BUILD_49": {
+"voice": "em_alex"
+},
+"seed_BUILD_50": {
+"voice": "ff_siwis"
+},
+"seed_BUILD_51": {
+"voice": "hf_alpha"
+},
+"seed_BUILD_52": {
+"voice": "hf_beta"
+},
+"seed_BUILD_53": {
+"voice": "hm_omega"
+},
+"seed_BUILD_54": {
+"voice": "hm_psi"
+},
+"seed_BUILD_55": {
+"voice": "if_sara"
+},
+"seed_BUILD_56": {
+"voice": "im_nicola"
+},
+"seed_BUILD_57": {
+"voice": "jf_alpha"
+},
+"seed_REPAIR_0": {
+"voice": "jf_gongitsune"
+},
+"seed_REPAIR_1": {
+"voice": "jf_nezumi"
+},
+"seed_REPAIR_2": {
+"voice": "jf_tebukuro"
+},
+"seed_REPAIR_3": {
+"voice": "jm_kumo"
+},
+"seed_REPAIR_4": {
+"voice": "pf_dora"
+},
+"seed_REPAIR_5": {
+"voice": "pm_alex"
+},
+"seed_REPAIR_6": {
+"voice": "pm_santa"
+},
+"seed_REPAIR_7": {
+"voice": "zf_xiaobei"
+},
+"seed_REPAIR_8": {
+"voice": "zf_xiaoni"
+},
+"seed_REPAIR_9": {
+"voice": "zf_xiaoxiao"
+},
+"seed_REPAIR_10": {
+"voice": "zf_xiaoyi"
+},
+"seed_REPAIR_11": {
+"voice": "zm_yunjian"
+},
+"seed_REPAIR_12": {
+"voice": "zm_yunxi"
+},
+"seed_REPAIR_13": {
+"voice": "zm_yunxia"
+},
+"seed_REPAIR_14": {
+"voice": "zm_yunyang"
+},
+"seed_REPAIR_15": {
+"voice": "em_santar"
+},
+"seed_REPAIR_16": {
+"voice": "ef_dora"
+},
+"seed_REPAIR_17": {
+"voice": "em_alex"
+},
+"seed_REPAIR_18": {
+"voice": "ff_siwis"
+},
+"seed_REPAIR_19": {
+"voice": "hf_alpha"
+},
+"seed_REPAIR_20": {
+"voice": "hf_beta"
+},
+"seed_REPAIR_21": {
+"voice": "hm_omega"
+},
+"seed_REPAIR_22": {
+"voice": "hm_psi"
+},
+"seed_REPAIR_23": {
+"voice": "if_sara"
+},
+"seed_REPAIR_24": {
+"voice": "im_nicola"
+},
+"seed_REPAIR_25": {
+"voice": "jf_alpha"
+},
+"seed_REPAIR_26": {
+"voice": "jf_gongitsune"
+},
+"seed_REPAIR_27": {
+"voice": "jf_nezumi"
+},
+"seed_REPAIR_28": {
+"voice": "jf_tebukuro"
+},
+"seed_REPAIR_29": {
+"voice": "jm_kumo"
+},
+"seed_REPAIR_30": {
+"voice": "pf_dora"
+},
+"seed_REPAIR_31": {
+"voice": "pm_alex"
+},
+"seed_REPAIR_32": {
+"voice": "pm_santa"
+},
+"seed_REPAIR_33": {
+"voice": "zf_xiaobei"
+},
+"seed_REPAIR_34": {
+"voice": "zf_xiaoni"
+},
+"seed_REPAIR_35": {
+"voice": "zf_xiaoxiao"
+},
+"seed_REPAIR_36": {
+"voice": "zf_xiaoyi"
+},
+"seed_REPAIR_37": {
+"voice": "zm_yunjian"
+},
+"seed_REPAIR_38": {
+"voice": "zm_yunxi"
+},
+"seed_REPAIR_39": {
+"voice": "zm_yunxia"
+},
+"seed_REPAIR_40": {
+"voice": "zm_yunyang"
+},
+"seed_REPAIR_41": {
+"voice": "em_santar"
+},
+"seed_REPAIR_42": {
+"voice": "ef_dora"
+},
+"seed_REPAIR_43": {
+"voice": "em_alex"
+},
+"seed_REPAIR_44": {
+"voice": "ff_siwis"
+},
+"seed_DEMOLISH_0": {
+"voice": "hf_alpha"
+},
+"seed_DEMOLISH_1": {
+"voice": "hf_beta"
+},
+"seed_DEMOLISH_2": {
+"voice": "hm_omega"
+},
+"seed_DEMOLISH_3": {
+"voice": "hm_psi"
+},
+"seed_DEMOLISH_4": {
+"voice": "if_sara"
+},
+"seed_DEMOLISH_5": {
+"voice": "im_nicola"
+},
+"seed_DEMOLISH_6": {
+"voice": "jf_alpha"
+},
+"seed_DEMOLISH_7": {
+"voice": "jf_gongitsune"
+},
+"seed_DEMOLISH_8": {
+"voice": "jf_nezumi"
+},
+"seed_DEMOLISH_9": {
+"voice": "jf_tebukuro"
+},
+"seed_DEMOLISH_10": {
+"voice": "jm_kumo"
+},
+"seed_DEMOLISH_11": {
+"voice": "pf_dora"
+},
+"seed_DEMOLISH_12": {
+"voice": "pm_alex"
+},
+"seed_DEMOLISH_13": {
+"voice": "pm_santa"
+},
+"seed_DEMOLISH_14": {
+"voice": "zf_xiaobei"
+},
+"seed_DEMOLISH_15": {
+"voice": "zf_xiaoni"
+},
+"seed_DEMOLISH_16": {
+"voice": "zf_xiaoxiao"
+},
+"seed_DEMOLISH_17": {
+"voice": "zf_xiaoyi"
+},
+"seed_DEMOLISH_18": {
+"voice": "zm_yunjian"
+},
+"seed_DEMOLISH_19": {
+"voice": "zm_yunxi"
+},
+"seed_DEMOLISH_20": {
+"voice": "zm_yunxia"
+},
+"seed_DEMOLISH_21": {
+"voice": "zm_yunyang"
+},
+"seed_DEMOLISH_22": {
+"voice": "em_santar"
+},
+"seed_DEMOLISH_23": {
+"voice": "ef_dora"
+},
+"seed_DEMOLISH_24": {
+"voice": "em_alex"
+},
+"seed_DEMOLISH_25": {
+"voice": "ff_siwis"
+},
+"seed_DEMOLISH_26": {
+"voice": "hf_alpha"
+},
+"seed_DEMOLISH_27": {
+"voice": "hf_beta"
+},
+"seed_DEMOLISH_28": {
+"voice": "hm_omega"
+},
+"seed_DEMOLISH_29": {
+"voice": "hm_psi"
+},
+"seed_DEMOLISH_30": {
+"voice": "if_sara"
+},
+"seed_DEMOLISH_31": {
+"voice": "im_nicola"
+},
+"seed_DEMOLISH_32": {
+"voice": "jf_alpha"
+},
+"seed_DEMOLISH_33": {
+"voice": "jf_gongitsune"
+},
+"seed_DEMOLISH_34": {
+"voice": "jf_nezumi"
+},
+"seed_DEMOLISH_35": {
+"voice": "jf_tebukuro"
+},
+"seed_DEMOLISH_36": {
+"voice": "jm_kumo"
+},
+"seed_DEMOLISH_37": {
+"voice": "pf_dora"
+},
+"seed_DEMOLISH_38": {
+"voice": "pm_alex"
+},
+"seed_DEMOLISH_39": {
+"voice": "pm_santa"
+},
+"seed_DEMOLISH_40": {
+"voice": "zf_xiaobei"
+}
+}
+}

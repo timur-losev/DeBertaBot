@@ -938,3 +938,39 @@ a2f72811d977373b0f7c7ce62c33c0c73c28890f59360aa9a3d790eff440c5c2 *annot/v57/auth
 c43daef56c79f49d2b4eafcf3bb06b14d11180a4f08e6aa7aa5299b46f0591f2 *make_spec_v58.py
 # v58 test lines (2026-10-18): one AI author (persona r6, read spec_v58.json only: not the seeds, not the owner's lines) wrote 64 lines of going on with a movement and its boundaries (goon_way 30, goon_back 6, goon_bare 12, boundary 16; 24 as a recognizer writes); 9 marked unsure with an alternative. A test set only, never trained on (stt/score_cont_v58.py). The developer read all 64 and agreed with every intent, accepting ENTRY besides MOVE_TO for 'Push on forward, slowly.'; three lines are seeds word for word ('further left', 'and down', 'Yeah, go ahead.') and are not counted.
 a2b9382bf219951e5e87cb8871a969e0472321deaae54840700c1d029fc286a7 *blind/v58/test_cont_r6.json
+# v60 (work machine), BEFORE any v60 test line exists; AFTER the owner's decisions of 2026-10-19 (make_spec_v60.py docstring): a new line of bots beside v5x (the game switches between the two brains): the farmer's and the builder's ten intents after RELOAD, each in a family of its own (PLANT_CROP, WATER, HARVEST, TILL, FEED, COLLECT, DELIVER, BUILD, REPAIR, DEMOLISH), 57 intents; modes are mixed (the owner), so a line is read with every intent available; what is built, planted, collected... is the modifier 'item' (what was said; the planner checks it against the game's catalogue: the owner's 'построй столб - нет такого'). Boundaries: a bare 'plant' stays PLANT, 'clear the room' ENTRY / 'clear the weeds' TILL, 'breach the wall' BREACH / 'tear down' DEMOLISH, 'build cover' BUILD / 'take cover' TAKE_COVER, picking up ammo / weapon / health stays MOVE_TO, 'dig in' HOLD_POSITION. Eleven farm and building places join the map (field, bed, greenhouse, barn, coop, beehive, well, fence, tree, crate, foundation). No authored line (v1 to v58) names farm or build work: none relabelled (checked by a word search: every hit is shooter talk). 502 new seeds (2012 -> 2514). Seeds are not blind. coop_v2.py: tag v60.
+0c84b8fd3519e64baca3432281ad947223c8193ce8865f263fe79e4ff7fd2db4 *blind/spec_v60.json
+d0906e0bb7babdefa2f40b76de96b051b46c2e1b22f4be4fbe511d3adb813375 *intents_v60.json
+eee5fc0ec1d0b07a68f5fe169cda6a24b0f43bf3f0ba3d986b8f8a4449000eda *seed_commands_v60.json
+6d55b75fe1ce86ac65ea4627320e9e816cf017bd351726b24fadbd0b39fe7182 *make_spec_v60.py
+e17b7dcfff2bf1c650dd41e407fb8daf7dd36e7ff828e07a844c84fe7d492d4c *coop_v2.py
+2026-10-19T22:03:39+02:00
+# v60 place vocabulary, written BEFORE any v60 test line was read (the first author's file existed, unread): locations_v60.json version 8 = locations.json version 7 (unchanged, the v5x bots') + field, bed, greenhouse, barn, coop, beehive, well, fence, tree, crate, foundation; 'ammo crate' and its like stay ammo / weapon / health; crop words are unknown_modifier words; the farmer's and the builder's verbs are order verbs (make_locations_v60.py). Rule set v7 code unchanged; locations.vocab_file() picks the file by COOP_TAG (v60 -> locations_v60.json), export_cpp.py / gen_tests.py / gen_world_tests.py follow the bot's own tag (bots.tag_of).
+fa65d6b13a0060f6c1dd4a21c2b49d1d63793bb5e3888adc2e6e91735f9009a7 *locations_v60.json
+e4c2b12857062c6cc4cc5c3761daa236df1d8a721e7c62c1220e3a80051a2c6c *make_locations_v60.py
+775692de07ead0270d2ee0346e73b3efb7544f9d7f91f9a88459662390ad3f23 *locations.py
+40809da7bac0aa53b9d71dad205ec65c2bccfceeb89f9ebfca26efd3eb65b775 *bots.py
+8e48c39752898ad74bd6ff330e8560b4ca50535a5a208ead723f99a3693d76f3 *export_cpp.py
+2026-10-19T22:08:03+02:00
+# v60 item rules i1 (items.py, items_v60.json; the developer's 70 own lines in items_dev.json all pass), frozen BEFORE they were run on any v60 test line, but AFTER the three authors' and six annotators' summaries had quoted about 50 of the 180 test lines (their hard cases): the item number on the v60 lines is not blind. The test lines themselves (author files, annotations) were not opened before this.
+0a724803a8173751d5d7909a1e696636418ff1b16d02efa3d186029b8e91cb46 *items.py
+7efa4938ce830b1361a04b4671d34fad86d0309ad22d7f88334a93ff346f7617 *items_v60.json
+e6dc1adb124bd639898d53637ddc562b5bd14e351cd1333c2d192112a38e6771 *items_dev.json
+2026-10-19T22:13:47+02:00
+# v60 test lines (2026-10-19): three AI authors (personas r6, cs, stt; each read spec_v60.json only) wrote 60 lines each with quotas by kind (plantcrop 5, water 4, harvest 5, till 4, feed 4, collect 5, deliver 5, build 6, repair 5, demolish 4, oddthing 3, boundary 10; 3 on a signal); two AI annotators per author read only the spec and the label-free lines. Majority of author + 2 annotators: all 180 unanimous on the intent, 179 on the item and on the place (one model family: weaker than it sounds). Item rules i1 (frozen above): 174/180; i2 after that run (yo is no determiner, outta, slap, a recipient only before a noun, 'them strawberries'): 180/180, not blind. Places (rule set v7, locations_v60.json): 168/180, 174/180 when a place that is the BUILD / COLLECT / DELIVER item is passed over; the 6 left are the player's own place read as the bot's ('while I hold main', 'im fixing the roof') and a delivery to the player. Flagged and left as they are: 'shed' is the map's barn (target, item null) for DEMOLISH; 'reap the corn field' item corn; misheard items stay as heard ('fans', 'kitchens', 'plants' for planks).
+d0b6086b2bd10ee4ea9aea63da5c8b88195ca6d1cf4a2daeea53a2b934890bb1 *items.py
+c2bd0afde3906036a3033780d2abb70ffe0dd2267327900218c41cb5d2e682ab *items_v60.json
+52fc5b0b799ea1fc7ba099d72d9015a0cdc163228f89966799e4a7b703dbe35e *eval_v60.py
+03848b9edd8a4d18d1b0bb5ec6c48f23fb4d8c98da5c8db02816928d16ce0aec *blind/v60/author_r6.json
+145c36619c029154e5338a210382a93e411117ed0749c0fdc9b303e242f2e27c *blind/v60/author_r6_lines.json
+da626e290355380bd89bfb18c718916f9c295e3419aef3ee0b622a81ab690c44 *blind/v60/author_cs.json
+d5e15253ccf3abe060005ce217fa99950c9b327d9fc9147eb95f44b733275c6d *blind/v60/author_cs_lines.json
+f025d8352e8078737ea94f796476c15bda9a900a48df21e076efd9b7dcb2b4a8 *blind/v60/author_stt.json
+49dfe3dc8763a7756042a605a84db2dd62b2e7e4a5b314964de8e00fc075bb8e *blind/v60/author_stt_lines.json
+457b38fbf623afa6d925768e8ee5405ae1bc88fb1ac4b46aac0c3e8940bc4349 *annot/v60/author_r6_ann1.json
+720dbc7871a6fcc46151e449463a30c0f13384c07ae86a71d13ef0f03801287b *annot/v60/author_r6_ann2.json
+cf0eb273d359570e2044d95f3924d4803de3e74b7aae34088f5510898e200326 *annot/v60/author_cs_ann1.json
+44cbec487d1e4b2946fa08f72b102eaeacb703dcfb1277a6c6531786b11c1bf8 *annot/v60/author_cs_ann2.json
+454740bfdd779d205d6f38cf771a8f85da19d7de2589bc011a1e9074e797fb91 *annot/v60/author_stt_ann1.json
+3a758cca9b294a5be8e649c5227563d692d7f6b43d2fcbc8a10e5c0713452623 *annot/v60/author_stt_ann2.json
+2026-10-19T22:15:28+02:00

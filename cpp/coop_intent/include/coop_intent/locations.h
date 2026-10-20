@@ -102,6 +102,13 @@ struct PlaceTarget {
     bool inferred = false;              // the object was not said ("take blue", "you take the south one")
 };
 
+// locations.tokenize: the line's tokens, each with the punctuation before it (0 none, 1 comma, 2 . ; : ! ?)
+struct PlaceToken {
+    std::string word;
+    int brk = 0;
+};
+std::vector<PlaceToken> PlaceTokens(std::string_view utf8);
+
 struct PlaceRecord {
     std::vector<PlaceTarget> targets;   // in line order
     // the first target without a role, a place or a direction; -1: the line names neither. If every
@@ -127,6 +134,12 @@ public:
     int QualifierIndex(const std::string& id) const { return Find(qualifiers_, id); }
     int ZoneIndex(const std::string& id) const { return Find(zones_, id); }
     bool Vertical(int object) const { return object >= 0 && vertical_[static_cast<size_t>(object)]; }
+    // the phrase index (items.cpp, world.cpp): the kind of a phrase given as tokens joined by one space -- "object",
+    // "qualifier", "named", "zone", "zone_end", "ignore" -- or nullptr; *index: its object / qualifier / zone (named:
+    // its object)
+    const char* PhraseKind(const std::string& joined, int* index = nullptr) const;
+    size_t MaxPhraseLen() const { return max_len_; }
+    bool InList(const char* list, const std::string& word) const { return In(list, word); }
 
 private:
     enum class Kind { Object, Qualifier, Named, Zone, Ignore, ZoneEnd };

@@ -1,0 +1,355 @@
+{
+ "_note": "The developer's own item lines (not test lines): what items.py rule set i1 must give. 2026-10-19.",
+ "lines": [
+  {
+   "text": "build a pillar",
+   "intent": "BUILD",
+   "item": "pillar"
+  },
+  {
+   "text": "build a wall at the east door",
+   "intent": "BUILD",
+   "item": "wall"
+  },
+  {
+   "text": "plant carrots in the north bed",
+   "intent": "PLANT_CROP",
+   "item": "carrots"
+  },
+  {
+   "text": "give the cows some hay",
+   "intent": "FEED",
+   "item": "cows"
+  },
+  {
+   "text": "collect the eggs",
+   "intent": "COLLECT",
+   "item": "eggs"
+  },
+  {
+   "text": "chop some wood",
+   "intent": "COLLECT",
+   "item": "wood"
+  },
+  {
+   "text": "milk the cow",
+   "intent": "COLLECT",
+   "item": "cow"
+  },
+  {
+   "text": "bring me the planks",
+   "intent": "DELIVER",
+   "item": "planks"
+  },
+  {
+   "text": "fix the wall",
+   "intent": "REPAIR",
+   "item": "wall"
+  },
+  {
+   "text": "water the north field",
+   "intent": "WATER",
+   "item": null
+  },
+  {
+   "text": "fix the door",
+   "intent": "REPAIR",
+   "item": null
+  },
+  {
+   "text": "build a fence",
+   "intent": "BUILD",
+   "item": "fence"
+  },
+  {
+   "text": "carry the crate to the barn",
+   "intent": "DELIVER",
+   "item": "crate"
+  },
+  {
+   "text": "build here",
+   "intent": "BUILD",
+   "item": null
+  },
+  {
+   "text": "water them",
+   "intent": "WATER",
+   "item": null
+  },
+  {
+   "text": "harvest everything",
+   "intent": "HARVEST",
+   "item": null
+  },
+  {
+   "text": "water the plants",
+   "intent": "WATER",
+   "item": null
+  },
+  {
+   "text": "harvest the crops",
+   "intent": "HARVEST",
+   "item": null
+  },
+  {
+   "text": "collect materials",
+   "intent": "COLLECT",
+   "item": null
+  },
+  {
+   "text": "plant two rows of beets",
+   "intent": "PLANT_CROP",
+   "item": "beets"
+  },
+  {
+   "text": "put the tomato seedlings in",
+   "intent": "PLANT_CROP",
+   "item": "tomato seedlings"
+  },
+  {
+   "text": "tear down the fence",
+   "intent": "DEMOLISH",
+   "item": null
+  },
+  {
+   "text": "throw some grain to the chickens",
+   "intent": "FEED",
+   "item": "chickens"
+  },
+  {
+   "text": "fill the trough",
+   "intent": "FEED",
+   "item": null
+  },
+  {
+   "text": "patch the hole in the wall",
+   "intent": "REPAIR",
+   "item": "wall"
+  },
+  {
+   "text": "seal the breach",
+   "intent": "REPAIR",
+   "item": null
+  },
+  {
+   "text": "fill that bed with carrots",
+   "intent": "PLANT_CROP",
+   "item": "carrots"
+  },
+  {
+   "text": "sow it with wheat",
+   "intent": "PLANT_CROP",
+   "item": "wheat"
+  },
+  {
+   "text": "get the seeds and plant them",
+   "intent": "PLANT_CROP",
+   "item": "seeds"
+  },
+  {
+   "text": "pick up the planks",
+   "intent": "COLLECT",
+   "item": "planks"
+  },
+  {
+   "text": "get rid of that wall",
+   "intent": "DEMOLISH",
+   "item": "wall"
+  },
+  {
+   "text": "build a wooden wall",
+   "intent": "BUILD",
+   "item": "wooden wall"
+  },
+  {
+   "text": "put up a fence around the field",
+   "intent": "BUILD",
+   "item": "fence"
+  },
+  {
+   "text": "give me some stone",
+   "intent": "DELIVER",
+   "item": "stone"
+  },
+  {
+   "text": "store the tools in the shed",
+   "intent": "DELIVER",
+   "item": "tools"
+  },
+  {
+   "text": "knock down the old shed",
+   "intent": "DEMOLISH",
+   "item": null
+  },
+  {
+   "text": "demolish the old barricade",
+   "intent": "DEMOLISH",
+   "item": "barricade"
+  },
+  {
+   "text": "reinforce the north wall",
+   "intent": "REPAIR",
+   "item": "wall"
+  },
+  {
+   "text": "cut down that tree",
+   "intent": "COLLECT",
+   "item": "tree"
+  },
+  {
+   "text": "dig up the potatoes",
+   "intent": "HARVEST",
+   "item": "potatoes"
+  },
+  {
+   "text": "go plant the carrots",
+   "intent": "PLANT_CROP",
+   "item": "carrots"
+  },
+  {
+   "text": "feed the chickens in the coop",
+   "intent": "FEED",
+   "item": "chickens"
+  },
+  {
+   "text": "feed the animals",
+   "intent": "FEED",
+   "item": null
+  },
+  {
+   "text": "water the wheat field",
+   "intent": "WATER",
+   "item": "wheat"
+  },
+  {
+   "text": "build cover",
+   "intent": "BUILD",
+   "item": "cover"
+  },
+  {
+   "text": "stack some sandbags here",
+   "intent": "BUILD",
+   "item": "sandbags"
+  },
+  {
+   "text": "uh build a uh wall",
+   "intent": "BUILD",
+   "item": "wall"
+  },
+  {
+   "text": "fix fix the gate",
+   "intent": "REPAIR",
+   "item": "gate"
+  },
+  {
+   "text": "Bring it here.",
+   "intent": "DELIVER",
+   "item": null
+  },
+  {
+   "text": "plant the bomb",
+   "intent": "PLANT",
+   "item": null
+  },
+  {
+   "text": "dig a trench",
+   "intent": "BUILD",
+   "item": "trench"
+  },
+  {
+   "text": "put a roof on it",
+   "intent": "BUILD",
+   "item": "roof"
+  },
+  {
+   "text": "board up the window",
+   "intent": "REPAIR",
+   "item": null
+  },
+  {
+   "text": "make a crate",
+   "intent": "BUILD",
+   "item": "crate"
+  },
+  {
+   "text": "give the tomatoes some water",
+   "intent": "WATER",
+   "item": "tomatoes"
+  },
+  {
+   "text": "bring the hay to the barn",
+   "intent": "DELIVER",
+   "item": "hay"
+  },
+  {
+   "text": "take the wheat to the barn",
+   "intent": "DELIVER",
+   "item": "wheat"
+  },
+  {
+   "text": "get some water from the well",
+   "intent": "COLLECT",
+   "item": "water"
+  },
+  {
+   "text": "load the wheat into the truck",
+   "intent": "DELIVER",
+   "item": "wheat"
+  },
+  {
+   "text": "drop the logs by the wall",
+   "intent": "DELIVER",
+   "item": "logs"
+  },
+  {
+   "text": "raise a wall here",
+   "intent": "BUILD",
+   "item": "wall"
+  },
+  {
+   "text": "take apart the ramp",
+   "intent": "DEMOLISH",
+   "item": "ramp"
+  },
+  {
+   "text": "remove the ladder",
+   "intent": "DEMOLISH",
+   "item": "ladder"
+  },
+  {
+   "text": "repair the car",
+   "intent": "REPAIR",
+   "item": null
+  },
+  {
+   "text": "set up a watchtower",
+   "intent": "BUILD",
+   "item": "watchtower"
+  },
+  {
+   "text": "plant the seeds",
+   "intent": "PLANT_CROP",
+   "item": "seeds"
+  },
+  {
+   "text": "carry the planks upstairs",
+   "intent": "DELIVER",
+   "item": "planks"
+  },
+  {
+   "text": "feed some corn to the pigs",
+   "intent": "FEED",
+   "item": "pigs"
+  },
+  {
+   "text": "plant it",
+   "intent": "PLANT_CROP",
+   "item": null
+  },
+  {
+   "text": "build a ramp up to the roof",
+   "intent": "BUILD",
+   "item": "ramp"
+  }
+ ]
+}

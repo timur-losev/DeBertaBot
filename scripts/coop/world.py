@@ -24,6 +24,7 @@ import copy, io, json, math, os, random, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import locations as LOC  # noqa: E402
+import items as IT  # noqa: E402
 
 # a direction word accepts a sector of bearings, with overlaps: a door at -40 degrees is "ahead" and "on the left"
 SECTORS = {"left": (-150.0, -20.0), "right": (20.0, 150.0), "forward": (-60.0, 60.0)}
@@ -168,6 +169,93 @@ def says_again(w):
     return "again" in w or any(a in ("once", "one") and b == "more" for a, b in zip(w, w[1:]))
 
 
+# ---- the farmer's and the builder's orders (the v60 bots, make_spec_v60.py). The intent is the verb; what it acts on is
+# the item the line names (items.py: "build a pillar" = "pillar"). The game may send, per intent, what it has:
+#   "catalog": {"BUILD": [{"id": "wall_wood", "words": ["wall", "wooden wall"]}, ...], "PLANT_CROP": [the seeds the bot
+#              carries], "COLLECT": [what lies around], ...}
+# An item the intent's catalogue lacks is refused, with the reason ("I can't build that: no pillar in my build menu.": the
+# owner's "построй столб - нет такого", 2026-10-19), and no order goes out. An intent the world has no catalogue for passes
+# the item on as said; the game decides. A line that names no item leaves the choice to the game.
+#   the item's place   for BUILD, COLLECT and DELIVER the thing built, gathered or carried may be a map object ("build a
+#                      fence", "carry the crate to the barn"): a place of the line that is the item is not where the order
+#                      goes, and the next place is ("... to the barn")
+#   a bare "plant"     PLANT is the bomb; a bot that carries no bomb and has seeds (a "PLANT_CROP" catalogue) plants a crop
+ITEM_INTENTS = tuple(IT.ITEMS["intents"])          # the nine with an item (TILL has none)
+FARM_INTENTS = ITEM_INTENTS + ("TILL",)
+PLACE_INTENTS = PLACE_INTENTS + FARM_INTENTS        # "no, by the barn": the same order at another place
+REFUSE = {"BUILD": "I can't build that: no {item} in my build menu.",
+          "PLANT_CROP": "I can't plant that: I have no {item} to plant.",
+          "WATER": "I can't water that: I see no {item}.",
+          "HARVEST": "I can't harvest that: I see no {item}.",
+          "FEED": "I can't feed that: I see no {item}.",
+          "COLLECT": "I can't collect that: I see no {item}.",
+          "DELIVER": "I can't bring that: I have no {item}.",
+          "REPAIR": "I can't repair that: I see no {item}.",
+          "DEMOLISH": "I can't tear that down: I see no {item}."}
+
+
+def singular(w):
+    """A plural's singular, near enough to compare a said word with a catalogue's ("tomatoes", "berries", "walls")."""
+    if len(w) > 4 and w.endswith("ies"):
+        return w[:-3] + "y"
+    if len(w) > 4 and w.endswith(("oes", "ches", "shes", "sses", "xes")):
+        return w[:-2]
+    if len(w) > 3 and w.endswith("s") and not w.endswith(("ss", "us")):
+        return w[:-1]
+    return w
+
+
+def same_words(p):
+    return " ".join(singular(w) for w in p.split(" "))
+
+
+def match_catalog(item, entries):
+    """The id of the catalogue entry the item names, or None: the same words (plurals aside); else an entry that is the
+    item's last word ("wooden wall" with a plain "wall" in the menu); else, for a one-word item, the first entry ending in
+    it ("wall" with only "stone wall")."""
+    said = same_words(item)
+    for e in entries:
+        if any(same_words(w) == said for w in e["words"]):
+            return e["id"]
+    head = said.split(" ")[-1]
+    for e in entries:
+        if any(same_words(w) == head for w in e["words"]):
+            return e["id"]
+    if " " not in said:
+        for e in entries:
+            if any(same_words(w).split(" ")[-1] == said for w in e["words"]):
+                return e["id"]
+    return None
+
+
+def item_object(item):
+    """The map object an item names with its last words ("crate" -> crate, "chicken coop" -> coop), or None."""
+    if not item:
+        return None
+    w = tuple(item.split(" "))
+    for n in range(min(len(w), LOC.VOCAB["max_len"]), 0, -1):
+        p = LOC.VOCAB["phrases"].get(w[len(w) - n:])
+        if p is not None and p[0] == "object":
+            return p[1]
+    return None
+
+
+def without_item_place(record, item, intent):
+    """The line's places without the one that is the item itself (BUILD, COLLECT, DELIVER): the order goes to the next."""
+    obj = item_object(item) if intent in IT.ITEMS["keeps_object"] else None
+    if obj is None or not record or not record["targets"]:
+        return record
+    keep = [t for t in record["targets"] if t["object"] != obj]
+    if len(keep) == len(record["targets"]):
+        return record
+    k = record["primary"]
+    if k >= 0 and record["targets"][k]["object"] != obj:
+        primary = next(i for i, t in enumerate(keep) if t is record["targets"][k])
+    else:
+        primary = next((i for i, t in enumerate(keep) if t["role"] is None), -1)
+    return dict(record, targets=keep, primary=primary)
+
+
 # ---- a line of several orders. The decoder in front of the classifier (cpp/coop_intent, rewriter.h) writes "smoke
 # the door then go in" as two order lines, "smoke the door" and "go in through the door", and each goes through
 # step() as a line of its own; the second and later ones with continued=True. Two things follow from their being ONE
@@ -229,6 +317,15 @@ def validate_world(w):
     assert w.get("player_gaze") is None or w["player_gaze"] in ids, w.get("player_gaze")
     assert w.get("bot", {}).get("stance", "stand") in STANCES, w.get("bot")
     assert w.get("time") is None or float(w["time"]) >= 0.0, w.get("time")
+    cat = w.get("catalog")
+    assert cat is None or isinstance(cat, dict), cat
+    for intent, entries in (cat or {}).items():
+        assert intent in ITEM_INTENTS, intent
+        seen = set()
+        for e in entries:
+            assert isinstance(e.get("id"), str) and e["id"] and e["id"] not in seen, e
+            seen.add(e["id"])
+            assert e.get("words") and all(isinstance(x, str) and x and x == " ".join(words(x)) for x in e["words"]), e
     return w
 
 
@@ -477,6 +574,7 @@ class Planner:
         self.pending_entity = None     # the queued order's resolved entity
         self.pending_here = False      # ... or that its place is "here"
         self.pending_near = False      # ... and that it pointed with "this" / "here"
+        self.pending_item = None       # ... and what it acts on (the farmer's and the builder's orders)
         self.frame_in_line = False     # the frame is of an order of the line being read (step(..., continued=True))
 
     def set_world(self, world):
@@ -489,7 +587,7 @@ class Planner:
         self.frame_in_line = False
 
     def _drop_pending(self):
-        self.pending_entity, self.pending_here, self.pending_near = None, False, False
+        self.pending_entity, self.pending_here, self.pending_near, self.pending_item = None, False, False, None
 
     def _alive(self, f):
         """The previous order is still what the conversation is about: the bot is busy with it, or it was given
@@ -542,7 +640,8 @@ class Planner:
     def _reissue(self, f, t, g, near, lead):
         """The previous order again, at the place given (its own, or the one the line named)."""
         rec = {"targets": [t], "primary": 0} if t is not None else {"targets": [], "primary": -1}
-        order = self._order(f["intent"], rec, [g] if t is not None else [], 0 if t is not None else -1, f["other"], near)
+        order = self._order(f["intent"], rec, [g] if t is not None else [], 0 if t is not None else -1, f["other"], near,
+                            item=f.get("item"))
         return "resolved", lead + self._echo(f["intent"], t, g), order
 
     def _context(self, text, action, intent, prob, record):
@@ -602,7 +701,22 @@ class Planner:
             return
         grounding[k] = copy.deepcopy(f["g"])
 
-    def _order(self, intent, record, grounding, k, other, near=False, said=None):
+    def _plants_crops(self):
+        """A bare "plant" is planting a crop: the bot carries no bomb and has seeds (a v60 bot)."""
+        return "PLANT_CROP" in self.bot.labels and "bomb" not in self.world.get("bot", {}).get("items", []) and \
+            bool((self.world.get("catalog") or {}).get("PLANT_CROP"))
+
+    def _item(self, text, intent):
+        """What the order acts on: {"said": the words or None, "id": the catalogue entry or None, "refused": the reason
+        to refuse it or None}."""
+        said = IT.find(text, intent)["item"]
+        cat = (self.world.get("catalog") or {}).get(intent)
+        if said is None or cat is None:
+            return {"said": said, "id": None, "refused": None}
+        iid = match_catalog(said, cat)
+        return {"said": said, "id": iid, "refused": None if iid is not None else REFUSE[intent].format(item=said)}
+
+    def _order(self, intent, record, grounding, k, other, near=False, said=None, item=None):
         t = record["targets"][k] if k >= 0 else None
         g = grounding[k] if k >= 0 else None
         ent = g["entity"] if g else None
@@ -612,15 +726,18 @@ class Planner:
         if intent != "GO_NOW":      # "go" with nothing queued is not an order to come back to
             now = self.world.get("time")
             self.memory["frame"] = {"intent": intent, "t": t, "g": g, "other": other, "near": bool(near),
-                                    "time": float(now) if now is not None else None, "said": said}
+                                    "time": float(now) if now is not None else None, "said": said, "item": item}
             self.frame_in_line = True
-        return {"intent": intent, "entity": ent, "candidates": g["candidates"] if g else [],
-                "direction": t.get("direction") if t else None, "zone": t["zone"] if t else None,
-                "object": t["object"] if t else None,
-                "pointer": t.get("pointer") if t else None, "other": other, "via": g["via"] if g else None,
-                "near": bool(near and t is not None and t.get("pointer") == "this")}
+        order = {"intent": intent, "entity": ent, "candidates": g["candidates"] if g else [],
+                 "direction": t.get("direction") if t else None, "zone": t["zone"] if t else None,
+                 "object": t["object"] if t else None,
+                 "pointer": t.get("pointer") if t else None, "other": other, "via": g["via"] if g else None,
+                 "near": bool(near and t is not None and t.get("pointer") == "this")}
+        if intent in ITEM_INTENTS:     # what it acts on: the words said and the catalogue entry (the v60 bots' orders only)
+            order["item"], order["item_id"] = (item["said"], item["id"]) if item else (None, None)
+        return order
 
-    def _ask(self, intent, record, grounding, k, other, queued):
+    def _ask(self, intent, record, grounding, k, other, queued, item=None):
         g = grounding[k]
         obj = object_word(record, k, self.world)
         by_id = {e["id"]: e for e in self.world["entities"]}
@@ -629,11 +746,11 @@ class Planner:
             what = {"pin": "I don't see a pin.", "this": "I don't know where you mean.",
                     "zone": f"I can't find {ZONE_NAMES.get(zone, 'that place')}."}.get(g["via"], f"I see no {obj}.")
             self.memory["question"] = {"kind": "missing", "intent": intent, "record": record, "k": k, "other": other,
-                                       "queued": queued, "candidates": [], "offered": 0}
+                                       "queued": queued, "candidates": [], "offered": 0, "item": item}
             return "ask", what + " Where?"
         cands = g["candidates"]
         self.memory["question"] = {"kind": "which", "intent": intent, "record": record, "k": k, "other": other,
-                                   "queued": queued, "candidates": cands, "offered": 0}
+                                   "queued": queued, "candidates": cands, "offered": 0, "item": item}
         return "ask", f"Which {obj}? The one {describe(by_id[cands[0]])}?"
 
     def _answer(self, intent):
@@ -681,10 +798,11 @@ class Planner:
         if q["queued"]:
             self.bot.pending, self.bot.pending_places, self.bot.pending_other = q["intent"], q["record"], q["other"]
             self._drop_pending()
-            self.pending_entity = entity
+            self.pending_entity, self.pending_item = entity, q.get("item")
             self.memory["last_entity"] = entity
             return "resolved", say + f" Ready to {self.bot.phrase[q['intent']]}. On your go.", None
-        return "resolved", say + f" {self.bot.phrase[q['intent']].capitalize()}.", self._order(q["intent"], rec, grounding, 0, q["other"], said=said)
+        return "resolved", say + f" {self.bot.phrase[q['intent']].capitalize()}.", \
+            self._order(q["intent"], rec, grounding, 0, q["other"], said=said, item=q.get("item"))
 
     def _settle_place(self, q, rec, g, queued, near):
         """The "Where?" question's order with the place the player pointed at: rec is that place's record (one
@@ -694,11 +812,12 @@ class Planner:
         if queued:
             self.bot.pending, self.bot.pending_places, self.bot.pending_other = q["intent"], rec, q["other"]
             self.pending_entity, self.pending_here, self.pending_near = g["entity"], g["via"] == "here", near
+            self.pending_item = q.get("item")
             if g["entity"] is not None:
                 self.memory["last_entity"] = g["entity"]
             return "resolved", f"Got it. Ready to {phrase}. On your go.", None
         return "resolved", f"Got it. {phrase.capitalize()}.", \
-            self._order(q["intent"], rec, [g], 0, q["other"], near, said=q["record"]["targets"][q["k"]])
+            self._order(q["intent"], rec, [g], 0, q["other"], near, said=q["record"]["targets"][q["k"]], item=q.get("item"))
 
     def _place_answer(self, q, text, action, intent, record, grounding):
         """A "Where?" answered by pointing ("there", "at my pin", "on the left", "that one"), or by "yes" / "go" once
@@ -732,6 +851,23 @@ class Planner:
         record = rec["places"]
         if intent in NO_PLACE and action in ("act", "queued"):
             record = {"targets": [], "primary": -1}
+        item = None
+        if action in ("act", "queued") and intent == "PLANT" and self._plants_crops():
+            intent = "PLANT_CROP"          # a bare "plant it": no bomb on the bot, seeds in its bag
+            reply = f"{self.bot.phrase[intent].capitalize()}." if action == "act" else f"Ready to {self.bot.phrase[intent]}. On your go."
+            if action == "queued":
+                self.bot.pending = intent
+        if action in ("act", "queued") and intent in ITEM_INTENTS:
+            item = self._item(text, intent)
+            if item["refused"] is not None:
+                if action == "queued":
+                    self.bot.reset()
+                self.memory["question"] = None
+                return {"action": "refused", "say": item["refused"], "ground": [], "order": None, "question": None,
+                        "intent": intent, "prob": rec["prob"], "probs_adjusted": adjusted}
+            record = without_item_place(record, item["said"], intent)
+            if action == "queued":
+                self.bot.pending_places = record
         grounding = ground(record, self.world, self.memory, text, intent) if record and record["targets"] else []
         if continued and self.frame_in_line:
             self._same_place(record, grounding)
@@ -817,15 +953,16 @@ class Planner:
                 if g["status"] in ("ambiguous", "missing"):
                     if action == "queued":   # the bot queued it already; the question decides its place
                         self.bot.reset()
-                    out["action"], out["say"] = self._ask(intent, record, grounding, k, rec["other"], action == "queued")
+                    out["action"], out["say"] = self._ask(intent, record, grounding, k, rec["other"], action == "queued", item)
                     out["question"] = self.memory["question"]
                     return out
             if action == "act":
-                out["order"] = self._order(intent, record, grounding, k, rec["other"], near)
+                out["order"] = self._order(intent, record, grounding, k, rec["other"], near, item=item)
                 if defaulted is not None:
                     out["say"] = self._echo(intent, defaulted[0], defaulted[1])     # the bot says what it assumed
             else:
                 self._drop_pending()
+                self.pending_item = item
                 if k >= 0:
                     self.pending_entity, self.pending_here, self.pending_near = grounding[k]["entity"], grounding[k]["via"] == "here", near
         elif action == "execute":
@@ -835,12 +972,13 @@ class Planner:
                 # the place the queued order was given, not what the crosshair is on now
                 g = [{"status": "resolved", "entity": self.pending_entity, "candidates": [], "via": "here" if self.pending_here else "queued"}]
                 rec2 = {"targets": [ex["targets"][k]], "primary": 0}
-                out["order"] = self._order(rec["executed"], rec2, g, 0, rec["executed_other"], self.pending_near)
+                out["order"] = self._order(rec["executed"], rec2, g, 0, rec["executed_other"], self.pending_near, item=self.pending_item)
             elif self.pending_entity is not None:
-                out["order"] = self._order(rec["executed"], {"targets": [], "primary": -1}, [], -1, rec["executed_other"])
+                out["order"] = self._order(rec["executed"], {"targets": [], "primary": -1}, [], -1, rec["executed_other"],
+                                           item=self.pending_item)
             else:
                 g2 = ground(ex, self.world, self.memory) if ex and ex["targets"] else []
-                out["order"] = self._order(rec["executed"], ex, g2, k, rec["executed_other"], self.pending_near)
+                out["order"] = self._order(rec["executed"], ex, g2, k, rec["executed_other"], self.pending_near, item=self.pending_item)
             self._drop_pending()
         elif action == "go":
             out["order"] = self._order("GO_NOW", record, grounding, -1, False)
@@ -1066,6 +1204,43 @@ def talk_change(pl, change):
     return bool(change.get("low"))
 
 
+# the farmer and the builder (the v60 bots; locations_v60.json): what the game has, and orders inside and outside it
+WORLD_FARM = {
+    "entities": [
+        {"id": "field_n", "object": "field", "qualifier": "north", "zone": None, "bearing": -30.0, "distance": 25.0, "elevation": 0.0, "tags": []},
+        {"id": "field_s", "object": "field", "qualifier": "south", "zone": None, "bearing": 150.0, "distance": 30.0, "elevation": 0.0, "tags": []},
+        {"id": "barn_1", "object": "barn", "qualifier": None, "zone": None, "bearing": 60.0, "distance": 18.0, "elevation": 0.0, "tags": []},
+        {"id": "crate_1", "object": "crate", "qualifier": None, "zone": None, "bearing": 5.0, "distance": 4.0, "elevation": 0.0, "tags": ["cover"]},
+        {"id": "fence_1", "object": "fence", "qualifier": None, "zone": None, "bearing": -80.0, "distance": 9.0, "elevation": 0.0, "tags": []},
+        {"id": "door_e", "object": "door", "qualifier": "east", "zone": "floor_1", "bearing": 90.0, "distance": 12.0, "elevation": 0.0, "tags": []},
+    ],
+    "player_pin": None, "bot_pin": None, "player_gaze": "crate_1", "player": {"downed": False},
+    "bot": {"stance": "stand", "items": [], "busy": False}, "time": 100.0,
+    "catalog": {
+        "BUILD": [{"id": "wall_wood", "words": ["wall", "wooden wall"]}, {"id": "fence", "words": ["fence"]},
+                  {"id": "barricade", "words": ["barricade"]}],
+        "PLANT_CROP": [{"id": "seed_carrot", "words": ["carrot", "carrot seeds"]}, {"id": "seed_wheat", "words": ["wheat", "wheat seeds"]}],
+        "COLLECT": [{"id": "eggs", "words": ["egg"]}, {"id": "wood", "words": ["wood", "log"]}],
+    },
+}
+DEV_V60 = [
+    ("build a wall", "BUILD", {"action": "act", "entity": None, "item": "wall", "item_id": "wall_wood"}),
+    ("build a pillar", "BUILD", {"action": "refused"}),                     # not in the build menu: said, no order
+    ("build a fence around the north field", "BUILD", {"action": "act", "entity": "field_n", "item_id": "fence"}),
+    ("plant carrots in the north field", "PLANT_CROP", {"action": "act", "entity": "field_n", "item_id": "seed_carrot"}),
+    ("plant some dragon fruit", "PLANT_CROP", {"action": "refused"}),     # no such seeds in the bag
+    ("plant it", "PLANT", {"action": "act", "intent": "PLANT_CROP"}),      # no bomb on the bot, seeds in the bag
+    ("water the south field", "WATER", {"action": "act", "entity": "field_s", "item": None}),
+    ("carry the crate to the barn", "DELIVER", {"action": "act", "entity": "barn_1", "item": "crate"}),   # the crate is the thing
+    ("collect the eggs", "COLLECT", {"action": "act", "item_id": "eggs"}),
+    ("go mine some uranium", "COLLECT", {"action": "refused"}),
+    ("fix the fence", "REPAIR", {"action": "act", "entity": "fence_1", "item": None}),
+    ("put up a barricade at the east door on my go", "BUILD", {"action": "queued"}),
+    ("go", "GO_NOW", {"action": "execute", "intent": "BUILD", "entity": "door_e", "item_id": "barricade"}),
+    ("no, by the barn", "NONE", {"action": "resolved", "intent": "BUILD", "entity": "barn_1", "item_id": "barricade"}),
+]
+
+
 def run_dev():
     os.environ.setdefault("COOP_TAG", "v54")
     import coop_bot
@@ -1087,7 +1262,10 @@ def run_dev():
     ok = 0
     for world, dev in ((WORLD_EXAMPLE, DEV), (WORLD_BARE, DEV_BARE), (WORLD_TALK, DEV_TALK), (WORLD_FLOORS, DEV_FLOORS),
                        (WORLD_V56, DEV_V56 if "GO_BACK" in labels else []),
-                       (WORLD_V56, DEV_V57 if "SWITCH_WEAPON" in labels else [])):
+                       (WORLD_V56, DEV_V57 if "SWITCH_WEAPON" in labels else []),
+                       (WORLD_FARM, DEV_V60 if LOC.VOCAB["version"] >= 8 else [])):
+        if not dev:
+            continue
         bot = Fake()
         pl = Planner(bot, world)
         for text, intent, want, *change in dev:
@@ -1100,7 +1278,8 @@ def run_dev():
             got = {"action": r["action"]}
             if r["order"]:
                 got.update(entity=r["order"]["entity"], zone=r["order"]["zone"], via=r["order"]["via"], near=r["order"]["near"],
-                           direction=r["order"]["direction"], intent=r["order"]["intent"], candidates=r["order"]["candidates"])
+                           direction=r["order"]["direction"], intent=r["order"]["intent"], candidates=r["order"]["candidates"],
+                           item=r["order"].get("item"), item_id=r["order"].get("item_id"))
             good = all(got.get(k) == v for k, v in want.items())
             ok += good
             print(f"{'ok ' if good else 'NO '} {text!r:36s} -> {r['action']:9s} {r['say']}" + (f"  order {r['order']}" if r["order"] else ""))
@@ -1117,7 +1296,7 @@ def run_dev():
             good = all(got.get(k) == v for k, v in want.items())
             ok += good
             print(f"{'ok ' if good else 'NO '} {('+ ' if continued else '') + repr(text):36s} -> {r['action']:9s} {r['say']}" + (f"  order {r['order']}" if r["order"] else ""))
-    print(f"{ok}/{len(DEV) + len(DEV_BARE) + len(DEV_TALK) + len(DEV_FLOORS) + len(DEV_CHAIN) + len(DEV_CHAIN_BARE) + (len(DEV_V56) if 'GO_BACK' in labels else 0) + (len(DEV_V57) if 'SWITCH_WEAPON' in labels else 0)}")
+    print(f"{ok}/{len(DEV) + len(DEV_BARE) + len(DEV_TALK) + len(DEV_FLOORS) + len(DEV_CHAIN) + len(DEV_CHAIN_BARE) + (len(DEV_V56) if 'GO_BACK' in labels else 0) + (len(DEV_V57) if 'SWITCH_WEAPON' in labels else 0) + (len(DEV_V60) if LOC.VOCAB['version'] >= 8 else 0)}")
 
 
 if __name__ == "__main__":

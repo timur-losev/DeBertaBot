@@ -39,6 +39,12 @@ Copy-Item "$botDir\intent_config.json", "$botDir\vocab.tsv" "$Target\bot" -Force
 Get-ChildItem "$Target\bot" -Filter '*.onnx' | Where-Object { $members -notcontains $_.Name } | Remove-Item -Force   # another bot's members
 foreach ($f in $members) { Copy-Item "$botDir\$f" "$Target\bot" -Force }
 foreach ($f in 'encoder.int8.onnx', 'decoder.int8.onnx', 'joiner.int8.onnx', 'tokens.txt') { Copy-Item "$Stt\$f" "$Target\stt" -Force }
+# llama.cpp's DLLs go with the exe whenever its build found llama.cpp: the exe links them, chain or no chain (a brain
+# deployed without -Chain, e.g. the v6x one, otherwise ends at once with STATUS_DLL_NOT_FOUND, 0xC0000135)
+if (Test-Path "$Build\llama.dll") {
+    Get-ChildItem $Build -File | Where-Object { $_.Name -like 'llama.dll' -or $_.Name -like 'ggml*.dll' -or $_.Name -eq 'libomp.dll' } |
+        Copy-Item -Destination $Target -Force
+}
 $chainFrom = $null
 if ($Chain) {
     $chainDir = Join-Path $repo "models\$Chain\cpp"
@@ -48,8 +54,6 @@ if ($Chain) {
         if (-not (Test-Path $need)) { throw "missing: $need" }
     }
     New-Item -ItemType Directory -Force "$Target\chain" | Out-Null
-    Get-ChildItem $Build -File | Where-Object { $_.Name -like 'llama.dll' -or $_.Name -like 'ggml*.dll' -or $_.Name -eq 'libomp.dll' } |
-        Copy-Item -Destination $Target -Force
     foreach ($f in $chainFiles) { Copy-Item "$chainDir\$f" "$Target\chain" -Force }
     $chainFrom = [ordered]@{ chain = $Chain; decoder = $ccfg.decoder_from; router = $ccfg.router_from; cut = $ccfg.cut }
 }

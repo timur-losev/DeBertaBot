@@ -18,6 +18,7 @@ reproduces that pipeline, so the golden ids come from the same tokenizer object 
 
     python export_cpp.py [BOT_DIR]      # jev environment; default: the shipped bot (bots.py)
     python export_cpp.py [BOT_DIR] --config-only    # after editing locations.json or the regexes: no ONNX export
+A bot with the farmer's and the builder's intents (v60) also gets "items": the word lists of items.py (items_v60.json).
 """
 import io, json, os, re, sys
 
@@ -45,6 +46,8 @@ if _SEEDS:
 import coop_v2 as V  # noqa: E402
 from coop_bot import ANSWERS, NEGATION, ON_SIGNAL  # noqa: E402  the bot's own timing pattern ("mark" is the pin)
 from timing_rule import OTHER  # noqa: E402
+import locations  # noqa: E402  the place vocabulary of the bot's tag (locations.vocab_file)
+import items  # noqa: E402  what the farmer's and the builder's orders act on (a v60 bot)
 MAX_LEN = 64
 
 # lines chosen to break a tokenizer port: whitespace runs, tabs, newlines, leading/trailing spaces,
@@ -93,9 +96,13 @@ def main():
         "safe_intents": ["NONE", "WAIT", "HOLD_POSITION"] + [x for x in ("HOLD_FIRE",) + ANSWERS if x in cfg["labels"]],
         # a v54 bot: the answers to the planner's questions are reported, never queued (coop_bot.ANSWERS)
         **({"answer_intents": [x for x in ANSWERS if x in cfg["labels"]]} if any(x in cfg["labels"] for x in ANSWERS) else {}),
-        # the map's named places and the matcher's word lists (locations.json, validated by locations.py)
-        "locations": {k: v for k, v in json.load(io.open(os.path.join(HERE, "locations.json"), encoding="utf-8")).items()
+        # the map's named places and the matcher's word lists (locations.json; a v60 bot locations_v60.json; validated by
+        # locations.py)
+        "locations": {k: v for k, v in json.load(io.open(locations.vocab_file(), encoding="utf-8")).items()
                       if not k.startswith("_")},
+        # a bot with the farmer's and the builder's intents (v60): the item rules' word lists (items_v60.json, items.py)
+        **({"items": {k: v for k, v in json.load(io.open(os.path.join(HERE, "items_v60.json"), encoding="utf-8")).items()
+                      if not k.startswith("_")}} if any(x in cfg["labels"] for x in items.ITEMS["intents"]) else {}),
     }, io.open(os.path.join(OUT, "intent_config.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
     if CONFIG_ONLY:

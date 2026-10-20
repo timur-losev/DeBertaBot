@@ -1,0 +1,1082 @@
+[
+{
+"id": "r6v60_000",
+"author": "r6",
+"version": "v60",
+"text": "Plant carrots in the north bed while it's quiet.",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0000.wav"
+},
+{
+"id": "r6v60_001",
+"author": "r6",
+"version": "v60",
+"text": "Reinforce that wall, they always open it from outside.",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0001.wav"
+},
+{
+"id": "r6v60_002",
+"author": "r6",
+"version": "v60",
+"text": "Pick the tomatoes while I hold main.",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "v60_0002.wav"
+},
+{
+"id": "r6v60_003",
+"author": "r6",
+"version": "v60",
+"text": "Clear the basement, I'll anchor up top.",
+"maj": "ENTRY",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0003.wav"
+},
+{
+"id": "r6v60_004",
+"author": "r6",
+"version": "v60",
+"text": "Feed the chickens.",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0004.wav"
+},
+{
+"id": "r6v60_005",
+"author": "r6",
+"version": "v60",
+"text": "Throw a wall up here, they're gonna push through this gap.",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "v60_0005.wav"
+},
+{
+"id": "r6v60_006",
+"author": "r6",
+"version": "v60",
+"text": "Collect the eggs from the coop before the round starts.",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0006.wav"
+},
+{
+"id": "r6v60_007",
+"author": "r6",
+"version": "v60",
+"text": "Till the south field.",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0007.wav"
+},
+{
+"id": "r6v60_008",
+"author": "r6",
+"version": "v60",
+"text": "Bring me the sandbags.",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "v60_0008.wav"
+},
+{
+"id": "r6v60_009",
+"author": "r6",
+"version": "v60",
+"text": "Water the north field, it's drying out.",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0009.wav"
+},
+{
+"id": "r6v60_010",
+"author": "r6",
+"version": "v60",
+"text": "Tear that fence down, it's blocking our rotate.",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0010.wav"
+},
+{
+"id": "r6v60_011",
+"author": "r6",
+"version": "v60",
+"text": "Plant it on my call.",
+"maj": "PLANT",
+"voice": "Microsoft Mark",
+"wav": "v60_0011.wav"
+},
+{
+"id": "r6v60_012",
+"author": "r6",
+"version": "v60",
+"text": "Build a deployable shield at the west door.",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0012.wav"
+},
+{
+"id": "r6v60_013",
+"author": "r6",
+"version": "v60",
+"text": "Plant the tomato seedlings in the greenhouse.",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0013.wav"
+},
+{
+"id": "r6v60_014",
+"author": "r6",
+"version": "v60",
+"text": "Fix the fence on the west side, they keep running through it.",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "v60_0014.wav"
+},
+{
+"id": "r6v60_015",
+"author": "r6",
+"version": "v60",
+"text": "Harvest the wheat in the west field, we've got time before the push.",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0015.wav"
+},
+{
+"id": "r6v60_016",
+"author": "r6",
+"version": "v60",
+"text": "Chop some wood, we'll need it for barricades.",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0016.wav"
+},
+{
+"id": "r6v60_017",
+"author": "r6",
+"version": "v60",
+"text": "Don't breach it, just tear the wall down quietly.",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "v60_0017.wav"
+},
+{
+"id": "r6v60_018",
+"author": "r6",
+"version": "v60",
+"text": "Put up a sandbag wall at the main door.",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0018.wav"
+},
+{
+"id": "r6v60_019",
+"author": "r6",
+"version": "v60",
+"text": "Give the lettuce some water, it's wilting.",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0019.wav"
+},
+{
+"id": "r6v60_020",
+"author": "r6",
+"version": "v60",
+"text": "Pull the weeds out of the carrot bed.",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "v60_0020.wav"
+},
+{
+"id": "r6v60_021",
+"author": "r6",
+"version": "v60",
+"text": "Haul the wheat over to the barn and stack it.",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0021.wav"
+},
+{
+"id": "r6v60_022",
+"author": "r6",
+"version": "v60",
+"text": "Throw some grain to the hens in the coop.",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0022.wav"
+},
+{
+"id": "r6v60_023",
+"author": "r6",
+"version": "v60",
+"text": "Build some cover next to the car.",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "v60_0023.wav"
+},
+{
+"id": "r6v60_024",
+"author": "r6",
+"version": "v60",
+"text": "Sow some barley on my pin.",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0024.wav"
+},
+{
+"id": "r6v60_025",
+"author": "r6",
+"version": "v60",
+"text": "Dismantle the ladder, it's giving them a free way in.",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0025.wav"
+},
+{
+"id": "r6v60_026",
+"author": "r6",
+"version": "v60",
+"text": "Dig up the potatoes on my marker.",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "v60_0026.wav"
+},
+{
+"id": "r6v60_027",
+"author": "r6",
+"version": "v60",
+"text": "Repair the car, we need it for the rotate.",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0027.wav"
+},
+{
+"id": "r6v60_028",
+"author": "r6",
+"version": "v60",
+"text": "Grab the honey from the beehives.",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0028.wav"
+},
+{
+"id": "r6v60_029",
+"author": "r6",
+"version": "v60",
+"text": "Dig in at the red stairs.",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft Mark",
+"wav": "v60_0029.wav"
+},
+{
+"id": "r6v60_030",
+"author": "r6",
+"version": "v60",
+"text": "Throw down a barricade on the north window when I say go.",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0030.wav"
+},
+{
+"id": "r6v60_031",
+"author": "r6",
+"version": "v60",
+"text": "Go water the strawberries in the greenhouse.",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0031.wav"
+},
+{
+"id": "r6v60_032",
+"author": "r6",
+"version": "v60",
+"text": "Plant some dragon fruit over there.",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "v60_0032.wav"
+},
+{
+"id": "r6v60_033",
+"author": "r6",
+"version": "v60",
+"text": "Carry those logs to my pin.",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0033.wav"
+},
+{
+"id": "r6v60_034",
+"author": "r6",
+"version": "v60",
+"text": "Rake this plot, we're planting after the round.",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0034.wav"
+},
+{
+"id": "r6v60_035",
+"author": "r6",
+"version": "v60",
+"text": "Feed the pigs in that pen.",
+"maj": "FEED",
+"voice": "Microsoft Mark",
+"wav": "v60_0035.wav"
+},
+{
+"id": "r6v60_036",
+"author": "r6",
+"version": "v60",
+"text": "Help me harvest the pumpkins.",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0036.wav"
+},
+{
+"id": "r6v60_037",
+"author": "r6",
+"version": "v60",
+"text": "Wait for my go, then knock down the shed.",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0037.wav"
+},
+{
+"id": "r6v60_038",
+"author": "r6",
+"version": "v60",
+"text": "Reap that field before they rotate over here.",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "v60_0038.wav"
+},
+{
+"id": "r6v60_039",
+"author": "r6",
+"version": "v60",
+"text": "Milk the cow, quick.",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0039.wav"
+},
+{
+"id": "r6v60_040",
+"author": "r6",
+"version": "v60",
+"text": "Reinforce the hatch upstairs.",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0040.wav"
+},
+{
+"id": "r6v60_041",
+"author": "r6",
+"version": "v60",
+"text": "Grab some ammo, you're running dry.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v60_0041.wav"
+},
+{
+"id": "r6v60_042",
+"author": "r6",
+"version": "v60",
+"text": "Lay a foundation on my ping.",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0042.wav"
+},
+{
+"id": "r6v60_043",
+"author": "r6",
+"version": "v60",
+"text": "Plant the sunflower seeds in the east field.",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0043.wav"
+},
+{
+"id": "r6v60_044",
+"author": "r6",
+"version": "v60",
+"text": "Drop the bricks at the foundation.",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "v60_0044.wav"
+},
+{
+"id": "r6v60_045",
+"author": "r6",
+"version": "v60",
+"text": "Don't water the corn yet.",
+"maj": "WAIT",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0045.wav"
+},
+{
+"id": "r6v60_046",
+"author": "r6",
+"version": "v60",
+"text": "Spread some manure on the west bed.",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0046.wav"
+},
+{
+"id": "r6v60_047",
+"author": "r6",
+"version": "v60",
+"text": "Cut the corn.",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "v60_0047.wav"
+},
+{
+"id": "r6v60_048",
+"author": "r6",
+"version": "v60",
+"text": "Mine some titanium ore for the turret.",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0048.wav"
+},
+{
+"id": "r6v60_049",
+"author": "r6",
+"version": "v60",
+"text": "Patch the barricade on the east door, it's half gone.",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0049.wav"
+},
+{
+"id": "r6v60_050",
+"author": "r6",
+"version": "v60",
+"text": "Pick up the planks by the barn.",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "v60_0050.wav"
+},
+{
+"id": "r6v60_051",
+"author": "r6",
+"version": "v60",
+"text": "Cover me while I reinforce.",
+"maj": "COVER_ME",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0051.wav"
+},
+{
+"id": "r6v60_052",
+"author": "r6",
+"version": "v60",
+"text": "Sprinkle that bed real quick.",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0052.wav"
+},
+{
+"id": "r6v60_053",
+"author": "r6",
+"version": "v60",
+"text": "Make a crate.",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "v60_0053.wav"
+},
+{
+"id": "r6v60_054",
+"author": "r6",
+"version": "v60",
+"text": "Stash the eggs in that crate.",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0054.wav"
+},
+{
+"id": "r6v60_055",
+"author": "r6",
+"version": "v60",
+"text": "Take apart the ramp.",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0055.wav"
+},
+{
+"id": "r6v60_056",
+"author": "r6",
+"version": "v60",
+"text": "Feed the horses, I'll keep droning.",
+"maj": "FEED",
+"voice": "Microsoft Mark",
+"wav": "v60_0056.wav"
+},
+{
+"id": "r6v60_057",
+"author": "r6",
+"version": "v60",
+"text": "The fence on the north side is busted.",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0057.wav"
+},
+{
+"id": "r6v60_058",
+"author": "r6",
+"version": "v60",
+"text": "Seed the south field with beans.",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0058.wav"
+},
+{
+"id": "r6v60_059",
+"author": "r6",
+"version": "v60",
+"text": "Set up a watchtower on the roof.",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "v60_0059.wav"
+},
+{
+"id": "csv60_000",
+"author": "cs",
+"version": "v60",
+"text": "plant some beets in the north bed bro",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0060.wav"
+},
+{
+"id": "csv60_001",
+"author": "cs",
+"version": "v60",
+"text": "fix the fence by the coop man chickens keep getting out",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0061.wav"
+},
+{
+"id": "csv60_002",
+"author": "cs",
+"version": "v60",
+"text": "im dry bro go scoop up some ammo",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v60_0062.wav"
+},
+{
+"id": "csv60_003",
+"author": "cs",
+"version": "v60",
+"text": "go chop some logs from the woods man, were out",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0063.wav"
+},
+{
+"id": "csv60_004",
+"author": "cs",
+"version": "v60",
+"text": "water the tomatoes man they look dead",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0064.wav"
+},
+{
+"id": "csv60_005",
+"author": "cs",
+"version": "v60",
+"text": "build a wall right here",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "v60_0065.wav"
+},
+{
+"id": "csv60_006",
+"author": "cs",
+"version": "v60",
+"text": "harvest the pumpkins",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0066.wav"
+},
+{
+"id": "csv60_007",
+"author": "cs",
+"version": "v60",
+"text": "toss the hens some grain in the coop bro",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0067.wav"
+},
+{
+"id": "csv60_008",
+"author": "cs",
+"version": "v60",
+"text": "just plant it man",
+"maj": "PLANT",
+"voice": "Microsoft Mark",
+"wav": "v60_0068.wav"
+},
+{
+"id": "csv60_009",
+"author": "cs",
+"version": "v60",
+"text": "haul the potatoes to the barn man",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0069.wav"
+},
+{
+"id": "csv60_010",
+"author": "cs",
+"version": "v60",
+"text": "plow the north field",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0070.wav"
+},
+{
+"id": "csv60_011",
+"author": "cs",
+"version": "v60",
+"text": "rip that fence down bro its blocking my shot",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "v60_0071.wav"
+},
+{
+"id": "csv60_012",
+"author": "cs",
+"version": "v60",
+"text": "build a windmill by the north field",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0072.wav"
+},
+{
+"id": "csv60_013",
+"author": "cs",
+"version": "v60",
+"text": "put a sandbag wall at main on my go",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0073.wav"
+},
+{
+"id": "csv60_014",
+"author": "cs",
+"version": "v60",
+"text": "dig in right here man",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft Mark",
+"wav": "v60_0074.wav"
+},
+{
+"id": "csv60_015",
+"author": "cs",
+"version": "v60",
+"text": "pick the grapes by my ping theyre ripe",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0075.wav"
+},
+{
+"id": "csv60_016",
+"author": "cs",
+"version": "v60",
+"text": "grab the eggs outta the coop",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0076.wav"
+},
+{
+"id": "csv60_017",
+"author": "cs",
+"version": "v60",
+"text": "reinforce the east wall bro theyre gonna push",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "v60_0077.wav"
+},
+{
+"id": "csv60_018",
+"author": "cs",
+"version": "v60",
+"text": "yo sow some wheat on my pin, need bread",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0078.wav"
+},
+{
+"id": "csv60_019",
+"author": "cs",
+"version": "v60",
+"text": "go water the other field too",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0079.wav"
+},
+{
+"id": "csv60_020",
+"author": "cs",
+"version": "v60",
+"text": "clear the weeds outta the carrot bed",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "v60_0080.wav"
+},
+{
+"id": "csv60_021",
+"author": "cs",
+"version": "v60",
+"text": "yo bring me some nails, im fixing the roof",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0081.wav"
+},
+{
+"id": "csv60_022",
+"author": "cs",
+"version": "v60",
+"text": "feed the horses",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0082.wav"
+},
+{
+"id": "csv60_023",
+"author": "cs",
+"version": "v60",
+"text": "pull the weeds over there bro its a mess",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "v60_0083.wav"
+},
+{
+"id": "csv60_024",
+"author": "cs",
+"version": "v60",
+"text": "put up a wooden fence around the east field bro, keep the cows in",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0084.wav"
+},
+{
+"id": "csv60_025",
+"author": "cs",
+"version": "v60",
+"text": "cover me while i fix the fence",
+"maj": "COVER_ME",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0085.wav"
+},
+{
+"id": "csv60_026",
+"author": "cs",
+"version": "v60",
+"text": "dig up the onions in the south bed man",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "v60_0086.wav"
+},
+{
+"id": "csv60_027",
+"author": "cs",
+"version": "v60",
+"text": "knock the shed down we need the space",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0087.wav"
+},
+{
+"id": "csv60_028",
+"author": "cs",
+"version": "v60",
+"text": "get some stone from over there, need it for walls",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0088.wav"
+},
+{
+"id": "csv60_029",
+"author": "cs",
+"version": "v60",
+"text": "stick the pepper seedlings in the greenhouse man",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "v60_0089.wav"
+},
+{
+"id": "csv60_030",
+"author": "cs",
+"version": "v60",
+"text": "breach that wall were going in",
+"maj": "BREACH",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0090.wav"
+},
+{
+"id": "csv60_031",
+"author": "cs",
+"version": "v60",
+"text": "patch that hole in the wall on my call",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0091.wav"
+},
+{
+"id": "csv60_032",
+"author": "cs",
+"version": "v60",
+"text": "carry those logs over here",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "v60_0092.wav"
+},
+{
+"id": "csv60_033",
+"author": "cs",
+"version": "v60",
+"text": "plant some dragon fruit in the west bed",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0093.wav"
+},
+{
+"id": "csv60_034",
+"author": "cs",
+"version": "v60",
+"text": "sprinkle the plants in the greenhouse",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0094.wav"
+},
+{
+"id": "csv60_035",
+"author": "cs",
+"version": "v60",
+"text": "yo the tomatoes are ripe btw",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "v60_0095.wav"
+},
+{
+"id": "csv60_036",
+"author": "cs",
+"version": "v60",
+"text": "give the pigs some slop man theyre screaming",
+"maj": "FEED",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0096.wav"
+},
+{
+"id": "csv60_037",
+"author": "cs",
+"version": "v60",
+"text": "slap a foundation on my pin bro",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0097.wav"
+},
+{
+"id": "csv60_038",
+"author": "cs",
+"version": "v60",
+"text": "rake the bed on the right man so we can plant",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "v60_0098.wav"
+},
+{
+"id": "csv60_039",
+"author": "cs",
+"version": "v60",
+"text": "bro reap the corn field before it gets dark",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0099.wav"
+},
+{
+"id": "csv60_040",
+"author": "cs",
+"version": "v60",
+"text": "put up some cover over there im getting lit up",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0100.wav"
+},
+{
+"id": "csv60_041",
+"author": "cs",
+"version": "v60",
+"text": "go milk the goats",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "v60_0101.wav"
+},
+{
+"id": "csv60_042",
+"author": "cs",
+"version": "v60",
+"text": "on three dismantle the bridge",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0102.wav"
+},
+{
+"id": "csv60_043",
+"author": "cs",
+"version": "v60",
+"text": "ok plant potatoes there",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0103.wav"
+},
+{
+"id": "csv60_044",
+"author": "cs",
+"version": "v60",
+"text": "repair the car man its smoking",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "v60_0104.wav"
+},
+{
+"id": "csv60_045",
+"author": "cs",
+"version": "v60",
+"text": "drop the sandbags by the north window, we gonna need em",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0105.wav"
+},
+{
+"id": "csv60_046",
+"author": "cs",
+"version": "v60",
+"text": "nah dont plant the beans yet",
+"maj": "WAIT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0106.wav"
+},
+{
+"id": "csv60_047",
+"author": "cs",
+"version": "v60",
+"text": "set up a watchtower by the west field man we need eyes on the road",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "v60_0107.wav"
+},
+{
+"id": "csv60_048",
+"author": "cs",
+"version": "v60",
+"text": "give the cucumbers some water over there",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0108.wav"
+},
+{
+"id": "csv60_049",
+"author": "cs",
+"version": "v60",
+"text": "fill the troughs in the barn",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0109.wav"
+},
+{
+"id": "csv60_050",
+"author": "cs",
+"version": "v60",
+"text": "go mine some uranium man we need it for the turret",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "v60_0110.wav"
+},
+{
+"id": "csv60_051",
+"author": "cs",
+"version": "v60",
+"text": "help me pick the strawberries",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0111.wav"
+},
+{
+"id": "csv60_052",
+"author": "cs",
+"version": "v60",
+"text": "spread some manure on the south field, the soil is trash",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0112.wav"
+},
+{
+"id": "csv60_053",
+"author": "cs",
+"version": "v60",
+"text": "loot the honey from the beehives bro",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "v60_0113.wav"
+},
+{
+"id": "csv60_054",
+"author": "cs",
+"version": "v60",
+"text": "the barricade on the north door is busted, fix it",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0114.wav"
+},
+{
+"id": "csv60_055",
+"author": "cs",
+"version": "v60",
+"text": "bro sow some seeds in the east field real quick its empty",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0115.wav"
+},
+{
+"id": "csv60_056",
+"author": "cs",
+"version": "v60",
+"text": "grab the seeds from the shed and bring em to me",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "v60_0116.wav"
+},
+{
+"id": "csv60_057",
+"author": "cs",
+"version": "v60",
+"text": "demolish the stone wall by the well man",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "v60_0117.wav"
+},
+{
+"id": "csv60_058",
+"author": "cs",
+"version": "v60",
+"text": "cut the lettuce in the greenhouse quick, were selling it",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "v60_0118.wav"
+},
+{
+"id": "csv60_059",
+"author": "cs",
+"version": "v60",
+"text": "build a turret on the roof bro",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "v60_0119.wav"
+}
+]

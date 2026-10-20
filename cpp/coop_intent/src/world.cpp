@@ -83,6 +83,17 @@ const char* const kPlaceIntents[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MOVE_TO
 // it), letting the player out (where the player is). Their lines' places are neither grounded nor asked about. Bot v57:
 // taking out or reloading a weapon the bot carries ("switch to your pistol" names no weapon lying in the world)
 const char* const kNoPlace[] = {"GO_BACK", "HELP_INTERACTION", "SWITCH_WEAPON", "RELOAD"};
+// world.ITEM_INTENTS (items_v60.json "intents") and FARM_INTENTS: the farmer's and the builder's orders. They join
+// PLACE_INTENTS: "no, by the barn" gives the same order at another place
+const char* const kItemIntents[] = {"PLANT_CROP", "WATER", "HARVEST", "FEED", "COLLECT", "DELIVER", "BUILD", "REPAIR", "DEMOLISH"};
+const char* const kFarmIntents[] = {"PLANT_CROP", "WATER", "HARVEST", "FEED", "COLLECT", "DELIVER", "BUILD", "REPAIR", "DEMOLISH", "TILL"};
+// world.REFUSE: what the bot says when the game's catalogue lacks the item ("{item}" is the words said)
+const std::pair<const char*, const char*> kRefuse[] = {
+    {"BUILD", "I can't build that: no {item} in my build menu."}, {"PLANT_CROP", "I can't plant that: I have no {item} to plant."},
+    {"WATER", "I can't water that: I see no {item}."}, {"HARVEST", "I can't harvest that: I see no {item}."},
+    {"FEED", "I can't feed that: I see no {item}."}, {"COLLECT", "I can't collect that: I see no {item}."},
+    {"DELIVER", "I can't bring that: I have no {item}."}, {"REPAIR", "I can't repair that: I see no {item}."},
+    {"DEMOLISH", "I can't tear that down: I see no {item}."}};
 const char* const kNoLeads[] = {"no", "nope", "nah", "not", "negative", "wrong"};
 const char* const kSaidWords[] = {"said", "meant", "mean"};   // world.py SAID_WORDS
 const char* const kLostPointers[] = {"there", "here"};
@@ -139,6 +150,42 @@ bool AnyOf(const std::vector<std::string>& words, const char* const (&list)[N]) 
         for (const char* x : list)
             if (w == x) return true;
     return false;
+}
+
+bool PlaceIntent(std::string_view label) { return OneOf(label, kPlaceIntents) || OneOf(label, kFarmIntents); }
+
+std::string JoinWords(const std::vector<std::string>& w) {
+    std::string s;
+    for (size_t i = 0; i < w.size(); ++i) s += (i ? " " : "") + w[i];
+    return s;
+}
+
+// world.singular: a plural's singular, near enough to compare a said word with a catalogue's
+bool EndsWith(const std::string& w, const char* tail) {
+    const size_t n = std::char_traits<char>::length(tail);
+    return w.size() >= n && w.compare(w.size() - n, n, tail) == 0;
+}
+std::string Singular(const std::string& w) {
+    if (w.size() > 4 && EndsWith(w, "ies")) return w.substr(0, w.size() - 3) + "y";
+    if (w.size() > 4 && (EndsWith(w, "oes") || EndsWith(w, "ches") || EndsWith(w, "shes") || EndsWith(w, "sses") || EndsWith(w, "xes")))
+        return w.substr(0, w.size() - 2);
+    if (w.size() > 3 && EndsWith(w, "s") && !EndsWith(w, "ss") && !EndsWith(w, "us")) return w.substr(0, w.size() - 1);
+    return w;
+}
+// world.same_words: every word of a phrase (single spaces) singular
+std::string SameWords(const std::string& p) {
+    std::string out;
+    for (size_t start = 0;;) {
+        const size_t sp = p.find(' ', start);
+        if (start) out += ' ';
+        out += Singular(p.substr(start, sp == std::string::npos ? std::string::npos : sp - start));
+        if (sp == std::string::npos) return out;
+        start = sp + 1;
+    }
+}
+std::string LastWord(const std::string& p) {
+    const size_t sp = p.rfind(' ');
+    return sp == std::string::npos ? p : p.substr(sp + 1);
 }
 
 std::string ZoneName(const std::string& zone) {
@@ -203,7 +250,80 @@ bool ValidateWorld(const WorldState& w, const LocationMatcher& places, std::stri
     if (!w.player_gaze.empty() && std::find(ids.begin(), ids.end(), w.player_gaze) == ids.end()) return fail("gaze on an unknown entity " + w.player_gaze);
     if (w.bot_stance != "stand" && w.bot_stance != "crouch" && w.bot_stance != "prone") return fail("unknown stance " + w.bot_stance);
     if (w.has_time && !(w.time >= 0.0)) return fail("negative time");
+    for (const auto& c : w.catalog) {   // world.validate_world: per intent with an item, entries with an id and words
+        if (!OneOf(c.first, kItemIntents)) return fail("a catalog for " + c.first + ", which has no item");
+        std::vector<std::string> seen;
+        for (const CatalogEntry& e : c.second) {
+            if (e.id.empty()) return fail("catalog " + c.first + ": an entry without an id");
+            if (std::find(seen.begin(), seen.end(), e.id) != seen.end()) return fail("catalog " + c.first + ": entry id " + e.id + " twice");
+            seen.push_back(e.id);
+            if (e.words.empty()) return fail("catalog " + c.first + ": entry " + e.id + " has no words");
+            for (const std::string& x : e.words)
+                if (x.empty() || x != JoinWords(Words(x)))
+                    return fail("catalog " + c.first + ": entry " + e.id + ": \"" + x + "\" must be lowercase ASCII words with one space between");
+        }
+    }
     return true;
+}
+
+std::string MatchCatalog(const std::string& item, const std::vector<CatalogEntry>& entries) {
+    const std::string said = SameWords(item);
+    for (const CatalogEntry& e : entries)
+        for (const std::string& w : e.words)
+            if (SameWords(w) == said) return e.id;
+    const std::string head = LastWord(said);
+    for (const CatalogEntry& e : entries)
+        for (const std::string& w : e.words)
+            if (SameWords(w) == head) return e.id;
+    if (said.find(' ') == std::string::npos) {
+        for (const CatalogEntry& e : entries)
+            for (const std::string& w : e.words)
+                if (LastWord(SameWords(w)) == said) return e.id;
+    }
+    return {};
+}
+
+// world.item_object: the map object an item names with its last words ("crate", "chicken coop"), or -1
+static int ItemObject(const std::string& item, const LocationMatcher& places) {
+    if (item.empty()) return -1;
+    std::vector<std::string> w;
+    for (size_t start = 0;;) {
+        const size_t sp = item.find(' ', start);
+        w.push_back(item.substr(start, sp == std::string::npos ? std::string::npos : sp - start));
+        if (sp == std::string::npos) break;
+        start = sp + 1;
+    }
+    for (size_t n = std::min(w.size(), places.MaxPhraseLen()); n >= 1; --n) {
+        std::string joined;
+        for (size_t i = w.size() - n; i < w.size(); ++i) joined += (joined.empty() ? "" : " ") + w[i];
+        int index = -1;
+        const char* kind = places.PhraseKind(joined, &index);
+        if (kind && std::string(kind) == "object") return index;
+    }
+    return -1;
+}
+
+// world.without_item_place: the line's places without the one that is the item itself (BUILD, COLLECT, DELIVER)
+static PlaceRecord WithoutItemPlace(const PlaceRecord& record, const std::string& item, bool keeps_object, const LocationMatcher& places) {
+    const int obj = keeps_object ? ItemObject(item, places) : -1;
+    if (obj < 0 || record.targets.empty()) return record;
+    PlaceRecord out;
+    int primary = -1;
+    for (size_t i = 0; i < record.targets.size(); ++i) {
+        if (record.targets[i].object == obj) continue;
+        if (static_cast<int>(i) == record.primary) primary = static_cast<int>(out.targets.size());
+        out.targets.push_back(record.targets[i]);
+    }
+    if (out.targets.size() == record.targets.size()) return record;
+    if (primary < 0) {
+        for (size_t i = 0; i < out.targets.size(); ++i)
+            if (out.targets[i].role == PlaceRole::None) {
+                primary = static_cast<int>(i);
+                break;
+            }
+    }
+    out.primary = primary;
+    return out;
 }
 
 std::string Deixis(std::string_view text) {
@@ -418,6 +538,34 @@ void Planner::Reset() {
 void Planner::DropPending() {
     pending_entity_.clear();
     pending_here_ = pending_near_ = false;
+    pending_item_ = ItemInfo();
+}
+
+// world.Planner._plants_crops
+bool Planner::PlantsCrops() const {
+    if (brain_->LabelIndex("PLANT_CROP") < 0) return false;
+    if (std::find(world_.bot_items.begin(), world_.bot_items.end(), "bomb") != world_.bot_items.end()) return false;
+    const std::vector<CatalogEntry>* seeds = world_.Catalog("PLANT_CROP");
+    return seeds && !seeds->empty();
+}
+
+// world.Planner._item
+bool Planner::ItemOf(std::string_view text, const std::string& intent, ItemInfo* item, std::string* refused) const {
+    *item = ItemInfo();
+    refused->clear();
+    const ItemFound f = brain_->Items().Find(text, intent, brain_->Places());
+    if (f.has_item) item->said = f.item;
+    const std::vector<CatalogEntry>* cat = world_.Catalog(intent);
+    if (item->said.empty() || !cat) return true;
+    item->id = MatchCatalog(item->said, *cat);
+    if (!item->id.empty()) return true;
+    for (const auto& r : kRefuse) {
+        if (intent != r.first) continue;
+        std::string say = r.second;
+        const size_t at = say.find("{item}");
+        *refused = say.replace(at, 6, item->said);
+    }
+    return false;
 }
 
 const WorldEntity* Planner::Entity(const std::string& id) const {
@@ -496,7 +644,8 @@ void Planner::Reissue(const Memory::Frame& f, const PlaceTarget* t, const Ground
     const bool other = f.other;
     out->action = "resolved";
     out->has_order = true;
-    out->order = MakeOrder(intent, rec, grounding, t ? 0 : -1, other, nearby);
+    const ItemInfo item = f.item;
+    out->order = MakeOrder(intent, rec, grounding, t ? 0 : -1, other, nearby, nullptr, &item);
     out->say = std::string(lead) + Echo(intent, t, g);
 }
 
@@ -529,7 +678,7 @@ bool Planner::Context(std::string_view text, const Decision& d, PlannerResult* o
         if (!rest.empty() && !place_only) return false;
     }
     if (!has_target && alive && d.action == Action::SayAgain && d.prob < kFragmentUnsure && OneOf(w.back(), kLostPointers) &&
-        OneOf(frame_label, kPlaceIntents)) {
+        PlaceIntent(frame_label)) {
         // the place matcher takes "there" only after an order word; here the order word is what was misheard
         PlaceTarget lost;
         lost.pointer = PlacePointer::This;
@@ -540,7 +689,7 @@ bool Planner::Context(std::string_view text, const Decision& d, PlannerResult* o
         }
     }
     if (OneOf(w.front(), kNoLeads) && alive && d.action != Action::Negated) {
-        if (has_place && OneOf(frame_label, kPlaceIntents)) {
+        if (has_place && PlaceIntent(frame_label)) {
             Reissue(f, &place_t, &place_g, nearby, "Got it. ", out);
             return true;
         }
@@ -558,7 +707,7 @@ bool Planner::Context(std::string_view text, const Decision& d, PlannerResult* o
             return true;
         }
     }
-    if (alive && has_place && OneOf(frame_label, kPlaceIntents) &&
+    if (alive && has_place && PlaceIntent(frame_label) &&
         ((Elliptical(text) && (unsure || d.action == Action::Act)) || (d.action == Action::SayAgain && d.prob < kFragmentUnsure))) {
         Reissue(f, &place_t, &place_g, nearby, "Got it. ", out);
         return true;
@@ -584,10 +733,17 @@ void Planner::SamePlace(const PlaceRecord& record, std::vector<Grounding>* groun
 }
 
 Order Planner::MakeOrder(int intent, const PlaceRecord& record, const std::vector<Grounding>& grounding, int k, bool other, bool nearby,
-                         const PlaceTarget* said) {
+                         const PlaceTarget* said, const ItemInfo* item) {
     Order o;
     o.intent = intent;
     o.other = other;
+    if (brain_->Items().HasItem(Label(intent))) {   // what it acts on: the v60 bots' orders only
+        o.has_item = true;
+        if (item) {
+            o.item = item->said;
+            o.item_id = item->id;
+        }
+    }
     if (Label(intent) != "GO_NOW") {   // "go" with nothing queued is not an order to come back to
         Memory::Frame f;
         f.has = true;
@@ -605,6 +761,7 @@ Order Planner::MakeOrder(int intent, const PlaceRecord& record, const std::vecto
             f.has_said = true;
             f.said = *said;
         }
+        if (item) f.item = *item;
         memory_.frame = f;
         frame_in_line_ = true;
     }
@@ -626,7 +783,7 @@ Order Planner::MakeOrder(int intent, const PlaceRecord& record, const std::vecto
 }
 
 void Planner::Ask(int intent, const PlaceRecord& record, const std::vector<Grounding>& grounding, int k, bool other, bool queued,
-                  PlannerResult* out) {
+                  PlannerResult* out, const ItemInfo* item) {
     const Grounding& g = grounding[static_cast<size_t>(k)];
     const PlaceTarget& t = record.targets[static_cast<size_t>(k)];
     const std::string obj = t.object >= 0 ? brain_->Places().ObjectId(t.object) : "place";
@@ -637,6 +794,7 @@ void Planner::Ask(int intent, const PlaceRecord& record, const std::vector<Groun
     q.k = k;
     q.other = other;
     q.queued = queued;
+    if (item) q.item = *item;
     memory_.has_question = true;
     out->action = "ask";
     if (g.status == "missing") {
@@ -678,6 +836,7 @@ void Planner::Settle(const Memory::Question& q, const std::string& entity, const
         brain_->SetPending(q.intent, q.record, q.other);
         DropPending();
         pending_entity_ = entity;
+        pending_item_ = q.item;
         memory_.last_entity = entity;
         out->say = say + " Ready to " + phrase + ". On your go.";
         return;
@@ -688,7 +847,7 @@ void Planner::Settle(const Memory::Question& q, const std::string& entity, const
     rec.primary = 0;
     out->say = say + " " + Capitalized(phrase) + ".";
     out->has_order = true;
-    out->order = MakeOrder(q.intent, rec, grounding, 0, q.other, false, said);
+    out->order = MakeOrder(q.intent, rec, grounding, 0, q.other, false, said, &q.item);
 }
 
 // world.Planner._settle_place
@@ -701,13 +860,14 @@ void Planner::SettlePlace(const Memory::Question& q, const PlaceRecord& rec, con
         pending_entity_ = g.entity;
         pending_here_ = g.via == "here";
         pending_near_ = nearby;
+        pending_item_ = q.item;
         if (!g.entity.empty()) memory_.last_entity = g.entity;
         out->say = "Got it. Ready to " + phrase + ". On your go.";
         return;
     }
     out->say = "Got it. " + Capitalized(phrase) + ".";
     out->has_order = true;
-    out->order = MakeOrder(q.intent, rec, {g}, 0, q.other, nearby, &q.record.targets[static_cast<size_t>(q.k)]);
+    out->order = MakeOrder(q.intent, rec, {g}, 0, q.other, nearby, &q.record.targets[static_cast<size_t>(q.k)], &q.item);
 }
 
 // world.Planner._place_answer
@@ -791,6 +951,26 @@ PlannerResult Planner::Step(std::string_view text, const std::vector<float>& pro
     out.action = ActionName(d.action);
     if (d.intent >= 0 && (d.action == Action::Act || d.action == Action::Queued) && OneOf(Label(d.intent), kNoPlace))
         d.places = PlaceRecord();   // going back, letting the player out: the line's place is not the order's
+    const bool order_line = d.intent >= 0 && (d.action == Action::Act || d.action == Action::Queued);
+    if (order_line && Label(d.intent) == "PLANT" && PlantsCrops()) {
+        // a bare "plant it": no bomb on the bot, seeds in its bag
+        d.intent = out.intent = out.decision.intent = brain_->LabelIndex("PLANT_CROP");
+        if (d.action == Action::Queued) brain_->SetPending(d.intent, brain_->PendingPlaces(), brain_->PendingOther());
+    }
+    ItemInfo item;
+    const bool has_item = order_line && brain_->Items().HasItem(Label(d.intent));
+    if (has_item) {
+        std::string refused;
+        if (!ItemOf(text, Label(d.intent), &item, &refused)) {   // the game's catalogue lacks it: said, no order
+            if (d.action == Action::Queued) brain_->Reset();
+            memory_.has_question = false;
+            out.action = "refused";
+            out.say = refused;
+            return out;
+        }
+        d.places = WithoutItemPlace(d.places, item.said, brain_->Items().KeepsObject(Label(d.intent)), brain_->Places());
+        if (d.action == Action::Queued) brain_->SetPending(brain_->Pending(), d.places, brain_->PendingOther());
+    }
     PlaceRecord record = d.places;   // a copy: an order that names no place may get one from the context
     const LocationMatcher& places = brain_->Places();
     if (!record.targets.empty()) out.ground = Ground(record, world_, memory_, places, text, d.intent >= 0 ? Label(d.intent) : std::string());
@@ -876,16 +1056,17 @@ PlannerResult Planner::Step(std::string_view text, const std::vector<float>& pro
             const Grounding& g = out.ground[static_cast<size_t>(k)];
             if (g.status == "ambiguous" || g.status == "missing") {
                 if (d.action == Action::Queued) brain_->Reset();   // the question decides the queued order's place
-                Ask(d.intent, record, out.ground, k, d.other, d.action == Action::Queued, &out);
+                Ask(d.intent, record, out.ground, k, d.other, d.action == Action::Queued, &out, has_item ? &item : nullptr);
                 return out;
             }
         }
         if (d.action == Action::Act) {
             out.has_order = true;
-            out.order = MakeOrder(d.intent, record, out.ground, k, d.other, nearby);
+            out.order = MakeOrder(d.intent, record, out.ground, k, d.other, nearby, nullptr, has_item ? &item : nullptr);
             if (defaulted) out.say = Echo(d.intent, &default_t, &default_g);   // the bot says what it assumed
         } else {
             DropPending();
+            if (has_item) pending_item_ = item;
             if (k >= 0) {
                 pending_entity_ = out.ground[static_cast<size_t>(k)].entity;
                 pending_here_ = out.ground[static_cast<size_t>(k)].via == "here";
@@ -902,13 +1083,13 @@ PlannerResult Planner::Step(std::string_view text, const std::vector<float>& pro
             PlaceRecord rec2;
             rec2.targets = {ex.targets[static_cast<size_t>(k)]};
             rec2.primary = 0;
-            out.order = MakeOrder(d.executed, rec2, g, 0, d.executed_other, pending_near_);
+            out.order = MakeOrder(d.executed, rec2, g, 0, d.executed_other, pending_near_, nullptr, &pending_item_);
         } else if (!pending_entity_.empty()) {
-            out.order = MakeOrder(d.executed, PlaceRecord(), {}, -1, d.executed_other);
+            out.order = MakeOrder(d.executed, PlaceRecord(), {}, -1, d.executed_other, false, nullptr, &pending_item_);
         } else {
             std::vector<Grounding> g2;
             if (!ex.targets.empty()) g2 = Ground(ex, world_, memory_, places);
-            out.order = MakeOrder(d.executed, ex, g2, k, d.executed_other, pending_near_);
+            out.order = MakeOrder(d.executed, ex, g2, k, d.executed_other, pending_near_, nullptr, &pending_item_);
         }
         DropPending();
     } else if (d.action == Action::Go) {

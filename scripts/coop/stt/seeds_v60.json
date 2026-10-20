@@ -1,0 +1,3516 @@
+[
+{
+"id": "seed_MOVE_TO_310",
+"text": "go to the field",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0000.wav"
+},
+{
+"id": "seed_MOVE_TO_311",
+"text": "go to the barn",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0001.wav"
+},
+{
+"id": "seed_MOVE_TO_312",
+"text": "go to the greenhouse",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "s60_0002.wav"
+},
+{
+"id": "seed_MOVE_TO_313",
+"text": "go to the coop",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0003.wav"
+},
+{
+"id": "seed_MOVE_TO_314",
+"text": "go to the well",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0004.wav"
+},
+{
+"id": "seed_MOVE_TO_315",
+"text": "move to the fence",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "s60_0005.wav"
+},
+{
+"id": "seed_MOVE_TO_316",
+"text": "go to the north field",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0006.wav"
+},
+{
+"id": "seed_MOVE_TO_317",
+"text": "go to the shed",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0007.wav"
+},
+{
+"id": "seed_MOVE_TO_318",
+"text": "head to the beehives",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "s60_0008.wav"
+},
+{
+"id": "seed_MOVE_TO_319",
+"text": "go to the building spot",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0009.wav"
+},
+{
+"id": "seed_MOVE_TO_320",
+"text": "go to the crate",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0010.wav"
+},
+{
+"id": "seed_HOLD_POSITION_68",
+"text": "dig in",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft Mark",
+"wav": "s60_0011.wav"
+},
+{
+"id": "seed_HOLD_POSITION_69",
+"text": "dig in here",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0012.wav"
+},
+{
+"id": "seed_HOLD_POSITION_70",
+"text": "dig in and hold",
+"maj": "HOLD_POSITION",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0013.wav"
+},
+{
+"id": "seed_BREACH_24",
+"text": "breach the barn wall",
+"maj": "BREACH",
+"voice": "Microsoft Mark",
+"wav": "s60_0014.wav"
+},
+{
+"id": "seed_BREACH_25",
+"text": "blow the wall",
+"maj": "BREACH",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0015.wav"
+},
+{
+"id": "seed_BREACH_26",
+"text": "breach the shed",
+"maj": "BREACH",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0016.wav"
+},
+{
+"id": "seed_COVER_ME_23",
+"text": "cover me while I build",
+"maj": "COVER_ME",
+"voice": "Microsoft Mark",
+"wav": "s60_0017.wav"
+},
+{
+"id": "seed_COVER_ME_24",
+"text": "cover me while I plant",
+"maj": "COVER_ME",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0018.wav"
+},
+{
+"id": "seed_COVER_ME_25",
+"text": "watch my back while I harvest",
+"maj": "COVER_ME",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0019.wav"
+},
+{
+"id": "seed_COVER_ME_26",
+"text": "cover me, I'm fixing the wall",
+"maj": "COVER_ME",
+"voice": "Microsoft Mark",
+"wav": "s60_0020.wav"
+},
+{
+"id": "seed_ENTRY_33",
+"text": "clear the building",
+"maj": "ENTRY",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0021.wav"
+},
+{
+"id": "seed_ENTRY_34",
+"text": "clear the barn",
+"maj": "ENTRY",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0022.wav"
+},
+{
+"id": "seed_ENTRY_35",
+"text": "clear the house",
+"maj": "ENTRY",
+"voice": "Microsoft Mark",
+"wav": "s60_0023.wav"
+},
+{
+"id": "seed_PLANT_18",
+"text": "plant the bomb on site",
+"maj": "PLANT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0024.wav"
+},
+{
+"id": "seed_PLANT_19",
+"text": "plant the defuser here",
+"maj": "PLANT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0025.wav"
+},
+{
+"id": "seed_PLANT_20",
+"text": "plant the charge",
+"maj": "PLANT",
+"voice": "Microsoft Mark",
+"wav": "s60_0026.wav"
+},
+{
+"id": "seed_PLANT_21",
+"text": "go plant the bomb",
+"maj": "PLANT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0027.wav"
+},
+{
+"id": "seed_WAIT_59",
+"text": "don't harvest yet",
+"maj": "WAIT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0028.wav"
+},
+{
+"id": "seed_WAIT_60",
+"text": "don't water the tomatoes",
+"maj": "WAIT",
+"voice": "Microsoft Mark",
+"wav": "s60_0029.wav"
+},
+{
+"id": "seed_WAIT_61",
+"text": "don't build here",
+"maj": "WAIT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0030.wav"
+},
+{
+"id": "seed_WAIT_62",
+"text": "don't tear it down",
+"maj": "WAIT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0031.wav"
+},
+{
+"id": "seed_WAIT_63",
+"text": "don't plant there",
+"maj": "WAIT",
+"voice": "Microsoft Mark",
+"wav": "s60_0032.wav"
+},
+{
+"id": "seed_WAIT_64",
+"text": "don't feed them yet",
+"maj": "WAIT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0033.wav"
+},
+{
+"id": "seed_WAIT_65",
+"text": "don't chop that tree",
+"maj": "WAIT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0034.wav"
+},
+{
+"id": "seed_WAIT_66",
+"text": "don't fix it yet",
+"maj": "WAIT",
+"voice": "Microsoft Mark",
+"wav": "s60_0035.wav"
+},
+{
+"id": "seed_TAKE_COVER_33",
+"text": "take cover behind the fence",
+"maj": "TAKE_COVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0036.wav"
+},
+{
+"id": "seed_TAKE_COVER_34",
+"text": "get behind the barricade",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0037.wav"
+},
+{
+"id": "seed_TAKE_COVER_35",
+"text": "hide behind the crate",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Mark",
+"wav": "s60_0038.wav"
+},
+{
+"id": "seed_TAKE_COVER_36",
+"text": "take cover by the barn",
+"maj": "TAKE_COVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0039.wav"
+},
+{
+"id": "seed_TAKE_COVER_37",
+"text": "get behind the wall",
+"maj": "TAKE_COVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0040.wav"
+},
+{
+"id": "seed_NONE_272",
+"text": "I'm planting the carrots",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s60_0041.wav"
+},
+{
+"id": "seed_NONE_273",
+"text": "I'll build the wall",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0042.wav"
+},
+{
+"id": "seed_NONE_274",
+"text": "the wheat is ready",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0043.wav"
+},
+{
+"id": "seed_NONE_275",
+"text": "the fence is broken",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s60_0044.wav"
+},
+{
+"id": "seed_NONE_276",
+"text": "we're out of wood",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0045.wav"
+},
+{
+"id": "seed_NONE_277",
+"text": "the chickens are hungry",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0046.wav"
+},
+{
+"id": "seed_NONE_278",
+"text": "nice harvest",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s60_0047.wav"
+},
+{
+"id": "seed_NONE_279",
+"text": "I'm fixing the wall",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0048.wav"
+},
+{
+"id": "seed_NONE_280",
+"text": "the wall is done",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0049.wav"
+},
+{
+"id": "seed_NONE_281",
+"text": "that's a lot of carrots",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s60_0050.wav"
+},
+{
+"id": "seed_NONE_282",
+"text": "the barn is full",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0051.wav"
+},
+{
+"id": "seed_NONE_283",
+"text": "I'll water the plants",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0052.wav"
+},
+{
+"id": "seed_NONE_284",
+"text": "we need more planks",
+"maj": "NONE",
+"voice": "Microsoft Mark",
+"wav": "s60_0053.wav"
+},
+{
+"id": "seed_CHECK_71",
+"text": "check the crops",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0054.wav"
+},
+{
+"id": "seed_CHECK_72",
+"text": "check the field",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0055.wav"
+},
+{
+"id": "seed_CHECK_73",
+"text": "check the barn",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s60_0056.wav"
+},
+{
+"id": "seed_CHECK_74",
+"text": "check the coop",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0057.wav"
+},
+{
+"id": "seed_CHECK_75",
+"text": "check the greenhouse",
+"maj": "CHECK",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0058.wav"
+},
+{
+"id": "seed_CHECK_76",
+"text": "check if the wheat is ready",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "s60_0059.wav"
+},
+{
+"id": "seed_CHECK_77",
+"text": "check the fence",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0060.wav"
+},
+{
+"id": "seed_PLANT_CROP_0",
+"text": "plant the carrots",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0061.wav"
+},
+{
+"id": "seed_PLANT_CROP_1",
+"text": "plant some carrots here",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0062.wav"
+},
+{
+"id": "seed_PLANT_CROP_2",
+"text": "plant carrots in that bed",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0063.wav"
+},
+{
+"id": "seed_PLANT_CROP_3",
+"text": "sow the wheat",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0064.wav"
+},
+{
+"id": "seed_PLANT_CROP_4",
+"text": "sow the north field",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0065.wav"
+},
+{
+"id": "seed_PLANT_CROP_5",
+"text": "seed the field",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0066.wav"
+},
+{
+"id": "seed_PLANT_CROP_6",
+"text": "plant the tomato seedlings",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0067.wav"
+},
+{
+"id": "seed_PLANT_CROP_7",
+"text": "put the tomatoes in the ground",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0068.wav"
+},
+{
+"id": "seed_PLANT_CROP_8",
+"text": "plant some potatoes",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0069.wav"
+},
+{
+"id": "seed_PLANT_CROP_9",
+"text": "plant potatoes over there",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0070.wav"
+},
+{
+"id": "seed_PLANT_CROP_10",
+"text": "plant the seeds",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0071.wav"
+},
+{
+"id": "seed_PLANT_CROP_11",
+"text": "plant these seeds",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0072.wav"
+},
+{
+"id": "seed_PLANT_CROP_12",
+"text": "put the seeds in",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0073.wav"
+},
+{
+"id": "seed_PLANT_CROP_13",
+"text": "sow some seeds here",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0074.wav"
+},
+{
+"id": "seed_PLANT_CROP_14",
+"text": "plant corn in the east field",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0075.wav"
+},
+{
+"id": "seed_PLANT_CROP_15",
+"text": "plant a row of lettuce",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0076.wav"
+},
+{
+"id": "seed_PLANT_CROP_16",
+"text": "plant sunflowers along the fence",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0077.wav"
+},
+{
+"id": "seed_PLANT_CROP_17",
+"text": "plant the onions",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0078.wav"
+},
+{
+"id": "seed_PLANT_CROP_18",
+"text": "plant garlic in the greenhouse",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0079.wav"
+},
+{
+"id": "seed_PLANT_CROP_19",
+"text": "plant some strawberries",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0080.wav"
+},
+{
+"id": "seed_PLANT_CROP_20",
+"text": "put a pumpkin here",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0081.wav"
+},
+{
+"id": "seed_PLANT_CROP_21",
+"text": "plant the beans by the wall",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0082.wav"
+},
+{
+"id": "seed_PLANT_CROP_22",
+"text": "sow the peas",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0083.wav"
+},
+{
+"id": "seed_PLANT_CROP_23",
+"text": "plant rice in the wet field",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0084.wav"
+},
+{
+"id": "seed_PLANT_CROP_24",
+"text": "plant some mint in the planter",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0085.wav"
+},
+{
+"id": "seed_PLANT_CROP_25",
+"text": "plant the cabbage",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0086.wav"
+},
+{
+"id": "seed_PLANT_CROP_26",
+"text": "plant the seedlings at my pin",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0087.wav"
+},
+{
+"id": "seed_PLANT_CROP_27",
+"text": "sow it with wheat",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0088.wav"
+},
+{
+"id": "seed_PLANT_CROP_28",
+"text": "fill that bed with carrots",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0089.wav"
+},
+{
+"id": "seed_PLANT_CROP_29",
+"text": "plant the whole field with corn",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0090.wav"
+},
+{
+"id": "seed_PLANT_CROP_30",
+"text": "get the seeds in the ground",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0091.wav"
+},
+{
+"id": "seed_PLANT_CROP_31",
+"text": "plant two rows of beets",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0092.wav"
+},
+{
+"id": "seed_PLANT_CROP_32",
+"text": "plant cucumbers in the greenhouse",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0093.wav"
+},
+{
+"id": "seed_PLANT_CROP_33",
+"text": "plant a tree here",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0094.wav"
+},
+{
+"id": "seed_PLANT_CROP_34",
+"text": "plant the grapes on the south side",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0095.wav"
+},
+{
+"id": "seed_PLANT_CROP_35",
+"text": "plant some flowers",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0096.wav"
+},
+{
+"id": "seed_PLANT_CROP_36",
+"text": "put some roses by the door",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0097.wav"
+},
+{
+"id": "seed_PLANT_CROP_37",
+"text": "go plant the carrots",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0098.wav"
+},
+{
+"id": "seed_PLANT_CROP_38",
+"text": "start planting",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0099.wav"
+},
+{
+"id": "seed_PLANT_CROP_39",
+"text": "start sowing",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0100.wav"
+},
+{
+"id": "seed_PLANT_CROP_40",
+"text": "sow the beds",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0101.wav"
+},
+{
+"id": "seed_PLANT_CROP_41",
+"text": "plant lavender over there",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0102.wav"
+},
+{
+"id": "seed_PLANT_CROP_42",
+"text": "plant the zucchini",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0103.wav"
+},
+{
+"id": "seed_PLANT_CROP_43",
+"text": "plant some peppers",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0104.wav"
+},
+{
+"id": "seed_PLANT_CROP_44",
+"text": "put in the onion sets",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0105.wav"
+},
+{
+"id": "seed_PLANT_CROP_45",
+"text": "plant the sugarcane",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0106.wav"
+},
+{
+"id": "seed_PLANT_CROP_46",
+"text": "plant cotton in the big field",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0107.wav"
+},
+{
+"id": "seed_PLANT_CROP_47",
+"text": "replant the tomatoes",
+"maj": "PLANT_CROP",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0108.wav"
+},
+{
+"id": "seed_PLANT_CROP_48",
+"text": "plant the turnips in the north bed",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0109.wav"
+},
+{
+"id": "seed_PLANT_CROP_49",
+"text": "plant spinach next to the lettuce",
+"maj": "PLANT_CROP",
+"voice": "Microsoft Mark",
+"wav": "s60_0110.wav"
+},
+{
+"id": "seed_WATER_0",
+"text": "water the plants",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0111.wav"
+},
+{
+"id": "seed_WATER_1",
+"text": "water the carrots",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0112.wav"
+},
+{
+"id": "seed_WATER_2",
+"text": "water the field",
+"maj": "WATER",
+"voice": "Microsoft Mark",
+"wav": "s60_0113.wav"
+},
+{
+"id": "seed_WATER_3",
+"text": "water the north field",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0114.wav"
+},
+{
+"id": "seed_WATER_4",
+"text": "water the beds",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0115.wav"
+},
+{
+"id": "seed_WATER_5",
+"text": "water the greenhouse",
+"maj": "WATER",
+"voice": "Microsoft Mark",
+"wav": "s60_0116.wav"
+},
+{
+"id": "seed_WATER_6",
+"text": "water everything",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0117.wav"
+},
+{
+"id": "seed_WATER_7",
+"text": "water them",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0118.wav"
+},
+{
+"id": "seed_WATER_8",
+"text": "water it",
+"maj": "WATER",
+"voice": "Microsoft Mark",
+"wav": "s60_0119.wav"
+},
+{
+"id": "seed_WATER_9",
+"text": "give the tomatoes some water",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0120.wav"
+},
+{
+"id": "seed_WATER_10",
+"text": "give the plants a drink",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0121.wav"
+},
+{
+"id": "seed_WATER_11",
+"text": "sprinkle the beds",
+"maj": "WATER",
+"voice": "Microsoft Mark",
+"wav": "s60_0122.wav"
+},
+{
+"id": "seed_WATER_12",
+"text": "water the seedlings",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0123.wav"
+},
+{
+"id": "seed_WATER_13",
+"text": "water the crops",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0124.wav"
+},
+{
+"id": "seed_WATER_14",
+"text": "go water the garden",
+"maj": "WATER",
+"voice": "Microsoft Mark",
+"wav": "s60_0125.wav"
+},
+{
+"id": "seed_WATER_15",
+"text": "water the corn",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0126.wav"
+},
+{
+"id": "seed_WATER_16",
+"text": "water the strawberries",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0127.wav"
+},
+{
+"id": "seed_WATER_17",
+"text": "water what we planted",
+"maj": "WATER",
+"voice": "Microsoft Mark",
+"wav": "s60_0128.wav"
+},
+{
+"id": "seed_WATER_18",
+"text": "water the lettuce",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0129.wav"
+},
+{
+"id": "seed_WATER_19",
+"text": "water the potatoes",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0130.wav"
+},
+{
+"id": "seed_WATER_20",
+"text": "water the east field",
+"maj": "WATER",
+"voice": "Microsoft Mark",
+"wav": "s60_0131.wav"
+},
+{
+"id": "seed_WATER_21",
+"text": "water the pumpkins",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0132.wav"
+},
+{
+"id": "seed_WATER_22",
+"text": "water the flowers",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0133.wav"
+},
+{
+"id": "seed_WATER_23",
+"text": "water the planter by the door",
+"maj": "WATER",
+"voice": "Microsoft Mark",
+"wav": "s60_0134.wav"
+},
+{
+"id": "seed_WATER_24",
+"text": "water the rows by the fence",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0135.wav"
+},
+{
+"id": "seed_WATER_25",
+"text": "the plants need water, water them",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0136.wav"
+},
+{
+"id": "seed_WATER_26",
+"text": "keep the beds watered",
+"maj": "WATER",
+"voice": "Microsoft Mark",
+"wav": "s60_0137.wav"
+},
+{
+"id": "seed_WATER_27",
+"text": "water the trees",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0138.wav"
+},
+{
+"id": "seed_WATER_28",
+"text": "water the sunflowers",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0139.wav"
+},
+{
+"id": "seed_WATER_29",
+"text": "water the beans",
+"maj": "WATER",
+"voice": "Microsoft Mark",
+"wav": "s60_0140.wav"
+},
+{
+"id": "seed_WATER_30",
+"text": "water the whole garden",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0141.wav"
+},
+{
+"id": "seed_WATER_31",
+"text": "give the field some water",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0142.wav"
+},
+{
+"id": "seed_WATER_32",
+"text": "irrigate the field",
+"maj": "WATER",
+"voice": "Microsoft Mark",
+"wav": "s60_0143.wav"
+},
+{
+"id": "seed_WATER_33",
+"text": "water those over there",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0144.wav"
+},
+{
+"id": "seed_WATER_34",
+"text": "water the plot at my pin",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0145.wav"
+},
+{
+"id": "seed_WATER_35",
+"text": "start watering",
+"maj": "WATER",
+"voice": "Microsoft Mark",
+"wav": "s60_0146.wav"
+},
+{
+"id": "seed_WATER_36",
+"text": "go water the plants",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0147.wav"
+},
+{
+"id": "seed_WATER_37",
+"text": "water the cucumbers in the greenhouse",
+"maj": "WATER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0148.wav"
+},
+{
+"id": "seed_WATER_38",
+"text": "water the herbs",
+"maj": "WATER",
+"voice": "Microsoft Mark",
+"wav": "s60_0149.wav"
+},
+{
+"id": "seed_WATER_39",
+"text": "soak the beds",
+"maj": "WATER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0150.wav"
+},
+{
+"id": "seed_HARVEST_0",
+"text": "harvest the wheat",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0151.wav"
+},
+{
+"id": "seed_HARVEST_1",
+"text": "harvest the field",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0152.wav"
+},
+{
+"id": "seed_HARVEST_2",
+"text": "harvest the carrots",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0153.wav"
+},
+{
+"id": "seed_HARVEST_3",
+"text": "harvest everything that's ready",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0154.wav"
+},
+{
+"id": "seed_HARVEST_4",
+"text": "pick the tomatoes",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0155.wav"
+},
+{
+"id": "seed_HARVEST_5",
+"text": "pick the strawberries",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0156.wav"
+},
+{
+"id": "seed_HARVEST_6",
+"text": "pick the berries",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0157.wav"
+},
+{
+"id": "seed_HARVEST_7",
+"text": "pick the grapes",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0158.wav"
+},
+{
+"id": "seed_HARVEST_8",
+"text": "dig up the potatoes",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0159.wav"
+},
+{
+"id": "seed_HARVEST_9",
+"text": "dig up the carrots",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0160.wav"
+},
+{
+"id": "seed_HARVEST_10",
+"text": "cut the corn",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0161.wav"
+},
+{
+"id": "seed_HARVEST_11",
+"text": "cut the wheat",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0162.wav"
+},
+{
+"id": "seed_HARVEST_12",
+"text": "reap the field",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0163.wav"
+},
+{
+"id": "seed_HARVEST_13",
+"text": "gather the strawberries",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0164.wav"
+},
+{
+"id": "seed_HARVEST_14",
+"text": "harvest the north field",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0165.wav"
+},
+{
+"id": "seed_HARVEST_15",
+"text": "harvest the greenhouse",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0166.wav"
+},
+{
+"id": "seed_HARVEST_16",
+"text": "pull up the onions",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0167.wav"
+},
+{
+"id": "seed_HARVEST_17",
+"text": "pull the beets",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0168.wav"
+},
+{
+"id": "seed_HARVEST_18",
+"text": "pick the apples",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0169.wav"
+},
+{
+"id": "seed_HARVEST_19",
+"text": "pick the cucumbers",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0170.wav"
+},
+{
+"id": "seed_HARVEST_20",
+"text": "harvest the pumpkins",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0171.wav"
+},
+{
+"id": "seed_HARVEST_21",
+"text": "cut the lettuce",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0172.wav"
+},
+{
+"id": "seed_HARVEST_22",
+"text": "harvest the crops",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0173.wav"
+},
+{
+"id": "seed_HARVEST_23",
+"text": "bring in the harvest",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0174.wav"
+},
+{
+"id": "seed_HARVEST_24",
+"text": "pick the peppers",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0175.wav"
+},
+{
+"id": "seed_HARVEST_25",
+"text": "harvest the beans",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0176.wav"
+},
+{
+"id": "seed_HARVEST_26",
+"text": "pick the peas",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0177.wav"
+},
+{
+"id": "seed_HARVEST_27",
+"text": "harvest the sunflowers",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0178.wav"
+},
+{
+"id": "seed_HARVEST_28",
+"text": "cut the sugarcane",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0179.wav"
+},
+{
+"id": "seed_HARVEST_29",
+"text": "pick the cotton",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0180.wav"
+},
+{
+"id": "seed_HARVEST_30",
+"text": "harvest the rice",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0181.wav"
+},
+{
+"id": "seed_HARVEST_31",
+"text": "pick the ripe ones",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0182.wav"
+},
+{
+"id": "seed_HARVEST_32",
+"text": "harvest what's ready",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0183.wav"
+},
+{
+"id": "seed_HARVEST_33",
+"text": "go harvest the wheat",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0184.wav"
+},
+{
+"id": "seed_HARVEST_34",
+"text": "start harvesting",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0185.wav"
+},
+{
+"id": "seed_HARVEST_35",
+"text": "pick the tomatoes in the greenhouse",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0186.wav"
+},
+{
+"id": "seed_HARVEST_36",
+"text": "harvest the east field",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0187.wav"
+},
+{
+"id": "seed_HARVEST_37",
+"text": "cut the hay",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0188.wav"
+},
+{
+"id": "seed_HARVEST_38",
+"text": "pick the blueberries",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0189.wav"
+},
+{
+"id": "seed_HARVEST_39",
+"text": "harvest the garlic",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0190.wav"
+},
+{
+"id": "seed_HARVEST_40",
+"text": "pick the mushrooms",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0191.wav"
+},
+{
+"id": "seed_HARVEST_41",
+"text": "harvest the turnips",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0192.wav"
+},
+{
+"id": "seed_HARVEST_42",
+"text": "pick the zucchini",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0193.wav"
+},
+{
+"id": "seed_HARVEST_43",
+"text": "harvest the tea",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0194.wav"
+},
+{
+"id": "seed_HARVEST_44",
+"text": "pick the lavender",
+"maj": "HARVEST",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0195.wav"
+},
+{
+"id": "seed_HARVEST_45",
+"text": "harvest the wheat on my go",
+"maj": "HARVEST",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0196.wav"
+},
+{
+"id": "seed_HARVEST_46",
+"text": "pick the tomatoes when I say",
+"maj": "HARVEST",
+"voice": "Microsoft Mark",
+"wav": "s60_0197.wav"
+},
+{
+"id": "seed_TILL_0",
+"text": "till the field",
+"maj": "TILL",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0198.wav"
+},
+{
+"id": "seed_TILL_1",
+"text": "till the soil",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0199.wav"
+},
+{
+"id": "seed_TILL_2",
+"text": "plow the field",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "s60_0200.wav"
+},
+{
+"id": "seed_TILL_3",
+"text": "plow the north field",
+"maj": "TILL",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0201.wav"
+},
+{
+"id": "seed_TILL_4",
+"text": "hoe the beds",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0202.wav"
+},
+{
+"id": "seed_TILL_5",
+"text": "rake the beds",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "s60_0203.wav"
+},
+{
+"id": "seed_TILL_6",
+"text": "dig a bed here",
+"maj": "TILL",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0204.wav"
+},
+{
+"id": "seed_TILL_7",
+"text": "dig a new bed",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0205.wav"
+},
+{
+"id": "seed_TILL_8",
+"text": "loosen the soil",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "s60_0206.wav"
+},
+{
+"id": "seed_TILL_9",
+"text": "weed the beds",
+"maj": "TILL",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0207.wav"
+},
+{
+"id": "seed_TILL_10",
+"text": "pull the weeds",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0208.wav"
+},
+{
+"id": "seed_TILL_11",
+"text": "pull the weeds in the greenhouse",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "s60_0209.wav"
+},
+{
+"id": "seed_TILL_12",
+"text": "clear the weeds",
+"maj": "TILL",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0210.wav"
+},
+{
+"id": "seed_TILL_13",
+"text": "clear the field",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0211.wav"
+},
+{
+"id": "seed_TILL_14",
+"text": "clear the rocks off the field",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "s60_0212.wav"
+},
+{
+"id": "seed_TILL_15",
+"text": "clear the field of rocks",
+"maj": "TILL",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0213.wav"
+},
+{
+"id": "seed_TILL_16",
+"text": "fertilize the field",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0214.wav"
+},
+{
+"id": "seed_TILL_17",
+"text": "fertilize the beds",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "s60_0215.wav"
+},
+{
+"id": "seed_TILL_18",
+"text": "spread the manure",
+"maj": "TILL",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0216.wav"
+},
+{
+"id": "seed_TILL_19",
+"text": "spread fertilizer on the north field",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0217.wav"
+},
+{
+"id": "seed_TILL_20",
+"text": "prepare the soil",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "s60_0218.wav"
+},
+{
+"id": "seed_TILL_21",
+"text": "get the field ready for planting",
+"maj": "TILL",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0219.wav"
+},
+{
+"id": "seed_TILL_22",
+"text": "turn the soil",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0220.wav"
+},
+{
+"id": "seed_TILL_23",
+"text": "dig over the garden",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "s60_0221.wav"
+},
+{
+"id": "seed_TILL_24",
+"text": "plow the east field",
+"maj": "TILL",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0222.wav"
+},
+{
+"id": "seed_TILL_25",
+"text": "hoe the rows",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0223.wav"
+},
+{
+"id": "seed_TILL_26",
+"text": "till the ground at my pin",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "s60_0224.wav"
+},
+{
+"id": "seed_TILL_27",
+"text": "weed the carrots",
+"maj": "TILL",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0225.wav"
+},
+{
+"id": "seed_TILL_28",
+"text": "get rid of the weeds",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0226.wav"
+},
+{
+"id": "seed_TILL_29",
+"text": "clean up the beds",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "s60_0227.wav"
+},
+{
+"id": "seed_TILL_30",
+"text": "till it",
+"maj": "TILL",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0228.wav"
+},
+{
+"id": "seed_TILL_31",
+"text": "plow it",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0229.wav"
+},
+{
+"id": "seed_TILL_32",
+"text": "dig up the ground here",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "s60_0230.wav"
+},
+{
+"id": "seed_TILL_33",
+"text": "prepare the beds",
+"maj": "TILL",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0231.wav"
+},
+{
+"id": "seed_TILL_34",
+"text": "till the greenhouse beds",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0232.wav"
+},
+{
+"id": "seed_TILL_35",
+"text": "go till the field",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "s60_0233.wav"
+},
+{
+"id": "seed_TILL_36",
+"text": "start plowing",
+"maj": "TILL",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0234.wav"
+},
+{
+"id": "seed_TILL_37",
+"text": "rake the field",
+"maj": "TILL",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0235.wav"
+},
+{
+"id": "seed_TILL_38",
+"text": "weed around the tomatoes",
+"maj": "TILL",
+"voice": "Microsoft Mark",
+"wav": "s60_0236.wav"
+},
+{
+"id": "seed_TILL_39",
+"text": "clear the stones from the garden",
+"maj": "TILL",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0237.wav"
+},
+{
+"id": "seed_FEED_0",
+"text": "feed the chickens",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0238.wav"
+},
+{
+"id": "seed_FEED_1",
+"text": "feed the hens",
+"maj": "FEED",
+"voice": "Microsoft Mark",
+"wav": "s60_0239.wav"
+},
+{
+"id": "seed_FEED_2",
+"text": "feed the cows",
+"maj": "FEED",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0240.wav"
+},
+{
+"id": "seed_FEED_3",
+"text": "feed the pigs",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0241.wav"
+},
+{
+"id": "seed_FEED_4",
+"text": "feed the animals",
+"maj": "FEED",
+"voice": "Microsoft Mark",
+"wav": "s60_0242.wav"
+},
+{
+"id": "seed_FEED_5",
+"text": "feed the sheep",
+"maj": "FEED",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0243.wav"
+},
+{
+"id": "seed_FEED_6",
+"text": "feed the goats",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0244.wav"
+},
+{
+"id": "seed_FEED_7",
+"text": "feed the horses",
+"maj": "FEED",
+"voice": "Microsoft Mark",
+"wav": "s60_0245.wav"
+},
+{
+"id": "seed_FEED_8",
+"text": "give the cows some hay",
+"maj": "FEED",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0246.wav"
+},
+{
+"id": "seed_FEED_9",
+"text": "throw some grain to the chickens",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0247.wav"
+},
+{
+"id": "seed_FEED_10",
+"text": "fill the troughs",
+"maj": "FEED",
+"voice": "Microsoft Mark",
+"wav": "s60_0248.wav"
+},
+{
+"id": "seed_FEED_11",
+"text": "fill the trough",
+"maj": "FEED",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0249.wav"
+},
+{
+"id": "seed_FEED_12",
+"text": "feed them",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0250.wav"
+},
+{
+"id": "seed_FEED_13",
+"text": "give the pigs their food",
+"maj": "FEED",
+"voice": "Microsoft Mark",
+"wav": "s60_0251.wav"
+},
+{
+"id": "seed_FEED_14",
+"text": "feed the chickens in the coop",
+"maj": "FEED",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0252.wav"
+},
+{
+"id": "seed_FEED_15",
+"text": "give the horses some oats",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0253.wav"
+},
+{
+"id": "seed_FEED_16",
+"text": "feed the animals in the barn",
+"maj": "FEED",
+"voice": "Microsoft Mark",
+"wav": "s60_0254.wav"
+},
+{
+"id": "seed_FEED_17",
+"text": "put hay in the pen",
+"maj": "FEED",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0255.wav"
+},
+{
+"id": "seed_FEED_18",
+"text": "feed the bees",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0256.wav"
+},
+{
+"id": "seed_FEED_19",
+"text": "give the goats some hay",
+"maj": "FEED",
+"voice": "Microsoft Mark",
+"wav": "s60_0257.wav"
+},
+{
+"id": "seed_FEED_20",
+"text": "go feed the chickens",
+"maj": "FEED",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0258.wav"
+},
+{
+"id": "seed_FEED_21",
+"text": "feed the cows in the stable",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0259.wav"
+},
+{
+"id": "seed_FEED_22",
+"text": "feed everybody",
+"maj": "FEED",
+"voice": "Microsoft Mark",
+"wav": "s60_0260.wav"
+},
+{
+"id": "seed_FEED_23",
+"text": "the animals are hungry, feed them",
+"maj": "FEED",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0261.wav"
+},
+{
+"id": "seed_FEED_24",
+"text": "put out some feed",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0262.wav"
+},
+{
+"id": "seed_FEED_25",
+"text": "fill the feeder",
+"maj": "FEED",
+"voice": "Microsoft Mark",
+"wav": "s60_0263.wav"
+},
+{
+"id": "seed_FEED_26",
+"text": "feed the pigs some scraps",
+"maj": "FEED",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0264.wav"
+},
+{
+"id": "seed_FEED_27",
+"text": "give the sheep some grain",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0265.wav"
+},
+{
+"id": "seed_FEED_28",
+"text": "give them some water and feed",
+"maj": "FEED",
+"voice": "Microsoft Mark",
+"wav": "s60_0266.wav"
+},
+{
+"id": "seed_FEED_29",
+"text": "top up the troughs",
+"maj": "FEED",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0267.wav"
+},
+{
+"id": "seed_FEED_30",
+"text": "feed the cattle",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0268.wav"
+},
+{
+"id": "seed_FEED_31",
+"text": "feed the livestock",
+"maj": "FEED",
+"voice": "Microsoft Mark",
+"wav": "s60_0269.wav"
+},
+{
+"id": "seed_FEED_32",
+"text": "feed the hens at the coop",
+"maj": "FEED",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0270.wav"
+},
+{
+"id": "seed_FEED_33",
+"text": "start feeding the animals",
+"maj": "FEED",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0271.wav"
+},
+{
+"id": "seed_FEED_34",
+"text": "give the chickens some corn",
+"maj": "FEED",
+"voice": "Microsoft Mark",
+"wav": "s60_0272.wav"
+},
+{
+"id": "seed_COLLECT_0",
+"text": "collect the eggs",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0273.wav"
+},
+{
+"id": "seed_COLLECT_1",
+"text": "get the eggs",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0274.wav"
+},
+{
+"id": "seed_COLLECT_2",
+"text": "grab the eggs from the coop",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "s60_0275.wav"
+},
+{
+"id": "seed_COLLECT_3",
+"text": "collect the honey",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0276.wav"
+},
+{
+"id": "seed_COLLECT_4",
+"text": "get the honey from the hives",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0277.wav"
+},
+{
+"id": "seed_COLLECT_5",
+"text": "milk the cow",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "s60_0278.wav"
+},
+{
+"id": "seed_COLLECT_6",
+"text": "milk the cows",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0279.wav"
+},
+{
+"id": "seed_COLLECT_7",
+"text": "milk the goats",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0280.wav"
+},
+{
+"id": "seed_COLLECT_8",
+"text": "shear the sheep",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "s60_0281.wav"
+},
+{
+"id": "seed_COLLECT_9",
+"text": "chop some wood",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0282.wav"
+},
+{
+"id": "seed_COLLECT_10",
+"text": "chop wood",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0283.wav"
+},
+{
+"id": "seed_COLLECT_11",
+"text": "cut down that tree",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "s60_0284.wav"
+},
+{
+"id": "seed_COLLECT_12",
+"text": "cut down the tree by the barn",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0285.wav"
+},
+{
+"id": "seed_COLLECT_13",
+"text": "chop down the trees over there",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0286.wav"
+},
+{
+"id": "seed_COLLECT_14",
+"text": "mine some stone",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "s60_0287.wav"
+},
+{
+"id": "seed_COLLECT_15",
+"text": "get some stone",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0288.wav"
+},
+{
+"id": "seed_COLLECT_16",
+"text": "collect some stone",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0289.wav"
+},
+{
+"id": "seed_COLLECT_17",
+"text": "gather some wood",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "s60_0290.wav"
+},
+{
+"id": "seed_COLLECT_18",
+"text": "get some wood",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0291.wav"
+},
+{
+"id": "seed_COLLECT_19",
+"text": "pick up the planks",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0292.wav"
+},
+{
+"id": "seed_COLLECT_20",
+"text": "grab the planks",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "s60_0293.wav"
+},
+{
+"id": "seed_COLLECT_21",
+"text": "collect the logs",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0294.wav"
+},
+{
+"id": "seed_COLLECT_22",
+"text": "gather the logs",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0295.wav"
+},
+{
+"id": "seed_COLLECT_23",
+"text": "pick up the bricks",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "s60_0296.wav"
+},
+{
+"id": "seed_COLLECT_24",
+"text": "grab some nails",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0297.wav"
+},
+{
+"id": "seed_COLLECT_25",
+"text": "get the seeds from the shed",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0298.wav"
+},
+{
+"id": "seed_COLLECT_26",
+"text": "grab the seeds",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "s60_0299.wav"
+},
+{
+"id": "seed_COLLECT_27",
+"text": "fill the watering can",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0300.wav"
+},
+{
+"id": "seed_COLLECT_28",
+"text": "get some water from the well",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0301.wav"
+},
+{
+"id": "seed_COLLECT_29",
+"text": "collect the wool",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "s60_0302.wav"
+},
+{
+"id": "seed_COLLECT_30",
+"text": "gather some hay",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0303.wav"
+},
+{
+"id": "seed_COLLECT_31",
+"text": "collect the hay",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0304.wav"
+},
+{
+"id": "seed_COLLECT_32",
+"text": "get some fertilizer",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "s60_0305.wav"
+},
+{
+"id": "seed_COLLECT_33",
+"text": "go collect the eggs",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0306.wav"
+},
+{
+"id": "seed_COLLECT_34",
+"text": "gather materials",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0307.wav"
+},
+{
+"id": "seed_COLLECT_35",
+"text": "collect materials",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "s60_0308.wav"
+},
+{
+"id": "seed_COLLECT_36",
+"text": "get the tools from the shed",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0309.wav"
+},
+{
+"id": "seed_COLLECT_37",
+"text": "grab some sandbags",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0310.wav"
+},
+{
+"id": "seed_COLLECT_38",
+"text": "pick up the sandbags",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "s60_0311.wav"
+},
+{
+"id": "seed_COLLECT_39",
+"text": "gather firewood",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0312.wav"
+},
+{
+"id": "seed_COLLECT_40",
+"text": "collect the scrap metal",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0313.wav"
+},
+{
+"id": "seed_COLLECT_41",
+"text": "get some metal",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "s60_0314.wav"
+},
+{
+"id": "seed_COLLECT_42",
+"text": "go chop some wood",
+"maj": "COLLECT",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0315.wav"
+},
+{
+"id": "seed_COLLECT_43",
+"text": "start collecting the eggs",
+"maj": "COLLECT",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0316.wav"
+},
+{
+"id": "seed_COLLECT_44",
+"text": "pick up that crate of seeds",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "s60_0317.wav"
+},
+{
+"id": "seed_DELIVER_0",
+"text": "bring me the wood",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0318.wav"
+},
+{
+"id": "seed_DELIVER_1",
+"text": "bring me some planks",
+"maj": "DELIVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0319.wav"
+},
+{
+"id": "seed_DELIVER_2",
+"text": "bring the planks over here",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "s60_0320.wav"
+},
+{
+"id": "seed_DELIVER_3",
+"text": "bring the logs here",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0321.wav"
+},
+{
+"id": "seed_DELIVER_4",
+"text": "take the wheat to the barn",
+"maj": "DELIVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0322.wav"
+},
+{
+"id": "seed_DELIVER_5",
+"text": "take the eggs to the house",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "s60_0323.wav"
+},
+{
+"id": "seed_DELIVER_6",
+"text": "put the eggs in the crate",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0324.wav"
+},
+{
+"id": "seed_DELIVER_7",
+"text": "put the eggs in the basket",
+"maj": "DELIVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0325.wav"
+},
+{
+"id": "seed_DELIVER_8",
+"text": "carry the planks to the wall",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "s60_0326.wav"
+},
+{
+"id": "seed_DELIVER_9",
+"text": "carry the logs to the north wall",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0327.wav"
+},
+{
+"id": "seed_DELIVER_10",
+"text": "give me the seeds",
+"maj": "DELIVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0328.wav"
+},
+{
+"id": "seed_DELIVER_11",
+"text": "hand me the seeds",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "s60_0329.wav"
+},
+{
+"id": "seed_DELIVER_12",
+"text": "give me some stone",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0330.wav"
+},
+{
+"id": "seed_DELIVER_13",
+"text": "store the tools in the shed",
+"maj": "DELIVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0331.wav"
+},
+{
+"id": "seed_DELIVER_14",
+"text": "put the tools in the barn",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "s60_0332.wav"
+},
+{
+"id": "seed_DELIVER_15",
+"text": "drop the logs by the wall",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0333.wav"
+},
+{
+"id": "seed_DELIVER_16",
+"text": "drop the wood here",
+"maj": "DELIVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0334.wav"
+},
+{
+"id": "seed_DELIVER_17",
+"text": "bring the hay to the barn",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "s60_0335.wav"
+},
+{
+"id": "seed_DELIVER_18",
+"text": "take the honey to the storehouse",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0336.wav"
+},
+{
+"id": "seed_DELIVER_19",
+"text": "bring me the hammer",
+"maj": "DELIVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0337.wav"
+},
+{
+"id": "seed_DELIVER_20",
+"text": "take the carrots to the crate",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "s60_0338.wav"
+},
+{
+"id": "seed_DELIVER_21",
+"text": "put the potatoes in the barn",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0339.wav"
+},
+{
+"id": "seed_DELIVER_22",
+"text": "bring me some water",
+"maj": "DELIVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0340.wav"
+},
+{
+"id": "seed_DELIVER_23",
+"text": "bring the bricks to my pin",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "s60_0341.wav"
+},
+{
+"id": "seed_DELIVER_24",
+"text": "take the sandbags to the window",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0342.wav"
+},
+{
+"id": "seed_DELIVER_25",
+"text": "bring the sandbags here",
+"maj": "DELIVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0343.wav"
+},
+{
+"id": "seed_DELIVER_26",
+"text": "carry the crate over there",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "s60_0344.wav"
+},
+{
+"id": "seed_DELIVER_27",
+"text": "bring it here",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0345.wav"
+},
+{
+"id": "seed_DELIVER_28",
+"text": "bring it to me",
+"maj": "DELIVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0346.wav"
+},
+{
+"id": "seed_DELIVER_29",
+"text": "take it to the barn",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "s60_0347.wav"
+},
+{
+"id": "seed_DELIVER_30",
+"text": "put it in the crate",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0348.wav"
+},
+{
+"id": "seed_DELIVER_31",
+"text": "bring me what you collected",
+"maj": "DELIVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0349.wav"
+},
+{
+"id": "seed_DELIVER_32",
+"text": "bring the harvest to the barn",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "s60_0350.wav"
+},
+{
+"id": "seed_DELIVER_33",
+"text": "load the wheat into the truck",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0351.wav"
+},
+{
+"id": "seed_DELIVER_34",
+"text": "put the logs in the truck",
+"maj": "DELIVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0352.wav"
+},
+{
+"id": "seed_DELIVER_35",
+"text": "unload the truck in the barn",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "s60_0353.wav"
+},
+{
+"id": "seed_DELIVER_36",
+"text": "bring the materials to the building spot",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0354.wav"
+},
+{
+"id": "seed_DELIVER_37",
+"text": "take the seeds to the greenhouse",
+"maj": "DELIVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0355.wav"
+},
+{
+"id": "seed_DELIVER_38",
+"text": "deliver the eggs to the house",
+"maj": "DELIVER",
+"voice": "Microsoft Mark",
+"wav": "s60_0356.wav"
+},
+{
+"id": "seed_DELIVER_39",
+"text": "drop the planks at the foundation",
+"maj": "DELIVER",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0357.wav"
+},
+{
+"id": "seed_BUILD_0",
+"text": "build a wall",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0358.wav"
+},
+{
+"id": "seed_BUILD_1",
+"text": "build a wall here",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0359.wav"
+},
+{
+"id": "seed_BUILD_2",
+"text": "build a wooden wall",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0360.wav"
+},
+{
+"id": "seed_BUILD_3",
+"text": "build a stone wall over there",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0361.wav"
+},
+{
+"id": "seed_BUILD_4",
+"text": "put up a fence",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0362.wav"
+},
+{
+"id": "seed_BUILD_5",
+"text": "put up a fence around the field",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0363.wav"
+},
+{
+"id": "seed_BUILD_6",
+"text": "build a fence",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0364.wav"
+},
+{
+"id": "seed_BUILD_7",
+"text": "place a barricade here",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0365.wav"
+},
+{
+"id": "seed_BUILD_8",
+"text": "build a barricade",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0366.wav"
+},
+{
+"id": "seed_BUILD_9",
+"text": "put up a barricade at the door",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0367.wav"
+},
+{
+"id": "seed_BUILD_10",
+"text": "build a ramp",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0368.wav"
+},
+{
+"id": "seed_BUILD_11",
+"text": "build a ramp up to the roof",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0369.wav"
+},
+{
+"id": "seed_BUILD_12",
+"text": "set up a watchtower",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0370.wav"
+},
+{
+"id": "seed_BUILD_13",
+"text": "build a watchtower",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0371.wav"
+},
+{
+"id": "seed_BUILD_14",
+"text": "lay a foundation",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0372.wav"
+},
+{
+"id": "seed_BUILD_15",
+"text": "lay the foundation here",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0373.wav"
+},
+{
+"id": "seed_BUILD_16",
+"text": "put in a door",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0374.wav"
+},
+{
+"id": "seed_BUILD_17",
+"text": "build a door",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0375.wav"
+},
+{
+"id": "seed_BUILD_18",
+"text": "make a crate",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0376.wav"
+},
+{
+"id": "seed_BUILD_19",
+"text": "build a crate",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0377.wav"
+},
+{
+"id": "seed_BUILD_20",
+"text": "build cover",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0378.wav"
+},
+{
+"id": "seed_BUILD_21",
+"text": "build some cover here",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0379.wav"
+},
+{
+"id": "seed_BUILD_22",
+"text": "put up some cover",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0380.wav"
+},
+{
+"id": "seed_BUILD_23",
+"text": "build a sandbag wall",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0381.wav"
+},
+{
+"id": "seed_BUILD_24",
+"text": "stack some sandbags here",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0382.wav"
+},
+{
+"id": "seed_BUILD_25",
+"text": "build a ladder",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0383.wav"
+},
+{
+"id": "seed_BUILD_26",
+"text": "put a ladder here",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0384.wav"
+},
+{
+"id": "seed_BUILD_27",
+"text": "build stairs to the roof",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0385.wav"
+},
+{
+"id": "seed_BUILD_28",
+"text": "build a bridge",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0386.wav"
+},
+{
+"id": "seed_BUILD_29",
+"text": "build a bridge over the river",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0387.wav"
+},
+{
+"id": "seed_BUILD_30",
+"text": "build a shed",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0388.wav"
+},
+{
+"id": "seed_BUILD_31",
+"text": "build a pillar",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0389.wav"
+},
+{
+"id": "seed_BUILD_32",
+"text": "build a roof",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0390.wav"
+},
+{
+"id": "seed_BUILD_33",
+"text": "put a roof on it",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0391.wav"
+},
+{
+"id": "seed_BUILD_34",
+"text": "build a floor",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0392.wav"
+},
+{
+"id": "seed_BUILD_35",
+"text": "build a gate",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0393.wav"
+},
+{
+"id": "seed_BUILD_36",
+"text": "put a gate in the fence",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0394.wav"
+},
+{
+"id": "seed_BUILD_37",
+"text": "build a trench",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0395.wav"
+},
+{
+"id": "seed_BUILD_38",
+"text": "dig a trench",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0396.wav"
+},
+{
+"id": "seed_BUILD_39",
+"text": "build a turret",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0397.wav"
+},
+{
+"id": "seed_BUILD_40",
+"text": "place a turret here",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0398.wav"
+},
+{
+"id": "seed_BUILD_41",
+"text": "build a bench",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0399.wav"
+},
+{
+"id": "seed_BUILD_42",
+"text": "build a table",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0400.wav"
+},
+{
+"id": "seed_BUILD_43",
+"text": "build a wall at my pin",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0401.wav"
+},
+{
+"id": "seed_BUILD_44",
+"text": "build a wall from here to there",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0402.wav"
+},
+{
+"id": "seed_BUILD_45",
+"text": "build a wall on the north side",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0403.wav"
+},
+{
+"id": "seed_BUILD_46",
+"text": "build a window",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0404.wav"
+},
+{
+"id": "seed_BUILD_47",
+"text": "put a window in",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0405.wav"
+},
+{
+"id": "seed_BUILD_48",
+"text": "build it",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0406.wav"
+},
+{
+"id": "seed_BUILD_49",
+"text": "build one here",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0407.wav"
+},
+{
+"id": "seed_BUILD_50",
+"text": "build another one",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0408.wav"
+},
+{
+"id": "seed_BUILD_51",
+"text": "start building",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0409.wav"
+},
+{
+"id": "seed_BUILD_52",
+"text": "go build the wall",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0410.wav"
+},
+{
+"id": "seed_BUILD_53",
+"text": "make a wall",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0411.wav"
+},
+{
+"id": "seed_BUILD_54",
+"text": "construct a wall",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0412.wav"
+},
+{
+"id": "seed_BUILD_55",
+"text": "raise a wall here",
+"maj": "BUILD",
+"voice": "Microsoft Mark",
+"wav": "s60_0413.wav"
+},
+{
+"id": "seed_BUILD_56",
+"text": "build the wall on my go",
+"maj": "BUILD",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0414.wav"
+},
+{
+"id": "seed_BUILD_57",
+"text": "put up the barricade when I say",
+"maj": "BUILD",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0415.wav"
+},
+{
+"id": "seed_REPAIR_0",
+"text": "fix the wall",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "s60_0416.wav"
+},
+{
+"id": "seed_REPAIR_1",
+"text": "repair the wall",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0417.wav"
+},
+{
+"id": "seed_REPAIR_2",
+"text": "patch that hole",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0418.wav"
+},
+{
+"id": "seed_REPAIR_3",
+"text": "patch the hole in the wall",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "s60_0419.wav"
+},
+{
+"id": "seed_REPAIR_4",
+"text": "fill the hole",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0420.wav"
+},
+{
+"id": "seed_REPAIR_5",
+"text": "fill the hole in the wall",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0421.wav"
+},
+{
+"id": "seed_REPAIR_6",
+"text": "repair the fence",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "s60_0422.wav"
+},
+{
+"id": "seed_REPAIR_7",
+"text": "fix the fence",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0423.wav"
+},
+{
+"id": "seed_REPAIR_8",
+"text": "mend the fence",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0424.wav"
+},
+{
+"id": "seed_REPAIR_9",
+"text": "mend the gate",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "s60_0425.wav"
+},
+{
+"id": "seed_REPAIR_10",
+"text": "fix the gate",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0426.wav"
+},
+{
+"id": "seed_REPAIR_11",
+"text": "repair the barricade",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0427.wav"
+},
+{
+"id": "seed_REPAIR_12",
+"text": "reinforce the barricade",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "s60_0428.wav"
+},
+{
+"id": "seed_REPAIR_13",
+"text": "reinforce the wall",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0429.wav"
+},
+{
+"id": "seed_REPAIR_14",
+"text": "reinforce that wall",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0430.wav"
+},
+{
+"id": "seed_REPAIR_15",
+"text": "reinforce the north wall",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "s60_0431.wav"
+},
+{
+"id": "seed_REPAIR_16",
+"text": "seal the breach",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0432.wav"
+},
+{
+"id": "seed_REPAIR_17",
+"text": "seal that hole",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0433.wav"
+},
+{
+"id": "seed_REPAIR_18",
+"text": "fix the door",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "s60_0434.wav"
+},
+{
+"id": "seed_REPAIR_19",
+"text": "repair the door",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0435.wav"
+},
+{
+"id": "seed_REPAIR_20",
+"text": "fix the roof",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0436.wav"
+},
+{
+"id": "seed_REPAIR_21",
+"text": "repair the roof",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "s60_0437.wav"
+},
+{
+"id": "seed_REPAIR_22",
+"text": "fix the ramp",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0438.wav"
+},
+{
+"id": "seed_REPAIR_23",
+"text": "repair the watchtower",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0439.wav"
+},
+{
+"id": "seed_REPAIR_24",
+"text": "fix it",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "s60_0440.wav"
+},
+{
+"id": "seed_REPAIR_25",
+"text": "repair it",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0441.wav"
+},
+{
+"id": "seed_REPAIR_26",
+"text": "patch it up",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0442.wav"
+},
+{
+"id": "seed_REPAIR_27",
+"text": "fix the window",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "s60_0443.wav"
+},
+{
+"id": "seed_REPAIR_28",
+"text": "board up the window",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0444.wav"
+},
+{
+"id": "seed_REPAIR_29",
+"text": "board up that window",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0445.wav"
+},
+{
+"id": "seed_REPAIR_30",
+"text": "fix the car",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "s60_0446.wav"
+},
+{
+"id": "seed_REPAIR_31",
+"text": "repair the car",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0447.wav"
+},
+{
+"id": "seed_REPAIR_32",
+"text": "repair the truck",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0448.wav"
+},
+{
+"id": "seed_REPAIR_33",
+"text": "fix the bridge",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "s60_0449.wav"
+},
+{
+"id": "seed_REPAIR_34",
+"text": "repair the shed",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0450.wav"
+},
+{
+"id": "seed_REPAIR_35",
+"text": "restore the wall",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0451.wav"
+},
+{
+"id": "seed_REPAIR_36",
+"text": "rebuild the wall",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "s60_0452.wav"
+},
+{
+"id": "seed_REPAIR_37",
+"text": "rebuild the fence",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0453.wav"
+},
+{
+"id": "seed_REPAIR_38",
+"text": "fix the holes in the wall",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0454.wav"
+},
+{
+"id": "seed_REPAIR_39",
+"text": "repair the damage",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "s60_0455.wav"
+},
+{
+"id": "seed_REPAIR_40",
+"text": "go fix the wall",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0456.wav"
+},
+{
+"id": "seed_REPAIR_41",
+"text": "start repairing",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0457.wav"
+},
+{
+"id": "seed_REPAIR_42",
+"text": "patch the floor",
+"maj": "REPAIR",
+"voice": "Microsoft Mark",
+"wav": "s60_0458.wav"
+},
+{
+"id": "seed_REPAIR_43",
+"text": "fix the floor",
+"maj": "REPAIR",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0459.wav"
+},
+{
+"id": "seed_REPAIR_44",
+"text": "fix the wall when I say",
+"maj": "REPAIR",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0460.wav"
+},
+{
+"id": "seed_DEMOLISH_0",
+"text": "tear down the fence",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "s60_0461.wav"
+},
+{
+"id": "seed_DEMOLISH_1",
+"text": "tear down that wall",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0462.wav"
+},
+{
+"id": "seed_DEMOLISH_2",
+"text": "tear it down",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0463.wav"
+},
+{
+"id": "seed_DEMOLISH_3",
+"text": "demolish the wall",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "s60_0464.wav"
+},
+{
+"id": "seed_DEMOLISH_4",
+"text": "demolish that wall",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0465.wav"
+},
+{
+"id": "seed_DEMOLISH_5",
+"text": "demolish the shed",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0466.wav"
+},
+{
+"id": "seed_DEMOLISH_6",
+"text": "dismantle the watchtower",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "s60_0467.wav"
+},
+{
+"id": "seed_DEMOLISH_7",
+"text": "dismantle the barricade",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0468.wav"
+},
+{
+"id": "seed_DEMOLISH_8",
+"text": "remove the barricade",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0469.wav"
+},
+{
+"id": "seed_DEMOLISH_9",
+"text": "take down the barricade",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "s60_0470.wav"
+},
+{
+"id": "seed_DEMOLISH_10",
+"text": "take down the fence",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0471.wav"
+},
+{
+"id": "seed_DEMOLISH_11",
+"text": "knock down the shed",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0472.wav"
+},
+{
+"id": "seed_DEMOLISH_12",
+"text": "knock down that wall",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "s60_0473.wav"
+},
+{
+"id": "seed_DEMOLISH_13",
+"text": "take apart the ramp",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0474.wav"
+},
+{
+"id": "seed_DEMOLISH_14",
+"text": "take the ramp apart",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0475.wav"
+},
+{
+"id": "seed_DEMOLISH_15",
+"text": "remove the ramp",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "s60_0476.wav"
+},
+{
+"id": "seed_DEMOLISH_16",
+"text": "remove that wall",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0477.wav"
+},
+{
+"id": "seed_DEMOLISH_17",
+"text": "destroy the barricade",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0478.wav"
+},
+{
+"id": "seed_DEMOLISH_18",
+"text": "break down the fence",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "s60_0479.wav"
+},
+{
+"id": "seed_DEMOLISH_19",
+"text": "pull down the fence",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0480.wav"
+},
+{
+"id": "seed_DEMOLISH_20",
+"text": "dismantle it",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0481.wav"
+},
+{
+"id": "seed_DEMOLISH_21",
+"text": "take it down",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "s60_0482.wav"
+},
+{
+"id": "seed_DEMOLISH_22",
+"text": "remove it",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0483.wav"
+},
+{
+"id": "seed_DEMOLISH_23",
+"text": "tear down the roof",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0484.wav"
+},
+{
+"id": "seed_DEMOLISH_24",
+"text": "remove the ladder",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "s60_0485.wav"
+},
+{
+"id": "seed_DEMOLISH_25",
+"text": "take down the ladder",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0486.wav"
+},
+{
+"id": "seed_DEMOLISH_26",
+"text": "remove the sandbags",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0487.wav"
+},
+{
+"id": "seed_DEMOLISH_27",
+"text": "clear away the barricade",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "s60_0488.wav"
+},
+{
+"id": "seed_DEMOLISH_28",
+"text": "get rid of that wall",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0489.wav"
+},
+{
+"id": "seed_DEMOLISH_29",
+"text": "get rid of the fence",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0490.wav"
+},
+{
+"id": "seed_DEMOLISH_30",
+"text": "demolish the tower",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "s60_0491.wav"
+},
+{
+"id": "seed_DEMOLISH_31",
+"text": "tear down the old barn",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0492.wav"
+},
+{
+"id": "seed_DEMOLISH_32",
+"text": "dismantle the bridge",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0493.wav"
+},
+{
+"id": "seed_DEMOLISH_33",
+"text": "remove the gate",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "s60_0494.wav"
+},
+{
+"id": "seed_DEMOLISH_34",
+"text": "take the door off",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0495.wav"
+},
+{
+"id": "seed_DEMOLISH_35",
+"text": "deconstruct the wall",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0496.wav"
+},
+{
+"id": "seed_DEMOLISH_36",
+"text": "scrap the turret",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "s60_0497.wav"
+},
+{
+"id": "seed_DEMOLISH_37",
+"text": "remove the turret",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0498.wav"
+},
+{
+"id": "seed_DEMOLISH_38",
+"text": "pull down the shed",
+"maj": "DEMOLISH",
+"voice": "Microsoft Zira Desktop",
+"wav": "s60_0499.wav"
+},
+{
+"id": "seed_DEMOLISH_39",
+"text": "level the shed",
+"maj": "DEMOLISH",
+"voice": "Microsoft Mark",
+"wav": "s60_0500.wav"
+},
+{
+"id": "seed_DEMOLISH_40",
+"text": "tear down the fence on my go",
+"maj": "DEMOLISH",
+"voice": "Microsoft David Desktop",
+"wav": "s60_0501.wav"
+}
+]

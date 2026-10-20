@@ -28,6 +28,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "coop_intent/items.h"
 #include "coop_intent/locations.h"
 
 namespace coop {
@@ -48,6 +49,9 @@ struct IntentConfig {
     // the map's named places (locations.json); without it the bot reports no places
     bool has_locations = false;
     LocationVocab locations;
+    // what the farmer's and the builder's orders act on (items_v60.json: a v60 bot); without it no order has an item
+    bool has_items = false;
+    ItemVocab items;
 };
 
 // Answer: the line answers the planner's question; Decision::intent says which answer
@@ -107,6 +111,7 @@ public:
     const PlaceRecord& PendingPlaces() const { return pending_places_; }   // and the places it named
     bool PendingOther() const { return pending_other_; }                   // and its "other" slot
     const LocationMatcher& Places() const { return places_; }
+    const ItemMatcher& Items() const { return items_; }
     void Reset() {
         pending_ = -1;
         pending_places_ = PlaceRecord();
@@ -136,6 +141,7 @@ private:
     PlaceRecord pending_places_;
     bool pending_other_ = false;
     LocationMatcher places_;
+    ItemMatcher items_;
 };
 
 }  // namespace coop
