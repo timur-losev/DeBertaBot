@@ -1,0 +1,30 @@
+split seed 0 fold -1: 14502 training rows, 0 test rows; prefix 1052 tokens
+trainable params: 16,819,200 || all params: 1,898,644,288 || trainable%: 0.8859
+epoch 0 step 50/1362: loss 2.1143, 31 s
+epoch 0 step 100/1362: loss 1.4935, 61 s
+epoch 0 step 150/1362: loss 1.2397, 92 s
+epoch 0 step 200/1362: loss 1.1242, 122 s
+epoch 0 step 250/1362: loss 1.0490, 153 s
+epoch 0 step 300/1362: loss 0.9325, 183 s
+epoch 0 step 350/1362: loss 0.9013, 214 s
+epoch 0 step 400/1362: loss 0.8806, 246 s
+epoch 0 step 450/1362: loss 0.7869, 288 s
+epoch 1 step 500/1362: loss 0.5082, 330 s
+epoch 1 step 550/1362: loss 0.5539, 371 s
+epoch 1 step 600/1362: loss 0.5220, 410 s
+epoch 1 step 650/1362: loss 0.4836, 441 s
+epoch 1 step 700/1362: loss 0.4736, 471 s
+epoch 1 step 750/1362: loss 0.5077, 502 s
+epoch 1 step 800/1362: loss 0.4540, 533 s
+epoch 1 step 850/1362: loss 0.4279, 577 s
+epoch 1 step 900/1362: loss 0.4597, 610 s
+epoch 2 step 950/1362: loss 0.1230, 640 s
+epoch 2 step 1000/1362: loss 0.1446, 671 s
+epoch 2 step 1050/1362: loss 0.1020, 701 s
+epoch 2 step 1100/1362: loss 0.1330, 731 s
+epoch 2 step 1150/1362: loss 0.1303, 761 s
+epoch 2 step 1200/1362: loss 0.1125, 791 s
+epoch 2 step 1250/1362: loss 0.1322, 821 s
+epoch 2 step 1300/1362: loss 0.1172, 851 s
+epoch 2 step 1350/1362: loss 0.1365, 881 s
+trained 1362 steps in 888 s -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\models_out\decider\lora_s0all

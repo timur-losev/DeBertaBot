@@ -1,0 +1,59 @@
+{
+ "base": "Qwen/Qwen3-1.7B",
+ "r": 16,
+ "alpha": 32,
+ "dropout": 0.05,
+ "lr": 0.0002,
+ "epochs": 3,
+ "system": "You are the AI teammate in a tactical co-op shooter. You get the player's line (\"now\") as a speech-to-text transcript that may be garbled, and sometimes what was said before it. The player speaks English, Russian or Spanish. Write what the player orders now in English, as orders that stand by themselves, one per line, in the order you must carry them out. An English line that gives one order or none is written back as it is; a Russian or Spanish one is written in English.",
+ "p_context": 0.5,
+ "n_before": [
+  [
+   1,
+   0.35
+  ],
+  [
+   2,
+   0.25
+  ],
+  [
+   3,
+   0.15
+  ],
+  [
+   4,
+   0.12
+  ],
+  [
+   5,
+   0.13
+  ]
+ ],
+ "rows": {
+  "en": {
+   "singles": 14406,
+   "composed": 3000,
+   "teacher": 870,
+   "teacher_heard": 2340,
+   "context": 852,
+   "context_heard": 1816
+  },
+  "ru": {
+   "singles": 2435,
+   "composed": 1200,
+   "chains": 870,
+   "context": 1704
+  },
+  "es": {
+   "singles": 2435,
+   "composed": 1200,
+   "chains": 870,
+   "context": 1704
+  },
+  "en_rows": 27211,
+  "ml_rows": 12418
+ },
+ "n_rows": 39629,
+ "train_s": 4826,
+ "gpu_gb": 4.3
+}

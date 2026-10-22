@@ -974,3 +974,57 @@ cf0eb273d359570e2044d95f3924d4803de3e74b7aae34088f5510898e200326 *annot/v60/auth
 454740bfdd779d205d6f38cf771a8f85da19d7de2589bc011a1e9074e797fb91 *annot/v60/author_stt_ann1.json
 3a758cca9b294a5be8e649c5227563d692d7f6b43d2fcbc8a10e5c0713452623 *annot/v60/author_stt_ann2.json
 2026-10-19T22:15:28+02:00
+# v61 (work machine), a seeds-only round of the v6x line after the owner's play with bot v60 (2026-10-20 21:16, make_spec_v61.py docstring): the same 57 intents, lines and readings as v60; 53 new seeds (2514 -> 2567) of the lines bot v60 did not understand, under the readings the log and the owner's answers gave: 'should ...' OPEN_FIRE (also the owner's earlier 'Should this wall?' that v60 read REPAIR), 'find the enemy' / 'give him' ('get him') / 'gilken' ('kill him') ATTACK, 'throw the grenade there' FRAG, 'let's colour the colour' ('cover me') COVER_ME, 'shotgun' SWITCH_WEAPON, a few NONE questions with 'should'. 'Carl.' gets no seed (the owner does not remember). No new test lines. Seeds are not blind: many are the owner's own words.
+0d9f6610bcf45ea54cf0bee46104d36d620951ac7cdc66199b5878ef744c25ff *seed_commands_v61.json
+e44fd5ed4aa16f7c2c2d3159c55f2720299238ad7d988aedec31a39cf22ed5f3 *make_spec_v61.py
+6b54ffbfd0cb681f04850761248b0a0121ba7f61d87c71b3536aaa2f73a8b041 *coop_v2.py
+2026-10-20T21:38:49+02:00
+# v61, second build (work machine, 2026-10-21; it replaces the first, whose models are kept as coop-deberta-v3-ens3-v61a): the owner, after playing v61: 'постоянно Should получается вместо Shoot. И улучши распознавание go, вернее нужно обучить на выходах от stt. посмотри логи ещё, найти проблемы, перезатри v61'. Same 57 intents, lines, readings and seeds as the first build. New: owner_lines_v61.json, the owner's own heard lines from the game logs 2026-10-16..21 (1008 spoken, 598 different; labelled from the talk by four AI labellers with RULES.md and the developer's review: 521 kept, 77 left out as answers, context-only fragments, 'through this window' = fire, bare 'get up', garbled), a third group out of fold; and accented transcripts (stt/export_accent_v61.py, synth_accent_v61.ps1: every r6/cs line and seed read by the Russian and German Windows voices, heard by Parakeet; kept only if they keep enough of the line and its negation). Not blind: the owner's lines are both training and the out-of-fold test.
+6ffe210f45e79434d48c56b8f392a36ce368805ff81d74142051d7b02e635c5b *owner_lines_v61.json
+696f54ff82fb04485f0234768379ac2bfd3e80cafcbe7855c11de9713f285921 *stt/build_v61.py
+0b8446c8602b449a6eb0a0d4ca77cbc11152e2789ab969ac886c8c638b6c8634 *stt/ensemble_bot_v61.py
+513d3dd981dc1d82fe3b7924757bcdf12eb0bb0f34ce94e1fc2a6a0e6d4bbf00 *stt/export_accent_v61.py
+4a3ad476697c663e5f44ed9d54441fd1aff44417a6e464caae4586d21fa42487 *stt/synth_accent_v61.ps1
+d1712606bb65e78eafa76428250e591271644d5315b014af2aea884b0c5d57d5 *stt/out_parakeet-0.6b-v2_ru_v61.json
+4f7365d67c27098bbf2f53625b880f2dfafd2d2a2e0d1ef5e20b8fc5c525f421 *stt/out_parakeet-0.6b-v2_de_v61.json
+2ecba2d8c53c6f4fd51a70809959b4e482469dfd623b08bc08348ebea931d74e *stt/out_parakeet-0.6b-v2_seedru_v61.json
+aaae60893122272149bb2005bcbb042ff127af2151f52b711629a045266b188b *stt/out_parakeet-0.6b-v2_seedde_v61.json
+2026-10-21T16:34:22+02:00
+# chain v62 (work machine, 2026-10-22): the v6x line's decoder, three languages in, English orders out (stt/chains6_v62.py docstring; reports/Мультиязычный бот - русский, английский, испанский.md). The owner: 'да' to training the decoder on Russian, English and Spanish after the probe (decoder v59 copies ru/es lines: 10/39, 13/39; plain Qwen3-1.7B 30/39, 28/39). Training data: v61's English rows on round six's recipe, and the player's lines translated into Russian and Spanish by 20 AI translators under chains2/ml_v62/TRANSLATE.md (prep_ml_v62.py batches: 2435 singles, 870 teacher chains, 852 context items per language; English answers unchanged, the speech-to-text slips of the chain answers mended in the ru/es rows). Test sets: the developer's 82 cases (dev_cases.json, written before the training data) and round three's blind chains and context items said in Russian and Spanish by 4 other AI translators under TEST.md, who never saw the training data. Not blind for the developer: he wrote dev_cases and the rules.
+524cd8419315f4e08bb8d2dcb7b57331c879e6eff868db436ca2c818e1cb9474 *stt/chains6_v62.py
+5fb229069518ba9eb6a004b052bc8326a169f3af9df3dd4ed69d770ce0f02ac3 *stt/prep_ml_v62.py
+9c257f1d855d2cffa0084169a86c540a06b94731717ccd4c04ab00b8a67cb27e *stt/chains2/ml_v62/TRANSLATE.md
+12351bde4b61e38eece4093c03ec927aa815fe1fe99219e89255a07350c5f6a8 *stt/chains2/ml_v62/TEST.md
+f86164ef81ad6641e929f532d84f78297ba9ccf20570cc58b938a0d8d4266765 *stt/chains2/ml_v62/dev_cases.json
+17ba4d6f0f21191afc6800b81955148703e16119498eb9d1d4c0c6d473a10053 *stt/chains2/ml_v62/out/es_chain_00.json
+32ae49eb26d21d4a72ab1d14632915f855782775eba2dcbe8ec6baf66610ab0b *stt/chains2/ml_v62/out/es_chain_01.json
+afc627b47350a77a6ece9ccabbedd220e598104852cf0c63890f219341cad17b *stt/chains2/ml_v62/out/es_ctx_00.json
+5675e545fbd1dc9653a4860ed153a54b15f70b8d717bcef08adb56faa7dbe74b *stt/chains2/ml_v62/out/es_ctx_01.json
+2c93eef1bd6e613633fd3757b436303982b3f18e2a7e9417470561fe16b62a2e *stt/chains2/ml_v62/out/es_ctx_02.json
+ada213707908c7322b21e67893a5b61b152a201dac0a638d34e7b82dce624080 *stt/chains2/ml_v62/out/es_single_00.json
+0f658fec1ec8286109fd8065792f3fa258f3563a2c299b3cbc437fe0bbe2d5df *stt/chains2/ml_v62/out/es_single_01.json
+0b2ca92044113be6b40aa579313fbb5ca3c2a3038d0fbc2d995c73d236376c89 *stt/chains2/ml_v62/out/es_single_02.json
+1725cfc9242a7986cd849960fd9219b45b7f8bfb33df01f38b8e55bc32714159 *stt/chains2/ml_v62/out/es_single_03.json
+19b1c9cbd5293e4da5d35b2a5c8229c62815154b4397405a76503256f6b99dc9 *stt/chains2/ml_v62/out/es_single_04.json
+4c1ffe587fa47f47b3ece99c3dc35cd612b2ff5afd5309f3dfc0e3b0a04b17bb *stt/chains2/ml_v62/out/ru_chain_00.json
+a7a5872d9ac13dd84c858a179cf7e6e59513f2b79a1e05c515de468f569e8efc *stt/chains2/ml_v62/out/ru_chain_01.json
+5f1d2c31b1c673aeedcc67aef68bb37460341f3255fb99ec1dfe80e7f41d6c59 *stt/chains2/ml_v62/out/ru_ctx_00.json
+2d9a5340c53aedbf988b853cc85def9c4f6f1c8645a50ddbf4eefdfd1441491f *stt/chains2/ml_v62/out/ru_ctx_01.json
+3bd04688eac7e9007bc5c52c9cdae9700a69d1b9bd874eb1804447499f04bc80 *stt/chains2/ml_v62/out/ru_ctx_02.json
+64ad3cdc21132f419d82ecbb0ed879795b7df5aeb654b60c74e355b6750ad0f3 *stt/chains2/ml_v62/out/ru_single_00.json
+368fd6b9390b239421aeafe5b542d064a6f81d7781f0b7d0b20a19e8697d2e8c *stt/chains2/ml_v62/out/ru_single_01.json
+d1983c5f10061f3e7fd26f325e01992cffa8d2174b1ce78311b09230967a312b *stt/chains2/ml_v62/out/ru_single_02.json
+c31553ec513e36e59e6d9a86290c181f85a0af81b59050e96ced677044da113e *stt/chains2/ml_v62/out/ru_single_03.json
+73eaa4429928fa31d2c39e133da15a17fafbc5bbdf8a4f63e45f3a867f9cbb45 *stt/chains2/ml_v62/out/ru_single_04.json
+931d6940194680026537daa2c456d5720aae3ebaf061dbb6d2bf75e45ac40ef3 *stt/chains2/ml_v62/test_out/es_blind2.json
+6a819d9f3ef1e1cd73761ac787a2cdeee2b0ca755f59a9aca4680f03416f6073 *stt/chains2/ml_v62/test_out/es_ctx.json
+53df44f18507d98fa5918d06a98f2a0317bae6a8ccf5ac7319fa580747c2b70c *stt/chains2/ml_v62/test_out/ru_blind2.json
+fab90d73156be0faf1c414f66b5d6e9ab6dc7edbf7e3f03b2fea28b244c13308 *stt/chains2/ml_v62/test_out/ru_ctx.json
+2026-10-22T17:27:18+02:00
+# chain v63 (work machine, 2026-10-22): two orders joined by 'and' / «и» / «y» (stt/chains7_v63.py and stt/router_v63.py docstrings). The owner after playing chain v62 in Russian: 'бот не понимает союз и не выполняет команды последовательно'. Written after the training (21:47), not before: pairs_test.json was written by 'chains7_v63.py data' before the decoder's training started (19:56) and not changed since; pairs_train_en.json at 19:56 for the router; the two scripts are hashed as they are now (score's router rows, probe and a seed tag added after the training, the rows and the recipe unchanged). Pairs are made only of short orders of different FAMILIES: same-family pairs (MOVE_TO + JUMP, 'go up by the stairs and jump down') are not in the training pairs nor in the test.
+e55f6dfb0142d1ad860433ee8ea3d85f8e1949ebdc598f1f75fee37e0b7362e9 *stt/chains7_v63.py
+f31b4c6938a05ed4f8718050f2e78b6b2d22b44619f3057913042bb3e207697b *stt/router_v63.py
+318981adfbd361243648e492c2ec9bc93814a5f3ec39cc5b457ae5b59e0467ff *stt/chains2/ml_v62/pairs_test.json
+11c877777e4de53027fc52102eac02bc9d0ee50a9b3053b1a4064348ed18f8e1 *stt/chains2/ml_v62/pairs_train_en.json
+aa60d3df9f676089a93eec20fa3c1a82a800cbaaa89d06cce28035c5287a839c *stt/chains2/ml_v62/singles_left_out_v63.json
+2026-10-22T22:01:45+02:00

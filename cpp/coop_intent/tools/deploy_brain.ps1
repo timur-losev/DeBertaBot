@@ -5,6 +5,11 @@
 #   pwsh deploy_brain.ps1 -Target J:\UE4\Projects\LyraStarterGame58\Binaries\CoopBrain            # bot v54
 #   pwsh deploy_brain.ps1 -Target D:\Game\Binaries\CoopBrain -Bot coop-deberta-v3-ens3-v53 -Build <build dir>\Release
 #   pwsh deploy_brain.ps1 -Target D:\Game\Binaries\CoopBrain -Chain coop-chain-v54     # with the router and the decoder
+#   pwsh deploy_brain.ps1 -Target ...\CoopBrainV6 -Bot coop-deberta-v3-ens3-v61 -Decider <export_game.py folder>
+#                    # with the optional second reader: <Target>\decider\ decider.json, decider.gguf (1.9 GB), decider_tests.json
+#   pwsh deploy_brain.ps1 -Target ...\CoopBrainV6 -Bot coop-deberta-v3-ens3-v61 -Chain coop-chain-v62 `
+#        -SttMulti <stt>\models\sherpa-onnx-nemo-parakeet-tdt-0.6b-v3-int8
+#                    # Russian and Spanish players: chain v62 (three languages in, English orders out) and <Target>\stt_v3
 #
 # Layout written:  <Target>\coop_cli.exe, onnxruntime.dll, sherpa-onnx-c-api.dll
 #                  <Target>\bot\      intent_config.json, vocab.tsv, model*.onnx
@@ -21,6 +26,11 @@ param(
     [string]$Build = (Join-Path $PSScriptRoot '..\build\Release'),
     [string]$Stt = (Join-Path $PSScriptRoot '..\..\..\scripts\coop\stt\models\sherpa-onnx-nemo-parakeet-tdt-0.6b-v2-int8'),
     [string]$Chain = '',
+    # a decider folder (scripts/coop/decider/export_game.py): the optional second reader; '' keeps whatever is there
+    [string]$Decider = '',
+    # the speech recognizer for Russian and Spanish players (Parakeet TDT 0.6B v3, 25 languages) -> <Target>\stt_v3; the
+    # game starts the brain with it when its language is ru or es. '' keeps whatever is there
+    [string]$SttMulti = '',
     # a sherpa-onnx Piper export; '' leaves the voice out (the game falls back to the system's voice)
     [string]$Voice = (Join-Path $PSScriptRoot '..\..\..\scripts\coop\stt\tts\vits-piper-en_GB-vctk-medium')
 )
@@ -57,6 +67,33 @@ if ($Chain) {
     foreach ($f in $chainFiles) { Copy-Item "$chainDir\$f" "$Target\chain" -Force }
     $chainFrom = [ordered]@{ chain = $Chain; decoder = $ccfg.decoder_from; router = $ccfg.router_from; cut = $ccfg.cut }
 }
+$sttMultiFrom = $null
+if ($SttMulti) {
+    $SttMulti = (Resolve-Path $SttMulti).Path
+    foreach ($need in 'encoder.int8.onnx', 'decoder.int8.onnx', 'joiner.int8.onnx', 'tokens.txt') {
+        if (-not (Test-Path "$SttMulti\$need")) { throw "missing: $SttMulti\$need" }
+    }
+    New-Item -ItemType Directory -Force "$Target\stt_v3" | Out-Null
+    foreach ($f in 'encoder.int8.onnx', 'decoder.int8.onnx', 'joiner.int8.onnx', 'tokens.txt') { Copy-Item "$SttMulti\$f" "$Target\stt_v3" -Force }
+    $sttMultiFrom = Split-Path $SttMulti -Leaf
+} elseif (Test-Path "$Target\stt_v3\tokens.txt") {
+    $sttMultiFrom = 'kept from an earlier deploy'
+}
+$deciderFrom = $null
+if ($Decider) {
+    # the optional second reader of a line (coop_cli --decider): scripts/coop/decider/export_game.py's folder. The game
+    # starts it only when asked (UOVCoopBotSettings::DeciderMode, ov.CoopBot.Brain.Decider)
+    $Decider = (Resolve-Path $Decider).Path
+    $dcfg = Get-Content "$Decider\decider.json" -Raw | ConvertFrom-Json
+    foreach ($need in @("$Build\llama.dll", "$Decider\$($dcfg.model)")) { if (-not (Test-Path $need)) { throw "missing: $need" } }
+    if (Test-Path "$Target\decider") { Remove-Item "$Target\decider" -Recurse -Force }
+    New-Item -ItemType Directory -Force "$Target\decider" | Out-Null
+    Copy-Item "$Decider\decider.json", "$Decider\$($dcfg.model)" "$Target\decider" -Force
+    if (Test-Path "$Decider\decider_tests.json") { Copy-Item "$Decider\decider_tests.json" "$Target\decider" -Force }
+    $deciderFrom = $dcfg.source
+} elseif (Test-Path "$Target\decider\decider.json") {
+    $deciderFrom = (Get-Content "$Target\decider\decider.json" -Raw | ConvertFrom-Json).source + ' (kept from an earlier deploy)'
+}
 $voiceFrom = $null
 if ($Voice -and (Test-Path $Voice)) {
     $Voice = (Resolve-Path $Voice).Path
@@ -75,6 +112,7 @@ if ($Voice -and (Test-Path $Voice)) {
 }
 $cfg = Get-Content "$botDir\intent_config.json" -Raw | ConvertFrom-Json
 [ordered]@{ bot = $Bot; labels = $cfg.labels.Count; gate = $cfg.gate; threshold = $cfg.threshold; members = $members; chain = $chainFrom; voice = $voiceFrom
+            decider = $deciderFrom; stt_multilingual = $sttMultiFrom
             exe_built = (Get-Item "$Build\coop_cli.exe").LastWriteTime.ToString('s'); from = $repo; deployed = (Get-Date).ToString('s') } |
     ConvertTo-Json | Set-Content "$Target\deployed.json" -Encoding UTF8
 "deployed {0} ({1} labels, {2} gate, threshold {3}) to {4}: {5:n1} GB" -f $Bot, $cfg.labels.Count, $cfg.gate, $cfg.threshold, $Target,

@@ -1,0 +1,1185 @@
+{
+"lang": "ru",
+"set": "ctx",
+"items": [
+{
+"id": "xb_r6_000",
+"before": [
+"On me.",
+"Stay low."
+],
+"bot": null,
+"en": "Smoke the main door, then hold the white stairs."
+},
+{
+"id": "xb_r6_001",
+"before": [
+"Go to the hatch."
+],
+"bot": "At the hatch.",
+"en": "Breach it."
+},
+{
+"id": "xb_r6_002",
+"before": [
+"Open the west door."
+],
+"bot": null,
+"en": "No, not the door, the window."
+},
+{
+"id": "xb_r6_003",
+"before": [
+"Breach the south door."
+],
+"bot": "South door is breached.",
+"en": "Rappel to the north window."
+},
+{
+"id": "xb_r6_004",
+"before": [
+"Go to the blue stairs."
+],
+"bot": null,
+"en": "Hold the red stairs."
+},
+{
+"id": "xb_r6_005",
+"before": [
+"Frag the north window."
+],
+"bot": "Frag out.",
+"en": "Nice, that got one of them."
+},
+{
+"id": "xb_r6_006",
+"before": [
+"Rappel to the south window."
+],
+"bot": "On the rope.",
+"en": "I'm taking the east window myself."
+},
+{
+"id": "xb_r6_007",
+"before": [
+"On me.",
+"Now hold an angle."
+],
+"bot": null,
+"en": "The yellow stairs."
+},
+{
+"id": "xb_r6_008",
+"before": [],
+"bot": null,
+"en": "Drone out the top floor, then hard breach the hatch."
+},
+{
+"id": "xb_r6_009",
+"before": [
+"Go to the red stairs."
+],
+"bot": "At the red stairs.",
+"en": "Hold position."
+},
+{
+"id": "xb_r6_010",
+"before": [
+"Stun the east door."
+],
+"bot": null,
+"en": "Smoke the window."
+},
+{
+"id": "xb_r6_011",
+"before": [
+"Frag the brown stairs.",
+"Nice, he's low."
+],
+"bot": null,
+"en": "Do that one more time."
+},
+{
+"id": "xb_r6_012",
+"before": [
+"Check that room.",
+"Never mind."
+],
+"bot": null,
+"en": "Plant the defuser."
+},
+{
+"id": "xb_r6_013",
+"before": [
+"Watch the window."
+],
+"bot": null,
+"en": "East."
+},
+{
+"id": "xb_r6_014",
+"before": [
+"Frag the second floor."
+],
+"bot": "Frag out.",
+"en": "And the top floor too."
+},
+{
+"id": "xb_r6_015",
+"before": [
+"Stun the main door."
+],
+"bot": null,
+"en": "Not a stun, smoke it."
+},
+{
+"id": "xb_r6_016",
+"before": [
+"Smoke the north window."
+],
+"bot": "Smoke out.",
+"en": "Same on the south one."
+},
+{
+"id": "xb_r6_017",
+"before": [
+"Smoke the main door."
+],
+"bot": null,
+"en": "Now flash it and push in."
+},
+{
+"id": "xb_r6_018",
+"before": [
+"On me.",
+"Frag the north window."
+],
+"bot": "Frag ready.",
+"en": "Wrong side, I meant south."
+},
+{
+"id": "xb_r6_019",
+"before": [
+"Clear the top floor."
+],
+"bot": "Top floor clear.",
+"en": "Plant the defuser."
+},
+{
+"id": "xb_r6_020",
+"before": [
+"Rappel to the east window."
+],
+"bot": null,
+"en": "Actually, vault it instead."
+},
+{
+"id": "xb_r6_021",
+"before": [
+"Move to the white stairs."
+],
+"bot": null,
+"en": "And hold there."
+},
+{
+"id": "xb_r6_022",
+"before": [
+"Breach the east door."
+],
+"bot": null,
+"en": "No, the west one."
+},
+{
+"id": "xb_r6_023",
+"before": [
+"Suppress the red stairs."
+],
+"bot": null,
+"en": "Not red, blue."
+},
+{
+"id": "xb_r6_024",
+"before": [
+"Breach the east door."
+],
+"bot": "Placing the charge.",
+"en": "Cancel that."
+},
+{
+"id": "xb_r6_025",
+"before": [
+"Watch the west window."
+],
+"bot": null,
+"en": "Stun the main door and fall back."
+},
+{
+"id": "xb_r6_026",
+"before": [],
+"bot": "Frag the basement, confirm?",
+"en": "Yes."
+},
+{
+"id": "xb_r6_027",
+"before": [
+"Drone the top floor."
+],
+"bot": "Two hostiles on the top floor.",
+"en": "Now clear it."
+},
+{
+"id": "xb_r6_028",
+"before": [
+"Vault the window."
+],
+"bot": "Which window, north or west?",
+"en": "North, obviously."
+},
+{
+"id": "xb_r6_029",
+"before": [
+"Hold the east door."
+],
+"bot": "Did you hear footsteps?",
+"en": "Yes."
+},
+{
+"id": "xb_r6_030",
+"before": [
+"Stack up on me.",
+"Watch the east window."
+],
+"bot": "Watching the east window.",
+"en": "No, the west one."
+},
+{
+"id": "xb_r6_031",
+"before": [
+"Drone the basement."
+],
+"bot": null,
+"en": "Sorry, I meant the top floor."
+},
+{
+"id": "xb_r6_032",
+"before": [],
+"bot": "Should I rappel to the east window?",
+"en": "Negative."
+},
+{
+"id": "xb_r6_033",
+"before": [
+"Hold that angle."
+],
+"bot": "Holding.",
+"en": "Hold the red stairs."
+},
+{
+"id": "xb_r6_034",
+"before": [
+"Hide."
+],
+"bot": null,
+"en": "Behind the table."
+},
+{
+"id": "xb_r6_035",
+"before": [
+"Stun the east door."
+],
+"bot": "Stun out.",
+"en": "Again."
+},
+{
+"id": "xb_r6_036",
+"before": [
+"Check the second floor."
+],
+"bot": "Moving to the second floor.",
+"en": "Sorry, I meant the top floor."
+},
+{
+"id": "xb_r6_037",
+"before": [
+"Throw a frag."
+],
+"bot": null,
+"en": "The yellow stairs."
+},
+{
+"id": "xb_r6_038",
+"before": [
+"Hold the west door."
+],
+"bot": null,
+"en": "Smoke that door."
+},
+{
+"id": "xb_r6_039",
+"before": [
+"Smoke the east door."
+],
+"bot": "Smoke is out.",
+"en": "Open fire on the west window."
+},
+{
+"id": "xb_r6_040",
+"before": [],
+"bot": "The east door is barricaded.",
+"en": "Breach it."
+},
+{
+"id": "xb_r6_041",
+"before": [
+"Hard breach the reinforced wall."
+],
+"bot": "Charge failed.",
+"en": "Again."
+},
+{
+"id": "xb_r6_042",
+"before": [
+"Stun the basement."
+],
+"bot": "Stun out.",
+"en": "Now clear it."
+},
+{
+"id": "xb_r6_043",
+"before": [
+"Frag the east window."
+],
+"bot": null,
+"en": "Smoke the main door, then hold the white stairs."
+},
+{
+"id": "xb_r6_044",
+"before": [
+"Open the south door."
+],
+"bot": "South door is open.",
+"en": "Now flash it and push in."
+},
+{
+"id": "xb_r6_045",
+"before": [
+"Open the door."
+],
+"bot": "Which door, east or south?",
+"en": "East."
+},
+{
+"id": "xb_r6_046",
+"before": [
+"Throw a stun down the brown stairs."
+],
+"bot": null,
+"en": "Not a stun, smoke it."
+},
+{
+"id": "xb_r6_047",
+"before": [
+"Hold the blue stairs."
+],
+"bot": null,
+"en": "Contact, two of them coming up the red stairs!"
+},
+{
+"id": "xb_r6_048",
+"before": [],
+"bot": "I can vault the east window.",
+"en": "Rappel to the north window."
+},
+{
+"id": "xb_r6_049",
+"before": [
+"Put a breach charge on the north door."
+],
+"bot": null,
+"en": "Same on the south one."
+},
+{
+"id": "xb_cs_000",
+"before": [
+"theyre on site",
+"flank them"
+],
+"bot": null,
+"en": "through main"
+},
+{
+"id": "xb_cs_001",
+"before": [
+"flash blue stairs"
+],
+"bot": null,
+"en": "no not flash, molly it"
+},
+{
+"id": "xb_cs_002",
+"before": [
+"flash the basement"
+],
+"bot": null,
+"en": "no not flash, molly it"
+},
+{
+"id": "xb_cs_003",
+"before": [
+"flash east door"
+],
+"bot": "Flash out.",
+"en": "one more"
+},
+{
+"id": "xb_cs_004",
+"before": [
+"hop through the south window"
+],
+"bot": "Moving to the south window.",
+"en": "nah the north one"
+},
+{
+"id": "xb_cs_005",
+"before": [],
+"bot": "Want me to smoke the main door?",
+"en": "yeah do it"
+},
+{
+"id": "xb_cs_006",
+"before": [
+"smoke the south door"
+],
+"bot": null,
+"en": "nah the north one"
+},
+{
+"id": "xb_cs_007",
+"before": [
+"hold that angle"
+],
+"bot": null,
+"en": "molly the red stairs"
+},
+{
+"id": "xb_cs_008",
+"before": [
+"frag the basement"
+],
+"bot": "Frag ready.",
+"en": "no, check it"
+},
+{
+"id": "xb_cs_009",
+"before": [
+"flash the main door"
+],
+"bot": "Flash out.",
+"en": "go go go"
+},
+{
+"id": "xb_cs_010",
+"before": [],
+"bot": null,
+"en": "smoke main then hold the blue stairs"
+},
+{
+"id": "xb_cs_011",
+"before": [],
+"bot": "I can smoke the main door.",
+"en": "flash west window then fall back"
+},
+{
+"id": "xb_cs_012",
+"before": [
+"push the top floor"
+],
+"bot": null,
+"en": "no, check it"
+},
+{
+"id": "xb_cs_013",
+"before": [
+"one down",
+"watch the hatch"
+],
+"bot": null,
+"en": "now open it"
+},
+{
+"id": "xb_cs_014",
+"before": [
+"throw a flash at the door"
+],
+"bot": null,
+"en": "west"
+},
+{
+"id": "xb_cs_015",
+"before": [
+"smoke the site"
+],
+"bot": "Smoke out.",
+"en": "defuse the bomb"
+},
+{
+"id": "xb_cs_016",
+"before": [
+"hold the main door"
+],
+"bot": "Holding the main door.",
+"en": "on me"
+},
+{
+"id": "xb_cs_017",
+"before": [
+"watch the north window"
+],
+"bot": null,
+"en": "plant and then take cover"
+},
+{
+"id": "xb_cs_018",
+"before": [
+"smoke the north door"
+],
+"bot": "Smoke out.",
+"en": "flash over there"
+},
+{
+"id": "xb_cs_019",
+"before": [
+"smoke blue stairs"
+],
+"bot": "Smoke out.",
+"en": "molly the red stairs"
+},
+{
+"id": "xb_cs_020",
+"before": [
+"check upstairs",
+"nah never mind"
+],
+"bot": null,
+"en": "on me"
+},
+{
+"id": "xb_cs_021",
+"before": [
+"go to the hatch"
+],
+"bot": "At the hatch.",
+"en": "breach it then drop through it"
+},
+{
+"id": "xb_cs_022",
+"before": [
+"hop over that"
+],
+"bot": null,
+"en": "the sofa"
+},
+{
+"id": "xb_cs_023",
+"before": [
+"cover me"
+],
+"bot": null,
+"en": "defuse the bomb"
+},
+{
+"id": "xb_cs_024",
+"before": [
+"watch the east door"
+],
+"bot": null,
+"en": "theres one at west door hes low"
+},
+{
+"id": "xb_cs_025",
+"before": [
+"push the top floor"
+],
+"bot": "Pushing.",
+"en": "stop stop"
+},
+{
+"id": "xb_cs_026",
+"before": [
+"smoke first floor"
+],
+"bot": null,
+"en": "same for the top floor"
+},
+{
+"id": "xb_cs_027",
+"before": [],
+"bot": "Open fire on the east window?",
+"en": "no, hold fire"
+},
+{
+"id": "xb_cs_028",
+"before": [
+"smoke the east window"
+],
+"bot": "Smoke out.",
+"en": "now the north one"
+},
+{
+"id": "xb_cs_029",
+"before": [
+"hold a window"
+],
+"bot": "Which window, west or south?",
+"en": "west"
+},
+{
+"id": "xb_cs_030",
+"before": [
+"go to the south door"
+],
+"bot": "At the south door.",
+"en": "now open it"
+},
+{
+"id": "xb_cs_031",
+"before": [
+"open east door"
+],
+"bot": "Opening the east door.",
+"en": "nono the main one"
+},
+{
+"id": "xb_cs_032",
+"before": [
+"go to the east window"
+],
+"bot": "At the east window.",
+"en": "now smoke"
+},
+{
+"id": "xb_cs_033",
+"before": [
+"plant the bomb"
+],
+"bot": "Planting.",
+"en": "how much time left"
+},
+{
+"id": "xb_cs_034",
+"before": [
+"hold white stairs"
+],
+"bot": null,
+"en": "i mean yellow"
+},
+{
+"id": "xb_cs_035",
+"before": [],
+"bot": "West window is open.",
+"en": "frag it"
+},
+{
+"id": "xb_cs_036",
+"before": [
+"check the basement"
+],
+"bot": "Two enemies in the basement.",
+"en": "frag it"
+},
+{
+"id": "xb_cs_037",
+"before": [
+"go up the brown stairs"
+],
+"bot": null,
+"en": "i mean yellow"
+},
+{
+"id": "xb_cs_038",
+"before": [
+"check behind the sofa"
+],
+"bot": "Nothing behind the sofa.",
+"en": "check again"
+},
+{
+"id": "xb_cs_039",
+"before": [
+"check the basement"
+],
+"bot": "Basement is clear.",
+"en": "same for the top floor"
+},
+{
+"id": "xb_cs_040",
+"before": [
+"get behind something"
+],
+"bot": null,
+"en": "the sofa"
+},
+{
+"id": "xb_cs_041",
+"before": [
+"molly the white stairs",
+"hes still there"
+],
+"bot": null,
+"en": "one more"
+},
+{
+"id": "xb_cs_042",
+"before": [
+"open the hatch"
+],
+"bot": "Hatch is open.",
+"en": "jump down"
+},
+{
+"id": "xb_cs_043",
+"before": [
+"nice",
+"go to the roof"
+],
+"bot": null,
+"en": "sorry, second floor"
+},
+{
+"id": "xb_cs_044",
+"before": [
+"frag the east window"
+],
+"bot": null,
+"en": "flash west window then fall back"
+},
+{
+"id": "xb_cs_045",
+"before": [
+"frag the west window"
+],
+"bot": "Frag out.",
+"en": "haha nice one"
+},
+{
+"id": "xb_cs_046",
+"before": [],
+"bot": "Is the bomb planted?",
+"en": "dunno"
+},
+{
+"id": "xb_cs_047",
+"before": [
+"smoke the top floor"
+],
+"bot": "Smoke out.",
+"en": "ok flash it then clear it"
+},
+{
+"id": "xb_cs_048",
+"before": [
+"go to the east door"
+],
+"bot": "At the east door.",
+"en": "open the window"
+},
+{
+"id": "xb_cs_049",
+"before": [
+"watch the red stairs"
+],
+"bot": "I can flank through the north door.",
+"en": "yeah do it"
+},
+{
+"id": "xb_stt_000",
+"before": [
+"frag the the north window"
+],
+"bot": "Frag out.",
+"en": "oh nice nice very good"
+},
+{
+"id": "xb_stt_001",
+"before": [
+"check the red stairs"
+],
+"bot": "Can you hear me?",
+"en": "yes yes"
+},
+{
+"id": "xb_stt_002",
+"before": [
+"now you hold angle"
+],
+"bot": null,
+"en": "uh the the east window"
+},
+{
+"id": "xb_stt_003",
+"before": [
+"look at the window"
+],
+"bot": null,
+"en": "south"
+},
+{
+"id": "xb_stt_004",
+"before": [
+"watch the window west"
+],
+"bot": null,
+"en": "throw the frag on red stairs and then uh come back"
+},
+{
+"id": "xb_stt_005",
+"before": [
+"suppress the main door"
+],
+"bot": "Reloading.",
+"en": "again again"
+},
+{
+"id": "xb_stt_006",
+"before": [
+"check the top floor"
+],
+"bot": "Top floor is clear.",
+"en": "uh you go to the roof please"
+},
+{
+"id": "xb_stt_007",
+"before": [
+"uh drop the smoke"
+],
+"bot": null,
+"en": "on my pin on my pin"
+},
+{
+"id": "xb_stt_008",
+"before": [
+"drone the basement",
+"okay good"
+],
+"bot": null,
+"en": "bridge the hatch now"
+},
+{
+"id": "xb_stt_009",
+"before": [
+"smoke the the east door"
+],
+"bot": "Smoke is out.",
+"en": "uh check the base meant please"
+},
+{
+"id": "xb_stt_010",
+"before": [
+"follow me",
+"hold the red stars"
+],
+"bot": null,
+"en": "no not red uh white"
+},
+{
+"id": "xb_stt_011",
+"before": [
+"go to the door"
+],
+"bot": "Which door, south or main?",
+"en": "south"
+},
+{
+"id": "xb_stt_012",
+"before": [
+"you go to the yellow stairs"
+],
+"bot": "At the yellow stairs.",
+"en": "um lie down lie down"
+},
+{
+"id": "xb_stt_013",
+"before": [
+"look at the east door"
+],
+"bot": null,
+"en": "smoke it and then then you push in"
+},
+{
+"id": "xb_stt_014",
+"before": [
+"go to the the top floor"
+],
+"bot": null,
+"en": "sorry sorry i mean second floor"
+},
+{
+"id": "xb_stt_015",
+"before": [
+"go to the hatch"
+],
+"bot": "At the hatch.",
+"en": "okay bridge"
+},
+{
+"id": "xb_stt_016",
+"before": [
+"hold the brown stairs"
+],
+"bot": null,
+"en": "enemy enemy he is on the roof i see him"
+},
+{
+"id": "xb_stt_017",
+"before": [],
+"bot": "Room clear.",
+"en": "you check the sofa and then follow me"
+},
+{
+"id": "xb_stt_018",
+"before": [
+"watch the south door"
+],
+"bot": null,
+"en": "cover me cover me"
+},
+{
+"id": "xb_stt_019",
+"before": [
+"frag the yellow stairs"
+],
+"bot": "Frag out.",
+"en": "and same same on the blue one"
+},
+{
+"id": "xb_stt_020",
+"before": [
+"bridge the north door"
+],
+"bot": null,
+"en": "no no the south one"
+},
+{
+"id": "xb_stt_021",
+"before": [
+"look at the table"
+],
+"bot": "Looking at the table.",
+"en": "now the the chairs"
+},
+{
+"id": "xb_stt_022",
+"before": [],
+"bot": "I can flash the stairs.",
+"en": "cover me cover me"
+},
+{
+"id": "xb_stt_023",
+"before": [
+"throw the flash in the window north"
+],
+"bot": "Flash out.",
+"en": "again again"
+},
+{
+"id": "xb_stt_024",
+"before": [
+"repel to the east window"
+],
+"bot": "On the rope.",
+"en": "uh you go to the roof please"
+},
+{
+"id": "xb_stt_025",
+"before": [],
+"bot": "The west door is open.",
+"en": "okay now you check it"
+},
+{
+"id": "xb_stt_026",
+"before": [
+"plan the bomb"
+],
+"bot": "Planting.",
+"en": "no no stop stop"
+},
+{
+"id": "xb_stt_027",
+"before": [
+"put smoke on the yellow stairs"
+],
+"bot": null,
+"en": "and same same on the blue one"
+},
+{
+"id": "xb_stt_028",
+"before": [],
+"bot": "Rappel to the east window, confirm?",
+"en": "yes yes"
+},
+{
+"id": "xb_stt_029",
+"before": [
+"flesh the main door"
+],
+"bot": null,
+"en": "no i mean smoke smoke it"
+},
+{
+"id": "xb_stt_030",
+"before": [
+"bridge the wall"
+],
+"bot": "Wall is open.",
+"en": "okay attack attack"
+},
+{
+"id": "xb_stt_031",
+"before": [
+"volt the west window",
+"uh why you stop"
+],
+"bot": null,
+"en": "do it one more time"
+},
+{
+"id": "xb_stt_032",
+"before": [
+"throw one smoke"
+],
+"bot": null,
+"en": "uh the the east window"
+},
+{
+"id": "xb_stt_033",
+"before": [
+"wait wait",
+"they are in the basement i think"
+],
+"bot": null,
+"en": "uh flesh it flesh it"
+},
+{
+"id": "xb_stt_034",
+"before": [
+"go to the basement"
+],
+"bot": "In the basement.",
+"en": "okay now you check it"
+},
+{
+"id": "xb_stt_035",
+"before": [
+"drown the first floor"
+],
+"bot": null,
+"en": "sorry sorry i mean second floor"
+},
+{
+"id": "xb_stt_036",
+"before": [
+"go to the mane door"
+],
+"bot": "At the main door.",
+"en": "bridge the hatch now"
+},
+{
+"id": "xb_stt_037",
+"before": [],
+"bot": null,
+"en": "first you open the mane door and after you check the the basement"
+},
+{
+"id": "xb_stt_038",
+"before": [
+"check upstairs"
+],
+"bot": "Upstairs is clear.",
+"en": "copy copy got it"
+},
+{
+"id": "xb_stt_039",
+"before": [],
+"bot": "Should I breach the hatch or the wall?",
+"en": "uh the hatch the hatch"
+},
+{
+"id": "xb_stt_040",
+"before": [
+"hold the east door"
+],
+"bot": null,
+"en": "uh you go there"
+},
+{
+"id": "xb_stt_041",
+"before": [
+"throw smoke in the basement"
+],
+"bot": "Smoke ready.",
+"en": "not smoke not smoke uh frag"
+},
+{
+"id": "xb_stt_042",
+"before": [
+"hide behind the the table"
+],
+"bot": null,
+"en": "eh no not table the sofa"
+},
+{
+"id": "xb_stt_043",
+"before": [],
+"bot": "Want me to throw a frag?",
+"en": "eh up to you"
+},
+{
+"id": "xb_stt_044",
+"before": [
+"open the north door"
+],
+"bot": "North door is open.",
+"en": "uh flesh it flesh it"
+},
+{
+"id": "xb_stt_045",
+"before": [
+"smoke the brown stairs"
+],
+"bot": null,
+"en": "not smoke not smoke uh frag"
+},
+{
+"id": "xb_stt_046",
+"before": [
+"we go to the basement now"
+],
+"bot": null,
+"en": "smoke it and then then you push in"
+},
+{
+"id": "xb_stt_047",
+"before": [
+"repel to the window south"
+],
+"bot": "Moving to the south window.",
+"en": "no no wrong wrong the east"
+},
+{
+"id": "xb_stt_048",
+"before": [
+"uh open the north window"
+],
+"bot": "Opening the north window.",
+"en": "no no the south one"
+},
+{
+"id": "xb_stt_049",
+"before": [
+"stand up"
+],
+"bot": null,
+"en": "you check the sofa and then follow me"
+}
+]
+}

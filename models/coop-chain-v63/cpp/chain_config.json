@@ -1,0 +1,12 @@
+{
+ "decoder": "decoder.gguf",
+ "decoder_from": "Qwen/Qwen3-1.7B + pieces8and_final seed 0, Q4_K_M, llama.cpp b11429",
+ "system": "You are the AI teammate in a tactical co-op shooter. You get the player's line (\"now\") as a speech-to-text transcript that may be garbled, and sometimes what was said before it. The player speaks English, Russian or Spanish. Write what the player orders now in English, as orders that stand by themselves, one per line, in the order you must carry them out. An English line that gives one order or none is written back as it is; a Russian or Spanish one is written in English.",
+ "max_new": 96,
+ "context": 1024,
+ "memory_lines": 5,
+ "memory_seconds": 30.0,
+ "router": "router.onnx",
+ "cut": 0.5,
+ "router_from": "microsoft/deberta-v3-small, 19701 rows, seed 0"
+}

@@ -1,0 +1,3006 @@
+{
+"lang": "ru",
+"kind": "single",
+"items": [
+{
+"id": "r6_055",
+"en": "nade that room",
+"intent": "FRAG"
+},
+{
+"id": "csv60_012",
+"en": "build a windmill by the north field",
+"intent": "BUILD"
+},
+{
+"id": "r6v5_028",
+"en": "Stop fighting and back up, disengage, disengage.",
+"intent": "FALL_BACK"
+},
+{
+"id": "seed_PLANT_CROP_7",
+"en": "put the tomatoes in the ground",
+"intent": "PLANT_CROP"
+},
+{
+"id": "sttv54_036",
+"en": "nah hold up hold up two seconds cancel that",
+"intent": "WAIT"
+},
+{
+"id": "r6v53_021",
+"en": "Keep your crosshair on that door, I'll go watch the other one.",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "sttv3_000",
+"en": "duck behind the couch bot they see you",
+"intent": "TAKE_COVER"
+},
+{
+"id": "sttv3_049",
+"en": "i got main covered so you uh run over to yellow stares",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_PLANT_8",
+"en": "plant at the north door",
+"intent": "PLANT"
+},
+{
+"id": "csv5_030",
+"en": "keep your crosshair on the south door, kill whoever walks through",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "r6v2_030",
+"en": "nah no need to hide, nobody's got eyes on you",
+"intent": "WAIT"
+},
+{
+"id": "csv60_055",
+"en": "bro sow some seeds in the east field real quick its empty",
+"intent": "PLANT_CROP"
+},
+{
+"id": "csv3_008",
+"en": "nah don't waste your smoke on west window, keep it",
+"intent": "WAIT"
+},
+{
+"id": "csv57_023",
+"en": "forget the pistol just start shooting",
+"intent": "OPEN_FIRE"
+},
+{
+"id": "r6v56_024",
+"en": "I'm trapped down here, the hatch shut on me, help me out of here.",
+"intent": "HELP_INTERACTION"
+},
+{
+"id": "r6_073",
+"en": "take site, check every corner",
+"intent": "ENTRY"
+},
+{
+"id": "sttv5_011",
+"en": "start shooting when i say go not before okay",
+"intent": "OPEN_FIRE"
+},
+{
+"id": "seed_PLANT_CROP_4",
+"en": "sow the north field",
+"intent": "PLANT_CROP"
+},
+{
+"id": "cs_111",
+"en": "smoke the other door, they're holding it",
+"intent": "SMOKE"
+},
+{
+"id": "seed_BREACH_24",
+"en": "breach the barn wall",
+"intent": "BREACH"
+},
+{
+"id": "sttv52_029",
+"en": "no i do not need help i am fine i am fine",
+"intent": "NO"
+},
+{
+"id": "sttv5_006",
+"en": "engage on the left side uh hit the left ones",
+"intent": "ATTACK"
+},
+{
+"id": "r6v51_013",
+"en": "When I say now, turn and face me, I'm coming in from your blind side.",
+"intent": "LOOK_AT_ME"
+},
+{
+"id": "csv60_050",
+"en": "go mine some uranium man we need it for the turret",
+"intent": "COLLECT"
+},
+{
+"id": "csv60_005",
+"en": "build a wall right here",
+"intent": "BUILD"
+},
+{
+"id": "sttv52_023",
+"en": "turn and look at the west window just look",
+"intent": "LOOK_AT"
+},
+{
+"id": "r6v55_010",
+"en": "Again, quicker this time.",
+"intent": "REPEAT"
+},
+{
+"id": "seed_LOOK_AT_ME_2",
+"en": "turn to me",
+"intent": "LOOK_AT_ME"
+},
+{
+"id": "csv54_014",
+"en": "lie flat on the ground, belly down",
+"intent": "PRONE"
+},
+{
+"id": "seed_WATER_2",
+"en": "water the field",
+"intent": "WATER"
+},
+{
+"id": "seed_FLANK_5",
+"en": "go around the back",
+"intent": "FLANK"
+},
+{
+"id": "r6v2_002",
+"en": "get the double doors open so I've got a lane to rotate",
+"intent": "OPEN"
+},
+{
+"id": "stt_014",
+"en": "fault in through the window bot",
+"intent": "VAULT_WINDOW"
+},
+{
+"id": "r6v5_018",
+"en": "Hold your shots until he walks into the open.",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "cs_117",
+"en": "you're my shadow this round, go where I go",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "r6v60_032",
+"en": "Plant some dragon fruit over there.",
+"intent": "PLANT_CROP"
+},
+{
+"id": "seed_PRONE_11",
+"en": "lay flat",
+"intent": "PRONE"
+},
+{
+"id": "seed_PLANT_CROP_35",
+"en": "plant some flowers",
+"intent": "PLANT_CROP"
+},
+{
+"id": "cs_119",
+"en": "I'm on this door, you watch the other side",
+"intent": "HOLD_OTHER_ANGLE"
+},
+{
+"id": "r6v60_008",
+"en": "Bring me the sandbags.",
+"intent": "DELIVER"
+},
+{
+"id": "seed_HOLD_POSITION_65",
+"en": "stand here until i say",
+"intent": "HOLD_POSITION"
+},
+{
+"id": "seed_GET_OUT_2",
+"en": "hop out of the car",
+"intent": "GET_OUT"
+},
+{
+"id": "seed_FOLLOW_ME_11",
+"en": "follow me to the north door",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "csv55_000",
+"en": "one more behind the sofa, he's lit for 90",
+"intent": "NONE"
+},
+{
+"id": "seed_NO_1",
+"en": "nope",
+"intent": "NO"
+},
+{
+"id": "r6_104",
+"en": "hold your horses",
+"intent": "WAIT"
+},
+{
+"id": "csv51_028",
+"en": "nah don't look at the west window, false alarm",
+"intent": "WAIT"
+},
+{
+"id": "seed_FOLLOW_ME_18",
+"en": "follow me to the basement",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "sttv2_015",
+"en": "okay so uh you gotta lay low they're coming up the stairs",
+"intent": "TAKE_COVER"
+},
+{
+"id": "sttv5_033",
+"en": "go around and plank them hit from the side",
+"intent": "FLANK"
+},
+{
+"id": "seed_PRONE_9",
+"en": "hit the dirt",
+"intent": "PRONE"
+},
+{
+"id": "sttv54_019",
+"en": "okay you go at my mark and you stay there dont move from it",
+"intent": "HOLD_POSITION"
+},
+{
+"id": "sttv57_018",
+"en": "enemy got shotgun on the left",
+"intent": "NONE"
+},
+{
+"id": "csv57_009",
+"en": "yo get out of there theyre flanking you",
+"intent": "FALL_BACK"
+},
+{
+"id": "csv57_011",
+"en": "just jump down bro its faster",
+"intent": "JUMP"
+},
+{
+"id": "seed_FOLLOW_ME_0",
+"en": "follow me",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "sttv57_010",
+"en": "uh reload you weapon",
+"intent": "RELOAD"
+},
+{
+"id": "r6_043",
+"en": "when I yell go, loop round the back",
+"intent": "FLANK"
+},
+{
+"id": "sttv53_015",
+"en": "you go downstairs now uh just move downstairs okay",
+"intent": "MOVE_TO"
+},
+{
+"id": "csv2_032",
+"en": "you don't gotta hide man, last guy's dead",
+"intent": "NONE"
+},
+{
+"id": "r6_062",
+"en": "plant is on you, I'm covering",
+"intent": "PLANT"
+},
+{
+"id": "seed_DRONE_18",
+"en": "send the drone to my mark",
+"intent": "DRONE"
+},
+{
+"id": "csv3_048",
+"en": "east door's boarded, put a charge on it and blow it",
+"intent": "BREACH"
+},
+{
+"id": "r6v60_015",
+"en": "Harvest the wheat in the west field, we've got time before the push.",
+"intent": "HARVEST"
+},
+{
+"id": "seed_DELIVER_16",
+"en": "drop the wood here",
+"intent": "DELIVER"
+},
+{
+"id": "seed_SWITCH_WEAPON_54",
+"en": "pistol",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "r6v5_005",
+"en": "He's lit, low HP, go finish him off.",
+"intent": "ATTACK"
+},
+{
+"id": "seed_HELP_14",
+"en": "get over here and help",
+"intent": "HELP"
+},
+{
+"id": "r6v60_023",
+"en": "Build some cover next to the car.",
+"intent": "BUILD"
+},
+{
+"id": "csv5_043",
+"en": "smoke nine o'clock, cut the awp off",
+"intent": "SMOKE"
+},
+{
+"id": "seed_SUPPRESS_42",
+"en": "suppressive fire on my mark",
+"intent": "SUPPRESS"
+},
+{
+"id": "seed_COLLECT_12",
+"en": "cut down the tree by the barn",
+"intent": "COLLECT"
+},
+{
+"id": "stt_084",
+"en": "rope down the outside wall to second floor",
+"intent": "RAPPEL"
+},
+{
+"id": "stt_092",
+"en": "uh disengage disengage reset",
+"intent": "FALL_BACK"
+},
+{
+"id": "seed_TAKE_COVER_5",
+"en": "cover yourself",
+"intent": "TAKE_COVER"
+},
+{
+"id": "sttv60_014",
+"en": "uh chop some wood from those trees there",
+"intent": "COLLECT"
+},
+{
+"id": "csv2_004",
+"en": "cover me while I open the gate",
+"intent": "COVER_ME"
+},
+{
+"id": "sttv2_023",
+"en": "the windows already open just climb in",
+"intent": "VAULT_WINDOW"
+},
+{
+"id": "r6v5_030",
+"en": "Keep your crosshair on the north door, be ready to fire.",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "r6v57_021",
+"en": "Get out, get out, they're lighting up the car!",
+"intent": "GET_OUT"
+},
+{
+"id": "csv3_044",
+"en": "yo get over to main real quick",
+"intent": "MOVE_TO"
+},
+{
+"id": "csv54_019",
+"en": "park yourself on my mark and don't move from it",
+"intent": "HOLD_POSITION"
+},
+{
+"id": "stt_018",
+"en": "blow the other hatch bot",
+"intent": "BREACH"
+},
+{
+"id": "r6v55_021",
+"en": "Grab some ammo upstairs, we're both running dry.",
+"intent": "MOVE_TO"
+},
+{
+"id": "sttv56_029",
+"en": "uh im trapped im trapped in basement help me get out",
+"intent": "HELP_INTERACTION"
+},
+{
+"id": "seed_WAIT_59",
+"en": "don't harvest yet",
+"intent": "WAIT"
+},
+{
+"id": "csv54_028",
+"en": "rotate over there and be quick about it",
+"intent": "MOVE_TO"
+},
+{
+"id": "cs_112",
+"en": "lock down the corridor with your gun up",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "r6v52_004",
+"en": "On my call, come give me a hand, not before.",
+"intent": "HELP"
+},
+{
+"id": "sttv3_004",
+"en": "one guy was sitting on the sofa upstairs i think he still alive",
+"intent": "NONE"
+},
+{
+"id": "r6v60_012",
+"en": "Build a deployable shield at the west door.",
+"intent": "BUILD"
+},
+{
+"id": "stt_109",
+"en": "take the long route past my marker come up behind them",
+"intent": "FLANK"
+},
+{
+"id": "stt_106",
+"en": "plan it plan it now",
+"intent": "PLANT"
+},
+{
+"id": "stt_042",
+"en": "watch that door",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "seed_YES_7",
+"en": "correct",
+"intent": "YES"
+},
+{
+"id": "csv55_022",
+"en": "do it again bro, the door's still shut",
+"intent": "REPEAT"
+},
+{
+"id": "sttv53_025",
+"en": "uh check your fire i say again check your fire you nearly hit me",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "r6v2_019",
+"en": "slide the gate open, keep it quiet",
+"intent": "OPEN"
+},
+{
+"id": "seed_HOLD_POSITION_68",
+"en": "dig in",
+"intent": "HOLD_POSITION"
+},
+{
+"id": "seed_HELP_INTERACTION_19",
+"en": "free me",
+"intent": "HELP_INTERACTION"
+},
+{
+"id": "csv56_011",
+"en": "stand on my ping and dont move",
+"intent": "HOLD_POSITION"
+},
+{
+"id": "sttv2_034",
+"en": "no not that one the other door open it",
+"intent": "OPEN"
+},
+{
+"id": "r6v60_040",
+"en": "Reinforce the hatch upstairs.",
+"intent": "REPAIR"
+},
+{
+"id": "sttv3_013",
+"en": "okay so uh keep you eyes on red they always sneak up from it",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "csv51_000",
+"en": "turn and look at the east window upstairs, think someone's peeking from it",
+"intent": "LOOK_AT"
+},
+{
+"id": "csv5_011",
+"en": "start shooting when i say go, ok",
+"intent": "OPEN_FIRE"
+},
+{
+"id": "r6_120",
+"en": "you're entry frag this round, get in the room",
+"intent": "ENTRY"
+},
+{
+"id": "csv5_040",
+"en": "hop through the right window, come on, hurry",
+"intent": "VAULT_WINDOW"
+},
+{
+"id": "seed_PLANT_5",
+"en": "get the plant",
+"intent": "PLANT"
+},
+{
+"id": "stt_095",
+"en": "cover me im crossing",
+"intent": "COVER_ME"
+},
+{
+"id": "seed_BUILD_5",
+"en": "put up a fence around the field",
+"intent": "BUILD"
+},
+{
+"id": "r6v3_041",
+"en": "Yellow stairs is already smoked, put yours on the other staircase.",
+"intent": "SMOKE"
+},
+{
+"id": "seed_SMOKE_8",
+"en": "smoke the north door",
+"intent": "SMOKE"
+},
+{
+"id": "r6v53_020",
+"en": "East window is mine, go hold the opposite side for me.",
+"intent": "HOLD_OTHER_ANGLE"
+},
+{
+"id": "r6_026",
+"en": "rez me please",
+"intent": "HELP"
+},
+{
+"id": "r6v51_016",
+"en": "Keep your eyes on the south window and don't come off it, they love that runout.",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "stt_002",
+"en": "blow the hatch open",
+"intent": "BREACH"
+},
+{
+"id": "cs_081",
+"en": "blind them for me before I peek",
+"intent": "FLASH"
+},
+{
+"id": "seed_RAPPEL_13",
+"en": "drop down on the rope",
+"intent": "RAPPEL"
+},
+{
+"id": "seed_GO_NOW_1",
+"en": "go now",
+"intent": "GO_NOW"
+},
+{
+"id": "r6v56_006",
+"en": "I got dropped in the hallway, come pick me up quick.",
+"intent": "HELP"
+},
+{
+"id": "csv54_006",
+"en": "damn, no clue man, couldn't tell you",
+"intent": "DONT_KNOW"
+},
+{
+"id": "csv51_022",
+"en": "i'm going for the plant, keep your eyes on me and cover me",
+"intent": "COVER_ME"
+},
+{
+"id": "seed_WATER_12",
+"en": "water the seedlings",
+"intent": "WATER"
+},
+{
+"id": "csv57_027",
+"en": "get out, the cars on fire",
+"intent": "GET_OUT"
+},
+{
+"id": "stt_063",
+"en": "hold this ankle right here",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "sttv60_026",
+"en": "uh pick up the ammo over there",
+"intent": "MOVE_TO"
+},
+{
+"id": "csv56_021",
+"en": "get back up man we gotta move",
+"intent": "STAND_UP"
+},
+{
+"id": "sttv57_026",
+"en": "swap to primary uh the primary",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "r6v57_006",
+"en": "You're out of ammo, pull your sidearm.",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "csv3_038",
+"en": "rope down to south window and just hang there",
+"intent": "RAPPEL"
+},
+{
+"id": "seed_CROUCH_15",
+"en": "crouch right there",
+"intent": "CROUCH"
+},
+{
+"id": "seed_HOLD_OTHER_ANGLE_27",
+"en": "cover the other angle",
+"intent": "HOLD_OTHER_ANGLE"
+},
+{
+"id": "r6v57_004",
+"en": "Cover me while I reload, I'm empty.",
+"intent": "COVER_ME"
+},
+{
+"id": "sttv60_059",
+"en": "um can you plant the sunflower in greenhouse when i say go",
+"intent": "PLANT_CROP"
+},
+{
+"id": "sttv5_017",
+"en": "no shooting okay do not fire your gun",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "seed_DONT_KNOW_6",
+"en": "i have no idea",
+"intent": "DONT_KNOW"
+},
+{
+"id": "sttv55_000",
+"en": "okay so uh you get in the car get in",
+"intent": "GET_IN"
+},
+{
+"id": "csv54_001",
+"en": "affirmative, that's a yes from me",
+"intent": "YES"
+},
+{
+"id": "csv55_033",
+"en": "no need to check the roof man, it's clear",
+"intent": "WAIT"
+},
+{
+"id": "r6v5_003",
+"en": "Attack basement and kill whoever is anchoring it.",
+"intent": "ATTACK"
+},
+{
+"id": "csv3_018",
+"en": "I'm sitting on blue, you watch the other staircase",
+"intent": "HOLD_OTHER_ANGLE"
+},
+{
+"id": "seed_SMOKE_23",
+"en": "throw a smoke on my pin",
+"intent": "SMOKE"
+},
+{
+"id": "seed_SUPPRESS_1",
+"en": "suppress them",
+"intent": "SUPPRESS"
+},
+{
+"id": "seed_MOVE_TO_131",
+"en": "move to that pin",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_HELP_12",
+"en": "can you help me",
+"intent": "HELP"
+},
+{
+"id": "cs_012",
+"en": "one's lit, like 20 hp, went pit",
+"intent": "NONE"
+},
+{
+"id": "cs_078",
+"en": "hit them from behind once I give the word",
+"intent": "FLANK"
+},
+{
+"id": "sttv51_008",
+"en": "when i say go you turn and look to the mane door okay not before",
+"intent": "LOOK_AT"
+},
+{
+"id": "seed_LOOK_AT_ME_6",
+"en": "turn and look at me",
+"intent": "LOOK_AT_ME"
+},
+{
+"id": "seed_PRONE_0",
+"en": "lie down",
+"intent": "PRONE"
+},
+{
+"id": "stt_047",
+"en": "shut their defuser down",
+"intent": "DEFUSE"
+},
+{
+"id": "cs_029",
+"en": "stick with me, we're going B together",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "r6_017",
+"en": "overwatch me while I'm droning",
+"intent": "COVER_ME"
+},
+{
+"id": "seed_SMOKE_13",
+"en": "smoke the east window",
+"intent": "SMOKE"
+},
+{
+"id": "seed_BREACH_0",
+"en": "breach",
+"intent": "BREACH"
+},
+{
+"id": "r6v5_010",
+"en": "On my mark, open up on them.",
+"intent": "OPEN_FIRE"
+},
+{
+"id": "csv2_015",
+"en": "get the other window open, this one's jammed",
+"intent": "OPEN"
+},
+{
+"id": "seed_OPEN_FIRE_35",
+"en": "should this wall",
+"intent": "OPEN_FIRE"
+},
+{
+"id": "csv5_053",
+"en": "plant right here, right now, we got twenty seconds",
+"intent": "PLANT"
+},
+{
+"id": "seed_LOOK_AT_ME_8",
+"en": "turn towards me",
+"intent": "LOOK_AT_ME"
+},
+{
+"id": "seed_FEED_16",
+"en": "feed the animals in the barn",
+"intent": "FEED"
+},
+{
+"id": "cs_104",
+"en": "go stand by the double stack over there",
+"intent": "MOVE_TO"
+},
+{
+"id": "sttv52_025",
+"en": "okay you can shoot now fire on the north window",
+"intent": "OPEN_FIRE"
+},
+{
+"id": "sttv60_033",
+"en": "fill up the troughs for the cows",
+"intent": "FEED"
+},
+{
+"id": "csv53_017",
+"en": "blow that hatch open, then we drop on their heads",
+"intent": "BREACH"
+},
+{
+"id": "sttv60_032",
+"en": "okay dig in here dig in",
+"intent": "HOLD_POSITION"
+},
+{
+"id": "cs_115",
+"en": "push in there and clear it out",
+"intent": "ENTRY"
+},
+{
+"id": "stt_037",
+"en": "uh hang on your rope outside that window",
+"intent": "RAPPEL"
+},
+{
+"id": "csv60_027",
+"en": "knock the shed down we need the space",
+"intent": "DEMOLISH"
+},
+{
+"id": "csv5_016",
+"en": "don't shoot, don't shoot, that's me coming through",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "csv60_000",
+"en": "plant some beets in the north bed bro",
+"intent": "PLANT_CROP"
+},
+{
+"id": "csv5_046",
+"en": "three rushing on the right, all together",
+"intent": "NONE"
+},
+{
+"id": "seed_MOVE_TO_116",
+"en": "squeeze in there",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6v54_036",
+"en": "No, hold up, scrap that order.",
+"intent": "WAIT"
+},
+{
+"id": "r6v60_014",
+"en": "Fix the fence on the west side, they keep running through it.",
+"intent": "REPAIR"
+},
+{
+"id": "r6v51_021",
+"en": "Come to me and stick on my shoulder, I don't want you roaming alone.",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "seed_TILL_17",
+"en": "fertilize the beds",
+"intent": "TILL"
+},
+{
+"id": "seed_HOLD_ANGLE_41",
+"en": "cover the east door",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "r6v60_034",
+"en": "Rake this plot, we're planting after the round.",
+"intent": "TILL"
+},
+{
+"id": "seed_PLANT_CROP_27",
+"en": "sow it with wheat",
+"intent": "PLANT_CROP"
+},
+{
+"id": "sttv60_051",
+"en": "okay so pick all the grapes in the west bed",
+"intent": "HARVEST"
+},
+{
+"id": "stt_096",
+"en": "roll the cam in there get me some eyes",
+"intent": "DRONE"
+},
+{
+"id": "seed_FALL_BACK_4",
+"en": "pull back",
+"intent": "FALL_BACK"
+},
+{
+"id": "seed_ATTACK_29",
+"en": "find them and kill them",
+"intent": "ATTACK"
+},
+{
+"id": "stt_060",
+"en": "nice shot buddy",
+"intent": "NONE"
+},
+{
+"id": "sttv60_008",
+"en": "fix that fence",
+"intent": "REPAIR"
+},
+{
+"id": "seed_FALL_BACK_9",
+"en": "fall back to the east door",
+"intent": "FALL_BACK"
+},
+{
+"id": "seed_JUMP_82",
+"en": "jump in through the hatch",
+"intent": "JUMP"
+},
+{
+"id": "stt_051",
+"en": "send the drone thru the other hallway",
+"intent": "DRONE"
+},
+{
+"id": "seed_DELIVER_34",
+"en": "put the logs in the truck",
+"intent": "DELIVER"
+},
+{
+"id": "csv57_026",
+"en": "dude on the right has a shotgun careful",
+"intent": "NONE"
+},
+{
+"id": "r6v3_018",
+"en": "Before we commit, get a drone into basement, I wanna know where the roamers are sitting.",
+"intent": "DRONE"
+},
+{
+"id": "seed_COLLECT_8",
+"en": "shear the sheep",
+"intent": "COLLECT"
+},
+{
+"id": "sttv54_009",
+"en": "calm back here calm back",
+"intent": "COME_BACK"
+},
+{
+"id": "r6_007",
+"en": "block their sightline with a smoke",
+"intent": "SMOKE"
+},
+{
+"id": "stt_073",
+"en": "get the defuser down",
+"intent": "PLANT"
+},
+{
+"id": "seed_FLANK_2",
+"en": "go around",
+"intent": "FLANK"
+},
+{
+"id": "r6_054",
+"en": "keep your crosshair on the long hallway",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "csv2_025",
+"en": "crack the door when I say go, I'm throwing a flash in",
+"intent": "OPEN"
+},
+{
+"id": "sttv3_043",
+"en": "flake them uh go around through brown",
+"intent": "FLANK"
+},
+{
+"id": "r6v53_008",
+"en": "Jump the railing and land next to me, we have to trade the roamer.",
+"intent": "JUMP"
+},
+{
+"id": "seed_GO_BACK_1",
+"en": "go back to where you were",
+"intent": "GO_BACK"
+},
+{
+"id": "stt_118",
+"en": "go go go",
+"intent": "GO_NOW"
+},
+{
+"id": "cs_073",
+"en": "I'll hold stairs, you hold whatever's opposite",
+"intent": "HOLD_OTHER_ANGLE"
+},
+{
+"id": "seed_RELOAD_2",
+"en": "reload your weapon",
+"intent": "RELOAD"
+},
+{
+"id": "seed_ATTACK_27",
+"en": "go find the enemies",
+"intent": "ATTACK"
+},
+{
+"id": "csv3_012",
+"en": "top floor, push it and wipe whoever's in there",
+"intent": "ENTRY"
+},
+{
+"id": "sttv3_042",
+"en": "throw a flash bang over the table okay",
+"intent": "FLASH"
+},
+{
+"id": "seed_CHECK_46",
+"en": "check white stairs",
+"intent": "CHECK"
+},
+{
+"id": "r6v57_013",
+"en": "He's reloading, he's reloading!",
+"intent": "NONE"
+},
+{
+"id": "seed_YES_19",
+"en": "uh huh",
+"intent": "YES"
+},
+{
+"id": "cs_044",
+"en": "vault in there, the window on your left",
+"intent": "VAULT_WINDOW"
+},
+{
+"id": "r6_010",
+"en": "disengage and reset",
+"intent": "FALL_BACK"
+},
+{
+"id": "sttv52_021",
+"en": "uh put your drown in there check the room with it",
+"intent": "DRONE"
+},
+{
+"id": "csv57_012",
+"en": "pick up that shotgun",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6v57_036",
+"en": "Leave the vehicle when I say go, not before.",
+"intent": "GET_OUT"
+},
+{
+"id": "seed_REPEAT_13",
+"en": "give it another go",
+"intent": "REPEAT"
+},
+{
+"id": "seed_TILL_3",
+"en": "plow the north field",
+"intent": "TILL"
+},
+{
+"id": "r6v2_015",
+"en": "wait wait, scratch that, don't open it yet",
+"intent": "WAIT"
+},
+{
+"id": "cs_063",
+"en": "send your drone in first, see what's in there",
+"intent": "DRONE"
+},
+{
+"id": "r6v56_012",
+"en": "Get up there, we're running out of time.",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6v2_022",
+"en": "gonna run the rotate, overwatch me from cover",
+"intent": "COVER_ME"
+},
+{
+"id": "r6v55_017",
+"en": "Hop out, we go on foot the rest of the way.",
+"intent": "GET_OUT"
+},
+{
+"id": "seed_VAULT_WINDOW_8",
+"en": "vault the north window",
+"intent": "VAULT_WINDOW"
+},
+{
+"id": "r6v54_040",
+"en": "Get me back on my feet, I'm bleeding out!",
+"intent": "HELP"
+},
+{
+"id": "csv2_022",
+"en": "on my count, dip behind the truck",
+"intent": "TAKE_COVER"
+},
+{
+"id": "stt_025",
+"en": "deny the plant bot",
+"intent": "DEFUSE"
+},
+{
+"id": "seed_PLANT_16",
+"en": "plant at my pin",
+"intent": "PLANT"
+},
+{
+"id": "sttv54_029",
+"en": "drone this room first uh send the drone in before we go",
+"intent": "DRONE"
+},
+{
+"id": "cs_018",
+"en": "take the long way round and catch them off guard",
+"intent": "FLANK"
+},
+{
+"id": "csv55_027",
+"en": "grab a rifle man, the pistol ain't gonna cut it",
+"intent": "MOVE_TO"
+},
+{
+"id": "sttv60_006",
+"en": "so uh bring me some logs i need to i need to build",
+"intent": "DELIVER"
+},
+{
+"id": "r6v3_046",
+"en": "You're getting swarmed, ditch that fight and get back to ground floor.",
+"intent": "FALL_BACK"
+},
+{
+"id": "seed_MAYBE_14",
+"en": "your call",
+"intent": "MAYBE"
+},
+{
+"id": "csv56_028",
+"en": "just jump down bro its faster than the stairs",
+"intent": "JUMP"
+},
+{
+"id": "seed_DEFUSE_3",
+"en": "go defuse",
+"intent": "DEFUSE"
+},
+{
+"id": "r6v3_010",
+"en": "Hit north door, go in hot and clean that room out.",
+"intent": "ENTRY"
+},
+{
+"id": "seed_GET_OUT_6",
+"en": "leave the car",
+"intent": "GET_OUT"
+},
+{
+"id": "sttv56_024",
+"en": "regroup regroup um rejoin me",
+"intent": "COME_BACK"
+},
+{
+"id": "csv3_033",
+"en": "they're all stacked on brown, so loop around east door and backstab them",
+"intent": "FLANK"
+},
+{
+"id": "r6v53_015",
+"en": "Go down to the basement and set up on site, I'm coming.",
+"intent": "MOVE_TO"
+},
+{
+"id": "sttv2_002",
+"en": "keep your gun on that window",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "sttv56_000",
+"en": "uh go back go back",
+"intent": "GO_BACK"
+},
+{
+"id": "r6v54_028",
+"en": "Hop over that sofa, quick.",
+"intent": "JUMP"
+},
+{
+"id": "csv3_006",
+"en": "flash blue on the ground floor before I peek",
+"intent": "FLASH"
+},
+{
+"id": "sttv3_035",
+"en": "smoke goes on white stares but only on my call",
+"intent": "SMOKE"
+},
+{
+"id": "r6v54_021",
+"en": "Flash my ping when I call it, not before.",
+"intent": "FLASH"
+},
+{
+"id": "cs_003",
+"en": "keep me alive while I cross",
+"intent": "COVER_ME"
+},
+{
+"id": "seed_WATER_16",
+"en": "water the strawberries",
+"intent": "WATER"
+},
+{
+"id": "r6v54_022",
+"en": "Drone out where I pinged before we commit.",
+"intent": "DRONE"
+},
+{
+"id": "seed_LOOK_AT_ME_13",
+"en": "turn around and look at me",
+"intent": "LOOK_AT_ME"
+},
+{
+"id": "r6v52_018",
+"en": "Just keep shooting at that wall so they can't rotate.",
+"intent": "SUPPRESS"
+},
+{
+"id": "r6_042",
+"en": "burn them out with a molly under the stairs",
+"intent": "FRAG"
+},
+{
+"id": "seed_COME_BACK_20",
+"en": "head back",
+"intent": "GO_BACK"
+},
+{
+"id": "cs_064",
+"en": "blow that wall open",
+"intent": "BREACH"
+},
+{
+"id": "seed_GO_NOW_6",
+"en": "now now",
+"intent": "GO_NOW"
+},
+{
+"id": "seed_PLANT_CROP_33",
+"en": "plant a tree here",
+"intent": "PLANT_CROP"
+},
+{
+"id": "csv51_004",
+"en": "turn around man, check behind you, he's lit",
+"intent": "LOOK_AT"
+},
+{
+"id": "stt_114",
+"en": "make us a hole in that wall",
+"intent": "BREACH"
+},
+{
+"id": "sttv5_003",
+"en": "okay so take them out you decide how just take them out",
+"intent": "ATTACK"
+},
+{
+"id": "stt_085",
+"en": "get on the bomb and uh kit it",
+"intent": "DEFUSE"
+},
+{
+"id": "sttv2_017",
+"en": "bot hit the deck hit the deck theyre lighting you up",
+"intent": "PRONE"
+},
+{
+"id": "r6v54_008",
+"en": "Come on back, you've roamed far enough.",
+"intent": "COME_BACK"
+},
+{
+"id": "csv5_055",
+"en": "don't open fire, we're still sneaking",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "r6v60_024",
+"en": "Sow some barley on my pin.",
+"intent": "PLANT_CROP"
+},
+{
+"id": "seed_GET_IN_7",
+"en": "get into the truck",
+"intent": "GET_IN"
+},
+{
+"id": "csv2_027",
+"en": "stay in cover and watch me cross",
+"intent": "COVER_ME"
+},
+{
+"id": "seed_FEED_17",
+"en": "put hay in the pen",
+"intent": "FEED"
+},
+{
+"id": "csv56_008",
+"en": "go down there bro its quieter",
+"intent": "MOVE_TO"
+},
+{
+"id": "sttv5_055",
+"en": "i said open fire but no dont fire dont fire",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "seed_FEED_3",
+"en": "feed the pigs",
+"intent": "FEED"
+},
+{
+"id": "stt_068",
+"en": "shield guy in the hallway",
+"intent": "NONE"
+},
+{
+"id": "sttv3_018",
+"en": "move to the spiral stares i will be with you in a second",
+"intent": "MOVE_TO"
+},
+{
+"id": "sttv51_015",
+"en": "bot bot turn around and luck at me",
+"intent": "LOOK_AT_ME"
+},
+{
+"id": "stt_081",
+"en": "hop the window on my mark",
+"intent": "VAULT_WINDOW"
+},
+{
+"id": "seed_HARVEST_35",
+"en": "pick the tomatoes in the greenhouse",
+"intent": "HARVEST"
+},
+{
+"id": "r6_052",
+"en": "Valk cam top of stairs",
+"intent": "NONE"
+},
+{
+"id": "sttv60_054",
+"en": "i'm planting the onions now",
+"intent": "NONE"
+},
+{
+"id": "r6v57_001",
+"en": "Hop out of the car, we're pushing in on foot.",
+"intent": "GET_OUT"
+},
+{
+"id": "r6v2_000",
+"en": "hide a Valk cam up on the ceiling somewhere",
+"intent": "NONE"
+},
+{
+"id": "r6v3_045",
+"en": "Bro I've been a Thermite main since year one and I still whiff that.",
+"intent": "NONE"
+},
+{
+"id": "r6v2_026",
+"en": "they left it open, flood in and take the room",
+"intent": "ENTRY"
+},
+{
+"id": "csv54_024",
+"en": "pop a flash over my mark when i say go, not before",
+"intent": "FLASH"
+},
+{
+"id": "r6v55_001",
+"en": "Try that again, the charge didn't stick.",
+"intent": "REPEAT"
+},
+{
+"id": "stt_010",
+"en": "on me on me",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "csv53_013",
+"en": "grab the rope and climb up to the roof, i'll meet you there",
+"intent": "RAPPEL"
+},
+{
+"id": "sttv60_005",
+"en": "okay so collect the eggs from the coop",
+"intent": "COLLECT"
+},
+{
+"id": "sttv52_002",
+"en": "okay so uh can you can you give me some help please i can not do it alone they are everywhere",
+"intent": "HELP"
+},
+{
+"id": "csv52_000",
+"en": "yo help me out real quick",
+"intent": "HELP"
+},
+{
+"id": "csv54_020",
+"en": "smoke my pin, i need to cross",
+"intent": "SMOKE"
+},
+{
+"id": "csv5_029",
+"en": "cover me while i plant, anyone peeks you drop him",
+"intent": "COVER_ME"
+},
+{
+"id": "sttv60_004",
+"en": "feed the sheeps",
+"intent": "FEED"
+},
+{
+"id": "csv52_022",
+"en": "on my go push through north door and clear the room, i'll trade you",
+"intent": "ENTRY"
+},
+{
+"id": "csv53_000",
+"en": "bro just drop down to me, they all rotated off site",
+"intent": "JUMP"
+},
+{
+"id": "r6v53_002",
+"en": "We're out of time, hop down and swing with me.",
+"intent": "JUMP"
+},
+{
+"id": "csv60_015",
+"en": "pick the grapes by my ping theyre ripe",
+"intent": "HARVEST"
+},
+{
+"id": "sttv51_014",
+"en": "on my call you turn and look on me okay on my call",
+"intent": "LOOK_AT_ME"
+},
+{
+"id": "seed_ATTACK_35",
+"en": "find enemy",
+"intent": "ATTACK"
+},
+{
+"id": "sttv52_012",
+"en": "okay so when i give the word you go check downstairs",
+"intent": "CHECK"
+},
+{
+"id": "stt_055",
+"en": "never mind the drone bot",
+"intent": "WAIT"
+},
+{
+"id": "csv51_013",
+"en": "turn and look at me, i'm at the north window",
+"intent": "LOOK_AT_ME"
+},
+{
+"id": "csv52_015",
+"en": "suppress right side for me, i need to cross",
+"intent": "SUPPRESS"
+},
+{
+"id": "csv51_006",
+"en": "look where i just pinged, over there",
+"intent": "LOOK_AT"
+},
+{
+"id": "seed_SWITCH_WEAPON_43",
+"en": "go secondary",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "cs_082",
+"en": "make your way up to top banana",
+"intent": "MOVE_TO"
+},
+{
+"id": "sttv51_019",
+"en": "go have a look what is on the roof first before we push",
+"intent": "CHECK"
+},
+{
+"id": "sttv55_016",
+"en": "okay so uh you go take armor at my ping there is boxes",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_LOOK_AT_45",
+"en": "look at the main door",
+"intent": "LOOK_AT"
+},
+{
+"id": "sttv56_009",
+"en": "press the button for me i cant reach it",
+"intent": "HELP_INTERACTION"
+},
+{
+"id": "stt_000",
+"en": "i take this door, you watch other",
+"intent": "HOLD_OTHER_ANGLE"
+},
+{
+"id": "seed_OPEN_FIRE_22",
+"en": "shoot at the west door",
+"intent": "OPEN_FIRE"
+},
+{
+"id": "seed_LOOK_AT_ME_1",
+"en": "face me",
+"intent": "LOOK_AT_ME"
+},
+{
+"id": "sttv3_038",
+"en": "bot you gonna repel on the north window but only when i tell you",
+"intent": "RAPPEL"
+},
+{
+"id": "stt_082",
+"en": "please you walk to where i mark",
+"intent": "MOVE_TO"
+},
+{
+"id": "csv55_028",
+"en": "get some health dude, you're one shot",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_WATER_13",
+"en": "water the crops",
+"intent": "WATER"
+},
+{
+"id": "r6v5_017",
+"en": "Do not fire yet, you'll give away our position.",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "seed_CROUCH_0",
+"en": "crouch",
+"intent": "CROUCH"
+},
+{
+"id": "sttv5_008",
+"en": "okay you are free to shoot shoot them",
+"intent": "OPEN_FIRE"
+},
+{
+"id": "seed_COLLECT_37",
+"en": "grab some sandbags",
+"intent": "COLLECT"
+},
+{
+"id": "csv53_018",
+"en": "i've got this angle, go hold the other for me",
+"intent": "HOLD_OTHER_ANGLE"
+},
+{
+"id": "seed_GET_IN_29",
+"en": "take that car",
+"intent": "GET_IN"
+},
+{
+"id": "r6v60_043",
+"en": "Plant the sunflower seeds in the east field.",
+"intent": "PLANT_CROP"
+},
+{
+"id": "r6v60_029",
+"en": "Dig in at the red stairs.",
+"intent": "HOLD_POSITION"
+},
+{
+"id": "r6_087",
+"en": "get ready to plant, don't touch it till I say",
+"intent": "PLANT"
+},
+{
+"id": "sttv5_048",
+"en": "contact behind us they are behind us",
+"intent": "NONE"
+},
+{
+"id": "seed_SWITCH_WEAPON_16",
+"en": "switch to the pistol",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "sttv57_025",
+"en": "uh swamp mags quick",
+"intent": "RELOAD"
+},
+{
+"id": "sttv53_007",
+"en": "just jump off the balcony come on it is not high",
+"intent": "JUMP"
+},
+{
+"id": "seed_NO_12",
+"en": "incorrect",
+"intent": "NO"
+},
+{
+"id": "csv2_030",
+"en": "door's open, push site and clear it",
+"intent": "ENTRY"
+},
+{
+"id": "r6_019",
+"en": "slap a charge on the barricade",
+"intent": "BREACH"
+},
+{
+"id": "r6v51_009",
+"en": "Look at that window above you, someone's hanging on it.",
+"intent": "LOOK_AT"
+},
+{
+"id": "seed_RAPPEL_12",
+"en": "rappel from the roof",
+"intent": "RAPPEL"
+},
+{
+"id": "r6v51_007",
+"en": "Look over there where I'm aiming, something just moved.",
+"intent": "LOOK_AT"
+},
+{
+"id": "r6v54_025",
+"en": "Check the stairs next to my ping, I heard footsteps.",
+"intent": "CHECK"
+},
+{
+"id": "sttv3_020",
+"en": "drone out top floor first i want to know how many",
+"intent": "DRONE"
+},
+{
+"id": "sttv51_006",
+"en": "okay so look at that that thing i just pinged",
+"intent": "LOOK_AT"
+},
+{
+"id": "seed_TAKE_COVER_14",
+"en": "get behind the sofa",
+"intent": "TAKE_COVER"
+},
+{
+"id": "seed_PLANT_20",
+"en": "plant the charge",
+"intent": "PLANT"
+},
+{
+"id": "r6v5_051",
+"en": "Only two left, we can win this round.",
+"intent": "NONE"
+},
+{
+"id": "seed_PLANT_11",
+"en": "plant behind the chairs",
+"intent": "PLANT"
+},
+{
+"id": "sttv3_045",
+"en": "second story is not clear go in and clean it",
+"intent": "ENTRY"
+},
+{
+"id": "sttv53_006",
+"en": "okay on three you jump across the cap not before on three",
+"intent": "JUMP"
+},
+{
+"id": "r6v55_023",
+"en": "Don't move, Kapkan's got the doorways trapped.",
+"intent": "HOLD_POSITION"
+},
+{
+"id": "sttv3_005",
+"en": "red stares is blocked uh get to the other stares",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_NONE_252",
+"en": "noted",
+"intent": "NONE"
+},
+{
+"id": "seed_FLANK_18",
+"en": "go around the left",
+"intent": "FLANK"
+},
+{
+"id": "seed_NONE_59",
+"en": "don't go to the top floor",
+"intent": "WAIT"
+},
+{
+"id": "seed_FOLLOW_ME_17",
+"en": "follow me to the first floor",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "csv5_005",
+"en": "take out the guy in the north window, he's a one tap",
+"intent": "ATTACK"
+},
+{
+"id": "cs_014",
+"en": "flash the room and then entry",
+"intent": "FLASH"
+},
+{
+"id": "seed_COME_BACK_3",
+"en": "return",
+"intent": "GO_BACK"
+},
+{
+"id": "sttv60_009",
+"en": "tear down that shed",
+"intent": "DEMOLISH"
+},
+{
+"id": "csv5_001",
+"en": "engage, engage, they're all over the bomb",
+"intent": "ATTACK"
+},
+{
+"id": "seed_SWITCH_WEAPON_34",
+"en": "take out your pistol",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "seed_LOOK_AT_ME_4",
+"en": "look at me bot",
+"intent": "LOOK_AT_ME"
+},
+{
+"id": "cs_085",
+"en": "res me bro",
+"intent": "HELP"
+},
+{
+"id": "sttv56_025",
+"en": "go inside the basement um quick",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6v57_005",
+"en": "Get behind the truck, there's a Glaz holding the long sightline.",
+"intent": "TAKE_COVER"
+},
+{
+"id": "sttv56_031",
+"en": "help me up man im knock down",
+"intent": "HELP"
+},
+{
+"id": "csv56_026",
+"en": "get in through the main door its open",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6v2_036",
+"en": "nitro's coming over the top, get yourself somewhere safe",
+"intent": "TAKE_COVER"
+},
+{
+"id": "r6_053",
+"en": "hard breach that wall",
+"intent": "BREACH"
+},
+{
+"id": "stt_071",
+"en": "two on the stairs two",
+"intent": "NONE"
+},
+{
+"id": "r6v52_011",
+"en": "Check that room I just pinged, I want to know it's clear.",
+"intent": "CHECK"
+},
+{
+"id": "csv5_037",
+"en": "toss a nade down, they're stacked under us",
+"intent": "FRAG"
+},
+{
+"id": "csv5_035",
+"en": "keep your eyes on the right, they love a late lurk",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "sttv5_040",
+"en": "watch the window above you i think somebody is their",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "r6v51_024",
+"en": "Look out, roamer swinging on your left!",
+"intent": "NONE"
+},
+{
+"id": "r6v57_034",
+"en": "Restock at the ammo crate in the basement.",
+"intent": "MOVE_TO"
+},
+{
+"id": "sttv60_038",
+"en": "okay put the pepper seedlings in that planter there",
+"intent": "PLANT_CROP"
+},
+{
+"id": "csv53_006",
+"en": "when i say go, jump off the edge and i'll swing with you",
+"intent": "JUMP"
+},
+{
+"id": "r6v52_012",
+"en": "On my go, check the top floor for roamers.",
+"intent": "CHECK"
+},
+{
+"id": "r6v3_032",
+"en": "Prep a flash for west window and send it on three.",
+"intent": "FLASH"
+},
+{
+"id": "r6v5_033",
+"en": "Hold where you are, don't move an inch.",
+"intent": "HOLD_POSITION"
+},
+{
+"id": "seed_LOOK_AT_29",
+"en": "face right",
+"intent": "LOOK_AT"
+},
+{
+"id": "stt_053",
+"en": "okay execute",
+"intent": "GO_NOW"
+},
+{
+"id": "seed_HOLD_ANGLE_24",
+"en": "lock down the top floor",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "seed_MOVE_TO_20",
+"en": "take yellow stairs",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_WAIT_1",
+"en": "hold up",
+"intent": "WAIT"
+},
+{
+"id": "sttv55_029",
+"en": "when i say go you push in from main door",
+"intent": "ENTRY"
+},
+{
+"id": "stt_076",
+"en": "bot are you even listening to me",
+"intent": "NONE"
+},
+{
+"id": "seed_PLANT_15",
+"en": "plant at yellow stairs",
+"intent": "PLANT"
+},
+{
+"id": "stt_017",
+"en": "you stay in this place no moving okay",
+"intent": "HOLD_POSITION"
+},
+{
+"id": "csv52_013",
+"en": "i got this room, you go check the other one",
+"intent": "CHECK"
+},
+{
+"id": "seed_WATER_3",
+"en": "water the north field",
+"intent": "WATER"
+},
+{
+"id": "csv56_004",
+"en": "come back bro",
+"intent": "COME_BACK"
+},
+{
+"id": "seed_HARVEST_3",
+"en": "harvest everything that's ready",
+"intent": "HARVEST"
+},
+{
+"id": "csv3_016",
+"en": "bomb's ticking by the sofa, get on it, I'll watch your back",
+"intent": "DEFUSE"
+},
+{
+"id": "r6v56_023",
+"en": "Run up the steps, quick.",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6v52_028",
+"en": "Never mind, I don't need help anymore, I traded him out.",
+"intent": "WAIT"
+},
+{
+"id": "seed_SMOKE_24",
+"en": "yeah smoke it",
+"intent": "SMOKE"
+},
+{
+"id": "seed_REPAIR_33",
+"en": "fix the bridge",
+"intent": "REPAIR"
+},
+{
+"id": "seed_OPEN_FIRE_46",
+"en": "should that car",
+"intent": "OPEN_FIRE"
+},
+{
+"id": "seed_FOLLOW_ME_8",
+"en": "follow me to the top floor",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "r6_103",
+"en": "two in kitchen, one's Mute",
+"intent": "NONE"
+},
+{
+"id": "cs_040",
+"en": "rotate to connector, quick",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_SWITCH_WEAPON_28",
+"en": "go to your sidearm",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "sttv54_014",
+"en": "go pro go pro uh flat on the ground",
+"intent": "PRONE"
+},
+{
+"id": "seed_FRAG_25",
+"en": "uh throw the grenade there",
+"intent": "FRAG"
+},
+{
+"id": "r6v56_037",
+"en": "Ash is on the rope by the north window.",
+"intent": "NONE"
+},
+{
+"id": "sttv3_022",
+"en": "i go in west window you climb in by the other window",
+"intent": "VAULT_WINDOW"
+},
+{
+"id": "csv57_033",
+"en": "back to primary man",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "sttv5_059",
+"en": "what gun are you using is it any good",
+"intent": "NONE"
+},
+{
+"id": "stt_090",
+"en": "uh wait one",
+"intent": "WAIT"
+},
+{
+"id": "sttv5_025",
+"en": "attack with the charge uh beach that wall",
+"intent": "BREACH"
+},
+{
+"id": "seed_COME_BACK_36",
+"en": "keep coming",
+"intent": "COME_BACK"
+},
+{
+"id": "r6_066",
+"en": "chill in that spot, no moving",
+"intent": "HOLD_POSITION"
+},
+{
+"id": "seed_GO_NOW_4",
+"en": "do it",
+"intent": "GO_NOW"
+},
+{
+"id": "seed_FALL_BACK_13",
+"en": "fall back to white stairs",
+"intent": "FALL_BACK"
+},
+{
+"id": "sttv5_016",
+"en": "dont shoot dont shoot it is a friendly",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "r6v5_049",
+"en": "Roamer on your six, he's really close.",
+"intent": "NONE"
+},
+{
+"id": "csv54_004",
+"en": "hmm might be, i'd call it fifty fifty",
+"intent": "MAYBE"
+},
+{
+"id": "sttv57_007",
+"en": "get out",
+"intent": "GET_OUT"
+},
+{
+"id": "csv57_020",
+"en": "theres a rifle by my ping go get it",
+"intent": "MOVE_TO"
+},
+{
+"id": "sttv60_056",
+"en": "uh build some cover by the car quick",
+"intent": "BUILD"
+},
+{
+"id": "seed_TAKE_COVER_25",
+"en": "keep your head down",
+"intent": "TAKE_COVER"
+},
+{
+"id": "cs_109",
+"en": "smoke off CT for me",
+"intent": "SMOKE"
+},
+{
+"id": "r6v5_041",
+"en": "Head down the white stairs and get on site.",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6v2_010",
+"en": "stop swinging and break line of sight",
+"intent": "TAKE_COVER"
+},
+{
+"id": "cs_051",
+"en": "on me, on me, don't wander off",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "csv55_007",
+"en": "get behind the car dude, they're spraying",
+"intent": "TAKE_COVER"
+},
+{
+"id": "sttv60_050",
+"en": "uh fix fix the fans",
+"intent": "REPAIR"
+},
+{
+"id": "csv60_010",
+"en": "plow the north field",
+"intent": "TILL"
+},
+{
+"id": "r6v57_003",
+"en": "Go grab some ammo, you're nearly dry.",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6_108",
+"en": "hatch above default is open",
+"intent": "NONE"
+},
+{
+"id": "r6v57_002",
+"en": "Reload.",
+"intent": "RELOAD"
+},
+{
+"id": "csv5_010",
+"en": "start blasting dude, what the hell are you waiting for",
+"intent": "OPEN_FIRE"
+},
+{
+"id": "sttv3_037",
+"en": "i am on north door you look at the other door",
+"intent": "HOLD_OTHER_ANGLE"
+},
+{
+"id": "sttv57_032",
+"en": "get down get down",
+"intent": "TAKE_COVER"
+},
+{
+"id": "seed_TILL_24",
+"en": "plow the east field",
+"intent": "TILL"
+},
+{
+"id": "sttv51_016",
+"en": "keep your eyes on the sauce window nobody comes through okay",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "csv55_032",
+"en": "jump in the car by the north door bro",
+"intent": "GET_IN"
+},
+{
+"id": "seed_COLLECT_15",
+"en": "get some stone",
+"intent": "COLLECT"
+},
+{
+"id": "csv57_038",
+"en": "hop off the ledge",
+"intent": "JUMP"
+},
+{
+"id": "r6v60_054",
+"en": "Stash the eggs in that crate.",
+"intent": "DELIVER"
+},
+{
+"id": "csv60_008",
+"en": "just plant it man",
+"intent": "PLANT"
+},
+{
+"id": "csv54_015",
+"en": "prone out dude, flat on your stomach",
+"intent": "PRONE"
+},
+{
+"id": "seed_HOLD_FIRE_12",
+"en": "don't shoot left",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "stt_089",
+"en": "one in kitchen hes one shot",
+"intent": "NONE"
+},
+{
+"id": "sttv57_039",
+"en": "you almost empty um reload it reload it now",
+"intent": "RELOAD"
+},
+{
+"id": "seed_BREACH_26",
+"en": "breach the shed",
+"intent": "BREACH"
+},
+{
+"id": "seed_GET_IN_28",
+"en": "into the car",
+"intent": "GET_IN"
+},
+{
+"id": "r6v3_048",
+"en": "Red stairs down in basement, lock that down, nobody walks up it.",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "r6v57_016",
+"en": "Hide right here till their drone's gone.",
+"intent": "TAKE_COVER"
+},
+{
+"id": "seed_HELP_INTERACTION_25",
+"en": "press that button",
+"intent": "HELP_INTERACTION"
+},
+{
+"id": "r6_093",
+"en": "reposition to kitchen real quick",
+"intent": "MOVE_TO"
+},
+{
+"id": "stt_021",
+"en": "uh hop in the window and watch the stairs",
+"intent": "VAULT_WINDOW"
+},
+{
+"id": "seed_COVER_ME_11",
+"en": "keep me covered",
+"intent": "COVER_ME"
+},
+{
+"id": "sttv56_026",
+"en": "okay you stand there stand there",
+"intent": "HOLD_POSITION"
+},
+{
+"id": "cs_055",
+"en": "save, save, don't take the fight",
+"intent": "FALL_BACK"
+},
+{
+"id": "seed_SWITCH_WEAPON_33",
+"en": "use your rifle",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "seed_RELOAD_22",
+"en": "top off",
+"intent": "RELOAD"
+},
+{
+"id": "sttv53_011",
+"en": "uh hope in through that window on the left hope in",
+"intent": "VAULT_WINDOW"
+},
+{
+"id": "csv55_017",
+"en": "don't move bro, he's got an angle on you",
+"intent": "HOLD_POSITION"
+},
+{
+"id": "csv54_016",
+"en": "alright you can stand back up now, it's clear",
+"intent": "STAND_UP"
+},
+{
+"id": "cs_022",
+"en": "hang off the outside by that window and peek in",
+"intent": "RAPPEL"
+},
+{
+"id": "csv5_059",
+"en": "man this team never buys armor on eco, unreal",
+"intent": "NONE"
+},
+{
+"id": "sttv57_024",
+"en": "okay so find cover over there",
+"intent": "TAKE_COVER"
+},
+{
+"id": "seed_SMOKE_18",
+"en": "smoke left",
+"intent": "SMOKE"
+},
+{
+"id": "csv56_033",
+"en": "yo return to me theyre flanking us",
+"intent": "COME_BACK"
+},
+{
+"id": "csv54_027",
+"en": "open this door slow and quiet, don't walk through it",
+"intent": "OPEN"
+},
+{
+"id": "csv56_009",
+"en": "nah return to your post man",
+"intent": "GO_BACK"
+},
+{
+"id": "sttv57_029",
+"en": "okay so go find some armor",
+"intent": "MOVE_TO"
+},
+{
+"id": "cs_019",
+"en": "can you even hear me or what",
+"intent": "NONE"
+},
+{
+"id": "seed_DEMOLISH_4",
+"en": "demolish that wall",
+"intent": "DEMOLISH"
+},
+{
+"id": "seed_ENTRY_23",
+"en": "go in and clear it",
+"intent": "ENTRY"
+},
+{
+"id": "seed_RAPPEL_6",
+"en": "rappel to the north window",
+"intent": "RAPPEL"
+},
+{
+"id": "seed_NONE_178",
+"en": "dance",
+"intent": "NONE"
+},
+{
+"id": "seed_LOOK_AT_55",
+"en": "face brown stairs",
+"intent": "LOOK_AT"
+},
+{
+"id": "seed_CHECK_35",
+"en": "check behind us",
+"intent": "CHECK"
+},
+{
+"id": "r6v2_013",
+"en": "open window on the left, hop through it",
+"intent": "VAULT_WINDOW"
+},
+{
+"id": "r6_065",
+"en": "swing in there and clean it out",
+"intent": "ENTRY"
+},
+{
+"id": "csv60_039",
+"en": "bro reap the corn field before it gets dark",
+"intent": "HARVEST"
+},
+{
+"id": "csv53_003",
+"en": "climb up onto that ledge, you can one tap them from it",
+"intent": "JUMP"
+},
+{
+"id": "r6_072",
+"en": "climb over the sill and drop inside",
+"intent": "VAULT_WINDOW"
+},
+{
+"id": "r6v5_031",
+"en": "You're getting lit up, get down behind something!",
+"intent": "TAKE_COVER"
+},
+{
+"id": "csv60_054",
+"en": "the barricade on the north door is busted, fix it",
+"intent": "REPAIR"
+},
+{
+"id": "seed_DEMOLISH_1",
+"en": "tear down that wall",
+"intent": "DEMOLISH"
+},
+{
+"id": "seed_NONE_180",
+"en": "are you talking to me",
+"intent": "NONE"
+},
+{
+"id": "r6v5_001",
+"en": "Roamer's on you, engage him, he's all yours.",
+"intent": "ATTACK"
+},
+{
+"id": "cs_054",
+"en": "they got an AWP holding long",
+"intent": "NONE"
+},
+{
+"id": "sttv56_013",
+"en": "um okay had back to where you was before i told you",
+"intent": "GO_BACK"
+},
+{
+"id": "seed_DONT_KNOW_9",
+"en": "im not sure",
+"intent": "DONT_KNOW"
+},
+{
+"id": "sttv57_002",
+"en": "okay so uh get out of the car",
+"intent": "GET_OUT"
+},
+{
+"id": "sttv5_047",
+"en": "one is coming down the red stairs careful",
+"intent": "NONE"
+},
+{
+"id": "r6v3_015",
+"en": "Smoke blue stairs, no wait, not blue, I meant white.",
+"intent": "SMOKE"
+},
+{
+"id": "sttv55_017",
+"en": "hop out hop out uh quick",
+"intent": "GET_OUT"
+},
+{
+"id": "sttv56_032",
+"en": "okay so uh return to me please",
+"intent": "COME_BACK"
+},
+{
+"id": "csv56_031",
+"en": "can you press the button for me, gate wont open",
+"intent": "HELP_INTERACTION"
+},
+{
+"id": "csv57_007",
+"en": "get out bro",
+"intent": "GET_OUT"
+},
+{
+"id": "seed_BREACH_10",
+"en": "breach the east door",
+"intent": "BREACH"
+},
+{
+"id": "seed_COVER_ME_14",
+"en": "cover from back there",
+"intent": "COVER_ME"
+},
+{
+"id": "csv5_019",
+"en": "stop shooting at the west window, you're giving us away",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "seed_MOVE_TO_221",
+"en": "go up these stairs",
+"intent": "MOVE_TO"
+},
+{
+"id": "sttv54_034",
+"en": "roger that copy copy",
+"intent": "NONE"
+},
+{
+"id": "sttv3_026",
+"en": "run down to basement like right now",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_PLANT_CROP_1",
+"en": "plant some carrots here",
+"intent": "PLANT_CROP"
+},
+{
+"id": "sttv3_031",
+"en": "go stand by the table upstairs",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_OPEN_4",
+"en": "open this door",
+"intent": "OPEN"
+},
+{
+"id": "sttv54_027",
+"en": "throw a flesh in there flesh in there",
+"intent": "FLASH"
+},
+{
+"id": "stt_006",
+"en": "i hear foot steps above us like right above",
+"intent": "NONE"
+},
+{
+"id": "csv53_027",
+"en": "we're getting shot at from the left, whole team's stuck",
+"intent": "NONE"
+},
+{
+"id": "r6_067",
+"en": "on me, stick to my hip",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "seed_TAKE_COVER_11",
+"en": "take cover behind the couch",
+"intent": "TAKE_COVER"
+},
+{
+"id": "sttv51_026",
+"en": "look man just put a smoke on main door i told you already",
+"intent": "SMOKE"
+},
+{
+"id": "cs_077",
+"en": "two pushing through B apps",
+"intent": "NONE"
+},
+{
+"id": "csv55_031",
+"en": "again bro",
+"intent": "REPEAT"
+},
+{
+"id": "sttv51_000",
+"en": "okay uh look at the so far for a second",
+"intent": "LOOK_AT"
+},
+{
+"id": "seed_HARVEST_21",
+"en": "cut the lettuce",
+"intent": "HARVEST"
+},
+{
+"id": "r6v51_011",
+"en": "Face me real quick, I need to see which gadget you've got out.",
+"intent": "LOOK_AT_ME"
+},
+{
+"id": "csv60_002",
+"en": "im dry bro go scoop up some ammo",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_GO_BACK_28",
+"en": "go back to your old position",
+"intent": "GO_BACK"
+},
+{
+"id": "r6v52_006",
+"en": "Check the basement, I think their roamer dropped the hatch.",
+"intent": "CHECK"
+},
+{
+"id": "r6v3_026",
+"en": "Guy's peeking down from top floor, get behind the sofa before he domes you.",
+"intent": "TAKE_COVER"
+},
+{
+"id": "r6v60_017",
+"en": "Don't breach it, just tear the wall down quietly.",
+"intent": "DEMOLISH"
+},
+{
+"id": "sttv54_006",
+"en": "uh i dont no man i really dont no",
+"intent": "DONT_KNOW"
+},
+{
+"id": "csv57_008",
+"en": "fresh mag now ur almost dry",
+"intent": "RELOAD"
+},
+{
+"id": "r6_118",
+"en": "kill the defuser on my ping, it's ticking",
+"intent": "DEFUSE"
+},
+{
+"id": "r6v5_035",
+"en": "Look up and hold the ceiling, they're playing vertical.",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "seed_TILL_13",
+"en": "clear the field",
+"intent": "TILL"
+},
+{
+"id": "sttv5_004",
+"en": "when i give the word you attack okay only on my word",
+"intent": "ATTACK"
+},
+{
+"id": "stt_031",
+"en": "smoke the other door",
+"intent": "SMOKE"
+},
+{
+"id": "r6v57_028",
+"en": "Jump out, we walk the rest of the way.",
+"intent": "GET_OUT"
+},
+{
+"id": "stt_093",
+"en": "put the spike down bot",
+"intent": "PLANT"
+},
+{
+"id": "r6v3_027",
+"en": "Hold up, hold up, don't go in north door yet, I'm not set.",
+"intent": "WAIT"
+},
+{
+"id": "r6_011",
+"en": "take the long way through my ping and pinch them",
+"intent": "FLANK"
+},
+{
+"id": "r6v56_034",
+"en": "Get inside to the basement before they rotate.",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6v60_037",
+"en": "Wait for my go, then knock down the shed.",
+"intent": "DEMOLISH"
+},
+{
+"id": "r6_003",
+"en": "drone the other room first",
+"intent": "DRONE"
+},
+{
+"id": "sttv2_003",
+"en": "hey bot get that door for me but dont walk through it",
+"intent": "OPEN"
+},
+{
+"id": "csv60_041",
+"en": "go milk the goats",
+"intent": "COLLECT"
+},
+{
+"id": "sttv54_041",
+"en": "uh you wait for my mark okay and then you vault the west window",
+"intent": "VAULT_WINDOW"
+},
+{
+"id": "seed_DRONE_6",
+"en": "drone the room",
+"intent": "DRONE"
+},
+{
+"id": "csv60_022",
+"en": "feed the horses",
+"intent": "FEED"
+},
+{
+"id": "seed_DEMOLISH_22",
+"en": "remove it",
+"intent": "DEMOLISH"
+},
+{
+"id": "seed_FLASH_22",
+"en": "flash on my goal",
+"intent": "FLASH"
+},
+{
+"id": "seed_RELOAD_30",
+"en": "reload on my go",
+"intent": "RELOAD"
+},
+{
+"id": "r6v55_016",
+"en": "One more time, Mute jammed your drone.",
+"intent": "REPEAT"
+},
+{
+"id": "seed_COME_BACK_27",
+"en": "come back over to me",
+"intent": "COME_BACK"
+},
+{
+"id": "r6v55_005",
+"en": "Wait for me at red stairs, I'm thirty seconds out.",
+"intent": "HOLD_POSITION"
+},
+{
+"id": "seed_MAYBE_8",
+"en": "i think so",
+"intent": "MAYBE"
+},
+{
+"id": "r6v5_055",
+"en": "Do not open up on them, keep your gun quiet.",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "sttv56_023",
+"en": "um go upstairs",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_DEFUSE_6",
+"en": "defuse now",
+"intent": "DEFUSE"
+},
+{
+"id": "csv5_047",
+"en": "lurker behind us, i can hear his steps",
+"intent": "NONE"
+},
+{
+"id": "seed_HOLD_FIRE_2",
+"en": "cease fire",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "sttv54_037",
+"en": "get back get back pool back its too hot",
+"intent": "FALL_BACK"
+},
+{
+"id": "seed_DONT_KNOW_3",
+"en": "dunno",
+"intent": "DONT_KNOW"
+},
+{
+"id": "seed_DRONE_14",
+"en": "drone white stairs",
+"intent": "DRONE"
+},
+{
+"id": "seed_SMOKE_3",
+"en": "smoke the door",
+"intent": "SMOKE"
+},
+{
+"id": "seed_COLLECT_6",
+"en": "milk the cows",
+"intent": "COLLECT"
+},
+{
+"id": "sttv60_037",
+"en": "uh remove the sandbags from main door",
+"intent": "DEMOLISH"
+},
+{
+"id": "seed_DEFUSE_7",
+"en": "get the defuse",
+"intent": "DEFUSE"
+},
+{
+"id": "csv52_029",
+"en": "no don't help me, i'm good, i can clutch it",
+"intent": "WAIT"
+},
+{
+"id": "csv60_004",
+"en": "water the tomatoes man they look dead",
+"intent": "WATER"
+},
+{
+"id": "r6_058",
+"en": "drop a cloud so we can cross",
+"intent": "SMOKE"
+},
+{
+"id": "csv3_001",
+"en": "chuck a nade downstairs, that guy is one hp",
+"intent": "FRAG"
+},
+{
+"id": "sttv60_017",
+"en": "go water the the south field",
+"intent": "WATER"
+},
+{
+"id": "r6v57_014",
+"en": "Bail out of the truck, it's about to get blown up.",
+"intent": "GET_OUT"
+},
+{
+"id": "sttv54_035",
+"en": "yeah okay go go go execute",
+"intent": "GO_NOW"
+},
+{
+"id": "r6_092",
+"en": "whoa whoa, easy, not yet",
+"intent": "WAIT"
+},
+{
+"id": "seed_NONE_284",
+"en": "we need more planks",
+"intent": "NONE"
+},
+{
+"id": "stt_066",
+"en": "throw a molly in there",
+"intent": "FRAG"
+},
+{
+"id": "csv57_016",
+"en": "swap guns",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "r6v2_023",
+"en": "when I say go, crack the bathroom door",
+"intent": "OPEN"
+},
+{
+"id": "r6v2_028",
+"en": "east window's open, somebody's holding it",
+"intent": "NONE"
+},
+{
+"id": "r6v51_002",
+"en": "Glance at the sofa for me, I think there's a trap tucked next to it.",
+"intent": "LOOK_AT"
+},
+{
+"id": "csv51_011",
+"en": "turn to face me dude, you're staring at a wall",
+"intent": "LOOK_AT_ME"
+},
+{
+"id": "sttv2_000",
+"en": "open fire on him",
+"intent": "OPEN_FIRE"
+},
+{
+"id": "r6_013",
+"en": "send it",
+"intent": "GO_NOW"
+},
+{
+"id": "seed_LOOK_AT_16",
+"en": "look left",
+"intent": "LOOK_AT"
+},
+{
+"id": "sttv3_046",
+"en": "jump in through the left window i go right behind you",
+"intent": "VAULT_WINDOW"
+},
+{
+"id": "r6_099",
+"en": "scout ahead, I wanna know what's waiting",
+"intent": "DRONE"
+},
+{
+"id": "stt_022",
+"en": "beach the hatch and drop in on em",
+"intent": "BREACH"
+},
+{
+"id": "cs_026",
+"en": "HE them, they're all stacked up",
+"intent": "FRAG"
+},
+{
+"id": "sttv56_022",
+"en": "can you pull the level for me",
+"intent": "HELP_INTERACTION"
+},
+{
+"id": "r6_057",
+"en": "I got left door, you hold the right one",
+"intent": "HOLD_OTHER_ANGLE"
+},
+{
+"id": "sttv60_028",
+"en": "take the honey out of the bee hives",
+"intent": "COLLECT"
+},
+{
+"id": "seed_ENTRY_20",
+"en": "push yellow",
+"intent": "ENTRY"
+},
+{
+"id": "r6v2_033",
+"en": "flip the skylight up for me",
+"intent": "OPEN"
+},
+{
+"id": "r6v5_042",
+"en": "Turn around and hold your six, a roamer is coming.",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "seed_HELP_INTERACTION_1",
+"en": "let me in",
+"intent": "HELP_INTERACTION"
+},
+{
+"id": "seed_DONT_KNOW_8",
+"en": "i'm not sure",
+"intent": "DONT_KNOW"
+},
+{
+"id": "r6v53_006",
+"en": "On my go, jump across that gap and we hit them from both sides.",
+"intent": "JUMP"
+},
+{
+"id": "r6_037",
+"en": "smoke the second door, not the one I'm at",
+"intent": "SMOKE"
+},
+{
+"id": "seed_TAKE_COVER_26",
+"en": "heads down",
+"intent": "TAKE_COVER"
+},
+{
+"id": "seed_DRONE_5",
+"en": "scout ahead",
+"intent": "DRONE"
+},
+{
+"id": "csv52_020",
+"en": "ah i'm knocked, help, come pick me up",
+"intent": "HELP"
+},
+{
+"id": "seed_SUPPRESS_30",
+"en": "suppress the east window",
+"intent": "SUPPRESS"
+},
+{
+"id": "seed_ATTACK_25",
+"en": "find an enemy",
+"intent": "ATTACK"
+},
+{
+"id": "seed_PRONE_10",
+"en": "lie flat",
+"intent": "PRONE"
+},
+{
+"id": "sttv2_014",
+"en": "cover me im gonna open this door",
+"intent": "COVER_ME"
+},
+{
+"id": "seed_TAKE_COVER_3",
+"en": "find cover",
+"intent": "TAKE_COVER"
+},
+{
+"id": "csv57_014",
+"en": "grab ur sidearm",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "r6v57_020",
+"en": "There's a rifle on my pin, go get it.",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_LOOK_AT_ME_7",
+"en": "look my way",
+"intent": "LOOK_AT_ME"
+},
+{
+"id": "seed_HOLD_ANGLE_27",
+"en": "hold the main door",
+"intent": "HOLD_ANGLE"
+}
+]
+}

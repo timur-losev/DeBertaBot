@@ -1,0 +1,21 @@
+                                                       v62       v63
+pairs en (150, never trained on)                      84.7      99.3
+pairs ru (150, never trained on)                      88.7      98.0
+pairs es (150, never trained on)                      88.7      96.0
+en blind2 (decoder alone)                             88.0      89.3
+en blind2_heard3 (decoder alone)                      62.7      66.3
+en ctx (decoder alone)                                87.3      88.7
+en ctx_heard3 (decoder alone)                         64.5      64.5
+dev_ru                                                90.2      92.7
+blind2_ru                                             78.0      79.3
+ctx_ru                                                80.0      78.7
+dev_es                                                95.1     100.0
+blind2_es                                             82.7      80.0
+ctx_es                                                78.7      80.0
+
+English through the router (v62 + router v59, v63 + router v63):
+pairs en, through the router                          77.3      99.3
+en blind2, through the router                         86.0      86.7
+en blind2_heard3, through the router                  60.7      63.0
+en ctx, through the router                            86.0      82.7
+en ctx_heard3, through the router                     61.5      61.2

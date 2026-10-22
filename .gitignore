@@ -39,3 +39,9 @@ scripts/coop/stt/*.server.log
 # the scores and the logs next to them are in git
 scripts/coop/stt/kd54_teacher_s*.json
 scripts/coop/stt/kd54_emb_*.npz
+
+# the decider study's C++ check (scripts/coop/decider/cpp): its CMake build folder, with llama.cpp's DLLs copied in
+scripts/coop/decider/cpp/build/
+# CMake's output of a local build of coop_intent, kept by hand next to it
+cpp/coop_intent/build_*.log
+cpp/coop_intent/build_*.err

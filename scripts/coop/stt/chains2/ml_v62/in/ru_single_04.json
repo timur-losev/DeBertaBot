@@ -1,0 +1,181 @@
+{
+"lang": "ru",
+"kind": "single",
+"items": [
+{
+"id": "seed_PLANT_19",
+"en": "plant the defuser here",
+"intent": "PLANT"
+},
+{
+"id": "r6v3_040",
+"en": "Get over to the spiral staircase, that's where they'll rotate.",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6v3_039",
+"en": "My ping is through the roof tonight, west coast servers are trash.",
+"intent": "NONE"
+},
+{
+"id": "r6v54_037",
+"en": "Get back, get out of the fight, you're about to get traded!",
+"intent": "FALL_BACK"
+},
+{
+"id": "sttv2_035",
+"en": "that door's barricaded uh beach it open",
+"intent": "BREACH"
+},
+{
+"id": "cs_045",
+"en": "pull out and regroup behind",
+"intent": "FALL_BACK"
+},
+{
+"id": "csv2_026",
+"en": "flip the closet door open, I'll hold it from here",
+"intent": "OPEN"
+},
+{
+"id": "csv55_019",
+"en": "jump in dude, i'm driving",
+"intent": "GET_IN"
+},
+{
+"id": "sttv52_014",
+"en": "so press the east window keep them keep them inside",
+"intent": "SUPPRESS"
+},
+{
+"id": "seed_HOLD_FIRE_14",
+"en": "don't shoot at the south door",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "r6v53_028",
+"en": "Don't jump down, they're holding the drop with a shotgun.",
+"intent": "WAIT"
+},
+{
+"id": "csv51_018",
+"en": "come to me and stick close, we're rotating together",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "sttv2_020",
+"en": "can you uh pull the garage door up just up you stay outside",
+"intent": "OPEN"
+},
+{
+"id": "r6v57_038",
+"en": "Spare ammo's on the second floor if you need it.",
+"intent": "NONE"
+},
+{
+"id": "seed_NO_20",
+"en": "not really",
+"intent": "NO"
+},
+{
+"id": "sttv54_002",
+"en": "nah nope thats not what i meant",
+"intent": "NO"
+},
+{
+"id": "seed_OPEN_13",
+"en": "open the left window",
+"intent": "OPEN"
+},
+{
+"id": "r6v56_025",
+"en": "Regroup with me before we rotate.",
+"intent": "COME_BACK"
+},
+{
+"id": "stt_105",
+"en": "throw a flesh in there",
+"intent": "FLASH"
+},
+{
+"id": "r6v51_017",
+"en": "Hold your crosshair on the door to your right, he's going to swing it.",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "r6v53_005",
+"en": "Climb onto the table, you'll see right over their deployable shield.",
+"intent": "JUMP"
+},
+{
+"id": "csv57_018",
+"en": "find cover over there",
+"intent": "TAKE_COVER"
+},
+{
+"id": "stt_045",
+"en": "climb in right here through the glass",
+"intent": "VAULT_WINDOW"
+},
+{
+"id": "csv60_059",
+"en": "build a turret on the roof bro",
+"intent": "BUILD"
+},
+{
+"id": "seed_HOLD_FIRE_20",
+"en": "check fire",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "seed_JUMP_42",
+"en": "jump down the hole",
+"intent": "JUMP"
+},
+{
+"id": "csv55_024",
+"en": "run it back dude, one more time",
+"intent": "REPEAT"
+},
+{
+"id": "seed_DONT_KNOW_14",
+"en": "no clue",
+"intent": "DONT_KNOW"
+},
+{
+"id": "seed_SMOKE_5",
+"en": "smoke here",
+"intent": "SMOKE"
+},
+{
+"id": "r6v2_003",
+"en": "get off that window line and hug the wall, they're pixel peeking you",
+"intent": "TAKE_COVER"
+},
+{
+"id": "seed_DONT_KNOW_19",
+"en": "i'm not certain",
+"intent": "DONT_KNOW"
+},
+{
+"id": "csv5_039",
+"en": "push in through the door on your left, i'll trade you",
+"intent": "ENTRY"
+},
+{
+"id": "stt_065",
+"en": "nade that corner",
+"intent": "FRAG"
+},
+{
+"id": "csv56_013",
+"en": "head down the ramp",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6_014",
+"en": "smash the glass and jump through",
+"intent": "VAULT_WINDOW"
+}
+]
+}

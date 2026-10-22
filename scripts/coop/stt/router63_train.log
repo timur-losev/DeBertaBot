@@ -1,0 +1,29 @@
+W1022 19:59:56.105000 37544 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+[transformers] The tokenizer you are loading from 'microsoft/deberta-v3-small' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]Loading weights:   3%|▎         | 3/102 [00:00<00:16,  5.93it/s]Loading weights: 100%|██████████| 102/102 [00:00<00:00, 198.52it/s]
+[transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-small
+Key                                     | Status     | 
+----------------------------------------+------------+-
+mask_predictions.classifier.bias        | UNEXPECTED | 
+mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+lm_predictions.lm_head.bias             | UNEXPECTED | 
+lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+mask_predictions.dense.weight           | UNEXPECTED | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+mask_predictions.dense.bias             | UNEXPECTED | 
+mask_predictions.classifier.weight      | UNEXPECTED | 
+lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+pooler.dense.bias                       | MISSING    | 
+classifier.bias                         | MISSING    | 
+classifier.weight                       | MISSING    | 
+pooler.dense.weight                     | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.19it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.19it/s]
+router v63 small seed 0: 19701 rows ({'v59_rows': 17321, 'left_out': 120, 'pairs': 2500}), 10027 of them for the decoder, 4 epochs, 261s

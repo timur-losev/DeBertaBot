@@ -1,0 +1,5664 @@
+{
+ "en": [
+  {
+   "text": "knock down that wall and exit the vehicle",
+   "pieces": [
+    "knock down that wall",
+    "exit the vehicle"
+   ],
+   "orders": [
+    "DEMOLISH",
+    "GET_OUT"
+   ],
+   "id": "pair_en_000"
+  },
+  {
+   "text": "take cover behind the chairs and go around through the main door",
+   "pieces": [
+    "take cover behind the chairs",
+    "go around through the main door"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "FLANK"
+   ],
+   "id": "pair_en_001"
+  },
+  {
+   "text": "switch weapon, hop in the east window and grab some amor",
+   "pieces": [
+    "switch weapon",
+    "hop in the east window",
+    "grab some amor"
+   ],
+   "orders": [
+    "SWITCH_WEAPON",
+    "VAULT_WINDOW",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_002"
+  },
+  {
+   "text": "spread fertilizer on the north field, and stay put bot",
+   "pieces": [
+    "spread fertilizer on the north field",
+    "stay put bot"
+   ],
+   "orders": [
+    "TILL",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_en_003"
+  },
+  {
+   "text": "drop prone, and weed the carrots",
+   "pieces": [
+    "drop prone",
+    "weed the carrots"
+   ],
+   "orders": [
+    "PRONE",
+    "TILL"
+   ],
+   "id": "pair_en_004"
+  },
+  {
+   "text": "cover the right side and also give the cows some hay",
+   "pieces": [
+    "cover the right side",
+    "give the cows some hay"
+   ],
+   "orders": [
+    "HOLD_ANGLE",
+    "FEED"
+   ],
+   "id": "pair_en_005"
+  },
+  {
+   "text": "follow me to the east window and cease fire",
+   "pieces": [
+    "follow me to the east window",
+    "cease fire"
+   ],
+   "orders": [
+    "FOLLOW_ME",
+    "HOLD_FIRE"
+   ],
+   "id": "pair_en_006"
+  },
+  {
+   "text": "lay a foundation and also go back on my go",
+   "pieces": [
+    "lay a foundation",
+    "go back on my go"
+   ],
+   "orders": [
+    "BUILD",
+    "GO_BACK"
+   ],
+   "id": "pair_en_007"
+  },
+  {
+   "text": "hold position at my pin and just jump down",
+   "pieces": [
+    "hold position at my pin",
+    "just jump down"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "JUMP"
+   ],
+   "id": "pair_en_008"
+  },
+  {
+   "text": "feed the bees and also pick up that shotgun over there",
+   "pieces": [
+    "feed the bees",
+    "pick up that shotgun over there"
+   ],
+   "orders": [
+    "FEED",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_009"
+  },
+  {
+   "text": "ok go back and watch main",
+   "pieces": [
+    "ok go back",
+    "watch main"
+   ],
+   "orders": [
+    "GO_BACK",
+    "HOLD_ANGLE"
+   ],
+   "id": "pair_en_010"
+  },
+  {
+   "text": "flank right and also feed the cows in the stable",
+   "pieces": [
+    "flank right",
+    "feed the cows in the stable"
+   ],
+   "orders": [
+    "FLANK",
+    "FEED"
+   ],
+   "id": "pair_en_011"
+  },
+  {
+   "text": "reinforce the north wall and gather some hay",
+   "pieces": [
+    "reinforce the north wall",
+    "gather some hay"
+   ],
+   "orders": [
+    "REPAIR",
+    "COLLECT"
+   ],
+   "id": "pair_en_012"
+  },
+  {
+   "text": "stay put bot and sit down and keep moving right",
+   "pieces": [
+    "stay put bot",
+    "sit down",
+    "keep moving right"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "CROUCH",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_013"
+  },
+  {
+   "text": "put the tools in the barn and lay the foundation here and find the enemies",
+   "pieces": [
+    "put the tools in the barn",
+    "lay the foundation here",
+    "find the enemies"
+   ],
+   "orders": [
+    "DELIVER",
+    "BUILD",
+    "ATTACK"
+   ],
+   "id": "pair_en_014"
+  },
+  {
+   "text": "plant some flowers and keep coming",
+   "pieces": [
+    "plant some flowers",
+    "keep coming"
+   ],
+   "orders": [
+    "PLANT_CROP",
+    "COME_BACK"
+   ],
+   "id": "pair_en_015"
+  },
+  {
+   "text": "smoke, and suppress them",
+   "pieces": [
+    "smoke",
+    "suppress them"
+   ],
+   "orders": [
+    "SMOKE",
+    "SUPPRESS"
+   ],
+   "id": "pair_en_016"
+  },
+  {
+   "text": "check the greenhouse and further down",
+   "pieces": [
+    "check the greenhouse",
+    "further down"
+   ],
+   "orders": [
+    "CHECK",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_017"
+  },
+  {
+   "text": "west window, hop in through it, and try again try again",
+   "pieces": [
+    "west window, hop in through it",
+    "try again try again"
+   ],
+   "orders": [
+    "VAULT_WINDOW",
+    "REPEAT"
+   ],
+   "id": "pair_en_018"
+  },
+  {
+   "text": "keep your gun on that window, and find a way up",
+   "pieces": [
+    "keep your gun on that window",
+    "find a way up"
+   ],
+   "orders": [
+    "HOLD_ANGLE",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_019"
+  },
+  {
+   "text": "cover me and hop outta the car",
+   "pieces": [
+    "cover me",
+    "hop outta the car"
+   ],
+   "orders": [
+    "COVER_ME",
+    "GET_OUT"
+   ],
+   "id": "pair_en_020"
+  },
+  {
+   "text": "take site, check every corner and pick the mushrooms and overwatch me while I'm droning",
+   "pieces": [
+    "take site, check every corner",
+    "pick the mushrooms",
+    "overwatch me while I'm droning"
+   ],
+   "orders": [
+    "ENTRY",
+    "HARVEST",
+    "COVER_ME"
+   ],
+   "id": "pair_en_021"
+  },
+  {
+   "text": "look right there and swap to your shotgun and check your left",
+   "pieces": [
+    "look right there",
+    "swap to your shotgun",
+    "check your left"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "SWITCH_WEAPON",
+    "CHECK"
+   ],
+   "id": "pair_en_022"
+  },
+  {
+   "text": "gimme a smoke screen out front, and dismantle it",
+   "pieces": [
+    "gimme a smoke screen out front",
+    "dismantle it"
+   ],
+   "orders": [
+    "SMOKE",
+    "DEMOLISH"
+   ],
+   "id": "pair_en_023"
+  },
+  {
+   "text": "put the tools in the barn and should that window jump below and take red",
+   "pieces": [
+    "put the tools in the barn",
+    "should that window jump below",
+    "take red"
+   ],
+   "orders": [
+    "DELIVER",
+    "OPEN_FIRE",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_024"
+  },
+  {
+   "text": "get inside the vent and disarm that thing before it blows",
+   "pieces": [
+    "get inside the vent",
+    "disarm that thing before it blows"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "DEFUSE"
+   ],
+   "id": "pair_en_025"
+  },
+  {
+   "text": "watch the door on the right, blow the wall and now uh another window",
+   "pieces": [
+    "watch the door on the right",
+    "blow the wall",
+    "now uh another window"
+   ],
+   "orders": [
+    "HOLD_ANGLE",
+    "BREACH",
+    "OPEN_FIRE"
+   ],
+   "id": "pair_en_026"
+  },
+  {
+   "text": "take the seeds to the greenhouse and check",
+   "pieces": [
+    "take the seeds to the greenhouse",
+    "check"
+   ],
+   "orders": [
+    "DELIVER",
+    "CHECK"
+   ],
+   "id": "pair_en_027"
+  },
+  {
+   "text": "disarm that thing before it blows and reinforce the hatch upstairs and grab the honey from the beehives",
+   "pieces": [
+    "disarm that thing before it blows",
+    "Reinforce the hatch upstairs",
+    "Grab the honey from the beehives"
+   ],
+   "orders": [
+    "DEFUSE",
+    "REPAIR",
+    "COLLECT"
+   ],
+   "id": "pair_en_028"
+  },
+  {
+   "text": "take cover behind the chairs, and shoot to my pin",
+   "pieces": [
+    "take cover behind the chairs",
+    "shoot to my pin"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "OPEN_FIRE"
+   ],
+   "id": "pair_en_029"
+  },
+  {
+   "text": "hop in the east window and look back",
+   "pieces": [
+    "hop in the east window",
+    "look back"
+   ],
+   "orders": [
+    "VAULT_WINDOW",
+    "LOOK_AT"
+   ],
+   "id": "pair_en_030"
+  },
+  {
+   "text": "jumbo and stay there",
+   "pieces": [
+    "jumbo",
+    "stay there"
+   ],
+   "orders": [
+    "JUMP",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_en_031"
+  },
+  {
+   "text": "get to the car, and water the crops",
+   "pieces": [
+    "get to the car",
+    "water the crops"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "WATER"
+   ],
+   "id": "pair_en_032"
+  },
+  {
+   "text": "dig over the garden and also hop out of the truck",
+   "pieces": [
+    "dig over the garden",
+    "hop out of the truck"
+   ],
+   "orders": [
+    "TILL",
+    "GET_OUT"
+   ],
+   "id": "pair_en_033"
+  },
+  {
+   "text": "jumbo, flash the right window and clear the field",
+   "pieces": [
+    "jumbo",
+    "flash the right window",
+    "clear the field"
+   ],
+   "orders": [
+    "JUMP",
+    "FLASH",
+    "TILL"
+   ],
+   "id": "pair_en_034"
+  },
+  {
+   "text": "beach this wall and look right there and uh bring the plants over here",
+   "pieces": [
+    "beach this wall",
+    "look right there",
+    "uh bring the plants over here"
+   ],
+   "orders": [
+    "BREACH",
+    "LOOK_AT",
+    "DELIVER"
+   ],
+   "id": "pair_en_035"
+  },
+  {
+   "text": "roll down and hold position at my pin",
+   "pieces": [
+    "roll down",
+    "hold position at my pin"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_en_036"
+  },
+  {
+   "text": "get back to your spot and pick the zucchini",
+   "pieces": [
+    "get back to your spot",
+    "pick the zucchini"
+   ],
+   "orders": [
+    "GO_BACK",
+    "HARVEST"
+   ],
+   "id": "pair_en_037"
+  },
+  {
+   "text": "get me out of this room and take cover behind the fence and jump down to the basement",
+   "pieces": [
+    "get me out of this room",
+    "take cover behind the fence",
+    "jump down to the basement"
+   ],
+   "orders": [
+    "HELP_INTERACTION",
+    "TAKE_COVER",
+    "JUMP"
+   ],
+   "id": "pair_en_038"
+  },
+  {
+   "text": "shoot this windows, frag the main door and follow me to the east window",
+   "pieces": [
+    "shoot this windows",
+    "frag the main door",
+    "follow me to the east window"
+   ],
+   "orders": [
+    "OPEN_FIRE",
+    "FRAG",
+    "FOLLOW_ME"
+   ],
+   "id": "pair_en_039"
+  },
+  {
+   "text": "duck behind that car real quick and also come back to me",
+   "pieces": [
+    "duck behind that car real quick",
+    "come back to me"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "COME_BACK"
+   ],
+   "id": "pair_en_040"
+  },
+  {
+   "text": "vault over that and also smoke the west window",
+   "pieces": [
+    "vault over that",
+    "smoke the west window"
+   ],
+   "orders": [
+    "JUMP",
+    "SMOKE"
+   ],
+   "id": "pair_en_041"
+  },
+  {
+   "text": "switch to the other angle and also grab some nails",
+   "pieces": [
+    "switch to the other angle",
+    "grab some nails"
+   ],
+   "orders": [
+    "HOLD_OTHER_ANGLE",
+    "COLLECT"
+   ],
+   "id": "pair_en_042"
+  },
+  {
+   "text": "more, gather the logs and find cover over there",
+   "pieces": [
+    "more",
+    "gather the logs",
+    "find cover over there"
+   ],
+   "orders": [
+    "REPEAT",
+    "COLLECT",
+    "TAKE_COVER"
+   ],
+   "id": "pair_en_043"
+  },
+  {
+   "text": "plant corn in the east field, and go to the field",
+   "pieces": [
+    "plant corn in the east field",
+    "go to the field"
+   ],
+   "orders": [
+    "PLANT_CROP",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_044"
+  },
+  {
+   "text": "check on the write side, and look at sofa",
+   "pieces": [
+    "check on the write side",
+    "look at sofa"
+   ],
+   "orders": [
+    "CHECK",
+    "LOOK_AT"
+   ],
+   "id": "pair_en_045"
+  },
+  {
+   "text": "take cover behind the fence and get to brown stairs",
+   "pieces": [
+    "take cover behind the fence",
+    "get to brown stairs"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_046"
+  },
+  {
+   "text": "rappel down from the roof and also gather the logs",
+   "pieces": [
+    "rappel down from the roof",
+    "gather the logs"
+   ],
+   "orders": [
+    "RAPPEL",
+    "COLLECT"
+   ],
+   "id": "pair_en_047"
+  },
+  {
+   "text": "plant some flowers and drone the room",
+   "pieces": [
+    "plant some flowers",
+    "drone the room"
+   ],
+   "orders": [
+    "PLANT_CROP",
+    "DRONE"
+   ],
+   "id": "pair_en_048"
+  },
+  {
+   "text": "pop a flash into site, and come back now",
+   "pieces": [
+    "pop a flash into site",
+    "come back now"
+   ],
+   "orders": [
+    "FLASH",
+    "COME_BACK"
+   ],
+   "id": "pair_en_049"
+  },
+  {
+   "text": "check the greenhouse and also same again",
+   "pieces": [
+    "check the greenhouse",
+    "same again"
+   ],
+   "orders": [
+    "CHECK",
+    "REPEAT"
+   ],
+   "id": "pair_en_050"
+  },
+  {
+   "text": "move to the north door, smoke and look at the main door",
+   "pieces": [
+    "move to the north door",
+    "smoke",
+    "look at the main door"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "SMOKE",
+    "LOOK_AT"
+   ],
+   "id": "pair_en_051"
+  },
+  {
+   "text": "push in at my pin and switch to your pistol and drone the room",
+   "pieces": [
+    "push in at my pin",
+    "switch to your pistol",
+    "drone the room"
+   ],
+   "orders": [
+    "ENTRY",
+    "SWITCH_WEAPON",
+    "DRONE"
+   ],
+   "id": "pair_en_052"
+  },
+  {
+   "text": "upon fire this wall and get into the car",
+   "pieces": [
+    "upon fire this wall",
+    "get into the car"
+   ],
+   "orders": [
+    "OPEN_FIRE",
+    "GET_IN"
+   ],
+   "id": "pair_en_053"
+  },
+  {
+   "text": "advance forward, and change to your rifle",
+   "pieces": [
+    "advance forward",
+    "change to your rifle"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_en_054"
+  },
+  {
+   "text": "come back come back to me, lay the foundation here and harvest the turnips",
+   "pieces": [
+    "come back come back to me",
+    "lay the foundation here",
+    "harvest the turnips"
+   ],
+   "orders": [
+    "COME_BACK",
+    "BUILD",
+    "HARVEST"
+   ],
+   "id": "pair_en_055"
+  },
+  {
+   "text": "should this glass, and fine colour",
+   "pieces": [
+    "should this glass",
+    "fine colour"
+   ],
+   "orders": [
+    "OPEN_FIRE",
+    "TAKE_COVER"
+   ],
+   "id": "pair_en_056"
+  },
+  {
+   "text": "again please, and switch to your pistol",
+   "pieces": [
+    "again please",
+    "switch to your pistol"
+   ],
+   "orders": [
+    "REPEAT",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_en_057"
+  },
+  {
+   "text": "up on your feet and quick reload",
+   "pieces": [
+    "up on your feet",
+    "quick reload"
+   ],
+   "orders": [
+    "STAND_UP",
+    "RELOAD"
+   ],
+   "id": "pair_en_058"
+  },
+  {
+   "text": "stand in the corner and jum dahl",
+   "pieces": [
+    "stand in the corner",
+    "jum dahl"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "JUMP"
+   ],
+   "id": "pair_en_059"
+  },
+  {
+   "text": "pop a flash into site and cover the right side",
+   "pieces": [
+    "pop a flash into site",
+    "cover the right side"
+   ],
+   "orders": [
+    "FLASH",
+    "HOLD_ANGLE"
+   ],
+   "id": "pair_en_060"
+  },
+  {
+   "text": "covering fire when i say and move up by the stairs",
+   "pieces": [
+    "covering fire when i say",
+    "move up by the stairs"
+   ],
+   "orders": [
+    "SUPPRESS",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_061"
+  },
+  {
+   "text": "harvest the turnips, and jumped on and switch weapon",
+   "pieces": [
+    "harvest the turnips",
+    "and jumped on",
+    "switch weapon"
+   ],
+   "orders": [
+    "HARVEST",
+    "JUMP",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_en_062"
+  },
+  {
+   "text": "go build the wall and yes go there and hold the west window",
+   "pieces": [
+    "go build the wall",
+    "yes go there",
+    "hold the west window"
+   ],
+   "orders": [
+    "BUILD",
+    "MOVE_TO",
+    "HOLD_ANGLE"
+   ],
+   "id": "pair_en_063"
+  },
+  {
+   "text": "have a look at that and somebody help me",
+   "pieces": [
+    "have a look at that",
+    "somebody help me"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "HELP"
+   ],
+   "id": "pair_en_064"
+  },
+  {
+   "text": "check if the wheat is ready and look at sofa",
+   "pieces": [
+    "check if the wheat is ready",
+    "look at sofa"
+   ],
+   "orders": [
+    "CHECK",
+    "LOOK_AT"
+   ],
+   "id": "pair_en_065"
+  },
+  {
+   "text": "take site, check every corner and also look forward",
+   "pieces": [
+    "take site, check every corner",
+    "look forward"
+   ],
+   "orders": [
+    "ENTRY",
+    "LOOK_AT"
+   ],
+   "id": "pair_en_066"
+  },
+  {
+   "text": "pick the apples, plant the seedlings at my pin and same again",
+   "pieces": [
+    "pick the apples",
+    "plant the seedlings at my pin",
+    "same again"
+   ],
+   "orders": [
+    "HARVEST",
+    "PLANT_CROP",
+    "REPEAT"
+   ],
+   "id": "pair_en_067"
+  },
+  {
+   "text": "try again relocating to my pin, and hold the north window",
+   "pieces": [
+    "try again relocating to my pin",
+    "hold the north window"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "HOLD_ANGLE"
+   ],
+   "id": "pair_en_068"
+  },
+  {
+   "text": "should that be true and go back again",
+   "pieces": [
+    "should that be true",
+    "go back again"
+   ],
+   "orders": [
+    "OPEN_FIRE",
+    "GO_BACK"
+   ],
+   "id": "pair_en_069"
+  },
+  {
+   "text": "uh go back go back and blow that hatch open and stand right here bro",
+   "pieces": [
+    "uh go back go back",
+    "blow that hatch open",
+    "stand right here bro"
+   ],
+   "orders": [
+    "GO_BACK",
+    "BREACH",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_en_070"
+  },
+  {
+   "text": "drop down through the hole, and check it",
+   "pieces": [
+    "drop down through the hole",
+    "check it"
+   ],
+   "orders": [
+    "JUMP",
+    "CHECK"
+   ],
+   "id": "pair_en_071"
+  },
+  {
+   "text": "go to your sidearm and go back again",
+   "pieces": [
+    "go to your sidearm",
+    "go back again"
+   ],
+   "orders": [
+    "SWITCH_WEAPON",
+    "GO_BACK"
+   ],
+   "id": "pair_en_072"
+  },
+  {
+   "text": "up on your feet and drop down when i say and get the defuse",
+   "pieces": [
+    "up on your feet",
+    "drop down when i say",
+    "get the defuse"
+   ],
+   "orders": [
+    "STAND_UP",
+    "JUMP",
+    "DEFUSE"
+   ],
+   "id": "pair_en_073"
+  },
+  {
+   "text": "look at my mark and shut this window and find cover over there",
+   "pieces": [
+    "look at my mark",
+    "shut this window",
+    "find cover over there"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "OPEN_FIRE",
+    "TAKE_COVER"
+   ],
+   "id": "pair_en_074"
+  },
+  {
+   "text": "stay at my ping, and look at sofa",
+   "pieces": [
+    "stay at my ping",
+    "look at sofa"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "LOOK_AT"
+   ],
+   "id": "pair_en_075"
+  },
+  {
+   "text": "dismantle it and smoke the door on the left and look at sofa",
+   "pieces": [
+    "dismantle it",
+    "smoke the door on the left",
+    "look at sofa"
+   ],
+   "orders": [
+    "DEMOLISH",
+    "SMOKE",
+    "LOOK_AT"
+   ],
+   "id": "pair_en_076"
+  },
+  {
+   "text": "come back come back to me and look at your six",
+   "pieces": [
+    "come back come back to me",
+    "look at your six"
+   ],
+   "orders": [
+    "COME_BACK",
+    "LOOK_AT"
+   ],
+   "id": "pair_en_077"
+  },
+  {
+   "text": "put a roof on it, and clear the rocks off the field",
+   "pieces": [
+    "put a roof on it",
+    "clear the rocks off the field"
+   ],
+   "orders": [
+    "BUILD",
+    "TILL"
+   ],
+   "id": "pair_en_078"
+  },
+  {
+   "text": "jump over the table, clear the rocks off the field and plant at the south door",
+   "pieces": [
+    "jump over the table",
+    "clear the rocks off the field",
+    "plant at the south door"
+   ],
+   "orders": [
+    "JUMP",
+    "TILL",
+    "PLANT"
+   ],
+   "id": "pair_en_079"
+  },
+  {
+   "text": "covering fire when i say and uh bring the plants over here",
+   "pieces": [
+    "covering fire when i say",
+    "uh bring the plants over here"
+   ],
+   "orders": [
+    "SUPPRESS",
+    "DELIVER"
+   ],
+   "id": "pair_en_080"
+  },
+  {
+   "text": "water the north field, move to the roof and um go hide here quick",
+   "pieces": [
+    "water the north field",
+    "move to the roof",
+    "um go hide here quick"
+   ],
+   "orders": [
+    "WATER",
+    "MOVE_TO",
+    "TAKE_COVER"
+   ],
+   "id": "pair_en_081"
+  },
+  {
+   "text": "roll down and water the plot at my pin",
+   "pieces": [
+    "roll down",
+    "water the plot at my pin"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "WATER"
+   ],
+   "id": "pair_en_082"
+  },
+  {
+   "text": "dig over the garden, cover me bro im reloading and clear the room",
+   "pieces": [
+    "dig over the garden",
+    "cover me bro im reloading",
+    "clear the room"
+   ],
+   "orders": [
+    "TILL",
+    "COVER_ME",
+    "ENTRY"
+   ],
+   "id": "pair_en_083"
+  },
+  {
+   "text": "hold this angle and try again relocating to my pin",
+   "pieces": [
+    "hold this angle",
+    "try again relocating to my pin"
+   ],
+   "orders": [
+    "HOLD_ANGLE",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_084"
+  },
+  {
+   "text": "beach this wall, and spread the manure",
+   "pieces": [
+    "beach this wall",
+    "spread the manure"
+   ],
+   "orders": [
+    "BREACH",
+    "TILL"
+   ],
+   "id": "pair_en_085"
+  },
+  {
+   "text": "should him and uh follow me, follow me and check the fire exit",
+   "pieces": [
+    "should him",
+    "uh follow me, follow me",
+    "check the fire exit"
+   ],
+   "orders": [
+    "OPEN_FIRE",
+    "FOLLOW_ME",
+    "CHECK"
+   ],
+   "id": "pair_en_086"
+  },
+  {
+   "text": "open the south door and i put my pins go there",
+   "pieces": [
+    "open the south door",
+    "i put my pins go there"
+   ],
+   "orders": [
+    "OPEN",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_087"
+  },
+  {
+   "text": "come here back, and open the wall",
+   "pieces": [
+    "come here back",
+    "open the wall"
+   ],
+   "orders": [
+    "COME_BACK",
+    "BREACH"
+   ],
+   "id": "pair_en_088"
+  },
+  {
+   "text": "spread the manure, and open the wall",
+   "pieces": [
+    "spread the manure",
+    "open the wall"
+   ],
+   "orders": [
+    "TILL",
+    "BREACH"
+   ],
+   "id": "pair_en_089"
+  },
+  {
+   "text": "go into the car and plant the seedlings at my pin",
+   "pieces": [
+    "go into the car",
+    "plant the seedlings at my pin"
+   ],
+   "orders": [
+    "GET_IN",
+    "PLANT_CROP"
+   ],
+   "id": "pair_en_090"
+  },
+  {
+   "text": "remove the ladder, take another angle and till it",
+   "pieces": [
+    "remove the ladder",
+    "take another angle",
+    "till it"
+   ],
+   "orders": [
+    "DEMOLISH",
+    "HOLD_OTHER_ANGLE",
+    "TILL"
+   ],
+   "id": "pair_en_091"
+  },
+  {
+   "text": "have another go and build a crate and attack that guy",
+   "pieces": [
+    "have another go",
+    "build a crate",
+    "attack that guy"
+   ],
+   "orders": [
+    "REPEAT",
+    "BUILD",
+    "ATTACK"
+   ],
+   "id": "pair_en_092"
+  },
+  {
+   "text": "get inside the vent, plant the seedlings at my pin and repair the door",
+   "pieces": [
+    "get inside the vent",
+    "plant the seedlings at my pin",
+    "repair the door"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "PLANT_CROP",
+    "REPAIR"
+   ],
+   "id": "pair_en_093"
+  },
+  {
+   "text": "um go hide here quick and jump through the window and attack that guy",
+   "pieces": [
+    "um go hide here quick",
+    "jump through the window",
+    "attack that guy"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "VAULT_WINDOW",
+    "ATTACK"
+   ],
+   "id": "pair_en_094"
+  },
+  {
+   "text": "check your left and go stand by the table upstairs",
+   "pieces": [
+    "check your left",
+    "go stand by the table upstairs"
+   ],
+   "orders": [
+    "CHECK",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_095"
+  },
+  {
+   "text": "lock down the first floor and follow me, follow me",
+   "pieces": [
+    "lock down the first floor",
+    "follow me, follow me"
+   ],
+   "orders": [
+    "HOLD_ANGLE",
+    "FOLLOW_ME"
+   ],
+   "id": "pair_en_096"
+  },
+  {
+   "text": "keep your gun on that window, and reinforce the north wall",
+   "pieces": [
+    "keep your gun on that window",
+    "reinforce the north wall"
+   ],
+   "orders": [
+    "HOLD_ANGLE",
+    "REPAIR"
+   ],
+   "id": "pair_en_097"
+  },
+  {
+   "text": "head downstairs bro quick, stay at my ping and tear down the roof",
+   "pieces": [
+    "head downstairs bro quick",
+    "stay at my ping",
+    "tear down the roof"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "HOLD_POSITION",
+    "DEMOLISH"
+   ],
+   "id": "pair_en_098"
+  },
+  {
+   "text": "stand in the corner, and go around through the main door",
+   "pieces": [
+    "stand in the corner",
+    "go around through the main door"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "FLANK"
+   ],
+   "id": "pair_en_099"
+  },
+  {
+   "text": "keep moving right, and on latch the gate for me",
+   "pieces": [
+    "keep moving right",
+    "on latch the gate for me"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "OPEN"
+   ],
+   "id": "pair_en_100"
+  },
+  {
+   "text": "shoot him, and stand here until i say",
+   "pieces": [
+    "shoot him",
+    "stand here until i say"
+   ],
+   "orders": [
+    "OPEN_FIRE",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_en_101"
+  },
+  {
+   "text": "use your other gun and also i put my pins go there",
+   "pieces": [
+    "use your other gun",
+    "i put my pins go there"
+   ],
+   "orders": [
+    "SWITCH_WEAPON",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_102"
+  },
+  {
+   "text": "throw some grain to the chickens and check the fire escape and sneak in there",
+   "pieces": [
+    "throw some grain to the chickens",
+    "check the fire escape",
+    "sneak in there"
+   ],
+   "orders": [
+    "FEED",
+    "CHECK",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_103"
+  },
+  {
+   "text": "suppress that and also go collect the eggs",
+   "pieces": [
+    "suppress that",
+    "go collect the eggs"
+   ],
+   "orders": [
+    "SUPPRESS",
+    "COLLECT"
+   ],
+   "id": "pair_en_104"
+  },
+  {
+   "text": "take red and also take cover behind the chairs",
+   "pieces": [
+    "take red",
+    "take cover behind the chairs"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "TAKE_COVER"
+   ],
+   "id": "pair_en_105"
+  },
+  {
+   "text": "jump in the car and find cover and take brown stairs",
+   "pieces": [
+    "jump in the car",
+    "find cover",
+    "take brown stairs"
+   ],
+   "orders": [
+    "GET_IN",
+    "TAKE_COVER",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_106"
+  },
+  {
+   "text": "patch that hole and frag the main door",
+   "pieces": [
+    "patch that hole",
+    "frag the main door"
+   ],
+   "orders": [
+    "REPAIR",
+    "FRAG"
+   ],
+   "id": "pair_en_107"
+  },
+  {
+   "text": "feed the hens and also get to the east window",
+   "pieces": [
+    "feed the hens",
+    "get to the east window"
+   ],
+   "orders": [
+    "FEED",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_108"
+  },
+  {
+   "text": "make a crate and water the north field and shoot to my pin",
+   "pieces": [
+    "make a crate",
+    "water the north field",
+    "shoot to my pin"
+   ],
+   "orders": [
+    "BUILD",
+    "WATER",
+    "OPEN_FIRE"
+   ],
+   "id": "pair_en_109"
+  },
+  {
+   "text": "take red and crouch",
+   "pieces": [
+    "take red",
+    "crouch"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "CROUCH"
+   ],
+   "id": "pair_en_110"
+  },
+  {
+   "text": "check the area and go build the wall and ur rifle is dry bro switch",
+   "pieces": [
+    "check the area",
+    "go build the wall",
+    "ur rifle is dry bro switch"
+   ],
+   "orders": [
+    "CHECK",
+    "BUILD",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_en_111"
+  },
+  {
+   "text": "find a way up, retreat, there's way too many and now uh another window",
+   "pieces": [
+    "find a way up",
+    "retreat, there's way too many",
+    "now uh another window"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "FALL_BACK",
+    "OPEN_FIRE"
+   ],
+   "id": "pair_en_112"
+  },
+  {
+   "text": "breach the shed and hold the other angle",
+   "pieces": [
+    "breach the shed",
+    "hold the other angle"
+   ],
+   "orders": [
+    "BREACH",
+    "HOLD_OTHER_ANGLE"
+   ],
+   "id": "pair_en_113"
+  },
+  {
+   "text": "i'm trapped in here, and drop down when i say",
+   "pieces": [
+    "i'm trapped in here",
+    "drop down when i say"
+   ],
+   "orders": [
+    "HELP_INTERACTION",
+    "JUMP"
+   ],
+   "id": "pair_en_114"
+  },
+  {
+   "text": "take that car and go to your sidearm",
+   "pieces": [
+    "take that car",
+    "go to your sidearm"
+   ],
+   "orders": [
+    "GET_IN",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_en_115"
+  },
+  {
+   "text": "vault over that and shotgun",
+   "pieces": [
+    "vault over that",
+    "shotgun"
+   ],
+   "orders": [
+    "JUMP",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_en_116"
+  },
+  {
+   "text": "blow the hatch open and lay a foundation and go primary",
+   "pieces": [
+    "blow the hatch open",
+    "lay a foundation",
+    "go primary"
+   ],
+   "orders": [
+    "BREACH",
+    "BUILD",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_en_117"
+  },
+  {
+   "text": "stay there and go find armor",
+   "pieces": [
+    "stay there",
+    "go find armor"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_118"
+  },
+  {
+   "text": "have a look at that and also set up",
+   "pieces": [
+    "have a look at that",
+    "set up"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "STAND_UP"
+   ],
+   "id": "pair_en_119"
+  },
+  {
+   "text": "drop prone and try again try again",
+   "pieces": [
+    "drop prone",
+    "try again try again"
+   ],
+   "orders": [
+    "PRONE",
+    "REPEAT"
+   ],
+   "id": "pair_en_120"
+  },
+  {
+   "text": "pick up that shotgun over there and switch to shock the gun",
+   "pieces": [
+    "pick up that shotgun over there",
+    "switch to shock the gun"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_en_121"
+  },
+  {
+   "text": "have another go and also stop moving there",
+   "pieces": [
+    "have another go",
+    "stop moving there"
+   ],
+   "orders": [
+    "REPEAT",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_en_122"
+  },
+  {
+   "text": "shoot this windows and go in the building",
+   "pieces": [
+    "shoot this windows",
+    "go in the building"
+   ],
+   "orders": [
+    "OPEN_FIRE",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_123"
+  },
+  {
+   "text": "put fire on them, and stay there",
+   "pieces": [
+    "put fire on them",
+    "stay there"
+   ],
+   "orders": [
+    "SUPPRESS",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_en_124"
+  },
+  {
+   "text": "blow the wall and patch that hole",
+   "pieces": [
+    "blow the wall",
+    "patch that hole"
+   ],
+   "orders": [
+    "BREACH",
+    "REPAIR"
+   ],
+   "id": "pair_en_125"
+  },
+  {
+   "text": "check it, and find a way up",
+   "pieces": [
+    "check it",
+    "find a way up"
+   ],
+   "orders": [
+    "CHECK",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_126"
+  },
+  {
+   "text": "cover me as I go, and follow me to the east window",
+   "pieces": [
+    "cover me as I go",
+    "follow me to the east window"
+   ],
+   "orders": [
+    "COVER_ME",
+    "FOLLOW_ME"
+   ],
+   "id": "pair_en_127"
+  },
+  {
+   "text": "quick reload, and jumbo",
+   "pieces": [
+    "quick reload",
+    "jumbo"
+   ],
+   "orders": [
+    "RELOAD",
+    "JUMP"
+   ],
+   "id": "pair_en_128"
+  },
+  {
+   "text": "look to your right and give the cows some hay",
+   "pieces": [
+    "look to your right",
+    "give the cows some hay"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "FEED"
+   ],
+   "id": "pair_en_129"
+  },
+  {
+   "text": "stand here until i say, and build a crate",
+   "pieces": [
+    "stand here until i say",
+    "build a crate"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "BUILD"
+   ],
+   "id": "pair_en_130"
+  },
+  {
+   "text": "get behind the chairs and make sure it's clear",
+   "pieces": [
+    "get behind the chairs",
+    "make sure it's clear"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "CHECK"
+   ],
+   "id": "pair_en_131"
+  },
+  {
+   "text": "pick the zucchini, and jumped on and ur rifle is dry bro switch",
+   "pieces": [
+    "pick the zucchini",
+    "and jumped on",
+    "ur rifle is dry bro switch"
+   ],
+   "orders": [
+    "HARVEST",
+    "JUMP",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_en_132"
+  },
+  {
+   "text": "reinforce the barricade and get behind the sofa",
+   "pieces": [
+    "reinforce the barricade",
+    "get behind the sofa"
+   ],
+   "orders": [
+    "REPAIR",
+    "TAKE_COVER"
+   ],
+   "id": "pair_en_133"
+  },
+  {
+   "text": "put the tools in the barn and freeze. stop moving hole there and take brown stairs",
+   "pieces": [
+    "put the tools in the barn",
+    "Freeze. stop moving hole there",
+    "take brown stairs"
+   ],
+   "orders": [
+    "DELIVER",
+    "HOLD_POSITION",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_134"
+  },
+  {
+   "text": "harvest the turnips, and hold blue",
+   "pieces": [
+    "harvest the turnips",
+    "hold blue"
+   ],
+   "orders": [
+    "HARVEST",
+    "HOLD_ANGLE"
+   ],
+   "id": "pair_en_135"
+  },
+  {
+   "text": "breach the shed, and pick the cucumbers",
+   "pieces": [
+    "breach the shed",
+    "pick the cucumbers"
+   ],
+   "orders": [
+    "BREACH",
+    "HARVEST"
+   ],
+   "id": "pair_en_136"
+  },
+  {
+   "text": "let's colour the colour and fix the wall when I say",
+   "pieces": [
+    "let's colour the colour",
+    "fix the wall when I say"
+   ],
+   "orders": [
+    "COVER_ME",
+    "REPAIR"
+   ],
+   "id": "pair_en_137"
+  },
+  {
+   "text": "check and move down here and cover another window",
+   "pieces": [
+    "check",
+    "move down here",
+    "cover another window"
+   ],
+   "orders": [
+    "CHECK",
+    "MOVE_TO",
+    "HOLD_OTHER_ANGLE"
+   ],
+   "id": "pair_en_138"
+  },
+  {
+   "text": "clear the room and also switch them",
+   "pieces": [
+    "clear the room",
+    "switch them"
+   ],
+   "orders": [
+    "ENTRY",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_en_139"
+  },
+  {
+   "text": "stand right here bro, and get the seeds in the ground",
+   "pieces": [
+    "stand right here bro",
+    "get the seeds in the ground"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "PLANT_CROP"
+   ],
+   "id": "pair_en_140"
+  },
+  {
+   "text": "smoke the door on the left, hold the north window and upon fire this wall",
+   "pieces": [
+    "smoke the door on the left",
+    "hold the north window",
+    "upon fire this wall"
+   ],
+   "orders": [
+    "SMOKE",
+    "HOLD_ANGLE",
+    "OPEN_FIRE"
+   ],
+   "id": "pair_en_141"
+  },
+  {
+   "text": "push the top floor, and a little further left",
+   "pieces": [
+    "push the top floor",
+    "a little further left"
+   ],
+   "orders": [
+    "ENTRY",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_142"
+  },
+  {
+   "text": "plant it, plant it and also go to the field",
+   "pieces": [
+    "plant it, plant it",
+    "go to the field"
+   ],
+   "orders": [
+    "PLANT",
+    "MOVE_TO"
+   ],
+   "id": "pair_en_143"
+  },
+  {
+   "text": "duck and get back to your spot",
+   "pieces": [
+    "duck",
+    "get back to your spot"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "GO_BACK"
+   ],
+   "id": "pair_en_144"
+  },
+  {
+   "text": "come back and on latch the gate for me and try again try again",
+   "pieces": [
+    "come back",
+    "on latch the gate for me",
+    "try again try again"
+   ],
+   "orders": [
+    "COME_BACK",
+    "OPEN",
+    "REPEAT"
+   ],
+   "id": "pair_en_145"
+  },
+  {
+   "text": "more and build a crate",
+   "pieces": [
+    "more",
+    "build a crate"
+   ],
+   "orders": [
+    "REPEAT",
+    "BUILD"
+   ],
+   "id": "pair_en_146"
+  },
+  {
+   "text": "go around through the main door and also drone the room",
+   "pieces": [
+    "go around through the main door",
+    "drone the room"
+   ],
+   "orders": [
+    "FLANK",
+    "DRONE"
+   ],
+   "id": "pair_en_147"
+  },
+  {
+   "text": "flash white stairs and stay right there and turn around",
+   "pieces": [
+    "flash white stairs",
+    "stay right there",
+    "turn around"
+   ],
+   "orders": [
+    "FLASH",
+    "HOLD_POSITION",
+    "LOOK_AT"
+   ],
+   "id": "pair_en_148"
+  },
+  {
+   "text": "sprinkle the plants in the greenhouse and return back",
+   "pieces": [
+    "sprinkle the plants in the greenhouse",
+    "return back"
+   ],
+   "orders": [
+    "WATER",
+    "GO_BACK"
+   ],
+   "id": "pair_en_149"
+  }
+ ],
+ "ru": [
+  {
+   "text": "отступай на верхний этаж и раскидай навоз",
+   "pieces": [
+    "fall back to the top floor",
+    "spread the manure"
+   ],
+   "orders": [
+    "FALL_BACK",
+    "TILL"
+   ],
+   "id": "pair_ru_000"
+  },
+  {
+   "text": "присядь на колено и эй, помоги по-быстрому и э, иди прячься сюда, быстро",
+   "pieces": [
+    "take a knee",
+    "yo help me out real quick",
+    "um go hide here quick"
+   ],
+   "orders": [
+    "CROUCH",
+    "HELP",
+    "TAKE_COVER"
+   ],
+   "id": "pair_ru_001"
+  },
+  {
+   "text": "смени магазин, и полей посевы",
+   "pieces": [
+    "change mags",
+    "water the crops"
+   ],
+   "orders": [
+    "RELOAD",
+    "WATER"
+   ],
+   "id": "pair_ru_002"
+  },
+  {
+   "text": "поставь дефузер, и отступай, их слишком много",
+   "pieces": [
+    "plant the defuser",
+    "retreat, there's way too many"
+   ],
+   "orders": [
+    "PLANT",
+    "FALL_BACK"
+   ],
+   "id": "pair_ru_003"
+  },
+  {
+   "text": "открой южную дверь и давай, подходи дальше",
+   "pieces": [
+    "open the south door",
+    "keep coming"
+   ],
+   "orders": [
+    "OPEN",
+    "COME_BACK"
+   ],
+   "id": "pair_ru_004"
+  },
+  {
+   "text": "посмотри на мою метку, присядь и кинь гранату на мою метку",
+   "pieces": [
+    "look at my mark",
+    "sit down",
+    "throw a frag at my mark"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "CROUCH",
+    "FRAG"
+   ],
+   "id": "pair_ru_005"
+  },
+  {
+   "text": "гранату в главную дверь и прикрой меня",
+   "pieces": [
+    "frag the main door",
+    "cover me"
+   ],
+   "orders": [
+    "FRAG",
+    "COVER_ME"
+   ],
+   "id": "pair_ru_006"
+  },
+  {
+   "text": "принеси сюда доски и ещё спустись по верёвке с крыши",
+   "pieces": [
+    "bring the planks over here",
+    "rappel down from the roof"
+   ],
+   "orders": [
+    "DELIVER",
+    "RAPPEL"
+   ],
+   "id": "pair_ru_007"
+  },
+  {
+   "text": "проверь справа и бери основное",
+   "pieces": [
+    "check on the write side",
+    "go primary"
+   ],
+   "orders": [
+    "CHECK",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_ru_008"
+  },
+  {
+   "text": "плант у жёлтой лестницы и встань, когда скажу",
+   "pieces": [
+    "plant at yellow stairs",
+    "stand up when i say"
+   ],
+   "orders": [
+    "PLANT",
+    "STAND_UP"
+   ],
+   "id": "pair_ru_009"
+  },
+  {
+   "text": "плант у жёлтой лестницы и ещё стой тут, пока не скажу",
+   "pieces": [
+    "plant at yellow stairs",
+    "stand here until i say"
+   ],
+   "orders": [
+    "PLANT",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_ru_010"
+  },
+  {
+   "text": "ложись и ещё зажми их",
+   "pieces": [
+    "drop prone",
+    "suppress them"
+   ],
+   "orders": [
+    "PRONE",
+    "SUPPRESS"
+   ],
+   "id": "pair_ru_011"
+  },
+  {
+   "text": "взорви тот люк, и вспаши южное поле",
+   "pieces": [
+    "blow that hatch open",
+    "Till the south field"
+   ],
+   "orders": [
+    "BREACH",
+    "TILL"
+   ],
+   "id": "pair_ru_012"
+  },
+  {
+   "text": "снеси баррикаду, иди встань у стола наверху и кинь гранату на мою метку",
+   "pieces": [
+    "remove the barricade",
+    "go stand by the table upstairs",
+    "throw a frag at my mark"
+   ],
+   "orders": [
+    "DEMOLISH",
+    "MOVE_TO",
+    "FRAG"
+   ],
+   "id": "pair_ru_013"
+  },
+  {
+   "text": "не стреляй, не стреляй, это свой и вспаши южное поле и помоги, я лежу",
+   "pieces": [
+    "dont shoot dont shoot is friendly",
+    "Till the south field",
+    "help I'm down"
+   ],
+   "orders": [
+    "HOLD_FIRE",
+    "TILL",
+    "HELP"
+   ],
+   "id": "pair_ru_014"
+  },
+  {
+   "text": "ляг здесь и отнеси семена в теплицу",
+   "pieces": [
+    "lay down here",
+    "take the seeds to the greenhouse"
+   ],
+   "orders": [
+    "PRONE",
+    "DELIVER"
+   ],
+   "id": "pair_ru_015"
+  },
+  {
+   "text": "попробуй ещё раз и ещё гранату в главную дверь",
+   "pieces": [
+    "have another go",
+    "frag the main door"
+   ],
+   "orders": [
+    "REPEAT",
+    "FRAG"
+   ],
+   "id": "pair_ru_016"
+  },
+  {
+   "text": "эй, помоги по-быстрому, и спускайся вниз, бро, быстро",
+   "pieces": [
+    "yo help me out real quick",
+    "head downstairs bro quick"
+   ],
+   "orders": [
+    "HELP",
+    "MOVE_TO"
+   ],
+   "id": "pair_ru_017"
+  },
+  {
+   "text": "эй, мне бы помощь не помешала и спрячься за диван",
+   "pieces": [
+    "Yo, I could use a hand",
+    "get behind the sofa"
+   ],
+   "orders": [
+    "HELP",
+    "TAKE_COVER"
+   ],
+   "id": "pair_ru_018"
+  },
+  {
+   "text": "смотри вправо, вправо, быстро-быстро, отступай на верхний этаж и посади цветы",
+   "pieces": [
+    "look write look write quick quick",
+    "fall back to the top floor",
+    "plant some flowers"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "FALL_BACK",
+    "PLANT_CROP"
+   ],
+   "id": "pair_ru_019"
+  },
+  {
+   "text": "прикрой, бро, я перезаряжаюсь и попробуй ещё раз",
+   "pieces": [
+    "cover me bro im reloading",
+    "have another go"
+   ],
+   "orders": [
+    "COVER_ME",
+    "REPEAT"
+   ],
+   "id": "pair_ru_020"
+  },
+  {
+   "text": "прикрой, бро, я перезаряжаюсь и плант, плант",
+   "pieces": [
+    "cover me bro im reloading",
+    "plant it, plant it"
+   ],
+   "orders": [
+    "COVER_ME",
+    "PLANT"
+   ],
+   "id": "pair_ru_021"
+  },
+  {
+   "text": "плант, плант и посмотри на мою метку",
+   "pieces": [
+    "plant it, plant it",
+    "look at my mark"
+   ],
+   "orders": [
+    "PLANT",
+    "LOOK_AT"
+   ],
+   "id": "pair_ru_022"
+  },
+  {
+   "text": "Замри. Не двигайся, стой там, присядь и ротнись туда, где я отметил",
+   "pieces": [
+    "Freeze. stop moving hole there",
+    "crouch",
+    "rotate over to where I marked"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "CROUCH",
+    "MOVE_TO"
+   ],
+   "id": "pair_ru_023"
+  },
+  {
+   "text": "открой южную дверь, и вставай на ноги",
+   "pieces": [
+    "open the south door",
+    "up on your feet"
+   ],
+   "orders": [
+    "OPEN",
+    "STAND_UP"
+   ],
+   "id": "pair_ru_024"
+  },
+  {
+   "text": "вставай на ноги и ещё отправь дрон на мою метку",
+   "pieces": [
+    "up on your feet",
+    "send the drone to my mark"
+   ],
+   "orders": [
+    "STAND_UP",
+    "DRONE"
+   ],
+   "id": "pair_ru_025"
+  },
+  {
+   "text": "разбери лестницу и построй ящик и подорви люк",
+   "pieces": [
+    "remove the ladder",
+    "build a crate",
+    "blow the hatch open"
+   ],
+   "orders": [
+    "DEMOLISH",
+    "BUILD",
+    "BREACH"
+   ],
+   "id": "pair_ru_026"
+  },
+  {
+   "text": "прикрой, бро, я перезаряжаюсь, плант у жёлтой лестницы и хватит зажимать",
+   "pieces": [
+    "cover me bro im reloading",
+    "plant at yellow stairs",
+    "stop suppressing"
+   ],
+   "orders": [
+    "COVER_ME",
+    "PLANT",
+    "HOLD_FIRE"
+   ],
+   "id": "pair_ru_027"
+  },
+  {
+   "text": "не стреляй, не стреляй, это свой, и перемахни через то окно",
+   "pieces": [
+    "dont shoot dont shoot is friendly",
+    "hop through that window"
+   ],
+   "orders": [
+    "HOLD_FIRE",
+    "VAULT_WINDOW"
+   ],
+   "id": "pair_ru_028"
+  },
+  {
+   "text": "забирай точку, чекай каждый угол и переходи на пистолет",
+   "pieces": [
+    "take site, check every corner",
+    "go to your sidearm"
+   ],
+   "orders": [
+    "ENTRY",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_ru_029"
+  },
+  {
+   "text": "покорми свиней и ещё построй ящик",
+   "pieces": [
+    "give the pigs their food",
+    "build a crate"
+   ],
+   "orders": [
+    "FEED",
+    "BUILD"
+   ],
+   "id": "pair_ru_030"
+  },
+  {
+   "text": "перезарядись по моей команде, и зажми их",
+   "pieces": [
+    "reload on my go",
+    "suppress them"
+   ],
+   "orders": [
+    "RELOAD",
+    "SUPPRESS"
+   ],
+   "id": "pair_ru_031"
+  },
+  {
+   "text": "пушь на мой пин и держи то окно на прицеле",
+   "pieces": [
+    "push in at my pin",
+    "keep your gun on that window"
+   ],
+   "orders": [
+    "ENTRY",
+    "HOLD_ANGLE"
+   ],
+   "id": "pair_ru_032"
+  },
+  {
+   "text": "Укрепи люк наверху, полей посевы и спрячься за диван",
+   "pieces": [
+    "Reinforce the hatch upstairs",
+    "water the crops",
+    "get behind the sofa"
+   ],
+   "orders": [
+    "REPAIR",
+    "WATER",
+    "TAKE_COVER"
+   ],
+   "id": "pair_ru_033"
+  },
+  {
+   "text": "гранату на жёлтую лестницу и да, бричь",
+   "pieces": [
+    "nade yellow stairs",
+    "yes breach it"
+   ],
+   "orders": [
+    "FRAG",
+    "BREACH"
+   ],
+   "id": "pair_ru_034"
+  },
+  {
+   "text": "да, бричь и выходи из машины",
+   "pieces": [
+    "yes breach it",
+    "exit the vehicle"
+   ],
+   "orders": [
+    "BREACH",
+    "GET_OUT"
+   ],
+   "id": "pair_ru_035"
+  },
+  {
+   "text": "найди укрытие вон там и ещё раскидай навоз",
+   "pieces": [
+    "find cover over there",
+    "spread the manure"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "TILL"
+   ],
+   "id": "pair_ru_036"
+  },
+  {
+   "text": "делай дефуз и ещё прикрой, пока я плантую",
+   "pieces": [
+    "get the defuse",
+    "cover me while I plant"
+   ],
+   "orders": [
+    "DEFUSE",
+    "COVER_ME"
+   ],
+   "id": "pair_ru_037"
+  },
+  {
+   "text": "повтори последний приказ, взорви люк и отступай, их слишком много",
+   "pieces": [
+    "repeat the last order",
+    "blow the hatch open",
+    "retreat, there's way too many"
+   ],
+   "orders": [
+    "REPEAT",
+    "BREACH",
+    "FALL_BACK"
+   ],
+   "id": "pair_ru_038"
+  },
+  {
+   "text": "смотри вправо, вправо, быстро-быстро и да, бричь",
+   "pieces": [
+    "look write look write quick quick",
+    "yes breach it"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "BREACH"
+   ],
+   "id": "pair_ru_039"
+  },
+  {
+   "text": "построй ящик, плант у жёлтой лестницы и собери клубнику",
+   "pieces": [
+    "build a crate",
+    "plant at yellow stairs",
+    "pick the strawberries"
+   ],
+   "orders": [
+    "BUILD",
+    "PLANT",
+    "HARVEST"
+   ],
+   "id": "pair_ru_040"
+  },
+  {
+   "text": "э, полей помидоры и стреляй в него и стой на месте, бот",
+   "pieces": [
+    "uh water the tomatoes",
+    "shoot him",
+    "stay put bot"
+   ],
+   "orders": [
+    "WATER",
+    "OPEN_FIRE",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_ru_041"
+  },
+  {
+   "text": "найди укрытие и ещё выпрыгивай из тачки",
+   "pieces": [
+    "find cover",
+    "hop outta the car"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "GET_OUT"
+   ],
+   "id": "pair_ru_042"
+  },
+  {
+   "text": "прекратить огонь и подорви люк и собираемся, собираемся, эм, давай ко мне",
+   "pieces": [
+    "cease fire",
+    "blow the hatch open",
+    "regroup regroup um rejoin me"
+   ],
+   "orders": [
+    "HOLD_FIRE",
+    "BREACH",
+    "COME_BACK"
+   ],
+   "id": "pair_ru_043"
+  },
+  {
+   "text": "покорми кур, открой южную дверь и отправь дрон на мою метку",
+   "pieces": [
+    "feed the chickens",
+    "open the south door",
+    "send the drone to my mark"
+   ],
+   "orders": [
+    "FEED",
+    "OPEN",
+    "DRONE"
+   ],
+   "id": "pair_ru_044"
+  },
+  {
+   "text": "продронь комнату и собираемся, собираемся, эм, давай ко мне",
+   "pieces": [
+    "drone the room",
+    "regroup regroup um rejoin me"
+   ],
+   "orders": [
+    "DRONE",
+    "COME_BACK"
+   ],
+   "id": "pair_ru_045"
+  },
+  {
+   "text": "ротнись туда, где я отметил, и обезвредь эту штуку, пока не рванула",
+   "pieces": [
+    "rotate over to where I marked",
+    "disarm that thing before it blows"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "DEFUSE"
+   ],
+   "id": "pair_ru_046"
+  },
+  {
+   "text": "присядь и сбрызни растения в теплице",
+   "pieces": [
+    "sit down",
+    "sprinkle the plants in the greenhouse"
+   ],
+   "orders": [
+    "CROUCH",
+    "WATER"
+   ],
+   "id": "pair_ru_047"
+  },
+  {
+   "text": "стой прям тут, бро и собери мёд из ульев",
+   "pieces": [
+    "stand right here bro",
+    "Grab the honey from the beehives"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "COLLECT"
+   ],
+   "id": "pair_ru_048"
+  },
+  {
+   "text": "западное окно, залезай через него, держи другой угол и собери репу",
+   "pieces": [
+    "west window, hop in through it",
+    "cover the other angle",
+    "harvest the turnips"
+   ],
+   "orders": [
+    "VAULT_WINDOW",
+    "HOLD_OTHER_ANGLE",
+    "HARVEST"
+   ],
+   "id": "pair_ru_049"
+  },
+  {
+   "text": "плант, плант, и давай, подходи дальше",
+   "pieces": [
+    "plant it, plant it",
+    "keep coming"
+   ],
+   "orders": [
+    "PLANT",
+    "COME_BACK"
+   ],
+   "id": "pair_ru_050"
+  },
+  {
+   "text": "держи то окно на прицеле и ещё поднимись по ступенькам",
+   "pieces": [
+    "keep your gun on that window",
+    "go up the steps"
+   ],
+   "orders": [
+    "HOLD_ANGLE",
+    "MOVE_TO"
+   ],
+   "id": "pair_ru_051"
+  },
+  {
+   "text": "э, полей помидоры, посмотри на мою метку и иди на первый этаж",
+   "pieces": [
+    "uh water the tomatoes",
+    "look at my mark",
+    "move to the first floor"
+   ],
+   "orders": [
+    "WATER",
+    "LOOK_AT",
+    "MOVE_TO"
+   ],
+   "id": "pair_ru_052"
+  },
+  {
+   "text": "у тебя винтовка пустая, бро, меняй и хватит зажимать и собери мёд из ульев",
+   "pieces": [
+    "ur rifle is dry bro switch",
+    "stop suppressing",
+    "Grab the honey from the beehives"
+   ],
+   "orders": [
+    "SWITCH_WEAPON",
+    "HOLD_FIRE",
+    "COLLECT"
+   ],
+   "id": "pair_ru_053"
+  },
+  {
+   "text": "у тебя винтовка пустая, бро, меняй и покорми кур и пушь на мой пин",
+   "pieces": [
+    "ur rifle is dry bro switch",
+    "feed the chickens",
+    "push in at my pin"
+   ],
+   "orders": [
+    "SWITCH_WEAPON",
+    "FEED",
+    "ENTRY"
+   ],
+   "id": "pair_ru_054"
+  },
+  {
+   "text": "дай мне дымовую завесу спереди, э, вступай в бой, в бой с вражеской командой и бери ту тачку",
+   "pieces": [
+    "gimme a smoke screen out front",
+    "uh engage engage the enemy team",
+    "take that car"
+   ],
+   "orders": [
+    "SMOKE",
+    "ATTACK",
+    "GET_IN"
+   ],
+   "id": "pair_ru_055"
+  },
+  {
+   "text": "стой прям тут, бро, кинь флешку на точку и бери ту тачку",
+   "pieces": [
+    "stand right here bro",
+    "pop a flash into site",
+    "take that car"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "FLASH",
+    "GET_IN"
+   ],
+   "id": "pair_ru_056"
+  },
+  {
+   "text": "я тут застрял и ещё принеси сюда доски",
+   "pieces": [
+    "i'm trapped in here",
+    "bring the planks over here"
+   ],
+   "orders": [
+    "HELP_INTERACTION",
+    "DELIVER"
+   ],
+   "id": "pair_ru_057"
+  },
+  {
+   "text": "поставь дым на западное окно, прикрой меня и спустись по верёвке с крыши",
+   "pieces": [
+    "smoke the west window",
+    "cover me",
+    "rappel down from the roof"
+   ],
+   "orders": [
+    "SMOKE",
+    "COVER_ME",
+    "RAPPEL"
+   ],
+   "id": "pair_ru_058"
+  },
+  {
+   "text": "э, полей помидоры и эй, мне бы помощь не помешала и посади цветы",
+   "pieces": [
+    "uh water the tomatoes",
+    "Yo, I could use a hand",
+    "plant some flowers"
+   ],
+   "orders": [
+    "WATER",
+    "HELP",
+    "PLANT_CROP"
+   ],
+   "id": "pair_ru_059"
+  },
+  {
+   "text": "зажми их, и отнеси семена в теплицу",
+   "pieces": [
+    "suppress them",
+    "take the seeds to the greenhouse"
+   ],
+   "orders": [
+    "SUPPRESS",
+    "DELIVER"
+   ],
+   "id": "pair_ru_060"
+  },
+  {
+   "text": "ага, кинь туда смок, и раскидай удобрения на северном поле",
+   "pieces": [
+    "yeah smoke it",
+    "spread fertilizer on the north field"
+   ],
+   "orders": [
+    "SMOKE",
+    "TILL"
+   ],
+   "id": "pair_ru_061"
+  },
+  {
+   "text": "помоги, я лежу и вставай на ноги",
+   "pieces": [
+    "help I'm down",
+    "up on your feet"
+   ],
+   "orders": [
+    "HELP",
+    "STAND_UP"
+   ],
+   "id": "pair_ru_062"
+  },
+  {
+   "text": "ещё раз, пожалуйста и подлатай это и за мной к восточному окну",
+   "pieces": [
+    "again please",
+    "patch it up",
+    "follow me to the east window"
+   ],
+   "orders": [
+    "REPEAT",
+    "REPAIR",
+    "FOLLOW_ME"
+   ],
+   "id": "pair_ru_063"
+  },
+  {
+   "text": "иди полей огород и вспаши это и не стреляй, не стреляй, это свой",
+   "pieces": [
+    "go water the garden",
+    "till it",
+    "dont shoot dont shoot is friendly"
+   ],
+   "orders": [
+    "WATER",
+    "TILL",
+    "HOLD_FIRE"
+   ],
+   "id": "pair_ru_064"
+  },
+  {
+   "text": "открой южную дверь, и держи позицию на моей метке",
+   "pieces": [
+    "open the south door",
+    "hold position at my pin"
+   ],
+   "orders": [
+    "OPEN",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_ru_065"
+  },
+  {
+   "text": "встань, когда скажу, собери репу и укрепи люк наверху",
+   "pieces": [
+    "stand up when i say",
+    "harvest the turnips",
+    "Reinforce the hatch upstairs"
+   ],
+   "orders": [
+    "STAND_UP",
+    "HARVEST",
+    "REPAIR"
+   ],
+   "id": "pair_ru_066"
+  },
+  {
+   "text": "гранату в главную дверь и не стреляй, не стреляй, это свой",
+   "pieces": [
+    "frag the main door",
+    "dont shoot dont shoot is friendly"
+   ],
+   "orders": [
+    "FRAG",
+    "HOLD_FIRE"
+   ],
+   "id": "pair_ru_067"
+  },
+  {
+   "text": "попробуй ещё раз и эй, мне бы помощь не помешала",
+   "pieces": [
+    "have another go",
+    "Yo, I could use a hand"
+   ],
+   "orders": [
+    "REPEAT",
+    "HELP"
+   ],
+   "id": "pair_ru_068"
+  },
+  {
+   "text": "поставь дым на западное окно и покорми свиней",
+   "pieces": [
+    "smoke the west window",
+    "give the pigs their food"
+   ],
+   "orders": [
+    "SMOKE",
+    "FEED"
+   ],
+   "id": "pair_ru_069"
+  },
+  {
+   "text": "поставь дым на западное окно, подлатай это и лезь через то окно",
+   "pieces": [
+    "smoke the west window",
+    "patch it up",
+    "hop through that window"
+   ],
+   "orders": [
+    "SMOKE",
+    "REPAIR",
+    "VAULT_WINDOW"
+   ],
+   "id": "pair_ru_070"
+  },
+  {
+   "text": "открой мне ворота, и выходи из машины",
+   "pieces": [
+    "on latch the gate for me",
+    "exit the vehicle"
+   ],
+   "orders": [
+    "OPEN",
+    "GET_OUT"
+   ],
+   "id": "pair_ru_071"
+  },
+  {
+   "text": "снеси баррикаду, э, иди прячься сюда, быстро и спустись по верёвке с крыши",
+   "pieces": [
+    "remove the barricade",
+    "um go hide here quick",
+    "rappel down from the roof"
+   ],
+   "orders": [
+    "DEMOLISH",
+    "TAKE_COVER",
+    "RAPPEL"
+   ],
+   "id": "pair_ru_072"
+  },
+  {
+   "text": "вспаши это и иди встань у стола наверху",
+   "pieces": [
+    "till it",
+    "go stand by the table upstairs"
+   ],
+   "orders": [
+    "TILL",
+    "MOVE_TO"
+   ],
+   "id": "pair_ru_073"
+  },
+  {
+   "text": "флешку в правое окно и ещё не стреляй, не стреляй, это свой",
+   "pieces": [
+    "flash the right window",
+    "dont shoot dont shoot is friendly"
+   ],
+   "orders": [
+    "FLASH",
+    "HOLD_FIRE"
+   ],
+   "id": "pair_ru_074"
+  },
+  {
+   "text": "э, вступай в бой, в бой с вражеской командой и ещё встань, когда скажу",
+   "pieces": [
+    "uh engage engage the enemy team",
+    "stand up when i say"
+   ],
+   "orders": [
+    "ATTACK",
+    "STAND_UP"
+   ],
+   "id": "pair_ru_075"
+  },
+  {
+   "text": "отнеси семена в теплицу и укрепи люк наверху",
+   "pieces": [
+    "take the seeds to the greenhouse",
+    "Reinforce the hatch upstairs"
+   ],
+   "orders": [
+    "DELIVER",
+    "REPAIR"
+   ],
+   "id": "pair_ru_076"
+  },
+  {
+   "text": "ляг здесь и не стреляй, не стреляй, это свой",
+   "pieces": [
+    "lay down here",
+    "dont shoot dont shoot is friendly"
+   ],
+   "orders": [
+    "PRONE",
+    "HOLD_FIRE"
+   ],
+   "id": "pair_ru_077"
+  },
+  {
+   "text": "найди укрытие, и вспаши южное поле",
+   "pieces": [
+    "find cover",
+    "Till the south field"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "TILL"
+   ],
+   "id": "pair_ru_078"
+  },
+  {
+   "text": "э, иди прячься сюда, быстро и попробуй ещё раз",
+   "pieces": [
+    "um go hide here quick",
+    "have another go"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "REPEAT"
+   ],
+   "id": "pair_ru_079"
+  },
+  {
+   "text": "раскидай удобрения на северном поле, и заложи фундамент на моей метке",
+   "pieces": [
+    "spread fertilizer on the north field",
+    "Lay a foundation on my ping"
+   ],
+   "orders": [
+    "TILL",
+    "BUILD"
+   ],
+   "id": "pair_ru_080"
+  },
+  {
+   "text": "покорми кур, подорви люк и поднимись по ступенькам",
+   "pieces": [
+    "feed the chickens",
+    "blow the hatch open",
+    "go up the steps"
+   ],
+   "orders": [
+    "FEED",
+    "BREACH",
+    "MOVE_TO"
+   ],
+   "id": "pair_ru_081"
+  },
+  {
+   "text": "вернись сейчас же и вылезай в окно и держи другой угол",
+   "pieces": [
+    "come back now",
+    "climb out the window",
+    "cover the other angle"
+   ],
+   "orders": [
+    "COME_BACK",
+    "VAULT_WINDOW",
+    "HOLD_OTHER_ANGLE"
+   ],
+   "id": "pair_ru_082"
+  },
+  {
+   "text": "ляг здесь, и я тут застрял",
+   "pieces": [
+    "lay down here",
+    "i'm trapped in here"
+   ],
+   "orders": [
+    "PRONE",
+    "HELP_INTERACTION"
+   ],
+   "id": "pair_ru_083"
+  },
+  {
+   "text": "найди укрытие и выпрыгивай из тачки и перемахни через то окно",
+   "pieces": [
+    "find cover",
+    "hop outta the car",
+    "hop through that window"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "GET_OUT",
+    "VAULT_WINDOW"
+   ],
+   "id": "pair_ru_084"
+  },
+  {
+   "text": "стой на месте, бот, и прыгай в то окно",
+   "pieces": [
+    "stay put bot",
+    "hop through that window"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "VAULT_WINDOW"
+   ],
+   "id": "pair_ru_085"
+  },
+  {
+   "text": "зажми их, и прикрой, бро, я перезаряжаюсь",
+   "pieces": [
+    "suppress them",
+    "cover me bro im reloading"
+   ],
+   "orders": [
+    "SUPPRESS",
+    "COVER_ME"
+   ],
+   "id": "pair_ru_086"
+  },
+  {
+   "text": "ложись и вернись на позицию",
+   "pieces": [
+    "drop prone",
+    "return to your position"
+   ],
+   "orders": [
+    "PRONE",
+    "GO_BACK"
+   ],
+   "id": "pair_ru_087"
+  },
+  {
+   "text": "посмотри на главную дверь и нырни за ту машину, быстро",
+   "pieces": [
+    "look at the main door",
+    "duck behind that car real quick"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "TAKE_COVER"
+   ],
+   "id": "pair_ru_088"
+  },
+  {
+   "text": "флешку в правое окно и зайди им в спину по заднему пути",
+   "pieces": [
+    "flash the right window",
+    "wrap 'em through the back route"
+   ],
+   "orders": [
+    "FLASH",
+    "FLANK"
+   ],
+   "id": "pair_ru_089"
+  },
+  {
+   "text": "посади цветы, и посмотри на мою метку",
+   "pieces": [
+    "plant some flowers",
+    "look at my mark"
+   ],
+   "orders": [
+    "PLANT_CROP",
+    "LOOK_AT"
+   ],
+   "id": "pair_ru_090"
+  },
+  {
+   "text": "возьми другой угол и повтори последний приказ",
+   "pieces": [
+    "take another angle",
+    "repeat the last order"
+   ],
+   "orders": [
+    "HOLD_OTHER_ANGLE",
+    "REPEAT"
+   ],
+   "id": "pair_ru_091"
+  },
+  {
+   "text": "посади цветы и бери ту тачку",
+   "pieces": [
+    "plant some flowers",
+    "take that car"
+   ],
+   "orders": [
+    "PLANT_CROP",
+    "GET_IN"
+   ],
+   "id": "pair_ru_092"
+  },
+  {
+   "text": "прикрывай меня, пока я дроню и посмотри на мою метку",
+   "pieces": [
+    "overwatch me while I'm droning",
+    "look at my mark"
+   ],
+   "orders": [
+    "COVER_ME",
+    "LOOK_AT"
+   ],
+   "id": "pair_ru_093"
+  },
+  {
+   "text": "прикрой, пока я плантую и эй, помоги по-быстрому",
+   "pieces": [
+    "cover me while I plant",
+    "yo help me out real quick"
+   ],
+   "orders": [
+    "COVER_ME",
+    "HELP"
+   ],
+   "id": "pair_ru_094"
+  },
+  {
+   "text": "посмотри на главную дверь и найди врага",
+   "pieces": [
+    "look at the main door",
+    "find enemy"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "ATTACK"
+   ],
+   "id": "pair_ru_095"
+  },
+  {
+   "text": "поднимись по ступенькам и проверь это и отнеси семена в теплицу",
+   "pieces": [
+    "go up the steps",
+    "check it",
+    "take the seeds to the greenhouse"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "CHECK",
+    "DELIVER"
+   ],
+   "id": "pair_ru_096"
+  },
+  {
+   "text": "найди укрытие и спустись по верёвке с крыши",
+   "pieces": [
+    "find cover",
+    "rappel down from the roof"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "RAPPEL"
+   ],
+   "id": "pair_ru_097"
+  },
+  {
+   "text": "быстро перезарядись и отправь дрон на мою метку",
+   "pieces": [
+    "quick reload",
+    "send the drone to my mark"
+   ],
+   "orders": [
+    "RELOAD",
+    "DRONE"
+   ],
+   "id": "pair_ru_098"
+  },
+  {
+   "text": "держи позицию на моей метке и снеси баррикаду и бери ту тачку",
+   "pieces": [
+    "hold position at my pin",
+    "take down the barricade",
+    "take that car"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "DEMOLISH",
+    "GET_IN"
+   ],
+   "id": "pair_ru_099"
+  },
+  {
+   "text": "западное окно, залезай через него, и попробуй ещё раз",
+   "pieces": [
+    "west window, hop in through it",
+    "have another go"
+   ],
+   "orders": [
+    "VAULT_WINDOW",
+    "REPEAT"
+   ],
+   "id": "pair_ru_100"
+  },
+  {
+   "text": "посмотри на главную дверь и прикрой, бро, я перезаряжаюсь и спустись по верёвке с крыши",
+   "pieces": [
+    "look at the main door",
+    "cover me bro im reloading",
+    "rappel down from the roof"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "COVER_ME",
+    "RAPPEL"
+   ],
+   "id": "pair_ru_101"
+  },
+  {
+   "text": "нырни за ту машину, быстро, и собери клубнику",
+   "pieces": [
+    "duck behind that car real quick",
+    "pick the strawberries"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "HARVEST"
+   ],
+   "id": "pair_ru_102"
+  },
+  {
+   "text": "прополи поле, и посади цветы",
+   "pieces": [
+    "clear the field",
+    "plant some flowers"
+   ],
+   "orders": [
+    "TILL",
+    "PLANT_CROP"
+   ],
+   "id": "pair_ru_103"
+  },
+  {
+   "text": "да, бричь и присядь",
+   "pieces": [
+    "yes breach it",
+    "sit down"
+   ],
+   "orders": [
+    "BREACH",
+    "CROUCH"
+   ],
+   "id": "pair_ru_104"
+  },
+  {
+   "text": "выпрыгивай из тачки и стой на пине",
+   "pieces": [
+    "hop outta the car",
+    "stand on the pin"
+   ],
+   "orders": [
+    "GET_OUT",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_ru_105"
+  },
+  {
+   "text": "выпрыгивай из тачки и покорми кур",
+   "pieces": [
+    "hop outta the car",
+    "feed the chickens"
+   ],
+   "orders": [
+    "GET_OUT",
+    "FEED"
+   ],
+   "id": "pair_ru_106"
+  },
+  {
+   "text": "не, вернись на свой пост, чел, замри. Не двигайся, стой там и бери основное",
+   "pieces": [
+    "nah return to your post man",
+    "Freeze. stop moving hole there",
+    "go primary"
+   ],
+   "orders": [
+    "GO_BACK",
+    "HOLD_POSITION",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_ru_107"
+  },
+  {
+   "text": "быстро перезарядись, вставай на ноги и взорви люк",
+   "pieces": [
+    "quick reload",
+    "up on your feet",
+    "blow the hatch open"
+   ],
+   "orders": [
+    "RELOAD",
+    "STAND_UP",
+    "BREACH"
+   ],
+   "id": "pair_ru_108"
+  },
+  {
+   "text": "Вспаши южное поле и садись в тачку",
+   "pieces": [
+    "Till the south field",
+    "take the car"
+   ],
+   "orders": [
+    "TILL",
+    "GET_IN"
+   ],
+   "id": "pair_ru_109"
+  },
+  {
+   "text": "повтори последний приказ, и стой на пине",
+   "pieces": [
+    "repeat the last order",
+    "stand on the pin"
+   ],
+   "orders": [
+    "REPEAT",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_ru_110"
+  },
+  {
+   "text": "кинь гранату на мою метку и собираемся, собираемся, эм, давай ко мне",
+   "pieces": [
+    "throw a frag at my mark",
+    "regroup regroup um rejoin me"
+   ],
+   "orders": [
+    "FRAG",
+    "COME_BACK"
+   ],
+   "id": "pair_ru_111"
+  },
+  {
+   "text": "стреляй в него и ещё держи позицию на моей метке",
+   "pieces": [
+    "should him",
+    "hold position at my pin"
+   ],
+   "orders": [
+    "OPEN_FIRE",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_ru_112"
+  },
+  {
+   "text": "посади цветы, дай коровам сена и лезь через то окно",
+   "pieces": [
+    "plant some flowers",
+    "give the cows some hay",
+    "hop through that window"
+   ],
+   "orders": [
+    "PLANT_CROP",
+    "FEED",
+    "VAULT_WINDOW"
+   ],
+   "id": "pair_ru_113"
+  },
+  {
+   "text": "собери репу и принеси сюда доски",
+   "pieces": [
+    "harvest the turnips",
+    "bring the planks over here"
+   ],
+   "orders": [
+    "HARVEST",
+    "DELIVER"
+   ],
+   "id": "pair_ru_114"
+  },
+  {
+   "text": "присядь и покорми свиней",
+   "pieces": [
+    "sit down",
+    "give the pigs their food"
+   ],
+   "orders": [
+    "CROUCH",
+    "FEED"
+   ],
+   "id": "pair_ru_115"
+  },
+  {
+   "text": "вернись сейчас же и полей посевы",
+   "pieces": [
+    "come back now",
+    "water the crops"
+   ],
+   "orders": [
+    "COME_BACK",
+    "WATER"
+   ],
+   "id": "pair_ru_116"
+  },
+  {
+   "text": "подорви люк, и стреляй в него",
+   "pieces": [
+    "blow the hatch open",
+    "should him"
+   ],
+   "orders": [
+    "BREACH",
+    "OPEN_FIRE"
+   ],
+   "id": "pair_ru_117"
+  },
+  {
+   "text": "стой тут, пока не скажу и ещё ротнись туда, где я отметил",
+   "pieces": [
+    "stand here until i say",
+    "rotate over to where I marked"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "MOVE_TO"
+   ],
+   "id": "pair_ru_118"
+  },
+  {
+   "text": "стой прям тут, бро и ещё стреляй в него",
+   "pieces": [
+    "stand right here bro",
+    "should him"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "OPEN_FIRE"
+   ],
+   "id": "pair_ru_119"
+  },
+  {
+   "text": "поставь дефузер и продронь комнату",
+   "pieces": [
+    "plant the defuser",
+    "drone the room"
+   ],
+   "orders": [
+    "PLANT",
+    "DRONE"
+   ],
+   "id": "pair_ru_120"
+  },
+  {
+   "text": "попробуй ещё раз, ослепи их, бот и плант, плант",
+   "pieces": [
+    "have another go",
+    "blind em bot",
+    "plant it, plant it"
+   ],
+   "orders": [
+    "REPEAT",
+    "FLASH",
+    "PLANT"
+   ],
+   "id": "pair_ru_121"
+  },
+  {
+   "text": "гранату в главную дверь и ляг здесь",
+   "pieces": [
+    "frag the main door",
+    "lay down here"
+   ],
+   "orders": [
+    "FRAG",
+    "PRONE"
+   ],
+   "id": "pair_ru_122"
+  },
+  {
+   "text": "ослепи их, бот и ещё смотри вправо, вправо, быстро-быстро",
+   "pieces": [
+    "blind em bot",
+    "look write look write quick quick"
+   ],
+   "orders": [
+    "FLASH",
+    "LOOK_AT"
+   ],
+   "id": "pair_ru_123"
+  },
+  {
+   "text": "западное окно, залезай через него и проверь справа",
+   "pieces": [
+    "west window, hop in through it",
+    "check on the write side"
+   ],
+   "orders": [
+    "VAULT_WINDOW",
+    "CHECK"
+   ],
+   "id": "pair_ru_124"
+  },
+  {
+   "text": "построй ящик и сбрызни растения в теплице",
+   "pieces": [
+    "build a crate",
+    "sprinkle the plants in the greenhouse"
+   ],
+   "orders": [
+    "BUILD",
+    "WATER"
+   ],
+   "id": "pair_ru_125"
+  },
+  {
+   "text": "поднимайся по лестнице, бро и ещё быстро перезарядись",
+   "pieces": [
+    "take the stairs up man",
+    "quick reload"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "RELOAD"
+   ],
+   "id": "pair_ru_126"
+  },
+  {
+   "text": "смотри вправо, вправо, быстро-быстро и отступай, их слишком много и дай коровам сена",
+   "pieces": [
+    "look write look write quick quick",
+    "retreat, there's way too many",
+    "give the cows some hay"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "FALL_BACK",
+    "FEED"
+   ],
+   "id": "pair_ru_127"
+  },
+  {
+   "text": "помоги, я лежу и спускайся вниз, бро, быстро и спустись по верёвке с крыши",
+   "pieces": [
+    "help I'm down",
+    "head downstairs bro quick",
+    "rappel down from the roof"
+   ],
+   "orders": [
+    "HELP",
+    "MOVE_TO",
+    "RAPPEL"
+   ],
+   "id": "pair_ru_128"
+  },
+  {
+   "text": "да, бричь и э, назад, назад",
+   "pieces": [
+    "yes breach it",
+    "uh go back go back"
+   ],
+   "orders": [
+    "BREACH",
+    "GO_BACK"
+   ],
+   "id": "pair_ru_129"
+  },
+  {
+   "text": "я тут застрял и ещё смени магазин",
+   "pieces": [
+    "i'm trapped in here",
+    "change mags"
+   ],
+   "orders": [
+    "HELP_INTERACTION",
+    "RELOAD"
+   ],
+   "id": "pair_ru_130"
+  },
+  {
+   "text": "ротнись туда, где я отметил и гранату в главную дверь",
+   "pieces": [
+    "rotate over to where I marked",
+    "frag the main door"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "FRAG"
+   ],
+   "id": "pair_ru_131"
+  },
+  {
+   "text": "покорми свиней и собери репу",
+   "pieces": [
+    "give the pigs their food",
+    "harvest the turnips"
+   ],
+   "orders": [
+    "FEED",
+    "HARVEST"
+   ],
+   "id": "pair_ru_132"
+  },
+  {
+   "text": "вылезай в окно и бери основное",
+   "pieces": [
+    "climb out the window",
+    "go primary"
+   ],
+   "orders": [
+    "VAULT_WINDOW",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_ru_133"
+  },
+  {
+   "text": "собери мёд из ульев и ещё выпрыгивай из тачки",
+   "pieces": [
+    "Grab the honey from the beehives",
+    "hop outta the car"
+   ],
+   "orders": [
+    "COLLECT",
+    "GET_OUT"
+   ],
+   "id": "pair_ru_134"
+  },
+  {
+   "text": "стой на месте, бот и ещё спрячься за диван",
+   "pieces": [
+    "stay put bot",
+    "get behind the sofa"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "TAKE_COVER"
+   ],
+   "id": "pair_ru_135"
+  },
+  {
+   "text": "подорви люк, э, полей помидоры и поставь дефузер",
+   "pieces": [
+    "blow the hatch open",
+    "uh water the tomatoes",
+    "plant the defuser"
+   ],
+   "orders": [
+    "BREACH",
+    "WATER",
+    "PLANT"
+   ],
+   "id": "pair_ru_136"
+  },
+  {
+   "text": "быстро перезарядись, и поставь дым у северной двери",
+   "pieces": [
+    "quick reload",
+    "smoke the north door"
+   ],
+   "orders": [
+    "RELOAD",
+    "SMOKE"
+   ],
+   "id": "pair_ru_137"
+  },
+  {
+   "text": "прикрой, бро, я перезаряжаюсь и плант у жёлтой лестницы и выходи из машины",
+   "pieces": [
+    "cover me bro im reloading",
+    "plant at yellow stairs",
+    "exit the vehicle"
+   ],
+   "orders": [
+    "COVER_ME",
+    "PLANT",
+    "GET_OUT"
+   ],
+   "id": "pair_ru_138"
+  },
+  {
+   "text": "посади цветы и прополи поле",
+   "pieces": [
+    "plant some flowers",
+    "clear the field"
+   ],
+   "orders": [
+    "PLANT_CROP",
+    "TILL"
+   ],
+   "id": "pair_ru_139"
+  },
+  {
+   "text": "найди врага и поставь дым на западное окно",
+   "pieces": [
+    "find enemy",
+    "smoke the west window"
+   ],
+   "orders": [
+    "ATTACK",
+    "SMOKE"
+   ],
+   "id": "pair_ru_140"
+  },
+  {
+   "text": "обезвредь эту штуку, пока не рванула и ротнись туда, где я отметил",
+   "pieces": [
+    "disarm that thing before it blows",
+    "rotate over to where I marked"
+   ],
+   "orders": [
+    "DEFUSE",
+    "MOVE_TO"
+   ],
+   "id": "pair_ru_141"
+  },
+  {
+   "text": "продронь комнату, и собери репу",
+   "pieces": [
+    "drone the room",
+    "harvest the turnips"
+   ],
+   "orders": [
+    "DRONE",
+    "HARVEST"
+   ],
+   "id": "pair_ru_142"
+  },
+  {
+   "text": "забирай точку, чекай каждый угол и ещё найди укрытие вон там",
+   "pieces": [
+    "take site, check every corner",
+    "find cover over there"
+   ],
+   "orders": [
+    "ENTRY",
+    "TAKE_COVER"
+   ],
+   "id": "pair_ru_143"
+  },
+  {
+   "text": "сбрызни растения в теплице и ещё поставь дефузер",
+   "pieces": [
+    "sprinkle the plants in the greenhouse",
+    "plant the defuser"
+   ],
+   "orders": [
+    "WATER",
+    "PLANT"
+   ],
+   "id": "pair_ru_144"
+  },
+  {
+   "text": "делай дефуз, и вернись сейчас же",
+   "pieces": [
+    "get the defuse",
+    "come back now"
+   ],
+   "orders": [
+    "DEFUSE",
+    "COME_BACK"
+   ],
+   "id": "pair_ru_145"
+  },
+  {
+   "text": "быстро перезарядись, и зайди им в спину по заднему пути",
+   "pieces": [
+    "quick reload",
+    "wrap 'em through the back route"
+   ],
+   "orders": [
+    "RELOAD",
+    "FLANK"
+   ],
+   "id": "pair_ru_146"
+  },
+  {
+   "text": "поднимайся по лестнице, бро и выходи из машины и пробей сарай",
+   "pieces": [
+    "take the stairs up man",
+    "exit the vehicle",
+    "breach the shed"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "GET_OUT",
+    "BREACH"
+   ],
+   "id": "pair_ru_147"
+  },
+  {
+   "text": "флешку в правое окно и ещё смотри вправо, вправо, быстро-быстро",
+   "pieces": [
+    "flash the right window",
+    "look write look write quick quick"
+   ],
+   "orders": [
+    "FLASH",
+    "LOOK_AT"
+   ],
+   "id": "pair_ru_148"
+  },
+  {
+   "text": "прикрывай меня, пока я дроню и поднимись по ступенькам",
+   "pieces": [
+    "overwatch me while I'm droning",
+    "go up the steps"
+   ],
+   "orders": [
+    "COVER_ME",
+    "MOVE_TO"
+   ],
+   "id": "pair_ru_149"
+  }
+ ],
+ "es": [
+  {
+   "text": "repliégate al último piso y esparce el estiércol",
+   "pieces": [
+    "fall back to the top floor",
+    "spread the manure"
+   ],
+   "orders": [
+    "FALL_BACK",
+    "TILL"
+   ],
+   "id": "pair_es_000"
+  },
+  {
+   "text": "rodilla en tierra y eh, ayúdame un momento y eh, escóndete aquí, rápido",
+   "pieces": [
+    "take a knee",
+    "yo help me out real quick",
+    "um go hide here quick"
+   ],
+   "orders": [
+    "CROUCH",
+    "HELP",
+    "TAKE_COVER"
+   ],
+   "id": "pair_es_001"
+  },
+  {
+   "text": "cambia de cargador, y riega los cultivos",
+   "pieces": [
+    "change mags",
+    "water the crops"
+   ],
+   "orders": [
+    "RELOAD",
+    "WATER"
+   ],
+   "id": "pair_es_002"
+  },
+  {
+   "text": "planta el desactivador, y retírate, son demasiados",
+   "pieces": [
+    "plant the defuser",
+    "retreat, there's way too many"
+   ],
+   "orders": [
+    "PLANT",
+    "FALL_BACK"
+   ],
+   "id": "pair_es_003"
+  },
+  {
+   "text": "abre la puerta sur y sigue viniendo",
+   "pieces": [
+    "open the south door",
+    "keep coming"
+   ],
+   "orders": [
+    "OPEN",
+    "COME_BACK"
+   ],
+   "id": "pair_es_004"
+  },
+  {
+   "text": "mira mi marca, siéntate y tira una granada a mi marca",
+   "pieces": [
+    "look at my mark",
+    "sit down",
+    "throw a frag at my mark"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "CROUCH",
+    "FRAG"
+   ],
+   "id": "pair_es_005"
+  },
+  {
+   "text": "granada a la puerta principal y cúbreme",
+   "pieces": [
+    "frag the main door",
+    "cover me"
+   ],
+   "orders": [
+    "FRAG",
+    "COVER_ME"
+   ],
+   "id": "pair_es_006"
+  },
+  {
+   "text": "trae los tablones aquí y también baja en rápel desde el tejado",
+   "pieces": [
+    "bring the planks over here",
+    "rappel down from the roof"
+   ],
+   "orders": [
+    "DELIVER",
+    "RAPPEL"
+   ],
+   "id": "pair_es_007"
+  },
+  {
+   "text": "revisa el lado derecho y saca la principal",
+   "pieces": [
+    "check on the write side",
+    "go primary"
+   ],
+   "orders": [
+    "CHECK",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_es_008"
+  },
+  {
+   "text": "planta en la escalera amarilla y levántate cuando te diga",
+   "pieces": [
+    "plant at yellow stairs",
+    "stand up when i say"
+   ],
+   "orders": [
+    "PLANT",
+    "STAND_UP"
+   ],
+   "id": "pair_es_009"
+  },
+  {
+   "text": "planta en la escalera amarilla y también quédate aquí hasta que te diga",
+   "pieces": [
+    "plant at yellow stairs",
+    "stand here until i say"
+   ],
+   "orders": [
+    "PLANT",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_es_010"
+  },
+  {
+   "text": "túmbate y también hazles supresión",
+   "pieces": [
+    "drop prone",
+    "suppress them"
+   ],
+   "orders": [
+    "PRONE",
+    "SUPPRESS"
+   ],
+   "id": "pair_es_011"
+  },
+  {
+   "text": "vuela esa trampilla, y ara el campo sur",
+   "pieces": [
+    "blow that hatch open",
+    "Till the south field"
+   ],
+   "orders": [
+    "BREACH",
+    "TILL"
+   ],
+   "id": "pair_es_012"
+  },
+  {
+   "text": "quita la barricada, ponte junto a la mesa de arriba y tira una granada a mi marca",
+   "pieces": [
+    "remove the barricade",
+    "go stand by the table upstairs",
+    "throw a frag at my mark"
+   ],
+   "orders": [
+    "DEMOLISH",
+    "MOVE_TO",
+    "FRAG"
+   ],
+   "id": "pair_es_013"
+  },
+  {
+   "text": "no dispares, no dispares, es aliado y ara el campo sur y ayuda, estoy en el suelo",
+   "pieces": [
+    "dont shoot dont shoot is friendly",
+    "Till the south field",
+    "help I'm down"
+   ],
+   "orders": [
+    "HOLD_FIRE",
+    "TILL",
+    "HELP"
+   ],
+   "id": "pair_es_014"
+  },
+  {
+   "text": "túmbate aquí y lleva las semillas al invernadero",
+   "pieces": [
+    "lay down here",
+    "take the seeds to the greenhouse"
+   ],
+   "orders": [
+    "PRONE",
+    "DELIVER"
+   ],
+   "id": "pair_es_015"
+  },
+  {
+   "text": "inténtalo otra vez y también granada a la puerta principal",
+   "pieces": [
+    "have another go",
+    "frag the main door"
+   ],
+   "orders": [
+    "REPEAT",
+    "FRAG"
+   ],
+   "id": "pair_es_016"
+  },
+  {
+   "text": "eh, ayúdame un momento, y baja abajo, bro, rápido",
+   "pieces": [
+    "yo help me out real quick",
+    "head downstairs bro quick"
+   ],
+   "orders": [
+    "HELP",
+    "MOVE_TO"
+   ],
+   "id": "pair_es_017"
+  },
+  {
+   "text": "eh, no me vendría mal una mano y ponte detrás del sofá",
+   "pieces": [
+    "Yo, I could use a hand",
+    "get behind the sofa"
+   ],
+   "orders": [
+    "HELP",
+    "TAKE_COVER"
+   ],
+   "id": "pair_es_018"
+  },
+  {
+   "text": "mira a la derecha, a la derecha, rápido, rápido, repliégate al último piso y planta unas flores",
+   "pieces": [
+    "look write look write quick quick",
+    "fall back to the top floor",
+    "plant some flowers"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "FALL_BACK",
+    "PLANT_CROP"
+   ],
+   "id": "pair_es_019"
+  },
+  {
+   "text": "cúbreme bro, estoy recargando y inténtalo otra vez",
+   "pieces": [
+    "cover me bro im reloading",
+    "have another go"
+   ],
+   "orders": [
+    "COVER_ME",
+    "REPEAT"
+   ],
+   "id": "pair_es_020"
+  },
+  {
+   "text": "cúbreme bro, estoy recargando y plántala, plántala",
+   "pieces": [
+    "cover me bro im reloading",
+    "plant it, plant it"
+   ],
+   "orders": [
+    "COVER_ME",
+    "PLANT"
+   ],
+   "id": "pair_es_021"
+  },
+  {
+   "text": "plántala, plántala y mira mi marca",
+   "pieces": [
+    "plant it, plant it",
+    "look at my mark"
+   ],
+   "orders": [
+    "PLANT",
+    "LOOK_AT"
+   ],
+   "id": "pair_es_022"
+  },
+  {
+   "text": "Quieto. Deja de moverte, quédate ahí, agáchate y rota a donde marqué",
+   "pieces": [
+    "Freeze. stop moving hole there",
+    "crouch",
+    "rotate over to where I marked"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "CROUCH",
+    "MOVE_TO"
+   ],
+   "id": "pair_es_023"
+  },
+  {
+   "text": "abre la puerta sur, y ponte de pie",
+   "pieces": [
+    "open the south door",
+    "up on your feet"
+   ],
+   "orders": [
+    "OPEN",
+    "STAND_UP"
+   ],
+   "id": "pair_es_024"
+  },
+  {
+   "text": "ponte de pie y también manda el dron a mi marca",
+   "pieces": [
+    "up on your feet",
+    "send the drone to my mark"
+   ],
+   "orders": [
+    "STAND_UP",
+    "DRONE"
+   ],
+   "id": "pair_es_025"
+  },
+  {
+   "text": "quita la escalera de mano y construye una caja y vuela la trampilla",
+   "pieces": [
+    "remove the ladder",
+    "build a crate",
+    "blow the hatch open"
+   ],
+   "orders": [
+    "DEMOLISH",
+    "BUILD",
+    "BREACH"
+   ],
+   "id": "pair_es_026"
+  },
+  {
+   "text": "cúbreme bro, estoy recargando, planta en la escalera amarilla y deja la supresión",
+   "pieces": [
+    "cover me bro im reloading",
+    "plant at yellow stairs",
+    "stop suppressing"
+   ],
+   "orders": [
+    "COVER_ME",
+    "PLANT",
+    "HOLD_FIRE"
+   ],
+   "id": "pair_es_027"
+  },
+  {
+   "text": "no dispares, no dispares, es aliado, y salta por esa ventana",
+   "pieces": [
+    "dont shoot dont shoot is friendly",
+    "hop through that window"
+   ],
+   "orders": [
+    "HOLD_FIRE",
+    "VAULT_WINDOW"
+   ],
+   "id": "pair_es_028"
+  },
+  {
+   "text": "toma el objetivo, revisa todas las esquinas y pasa a la secundaria",
+   "pieces": [
+    "take site, check every corner",
+    "go to your sidearm"
+   ],
+   "orders": [
+    "ENTRY",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_es_029"
+  },
+  {
+   "text": "dales de comer a los cerdos y también construye una caja",
+   "pieces": [
+    "give the pigs their food",
+    "build a crate"
+   ],
+   "orders": [
+    "FEED",
+    "BUILD"
+   ],
+   "id": "pair_es_030"
+  },
+  {
+   "text": "recarga a mi señal, y hazles supresión",
+   "pieces": [
+    "reload on my go",
+    "suppress them"
+   ],
+   "orders": [
+    "RELOAD",
+    "SUPPRESS"
+   ],
+   "id": "pair_es_031"
+  },
+  {
+   "text": "pushea en mi marcador y apunta a esa ventana y no la sueltes",
+   "pieces": [
+    "push in at my pin",
+    "keep your gun on that window"
+   ],
+   "orders": [
+    "ENTRY",
+    "HOLD_ANGLE"
+   ],
+   "id": "pair_es_032"
+  },
+  {
+   "text": "Refuerza la trampilla de arriba, riega los cultivos y ponte detrás del sofá",
+   "pieces": [
+    "Reinforce the hatch upstairs",
+    "water the crops",
+    "get behind the sofa"
+   ],
+   "orders": [
+    "REPAIR",
+    "WATER",
+    "TAKE_COVER"
+   ],
+   "id": "pair_es_033"
+  },
+  {
+   "text": "granada a la escalera amarilla y sí, abre brecha",
+   "pieces": [
+    "nade yellow stairs",
+    "yes breach it"
+   ],
+   "orders": [
+    "FRAG",
+    "BREACH"
+   ],
+   "id": "pair_es_034"
+  },
+  {
+   "text": "sí, abre brecha y sal del vehículo",
+   "pieces": [
+    "yes breach it",
+    "exit the vehicle"
+   ],
+   "orders": [
+    "BREACH",
+    "GET_OUT"
+   ],
+   "id": "pair_es_035"
+  },
+  {
+   "text": "busca cobertura por allá y también esparce el estiércol",
+   "pieces": [
+    "find cover over there",
+    "spread the manure"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "TILL"
+   ],
+   "id": "pair_es_036"
+  },
+  {
+   "text": "ve a desactivar y también cúbreme mientras planto",
+   "pieces": [
+    "get the defuse",
+    "cover me while I plant"
+   ],
+   "orders": [
+    "DEFUSE",
+    "COVER_ME"
+   ],
+   "id": "pair_es_037"
+  },
+  {
+   "text": "repite la última orden, vuela la trampilla y retírate, son demasiados",
+   "pieces": [
+    "repeat the last order",
+    "blow the hatch open",
+    "retreat, there's way too many"
+   ],
+   "orders": [
+    "REPEAT",
+    "BREACH",
+    "FALL_BACK"
+   ],
+   "id": "pair_es_038"
+  },
+  {
+   "text": "mira a la derecha, a la derecha, rápido, rápido y sí, abre brecha",
+   "pieces": [
+    "look write look write quick quick",
+    "yes breach it"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "BREACH"
+   ],
+   "id": "pair_es_039"
+  },
+  {
+   "text": "construye una caja, planta en la escalera amarilla y cosecha las fresas",
+   "pieces": [
+    "build a crate",
+    "plant at yellow stairs",
+    "pick the strawberries"
+   ],
+   "orders": [
+    "BUILD",
+    "PLANT",
+    "HARVEST"
+   ],
+   "id": "pair_es_040"
+  },
+  {
+   "text": "eh, riega los tomates y dispárale y quieto ahí, bot",
+   "pieces": [
+    "uh water the tomatoes",
+    "shoot him",
+    "stay put bot"
+   ],
+   "orders": [
+    "WATER",
+    "OPEN_FIRE",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_es_041"
+  },
+  {
+   "text": "busca cobertura y también bájate del coche",
+   "pieces": [
+    "find cover",
+    "hop outta the car"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "GET_OUT"
+   ],
+   "id": "pair_es_042"
+  },
+  {
+   "text": "alto el fuego y vuela la trampilla y reagrúpate reagrúpate, em, vuelve conmigo",
+   "pieces": [
+    "cease fire",
+    "blow the hatch open",
+    "regroup regroup um rejoin me"
+   ],
+   "orders": [
+    "HOLD_FIRE",
+    "BREACH",
+    "COME_BACK"
+   ],
+   "id": "pair_es_043"
+  },
+  {
+   "text": "da de comer a las gallinas, abre la puerta sur y manda el dron a mi marca",
+   "pieces": [
+    "feed the chickens",
+    "open the south door",
+    "send the drone to my mark"
+   ],
+   "orders": [
+    "FEED",
+    "OPEN",
+    "DRONE"
+   ],
+   "id": "pair_es_044"
+  },
+  {
+   "text": "dronea la sala y reagrúpate reagrúpate, em, vuelve conmigo",
+   "pieces": [
+    "drone the room",
+    "regroup regroup um rejoin me"
+   ],
+   "orders": [
+    "DRONE",
+    "COME_BACK"
+   ],
+   "id": "pair_es_045"
+  },
+  {
+   "text": "rota a donde marqué, y desactiva esa cosa antes de que explote",
+   "pieces": [
+    "rotate over to where I marked",
+    "disarm that thing before it blows"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "DEFUSE"
+   ],
+   "id": "pair_es_046"
+  },
+  {
+   "text": "siéntate y échale agua a las plantas del invernadero",
+   "pieces": [
+    "sit down",
+    "sprinkle the plants in the greenhouse"
+   ],
+   "orders": [
+    "CROUCH",
+    "WATER"
+   ],
+   "id": "pair_es_047"
+  },
+  {
+   "text": "quédate justo aquí, bro y coge la miel de las colmenas",
+   "pieces": [
+    "stand right here bro",
+    "Grab the honey from the beehives"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "COLLECT"
+   ],
+   "id": "pair_es_048"
+  },
+  {
+   "text": "ventana oeste, métete saltando por ahí, cubre el otro ángulo y cosecha los nabos",
+   "pieces": [
+    "west window, hop in through it",
+    "cover the other angle",
+    "harvest the turnips"
+   ],
+   "orders": [
+    "VAULT_WINDOW",
+    "HOLD_OTHER_ANGLE",
+    "HARVEST"
+   ],
+   "id": "pair_es_049"
+  },
+  {
+   "text": "plántala, plántala, y sigue viniendo",
+   "pieces": [
+    "plant it, plant it",
+    "keep coming"
+   ],
+   "orders": [
+    "PLANT",
+    "COME_BACK"
+   ],
+   "id": "pair_es_050"
+  },
+  {
+   "text": "apunta a esa ventana y no la sueltes y también sube los escalones",
+   "pieces": [
+    "keep your gun on that window",
+    "go up the steps"
+   ],
+   "orders": [
+    "HOLD_ANGLE",
+    "MOVE_TO"
+   ],
+   "id": "pair_es_051"
+  },
+  {
+   "text": "eh, riega los tomates, mira mi marca y ve al primer piso",
+   "pieces": [
+    "uh water the tomatoes",
+    "look at my mark",
+    "move to the first floor"
+   ],
+   "orders": [
+    "WATER",
+    "LOOK_AT",
+    "MOVE_TO"
+   ],
+   "id": "pair_es_052"
+  },
+  {
+   "text": "tu rifle está vacío, bro, cambia y deja la supresión y coge la miel de las colmenas",
+   "pieces": [
+    "ur rifle is dry bro switch",
+    "stop suppressing",
+    "Grab the honey from the beehives"
+   ],
+   "orders": [
+    "SWITCH_WEAPON",
+    "HOLD_FIRE",
+    "COLLECT"
+   ],
+   "id": "pair_es_053"
+  },
+  {
+   "text": "tu rifle está vacío, bro, cambia y da de comer a las gallinas y pushea en mi marcador",
+   "pieces": [
+    "ur rifle is dry bro switch",
+    "feed the chickens",
+    "push in at my pin"
+   ],
+   "orders": [
+    "SWITCH_WEAPON",
+    "FEED",
+    "ENTRY"
+   ],
+   "id": "pair_es_054"
+  },
+  {
+   "text": "ponme una cortina de humo delante, eh, ataca, ataca al equipo enemigo y pilla ese coche",
+   "pieces": [
+    "gimme a smoke screen out front",
+    "uh engage engage the enemy team",
+    "take that car"
+   ],
+   "orders": [
+    "SMOKE",
+    "ATTACK",
+    "GET_IN"
+   ],
+   "id": "pair_es_055"
+  },
+  {
+   "text": "quédate justo aquí, bro, mete una flash al sitio y pilla ese coche",
+   "pieces": [
+    "stand right here bro",
+    "pop a flash into site",
+    "take that car"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "FLASH",
+    "GET_IN"
+   ],
+   "id": "pair_es_056"
+  },
+  {
+   "text": "estoy atrapado aquí dentro y también trae los tablones aquí",
+   "pieces": [
+    "i'm trapped in here",
+    "bring the planks over here"
+   ],
+   "orders": [
+    "HELP_INTERACTION",
+    "DELIVER"
+   ],
+   "id": "pair_es_057"
+  },
+  {
+   "text": "tira humo a la ventana oeste, cúbreme y baja en rápel desde el tejado",
+   "pieces": [
+    "smoke the west window",
+    "cover me",
+    "rappel down from the roof"
+   ],
+   "orders": [
+    "SMOKE",
+    "COVER_ME",
+    "RAPPEL"
+   ],
+   "id": "pair_es_058"
+  },
+  {
+   "text": "eh, riega los tomates y eh, no me vendría mal una mano y planta unas flores",
+   "pieces": [
+    "uh water the tomatoes",
+    "Yo, I could use a hand",
+    "plant some flowers"
+   ],
+   "orders": [
+    "WATER",
+    "HELP",
+    "PLANT_CROP"
+   ],
+   "id": "pair_es_059"
+  },
+  {
+   "text": "hazles supresión, y lleva las semillas al invernadero",
+   "pieces": [
+    "suppress them",
+    "take the seeds to the greenhouse"
+   ],
+   "orders": [
+    "SUPPRESS",
+    "DELIVER"
+   ],
+   "id": "pair_es_060"
+  },
+  {
+   "text": "sí, ponle humo, y echa abono en el campo norte",
+   "pieces": [
+    "yeah smoke it",
+    "spread fertilizer on the north field"
+   ],
+   "orders": [
+    "SMOKE",
+    "TILL"
+   ],
+   "id": "pair_es_061"
+  },
+  {
+   "text": "ayuda, estoy en el suelo y ponte de pie",
+   "pieces": [
+    "help I'm down",
+    "up on your feet"
+   ],
+   "orders": [
+    "HELP",
+    "STAND_UP"
+   ],
+   "id": "pair_es_062"
+  },
+  {
+   "text": "otra vez, porfa y arréglalo y sígueme a la ventana este",
+   "pieces": [
+    "again please",
+    "patch it up",
+    "follow me to the east window"
+   ],
+   "orders": [
+    "REPEAT",
+    "REPAIR",
+    "FOLLOW_ME"
+   ],
+   "id": "pair_es_063"
+  },
+  {
+   "text": "ve a regar el huerto y áralo y no dispares, no dispares, es aliado",
+   "pieces": [
+    "go water the garden",
+    "till it",
+    "dont shoot dont shoot is friendly"
+   ],
+   "orders": [
+    "WATER",
+    "TILL",
+    "HOLD_FIRE"
+   ],
+   "id": "pair_es_064"
+  },
+  {
+   "text": "abre la puerta sur, y mantén la posición en mi marcador",
+   "pieces": [
+    "open the south door",
+    "hold position at my pin"
+   ],
+   "orders": [
+    "OPEN",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_es_065"
+  },
+  {
+   "text": "levántate cuando te diga, cosecha los nabos y refuerza la trampilla de arriba",
+   "pieces": [
+    "stand up when i say",
+    "harvest the turnips",
+    "Reinforce the hatch upstairs"
+   ],
+   "orders": [
+    "STAND_UP",
+    "HARVEST",
+    "REPAIR"
+   ],
+   "id": "pair_es_066"
+  },
+  {
+   "text": "granada a la puerta principal y no dispares, no dispares, es aliado",
+   "pieces": [
+    "frag the main door",
+    "dont shoot dont shoot is friendly"
+   ],
+   "orders": [
+    "FRAG",
+    "HOLD_FIRE"
+   ],
+   "id": "pair_es_067"
+  },
+  {
+   "text": "inténtalo otra vez y eh, no me vendría mal una mano",
+   "pieces": [
+    "have another go",
+    "Yo, I could use a hand"
+   ],
+   "orders": [
+    "REPEAT",
+    "HELP"
+   ],
+   "id": "pair_es_068"
+  },
+  {
+   "text": "tira humo a la ventana oeste y dales de comer a los cerdos",
+   "pieces": [
+    "smoke the west window",
+    "give the pigs their food"
+   ],
+   "orders": [
+    "SMOKE",
+    "FEED"
+   ],
+   "id": "pair_es_069"
+  },
+  {
+   "text": "tira humo a la ventana oeste, arréglalo y pasa por esa ventana de un salto",
+   "pieces": [
+    "smoke the west window",
+    "patch it up",
+    "hop through that window"
+   ],
+   "orders": [
+    "SMOKE",
+    "REPAIR",
+    "VAULT_WINDOW"
+   ],
+   "id": "pair_es_070"
+  },
+  {
+   "text": "quítame el pestillo de la verja, y sal del vehículo",
+   "pieces": [
+    "on latch the gate for me",
+    "exit the vehicle"
+   ],
+   "orders": [
+    "OPEN",
+    "GET_OUT"
+   ],
+   "id": "pair_es_071"
+  },
+  {
+   "text": "quita la barricada, eh, escóndete aquí, rápido y baja en rápel desde el tejado",
+   "pieces": [
+    "remove the barricade",
+    "um go hide here quick",
+    "rappel down from the roof"
+   ],
+   "orders": [
+    "DEMOLISH",
+    "TAKE_COVER",
+    "RAPPEL"
+   ],
+   "id": "pair_es_072"
+  },
+  {
+   "text": "áralo y ponte junto a la mesa de arriba",
+   "pieces": [
+    "till it",
+    "go stand by the table upstairs"
+   ],
+   "orders": [
+    "TILL",
+    "MOVE_TO"
+   ],
+   "id": "pair_es_073"
+  },
+  {
+   "text": "flash a la ventana derecha y también no dispares, no dispares, es aliado",
+   "pieces": [
+    "flash the right window",
+    "dont shoot dont shoot is friendly"
+   ],
+   "orders": [
+    "FLASH",
+    "HOLD_FIRE"
+   ],
+   "id": "pair_es_074"
+  },
+  {
+   "text": "eh, ataca, ataca al equipo enemigo y también levántate cuando te diga",
+   "pieces": [
+    "uh engage engage the enemy team",
+    "stand up when i say"
+   ],
+   "orders": [
+    "ATTACK",
+    "STAND_UP"
+   ],
+   "id": "pair_es_075"
+  },
+  {
+   "text": "lleva las semillas al invernadero y refuerza la trampilla de arriba",
+   "pieces": [
+    "take the seeds to the greenhouse",
+    "Reinforce the hatch upstairs"
+   ],
+   "orders": [
+    "DELIVER",
+    "REPAIR"
+   ],
+   "id": "pair_es_076"
+  },
+  {
+   "text": "túmbate aquí y no dispares, no dispares, es aliado",
+   "pieces": [
+    "lay down here",
+    "dont shoot dont shoot is friendly"
+   ],
+   "orders": [
+    "PRONE",
+    "HOLD_FIRE"
+   ],
+   "id": "pair_es_077"
+  },
+  {
+   "text": "busca cobertura, y ara el campo sur",
+   "pieces": [
+    "find cover",
+    "Till the south field"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "TILL"
+   ],
+   "id": "pair_es_078"
+  },
+  {
+   "text": "eh, escóndete aquí, rápido y inténtalo otra vez",
+   "pieces": [
+    "um go hide here quick",
+    "have another go"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "REPEAT"
+   ],
+   "id": "pair_es_079"
+  },
+  {
+   "text": "echa abono en el campo norte, y pon unos cimientos en mi marca",
+   "pieces": [
+    "spread fertilizer on the north field",
+    "Lay a foundation on my ping"
+   ],
+   "orders": [
+    "TILL",
+    "BUILD"
+   ],
+   "id": "pair_es_080"
+  },
+  {
+   "text": "da de comer a las gallinas, vuela la trampilla y sube los escalones",
+   "pieces": [
+    "feed the chickens",
+    "blow the hatch open",
+    "go up the steps"
+   ],
+   "orders": [
+    "FEED",
+    "BREACH",
+    "MOVE_TO"
+   ],
+   "id": "pair_es_081"
+  },
+  {
+   "text": "vuelve ya y sal por la ventana y cubre el otro ángulo",
+   "pieces": [
+    "come back now",
+    "climb out the window",
+    "cover the other angle"
+   ],
+   "orders": [
+    "COME_BACK",
+    "VAULT_WINDOW",
+    "HOLD_OTHER_ANGLE"
+   ],
+   "id": "pair_es_082"
+  },
+  {
+   "text": "túmbate aquí, y estoy atrapado aquí dentro",
+   "pieces": [
+    "lay down here",
+    "i'm trapped in here"
+   ],
+   "orders": [
+    "PRONE",
+    "HELP_INTERACTION"
+   ],
+   "id": "pair_es_083"
+  },
+  {
+   "text": "busca cobertura y bájate del coche y salta por esa ventana",
+   "pieces": [
+    "find cover",
+    "hop outta the car",
+    "hop through that window"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "GET_OUT",
+    "VAULT_WINDOW"
+   ],
+   "id": "pair_es_084"
+  },
+  {
+   "text": "quieto ahí, bot, y cruza esa ventana de un salto",
+   "pieces": [
+    "stay put bot",
+    "hop through that window"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "VAULT_WINDOW"
+   ],
+   "id": "pair_es_085"
+  },
+  {
+   "text": "hazles supresión, y cúbreme bro, estoy recargando",
+   "pieces": [
+    "suppress them",
+    "cover me bro im reloading"
+   ],
+   "orders": [
+    "SUPPRESS",
+    "COVER_ME"
+   ],
+   "id": "pair_es_086"
+  },
+  {
+   "text": "túmbate y vuelve a tu posición",
+   "pieces": [
+    "drop prone",
+    "return to your position"
+   ],
+   "orders": [
+    "PRONE",
+    "GO_BACK"
+   ],
+   "id": "pair_es_087"
+  },
+  {
+   "text": "mira la puerta principal y agáchate detrás de ese coche, rápido",
+   "pieces": [
+    "look at the main door",
+    "duck behind that car real quick"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "TAKE_COVER"
+   ],
+   "id": "pair_es_088"
+  },
+  {
+   "text": "flash a la ventana derecha y rodéalos por la ruta de atrás",
+   "pieces": [
+    "flash the right window",
+    "wrap 'em through the back route"
+   ],
+   "orders": [
+    "FLASH",
+    "FLANK"
+   ],
+   "id": "pair_es_089"
+  },
+  {
+   "text": "planta unas flores, y mira mi marca",
+   "pieces": [
+    "plant some flowers",
+    "look at my mark"
+   ],
+   "orders": [
+    "PLANT_CROP",
+    "LOOK_AT"
+   ],
+   "id": "pair_es_090"
+  },
+  {
+   "text": "coge otro ángulo y repite la última orden",
+   "pieces": [
+    "take another angle",
+    "repeat the last order"
+   ],
+   "orders": [
+    "HOLD_OTHER_ANGLE",
+    "REPEAT"
+   ],
+   "id": "pair_es_091"
+  },
+  {
+   "text": "planta unas flores y pilla ese coche",
+   "pieces": [
+    "plant some flowers",
+    "take that car"
+   ],
+   "orders": [
+    "PLANT_CROP",
+    "GET_IN"
+   ],
+   "id": "pair_es_092"
+  },
+  {
+   "text": "cúbreme mientras dronéo y mira mi marca",
+   "pieces": [
+    "overwatch me while I'm droning",
+    "look at my mark"
+   ],
+   "orders": [
+    "COVER_ME",
+    "LOOK_AT"
+   ],
+   "id": "pair_es_093"
+  },
+  {
+   "text": "cúbreme mientras planto y eh, ayúdame un momento",
+   "pieces": [
+    "cover me while I plant",
+    "yo help me out real quick"
+   ],
+   "orders": [
+    "COVER_ME",
+    "HELP"
+   ],
+   "id": "pair_es_094"
+  },
+  {
+   "text": "mira la puerta principal y busca al enemigo",
+   "pieces": [
+    "look at the main door",
+    "find enemy"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "ATTACK"
+   ],
+   "id": "pair_es_095"
+  },
+  {
+   "text": "sube los escalones y revísalo y lleva las semillas al invernadero",
+   "pieces": [
+    "go up the steps",
+    "check it",
+    "take the seeds to the greenhouse"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "CHECK",
+    "DELIVER"
+   ],
+   "id": "pair_es_096"
+  },
+  {
+   "text": "busca cobertura y baja en rápel desde el tejado",
+   "pieces": [
+    "find cover",
+    "rappel down from the roof"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "RAPPEL"
+   ],
+   "id": "pair_es_097"
+  },
+  {
+   "text": "recarga rápido y manda el dron a mi marca",
+   "pieces": [
+    "quick reload",
+    "send the drone to my mark"
+   ],
+   "orders": [
+    "RELOAD",
+    "DRONE"
+   ],
+   "id": "pair_es_098"
+  },
+  {
+   "text": "mantén la posición en mi marcador y derriba la barricada y pilla ese coche",
+   "pieces": [
+    "hold position at my pin",
+    "take down the barricade",
+    "take that car"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "DEMOLISH",
+    "GET_IN"
+   ],
+   "id": "pair_es_099"
+  },
+  {
+   "text": "ventana oeste, métete saltando por ahí, y inténtalo otra vez",
+   "pieces": [
+    "west window, hop in through it",
+    "have another go"
+   ],
+   "orders": [
+    "VAULT_WINDOW",
+    "REPEAT"
+   ],
+   "id": "pair_es_100"
+  },
+  {
+   "text": "mira la puerta principal y cúbreme bro, estoy recargando y baja en rápel desde el tejado",
+   "pieces": [
+    "look at the main door",
+    "cover me bro im reloading",
+    "rappel down from the roof"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "COVER_ME",
+    "RAPPEL"
+   ],
+   "id": "pair_es_101"
+  },
+  {
+   "text": "agáchate detrás de ese coche, rápido, y cosecha las fresas",
+   "pieces": [
+    "duck behind that car real quick",
+    "pick the strawberries"
+   ],
+   "orders": [
+    "TAKE_COVER",
+    "HARVEST"
+   ],
+   "id": "pair_es_102"
+  },
+  {
+   "text": "desyerba el campo, y planta unas flores",
+   "pieces": [
+    "clear the field",
+    "plant some flowers"
+   ],
+   "orders": [
+    "TILL",
+    "PLANT_CROP"
+   ],
+   "id": "pair_es_103"
+  },
+  {
+   "text": "sí, abre brecha y siéntate",
+   "pieces": [
+    "yes breach it",
+    "sit down"
+   ],
+   "orders": [
+    "BREACH",
+    "CROUCH"
+   ],
+   "id": "pair_es_104"
+  },
+  {
+   "text": "bájate del coche y quédate en el marcador",
+   "pieces": [
+    "hop outta the car",
+    "stand on the pin"
+   ],
+   "orders": [
+    "GET_OUT",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_es_105"
+  },
+  {
+   "text": "bájate del coche y da de comer a las gallinas",
+   "pieces": [
+    "hop outta the car",
+    "feed the chickens"
+   ],
+   "orders": [
+    "GET_OUT",
+    "FEED"
+   ],
+   "id": "pair_es_106"
+  },
+  {
+   "text": "nada, vuelve a tu puesto tío, quieto. Deja de moverte, quédate ahí y saca la principal",
+   "pieces": [
+    "nah return to your post man",
+    "Freeze. stop moving hole there",
+    "go primary"
+   ],
+   "orders": [
+    "GO_BACK",
+    "HOLD_POSITION",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_es_107"
+  },
+  {
+   "text": "recarga rápido, ponte de pie y vuela la trampilla",
+   "pieces": [
+    "quick reload",
+    "up on your feet",
+    "blow the hatch open"
+   ],
+   "orders": [
+    "RELOAD",
+    "STAND_UP",
+    "BREACH"
+   ],
+   "id": "pair_es_108"
+  },
+  {
+   "text": "ara el campo sur y agarra el carro",
+   "pieces": [
+    "Till the south field",
+    "take the car"
+   ],
+   "orders": [
+    "TILL",
+    "GET_IN"
+   ],
+   "id": "pair_es_109"
+  },
+  {
+   "text": "repite la última orden, y quédate en el marcador",
+   "pieces": [
+    "repeat the last order",
+    "stand on the pin"
+   ],
+   "orders": [
+    "REPEAT",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_es_110"
+  },
+  {
+   "text": "tira una granada a mi marca y reagrúpate reagrúpate, em, vuelve conmigo",
+   "pieces": [
+    "throw a frag at my mark",
+    "regroup regroup um rejoin me"
+   ],
+   "orders": [
+    "FRAG",
+    "COME_BACK"
+   ],
+   "id": "pair_es_111"
+  },
+  {
+   "text": "dispárale y también mantén la posición en mi marcador",
+   "pieces": [
+    "should him",
+    "hold position at my pin"
+   ],
+   "orders": [
+    "OPEN_FIRE",
+    "HOLD_POSITION"
+   ],
+   "id": "pair_es_112"
+  },
+  {
+   "text": "planta unas flores, dales heno a las vacas y pasa por esa ventana de un salto",
+   "pieces": [
+    "plant some flowers",
+    "give the cows some hay",
+    "hop through that window"
+   ],
+   "orders": [
+    "PLANT_CROP",
+    "FEED",
+    "VAULT_WINDOW"
+   ],
+   "id": "pair_es_113"
+  },
+  {
+   "text": "cosecha los nabos y trae los tablones aquí",
+   "pieces": [
+    "harvest the turnips",
+    "bring the planks over here"
+   ],
+   "orders": [
+    "HARVEST",
+    "DELIVER"
+   ],
+   "id": "pair_es_114"
+  },
+  {
+   "text": "siéntate y dales de comer a los cerdos",
+   "pieces": [
+    "sit down",
+    "give the pigs their food"
+   ],
+   "orders": [
+    "CROUCH",
+    "FEED"
+   ],
+   "id": "pair_es_115"
+  },
+  {
+   "text": "vuelve ya y riega los cultivos",
+   "pieces": [
+    "come back now",
+    "water the crops"
+   ],
+   "orders": [
+    "COME_BACK",
+    "WATER"
+   ],
+   "id": "pair_es_116"
+  },
+  {
+   "text": "vuela la trampilla, y dispárale",
+   "pieces": [
+    "blow the hatch open",
+    "should him"
+   ],
+   "orders": [
+    "BREACH",
+    "OPEN_FIRE"
+   ],
+   "id": "pair_es_117"
+  },
+  {
+   "text": "quédate aquí hasta que te diga y también rota a donde marqué",
+   "pieces": [
+    "stand here until i say",
+    "rotate over to where I marked"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "MOVE_TO"
+   ],
+   "id": "pair_es_118"
+  },
+  {
+   "text": "quédate justo aquí, bro y también dispárale",
+   "pieces": [
+    "stand right here bro",
+    "should him"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "OPEN_FIRE"
+   ],
+   "id": "pair_es_119"
+  },
+  {
+   "text": "planta el desactivador y dronea la sala",
+   "pieces": [
+    "plant the defuser",
+    "drone the room"
+   ],
+   "orders": [
+    "PLANT",
+    "DRONE"
+   ],
+   "id": "pair_es_120"
+  },
+  {
+   "text": "inténtalo otra vez, ciégalos, bot y plántala, plántala",
+   "pieces": [
+    "have another go",
+    "blind em bot",
+    "plant it, plant it"
+   ],
+   "orders": [
+    "REPEAT",
+    "FLASH",
+    "PLANT"
+   ],
+   "id": "pair_es_121"
+  },
+  {
+   "text": "granada a la puerta principal y túmbate aquí",
+   "pieces": [
+    "frag the main door",
+    "lay down here"
+   ],
+   "orders": [
+    "FRAG",
+    "PRONE"
+   ],
+   "id": "pair_es_122"
+  },
+  {
+   "text": "ciégalos, bot y también mira a la derecha, a la derecha, rápido, rápido",
+   "pieces": [
+    "blind em bot",
+    "look write look write quick quick"
+   ],
+   "orders": [
+    "FLASH",
+    "LOOK_AT"
+   ],
+   "id": "pair_es_123"
+  },
+  {
+   "text": "ventana oeste, métete saltando por ahí y revisa el lado derecho",
+   "pieces": [
+    "west window, hop in through it",
+    "check on the write side"
+   ],
+   "orders": [
+    "VAULT_WINDOW",
+    "CHECK"
+   ],
+   "id": "pair_es_124"
+  },
+  {
+   "text": "construye una caja y échale agua a las plantas del invernadero",
+   "pieces": [
+    "build a crate",
+    "sprinkle the plants in the greenhouse"
+   ],
+   "orders": [
+    "BUILD",
+    "WATER"
+   ],
+   "id": "pair_es_125"
+  },
+  {
+   "text": "sube por las escaleras, tío y también recarga rápido",
+   "pieces": [
+    "take the stairs up man",
+    "quick reload"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "RELOAD"
+   ],
+   "id": "pair_es_126"
+  },
+  {
+   "text": "mira a la derecha, a la derecha, rápido, rápido y retírate, son demasiados y dales heno a las vacas",
+   "pieces": [
+    "look write look write quick quick",
+    "retreat, there's way too many",
+    "give the cows some hay"
+   ],
+   "orders": [
+    "LOOK_AT",
+    "FALL_BACK",
+    "FEED"
+   ],
+   "id": "pair_es_127"
+  },
+  {
+   "text": "ayuda, estoy en el suelo y baja abajo, bro, rápido y baja en rápel desde el tejado",
+   "pieces": [
+    "help I'm down",
+    "head downstairs bro quick",
+    "rappel down from the roof"
+   ],
+   "orders": [
+    "HELP",
+    "MOVE_TO",
+    "RAPPEL"
+   ],
+   "id": "pair_es_128"
+  },
+  {
+   "text": "sí, abre brecha y eh vuelve, vuelve",
+   "pieces": [
+    "yes breach it",
+    "uh go back go back"
+   ],
+   "orders": [
+    "BREACH",
+    "GO_BACK"
+   ],
+   "id": "pair_es_129"
+  },
+  {
+   "text": "estoy atrapado aquí dentro y también cambia de cargador",
+   "pieces": [
+    "i'm trapped in here",
+    "change mags"
+   ],
+   "orders": [
+    "HELP_INTERACTION",
+    "RELOAD"
+   ],
+   "id": "pair_es_130"
+  },
+  {
+   "text": "rota a donde marqué y granada a la puerta principal",
+   "pieces": [
+    "rotate over to where I marked",
+    "frag the main door"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "FRAG"
+   ],
+   "id": "pair_es_131"
+  },
+  {
+   "text": "dales de comer a los cerdos y cosecha los nabos",
+   "pieces": [
+    "give the pigs their food",
+    "harvest the turnips"
+   ],
+   "orders": [
+    "FEED",
+    "HARVEST"
+   ],
+   "id": "pair_es_132"
+  },
+  {
+   "text": "sal por la ventana y saca la principal",
+   "pieces": [
+    "climb out the window",
+    "go primary"
+   ],
+   "orders": [
+    "VAULT_WINDOW",
+    "SWITCH_WEAPON"
+   ],
+   "id": "pair_es_133"
+  },
+  {
+   "text": "coge la miel de las colmenas y también bájate del coche",
+   "pieces": [
+    "Grab the honey from the beehives",
+    "hop outta the car"
+   ],
+   "orders": [
+    "COLLECT",
+    "GET_OUT"
+   ],
+   "id": "pair_es_134"
+  },
+  {
+   "text": "quieto ahí, bot y también ponte detrás del sofá",
+   "pieces": [
+    "stay put bot",
+    "get behind the sofa"
+   ],
+   "orders": [
+    "HOLD_POSITION",
+    "TAKE_COVER"
+   ],
+   "id": "pair_es_135"
+  },
+  {
+   "text": "vuela la trampilla, eh, riega los tomates y planta el desactivador",
+   "pieces": [
+    "blow the hatch open",
+    "uh water the tomatoes",
+    "plant the defuser"
+   ],
+   "orders": [
+    "BREACH",
+    "WATER",
+    "PLANT"
+   ],
+   "id": "pair_es_136"
+  },
+  {
+   "text": "recarga rápido, y humo en la puerta norte",
+   "pieces": [
+    "quick reload",
+    "smoke the north door"
+   ],
+   "orders": [
+    "RELOAD",
+    "SMOKE"
+   ],
+   "id": "pair_es_137"
+  },
+  {
+   "text": "cúbreme bro, estoy recargando y planta en la escalera amarilla y sal del vehículo",
+   "pieces": [
+    "cover me bro im reloading",
+    "plant at yellow stairs",
+    "exit the vehicle"
+   ],
+   "orders": [
+    "COVER_ME",
+    "PLANT",
+    "GET_OUT"
+   ],
+   "id": "pair_es_138"
+  },
+  {
+   "text": "planta unas flores y desyerba el campo",
+   "pieces": [
+    "plant some flowers",
+    "clear the field"
+   ],
+   "orders": [
+    "PLANT_CROP",
+    "TILL"
+   ],
+   "id": "pair_es_139"
+  },
+  {
+   "text": "busca al enemigo y tira humo a la ventana oeste",
+   "pieces": [
+    "find enemy",
+    "smoke the west window"
+   ],
+   "orders": [
+    "ATTACK",
+    "SMOKE"
+   ],
+   "id": "pair_es_140"
+  },
+  {
+   "text": "desactiva esa cosa antes de que explote y rota a donde marqué",
+   "pieces": [
+    "disarm that thing before it blows",
+    "rotate over to where I marked"
+   ],
+   "orders": [
+    "DEFUSE",
+    "MOVE_TO"
+   ],
+   "id": "pair_es_141"
+  },
+  {
+   "text": "dronea la sala, y cosecha los nabos",
+   "pieces": [
+    "drone the room",
+    "harvest the turnips"
+   ],
+   "orders": [
+    "DRONE",
+    "HARVEST"
+   ],
+   "id": "pair_es_142"
+  },
+  {
+   "text": "toma el objetivo, revisa todas las esquinas y también busca cobertura por allá",
+   "pieces": [
+    "take site, check every corner",
+    "find cover over there"
+   ],
+   "orders": [
+    "ENTRY",
+    "TAKE_COVER"
+   ],
+   "id": "pair_es_143"
+  },
+  {
+   "text": "échale agua a las plantas del invernadero y también planta el desactivador",
+   "pieces": [
+    "sprinkle the plants in the greenhouse",
+    "plant the defuser"
+   ],
+   "orders": [
+    "WATER",
+    "PLANT"
+   ],
+   "id": "pair_es_144"
+  },
+  {
+   "text": "ve a desactivar, y vuelve ya",
+   "pieces": [
+    "get the defuse",
+    "come back now"
+   ],
+   "orders": [
+    "DEFUSE",
+    "COME_BACK"
+   ],
+   "id": "pair_es_145"
+  },
+  {
+   "text": "recarga rápido, y rodéalos por la ruta de atrás",
+   "pieces": [
+    "quick reload",
+    "wrap 'em through the back route"
+   ],
+   "orders": [
+    "RELOAD",
+    "FLANK"
+   ],
+   "id": "pair_es_146"
+  },
+  {
+   "text": "sube por las escaleras, tío y sal del vehículo y abre brecha en el cobertizo",
+   "pieces": [
+    "take the stairs up man",
+    "exit the vehicle",
+    "breach the shed"
+   ],
+   "orders": [
+    "MOVE_TO",
+    "GET_OUT",
+    "BREACH"
+   ],
+   "id": "pair_es_147"
+  },
+  {
+   "text": "flash a la ventana derecha y también mira a la derecha, a la derecha, rápido, rápido",
+   "pieces": [
+    "flash the right window",
+    "look write look write quick quick"
+   ],
+   "orders": [
+    "FLASH",
+    "LOOK_AT"
+   ],
+   "id": "pair_es_148"
+  },
+  {
+   "text": "cúbreme mientras dronéo y sube los escalones",
+   "pieces": [
+    "overwatch me while I'm droning",
+    "go up the steps"
+   ],
+   "orders": [
+    "COVER_ME",
+    "MOVE_TO"
+   ],
+   "id": "pair_es_149"
+  }
+ ]
+}

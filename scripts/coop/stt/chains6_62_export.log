@@ -1,0 +1,5 @@
+llama_quantize: quantize time = 13045.61 ms
+llama_quantize:    total time = 13045.61 ms
+pieces7ml_final seed 0: 1056 MB, 39s -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\models\gguf\pieces7ml_final_s0-Q4_K_M.gguf
+  warnings.warn(
+wrote G:\Proj\ollaya\DeBertaBot\models\coop-chain-v62\cpp: decoder.gguf (1056 MB), router.onnx (it sends 63 of 160 test lines on), 160 test lines, 41 answered with several orders

@@ -1261,6 +1261,245 @@ of its own; ammo, weapons and health are places to walk to; a negated order is "
   client's world. End to end: `v55.txt` (every request above, including "start shooting" then "to this wall" firing
   where the player looks), `v55_car.txt`, `chain.txt`.
 
+### Chain v63: two orders joined by "and" / «и» / «y» (2026-10-22, evening)
+
+The owner, after playing chain v62 in Russian: "бот не понимает союз и не выполняет команды последовательно. Хотя если я
+скажу потом, тогда он сделает две команды."
+
+- **The fault:**
+  - In the log, «иди ко мне сюда и прыгни», «прыгни и подойди ко мне», «подпрыгни и стреляй» each gave only the first
+    order. Decoder v62 wrote each as ONE English line ("jump up and shoot"), and the classifier read one intent of it.
+  - English had the same fault: on the owner's 50 context lines (`chains2/owner_ctx_v59.json`, end to end with bot v61),
+    chain v62 read 28/50, against 45/50 for chain v59 with bot v58. v62 copied "go up by these stairs and jump up",
+    "jump up and shoot that wall" and "come closer to me and shoot again" whole.
+  - The rows behind it: singles holding two actions joined by "and", copied as they are, with their translations; and few
+    lines of two SHORT orders.
+- **Decoder v63** ([chains7_v63.py](scripts/coop/stt/chains7_v63.py)): v62's rows and recipe, and:
+  - a single whose halves around "and" the v61 ensemble reads as two orders of different families (0.9 or more each) is
+    left out, with its translations (199 singles, 358 rows);
+  - 2,500 short pairs per language joined by and / и / y;
+  - a pairs test of 150 per language made of held-out singles;
+  - 46,771 rows, 108 min.
+- **Router v63** ([router_v63.py](scripts/coop/stt/router_v63.py)): router v59's rows without the 120 conflicting
+  singles, plus the 2,500 English pairs for the decoder. Router v59 had sent "reload and cover me" to the classifier
+  (0.00).
+- **Scores, v62 -> v63:**
+
+  | Set | v62 | v63 |
+  |---|---|---|
+  | Pairs en / ru / es, decoder alone | 84.7 / 88.7 / 88.7 | 99.3 / 98.0 / 96.0 |
+  | English pairs through the router | 77.3 | 99.3 |
+  | **Owner's 50 context lines, end to end** | **28/50** | **43/50** |
+
+  Round three's English sets moved by 1–3 points either way. The one clear loss is typed context through the router,
+  86.0 -> 82.7. The cause is router v63: with decoder v63 and router v59 it reads 86.7. The router now leaves some
+  leaning lines without "and" ("okay now you check it" 0.97 -> 0.00) to the classifier. A second router seed read
+  84.0, so part of it is seed noise.
+
+  Router v63 was kept: with router v59, the owner's set reads 41/50, because "get into the car and get out" and "jump
+  down here and find cover" go to the classifier whole. Russian and Spanish sets moved by 1–3 points either way. The new
+  fault is over-splitting a single with a clause: "watch the stairs and shoot if someone comes" becomes two orders.
+- **Not fixed:**
+  - Pairs of the same family, e.g. "go up by the stairs and jump down" (MOVE_TO + JUMP), are still copied whole: 3 of
+    the owner's 7 misses. The training pairs, like the test, take orders of different families only.
+  - The decoder writes «стреляй» as "should …", the owner's misheard "shoot" that it learned from the English rows; bot
+    v61 reads it as OPEN_FIRE.
+- **In the engine:** `models/coop-chain-v63/cpp` (decoder v63, router v63). Chain tests 160/160 on the CPU, 565 ms a
+  line with 4 threads.
+- **In the game:**
+  - The v6x brain was redeployed with chain v63 (2026-10-22 22:02).
+  - `Tests/E2E/multilingual.txt` passes with the new lines. «прыгни и подойди ко мне» -> JUMP, then FOLLOW_ME;
+    «подпрыгни и стреляй» -> JUMP, then OPEN_FIRE; «salta y ven aquí» -> JUMP, then FOLLOW_ME; "reload and cover me" ->
+    RELOAD, then COVER_ME; "come here and jump" -> FOLLOW_ME, then JUMP.
+  - «ну чё там» read as HOLD_ANGLE ("what's up there") is the classifier's, as with v62.
+
+### Chain v62: Russian, English and Spanish players (2026-10-22)
+
+The owner asked for multilingual voice orders, then "русский, английский, испанский" with tests, options, training and
+time. The study, the probes and the numbers are in
+[reports/Мультиязычный бот - русский, английский, испанский.md](reports/Мультиязычный%20бот%20-%20русский,%20английский,%20испанский.md).
+
+- **Design:**
+  - Nothing is translated on the server; the orders that reach it carry no language.
+  - On the client, a Russian or Spanish line goes to the chain's decoder, which writes it as English orders. The
+    classifier, the place matcher, the item rules and the planner are unchanged.
+  - Replies and voice are still English: the reply tables are the next step.
+- **Decoder v62** ([chains6_v62.py](scripts/coop/stt/chains6_v62.py)):
+  - a new QLoRA on Qwen3-1.7B, with round six's recipe on v61's data;
+  - 12,418 Russian and Spanish rows: singles, composed chains, chains and context, translated by 20 AI translators
+    under [TRANSLATE.md](scripts/coop/stt/chains2/ml_v62/TRANSLATE.md);
+  - 39,629 rows in all, 80 min on the RTX 4090.
+- **Blind ru/es sets** (round three's chains and context, said by 4 other translators): Russian 80.1 / 82.2,
+  Spanish 83.6 / 80.8. Before: decoder v59 5–20, plain Qwen3 with a translation prompt 10–21. English stays level with
+  chain v59: typed chains through the router 84.9 -> 88.4, chains heard by voices -2.0.
+- **In the engine:**
+  - `models/coop-chain-v62/cpp`: decoder v62 with router v59. Chain tests 160/160 on the CPU; 32 ms a line on the GPU.
+  - `coop_cli --language en|ru|es`: ru/es lines skip the router, and answers are read from the English.
+  - Parakeet v3 (25 languages) for ru/es speech.
+- **In the game:** `Language` / `ov.CoopBot.Brain.Language`. The v6x brain was deployed with chain v62 and `stt_v3`.
+  `Tests/E2E/multilingual.txt` passes in all three languages ("закинь флешку в комнату, потом заходи" -> FLASH, ENTRY;
+  "tira una flash a la sala y luego entra" -> the same).
+
+### decider-2b with LoRA beside DeBERTa: a study (2026-10-21)
+
+The owner asked to fine-tune `Mapika/decider-2b` (Qwen3.5-2B) on the bot's data with LoRA, to run it quantized, and to
+compare precision and recall. The full report is in [scripts/coop/decider/README.md](scripts/coop/decider/README.md).
+
+**Setup:** one held-out split (v61's seed 0, fold 0): 2,186 lines, of them 96 of the owner's own heard lines.
+Accuracy (the top intent is the labelled one):
+
+| | owner's lines | all heard lines | typed lines |
+|---|---|---|---|
+| DeBERTa ensemble (shipped) | 92.7 | 85.6 | 94.6 |
+| decider-2b zero-shot | 47.9 | 39.3 | 48.4 |
+| decider-2b + LoRA (bf16) | 91.7 | 84.0 | 93.8 |
+| decider-2b + LoRA (Q8_0, llama.cpp CPU) | 90.6 | 83.8 | 93.8 |
+| ensemble + decider, averaged | 93.8 | 86.9 | 95.4 |
+
+- **decider with LoRA** equals one DeBERTa model, but not the ensemble.
+- **Its confidence is less useful:** at 0.66 it carries out more wrong orders (heard: 9.5% against 6.3%).
+- **Quantization:** Q8_0 loses nothing against bf16; Q4_K_M loses about 1 point.
+- **Speed on the i9-10900K:** 135-150 ms per line, against DeBERTa's 40 ms.
+- **Averaged with the ensemble:** wrong orders fall by about a third (heard 6.3 -> 3.9%) at the same recall. This is
+  one fold with no tuning, to be confirmed on all five.
+- **In the game, as an optional second reader** (the owner: "можно десайдер уже подключить, как сайд опцию в Лиру?"):
+  - In the brain: `coop_cli --decider DIR [--decider-mode avg|only]`. The model is trained on all of v61's rows and
+    quantized to Q8_0.
+  - In the game: `DeciderMode` and `ov.CoopBot.Brain.Decider 0|1|2`. Off by default.
+  - The C++ decider equals the reference on 300/300 lines.
+  - `Tests/E2E/decider.txt` passes. A line takes about 150 to 190 ms instead of 42, and the brain starts in 16 s
+    instead of 6.
+
+### v61: trained on what the speech-to-text makes of the owner (2026-10-20, second build 2026-10-21)
+
+v61 was built twice. The game has the second build in `Binaries/CoopBrainV6`. The first build's models are kept as
+`models/coop-deberta-v3-ens3-v61a`.
+
+#### Second build (2026-10-21): the owner's own heard lines and accented voices
+
+The owner played the first build, then said: "постоянно Should получается вместо Shoot. И улучши распознавание go,
+вернее нужно обучить на выходах от stt. посмотри логи ещё, найти проблемы, перезатри v61".
+
+- **The logs.** Every game log since 2026-10-16 was read: the editor's logs and the packaged build's.
+  - There are 1008 spoken lines, 598 different.
+  - Four AI labellers labelled each line from the talk around it: what the owner said next, the bot's question
+    before, and this speaker's known mishearings. Their rules are in the session's `owner_label/RULES.md`.
+  - The developer then reviewed the unsure labels and the conflicts. 77 lines were left out:
+    - answers to the bot's questions, and fragments that only mean something after the line before ("Now this.",
+      "This window also.");
+    - "through this window" meaning fire, because it would break "go through this window" (VAULT_WINDOW);
+    - bare "Get up.", which this speaker uses both for standing up and for coming up;
+    - garbled one-off lines.
+  - 521 lines are left, said 916 times: [owner_lines_v61.json](scripts/coop/owner_lines_v61.json).
+  - A line of two orders is labelled with its first order, because the v6x line has no chain.
+- **Accented voices** ([export_accent_v61.py](scripts/coop/stt/export_accent_v61.py),
+  [synth_accent_v61.ps1](scripts/coop/stt/synth_accent_v61.ps1)):
+  - Every r6/cs line and every seed command was read again by the Windows voices of other languages: Russian (Irina,
+    Pavel) and German (Hedda, Katja, Stefan), at speaking rates 0 and 1. Parakeet then transcribed the recordings.
+  - A probe of 30 commands showed that the Russian voices give the owner's kind of mistakes. "shoot this wall" came
+    out as "Should kiss while", "go there" as "Good here", and "kill them" as "Kiss him".
+  - 7,474 transcripts were made. A transcript is left out if it keeps less than 0.4 of its line, or less than half
+    its words. It is also left out if it loses the line's negation: these voices' "don't" is heard as "then", and
+    "don't shoot him" would come out as "Then shoot him." with the label HOLD_FIRE. That left 6,926.
+- **The training set has 14,502 rows**, against 9,152 in the first build. Training took 1 h 53 min. Gate: family,
+  threshold 0.66.
+  - The owner's lines are a third group beside lines and seeds. They are held out by fold like the others, so every
+    one of them gets an out-of-fold reading.
+  - The held-out lines are also tested as the Russian and German voices read them.
+- **The owner's lines** (out of fold for the second build; full models for the others, so those are slightly
+  flattered):
+
+  | 521 lines, 916 times said | v60 | v61 first build | v61 second build |
+  |---|---|---|---|
+  | right | 83.1 | 85.4 | **91.8** |
+  | say again or ignored | 11.6 | 10.2 | **5.5** |
+  | wrong family | 4.5 | 3.5 | **2.2** |
+
+  The lines with misheard words:
+  - "shoot" heard as "should" / "shut" / ...: 36 times said, right 27 -> 32. "Shut down these windows" now fires.
+  - "go" heard as "roll" / "well" / "call us" / "more" / ...: 30 times said, right 12 -> 22.
+  - The one-off "kill" lines ("Kiss him", "Gil Kim", "Lock him") are not read out of fold. The final models, which
+    were trained on them, read them as ATTACK.
+- **Test lines** (out of fold; the first build in brackets):
+  - typed: 90.7 (91.5);
+  - typed v60 lines: 98.3 (99.4);
+  - VCTK B: 69.3 (69.0);
+  - VCTK B v60 lines: 74.2 (77.5). That is 4 of 120 lines that now act in a wrong family.
+  - Russian voices: 53.5, and German voices: 70.3. The first build has no out-of-fold numbers for these.
+
+  Typed, 45 lines got worse and 33 better. Most of them move between acting and "say again" on long authored lines
+  ("Mag's empty and there's no time, just swap to the pistol."). The trade: the owner's own speech is much better
+  understood, and long written lines are a little worse.
+- **Engine checks:** all 8 pass.
+- **In the game:** `Tests/E2E/v61.txt`, extended with eight of the owner's lines, passes. All 16 lines become their
+  orders: "shook him" opens fire, "kiss him" and "lock him" attack, "roll there" and "gold down the stairs" move,
+  "call me" is follow me. "should this window jump below" opens fire and "go up by the stairs and open fire" moves:
+  these are first orders only, because the v6x line has no chain.
+- **Found in the logs, and not fixed by training:**
+  - Lines of two orders on the v6x line: it needs the chain, as v5x has.
+  - Weapon names misheard ("shellgun", "shadgun", "Sargon") are not matched to the shotgun by the game, and the bot
+    switches to the pistol.
+  - "Find some hill" (heal) is understood as MOVE_TO, but the place words have no "hill" -> health.
+
+#### First build (2026-10-20): seeds of the lines bot v60 did not understand
+
+The owner played L_Expanse with bot v60, the v6x line and the game's default since that day. Then they asked: "В
+логах последней сессии находится общение бота, посмотри лог и начни обучение системы v61 на непонятых фразах". In that
+session, bot v60 said "say again" on 10 of the 34 heard lines.
+
+- **Readings.** They come from the log (what the owner said next) and from the owner's answers:
+  - "Should there" is "Shoot there": the next line was "Shoot their". Parakeet hears "shoot" as "should", as in v57.
+  - "Find the enemy." (four times) is ATTACK.
+  - "Give him" is ATTACK ("Get him"), and "Gilken." is ATTACK ("Kill him"). Both are the owner's answers.
+  - "Throw the grenade there." is FRAG. v60 read it at 0.63, under the 0.66 threshold.
+  - "Let's colour the colour." is COVER_ME, by the owner's answer.
+  - "Carl.": the owner does not remember what they meant, so it gets no seed.
+  - The v58/v60 comparison adds the "should <thing>" lines ("Should this wall?", which v60 read as REPAIR) and
+    "Shotgun.".
+- **The data** ([make_spec_v61.py](scripts/coop/make_spec_v61.py)): v60's 57 intents, lines and readings, plus 53
+  seeds (2514 -> 2567):
+  - 20 "should ..." lines as OPEN_FIRE;
+  - 13 ATTACK, 8 FRAG, 4 COVER_ME and 4 SWITCH_WEAPON;
+  - 5 NONE questions with "should" ("what should I do"), so that not every "should" fires.
+
+  The seeds were written with the owner's log in view, so they are not blind. There are no new test lines: v60's
+  lines stay the test.
+- **Training:** `stt/build_v61.py` and `stt/ensemble_bot_v61.py` use v60's recipe. The training set has 9152 rows,
+  and training took 80 min on the RTX 4090. Gate: family, threshold 0.66, as v60.
+- **Out-of-fold numbers** (criterion near - 2 x wrong family):
+
+  | Lines | v61 | v60 |
+  |---|---|---|
+  | The 180 v60 lines, typed | 99.4 | 99.4 |
+  | The 120 v60 lines, unseen voices (VCTK B) | 77.5 | 70.8 |
+  | The 1575 older lines, typed | 90.6 | 90.0 |
+  | The older lines, unseen voices | 68.0 | 67.9 |
+
+  Nothing dropped. On 120 lines, one line is 0.8 points, so the 6.7-point gain is eight lines and partly noise.
+- **Engine checks:** all 8 pass on bot v61 (golden 4368/4368, world 10,005/10,005, items 92,037/92,037).
+- **The owner's lines** (764 heard lines, 465 different; v60 against v61, classifier only):
+  - "Say again" on this session's 34 lines: 10 -> 2. The two left are "Gilken." (0.51) and "Carl.". On the 730
+    earlier lines: 14.0% -> 11.0% (v58: 13.4%).
+  - Every target line is read at 1.00: "Should there", "Find the enemy.", "Give him", both "Throw the grenade
+    there." lines, "Let's colour the colour.", "Shotgun." and nine "Should this wall / fall / well / ball ..." lines.
+  - v61 reads 82 lines differently. Apart from the target lines, many cross the 0.66 threshold in both
+    directions: "Stop here." HOLD_POSITION 0.91 -> say again 0.57, and "There." say again -> MOVE_TO 0.69.
+  - New wrong readings, judged by the context:
+    - "Should sit inside." is now OPEN_FIRE 0.99, but in the game the bot went inside. The "should" seeds went too
+      far.
+    - "Save wall." is REPAIR 0.70; the owner then said "Should this same wall".
+    - "Another." is HOLD_OTHER_ANGLE 0.66; the owner then said "Another window".
+    - "No, come here." is WAIT 0.66.
+  - Right by the context:
+    - "Should that be true?" is now OPEN_FIRE (the owner then said "Shoot that beach").
+    - "Should this work?" is now OPEN_FIRE (the owner then said "Should this ball").
+    - "Come back to the last position." is GO_BACK, by the v56 rule.
+- **In the game** (until the second build replaced it): `Binaries/CoopBrainV6` was this build (no chain, as v60). End
+  to end (`Tests/E2E/v61.txt`, dedicated server and client): the default line 6 starts the brain from
+  `CoopBrainV6` with 57 labels. All eight lines are read at 1.00 and become orders: "should there" and "should this
+  wall" open fire, "find the enemy" and "give him" attack, "throw the grenade there" throws a frag, "let's colour the
+  colour" is cover me, and "shotgun" switches weapon. "What should I do" is no order.
+
 ### v60: the farmer and the builder, a second line of brains (2026-10-19)
 
 The owner asked what it would cost to add a farmer's and a builder's intents, and decided:

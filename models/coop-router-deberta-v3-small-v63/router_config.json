@@ -1,0 +1,17 @@
+{
+ "rows": 19701,
+ "counts": {
+  "v59_rows": 17321,
+  "left_out": 120,
+  "pairs": 2500
+ },
+ "for_the_decoder": 10027,
+ "epochs": 4,
+ "cut": 0.5,
+ "labels": [
+  "ensemble",
+  "decoder"
+ ],
+ "base_model": "microsoft/deberta-v3-small",
+ "seed": 0
+}

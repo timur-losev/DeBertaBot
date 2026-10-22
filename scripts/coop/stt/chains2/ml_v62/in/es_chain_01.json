@@ -1,0 +1,5126 @@
+{
+"lang": "es",
+"kind": "chain",
+"items": [
+{
+"id": "t2b_stt_095",
+"en": "he is behind the so far he is behind so far shoot him",
+"orders": [
+"OPEN_FIRE"
+],
+"pieces": [
+"shoot him behind the so far"
+]
+},
+{
+"id": "t2a_stt_098",
+"en": "before you bridge the door you uh you send the drone inside and after the bridge throw smoke in",
+"orders": [
+"DRONE",
+"BREACH",
+"SMOKE"
+],
+"pieces": [
+"you send the drone inside",
+"you bridge the door",
+"throw smoke in"
+]
+},
+{
+"id": "t2b_r6_002",
+"en": "Once I'm set on the stairs I'll say now, and then you open that door.",
+"orders": [
+"OPEN"
+],
+"pieces": [
+"Open that door."
+]
+},
+{
+"id": "t_r6_015",
+"en": "Two pushing the main door, one more on the red stairs.",
+"orders": [
+"NONE"
+],
+"pieces": [
+"Two pushing the main door, one more on the red stairs."
+]
+},
+{
+"id": "t_stt_057",
+"en": "stay at my pin do not shoot anybody okay",
+"orders": [
+"HOLD_POSITION",
+"HOLD_FIRE"
+],
+"pieces": [
+"stay at my pin",
+"do not shoot anybody"
+]
+},
+{
+"id": "t2a_r6_099",
+"en": "Smoke the window, no, scratch that, flash it.",
+"orders": [
+"FLASH"
+],
+"pieces": [
+"Flash the window."
+]
+},
+{
+"id": "t2b_cs_069",
+"en": "i'm baiting main, go through the window and check the stairs",
+"orders": [
+"VAULT_WINDOW",
+"CHECK"
+],
+"pieces": [
+"go through the window",
+"check the stairs"
+]
+},
+{
+"id": "t2a_r6_025",
+"en": "Check the north door, then the same for the south one, and come back.",
+"orders": [
+"CHECK",
+"CHECK",
+"COME_BACK"
+],
+"pieces": [
+"Check the north door.",
+"Check the south door.",
+"Come back."
+]
+},
+{
+"id": "t_r6_096",
+"en": "Before you breach the hatch, drone below it, and after it pops, drop in.",
+"orders": [
+"DRONE",
+"BREACH",
+"JUMP"
+],
+"pieces": [
+"Drone below the hatch.",
+"Breach the hatch.",
+"Drop in through the hatch."
+]
+},
+{
+"id": "t_stt_044",
+"en": "i need help here and after send the drown upstairs and watch the stairs",
+"orders": [
+"HELP",
+"DRONE",
+"HOLD_ANGLE"
+],
+"pieces": [
+"i need help here",
+"send the drown upstairs",
+"watch the stairs"
+]
+},
+{
+"id": "t_stt_016",
+"en": "jump down from the roof then go to the east window and open it and throw the grenade inside",
+"orders": [
+"JUMP",
+"MOVE_TO",
+"OPEN",
+"FRAG"
+],
+"pieces": [
+"jump down from the roof",
+"go to the east window",
+"open the east window",
+"throw the grenade inside the east window"
+]
+},
+{
+"id": "t2a_cs_099",
+"en": "molly the stairs, nah wait, smoke them",
+"orders": [
+"SMOKE"
+],
+"pieces": [
+"smoke the stairs"
+]
+},
+{
+"id": "t2a_cs_024",
+"en": "follow me, then jump down after you check below",
+"orders": [
+"FOLLOW_ME",
+"CHECK",
+"JUMP"
+],
+"pieces": [
+"follow me",
+"check below",
+"jump down"
+]
+},
+{
+"id": "t2a_stt_049",
+"en": "come here come with me and then you rappel down the wall",
+"orders": [
+"FOLLOW_ME",
+"RAPPEL"
+],
+"pieces": [
+"come here come with me",
+"you rappel down the wall"
+]
+},
+{
+"id": "t_stt_011",
+"en": "okay go now go and uh then fall back to the stairs",
+"orders": [
+"GO_NOW",
+"FALL_BACK"
+],
+"pieces": [
+"go now go",
+"fall back to the stairs"
+]
+},
+{
+"id": "t2a_stt_034",
+"en": "you engage them last okay first you jump over the so far and then you take cover",
+"orders": [
+"JUMP",
+"TAKE_COVER",
+"ATTACK"
+],
+"pieces": [
+"you jump over the so far",
+"you take cover",
+"you engage them"
+]
+},
+{
+"id": "t2a_stt_085",
+"en": "uh yes yes okay that is correct",
+"orders": [
+"YES"
+],
+"pieces": [
+"uh yes yes okay that is correct"
+]
+},
+{
+"id": "t_stt_089",
+"en": "open the west door for me after you jump down from here",
+"orders": [
+"JUMP",
+"OPEN"
+],
+"pieces": [
+"jump down from here",
+"open the west door for me"
+]
+},
+{
+"id": "t_cs_029",
+"en": "im down bro, come pick me up",
+"orders": [
+"REVIVE_ME"
+],
+"pieces": [
+"come pick me up, im down"
+]
+},
+{
+"id": "t2b_r6_050",
+"en": "Reinforce the wall behind us, and put your barbed wire on the stairs.",
+"orders": [
+"NONE"
+],
+"pieces": [
+"Reinforce the wall behind us, and put your barbed wire on the stairs."
+]
+},
+{
+"id": "t_r6_018",
+"en": "Go now, and once it's done, fall back and hold the stairs.",
+"orders": [
+"GO_NOW",
+"FALL_BACK",
+"HOLD_ANGLE"
+],
+"pieces": [
+"Go now.",
+"Fall back.",
+"Hold the stairs."
+]
+},
+{
+"id": "t2b_cs_003",
+"en": "bomb's ticking, like ten seconds, defuse it",
+"orders": [
+"DEFUSE"
+],
+"pieces": [
+"defuse the bomb"
+]
+},
+{
+"id": "t2a_r6_040",
+"en": "I'm going for the defuser. Watch the north window, then follow me in.",
+"orders": [
+"HOLD_ANGLE",
+"FOLLOW_ME"
+],
+"pieces": [
+"Watch the north window.",
+"Follow me in."
+]
+},
+{
+"id": "t2b_r6_013",
+"en": "I got dropped by the red stairs. Smoke them, then come pick me up.",
+"orders": [
+"SMOKE",
+"REVIVE_ME"
+],
+"pieces": [
+"Smoke the red stairs.",
+"Come pick me up."
+]
+},
+{
+"id": "t2b_cs_098",
+"en": "smoke the door and then plant",
+"orders": [
+"SMOKE",
+"PLANT"
+],
+"pieces": [
+"smoke the door",
+"plant the bomb"
+]
+},
+{
+"id": "t2b_cs_001",
+"en": "stop shooting, get behind the sofa, look at me",
+"orders": [
+"HOLD_FIRE",
+"TAKE_COVER",
+"LOOK_AT_ME"
+],
+"pieces": [
+"stop shooting",
+"get behind the sofa",
+"look at me"
+]
+},
+{
+"id": "t_r6_019",
+"en": "Yes, that's exactly right.",
+"orders": [
+"YES"
+],
+"pieces": [
+"Yes, that's exactly right."
+]
+},
+{
+"id": "t2b_cs_054",
+"en": "i'll smoke the window and cross, then you rush the site",
+"orders": [
+"ENTRY"
+],
+"pieces": [
+"rush the site"
+]
+},
+{
+"id": "t_cs_004",
+"en": "nope, wrong one man",
+"orders": [
+"NO"
+],
+"pieces": [
+"nope, wrong one man"
+]
+},
+{
+"id": "t2a_cs_027",
+"en": "drop down after you smoke below, then go to my ping and hold the yellow stairs",
+"orders": [
+"SMOKE",
+"JUMP",
+"MOVE_TO",
+"HOLD_ANGLE"
+],
+"pieces": [
+"smoke below",
+"drop down",
+"go to my ping",
+"hold the yellow stairs"
+]
+},
+{
+"id": "t2b_r6_041",
+"en": "Get low, and then look at the east window.",
+"orders": [
+"CROUCH",
+"LOOK_AT"
+],
+"pieces": [
+"Get low.",
+"Look at the east window."
+]
+},
+{
+"id": "t2b_r6_009",
+"en": "Two on site. Frag it, clear it, then plant the defuser.",
+"orders": [
+"FRAG",
+"ENTRY",
+"PLANT"
+],
+"pieces": [
+"Frag the site.",
+"Clear the site.",
+"Plant the defuser."
+]
+},
+{
+"id": "t2b_cs_026",
+"en": "i'm watching window, you watch the other side",
+"orders": [
+"HOLD_OTHER_ANGLE"
+],
+"pieces": [
+"you watch the other side"
+]
+},
+{
+"id": "t_stt_038",
+"en": "fall back after you throw smoke on the bomb and diffuse it",
+"orders": [
+"SMOKE",
+"DEFUSE",
+"FALL_BACK"
+],
+"pieces": [
+"throw smoke on the bomb",
+"diffuse the bomb",
+"fall back"
+]
+},
+{
+"id": "t2b_cs_007",
+"en": "i'm planting for main, go check behind the sofa",
+"orders": [
+"CHECK"
+],
+"pieces": [
+"go check behind the sofa"
+]
+},
+{
+"id": "t2b_cs_050",
+"en": "yeah yeah good idea, open that door and check inside",
+"orders": [
+"OPEN",
+"CHECK"
+],
+"pieces": [
+"open that door",
+"check inside that door"
+]
+},
+{
+"id": "t2b_stt_036",
+"en": "i will make the plant now uh cover me cover me",
+"orders": [
+"COVER_ME"
+],
+"pieces": [
+"cover me"
+]
+},
+{
+"id": "t_cs_028",
+"en": "get up, go blue stairs, check upstairs, come back",
+"orders": [
+"STAND_UP",
+"MOVE_TO",
+"CHECK",
+"COME_BACK"
+],
+"pieces": [
+"get up",
+"go blue stairs",
+"check upstairs",
+"come back"
+]
+},
+{
+"id": "t_r6_074",
+"en": "Don't flash that, I'm standing right in the doorway.",
+"orders": [
+"NONE"
+],
+"pieces": [
+"Don't flash that, I'm standing right in the doorway."
+]
+},
+{
+"id": "t_stt_040",
+"en": "retreat retreat throw smoke behind you",
+"orders": [
+"FALL_BACK",
+"SMOKE"
+],
+"pieces": [
+"retreat",
+"throw smoke behind you"
+]
+},
+{
+"id": "t2a_cs_058",
+"en": "help me out here after youve defused, checked the stairs and smoked main",
+"orders": [
+"DEFUSE",
+"CHECK",
+"SMOKE",
+"HELP"
+],
+"pieces": [
+"defuse the bomb",
+"check the stairs",
+"smoke main",
+"help me out here"
+]
+},
+{
+"id": "t2a_r6_024",
+"en": "Follow me up the white stairs, then plant the defuser after you smoke the door.",
+"orders": [
+"FOLLOW_ME",
+"SMOKE",
+"PLANT"
+],
+"pieces": [
+"Follow me up the white stairs.",
+"Smoke the door.",
+"Plant the defuser."
+]
+},
+{
+"id": "t_r6_021",
+"en": "Keep holding this angle, and I'll take the other one myself.",
+"orders": [
+"HOLD_ANGLE"
+],
+"pieces": [
+"Keep holding this angle."
+]
+},
+{
+"id": "t2b_stt_097",
+"en": "defuse the bomb but before that check behind the so far",
+"orders": [
+"CHECK",
+"DEFUSE"
+],
+"pieces": [
+"check behind the so far",
+"defuse the bomb"
+]
+},
+{
+"id": "t2b_r6_062",
+"en": "Take cover behind the sofa, then suppress the door.",
+"orders": [
+"TAKE_COVER",
+"SUPPRESS"
+],
+"pieces": [
+"Take cover behind the sofa.",
+"Suppress the door."
+]
+},
+{
+"id": "t_stt_000",
+"en": "come with me okay and when we go inside you watch the other side",
+"orders": [
+"FOLLOW_ME",
+"HOLD_OTHER_ANGLE"
+],
+"pieces": [
+"come with me",
+"you watch the other side"
+]
+},
+{
+"id": "t2a_stt_082",
+"en": "dont breach the wall and uh dont open the door also",
+"orders": [
+"NONE"
+],
+"pieces": [
+"dont breach the wall and uh dont open the door also"
+]
+},
+{
+"id": "t2a_cs_045",
+"en": "suppress the stairs once youve fallen back and taken a knee",
+"orders": [
+"FALL_BACK",
+"CROUCH",
+"SUPPRESS"
+],
+"pieces": [
+"fall back",
+"take a knee",
+"suppress the stairs"
+]
+},
+{
+"id": "t2b_r6_051",
+"en": "Defuser's down by the table, twenty seconds left, go disable it.",
+"orders": [
+"DEFUSE"
+],
+"pieces": [
+"Go disable the defuser."
+]
+},
+{
+"id": "t2b_r6_027",
+"en": "I'm breaching the hatch and dropping into the basement, wish me luck.",
+"orders": [
+"NONE"
+],
+"pieces": [
+"I'm breaching the hatch and dropping into the basement, wish me luck."
+]
+},
+{
+"id": "t2a_stt_081",
+"en": "you clear the room after you flash it and uh before the flash you open the door",
+"orders": [
+"OPEN",
+"FLASH",
+"ENTRY"
+],
+"pieces": [
+"you open the door",
+"you flash the room",
+"you clear the room"
+]
+},
+{
+"id": "t2b_cs_018",
+"en": "jump on the table then hop through the window",
+"orders": [
+"JUMP",
+"VAULT_WINDOW"
+],
+"pieces": [
+"jump on the table",
+"hop through the window"
+]
+},
+{
+"id": "t2a_cs_065",
+"en": "open fire and then push the room, but thats after you get up and take the other door",
+"orders": [
+"STAND_UP",
+"HOLD_OTHER_ANGLE",
+"OPEN_FIRE",
+"ENTRY"
+],
+"pieces": [
+"get up",
+"you take the other door",
+"open fire",
+"push the room"
+]
+},
+{
+"id": "t_r6_091",
+"en": "I'm down by the sofa. Flash them and get me up.",
+"orders": [
+"FLASH",
+"REVIVE_ME"
+],
+"pieces": [
+"Flash them.",
+"Get me up, I'm down by the sofa."
+]
+},
+{
+"id": "t2b_cs_092",
+"en": "send your drone ahead and scout the site for me",
+"orders": [
+"DRONE"
+],
+"pieces": [
+"send your drone ahead and scout the site for me"
+]
+},
+{
+"id": "t2a_stt_066",
+"en": "go to the roof uh no no sorry come back",
+"orders": [
+"COME_BACK"
+],
+"pieces": [
+"come back"
+]
+},
+{
+"id": "t2b_r6_003",
+"en": "Plant the defuser and then get behind the sofa.",
+"orders": [
+"PLANT",
+"TAKE_COVER"
+],
+"pieces": [
+"Plant the defuser.",
+"Get behind the sofa."
+]
+},
+{
+"id": "t2b_cs_035",
+"en": "not yet, not yet, when i ping it, molly the stairs",
+"orders": [
+"FRAG"
+],
+"pieces": [
+"molly the stairs"
+]
+},
+{
+"id": "t2b_cs_090",
+"en": "i'm planting. crouch so they don't see you, then cover me",
+"orders": [
+"CROUCH",
+"COVER_ME"
+],
+"pieces": [
+"crouch",
+"cover me"
+]
+},
+{
+"id": "t2a_r6_031",
+"en": "Flash the room, then clear it and hold the door from inside.",
+"orders": [
+"FLASH",
+"ENTRY",
+"HOLD_ANGLE"
+],
+"pieces": [
+"Flash the room.",
+"Clear the room.",
+"Hold the door from inside the room."
+]
+},
+{
+"id": "t2b_r6_012",
+"en": "Wait for my go, then breach the hatch and drop in.",
+"orders": [
+"BREACH",
+"JUMP"
+],
+"pieces": [
+"Breach the hatch.",
+"Drop in through the hatch."
+]
+},
+{
+"id": "t2a_stt_001",
+"en": "okay now go go now and after you finish come back and uh crouch and look at the door",
+"orders": [
+"GO_NOW",
+"COME_BACK",
+"CROUCH",
+"LOOK_AT"
+],
+"pieces": [
+"go go now",
+"come back",
+"crouch",
+"look at the door"
+]
+},
+{
+"id": "t2b_r6_034",
+"en": "I'll pull the barricade off myself, you throw the flash through the door.",
+"orders": [
+"FLASH"
+],
+"pieces": [
+"Throw the flash through the door."
+]
+},
+{
+"id": "t2a_cs_075",
+"en": "im gonna peek, then im rotating to basement",
+"orders": [
+"NONE"
+],
+"pieces": [
+"im gonna peek, then im rotating to basement"
+]
+},
+{
+"id": "t_stt_083",
+"en": "you go down with the rope to the south window and you shoot inside",
+"orders": [
+"RAPPEL",
+"OPEN_FIRE"
+],
+"pieces": [
+"you go down with the rope to the south window",
+"you shoot inside the south window"
+]
+},
+{
+"id": "t_cs_021",
+"en": "dunno man, no idea",
+"orders": [
+"DONT_KNOW"
+],
+"pieces": [
+"dunno man, no idea"
+]
+},
+{
+"id": "t2b_r6_053",
+"en": "Breach the east wall after you smoke it.",
+"orders": [
+"SMOKE",
+"BREACH"
+],
+"pieces": [
+"Smoke the east wall.",
+"Breach the east wall."
+]
+},
+{
+"id": "t2a_stt_013",
+"en": "follow me follow me and then you plant the bomb after you check the corner okay",
+"orders": [
+"FOLLOW_ME",
+"CHECK",
+"PLANT"
+],
+"pieces": [
+"follow me follow me",
+"you check the corner",
+"you plant the bomb"
+]
+},
+{
+"id": "t2a_r6_064",
+"en": "Rappel down the south side and frag the window, but before you do, drone the top floor.",
+"orders": [
+"DRONE",
+"RAPPEL",
+"FRAG"
+],
+"pieces": [
+"Drone the top floor.",
+"Rappel down the south side.",
+"Frag the south window."
+]
+},
+{
+"id": "t2a_r6_070",
+"en": "Go to the top of the red stairs, take the opposite angle from me, and hold your fire.",
+"orders": [
+"MOVE_TO",
+"HOLD_OTHER_ANGLE",
+"HOLD_FIRE"
+],
+"pieces": [
+"Go to the top of the red stairs.",
+"Take the opposite angle from me.",
+"Hold your fire."
+]
+},
+{
+"id": "t2b_r6_094",
+"en": "Watch that door and drop anyone who comes through it.",
+"orders": [
+"HOLD_ANGLE"
+],
+"pieces": [
+"Watch that door and drop anyone who comes through it."
+]
+},
+{
+"id": "t2a_stt_071",
+"en": "i am planting now so you take cover and then hold the east door and dont shoot okay",
+"orders": [
+"TAKE_COVER",
+"HOLD_ANGLE",
+"HOLD_FIRE"
+],
+"pieces": [
+"you take cover",
+"hold the east door",
+"dont shoot okay"
+]
+},
+{
+"id": "t2b_stt_008",
+"en": "fall back fall back and then give me covering fire",
+"orders": [
+"FALL_BACK",
+"SUPPRESS"
+],
+"pieces": [
+"fall back fall back",
+"give me covering fire"
+]
+},
+{
+"id": "t2a_stt_002",
+"en": "you revive me after you kill uh after you take them out and then open the door and we go you follow me",
+"orders": [
+"ATTACK",
+"REVIVE_ME",
+"OPEN",
+"FOLLOW_ME"
+],
+"pieces": [
+"you take them out",
+"you revive me",
+"open the door",
+"you follow me"
+]
+},
+{
+"id": "t2b_stt_011",
+"en": "okay this floor is clear good job now stand up and check the top floor",
+"orders": [
+"STAND_UP",
+"CHECK"
+],
+"pieces": [
+"stand up",
+"check the top floor"
+]
+},
+{
+"id": "t_cs_047",
+"en": "duck behind the sofa then check ur six",
+"orders": [
+"TAKE_COVER",
+"CHECK"
+],
+"pieces": [
+"duck behind the sofa",
+"check ur six"
+]
+},
+{
+"id": "t2b_r6_032",
+"en": "Stand up and open fire on the window.",
+"orders": [
+"STAND_UP",
+"OPEN_FIRE"
+],
+"pieces": [
+"Stand up.",
+"Open fire on the window."
+]
+},
+{
+"id": "t2a_stt_089",
+"en": "i watch this door and you watch the other door and uh when i say you throw flash and push in",
+"orders": [
+"HOLD_OTHER_ANGLE",
+"FLASH",
+"ENTRY"
+],
+"pieces": [
+"you watch the other door",
+"you throw flash",
+"push in"
+]
+},
+{
+"id": "t_cs_023",
+"en": "rush site n clear it out, im behind u",
+"orders": [
+"ENTRY"
+],
+"pieces": [
+"rush site n clear it out"
+]
+},
+{
+"id": "t2b_r6_073",
+"en": "He's behind the sofa and he's one HP, frag him.",
+"orders": [
+"FRAG"
+],
+"pieces": [
+"Frag him behind the sofa."
+]
+},
+{
+"id": "t2a_r6_021",
+"en": "Fall back to the brown stairs, crouch, then open fire on the door after you smoke it.",
+"orders": [
+"FALL_BACK",
+"CROUCH",
+"SMOKE",
+"OPEN_FIRE"
+],
+"pieces": [
+"Fall back to the brown stairs.",
+"Crouch.",
+"Smoke the door.",
+"Open fire on the door."
+]
+},
+{
+"id": "t2b_r6_084",
+"en": "Fall back and take the other angle.",
+"orders": [
+"FALL_BACK",
+"HOLD_OTHER_ANGLE"
+],
+"pieces": [
+"Fall back.",
+"Take the other angle."
+]
+},
+{
+"id": "t2b_cs_058",
+"en": "one on stairs, one on site. flash stairs and kill him",
+"orders": [
+"FLASH",
+"ATTACK"
+],
+"pieces": [
+"flash stairs",
+"kill the one on stairs"
+]
+},
+{
+"id": "t2a_r6_043",
+"en": "Face the east door and hold fire for now.",
+"orders": [
+"LOOK_AT",
+"HOLD_FIRE"
+],
+"pieces": [
+"Face the east door.",
+"Hold fire for now."
+]
+},
+{
+"id": "t_cs_088",
+"en": "nah, not that one bro",
+"orders": [
+"NO"
+],
+"pieces": [
+"nah, not that one bro"
+]
+},
+{
+"id": "t2a_r6_059",
+"en": "Open the north door quietly, drone the room, and don't push in until you've flashed it.",
+"orders": [
+"OPEN",
+"DRONE",
+"FLASH",
+"ENTRY"
+],
+"pieces": [
+"Open the north door quietly.",
+"Drone the room.",
+"Flash the room.",
+"Push into the room."
+]
+},
+{
+"id": "t2b_cs_041",
+"en": "when i say go, jump down and plant",
+"orders": [
+"JUMP",
+"PLANT"
+],
+"pieces": [
+"jump down",
+"plant the bomb"
+]
+},
+{
+"id": "t_cs_081",
+"en": "who has the bomb, anyone?",
+"orders": [
+"NONE"
+],
+"pieces": [
+"who has the bomb, anyone?"
+]
+},
+{
+"id": "t2a_cs_039",
+"en": "come back, then defuse after you smoke the bomb, and then watch main",
+"orders": [
+"COME_BACK",
+"SMOKE",
+"DEFUSE",
+"HOLD_ANGLE"
+],
+"pieces": [
+"come back",
+"smoke the bomb",
+"defuse the bomb",
+"watch main"
+]
+},
+{
+"id": "t2a_r6_026",
+"en": "Cease fire, pull back to the yellow stairs, get behind something solid.",
+"orders": [
+"HOLD_FIRE",
+"FALL_BACK",
+"TAKE_COVER"
+],
+"pieces": [
+"Cease fire.",
+"Pull back to the yellow stairs.",
+"Get behind something solid."
+]
+},
+{
+"id": "t2b_r6_014",
+"en": "Vault out the south window and regroup.",
+"orders": [
+"VAULT_WINDOW",
+"COME_BACK"
+],
+"pieces": [
+"Vault out the south window.",
+"Regroup."
+]
+},
+{
+"id": "t2b_stt_025",
+"en": "enemy is in the window suppress him and when i am across you move to my marker",
+"orders": [
+"SUPPRESS",
+"MOVE_TO"
+],
+"pieces": [
+"suppress the enemy in the window",
+"you move to my marker"
+]
+},
+{
+"id": "t2b_r6_057",
+"en": "While I rappel the south window and get an angle, you push main and clear.",
+"orders": [
+"ENTRY"
+],
+"pieces": [
+"Push main and clear."
+]
+},
+{
+"id": "t2b_r6_091",
+"en": "I'm dropping through the hatch to plant, so flank through the basement.",
+"orders": [
+"FLANK"
+],
+"pieces": [
+"Flank through the basement."
+]
+},
+{
+"id": "t2a_r6_023",
+"en": "Clear the basement after you flash it, and before the flash, drone it.",
+"orders": [
+"DRONE",
+"FLASH",
+"ENTRY"
+],
+"pieces": [
+"Drone the basement.",
+"Flash the basement.",
+"Clear the basement."
+]
+},
+{
+"id": "t_r6_043",
+"en": "Follow me up, hold the top of the red stairs, and don't shoot unless they push.",
+"orders": [
+"FOLLOW_ME",
+"HOLD_ANGLE",
+"HOLD_FIRE"
+],
+"pieces": [
+"Follow me up.",
+"Hold the top of the red stairs.",
+"Don't shoot unless they push."
+]
+},
+{
+"id": "t_cs_009",
+"en": "nade them, but revive me first bro",
+"orders": [
+"REVIVE_ME",
+"FRAG"
+],
+"pieces": [
+"revive me bro",
+"nade them"
+]
+},
+{
+"id": "t2b_cs_078",
+"en": "move to my pin, then go prone",
+"orders": [
+"MOVE_TO",
+"PRONE"
+],
+"pieces": [
+"move to my pin",
+"go prone"
+]
+},
+{
+"id": "t_stt_005",
+"en": "pin them down pin them down and when i am in the door you stop shooting and come with me",
+"orders": [
+"SUPPRESS",
+"HOLD_FIRE",
+"FOLLOW_ME"
+],
+"pieces": [
+"pin them down",
+"stop shooting when i am in the door",
+"come with me"
+]
+},
+{
+"id": "t2b_r6_069",
+"en": "Nice flash, that blinded both of them. Okay, come back here.",
+"orders": [
+"COME_BACK"
+],
+"pieces": [
+"Come back here."
+]
+},
+{
+"id": "t2b_stt_050",
+"en": "what are you doing why you look at the wall look at me",
+"orders": [
+"LOOK_AT_ME"
+],
+"pieces": [
+"look at me"
+]
+},
+{
+"id": "t2a_r6_098",
+"en": "Smoke the Main door, then hold up, don't cross yet.",
+"orders": [
+"SMOKE",
+"WAIT"
+],
+"pieces": [
+"Smoke the Main door.",
+"Hold up, don't cross yet."
+]
+},
+{
+"id": "t2b_cs_030",
+"en": "they got me, i'm down by the table, come revive me",
+"orders": [
+"REVIVE_ME"
+],
+"pieces": [
+"come revive me"
+]
+},
+{
+"id": "t2a_cs_041",
+"en": "flash north window then the same for east, hop in and clear",
+"orders": [
+"FLASH",
+"FLASH",
+"VAULT_WINDOW",
+"ENTRY"
+],
+"pieces": [
+"flash north window",
+"flash east window",
+"hop in the east window",
+"clear the room"
+]
+},
+{
+"id": "t2a_cs_035",
+"en": "im down, res me once youve smoked the door and killed that guy",
+"orders": [
+"SMOKE",
+"ATTACK",
+"REVIVE_ME"
+],
+"pieces": [
+"smoke the door",
+"kill that guy",
+"res me im down"
+]
+},
+{
+"id": "t2b_r6_074",
+"en": "Last roamer's upstairs and he's weak, take him out.",
+"orders": [
+"ATTACK"
+],
+"pieces": [
+"Take him out."
+]
+},
+{
+"id": "t2a_r6_067",
+"en": "I'll plant the defuser, and you cover me.",
+"orders": [
+"COVER_ME"
+],
+"pieces": [
+"You cover me."
+]
+},
+{
+"id": "t2b_stt_054",
+"en": "open the vest door uh no sorry the main door open the main door",
+"orders": [
+"OPEN"
+],
+"pieces": [
+"open the main door"
+]
+},
+{
+"id": "t2b_stt_004",
+"en": "two guys are in the room so throw grenade then push in and after that hold the window",
+"orders": [
+"FRAG",
+"ENTRY",
+"HOLD_ANGLE"
+],
+"pieces": [
+"throw grenade in the room",
+"push in the room",
+"hold the window"
+]
+},
+{
+"id": "t2b_cs_076",
+"en": "i'm trying to hold main alone here, i need a hand",
+"orders": [
+"HELP"
+],
+"pieces": [
+"i need a hand here"
+]
+},
+{
+"id": "t2a_cs_046",
+"en": "ok go now, and get back here after you plant",
+"orders": [
+"GO_NOW",
+"PLANT",
+"COME_BACK"
+],
+"pieces": [
+"ok go now",
+"plant the bomb",
+"get back here"
+]
+},
+{
+"id": "t2b_cs_079",
+"en": "before you plant, check behind the box",
+"orders": [
+"CHECK",
+"PLANT"
+],
+"pieces": [
+"check behind the box",
+"plant the bomb"
+]
+},
+{
+"id": "t2b_r6_070",
+"en": "Give it a second. When I ping the window, rappel down to it.",
+"orders": [
+"RAPPEL"
+],
+"pieces": [
+"Rappel down to the window."
+]
+},
+{
+"id": "t2b_cs_085",
+"en": "on my go flash them, light them up, then fall back",
+"orders": [
+"FLASH",
+"OPEN_FIRE",
+"FALL_BACK"
+],
+"pieces": [
+"flash them",
+"light them up",
+"fall back"
+]
+},
+{
+"id": "t_cs_036",
+"en": "im pushing main then im planting",
+"orders": [
+"NONE"
+],
+"pieces": [
+"im pushing main then im planting"
+]
+},
+{
+"id": "t2b_r6_066",
+"en": "Look at me, then go where I pinged.",
+"orders": [
+"LOOK_AT_ME",
+"MOVE_TO"
+],
+"pieces": [
+"Look at me.",
+"Go where I pinged."
+]
+},
+{
+"id": "t2a_stt_005",
+"en": "before you plan the bomb you check behind the table and then you hide",
+"orders": [
+"CHECK",
+"PLANT",
+"TAKE_COVER"
+],
+"pieces": [
+"you check behind the table",
+"you plan the bomb",
+"you hide"
+]
+},
+{
+"id": "t2a_cs_068",
+"en": "before you rope down check the roof, and hop in the window after you flash it",
+"orders": [
+"CHECK",
+"RAPPEL",
+"FLASH",
+"VAULT_WINDOW"
+],
+"pieces": [
+"check the roof",
+"rope down",
+"flash the window",
+"hop in the window"
+]
+},
+{
+"id": "t2b_r6_088",
+"en": "I'll get the defuser down and then hold from behind the chairs.",
+"orders": [
+"NONE"
+],
+"pieces": [
+"I'll get the defuser down and then hold from behind the chairs."
+]
+},
+{
+"id": "t_stt_074",
+"en": "help me here please and after we go you follow me",
+"orders": [
+"HELP",
+"FOLLOW_ME"
+],
+"pieces": [
+"help me here please",
+"you follow me"
+]
+},
+{
+"id": "t_r6_065",
+"en": "Plant and then take cover behind the table, but smoke the door before any of that.",
+"orders": [
+"SMOKE",
+"PLANT",
+"TAKE_COVER"
+],
+"pieces": [
+"Smoke the door.",
+"Plant the defuser.",
+"Take cover behind the table."
+]
+},
+{
+"id": "t2a_stt_078",
+"en": "no no uh not that one that is wrong",
+"orders": [
+"NO"
+],
+"pieces": [
+"no no uh not that one that is wrong"
+]
+},
+{
+"id": "t2a_r6_013",
+"en": "Go to my pin, and you take the other window from there.",
+"orders": [
+"MOVE_TO",
+"HOLD_OTHER_ANGLE"
+],
+"pieces": [
+"Go to my pin.",
+"You take the other window."
+]
+},
+{
+"id": "t2a_cs_077",
+"en": "get up, then fall back after you toss the frag, then hide",
+"orders": [
+"STAND_UP",
+"FRAG",
+"FALL_BACK",
+"TAKE_COVER"
+],
+"pieces": [
+"get up",
+"toss the frag",
+"fall back",
+"hide"
+]
+},
+{
+"id": "t2a_r6_003",
+"en": "Yes, exactly, that's the one I meant.",
+"orders": [
+"YES"
+],
+"pieces": [
+"Yes, exactly, that's the one I meant."
+]
+},
+{
+"id": "t2a_cs_023",
+"en": "hop in the window after you molly the room, and before the molly drone it",
+"orders": [
+"DRONE",
+"FRAG",
+"VAULT_WINDOW"
+],
+"pieces": [
+"drone the room",
+"molly the room",
+"hop in the window"
+]
+},
+{
+"id": "t2b_r6_029",
+"en": "Come back here and then cover me.",
+"orders": [
+"COME_BACK",
+"COVER_ME"
+],
+"pieces": [
+"Come back here.",
+"Cover me."
+]
+},
+{
+"id": "t2a_stt_025",
+"en": "stay there stay there and you open the door only after you have looked at me",
+"orders": [
+"HOLD_POSITION",
+"LOOK_AT_ME",
+"OPEN"
+],
+"pieces": [
+"stay there stay there",
+"look at me",
+"you open the door"
+]
+},
+{
+"id": "t2b_cs_027",
+"en": "got the kit, i'm sticking it, smoke the bomb",
+"orders": [
+"SMOKE"
+],
+"pieces": [
+"smoke the bomb"
+]
+},
+{
+"id": "t_stt_099",
+"en": "okay i am ready now go go do it now",
+"orders": [
+"GO_NOW"
+],
+"pieces": [
+"go go do it now"
+]
+},
+{
+"id": "t2b_r6_093",
+"en": "Go prone, and don't shoot.",
+"orders": [
+"PRONE",
+"HOLD_FIRE"
+],
+"pieces": [
+"Go prone.",
+"Don't shoot."
+]
+},
+{
+"id": "t_r6_063",
+"en": "One's holding the red stairs, lay down fire and keep him pinned.",
+"orders": [
+"SUPPRESS"
+],
+"pieces": [
+"Lay down fire on the red stairs and keep him pinned."
+]
+},
+{
+"id": "t_cs_024",
+"en": "wait for my call then send the drone",
+"orders": [
+"DRONE"
+],
+"pieces": [
+"send the drone on my call"
+]
+},
+{
+"id": "t_cs_007",
+"en": "plant after u flash site n push in",
+"orders": [
+"FLASH",
+"ENTRY",
+"PLANT"
+],
+"pieces": [
+"flash site",
+"push into site",
+"plant the bomb"
+]
+},
+{
+"id": "t_r6_020",
+"en": "Engage the two on site, plant when they're down, then get behind cover.",
+"orders": [
+"ATTACK",
+"PLANT",
+"TAKE_COVER"
+],
+"pieces": [
+"Engage the two on site.",
+"Plant the defuser.",
+"Get behind cover."
+]
+},
+{
+"id": "t2b_cs_073",
+"en": "get up and come with me",
+"orders": [
+"STAND_UP",
+"FOLLOW_ME"
+],
+"pieces": [
+"get up",
+"come with me"
+]
+},
+{
+"id": "t2a_stt_026",
+"en": "i am down so you follow me only when you have picked me up and thrown the smoke",
+"orders": [
+"REVIVE_ME",
+"SMOKE",
+"FOLLOW_ME"
+],
+"pieces": [
+"pick me up i am down",
+"throw the smoke",
+"you follow me"
+]
+},
+{
+"id": "t2b_stt_027",
+"en": "how many grenades you have do you have two or one",
+"orders": [
+"NONE"
+],
+"pieces": [
+"how many grenades you have do you have two or one"
+]
+},
+{
+"id": "t2b_stt_093",
+"en": "you are too high they will see you from window lie down",
+"orders": [
+"PRONE"
+],
+"pieces": [
+"lie down"
+]
+},
+{
+"id": "t2a_r6_086",
+"en": "Go around through the west door and hit them from behind.",
+"orders": [
+"FLANK"
+],
+"pieces": [
+"Go around through the west door and hit them from behind."
+]
+},
+{
+"id": "t2b_stt_021",
+"en": "throw grenade in the window and then one more in the door",
+"orders": [
+"FRAG",
+"FRAG"
+],
+"pieces": [
+"throw grenade in the window",
+"throw one more grenade in the door"
+]
+},
+{
+"id": "t2a_cs_002",
+"en": "dont jump down till youve looked at me, then go to the sofa and lie down",
+"orders": [
+"LOOK_AT_ME",
+"JUMP",
+"MOVE_TO",
+"PRONE"
+],
+"pieces": [
+"look at me",
+"jump down",
+"go to the sofa",
+"lie down"
+]
+},
+{
+"id": "t_stt_098",
+"en": "uh open fire on the window and then help me here i need help",
+"orders": [
+"OPEN_FIRE",
+"HELP"
+],
+"pieces": [
+"open fire on the window",
+"help me here i need help"
+]
+},
+{
+"id": "t2b_stt_086",
+"en": "do not go inside the room just uh look at the north window",
+"orders": [
+"LOOK_AT"
+],
+"pieces": [
+"look at the north window"
+]
+},
+{
+"id": "t_cs_065",
+"en": "cover me til im across then defuse",
+"orders": [
+"COVER_ME",
+"DEFUSE"
+],
+"pieces": [
+"cover me til im across",
+"defuse the bomb"
+]
+},
+{
+"id": "t_r6_022",
+"en": "Get on the ground and open fire on the main door.",
+"orders": [
+"PRONE",
+"OPEN_FIRE"
+],
+"pieces": [
+"Get on the ground.",
+"Open fire on the main door."
+]
+},
+{
+"id": "t2a_r6_087",
+"en": "Rope up to the roof and cover me from there.",
+"orders": [
+"RAPPEL",
+"COVER_ME"
+],
+"pieces": [
+"Rope up to the roof.",
+"Cover me from the roof."
+]
+},
+{
+"id": "t2b_cs_053",
+"en": "i'm smoking window then i'm crossing, whatever happens happens",
+"orders": [
+"NONE"
+],
+"pieces": [
+"i'm smoking window then i'm crossing, whatever happens happens"
+]
+},
+{
+"id": "t2a_stt_035",
+"en": "i go to plan the bomb and then i go back to the door",
+"orders": [
+"NONE"
+],
+"pieces": [
+"i go to plan the bomb and then i go back to the door"
+]
+},
+{
+"id": "t2a_stt_075",
+"en": "you hold position after you jump over the table okay",
+"orders": [
+"JUMP",
+"HOLD_POSITION"
+],
+"pieces": [
+"you jump over the table",
+"you hold position"
+]
+},
+{
+"id": "t_stt_085",
+"en": "go to the door open the door throw the flesh and clear the room",
+"orders": [
+"MOVE_TO",
+"OPEN",
+"FLASH",
+"ENTRY"
+],
+"pieces": [
+"go to the door",
+"open the door",
+"throw the flesh in the room",
+"clear the room"
+]
+},
+{
+"id": "t2b_stt_060",
+"en": "i will plant the bomb uh you get up smoke the stairs and cover me",
+"orders": [
+"STAND_UP",
+"SMOKE",
+"COVER_ME"
+],
+"pieces": [
+"you get up",
+"smoke the stairs",
+"cover me"
+]
+},
+{
+"id": "t2a_r6_091",
+"en": "Plant the defuser, but not before you've cleared site, and don't clear it until you've flashed.",
+"orders": [
+"FLASH",
+"ENTRY",
+"PLANT"
+],
+"pieces": [
+"Flash the site.",
+"Clear the site.",
+"Plant the defuser."
+]
+},
+{
+"id": "t2b_stt_006",
+"en": "i am coming to you i am coming so stand up",
+"orders": [
+"STAND_UP"
+],
+"pieces": [
+"stand up"
+]
+},
+{
+"id": "t2a_r6_029",
+"en": "Don't breach it, and don't open it either.",
+"orders": [
+"NONE"
+],
+"pieces": [
+"Don't breach it, and don't open it either."
+]
+},
+{
+"id": "t2a_stt_020",
+"en": "uh you clear the basement after you send the drown there",
+"orders": [
+"DRONE",
+"ENTRY"
+],
+"pieces": [
+"you send the drown to the basement",
+"you clear the basement"
+]
+},
+{
+"id": "t2b_r6_058",
+"en": "Lie down flat right there and stay on your belly.",
+"orders": [
+"PRONE"
+],
+"pieces": [
+"Lie down flat right there and stay on your belly."
+]
+},
+{
+"id": "t2b_cs_088",
+"en": "get up, come back here, and watch main",
+"orders": [
+"STAND_UP",
+"COME_BACK",
+"HOLD_ANGLE"
+],
+"pieces": [
+"get up",
+"come back here",
+"watch main"
+]
+},
+{
+"id": "t2b_r6_038",
+"en": "I'll flash and swing off it, you just hold the north door.",
+"orders": [
+"HOLD_ANGLE"
+],
+"pieces": [
+"Hold the north door."
+]
+},
+{
+"id": "t2b_stt_034",
+"en": "jump over the so far and land on the other side",
+"orders": [
+"JUMP"
+],
+"pieces": [
+"jump over the so far and land on the other side"
+]
+},
+{
+"id": "t2b_stt_074",
+"en": "okay listen when i shout go you jump down from there",
+"orders": [
+"JUMP"
+],
+"pieces": [
+"you jump down from there"
+]
+},
+{
+"id": "t2a_r6_014",
+"en": "Don't push in and don't peek, just stay where you are.",
+"orders": [
+"HOLD_POSITION"
+],
+"pieces": [
+"Just stay where you are."
+]
+},
+{
+"id": "t_stt_051",
+"en": "look if it is clear there after you throw the grenade",
+"orders": [
+"FRAG",
+"CHECK"
+],
+"pieces": [
+"throw the grenade there",
+"look if it is clear there"
+]
+},
+{
+"id": "t2a_cs_032",
+"en": "once youve planted, go hide and watch main",
+"orders": [
+"PLANT",
+"TAKE_COVER",
+"HOLD_ANGLE"
+],
+"pieces": [
+"plant the bomb",
+"go hide",
+"watch main"
+]
+},
+{
+"id": "t2b_r6_044",
+"en": "I just heard glass break behind you, turn around.",
+"orders": [
+"LOOK_AT"
+],
+"pieces": [
+"Turn around."
+]
+},
+{
+"id": "t_stt_084",
+"en": "use the drone in the basement then go down the red stairs and finally open the door",
+"orders": [
+"DRONE",
+"MOVE_TO",
+"OPEN"
+],
+"pieces": [
+"use the drone in the basement",
+"go down the red stairs",
+"open the door"
+]
+},
+{
+"id": "t2b_cs_062",
+"en": "watch main and one tap whoever peeks",
+"orders": [
+"HOLD_ANGLE"
+],
+"pieces": [
+"watch main and one tap whoever peeks"
+]
+},
+{
+"id": "t_stt_097",
+"en": "use the drone in the top floor and after you go around and attack them from behind",
+"orders": [
+"DRONE",
+"FLANK"
+],
+"pieces": [
+"use the drone in the top floor",
+"go around and attack them from behind"
+]
+},
+{
+"id": "t2b_r6_079",
+"en": "Two in the basement, one of them is lit. Smoke the brown stairs.",
+"orders": [
+"SMOKE"
+],
+"pieces": [
+"Smoke the brown stairs."
+]
+},
+{
+"id": "t2a_cs_017",
+"en": "before you go roof look at me, then rope down east",
+"orders": [
+"LOOK_AT_ME",
+"MOVE_TO",
+"RAPPEL"
+],
+"pieces": [
+"look at me",
+"go to the roof",
+"rope down the east side"
+]
+},
+{
+"id": "t2b_r6_022",
+"en": "That's the last one, he's in the basement. Flash the stairs and take him out.",
+"orders": [
+"FLASH",
+"ATTACK"
+],
+"pieces": [
+"Flash the stairs.",
+"Take him out."
+]
+},
+{
+"id": "t2b_stt_092",
+"en": "i will shoot the guy on the stairs and you you go the fuse the bomb",
+"orders": [
+"DEFUSE"
+],
+"pieces": [
+"you go the fuse the bomb"
+]
+},
+{
+"id": "t_r6_051",
+"en": "Break off and fall back, then hold the stairs behind us.",
+"orders": [
+"FALL_BACK",
+"HOLD_ANGLE"
+],
+"pieces": [
+"Break off and fall back.",
+"Hold the stairs behind us."
+]
+},
+{
+"id": "t2b_stt_055",
+"en": "uh two enemies two enemies on the top floor throw grenade on the wide stairs",
+"orders": [
+"FRAG"
+],
+"pieces": [
+"throw grenade on the wide stairs"
+]
+},
+{
+"id": "t_r6_010",
+"en": "Affirmative, yeah, that's correct.",
+"orders": [
+"YES"
+],
+"pieces": [
+"Affirmative, yeah, that's correct."
+]
+},
+{
+"id": "t2b_cs_046",
+"en": "they're saving, don't chase. come back and plant",
+"orders": [
+"COME_BACK",
+"PLANT"
+],
+"pieces": [
+"come back",
+"plant the bomb"
+]
+},
+{
+"id": "t2a_r6_081",
+"en": "Don't flank until you've smoked the Main door, then hold the stairs behind them.",
+"orders": [
+"SMOKE",
+"FLANK",
+"HOLD_ANGLE"
+],
+"pieces": [
+"Smoke the Main door.",
+"Flank them.",
+"Hold the stairs behind them."
+]
+},
+{
+"id": "t2a_cs_033",
+"en": "im down by the sofa. pick me up, cover me while i heal, then go watch main",
+"orders": [
+"REVIVE_ME",
+"COVER_ME",
+"HOLD_ANGLE"
+],
+"pieces": [
+"pick me up im down",
+"cover me while i heal",
+"go watch main"
+]
+},
+{
+"id": "t_cs_074",
+"en": "flash n clear the room but open the west door first",
+"orders": [
+"OPEN",
+"FLASH",
+"ENTRY"
+],
+"pieces": [
+"open the west door",
+"flash the room",
+"clear the room"
+]
+},
+{
+"id": "t2b_stt_084",
+"en": "first smoke the stars and after that you plan the bomb",
+"orders": [
+"SMOKE",
+"PLANT"
+],
+"pieces": [
+"smoke the stars",
+"you plan the bomb"
+]
+},
+{
+"id": "t2a_r6_068",
+"en": "Stand up, and don't move to my marker until you've checked behind the sofa, then watch the south window from there.",
+"orders": [
+"STAND_UP",
+"CHECK",
+"MOVE_TO",
+"HOLD_ANGLE"
+],
+"pieces": [
+"Stand up.",
+"Check behind the sofa.",
+"Move to my marker.",
+"Watch the south window from my marker."
+]
+},
+{
+"id": "t2a_cs_042",
+"en": "get down and hide behind something",
+"orders": [
+"TAKE_COVER"
+],
+"pieces": [
+"get down and hide behind something"
+]
+},
+{
+"id": "t_r6_079",
+"en": "Come back here and look at me.",
+"orders": [
+"COME_BACK",
+"LOOK_AT_ME"
+],
+"pieces": [
+"Come back here.",
+"Look at me."
+]
+},
+{
+"id": "t_r6_011",
+"en": "Look at me. See where I'm pointing? Go there and lie down.",
+"orders": [
+"LOOK_AT_ME",
+"MOVE_TO",
+"PRONE"
+],
+"pieces": [
+"Look at me.",
+"Go there, where I'm pointing.",
+"Lie down."
+]
+},
+{
+"id": "t2a_r6_050",
+"en": "Suppress that window, and before that take cover behind the sofa.",
+"orders": [
+"TAKE_COVER",
+"SUPPRESS"
+],
+"pieces": [
+"Take cover behind the sofa.",
+"Suppress that window."
+]
+},
+{
+"id": "t_r6_098",
+"en": "Before you go down the blue stairs, drone the basement.",
+"orders": [
+"DRONE",
+"MOVE_TO"
+],
+"pieces": [
+"Drone the basement.",
+"Go down the blue stairs."
+]
+},
+{
+"id": "t_r6_024",
+"en": "Suppress the window while I move, then smoke it and push through the main door.",
+"orders": [
+"SUPPRESS",
+"SMOKE",
+"ENTRY"
+],
+"pieces": [
+"Suppress the window while I move.",
+"Smoke the window.",
+"Push through the main door."
+]
+},
+{
+"id": "t2b_stt_069",
+"en": "revive me revive me and then throw smoke on the door",
+"orders": [
+"REVIVE_ME",
+"SMOKE"
+],
+"pieces": [
+"revive me revive me",
+"throw smoke on the door"
+]
+},
+{
+"id": "t2b_cs_089",
+"en": "go prone and stay flat, don't get up",
+"orders": [
+"PRONE"
+],
+"pieces": [
+"go prone and stay flat, don't get up"
+]
+},
+{
+"id": "t_cs_038",
+"en": "yeah, weapons free, light em up",
+"orders": [
+"OPEN_FIRE"
+],
+"pieces": [
+"weapons free, light em up"
+]
+},
+{
+"id": "t2a_stt_023",
+"en": "you suppress them and before that you crouch down",
+"orders": [
+"CROUCH",
+"SUPPRESS"
+],
+"pieces": [
+"you crouch down",
+"you suppress them"
+]
+},
+{
+"id": "t_cs_085",
+"en": "open main door from inside after u vault the window",
+"orders": [
+"VAULT_WINDOW",
+"OPEN"
+],
+"pieces": [
+"vault the window",
+"open main door from inside"
+]
+},
+{
+"id": "t2a_stt_007",
+"en": "okay do it now do it and then you come back after you breach the other wall",
+"orders": [
+"GO_NOW",
+"BREACH",
+"COME_BACK"
+],
+"pieces": [
+"do it now do it",
+"you breach the other wall",
+"you come back"
+]
+},
+{
+"id": "t_cs_032",
+"en": "drop down from there, i need help here",
+"orders": [
+"JUMP",
+"HELP"
+],
+"pieces": [
+"drop down from there",
+"i need help here"
+]
+},
+{
+"id": "t_stt_072",
+"en": "stand up please then jump on the table and at the end look at the north window",
+"orders": [
+"STAND_UP",
+"JUMP",
+"LOOK_AT"
+],
+"pieces": [
+"stand up please",
+"jump on the table",
+"look at the north window"
+]
+},
+{
+"id": "t_cs_040",
+"en": "attack them first, then hold position on site",
+"orders": [
+"ATTACK",
+"HOLD_POSITION"
+],
+"pieces": [
+"attack them",
+"hold position on site"
+]
+},
+{
+"id": "t2a_r6_046",
+"en": "Do it now, go, and regroup on me after you've checked the basement.",
+"orders": [
+"GO_NOW",
+"CHECK",
+"COME_BACK"
+],
+"pieces": [
+"Do it now, go.",
+"Check the basement.",
+"Regroup on me."
+]
+},
+{
+"id": "t2a_stt_000",
+"en": "you jump down and help me here but first you throw the frog on them",
+"orders": [
+"FRAG",
+"JUMP",
+"HELP"
+],
+"pieces": [
+"you throw the frog on them",
+"you jump down",
+"help me here"
+]
+},
+{
+"id": "t2a_cs_015",
+"en": "hold fire, come here, stay low, watch west door",
+"orders": [
+"HOLD_FIRE",
+"FOLLOW_ME",
+"CROUCH",
+"HOLD_ANGLE"
+],
+"pieces": [
+"hold fire",
+"come here",
+"stay low",
+"watch west door"
+]
+},
+{
+"id": "t_r6_031",
+"en": "Do it now, go! Next, take cover by the brown stairs.",
+"orders": [
+"GO_NOW",
+"TAKE_COVER"
+],
+"pieces": [
+"Do it now, go!",
+"Take cover by the brown stairs."
+]
+},
+{
+"id": "t2b_stt_062",
+"en": "no no not this door uh flash the other door and push in",
+"orders": [
+"FLASH",
+"ENTRY"
+],
+"pieces": [
+"flash the other door",
+"push in through the other door"
+]
+},
+{
+"id": "t2b_r6_075",
+"en": "Vault the north window, but wait for my signal first.",
+"orders": [
+"VAULT_WINDOW"
+],
+"pieces": [
+"Vault the north window."
+]
+},
+{
+"id": "t2a_r6_012",
+"en": "Stay put after you open the gate, I'll go through.",
+"orders": [
+"OPEN",
+"HOLD_POSITION"
+],
+"pieces": [
+"Open the gate.",
+"Stay put."
+]
+},
+{
+"id": "t2a_cs_053",
+"en": "go roof, rope down the west side, hop in the window, then open fire",
+"orders": [
+"MOVE_TO",
+"RAPPEL",
+"VAULT_WINDOW",
+"OPEN_FIRE"
+],
+"pieces": [
+"go to the roof",
+"rope down the west side",
+"hop in the west window",
+"open fire"
+]
+},
+{
+"id": "t2b_stt_091",
+"en": "take cover behind the table throw the flesh and then open fire",
+"orders": [
+"TAKE_COVER",
+"FLASH",
+"OPEN_FIRE"
+],
+"pieces": [
+"take cover behind the table",
+"throw the flesh",
+"open fire"
+]
+},
+{
+"id": "t2b_r6_037",
+"en": "I'm nearly out of ammo. Cover me while I reload, then follow me.",
+"orders": [
+"COVER_ME",
+"FOLLOW_ME"
+],
+"pieces": [
+"Cover me.",
+"Follow me."
+]
+},
+{
+"id": "t2b_stt_070",
+"en": "i am holding this corridor so you hold another angle",
+"orders": [
+"HOLD_OTHER_ANGLE"
+],
+"pieces": [
+"you hold another angle"
+]
+},
+{
+"id": "t2a_stt_070",
+"en": "before you flank them you throw the smoke on main door",
+"orders": [
+"SMOKE",
+"FLANK"
+],
+"pieces": [
+"you throw the smoke on main door",
+"you flank them"
+]
+},
+{
+"id": "t2b_stt_088",
+"en": "before you go through the window you send the drone inside",
+"orders": [
+"DRONE",
+"VAULT_WINDOW"
+],
+"pieces": [
+"you send the drone inside",
+"you go through the window"
+]
+},
+{
+"id": "t2a_r6_065",
+"en": "Don't plant until you've fragged behind the table and cleared site, then go prone next to the defuser.",
+"orders": [
+"FRAG",
+"ENTRY",
+"PLANT",
+"PRONE"
+],
+"pieces": [
+"Frag behind the table.",
+"Clear the site.",
+"Plant the defuser.",
+"Go prone next to the defuser."
+]
+},
+{
+"id": "t_stt_030",
+"en": "watch the south door after you throw the smoke on the so far",
+"orders": [
+"SMOKE",
+"HOLD_ANGLE"
+],
+"pieces": [
+"throw the smoke on the so far",
+"watch the south door"
+]
+},
+{
+"id": "t2b_cs_057",
+"en": "it's quiet, too quiet. scout ahead and then hold the door",
+"orders": [
+"DRONE",
+"HOLD_ANGLE"
+],
+"pieces": [
+"scout ahead",
+"hold the door"
+]
+},
+{
+"id": "t2a_r6_075",
+"en": "Nice trade, and thanks for the cover back there.",
+"orders": [
+"NONE"
+],
+"pieces": [
+"Nice trade, and thanks for the cover back there."
+]
+},
+{
+"id": "t_cs_095",
+"en": "frag the room after u rappel down to the west window",
+"orders": [
+"RAPPEL",
+"FRAG"
+],
+"pieces": [
+"rappel down to the west window",
+"frag the room"
+]
+},
+{
+"id": "t_cs_093",
+"en": "one at the door, pin him down, nade it, then push in",
+"orders": [
+"SUPPRESS",
+"FRAG",
+"ENTRY"
+],
+"pieces": [
+"pin him down at the door",
+"nade the door",
+"push in thru the door"
+]
+},
+{
+"id": "t2b_r6_096",
+"en": "Rappel the, no, forget the rope. Go up the blue stairs to the top floor.",
+"orders": [
+"MOVE_TO"
+],
+"pieces": [
+"Go up the blue stairs to the top floor."
+]
+},
+{
+"id": "t2a_stt_014",
+"en": "okay now you can go go now and do it fast",
+"orders": [
+"GO_NOW"
+],
+"pieces": [
+"okay now you can go go now and do it fast"
+]
+},
+{
+"id": "t2a_cs_049",
+"en": "flash the room after you open the door",
+"orders": [
+"OPEN",
+"FLASH"
+],
+"pieces": [
+"open the door",
+"flash the room"
+]
+},
+{
+"id": "t2a_cs_013",
+"en": "lie down and hold the red stairs for me",
+"orders": [
+"PRONE",
+"HOLD_ANGLE"
+],
+"pieces": [
+"lie down",
+"hold the red stairs for me"
+]
+},
+{
+"id": "t2a_stt_011",
+"en": "stop stop wait and dont do nothing now",
+"orders": [
+"WAIT"
+],
+"pieces": [
+"stop stop wait and dont do nothing now"
+]
+},
+{
+"id": "t2a_stt_038",
+"en": "you look at me okay then go to my pin and vault the window there and then open fire",
+"orders": [
+"LOOK_AT_ME",
+"MOVE_TO",
+"VAULT_WINDOW",
+"OPEN_FIRE"
+],
+"pieces": [
+"you look at me",
+"go to my pin",
+"vault the window at my pin",
+"open fire"
+]
+},
+{
+"id": "t2b_r6_008",
+"en": "After I throw my flash, vault the window and frag the back corner.",
+"orders": [
+"VAULT_WINDOW",
+"FRAG"
+],
+"pieces": [
+"Vault the window.",
+"Frag the back corner."
+]
+},
+{
+"id": "t_r6_084",
+"en": "Rappel down to the east window and vault straight in.",
+"orders": [
+"RAPPEL",
+"VAULT_WINDOW"
+],
+"pieces": [
+"Rappel down to the east window.",
+"Vault straight in through the east window."
+]
+},
+{
+"id": "t_stt_064",
+"en": "attack the enemy on the stairs and uh after that take cover",
+"orders": [
+"ATTACK",
+"TAKE_COVER"
+],
+"pieces": [
+"attack the enemy on the stairs",
+"take cover"
+]
+},
+{
+"id": "t_cs_080",
+"en": "push site but nade it first",
+"orders": [
+"FRAG",
+"ENTRY"
+],
+"pieces": [
+"nade site",
+"push site"
+]
+},
+{
+"id": "t2b_r6_035",
+"en": "Three of them roaming the top floor. Drone it, and then frag the stairs.",
+"orders": [
+"DRONE",
+"FRAG"
+],
+"pieces": [
+"Drone the top floor.",
+"Frag the stairs."
+]
+},
+{
+"id": "t_stt_032",
+"en": "uh lie down on the ground and keep shooting the door to pin them down",
+"orders": [
+"PRONE",
+"SUPPRESS"
+],
+"pieces": [
+"lie down on the ground",
+"keep shooting the door to pin them down"
+]
+},
+{
+"id": "t_stt_033",
+"en": "check the basement then come back and follow me to the roof and repel down",
+"orders": [
+"CHECK",
+"COME_BACK",
+"FOLLOW_ME",
+"RAPPEL"
+],
+"pieces": [
+"check the basement",
+"come back",
+"follow me to the roof",
+"repel down from the roof"
+]
+},
+{
+"id": "t2b_stt_075",
+"en": "open the door and throw one flesh inside",
+"orders": [
+"OPEN",
+"FLASH"
+],
+"pieces": [
+"open the door",
+"throw one flesh inside the door"
+]
+},
+{
+"id": "t_cs_049",
+"en": "yeah yeah thats right",
+"orders": [
+"YES"
+],
+"pieces": [
+"yeah yeah thats right"
+]
+},
+{
+"id": "t2b_r6_060",
+"en": "I've got the red stairs, you take the other side.",
+"orders": [
+"HOLD_OTHER_ANGLE"
+],
+"pieces": [
+"You take the other side."
+]
+},
+{
+"id": "t2a_cs_086",
+"en": "wrap around the back and hit them from behind",
+"orders": [
+"FLANK"
+],
+"pieces": [
+"wrap around the back and hit them from behind"
+]
+},
+{
+"id": "t_stt_034",
+"en": "start shooting now start shooting and then you go clear the room",
+"orders": [
+"OPEN_FIRE",
+"ENTRY"
+],
+"pieces": [
+"start shooting now",
+"go clear the room"
+]
+},
+{
+"id": "t2b_stt_033",
+"en": "i am gonna plant the bomb and then i hide behind the chairs",
+"orders": [
+"NONE"
+],
+"pieces": [
+"i am gonna plant the bomb and then i hide behind the chairs"
+]
+},
+{
+"id": "t2b_cs_081",
+"en": "spray the window, keep spraying, keep them pinned",
+"orders": [
+"SUPPRESS"
+],
+"pieces": [
+"spray the window, keep spraying, keep them pinned"
+]
+},
+{
+"id": "t_r6_037",
+"en": "Yes, go, go, go!",
+"orders": [
+"GO_NOW"
+],
+"pieces": [
+"Go, go, go!"
+]
+},
+{
+"id": "t2a_cs_036",
+"en": "follow me, but first help me over here",
+"orders": [
+"HELP",
+"FOLLOW_ME"
+],
+"pieces": [
+"help me over here",
+"follow me"
+]
+},
+{
+"id": "t_cs_053",
+"en": "look at me, ok now come with me n check the roof",
+"orders": [
+"LOOK_AT_ME",
+"FOLLOW_ME",
+"CHECK"
+],
+"pieces": [
+"look at me",
+"come with me",
+"check the roof"
+]
+},
+{
+"id": "t2b_stt_079",
+"en": "i will break the window and you throw smoke inside and then climb through it",
+"orders": [
+"SMOKE",
+"VAULT_WINDOW"
+],
+"pieces": [
+"you throw smoke inside the window",
+"climb through the window"
+]
+},
+{
+"id": "t2a_stt_092",
+"en": "get up get up and help me here",
+"orders": [
+"STAND_UP",
+"HELP"
+],
+"pieces": [
+"get up get up",
+"help me here"
+]
+},
+{
+"id": "t_stt_003",
+"en": "open the window uh open it and throw smoke outside",
+"orders": [
+"OPEN",
+"SMOKE"
+],
+"pieces": [
+"open the window",
+"throw smoke outside the window"
+]
+},
+{
+"id": "t_r6_042",
+"en": "Copy that, got it, moving up now.",
+"orders": [
+"NONE"
+],
+"pieces": [
+"Copy that, got it, moving up now."
+]
+},
+{
+"id": "t2a_stt_073",
+"en": "you go down the stairs and you can defuse the bomb once you have checked the room and thrown the smoke",
+"orders": [
+"MOVE_TO",
+"CHECK",
+"SMOKE",
+"DEFUSE"
+],
+"pieces": [
+"you go down the stairs",
+"check the room",
+"throw the smoke",
+"defuse the bomb"
+]
+},
+{
+"id": "t2b_cs_017",
+"en": "i'm going window. you smoke main, cross to yellow stairs, then hold the other side",
+"orders": [
+"SMOKE",
+"MOVE_TO",
+"HOLD_OTHER_ANGLE"
+],
+"pieces": [
+"smoke main",
+"cross to yellow stairs",
+"hold the other side"
+]
+},
+{
+"id": "t2b_cs_021",
+"en": "scout the top floor, come back, then follow me up",
+"orders": [
+"DRONE",
+"COME_BACK",
+"FOLLOW_ME"
+],
+"pieces": [
+"scout the top floor",
+"come back",
+"follow me up"
+]
+},
+{
+"id": "t2a_r6_072",
+"en": "Hold up, stop, and don't do anything yet.",
+"orders": [
+"WAIT"
+],
+"pieces": [
+"Hold up, stop, and don't do anything yet."
+]
+},
+{
+"id": "t_cs_063",
+"en": "get back here after u check upstairs",
+"orders": [
+"CHECK",
+"COME_BACK"
+],
+"pieces": [
+"check upstairs",
+"get back here"
+]
+},
+{
+"id": "t2a_r6_047",
+"en": "Take cover, though not until you've thrown that stun.",
+"orders": [
+"FLASH",
+"TAKE_COVER"
+],
+"pieces": [
+"Throw that stun.",
+"Take cover."
+]
+},
+{
+"id": "t2b_cs_023",
+"en": "help me here first, then go plant",
+"orders": [
+"HELP",
+"PLANT"
+],
+"pieces": [
+"help me here",
+"go plant the bomb"
+]
+},
+{
+"id": "t_stt_043",
+"en": "i do not know sorry",
+"orders": [
+"DONT_KNOW"
+],
+"pieces": [
+"i do not know sorry"
+]
+},
+{
+"id": "t_cs_071",
+"en": "stop shooting, get back here",
+"orders": [
+"HOLD_FIRE",
+"COME_BACK"
+],
+"pieces": [
+"stop shooting",
+"get back here"
+]
+},
+{
+"id": "t2a_cs_043",
+"en": "go to my pin and then hold up, dont plant yet",
+"orders": [
+"MOVE_TO",
+"WAIT"
+],
+"pieces": [
+"go to my pin",
+"hold up, dont plant yet"
+]
+},
+{
+"id": "t_cs_079",
+"en": "come here, crouch, dont shoot",
+"orders": [
+"FOLLOW_ME",
+"CROUCH",
+"HOLD_FIRE"
+],
+"pieces": [
+"come here",
+"crouch",
+"dont shoot"
+]
+},
+{
+"id": "t2b_cs_066",
+"en": "no no don't peek, get down and hold fire",
+"orders": [
+"TAKE_COVER",
+"HOLD_FIRE"
+],
+"pieces": [
+"get down",
+"hold fire"
+]
+},
+{
+"id": "t2a_stt_087",
+"en": "lie down on the floor and then drone the corridor",
+"orders": [
+"PRONE",
+"DRONE"
+],
+"pieces": [
+"lie down on the floor",
+"drone the corridor"
+]
+},
+{
+"id": "t_r6_003",
+"en": "Rope up on the west side, and on my call breach the wall.",
+"orders": [
+"RAPPEL",
+"BREACH"
+],
+"pieces": [
+"Rope up on the west side.",
+"On my call, breach the wall."
+]
+},
+{
+"id": "t2a_stt_046",
+"en": "turn around turn around and uh go prone and suppress the door",
+"orders": [
+"LOOK_AT",
+"PRONE",
+"SUPPRESS"
+],
+"pieces": [
+"turn around turn around",
+"go prone",
+"suppress the door"
+]
+},
+{
+"id": "t_cs_089",
+"en": "yeah plant it, then hide",
+"orders": [
+"PLANT",
+"TAKE_COVER"
+],
+"pieces": [
+"plant the bomb",
+"hide"
+]
+},
+{
+"id": "t2b_stt_019",
+"en": "before you defuse you throw smoke on the bomb and kill the guy on the stairs",
+"orders": [
+"SMOKE",
+"ATTACK",
+"DEFUSE"
+],
+"pieces": [
+"you throw smoke on the bomb",
+"kill the guy on the stairs",
+"you defuse the bomb"
+]
+},
+{
+"id": "t2b_r6_065",
+"en": "I'm planting. Flash the door, then cover me.",
+"orders": [
+"FLASH",
+"COVER_ME"
+],
+"pieces": [
+"Flash the door.",
+"Cover me."
+]
+},
+{
+"id": "t2b_stt_028",
+"en": "after you flash the stairs you attack them",
+"orders": [
+"FLASH",
+"ATTACK"
+],
+"pieces": [
+"you flash the stairs",
+"you attack them"
+]
+},
+{
+"id": "t2a_r6_095",
+"en": "I'm down. Pick me up after you've smoked the corridor, fragged the stairs and checked it's clear.",
+"orders": [
+"SMOKE",
+"FRAG",
+"CHECK",
+"REVIVE_ME"
+],
+"pieces": [
+"Smoke the corridor.",
+"Frag the stairs.",
+"Check that the corridor is clear.",
+"Pick me up, I'm down."
+]
+},
+{
+"id": "t_r6_086",
+"en": "Get low and hold up; don't do anything yet.",
+"orders": [
+"CROUCH",
+"WAIT"
+],
+"pieces": [
+"Get low.",
+"Hold up, don't do anything yet."
+]
+},
+{
+"id": "t_cs_011",
+"en": "nice shot bro, that was clean",
+"orders": [
+"NONE"
+],
+"pieces": [
+"nice shot bro, that was clean"
+]
+},
+{
+"id": "t2a_r6_083",
+"en": "Regroup on me and take the other angle, but drone the roof first.",
+"orders": [
+"DRONE",
+"COME_BACK",
+"HOLD_OTHER_ANGLE"
+],
+"pieces": [
+"Drone the roof.",
+"Regroup on me.",
+"Take the other angle."
+]
+},
+{
+"id": "t_stt_058",
+"en": "okay so go to the window uh and before you jump in throw the flesh inside",
+"orders": [
+"MOVE_TO",
+"FLASH",
+"VAULT_WINDOW"
+],
+"pieces": [
+"go to the window",
+"throw the flesh inside the window",
+"jump in through the window"
+]
+},
+{
+"id": "t2a_r6_039",
+"en": "Get back here, then suppress the east window after you smoke it, then cover me while I cross.",
+"orders": [
+"COME_BACK",
+"SMOKE",
+"SUPPRESS",
+"COVER_ME"
+],
+"pieces": [
+"Get back here.",
+"Smoke the east window.",
+"Suppress the east window.",
+"Cover me while I cross."
+]
+},
+{
+"id": "t2a_stt_037",
+"en": "i am down i am down you throw frag to the door and pick me up then follow me and then you hold the white stairs",
+"orders": [
+"FRAG",
+"REVIVE_ME",
+"FOLLOW_ME",
+"HOLD_ANGLE"
+],
+"pieces": [
+"you throw frag to the door",
+"pick me up i am down",
+"follow me",
+"you hold the white stairs"
+]
+},
+{
+"id": "t2b_cs_072",
+"en": "hide behind the table and don't peek",
+"orders": [
+"TAKE_COVER"
+],
+"pieces": [
+"hide behind the table and don't peek"
+]
+},
+{
+"id": "t_stt_073",
+"en": "cover me when i open the door and then follow me inside",
+"orders": [
+"COVER_ME",
+"FOLLOW_ME"
+],
+"pieces": [
+"cover me when i open the door",
+"follow me inside"
+]
+},
+{
+"id": "t_r6_030",
+"en": "Get up, move to my ping, and go prone there.",
+"orders": [
+"STAND_UP",
+"MOVE_TO",
+"PRONE"
+],
+"pieces": [
+"Get up.",
+"Move to my ping.",
+"Go prone."
+]
+},
+{
+"id": "t2b_cs_034",
+"en": "dude you're standing in the open, crouch",
+"orders": [
+"CROUCH"
+],
+"pieces": [
+"crouch"
+]
+},
+{
+"id": "t2b_stt_031",
+"en": "i will go from the top and you stay at my marker and when i call you bridge the door",
+"orders": [
+"HOLD_POSITION",
+"BREACH"
+],
+"pieces": [
+"you stay at my marker",
+"you bridge the door"
+]
+},
+{
+"id": "t_r6_058",
+"en": "Regroup once you've cleared the room and checked the basement.",
+"orders": [
+"ENTRY",
+"CHECK",
+"COME_BACK"
+],
+"pieces": [
+"Clear the room.",
+"Check the basement.",
+"Regroup."
+]
+},
+{
+"id": "t2a_stt_095",
+"en": "before you go in the room you throw smoke uh smoke on the door and then you plant the bomb and watch the stairs",
+"orders": [
+"SMOKE",
+"MOVE_TO",
+"PLANT",
+"HOLD_ANGLE"
+],
+"pieces": [
+"throw smoke on the door",
+"go in the room",
+"plant the bomb",
+"watch the stairs"
+]
+},
+{
+"id": "t2a_r6_093",
+"en": "I need a hand here, then go hold the yellow stairs.",
+"orders": [
+"HELP",
+"HOLD_ANGLE"
+],
+"pieces": [
+"I need a hand here.",
+"Go hold the yellow stairs."
+]
+},
+{
+"id": "t2b_r6_054",
+"en": "I'm on the defuser. Check the top floor, come back down, and take the other angle.",
+"orders": [
+"CHECK",
+"COME_BACK",
+"HOLD_OTHER_ANGLE"
+],
+"pieces": [
+"Check the top floor.",
+"Come back down.",
+"Take the other angle."
+]
+},
+{
+"id": "t2b_cs_002",
+"en": "don't push, just hold the angle",
+"orders": [
+"HOLD_ANGLE"
+],
+"pieces": [
+"just hold the angle"
+]
+},
+{
+"id": "t_cs_076",
+"en": "rappel up, breach the roof hatch n jump in",
+"orders": [
+"RAPPEL",
+"BREACH",
+"JUMP"
+],
+"pieces": [
+"rappel up to the roof",
+"breach the roof hatch",
+"jump in thru the roof hatch"
+]
+},
+{
+"id": "t_cs_022",
+"en": "nah dont nade the room, smoke it and push in",
+"orders": [
+"SMOKE",
+"ENTRY"
+],
+"pieces": [
+"smoke the room",
+"push into the room"
+]
+},
+{
+"id": "t2a_stt_031",
+"en": "you climb up there and watch the door but first you throw the flesh",
+"orders": [
+"FLASH",
+"JUMP",
+"HOLD_ANGLE"
+],
+"pieces": [
+"you throw the flesh",
+"you climb up there",
+"watch the door"
+]
+},
+{
+"id": "t2b_stt_087",
+"en": "it is very quiet i do not like it uh send the drown first",
+"orders": [
+"DRONE"
+],
+"pieces": [
+"send the drown first"
+]
+},
+{
+"id": "t2b_r6_031",
+"en": "How many drones do you have left, and where did the first one go?",
+"orders": [
+"NONE"
+],
+"pieces": [
+"How many drones do you have left, and where did the first one go?"
+]
+},
+{
+"id": "t2b_r6_011",
+"en": "I'm going up the white stairs. Watch the corridor, then follow me up.",
+"orders": [
+"HOLD_ANGLE",
+"FOLLOW_ME"
+],
+"pieces": [
+"Watch the corridor.",
+"Follow me up."
+]
+},
+{
+"id": "t_r6_080",
+"en": "Defuse the bomb as soon as you've smoked it.",
+"orders": [
+"SMOKE",
+"DEFUSE"
+],
+"pieces": [
+"Smoke the bomb.",
+"Defuse the bomb."
+]
+},
+{
+"id": "t2a_stt_033",
+"en": "uh dont bridge the wall until you have droned the other side and smoked the window and then you push in",
+"orders": [
+"DRONE",
+"SMOKE",
+"BREACH",
+"ENTRY"
+],
+"pieces": [
+"drone the other side of the wall",
+"smoke the window",
+"bridge the wall",
+"push in"
+]
+},
+{
+"id": "t2a_r6_060",
+"en": "Light them up once you've taken the other angle and gone prone.",
+"orders": [
+"HOLD_OTHER_ANGLE",
+"PRONE",
+"OPEN_FIRE"
+],
+"pieces": [
+"Take the other angle.",
+"Go prone.",
+"Light them up."
+]
+},
+{
+"id": "t2a_cs_031",
+"en": "after i smoke the door, flash it and go in, then plant",
+"orders": [
+"FLASH",
+"MOVE_TO",
+"PLANT"
+],
+"pieces": [
+"flash the door",
+"go in through the door",
+"plant the bomb"
+]
+},
+{
+"id": "t_r6_032",
+"en": "Flash the corner right after you frag it.",
+"orders": [
+"FRAG",
+"FLASH"
+],
+"pieces": [
+"Frag the corner.",
+"Flash the corner."
+]
+},
+{
+"id": "t2b_stt_058",
+"en": "i will check the room myself you rope up to the roof and watch the west window",
+"orders": [
+"RAPPEL",
+"HOLD_ANGLE"
+],
+"pieces": [
+"you rope up to the roof",
+"watch the west window"
+]
+},
+{
+"id": "t_cs_061",
+"en": "drone the basement before u push it",
+"orders": [
+"DRONE",
+"ENTRY"
+],
+"pieces": [
+"drone the basement",
+"push into the basement"
+]
+},
+{
+"id": "t2a_cs_004",
+"en": "flash site and push but smoke it first, and when thats done defuse",
+"orders": [
+"SMOKE",
+"FLASH",
+"ENTRY",
+"DEFUSE"
+],
+"pieces": [
+"smoke site",
+"flash site",
+"push site",
+"defuse the bomb"
+]
+},
+{
+"id": "t2b_r6_048",
+"en": "On my go, open the door, throw a frag, and suppress the corridor.",
+"orders": [
+"OPEN",
+"FRAG",
+"SUPPRESS"
+],
+"pieces": [
+"Open the door.",
+"Throw a frag through the door.",
+"Suppress the corridor."
+]
+},
+{
+"id": "t2b_stt_024",
+"en": "i am planting now you go prone here and watch the main door",
+"orders": [
+"PRONE",
+"HOLD_ANGLE"
+],
+"pieces": [
+"you go prone here",
+"watch the main door"
+]
+},
+{
+"id": "t_stt_049",
+"en": "do not shoot okay and uh return to your position",
+"orders": [
+"HOLD_FIRE",
+"COME_BACK"
+],
+"pieces": [
+"do not shoot",
+"return to your position"
+]
+},
+{
+"id": "t_r6_017",
+"en": "Flash the south door, then do the same for the window.",
+"orders": [
+"FLASH",
+"FLASH"
+],
+"pieces": [
+"Flash the south door.",
+"Flash the window."
+]
+},
+{
+"id": "t_cs_016",
+"en": "defuse it after u smoke the bomb",
+"orders": [
+"SMOKE",
+"DEFUSE"
+],
+"pieces": [
+"smoke the bomb",
+"defuse the bomb"
+]
+},
+{
+"id": "t2a_r6_084",
+"en": "Hold this angle, and I'll take the other one.",
+"orders": [
+"HOLD_ANGLE"
+],
+"pieces": [
+"Hold this angle."
+]
+},
+{
+"id": "t2a_r6_057",
+"en": "Before you drop through the hatch, toss a stun down, then clear the basement and defuse.",
+"orders": [
+"FLASH",
+"JUMP",
+"ENTRY",
+"DEFUSE"
+],
+"pieces": [
+"Toss a stun down the hatch.",
+"Drop through the hatch.",
+"Clear the basement.",
+"Defuse the bomb."
+]
+},
+{
+"id": "t2a_cs_030",
+"en": "dont go down the blue stairs till youve mollied the bottom, then check basement",
+"orders": [
+"FRAG",
+"MOVE_TO",
+"CHECK"
+],
+"pieces": [
+"molly the bottom of blue stairs",
+"go down the blue stairs",
+"check basement"
+]
+},
+{
+"id": "t2a_r6_051",
+"en": "Don't vault that window until you've droned the room and fragged it, then hold the east door from inside.",
+"orders": [
+"DRONE",
+"FRAG",
+"VAULT_WINDOW",
+"HOLD_ANGLE"
+],
+"pieces": [
+"Drone the room.",
+"Frag the room.",
+"Vault that window.",
+"Hold the east door from inside."
+]
+},
+{
+"id": "t2a_cs_028",
+"en": "wait for my go, then open fire",
+"orders": [
+"OPEN_FIRE"
+],
+"pieces": [
+"open fire"
+]
+},
+{
+"id": "t2a_cs_067",
+"en": "ill plant, and you watch west door",
+"orders": [
+"HOLD_ANGLE"
+],
+"pieces": [
+"you watch west door"
+]
+},
+{
+"id": "t2a_stt_083",
+"en": "yeah yeah exactly and uh that is right",
+"orders": [
+"YES"
+],
+"pieces": [
+"yeah yeah exactly and uh that is right"
+]
+},
+{
+"id": "t2b_stt_061",
+"en": "after i throw my flesh you climb in the window and start shooting",
+"orders": [
+"VAULT_WINDOW",
+"OPEN_FIRE"
+],
+"pieces": [
+"you climb in the window",
+"start shooting"
+]
+},
+{
+"id": "t_stt_025",
+"en": "use the rope to go up on the roof and then jump in the hole there",
+"orders": [
+"RAPPEL",
+"JUMP"
+],
+"pieces": [
+"use the rope to go up on the roof",
+"jump in the hole on the roof"
+]
+},
+{
+"id": "t_stt_004",
+"en": "sit down sit down and when i say go you stand up",
+"orders": [
+"CROUCH",
+"STAND_UP"
+],
+"pieces": [
+"sit down",
+"stand up when i say go"
+]
+},
+{
+"id": "t2b_r6_023",
+"en": "Not yet, not yet. On my go, open fire on the door.",
+"orders": [
+"OPEN_FIRE"
+],
+"pieces": [
+"Open fire on the door."
+]
+},
+{
+"id": "t_cs_060",
+"en": "smoke the door, nah wait, molly it",
+"orders": [
+"FRAG"
+],
+"pieces": [
+"molly the door"
+]
+},
+{
+"id": "t2a_cs_055",
+"en": "flank them from the left, then defuse when its clear",
+"orders": [
+"FLANK",
+"DEFUSE"
+],
+"pieces": [
+"flank them from the left",
+"defuse the bomb when its clear"
+]
+},
+{
+"id": "t_stt_042",
+"en": "follow me follow me and uh when we are there you watch the north window",
+"orders": [
+"FOLLOW_ME",
+"HOLD_ANGLE"
+],
+"pieces": [
+"follow me",
+"you watch the north window"
+]
+},
+{
+"id": "t2b_cs_015",
+"en": "when i say now, pop flash over the wall",
+"orders": [
+"FLASH"
+],
+"pieces": [
+"pop flash over the wall"
+]
+},
+{
+"id": "t2a_stt_017",
+"en": "you look at me uh but first stop shooting",
+"orders": [
+"HOLD_FIRE",
+"LOOK_AT_ME"
+],
+"pieces": [
+"stop shooting",
+"you look at me"
+]
+},
+{
+"id": "t_r6_097",
+"en": "I need backup here. Then take the other angle and stay low.",
+"orders": [
+"HELP",
+"HOLD_OTHER_ANGLE",
+"CROUCH"
+],
+"pieces": [
+"I need backup here.",
+"Take the other angle.",
+"Stay low."
+]
+},
+{
+"id": "t2b_r6_033",
+"en": "Rappel to the west window, then frag the room.",
+"orders": [
+"RAPPEL",
+"FRAG"
+],
+"pieces": [
+"Rappel to the west window.",
+"Frag the room."
+]
+},
+{
+"id": "t2a_stt_079",
+"en": "hold fire hold fire and uh you go to my pin after you check the corridor and then look at me",
+"orders": [
+"HOLD_FIRE",
+"CHECK",
+"MOVE_TO",
+"LOOK_AT_ME"
+],
+"pieces": [
+"hold fire",
+"check the corridor",
+"go to my pin",
+"look at me"
+]
+},
+{
+"id": "t_cs_051",
+"en": "jump down, nah actually use the rope, rappel down",
+"orders": [
+"RAPPEL"
+],
+"pieces": [
+"use the rope, rappel down"
+]
+},
+{
+"id": "t2a_cs_020",
+"en": "come back last. first open the gate, then drone the yard",
+"orders": [
+"OPEN",
+"DRONE",
+"COME_BACK"
+],
+"pieces": [
+"open the gate",
+"drone the yard",
+"come back"
+]
+},
+{
+"id": "t2b_r6_036",
+"en": "I'm about to peek him from the window, don't shoot.",
+"orders": [
+"HOLD_FIRE"
+],
+"pieces": [
+"Don't shoot."
+]
+},
+{
+"id": "t2b_stt_002",
+"en": "do not go now wait for my signal and then you bridge the wall",
+"orders": [
+"BREACH"
+],
+"pieces": [
+"you bridge the wall"
+]
+},
+{
+"id": "t2a_cs_090",
+"en": "nah, wrong one, thats not it",
+"orders": [
+"NO"
+],
+"pieces": [
+"nah, wrong one, thats not it"
+]
+},
+{
+"id": "t_r6_028",
+"en": "Go now, execute, then hold the east door once you're in.",
+"orders": [
+"GO_NOW",
+"HOLD_ANGLE"
+],
+"pieces": [
+"Go now, execute.",
+"Hold the east door."
+]
+},
+{
+"id": "t2a_cs_044",
+"en": "two top floor, one lit. smoke white stairs, rush up and clear, then watch the window",
+"orders": [
+"SMOKE",
+"ENTRY",
+"HOLD_ANGLE"
+],
+"pieces": [
+"smoke white stairs",
+"rush up and clear top floor",
+"watch the window"
+]
+},
+{
+"id": "t2b_r6_021",
+"en": "Wait, hold on. No, never mind, it's clear. Go, execute.",
+"orders": [
+"GO_NOW"
+],
+"pieces": [
+"Go, execute."
+]
+},
+{
+"id": "t2a_stt_029",
+"en": "you bridge this wall and then uh the same for that wall there",
+"orders": [
+"BREACH",
+"BREACH"
+],
+"pieces": [
+"you bridge this wall",
+"you bridge that wall there"
+]
+},
+{
+"id": "t_stt_087",
+"en": "no no not that one",
+"orders": [
+"NO"
+],
+"pieces": [
+"no no not that one"
+]
+},
+{
+"id": "t_r6_045",
+"en": "I need a hand here; after that, stay on my marker.",
+"orders": [
+"HELP",
+"HOLD_POSITION"
+],
+"pieces": [
+"I need a hand here.",
+"Stay on my marker."
+]
+},
+{
+"id": "t_stt_062",
+"en": "uh maybe i think maybe",
+"orders": [
+"MAYBE"
+],
+"pieces": [
+"uh maybe i think maybe"
+]
+},
+{
+"id": "t_cs_086",
+"en": "get up n stay on ur feet, we gotta move",
+"orders": [
+"STAND_UP"
+],
+"pieces": [
+"get up n stay on ur feet"
+]
+},
+{
+"id": "t_stt_067",
+"en": "go to my marker go to my marker and lie down there",
+"orders": [
+"MOVE_TO",
+"PRONE"
+],
+"pieces": [
+"go to my marker",
+"lie down"
+]
+},
+{
+"id": "t2b_cs_094",
+"en": "vault the window, breach the wall inside, then plant",
+"orders": [
+"VAULT_WINDOW",
+"BREACH",
+"PLANT"
+],
+"pieces": [
+"vault the window",
+"breach the wall inside",
+"plant the bomb"
+]
+},
+{
+"id": "t2b_cs_042",
+"en": "breach the wall and fall back",
+"orders": [
+"BREACH",
+"FALL_BACK"
+],
+"pieces": [
+"breach the wall",
+"fall back"
+]
+},
+{
+"id": "t_cs_054",
+"en": "smoke the door, same thing on the window",
+"orders": [
+"SMOKE",
+"SMOKE"
+],
+"pieces": [
+"smoke the door",
+"smoke the window"
+]
+},
+{
+"id": "t2b_cs_014",
+"en": "flash site then rush in",
+"orders": [
+"FLASH",
+"ENTRY"
+],
+"pieces": [
+"flash site",
+"rush site"
+]
+},
+{
+"id": "t_stt_080",
+"en": "run to the yellow stairs uh but stand up first",
+"orders": [
+"STAND_UP",
+"MOVE_TO"
+],
+"pieces": [
+"stand up",
+"run to the yellow stairs"
+]
+},
+{
+"id": "t2b_cs_010",
+"en": "i'm crossing now, smoke window then follow me",
+"orders": [
+"SMOKE",
+"FOLLOW_ME"
+],
+"pieces": [
+"smoke window",
+"follow me"
+]
+},
+{
+"id": "t_cs_002",
+"en": "keep their heads down for a sec then fall back",
+"orders": [
+"SUPPRESS",
+"FALL_BACK"
+],
+"pieces": [
+"keep their heads down for a sec",
+"fall back"
+]
+},
+{
+"id": "t2b_stt_015",
+"en": "throw smoke on the window no no not smoke uh grenade throw grenade",
+"orders": [
+"FRAG"
+],
+"pieces": [
+"throw grenade on the window"
+]
+},
+{
+"id": "t2a_stt_055",
+"en": "after i throw the smoke you open the door and go inside and uh check the corners",
+"orders": [
+"OPEN",
+"MOVE_TO",
+"CHECK"
+],
+"pieces": [
+"you open the door",
+"go inside",
+"check the corners"
+]
+},
+{
+"id": "t_r6_052",
+"en": "I'll hold them off, you get on the bomb and defuse it.",
+"orders": [
+"DEFUSE"
+],
+"pieces": [
+"Get on the bomb and defuse it."
+]
+},
+{
+"id": "t2a_cs_097",
+"en": "im down bro. take the other door, pin them and then fall back, but before all that pick me up",
+"orders": [
+"REVIVE_ME",
+"HOLD_OTHER_ANGLE",
+"SUPPRESS",
+"FALL_BACK"
+],
+"pieces": [
+"pick me up im down",
+"take the other door",
+"pin them down",
+"fall back"
+]
+},
+{
+"id": "t2a_cs_003",
+"en": "yeah yeah, thats right, exactly that one",
+"orders": [
+"YES"
+],
+"pieces": [
+"yeah yeah, thats right, exactly that one"
+]
+},
+{
+"id": "t2b_r6_095",
+"en": "I'm going to hard breach this wall and push through it. Stay here.",
+"orders": [
+"HOLD_POSITION"
+],
+"pieces": [
+"Stay here."
+]
+},
+{
+"id": "t2a_r6_049",
+"en": "Frag where I pinged after you smoke it.",
+"orders": [
+"SMOKE",
+"FRAG"
+],
+"pieces": [
+"Smoke where I pinged.",
+"Frag where I pinged."
+]
+},
+{
+"id": "t2a_cs_070",
+"en": "ill hold main, you take the other door, lie down and dont shoot till they cross",
+"orders": [
+"HOLD_OTHER_ANGLE",
+"PRONE",
+"HOLD_FIRE"
+],
+"pieces": [
+"you take the other door",
+"lie down",
+"dont shoot till they cross"
+]
+},
+{
+"id": "t_stt_082",
+"en": "throw the grenade in the door and uh then another grenade on the stairs",
+"orders": [
+"FRAG",
+"FRAG"
+],
+"pieces": [
+"throw the grenade in the door",
+"throw another grenade on the stairs"
+]
+},
+{
+"id": "t2a_r6_053",
+"en": "Give me a hand over here, then check the west door, open it and send the drone through.",
+"orders": [
+"HELP",
+"CHECK",
+"OPEN",
+"DRONE"
+],
+"pieces": [
+"Give me a hand over here.",
+"Check the west door.",
+"Open the west door.",
+"Send the drone through the west door."
+]
+},
+{
+"id": "t_r6_025",
+"en": "Breach the hatch and drop down once it's open.",
+"orders": [
+"BREACH",
+"JUMP"
+],
+"pieces": [
+"Breach the hatch.",
+"Drop down through the hatch."
+]
+},
+{
+"id": "t2a_cs_011",
+"en": "im lurking blue, you go red stairs, smoke the top, flash and push top floor",
+"orders": [
+"MOVE_TO",
+"SMOKE",
+"FLASH",
+"ENTRY"
+],
+"pieces": [
+"go to red stairs",
+"smoke the top of red stairs",
+"flash top floor",
+"push top floor"
+]
+},
+{
+"id": "t2a_cs_009",
+"en": "jump down and flank them from behind, but smoke the window first",
+"orders": [
+"SMOKE",
+"JUMP",
+"FLANK"
+],
+"pieces": [
+"smoke the window",
+"jump down",
+"flank them from behind"
+]
+},
+{
+"id": "t2a_cs_071",
+"en": "hold fire, then rush the room after you flash it",
+"orders": [
+"HOLD_FIRE",
+"FLASH",
+"ENTRY"
+],
+"pieces": [
+"hold fire",
+"flash the room",
+"rush the room"
+]
+},
+{
+"id": "t2b_cs_047",
+"en": "push push, no wait, stop, hold up",
+"orders": [
+"WAIT"
+],
+"pieces": [
+"stop, hold up"
+]
+},
+{
+"id": "t_stt_028",
+"en": "follow me upstairs then you check the room on the left and come back",
+"orders": [
+"FOLLOW_ME",
+"CHECK",
+"COME_BACK"
+],
+"pieces": [
+"follow me upstairs",
+"you check the room on the left",
+"come back"
+]
+},
+{
+"id": "t_r6_000",
+"en": "Cover me while I plant, and after that hold the north window.",
+"orders": [
+"COVER_ME",
+"HOLD_ANGLE"
+],
+"pieces": [
+"Cover me while I plant.",
+"Hold the north window."
+]
+},
+{
+"id": "t2a_cs_084",
+"en": "i got this door, you take the other one",
+"orders": [
+"HOLD_OTHER_ANGLE"
+],
+"pieces": [
+"you take the other door"
+]
+},
+{
+"id": "t2b_r6_040",
+"en": "Go to the top of the blue stairs and watch the corridor.",
+"orders": [
+"MOVE_TO",
+"HOLD_ANGLE"
+],
+"pieces": [
+"Go to the top of the blue stairs.",
+"Watch the corridor."
+]
+},
+{
+"id": "t2b_cs_096",
+"en": "they're pushing main, fall back and hold red stairs",
+"orders": [
+"FALL_BACK",
+"HOLD_ANGLE"
+],
+"pieces": [
+"fall back",
+"hold red stairs"
+]
+},
+{
+"id": "t_stt_021",
+"en": "you crouch you crouch go slowly to my pin",
+"orders": [
+"CROUCH",
+"MOVE_TO"
+],
+"pieces": [
+"you crouch",
+"go slowly to my pin"
+]
+},
+{
+"id": "t2b_r6_081",
+"en": "Open the door and toss a flash in.",
+"orders": [
+"OPEN",
+"FLASH"
+],
+"pieces": [
+"Open the door.",
+"Toss a flash in through the door."
+]
+},
+{
+"id": "t2a_r6_069",
+"en": "Before you breach that wall, drone the other side of it, and then hold the hole.",
+"orders": [
+"DRONE",
+"BREACH",
+"HOLD_ANGLE"
+],
+"pieces": [
+"Drone the other side of that wall.",
+"Breach that wall.",
+"Hold the hole in that wall."
+]
+},
+{
+"id": "t2a_stt_077",
+"en": "you watch the other stairs after you check this one okay",
+"orders": [
+"CHECK",
+"HOLD_OTHER_ANGLE"
+],
+"pieces": [
+"you check this stairs",
+"you watch the other stairs"
+]
+},
+{
+"id": "t2a_cs_014",
+"en": "dont defuse and dont peek, just get back here",
+"orders": [
+"COME_BACK"
+],
+"pieces": [
+"just get back here"
+]
+},
+{
+"id": "t_stt_076",
+"en": "i am down i am down help me up please",
+"orders": [
+"REVIVE_ME"
+],
+"pieces": [
+"help me up please i am down"
+]
+},
+{
+"id": "t2a_stt_051",
+"en": "i go to plant okay you cover me then you look at north window then lie down and hold the fire",
+"orders": [
+"COVER_ME",
+"LOOK_AT",
+"PRONE",
+"HOLD_FIRE"
+],
+"pieces": [
+"you cover me",
+"you look at north window",
+"lie down",
+"hold the fire"
+]
+},
+{
+"id": "t_stt_002",
+"en": "go back to the stairs but first you attack them and diffuse the bomb",
+"orders": [
+"ATTACK",
+"DEFUSE",
+"MOVE_TO"
+],
+"pieces": [
+"attack them",
+"diffuse the bomb",
+"go back to the stairs"
+]
+},
+{
+"id": "t2b_stt_046",
+"en": "watch this door and if somebody comes you shoot him",
+"orders": [
+"HOLD_ANGLE"
+],
+"pieces": [
+"watch this door and if somebody comes you shoot him"
+]
+},
+{
+"id": "t2a_r6_028",
+"en": "Wait for my call, then breach the hatch.",
+"orders": [
+"BREACH"
+],
+"pieces": [
+"Breach the hatch."
+]
+},
+{
+"id": "t2b_cs_005",
+"en": "suppress them, wait for my call, then fall back",
+"orders": [
+"SUPPRESS",
+"FALL_BACK"
+],
+"pieces": [
+"suppress them",
+"fall back"
+]
+},
+{
+"id": "t_stt_018",
+"en": "revive me please and next you cover me i am weak",
+"orders": [
+"REVIVE_ME",
+"COVER_ME"
+],
+"pieces": [
+"revive me please",
+"you cover me i am weak"
+]
+},
+{
+"id": "t2b_r6_092",
+"en": "I'll hold this one. You take the other angle, and if they push you, fall back.",
+"orders": [
+"HOLD_OTHER_ANGLE",
+"FALL_BACK"
+],
+"pieces": [
+"You take the other angle.",
+"Fall back."
+]
+},
+{
+"id": "t_cs_050",
+"en": "im pinned down behind the sofa, theyre spraying me",
+"orders": [
+"NONE"
+],
+"pieces": [
+"im pinned down behind the sofa, theyre spraying me"
+]
+},
+{
+"id": "t_cs_041",
+"en": "probably, i guess so",
+"orders": [
+"MAYBE"
+],
+"pieces": [
+"probably, i guess so"
+]
+},
+{
+"id": "t_r6_034",
+"en": "Cease fire. Flank around through my ping.",
+"orders": [
+"HOLD_FIRE",
+"FLANK"
+],
+"pieces": [
+"Cease fire.",
+"Flank around through my ping."
+]
+},
+{
+"id": "t_stt_092",
+"en": "run to the brown stairs when you finish to diffuse the bomb",
+"orders": [
+"DEFUSE",
+"MOVE_TO"
+],
+"pieces": [
+"diffuse the bomb",
+"run to the brown stairs"
+]
+},
+{
+"id": "t2a_stt_050",
+"en": "you so press the window and then fall back and watch the door but first first come back here",
+"orders": [
+"COME_BACK",
+"SUPPRESS",
+"FALL_BACK",
+"HOLD_ANGLE"
+],
+"pieces": [
+"come back here",
+"you so press the window",
+"fall back",
+"watch the door"
+]
+},
+{
+"id": "t2b_cs_055",
+"en": "nade the corner, flash the door, then rush in",
+"orders": [
+"FRAG",
+"FLASH",
+"ENTRY"
+],
+"pieces": [
+"nade the corner",
+"flash the door",
+"rush in through the door"
+]
+},
+{
+"id": "t_cs_020",
+"en": "look at that door, open it slowly",
+"orders": [
+"LOOK_AT",
+"OPEN"
+],
+"pieces": [
+"look at that door",
+"open that door slowly"
+]
+},
+{
+"id": "t_stt_017",
+"en": "go to the top floor and breach the floor and then drop down on them",
+"orders": [
+"MOVE_TO",
+"BREACH",
+"JUMP"
+],
+"pieces": [
+"go to the top floor",
+"breach the floor",
+"drop down through the hole in the floor"
+]
+},
+{
+"id": "t2a_cs_096",
+"en": "nt guys, and that last spray was insane lol",
+"orders": [
+"NONE"
+],
+"pieces": [
+"nt guys, and that last spray was insane lol"
+]
+},
+{
+"id": "t_stt_060",
+"en": "smoke the door and plant the bomb and after hide but first first revive me",
+"orders": [
+"REVIVE_ME",
+"SMOKE",
+"PLANT",
+"TAKE_COVER"
+],
+"pieces": [
+"revive me",
+"smoke the door",
+"plant the bomb",
+"hide"
+]
+},
+{
+"id": "t_r6_040",
+"en": "Plant behind the sofa after you vault the west window.",
+"orders": [
+"VAULT_WINDOW",
+"PLANT"
+],
+"pieces": [
+"Vault the west window.",
+"Plant behind the sofa."
+]
+},
+{
+"id": "t2b_stt_009",
+"en": "first throw smoke on main door then go to the red stairs and watch the north window from there",
+"orders": [
+"SMOKE",
+"MOVE_TO",
+"HOLD_ANGLE"
+],
+"pieces": [
+"throw smoke on main door",
+"go to the red stairs",
+"watch the north window"
+]
+},
+{
+"id": "t2b_r6_078",
+"en": "Go around through the west door and hit them from behind.",
+"orders": [
+"FLANK"
+],
+"pieces": [
+"Go around through the west door and hit them from behind."
+]
+},
+{
+"id": "t2a_r6_010",
+"en": "On three, open the door, and I mean quietly.",
+"orders": [
+"OPEN"
+],
+"pieces": [
+"Open the door quietly."
+]
+},
+{
+"id": "t_stt_036",
+"en": "uh they are shooting me from the window i am pinned down",
+"orders": [
+"NONE"
+],
+"pieces": [
+"uh they are shooting me from the window i am pinned down"
+]
+},
+{
+"id": "t2b_stt_064",
+"en": "they do not know we are here so do not shoot and stay low",
+"orders": [
+"HOLD_FIRE",
+"CROUCH"
+],
+"pieces": [
+"do not shoot",
+"stay low"
+]
+},
+{
+"id": "t_r6_060",
+"en": "I'm on the defuser, so check the hallway and see if it's clear.",
+"orders": [
+"CHECK"
+],
+"pieces": [
+"Check the hallway and see if it's clear."
+]
+},
+{
+"id": "t2a_cs_069",
+"en": "before you defuse smoke the bomb, then stay low",
+"orders": [
+"SMOKE",
+"DEFUSE",
+"CROUCH"
+],
+"pieces": [
+"smoke the bomb",
+"defuse the bomb",
+"stay low"
+]
+},
+{
+"id": "t2a_r6_042",
+"en": "Rope down the south side and hang at the window.",
+"orders": [
+"RAPPEL"
+],
+"pieces": [
+"Rope down the south side and hang at the window."
+]
+},
+{
+"id": "t2a_stt_041",
+"en": "uh open fire open fire and then you fall back and hold the brown stairs",
+"orders": [
+"OPEN_FIRE",
+"FALL_BACK",
+"HOLD_ANGLE"
+],
+"pieces": [
+"open fire open fire",
+"you fall back",
+"hold the brown stairs"
+]
+},
+{
+"id": "t2b_r6_049",
+"en": "No charge on that door, it's too loud. Just open it by hand.",
+"orders": [
+"OPEN"
+],
+"pieces": [
+"Just open that door by hand."
+]
+},
+{
+"id": "t_cs_013",
+"en": "move up to my marker, from there check the door",
+"orders": [
+"MOVE_TO",
+"CHECK"
+],
+"pieces": [
+"move up to my marker",
+"check the door"
+]
+},
+{
+"id": "t2a_stt_068",
+"en": "go to the so far and take a knee and hold the left door but before everything you help me here",
+"orders": [
+"HELP",
+"MOVE_TO",
+"CROUCH",
+"HOLD_ANGLE"
+],
+"pieces": [
+"you help me here",
+"go to the so far",
+"take a knee",
+"hold the left door"
+]
+},
+{
+"id": "t_r6_077",
+"en": "Move up to the top floor, and when you get there, open the hatch.",
+"orders": [
+"MOVE_TO",
+"OPEN"
+],
+"pieces": [
+"Move up to the top floor.",
+"Open the hatch on the top floor."
+]
+},
+{
+"id": "t_r6_068",
+"en": "Look at me. Okay, now look at that window on your left.",
+"orders": [
+"LOOK_AT_ME",
+"LOOK_AT"
+],
+"pieces": [
+"Look at me.",
+"Look at that window on your left."
+]
+},
+{
+"id": "t_cs_017",
+"en": "breach the wall, nade the room n push in, but drone it first",
+"orders": [
+"DRONE",
+"BREACH",
+"FRAG",
+"ENTRY"
+],
+"pieces": [
+"drone the room",
+"breach the wall",
+"nade the room",
+"push into the room"
+]
+},
+{
+"id": "t_cs_070",
+"en": "crouch, dont shoot yet",
+"orders": [
+"CROUCH",
+"HOLD_FIRE"
+],
+"pieces": [
+"crouch",
+"dont shoot yet"
+]
+},
+{
+"id": "t2b_cs_037",
+"en": "smoke it, nah forget it, i'll smoke, you just cover me",
+"orders": [
+"COVER_ME"
+],
+"pieces": [
+"just cover me"
+]
+},
+{
+"id": "t2b_stt_076",
+"en": "the door is closed and i hear them inside so bridge it and throw grenade",
+"orders": [
+"BREACH",
+"FRAG"
+],
+"pieces": [
+"bridge the door",
+"throw grenade inside the door"
+]
+},
+{
+"id": "t_stt_007",
+"en": "turn around and look at me i am behind you",
+"orders": [
+"LOOK_AT_ME"
+],
+"pieces": [
+"turn around and look at me"
+]
+},
+{
+"id": "t2a_stt_012",
+"en": "i open the door okay and you throw the flash and then you go in",
+"orders": [
+"FLASH",
+"MOVE_TO"
+],
+"pieces": [
+"you throw the flash",
+"you go in"
+]
+},
+{
+"id": "t_r6_070",
+"en": "After you check the top floor, come back here.",
+"orders": [
+"CHECK",
+"COME_BACK"
+],
+"pieces": [
+"Check the top floor.",
+"Come back here."
+]
+},
+{
+"id": "t2b_cs_011",
+"en": "nade the door, nah nah, flash it",
+"orders": [
+"FLASH"
+],
+"pieces": [
+"flash the door"
+]
+},
+{
+"id": "t2b_r6_026",
+"en": "Check the basement and then come back.",
+"orders": [
+"CHECK",
+"COME_BACK"
+],
+"pieces": [
+"Check the basement.",
+"Come back."
+]
+},
+{
+"id": "t2b_stt_048",
+"en": "open fire uh no no no do not shoot hold fire",
+"orders": [
+"HOLD_FIRE"
+],
+"pieces": [
+"do not shoot hold fire"
+]
+},
+{
+"id": "t2a_cs_037",
+"en": "look at east door, crouch, then just hold it",
+"orders": [
+"LOOK_AT",
+"CROUCH",
+"HOLD_ANGLE"
+],
+"pieces": [
+"look at east door",
+"crouch",
+"just hold east door"
+]
+},
+{
+"id": "t2b_r6_005",
+"en": "Stop shooting, come back here, and cover me while I plant.",
+"orders": [
+"HOLD_FIRE",
+"COME_BACK",
+"COVER_ME"
+],
+"pieces": [
+"Stop shooting.",
+"Come back here.",
+"Cover me."
+]
+},
+{
+"id": "t_r6_009",
+"en": "Drone the basement, breach the hatch, flash down, and then drop in.",
+"orders": [
+"DRONE",
+"BREACH",
+"FLASH",
+"JUMP"
+],
+"pieces": [
+"Drone the basement.",
+"Breach the hatch.",
+"Flash down through the hatch.",
+"Drop in through the hatch."
+]
+},
+{
+"id": "t_cs_091",
+"en": "smoke main, molly my ping, then open fire on the window",
+"orders": [
+"SMOKE",
+"FRAG",
+"OPEN_FIRE"
+],
+"pieces": [
+"smoke main",
+"molly my ping",
+"open fire on the window"
+]
+},
+{
+"id": "t_cs_067",
+"en": "pin them down first, then move up to where i pinged",
+"orders": [
+"SUPPRESS",
+"MOVE_TO"
+],
+"pieces": [
+"pin them down",
+"move up to where i pinged"
+]
+},
+{
+"id": "t2b_cs_063",
+"en": "nt bro that was unlucky, ok come back",
+"orders": [
+"COME_BACK"
+],
+"pieces": [
+"come back"
+]
+},
+{
+"id": "t2a_cs_098",
+"en": "flash main then the same on west door",
+"orders": [
+"FLASH",
+"FLASH"
+],
+"pieces": [
+"flash main",
+"flash west door"
+]
+},
+{
+"id": "t2a_stt_027",
+"en": "you scout ahead first and then go up to roof and look down to the yard",
+"orders": [
+"DRONE",
+"MOVE_TO",
+"LOOK_AT"
+],
+"pieces": [
+"you scout ahead",
+"go up to roof",
+"look down to the yard"
+]
+},
+{
+"id": "t2a_stt_028",
+"en": "throw the flesh and push the room but you smoke the door first okay and when it is done come back",
+"orders": [
+"SMOKE",
+"FLASH",
+"ENTRY",
+"COME_BACK"
+],
+"pieces": [
+"you smoke the door",
+"throw the flesh in the room",
+"push the room",
+"come back"
+]
+},
+{
+"id": "t2b_r6_000",
+"en": "Kill the last one, then disable the defuser.",
+"orders": [
+"ATTACK",
+"DEFUSE"
+],
+"pieces": [
+"Kill the last one.",
+"Disable the defuser."
+]
+},
+{
+"id": "t2b_stt_099",
+"en": "stay near me and go where i go okay",
+"orders": [
+"FOLLOW_ME"
+],
+"pieces": [
+"stay near me and go where i go okay"
+]
+},
+{
+"id": "t2a_stt_040",
+"en": "you help me here after you diffuse the bomb and then you follow me and cover me when i open the door",
+"orders": [
+"DEFUSE",
+"HELP",
+"FOLLOW_ME",
+"COVER_ME"
+],
+"pieces": [
+"diffuse the bomb",
+"you help me here",
+"you follow me",
+"cover me when i open the door"
+]
+},
+{
+"id": "t2a_r6_054",
+"en": "Come back to me the second you've defused the bomb.",
+"orders": [
+"DEFUSE",
+"COME_BACK"
+],
+"pieces": [
+"Defuse the bomb.",
+"Come back to me."
+]
+},
+{
+"id": "t2b_stt_038",
+"en": "where is he where did he go did you see him",
+"orders": [
+"NONE"
+],
+"pieces": [
+"where is he where did he go did you see him"
+]
+},
+{
+"id": "t2b_stt_051",
+"en": "come back to me then crouch and look at the east window",
+"orders": [
+"COME_BACK",
+"CROUCH",
+"LOOK_AT"
+],
+"pieces": [
+"come back to me",
+"crouch",
+"look at the east window"
+]
+}
+]
+}

@@ -163,6 +163,26 @@ build\Release\coop_cli.exe --world ..\..\scripts\coop\world_example.json   # cha
 build\Release\coop_cli.exe --serve --no-spin --threads 1 --tts   # the bot as a service: JSON lines on stdin / stdout
 ```
 
+- `--language en|ru|es` sets the player's language; the default is en.
+  - For ru and es, every line goes to the decoder of `--chain`, and the router is not asked. The chain must be v62 or
+    later, trained on the three languages (`scripts/coop/stt/chains6_v62.py`). The decoder writes the line as English
+    orders, and the classifier, the place matcher and the planner read them as usual.
+  - An answer to the bot's question is read from the decoder's English.
+  - The talk memory keeps the player's own lines, as the decoder learned them.
+  - Speech: `--stt-model` with Parakeet TDT 0.6B v3 (`sherpa-onnx-nemo-parakeet-tdt-0.6b-v3-int8`, 25 languages). It has
+    the same files and engine as v2, and transcribes Russian word for word on Windows voices.
+- `--decider DIR` (a build with llama.cpp) adds an optional second reader of every line beside the ensemble:
+  - The model is decider-2b with the bot's LoRA, as a GGUF ([decider.h](include/coop_intent/decider.h)). `DIR` is
+    `scripts/coop/decider/export_game.py`'s folder.
+  - `--decider-mode avg` (the default) averages the two readers' probabilities; `only` uses the decider's alone.
+  - `--decider-threads N` (default 8) and `--decider-gpu-layers N` (default 0, the CPU alone) tune it.
+  - It runs on its own thread while the ensemble reads the line. At load it decodes its prompt's fixed 1,052 tokens
+    once; per line it computes only the line's own 10 to 25 tokens, about 135 to 220 ms on an i9-10900K.
+  - Without the option nothing changes. A decider that does not load, or a line it cannot read, leaves the ensemble
+    alone.
+  - `--decider DIR --decider-tests DIR/decider_tests.json` checks it: the line's tokens against upstream's tokenizer,
+    and the probabilities against `decider_eval`'s on the same GGUF.
+  - The study behind it: [scripts/coop/decider/README.md](../../scripts/coop/decider/README.md).
 - `--model-dir` picks another exported bot.
 - `--world FILE` loads a world state for the chat (`/world FILE` in the chat does the same); without one the
   planner runs on an empty world and asks "where?" for every place it cannot ground.

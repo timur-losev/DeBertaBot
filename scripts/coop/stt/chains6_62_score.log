@@ -1,0 +1,33 @@
+English (round three's blind sets; through router v59 a line under 0.5 goes to the classifier as it is)
+                                                           round six (v59)                   v62
+chains, typed                                                         87.3                  88.0
+chains, typed, router                                                 82.7                  86.0
+  chains, typed, no repeats/negations                                 88.4                  89.0
+  chains, typed, no repeats/negations, router                         84.9                  88.4
+chains, three unseen voices                                           66.7                  62.7
+chains, three unseen voices, router                                   62.7                  60.7
+  chains, three unseen voices, no repeats/negations                   66.7                  63.6
+  chains, three unseen voices, no repeats/negations, router                  63.6                  61.6
+context, typed (+places)                                              88.7                  87.3
+context, typed (+places), router                                      86.7                  86.0
+  context, typed (+places), no repeats/negations                      90.4                  89.0
+  context, typed (+places), no repeats/negations, router                  88.4                  87.7
+context, three unseen voices (+places)                                64.2                  64.5
+context, three unseen voices (+places), router                        59.5                  61.5
+  context, three unseen voices (+places), no repeats/negations                  66.2                  66.6
+  context, three unseen voices (+places), no repeats/negations, router                  61.4                  63.4
+
+Russian and Spanish (no router: every line to the decoder)
+                                                            v59, no router            plain Qwen                   v62
+dev_ru: all 41                                                        29.3                  70.7                  90.2
+  without farm/build                                                  28.2                  71.8                  89.7
+blind2_ru: all 150                                                    15.3                  20.7                  78.0
+  without the 4 repeats and negations                                 13.7                  21.2                  80.1
+ctx_ru: all 150                                                        5.3                  14.0                  80.0
+  without the 4 repeats and negations                                  5.5                  14.4                  82.2
+dev_es: all 41                                                        29.3                  53.7                  95.1
+  without farm/build                                                  28.2                  51.3                  94.9
+blind2_es: all 150                                                    20.7                  20.7                  82.7
+  without the 4 repeats and negations                                 19.9                  21.2                  83.6
+ctx_es: all 150                                                       11.3                  10.0                  78.7
+  without the 4 repeats and negations                                 11.6                  10.3                  80.8

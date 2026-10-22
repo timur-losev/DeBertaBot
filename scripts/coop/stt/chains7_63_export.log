@@ -1,0 +1,5 @@
+W1022 21:51:37.434000 30436 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]Loading weights: 100%|██████████| 106/106 [00:00<00:00, 2032.62it/s]
+wrote G:\Proj\ollaya\DeBertaBot\models\coop-chain-v63\cpp: decoder.gguf (1056 MB), router.onnx (it sends 66 of 160 test lines on), 160 test lines, 43 answered with several orders

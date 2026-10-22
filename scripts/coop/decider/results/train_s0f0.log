@@ -1,0 +1,25 @@
+split seed 0 fold 0: 11589 training rows, 2186 test rows; prefix 1052 tokens
+trainable params: 16,819,200 || all params: 1,898,644,288 || trainable%: 0.8859
+epoch 0 step 50/1089: loss 2.0048, 31 s
+epoch 0 step 100/1089: loss 1.4252, 61 s
+epoch 0 step 150/1089: loss 1.2304, 92 s
+epoch 0 step 200/1089: loss 1.0719, 123 s
+epoch 0 step 250/1089: loss 1.0458, 153 s
+epoch 0 step 300/1089: loss 0.9685, 183 s
+epoch 0 step 350/1089: loss 0.9279, 214 s
+epoch 1 step 400/1089: loss 0.4360, 244 s
+epoch 1 step 450/1089: loss 0.6144, 275 s
+epoch 1 step 500/1089: loss 0.5182, 305 s
+epoch 1 step 550/1089: loss 0.5381, 335 s
+epoch 1 step 600/1089: loss 0.4788, 365 s
+epoch 1 step 650/1089: loss 0.5027, 395 s
+epoch 1 step 700/1089: loss 0.5059, 425 s
+epoch 2 step 750/1089: loss 0.0732, 456 s
+epoch 2 step 800/1089: loss 0.2023, 486 s
+epoch 2 step 850/1089: loss 0.1641, 516 s
+epoch 2 step 900/1089: loss 0.1379, 546 s
+epoch 2 step 950/1089: loss 0.1520, 576 s
+epoch 2 step 1000/1089: loss 0.1311, 606 s
+epoch 2 step 1050/1089: loss 0.1255, 636 s
+trained 1089 steps in 660 s -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\models_out\decider\lora_s0f0
+lora: 2186 test rows, argmax accuracy 86.0%, 13 s -> G:\Proj\ollaya\DeBertaBot\scripts\coop\decider\results\lora_s0f0.json

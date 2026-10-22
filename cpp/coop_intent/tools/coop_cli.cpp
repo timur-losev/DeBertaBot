@@ -43,6 +43,15 @@
 //   coop_cli --chain DIR --chain-tests   chain_tests.jsonl: the decoder's turn text, the router's probability against
 //                                 PyTorch's, the decoder's answers against llama.cpp's own server (with --decoder-cpu:
 //                                 the file's answers are the CPU's)
+//   --language en|ru|es           the player's language (default en). ru and es: every line goes to the decoder of --chain
+//                                 (chain v62 or later: trained on three languages), which writes English orders; the
+//                                 router is not asked. Speech: --stt-model with Parakeet TDT 0.6B v3 (25 languages)
+//   --decider DIR                 a second reader of every line beside the ensemble (decider.h: decider-2b with the
+//                                 bot's LoRA, GGUF; DIR is scripts/coop/decider/export_game.py's output). Off without it.
+//                                 --decider-mode avg (default: the two readers' probabilities averaged) | only (the
+//                                 decider's alone), --decider-threads N (default 8), --decider-gpu-layers N (default 0)
+//   coop_cli --decider DIR --decider-tests FILE   the line's tokens against upstream's tokenizer and the probabilities
+//                                 against decider_eval's (export_game.py writes FILE)
 // every mode first prints the bot it runs on (directory, labels, gate, threshold)
 // options: --model-dir DIR (export_cpp.py output: intent_config.json, vocab.tsv and the model files
 //          it lists under "members"), --threads N (per model, default 4),
@@ -84,6 +93,7 @@
 #endif
 
 #include "coop_intent/bot_brain.h"
+#include "coop_intent/decider.h"
 #include "coop_intent/intent_model.h"
 #include "coop_intent/rewriter.h"
 #include "coop_intent/speech.h"
@@ -1113,6 +1123,124 @@ struct Chain {
 
 Chain* g_chain = nullptr;   // set by --chain DIR; every Chat uses it
 
+// --language en|ru|es: the player's language. English goes as it always went (the router sends a line to the decoder only
+// when it gives several orders or leans on the talk). Russian and Spanish lines all go to the decoder (a chain whose decoder
+// was trained on three languages, chain v62: scripts/coop/stt/chains6_v62.py), which writes them as English orders; the
+// classifier, the place matcher and the planner then read English as before. The router is English and is not asked.
+std::string g_language = "en";
+
+// ---- the second reader of a line (decider.h): --decider DIR (decider.json and the GGUF it names), off by default
+struct DeciderReader {
+    std::string dir;
+    std::string mode = "avg";        // avg: the ensemble's and the decider's probabilities averaged; only: the decider's
+    std::string source;              // decider.json "source": which model, trained on what
+    coop::DeciderOptions options;
+#ifdef COOP_WITH_LLM
+    coop::Decider model;
+#endif
+    double last_ms = 0;              // the last line's time in the decider (it runs beside the ensemble)
+    size_t failures = 0;
+
+    bool Probs(const std::string& text, std::vector<float>* p, std::string* err, std::vector<int32_t>* ids = nullptr) {
+#ifdef COOP_WITH_LLM
+        const auto t0 = Clock::now();
+        const bool ok = model.Probs(text, p, err, ids);
+        last_ms = Ms(Clock::now() - t0);
+        return ok;
+#else
+        (void)text, (void)p, (void)ids;
+        return *err = "this coop_cli was built without llama.cpp: no decider", false;
+#endif
+    }
+};
+
+DeciderReader* g_decider = nullptr;   // set by --decider DIR; every Chat uses it
+
+bool LoadDecider(DeciderReader& d, const std::vector<std::string>& labels, std::string* err) {
+    std::string text;
+    if (!ReadFile(d.dir + "/decider.json", &text)) return *err = "cannot read decider.json", false;
+    try {
+        const json j = json::parse(text);
+        if (j.at("labels").get<std::vector<std::string>>() != labels)
+            return *err = "the decider's labels are not the bot's (another label set or order)", false;
+        d.options.model_path = d.dir + "/" + j.at("model").get<std::string>();
+        d.options.prefix = j.at("prefix").get<std::vector<int32_t>>();
+        d.options.label_ids = j.at("label_ids").get<std::vector<int32_t>>();
+        d.options.context_ids = j.at("context_ids").get<std::vector<int32_t>>();
+        d.options.answer_ids = j.at("answer_ids").get<std::vector<int32_t>>();
+        d.options.max_line_tokens = j.value("max_line_tokens", 1536);
+        d.options.temperature = j.value("temperature", 1.0);
+        d.source = j.value("source", std::string());
+    } catch (const std::exception& e) {
+        return *err = std::string("decider.json: ") + e.what(), false;
+    }
+    if (d.options.label_ids.size() != labels.size()) return *err = "decider.json: one label token per label expected", false;
+    if (d.mode != "avg" && d.mode != "only") return *err = "--decider-mode is avg or only, not " + d.mode, false;
+#ifdef COOP_WITH_LLM
+    if (!d.model.Load(d.options, err)) return false;
+    std::vector<float> p;
+    return d.Probs("warm up", &p, err);
+#else
+    return *err = "this coop_cli was built without llama.cpp: no decider", false;
+#endif
+}
+
+// --decider-tests FILE (export_game.py): per line the text, upstream's tokens of the line alone and decider_eval's label
+// logits on the same GGUF. The line's tokens must be the same; the probabilities the same up to llama.cpp's own noise.
+int RunDeciderTests(DeciderReader& d, const std::string& path) {
+    std::string raw, err;
+    if (!ReadFile(path, &raw)) return std::fprintf(stderr, "cannot read %s\n", path.c_str()), 1;
+    const json rows = json::parse(raw).at("rows");
+    size_t n = 0, same_ids = 0, same_top = 0, shown = 0;
+    double worst = 0, total_ms = 0;
+    std::vector<float> p;
+    std::vector<int32_t> ids;
+    for (const json& r : rows) {
+        const std::string text = r.at("text").get<std::string>();
+        if (!d.Probs(text, &p, &err, &ids)) return std::fprintf(stderr, "%s: %s\n", text.c_str(), err.c_str()), 1;
+        total_ms += d.last_ms;
+        ++n;
+        const bool ids_ok = ids == r.at("line_ids").get<std::vector<int32_t>>();
+        same_ids += ids_ok;
+        const std::vector<float> lg = r.at("logits").get<std::vector<float>>();
+        std::vector<double> ref(lg.size());
+        const double top = *std::max_element(lg.begin(), lg.end());
+        double sum = 0;
+        for (size_t j = 0; j < lg.size(); ++j) sum += ref[j] = std::exp((lg[j] - top) / d.options.temperature);
+        double dp = 0;
+        size_t a = 0, b = 0;
+        for (size_t j = 0; j < lg.size(); ++j) {
+            dp = std::max(dp, std::abs(p[j] - ref[j] / sum));
+            if (p[j] > p[a]) a = j;
+            if (ref[j] > ref[b]) b = j;
+        }
+        worst = std::max(worst, dp);
+        same_top += a == b;
+        if ((!ids_ok || a != b) && shown++ < 10)
+            std::printf("  %s %s: tokens %s, top %zu vs %zu, max |dp| %.4f\n", r.at("id").get<std::string>().c_str(),
+                        Escaped(text).c_str(), ids_ok ? "equal" : "DIFFER", a, b, dp);
+    }
+    std::printf("decider tests, %zu lines: the line's tokens equal upstream's on %zu/%zu, the top label equal on %zu/%zu, "
+                "max |d probability| %.4f; %.1f ms per line (%d threads)\n", n, same_ids, n, same_top, n, worst, total_ms / std::max<size_t>(1, n),
+                d.options.threads);
+    return (same_ids == n && same_top == n) ? 0 : 1;
+}
+
+// the decider's reading folded into the ensemble's probabilities `p` (avg or only); a line the decider could not read
+// keeps the ensemble's alone
+void SecondReading(DeciderReader& d, bool ok, const std::vector<float>& pd, const std::string& derr, std::vector<float>* p) {
+    if (!ok || pd.size() != p->size()) {
+        ++d.failures;
+        std::fprintf(stderr, "decider: %s (the ensemble alone reads this line)\n", ok ? "the label count differs" : derr.c_str());
+        return;
+    }
+    if (d.mode == "only") {
+        *p = pd;
+        return;
+    }
+    for (size_t i = 0; i < p->size(); ++i) (*p)[i] = 0.5f * ((*p)[i] + pd[i]);
+}
+
 bool LoadChain(Chain& c, const coop::OrtBackend::Options& opt, bool decoder_cpu, int decoder_threads, std::string* err) {
     const auto t0 = Clock::now();
     std::string text;
@@ -1300,17 +1428,22 @@ struct Chat {
             if (ok) h->decoded = true;
             return ok;
         };
+        // a Russian or Spanish line: always to the decoder, which writes it in English (--language)
+        const bool foreign = g_language != "en";
         if (c) {
             const auto t0 = Clock::now();
-            if (!c->Route(m.tok.Encode(text), &h->route, err)) return false;
+            if (foreign) h->route = 1.0;
+            else if (!c->Route(m.tok.Encode(text), &h->route, err)) return false;
             h->route_ms = Ms(Clock::now() - t0);
-            if (!c->router || h->route >= c->cut) {
+            if (foreign || !c->router || h->route >= c->cut) {
                 std::vector<std::string> pieces;
                 // a decoder that fails leaves the line to the classifier
                 decode(&pieces);
                 // a line written back as it is stays the player's own line
                 if (pieces.size() == 1 && coop::SpeechTextForClassifier(pieces[0]) == coop::SpeechTextForClassifier(text)) pieces.clear();
-                if (answering && pieces.size() == 1) {
+                // an answer to the bot's question: in English the player's own line is read first (the decoder's reading
+                // only if the planner cannot read it); a Russian or Spanish line cannot be read, its English is
+                if (!foreign && answering && pieces.size() == 1) {
                     bool answer = false;
                     if (!AnswerLike(text, &answer, err)) return false;
                     if (answer) {
@@ -1383,7 +1516,9 @@ struct Chat {
             bool again = true;
             for (const Turn& t : h->turns) again = again && t.r.action == "say_again";
             if (!again) {
-                said.push_back({kept.empty() ? text : kept, now});
+                // a Russian or Spanish line is remembered as the player said it: the decoder learned its earlier lines in
+                // the player's language (chains6_v62.py), the bot's own lines in English
+                said.push_back({foreign || kept.empty() ? text : kept, now});
                 while (said.size() > g_chain->memory_lines) said.pop_front();
                 const std::string& own = h->turns.back().r.say;
                 bot_said = own.empty() ? Said() : Said{own, now};
@@ -1397,7 +1532,16 @@ struct Chat {
         if (has_read && read_text == text) return true;
         has_read = false;
         const auto t0 = Clock::now();
-        if (!Classify(m, m.tok.Encode(text), &p, err)) return false;
+        // with --decider the second reader runs on a thread of its own while the ensemble reads the line
+        std::vector<float> pd;
+        std::string derr;
+        bool dok = false;
+        std::thread second;
+        if (g_decider) second = std::thread([&] { dok = g_decider->Probs(text, &pd, &derr); });
+        const bool ok = Classify(m, m.tok.Encode(text), &p, err);
+        if (second.joinable()) second.join();
+        if (!ok) return false;
+        if (g_decider) SecondReading(*g_decider, dok, pd, derr, &p);
         read_ms = Ms(Clock::now() - t0);
         read_text = text;
         return has_read = true;
@@ -2326,7 +2470,11 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
           {"chain", g_chain ? json({{"dir", g_chain->dir}, {"router", g_chain->router != nullptr}, {"cut", g_chain->cut},
                                     {"decoder", Chain::Backend()}, {"gpu", g_chain->decoder_options.gpu_layers != 0},
                                     {"memory_lines", g_chain->memory_lines}, {"memory_seconds", g_chain->memory_seconds}})
-                            : json(nullptr)}});
+                            : json(nullptr)},
+          {"language", g_language},
+          {"decider", g_decider ? json({{"dir", g_decider->dir}, {"mode", g_decider->mode}, {"source", g_decider->source},
+                                        {"threads", g_decider->options.threads}, {"gpu", g_decider->options.gpu_layers != 0}})
+                                : json(nullptr)}});
     bool listening = false;
     Clock::time_point down = Clock::now();
     for (std::string line; std::getline(std::cin, line);) {
@@ -2515,6 +2663,8 @@ int main(int argc, char** argv) {
     std::vector<std::string> wavs, stt_test;
     double mic_seconds = 0;
     Chain chain;
+    DeciderReader decider;
+    std::string decider_tests;
     bool decoder_cpu = false;
     int decoder_threads = 4;
     coop::VoiceOptions piper;
@@ -2532,6 +2682,12 @@ int main(int argc, char** argv) {
         else if (a == "--decoder-cpu") decoder_cpu = true;
         else if (a == "--decoder-threads" && i + 1 < argc) decoder_threads = std::atoi(argv[++i]);
         else if (a == "--chain-tests") mode = "chain-tests";
+        else if (a == "--language" && i + 1 < argc) g_language = argv[++i];
+        else if (a == "--decider" && i + 1 < argc) decider.dir = argv[++i];
+        else if (a == "--decider-mode" && i + 1 < argc) decider.mode = argv[++i];
+        else if (a == "--decider-threads" && i + 1 < argc) decider.options.threads = std::atoi(argv[++i]);
+        else if (a == "--decider-gpu-layers" && i + 1 < argc) decider.options.gpu_layers = std::atoi(argv[++i]);
+        else if (a == "--decider-tests" && i + 1 < argc) mode = "decider-tests", decider_tests = argv[++i];
         else if (a == "--threads" && i + 1 < argc) opt.threads = std::atoi(argv[++i]);
         else if (a == "--no-spin") opt.allow_spinning = false;
         else if (a == "--sequential") parallel = false;
@@ -2558,7 +2714,10 @@ int main(int argc, char** argv) {
                                  "                [--model-dir DIR] [--threads N] [--no-spin] [--sequential] [--world FILE]\n"
                                  "                [--stt-model DIR] [--stt-threads N]\n"
                                  "                [--tts-speaker NAME[,NAME...]] [--tts-speed X] [--tts-threads N]\n"
-                                 "                [--chain DIR [--chain-tests] [--decoder-cpu] [--decoder-threads N]]\n");
+                                 "                [--chain DIR [--chain-tests] [--decoder-cpu] [--decoder-threads N]]\n"
+                                 "                [--language en|ru|es]\n"
+                                 "                [--decider DIR [--decider-tests FILE] [--decider-mode avg|only] [--decider-threads N]\n"
+                                 "                 [--decider-gpu-layers N]]\n");
             return 2;
         }
     }
@@ -2618,6 +2777,29 @@ int main(int argc, char** argv) {
                     decoder_threads, chain.load_ms);
         g_chain = &chain;
     }
+    if (g_language != "en" && g_language != "ru" && g_language != "es")
+        return std::fprintf(stderr, "--language is en, ru or es, not %s\n", g_language.c_str()), 2;
+    if (g_language != "en")
+        std::printf("language: %s (every line to the decoder, written in English%s)\n", g_language.c_str(),
+                    g_chain ? "" : "; NO decoder is loaded (--chain DIR): the classifier gets the lines as they are and reads little");
+    if (mode == "decider-tests" && decider.dir.empty()) return std::fprintf(stderr, "--decider-tests needs --decider DIR\n"), 2;
+    if (!decider.dir.empty() && !LoadDecider(decider, m.cfg.labels, &err)) {
+        // the second reader is optional: a brain whose decider does not load (another label set, a missing file) goes on
+        // with the ensemble alone; only its own tests need it
+        if (mode == "decider-tests") return std::fprintf(stderr, "%s: %s\n", decider.dir.c_str(), err.c_str()), 1;
+        std::fprintf(stderr, "decider: %s: %s; the ensemble alone reads the lines\n", decider.dir.c_str(), err.c_str());
+        decider.dir.clear();
+    }
+    if (!decider.dir.empty()) {
+#ifdef COOP_WITH_LLM
+        std::printf("decider: %s (%s; %s, %d threads, %s; loaded in %.0f ms, prefix of %zu tokens in %.0f ms)\n", decider.dir.c_str(),
+                    decider.mode == "avg" ? "averaged with the ensemble" : "alone, the ensemble's reading set aside",
+                    decider.options.gpu_layers ? "GPU" : "CPU", decider.options.threads, decider.source.c_str(), decider.model.load_ms(),
+                    decider.model.prefix_tokens(), decider.model.prefix_ms());
+#endif
+        g_decider = &decider;
+    }
+    if (mode == "decider-tests") return RunDeciderTests(decider, decider_tests);
     if (mode == "chain-tests") return RunChainTests(m, chain);
     if (mode == "serve") return RunServe(m, speech, opt.threads, serve_stt, serve_tts, piper.model_dir.empty() ? nullptr : &piper);
     if (mode == "golden") return RunGolden(m);
