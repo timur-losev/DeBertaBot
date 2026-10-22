@@ -1,0 +1,6131 @@
+{
+"_note": "The owner's own spoken lines as Parakeet heard them in the game (logs 2026-10-16..21: bots v56..v58 with the chain, v60/v61 without), one item per line as heard (lowercased, final .!? stripped), labelled from the talk around it (what was said next, the bot's question before, the known mishearings of this speaker, the owner's decisions); lines that could not be recovered and lines labelled two ways are left out. 'said': the line ids in the session transcripts; 'multi': a line of two orders, labelled by its first (the v6x line has no chain).",
+"items": [
+{
+"id": "owner_0001",
+"text": "again",
+"maj": "REPEAT",
+"count": 5,
+"said": [
+"a190",
+"a191",
+"a195",
+"a317",
+"b50"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0003",
+"text": "and and check there, check",
+"maj": "CHECK",
+"count": 1,
+"said": [
+"a284"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0004",
+"text": "and come here",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a136"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0005",
+"text": "and get out",
+"maj": "GET_OUT",
+"count": 1,
+"said": [
+"b92"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0006",
+"text": "and hold this door",
+"maj": "HOLD_ANGLE",
+"count": 1,
+"said": [
+"a257"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0007",
+"text": "and jumped on",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"b267"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0008",
+"text": "and start shooting",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a526"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0011",
+"text": "another window",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a27"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0013",
+"text": "attack",
+"maj": "ATTACK",
+"count": 2,
+"said": [
+"b124",
+"b129"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0014",
+"text": "attack attack them",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b122"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0015",
+"text": "attack the position",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b130"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0016",
+"text": "attack them, so but",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b136"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0018",
+"text": "bo there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b128"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0019",
+"text": "built",
+"maj": "BUILD",
+"count": 1,
+"said": [
+"b74"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0020",
+"text": "by these stairs",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a41"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0021",
+"text": "c come here",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a158"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0022",
+"text": "call as me",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b166"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0023",
+"text": "call me",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b154"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0024",
+"text": "call us me",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b152"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0025",
+"text": "call us the basement door",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a474"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0026",
+"text": "called us the sec second floor",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a494"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0027",
+"text": "can come back to me now",
+"maj": "COME_BACK",
+"count": 1,
+"said": [
+"a371"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0029",
+"text": "can you hear me",
+"maj": "NONE",
+"count": 1,
+"said": [
+"a368"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0033",
+"text": "cease fire",
+"maj": "HOLD_FIRE",
+"count": 1,
+"said": [
+"b11"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0034",
+"text": "ceasefire",
+"maj": "HOLD_FIRE",
+"count": 1,
+"said": [
+"b270"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0035",
+"text": "check",
+"maj": "CHECK",
+"count": 3,
+"said": [
+"a18",
+"a19",
+"a167"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0036",
+"text": "closer closer to me",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a485"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0039",
+"text": "come back",
+"maj": "COME_BACK",
+"count": 24,
+"said": [
+"a52",
+"a77",
+"a82",
+"a89",
+"a91",
+"a96",
+"a111",
+"a126",
+"a140",
+"a150",
+"a153",
+"a160",
+"a164",
+"a301",
+"a314",
+"a489",
+"a616",
+"a688",
+"a695",
+"a707",
+"a726",
+"b46",
+"b48",
+"b265"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0040",
+"text": "come back come back to me",
+"maj": "COME_BACK",
+"count": 1,
+"said": [
+"a319"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0041",
+"text": "come back to me",
+"maj": "COME_BACK",
+"count": 35,
+"said": [
+"a21",
+"a24",
+"a33",
+"a94",
+"a146",
+"a168",
+"a188",
+"a197",
+"a209",
+"a223",
+"a231",
+"a291",
+"a309",
+"a348",
+"a385",
+"a395",
+"a434",
+"a438",
+"a460",
+"a472",
+"a477",
+"a479",
+"a496",
+"a518",
+"a546",
+"a582",
+"a584",
+"a591",
+"a623",
+"a637",
+"a666",
+"a671",
+"a699",
+"b37",
+"b40"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0042",
+"text": "come back to me closer",
+"maj": "COME_BACK",
+"count": 1,
+"said": [
+"b44"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0043",
+"text": "come back to me now",
+"maj": "COME_BACK",
+"count": 1,
+"said": [
+"a354"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0044",
+"text": "come back to the last position",
+"maj": "GO_BACK",
+"count": 1,
+"said": [
+"a66"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0045",
+"text": "come back, come back, uh mo move up",
+"maj": "COME_BACK",
+"count": 1,
+"said": [
+"a352"
+],
+"multi": true,
+"sure": false
+},
+{
+"id": "owner_0046",
+"text": "come closer",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a261"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0047",
+"text": "come closer to me",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a660"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0048",
+"text": "come closer to me and shoot again",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a722"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0049",
+"text": "come come here",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a605"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0050",
+"text": "come here",
+"maj": "FOLLOW_ME",
+"count": 37,
+"said": [
+"a4",
+"a15",
+"a48",
+"a60",
+"a69",
+"a74",
+"a177",
+"a185",
+"a228",
+"a234",
+"a238",
+"a241",
+"a244",
+"a280",
+"a340",
+"a415",
+"a416",
+"a464",
+"a529",
+"a540",
+"a544",
+"a548",
+"a556",
+"a567",
+"a619",
+"a655",
+"a684",
+"b5",
+"b6",
+"b17",
+"b28",
+"b32",
+"b61",
+"b107",
+"b133",
+"b263",
+"b269"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0051",
+"text": "come here back",
+"maj": "COME_BACK",
+"count": 1,
+"said": [
+"a138"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0052",
+"text": "come here closer",
+"maj": "FOLLOW_ME",
+"count": 3,
+"said": [
+"a343",
+"a614",
+"b70"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0053",
+"text": "come here to me",
+"maj": "FOLLOW_ME",
+"count": 3,
+"said": [
+"a369",
+"a565",
+"b54"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0054",
+"text": "come here, closer",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a571"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0055",
+"text": "come here, come closer",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b271"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0056",
+"text": "come here, come here",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b86"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0057",
+"text": "come out",
+"maj": "GET_OUT",
+"count": 1,
+"said": [
+"b27"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0058",
+"text": "come there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b104"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0059",
+"text": "come to me",
+"maj": "FOLLOW_ME",
+"count": 3,
+"said": [
+"a38",
+"a418",
+"b12"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0060",
+"text": "come up here",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a676"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0061",
+"text": "come with me",
+"maj": "FOLLOW_ME",
+"count": 4,
+"said": [
+"b110",
+"b153",
+"b167",
+"b254"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0062",
+"text": "come with me, come with me",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b112"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0063",
+"text": "comments me",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b253"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0066",
+"text": "cover me",
+"maj": "COVER_ME",
+"count": 1,
+"said": [
+"b147"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0069",
+"text": "did you find it",
+"maj": "NONE",
+"count": 1,
+"said": [
+"b221"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0070",
+"text": "do it again",
+"maj": "REPEAT",
+"count": 2,
+"said": [
+"a269",
+"b51"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0071",
+"text": "do that again",
+"maj": "REPEAT",
+"count": 1,
+"said": [
+"a65"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0072",
+"text": "do the same",
+"maj": "REPEAT",
+"count": 1,
+"said": [
+"a58"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0073",
+"text": "do the same again",
+"maj": "REPEAT",
+"count": 1,
+"said": [
+"a59"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0074",
+"text": "do the same for pin as you did before",
+"maj": "REPEAT",
+"count": 1,
+"said": [
+"a381"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0075",
+"text": "down here",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a157"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0076",
+"text": "drop down to me",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a590"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0077",
+"text": "drum down now",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a28"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0078",
+"text": "dump here",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"b13"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0079",
+"text": "enter this window",
+"maj": "VAULT_WINDOW",
+"count": 1,
+"said": [
+"a413"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0082",
+"text": "fertilize",
+"maj": "TILL",
+"count": 1,
+"said": [
+"b85"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0083",
+"text": "find armor",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a44"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0084",
+"text": "find cover",
+"maj": "TAKE_COVER",
+"count": 1,
+"said": [
+"a247"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0085",
+"text": "find some hill",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b208"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0086",
+"text": "find some med kit",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b210"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0087",
+"text": "find some shotgun",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"b220",
+"b238"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0088",
+"text": "find the enemy",
+"maj": "ATTACK",
+"count": 5,
+"said": [
+"b8",
+"b95",
+"b96",
+"b103",
+"b109"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0089",
+"text": "find the med kit",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b113"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0090",
+"text": "find the shotgun",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b194"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0091",
+"text": "find uh rifle",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b198"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0092",
+"text": "find uh some rifle",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b215"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0093",
+"text": "fine colour",
+"maj": "TAKE_COVER",
+"count": 1,
+"said": [
+"a166"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0094",
+"text": "fine cover",
+"maj": "TAKE_COVER",
+"count": 2,
+"said": [
+"a564",
+"a573"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0095",
+"text": "fine covers",
+"maj": "TAKE_COVER",
+"count": 1,
+"said": [
+"a3"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0096",
+"text": "fire on this wall",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a322"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0097",
+"text": "follow",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b189"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0098",
+"text": "follow me",
+"maj": "FOLLOW_ME",
+"count": 36,
+"said": [
+"a154",
+"a179",
+"a181",
+"a213",
+"a296",
+"a320",
+"a346",
+"a392",
+"a402",
+"a424",
+"a429",
+"a446",
+"a466",
+"a631",
+"a713",
+"b1",
+"b71",
+"b134",
+"b155",
+"b158",
+"b163",
+"b175",
+"b184",
+"b186",
+"b195",
+"b197",
+"b199",
+"b203",
+"b205",
+"b209",
+"b230",
+"b239",
+"b240",
+"b244",
+"b247",
+"b252"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0099",
+"text": "follow me now",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b236"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0100",
+"text": "follow me, follow me",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b102"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0101",
+"text": "following",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b143"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0102",
+"text": "following me",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b214"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0103",
+"text": "following the",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b233"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0105",
+"text": "further up",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a449"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0107",
+"text": "get back to me",
+"maj": "COME_BACK",
+"count": 4,
+"said": [
+"a30",
+"a608",
+"a627",
+"a701"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0108",
+"text": "get back to the car",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a626"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0110",
+"text": "get closer",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a524"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0111",
+"text": "get closer to the wall",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a525"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0113",
+"text": "get down here",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a112",
+"a113"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0115",
+"text": "get down to me",
+"maj": "COME_BACK",
+"count": 1,
+"said": [
+"a697"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0116",
+"text": "get in",
+"maj": "MOVE_TO",
+"count": 4,
+"said": [
+"b142",
+"b165",
+"b173",
+"b174"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0117",
+"text": "get in the the room",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b185"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0119",
+"text": "get inside of it",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a642"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0120",
+"text": "get inside of it and start riding",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a622"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0121",
+"text": "get inside of the car",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a198"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0122",
+"text": "get inside the car",
+"maj": "GET_IN",
+"count": 3,
+"said": [
+"a543",
+"a545",
+"a611"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0123",
+"text": "get into it and start start riding",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a621"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0124",
+"text": "get into that window",
+"maj": "VAULT_WINDOW",
+"count": 1,
+"said": [
+"a31"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0125",
+"text": "get into the car",
+"maj": "GET_IN",
+"count": 6,
+"said": [
+"a182",
+"a242",
+"a302",
+"a304",
+"a427",
+"a624"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0126",
+"text": "get into the car and get out",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a405"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0127",
+"text": "get into the car, get out, and shoot this wall",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a403"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0128",
+"text": "get into the room",
+"maj": "MOVE_TO",
+"count": 4,
+"said": [
+"b190",
+"b191",
+"b200",
+"b242"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0129",
+"text": "get into this car",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a505"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0130",
+"text": "get out",
+"maj": "GET_OUT",
+"count": 13,
+"said": [
+"a184",
+"a199",
+"a254",
+"a305",
+"a335",
+"a404",
+"a428",
+"a504",
+"a506",
+"a509",
+"a513",
+"a612",
+"a658"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0132",
+"text": "get out and i'll",
+"maj": "GET_OUT",
+"count": 1,
+"said": [
+"a407"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0133",
+"text": "get out and shoot that wall",
+"maj": "GET_OUT",
+"count": 1,
+"said": [
+"b58"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0134",
+"text": "get out of the car",
+"maj": "GET_OUT",
+"count": 3,
+"said": [
+"a303",
+"a391",
+"a570"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0135",
+"text": "get out of the car and start shooting this wall on my pin",
+"maj": "GET_OUT",
+"count": 1,
+"said": [
+"b30"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0136",
+"text": "get that by the stairs",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a79"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0137",
+"text": "get to the car",
+"maj": "MOVE_TO",
+"count": 4,
+"said": [
+"a610",
+"a617",
+"a620",
+"a641"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0138",
+"text": "get up",
+"maj": "STAND_UP",
+"count": 10,
+"said": [
+"a5",
+"a10",
+"a14",
+"a37",
+"a75",
+"a120",
+"a124",
+"a232",
+"a266",
+"a693"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0139",
+"text": "get up by the stairs",
+"maj": "MOVE_TO",
+"count": 3,
+"said": [
+"a34",
+"a78",
+"a724"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0140",
+"text": "get up by these stairs",
+"maj": "MOVE_TO",
+"count": 4,
+"said": [
+"a49",
+"a50",
+"a725",
+"a727"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0141",
+"text": "get up here",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a8",
+"a557"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0142",
+"text": "get up here and file and cover",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a6"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0143",
+"text": "get up here and find cover",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a7"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0144",
+"text": "get up there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a730"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0145",
+"text": "get up to me",
+"maj": "FOLLOW_ME",
+"count": 2,
+"said": [
+"a23",
+"a716"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0146",
+"text": "getting",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b169"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0147",
+"text": "getting to the car",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a542"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0148",
+"text": "gil kim",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b234"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0149",
+"text": "gilken",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b100"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0150",
+"text": "give him",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b97"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0151",
+"text": "give up to me and shoot that uh panel",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a574"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0152",
+"text": "go and take rifle here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a683"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0153",
+"text": "go b uh by these stairs and jump down",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a705"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0154",
+"text": "go back",
+"maj": "GO_BACK",
+"count": 6,
+"said": [
+"a326",
+"a686",
+"a691",
+"a704",
+"a709",
+"a711"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0155",
+"text": "go back again",
+"maj": "GO_BACK",
+"count": 1,
+"said": [
+"a651"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0156",
+"text": "go back now",
+"maj": "GO_BACK",
+"count": 3,
+"said": [
+"a307",
+"a356",
+"a650"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0157",
+"text": "go back to me",
+"maj": "COME_BACK",
+"count": 3,
+"said": [
+"a285",
+"a332",
+"a379"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0158",
+"text": "go by this chance",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a173"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0159",
+"text": "go check that stairs",
+"maj": "CHECK",
+"count": 1,
+"said": [
+"a282"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0160",
+"text": "go down",
+"maj": "MOVE_TO",
+"count": 4,
+"said": [
+"a463",
+"a468",
+"a483",
+"b121"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0161",
+"text": "go down by the stairs",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a171",
+"a338"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0162",
+"text": "go down here",
+"maj": "MOVE_TO",
+"count": 4,
+"said": [
+"a170",
+"a205",
+"a306",
+"a445"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0163",
+"text": "go down there",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a143",
+"a572"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0164",
+"text": "go down to me",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a484"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0165",
+"text": "go down up the stairs",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a210"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0167",
+"text": "go find ammo",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a318"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0168",
+"text": "go find amor",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a300"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0169",
+"text": "go find another ammo",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a607"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0170",
+"text": "go find another um shotgun",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a109"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0171",
+"text": "go find enemy",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b9"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0172",
+"text": "go find them all",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a225"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0173",
+"text": "go fire and armor",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a299"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0174",
+"text": "go follow me",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a450"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0175",
+"text": "go for this tunnel",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a566"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0176",
+"text": "go forward",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a218"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0177",
+"text": "go fully up by these stairs",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a451"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0178",
+"text": "go go here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b261"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0179",
+"text": "go here",
+"maj": "MOVE_TO",
+"count": 3,
+"said": [
+"a90",
+"a93",
+"a559"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0180",
+"text": "go here and take this shotgun",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a433"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0181",
+"text": "go here, stand here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a367"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0182",
+"text": "go inside of the car",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a334"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0183",
+"text": "go inside this car",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a503"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0184",
+"text": "go inside to this car",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a502"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0185",
+"text": "go into the car",
+"maj": "GET_IN",
+"count": 3,
+"said": [
+"a389",
+"b26",
+"b29"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0186",
+"text": "go it take shuggle here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a681"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0187",
+"text": "go jump down",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a465"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0188",
+"text": "go more up",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a654"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0189",
+"text": "go right",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a487"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0190",
+"text": "go right and come back to me",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a488"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0191",
+"text": "go sit into the scar",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a501"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0192",
+"text": "go take shotgun",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a110"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0193",
+"text": "go take that rifle",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a629",
+"a630"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0194",
+"text": "go there",
+"maj": "MOVE_TO",
+"count": 10,
+"said": [
+"a92",
+"a455",
+"a456",
+"a457",
+"a478",
+"b14",
+"b73",
+"b82",
+"b126",
+"b131"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0195",
+"text": "go there and then come back to me",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a492"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0196",
+"text": "go there, there, there, there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a562"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0197",
+"text": "go through that door is and open fire",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a207"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0198",
+"text": "go through this window",
+"maj": "VAULT_WINDOW",
+"count": 1,
+"said": [
+"b260"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0199",
+"text": "go to my pin",
+"maj": "MOVE_TO",
+"count": 6,
+"said": [
+"a268",
+"a271",
+"a375",
+"a384",
+"a648",
+"a649"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0200",
+"text": "go to the basement",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a470"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0201",
+"text": "go to the basement door",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a475"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0202",
+"text": "go to the car",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a656"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0203",
+"text": "go up",
+"maj": "MOVE_TO",
+"count": 6,
+"said": [
+"a117",
+"a165",
+"a203",
+"a325",
+"a341",
+"a462"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0204",
+"text": "go up and check there",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a286",
+"a287"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0205",
+"text": "go up and shoot that car",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a409"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0206",
+"text": "go up by the stairs",
+"maj": "MOVE_TO",
+"count": 8,
+"said": [
+"a172",
+"a206",
+"a212",
+"a355",
+"a358",
+"a447",
+"a493",
+"b55"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0207",
+"text": "go up by the stairs and jump up",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a702"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0208",
+"text": "go up by the stairs and open fire",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a696"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0209",
+"text": "go up by the stairs, then come back to me and then do it again",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b52"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0210",
+"text": "go up by the stairs, then come back to me, then go up again",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b43"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0211",
+"text": "go up by there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a653"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0212",
+"text": "go up by these stairs",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a678"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0213",
+"text": "go up by these stairs and go find cover",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a687"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0214",
+"text": "go up by these stairs and jump down",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a706"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0215",
+"text": "go up by these stairs and jump up",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a710"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0216",
+"text": "go up by these stairs and open fire",
+"maj": "MOVE_TO",
+"count": 3,
+"said": [
+"a690",
+"a708",
+"a712"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0217",
+"text": "go up by these stairs and sit down",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a694",
+"a700"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0218",
+"text": "go up by these stairs and then come back to me",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a491",
+"b49"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0219",
+"text": "go up by these stairs, then come back to me, then go up by these stairs",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b47"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0220",
+"text": "go up by these stairs, then come here, and come here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b41"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0221",
+"text": "go up by these stairs, then go here, go here, go here, and take that rifle",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b39"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0222",
+"text": "go up by these stairs, then go here, then go here, go here, go here, go here, go here, go here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b36"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0223",
+"text": "go up by this step",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a339"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0224",
+"text": "go up completely by these stairs, and then come back to me",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a490"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0225",
+"text": "go up here",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a2",
+"a401"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0226",
+"text": "go up hither",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a359"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0227",
+"text": "go up there",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"b25",
+"b53"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0228",
+"text": "go up to my opinion check there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a288"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0229",
+"text": "go up to my pin and check there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a289"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0230",
+"text": "go up up the stairs and find cover",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a685"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0231",
+"text": "goal here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a647"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0233",
+"text": "going back to me",
+"maj": "COME_BACK",
+"count": 1,
+"said": [
+"a311"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0234",
+"text": "going down there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a583"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0235",
+"text": "gold down by the stairs",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a469"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0236",
+"text": "gold stairs basement",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a473"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0237",
+"text": "gone there, there, there, there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a563"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0238",
+"text": "good job",
+"maj": "NONE",
+"count": 1,
+"said": [
+"b170"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0239",
+"text": "good there there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a561"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0240",
+"text": "got there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b16"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0241",
+"text": "grab that armor",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a163"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0242",
+"text": "grab the stairs",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a297"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0244",
+"text": "height",
+"maj": "TAKE_COVER",
+"count": 1,
+"said": [
+"a214"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0246",
+"text": "hey, stand up",
+"maj": "STAND_UP",
+"count": 1,
+"said": [
+"a461"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0247",
+"text": "hi here",
+"maj": "TAKE_COVER",
+"count": 1,
+"said": [
+"b78"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0248",
+"text": "hi there",
+"maj": "TAKE_COVER",
+"count": 2,
+"said": [
+"a215",
+"b77"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0249",
+"text": "hide all my pin",
+"maj": "TAKE_COVER",
+"count": 1,
+"said": [
+"a293"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0250",
+"text": "hide behind the car",
+"maj": "TAKE_COVER",
+"count": 1,
+"said": [
+"a669"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0251",
+"text": "hide behind the pillar",
+"maj": "TAKE_COVER",
+"count": 1,
+"said": [
+"a458"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0252",
+"text": "hide on my pin",
+"maj": "TAKE_COVER",
+"count": 1,
+"said": [
+"a294"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0253",
+"text": "hiding my pin",
+"maj": "TAKE_COVER",
+"count": 1,
+"said": [
+"a292"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0255",
+"text": "hold here",
+"maj": "HOLD_POSITION",
+"count": 1,
+"said": [
+"a252"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0256",
+"text": "hold it to angle",
+"maj": "HOLD_ANGLE",
+"count": 1,
+"said": [
+"a219"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0257",
+"text": "hold it to go to my pin",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a270"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0258",
+"text": "hold on",
+"maj": "WAIT",
+"count": 1,
+"said": [
+"b211"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0259",
+"text": "hold position",
+"maj": "HOLD_POSITION",
+"count": 3,
+"said": [
+"a16",
+"a246",
+"b66"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0260",
+"text": "hold that angle",
+"maj": "HOLD_ANGLE",
+"count": 3,
+"said": [
+"b68",
+"b69",
+"b272"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0261",
+"text": "hold the door",
+"maj": "HOLD_ANGLE",
+"count": 1,
+"said": [
+"a249"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0262",
+"text": "hold this angle",
+"maj": "HOLD_ANGLE",
+"count": 1,
+"said": [
+"a263"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0263",
+"text": "hold this door",
+"maj": "HOLD_ANGLE",
+"count": 2,
+"said": [
+"a258",
+"a262"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0264",
+"text": "hollow me, follow me, follow me",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b223"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0265",
+"text": "hot angles",
+"maj": "HOLD_ANGLE",
+"count": 1,
+"said": [
+"a248"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0266",
+"text": "hucky, come here closer",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b56"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0267",
+"text": "i put my pin take this rifle",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a374"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0268",
+"text": "i put my pins go there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a376"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0269",
+"text": "i'm back",
+"maj": "COME_BACK",
+"count": 1,
+"said": [
+"a521"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0270",
+"text": "i'm down",
+"maj": "HELP",
+"count": 1,
+"said": [
+"b212"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0271",
+"text": "i'm gonna cover you. get in",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b168"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0273",
+"text": "i'm here closer",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a613"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0275",
+"text": "impressive",
+"maj": "NONE",
+"count": 2,
+"said": [
+"a595",
+"a596"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0276",
+"text": "inside of it",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a657"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0277",
+"text": "it did you find the shotgun",
+"maj": "NONE",
+"count": 1,
+"said": [
+"b222"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0278",
+"text": "it's come back",
+"maj": "COME_BACK",
+"count": 1,
+"said": [
+"a308"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0280",
+"text": "it's the pub by the stairs",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a71"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0281",
+"text": "jam down",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a161"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0282",
+"text": "jammed out",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a155"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0283",
+"text": "japur",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a67"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0284",
+"text": "jum dahl",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a443"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0285",
+"text": "jumbo",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a410"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0286",
+"text": "jump down",
+"maj": "JUMP",
+"count": 14,
+"said": [
+"a22",
+"a29",
+"a156",
+"a159",
+"a162",
+"a187",
+"a196",
+"a230",
+"a239",
+"a264",
+"a279",
+"a411",
+"a422",
+"b259"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0287",
+"text": "jump down and come back to me",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a349"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0288",
+"text": "jump down and come back to me by these stairs",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a351"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0289",
+"text": "jump down and get into the car",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a568"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0290",
+"text": "jump down and take this car",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"b57"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0291",
+"text": "jump down here",
+"maj": "JUMP",
+"count": 3,
+"said": [
+"a152",
+"a347",
+"b264"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0292",
+"text": "jump down there",
+"maj": "JUMP",
+"count": 2,
+"said": [
+"a581",
+"b268"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0293",
+"text": "jump down to me",
+"maj": "JUMP",
+"count": 2,
+"said": [
+"a204",
+"a495"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0294",
+"text": "jump down to me and show",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"b62"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0295",
+"text": "jump down, jump up and start shooting the car",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a720"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0296",
+"text": "jump it down",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a421"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0297",
+"text": "jump over",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a68"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0298",
+"text": "jump to me",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a417"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0299",
+"text": "jump up",
+"maj": "JUMP",
+"count": 2,
+"said": [
+"a200",
+"a202"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0300",
+"text": "jump up and open fire",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a689"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0301",
+"text": "jump up and shoot on my pin",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a189"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0302",
+"text": "jump up and shoot that wall",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a276"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0303",
+"text": "jump up, jump down and shoot to this wall",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a394"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0304",
+"text": "jumpadon",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a420"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0305",
+"text": "keep moving",
+"maj": "NONE",
+"count": 2,
+"said": [
+"a56",
+"a57"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0306",
+"text": "kill him",
+"maj": "ATTACK",
+"count": 9,
+"said": [
+"b101",
+"b159",
+"b178",
+"b182",
+"b183",
+"b187",
+"b196",
+"b204",
+"b206"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0307",
+"text": "kill him on the pin",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b201"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0308",
+"text": "kill him. kill him. kill him",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b98"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0309",
+"text": "kill the enemy and find the position",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b111"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0310",
+"text": "kill them",
+"maj": "ATTACK",
+"count": 3,
+"said": [
+"b188",
+"b235",
+"b246"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0311",
+"text": "killed them all",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b278"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0312",
+"text": "kiss him",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b181"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0313",
+"text": "let's colour the colour",
+"maj": "COVER_ME",
+"count": 1,
+"said": [
+"b118"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0314",
+"text": "lock him",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b250"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0316",
+"text": "mo move uh up by the stairs",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a592"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0317",
+"text": "more",
+"maj": "REPEAT",
+"count": 1,
+"said": [
+"a498"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0318",
+"text": "more dark here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a114"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0319",
+"text": "more down by this day",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a344"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0320",
+"text": "more forward",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a387"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0321",
+"text": "more up",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a481"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0322",
+"text": "more, one, more",
+"maj": "REPEAT",
+"count": 1,
+"said": [
+"a399"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0323",
+"text": "move apart by this test",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a330"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0324",
+"text": "move back to me",
+"maj": "COME_BACK",
+"count": 1,
+"said": [
+"a388"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0325",
+"text": "move down",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a274",
+"a437"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0326",
+"text": "move down by these stairs",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a345"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0327",
+"text": "move down by these stairs and find cover there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a121"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0328",
+"text": "move down here",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a115",
+"a245"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0329",
+"text": "move down to there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a149"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0330",
+"text": "move down. come here come here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a275"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0331",
+"text": "move forward",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a625"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0332",
+"text": "move here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a81"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0333",
+"text": "move on the map",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b119"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0334",
+"text": "move out",
+"maj": "GET_OUT",
+"count": 1,
+"said": [
+"a569"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0335",
+"text": "move there",
+"maj": "MOVE_TO",
+"count": 8,
+"said": [
+"a51",
+"a84",
+"a86",
+"a87",
+"a88",
+"a95",
+"a364",
+"b135"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0336",
+"text": "move up",
+"maj": "MOVE_TO",
+"count": 17,
+"said": [
+"a47",
+"a53",
+"a55",
+"a61",
+"a62",
+"a64",
+"a76",
+"a80",
+"a116",
+"a233",
+"a267",
+"a283",
+"a328",
+"a329",
+"a436",
+"a480",
+"a482"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0337",
+"text": "move up and check",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a593"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0338",
+"text": "move up by the stairs",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a298",
+"a549"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0339",
+"text": "move up by these stairs and jump down here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a353"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0340",
+"text": "move up here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a12"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0341",
+"text": "move up more",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a236",
+"a550"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0342",
+"text": "move up there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a235"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0343",
+"text": "nice shot",
+"maj": "NONE",
+"count": 1,
+"said": [
+"a277"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0344",
+"text": "no",
+"maj": "NO",
+"count": 1,
+"said": [
+"a98"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0345",
+"text": "no attack them",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b123"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0346",
+"text": "no, cam come here",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a119"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0347",
+"text": "no, come here",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a129"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0348",
+"text": "no, no come back",
+"maj": "COME_BACK",
+"count": 1,
+"said": [
+"a144"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0349",
+"text": "no, no, no, just just go down there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b64"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0350",
+"text": "no, shoot on my pin",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b3"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0351",
+"text": "not move",
+"maj": "HOLD_POSITION",
+"count": 1,
+"said": [
+"b160"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0352",
+"text": "now back to me",
+"maj": "COME_BACK",
+"count": 1,
+"said": [
+"a211"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0353",
+"text": "now get in",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b161"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0355",
+"text": "now kill the enemy",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b108"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0356",
+"text": "now shoot this window",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a635"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0357",
+"text": "now should the same rule again",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a670"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0358",
+"text": "now take the position",
+"maj": "HOLD_POSITION",
+"count": 1,
+"said": [
+"b138"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0361",
+"text": "now uh another window",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a589"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0362",
+"text": "now, uh get in",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b156"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0363",
+"text": "oh no, go up, go up",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a398"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0365",
+"text": "okay, go completely up by these stairs",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a486"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0366",
+"text": "okay, nice",
+"maj": "NONE",
+"count": 1,
+"said": [
+"a295"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0367",
+"text": "open fire",
+"maj": "OPEN_FIRE",
+"count": 2,
+"said": [
+"a20",
+"a220"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0368",
+"text": "open fire here",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b88"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0369",
+"text": "open fire to cpu",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a141"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0370",
+"text": "open fire to my opinion",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a273"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0371",
+"text": "open fire to that windows and get down",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a147"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0372",
+"text": "open fire to the enemy",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b7"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0373",
+"text": "open fire to these windows",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a133"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0374",
+"text": "open fire to this wall",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a497"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0375",
+"text": "open fire to this wall and then to that wall",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a667"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0376",
+"text": "open fire to this window",
+"maj": "OPEN_FIRE",
+"count": 3,
+"said": [
+"a128",
+"a142",
+"a606"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0377",
+"text": "open that window",
+"maj": "OPEN",
+"count": 1,
+"said": [
+"a636"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0378",
+"text": "open that window so you can get inside",
+"maj": "OPEN",
+"count": 1,
+"said": [
+"a145"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0381",
+"text": "phantom hill",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b207"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0382",
+"text": "pick the shotgun",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b237"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0386",
+"text": "push them with the shotgun",
+"maj": "ENTRY",
+"count": 1,
+"said": [
+"b216"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0387",
+"text": "push, push, push",
+"maj": "ENTRY",
+"count": 1,
+"said": [
+"b217"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0388",
+"text": "reach the shoulder",
+"maj": "SWITCH_WEAPON",
+"count": 1,
+"said": [
+"a554"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0389",
+"text": "reposition",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b79"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0391",
+"text": "roll down",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a467"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0392",
+"text": "roll down here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a444"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0393",
+"text": "roll there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a471"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0395",
+"text": "rush",
+"maj": "ENTRY",
+"count": 4,
+"said": [
+"b150",
+"b229",
+"b241",
+"b277"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0396",
+"text": "rush into the beginning",
+"maj": "ENTRY",
+"count": 1,
+"said": [
+"b243"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0397",
+"text": "rush on the pin",
+"maj": "ENTRY",
+"count": 1,
+"said": [
+"b245"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0398",
+"text": "rush them",
+"maj": "ENTRY",
+"count": 2,
+"said": [
+"b140",
+"b146"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0399",
+"text": "rush, rush them",
+"maj": "ENTRY",
+"count": 1,
+"said": [
+"b151"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0400",
+"text": "russ",
+"maj": "ENTRY",
+"count": 1,
+"said": [
+"b144"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0401",
+"text": "sand up",
+"maj": "STAND_UP",
+"count": 1,
+"said": [
+"a255"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0402",
+"text": "save wall",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a527"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0403",
+"text": "seat this car",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a508"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0404",
+"text": "see it into this car",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a516"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0405",
+"text": "see the game",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b34"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0406",
+"text": "seep into the car",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a615"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0407",
+"text": "send up",
+"maj": "STAND_UP",
+"count": 2,
+"said": [
+"a9",
+"a718"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0408",
+"text": "set up",
+"maj": "STAND_UP",
+"count": 1,
+"said": [
+"a577"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0409",
+"text": "sh shoot that car",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a408"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0410",
+"text": "sh should that be short",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a100"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0411",
+"text": "shook him",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b224"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0412",
+"text": "shoot again",
+"maj": "OPEN_FIRE",
+"count": 2,
+"said": [
+"a534",
+"b35"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0413",
+"text": "shoot at windows",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a535"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0414",
+"text": "shoot here",
+"maj": "OPEN_FIRE",
+"count": 2,
+"said": [
+"a229",
+"b81"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0415",
+"text": "shoot him",
+"maj": "OPEN_FIRE",
+"count": 2,
+"said": [
+"b225",
+"b232"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0416",
+"text": "shoot me",
+"maj": "OPEN_FIRE",
+"count": 2,
+"said": [
+"b93",
+"b231"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0417",
+"text": "shoot me uh shoot him on the pin",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b227"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0418",
+"text": "shoot more",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a500"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0419",
+"text": "shoot my pin",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b60"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0420",
+"text": "shoot right to my pin",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b19"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0421",
+"text": "shoot that all",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b59"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0422",
+"text": "shoot that beach",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a102"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0423",
+"text": "shoot that panel again",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a585"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0424",
+"text": "shoot that wall",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a632"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0425",
+"text": "shoot that weapons",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a439"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0426",
+"text": "shoot that well",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a281"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0427",
+"text": "shoot that will",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a400"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0428",
+"text": "shoot that window",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b2"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0429",
+"text": "shoot that window down",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a640"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0430",
+"text": "shoot that windows",
+"maj": "OPEN_FIRE",
+"count": 12,
+"said": [
+"a25",
+"a186",
+"a193",
+"a224",
+"a278",
+"a397",
+"a440",
+"a459",
+"a598",
+"a663",
+"a674",
+"a721"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0431",
+"text": "shoot that windows again",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a723"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0432",
+"text": "shoot their",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b90"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0433",
+"text": "shoot them",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a662"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0434",
+"text": "shoot these windows",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a609"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0435",
+"text": "shoot this panel",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a576"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0436",
+"text": "shoot this roll again",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a519"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0437",
+"text": "shoot this wall",
+"maj": "OPEN_FIRE",
+"count": 3,
+"said": [
+"a313",
+"a315",
+"a336"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0438",
+"text": "shoot this wall again",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a520"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0439",
+"text": "shoot this window",
+"maj": "OPEN_FIRE",
+"count": 4,
+"said": [
+"a97",
+"a425",
+"b20",
+"b24"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0440",
+"text": "shoot this window in jump below",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b256"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0441",
+"text": "shoot this window on my pin",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b18"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0442",
+"text": "shoot this windows",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a580"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0443",
+"text": "shoot this world again",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a523"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0444",
+"text": "shoot to my pin",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b4"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0445",
+"text": "shoot, shoot, shoot, shoot, shoot, here, here, here, here, no, no, no, there",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a104"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0446",
+"text": "shoot. shoot the enemy",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b10"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0447",
+"text": "shotgun",
+"maj": "SWITCH_WEAPON",
+"count": 1,
+"said": [
+"a643"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0448",
+"text": "should came on the bin",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b228"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0449",
+"text": "should shoot shoot shoot shoot",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a103"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0450",
+"text": "should sit inside",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a618"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0451",
+"text": "should that be true",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a101"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0452",
+"text": "should that wall",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a597"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0453",
+"text": "should that we lose",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a396"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0454",
+"text": "should that window",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a442"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0455",
+"text": "should that window jump below",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b255"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0456",
+"text": "should that windows",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a192"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0457",
+"text": "should there",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b89"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0458",
+"text": "should this",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a602"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0459",
+"text": "should this ball",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a532"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0460",
+"text": "should this bulk",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a594"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0461",
+"text": "should this fall",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a312"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0462",
+"text": "should this glass",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a579"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0463",
+"text": "should this same wall",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a528"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0464",
+"text": "should this volt",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b33"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0465",
+"text": "should this wall",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a310"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0466",
+"text": "should this well",
+"maj": "OPEN_FIRE",
+"count": 2,
+"said": [
+"a316",
+"a321"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0467",
+"text": "should this window",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a603"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0468",
+"text": "should this window jump below",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b257"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0469",
+"text": "should this window jump down",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b266"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0470",
+"text": "should this window this window",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b258"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0471",
+"text": "should this work",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a531"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0472",
+"text": "shut down shut down shoot",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a132"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0473",
+"text": "shut down these windows",
+"maj": "OPEN_FIRE",
+"count": 2,
+"said": [
+"a130",
+"a131"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0474",
+"text": "shut down this window",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a134"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0475",
+"text": "shut that windows",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a673"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0476",
+"text": "shut this window",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a127"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0478",
+"text": "sim dub",
+"maj": "STAND_UP",
+"count": 1,
+"said": [
+"a221"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0479",
+"text": "simmed up",
+"maj": "STAND_UP",
+"count": 1,
+"said": [
+"a123"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0480",
+"text": "sit down",
+"maj": "CROUCH",
+"count": 2,
+"said": [
+"a216",
+"a692"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0481",
+"text": "sit down to the car",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a333"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0482",
+"text": "sit into the scar",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"a507"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0483",
+"text": "so go check there",
+"maj": "CHECK",
+"count": 1,
+"said": [
+"a217"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0485",
+"text": "so this window",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"b21"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0487",
+"text": "stamp here closer",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a342"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0488",
+"text": "stand here",
+"maj": "HOLD_POSITION",
+"count": 2,
+"said": [
+"a360",
+"a645"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0489",
+"text": "stand there",
+"maj": "HOLD_POSITION",
+"count": 5,
+"said": [
+"a361",
+"a362",
+"a363",
+"a365",
+"a646"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0490",
+"text": "stand up",
+"maj": "STAND_UP",
+"count": 9,
+"said": [
+"a125",
+"a151",
+"a169",
+"a222",
+"a256",
+"a578",
+"a672",
+"a719",
+"b80"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0491",
+"text": "stand up come to me in find cover",
+"maj": "STAND_UP",
+"count": 1,
+"said": [
+"a717"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0492",
+"text": "stand up, get up to me and find cover",
+"maj": "STAND_UP",
+"count": 1,
+"said": [
+"a715"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0493",
+"text": "stay here",
+"maj": "HOLD_POSITION",
+"count": 4,
+"said": [
+"a350",
+"a499",
+"a530",
+"b38"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0494",
+"text": "stay stay there",
+"maj": "HOLD_POSITION",
+"count": 1,
+"said": [
+"b45"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0495",
+"text": "stay there",
+"maj": "HOLD_POSITION",
+"count": 1,
+"said": [
+"b72"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0499",
+"text": "step back on the stairs",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a628"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0500",
+"text": "step up",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a70",
+"a386"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0501",
+"text": "step up by the stairs",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a40"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0502",
+"text": "step up by these stairs",
+"maj": "MOVE_TO",
+"count": 3,
+"said": [
+"a72",
+"a324",
+"a327"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0503",
+"text": "step up here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a677"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0504",
+"text": "step up here and find cover",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a11"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0505",
+"text": "stop",
+"maj": "WAIT",
+"count": 3,
+"said": [
+"a272",
+"a652",
+"a729"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0506",
+"text": "stop following me",
+"maj": "WAIT",
+"count": 2,
+"said": [
+"b94",
+"b120"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0507",
+"text": "stop here",
+"maj": "HOLD_POSITION",
+"count": 1,
+"said": [
+"a541"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0508",
+"text": "stop moving there",
+"maj": "HOLD_POSITION",
+"count": 2,
+"said": [
+"b132",
+"b137"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0509",
+"text": "stop, stop, stop",
+"maj": "WAIT",
+"count": 1,
+"said": [
+"a586"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0511",
+"text": "switch them",
+"maj": "SWITCH_WEAPON",
+"count": 1,
+"said": [
+"b192"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0512",
+"text": "switch to pistol",
+"maj": "SWITCH_WEAPON",
+"count": 1,
+"said": [
+"a441"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0513",
+"text": "switch to rifle",
+"maj": "SWITCH_WEAPON",
+"count": 1,
+"said": [
+"a553"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0514",
+"text": "switch to sargon",
+"maj": "SWITCH_WEAPON",
+"count": 1,
+"said": [
+"b219"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0515",
+"text": "switch to shock the gun",
+"maj": "SWITCH_WEAPON",
+"count": 1,
+"said": [
+"b176"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0516",
+"text": "switch to shotgun",
+"maj": "SWITCH_WEAPON",
+"count": 3,
+"said": [
+"a555",
+"b177",
+"b193"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0517",
+"text": "switch weapons",
+"maj": "SWITCH_WEAPON",
+"count": 1,
+"said": [
+"a226"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0519",
+"text": "take position",
+"maj": "HOLD_POSITION",
+"count": 2,
+"said": [
+"b65",
+"b139"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0520",
+"text": "take shotgun",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a679",
+"a680"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0521",
+"text": "take take that shotgun",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b23"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0522",
+"text": "take take the shotgun and pistol",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a431"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0523",
+"text": "take that pistol",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a46"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0524",
+"text": "take that rifle",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a45"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0525",
+"text": "take that shotgun and fertilize",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b83"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0526",
+"text": "take that trifle",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a430"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0527",
+"text": "take the damo",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a107"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0529",
+"text": "take the trifle",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a108"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0530",
+"text": "take this",
+"maj": "MOVE_TO",
+"count": 4,
+"said": [
+"a174",
+"a175",
+"a178",
+"a180"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0531",
+"text": "take this armor",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a208"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0532",
+"text": "take this position",
+"maj": "HOLD_POSITION",
+"count": 1,
+"said": [
+"b248"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0533",
+"text": "take this position on the pin",
+"maj": "HOLD_POSITION",
+"count": 1,
+"said": [
+"b249"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0534",
+"text": "take this rifle",
+"maj": "MOVE_TO",
+"count": 5,
+"said": [
+"a237",
+"a240",
+"a370",
+"a372",
+"a552"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0535",
+"text": "take this shotgun",
+"maj": "MOVE_TO",
+"count": 3,
+"said": [
+"a522",
+"a547",
+"a551"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0536",
+"text": "take this shotgun and pistol",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a432"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0538",
+"text": "the car",
+"maj": "GET_IN",
+"count": 2,
+"said": [
+"a512",
+"a514"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0549",
+"text": "throw a grenade",
+"maj": "FRAG",
+"count": 1,
+"said": [
+"a194"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0550",
+"text": "throw it",
+"maj": "FRAG",
+"count": 1,
+"said": [
+"b106"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0551",
+"text": "throw the grenade there",
+"maj": "FRAG",
+"count": 1,
+"said": [
+"b116"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0552",
+"text": "to come here",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a423"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0553",
+"text": "to this hole move down",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a412"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0554",
+"text": "try again relocating to my pin,",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a383"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0555",
+"text": "trying again but catin",
+"maj": "REPEAT",
+"count": 1,
+"said": [
+"a382"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0556",
+"text": "uh follow me, follow me",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b157"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0557",
+"text": "uh get into the car",
+"maj": "GET_IN",
+"count": 1,
+"said": [
+"b91"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0558",
+"text": "uh jump down here and find cover",
+"maj": "JUMP",
+"count": 1,
+"said": [
+"a714"
+],
+"multi": true,
+"sure": true
+},
+{
+"id": "owner_0559",
+"text": "uh throw the grenade there",
+"maj": "FRAG",
+"count": 1,
+"said": [
+"b115"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0560",
+"text": "uh-huh get in",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b180"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0563",
+"text": "upon fire this wall",
+"maj": "OPEN_FIRE",
+"count": 1,
+"said": [
+"a668"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0565",
+"text": "walk here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a435"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0566",
+"text": "walk up by the stairs",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a558"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0569",
+"text": "we'll find ammo",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a106"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0571",
+"text": "well done",
+"maj": "NONE",
+"count": 1,
+"said": [
+"b202"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0572",
+"text": "well here",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a83"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0573",
+"text": "well there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"b127"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0574",
+"text": "well well there",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a560"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0578",
+"text": "woke up",
+"maj": "MOVE_TO",
+"count": 2,
+"said": [
+"a35",
+"a36"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0579",
+"text": "work the ground",
+"maj": "TILL",
+"count": 1,
+"said": [
+"b76"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0580",
+"text": "world back game back",
+"maj": "GO_BACK",
+"count": 1,
+"said": [
+"a703"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0582",
+"text": "yeah back to me",
+"maj": "COME_BACK",
+"count": 1,
+"said": [
+"a639"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0583",
+"text": "yeah, come here",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"b99"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0584",
+"text": "yeah, get out",
+"maj": "GET_OUT",
+"count": 1,
+"said": [
+"a243"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0585",
+"text": "yep, get up to me",
+"maj": "FOLLOW_ME",
+"count": 1,
+"said": [
+"a575"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0586",
+"text": "yes",
+"maj": "YES",
+"count": 7,
+"said": [
+"a32",
+"a99",
+"a414",
+"a476",
+"a588",
+"a599",
+"a728"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0587",
+"text": "yes, yes",
+"maj": "YES",
+"count": 1,
+"said": [
+"a148"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0588",
+"text": "you are idiot",
+"maj": "NONE",
+"count": 1,
+"said": [
+"a39"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0589",
+"text": "you are you must follow my pin",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a377"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0591",
+"text": "you doubt",
+"maj": "GET_OUT",
+"count": 2,
+"said": [
+"a183",
+"a517"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0592",
+"text": "you have already have it",
+"maj": "NONE",
+"count": 1,
+"said": [
+"a176"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0593",
+"text": "you have to kill him",
+"maj": "ATTACK",
+"count": 1,
+"said": [
+"b164"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0595",
+"text": "you must follow position of my pin",
+"maj": "MOVE_TO",
+"count": 1,
+"said": [
+"a378"
+],
+"multi": false,
+"sure": false
+},
+{
+"id": "owner_0596",
+"text": "you tow the car",
+"maj": "GET_OUT",
+"count": 1,
+"said": [
+"a390"
+],
+"multi": false,
+"sure": true
+},
+{
+"id": "owner_0597",
+"text": "you're out",
+"maj": "GET_OUT",
+"count": 1,
+"said": [
+"a515"
+],
+"multi": false,
+"sure": true
+}
+]
+}

@@ -442,7 +442,7 @@ def _no_duplicate_keys(pairs):
     return dict(pairs)
 
 
-V60_TAGS = ("v60",)
+V60_TAGS = ("v60", "v61")
 
 
 def vocab_file(tag=None):

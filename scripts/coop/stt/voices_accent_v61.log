@@ -1,0 +1,11 @@
+16:09:44  start
+16:09:44  export           exit 0  0 s  accent_seedde_v61.json: 2567 rows
+16:10:03  synth_ru         exit 0  19 s  wav_ru: 1170 new files (1170 rows)
+16:10:03  synth_de         exit 0  19 s  wav_de: 1170 new files (1170 rows)
+16:10:05  synth_seedru     exit 0  21 s  wav_seedru: 2567 new files (2567 rows)
+16:10:05  synth_seedde     exit 0  21 s  wav_seedde: 2567 new files (2567 rows)
+16:22:35  stt_ru           exit 0  750 s      'Drawn the outer room first.' | None
+16:22:35  stt_de           exit 0  750 s      'Drain the adza room first.' | None
+16:24:46  stt_seedru       exit 0  881 s      'On me.' | None
+16:32:53  stt_seedde       exit 0  487 s      'On M.' | None
+16:32:53  done
