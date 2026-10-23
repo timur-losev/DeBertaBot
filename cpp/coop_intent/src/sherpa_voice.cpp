@@ -67,6 +67,19 @@ bool PiperVoice::Load(const VoiceOptions& options, std::string* error) {
     const fs::path tokens = dir / "tokens.txt", data = dir / "espeak-ng-data", card = fs::path(model.u8string() + ".json");
     if (!fs::exists(tokens)) return fail("no tokens.txt in " + options.model_dir);
     if (!fs::is_directory(data)) return fail("no espeak-ng-data in " + options.model_dir);
+    // the deploy's choice of speaker and language for this folder
+    std::string speaker_default, lang = options.lang;
+    if (std::ifstream vin{dir / "voice.json"}) {
+        try {
+            const nlohmann::json v = nlohmann::json::parse(vin);
+            speaker_default = v.value("speaker", std::string());
+            if (lang.empty()) lang = v.value("lang", std::string());
+        } catch (const std::exception& e) {
+            return fail((dir / "voice.json").u8string() + ": " + e.what());
+        }
+    }
+    const fs::path voices = dir / "voices.bin";
+    const bool kokoro = fs::exists(voices);
 
     // the speakers' names and the scales the model was published with
     float noise = 0.667f, noise_w = 0.8f, length = 1.0f;
@@ -92,15 +105,24 @@ bool PiperVoice::Load(const VoiceOptions& options, std::string* error) {
         }
     }
 
-    const std::string model_s = model.u8string(), tokens_s = tokens.u8string(), data_s = data.u8string();
+    const std::string model_s = model.u8string(), tokens_s = tokens.u8string(), data_s = data.u8string(), voices_s = voices.u8string();
     SherpaOnnxOfflineTtsConfig config;
     std::memset(&config, 0, sizeof config);   // every other model family and option of the C API, switched off
-    config.model.vits.model = model_s.c_str();
-    config.model.vits.tokens = tokens_s.c_str();
-    config.model.vits.data_dir = data_s.c_str();
-    config.model.vits.noise_scale = noise;
-    config.model.vits.noise_scale_w = noise_w;
-    config.model.vits.length_scale = length;
+    if (kokoro) {
+        config.model.kokoro.model = model_s.c_str();
+        config.model.kokoro.voices = voices_s.c_str();
+        config.model.kokoro.tokens = tokens_s.c_str();
+        config.model.kokoro.data_dir = data_s.c_str();
+        config.model.kokoro.length_scale = 1.0f;
+        config.model.kokoro.lang = lang.c_str();
+    } else {
+        config.model.vits.model = model_s.c_str();
+        config.model.vits.tokens = tokens_s.c_str();
+        config.model.vits.data_dir = data_s.c_str();
+        config.model.vits.noise_scale = noise;
+        config.model.vits.noise_scale_w = noise_w;
+        config.model.vits.length_scale = length;
+    }
     config.model.num_threads = options.threads;
     config.model.provider = "cpu";
     config.max_num_sentences = 1;
@@ -108,12 +130,13 @@ bool PiperVoice::Load(const VoiceOptions& options, std::string* error) {
     if (!tts) return fail("sherpa-onnx refused the voice in " + options.model_dir);
     if (impl_->tts) SherpaOnnxDestroyOfflineTts(impl_->tts);
     impl_->tts = tts;
-    impl_->name = model.stem().u8string();
+    impl_->name = kokoro ? "kokoro " + dir.filename().u8string() : model.stem().u8string();
     impl_->speakers = std::move(speakers);
     impl_->speed = options.speed > 0 ? options.speed : 1.0f;
     impl_->speaker = 0;
-    const int speaker = SpeakerId(options.speaker);
-    if (speaker < 0) return fail("the voice " + impl_->name + " has no speaker " + options.speaker);
+    const std::string asked = options.speaker.empty() ? speaker_default : options.speaker;
+    const int speaker = SpeakerId(asked);
+    if (speaker < 0) return fail("the voice " + impl_->name + " has no speaker " + asked);
     impl_->speaker = speaker;
     return true;
 }

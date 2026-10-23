@@ -95,6 +95,7 @@
 #include "coop_intent/bot_brain.h"
 #include "coop_intent/decider.h"
 #include "coop_intent/intent_model.h"
+#include "coop_intent/localize.h"
 #include "coop_intent/rewriter.h"
 #include "coop_intent/speech.h"
 #include "coop_intent/tokenizer.h"
@@ -1128,6 +1129,49 @@ Chain* g_chain = nullptr;   // set by --chain DIR; every Chat uses it
 // was trained on three languages, chain v62: scripts/coop/stt/chains6_v62.py), which writes them as English orders; the
 // classifier, the place matcher and the planner then read English as before. The router is English and is not asked.
 std::string g_language = "en";
+
+// --replies FILE (localize.h): the bot's lines in the player's language. Each reply's "say" is written in it ("say_en" keeps
+// the English); a line the game hands to "say" in English is written in it too, and said with --voice-local DIR, the
+// player's language's voice. A sentence the table has no template for keeps the whole line English (and its English voice),
+// and is logged on stderr. The lines this brain wrote in the player's language are kept for a while: the game hands them
+// back to "say" as they are.
+coop::Localizer* g_replies = nullptr;
+std::deque<std::string> g_localized;
+
+bool Localize(const std::string& english, std::string* local) {
+    if (!g_replies || english.empty()) return false;
+    std::string missing;
+    if (!g_replies->Translate(english, local, &missing)) {
+        std::fprintf(stderr, "replies: no %s template for \"%s\" (in \"%s\")\n", g_replies->Language().c_str(), missing.c_str(), english.c_str());
+        return false;
+    }
+    g_localized.push_back(*local);
+    if (g_localized.size() > 64) g_localized.pop_front();
+    return true;
+}
+
+bool IsLocalized(const std::string& line) { return std::find(g_localized.begin(), g_localized.end(), line) != g_localized.end(); }
+
+// a line the game put together from a reply this brain wrote in the player's language and its own English words ("No
+// flashbangs, only frags." + "Зачищаю комнату."): each sentence that is a sentence of a line written here stays, each
+// other one is translated. False when one of them can be neither: the line stays English
+bool LocalizeMixed(const std::string& line, std::string* local) {
+    if (!g_replies) return false;
+    std::string out;
+    for (const std::string& sentence : coop::SplitSentences(line)) {
+        std::string piece;
+        bool ours = false;
+        for (const std::string& l : g_localized)
+            for (const std::string& s : coop::SplitSentences(l))
+                if (s == sentence) ours = true;
+        if (ours) piece = sentence;
+        else if (!Localize(sentence, &piece)) return false;
+        if (!out.empty()) out += ' ';
+        out += piece;
+    }
+    *local = out;
+    return !out.empty();
+}
 
 // ---- the second reader of a line (decider.h): --decider DIR (decider.json and the GGUF it names), off by default
 struct DeciderReader {
@@ -2300,6 +2344,11 @@ json ReplyJson(Chat& chat, const Chat::Turn& t) {
     j["prob"] = d.prob;
     j["action"] = r.action;
     j["say"] = t.reply;
+    if (g_replies && !t.reply.empty()) {
+        std::string local;
+        if (Localize(t.reply, &local)) j["say"] = local, j["say_en"] = t.reply;
+        else j["say_untranslated"] = true;
+    }
     j["ms"] = t.ms;
     j["on_signal"] = d.on_signal;
     j["other"] = d.other;
@@ -2340,7 +2389,25 @@ json ReplyJson(Chat& chat, const Chat::Turn& t) {
     return j;
 }
 
-int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want_stt, bool want_tts, const coop::VoiceOptions* piper) {
+// --replies-check FILE: every template of the table, with every value of each of its slots, translated back: a template or
+// a slot form the table lacks shows here, not in a player's game. Prints each failure and a few samples.
+int RunRepliesCheck(const coop::Localizer& replies) {
+    const std::vector<std::string> ex = replies.Examples();
+    size_t bad = 0;
+    for (size_t i = 0; i < ex.size(); ++i) {
+        std::string out, missing;
+        if (!replies.Translate(ex[i], &out, &missing)) {
+            if (++bad <= 40) std::printf("  NO  \"%s\" (sentence \"%s\")\n", ex[i].c_str(), missing.c_str());
+        } else if (i % 97 == 0) {
+            std::printf("  ok  \"%s\" -> \"%s\"\n", ex[i].c_str(), out.c_str());
+        }
+    }
+    std::printf("replies check (%s): %zu of %zu example lines translated\n", replies.Language().c_str(), ex.size() - bad, ex.size());
+    return bad ? 1 : 0;
+}
+
+int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want_stt, bool want_tts, const coop::VoiceOptions* piper,
+             const coop::VoiceOptions* local_voice) {
     Chat chat(m);
     chat.why = false;
     std::string err;
@@ -2349,22 +2416,30 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
     std::string stt_note, mic_note, tts_note, tts_kind;
     // the bot's voice as audio for the game (Piper): made on a thread of its own, so that a line being made never
     // holds up the talk key; one line at a time, three waiting at most
-    bool piper_ready = false;
+    bool piper_ready = false, local_ready = false;
+    std::string local_note;
 #ifdef COOP_WITH_STT
-    coop::PiperVoice voice;
+    coop::PiperVoice voice, voice_local;
     if (piper) {
         piper_ready = voice.Load(*piper, &err);
         tts_ready = piper_ready;
         tts_note = piper_ready ? voice.Describe() : err;
         if (piper_ready) tts_kind = "piper";
     }
+    // the player's language's voice (--voice-local): the lines written in it are said with it
+    if (piper_ready && local_voice) {
+        local_ready = voice_local.Load(*local_voice, &err);
+        local_note = local_ready ? voice_local.Describe() : err;
+    }
 #else
     if (piper) tts_note = "this coop_cli was built without sherpa-onnx: no Piper voice";
 #endif
+    (void)local_voice;
     struct SpeechJob {
         json id;
         std::string text, speaker;
         float speed = 0;
+        bool local = false;   // in the player's language, with voice_local
     };
     std::mutex out_mutex, jobs_mutex;
     std::condition_variable jobs_cv;
@@ -2422,6 +2497,8 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 std::vector<float> x;
                 std::string warm_err;
                 voice.Speak("Ready.", &x, &warm_err);
+                std::string ready;
+                if (local_ready && g_replies && g_replies->Translate("Ready.", &ready)) voice_local.Speak(ready, &x, &warm_err);
             }
             for (;;) {
                 SpeechJob job;
@@ -2435,12 +2512,14 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 const auto t0 = Clock::now();
                 std::vector<float> x;
                 std::string speak_err;
-                if (!voice.Speak(job.text, &x, &speak_err, job.speaker, job.speed)) {
+                const coop::PiperVoice& v = job.local ? voice_local : voice;
+                if (!v.Speak(job.text, &x, &speak_err, job.speaker, job.speed)) {
                     send({{"event", "error"}, {"id", job.id}, {"cmd", "say"}, {"message", speak_err}});
                     continue;
                 }
-                const int rate = voice.SampleRate();
-                send({{"event", "speech"}, {"id", job.id}, {"text", job.text}, {"rate", rate},
+                const int rate = v.SampleRate();
+                send({{"event", "speech"}, {"id", job.id}, {"text", job.text}, {"lang", job.local && g_replies ? g_replies->Language() : std::string("en")},
+                      {"rate", rate},
                       {"audio_s", rate > 0 ? static_cast<double>(x.size()) / rate : 0.0}, {"ms", Ms(Clock::now() - t0)}, {"pcm16", Base64(Pcm16(x))}});
             }
         });
@@ -2467,6 +2546,8 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
           {"threads", threads}, {"runtime", coop::OrtBackend::RuntimeVersion()}, {"stt", stt_ready}, {"stt_note", stt_note},
           {"mic", mic_ready}, {"mic_note", mic_note}, {"tts", tts_ready}, {"tts_note", tts_note},
           {"tts_kind", tts_kind.empty() ? json(nullptr) : json(tts_kind)},
+          {"replies", g_replies ? json({{"language", g_replies->Language()}, {"templates", g_replies->Templates()}}) : json(nullptr)},
+          {"voice_local", local_ready}, {"voice_local_note", local_note},
           {"chain", g_chain ? json({{"dir", g_chain->dir}, {"router", g_chain->router != nullptr}, {"cut", g_chain->cut},
                                     {"decoder", Chain::Backend()}, {"gpu", g_chain->decoder_options.gpu_layers != 0},
                                     {"memory_lines", g_chain->memory_lines}, {"memory_seconds", g_chain->memory_seconds}})
@@ -2609,7 +2690,15 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                             send({{"event", "hushed"}, {"id", jobs.front().id}});
                             jobs.pop_front();
                         }
-                        jobs.push_back({id, q.at("text").get<std::string>(), q.value("speaker", std::string()), q.value("speed", 0.0f)});
+                        // a line in English from the game is written in the player's language here; one this brain wrote in it
+                        // already (a reply's "say") is said as it is
+                        std::string text = q.at("text").get<std::string>(), local;
+                        bool in_local = false;
+                        if (local_ready && g_replies) {
+                            if (q.value("localized", false) || IsLocalized(text)) in_local = true;
+                            else if (LocalizeMixed(text, &local)) text = local, in_local = true;
+                        }
+                        jobs.push_back({id, text, in_local ? std::string() : q.value("speaker", std::string()), q.value("speed", 0.0f), in_local});
                         jobs_cv.notify_one();
                     }
                 } else if (cmd == "say" && !id.is_null()) {
@@ -2667,7 +2756,8 @@ int main(int argc, char** argv) {
     std::string decider_tests;
     bool decoder_cpu = false;
     int decoder_threads = 4;
-    coop::VoiceOptions piper;
+    coop::VoiceOptions piper, voice_local;
+    std::string replies_file;
     std::string tts_demo_dir, tts_text = "Contact left! Moving to the ping. Which door? The one ahead, 8 m?";
     for (int i = 1; i < argc; ++i) {
         const std::string a = argv[i];
@@ -2683,6 +2773,9 @@ int main(int argc, char** argv) {
         else if (a == "--decoder-threads" && i + 1 < argc) decoder_threads = std::atoi(argv[++i]);
         else if (a == "--chain-tests") mode = "chain-tests";
         else if (a == "--language" && i + 1 < argc) g_language = argv[++i];
+        else if (a == "--replies" && i + 1 < argc) replies_file = argv[++i];
+        else if (a == "--replies-check" && i + 1 < argc) mode = "replies-check", replies_file = argv[++i];
+        else if (a == "--voice-local" && i + 1 < argc) voice_local.model_dir = argv[++i];
         else if (a == "--decider" && i + 1 < argc) decider.dir = argv[++i];
         else if (a == "--decider-mode" && i + 1 < argc) decider.mode = argv[++i];
         else if (a == "--decider-threads" && i + 1 < argc) decider.options.threads = std::atoi(argv[++i]);
@@ -2782,6 +2875,14 @@ int main(int argc, char** argv) {
     if (g_language != "en")
         std::printf("language: %s (every line to the decoder, written in English%s)\n", g_language.c_str(),
                     g_chain ? "" : "; NO decoder is loaded (--chain DIR): the classifier gets the lines as they are and reads little");
+    coop::Localizer replies;
+    if (!replies_file.empty()) {
+        if (!replies.Load(replies_file, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 2;
+        std::printf("replies: %s, %zu templates (%s)\n", replies.Language().c_str(), replies.Templates(), replies_file.c_str());
+        g_replies = &replies;
+    }
+    if (mode == "replies-check") return RunRepliesCheck(replies);
+    voice_local.threads = std::max(piper.threads, 4);   // a Kokoro voice needs them: about 3 s a line on one thread, 0.5 s on four
     if (mode == "decider-tests" && decider.dir.empty()) return std::fprintf(stderr, "--decider-tests needs --decider DIR\n"), 2;
     if (!decider.dir.empty() && !LoadDecider(decider, m.cfg.labels, &err)) {
         // the second reader is optional: a brain whose decider does not load (another label set, a missing file) goes on
@@ -2801,7 +2902,9 @@ int main(int argc, char** argv) {
     }
     if (mode == "decider-tests") return RunDeciderTests(decider, decider_tests);
     if (mode == "chain-tests") return RunChainTests(m, chain);
-    if (mode == "serve") return RunServe(m, speech, opt.threads, serve_stt, serve_tts, piper.model_dir.empty() ? nullptr : &piper);
+    if (mode == "serve")
+        return RunServe(m, speech, opt.threads, serve_stt, serve_tts, piper.model_dir.empty() ? nullptr : &piper,
+                        voice_local.model_dir.empty() ? nullptr : &voice_local);
     if (mode == "golden") return RunGolden(m);
     if (mode == "dialogue") return RunDialogue(m);
     if (mode == "bench") return RunBench(m, load_ms, mem0);

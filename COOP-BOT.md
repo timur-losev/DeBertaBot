@@ -1261,6 +1261,34 @@ of its own; ammo, weapons and health are places to walk to; a negated order is "
   client's world. End to end: `v55.txt` (every request above, including "start shooting" then "to this wall" firing
   where the player looks), `v55_car.txt`, `chain.txt`.
 
+### The bot answers in Russian and Spanish (2026-10-23)
+
+The owner: "давай придумаем, как озвучивать русские и испанские фразы, а потом будут немецкие". The game will be sold,
+so only voices with a commercial licence were sampled: Silero, XTTS and Piper ruslan are non-commercial, and Piper
+irina's licence is unknown. After listening, the owner picked Piper denis (Russian, CC0), Piper ald (Spanish, Mexico,
+Unlicense) and Kokoro em_santa (Spanish, Apache 2.0) to test.
+
+- **Lines:**
+  - [scripts/coop/replies/make_catalogue.py](scripts/coop/replies/make_catalogue.py) writes `catalogue_en.json`: every
+    sentence the bot says, the brain's and the game's, as 278 templates with slots (place, sector, number, item,
+    weapon...).
+  - Two AI translators wrote `replies_ru.json` and `replies_es.json` under [TRANSLATE.md](scripts/coop/replies/TRANSLATE.md).
+    Each slot's words are given in the forms the translations use (cases, gender, articles), with plural rules for
+    numbers.
+- **Engine:**
+  - [localize.h](cpp/coop_intent/include/coop_intent/localize.h) cuts a line into sentences, matches each to a template
+    and writes its translation.
+  - `coop_cli --replies` translates every reply and every line the game hands to `say`; `--voice-local` says them.
+    Kokoro is loaded too (`voices.bin`, `voice.json`).
+  - `--replies-check`: both tables translate 910 of 910 example lines.
+  - Speed: Piper takes 80–170 ms a line, Kokoro 0.3–0.4 s on four threads.
+- **Game:** P4 change 190. `Tests/E2E/multilingual.txt` passes in all three languages, with the bot's own lines spoken
+  in the language.
+- **Not done:**
+  - A Russian female voice: there is none with a commercial licence; it needs our own fine-tune.
+  - One voice for the bot in every language: that needs a voice-cloning model.
+  - German.
+
 ### Chain v63: two orders joined by "and" / «и» / «y» (2026-10-22, evening)
 
 The owner, after playing chain v62 in Russian: "бот не понимает союз и не выполняет команды последовательно. Хотя если я

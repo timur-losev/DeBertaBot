@@ -5,7 +5,9 @@
 //   line --PiperVoice::Speak--> mono samples at SampleRate() (22050 Hz for vctk-medium)
 //
 // A model directory holds what sherpa-onnx's Piper exports hold: one <name>.onnx, its <name>.onnx.json (the speaker
-// names), tokens.txt and espeak-ng-data/.
+// names), tokens.txt and espeak-ng-data/. Or a Kokoro model as sherpa-onnx exports it (model.onnx, voices.bin,
+// tokens.txt, espeak-ng-data/; 2026-10-23, the Spanish test voice em_santa): its speakers go by number. Either may
+// hold a voice.json, {"speaker": "53", "lang": "es"}, the speaker and the language used when none is asked for.
 #pragma once
 
 #include <memory>
@@ -21,6 +23,8 @@ struct VoiceOptions {
     int threads = 1;
     // > 1 speaks faster (the model's length scale is divided by it)
     float speed = 1.0f;
+    // a Kokoro model's language ("es"); empty: voice.json's, else the model's default
+    std::string lang;
 };
 
 class PiperVoice {

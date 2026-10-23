@@ -1,0 +1,1650 @@
+{
+ "note": "Every sentence the bot says, in English, as templates: the source the Russian and Spanish reply tables are translated",
+ "sentences": [
+  {
+   "en": "On you.",
+   "source": "coop_cli.cpp kLines FOLLOW_ME"
+  },
+  {
+   "en": "Right behind you.",
+   "source": "coop_cli.cpp kLines FOLLOW_ME"
+  },
+  {
+   "en": "Moving with you.",
+   "source": "coop_cli.cpp kLines FOLLOW_ME"
+  },
+  {
+   "en": "Moving to the ping.",
+   "source": "coop_cli.cpp kLines MOVE_TO"
+  },
+  {
+   "en": "On my way there.",
+   "source": "coop_cli.cpp kLines MOVE_TO"
+  },
+  {
+   "en": "Relocating.",
+   "source": "coop_cli.cpp kLines MOVE_TO"
+  },
+  {
+   "en": "Holding here.",
+   "source": "coop_cli.cpp kLines HOLD_POSITION"
+  },
+  {
+   "en": "Staying put.",
+   "source": "coop_cli.cpp kLines HOLD_POSITION"
+  },
+  {
+   "en": "Not moving.",
+   "source": "coop_cli.cpp kLines HOLD_POSITION"
+  },
+  {
+   "en": "Holding that angle.",
+   "source": "coop_cli.cpp kLines HOLD_ANGLE"
+  },
+  {
+   "en": "Eyes on it.",
+   "source": "coop_cli.cpp kLines HOLD_ANGLE"
+  },
+  {
+   "en": "Angle locked.",
+   "source": "coop_cli.cpp kLines HOLD_ANGLE"
+  },
+  {
+   "en": "I've got the other side.",
+   "source": "coop_cli.cpp kLines HOLD_OTHER_ANGLE"
+  },
+  {
+   "en": "Taking the other angle.",
+   "source": "coop_cli.cpp kLines HOLD_OTHER_ANGLE"
+  },
+  {
+   "en": "Watching the other one.",
+   "source": "coop_cli.cpp kLines HOLD_OTHER_ANGLE"
+  },
+  {
+   "en": "Going around.",
+   "source": "coop_cli.cpp kLines FLANK"
+  },
+  {
+   "en": "Flanking, keep them busy.",
+   "source": "coop_cli.cpp kLines FLANK"
+  },
+  {
+   "en": "Taking the long way.",
+   "source": "coop_cli.cpp kLines FLANK"
+  },
+  {
+   "en": "Going through the window.",
+   "source": "coop_cli.cpp kLines VAULT_WINDOW"
+  },
+  {
+   "en": "Vaulting in.",
+   "source": "coop_cli.cpp kLines VAULT_WINDOW"
+  },
+  {
+   "en": "Window, going.",
+   "source": "coop_cli.cpp kLines VAULT_WINDOW"
+  },
+  {
+   "en": "On the rope.",
+   "source": "coop_cli.cpp kLines RAPPEL"
+  },
+  {
+   "en": "Rappelling.",
+   "source": "coop_cli.cpp kLines RAPPEL"
+  },
+  {
+   "en": "Heading up top.",
+   "source": "coop_cli.cpp kLines RAPPEL"
+  },
+  {
+   "en": "Charge set, breaching!",
+   "source": "coop_cli.cpp kLines BREACH"
+  },
+  {
+   "en": "Blowing it open.",
+   "source": "coop_cli.cpp kLines BREACH"
+  },
+  {
+   "en": "Breaching!",
+   "source": "coop_cli.cpp kLines BREACH"
+  },
+  {
+   "en": "Droning it out.",
+   "source": "coop_cli.cpp kLines DRONE"
+  },
+  {
+   "en": "Drone's in.",
+   "source": "coop_cli.cpp kLines DRONE"
+  },
+  {
+   "en": "Scouting first.",
+   "source": "coop_cli.cpp kLines DRONE"
+  },
+  {
+   "en": "Flash out!",
+   "source": "coop_cli.cpp kLines FLASH"
+  },
+  {
+   "en": "Popping a flash.",
+   "source": "coop_cli.cpp kLines FLASH"
+  },
+  {
+   "en": "Stun going in.",
+   "source": "coop_cli.cpp kLines FLASH"
+  },
+  {
+   "en": "Smoke out.",
+   "source": "coop_cli.cpp kLines SMOKE"
+  },
+  {
+   "en": "Popping smoke.",
+   "source": "coop_cli.cpp kLines SMOKE"
+  },
+  {
+   "en": "Smoking it.",
+   "source": "coop_cli.cpp kLines SMOKE"
+  },
+  {
+   "en": "Frag out!",
+   "source": "coop_cli.cpp kLines FRAG"
+  },
+  {
+   "en": "Nade going in.",
+   "source": "coop_cli.cpp kLines FRAG"
+  },
+  {
+   "en": "Throwing a frag.",
+   "source": "coop_cli.cpp kLines FRAG"
+  },
+  {
+   "en": "Covering you, go.",
+   "source": "coop_cli.cpp kLines COVER_ME"
+  },
+  {
+   "en": "I've got your back.",
+   "source": "coop_cli.cpp kLines COVER_ME"
+  },
+  {
+   "en": "Go, I'm on it.",
+   "source": "coop_cli.cpp kLines COVER_ME"
+  },
+  {
+   "en": "Pushing in!",
+   "source": "coop_cli.cpp kLines ENTRY"
+  },
+  {
+   "en": "Taking the room.",
+   "source": "coop_cli.cpp kLines ENTRY"
+  },
+  {
+   "en": "Entry, entry!",
+   "source": "coop_cli.cpp kLines ENTRY"
+  },
+  {
+   "en": "Falling back.",
+   "source": "coop_cli.cpp kLines FALL_BACK; game: GET_OUT on foot"
+  },
+  {
+   "en": "Pulling out.",
+   "source": "coop_cli.cpp kLines FALL_BACK"
+  },
+  {
+   "en": "Backing off.",
+   "source": "coop_cli.cpp kLines FALL_BACK"
+  },
+  {
+   "en": "Planting.",
+   "source": "coop_cli.cpp kLines PLANT; coop_cli.cpp kLines PLANT_CROP"
+  },
+  {
+   "en": "Getting the plant down.",
+   "source": "coop_cli.cpp kLines PLANT"
+  },
+  {
+   "en": "Plant going down, cover me.",
+   "source": "coop_cli.cpp kLines PLANT"
+  },
+  {
+   "en": "Defusing.",
+   "source": "coop_cli.cpp kLines DEFUSE"
+  },
+  {
+   "en": "On the defuser.",
+   "source": "coop_cli.cpp kLines DEFUSE"
+  },
+  {
+   "en": "Working on it.",
+   "source": "coop_cli.cpp kLines DEFUSE"
+  },
+  {
+   "en": "Coming to get you!",
+   "source": "coop_cli.cpp kLines REVIVE_ME"
+  },
+  {
+   "en": "Hold on, reviving.",
+   "source": "coop_cli.cpp kLines REVIVE_ME"
+  },
+  {
+   "en": "On my way, stay down.",
+   "source": "coop_cli.cpp kLines REVIVE_ME"
+  },
+  {
+   "en": "Coming to help.",
+   "source": "coop_cli.cpp kLines HELP_INTERACTION; coop_cli.cpp kLines HELP"
+  },
+  {
+   "en": "On my way to you.",
+   "source": "coop_cli.cpp kLines HELP_INTERACTION; coop_cli.cpp kLines HELP"
+  },
+  {
+   "en": "Hold on, coming.",
+   "source": "coop_cli.cpp kLines HELP_INTERACTION"
+  },
+  {
+   "en": "Going back.",
+   "source": "coop_cli.cpp kLines GO_BACK"
+  },
+  {
+   "en": "Heading back.",
+   "source": "coop_cli.cpp kLines GO_BACK"
+  },
+  {
+   "en": "Back to where I was.",
+   "source": "coop_cli.cpp kLines GO_BACK"
+  },
+  {
+   "en": "Switching weapons.",
+   "source": "coop_cli.cpp kLines SWITCH_WEAPON"
+  },
+  {
+   "en": "Swapping.",
+   "source": "coop_cli.cpp kLines SWITCH_WEAPON"
+  },
+  {
+   "en": "Changing guns.",
+   "source": "coop_cli.cpp kLines SWITCH_WEAPON"
+  },
+  {
+   "en": "Reloading.",
+   "source": "coop_cli.cpp kLines RELOAD; game: RELOAD"
+  },
+  {
+   "en": "Changing mags.",
+   "source": "coop_cli.cpp kLines RELOAD"
+  },
+  {
+   "en": "Reloading, cover me.",
+   "source": "coop_cli.cpp kLines RELOAD"
+  },
+  {
+   "en": "Holding up.",
+   "source": "coop_cli.cpp kLines WAIT"
+  },
+  {
+   "en": "Standing by.",
+   "source": "coop_cli.cpp kLines WAIT"
+  },
+  {
+   "en": "Copy, waiting.",
+   "source": "coop_cli.cpp kLines WAIT"
+  },
+  {
+   "en": "Getting into cover.",
+   "source": "coop_cli.cpp kLines TAKE_COVER"
+  },
+  {
+   "en": "Finding cover.",
+   "source": "coop_cli.cpp kLines TAKE_COVER"
+  },
+  {
+   "en": "Hiding.",
+   "source": "coop_cli.cpp kLines TAKE_COVER"
+  },
+  {
+   "en": "Opening it.",
+   "source": "coop_cli.cpp kLines OPEN"
+  },
+  {
+   "en": "Getting it open.",
+   "source": "coop_cli.cpp kLines OPEN"
+  },
+  {
+   "en": "Opening, not going in.",
+   "source": "coop_cli.cpp kLines OPEN"
+  },
+  {
+   "en": "Attacking!",
+   "source": "coop_cli.cpp kLines ATTACK"
+  },
+  {
+   "en": "Engaging.",
+   "source": "coop_cli.cpp kLines ATTACK"
+  },
+  {
+   "en": "Going on the offensive.",
+   "source": "coop_cli.cpp kLines ATTACK"
+  },
+  {
+   "en": "Opening fire!",
+   "source": "coop_cli.cpp kLines OPEN_FIRE"
+  },
+  {
+   "en": "Weapons free.",
+   "source": "coop_cli.cpp kLines OPEN_FIRE"
+  },
+  {
+   "en": "Firing!",
+   "source": "coop_cli.cpp kLines OPEN_FIRE"
+  },
+  {
+   "en": "Holding fire.",
+   "source": "coop_cli.cpp kLines HOLD_FIRE"
+  },
+  {
+   "en": "Weapons tight.",
+   "source": "coop_cli.cpp kLines HOLD_FIRE"
+  },
+  {
+   "en": "Ceasing fire.",
+   "source": "coop_cli.cpp kLines HOLD_FIRE"
+  },
+  {
+   "en": "Looking.",
+   "source": "coop_cli.cpp kLines LOOK_AT"
+  },
+  {
+   "en": "I see it.",
+   "source": "coop_cli.cpp kLines LOOK_AT"
+  },
+  {
+   "en": "Turning to look.",
+   "source": "coop_cli.cpp kLines LOOK_AT"
+  },
+  {
+   "en": "Looking at you.",
+   "source": "coop_cli.cpp kLines LOOK_AT_ME"
+  },
+  {
+   "en": "Yeah, I see you.",
+   "source": "coop_cli.cpp kLines LOOK_AT_ME"
+  },
+  {
+   "en": "Facing you.",
+   "source": "coop_cli.cpp kLines LOOK_AT_ME"
+  },
+  {
+   "en": "Hang on, I'm coming.",
+   "source": "coop_cli.cpp kLines HELP"
+  },
+  {
+   "en": "Checking it.",
+   "source": "coop_cli.cpp kLines CHECK"
+  },
+  {
+   "en": "I'll check.",
+   "source": "coop_cli.cpp kLines CHECK"
+  },
+  {
+   "en": "Going to take a look.",
+   "source": "coop_cli.cpp kLines CHECK"
+  },
+  {
+   "en": "Suppressing!",
+   "source": "coop_cli.cpp kLines SUPPRESS"
+  },
+  {
+   "en": "Covering fire!",
+   "source": "coop_cli.cpp kLines SUPPRESS"
+  },
+  {
+   "en": "Keeping their heads down.",
+   "source": "coop_cli.cpp kLines SUPPRESS"
+  },
+  {
+   "en": "Jumping.",
+   "source": "coop_cli.cpp kLines JUMP"
+  },
+  {
+   "en": "On it, jumping.",
+   "source": "coop_cli.cpp kLines JUMP"
+  },
+  {
+   "en": "Going over.",
+   "source": "coop_cli.cpp kLines JUMP"
+  },
+  {
+   "en": "Coming back.",
+   "source": "coop_cli.cpp kLines COME_BACK"
+  },
+  {
+   "en": "On my way back.",
+   "source": "coop_cli.cpp kLines COME_BACK"
+  },
+  {
+   "en": "Returning.",
+   "source": "coop_cli.cpp kLines COME_BACK"
+  },
+  {
+   "en": "Crouching.",
+   "source": "coop_cli.cpp kLines CROUCH"
+  },
+  {
+   "en": "Getting low.",
+   "source": "coop_cli.cpp kLines CROUCH"
+  },
+  {
+   "en": "Down on a knee.",
+   "source": "coop_cli.cpp kLines CROUCH"
+  },
+  {
+   "en": "Going prone.",
+   "source": "coop_cli.cpp kLines PRONE"
+  },
+  {
+   "en": "Lying down.",
+   "source": "coop_cli.cpp kLines PRONE"
+  },
+  {
+   "en": "Flat on the ground.",
+   "source": "coop_cli.cpp kLines PRONE"
+  },
+  {
+   "en": "Standing up.",
+   "source": "coop_cli.cpp kLines STAND_UP"
+  },
+  {
+   "en": "On my feet.",
+   "source": "coop_cli.cpp kLines STAND_UP"
+  },
+  {
+   "en": "Up.",
+   "source": "coop_cli.cpp kLines STAND_UP"
+  },
+  {
+   "en": "Yes, got it.",
+   "source": "coop_cli.cpp kLines YES"
+  },
+  {
+   "en": "Understood: yes.",
+   "source": "coop_cli.cpp kLines YES"
+  },
+  {
+   "en": "Copy, that's a yes.",
+   "source": "coop_cli.cpp kLines YES"
+  },
+  {
+   "en": "No, got it.",
+   "source": "coop_cli.cpp kLines NO"
+  },
+  {
+   "en": "Understood: no.",
+   "source": "coop_cli.cpp kLines NO"
+  },
+  {
+   "en": "Copy, that's a no.",
+   "source": "coop_cli.cpp kLines NO"
+  },
+  {
+   "en": "Maybe, got it.",
+   "source": "coop_cli.cpp kLines MAYBE"
+  },
+  {
+   "en": "Understood: not certain.",
+   "source": "coop_cli.cpp kLines MAYBE"
+  },
+  {
+   "en": "Copy, I'll use my judgement.",
+   "source": "coop_cli.cpp kLines MAYBE"
+  },
+  {
+   "en": "You don't know, got it.",
+   "source": "coop_cli.cpp kLines DONT_KNOW"
+  },
+  {
+   "en": "Understood: no answer.",
+   "source": "coop_cli.cpp kLines DONT_KNOW"
+  },
+  {
+   "en": "Copy, you're not sure.",
+   "source": "coop_cli.cpp kLines DONT_KNOW"
+  },
+  {
+   "en": "Getting in.",
+   "source": "coop_cli.cpp kLines GET_IN"
+  },
+  {
+   "en": "Hopping in.",
+   "source": "coop_cli.cpp kLines GET_IN"
+  },
+  {
+   "en": "In the car.",
+   "source": "coop_cli.cpp kLines GET_IN"
+  },
+  {
+   "en": "Getting out.",
+   "source": "coop_cli.cpp kLines GET_OUT"
+  },
+  {
+   "en": "Hopping out.",
+   "source": "coop_cli.cpp kLines GET_OUT"
+  },
+  {
+   "en": "Out of the car.",
+   "source": "coop_cli.cpp kLines GET_OUT"
+  },
+  {
+   "en": "Again.",
+   "source": "coop_cli.cpp kLines REPEAT"
+  },
+  {
+   "en": "Trying again.",
+   "source": "coop_cli.cpp kLines REPEAT"
+  },
+  {
+   "en": "One more time.",
+   "source": "coop_cli.cpp kLines REPEAT"
+  },
+  {
+   "en": "Getting it in the ground.",
+   "source": "coop_cli.cpp kLines PLANT_CROP"
+  },
+  {
+   "en": "Sowing.",
+   "source": "coop_cli.cpp kLines PLANT_CROP"
+  },
+  {
+   "en": "Watering.",
+   "source": "coop_cli.cpp kLines WATER"
+  },
+  {
+   "en": "On the watering.",
+   "source": "coop_cli.cpp kLines WATER"
+  },
+  {
+   "en": "Giving them water.",
+   "source": "coop_cli.cpp kLines WATER"
+  },
+  {
+   "en": "Harvesting.",
+   "source": "coop_cli.cpp kLines HARVEST"
+  },
+  {
+   "en": "Bringing it in.",
+   "source": "coop_cli.cpp kLines HARVEST"
+  },
+  {
+   "en": "Picking it.",
+   "source": "coop_cli.cpp kLines HARVEST"
+  },
+  {
+   "en": "Working the ground.",
+   "source": "coop_cli.cpp kLines TILL"
+  },
+  {
+   "en": "On the soil.",
+   "source": "coop_cli.cpp kLines TILL"
+  },
+  {
+   "en": "Getting the ground ready.",
+   "source": "coop_cli.cpp kLines TILL"
+  },
+  {
+   "en": "Feeding them.",
+   "source": "coop_cli.cpp kLines FEED"
+  },
+  {
+   "en": "On the feeding.",
+   "source": "coop_cli.cpp kLines FEED"
+  },
+  {
+   "en": "Getting them fed.",
+   "source": "coop_cli.cpp kLines FEED"
+  },
+  {
+   "en": "Collecting.",
+   "source": "coop_cli.cpp kLines COLLECT"
+  },
+  {
+   "en": "Gathering it up.",
+   "source": "coop_cli.cpp kLines COLLECT"
+  },
+  {
+   "en": "On it, collecting.",
+   "source": "coop_cli.cpp kLines COLLECT"
+  },
+  {
+   "en": "Bringing it.",
+   "source": "coop_cli.cpp kLines DELIVER"
+  },
+  {
+   "en": "On the way with it.",
+   "source": "coop_cli.cpp kLines DELIVER"
+  },
+  {
+   "en": "Carrying it over.",
+   "source": "coop_cli.cpp kLines DELIVER"
+  },
+  {
+   "en": "Building.",
+   "source": "coop_cli.cpp kLines BUILD"
+  },
+  {
+   "en": "Putting it up.",
+   "source": "coop_cli.cpp kLines BUILD"
+  },
+  {
+   "en": "On the build.",
+   "source": "coop_cli.cpp kLines BUILD"
+  },
+  {
+   "en": "Repairing.",
+   "source": "coop_cli.cpp kLines REPAIR"
+  },
+  {
+   "en": "Fixing it.",
+   "source": "coop_cli.cpp kLines REPAIR"
+  },
+  {
+   "en": "Patching it up.",
+   "source": "coop_cli.cpp kLines REPAIR"
+  },
+  {
+   "en": "Tearing it down.",
+   "source": "coop_cli.cpp kLines DEMOLISH"
+  },
+  {
+   "en": "Taking it apart.",
+   "source": "coop_cli.cpp kLines DEMOLISH"
+  },
+  {
+   "en": "Demolishing.",
+   "source": "coop_cli.cpp kLines DEMOLISH"
+  },
+  {
+   "en": "Copy.",
+   "source": "coop_cli.cpp kAck; game: dead and given an order; followed by the next"
+  },
+  {
+   "en": "Noted.",
+   "source": "coop_cli.cpp kAck"
+  },
+  {
+   "en": "Heard.",
+   "source": "coop_cli.cpp kAck"
+  },
+  {
+   "en": "Say again?",
+   "source": "coop_cli.cpp kAgain"
+  },
+  {
+   "en": "Didn't catch that.",
+   "source": "coop_cli.cpp kAgain"
+  },
+  {
+   "en": "Come again?",
+   "source": "coop_cli.cpp kAgain"
+  },
+  {
+   "en": "Copy, stopping.",
+   "source": "world.cpp: a negated order stops the bot"
+  },
+  {
+   "en": "I don't see a pin.",
+   "source": "world.cpp: the order names the pin and there is none; followed by 'Where?'"
+  },
+  {
+   "en": "I don't know where you mean.",
+   "source": "world.cpp: 'there', 'this' with nothing to point at"
+  },
+  {
+   "en": "I can't find {zone}.",
+   "source": "world.cpp: a zone of the map ('the way up') that the world has not"
+  },
+  {
+   "en": "I see no {object}.",
+   "source": "world.cpp: the object named is not in the world"
+  },
+  {
+   "en": "Where?",
+   "source": "world.cpp: the question after the three above"
+  },
+  {
+   "en": "Which {object}?",
+   "source": "world.cpp: several of the object; followed by 'The one ..., N m?'"
+  },
+  {
+   "en": "The one {sector}, {n} m?",
+   "source": "world.cpp: offering a candidate: where it is from the player and how far"
+  },
+  {
+   "en": "Got it.",
+   "source": "world.cpp: the player's answer settled the question"
+  },
+  {
+   "en": "Copy, never mind.",
+   "source": "world.cpp: the player dropped the question"
+  },
+  {
+   "en": "I'll take the one {sector}, {n} m.",
+   "source": "world.cpp: the bot picks a candidate itself"
+  },
+  {
+   "en": "Which one, then?",
+   "source": "world.cpp: the player said no to every candidate; followed by 'Point at it.'"
+  },
+  {
+   "en": "Point at it.",
+   "source": "world.cpp"
+  },
+  {
+   "en": "{Phrase}.",
+   "source": "world.cpp: the order said back, e.g. 'Move there.', 'Hold position.'"
+  },
+  {
+   "en": "{Phrase}, {where}.",
+   "source": "world.cpp: the order said back with where, e.g. 'Open fire, on your pin.'"
+  },
+  {
+   "en": "Ready to {phrase}.",
+   "source": "coop_cli.cpp / world.cpp: an order queued for the player's signal; followed by 'On your go.'"
+  },
+  {
+   "en": "On your go.",
+   "source": "coop_cli.cpp / world.cpp: the bot waits for the player's 'go'"
+  },
+  {
+   "en": "Copy, standing down.",
+   "source": "coop_cli.cpp: a negated order"
+  },
+  {
+   "en": "Now!",
+   "source": "coop_cli.cpp: the queued order is carried out on the signal; followed by the order's line"
+  },
+  {
+   "en": "Going!",
+   "source": "coop_cli.cpp: 'go' with nothing queued"
+  },
+  {
+   "en": "Taking the other one.",
+   "source": "coop_cli.cpp: 'the other one'"
+  },
+  {
+   "en": "Ready.",
+   "source": "coop_cli.cpp: the voice's warm-up line"
+  },
+  {
+   "en": "I can't build that: no {item} in my build menu.",
+   "source": "world.cpp kRefuse BUILD"
+  },
+  {
+   "en": "I can't plant that: I have no {item} to plant.",
+   "source": "world.cpp kRefuse PLANT_CROP"
+  },
+  {
+   "en": "I can't water that: I see no {item}.",
+   "source": "world.cpp kRefuse WATER"
+  },
+  {
+   "en": "I can't harvest that: I see no {item}.",
+   "source": "world.cpp kRefuse HARVEST"
+  },
+  {
+   "en": "I can't feed that: I see no {item}.",
+   "source": "world.cpp kRefuse FEED"
+  },
+  {
+   "en": "I can't collect that: I see no {item}.",
+   "source": "world.cpp kRefuse COLLECT"
+  },
+  {
+   "en": "I can't bring that: I have no {item}.",
+   "source": "world.cpp kRefuse DELIVER"
+  },
+  {
+   "en": "I can't repair that: I see no {item}.",
+   "source": "world.cpp kRefuse REPAIR"
+  },
+  {
+   "en": "I can't tear that down: I see no {item}.",
+   "source": "world.cpp kRefuse DEMOLISH"
+  },
+  {
+   "en": "Back in the fight.",
+   "source": "game: respawned"
+  },
+  {
+   "en": "I'm down!",
+   "source": "game: died"
+  },
+  {
+   "en": "I can't get in.",
+   "source": "game: car"
+  },
+  {
+   "en": "Someone's in it.",
+   "source": "game: car taken"
+  },
+  {
+   "en": "I can't get to the car.",
+   "source": "game: car"
+  },
+  {
+   "en": "Again what?",
+   "source": "game: REPEAT with nothing to repeat"
+  },
+  {
+   "en": "Taking fire, {side}!",
+   "source": "game: hit by an enemy out of view; side from the player"
+  },
+  {
+   "en": "Target down.",
+   "source": "game: killed its target"
+  },
+  {
+   "en": "Contact, {side}!",
+   "source": "game: saw a new enemy; side from the player"
+  },
+  {
+   "en": "Jumping down.",
+   "source": "game: drop"
+  },
+  {
+   "en": "I can't get down here.",
+   "source": "game: drop"
+  },
+  {
+   "en": "I'm here.",
+   "source": "game: HELP_INTERACTION arrived; followed by 'What do I do?'"
+  },
+  {
+   "en": "What do I do?",
+   "source": "game: HELP_INTERACTION"
+  },
+  {
+   "en": "I can't get there.",
+   "source": "game: no path"
+  },
+  {
+   "en": "In cover.",
+   "source": "game: TAKE_COVER arrived"
+  },
+  {
+   "en": "I'm with you.",
+   "source": "game: FOLLOW_ME arrived"
+  },
+  {
+   "en": "Closest I can get.",
+   "source": "game: walk ended short"
+  },
+  {
+   "en": "I'm back.",
+   "source": "game: COME_BACK / GO_BACK arrived"
+  },
+  {
+   "en": "Flank's set.",
+   "source": "game: FLANK arrived"
+  },
+  {
+   "en": "In position.",
+   "source": "game: MOVE_TO arrived"
+  },
+  {
+   "en": "Already on my {weapon}.",
+   "source": "game: SWITCH_WEAPON to the one in hand"
+  },
+  {
+   "en": "No {weapon} on me.",
+   "source": "game: SWITCH_WEAPON to one it has not"
+  },
+  {
+   "en": "Nothing else with ammo.",
+   "source": "game: SWITCH_WEAPON"
+  },
+  {
+   "en": "This is all I've got.",
+   "source": "game: SWITCH_WEAPON"
+  },
+  {
+   "en": "Switching to {weapon}.",
+   "source": "game: SWITCH_WEAPON ordered"
+  },
+  {
+   "en": "Out of ammo, switching to {weapon}!",
+   "source": "game: its own switch when the weapon is empty"
+  },
+  {
+   "en": "Nothing to reload.",
+   "source": "game: RELOAD"
+  },
+  {
+   "en": "No spare ammo.",
+   "source": "game: RELOAD"
+  },
+  {
+   "en": "Mag's full.",
+   "source": "game: RELOAD"
+  },
+  {
+   "en": "Can't reload right now.",
+   "source": "game: RELOAD"
+  },
+  {
+   "en": "Frag's coming back!",
+   "source": "game: its grenade bounced back"
+  },
+  {
+   "en": "Grenade by you, move!",
+   "source": "game: grenade near the player"
+  },
+  {
+   "en": "I'm in.",
+   "source": "game: in the car"
+  },
+  {
+   "en": "I can't get out.",
+   "source": "game: car"
+  },
+  {
+   "en": "I'm down, back in a moment.",
+   "source": "game: dead and given an order"
+  },
+  {
+   "en": "I'm down, give me a moment.",
+   "source": "game: dead and given an order"
+  },
+  {
+   "en": "I don't see a way in.",
+   "source": "game: 'go inside' with no covered spot"
+  },
+  {
+   "en": "No free car around.",
+   "source": "game: GET_IN"
+  },
+  {
+   "en": "Back where?",
+   "source": "game: GO_BACK before any move; followed by 'I haven't moved.'"
+  },
+  {
+   "en": "I haven't moved.",
+   "source": "game: GO_BACK"
+  },
+  {
+   "en": "Where are you?",
+   "source": "game: FOLLOW_ME with the player out of reach"
+  },
+  {
+   "en": "Up where?",
+   "source": "game: 'go up' with no way up; followed by 'Mark it.'"
+  },
+  {
+   "en": "Down where?",
+   "source": "game: 'go down' with no way down"
+  },
+  {
+   "en": "Mark it.",
+   "source": "game: asks for a pin"
+  },
+  {
+   "en": "No cover here, staying low.",
+   "source": "game: TAKE_COVER"
+  },
+  {
+   "en": "Too close for a frag.",
+   "source": "game: FRAG"
+  },
+  {
+   "en": "Too far for a frag.",
+   "source": "game: FRAG"
+  },
+  {
+   "en": "You're in my way.",
+   "source": "game: FRAG: the player in the arc"
+  },
+  {
+   "en": "No clear throw from here.",
+   "source": "game: FRAG"
+  },
+  {
+   "en": "Nowhere to jump down here.",
+   "source": "game: JUMP down"
+  },
+  {
+   "en": "I can't reach you.",
+   "source": "game: FOLLOW_ME"
+  },
+  {
+   "en": "Contact here!",
+   "source": "game: CHECK found an enemy"
+  },
+  {
+   "en": "Clear.",
+   "source": "game: CHECK found none"
+  },
+  {
+   "en": "Frag's not ready.",
+   "source": "game: FRAG on cooldown"
+  },
+  {
+   "en": "I'm out of ammo!",
+   "source": "game: nothing left"
+  },
+  {
+   "en": "That's too far.",
+   "source": "game: order too far from the player"
+  },
+  {
+   "en": "I don't know how to do that.",
+   "source": "game: an intent the game does not know"
+  },
+  {
+   "en": "Moving.",
+   "source": "game: MOVE_TO to the player's pin"
+  },
+  {
+   "en": "Coming to you.",
+   "source": "game: MOVE_TO to the speaker"
+  },
+  {
+   "en": "No charges on me.",
+   "source": "game: BREACH; followed by 'Pushing in instead.'"
+  },
+  {
+   "en": "Pushing in instead.",
+   "source": "game: BREACH"
+  },
+  {
+   "en": "Can't go prone here.",
+   "source": "game: PRONE; followed by 'Staying low.'"
+  },
+  {
+   "en": "Staying low.",
+   "source": "game: PRONE"
+  },
+  {
+   "en": "Nothing to open there.",
+   "source": "game: OPEN; followed by 'Moving up to it.'"
+  },
+  {
+   "en": "Moving up to it.",
+   "source": "game: OPEN"
+  },
+  {
+   "en": "Didn't catch part of that.",
+   "source": "game: a line of several orders with one not understood"
+  },
+  {
+   "en": "Understood: {verb}.",
+   "source": "game: farm or build order on a map without those mechanics; followed by 'No farming or building on this map yet.'"
+  },
+  {
+   "en": "Understood: {verb} {item}.",
+   "source": "game: the same with the item the player named"
+  },
+  {
+   "en": "No farming or building on this map yet.",
+   "source": "game: farm or build order"
+  },
+  {
+   "en": "No rope on me.",
+   "source": "game: RAPPEL"
+  },
+  {
+   "en": "I don't have a drone.",
+   "source": "game: DRONE"
+  },
+  {
+   "en": "No flashbangs, only frags.",
+   "source": "game: FLASH"
+  },
+  {
+   "en": "No smoke, only frags.",
+   "source": "game: SMOKE"
+  },
+  {
+   "en": "Nothing to plant here.",
+   "source": "game: PLANT (bomb)"
+  },
+  {
+   "en": "Nothing to defuse here.",
+   "source": "game: DEFUSE"
+  },
+  {
+   "en": "I can't do that here.",
+   "source": "game: other"
+  }
+ ],
+ "slots": {
+  "where": {
+   "note": "where the order goes, after a comma: 'Open fire, on your pin.'",
+   "values": [
+    "on your pin",
+    "here",
+    "there",
+    "to the left",
+    "to the right",
+    "forward",
+    "back",
+    "up",
+    "down"
+   ]
+  },
+  "sector": {
+   "note": "where a candidate is, seen from the player: 'The one on the right, 23 m?'",
+   "values": [
+    "above",
+    "below",
+    "ahead",
+    "behind you",
+    "on the left",
+    "on the right"
+   ]
+  },
+  "zone": {
+   "note": "a part of the map, with its article: 'I can't find the way up.'",
+   "values": [
+    "the basement",
+    "the first floor",
+    "the second floor",
+    "the top floor",
+    "the roof",
+    "the way up",
+    "the way down",
+    "the way in",
+    "that place"
+   ]
+  },
+  "side": {
+   "note": "where an enemy is, seen from the player: 'Contact, ahead, high!'",
+   "values": [
+    "ahead",
+    "ahead, high",
+    "ahead, low",
+    "on us",
+    "on us, high",
+    "on us, low",
+    "behind us",
+    "behind us, high",
+    "behind us, low",
+    "right",
+    "right, high",
+    "right, low",
+    "left",
+    "left, high",
+    "left, low"
+   ]
+  },
+  "weapon": {
+   "note": "a weapon's name: 'Switching to pistol.'",
+   "values": [
+    "pistol",
+    "rifle",
+    "shotgun",
+    "weapon"
+   ]
+  },
+  "verb": {
+   "note": "a farm or build action: 'Understood: tear down.'",
+   "values": [
+    "plant",
+    "water",
+    "harvest",
+    "work the ground",
+    "feed",
+    "collect",
+    "bring",
+    "build",
+    "repair",
+    "tear down",
+    "do that"
+   ]
+  },
+  "item": {
+   "note": "what a farm or build order acts on, as the player named it ('wall', 'corn'); open: any word may come, and the table gives the words it knows and a form for any other",
+   "values": [
+    "wall",
+    "floor",
+    "ramp",
+    "roof",
+    "door",
+    "window",
+    "stairs",
+    "fence",
+    "pillar",
+    "foundation",
+    "corn",
+    "wheat",
+    "carrots",
+    "potatoes",
+    "tomatoes",
+    "seeds",
+    "plants",
+    "crops",
+    "chickens",
+    "cows",
+    "pigs",
+    "animals",
+    "eggs",
+    "milk",
+    "wood",
+    "planks",
+    "stone",
+    "metal",
+    "ammo",
+    "water",
+    "field",
+    "barn",
+    "well"
+   ]
+  },
+  "phrase": {
+   "note": "the order, as the bot says it back (intent_config.json 'phrases'); lowercase, an imperative ('move there')",
+   "values": [
+    "attack",
+    "breach",
+    "bring it",
+    "build",
+    "check it",
+    "collect",
+    "come back",
+    "cover me",
+    "crouch",
+    "defuse it",
+    "do it again",
+    "drone it",
+    "fall back",
+    "feed the animals",
+    "flank",
+    "follow me",
+    "get in the vehicle",
+    "get out of the vehicle",
+    "go back",
+    "go now",
+    "go prone",
+    "go through the window",
+    "harvest",
+    "help me get out",
+    "help you",
+    "hold fire",
+    "hold position",
+    "hold the angle",
+    "hold the other angle",
+    "jump",
+    "look at you",
+    "look there",
+    "move there",
+    "not an order",
+    "open fire",
+    "open it",
+    "plant a crop",
+    "plant it",
+    "push in",
+    "rappel",
+    "reload",
+    "repair",
+    "say maybe",
+    "say no",
+    "say they don't know",
+    "say yes",
+    "stand up",
+    "suppress",
+    "switch weapons",
+    "take cover",
+    "tear it down",
+    "throw a flash",
+    "throw a frag",
+    "throw a smoke",
+    "till the ground",
+    "wait",
+    "water the plants"
+   ]
+  },
+  "object": {
+   "note": "a kind of place on the map: 'Which window?', 'I see no car.'",
+   "values": [
+    {
+     "id": "door",
+     "words": [
+      "door",
+      "doors",
+      "doorway",
+      "doorways",
+      "entrance",
+      "entrances",
+      "entryway"
+     ],
+     "qualifiers": [
+      "main",
+      "north",
+      "south",
+      "west",
+      "east"
+     ]
+    },
+    {
+     "id": "window",
+     "words": [
+      "window",
+      "windows"
+     ],
+     "qualifiers": [
+      "north",
+      "south",
+      "west",
+      "east"
+     ]
+    },
+    {
+     "id": "stairs",
+     "words": [
+      "stairs",
+      "stair",
+      "staircase",
+      "staircases",
+      "stairway",
+      "stairways",
+      "stairwell",
+      "stairwells",
+      "stares",
+      "the steps",
+      "those steps"
+     ],
+     "qualifiers": [
+      "blue",
+      "red",
+      "yellow",
+      "white",
+      "brown"
+     ],
+     "vertical": true
+    },
+    {
+     "id": "chair",
+     "words": [
+      "chair",
+      "chairs"
+     ],
+     "qualifiers": []
+    },
+    {
+     "id": "sofa",
+     "words": [
+      "sofa",
+      "sofas",
+      "couch",
+      "couches"
+     ],
+     "qualifiers": []
+    },
+    {
+     "id": "table",
+     "words": [
+      "table",
+      "tables"
+     ],
+     "qualifiers": []
+    },
+    {
+     "id": "car",
+     "words": [
+      "car",
+      "cars",
+      "vehicle",
+      "vehicles",
+      "truck",
+      "trucks",
+      "jeep",
+      "van"
+     ],
+     "qualifiers": []
+    },
+    {
+     "id": "ammo",
+     "words": [
+      "ammo",
+      "ammunition",
+      "mags",
+      "magazines",
+      "bullets",
+      "armor",
+      "armour",
+      "amor",
+      "ammo crate",
+      "ammo crates",
+      "ammo box",
+      "ammo boxes",
+      "ammunition crate",
+      "ammunition box"
+     ],
+     "qualifiers": []
+    },
+    {
+     "id": "weapon",
+     "words": [
+      "weapon",
+      "weapons",
+      "gun",
+      "guns",
+      "rifle",
+      "rifles",
+      "pistol",
+      "pistols",
+      "shotgun",
+      "shotguns",
+      "launcher",
+      "weapon crate",
+      "weapons crate",
+      "gun crate",
+      "weapon box",
+      "weapons box"
+     ],
+     "qualifiers": []
+    },
+    {
+     "id": "health",
+     "words": [
+      "health",
+      "medkit",
+      "medkits",
+      "med kit",
+      "health pack",
+      "health packs",
+      "healthpack",
+      "first aid",
+      "health box",
+      "medical box",
+      "medical crate"
+     ],
+     "qualifiers": []
+    },
+    {
+     "id": "field",
+     "words": [
+      "field",
+      "fields",
+      "farmland",
+      "paddock",
+      "paddocks",
+      "meadow",
+      "meadows"
+     ],
+     "qualifiers": [
+      "north",
+      "south",
+      "west",
+      "east"
+     ]
+    },
+    {
+     "id": "bed",
+     "words": [
+      "bed",
+      "beds",
+      "garden bed",
+      "garden beds",
+      "flower bed",
+      "flower beds",
+      "vegetable bed",
+      "plot",
+      "plots",
+      "planter",
+      "planters",
+      "raised bed",
+      "raised beds"
+     ],
+     "qualifiers": [
+      "north",
+      "south",
+      "west",
+      "east"
+     ]
+    },
+    {
+     "id": "greenhouse",
+     "words": [
+      "greenhouse",
+      "greenhouses",
+      "green house",
+      "hothouse",
+      "glasshouse"
+     ],
+     "qualifiers": [
+      "north",
+      "south",
+      "west",
+      "east"
+     ]
+    },
+    {
+     "id": "barn",
+     "words": [
+      "barn",
+      "barns",
+      "shed",
+      "sheds",
+      "storehouse",
+      "storehouses",
+      "silo",
+      "silos",
+      "granary",
+      "warehouse",
+      "tool shed",
+      "toolshed"
+     ],
+     "qualifiers": [
+      "north",
+      "south",
+      "west",
+      "east"
+     ]
+    },
+    {
+     "id": "coop",
+     "words": [
+      "coop",
+      "coops",
+      "chicken coop",
+      "hen house",
+      "henhouse",
+      "chicken house",
+      "pen",
+      "pens",
+      "stable",
+      "stables",
+      "sty",
+      "pigsty",
+      "pig pen",
+      "corral"
+     ],
+     "qualifiers": [
+      "north",
+      "south",
+      "west",
+      "east"
+     ]
+    },
+    {
+     "id": "beehive",
+     "words": [
+      "beehive",
+      "beehives",
+      "hive",
+      "hives",
+      "bee hive",
+      "bee hives",
+      "apiary"
+     ],
+     "qualifiers": []
+    },
+    {
+     "id": "well",
+     "words": [
+      "the well",
+      "water well",
+      "wells",
+      "water tank",
+      "water tanks",
+      "water pump",
+      "pump",
+      "pumps"
+     ],
+     "qualifiers": []
+    },
+    {
+     "id": "fence",
+     "words": [
+      "fence",
+      "fences",
+      "fencing",
+      "fence line"
+     ],
+     "qualifiers": [
+      "north",
+      "south",
+      "west",
+      "east"
+     ]
+    },
+    {
+     "id": "tree",
+     "words": [
+      "tree",
+      "trees",
+      "woods",
+      "forest",
+      "treeline",
+      "tree line"
+     ],
+     "qualifiers": []
+    },
+    {
+     "id": "crate",
+     "words": [
+      "crate",
+      "crates",
+      "box",
+      "boxes",
+      "chest",
+      "chests",
+      "container",
+      "containers"
+     ],
+     "qualifiers": []
+    },
+    {
+     "id": "foundation",
+     "words": [
+      "foundation",
+      "foundations",
+      "building spot",
+      "build spot",
+      "building site",
+      "construction site"
+     ],
+     "qualifiers": []
+    },
+    "place"
+   ]
+  }
+ }
+}

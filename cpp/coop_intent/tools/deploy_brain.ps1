@@ -20,6 +20,12 @@
 #                  <Target>\chain\    chain_config.json, router.onnx, decoder.gguf (1 GB)
 # the bot's voice (voice.h; the game then starts the service with `--tts-piper <Target>\voice`), when -Voice is there:
 #                  <Target>\voice\    <name>.onnx, <name>.onnx.json, tokens.txt, espeak-ng-data\, MODEL_CARD (90 MB)
+# the bot's lines in the player's language (localize.h; the game starts the service with `--replies <Target>\replies\
+# replies_<lang>.json --voice-local <Target>\voice_<lang>` for a Russian or Spanish player), from -Replies and -LocalVoices:
+#                  <Target>\replies\  replies_ru.json, replies_es.json
+#                  <Target>\voice_<name>\  a Piper or Kokoro export and voice.json ({"speaker", "lang"})
+#   pwsh deploy_brain.ps1 -Target ...\CoopBrainV6 -Bot coop-deberta-v3-ens3-v61 -Chain coop-chain-v63 `
+#        -LocalVoices 'ru=<tts>\vits-piper-ru_RU-denis-medium', 'es=<tts>\vits-piper-es_MX-ald-medium', 'es_kokoro=<tts>\kokoro-multi-lang-v1_0@53'
 param(
     [Parameter(Mandatory = $true)][string]$Target,
     [string]$Bot = 'coop-deberta-v3-ens3-v54',
@@ -32,7 +38,12 @@ param(
     # game starts the brain with it when its language is ru or es. '' keeps whatever is there
     [string]$SttMulti = '',
     # a sherpa-onnx Piper export; '' leaves the voice out (the game falls back to the system's voice)
-    [string]$Voice = (Join-Path $PSScriptRoot '..\..\..\scripts\coop\stt\tts\vits-piper-en_GB-vctk-medium')
+    [string]$Voice = (Join-Path $PSScriptRoot '..\..\..\scripts\coop\stt\tts\vits-piper-en_GB-vctk-medium'),
+    # the reply tables (scripts/coop/replies/replies_<lang>.json); '' leaves <Target>\replies as it is
+    [string]$Replies = (Join-Path $PSScriptRoot '..\..\..\scripts\coop\replies'),
+    # the players' languages' voices: name=folder[@speaker] ("ru=...\vits-piper-ru_RU-denis-medium", "es_kokoro=...\kokoro-multi-lang-v1_0@53");
+    # the name's first two letters are the voice's language. Each goes to <Target>\voice_<name>; none given keeps what is there
+    [string[]]$LocalVoices = @()
 )
 $ErrorActionPreference = 'Stop'
 $repo = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
@@ -110,9 +121,41 @@ if ($Voice -and (Test-Path $Voice)) {
 } elseif ($Voice) {
     "no voice at ${Voice}: the game will use the system's voice"
 }
+$repliesFrom = $null
+if ($Replies -and (Test-Path $Replies)) {
+    $tables = Get-ChildItem $Replies -Filter 'replies_*.json'
+    if ($tables) {
+        New-Item -ItemType Directory -Force "$Target\replies" | Out-Null
+        $tables | Copy-Item -Destination "$Target\replies" -Force
+        $repliesFrom = ($tables | ForEach-Object { $_.BaseName -replace '^replies_', '' }) -join ', '
+    }
+}
+$localFrom = [ordered]@{}
+foreach ($spec in $LocalVoices) {
+    if ($spec -notmatch '^([a-z]{2}[a-z_]*)=(.+?)(@(\w+))?$') { throw "-LocalVoices: name=folder[@speaker], not $spec" }
+    $name = $Matches[1]; $from = (Resolve-Path $Matches[2]).Path; $speaker = $Matches[4]
+    $dest = "$Target\voice_$name"
+    if (Test-Path $dest) { Remove-Item $dest -Recurse -Force }
+    New-Item -ItemType Directory -Force $dest | Out-Null
+    if (Test-Path "$from\voices.bin") {   # Kokoro: the model, its voices and what its phonemes need; not its Chinese lexicons
+        Copy-Item "$from\model.onnx", "$from\voices.bin", "$from\tokens.txt" $dest -Force
+    } else {
+        $model = Get-ChildItem $from -Filter '*.onnx' | Select-Object -First 1
+        Copy-Item $model.FullName, "$($model.FullName).json", "$from\tokens.txt" $dest -Force
+    }
+    Copy-Item "$from\espeak-ng-data" $dest -Recurse -Force
+    foreach ($card in 'MODEL_CARD', 'LICENSE') { if (Test-Path "$from\$card") { Copy-Item "$from\$card" $dest -Force } }
+    [ordered]@{ speaker = $(if ($speaker) { $speaker } else { '' }); lang = $name.Substring(0, 2); from = (Split-Path $from -Leaf) } |
+        ConvertTo-Json | Set-Content "$dest\voice.json" -Encoding UTF8
+    $localFrom[$name] = (Split-Path $from -Leaf) + $(if ($speaker) { "@$speaker" } else { '' })
+}
+foreach ($d in Get-ChildItem $Target -Directory -Filter 'voice_*') {
+    $n = $d.Name.Substring(6)
+    if (-not $localFrom.Contains($n) -and (Test-Path "$($d.FullName)\voice.json")) { $localFrom[$n] = (Get-Content "$($d.FullName)\voice.json" -Raw | ConvertFrom-Json).from + ' (kept)' }
+}
 $cfg = Get-Content "$botDir\intent_config.json" -Raw | ConvertFrom-Json
 [ordered]@{ bot = $Bot; labels = $cfg.labels.Count; gate = $cfg.gate; threshold = $cfg.threshold; members = $members; chain = $chainFrom; voice = $voiceFrom
-            decider = $deciderFrom; stt_multilingual = $sttMultiFrom
+            decider = $deciderFrom; stt_multilingual = $sttMultiFrom; replies = $repliesFrom; local_voices = $localFrom
             exe_built = (Get-Item "$Build\coop_cli.exe").LastWriteTime.ToString('s'); from = $repo; deployed = (Get-Date).ToString('s') } |
     ConvertTo-Json | Set-Content "$Target\deployed.json" -Encoding UTF8
 "deployed {0} ({1} labels, {2} gate, threshold {3}) to {4}: {5:n1} GB" -f $Bot, $cfg.labels.Count, $cfg.gate, $cfg.threshold, $Target,

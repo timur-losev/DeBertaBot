@@ -49,8 +49,10 @@ add_library(coop_intent_core STATIC
   src/world.cpp
   src/intent_model.cpp
   src/speech_text.cpp
-  src/rewriter_text.cpp)
+  src/rewriter_text.cpp
+  src/localize.cpp)
 target_include_directories(coop_intent_core PUBLIC include)
+target_include_directories(coop_intent_core PRIVATE third_party)   # nlohmann/json for the reply tables (localize.cpp)
 target_link_libraries(coop_intent_core PUBLIC Threads::Threads)
 
 # the model in ONNX Runtime (UE5 uses NNE instead)

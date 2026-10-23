@@ -171,6 +171,16 @@ build\Release\coop_cli.exe --serve --no-spin --threads 1 --tts   # the bot as a 
   - The talk memory keeps the player's own lines, as the decoder learned them.
   - Speech: `--stt-model` with Parakeet TDT 0.6B v3 (`sherpa-onnx-nemo-parakeet-tdt-0.6b-v3-int8`, 25 languages). It has
     the same files and engine as v2, and transcribes Russian word for word on Windows voices.
+- `--replies FILE` makes the bot answer in the table's language ([localize.h](include/coop_intent/localize.h)):
+  - The table is `scripts/coop/replies/replies_<lang>.json`: 278 English sentence templates from `catalogue_en.json`
+    (`make_catalogue.py`), translated by `TRANSLATE.md`, with each slot's words in the forms the translations use.
+  - Every reply's `say` is written in the language, and `say_en` keeps the English. A sentence without a template keeps
+    the line English (`say_untranslated`) and is logged on stderr.
+  - `--voice-local DIR` says the lines written in the language with that voice (Piper, or a Kokoro export with
+    `voices.bin`; a `voice.json` in the folder gives its speaker and language). A line the game hands to `say` in English
+    is translated first, sentence by sentence: sentences this brain already wrote stay as they are. The `speech` event's
+    `text` and `lang` say what was said.
+  - `--replies-check FILE` translates every template with every value of each slot: both tables pass 910 of 910.
 - `--decider DIR` (a build with llama.cpp) adds an optional second reader of every line beside the ensemble:
   - The model is decider-2b with the bot's LoRA, as a GGUF ([decider.h](include/coop_intent/decider.h)). `DIR` is
     `scripts/coop/decider/export_game.py`'s folder.
