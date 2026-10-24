@@ -1,0 +1,566 @@
+{
+ "csv62_000": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "north",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_001": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "red",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_002": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_003": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_004": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_005": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_006": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_007": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_008": {
+  "intent": "SEE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_009": {
+  "intent": "SEE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_010": {
+  "intent": "SEE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_011": {
+  "intent": "SEE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_012": {
+  "intent": "SMALL_TALK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_013": {
+  "intent": "SMALL_TALK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_014": {
+  "intent": "SMALL_TALK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_015": {
+  "intent": "SMALL_TALK",
+  "ok": [
+   "PRAISE"
+  ],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_016": {
+  "intent": "SMALL_TALK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_017": {
+  "intent": "SMALL_TALK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_018": {
+  "intent": "SMALL_TALK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_019": {
+  "intent": "SMALL_TALK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_020": {
+  "intent": "PRAISE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_021": {
+  "intent": "PRAISE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_022": {
+  "intent": "PRAISE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_023": {
+  "intent": "PRAISE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_024": {
+  "intent": "PRAISE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_025": {
+  "intent": "PRAISE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_026": {
+  "intent": "KILL_YOURSELF",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_027": {
+  "intent": "KILL_YOURSELF",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_028": {
+  "intent": "KILL_YOURSELF",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_029": {
+  "intent": "KILL_YOURSELF",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_030": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "teleport",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_031": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "teleport",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_032": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "teleport",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_033": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": "teleport",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_034": {
+  "intent": "LOOK_AT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "east",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_035": {
+  "intent": "CHECK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_036": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "blue",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_037": {
+  "intent": "ATTACK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_038": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "south",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "csv62_039": {
+  "intent": "YES",
+  "ok": [
+   "PRAISE"
+  ],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ }
+}

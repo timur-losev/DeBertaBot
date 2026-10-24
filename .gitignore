@@ -26,6 +26,10 @@ scripts/coop/stt/tts_demo_*/
 scripts/coop/stt/models_out/
 scripts/coop/stt/venv/
 
+# bot voices trained from heavy-model renders (scripts/coop/voice): environments, model downloads, rendered corpora,
+# training runs and exported voices are regenerated per machine; the scripts are in git
+scripts/coop/voice/work/
+
 # stderr of the training processes (library warnings); their summaries are in build_*.log
 scripts/coop/stt/*.log.err
 # stdout and stderr of the voicing tools, one pair per voice and recognizer; the summary of the run is in voices_*.log

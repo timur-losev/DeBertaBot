@@ -18,6 +18,7 @@
 // {n:one|other}) the word for it (Russian or Spanish plural rules).
 #pragma once
 
+#include <map>
 #include <memory>
 #include <string>
 #include <vector>
@@ -39,9 +40,13 @@ public:
     const std::string& Language() const;
     size_t Templates() const;
 
+    // words a line comes with, by slot and English value (lower case): {"thing": {"spike trap": {"text": "ловушка с
+    // шипами", "acc": "ловушку с шипами"}}}. They come before the table's own (a level's labels are not in any table)
+    using Terms = std::map<std::string, std::map<std::string, std::map<std::string, std::string>>>;
+
     // the English line in the table's language. False when a sentence of it matches no template: out is left empty
     // and missing (if given) gets that sentence.
-    bool Translate(const std::string& english, std::string* out, std::string* missing = nullptr) const;
+    bool Translate(const std::string& english, std::string* out, std::string* missing = nullptr, const Terms* terms = nullptr) const;
     // one English template with every slot filled with its first value (and {n} with 23): what the coverage check
     // translates back (coop_cli --replies-check)
     std::vector<std::string> Examples() const;

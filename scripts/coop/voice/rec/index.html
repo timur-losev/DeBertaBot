@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Студия брата</title>
+<style>
+/* a recording booth: the line to read is the biggest thing on the screen; everything else is small and to the side */
+:root {
+  --bg: #f2f1ee; --panel: #ffffff; --ink: #1d1f22; --muted: #646a72; --line: #d9dbdf;
+  --accent: #2c5f8a; --accent-ink: #ffffff; --rec: #c4302b; --rec-ink: #ffffff;
+  --good: #2f7a3e; --warn: #9a6a10; --bad: #b3352b; --chip: #eceef1; --cur: #e3edf6;
+  --mono: Consolas, "JetBrains Mono", monospace; --body: "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #15171a; --panel: #1d2024; --ink: #e6e8eb; --muted: #9aa1a9; --line: #30353b;
+  --accent: #6ea8d8; --accent-ink: #0f1418; --rec: #e5534b; --rec-ink: #ffffff;
+  --good: #7ccf8b; --warn: #e0b45a; --bad: #f08a7e; --chip: #262a2f; --cur: #22303d; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #15171a; --panel: #1d2024; --ink: #e6e8eb; --muted: #9aa1a9; --line: #30353b;
+  --accent: #6ea8d8; --accent-ink: #0f1418; --rec: #e5534b; --rec-ink: #ffffff;
+  --good: #7ccf8b; --warn: #e0b45a; --bad: #f08a7e; --chip: #262a2f; --cur: #22303d; color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.45 var(--body); }
+button, select { font: inherit; color: inherit; }
+button { cursor: pointer; border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 7px 12px; }
+button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button:disabled { opacity: .45; cursor: default; }
+kbd { font-family: var(--mono); font-size: .75rem; padding: 0 5px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; color: var(--muted); }
+.app { display: grid; grid-template-columns: minmax(260px, 340px) 1fr; height: 100vh; }
+aside { border-right: 1px solid var(--line); display: grid; grid-template-rows: auto auto 1fr; min-height: 0; background: var(--panel); }
+.side-head { padding: 14px 14px 8px; display: grid; gap: 8px; }
+.side-head h1 { font-size: 1.15rem; margin: 0; }
+.progress { height: 6px; background: var(--chip); border-radius: 3px; overflow: hidden; }
+.progress div { height: 100%; background: var(--good); width: 0; }
+.counts { color: var(--muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
+.filters { display: flex; gap: 4px; padding: 0 14px 10px; flex-wrap: wrap; }
+.filters button { padding: 3px 9px; font-size: .82rem; border-radius: 999px; }
+.filters button.on { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+#list { list-style: none; margin: 0; padding: 0 6px 20px; overflow-y: auto; min-height: 0; }
+#list li { display: grid; grid-template-columns: 14px 1fr; gap: 8px; align-items: baseline; padding: 5px 8px; border-radius: 6px; cursor: pointer; font-size: .88rem; }
+#list li:hover { background: var(--chip); }
+#list li.cur { background: var(--cur); }
+#list li .dot { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--muted); transform: translateY(1px); }
+#list li.done .dot { background: var(--good); border-color: var(--good); }
+#list li.skip .dot { background: transparent; border-color: var(--warn); border-style: dashed; }
+#list li.skip .t { color: var(--muted); text-decoration: line-through; }
+main { display: grid; grid-template-rows: auto 1fr auto; min-height: 0; overflow-y: auto; }
+.bar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; padding: 10px 24px; border-bottom: 1px solid var(--line); }
+.bar label { display: flex; gap: 6px; align-items: center; color: var(--muted); font-size: .88rem; }
+.bar select { max-width: 280px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; }
+.meter { width: 160px; height: 10px; background: var(--chip); border-radius: 5px; overflow: hidden; position: relative; }
+.meter div { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--good); }
+.meter.hot div { background: var(--bad); }
+.stage { display: grid; align-content: center; gap: 22px; padding: 28px clamp(16px, 5vw, 64px); max-width: 1100px; width: 100%; margin: 0 auto; }
+.where { display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: .9rem; font-family: var(--mono); }
+.tag { font-family: var(--body); font-size: .78rem; padding: 1px 8px; border-radius: 999px; background: var(--chip); }
+.tag.bot { background: var(--cur); color: var(--accent); }
+#text { font-size: clamp(1.8rem, 4.2vw, 3.1rem); line-height: 1.2; margin: 0; font-weight: 600; text-wrap: balance; }
+#text.rec { color: var(--rec); }
+.next { color: var(--muted); font-size: 1.05rem; margin: 0; }
+.next b { font-weight: 500; }
+.take { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; min-height: 30px; font-variant-numeric: tabular-nums; }
+.flag { font-size: .85rem; padding: 2px 9px; border-radius: 5px; background: var(--chip); }
+.flag.good { color: var(--good); } .flag.warn { color: var(--warn); } .flag.bad { color: var(--bad); }
+.controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.controls button { display: inline-flex; gap: 8px; align-items: center; padding: 10px 16px; }
+#rec { background: var(--rec); color: var(--rec-ink); border-color: var(--rec); font-weight: 600; min-width: 170px; justify-content: center; }
+#rec.on { animation: pulse 1s ease-in-out infinite; }
+#rec.on kbd, #rec kbd { color: inherit; border-color: color-mix(in srgb, currentColor 50%, transparent); }
+@keyframes pulse { 50% { filter: brightness(1.25); } }
+.tips { border-top: 1px solid var(--line); padding: 12px 24px 16px; color: var(--muted); font-size: .85rem; display: grid; gap: 4px; }
+.tips p { margin: 0; }
+#start { position: fixed; inset: 0; display: grid; place-items: center; background: color-mix(in srgb, var(--bg) 88%, transparent); z-index: 5; }
+#start .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 24px; max-width: 520px; display: grid; gap: 12px; margin: 16px; }
+#start h2 { margin: 0; }
+#start p { margin: 0; color: var(--muted); }
+#start button { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); padding: 10px 16px; justify-self: start; font-weight: 600; }
+#err { color: var(--bad); }
+@media (max-width: 760px) {
+  .app { grid-template-columns: 1fr; grid-template-rows: 40vh 1fr; height: auto; min-height: 100vh; }
+  aside { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+@media (prefers-reduced-motion: reduce) { #rec.on { animation: none; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <div class="side-head">
+      <h1>Студия брата</h1>
+      <div class="progress"><div id="prog"></div></div>
+      <div class="counts" id="counts">…</div>
+    </div>
+    <div class="filters" role="group" aria-label="Какие строки показывать">
+      <button data-f="all" class="on">все</button>
+      <button data-f="todo">не записаны</button>
+      <button data-f="done">записаны</button>
+      <button data-f="skip">пропущены</button>
+    </div>
+    <ol id="list"></ol>
+  </aside>
+  <main>
+    <div class="bar">
+      <label>Микрофон <select id="mic"></select></label>
+      <div class="meter" id="meter" title="Уровень входа"><div></div></div>
+      <label><input type="checkbox" id="autoplay"> слушать после записи</label>
+      <label><input type="checkbox" id="autonext"> сразу к следующей</label>
+    </div>
+    <div class="stage">
+      <div class="where"><span id="pos">–</span><span class="tag" id="kind">–</span></div>
+      <p id="text">…</p>
+      <div class="take" id="take"></div>
+      <div class="controls">
+        <button id="rec" title="Пробел">● Запись <kbd>Пробел</kbd></button>
+        <button id="play" title="P">▶ Слушать <kbd>P</kbd></button>
+        <button id="prev" title="←">← Назад</button>
+        <button id="next" title="Enter или →">Дальше → <kbd>Enter</kbd></button>
+        <button id="todo" title="N">К незаписанной <kbd>N</kbd></button>
+        <button id="skip" title="S">Пропустить <kbd>S</kbd></button>
+        <button id="del" title="Delete">Удалить запись <kbd>Del</kbd></button>
+      </div>
+      <p class="next" id="nextline"></p>
+    </div>
+    <div class="tips">
+      <p><b>Как читать:</b> голосом «брата», с вашим акцентом, спокойно, как в игре. Держите одно расстояние до микрофона и одну громкость на все строки. В комнате должно быть тихо.</p>
+      <p>Нажали <kbd>Пробел</kbd> — подождите полсекунды и говорите. Договорили — снова <kbd>Пробел</kbd>. Щелчки клавиши и тишина по краям обрежутся сами. Оговорились — просто запишите строку ещё раз, запись заменится.</p>
+      <p>Строку, которую неудобно читать (странная, не выговаривается), смело пропускайте: <kbd>S</kbd>. Записи сохраняются сразу, страницу можно закрыть и продолжить в любой момент.</p>
+    </div>
+  </main>
+</div>
+<div id="start">
+  <div class="card">
+    <h2>Студия брата</h2>
+    <p>Строки бота вперемешку с короткими обычными фразами: обычные добирают звуки, которых в репликах нет. Можно остановиться где угодно. Чем больше записано, тем лучше голос: от 300 строк уже можно учить.</p>
+    <p>Браузер попросит доступ к микрофону. Шумоподавление и автогромкость отключены, чтобы запись была чистой.</p>
+    <button id="go">Включить микрофон</button>
+    <p id="err"></p>
+  </div>
+</div>
+<audio id="player"></audio>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const player = $("player");
+  let lines = [], recorded = {}, skipped = new Set(), cur = 0, filter = "all";
+  let ctx = null, stream = null, node = null, analyser = null, recording = false, chunks = [], stopping = false;
+  let lastTake = {};   // id -> {flags} of takes made in this session
+
+  const pref = (k, d) => { try { const v = localStorage.getItem("booth." + k); return v === null ? d : v === "1"; } catch { return d; } };
+  const setPref = (k, v) => { try { localStorage.setItem("booth." + k, v ? "1" : "0"); } catch {} };
+  $("autoplay").checked = pref("autoplay", true);
+  $("autonext").checked = pref("autonext", false);
+  $("autoplay").onchange = e => { setPref("autoplay", e.target.checked); e.target.blur(); };
+  $("autonext").onchange = e => { setPref("autonext", e.target.checked); e.target.blur(); };
+
+  async function load() {
+    const s = await (await fetch("/api/state")).json();
+    lines = s.lines; recorded = s.recorded; skipped = new Set(s.skipped);
+    let saved = 0;
+    try { saved = parseInt(localStorage.getItem("booth.cur") || "0", 10) || 0; } catch {}
+    cur = Math.min(saved, lines.length - 1);
+    renderList(); show();
+  }
+
+  function status(id) { return skipped.has(id) ? "skip" : (id in recorded ? "done" : "todo"); }
+  function renderList() {
+    const ol = $("list"); ol.innerHTML = "";
+    lines.forEach((l, i) => {
+      const st = status(l.id);
+      if (filter !== "all" && filter !== st) return;
+      const li = document.createElement("li");
+      li.dataset.i = i;
+      li.className = st + (i === cur ? " cur" : "");
+      li.innerHTML = '<span class="dot"></span><span class="t"></span>';
+      li.querySelector(".t").textContent = (i + 1) + ". " + l.text;
+      ol.appendChild(li);
+    });
+    counts();
+  }
+  function counts() {
+    const done = Object.keys(recorded).filter(id => !skipped.has(id)).length;
+    const secs = Object.entries(recorded).filter(([id]) => !skipped.has(id)).reduce((a, [, s]) => a + s, 0);
+    $("prog").style.width = (100 * done / Math.max(lines.length - skipped.size, 1)) + "%";
+    $("counts").textContent = `записано ${done} из ${lines.length - skipped.size} · ${(secs / 60).toFixed(1)} мин речи` + (skipped.size ? ` · пропущено ${skipped.size}` : "");
+  }
+  function updateItem(i) {
+    const li = $("list").querySelector(`li[data-i="${i}"]`);
+    if (li) li.className = status(lines[i].id) + (i === cur ? " cur" : "");
+  }
+  function show() {
+    const l = lines[cur]; if (!l) return;
+    try { localStorage.setItem("booth.cur", String(cur)); } catch {}
+    $("pos").textContent = `${cur + 1} / ${lines.length} · ${l.id}`;
+    $("kind").textContent = l.kind === "bot" ? "реплика бота" : "обычная фраза";
+    $("kind").className = "tag" + (l.kind === "bot" ? " bot" : "");
+    $("text").textContent = l.text;
+    const n = lines[cur + 1];
+    $("nextline").innerHTML = n ? "Дальше: <b></b>" : "";
+    if (n) $("nextline").querySelector("b").textContent = n.text;
+    $("list").querySelectorAll("li.cur").forEach(li => li.classList.remove("cur"));
+    const li = $("list").querySelector(`li[data-i="${cur}"]`);
+    if (li) { li.classList.add("cur"); li.scrollIntoView({ block: "nearest" }); }
+    showTake();
+  }
+  function showTake() {
+    const l = lines[cur], box = $("take"); box.innerHTML = "";
+    const add = (text, cls) => { const s = document.createElement("span"); s.className = "flag " + (cls || ""); s.textContent = text; box.appendChild(s); };
+    if (skipped.has(l.id)) add("пропущена", "warn");
+    if (l.id in recorded) {
+      add(`запись ${recorded[l.id].toFixed(1)} с`, "good");
+      (lastTake[l.id] || []).forEach(f => add(f[0], f[1]));
+    } else if (!skipped.has(l.id)) add("не записана");
+    $("play").disabled = !(l.id in recorded);
+    $("del").disabled = !(l.id in recorded);
+    $("skip").textContent = skipped.has(l.id) ? "Вернуть строку" : "Пропустить";
+    $("skip").insertAdjacentHTML("beforeend", " <kbd>S</kbd>");
+  }
+  function go(i) { if (recording) return; cur = Math.max(0, Math.min(lines.length - 1, i)); show(); }
+  function nextTodo() {
+    for (let k = 1; k <= lines.length; k++) {
+      const i = (cur + k) % lines.length;
+      if (status(lines[i].id) === "todo") return go(i);
+    }
+  }
+
+  // ---- microphone ----
+  const TAP = `class Tap extends AudioWorkletProcessor {
+    constructor() { super(); this.buf = []; this.n = 0; }
+    process(inputs) { const ch = inputs[0][0]; if (ch) { this.buf.push(new Float32Array(ch)); this.n += ch.length;
+      if (this.n >= 2048) { this.port.postMessage(this.buf); this.buf = []; this.n = 0; } } return true; } }
+    registerProcessor("tap", Tap);`;
+
+  async function openMic(deviceId) {
+    if (stream) stream.getTracks().forEach(t => t.stop());
+    stream = await navigator.mediaDevices.getUserMedia({ audio: {
+      deviceId: deviceId ? { exact: deviceId } : undefined, channelCount: 1,
+      echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
+    // Firefox will not connect a microphone to a context of another sample rate: the context takes the microphone's
+    const rate = stream.getAudioTracks()[0].getSettings().sampleRate;
+    if (ctx && rate && ctx.sampleRate !== rate) { await ctx.close(); ctx = null; node = null; }
+    if (!ctx) {
+      ctx = rate ? new AudioContext({ sampleRate: rate }) : new AudioContext();
+      await ctx.audioWorklet.addModule(URL.createObjectURL(new Blob([TAP], { type: "application/javascript" })));
+    }
+    if (node) node.disconnect();
+    const src = ctx.createMediaStreamSource(stream);
+    node = new AudioWorkletNode(ctx, "tap");
+    analyser = ctx.createAnalyser(); analyser.fftSize = 1024;
+    src.connect(node); src.connect(analyser);
+    const sink = ctx.createGain(); sink.gain.value = 0; node.connect(sink); sink.connect(ctx.destination);
+    node.port.onmessage = e => { if (recording) chunks.push(...e.data); };
+    await listMics();
+  }
+  async function listMics() {
+    const devs = (await navigator.mediaDevices.enumerateDevices()).filter(d => d.kind === "audioinput");
+    const sel = $("mic"), active = stream && stream.getAudioTracks()[0].getSettings().deviceId;
+    sel.innerHTML = "";
+    devs.forEach(d => { const o = document.createElement("option"); o.value = d.deviceId; o.textContent = d.label || "микрофон"; if (d.deviceId === active) o.selected = true; sel.appendChild(o); });
+  }
+  $("mic").onchange = e => openMic(e.target.value).catch(err => alert("Микрофон: " + err.message));
+
+  let peakHold = 0;
+  function meter() {
+    if (analyser) {
+      const a = new Float32Array(analyser.fftSize); analyser.getFloatTimeDomainData(a);
+      let p = 0; for (const v of a) p = Math.max(p, Math.abs(v));
+      peakHold = Math.max(p, peakHold * 0.92);
+      const m = $("meter"); m.querySelector("div").style.width = Math.min(100, 100 * Math.sqrt(peakHold)) + "%";
+      m.classList.toggle("hot", peakHold > 0.95);
+    }
+    requestAnimationFrame(meter);
+  }
+
+  // ---- a take ----
+  function trim(samples, sr) {
+    // speech is a run of 80 ms of 10 ms frames over the noise floor: a key click is too short to count
+    const f = Math.round(sr / 100), n = Math.floor(samples.length / f), db = new Float32Array(n);
+    for (let i = 0; i < n; i++) { let s = 0; for (let j = i * f; j < (i + 1) * f; j++) s += samples[j] * samples[j]; db[i] = 10 * Math.log10(s / f + 1e-10); }
+    const sorted = Array.from(db).sort((a, b) => a - b), floor = sorted[Math.floor(n * 0.1)] || -90;
+    const thr = Math.max(floor + 15, -55), run = 8;
+    let start = -1, end = -1;
+    for (let i = 0, c = 0; i < n; i++) { c = db[i] > thr ? c + 1 : 0; if (c >= run) { start = i - run + 1; break; } }
+    for (let i = n - 1, c = 0; i >= 0; i--) { c = db[i] > thr ? c + 1 : 0; if (c >= run) { end = i + run; break; } }
+    if (start < 0 || end <= start) return null;
+    const a = Math.max(0, (start - 15) * f), b = Math.min(samples.length, (end + 20) * f);
+    return samples.subarray(a, b);
+  }
+  function wav(samples, sr) {
+    const buf = new ArrayBuffer(44 + samples.length * 2), v = new DataView(buf);
+    const w = (o, s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+    w(0, "RIFF"); v.setUint32(4, 36 + samples.length * 2, true); w(8, "WAVE"); w(12, "fmt ");
+    v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true); v.setUint32(24, sr, true);
+    v.setUint32(28, sr * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true); w(36, "data"); v.setUint32(40, samples.length * 2, true);
+    for (let i = 0; i < samples.length; i++) { const s = Math.max(-1, Math.min(1, samples[i])); v.setInt16(44 + i * 2, s < 0 ? s * 0x8000 : s * 0x7fff, true); }
+    return new Blob([buf], { type: "audio/wav" });
+  }
+  function startRec() {
+    if (!ctx || recording || stopping) return;
+    player.pause(); chunks = []; recording = true;
+    $("rec").classList.add("on"); $("rec").firstChild.textContent = "■ Стоп ";
+    $("text").classList.add("rec");
+  }
+  async function stopRec() {
+    if (!recording || stopping) return;
+    stopping = true;
+    await new Promise(r => setTimeout(r, 250));   // the last syllable, then the key's click (trimmed off below)
+    recording = false; stopping = false;
+    $("rec").classList.remove("on"); $("rec").firstChild.textContent = "● Запись ";
+    $("text").classList.remove("rec");
+    const total = chunks.reduce((a, c) => a + c.length, 0), all = new Float32Array(total);
+    let o = 0; for (const c of chunks) { all.set(c, o); o += c.length; }
+    const sr = ctx.sampleRate, l = lines[cur], i = cur;
+    const speech = trim(all, sr);
+    if (!speech) { lastTake[l.id] = [["речи не слышно — проверьте микрофон", "bad"]]; showTake(); return; }
+    let peak = 0; for (const v of speech) peak = Math.max(peak, Math.abs(v));
+    const flags = [];
+    if (peak >= 0.99) flags.push(["перегруз: отодвиньтесь или убавьте вход", "bad"]);
+    else if (peak < 0.06) flags.push(["тихо: ближе к микрофону", "warn"]);
+    const secs = speech.length / sr;
+    if (secs / l.text.length < 0.03) flags.push(["очень быстро?", "warn"]);
+    const res = await fetch("/api/take/" + l.id, { method: "PUT", body: wav(speech, sr) });
+    if (!res.ok) { lastTake[l.id] = [["не сохранилось: сервер ответил " + res.status, "bad"]]; showTake(); return; }
+    const j = await res.json();
+    recorded[l.id] = j.seconds; skipped.delete(l.id); lastTake[l.id] = flags;
+    updateItem(i); counts();
+    if (i !== cur) return;
+    showTake();
+    const advance = () => { if ($("autonext").checked && cur === i && !recording) nextTodo(); };
+    if ($("autoplay").checked) { play(advance); } else advance();
+  }
+  function play(after) {
+    const l = lines[cur]; if (!(l.id in recorded)) return;
+    player.onended = after || null;
+    player.src = "/take/" + l.id + ".wav?t=" + Date.now();
+    player.play().catch(() => {});
+  }
+  async function del() {
+    const l = lines[cur]; if (!(l.id in recorded)) return;
+    await fetch("/api/take/" + l.id, { method: "DELETE" });
+    delete recorded[l.id]; delete lastTake[l.id]; updateItem(cur); counts(); showTake();
+  }
+  async function skip() {
+    const l = lines[cur];
+    const j = await (await fetch("/api/skip/" + l.id, { method: "POST" })).json();
+    if (j.skipped) skipped.add(l.id); else skipped.delete(l.id);
+    updateItem(cur); counts(); showTake();
+    if (j.skipped) nextTodo();
+  }
+
+  $("rec").onclick = () => recording ? stopRec() : startRec();
+  $("play").onclick = () => play();
+  $("prev").onclick = () => go(cur - 1);
+  $("next").onclick = () => go(cur + 1);
+  $("todo").onclick = nextTodo;
+  $("skip").onclick = skip;
+  $("del").onclick = del;
+  $("list").onclick = e => { const li = e.target.closest("li"); if (li) go(+li.dataset.i); };
+  document.querySelectorAll(".filters button").forEach(b => b.onclick = () => {
+    filter = b.dataset.f; document.querySelectorAll(".filters button").forEach(x => x.classList.toggle("on", x === b)); renderList(); show();
+  });
+  document.addEventListener("keydown", e => {
+    if (!ctx || e.target.tagName === "SELECT" || e.target.tagName === "INPUT" || e.ctrlKey || e.altKey || e.metaKey) return;
+    const k = e.key;
+    if (k === " ") { e.preventDefault(); if (!e.repeat) (recording ? stopRec() : startRec()); }
+    else if (recording) return;
+    else if (k === "Enter" || k === "ArrowRight") { e.preventDefault(); go(cur + 1); }
+    else if (k === "ArrowLeft") { e.preventDefault(); go(cur - 1); }
+    else if (k === "p" || k === "P" || k === "з" || k === "З") play();
+    else if (k === "n" || k === "N" || k === "т" || k === "Т") nextTodo();
+    else if (k === "s" || k === "S" || k === "ы" || k === "Ы") skip();
+    else if (k === "Delete" || k === "Backspace") { e.preventDefault(); del(); }
+  });
+  // the keys are the page's, not a focused button's: Space on a button would record and click it at once
+  document.querySelectorAll("button").forEach(b => b.addEventListener("keydown", e => { if (e.key === " " || e.key === "Enter") e.preventDefault(); }));
+  document.addEventListener("click", e => { const b = e.target.closest("button"); if (b && b.id !== "go") b.blur(); });
+
+  $("go").onclick = async () => {
+    try { await openMic(); $("start").style.display = "none"; meter(); }
+    catch (err) { $("err").textContent = "Микрофон не открылся: " + err.message; }
+  };
+  load().catch(err => { $("text").textContent = "Сервер студии не отвечает: " + err.message; });
+})();
+</script>
+</body>
+</html>

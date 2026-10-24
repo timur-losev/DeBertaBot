@@ -204,6 +204,10 @@ public:
     bool SetWorld(const WorldState& world, std::string* error);
     const WorldState& World() const { return world_; }
     const Memory& Mem() const { return memory_; }
+    // the chat took the line for something else than the planner did (coop_cli: "got any ammo?" is a question about the
+    // bot, not a walk to the ammo the planner asked "Where?" about): the question it asked is no longer open. Not in
+    // world.py: no planner step calls it
+    void DropQuestion() { memory_.has_question = false; }
     const std::string& PendingEntity() const { return pending_entity_; }
     bool PendingHere() const { return pending_here_; }   // the queued order's place is "here"
     bool PendingNear() const { return pending_near_; }   // ... and it pointed with "this" / "here"

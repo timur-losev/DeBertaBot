@@ -1028,3 +1028,41 @@ f31b4c6938a05ed4f8718050f2e78b6b2d22b44619f3057913042bb3e207697b *stt/router_v63
 11c877777e4de53027fc52102eac02bc9d0ee50a9b3053b1a4064348ed18f8e1 *stt/chains2/ml_v62/pairs_train_en.json
 aa60d3df9f676089a93eec20fa3c1a82a800cbaaa89d06cce28035c5287a839c *stt/chains2/ml_v62/singles_left_out_v63.json
 2026-10-22T22:01:45+02:00
+# v62 (work machine, 2026-10-24), BEFORE any v62 test line exists; AFTER the owner's words of 2026-10-24 (make_spec_v62.py docstring: 'Видишь [что-то]?', 'Видишь меня?', small talk, praise, 'Убейся' with humour, 'Иди в портал/телепорт' MOVE_TO): five intents after DEMOLISH (SEE_THING, SEE_ME in the family 'see'; SMALL_TALK, PRAISE, KILL_YOURSELF one each), 62 intents; the teleport as a place (locations_v62.json, vocabulary v9). 276 new seeds (2567 -> 2843), 15 earlier NONE seeds relabelled to the new intents (RELABEL_SEEDS). Seeds are not blind.
+16246170161f28ae8d2eb0c9ad9340b0071d7c97254eb0f11e801db23dd978b7 *blind/spec_v62.json
+5b6945f08b8b09e918d6d00d705320e975c968fe7ba28931360010d4743012de *intents_v62.json
+cc56369aad70c41db8e5b961d92662aeadeeb56c73d1c352a96fe6c2ff601748 *seed_commands_v62.json
+f68396fa68749ad82c84b0f924b230025470092cfb325417640086518e02f5b1 *locations_v62.json
+3c38228b849a50c4f36753b5336b8d63ef9650d198c2270830b343d238aa3458 *make_spec_v62.py
+2026-10-24T13:34:34+02:00
+# v62 test lines (2026-10-24): three AI authors (personas r6, cs, stt; each read spec_v62.json only) wrote 40 lines each with quotas by kind (see_thing 8, see_me 4, small_talk 8, praise 6, kill_yourself 4, teleport 4, boundary 6: LOOK_AT, CHECK, NONE callout, ATTACK, praise with an order, bare YES); two AI annotators per author read only the spec and the label-free lines. All 120 unanimous on the intent (one model family: weaker than it sounds). Earlier lines read again: 3 praise lines and 3 of the owner's lines NONE -> PRAISE (annot/v62/relabel_v62.json).
+7a2d9027bea50a09697062c7a4bc1b8fe5b80b02d820ae39e94870df996837a6 *blind/v62/author_cs.json
+232134b46dfbd816aa0386bffc0bafd1bc5c7767f0eb7312b5b2be9b0d948626 *blind/v62/author_cs_lines.json
+f6e4adecea9c8e86de35a6bf525ebf257e0ba851806dd09bea94ca288011d9a8 *blind/v62/author_r6.json
+8f7418c5bad184aa7739762b59e676829810b7e2ea48befef2861684a6f4ffd3 *blind/v62/author_r6_lines.json
+a20e4f57dcf2681452227cdf1b5109054289f5e1307019f1b3d99d2340ed7003 *blind/v62/author_stt.json
+610c676e8b3213231c89f3df43f84a2cad918e871cca7880dbd0801030b31f5a *blind/v62/author_stt_lines.json
+65826f27fc3f833727aa69603b0bfa61d3740baf51de366850bd66dcda1f9cf0 *annot/v62/author_cs_ann1.json
+65826f27fc3f833727aa69603b0bfa61d3740baf51de366850bd66dcda1f9cf0 *annot/v62/author_cs_ann2.json
+e6276f5a7041b4942c248d77a046a187233565e30ca2e8618d539b4f8cd9dfec *annot/v62/author_r6_ann1.json
+e6276f5a7041b4942c248d77a046a187233565e30ca2e8618d539b4f8cd9dfec *annot/v62/author_r6_ann2.json
+7e6c8e62935abed16b9ad9618e082c1a3fa3cd7828baa92de8292bf84f568ffc *annot/v62/author_stt_ann1.json
+7e6c8e62935abed16b9ad9618e082c1a3fa3cd7828baa92de8292bf84f568ffc *annot/v62/author_stt_ann2.json
+7bad3a8ca7d99f077f7188c9508ab9bf952deed873cc25a516b28c195c6236d1 *annot/v62/relabel_candidates_v62.json
+4d0057dc40fd7e90fe7cccce5ce351d25217615f42e53156d2b01b1d2eb1cf55 *annot/v62/relabel_v62.json
+2026-10-24T13:38:20+02:00
+# v62 seeds, a second time (2026-10-24, after the v62 test lines): the owner mid-round asked for carrying ('Неси это', 'Бери это и неси туда', 'Перенеси, отнеси, принеси мне коробку'): +49 DELIVER (pointed things, boxes and crates) and +6 COLLECT (picking up) seeds in make_spec_v62.py, 2843 -> 2898. Seeds are not blind; no v62 test line is about carrying.
+221e4d455a5903fe1f79d218fcf6fd48d50ebe11780b28357f85100f9ce80267 *seed_commands_v62.json
+39e0ac8c07ae575946d2fafa0dc6400f6823a08bc227436aa060fe9be3ba191a *make_spec_v62.py
+2026-10-24T13:39:12+02:00
+# v62 seeds and owner relabel, a third time (2026-10-24, after the first v62 build's out-of-fold numbers): 'take this' out of the COLLECT seeds (the owner says it for MOVE_TO, four times in owner_lines_v61.json) and the owner's 'impressive' NONE -> PRAISE (relabel_v62.json). The final models are trained again on this; the out-of-fold runs, the gate and the threshold are the first build's.
+ae36494f41f5e06b0e4d37185f64b5f176f2aa92f984f287fa96a9d0afcd5606 *seed_commands_v62.json
+eec6ffe0e4c4ab17ef3f429b6590ebaec817bf32653f3a789bcbeddcd7e1a168 *make_spec_v62.py
+edb5b71eea084878e143c8e77e9ade66ae09c06af2d15db3501f28405307d071 *annot/v62/relabel_v62.json
+2026-10-24T16:48:49+02:00
+# v63 (work machine, 2026-10-24), BEFORE any v63 test line exists; AFTER the owner's words and choices of 2026-10-24 (make_spec_v63.py docstring: 'отпизди его, наваляй ему ... аналоги на англ', free hands, weapons into the inventory; melee at enemies and neutral NPCs, fists or the gun's butt, the key H): MELEE and HOLSTER after KILL_YOURSELF, each in a family of its own, 64 intents. 126 new seeds (2897 -> 3023). Seeds are not blind.
+0eb0ddda326460f33327ef99f4f35c3a673e201dd7455eac89cc7aef46381a00 *blind/spec_v63.json
+f3477e0a790432de31f049db13c18036b9eba72ac65d49309f4080d98842108e *intents_v63.json
+887785d3a5b60d23dc4511d6e0505f5c1d597749f639abd884ec00d10c777f55 *seed_commands_v63.json
+489c8be7bcaa546fbb843d144e5a0bdbc443b7bd598dcf99543f5c0a020d3ae7 *make_spec_v63.py
+2026-10-24T17:10:17+02:00

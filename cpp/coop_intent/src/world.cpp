@@ -75,14 +75,15 @@ constexpr double kFragmentUnsure = 0.5;
 const char* const kFire[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK"};
 const char* const kPinDefault[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MOVE_TO", "CHECK", "ENTRY", "FLANK"};
 const char* const kCarry[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MOVE_TO", "CHECK", "ENTRY", "FLANK", "HOLD_ANGLE", "LOOK_AT"};
-const char* const kPointedHere[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "FRAG", "FLASH", "SMOKE", "LOOK_AT", "CHECK", "HOLD_ANGLE"};
+const char* const kPointedHere[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "FRAG", "FLASH", "SMOKE", "LOOK_AT", "CHECK", "HOLD_ANGLE", "SEE_THING"};
 const char* const kPlaceIntents[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MOVE_TO", "CHECK", "ENTRY", "FLANK", "HOLD_ANGLE", "LOOK_AT",
                                      "FRAG", "FLASH", "SMOKE", "HOLD_POSITION", "JUMP", "TAKE_COVER", "FALL_BACK", "COME_BACK",
                                      "BREACH", "VAULT_WINDOW", "OPEN"};
 // world.NO_PLACE (bot v56): orders whose place is not the line's: going back (the bot's own earlier place, the game keeps
 // it), letting the player out (where the player is). Their lines' places are neither grounded nor asked about. Bot v57:
 // taking out or reloading a weapon the bot carries ("switch to your pistol" names no weapon lying in the world)
-const char* const kNoPlace[] = {"GO_BACK", "HELP_INTERACTION", "SWITCH_WEAPON", "RELOAD"};
+// bot v62: the talk intents; a place in "thanks for the cover at the door" is no order's
+const char* const kNoPlace[] = {"GO_BACK", "HELP_INTERACTION", "SWITCH_WEAPON", "RELOAD", "SEE_ME", "SMALL_TALK", "PRAISE", "KILL_YOURSELF"};
 // world.ITEM_INTENTS (items_v60.json "intents") and FARM_INTENTS: the farmer's and the builder's orders. They join
 // PLACE_INTENTS: "no, by the barn" gives the same order at another place
 const char* const kItemIntents[] = {"PLANT_CROP", "WATER", "HARVEST", "FEED", "COLLECT", "DELIVER", "BUILD", "REPAIR", "DEMOLISH"};

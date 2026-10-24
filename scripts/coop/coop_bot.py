@@ -127,6 +127,14 @@ LINES = {
     "BUILD": ["Building.", "Putting it up.", "On the build."],
     "REPAIR": ["Repairing.", "Fixing it.", "Patching it up."],
     "DEMOLISH": ["Tearing it down.", "Taking it apart.", "Demolishing."],
+    # the v62 bots: the bot that talks (coop_cli.cpp kLines and kTalk: there small talk is answered by what the line asks;
+    # whether the bot sees a thing or the player is the game's answer, so the brain says nothing)
+    "SEE_THING": [""],
+    "SEE_ME": [""],
+    "SMALL_TALK": ["Hey.", "Doing fine. Ready to work.", "Anytime.", "Sure thing."],
+    "PRAISE": ["Thanks!", "Appreciate it.", "Just doing my job.", "Couldn't have done it without you.", "Thanks, you too."],
+    "KILL_YOURSELF": ["Respawn timer's too long for that.", "Nice try. Who'd cover you then?", "Request denied. I like being alive.",
+                      "Not today. You'd miss me.", "I'll pass. Somebody has to watch your back."],
 }
 ACK = ["Copy.", "Noted.", "Heard."]                   # NONE: a callout or chatter, nothing to do
 AGAIN = ["Say again?", "Didn't catch that.", "Come again?"]

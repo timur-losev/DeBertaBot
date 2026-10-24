@@ -13,8 +13,9 @@ namespace coop {
 
 namespace {
 
-// slots whose English value may be any words: the item a player named, a weapon the game calls by its asset's name
-bool OpenSlot(const std::string& slot) { return slot == "item" || slot == "weapon"; }
+// slots whose English value may be any words: the item a player named, a weapon the game calls by its asset's name, a
+// thing the level designer labelled ("spike trap": its words in the player's language come with the line, Terms)
+bool OpenSlot(const std::string& slot) { return slot == "item" || slot == "weapon" || slot == "thing"; }
 
 struct Token {
     enum Kind { Lit, Slot, Num } kind = Lit;
@@ -166,7 +167,7 @@ struct Localizer::Impl {
         return false;
     }
 
-    bool Render(const Template& tp, const Bindings& b, std::string* out) const {
+    bool Render(const Template& tp, const Bindings& b, std::string* out, const Localizer::Terms* terms) const {
         out->clear();
         for (const Token& t : tp.out) {
             if (t.kind == Token::Lit) {
@@ -191,11 +192,23 @@ struct Localizer::Impl {
                 const auto sb = b.find(t.slot);
                 const auto st = slots.find(t.slot);
                 if (sb == b.end() || st == slots.end()) return false;
+                // the words the line came with (a labelled thing's name in the player's language) before the table's
+                const std::map<std::string, std::string>* given = nullptr;
+                if (terms) {
+                    const auto ts = terms->find(t.slot);
+                    if (ts != terms->end()) {
+                        const auto tv = ts->second.find(sb->second);
+                        if (tv != ts->second.end()) given = &tv->second;
+                    }
+                }
                 const auto fv = st->second.forms.find(sb->second);
-                const std::map<std::string, std::string>& forms = fv != st->second.forms.end() ? fv->second : st->second.other;
-                const auto w = forms.find(t.form.empty() ? "text" : t.form);
+                const std::map<std::string, std::string>& forms = given ? *given : fv != st->second.forms.end() ? fv->second : st->second.other;
+                auto w = forms.find(t.form.empty() ? "text" : t.form);
+                if (w == forms.end() && given) w = forms.find("text");   // a name given without that form: its plain one
                 if (w == forms.end()) return false;
-                *out += t.cap ? Capital(w->second) : w->second;
+                // "*": the English words themselves (an English table: "bro" lines keep the item the player named)
+                const std::string& word = w->second == "*" ? sb->second : w->second;
+                *out += t.cap ? Capital(word) : word;
             }
         }
         return true;
@@ -255,7 +268,7 @@ bool Localizer::Load(const std::string& path, std::string* error) {
     return true;
 }
 
-bool Localizer::Translate(const std::string& english, std::string* out, std::string* missing) const {
+bool Localizer::Translate(const std::string& english, std::string* out, std::string* missing, const Terms* terms) const {
     out->clear();
     std::string result;
     for (const std::string& s : SplitSentences(english)) {
@@ -263,7 +276,7 @@ bool Localizer::Translate(const std::string& english, std::string* out, std::str
         for (const Template& tp : impl_->templates) {
             Impl::Bindings b;
             std::string piece;
-            if (impl_->Match(tp.match, 0, s, 0, &b) && impl_->Render(tp, b, &piece)) {
+            if (impl_->Match(tp.match, 0, s, 0, &b) && impl_->Render(tp, b, &piece, terms)) {
                 if (!result.empty()) result += ' ';
                 result += piece;
                 done = true;

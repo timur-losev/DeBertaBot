@@ -127,6 +127,7 @@ public:
     PlaceRecord Find(std::string_view utf8) const;
 
     const std::string& ObjectId(int i) const { return objects_[static_cast<size_t>(i)]; }
+    const std::vector<std::string>& ObjectIds() const { return objects_; }   // the vocabulary's objects (the game's "ready" lists them)
     const std::string& QualifierId(int i) const { return qualifiers_[static_cast<size_t>(i)]; }
     const std::string& ZoneId(int i) const { return zones_[static_cast<size_t>(i)]; }
     // the index of an id, -1 if the vocabulary has none (world.h: the game's entities carry these ids)

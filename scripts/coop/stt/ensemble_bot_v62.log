@@ -1,0 +1,39 @@
+v62 ensemble, build_v62.py out-of-fold (three seeds): gate family, threshold 0.64
+  VCTK pool B, r6+cs       n=1250  near 78.2  wrong family 5.4%  criterion 67.5
+  typed, all lines         n=1875  near 93.0  wrong family 1.5%  criterion 89.9
+  typed, v62 lines         n= 120  near 86.7  wrong family 1.7%  criterion 83.3
+  VCTK pool B, v62 lines   n=  80  near 72.5  wrong family 2.5%  criterion 67.5
+  typed, v60 lines         n= 180  near 97.2  wrong family 1.1%  criterion 95.0
+  VCTK pool B, v60 lines   n= 120  near 77.5  wrong family 3.3%  criterion 70.8
+  typed, v1-v58 lines      n=1575  near 93.0  wrong family 1.6%  criterion 89.8
+  VCTK pool B, v1-v58      n=1050  near 78.8  wrong family 5.8%  criterion 67.1
+  Russian voices, r6+cs    n=1170  near 69.3  wrong family 8.1%  criterion 53.1
+  German voices, r6+cs     n=1170  near 80.1  wrong family 4.6%  criterion 70.9
+  owner, per line          n= 521  right 86.0  say again / ignored 10.2%  wrong family 2.9%
+  owner, per time said     n= 916  right 91.0  say again / ignored 6.1%  wrong family 2.3%
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  15%|█▍        | 30/202 [00:00<00:00, 297.03it/s]Loading weights:  30%|███       | 61/202 [00:00<00:00, 303.57it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 775.02it/s]
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  22%|██▏       | 44/202 [00:00<00:00, 389.27it/s]Loading weights:  41%|████      | 83/202 [00:00<00:00, 361.28it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 706.02it/s]
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  20%|██        | 41/202 [00:00<00:00, 381.39it/s]Loading weights:  40%|███▉      | 80/202 [00:00<00:00, 286.48it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 680.50it/s]
+G:\Proj\ollaya\DeBertaBot\scripts\coop\export_cpp.py:123: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html
+  torch.onnx.export(Wrap(model), (x["input_ids"], x["attention_mask"]), os.path.join(OUT, name),
+wrote G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-ens3-v62\cpp: 3 ONNX model(s), vocab 128000 pieces, golden 4818 lines
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  15%|█▌        | 31/202 [00:00<00:00, 307.35it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 1263.34it/s]
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  21%|██        | 42/202 [00:00<00:00, 412.42it/s]Loading weights:  73%|███████▎  | 148/202 [00:00<00:00, 787.68it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 983.17it/s]
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  12%|█▏        | 24/202 [00:00<00:00, 222.28it/s]Loading weights:  26%|██▌       | 53/202 [00:00<00:00, 260.08it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 876.28it/s]
+gate tests: 5225 rows, the two gates pick different intents on 307
+decide tests, actions per gate: {'top': ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait'], 'family': ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait']} (242 steps in 6 conversations)
+dialogue actions: ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait'] 
+location tests: 53192 lines, 41132 name a place, a direction or a pointer, 14529 of them a direction, 14142 a pointer (3916 a pin; in 8731 a pointer is a target of its own)
+  rule set v5: 14482 of the lines are the pointer batch's (16000 generated from 108 pointer patterns among the direction patterns, and 65 written out; without the ones generated twice or already there)
+item tests: 91960 lines and intents, 12754 with an item (8360 lines)
+tokenizer tests: 12987 lines (5396 with [UNK], 830 cut at 64 tokens, slots on_signal/other/negation on [1964, 804, 762])
+world tests: 1208 scenarios, 10070 steps; actions act 2331, answer 579, ask 2053, execute 78, go 77, ignore 355, negated 128, queued 447, refused 259, resolved 982, say_again 2588, wait 193
+  groundings: missing/None 2022, resolved/pin 609, resolved/direction 499, resolved/gaze 473, resolved/pin_default 367, ambiguous/distance 339, resolved/here 257, resolved/only 256, missing/pin 249, missing/zone 152, missing/this 100, ambiguous/unknown_modifier 69, resolved/inside 56, resolved/memory 51, resolved/answer 51, resolved/nearest 39, resolved/zone 38
+  priors applied on 10070 steps; 18 worlds to refuse
+  the short context: a bare no stopped the bot 100, corrections and fragments 250, repeats 57, the standing pin as the place not said 319; 273 scenarios without the game's clock
+  290 scenarios in a world without named places; 117 orders at "here"; 575 questions answered by pointing; 50 steps with a queued order at "here"
+  lines of several orders: 587 further orders of a line, 228 of them given the place of the order before them; "the other" in answer to "Which ...?" 118 times, 42 of them settled by it and 36 answered with the next one

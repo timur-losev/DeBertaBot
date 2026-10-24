@@ -137,12 +137,13 @@ FRAGMENT_UNSURE = 0.5      # a line under the threshold AND under this is read f
 FIRE = ("OPEN_FIRE", "SUPPRESS", "ATTACK")                       # the enemy under the crosshair comes first
 PIN_DEFAULT = FIRE + ("MOVE_TO", "CHECK", "ENTRY", "FLANK")      # a place not said is the standing pin
 CARRY = PIN_DEFAULT + ("HOLD_ANGLE", "LOOK_AT")                  # ... or where the same order was a moment ago
-POINTED_HERE = FIRE + ("FRAG", "FLASH", "SMOKE", "LOOK_AT", "CHECK", "HOLD_ANGLE")   # "here" is the crosshair's point
+POINTED_HERE = FIRE + ("FRAG", "FLASH", "SMOKE", "LOOK_AT", "CHECK", "HOLD_ANGLE", "SEE_THING")   # "here" is the crosshair's point
 # orders whose place is not the line's (bot v56): going back is to the bot's own earlier place, which the game keeps; letting
 # the player out is where the player is. Their lines' places are neither grounded nor asked about ("go back there"). Bot v57:
 # a weapon named for taking it out or reloading is one the bot carries, not a weapon lying in the world ("switch to your
 # pistol"; the game reads the kind from the words)
-NO_PLACE = ("GO_BACK", "HELP_INTERACTION", "SWITCH_WEAPON", "RELOAD")
+NO_PLACE = ("GO_BACK", "HELP_INTERACTION", "SWITCH_WEAPON", "RELOAD",
+            "SEE_ME", "SMALL_TALK", "PRAISE", "KILL_YOURSELF")   # bot v62: talk; a place in "thanks for the cover at the door" is no order's
 PLACE_INTENTS = CARRY + ("FRAG", "FLASH", "SMOKE", "HOLD_POSITION", "JUMP", "TAKE_COVER", "FALL_BACK", "COME_BACK",
                          "BREACH", "VAULT_WINDOW", "OPEN")       # orders that can be given again at another place
 NO_LEADS = ("no", "nope", "nah", "not", "negative", "wrong")

@@ -662,12 +662,196 @@
    "source": "coop_cli.cpp kLines DEMOLISH"
   },
   {
-   "en": "Copy.",
-   "source": "coop_cli.cpp kAck; game: dead and given an order; followed by the next"
+   "en": "Thanks!",
+   "source": "coop_cli.cpp kLines PRAISE"
+  },
+  {
+   "en": "Appreciate it.",
+   "source": "coop_cli.cpp kLines PRAISE"
+  },
+  {
+   "en": "Just doing my job.",
+   "source": "coop_cli.cpp kLines PRAISE"
+  },
+  {
+   "en": "Couldn't have done it without you.",
+   "source": "coop_cli.cpp kLines PRAISE"
+  },
+  {
+   "en": "Thanks, you too.",
+   "source": "coop_cli.cpp kLines PRAISE"
+  },
+  {
+   "en": "Respawn timer's too long for that.",
+   "source": "coop_cli.cpp kLines KILL_YOURSELF"
+  },
+  {
+   "en": "Nice try.",
+   "source": "coop_cli.cpp kLines KILL_YOURSELF"
+  },
+  {
+   "en": "Who'd cover you then?",
+   "source": "coop_cli.cpp kLines KILL_YOURSELF"
+  },
+  {
+   "en": "Request denied.",
+   "source": "coop_cli.cpp kLines KILL_YOURSELF"
+  },
+  {
+   "en": "I like being alive.",
+   "source": "coop_cli.cpp kLines KILL_YOURSELF"
+  },
+  {
+   "en": "Not today.",
+   "source": "coop_cli.cpp kLines KILL_YOURSELF"
+  },
+  {
+   "en": "You'd miss me.",
+   "source": "coop_cli.cpp kLines KILL_YOURSELF"
+  },
+  {
+   "en": "I'll pass.",
+   "source": "coop_cli.cpp kLines KILL_YOURSELF"
+  },
+  {
+   "en": "Somebody has to watch your back.",
+   "source": "coop_cli.cpp kLines KILL_YOURSELF"
+  },
+  {
+   "en": "Anytime.",
+   "source": "coop_cli.cpp kTalk thanks (SMALL_TALK)"
+  },
+  {
+   "en": "No problem.",
+   "source": "coop_cli.cpp kTalk thanks (SMALL_TALK)"
+  },
+  {
+   "en": "That's what I'm here for.",
+   "source": "coop_cli.cpp kTalk thanks (SMALL_TALK)"
+  },
+  {
+   "en": "No worries.",
+   "source": "coop_cli.cpp kTalk sorry (SMALL_TALK)"
+  },
+  {
+   "en": "It happens.",
+   "source": "coop_cli.cpp kTalk sorry (SMALL_TALK)"
+  },
+  {
+   "en": "All good.",
+   "source": "coop_cli.cpp kTalk sorry (SMALL_TALK)"
+  },
+  {
+   "en": "See you.",
+   "source": "coop_cli.cpp kTalk bye (SMALL_TALK)"
+  },
+  {
+   "en": "Later.",
+   "source": "coop_cli.cpp kTalk bye (SMALL_TALK)"
+  },
+  {
+   "en": "Take care out there.",
+   "source": "coop_cli.cpp kTalk bye (SMALL_TALK)"
+  },
+  {
+   "en": "Doing fine.",
+   "source": "coop_cli.cpp kTalk how (SMALL_TALK)"
+  },
+  {
+   "en": "Ready to work.",
+   "source": "coop_cli.cpp kTalk how (SMALL_TALK)"
+  },
+  {
+   "en": "All good here.",
+   "source": "coop_cli.cpp kTalk how (SMALL_TALK)"
+  },
+  {
+   "en": "Still in one piece.",
+   "source": "coop_cli.cpp kTalk how (SMALL_TALK)"
+  },
+  {
+   "en": "Right here.",
+   "source": "coop_cli.cpp kTalk there (SMALL_TALK)"
+  },
+  {
+   "en": "Still here.",
+   "source": "coop_cli.cpp kTalk there (SMALL_TALK)"
+  },
+  {
+   "en": "I hear you.",
+   "source": "coop_cli.cpp kTalk there (SMALL_TALK)"
+  },
+  {
+   "en": "Just your teammate.",
+   "source": "coop_cli.cpp kTalk who (SMALL_TALK)"
+  },
+  {
+   "en": "A bot, and proud of it.",
+   "source": "coop_cli.cpp kTalk who (SMALL_TALK)"
+  },
+  {
+   "en": "Your squad mate.",
+   "source": "coop_cli.cpp kTalk who (SMALL_TALK)"
+  },
+  {
+   "en": "I follow orders and watch your back.",
+   "source": "coop_cli.cpp kTalk who (SMALL_TALK)"
+  },
+  {
+   "en": "Why did the grenade get promoted?",
+   "source": "coop_cli.cpp kTalk joke (SMALL_TALK)"
+  },
+  {
+   "en": "It really blew them away.",
+   "source": "coop_cli.cpp kTalk joke (SMALL_TALK)"
+  },
+  {
+   "en": "I'd tell you a sniper joke, but you wouldn't see it coming.",
+   "source": "coop_cli.cpp kTalk joke (SMALL_TALK)"
+  },
+  {
+   "en": "Let's go find some trouble then.",
+   "source": "coop_cli.cpp kTalk bored (SMALL_TALK)"
+  },
+  {
+   "en": "Say the word and we move.",
+   "source": "coop_cli.cpp kTalk bored (SMALL_TALK)"
+  },
+  {
+   "en": "Hey.",
+   "source": "coop_cli.cpp kTalk hello (SMALL_TALK)"
+  },
+  {
+   "en": "Hey, good to see you.",
+   "source": "coop_cli.cpp kTalk hello (SMALL_TALK)"
+  },
+  {
+   "en": "Hi.",
+   "source": "coop_cli.cpp kTalk hello (SMALL_TALK)"
+  },
+  {
+   "en": "Ready when you are.",
+   "source": "coop_cli.cpp kTalk hello (SMALL_TALK)"
+  },
+  {
+   "en": "Ha.",
+   "source": "coop_cli.cpp kTalk other (SMALL_TALK)"
+  },
+  {
+   "en": "Good one.",
+   "source": "coop_cli.cpp kTalk other (SMALL_TALK)"
+  },
+  {
+   "en": "Sure thing.",
+   "source": "coop_cli.cpp kTalk other (SMALL_TALK)"
   },
   {
    "en": "Noted.",
-   "source": "coop_cli.cpp kAck"
+   "source": "coop_cli.cpp kTalk other (SMALL_TALK); coop_cli.cpp kAck"
+  },
+  {
+   "en": "Copy.",
+   "source": "coop_cli.cpp kAck; game: dead and given an order; followed by the next"
   },
   {
    "en": "Heard.",
@@ -719,7 +903,7 @@
   },
   {
    "en": "Got it.",
-   "source": "world.cpp: the player's answer settled the question"
+   "source": "world.cpp: the player's answer settled the question; game: DELIVER: picked the thing up"
   },
   {
    "en": "Copy, never mind.",
@@ -1112,6 +1296,194 @@
   {
    "en": "I can't do that here.",
    "source": "game: other"
+  },
+  {
+   "en": "Yes, I see it.",
+   "source": "game: SEE_THING: the pointed or named thing is in sight"
+  },
+  {
+   "en": "No, I can't see it from here.",
+   "source": "game: SEE_THING: it is not"
+  },
+  {
+   "en": "Yes, I see him.",
+   "source": "game: SEE_THING: the enemy under the crosshair is in sight"
+  },
+  {
+   "en": "No, I don't see him.",
+   "source": "game: SEE_THING: that enemy is not in sight"
+  },
+  {
+   "en": "I see one of them.",
+   "source": "game: SEE_THING with nothing pointed: one enemy in sight"
+  },
+  {
+   "en": "I see {n} of them.",
+   "source": "game: SEE_THING with nothing pointed: several enemies in sight"
+  },
+  {
+   "en": "Nothing in sight.",
+   "source": "game: SEE_THING: no enemy in sight"
+  },
+  {
+   "en": "Yes, I see you.",
+   "source": "game: SEE_ME: the player is in sight"
+  },
+  {
+   "en": "No, I can't see you.",
+   "source": "game: SEE_ME: the player is not"
+  },
+  {
+   "en": "Through the portal.",
+   "source": "game: MOVE_TO a teleport: the bot went through"
+  },
+  {
+   "en": "Here you go.",
+   "source": "game: DELIVER: put it down by the player"
+  },
+  {
+   "en": "Dropped it off.",
+   "source": "game: DELIVER: put it down at the place"
+  },
+  {
+   "en": "Nothing to carry there.",
+   "source": "game: DELIVER: no carriable thing where the player points"
+  },
+  {
+   "en": "That's too heavy for me.",
+   "source": "game: DELIVER: not carriable"
+  },
+  {
+   "en": "I see {thing} {sector}, {n} m.",
+   "source": "game: 'what do you see?': a labelled thing in sight, where it is from the player and how far"
+  },
+  {
+   "en": "And {thing} {sector}, {n} m.",
+   "source": "game: 'what do you see?': the next labelled thing in sight"
+  },
+  {
+   "en": "I can feel {thing} {sector}.",
+   "source": "game: 'what do you see?': a labelled heat, cold or gas source near the bot, out of sight"
+  },
+  {
+   "en": "Enemy {sector}, {n} m.",
+   "source": "game: 'what do you see?': one enemy in sight"
+  },
+  {
+   "en": "{n} enemies in sight.",
+   "source": "game: 'what do you see?': several enemies in sight; followed by 'The nearest ...'"
+  },
+  {
+   "en": "The nearest {sector}, {n} m.",
+   "source": "game: 'what do you see?': the nearest of several enemies"
+  },
+  {
+   "en": "Nothing worth noting.",
+   "source": "game: 'what do you see?': no labelled thing and no enemy"
+  },
+  {
+   "en": "Not a scratch.",
+   "source": "game: health above nine tenths"
+  },
+  {
+   "en": "Took a few hits, I'm fine.",
+   "source": "game: health 60 to 90 percent"
+  },
+  {
+   "en": "Hurt, but I can fight.",
+   "source": "game: health 30 to 60 percent"
+  },
+  {
+   "en": "Badly hurt, I need a break.",
+   "source": "game: health under 30 percent"
+  },
+  {
+   "en": "Not hot at all.",
+   "source": "game: 'are you hot?' with no heat"
+  },
+  {
+   "en": "Getting warm here.",
+   "source": "game: a little heat"
+  },
+  {
+   "en": "It's hot, really hot!",
+   "source": "game: heat"
+  },
+  {
+   "en": "I'm burning up, get me out of here!",
+   "source": "game: much heat; also said by itself when it gets there"
+  },
+  {
+   "en": "Not cold.",
+   "source": "game: 'are you cold?' with no cold"
+  },
+  {
+   "en": "A bit chilly.",
+   "source": "game: a little cold"
+  },
+  {
+   "en": "It's freezing here.",
+   "source": "game: cold"
+  },
+  {
+   "en": "I'm freezing to death!",
+   "source": "game: much cold; also said by itself"
+  },
+  {
+   "en": "Air's clean.",
+   "source": "game: 'gas?' with no gas"
+  },
+  {
+   "en": "Something smells off.",
+   "source": "game: a little gas"
+  },
+  {
+   "en": "Gas!",
+   "source": "game: gas"
+  },
+  {
+   "en": "Hard to breathe.",
+   "source": "game: gas"
+  },
+  {
+   "en": "Choking on gas, need to get out!",
+   "source": "game: much gas; also said by itself"
+  },
+  {
+   "en": "{n} rounds left.",
+   "source": "game: 'ammo?': the rounds in the weapon in hand and in reserve"
+  },
+  {
+   "en": "Plenty of ammo.",
+   "source": "game: 'ammo?': over half"
+  },
+  {
+   "en": "Running low on ammo.",
+   "source": "game: 'ammo?': under a quarter"
+  },
+  {
+   "en": "Nothing in my hands.",
+   "source": "game: 'ammo?' with the weapon put away"
+  },
+  {
+   "en": "All quiet around me.",
+   "source": "game: 'how is it going?' with nothing to report but health"
+  },
+  {
+   "en": "Okay, I won't anymore.",
+   "source": "coop_cli.cpp bro habit: the player told it to stop saying 'bro'"
+  },
+  {
+   "en": "Got it, no more.",
+   "source": "coop_cli.cpp bro habit: the same"
+  },
+  {
+   "en": "Fine, I'll stop.",
+   "source": "coop_cli.cpp bro habit: the same"
+  },
+  {
+   "en": "Sorry, habit.",
+   "source": "coop_cli.cpp bro habit: the brat persona says 'bro' again 30 s after being told to stop; followed by its line"
   }
  ],
  "slots": {
@@ -1237,6 +1609,10 @@
     "well"
    ]
   },
+  "thing": {
+   "note": "a thing the level designer labelled, with its English article ('a spike trap'); open, and it has no values: its words in the player's language come with the line from the label itself (the forms text, acc, gen...). The table's _other is said only when a label has no words of that language: a neutral word ('что-то', 'algo')",
+   "values": []
+  },
   "phrase": {
    "note": "the order, as the bot says it back (intent_config.json 'phrases'); lowercase, an imperative ('move there')",
    "values": [
@@ -1280,8 +1656,11 @@
     "plant it",
     "push in",
     "rappel",
+    "refuse that",
     "reload",
     "repair",
+    "say if you see it",
+    "say if you see me",
     "say maybe",
     "say no",
     "say they don't know",
@@ -1290,6 +1669,8 @@
     "suppress",
     "switch weapons",
     "take cover",
+    "take the praise",
+    "talk",
     "tear it down",
     "throw a flash",
     "throw a frag",
@@ -1302,347 +1683,28 @@
   "object": {
    "note": "a kind of place on the map: 'Which window?', 'I see no car.'",
    "values": [
-    {
-     "id": "door",
-     "words": [
-      "door",
-      "doors",
-      "doorway",
-      "doorways",
-      "entrance",
-      "entrances",
-      "entryway"
-     ],
-     "qualifiers": [
-      "main",
-      "north",
-      "south",
-      "west",
-      "east"
-     ]
-    },
-    {
-     "id": "window",
-     "words": [
-      "window",
-      "windows"
-     ],
-     "qualifiers": [
-      "north",
-      "south",
-      "west",
-      "east"
-     ]
-    },
-    {
-     "id": "stairs",
-     "words": [
-      "stairs",
-      "stair",
-      "staircase",
-      "staircases",
-      "stairway",
-      "stairways",
-      "stairwell",
-      "stairwells",
-      "stares",
-      "the steps",
-      "those steps"
-     ],
-     "qualifiers": [
-      "blue",
-      "red",
-      "yellow",
-      "white",
-      "brown"
-     ],
-     "vertical": true
-    },
-    {
-     "id": "chair",
-     "words": [
-      "chair",
-      "chairs"
-     ],
-     "qualifiers": []
-    },
-    {
-     "id": "sofa",
-     "words": [
-      "sofa",
-      "sofas",
-      "couch",
-      "couches"
-     ],
-     "qualifiers": []
-    },
-    {
-     "id": "table",
-     "words": [
-      "table",
-      "tables"
-     ],
-     "qualifiers": []
-    },
-    {
-     "id": "car",
-     "words": [
-      "car",
-      "cars",
-      "vehicle",
-      "vehicles",
-      "truck",
-      "trucks",
-      "jeep",
-      "van"
-     ],
-     "qualifiers": []
-    },
-    {
-     "id": "ammo",
-     "words": [
-      "ammo",
-      "ammunition",
-      "mags",
-      "magazines",
-      "bullets",
-      "armor",
-      "armour",
-      "amor",
-      "ammo crate",
-      "ammo crates",
-      "ammo box",
-      "ammo boxes",
-      "ammunition crate",
-      "ammunition box"
-     ],
-     "qualifiers": []
-    },
-    {
-     "id": "weapon",
-     "words": [
-      "weapon",
-      "weapons",
-      "gun",
-      "guns",
-      "rifle",
-      "rifles",
-      "pistol",
-      "pistols",
-      "shotgun",
-      "shotguns",
-      "launcher",
-      "weapon crate",
-      "weapons crate",
-      "gun crate",
-      "weapon box",
-      "weapons box"
-     ],
-     "qualifiers": []
-    },
-    {
-     "id": "health",
-     "words": [
-      "health",
-      "medkit",
-      "medkits",
-      "med kit",
-      "health pack",
-      "health packs",
-      "healthpack",
-      "first aid",
-      "health box",
-      "medical box",
-      "medical crate"
-     ],
-     "qualifiers": []
-    },
-    {
-     "id": "field",
-     "words": [
-      "field",
-      "fields",
-      "farmland",
-      "paddock",
-      "paddocks",
-      "meadow",
-      "meadows"
-     ],
-     "qualifiers": [
-      "north",
-      "south",
-      "west",
-      "east"
-     ]
-    },
-    {
-     "id": "bed",
-     "words": [
-      "bed",
-      "beds",
-      "garden bed",
-      "garden beds",
-      "flower bed",
-      "flower beds",
-      "vegetable bed",
-      "plot",
-      "plots",
-      "planter",
-      "planters",
-      "raised bed",
-      "raised beds"
-     ],
-     "qualifiers": [
-      "north",
-      "south",
-      "west",
-      "east"
-     ]
-    },
-    {
-     "id": "greenhouse",
-     "words": [
-      "greenhouse",
-      "greenhouses",
-      "green house",
-      "hothouse",
-      "glasshouse"
-     ],
-     "qualifiers": [
-      "north",
-      "south",
-      "west",
-      "east"
-     ]
-    },
-    {
-     "id": "barn",
-     "words": [
-      "barn",
-      "barns",
-      "shed",
-      "sheds",
-      "storehouse",
-      "storehouses",
-      "silo",
-      "silos",
-      "granary",
-      "warehouse",
-      "tool shed",
-      "toolshed"
-     ],
-     "qualifiers": [
-      "north",
-      "south",
-      "west",
-      "east"
-     ]
-    },
-    {
-     "id": "coop",
-     "words": [
-      "coop",
-      "coops",
-      "chicken coop",
-      "hen house",
-      "henhouse",
-      "chicken house",
-      "pen",
-      "pens",
-      "stable",
-      "stables",
-      "sty",
-      "pigsty",
-      "pig pen",
-      "corral"
-     ],
-     "qualifiers": [
-      "north",
-      "south",
-      "west",
-      "east"
-     ]
-    },
-    {
-     "id": "beehive",
-     "words": [
-      "beehive",
-      "beehives",
-      "hive",
-      "hives",
-      "bee hive",
-      "bee hives",
-      "apiary"
-     ],
-     "qualifiers": []
-    },
-    {
-     "id": "well",
-     "words": [
-      "the well",
-      "water well",
-      "wells",
-      "water tank",
-      "water tanks",
-      "water pump",
-      "pump",
-      "pumps"
-     ],
-     "qualifiers": []
-    },
-    {
-     "id": "fence",
-     "words": [
-      "fence",
-      "fences",
-      "fencing",
-      "fence line"
-     ],
-     "qualifiers": [
-      "north",
-      "south",
-      "west",
-      "east"
-     ]
-    },
-    {
-     "id": "tree",
-     "words": [
-      "tree",
-      "trees",
-      "woods",
-      "forest",
-      "treeline",
-      "tree line"
-     ],
-     "qualifiers": []
-    },
-    {
-     "id": "crate",
-     "words": [
-      "crate",
-      "crates",
-      "box",
-      "boxes",
-      "chest",
-      "chests",
-      "container",
-      "containers"
-     ],
-     "qualifiers": []
-    },
-    {
-     "id": "foundation",
-     "words": [
-      "foundation",
-      "foundations",
-      "building spot",
-      "build spot",
-      "building site",
-      "construction site"
-     ],
-     "qualifiers": []
-    },
+    "door",
+    "window",
+    "stairs",
+    "chair",
+    "sofa",
+    "table",
+    "car",
+    "ammo",
+    "weapon",
+    "health",
+    "field",
+    "bed",
+    "greenhouse",
+    "barn",
+    "coop",
+    "beehive",
+    "well",
+    "fence",
+    "tree",
+    "crate",
+    "foundation",
+    "teleport",
     "place"
    ]
   }

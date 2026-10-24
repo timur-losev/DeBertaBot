@@ -1,0 +1,564 @@
+{
+ "r6v62_000": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "east",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_001": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "red",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_002": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_003": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_004": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_005": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_006": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_007": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_008": {
+  "intent": "SEE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_009": {
+  "intent": "SEE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_010": {
+  "intent": "SEE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_011": {
+  "intent": "SEE_ME",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_012": {
+  "intent": "SMALL_TALK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_013": {
+  "intent": "SMALL_TALK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_014": {
+  "intent": "SMALL_TALK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_015": {
+  "intent": "SMALL_TALK",
+  "ok": [
+   "NONE"
+  ],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_016": {
+  "intent": "SMALL_TALK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_017": {
+  "intent": "SMALL_TALK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_018": {
+  "intent": "SMALL_TALK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_019": {
+  "intent": "SMALL_TALK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_020": {
+  "intent": "PRAISE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_021": {
+  "intent": "PRAISE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_022": {
+  "intent": "PRAISE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_023": {
+  "intent": "PRAISE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_024": {
+  "intent": "PRAISE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_025": {
+  "intent": "PRAISE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_026": {
+  "intent": "KILL_YOURSELF",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_027": {
+  "intent": "KILL_YOURSELF",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_028": {
+  "intent": "KILL_YOURSELF",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_029": {
+  "intent": "KILL_YOURSELF",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_030": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "teleport",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_031": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "teleport",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_032": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": "teleport",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_033": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "teleport",
+   "qualifier": null,
+   "zone": null,
+   "direction": "left",
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_034": {
+  "intent": "LOOK_AT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "north",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_035": {
+  "intent": "CHECK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_036": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "yellow",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_037": {
+  "intent": "ATTACK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_038": {
+  "intent": "HOLD_ANGLE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "west",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v62_039": {
+  "intent": "YES",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "_note": "v62 (2026-10-24): earlier lines read again under spec v62 (relabel_candidates_v62.json: a word search over the lines and the owner's lines whose majority was NONE, YES, LOOK_AT, CHECK or LOOK_AT_ME). Praise of what the bot did is PRAISE now; the rest stay (a brag 'did you see that' about the player's own play, a question about the game, an acknowledgement 'okay, nice', answers with YES first). After the first v62 build: the owner's 'impressive' (said twice) is PRAISE too.",
+ "lines": {
+  "cs_047": {
+   "from": "NONE",
+   "to": "PRAISE",
+   "text": "nice one dude, clean"
+  },
+  "stt_060": {
+   "from": "NONE",
+   "to": "PRAISE",
+   "text": "nice shot buddy"
+  },
+  "csv5_057": {
+   "from": "NONE",
+   "to": "PRAISE",
+   "text": "nice shot dude, that was a clean one tap"
+  }
+ },
+ "owner": {
+  "owner_0238": {
+   "from": "NONE",
+   "to": "PRAISE",
+   "text": "good job"
+  },
+  "owner_0343": {
+   "from": "NONE",
+   "to": "PRAISE",
+   "text": "nice shot"
+  },
+  "owner_0571": {
+   "from": "NONE",
+   "to": "PRAISE",
+   "text": "well done"
+  },
+  "owner_0275": {
+   "from": "NONE",
+   "to": "PRAISE",
+   "text": "impressive"
+  }
+ }
+}

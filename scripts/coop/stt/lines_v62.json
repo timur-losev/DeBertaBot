@@ -1,0 +1,722 @@
+[
+{
+"id": "r6v62_000",
+"author": "r6",
+"version": "v62",
+"text": "You got eyes on the east window?",
+"maj": "SEE_THING",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0000.wav"
+},
+{
+"id": "r6v62_001",
+"author": "r6",
+"version": "v62",
+"text": "Can you see the red stairs from where you are?",
+"maj": "SEE_THING",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0001.wav"
+},
+{
+"id": "r6v62_002",
+"author": "r6",
+"version": "v62",
+"text": "You seeing anything on your end?",
+"maj": "SEE_THING",
+"voice": "Microsoft Mark",
+"wav": "v62_0002.wav"
+},
+{
+"id": "r6v62_003",
+"author": "r6",
+"version": "v62",
+"text": "Any hostiles in sight, buddy?",
+"maj": "SEE_THING",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0003.wav"
+},
+{
+"id": "r6v62_004",
+"author": "r6",
+"version": "v62",
+"text": "Yo, you see that?",
+"maj": "SEE_THING",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0004.wav"
+},
+{
+"id": "r6v62_005",
+"author": "r6",
+"version": "v62",
+"text": "Can you spot him from your angle?",
+"maj": "SEE_THING",
+"voice": "Microsoft Mark",
+"wav": "v62_0005.wav"
+},
+{
+"id": "r6v62_006",
+"author": "r6",
+"version": "v62",
+"text": "Do you have a visual over there?",
+"maj": "SEE_THING",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0006.wav"
+},
+{
+"id": "r6v62_007",
+"author": "r6",
+"version": "v62",
+"text": "Got eyes on my ping?",
+"maj": "SEE_THING",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0007.wav"
+},
+{
+"id": "r6v62_008",
+"author": "r6",
+"version": "v62",
+"text": "Am I visible to you right now?",
+"maj": "SEE_ME",
+"voice": "Microsoft Mark",
+"wav": "v62_0008.wav"
+},
+{
+"id": "r6v62_009",
+"author": "r6",
+"version": "v62",
+"text": "You seeing me, mate?",
+"maj": "SEE_ME",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0009.wav"
+},
+{
+"id": "r6v62_010",
+"author": "r6",
+"version": "v62",
+"text": "Am I in your line of sight?",
+"maj": "SEE_ME",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0010.wav"
+},
+{
+"id": "r6v62_011",
+"author": "r6",
+"version": "v62",
+"text": "Hey, do you see me waving at you?",
+"maj": "SEE_ME",
+"voice": "Microsoft Mark",
+"wav": "v62_0011.wav"
+},
+{
+"id": "r6v62_012",
+"author": "r6",
+"version": "v62",
+"text": "Morning, partner. Ready for another round?",
+"maj": "SMALL_TALK",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0012.wav"
+},
+{
+"id": "r6v62_013",
+"author": "r6",
+"version": "v62",
+"text": "How you holding up?",
+"maj": "SMALL_TALK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0013.wav"
+},
+{
+"id": "r6v62_014",
+"author": "r6",
+"version": "v62",
+"text": "Thanks, man, I owe you one.",
+"maj": "SMALL_TALK",
+"voice": "Microsoft Mark",
+"wav": "v62_0014.wav"
+},
+{
+"id": "r6v62_015",
+"author": "r6",
+"version": "v62",
+"text": "My bad, that was my grenade.",
+"maj": "SMALL_TALK",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0015.wav"
+},
+{
+"id": "r6v62_016",
+"author": "r6",
+"version": "v62",
+"text": "What's your name anyway?",
+"maj": "SMALL_TALK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0016.wav"
+},
+{
+"id": "r6v62_017",
+"author": "r6",
+"version": "v62",
+"text": "Are you actually a bot or is someone playing you?",
+"maj": "SMALL_TALK",
+"voice": "Microsoft Mark",
+"wav": "v62_0017.wav"
+},
+{
+"id": "r6v62_018",
+"author": "r6",
+"version": "v62",
+"text": "Talk to me, I'm bored out of my mind.",
+"maj": "SMALL_TALK",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0018.wav"
+},
+{
+"id": "r6v62_019",
+"author": "r6",
+"version": "v62",
+"text": "Alright, I'm logging off. Catch you tomorrow.",
+"maj": "SMALL_TALK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0019.wav"
+},
+{
+"id": "r6v62_020",
+"author": "r6",
+"version": "v62",
+"text": "Clean headshot, man.",
+"maj": "PRAISE",
+"voice": "Microsoft Mark",
+"wav": "v62_0020.wav"
+},
+{
+"id": "r6v62_021",
+"author": "r6",
+"version": "v62",
+"text": "That was a sick clutch!",
+"maj": "PRAISE",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0021.wav"
+},
+{
+"id": "r6v62_022",
+"author": "r6",
+"version": "v62",
+"text": "You're a beast, seriously.",
+"maj": "PRAISE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0022.wav"
+},
+{
+"id": "r6v62_023",
+"author": "r6",
+"version": "v62",
+"text": "Nice trade, good stuff.",
+"maj": "PRAISE",
+"voice": "Microsoft Mark",
+"wav": "v62_0023.wav"
+},
+{
+"id": "r6v62_024",
+"author": "r6",
+"version": "v62",
+"text": "Best teammate I've ever had, no joke.",
+"maj": "PRAISE",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0024.wav"
+},
+{
+"id": "r6v62_025",
+"author": "r6",
+"version": "v62",
+"text": "Hell yeah, you cleared that room like a pro.",
+"maj": "PRAISE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0025.wav"
+},
+{
+"id": "r6v62_026",
+"author": "r6",
+"version": "v62",
+"text": "Ugh, just go die already.",
+"maj": "KILL_YOURSELF",
+"voice": "Microsoft Mark",
+"wav": "v62_0026.wav"
+},
+{
+"id": "r6v62_027",
+"author": "r6",
+"version": "v62",
+"text": "Bro, kys.",
+"maj": "KILL_YOURSELF",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0027.wav"
+},
+{
+"id": "r6v62_028",
+"author": "r6",
+"version": "v62",
+"text": "Why don't you blow yourself up next time.",
+"maj": "KILL_YOURSELF",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0028.wav"
+},
+{
+"id": "r6v62_029",
+"author": "r6",
+"version": "v62",
+"text": "Useless bot, go shoot yourself.",
+"maj": "KILL_YOURSELF",
+"voice": "Microsoft Mark",
+"wav": "v62_0029.wav"
+},
+{
+"id": "r6v62_030",
+"author": "r6",
+"version": "v62",
+"text": "Take the portal, I'm right behind you.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0030.wav"
+},
+{
+"id": "r6v62_031",
+"author": "r6",
+"version": "v62",
+"text": "Go through that teleporter.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0031.wav"
+},
+{
+"id": "r6v62_032",
+"author": "r6",
+"version": "v62",
+"text": "Head into the teleport by my pin.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v62_0032.wav"
+},
+{
+"id": "r6v62_033",
+"author": "r6",
+"version": "v62",
+"text": "Step into the portal on the left.",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0033.wav"
+},
+{
+"id": "r6v62_034",
+"author": "r6",
+"version": "v62",
+"text": "Turn and look at the north window.",
+"maj": "LOOK_AT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0034.wav"
+},
+{
+"id": "r6v62_035",
+"author": "r6",
+"version": "v62",
+"text": "Go see if the basement's clear.",
+"maj": "CHECK",
+"voice": "Microsoft Mark",
+"wav": "v62_0035.wav"
+},
+{
+"id": "r6v62_036",
+"author": "r6",
+"version": "v62",
+"text": "I see him, he's on the yellow stairs.",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0036.wav"
+},
+{
+"id": "r6v62_037",
+"author": "r6",
+"version": "v62",
+"text": "Kill him before he flanks us.",
+"maj": "ATTACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0037.wav"
+},
+{
+"id": "r6v62_038",
+"author": "r6",
+"version": "v62",
+"text": "Nice shot, now hold the west door.",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft Mark",
+"wav": "v62_0038.wav"
+},
+{
+"id": "r6v62_039",
+"author": "r6",
+"version": "v62",
+"text": "Perfect, that's it.",
+"maj": "YES",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0039.wav"
+},
+{
+"id": "csv62_000",
+"author": "cs",
+"version": "v62",
+"text": "yo do you see the north window?",
+"maj": "SEE_THING",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0040.wav"
+},
+{
+"id": "csv62_001",
+"author": "cs",
+"version": "v62",
+"text": "bro you got eyes on the red stairs or nah",
+"maj": "SEE_THING",
+"voice": "Microsoft Mark",
+"wav": "v62_0041.wav"
+},
+{
+"id": "csv62_002",
+"author": "cs",
+"version": "v62",
+"text": "dude, you seeing anything?",
+"maj": "SEE_THING",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0042.wav"
+},
+{
+"id": "csv62_003",
+"author": "cs",
+"version": "v62",
+"text": "yo you spot any enemies or you just vibing",
+"maj": "SEE_THING",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0043.wav"
+},
+{
+"id": "csv62_004",
+"author": "cs",
+"version": "v62",
+"text": "yo yo yo you see that??",
+"maj": "SEE_THING",
+"voice": "Microsoft Mark",
+"wav": "v62_0044.wav"
+},
+{
+"id": "csv62_005",
+"author": "cs",
+"version": "v62",
+"text": "bro can you see him or are you blind",
+"maj": "SEE_THING",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0045.wav"
+},
+{
+"id": "csv62_006",
+"author": "cs",
+"version": "v62",
+"text": "see that dude over there?",
+"maj": "SEE_THING",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0046.wav"
+},
+{
+"id": "csv62_007",
+"author": "cs",
+"version": "v62",
+"text": "you got a visual on my ping?",
+"maj": "SEE_THING",
+"voice": "Microsoft Mark",
+"wav": "v62_0047.wav"
+},
+{
+"id": "csv62_008",
+"author": "cs",
+"version": "v62",
+"text": "bro am I on your screen right now",
+"maj": "SEE_ME",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0048.wav"
+},
+{
+"id": "csv62_009",
+"author": "cs",
+"version": "v62",
+"text": "dude do you even see me rn",
+"maj": "SEE_ME",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0049.wav"
+},
+{
+"id": "csv62_010",
+"author": "cs",
+"version": "v62",
+"text": "you got eyes on me or what",
+"maj": "SEE_ME",
+"voice": "Microsoft Mark",
+"wav": "v62_0050.wav"
+},
+{
+"id": "csv62_011",
+"author": "cs",
+"version": "v62",
+"text": "can you see me from where you're camping lol",
+"maj": "SEE_ME",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0051.wav"
+},
+{
+"id": "csv62_012",
+"author": "cs",
+"version": "v62",
+"text": "yo what's good bot",
+"maj": "SMALL_TALK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0052.wav"
+},
+{
+"id": "csv62_013",
+"author": "cs",
+"version": "v62",
+"text": "sup dude, you alive in there?",
+"maj": "SMALL_TALK",
+"voice": "Microsoft Mark",
+"wav": "v62_0053.wav"
+},
+{
+"id": "csv62_014",
+"author": "cs",
+"version": "v62",
+"text": "my bad bro, that was totally my grenade",
+"maj": "SMALL_TALK",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0054.wav"
+},
+{
+"id": "csv62_015",
+"author": "cs",
+"version": "v62",
+"text": "thanks for the carry dude",
+"maj": "SMALL_TALK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0055.wav"
+},
+{
+"id": "csv62_016",
+"author": "cs",
+"version": "v62",
+"text": "are you like an actual bot or some sweaty kid",
+"maj": "SMALL_TALK",
+"voice": "Microsoft Mark",
+"wav": "v62_0056.wav"
+},
+{
+"id": "csv62_017",
+"author": "cs",
+"version": "v62",
+"text": "bro tell me something funny, I'm dying of boredom here",
+"maj": "SMALL_TALK",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0057.wav"
+},
+{
+"id": "csv62_018",
+"author": "cs",
+"version": "v62",
+"text": "aight gg, I'm out, peace",
+"maj": "SMALL_TALK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0058.wav"
+},
+{
+"id": "csv62_019",
+"author": "cs",
+"version": "v62",
+"text": "what's your name anyway, Steve?",
+"maj": "SMALL_TALK",
+"voice": "Microsoft Mark",
+"wav": "v62_0059.wav"
+},
+{
+"id": "csv62_020",
+"author": "cs",
+"version": "v62",
+"text": "yooo that headshot was clean",
+"maj": "PRAISE",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0060.wav"
+},
+{
+"id": "csv62_021",
+"author": "cs",
+"version": "v62",
+"text": "dude you're cracked",
+"maj": "PRAISE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0061.wav"
+},
+{
+"id": "csv62_022",
+"author": "cs",
+"version": "v62",
+"text": "you carried the whole round bro, respect",
+"maj": "PRAISE",
+"voice": "Microsoft Mark",
+"wav": "v62_0062.wav"
+},
+{
+"id": "csv62_023",
+"author": "cs",
+"version": "v62",
+"text": "okay that clutch was actually insane",
+"maj": "PRAISE",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0063.wav"
+},
+{
+"id": "csv62_024",
+"author": "cs",
+"version": "v62",
+"text": "W bot, honestly",
+"maj": "PRAISE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0064.wav"
+},
+{
+"id": "csv62_025",
+"author": "cs",
+"version": "v62",
+"text": "sheesh, nice flick dude",
+"maj": "PRAISE",
+"voice": "Microsoft Mark",
+"wav": "v62_0065.wav"
+},
+{
+"id": "csv62_026",
+"author": "cs",
+"version": "v62",
+"text": "lol kys you useless bot",
+"maj": "KILL_YOURSELF",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0066.wav"
+},
+{
+"id": "csv62_027",
+"author": "cs",
+"version": "v62",
+"text": "just go die in a corner or something",
+"maj": "KILL_YOURSELF",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0067.wav"
+},
+{
+"id": "csv62_028",
+"author": "cs",
+"version": "v62",
+"text": "eat your own grenade bro",
+"maj": "KILL_YOURSELF",
+"voice": "Microsoft Mark",
+"wav": "v62_0068.wav"
+},
+{
+"id": "csv62_029",
+"author": "cs",
+"version": "v62",
+"text": "you're so trash, go shoot yourself lmao",
+"maj": "KILL_YOURSELF",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0069.wav"
+},
+{
+"id": "csv62_030",
+"author": "cs",
+"version": "v62",
+"text": "yo dip through the portal",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0070.wav"
+},
+{
+"id": "csv62_031",
+"author": "cs",
+"version": "v62",
+"text": "bro take the teleporter, I'll meet you on the other side",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v62_0071.wav"
+},
+{
+"id": "csv62_032",
+"author": "cs",
+"version": "v62",
+"text": "go through that tp real quick",
+"maj": "MOVE_TO",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0072.wav"
+},
+{
+"id": "csv62_033",
+"author": "cs",
+"version": "v62",
+"text": "run into the portal by my ping bro",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0073.wav"
+},
+{
+"id": "csv62_034",
+"author": "cs",
+"version": "v62",
+"text": "dude face the east door",
+"maj": "LOOK_AT",
+"voice": "Microsoft Mark",
+"wav": "v62_0074.wav"
+},
+{
+"id": "csv62_035",
+"author": "cs",
+"version": "v62",
+"text": "go see if the basement's clear bro",
+"maj": "CHECK",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0075.wav"
+},
+{
+"id": "csv62_036",
+"author": "cs",
+"version": "v62",
+"text": "I see a dude camping by the blue stairs",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0076.wav"
+},
+{
+"id": "csv62_037",
+"author": "cs",
+"version": "v62",
+"text": "dude just kill that guy",
+"maj": "ATTACK",
+"voice": "Microsoft Mark",
+"wav": "v62_0077.wav"
+},
+{
+"id": "csv62_038",
+"author": "cs",
+"version": "v62",
+"text": "clean kill bro, now hold the south window",
+"maj": "HOLD_ANGLE",
+"voice": "Microsoft David Desktop",
+"wav": "v62_0078.wav"
+},
+{
+"id": "csv62_039",
+"author": "cs",
+"version": "v62",
+"text": "perfect bro",
+"maj": "YES",
+"voice": "Microsoft Zira Desktop",
+"wav": "v62_0079.wav"
+}
+]

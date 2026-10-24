@@ -180,7 +180,19 @@ build\Release\coop_cli.exe --serve --no-spin --threads 1 --tts   # the bot as a 
     `voices.bin`; a `voice.json` in the folder gives its speaker and language). A line the game hands to `say` in English
     is translated first, sentence by sentence: sentences this brain already wrote stay as they are. The `speech` event's
     `text` and `lang` say what was said.
-  - `--replies-check FILE` translates every template with every value of each slot: both tables pass 910 of 910.
+  - `--replies-check FILE` translates every template with every value of each slot: every table (371 templates since
+    2026-10-24) passes 1048 of 1048.
+  - A `say` may bring `terms`: the words of the level's labelled things in the player's language (the open slot `thing`;
+    `Localizer::Terms`). A form `*` writes the English words as they came (the English table of the habit below).
+- `--replies-bro FILE --bro on|off --bro-relapse SECONDS` (2026-10-24, [bro.h](include/coop_intent/bro.h)): the habit of
+  calling the player «брат» / "bro" / "hermano". A word for "brother" in the player's line turns it on; "stop calling me
+  bro" and the like turn it off (the reply is the bot's agreement and nothing else is read). While it is on, the lines
+  come from FILE (`replies_<lang>_brat.json`, en too); `--bro-relapse 30` (the brat persona) brings it back 30 s after it
+  was stopped, with "Sorry, habit.". The reply says `bro` (on/off) and `bro_active`. `--bro-check tools/bro_tests.json`:
+  42 lines in three languages and the relapse.
+- `state` in a reply (2026-10-24): a question about the bot only the game can answer, with no order and no words: `seen`
+  ("what do you see?", also «что видишь?» / «qué ves?» in the player's own words), `how`, `hurt`, `heat`, `cold`, `gas`,
+  `ammo` ("got any ammo?" is read as a walk to the ammo: the planner's "Where?" is dropped). `StateQuestion` in coop_cli.cpp.
 - `--decider DIR` (a build with llama.cpp) adds an optional second reader of every line beside the ensemble:
   - The model is decider-2b with the bot's LoRA, as a GGUF ([decider.h](include/coop_intent/decider.h)). `DIR` is
     `scripts/coop/decider/export_game.py`'s folder.

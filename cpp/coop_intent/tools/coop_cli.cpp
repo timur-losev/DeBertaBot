@@ -95,6 +95,7 @@
 #include "coop_intent/bot_brain.h"
 #include "coop_intent/decider.h"
 #include "coop_intent/intent_model.h"
+#include "coop_intent/bro.h"
 #include "coop_intent/localize.h"
 #include "coop_intent/rewriter.h"
 #include "coop_intent/speech.h"
@@ -1059,7 +1060,113 @@ const std::unordered_map<std::string, std::vector<std::string>> kLines = {
     {"BUILD", {"Building.", "Putting it up.", "On the build."}},
     {"REPAIR", {"Repairing.", "Fixing it.", "Patching it up."}},
     {"DEMOLISH", {"Tearing it down.", "Taking it apart.", "Demolishing."}},
+    // the v62 bots: the bot that talks. Whether it sees a thing or the player is the game's answer (its line of sight):
+    // the brain says nothing for those. Small talk is answered by what the line asks (kTalk)
+    {"SEE_THING", {""}},
+    {"SEE_ME", {""}},
+    {"PRAISE", {"Thanks!", "Appreciate it.", "Just doing my job.", "Couldn't have done it without you.", "Thanks, you too."}},
+    {"KILL_YOURSELF", {"Respawn timer's too long for that.", "Nice try. Who'd cover you then?", "Request denied. I like being alive.",
+                       "Not today. You'd miss me.", "I'll pass. Somebody has to watch your back."}},
 };
+// SMALL_TALK (bot v62): the answer by what the line asks, the first kind whose words it has; none: kTalk "other"
+const std::vector<std::pair<std::string, std::vector<std::string>>> kTalkWords = {
+    {"thanks", {"thank", "thanks", "thx", "cheers", "appreciate"}},
+    {"sorry", {"sorry", "my bad", "apologize", "apologies", "oops"}},
+    {"bye", {"bye", "goodbye", "see you", "see ya", "later", "good night", "peace", "i'm out", "gotta go"}},
+    {"how", {"how are", "how's it", "how is it", "how you doing", "how are things", "how do you feel", "how was", "how's your",
+             "what's up", "whats up", "sup", "what's new", "you okay", "you ok", "are you okay", "are you alright", "you alright",
+             "alive"}},
+    {"there", {"you there", "are you there", "still there", "you with me", "can you hear me", "you hear me", "talking to me"}},
+    {"who", {"who are you", "your name", "what are you", "are you a bot", "are you human", "are you real", "how old", "where are you from"}},
+    {"joke", {"joke", "funny", "make me laugh"}},
+    {"bored", {"bored", "boring", "talk to me", "say something", "tell me something"}},
+    {"hello", {"hello", "hey", "hi", "yo", "good morning", "good evening", "morning", "greetings", "howdy"}},
+};
+const std::unordered_map<std::string, std::vector<std::string>> kTalk = {
+    {"thanks", {"Anytime.", "No problem.", "That's what I'm here for."}},
+    {"sorry", {"No worries.", "It happens.", "All good."}},
+    {"bye", {"See you.", "Later.", "Take care out there."}},
+    {"how", {"Doing fine. Ready to work.", "All good here.", "Still in one piece."}},
+    {"there", {"Right here.", "Still here.", "I hear you."}},
+    {"who", {"Just your teammate. A bot, and proud of it.", "Your squad mate. I follow orders and watch your back."}},
+    {"joke", {"Why did the grenade get promoted? It really blew them away.", "I'd tell you a sniper joke, but you wouldn't see it coming."}},
+    {"bored", {"Let's go find some trouble then.", "Say the word and we move."}},
+    {"hello", {"Hey.", "Hey, good to see you.", "Hi. Ready when you are."}},
+    {"other", {"Ha. Good one.", "Sure thing.", "Noted."}},
+};
+
+// a phrase of the list in the line, as whole words (lower case)
+bool PhraseIn(const std::string& text, const std::vector<std::string>& phrases) {
+    std::string t;
+    for (char c : text) t += static_cast<char>(c >= 'A' && c <= 'Z' ? c - 'A' + 'a' : c);
+    const std::string padded = " " + t + " ";
+    for (const std::string& w : phrases)
+        for (size_t at = padded.find(w); at != std::string::npos; at = padded.find(w, at + 1)) {
+            const char before = padded[at - 1], after = at + w.size() < padded.size() ? padded[at + w.size()] : ' ';
+            if (!std::isalnum(static_cast<unsigned char>(before)) && !std::isalnum(static_cast<unsigned char>(after))) return true;
+        }
+    return false;
+}
+
+const std::vector<std::string>& TalkLines(const std::string& text) {
+    for (const auto& kind : kTalkWords)
+        if (PhraseIn(text, kind.second)) return kTalk.at(kind.first);
+    return kTalk.at("other");
+}
+
+// Questions about the bot itself that only the game can answer (2026-10-24, the owner): what it sees and senses now (the
+// labelled things and the enemy), and how its body is (health, heat, cold, gas, ammo). The brain says nothing for them:
+// the reply carries "state" and the game's server answers from the bot. A question about one thing ("are you hurt?",
+// "тебе не жарко?" -> "are you hot") is that thing; "how is it going?" and the like, everything at once
+const std::vector<std::pair<std::string, std::vector<std::string>>> kStateWords = {
+    {"seen", {"what do you see", "what can you see", "what are you looking at", "what are you seeing", "what's around", "what is around",
+              "anything around", "what's there", "what is there", "what's out there", "see anything", "anything there",
+              "what do you notice", "anything interesting", "what's ahead", "what is ahead"}},
+    {"hurt", {"hurt", "wounded", "injured", "health", "are you hit", "you hit", "bleeding", "hp", "damaged", "in pain"}},
+    {"heat", {"hot", "heat", "burning", "on fire", "too warm", "warm", "sweating", "overheating"}},
+    {"cold", {"cold", "freezing", "frozen", "chilly", "chilled"}},
+    {"gas", {"gas", "poison", "poisoned", "toxic", "breathe", "breathing", "smell", "smells", "choking", "fumes"}},
+    {"ammo", {"ammo", "ammunition", "bullets", "rounds left", "magazine", "how many rounds", "rounds", "cartridges"}},
+};
+
+// "what do you see?" as a Russian or Spanish player says it (lower case, Cyrillic and accents included)
+bool SeenInOwnWords(const std::string& line) {
+    std::u32string u = coop::DecodeUtf8(line);
+    for (char32_t& c : u) {
+        if (c >= U'A' && c <= U'Z') c = c - U'A' + U'a';
+        else if (c >= U'А' && c <= U'Я') c = c - U'А' + U'а';
+        else if (c == U'Ё') c = U'ё';
+    }
+    std::u32string t;
+    for (char32_t c : u) t += (c == U'?' || c == U'¿' || c == U'!' || c == U'¡' || c == U',' || c == U'.') ? U' ' : c;
+    const std::string s = " " + coop::EncodeUtf8(t) + " ";
+    static const char* const kSeen[] = {" что видишь ", " что ты видишь ", " что там видишь ", " что видно ", " что там видно ",
+                                        " что вокруг ", " что там впереди ", " видишь что-нибудь ", " видишь что нибудь ",
+                                        " qué ves ", " que ves ", " qué estás viendo ", " que estas viendo ", " qué hay ", " que hay ",
+                                        " qué se ve ", " que se ve ", " ves algo "};
+    for (const char* p : kSeen)
+        if (s.find(p) != std::string::npos) return true;
+    return false;
+}
+
+// the question's kind: "seen", "hurt", ..., "how" (SMALL_TALK's how-are-you), or empty. talk: the classifier took the
+// line for small talk or for no order at all ("патроны есть?" -> "got any ammo?" is no order)
+std::string StateQuestion(const std::string& text, bool talk, bool walk = false) {
+    // a question about its ammo, which the classifier reads as a walk to the ammo (an ammo box is a MOVE_TO place, bot v55);
+    // a walk is only ever this question, "go over there and see what's there" stays a walk
+    static const std::vector<std::string> kAmmoAsked = {"got any ammo", "have any ammo", "you have ammo", "you got ammo", "how much ammo",
+                                                         "how's your ammo", "how is your ammo", "ammo check", "ammo count", "how many bullets",
+                                                         "any ammo left", "ammo left", "low on ammo"};
+    if (PhraseIn(text, kAmmoAsked)) return "ammo";
+    if (walk) return std::string();
+    if (PhraseIn(text, kStateWords[0].second)) return "seen";   // the classifier reads it as SEE_THING, or as nothing
+    if (!talk) return std::string();
+    for (size_t k = 1; k < kStateWords.size(); ++k)
+        if (PhraseIn(text, kStateWords[k].second)) return kStateWords[k].first;
+    for (const auto& kind : kTalkWords)
+        if (kind.first == "how" && PhraseIn(text, kind.second)) return "how";
+    return std::string();
+}
 const std::vector<std::string> kAck = {"Copy.", "Noted.", "Heard."};
 
 // a label the demo has no lines for (a newer model) still gets an answer
@@ -1138,10 +1245,10 @@ std::string g_language = "en";
 coop::Localizer* g_replies = nullptr;
 std::deque<std::string> g_localized;
 
-bool Localize(const std::string& english, std::string* local) {
+bool Localize(const std::string& english, std::string* local, const coop::Localizer::Terms* terms = nullptr) {
     if (!g_replies || english.empty()) return false;
     std::string missing;
-    if (!g_replies->Translate(english, local, &missing)) {
+    if (!g_replies->Translate(english, local, &missing, terms)) {
         std::fprintf(stderr, "replies: no %s template for \"%s\" (in \"%s\")\n", g_replies->Language().c_str(), missing.c_str(), english.c_str());
         return false;
     }
@@ -1152,10 +1259,28 @@ bool Localize(const std::string& english, std::string* local) {
 
 bool IsLocalized(const std::string& line) { return std::find(g_localized.begin(), g_localized.end(), line) != g_localized.end(); }
 
+// --replies-bro FILE, --bro on|off, --bro-relapse SECONDS (bro.h): the habit of calling the player «брат» / "bro" /
+// "hermano". While it is on the lines are written from the persona's table (English too: an English table of the same
+// sentences with "bro"); off, from the plain one (--replies; none in English). The player's words switch it
+coop::BroHabit g_bro;
+coop::Localizer* g_plain_replies = nullptr;
+coop::Localizer* g_bro_replies = nullptr;
+const auto g_started = std::chrono::steady_clock::now();
+
+double SinceStart() { return std::chrono::duration<double>(std::chrono::steady_clock::now() - g_started).count(); }
+
+// the table for the next line: the habit's, or the plain one
+void ChooseReplies() {
+    g_replies = g_bro_replies && g_bro.Active(SinceStart()) ? g_bro_replies : g_plain_replies;
+}
+
+const std::vector<std::string> kBroOff = {"Okay, I won't anymore.", "Got it, no more.", "Fine, I'll stop."};
+const std::string kBroRelapse = "Sorry, habit.";
+
 // a line the game put together from a reply this brain wrote in the player's language and its own English words ("No
 // flashbangs, only frags." + "Зачищаю комнату."): each sentence that is a sentence of a line written here stays, each
 // other one is translated. False when one of them can be neither: the line stays English
-bool LocalizeMixed(const std::string& line, std::string* local) {
+bool LocalizeMixed(const std::string& line, std::string* local, const coop::Localizer::Terms* terms = nullptr) {
     if (!g_replies) return false;
     std::string out;
     for (const std::string& sentence : coop::SplitSentences(line)) {
@@ -1165,7 +1290,7 @@ bool LocalizeMixed(const std::string& line, std::string* local) {
             for (const std::string& s : coop::SplitSentences(l))
                 if (s == sentence) ours = true;
         if (ours) piece = sentence;
-        else if (!Localize(sentence, &piece)) return false;
+        else if (!Localize(sentence, &piece, terms)) return false;
         if (!out.empty()) out += ' ';
         out += piece;
     }
@@ -1395,6 +1520,7 @@ struct Chat {
         std::string line;       // the order line it is about: the player's line, or one the decoder wrote from it
         coop::PlannerResult r;
         std::string reply;
+        std::string state;      // a question only the game can answer (StateQuestion): "seen", "how", "hurt", "heat", ...
         std::vector<float> p;   // the classifier's probabilities
         double ms = 0;
     };
@@ -1496,7 +1622,15 @@ struct Chat {
                         h->note = "the bot's question is open, the line is its answer";
                     }
                 }
-                for (const std::string& piece : pieces) todo.push_back({piece, coop::SpeechTextForClassifier(piece)});
+                for (std::string piece : pieces) {
+                    // bot v62: the classifier reads an English "hi" / "hi there" as the owner's misheard "hide (there)"
+                    // (v57). The decoder's English for «привет», «hola» is no mishearing: it is a greeting
+                    if (foreign) {
+                        const std::string low = coop::SpeechTextForClassifier(piece);
+                        if (low == "hi" || low.rfind("hi ", 0) == 0) piece = "hello" + piece.substr(2);
+                    }
+                    todo.push_back({piece, coop::SpeechTextForClassifier(piece)});
+                }
                 h->rewritten = !todo.empty();
             }
         }
@@ -1631,7 +1765,7 @@ struct Chat {
             case coop::Action::Go: reply = "Going!"; break;
             case coop::Action::Wait: reply = Pick(kLines.at("WAIT")); break;
             case coop::Action::Queued: reply = "Ready to " + m.cfg.phrases[intent] + ". On your go."; break;
-            case coop::Action::Act: reply = Pick(LinesFor(intent)); break;
+            case coop::Action::Act: reply = intent == "SMALL_TALK" ? Pick(TalkLines(text)) : Pick(LinesFor(intent)); break;
             case coop::Action::Answer: reply = Pick(LinesFor(intent)); break;   // the answer said back: nothing is done
         }
         // "hold fire until I say": the bot holds now and has queued OPEN_FIRE for the signal
@@ -1640,6 +1774,18 @@ struct Chat {
         if (d.other && (d.action == coop::Action::Act || d.action == coop::Action::Queued) && intent != "HOLD_OTHER_ANGLE" &&
             intent != "HOLD_FIRE" && r.action != "ask")
             reply += " Taking the other one.";
+        // what it sees, how it is: the game answers (the order, if any, is dropped in ReplyJson)
+        if (intent == "MOVE_TO") {
+            // "got any ammo?": the planner may have asked where the ammo is; the question is the bot's, not the walk's
+            turn->state = StateQuestion(text, false, true);
+            if (!turn->state.empty()) {
+                reply.clear();
+                if (r.action == "ask") planner.DropQuestion();
+            }
+        } else if (r.action != "ask" && (intent == "SMALL_TALK" || intent == "SEE_THING" || intent == "NONE" || d.action == coop::Action::Ignore)) {
+            turn->state = StateQuestion(text, intent == "SMALL_TALK" || intent == "NONE" || d.action == coop::Action::Ignore);
+            if (!turn->state.empty()) reply.clear();
+        }
         return true;
     }
 
@@ -2307,6 +2453,9 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads, const std::s
 //                                                                answered by "speech" (speaker and speed optional:
 //                                                                the ones the service was started with); "hush" and
 //                                                                "ptt_down" drop the lines not made yet
+//        "terms":{"thing":{"a spike trap":{"ru":{"text":"ловушка с шипами","acc":"ловушку с шипами"},"es":{"text":
+//        "una trampa de pinchos"}}}}: the words of the level's labelled things the line names, in the languages the
+//        label has; the reply table takes the player's (localize.h Terms)
 //   {"cmd":"reset"} {"cmd":"threshold","value":0.7} {"cmd":"ping"} {"cmd":"quit"}
 //
 //   {"event":"ready","labels":[...],"gate":"family","threshold":0.68,"stt":true,"mic":true,"tts":true,...}
@@ -2324,6 +2473,10 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads, const std::s
 //        {"route" (the router's probability, null when it was not asked),"decoded","rewritten","held" (order lines
 //        that wait for the answer to the question a turn asked; they come as turns of the reply to that answer,
 //        "resumed" of them),"note","route_ms","rewrite_ms"}
+//        "state" (a turn's, 2026-10-24): a question about the bot that only the game can answer, with no order and no
+//        words: "seen" (what it sees and senses), "how" (everything), "hurt", "heat", "cold", "gas", "ammo" (StateQuestion).
+//        With --replies-bro: "bro" "on" / "off" when the line switched the habit (bro.h; "off" comes with the bot's
+//        agreement as its words and SMALL_TALK, nothing else read), "bro_active" whether this reply was written with it
 //   {"event":"nothing","id":8,...}    the clip had no words;  {"event":"too_short","id":8}
 //   {"event":"speech","id":12,"text":"Contact left!","rate":22050,"audio_s":0.9,"ms":61,"pcm16":"<base64>"}
 //        the line as 16-bit little-endian mono samples (--tts-piper); the game plays it from the bot.
@@ -2377,6 +2530,11 @@ json ReplyJson(Chat& chat, const Chat::Turn& t) {
     } else {
         j["order"] = nullptr;
     }
+    if (!t.state.empty()) {
+        // a question the game answers from the bot: no order goes with it ("what do you see?" is no SEE_THING at the crosshair)
+        j["state"] = t.state;
+        j["order"] = nullptr;
+    }
     const coop::Memory& mem = chat.planner.Mem();
     if (mem.has_question)
         j["question"] = {{"kind", mem.question.kind}, {"intent", label(mem.question.intent)}, {"candidates", mem.question.candidates},
@@ -2387,6 +2545,39 @@ json ReplyJson(Chat& chat, const Chat::Turn& t) {
     j["pending_entity"] = or_null(chat.planner.PendingEntity());
     j["last_entity"] = or_null(mem.last_entity);
     return j;
+}
+
+// --bro-check FILE (tools/bro_tests.json): [{"line": "...", "expect": "on" | "off" | "none"}, ...], what the habit reads in
+// each line (bro.h); every line that reads otherwise is printed. Exit 1 on any
+int RunBroCheck(const std::string& path) {
+    std::ifstream f(path);
+    if (!f) return std::fprintf(stderr, "cannot read %s\n", path.c_str()), 2;
+    json cases;
+    try {
+        f >> cases;
+    } catch (const std::exception& e) {
+        return std::fprintf(stderr, "%s: %s\n", path.c_str(), e.what()), 2;
+    }
+    size_t bad = 0;
+    for (const json& c : cases) {
+        const std::string line = c.at("line").get<std::string>(), expect = c.at("expect").get<std::string>();
+        const coop::BroHabit::Heard h = coop::BroHabit::Read(line);
+        const std::string got = h == coop::BroHabit::Heard::On ? "on" : h == coop::BroHabit::Heard::Off ? "off" : "none";
+        if (got != expect) {
+            ++bad;
+            std::printf("  %-48s expected %-4s got %s\n", line.c_str(), expect.c_str(), got.c_str());
+        }
+    }
+    // the habit over time: the brat persona comes back 30 s after it is stopped, the plain bot does not
+    coop::BroHabit persona, plain;
+    persona.Configure(true, 30);
+    plain.Configure(false, 0);
+    persona.Hear("не называй меня брат", 10);
+    plain.Hear("bro", 10);
+    plain.Hear("stop calling me bro", 11);
+    const bool timing = !persona.Active(20) && persona.Active(41) && persona.TakeRelapse() && !plain.Active(100);
+    std::printf("bro check: %zu lines, %zu wrong; the 30 s relapse %s\n", cases.size(), bad, timing ? "ok" : "WRONG");
+    return bad || !timing ? 1 : 0;
 }
 
 // --replies-check FILE: every template of the table, with every value of each of its slots, translated back: a template or
@@ -2547,6 +2738,9 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
           {"mic", mic_ready}, {"mic_note", mic_note}, {"tts", tts_ready}, {"tts_note", tts_note},
           {"tts_kind", tts_kind.empty() ? json(nullptr) : json(tts_kind)},
           {"replies", g_replies ? json({{"language", g_replies->Language()}, {"templates", g_replies->Templates()}}) : json(nullptr)},
+          {"bro", g_bro_replies ? json({{"active", g_replies == g_bro_replies}, {"relapse_s", g_bro.RelapseSeconds()},
+                                        {"templates", g_bro_replies->Templates()}}) : json(nullptr)},
+          {"place_objects", chat.brain.Places().ObjectIds()},   // what the game may send as a place's object (bot v62: teleport)
           {"voice_local", local_ready}, {"voice_local_note", local_note},
           {"chain", g_chain ? json({{"dir", g_chain->dir}, {"router", g_chain->router != nullptr}, {"cut", g_chain->cut},
                                     {"decoder", Chain::Backend()}, {"gpu", g_chain->decoder_options.gpu_layers != 0},
@@ -2586,6 +2780,32 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                     send({{"event", "nothing"}, {"id", id}, {"audio_s", audio_s}, {"stt_ms", stt_ms}});
                     return;
                 }
+                // the habit first, by the words as said: "stop calling me bro" is about the habit and nothing else (the
+                // classifier would read it as an order: "хватит говорить брат" -> HOLD_FIRE)
+                const coop::BroHabit::Heard bro = g_bro_replies ? g_bro.Hear(heard, SinceStart()) : coop::BroHabit::Heard::None;
+                const char* bro_name = bro == coop::BroHabit::Heard::On ? "on" : bro == coop::BroHabit::Heard::Off ? "off" : nullptr;
+                ChooseReplies();
+                const bool relapsed = g_bro.TakeRelapse();
+                if (bro == coop::BroHabit::Heard::Off) {
+                    const std::string en = chat.Pick(kBroOff);
+                    json turn = {{"intent", "SMALL_TALK"}, {"prob", 1.0}, {"action", "act"}, {"say", en}, {"line", heard},
+                                 {"order", {{"intent", "SMALL_TALK"}}}, {"question", nullptr}, {"bro", "off"}};
+                    std::string local;
+                    if (g_replies && Localize(en, &local)) turn["say"] = local, turn["say_en"] = en;
+                    json j = turn;
+                    j.erase("line");
+                    j["event"] = "reply";
+                    j["turns"] = json::array({turn});
+                    j["id"] = id;
+                    j["heard"] = heard;
+                    j["spoken"] = spoken;
+                    j["audio_s"] = audio_s;
+                    j["stt_ms"] = stt_ms;
+                    j["bro_active"] = false;
+                    j["bro_back_in"] = g_bro.RelapseSeconds() > 0 ? json(g_bro.RelapseSeconds()) : json(nullptr);
+                    send(j);
+                    return;
+                }
                 Chat::Heard h;
                 json turns = json::array();
                 if (!chat.Hear(heard, spoken ? coop::SpeechTextForClassifier(heard) : heard, &h, &err, [&](const Chat::Heard&, const Chat::Turn& t) {
@@ -2597,9 +2817,46 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                     fail(err);
                     return;
                 }
+                if (bro == coop::BroHabit::Heard::On && !turns.empty()) {
+                    // the line that switched the habit on gets an answer with the word in it: the player hears it took
+                    json& first = turns.at(0);
+                    const std::string said = first.value("say", std::string()), english = first.value("say_en", said);
+                    const auto variants = kLines.find(first.value("intent", std::string()));
+                    if (coop::BroHabit::Read(said) == coop::BroHabit::Heard::None && variants != kLines.end() &&
+                        std::find(variants->second.begin(), variants->second.end(), english) != variants->second.end())
+                        for (const std::string& v : variants->second) {
+                            std::string local;
+                            if (g_replies && Localize(v, &local) && coop::BroHabit::Read(local) == coop::BroHabit::Heard::On) {
+                                first["say"] = local;
+                                first["say_en"] = v;
+                                break;
+                            }
+                        }
+                }
+                if (relapsed && !turns.empty()) {
+                    // the brat persona, 30 s after it was told to stop: it slips, and owns up to it
+                    json& first = turns.at(0);
+                    std::string sorry = kBroRelapse, local;
+                    if (g_replies && Localize(kBroRelapse, &local)) sorry = local;
+                    const std::string said = first.value("say", std::string());
+                    first["say"] = said.empty() ? sorry : sorry + " " + said;
+                    if (first.contains("say_en")) first["say_en"] = kBroRelapse + " " + first["say_en"].get<std::string>();
+                    first["bro_relapse"] = true;
+                }
+                // "what do you see?" in the player's own words: the decoder writes «qué ves?» as an order to watch an angle
+                // (chain v63), so a Russian or Spanish line that asks it is the question whatever the decoder made of it
+                if (g_language != "en" && turns.size() == 1 && !turns.at(0).contains("state") && SeenInOwnWords(heard)) {
+                    json& only = turns.at(0);
+                    only["state"] = "seen";
+                    only["order"] = nullptr;
+                    only["say"] = "";
+                    only.erase("say_en");
+                }
                 json j = turns.at(0);   // the reply as it was before --chain: the first order's
                 j.erase("line");
                 j["event"] = "reply";
+                if (bro_name) j["bro"] = bro_name;
+                j["bro_active"] = g_replies != nullptr && g_replies == g_bro_replies;
                 if (g_chain) {
                     j["turns"] = std::move(turns);
                     j["chain"] = {{"route", h.route >= 0 ? json(h.route) : json(nullptr)}, {"decoded", h.decoded}, {"rewritten", h.rewritten},
@@ -2694,9 +2951,25 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                         // already (a reply's "say") is said as it is
                         std::string text = q.at("text").get<std::string>(), local;
                         bool in_local = false;
+                        ChooseReplies();
+                        // "terms": the words of labelled things in the player's language, {"thing": {"spike trap": {"ru":
+                        // {"text": ..., "acc": ...}, "es": {...}}}}: this language's forms go to the table
+                        coop::Localizer::Terms terms;
+                        if (g_replies && q.contains("terms") && q["terms"].is_object())
+                            for (auto s = q["terms"].begin(); s != q["terms"].end(); ++s)
+                                for (auto v = s.value().begin(); v != s.value().end(); ++v) {
+                                    const json& forms = v.value().contains(g_replies->Language()) ? v.value()[g_replies->Language()] : v.value();
+                                    std::string key = v.key();
+                                    for (char& c : key) c = static_cast<char>(c >= 'A' && c <= 'Z' ? c - 'A' + 'a' : c);
+                                    for (auto f = forms.begin(); f != forms.end(); ++f)
+                                        if (f.value().is_string()) terms[s.key()][key][f.key()] = f.value().get<std::string>();
+                                }
                         if (local_ready && g_replies) {
                             if (q.value("localized", false) || IsLocalized(text)) in_local = true;
-                            else if (LocalizeMixed(text, &local)) text = local, in_local = true;
+                            else if (LocalizeMixed(text, &local, &terms)) text = local, in_local = true;
+                        } else if (g_replies && g_replies->Language() == "en") {
+                            // English with the habit: the game's line in the persona's words, said by the English voice
+                            if (!q.value("localized", false) && !IsLocalized(text) && LocalizeMixed(text, &local, &terms)) text = local;
                         }
                         jobs.push_back({id, text, in_local ? std::string() : q.value("speaker", std::string()), q.value("speed", 0.0f), in_local});
                         jobs_cv.notify_one();
@@ -2757,7 +3030,9 @@ int main(int argc, char** argv) {
     bool decoder_cpu = false;
     int decoder_threads = 4;
     coop::VoiceOptions piper, voice_local;
-    std::string replies_file;
+    std::string replies_file, bro_file, bro_check;
+    bool bro_on = false;
+    double bro_relapse = 0;
     std::string tts_demo_dir, tts_text = "Contact left! Moving to the ping. Which door? The one ahead, 8 m?";
     for (int i = 1; i < argc; ++i) {
         const std::string a = argv[i];
@@ -2773,6 +3048,10 @@ int main(int argc, char** argv) {
         else if (a == "--decoder-threads" && i + 1 < argc) decoder_threads = std::atoi(argv[++i]);
         else if (a == "--chain-tests") mode = "chain-tests";
         else if (a == "--language" && i + 1 < argc) g_language = argv[++i];
+        else if (a == "--replies-bro" && i + 1 < argc) bro_file = argv[++i];
+        else if (a == "--bro" && i + 1 < argc) bro_on = std::string(argv[++i]) == "on";
+        else if (a == "--bro-relapse" && i + 1 < argc) bro_relapse = std::atof(argv[++i]);
+        else if (a == "--bro-check" && i + 1 < argc) mode = "bro-check", bro_check = argv[++i];
         else if (a == "--replies" && i + 1 < argc) replies_file = argv[++i];
         else if (a == "--replies-check" && i + 1 < argc) mode = "replies-check", replies_file = argv[++i];
         else if (a == "--voice-local" && i + 1 < argc) voice_local.model_dir = argv[++i];
@@ -2880,6 +3159,20 @@ int main(int argc, char** argv) {
         if (!replies.Load(replies_file, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 2;
         std::printf("replies: %s, %zu templates (%s)\n", replies.Language().c_str(), replies.Templates(), replies_file.c_str());
         g_replies = &replies;
+        g_plain_replies = &replies;
+    }
+    if (mode == "bro-check") return RunBroCheck(bro_check);
+    coop::Localizer bro_replies;
+    if (!bro_file.empty()) {
+        if (!bro_replies.Load(bro_file, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 2;
+        if (bro_replies.Language() != g_language)
+            return std::fprintf(stderr, "%s is a %s table, and the player's language is %s\n", bro_file.c_str(), bro_replies.Language().c_str(),
+                                g_language.c_str()), 2;
+        g_bro_replies = &bro_replies;
+        g_bro.Configure(bro_on, bro_relapse);
+        ChooseReplies();
+        std::printf("bro: %s, %zu templates (%s), starts %s%s\n", bro_replies.Language().c_str(), bro_replies.Templates(), bro_file.c_str(),
+                    bro_on ? "on" : "off", bro_relapse > 0 ? (", comes back " + std::to_string(static_cast<int>(bro_relapse)) + " s after it is stopped").c_str() : "");
     }
     if (mode == "replies-check") return RunRepliesCheck(replies);
     voice_local.threads = std::max(piper.threads, 4);   // a Kokoro voice needs them: about 3 s a line on one thread, 0.5 s on four

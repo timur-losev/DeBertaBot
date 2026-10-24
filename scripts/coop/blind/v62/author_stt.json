@@ -1,0 +1,642 @@
+[
+ {
+  "id": "sttv62_000",
+  "text": "uh do you see the the norse window",
+  "intent": "SEE_THING",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "north",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "see_thing"
+ },
+ {
+  "id": "sttv62_001",
+  "text": "okay so can you see the blue stares um",
+  "intent": "SEE_THING",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "blue",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "see_thing"
+ },
+ {
+  "id": "sttv62_002",
+  "text": "um you seeing anything",
+  "intent": "SEE_THING",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "see_thing"
+ },
+ {
+  "id": "sttv62_003",
+  "text": "any enemies do you see any any enemies like",
+  "intent": "SEE_THING",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "see_thing"
+ },
+ {
+  "id": "sttv62_004",
+  "text": "do you, do you see that",
+  "intent": "SEE_THING",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "see_thing"
+ },
+ {
+  "id": "sttv62_005",
+  "text": "can you see him uh the guy with the uh shotgun",
+  "intent": "SEE_THING",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "see_thing"
+ },
+ {
+  "id": "sttv62_006",
+  "text": "you got a visual over there",
+  "intent": "SEE_THING",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "see_thing"
+ },
+ {
+  "id": "sttv62_007",
+  "text": "okay look at my pin do you see what's at my pin",
+  "intent": "SEE_THING",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "see_thing"
+ },
+ {
+  "id": "sttv62_008",
+  "text": "hey can you sea me",
+  "intent": "SEE_ME",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "see_me"
+ },
+ {
+  "id": "sttv62_009",
+  "text": "am i um am i in your view right now",
+  "intent": "SEE_ME",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "see_me"
+ },
+ {
+  "id": "sttv62_010",
+  "text": "do you have ice on me buddy",
+  "intent": "SEE_ME",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "see_me"
+ },
+ {
+  "id": "sttv62_011",
+  "text": "you see me okay so do you see me or not",
+  "intent": "SEE_ME",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "see_me"
+ },
+ {
+  "id": "sttv62_012",
+  "text": "hey buddy how's it going",
+  "intent": "SMALL_TALK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "small_talk"
+ },
+ {
+  "id": "sttv62_013",
+  "text": "thanks man appreciate it",
+  "intent": "SMALL_TALK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "small_talk"
+ },
+ {
+  "id": "sttv62_014",
+  "text": "sorry sorry my bad that was me",
+  "intent": "SMALL_TALK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "small_talk"
+ },
+ {
+  "id": "sttv62_015",
+  "text": "uh what's your name again",
+  "intent": "SMALL_TALK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "small_talk"
+ },
+ {
+  "id": "sttv62_016",
+  "text": "are you a bot or like a real person",
+  "intent": "SMALL_TALK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "small_talk"
+ },
+ {
+  "id": "sttv62_017",
+  "text": "okay i'm board talk to me",
+  "intent": "SMALL_TALK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "small_talk"
+ },
+ {
+  "id": "sttv62_018",
+  "text": "see you later bro i gotta go eat",
+  "intent": "SMALL_TALK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "small_talk"
+ },
+ {
+  "id": "sttv62_019",
+  "text": "you still there um you okay",
+  "intent": "SMALL_TALK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "small_talk"
+ },
+ {
+  "id": "sttv62_020",
+  "text": "nice shot dude",
+  "intent": "PRAISE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "praise"
+ },
+ {
+  "id": "sttv62_021",
+  "text": "whoa whoa that was amazing",
+  "intent": "PRAISE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "praise"
+ },
+ {
+  "id": "sttv62_022",
+  "text": "good job good job",
+  "intent": "PRAISE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "praise"
+ },
+ {
+  "id": "sttv62_023",
+  "text": "you're the best bought ever",
+  "intent": "PRAISE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "praise"
+ },
+ {
+  "id": "sttv62_024",
+  "text": "nice kill man great work",
+  "intent": "PRAISE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "praise"
+ },
+ {
+  "id": "sttv62_025",
+  "text": "okay that was uh really really great team work honestly",
+  "intent": "PRAISE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "praise"
+ },
+ {
+  "id": "sttv62_026",
+  "text": "just go die",
+  "intent": "KILL_YOURSELF",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "kill_yourself"
+ },
+ {
+  "id": "sttv62_027",
+  "text": "kill your self lol",
+  "intent": "KILL_YOURSELF",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "kill_yourself"
+ },
+ {
+  "id": "sttv62_028",
+  "text": "uh drop dead you stupid bot",
+  "intent": "KILL_YOURSELF",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "kill_yourself"
+ },
+ {
+  "id": "sttv62_029",
+  "text": "man just go blow yourself up already",
+  "intent": "KILL_YOURSELF",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "kill_yourself"
+ },
+ {
+  "id": "sttv62_030",
+  "text": "um go in the portal",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "teleport",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "teleport"
+ },
+ {
+  "id": "sttv62_031",
+  "text": "take that teleport over there",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "teleport",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "teleport"
+ },
+ {
+  "id": "sttv62_032",
+  "text": "okay so go through the tele porter on my go",
+  "intent": "MOVE_TO",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "teleport",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "teleport"
+ },
+ {
+  "id": "sttv62_033",
+  "text": "uh walk into the porter the portal by my pin",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": "teleport",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "teleport"
+ },
+ {
+  "id": "sttv62_034",
+  "text": "turn turn around look behind you",
+  "intent": "LOOK_AT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": "back",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv62_035",
+  "text": "go see if the basement is uh clear",
+  "intent": "CHECK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv62_036",
+  "text": "i see two guys on the roof",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "roof",
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv62_037",
+  "text": "kill him kill that guy",
+  "intent": "ATTACK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv62_038",
+  "text": "nice one okay now watch the east door",
+  "intent": "HOLD_ANGLE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "east",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv62_039",
+  "text": "uh perfect",
+  "intent": "YES",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ }
+]

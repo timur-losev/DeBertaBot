@@ -1,0 +1,945 @@
+{
+ "language": "en",
+ "style": "brat",
+ "sentences": {
+  "On you.": "On you, bro.",
+  "Right behind you.": "Bro, right behind you.",
+  "Moving with you.": "Moving with you.",
+  "Moving to the ping.": "Moving to the ping, bro.",
+  "On my way there.": "On my way there, bro.",
+  "Relocating.": "Bro, relocating.",
+  "Holding here.": "Holding here, bro.",
+  "Staying put.": "Bro, staying put.",
+  "Not moving.": "Not moving.",
+  "Holding that angle.": "Holding that angle, bro.",
+  "Eyes on it.": "Eyes on it.",
+  "Angle locked.": "Angle locked, bro.",
+  "I've got the other side.": "I've got the other side, bro.",
+  "Taking the other angle.": "Bro, taking the other angle.",
+  "Watching the other one.": "Watching the other one.",
+  "Going around.": "Going around.",
+  "Flanking, keep them busy.": "Flanking, bro, keep them busy.",
+  "Taking the long way.": "Bro, taking the long way.",
+  "Going through the window.": "Going through the window, bro.",
+  "Vaulting in.": "Vaulting in.",
+  "Window, going.": "Window, bro, going.",
+  "On the rope.": "On the rope.",
+  "Rappelling.": "Rappelling, bro.",
+  "Heading up top.": "Bro, heading up top.",
+  "Charge set, breaching!": "Charge set, bro, breaching!",
+  "Blowing it open.": "Blowing it open, bro.",
+  "Breaching!": "Breaching!",
+  "Droning it out.": "Droning it out, bro.",
+  "Drone's in.": "Bro, drone's in.",
+  "Scouting first.": "Scouting first, bro.",
+  "Flash out!": "Flash out!",
+  "Popping a flash.": "Popping a flash, bro.",
+  "Stun going in.": "Bro, stun going in.",
+  "Smoke out.": "Smoke out.",
+  "Popping smoke.": "Popping smoke, bro.",
+  "Smoking it.": "Bro, smoking it.",
+  "Frag out!": "Frag out!",
+  "Nade going in.": "Nade going in.",
+  "Throwing a frag.": "Bro, throwing a frag.",
+  "Covering you, go.": "Covering you, bro, go.",
+  "I've got your back.": "I've got your back, bro.",
+  "Go, I'm on it.": "Go, bro, I'm on it.",
+  "Pushing in!": "Pushing in!",
+  "Taking the room.": "Taking the room, bro.",
+  "Entry, entry!": "Entry, entry!",
+  "Falling back.": "Falling back, bro.",
+  "Pulling out.": "Pulling out.",
+  "Backing off.": "Bro, backing off.",
+  "Planting.": "Planting, bro.",
+  "Getting the plant down.": "Bro, getting the plant down.",
+  "Plant going down, cover me.": "Plant going down, bro, cover me.",
+  "Defusing.": "Bro, defusing.",
+  "On the defuser.": "On the defuser.",
+  "Working on it.": "Working on it, bro.",
+  "Coming to get you!": "Bro, coming to get you!",
+  "Hold on, reviving.": "Hold on, bro, reviving.",
+  "On my way, stay down.": "On my way, bro, stay down.",
+  "Coming to help.": "Coming to help, bro.",
+  "On my way to you.": "Bro, on my way to you.",
+  "Hold on, coming.": "Hold on, bro, coming.",
+  "Going back.": "Going back, bro.",
+  "Heading back.": "Heading back.",
+  "Back to where I was.": "Bro, back to where I was.",
+  "Switching weapons.": "Switching weapons, bro.",
+  "Swapping.": "Swapping.",
+  "Changing guns.": "Bro, changing guns.",
+  "Reloading.": "Reloading.",
+  "Changing mags.": "Changing mags, bro.",
+  "Reloading, cover me.": "Reloading, bro, cover me.",
+  "Holding up.": "Holding up.",
+  "Standing by.": "Bro, standing by.",
+  "Copy, waiting.": "Copy, bro, waiting.",
+  "Getting into cover.": "Getting into cover, bro.",
+  "Finding cover.": "Bro, finding cover.",
+  "Hiding.": "Hiding.",
+  "Opening it.": "Opening it.",
+  "Getting it open.": "Getting it open, bro.",
+  "Opening, not going in.": "Opening, bro, not going in.",
+  "Attacking!": "Attacking!",
+  "Engaging.": "Engaging.",
+  "Going on the offensive.": "Bro, going on the offensive.",
+  "Opening fire!": "Opening fire, bro!",
+  "Weapons free.": "Bro, weapons free.",
+  "Firing!": "Firing!",
+  "Holding fire.": "Holding fire, bro.",
+  "Weapons tight.": "Weapons tight.",
+  "Ceasing fire.": "Bro, ceasing fire.",
+  "Looking.": "Looking.",
+  "I see it.": "I see it, bro.",
+  "Turning to look.": "Turning to look.",
+  "Looking at you.": "Bro, looking at you.",
+  "Yeah, I see you.": "Yeah, bro, I see you.",
+  "Facing you.": "Facing you, bro.",
+  "Hang on, I'm coming.": "Hang on, bro, I'm coming.",
+  "Checking it.": "Checking it, bro.",
+  "I'll check.": "I'll check, bro.",
+  "Going to take a look.": "Bro, going to take a look.",
+  "Suppressing!": "Suppressing!",
+  "Covering fire!": "Covering fire, bro!",
+  "Keeping their heads down.": "Bro, keeping their heads down.",
+  "Jumping.": "Jumping.",
+  "On it, jumping.": "On it, bro, jumping.",
+  "Going over.": "Going over.",
+  "Coming back.": "Bro, coming back.",
+  "On my way back.": "On my way back.",
+  "Returning.": "Returning.",
+  "Crouching.": "Crouching.",
+  "Getting low.": "Getting low.",
+  "Down on a knee.": "Down on a knee, bro.",
+  "Going prone.": "Going prone.",
+  "Lying down.": "Lying down.",
+  "Flat on the ground.": "Bro, flat on the ground.",
+  "Standing up.": "Standing up.",
+  "On my feet.": "Bro, on my feet.",
+  "Up.": "Up.",
+  "Yes, got it.": "Yes, got it, bro.",
+  "Understood: yes.": "Understood, bro: yes.",
+  "Copy, that's a yes.": "Copy, that's a yes.",
+  "No, got it.": "No, bro, got it.",
+  "Understood: no.": "Understood: no.",
+  "Copy, that's a no.": "Copy, that's a no, bro.",
+  "Maybe, got it.": "Maybe, got it, bro.",
+  "Understood: not certain.": "Understood: not certain.",
+  "Copy, I'll use my judgement.": "Copy, bro, I'll use my judgement.",
+  "You don't know, got it.": "You don't know, bro, got it.",
+  "Understood: no answer.": "Understood: no answer.",
+  "Copy, you're not sure.": "Copy, you're not sure, bro.",
+  "Getting in.": "Getting in.",
+  "Hopping in.": "Bro, hopping in.",
+  "In the car.": "In the car, bro.",
+  "Getting out.": "Getting out, bro.",
+  "Hopping out.": "Hopping out.",
+  "Out of the car.": "Bro, out of the car.",
+  "Again.": "Again.",
+  "Trying again.": "Trying again, bro.",
+  "One more time.": "One more time.",
+  "Getting it in the ground.": "Bro, getting it in the ground.",
+  "Sowing.": "Sowing.",
+  "Watering.": "Watering.",
+  "On the watering.": "On the watering, bro.",
+  "Giving them water.": "Giving them water.",
+  "Harvesting.": "Harvesting, bro.",
+  "Bringing it in.": "Bro, bringing it in.",
+  "Picking it.": "Picking it.",
+  "Working the ground.": "Bro, working the ground.",
+  "On the soil.": "On the soil.",
+  "Getting the ground ready.": "Getting the ground ready, bro.",
+  "Feeding them.": "Feeding them.",
+  "On the feeding.": "Bro, on the feeding.",
+  "Getting them fed.": "Getting them fed, bro.",
+  "Collecting.": "Collecting.",
+  "Gathering it up.": "Gathering it up.",
+  "On it, collecting.": "On it, bro, collecting.",
+  "Bringing it.": "Bringing it.",
+  "On the way with it.": "On the way with it, bro.",
+  "Carrying it over.": "Bro, carrying it over.",
+  "Building.": "Building.",
+  "Putting it up.": "Putting it up.",
+  "On the build.": "Bro, on the build.",
+  "Repairing.": "Bro, repairing.",
+  "Fixing it.": "Fixing it, bro.",
+  "Patching it up.": "Patching it up.",
+  "Tearing it down.": "Tearing it down.",
+  "Taking it apart.": "Bro, taking it apart.",
+  "Demolishing.": "Demolishing.",
+  "Thanks!": "Thanks, bro!",
+  "Appreciate it.": "Appreciate it, bro.",
+  "Just doing my job.": "Just doing my job.",
+  "Couldn't have done it without you.": "Bro, couldn't have done it without you.",
+  "Thanks, you too.": "Thanks, bro, you too.",
+  "Respawn timer's too long for that.": "Bro, respawn timer's too long for that.",
+  "Nice try.": "Nice try, bro.",
+  "Who'd cover you then?": "Bro, who'd cover you then?",
+  "Request denied.": "Request denied.",
+  "I like being alive.": "I like being alive, bro.",
+  "Not today.": "Not today, bro.",
+  "You'd miss me.": "You'd miss me, bro.",
+  "I'll pass.": "I'll pass, bro.",
+  "Somebody has to watch your back.": "Somebody has to watch your back, bro.",
+  "Anytime.": "Anytime, bro.",
+  "No problem.": "No problem, bro.",
+  "That's what I'm here for.": "That's what I'm here for, bro.",
+  "No worries.": "No worries, bro.",
+  "It happens.": "It happens, bro.",
+  "All good.": "All good, bro.",
+  "See you.": "See you, bro.",
+  "Later.": "Later, bro.",
+  "Take care out there.": "Take care out there, bro.",
+  "Doing fine.": "Doing fine, bro.",
+  "Ready to work.": "Bro, ready to work.",
+  "All good here.": "All good here, bro.",
+  "Still in one piece.": "Still in one piece, bro.",
+  "Right here.": "Right here, bro.",
+  "Still here.": "Bro, still here.",
+  "I hear you.": "I hear you, bro.",
+  "Just your teammate.": "Just your teammate, bro.",
+  "A bot, and proud of it.": "A bot, bro, and proud of it.",
+  "Your squad mate.": "Your squad mate, bro.",
+  "I follow orders and watch your back.": "I follow orders and watch your back.",
+  "Why did the grenade get promoted?": "Bro, why did the grenade get promoted?",
+  "It really blew them away.": "It really blew them away, bro.",
+  "I'd tell you a sniper joke, but you wouldn't see it coming.": "I'd tell you a sniper joke, bro, but you wouldn't see it coming.",
+  "Let's go find some trouble then.": "Let's go find some trouble then, bro.",
+  "Say the word and we move.": "Say the word, bro, and we move.",
+  "Hey.": "Hey, bro.",
+  "Hey, good to see you.": "Hey, bro, good to see you.",
+  "Hi.": "Hi, bro.",
+  "Ready when you are.": "Ready when you are, bro.",
+  "Ha.": "Ha.",
+  "Good one.": "Good one, bro.",
+  "Sure thing.": "Sure thing, bro.",
+  "Noted.": "Noted.",
+  "Copy.": "Copy, bro.",
+  "Heard.": "Heard.",
+  "Say again?": "Say again, bro?",
+  "Didn't catch that.": "Bro, didn't catch that.",
+  "Come again?": "Come again?",
+  "Copy, stopping.": "Copy, bro, stopping.",
+  "I don't see a pin.": "I don't see a pin, bro.",
+  "I don't know where you mean.": "Bro, I don't know where you mean.",
+  "I can't find {zone}.": "Bro, I can't find {zone}.",
+  "I see no {object}.": "I see no {object}, bro.",
+  "Where?": "Where, bro?",
+  "Which {object}?": "Which {object}, bro?",
+  "The one {sector}, {n} m?": "The one {sector}, {n} m?",
+  "Got it.": "Got it, bro.",
+  "Copy, never mind.": "Copy, bro, never mind.",
+  "I'll take the one {sector}, {n} m.": "Bro, I'll take the one {sector}, {n} m.",
+  "Which one, then?": "Which one, then, bro?",
+  "Point at it.": "Bro, point at it.",
+  "{Phrase}.": "{Phrase}, bro.",
+  "{Phrase}, {where}.": "{Phrase}, {where}, bro.",
+  "Ready to {phrase}.": "Ready to {phrase}, bro.",
+  "On your go.": "On your go.",
+  "Copy, standing down.": "Copy, bro, standing down.",
+  "Now!": "Now!",
+  "Going!": "Going!",
+  "Taking the other one.": "Bro, taking the other one.",
+  "Ready.": "Ready, bro.",
+  "I can't build that: no {item} in my build menu.": "Bro, I can't build that: no {item} in my build menu.",
+  "I can't plant that: I have no {item} to plant.": "I can't plant that, bro: I have no {item} to plant.",
+  "I can't water that: I see no {item}.": "Bro, I can't water that: I see no {item}.",
+  "I can't harvest that: I see no {item}.": "I can't harvest that: I see no {item}, bro.",
+  "I can't feed that: I see no {item}.": "I can't feed that, bro: I see no {item}.",
+  "I can't collect that: I see no {item}.": "Bro, I can't collect that: I see no {item}.",
+  "I can't bring that: I have no {item}.": "I can't bring that, bro: I have no {item}.",
+  "I can't repair that: I see no {item}.": "I can't repair that: I see no {item}, bro.",
+  "I can't tear that down: I see no {item}.": "Bro, I can't tear that down: I see no {item}.",
+  "Back in the fight.": "Back in the fight, bro.",
+  "I'm down!": "I'm down!",
+  "I can't get in.": "Bro, I can't get in.",
+  "Someone's in it.": "Someone's in it, bro.",
+  "I can't get to the car.": "I can't get to the car, bro.",
+  "Again what?": "Again what, bro?",
+  "Taking fire, {side}!": "Bro, taking fire, {side}!",
+  "Target down.": "Target down, bro.",
+  "Contact, {side}!": "Bro, contact, {side}!",
+  "Jumping down.": "Jumping down.",
+  "I can't get down here.": "I can't get down here, bro.",
+  "I'm here.": "I'm here, bro.",
+  "What do I do?": "What do I do, bro?",
+  "I can't get there.": "Bro, I can't get there.",
+  "In cover.": "In cover, bro.",
+  "I'm with you.": "I'm with you, bro.",
+  "Closest I can get.": "Closest I can get, bro.",
+  "I'm back.": "I'm back, bro.",
+  "Flank's set.": "Bro, flank's set.",
+  "In position.": "In position, bro.",
+  "Already on my {weapon}.": "Already on my {weapon}, bro.",
+  "No {weapon} on me.": "Bro, no {weapon} on me.",
+  "Nothing else with ammo.": "Nothing else with ammo, bro.",
+  "This is all I've got.": "Bro, this is all I've got.",
+  "Switching to {weapon}.": "Switching to {weapon}, bro.",
+  "Out of ammo, switching to {weapon}!": "Out of ammo, bro, switching to {weapon}!",
+  "Nothing to reload.": "Bro, nothing to reload.",
+  "No spare ammo.": "No spare ammo, bro.",
+  "Mag's full.": "Mag's full.",
+  "Can't reload right now.": "Can't reload right now, bro.",
+  "Frag's coming back!": "Frag's coming back!",
+  "Grenade by you, move!": "Grenade by you, bro, move!",
+  "I'm in.": "I'm in, bro.",
+  "I can't get out.": "I can't get out, bro.",
+  "I'm down, back in a moment.": "I'm down, back in a moment, bro.",
+  "I'm down, give me a moment.": "I'm down, bro, give me a moment.",
+  "I don't see a way in.": "Bro, I don't see a way in.",
+  "No free car around.": "No free car around, bro.",
+  "Back where?": "Back where, bro?",
+  "I haven't moved.": "Bro, I haven't moved.",
+  "Where are you?": "Bro, where are you?",
+  "Up where?": "Up where, bro?",
+  "Down where?": "Down where, bro?",
+  "Mark it.": "Mark it, bro.",
+  "No cover here, staying low.": "No cover here, bro, staying low.",
+  "Too close for a frag.": "Bro, too close for a frag.",
+  "Too far for a frag.": "Too far for a frag, bro.",
+  "You're in my way.": "Bro, you're in my way.",
+  "No clear throw from here.": "No clear throw from here, bro.",
+  "Nowhere to jump down here.": "Bro, nowhere to jump down here.",
+  "I can't reach you.": "I can't reach you, bro.",
+  "Contact here!": "Bro, contact here!",
+  "Clear.": "Clear, bro.",
+  "Frag's not ready.": "Frag's not ready, bro.",
+  "I'm out of ammo!": "Bro, I'm out of ammo!",
+  "That's too far.": "Bro, that's too far.",
+  "I don't know how to do that.": "Bro, I don't know how to do that.",
+  "Moving.": "Moving.",
+  "Coming to you.": "Coming to you, bro.",
+  "No charges on me.": "No charges on me, bro.",
+  "Pushing in instead.": "Pushing in instead.",
+  "Can't go prone here.": "Bro, can't go prone here.",
+  "Staying low.": "Staying low.",
+  "Nothing to open there.": "Nothing to open there, bro.",
+  "Moving up to it.": "Moving up to it.",
+  "Didn't catch part of that.": "Bro, didn't catch part of that.",
+  "Understood: {verb}.": "Understood, bro: {verb}.",
+  "Understood: {verb} {item}.": "Understood, bro: {verb} {item}.",
+  "No farming or building on this map yet.": "No farming or building on this map yet.",
+  "No rope on me.": "Bro, no rope on me.",
+  "I don't have a drone.": "I don't have a drone, bro.",
+  "No flashbangs, only frags.": "No flashbangs, bro, only frags.",
+  "No smoke, only frags.": "No smoke, bro, only frags.",
+  "Nothing to plant here.": "Nothing to plant here, bro.",
+  "Nothing to defuse here.": "Bro, nothing to defuse here.",
+  "I can't do that here.": "I can't do that here, bro.",
+  "Yes, I see it.": "Yes, bro, I see it.",
+  "No, I can't see it from here.": "No, bro, I can't see it from here.",
+  "Yes, I see him.": "Yes, bro, I see him.",
+  "No, I don't see him.": "No, I don't see him, bro.",
+  "I see one of them.": "I see one of them, bro.",
+  "I see {n} of them.": "Bro, I see {n} of them.",
+  "Nothing in sight.": "Nothing in sight, bro.",
+  "Yes, I see you.": "Yes, I see you, bro.",
+  "No, I can't see you.": "No, bro, I can't see you.",
+  "Through the portal.": "Through the portal, bro.",
+  "Here you go.": "Here you go, bro.",
+  "Dropped it off.": "Dropped it off, bro.",
+  "Nothing to carry there.": "Bro, nothing to carry there.",
+  "That's too heavy for me.": "That's too heavy for me, bro.",
+  "I see {thing} {sector}, {n} m.": "Bro, I see {thing} {sector}, {n} m.",
+  "And {thing} {sector}, {n} m.": "And {thing} {sector}, {n} m.",
+  "I can feel {thing} {sector}.": "I can feel {thing} {sector}, bro.",
+  "Enemy {sector}, {n} m.": "Bro, enemy {sector}, {n} m.",
+  "{n} enemies in sight.": "{n} enemies in sight, bro.",
+  "The nearest {sector}, {n} m.": "The nearest {sector}, {n} m.",
+  "Nothing worth noting.": "Nothing worth noting, bro.",
+  "Not a scratch.": "Not a scratch, bro.",
+  "Took a few hits, I'm fine.": "Took a few hits, bro, I'm fine.",
+  "Hurt, but I can fight.": "Hurt, bro, but I can fight.",
+  "Badly hurt, I need a break.": "Badly hurt, bro, I need a break.",
+  "Not hot at all.": "Not hot at all, bro.",
+  "Getting warm here.": "Bro, getting warm here.",
+  "It's hot, really hot!": "It's hot, bro, really hot!",
+  "I'm burning up, get me out of here!": "I'm burning up, bro, get me out of here!",
+  "Not cold.": "Not cold, bro.",
+  "A bit chilly.": "A bit chilly, bro.",
+  "It's freezing here.": "Bro, it's freezing here.",
+  "I'm freezing to death!": "I'm freezing to death, bro!",
+  "Air's clean.": "Air's clean, bro.",
+  "Something smells off.": "Bro, something smells off.",
+  "Gas!": "Gas!",
+  "Hard to breathe.": "Hard to breathe, bro.",
+  "Choking on gas, need to get out!": "Choking on gas, bro, need to get out!",
+  "{n} rounds left.": "{n} rounds left, bro.",
+  "Plenty of ammo.": "Plenty of ammo, bro.",
+  "Running low on ammo.": "Bro, running low on ammo.",
+  "Nothing in my hands.": "Nothing in my hands, bro.",
+  "All quiet around me.": "All quiet around me, bro.",
+  "Okay, I won't anymore.": "Okay, I won't anymore.",
+  "Got it, no more.": "Got it, no more.",
+  "Fine, I'll stop.": "Fine, I'll stop.",
+  "Sorry, habit.": "Sorry, bro, habit."
+ },
+ "slots": {
+  "where": {
+   "on your pin": {
+    "text": "on your pin"
+   },
+   "here": {
+    "text": "here"
+   },
+   "there": {
+    "text": "there"
+   },
+   "to the left": {
+    "text": "to the left"
+   },
+   "to the right": {
+    "text": "to the right"
+   },
+   "forward": {
+    "text": "forward"
+   },
+   "back": {
+    "text": "back"
+   },
+   "up": {
+    "text": "up"
+   },
+   "down": {
+    "text": "down"
+   },
+   "_other": {
+    "text": "*"
+   }
+  },
+  "sector": {
+   "above": {
+    "text": "above"
+   },
+   "below": {
+    "text": "below"
+   },
+   "ahead": {
+    "text": "ahead"
+   },
+   "behind you": {
+    "text": "behind you"
+   },
+   "on the left": {
+    "text": "on the left"
+   },
+   "on the right": {
+    "text": "on the right"
+   },
+   "_other": {
+    "text": "*"
+   }
+  },
+  "zone": {
+   "the basement": {
+    "text": "the basement"
+   },
+   "the first floor": {
+    "text": "the first floor"
+   },
+   "the second floor": {
+    "text": "the second floor"
+   },
+   "the top floor": {
+    "text": "the top floor"
+   },
+   "the roof": {
+    "text": "the roof"
+   },
+   "the way up": {
+    "text": "the way up"
+   },
+   "the way down": {
+    "text": "the way down"
+   },
+   "the way in": {
+    "text": "the way in"
+   },
+   "that place": {
+    "text": "that place"
+   },
+   "_other": {
+    "text": "*"
+   }
+  },
+  "side": {
+   "ahead": {
+    "text": "ahead"
+   },
+   "ahead, high": {
+    "text": "ahead, high"
+   },
+   "ahead, low": {
+    "text": "ahead, low"
+   },
+   "on us": {
+    "text": "on us"
+   },
+   "on us, high": {
+    "text": "on us, high"
+   },
+   "on us, low": {
+    "text": "on us, low"
+   },
+   "behind us": {
+    "text": "behind us"
+   },
+   "behind us, high": {
+    "text": "behind us, high"
+   },
+   "behind us, low": {
+    "text": "behind us, low"
+   },
+   "right": {
+    "text": "right"
+   },
+   "right, high": {
+    "text": "right, high"
+   },
+   "right, low": {
+    "text": "right, low"
+   },
+   "left": {
+    "text": "left"
+   },
+   "left, high": {
+    "text": "left, high"
+   },
+   "left, low": {
+    "text": "left, low"
+   },
+   "_other": {
+    "text": "*"
+   }
+  },
+  "weapon": {
+   "pistol": {
+    "text": "pistol"
+   },
+   "rifle": {
+    "text": "rifle"
+   },
+   "shotgun": {
+    "text": "shotgun"
+   },
+   "weapon": {
+    "text": "weapon"
+   },
+   "_other": {
+    "text": "*"
+   }
+  },
+  "verb": {
+   "plant": {
+    "text": "plant"
+   },
+   "water": {
+    "text": "water"
+   },
+   "harvest": {
+    "text": "harvest"
+   },
+   "work the ground": {
+    "text": "work the ground"
+   },
+   "feed": {
+    "text": "feed"
+   },
+   "collect": {
+    "text": "collect"
+   },
+   "bring": {
+    "text": "bring"
+   },
+   "build": {
+    "text": "build"
+   },
+   "repair": {
+    "text": "repair"
+   },
+   "tear down": {
+    "text": "tear down"
+   },
+   "do that": {
+    "text": "do that"
+   },
+   "_other": {
+    "text": "*"
+   }
+  },
+  "item": {
+   "wall": {
+    "text": "wall"
+   },
+   "floor": {
+    "text": "floor"
+   },
+   "ramp": {
+    "text": "ramp"
+   },
+   "roof": {
+    "text": "roof"
+   },
+   "door": {
+    "text": "door"
+   },
+   "window": {
+    "text": "window"
+   },
+   "stairs": {
+    "text": "stairs"
+   },
+   "fence": {
+    "text": "fence"
+   },
+   "pillar": {
+    "text": "pillar"
+   },
+   "foundation": {
+    "text": "foundation"
+   },
+   "corn": {
+    "text": "corn"
+   },
+   "wheat": {
+    "text": "wheat"
+   },
+   "carrots": {
+    "text": "carrots"
+   },
+   "potatoes": {
+    "text": "potatoes"
+   },
+   "tomatoes": {
+    "text": "tomatoes"
+   },
+   "seeds": {
+    "text": "seeds"
+   },
+   "plants": {
+    "text": "plants"
+   },
+   "crops": {
+    "text": "crops"
+   },
+   "chickens": {
+    "text": "chickens"
+   },
+   "cows": {
+    "text": "cows"
+   },
+   "pigs": {
+    "text": "pigs"
+   },
+   "animals": {
+    "text": "animals"
+   },
+   "eggs": {
+    "text": "eggs"
+   },
+   "milk": {
+    "text": "milk"
+   },
+   "wood": {
+    "text": "wood"
+   },
+   "planks": {
+    "text": "planks"
+   },
+   "stone": {
+    "text": "stone"
+   },
+   "metal": {
+    "text": "metal"
+   },
+   "ammo": {
+    "text": "ammo"
+   },
+   "water": {
+    "text": "water"
+   },
+   "field": {
+    "text": "field"
+   },
+   "barn": {
+    "text": "barn"
+   },
+   "well": {
+    "text": "well"
+   },
+   "_other": {
+    "text": "*"
+   }
+  },
+  "thing": {
+   "_other": {
+    "text": "*"
+   }
+  },
+  "phrase": {
+   "attack": {
+    "text": "attack"
+   },
+   "breach": {
+    "text": "breach"
+   },
+   "bring it": {
+    "text": "bring it"
+   },
+   "build": {
+    "text": "build"
+   },
+   "check it": {
+    "text": "check it"
+   },
+   "collect": {
+    "text": "collect"
+   },
+   "come back": {
+    "text": "come back"
+   },
+   "cover me": {
+    "text": "cover me"
+   },
+   "crouch": {
+    "text": "crouch"
+   },
+   "defuse it": {
+    "text": "defuse it"
+   },
+   "do it again": {
+    "text": "do it again"
+   },
+   "drone it": {
+    "text": "drone it"
+   },
+   "fall back": {
+    "text": "fall back"
+   },
+   "feed the animals": {
+    "text": "feed the animals"
+   },
+   "flank": {
+    "text": "flank"
+   },
+   "follow me": {
+    "text": "follow me"
+   },
+   "get in the vehicle": {
+    "text": "get in the vehicle"
+   },
+   "get out of the vehicle": {
+    "text": "get out of the vehicle"
+   },
+   "go back": {
+    "text": "go back"
+   },
+   "go now": {
+    "text": "go now"
+   },
+   "go prone": {
+    "text": "go prone"
+   },
+   "go through the window": {
+    "text": "go through the window"
+   },
+   "harvest": {
+    "text": "harvest"
+   },
+   "help me get out": {
+    "text": "help me get out"
+   },
+   "help you": {
+    "text": "help you"
+   },
+   "hold fire": {
+    "text": "hold fire"
+   },
+   "hold position": {
+    "text": "hold position"
+   },
+   "hold the angle": {
+    "text": "hold the angle"
+   },
+   "hold the other angle": {
+    "text": "hold the other angle"
+   },
+   "jump": {
+    "text": "jump"
+   },
+   "look at you": {
+    "text": "look at you"
+   },
+   "look there": {
+    "text": "look there"
+   },
+   "move there": {
+    "text": "move there"
+   },
+   "not an order": {
+    "text": "not an order"
+   },
+   "open fire": {
+    "text": "open fire"
+   },
+   "open it": {
+    "text": "open it"
+   },
+   "plant a crop": {
+    "text": "plant a crop"
+   },
+   "plant it": {
+    "text": "plant it"
+   },
+   "push in": {
+    "text": "push in"
+   },
+   "rappel": {
+    "text": "rappel"
+   },
+   "refuse that": {
+    "text": "refuse that"
+   },
+   "reload": {
+    "text": "reload"
+   },
+   "repair": {
+    "text": "repair"
+   },
+   "say if you see it": {
+    "text": "say if you see it"
+   },
+   "say if you see me": {
+    "text": "say if you see me"
+   },
+   "say maybe": {
+    "text": "say maybe"
+   },
+   "say no": {
+    "text": "say no"
+   },
+   "say they don't know": {
+    "text": "say they don't know"
+   },
+   "say yes": {
+    "text": "say yes"
+   },
+   "stand up": {
+    "text": "stand up"
+   },
+   "suppress": {
+    "text": "suppress"
+   },
+   "switch weapons": {
+    "text": "switch weapons"
+   },
+   "take cover": {
+    "text": "take cover"
+   },
+   "take the praise": {
+    "text": "take the praise"
+   },
+   "talk": {
+    "text": "talk"
+   },
+   "tear it down": {
+    "text": "tear it down"
+   },
+   "throw a flash": {
+    "text": "throw a flash"
+   },
+   "throw a frag": {
+    "text": "throw a frag"
+   },
+   "throw a smoke": {
+    "text": "throw a smoke"
+   },
+   "till the ground": {
+    "text": "till the ground"
+   },
+   "wait": {
+    "text": "wait"
+   },
+   "water the plants": {
+    "text": "water the plants"
+   },
+   "_other": {
+    "text": "*"
+   }
+  },
+  "object": {
+   "door": {
+    "text": "door"
+   },
+   "window": {
+    "text": "window"
+   },
+   "stairs": {
+    "text": "stairs"
+   },
+   "chair": {
+    "text": "chair"
+   },
+   "sofa": {
+    "text": "sofa"
+   },
+   "table": {
+    "text": "table"
+   },
+   "car": {
+    "text": "car"
+   },
+   "ammo": {
+    "text": "ammo"
+   },
+   "weapon": {
+    "text": "weapon"
+   },
+   "health": {
+    "text": "health"
+   },
+   "field": {
+    "text": "field"
+   },
+   "bed": {
+    "text": "bed"
+   },
+   "greenhouse": {
+    "text": "greenhouse"
+   },
+   "barn": {
+    "text": "barn"
+   },
+   "coop": {
+    "text": "coop"
+   },
+   "beehive": {
+    "text": "beehive"
+   },
+   "well": {
+    "text": "well"
+   },
+   "fence": {
+    "text": "fence"
+   },
+   "tree": {
+    "text": "tree"
+   },
+   "crate": {
+    "text": "crate"
+   },
+   "foundation": {
+    "text": "foundation"
+   },
+   "teleport": {
+    "text": "teleport"
+   },
+   "place": {
+    "text": "place"
+   },
+   "_other": {
+    "text": "*"
+   }
+  }
+ }
+}

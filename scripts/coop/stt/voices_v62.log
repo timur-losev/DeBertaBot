@@ -1,0 +1,17 @@
+13:41:09  start
+13:41:09  export seeds               0 s  331 new seed commands
+13:41:10  export lines               0 s  80 v62 lines of r6 and cs
+13:41:12  windows seeds              3 s  wav_seedclean: 331 new files
+13:41:14  windows lines              1 s  wav_clean: 80 new files
+13:46:38  piper/kokoro seeds       324 s  kokoro 323s
+13:48:31  piper/kokoro lines       114 s  kokoro 113s
+13:49:29  stt seedclean             58 s      'Hey follow me.' | None
+13:50:30  stt seedkokoro            61 s      'Hey, follow me' | None
+13:51:23  stt seedkokorox           53 s      'Hey follow me.' | None
+13:52:15  stt seedvctkA             52 s      'Hey follow me.' | None
+13:52:37  stt clean                 22 s      'Any hostiles in sight, buddy?' | None
+13:53:00  stt kokoro                23 s      'Any hostels in sight, buddy?' | None
+13:53:22  stt kokorox               22 s      'Any hostels inside Padi?' | None
+13:53:43  stt vctkA                 21 s      'Any hostas in sight, buddy?' | None
+13:54:03  stt vctkB                 20 s      'Any hostiles in sight, buddy?' | None
+13:54:03  done

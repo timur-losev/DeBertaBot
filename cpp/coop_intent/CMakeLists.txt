@@ -50,7 +50,8 @@ add_library(coop_intent_core STATIC
   src/intent_model.cpp
   src/speech_text.cpp
   src/rewriter_text.cpp
-  src/localize.cpp)
+  src/localize.cpp
+  src/bro.cpp)
 target_include_directories(coop_intent_core PUBLIC include)
 target_include_directories(coop_intent_core PRIVATE third_party)   # nlohmann/json for the reply tables (localize.cpp)
 target_link_libraries(coop_intent_core PUBLIC Threads::Threads)

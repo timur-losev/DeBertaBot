@@ -17,7 +17,8 @@ import io, json, os, re
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.normpath(os.path.join(HERE, "..", "..", ".."))
 CLI = os.path.join(REPO, "cpp", "coop_intent", "tools", "coop_cli.cpp")
-CONFIG = os.path.join(REPO, "models", "coop-deberta-v3-ens3-v61", "cpp", "intent_config.json")
+CONFIG = os.path.join(REPO, "scripts", "coop", "intents_v62.json")   # bot v62's phrases ("label") and places (locations_v62.json)
+PLACES = os.path.join(REPO, "scripts", "coop", "locations_v62.json")
 
 PLANNER = [
     ("Copy, stopping.", "world.cpp: a negated order stops the bot"),
@@ -84,7 +85,42 @@ GAME = [  # the game's own lines (Source/LyraGame/CoopBot)
     ("No farming or building on this map yet.", "farm or build order"), ("No rope on me.", "RAPPEL"),
     ("I don't have a drone.", "DRONE"), ("No flashbangs, only frags.", "FLASH"), ("No smoke, only frags.", "SMOKE"),
     ("Nothing to plant here.", "PLANT (bomb)"), ("Nothing to defuse here.", "DEFUSE"), ("I can't do that here.", "other"),
+    # bot v62 (2026-10-24): the answers the game gives after checking the bot's line of sight, the teleport, carrying
+    ("Yes, I see it.", "SEE_THING: the pointed or named thing is in sight"),
+    ("No, I can't see it from here.", "SEE_THING: it is not"), ("Yes, I see him.", "SEE_THING: the enemy under the crosshair is in sight"),
+    ("No, I don't see him.", "SEE_THING: that enemy is not in sight"), ("I see one of them.", "SEE_THING with nothing pointed: one enemy in sight"),
+    ("I see {n} of them.", "SEE_THING with nothing pointed: several enemies in sight"), ("Nothing in sight.", "SEE_THING: no enemy in sight"),
+    ("Yes, I see you.", "SEE_ME: the player is in sight"), ("No, I can't see you.", "SEE_ME: the player is not"),
+    ("Through the portal.", "MOVE_TO a teleport: the bot went through"), ("Got it.", "DELIVER: picked the thing up"),
+    ("Here you go.", "DELIVER: put it down by the player"), ("Dropped it off.", "DELIVER: put it down at the place"),
+    ("Nothing to carry there.", "DELIVER: no carriable thing where the player points"), ("That's too heavy for me.", "DELIVER: not carriable"),
+    # 2026-10-24, the owner: "what do you see?" / "how is it going?" answered from what the bot sees and senses (the things the
+    # level designer labelled, the enemy) and from its body (health, heat, cold, gas, ammo). {thing} is the label, with its
+    # article in English ("a spike trap"); its words in the player's language come with the line (the label's own names)
+    ("I see {thing} {sector}, {n} m.", "'what do you see?': a labelled thing in sight, where it is from the player and how far"),
+    ("And {thing} {sector}, {n} m.", "'what do you see?': the next labelled thing in sight"),
+    ("I can feel {thing} {sector}.", "'what do you see?': a labelled heat, cold or gas source near the bot, out of sight"),
+    ("Enemy {sector}, {n} m.", "'what do you see?': one enemy in sight"),
+    ("{n} enemies in sight.", "'what do you see?': several enemies in sight; followed by 'The nearest ...'"),
+    ("The nearest {sector}, {n} m.", "'what do you see?': the nearest of several enemies"),
+    ("Nothing worth noting.", "'what do you see?': no labelled thing and no enemy"),
+    ("Not a scratch.", "health above nine tenths"), ("Took a few hits, I'm fine.", "health 60 to 90 percent"),
+    ("Hurt, but I can fight.", "health 30 to 60 percent"), ("Badly hurt, I need a break.", "health under 30 percent"),
+    ("Not hot at all.", "'are you hot?' with no heat"), ("Getting warm here.", "a little heat"), ("It's hot, really hot!", "heat"),
+    ("I'm burning up, get me out of here!", "much heat; also said by itself when it gets there"),
+    ("Not cold.", "'are you cold?' with no cold"), ("A bit chilly.", "a little cold"), ("It's freezing here.", "cold"),
+    ("I'm freezing to death!", "much cold; also said by itself"),
+    ("Air's clean.", "'gas?' with no gas"), ("Something smells off.", "a little gas"), ("Gas! Hard to breathe.", "gas"),
+    ("Choking on gas, need to get out!", "much gas; also said by itself"),
+    ("{n} rounds left.", "'ammo?': the rounds in the weapon in hand and in reserve"), ("Plenty of ammo.", "'ammo?': over half"),
+    ("Running low on ammo.", "'ammo?': under a quarter"), ("Nothing in my hands.", "'ammo?' with the weapon put away"),
+    ("All quiet around me.", "'how is it going?' with nothing to report but health"),
 ]
+# the brat habit (coop_cli.cpp kBroOff, kBroRelapse; bro.h): the bot agrees to stop calling the player "bro", and the brat
+# persona slips 30 s later
+BRO = [("Okay, I won't anymore.", "the player told it to stop saying 'bro'"), ("Got it, no more.", "the same"),
+       ("Fine, I'll stop.", "the same"), ("Sorry, habit.", "the brat persona says 'bro' again 30 s after being told to stop; "
+                                         "followed by its line")]
 
 SLOTS_NOTE = {
     "phrase": "the order, as the bot says it back (intent_config.json 'phrases'); lowercase, an imperative ('move there')",
@@ -97,6 +133,9 @@ SLOTS_NOTE = {
     "verb": "a farm or build action: 'Understood: tear down.'",
     "item": "what a farm or build order acts on, as the player named it ('wall', 'corn'); open: any word may come, "
             "and the table gives the words it knows and a form for any other",
+    "thing": "a thing the level designer labelled, with its English article ('a spike trap'); open, and it has no values: "
+             "its words in the player's language come with the line from the label itself (the forms text, acc, gen...). "
+             "The table's _other is said only when a label has no words of that language: a neutral word ('что-то', 'algo')",
 }
 SLOT_VALUES = {
     "where": ["on your pin", "here", "there", "to the left", "to the right", "forward", "back", "up", "down"],
@@ -109,6 +148,7 @@ SLOT_VALUES = {
     "item": ["wall", "floor", "ramp", "roof", "door", "window", "stairs", "fence", "pillar", "foundation", "corn", "wheat",
              "carrots", "potatoes", "tomatoes", "seeds", "plants", "crops", "chickens", "cows", "pigs", "animals", "eggs", "milk",
              "wood", "planks", "stone", "metal", "ammo", "water", "field", "barn", "well"],
+    "thing": [],
 }
 
 
@@ -119,6 +159,9 @@ def chat_lines():
     for m in re.finditer(r'\{"([A-Z_]+)",\s*\{([^}]*)\}\}', body):
         for line in re.findall(r'"([^"]+)"', m.group(2)):
             out.append((line, f"coop_cli.cpp kLines {m.group(1)}"))
+    m = re.search(r"kTalk = \{(.*?)\n\};", src, re.S)       # bot v62: the small talk answers, by kind
+    for k in re.finditer(r'\{"([a-z]+)",\s*\{([^}]*)\}\}', m.group(1)):
+        out += [(line, f"coop_cli.cpp kTalk {k.group(1)} (SMALL_TALK)") for line in re.findall(r'"([^"]+)"', k.group(2))]
     for name in ("kAck", "kAgain"):
         m = re.search(name + r' = \{([^}]*)\}', src)
         out += [(line, f"coop_cli.cpp {name}") for line in re.findall(r'"([^"]+)"', m.group(1))]
@@ -132,10 +175,11 @@ def sentences(line):
 
 def main():
     cfg = json.load(io.open(CONFIG, encoding="utf-8"))
-    phrases = sorted(set(cfg["phrases"].values()))
-    objects = list(cfg["locations"]["objects"]) + ["place"]
+    phrases = sorted({v["label"] for k, v in cfg.items() if not k.startswith("_") and isinstance(v, dict) and "label" in v})
+    objects = [o["id"] for o in json.load(io.open(PLACES, encoding="utf-8"))["objects"]] + ["place"]
     seen, out = {}, []
-    for line, src in chat_lines() + PLANNER + [(t, "world.cpp kRefuse " + i) for t, i in REFUSE] + [(t, "game: " + n) for t, n in GAME]:
+    for line, src in (chat_lines() + PLANNER + [(t, "world.cpp kRefuse " + i) for t, i in REFUSE] + [(t, "game: " + n) for t, n in GAME] +
+                      [(t, "coop_cli.cpp bro habit: " + n) for t, n in BRO]):
         for s in sentences(line):
             if s in seen:
                 seen[s]["source"] += "; " + src
