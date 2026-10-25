@@ -1,0 +1,1621 @@
+{
+"lang": "ru",
+"kind": "single",
+"items": [
+{
+"id": "r6v62_000",
+"en": "You got eyes on the east window?",
+"intent": "SEE_THING"
+},
+{
+"id": "r6v62_001",
+"en": "Can you see the red stairs from where you are?",
+"intent": "SEE_THING"
+},
+{
+"id": "r6v62_003",
+"en": "Any hostiles in sight, buddy?",
+"intent": "SEE_THING"
+},
+{
+"id": "r6v62_004",
+"en": "Yo, you see that?",
+"intent": "SEE_THING"
+},
+{
+"id": "r6v62_005",
+"en": "Can you spot him from your angle?",
+"intent": "SEE_THING"
+},
+{
+"id": "r6v62_006",
+"en": "Do you have a visual over there?",
+"intent": "SEE_THING"
+},
+{
+"id": "r6v62_007",
+"en": "Got eyes on my ping?",
+"intent": "SEE_THING"
+},
+{
+"id": "r6v62_008",
+"en": "Am I visible to you right now?",
+"intent": "SEE_ME"
+},
+{
+"id": "r6v62_009",
+"en": "You seeing me, mate?",
+"intent": "SEE_ME"
+},
+{
+"id": "r6v62_010",
+"en": "Am I in your line of sight?",
+"intent": "SEE_ME"
+},
+{
+"id": "r6v62_011",
+"en": "Hey, do you see me waving at you?",
+"intent": "SEE_ME"
+},
+{
+"id": "r6v62_012",
+"en": "Morning, partner. Ready for another round?",
+"intent": "SMALL_TALK"
+},
+{
+"id": "r6v62_013",
+"en": "How you holding up?",
+"intent": "SMALL_TALK"
+},
+{
+"id": "r6v62_014",
+"en": "Thanks, man, I owe you one.",
+"intent": "SMALL_TALK"
+},
+{
+"id": "r6v62_015",
+"en": "My bad, that was my grenade.",
+"intent": "SMALL_TALK"
+},
+{
+"id": "r6v62_016",
+"en": "What's your name anyway?",
+"intent": "SMALL_TALK"
+},
+{
+"id": "r6v62_017",
+"en": "Are you actually a bot or is someone playing you?",
+"intent": "SMALL_TALK"
+},
+{
+"id": "r6v62_018",
+"en": "Talk to me, I'm bored out of my mind.",
+"intent": "SMALL_TALK"
+},
+{
+"id": "r6v62_019",
+"en": "Alright, I'm logging off. Catch you tomorrow.",
+"intent": "SMALL_TALK"
+},
+{
+"id": "r6v62_020",
+"en": "Clean headshot, man.",
+"intent": "PRAISE"
+},
+{
+"id": "r6v62_021",
+"en": "That was a sick clutch!",
+"intent": "PRAISE"
+},
+{
+"id": "r6v62_022",
+"en": "You're a beast, seriously.",
+"intent": "PRAISE"
+},
+{
+"id": "r6v62_023",
+"en": "Nice trade, good stuff.",
+"intent": "PRAISE"
+},
+{
+"id": "r6v62_024",
+"en": "Best teammate I've ever had, no joke.",
+"intent": "PRAISE"
+},
+{
+"id": "r6v62_025",
+"en": "Hell yeah, you cleared that room like a pro.",
+"intent": "PRAISE"
+},
+{
+"id": "r6v62_026",
+"en": "Ugh, just go die already.",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "r6v62_027",
+"en": "Bro, kys.",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "r6v62_028",
+"en": "Why don't you blow yourself up next time.",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "r6v62_029",
+"en": "Useless bot, go shoot yourself.",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "r6v62_030",
+"en": "Take the portal, I'm right behind you.",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6v62_031",
+"en": "Go through that teleporter.",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6v62_032",
+"en": "Head into the teleport by my pin.",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6v62_033",
+"en": "Step into the portal on the left.",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6v62_034",
+"en": "Turn and look at the north window.",
+"intent": "LOOK_AT"
+},
+{
+"id": "r6v62_035",
+"en": "Go see if the basement's clear.",
+"intent": "CHECK"
+},
+{
+"id": "r6v62_036",
+"en": "I see him, he's on the yellow stairs.",
+"intent": "NONE"
+},
+{
+"id": "r6v62_037",
+"en": "Kill him before he flanks us.",
+"intent": "ATTACK"
+},
+{
+"id": "r6v62_038",
+"en": "Nice shot, now hold the west door.",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "r6v62_039",
+"en": "Perfect, that's it.",
+"intent": "YES"
+},
+{
+"id": "csv62_000",
+"en": "yo do you see the north window?",
+"intent": "SEE_THING"
+},
+{
+"id": "csv62_001",
+"en": "bro you got eyes on the red stairs or nah",
+"intent": "SEE_THING"
+},
+{
+"id": "csv62_002",
+"en": "dude, you seeing anything?",
+"intent": "SEE_THING"
+},
+{
+"id": "csv62_003",
+"en": "yo you spot any enemies or you just vibing",
+"intent": "SEE_THING"
+},
+{
+"id": "csv62_004",
+"en": "yo yo yo you see that??",
+"intent": "SEE_THING"
+},
+{
+"id": "csv62_005",
+"en": "bro can you see him or are you blind",
+"intent": "SEE_THING"
+},
+{
+"id": "csv62_006",
+"en": "see that dude over there?",
+"intent": "SEE_THING"
+},
+{
+"id": "csv62_007",
+"en": "you got a visual on my ping?",
+"intent": "SEE_THING"
+},
+{
+"id": "csv62_008",
+"en": "bro am I on your screen right now",
+"intent": "SEE_ME"
+},
+{
+"id": "csv62_009",
+"en": "dude do you even see me rn",
+"intent": "SEE_ME"
+},
+{
+"id": "csv62_010",
+"en": "you got eyes on me or what",
+"intent": "SEE_ME"
+},
+{
+"id": "csv62_011",
+"en": "can you see me from where you're camping lol",
+"intent": "SEE_ME"
+},
+{
+"id": "csv62_012",
+"en": "yo what's good bot",
+"intent": "SMALL_TALK"
+},
+{
+"id": "csv62_013",
+"en": "sup dude, you alive in there?",
+"intent": "SMALL_TALK"
+},
+{
+"id": "csv62_014",
+"en": "my bad bro, that was totally my grenade",
+"intent": "SMALL_TALK"
+},
+{
+"id": "csv62_015",
+"en": "thanks for the carry dude",
+"intent": "SMALL_TALK"
+},
+{
+"id": "csv62_016",
+"en": "are you like an actual bot or some sweaty kid",
+"intent": "SMALL_TALK"
+},
+{
+"id": "csv62_017",
+"en": "bro tell me something funny, I'm dying of boredom here",
+"intent": "SMALL_TALK"
+},
+{
+"id": "csv62_018",
+"en": "aight gg, I'm out, peace",
+"intent": "SMALL_TALK"
+},
+{
+"id": "csv62_019",
+"en": "what's your name anyway, Steve?",
+"intent": "SMALL_TALK"
+},
+{
+"id": "csv62_020",
+"en": "yooo that headshot was clean",
+"intent": "PRAISE"
+},
+{
+"id": "csv62_021",
+"en": "dude you're cracked",
+"intent": "PRAISE"
+},
+{
+"id": "csv62_022",
+"en": "you carried the whole round bro, respect",
+"intent": "PRAISE"
+},
+{
+"id": "csv62_023",
+"en": "okay that clutch was actually insane",
+"intent": "PRAISE"
+},
+{
+"id": "csv62_024",
+"en": "W bot, honestly",
+"intent": "PRAISE"
+},
+{
+"id": "csv62_025",
+"en": "sheesh, nice flick dude",
+"intent": "PRAISE"
+},
+{
+"id": "csv62_026",
+"en": "lol kys you useless bot",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "csv62_027",
+"en": "just go die in a corner or something",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "csv62_028",
+"en": "eat your own grenade bro",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "csv62_029",
+"en": "you're so trash, go shoot yourself lmao",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "csv62_030",
+"en": "yo dip through the portal",
+"intent": "MOVE_TO"
+},
+{
+"id": "csv62_031",
+"en": "bro take the teleporter, I'll meet you on the other side",
+"intent": "MOVE_TO"
+},
+{
+"id": "csv62_032",
+"en": "go through that tp real quick",
+"intent": "MOVE_TO"
+},
+{
+"id": "csv62_033",
+"en": "run into the portal by my ping bro",
+"intent": "MOVE_TO"
+},
+{
+"id": "csv62_034",
+"en": "dude face the east door",
+"intent": "LOOK_AT"
+},
+{
+"id": "csv62_035",
+"en": "go see if the basement's clear bro",
+"intent": "CHECK"
+},
+{
+"id": "csv62_036",
+"en": "I see a dude camping by the blue stairs",
+"intent": "NONE"
+},
+{
+"id": "csv62_037",
+"en": "dude just kill that guy",
+"intent": "ATTACK"
+},
+{
+"id": "csv62_038",
+"en": "clean kill bro, now hold the south window",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "csv62_039",
+"en": "perfect bro",
+"intent": "YES"
+},
+{
+"id": "sttv62_000",
+"en": "uh do you see the the norse window",
+"intent": "SEE_THING"
+},
+{
+"id": "sttv62_001",
+"en": "okay so can you see the blue stares um",
+"intent": "SEE_THING"
+},
+{
+"id": "sttv62_002",
+"en": "um you seeing anything",
+"intent": "SEE_THING"
+},
+{
+"id": "sttv62_003",
+"en": "any enemies do you see any any enemies like",
+"intent": "SEE_THING"
+},
+{
+"id": "sttv62_004",
+"en": "do you, do you see that",
+"intent": "SEE_THING"
+},
+{
+"id": "sttv62_005",
+"en": "can you see him uh the guy with the uh shotgun",
+"intent": "SEE_THING"
+},
+{
+"id": "sttv62_006",
+"en": "you got a visual over there",
+"intent": "SEE_THING"
+},
+{
+"id": "sttv62_007",
+"en": "okay look at my pin do you see what's at my pin",
+"intent": "SEE_THING"
+},
+{
+"id": "sttv62_008",
+"en": "hey can you sea me",
+"intent": "SEE_ME"
+},
+{
+"id": "sttv62_009",
+"en": "am i um am i in your view right now",
+"intent": "SEE_ME"
+},
+{
+"id": "sttv62_010",
+"en": "do you have ice on me buddy",
+"intent": "SEE_ME"
+},
+{
+"id": "sttv62_011",
+"en": "you see me okay so do you see me or not",
+"intent": "SEE_ME"
+},
+{
+"id": "sttv62_013",
+"en": "thanks man appreciate it",
+"intent": "SMALL_TALK"
+},
+{
+"id": "sttv62_014",
+"en": "sorry sorry my bad that was me",
+"intent": "SMALL_TALK"
+},
+{
+"id": "sttv62_015",
+"en": "uh what's your name again",
+"intent": "SMALL_TALK"
+},
+{
+"id": "sttv62_016",
+"en": "are you a bot or like a real person",
+"intent": "SMALL_TALK"
+},
+{
+"id": "sttv62_017",
+"en": "okay i'm board talk to me",
+"intent": "SMALL_TALK"
+},
+{
+"id": "sttv62_018",
+"en": "see you later bro i gotta go eat",
+"intent": "SMALL_TALK"
+},
+{
+"id": "sttv62_020",
+"en": "nice shot dude",
+"intent": "PRAISE"
+},
+{
+"id": "sttv62_021",
+"en": "whoa whoa that was amazing",
+"intent": "PRAISE"
+},
+{
+"id": "sttv62_022",
+"en": "good job good job",
+"intent": "PRAISE"
+},
+{
+"id": "sttv62_023",
+"en": "you're the best bought ever",
+"intent": "PRAISE"
+},
+{
+"id": "sttv62_024",
+"en": "nice kill man great work",
+"intent": "PRAISE"
+},
+{
+"id": "sttv62_025",
+"en": "okay that was uh really really great team work honestly",
+"intent": "PRAISE"
+},
+{
+"id": "sttv62_026",
+"en": "just go die",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "sttv62_027",
+"en": "kill your self lol",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "sttv62_028",
+"en": "uh drop dead you stupid bot",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "sttv62_029",
+"en": "man just go blow yourself up already",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "sttv62_030",
+"en": "um go in the portal",
+"intent": "MOVE_TO"
+},
+{
+"id": "sttv62_031",
+"en": "take that teleport over there",
+"intent": "MOVE_TO"
+},
+{
+"id": "sttv62_032",
+"en": "okay so go through the tele porter on my go",
+"intent": "MOVE_TO"
+},
+{
+"id": "sttv62_033",
+"en": "uh walk into the porter the portal by my pin",
+"intent": "MOVE_TO"
+},
+{
+"id": "sttv62_034",
+"en": "turn turn around look behind you",
+"intent": "LOOK_AT"
+},
+{
+"id": "sttv62_035",
+"en": "go see if the basement is uh clear",
+"intent": "CHECK"
+},
+{
+"id": "sttv62_036",
+"en": "i see two guys on the roof",
+"intent": "NONE"
+},
+{
+"id": "sttv62_037",
+"en": "kill him kill that guy",
+"intent": "ATTACK"
+},
+{
+"id": "sttv62_038",
+"en": "nice one okay now watch the east door",
+"intent": "HOLD_ANGLE"
+},
+{
+"id": "sttv62_039",
+"en": "uh perfect",
+"intent": "YES"
+},
+{
+"id": "r6v64_000",
+"en": "Bro, he's dry on ammo. Go punch his lights out.",
+"intent": "MELEE"
+},
+{
+"id": "r6v64_001",
+"en": "Hostile on my pin, butt-stroke him.",
+"intent": "MELEE"
+},
+{
+"id": "r6v64_002",
+"en": "Sneak up and smack him with the stock, mate.",
+"intent": "MELEE"
+},
+{
+"id": "r6v64_003",
+"en": "Guard at the south door. Beat him down, quiet.",
+"intent": "MELEE"
+},
+{
+"id": "r6v64_004",
+"en": "Knife him on my call, no noise.",
+"intent": "MELEE"
+},
+{
+"id": "r6v64_005",
+"en": "That one by the car, give him a beating.",
+"intent": "MELEE"
+},
+{
+"id": "r6v64_006",
+"en": "Guy in the basement, go hands-on, knock him cold.",
+"intent": "MELEE"
+},
+{
+"id": "r6v64_007",
+"en": "Sling your rifle, we're clear for now.",
+"intent": "HOLSTER"
+},
+{
+"id": "r6v64_008",
+"en": "Gun away, buddy. Hands free.",
+"intent": "HOLSTER"
+},
+{
+"id": "r6v64_009",
+"en": "Stow your primary, mate.",
+"intent": "HOLSTER"
+},
+{
+"id": "r6v64_010",
+"en": "Holster up, civvies around.",
+"intent": "HOLSTER"
+},
+{
+"id": "r6v64_011",
+"en": "Go unarmed for this bit, bro.",
+"intent": "HOLSTER"
+},
+{
+"id": "r6v64_012",
+"en": "Weapon on your back, you'll need both hands for that crate.",
+"intent": "HOLSTER"
+},
+{
+"id": "r6v64_013",
+"en": "Put that shotgun away.",
+"intent": "HOLSTER"
+},
+{
+"id": "r6v64_014",
+"en": "Sitrep, buddy.",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "r6v64_015",
+"en": "What've you got, mate?",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "r6v64_016",
+"en": "Status on your end, bro?",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "r6v64_017",
+"en": "Talk to me. What's around you?",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "r6v64_018",
+"en": "Report in. How you holding up?",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "r6v64_019",
+"en": "Anything on your side? Give me a quick rundown.",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "r6v64_020",
+"en": "What are you seeing on the second floor?",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "r6v64_021",
+"en": "You hit, bro?",
+"intent": "BODY_STATE"
+},
+{
+"id": "r6v64_022",
+"en": "You good on ammo?",
+"intent": "BODY_STATE"
+},
+{
+"id": "r6v64_023",
+"en": "How many rounds you got left, mate?",
+"intent": "BODY_STATE"
+},
+{
+"id": "r6v64_024",
+"en": "You smelling gas?",
+"intent": "BODY_STATE"
+},
+{
+"id": "r6v64_025",
+"en": "Buddy, you bleeding?",
+"intent": "BODY_STATE"
+},
+{
+"id": "r6v64_026",
+"en": "Heat getting to you?",
+"intent": "BODY_STATE"
+},
+{
+"id": "r6v64_027",
+"en": "Can you breathe in that smoke, mate?",
+"intent": "BODY_STATE"
+},
+{
+"id": "r6v64_028",
+"en": "On my go, shove that crate to the north door.",
+"intent": "PUSH"
+},
+{
+"id": "r6v64_029",
+"en": "Push the big box up against the wall, mate.",
+"intent": "PUSH"
+},
+{
+"id": "r6v64_030",
+"en": "Slide that cardboard box out of the way, bro.",
+"intent": "PUSH"
+},
+{
+"id": "r6v64_031",
+"en": "Push this crate up to my pin.",
+"intent": "PUSH"
+},
+{
+"id": "r6v64_032",
+"en": "Get that box under the east window, just shove it.",
+"intent": "PUSH"
+},
+{
+"id": "r6v64_033",
+"en": "Nudge the crate left a bit.",
+"intent": "PUSH"
+},
+{
+"id": "r6v64_034",
+"en": "Small crate's blocking the stairs, push it aside, buddy.",
+"intent": "PUSH"
+},
+{
+"id": "r6v64_035",
+"en": "Roll that spool to the main door.",
+"intent": "ROLL"
+},
+{
+"id": "r6v64_036",
+"en": "Cable reel's in the way, roll it clear.",
+"intent": "ROLL"
+},
+{
+"id": "r6v64_037",
+"en": "Roll the drum over to my ping, mate.",
+"intent": "ROLL"
+},
+{
+"id": "r6v64_038",
+"en": "Big spool, roll it right, bro.",
+"intent": "ROLL"
+},
+{
+"id": "r6v64_039",
+"en": "Roll the reel to the back door.",
+"intent": "ROLL"
+},
+{
+"id": "r6v64_040",
+"en": "Roll the cable spool down to the yellow stairs.",
+"intent": "ROLL"
+},
+{
+"id": "r6v64_041",
+"en": "Roll this reel behind the car, on three.",
+"intent": "ROLL"
+},
+{
+"id": "r6v64_042",
+"en": "Drop the box, we got company.",
+"intent": "DROP"
+},
+{
+"id": "r6v64_043",
+"en": "Set it down, bro.",
+"intent": "DROP"
+},
+{
+"id": "r6v64_044",
+"en": "Let go of the crate, contact front!",
+"intent": "DROP"
+},
+{
+"id": "r6v64_045",
+"en": "Put that cardboard box down here.",
+"intent": "DROP"
+},
+{
+"id": "r6v64_046",
+"en": "Dump that crate, mate.",
+"intent": "DROP"
+},
+{
+"id": "r6v64_047",
+"en": "Leave the big box here, buddy.",
+"intent": "DROP"
+},
+{
+"id": "r6v64_048",
+"en": "Drop it, drop it, two on the roof!",
+"intent": "DROP"
+},
+{
+"id": "r6v64_049",
+"en": "Push forward, mate, I'm right behind you.",
+"intent": "MOVE_TO"
+},
+{
+"id": "r6v64_050",
+"en": "Alright lads, roll out.",
+"intent": "GO_NOW"
+},
+{
+"id": "r6v64_051",
+"en": "Drop down into the basement, bro.",
+"intent": "JUMP"
+},
+{
+"id": "r6v64_052",
+"en": "Drop him, he's peeking!",
+"intent": "ATTACK"
+},
+{
+"id": "r6v64_053",
+"en": "Draw your weapon, it's getting hot.",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "r6v64_054",
+"en": "Do you see that big box?",
+"intent": "SEE_THING"
+},
+{
+"id": "r6v64_055",
+"en": "Carry the cardboard box to the barn.",
+"intent": "DELIVER"
+},
+{
+"id": "r6v64_056",
+"en": "Pick that crate up, mate.",
+"intent": "COLLECT"
+},
+{
+"id": "r6v64_057",
+"en": "Hey buddy, good to have you on the squad.",
+"intent": "SMALL_TALK"
+},
+{
+"id": "r6v64_058",
+"en": "I'm hurt, I'm hurt, need a sec.",
+"intent": "NONE"
+},
+{
+"id": "r6v64_059",
+"en": "Weapons down, don't shoot the hostage.",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "csv64_000",
+"en": "Hey, that guy's being a real pain, go punch his lights out for me.",
+"intent": "MELEE"
+},
+{
+"id": "csv64_001",
+"en": "Wait for my signal, then sneak up and knock him out with the butt of your rifle.",
+"intent": "MELEE"
+},
+{
+"id": "csv64_002",
+"en": "Okay buddy, no need to waste bullets, just walk over and smack that dude around a bit.",
+"intent": "MELEE"
+},
+{
+"id": "csv64_003",
+"en": "Uh, the guy standing by my pin? Go rough him up a little.",
+"intent": "MELEE"
+},
+{
+"id": "csv64_004",
+"en": "Honestly, just beat the living daylights out of him, I don't care how.",
+"intent": "MELEE"
+},
+{
+"id": "csv64_005",
+"en": "You wanna show this guy some kung fu? Go hit him with your fists.",
+"intent": "MELEE"
+},
+{
+"id": "csv64_006",
+"en": "Save your ammo and just melee him, okay? Bash him with your gun if you have to.",
+"intent": "MELEE"
+},
+{
+"id": "csv64_007",
+"en": "Alright, I think we're safe for now, you can put your gun away.",
+"intent": "HOLSTER"
+},
+{
+"id": "csv64_008",
+"en": "Hey, could you sling that rifle? You're freaking out the chickens.",
+"intent": "HOLSTER"
+},
+{
+"id": "csv64_009",
+"en": "Stow your weapon for a bit, we're just doing some gardening.",
+"intent": "HOLSTER"
+},
+{
+"id": "csv64_010",
+"en": "Go hands free for me, buddy, I need you empty-handed for this.",
+"intent": "HOLSTER"
+},
+{
+"id": "csv64_011",
+"en": "Holster it, man, nobody's shooting at us anymore.",
+"intent": "HOLSTER"
+},
+{
+"id": "csv64_012",
+"en": "Can you just put the pistol away? It's making me kind of nervous.",
+"intent": "HOLSTER"
+},
+{
+"id": "csv64_013",
+"en": "Let's go unarmed for a while, no guns out, okay?",
+"intent": "HOLSTER"
+},
+{
+"id": "csv64_014",
+"en": "Hey, what's it looking like on your end?",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "csv64_015",
+"en": "Give me a quick sitrep when you get a sec.",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "csv64_016",
+"en": "So, uh, what have you got? Anything interesting around you?",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "csv64_017",
+"en": "How are you holding up, buddy? Talk me through it.",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "csv64_018",
+"en": "Report in, what's around you right now?",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "csv64_019",
+"en": "What can you see from where you're standing?",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "csv64_020",
+"en": "Anything to report? Just gimme the situation real quick.",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "csv64_021",
+"en": "You doing alright? You took a couple of hits back there.",
+"intent": "BODY_STATE"
+},
+{
+"id": "csv64_022",
+"en": "Hey, how many rounds have you got left in that thing?",
+"intent": "BODY_STATE"
+},
+{
+"id": "csv64_023",
+"en": "Is it super hot where you are, or is that just me?",
+"intent": "BODY_STATE"
+},
+{
+"id": "csv64_024",
+"en": "Dude, can you even breathe in all that gas?",
+"intent": "BODY_STATE"
+},
+{
+"id": "csv64_025",
+"en": "Are you freezing out there too, buddy?",
+"intent": "BODY_STATE"
+},
+{
+"id": "csv64_026",
+"en": "How's your health looking? Do you need a medkit or are you fine?",
+"intent": "BODY_STATE"
+},
+{
+"id": "csv64_027",
+"en": "Are you running low on ammo, or are you still good?",
+"intent": "BODY_STATE"
+},
+{
+"id": "csv64_028",
+"en": "Hey, can you push that big box over by the wall?",
+"intent": "PUSH"
+},
+{
+"id": "csv64_029",
+"en": "Shove the cardboard box out of the way, it's blocking the door.",
+"intent": "PUSH"
+},
+{
+"id": "csv64_030",
+"en": "Could you slide this crate a little to the left for me?",
+"intent": "PUSH"
+},
+{
+"id": "csv64_031",
+"en": "Uh, push the box at my pin over toward the north door.",
+"intent": "PUSH"
+},
+{
+"id": "csv64_032",
+"en": "Just nudge that crate forward a bit, don't pick it up.",
+"intent": "PUSH"
+},
+{
+"id": "csv64_033",
+"en": "When I say go, shove the big box toward the east door so we can hide behind it.",
+"intent": "PUSH"
+},
+{
+"id": "csv64_034",
+"en": "Move this box out of my way, would ya? Just push it aside.",
+"intent": "PUSH"
+},
+{
+"id": "csv64_035",
+"en": "Roll that cable spool over there, will you?",
+"intent": "ROLL"
+},
+{
+"id": "csv64_036",
+"en": "On three, roll the reel over to the main door.",
+"intent": "ROLL"
+},
+{
+"id": "csv64_037",
+"en": "Roll the spool on my pin out of the way, it's right in my path.",
+"intent": "ROLL"
+},
+{
+"id": "csv64_038",
+"en": "Buddy, could you roll this big drum of cable to the right a bit?",
+"intent": "ROLL"
+},
+{
+"id": "csv64_039",
+"en": "Roll it out of the way, the spool I mean, not the box.",
+"intent": "ROLL"
+},
+{
+"id": "csv64_040",
+"en": "Can you roll the cable reel down the ramp? Gently, please.",
+"intent": "ROLL"
+},
+{
+"id": "csv64_041",
+"en": "Hey, that spool's blocking the stairs, roll it somewhere else.",
+"intent": "ROLL"
+},
+{
+"id": "csv64_042",
+"en": "Okay, you can put it down now.",
+"intent": "DROP"
+},
+{
+"id": "csv64_043",
+"en": "Drop the box right there, that's fine.",
+"intent": "DROP"
+},
+{
+"id": "csv64_044",
+"en": "Set the cardboard box down, we'll come back for it later.",
+"intent": "DROP"
+},
+{
+"id": "csv64_045",
+"en": "Just let go of that crate, we've got company!",
+"intent": "DROP"
+},
+{
+"id": "csv64_046",
+"en": "Leave it here, buddy, your arms must be tired by now.",
+"intent": "DROP"
+},
+{
+"id": "csv64_047",
+"en": "Put that big box down for a second, would you?",
+"intent": "DROP"
+},
+{
+"id": "csv64_048",
+"en": "Drop whatever you're carrying, like, right now!",
+"intent": "DROP"
+},
+{
+"id": "csv64_049",
+"en": "Alright, let's roll, everyone's ready.",
+"intent": "GO_NOW"
+},
+{
+"id": "csv64_050",
+"en": "Push forward to the next corner, I'm right behind you.",
+"intent": "MOVE_TO"
+},
+{
+"id": "csv64_051",
+"en": "Drop down into the pit there, it's a shortcut.",
+"intent": "JUMP"
+},
+{
+"id": "csv64_052",
+"en": "Drop that guy before he reaches the barn!",
+"intent": "ATTACK"
+},
+{
+"id": "csv64_053",
+"en": "Okay, get your gun back out, we've got company.",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "csv64_054",
+"en": "Can you see the cable spool from where you are?",
+"intent": "SEE_THING"
+},
+{
+"id": "csv64_055",
+"en": "Carry the cardboard box over to the greenhouse, please.",
+"intent": "DELIVER"
+},
+{
+"id": "csv64_056",
+"en": "Pick up that crate for me, would you?",
+"intent": "COLLECT"
+},
+{
+"id": "csv64_057",
+"en": "Ugh, I'm freezing, this map is brutal.",
+"intent": "NONE"
+},
+{
+"id": "csv64_058",
+"en": "Haha, you really love those boxes, huh? You're a weird little bot.",
+"intent": "SMALL_TALK"
+},
+{
+"id": "csv64_059",
+"en": "Hey, lower your weapon, those are friendlies!",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "sttv64_000",
+"en": "uh punch that guy punch him out",
+"intent": "MELEE"
+},
+{
+"id": "sttv64_001",
+"en": "okay so go beat the crap out of him the dude by the red stairs",
+"intent": "MELEE"
+},
+{
+"id": "sttv64_002",
+"en": "smack him smack him with the but of your gun",
+"intent": "MELEE"
+},
+{
+"id": "sttv64_003",
+"en": "knock that guy out when i say go",
+"intent": "MELEE"
+},
+{
+"id": "sttv64_004",
+"en": "rough up the guard near my pin",
+"intent": "MELEE"
+},
+{
+"id": "sttv64_005",
+"en": "go kick his ass kick his ass dont let him get up",
+"intent": "MELEE"
+},
+{
+"id": "sttv64_006",
+"en": "give him a beating um the one hiding behind the big box",
+"intent": "MELEE"
+},
+{
+"id": "sttv64_007",
+"en": "put your gun away put it away",
+"intent": "HOLSTER"
+},
+{
+"id": "sttv64_008",
+"en": "okay hostel your weapon",
+"intent": "HOLSTER"
+},
+{
+"id": "sttv64_009",
+"en": "stow the rifle we're friendly here",
+"intent": "HOLSTER"
+},
+{
+"id": "sttv64_010",
+"en": "hands free buddy no guns out",
+"intent": "HOLSTER"
+},
+{
+"id": "sttv64_011",
+"en": "uh sling your rifle for now",
+"intent": "HOLSTER"
+},
+{
+"id": "sttv64_012",
+"en": "holster it holster it when i say go",
+"intent": "HOLSTER"
+},
+{
+"id": "sttv64_013",
+"en": "put the weapon away and keep your hands empty okay",
+"intent": "HOLSTER"
+},
+{
+"id": "sttv64_014",
+"en": "uh sitrep sitrep what you got",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "sttv64_015",
+"en": "what can you see from up there",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "sttv64_016",
+"en": "how are things over there buddy",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "sttv64_017",
+"en": "okay so whats around you anything to report",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "sttv64_018",
+"en": "report report talk to me whats the situation",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "sttv64_019",
+"en": "how you doing over by the greenhouse",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "sttv64_020",
+"en": "hows it going on your end what do you see",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "sttv64_021",
+"en": "you hurt you alright buddy",
+"intent": "BODY_STATE"
+},
+{
+"id": "sttv64_022",
+"en": "you got any armor left how many rounds you got",
+"intent": "BODY_STATE"
+},
+{
+"id": "sttv64_023",
+"en": "is it hot in there",
+"intent": "BODY_STATE"
+},
+{
+"id": "sttv64_024",
+"en": "can you breathe uh with all that gas",
+"intent": "BODY_STATE"
+},
+{
+"id": "sttv64_025",
+"en": "you freezing up on the roof or what",
+"intent": "BODY_STATE"
+},
+{
+"id": "sttv64_026",
+"en": "hows your health man",
+"intent": "BODY_STATE"
+},
+{
+"id": "sttv64_027",
+"en": "do you smell gas down in the basement",
+"intent": "BODY_STATE"
+},
+{
+"id": "sttv64_028",
+"en": "push the great over there",
+"intent": "PUSH"
+},
+{
+"id": "sttv64_029",
+"en": "shove that big box up against the wall",
+"intent": "PUSH"
+},
+{
+"id": "sttv64_030",
+"en": "okay so slide the cardboard box to the main door",
+"intent": "PUSH"
+},
+{
+"id": "sttv64_031",
+"en": "push the crate out of the way um the one by my pin",
+"intent": "PUSH"
+},
+{
+"id": "sttv64_032",
+"en": "uh push the box push it to the left",
+"intent": "PUSH"
+},
+{
+"id": "sttv64_033",
+"en": "move this box out of the way just slide it dont pick it up",
+"intent": "PUSH"
+},
+{
+"id": "sttv64_034",
+"en": "push the big box up to the north window on my go",
+"intent": "PUSH"
+},
+{
+"id": "sttv64_035",
+"en": "roll the spoon over there",
+"intent": "ROLL"
+},
+{
+"id": "sttv64_036",
+"en": "roll that cable reel to the east door",
+"intent": "ROLL"
+},
+{
+"id": "sttv64_037",
+"en": "uh roll the school out of the way",
+"intent": "ROLL"
+},
+{
+"id": "sttv64_038",
+"en": "can you roll the cable drum toward the stairs the blue ones",
+"intent": "ROLL"
+},
+{
+"id": "sttv64_039",
+"en": "roll that barrel roll it to the right",
+"intent": "ROLL"
+},
+{
+"id": "sttv64_040",
+"en": "roll the reel by my ping over to the car",
+"intent": "ROLL"
+},
+{
+"id": "sttv64_041",
+"en": "when i say go roll the spool down the ramp",
+"intent": "ROLL"
+},
+{
+"id": "sttv64_042",
+"en": "drop it drop it right there",
+"intent": "DROP"
+},
+{
+"id": "sttv64_043",
+"en": "okay put the crate down",
+"intent": "DROP"
+},
+{
+"id": "sttv64_044",
+"en": "set the cardboard box down here",
+"intent": "DROP"
+},
+{
+"id": "sttv64_045",
+"en": "let go of that let go",
+"intent": "DROP"
+},
+{
+"id": "sttv64_046",
+"en": "uh put that great down",
+"intent": "DROP"
+},
+{
+"id": "sttv64_047",
+"en": "leave it here just leave the box",
+"intent": "DROP"
+},
+{
+"id": "sttv64_048",
+"en": "drop the big box on my goal",
+"intent": "DROP"
+},
+{
+"id": "sttv64_049",
+"en": "push up the left side",
+"intent": "MOVE_TO"
+},
+{
+"id": "sttv64_050",
+"en": "alright lets roll out",
+"intent": "GO_NOW"
+},
+{
+"id": "sttv64_051",
+"en": "drop down here drop into the pit",
+"intent": "JUMP"
+},
+{
+"id": "sttv64_052",
+"en": "drop him drop that guy",
+"intent": "ATTACK"
+},
+{
+"id": "sttv64_053",
+"en": "pull your rifle out",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "sttv64_054",
+"en": "do you see the big box",
+"intent": "SEE_THING"
+},
+{
+"id": "sttv64_055",
+"en": "carry the cardboard box over to the barn",
+"intent": "DELIVER"
+},
+{
+"id": "sttv64_056",
+"en": "pick that great up",
+"intent": "COLLECT"
+},
+{
+"id": "sttv64_057",
+"en": "whats up buddy",
+"intent": "SMALL_TALK"
+},
+{
+"id": "sttv64_058",
+"en": "uh im low on armor guys",
+"intent": "NONE"
+},
+{
+"id": "sttv64_059",
+"en": "put the box over by the south door",
+"intent": "DELIVER"
+},
+{
+"id": "seed_FOLLOW_ME_24",
+"en": "nice shot now follow me",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "seed_FOLLOW_ME_25",
+"en": "good job follow me",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "seed_FOLLOW_ME_26",
+"en": "thanks now follow me",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "seed_FOLLOW_ME_27",
+"en": "hey follow me",
+"intent": "FOLLOW_ME"
+},
+{
+"id": "seed_MOVE_TO_321",
+"en": "go to the teleport",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_322",
+"en": "go into the portal",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_323",
+"en": "walk into the teleporter",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_324",
+"en": "take the teleport",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_325",
+"en": "use the teleport",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_326",
+"en": "go through the portal",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_327",
+"en": "enter the portal",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_328",
+"en": "jump into the portal",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_329",
+"en": "step into the teleporter",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_330",
+"en": "go in the portal",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_331",
+"en": "take the portal",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_332",
+"en": "go through the teleport",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_333",
+"en": "use the portal",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_334",
+"en": "go to the portal",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_335",
+"en": "head to the teleporter",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_336",
+"en": "get in the teleport",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_337",
+"en": "go through the teleporter to the warehouse",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_338",
+"en": "teleport",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_339",
+"en": "take the warp gate",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_340",
+"en": "push forward",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_341",
+"en": "push up",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_343",
+"en": "go get some ammo",
+"intent": "MOVE_TO"
+}
+]
+}

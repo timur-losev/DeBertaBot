@@ -17,8 +17,8 @@ import io, json, os, re
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.normpath(os.path.join(HERE, "..", "..", ".."))
 CLI = os.path.join(REPO, "cpp", "coop_intent", "tools", "coop_cli.cpp")
-CONFIG = os.path.join(REPO, "scripts", "coop", "intents_v62.json")   # bot v62's phrases ("label") and places (locations_v62.json)
-PLACES = os.path.join(REPO, "scripts", "coop", "locations_v62.json")
+CONFIG = os.path.join(REPO, "scripts", "coop", "intents_v64.json")   # bot v64's phrases ("label") and places (locations_v64.json)
+PLACES = os.path.join(REPO, "scripts", "coop", "locations_v64.json")
 
 PLANNER = [
     ("Copy, stopping.", "world.cpp: a negated order stops the bot"),
@@ -115,6 +115,17 @@ GAME = [  # the game's own lines (Source/LyraGame/CoopBot)
     ("{n} rounds left.", "'ammo?': the rounds in the weapon in hand and in reserve"), ("Plenty of ammo.", "'ammo?': over half"),
     ("Running low on ammo.", "'ammo?': under a quarter"), ("Nothing in my hands.", "'ammo?' with the weapon put away"),
     ("All quiet around me.", "'how is it going?' with nothing to report but health"),
+    # bot v64 (2026-10-25): hand to hand, the weapon put away, things pushed, rolled and put down
+    ("My hands are free already.", "HOLSTER with nothing in hand"), ("Weapon up.", "SWITCH_WEAPON with the weapon put away: drawn"),
+    ("That's one of ours.", "MELEE with the crosshair on a teammate"), ("Who? I don't see anyone.", "MELEE with no one to strike"),
+    ("He's down.", "MELEE: the one it fought is down"), ("I can't get to him.", "MELEE: no way to the one it fights"),
+    ("Nothing to push there.", "PUSH: nothing that moves where the player points"),
+    ("Nothing to roll there.", "ROLL: the same"), ("That won't move.", "PUSH / ROLL: a fixed part of the map"),
+    ("I can't get behind it.", "PUSH / ROLL: no way to behind the thing"), ("There it is.", "PUSH / ROLL: the thing is at its place"),
+    ("It won't budge.", "PUSH / ROLL: the thing does not move"), ("I'm not carrying anything.", "DROP with nothing in its hands"),
+    # 2026-10-25: jumping over a thing or onto it
+    ("Too high to jump on.", "JUMP onto a thing higher than the bot's jump"), ("Too high to jump over.", "JUMP over it: the same"),
+    ("Nowhere to land over there.", "JUMP over a thing with no floor beyond it"), ("Didn't make it.", "JUMP over / onto: it landed short"),
 ]
 # the brat habit (coop_cli.cpp kBroOff, kBroRelapse; bro.h): the bot agrees to stop calling the player "bro", and the brat
 # persona slips 30 s later

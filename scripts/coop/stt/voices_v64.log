@@ -1,0 +1,17 @@
+02:35:26  start
+02:35:26  export seeds               0 s  341 new seed commands
+02:35:26  export lines               0 s  120 v64 lines of r6 and cs
+02:35:28  windows seeds              2 s  wav_seedclean: 341 new files
+02:35:29  windows lines              1 s  wav_clean: 120 new files
+02:39:50  piper/kokoro seeds       261 s  kokoro 261s
+02:42:49  piper/kokoro lines       179 s  kokoro 178s
+02:43:31  stt seedclean             42 s      'Go get some ammo.' | None
+02:44:13  stt seedkokoro            42 s      'Go get some ammo.' | None
+02:44:56  stt seedkokorox           43 s      'Go get some ammo.' | None
+02:45:35  stt seedvctkA             39 s      'Go get some armour.' | None
+02:46:01  stt clean                 26 s      'Guard at the south door. Beat him down, quiet.' | None
+02:46:29  stt kokoro                28 s      'Guard at the south door, beat him down quiet.' | None
+02:46:55  stt kokorox               26 s      'Guard at the south door. Beat him down quiet.' | None
+02:47:19  stt vctkA                 24 s      'Guard at the south door. Beat him down quiet.' | None
+02:47:42  stt vctkB                 23 s      'Dart at the safdoor. Beek him down quiet.' | None
+02:47:42  done

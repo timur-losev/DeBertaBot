@@ -372,7 +372,40 @@
   "Okay, I won't anymore.": "Okay, I won't anymore.",
   "Got it, no more.": "Got it, no more.",
   "Fine, I'll stop.": "Fine, I'll stop.",
-  "Sorry, habit.": "Sorry, bro, habit."
+  "Sorry, habit.": "Sorry, bro, habit.",
+  "Going hands-on.": "Going hands-on, bro.",
+  "He's getting a beating.": "He's getting a beating, bro.",
+  "On him.": "On him.",
+  "Putting it away.": "Putting it away.",
+  "Hands free.": "Hands free.",
+  "Weapon away.": "Weapon away, bro.",
+  "Pushing it.": "Pushing it, bro.",
+  "Shoving it over.": "Shoving it over.",
+  "Moving it.": "Moving it.",
+  "Rolling it.": "Rolling it, bro.",
+  "Rolling it over.": "Rolling it over.",
+  "On it, rolling.": "On it, rolling.",
+  "Putting it down.": "Putting it down.",
+  "Setting it down.": "Setting it down.",
+  "Dropping it.": "Dropping it.",
+  "My hands are free already.": "Bro, my hands are free already.",
+  "Weapon up.": "Weapon up.",
+  "That's one of ours.": "Bro, that's one of ours.",
+  "Who?": "Who, bro?",
+  "I don't see anyone.": "I don't see anyone, bro.",
+  "He's down.": "He's down, bro.",
+  "I can't get to him.": "Bro, I can't get to him.",
+  "Nothing to push there.": "Bro, nothing to push there.",
+  "Nothing to roll there.": "Bro, nothing to roll there.",
+  "That won't move.": "That won't move.",
+  "I can't get behind it.": "I can't get behind it.",
+  "There it is.": "There it is, bro.",
+  "It won't budge.": "It won't budge, bro.",
+  "I'm not carrying anything.": "Bro, I'm not carrying anything.",
+  "Too high to jump on.": "Too high to jump on, bro.",
+  "Too high to jump over.": "Bro, too high to jump over.",
+  "Nowhere to land over there.": "Nowhere to land over there, bro.",
+  "Didn't make it.": "Didn't make it, bro."
  },
  "slots": {
   "where": {
@@ -865,6 +898,27 @@
    },
    "_other": {
     "text": "*"
+   },
+   "beat him up": {
+    "text": "beat him up"
+   },
+   "push it": {
+    "text": "push it"
+   },
+   "put it down": {
+    "text": "put it down"
+   },
+   "put the weapon away": {
+    "text": "put the weapon away"
+   },
+   "report": {
+    "text": "report"
+   },
+   "roll it": {
+    "text": "roll it"
+   },
+   "say how you are": {
+    "text": "say how you are"
    }
   },
   "object": {
@@ -939,6 +993,9 @@
    },
    "_other": {
     "text": "*"
+   },
+   "spool": {
+    "text": "spool"
    }
   }
  }

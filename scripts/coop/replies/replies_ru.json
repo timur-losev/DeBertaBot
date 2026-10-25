@@ -371,7 +371,40 @@
   "Okay, I won't anymore.": "Ладно, больше не буду.",
   "Got it, no more.": "Понял, больше не скажу.",
   "Fine, I'll stop.": "Хорошо, перестану.",
-  "Sorry, habit.": "Извини, привычка."
+  "Sorry, habit.": "Извини, привычка.",
+  "Going hands-on.": "Иду врукопашную.",
+  "He's getting a beating.": "Щас огребёт.",
+  "On him.": "Беру его на себя.",
+  "Putting it away.": "Убираю.",
+  "Hands free.": "Руки свободны.",
+  "Weapon away.": "Оружие убрал.",
+  "Pushing it.": "Толкаю.",
+  "Shoving it over.": "Пихаю туда.",
+  "Moving it.": "Двигаю.",
+  "Rolling it.": "Качу.",
+  "Rolling it over.": "Перекатываю.",
+  "On it, rolling.": "Есть, качу.",
+  "Putting it down.": "Ставлю.",
+  "Setting it down.": "Опускаю.",
+  "Dropping it.": "Бросаю.",
+  "My hands are free already.": "У меня и так руки свободны.",
+  "Weapon up.": "Оружие к бою.",
+  "That's one of ours.": "Это же свой.",
+  "Who?": "Кого?",
+  "I don't see anyone.": "Никого не вижу.",
+  "He's down.": "Он готов.",
+  "I can't get to him.": "Не могу до него добраться.",
+  "Nothing to push there.": "Там нечего толкать.",
+  "Nothing to roll there.": "Там нечего катить.",
+  "That won't move.": "Это не сдвинуть.",
+  "I can't get behind it.": "Не могу зайти сзади.",
+  "There it is.": "Готово, на месте.",
+  "It won't budge.": "Не сдвигается.",
+  "I'm not carrying anything.": "У меня ничего нет в руках.",
+  "Too high to jump on.": "Слишком высоко, не запрыгну.",
+  "Too high to jump over.": "Слишком высоко, не перепрыгну.",
+  "Nowhere to land over there.": "Там некуда приземлиться.",
+  "Didn't make it.": "Не допрыгнул."
  },
  "slots": {
   "where": {
@@ -548,7 +581,14 @@
    "till the ground": {"text": "копаю землю", "ready": "вскопать землю"},
    "wait": {"text": "жду", "ready": "ждать"},
    "water the plants": {"text": "поливаю", "ready": "полить"},
-   "_other": {"text": "выполняю", "ready": "выполнить"}
+   "_other": {"text": "выполняю", "ready": "выполнить"},
+   "beat him up": {"text": "бью его", "ready": "вломить ему"},
+   "push it": {"text": "толкаю", "ready": "толкнуть"},
+   "put it down": {"text": "ставлю", "ready": "поставить"},
+   "put the weapon away": {"text": "убираю оружие", "ready": "убрать оружие"},
+   "report": {"text": "докладываю", "ready": "доложить"},
+   "roll it": {"text": "качу", "ready": "покатить"},
+   "say how you are": {"text": "докладываю, как я", "ready": "рассказать, как я"}
   },
   "object": {
    "door": {"text": "дверь", "which": "какая", "gen": "двери"},
@@ -574,7 +614,8 @@
    "foundation": {"text": "фундамент", "which": "какой", "gen": "фундамента"},
    "teleport": {"text": "телепорт", "which": "какой", "gen": "телепорта"},
    "place": {"text": "место", "which": "какое", "gen": "подходящего места"},
-   "_other": {"text": "место", "which": "какое", "gen": "такого места"}
+   "_other": {"text": "место", "which": "какое", "gen": "такого места"},
+   "spool": {"text": "катушка", "which": "какая", "gen": "катушки"}
   }
  }
 }

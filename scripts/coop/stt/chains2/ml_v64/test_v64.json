@@ -1,0 +1,2624 @@
+{
+ "en": [
+  {
+   "id": "r6v62_004",
+   "text": "Yo, you see that?",
+   "en": "Yo, you see that?",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "r6v62_007",
+   "text": "Got eyes on my ping?",
+   "en": "Got eyes on my ping?",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "r6v62_014",
+   "text": "Thanks, man, I owe you one.",
+   "en": "Thanks, man, I owe you one.",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "r6v62_020",
+   "text": "Clean headshot, man.",
+   "en": "Clean headshot, man.",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "r6v62_021",
+   "text": "That was a sick clutch!",
+   "en": "That was a sick clutch!",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "r6v62_025",
+   "text": "Hell yeah, you cleared that room like a pro.",
+   "en": "Hell yeah, you cleared that room like a pro.",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "r6v62_036",
+   "text": "I see him, he's on the yellow stairs.",
+   "en": "I see him, he's on the yellow stairs.",
+   "orders": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "csv62_015",
+   "text": "thanks for the carry dude",
+   "en": "thanks for the carry dude",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "csv62_017",
+   "text": "bro tell me something funny, I'm dying of boredom here",
+   "en": "bro tell me something funny, I'm dying of boredom here",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "csv62_021",
+   "text": "dude you're cracked",
+   "en": "dude you're cracked",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "csv62_022",
+   "text": "you carried the whole round bro, respect",
+   "en": "you carried the whole round bro, respect",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "csv62_026",
+   "text": "lol kys you useless bot",
+   "en": "lol kys you useless bot",
+   "orders": [
+    "KILL_YOURSELF"
+   ]
+  },
+  {
+   "id": "csv62_034",
+   "text": "dude face the east door",
+   "en": "dude face the east door",
+   "orders": [
+    "LOOK_AT"
+   ]
+  },
+  {
+   "id": "csv62_038",
+   "text": "clean kill bro, now hold the south window",
+   "en": "clean kill bro, now hold the south window",
+   "orders": [
+    "HOLD_ANGLE"
+   ]
+  },
+  {
+   "id": "sttv62_001",
+   "text": "okay so can you see the blue stares um",
+   "en": "okay so can you see the blue stares um",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "sttv62_006",
+   "text": "you got a visual over there",
+   "en": "you got a visual over there",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "sttv62_014",
+   "text": "sorry sorry my bad that was me",
+   "en": "sorry sorry my bad that was me",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "sttv62_023",
+   "text": "you're the best bought ever",
+   "en": "you're the best bought ever",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "sttv62_038",
+   "text": "nice one okay now watch the east door",
+   "en": "nice one okay now watch the east door",
+   "orders": [
+    "HOLD_ANGLE"
+   ]
+  },
+  {
+   "id": "r6v64_006",
+   "text": "Guy in the basement, go hands-on, knock him cold.",
+   "en": "Guy in the basement, go hands-on, knock him cold.",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "r6v64_008",
+   "text": "Gun away, buddy. Hands free.",
+   "en": "Gun away, buddy. Hands free.",
+   "orders": [
+    "HOLSTER"
+   ]
+  },
+  {
+   "id": "r6v64_020",
+   "text": "What are you seeing on the second floor?",
+   "en": "What are you seeing on the second floor?",
+   "orders": [
+    "STATUS_REPORT"
+   ]
+  },
+  {
+   "id": "r6v64_024",
+   "text": "You smelling gas?",
+   "en": "You smelling gas?",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "r6v64_027",
+   "text": "Can you breathe in that smoke, mate?",
+   "en": "Can you breathe in that smoke, mate?",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "r6v64_028",
+   "text": "On my go, shove that crate to the north door.",
+   "en": "On my go, shove that crate to the north door.",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "r6v64_030",
+   "text": "Slide that cardboard box out of the way, bro.",
+   "en": "Slide that cardboard box out of the way, bro.",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "r6v64_034",
+   "text": "Small crate's blocking the stairs, push it aside, buddy.",
+   "en": "Small crate's blocking the stairs, push it aside, buddy.",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "r6v64_039",
+   "text": "Roll the reel to the back door.",
+   "en": "Roll the reel to the back door.",
+   "orders": [
+    "ROLL"
+   ]
+  },
+  {
+   "id": "r6v64_056",
+   "text": "Pick that crate up, mate.",
+   "en": "Pick that crate up, mate.",
+   "orders": [
+    "COLLECT"
+   ]
+  },
+  {
+   "id": "r6v64_059",
+   "text": "Weapons down, don't shoot the hostage.",
+   "en": "Weapons down, don't shoot the hostage.",
+   "orders": [
+    "HOLD_FIRE"
+   ]
+  },
+  {
+   "id": "csv64_010",
+   "text": "Go hands free for me, buddy, I need you empty-handed for this.",
+   "en": "Go hands free for me, buddy, I need you empty-handed for this.",
+   "orders": [
+    "HOLSTER"
+   ]
+  },
+  {
+   "id": "csv64_018",
+   "text": "Report in, what's around you right now?",
+   "en": "Report in, what's around you right now?",
+   "orders": [
+    "STATUS_REPORT"
+   ]
+  },
+  {
+   "id": "csv64_029",
+   "text": "Shove the cardboard box out of the way, it's blocking the door.",
+   "en": "Shove the cardboard box out of the way, it's blocking the door.",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "csv64_030",
+   "text": "Could you slide this crate a little to the left for me?",
+   "en": "Could you slide this crate a little to the left for me?",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "csv64_038",
+   "text": "Buddy, could you roll this big drum of cable to the right a bit?",
+   "en": "Buddy, could you roll this big drum of cable to the right a bit?",
+   "orders": [
+    "ROLL"
+   ]
+  },
+  {
+   "id": "csv64_043",
+   "text": "Drop the box right there, that's fine.",
+   "en": "Drop the box right there, that's fine.",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "csv64_049",
+   "text": "Alright, let's roll, everyone's ready.",
+   "en": "Alright, let's roll, everyone's ready.",
+   "orders": [
+    "GO_NOW"
+   ]
+  },
+  {
+   "id": "csv64_058",
+   "text": "Haha, you really love those boxes, huh? You're a weird little bot.",
+   "en": "Haha, you really love those boxes, huh? You're a weird little bot.",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "sttv64_014",
+   "text": "uh sitrep sitrep what you got",
+   "en": "uh sitrep sitrep what you got",
+   "orders": [
+    "STATUS_REPORT"
+   ]
+  },
+  {
+   "id": "sttv64_031",
+   "text": "push the crate out of the way um the one by my pin",
+   "en": "push the crate out of the way um the one by my pin",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "sttv64_044",
+   "text": "set the cardboard box down here",
+   "en": "set the cardboard box down here",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "sttv64_047",
+   "text": "leave it here just leave the box",
+   "en": "leave it here just leave the box",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "sttv64_048",
+   "text": "drop the big box on my goal",
+   "en": "drop the big box on my goal",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "sttv64_051",
+   "text": "drop down here drop into the pit",
+   "en": "drop down here drop into the pit",
+   "orders": [
+    "JUMP"
+   ]
+  },
+  {
+   "id": "seed_FOLLOW_ME_25",
+   "text": "good job follow me",
+   "en": "good job follow me",
+   "orders": [
+    "FOLLOW_ME"
+   ]
+  },
+  {
+   "id": "seed_MOVE_TO_331",
+   "text": "take the portal",
+   "en": "take the portal",
+   "orders": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "seed_MOVE_TO_336",
+   "text": "get in the teleport",
+   "en": "get in the teleport",
+   "orders": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "seed_NONE_300",
+   "text": "I killed him",
+   "en": "I killed him",
+   "orders": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "seed_NONE_305",
+   "text": "he punched me",
+   "en": "he punched me",
+   "orders": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "seed_NONE_315",
+   "text": "it's hot here",
+   "en": "it's hot here",
+   "orders": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "seed_ATTACK_38",
+   "text": "kill that guy",
+   "en": "kill that guy",
+   "orders": [
+    "ATTACK"
+   ]
+  },
+  {
+   "id": "seed_ATTACK_41",
+   "text": "take that guy out",
+   "en": "take that guy out",
+   "orders": [
+    "ATTACK"
+   ]
+  },
+  {
+   "id": "seed_ATTACK_45",
+   "text": "drop him",
+   "en": "drop him",
+   "orders": [
+    "ATTACK"
+   ]
+  },
+  {
+   "id": "seed_YES_30",
+   "text": "perfect",
+   "en": "perfect",
+   "orders": [
+    "YES"
+   ]
+  },
+  {
+   "id": "seed_COLLECT_53",
+   "text": "lift that box",
+   "en": "lift that box",
+   "orders": [
+    "COLLECT"
+   ]
+  },
+  {
+   "id": "seed_COLLECT_56",
+   "text": "get that crate up",
+   "en": "get that crate up",
+   "orders": [
+    "COLLECT"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_49",
+   "text": "take it over there",
+   "en": "take it over there",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_62",
+   "text": "move this over there",
+   "en": "move this over there",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_69",
+   "text": "bring me that box",
+   "en": "bring me that box",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_77",
+   "text": "get me that box",
+   "en": "get me that box",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_91",
+   "text": "bring me the cardboard box",
+   "en": "bring me the cardboard box",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_95",
+   "text": "lift the crate and carry it over there",
+   "en": "lift the crate and carry it over there",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_SEE_THING_24",
+   "text": "can you see my mark",
+   "en": "can you see my mark",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "seed_SEE_THING_32",
+   "text": "did you spot him",
+   "en": "did you spot him",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "seed_SEE_THING_38",
+   "text": "do you see what I'm looking at",
+   "en": "do you see what I'm looking at",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "seed_SEE_THING_55",
+   "text": "see them over there",
+   "en": "see them over there",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "seed_SEE_THING_57",
+   "text": "do you see the guy behind the car",
+   "en": "do you see the guy behind the car",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "seed_SEE_ME_1",
+   "text": "you see me",
+   "en": "you see me",
+   "orders": [
+    "SEE_ME"
+   ]
+  },
+  {
+   "id": "seed_SMALL_TALK_3",
+   "text": "what's up",
+   "en": "what's up",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "seed_SMALL_TALK_5",
+   "text": "hello there",
+   "en": "hello there",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "seed_SMALL_TALK_22",
+   "text": "thank you so much",
+   "en": "thank you so much",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "seed_SMALL_TALK_30",
+   "text": "are you a bot",
+   "en": "are you a bot",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_2",
+   "text": "well done",
+   "en": "well done",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_4",
+   "text": "great shot",
+   "en": "great shot",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_11",
+   "text": "awesome job",
+   "en": "awesome job",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_18",
+   "text": "nice moves",
+   "en": "nice moves",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_34",
+   "text": "you nailed it",
+   "en": "you nailed it",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_46",
+   "text": "you rock",
+   "en": "you rock",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_KILL_YOURSELF_3",
+   "text": "shoot yourself",
+   "en": "shoot yourself",
+   "orders": [
+    "KILL_YOURSELF"
+   ]
+  },
+  {
+   "id": "seed_KILL_YOURSELF_31",
+   "text": "please die",
+   "en": "please die",
+   "orders": [
+    "KILL_YOURSELF"
+   ]
+  },
+  {
+   "id": "seed_MELEE_7",
+   "text": "kick their ass",
+   "en": "kick their ass",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_8",
+   "text": "kick the shit out of him",
+   "en": "kick the shit out of him",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_29",
+   "text": "fuck him up",
+   "en": "fuck him up",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_30",
+   "text": "go fuck him up",
+   "en": "go fuck him up",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_41",
+   "text": "smash his face in",
+   "en": "smash his face in",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_44",
+   "text": "give him a punch",
+   "en": "give him a punch",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_45",
+   "text": "give him a slap",
+   "en": "give him a slap",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_56",
+   "text": "punch him don't shoot",
+   "en": "punch him don't shoot",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_65",
+   "text": "kick that guy's butt",
+   "en": "kick that guy's butt",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_HOLSTER_16",
+   "text": "stow it",
+   "en": "stow it",
+   "orders": [
+    "HOLSTER"
+   ]
+  },
+  {
+   "id": "seed_HOLSTER_25",
+   "text": "no weapons out",
+   "en": "no weapons out",
+   "orders": [
+    "HOLSTER"
+   ]
+  },
+  {
+   "id": "seed_HOLSTER_36",
+   "text": "go bare handed",
+   "en": "go bare handed",
+   "orders": [
+    "HOLSTER"
+   ]
+  },
+  {
+   "id": "seed_STATUS_REPORT_7",
+   "text": "how's it going over there",
+   "en": "how's it going over there",
+   "orders": [
+    "STATUS_REPORT"
+   ]
+  },
+  {
+   "id": "seed_STATUS_REPORT_19",
+   "text": "anything to report",
+   "en": "anything to report",
+   "orders": [
+    "STATUS_REPORT"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_1",
+   "text": "are you wounded",
+   "en": "are you wounded",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_2",
+   "text": "are you injured",
+   "en": "are you injured",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_7",
+   "text": "how much health do you have",
+   "en": "how much health do you have",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_10",
+   "text": "you need a medkit",
+   "en": "you need a medkit",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_11",
+   "text": "are you hot",
+   "en": "are you hot",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_26",
+   "text": "got any ammo",
+   "en": "got any ammo",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_38",
+   "text": "are you still alive",
+   "en": "are you still alive",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_PUSH_0",
+   "text": "push the box",
+   "en": "push the box",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "seed_PUSH_13",
+   "text": "push it out of the way",
+   "en": "push it out of the way",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "seed_PUSH_14",
+   "text": "push the big box",
+   "en": "push the big box",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "seed_PUSH_25",
+   "text": "slide it over",
+   "en": "slide it over",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "seed_PUSH_29",
+   "text": "push the box along",
+   "en": "push the box along",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "seed_DROP_4",
+   "text": "put the crate down",
+   "en": "put the crate down",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "seed_DROP_7",
+   "text": "leave it here",
+   "en": "leave it here",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "seed_DROP_10",
+   "text": "put that box down",
+   "en": "put that box down",
+   "orders": [
+    "DROP"
+   ]
+  }
+ ],
+ "ru": [
+  {
+   "id": "r6v62_004",
+   "text": "О, видишь это?",
+   "en": "Yo, you see that?",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "r6v62_007",
+   "text": "Мой пинг видишь?",
+   "en": "Got eyes on my ping?",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "r6v62_014",
+   "text": "Спасибо, бро, с меня должок.",
+   "en": "Thanks, man, I owe you one.",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "r6v62_020",
+   "text": "Чистый хэдшот, бро.",
+   "en": "Clean headshot, man.",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "r6v62_021",
+   "text": "Вот это клатч, жесть!",
+   "en": "That was a sick clutch!",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "r6v62_025",
+   "text": "Да, блин! Зачистил комнату как профи.",
+   "en": "Hell yeah, you cleared that room like a pro.",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "r6v62_036",
+   "text": "Вижу его, он на жёлтой лестнице.",
+   "en": "I see him, he's on the yellow stairs.",
+   "orders": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "csv62_015",
+   "text": "спасибо, что затащил, чувак",
+   "en": "thanks for the carry dude",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "csv62_017",
+   "text": "бро, расскажи что-нибудь смешное, я тут от скуки помираю",
+   "en": "bro tell me something funny, I'm dying of boredom here",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "csv62_021",
+   "text": "чувак, ты имба",
+   "en": "dude you're cracked",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "csv62_022",
+   "text": "ты весь раунд затащил, бро, респект",
+   "en": "you carried the whole round bro, respect",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "csv62_026",
+   "text": "лол, убейся, бесполезный бот",
+   "en": "lol kys you useless bot",
+   "orders": [
+    "KILL_YOURSELF"
+   ]
+  },
+  {
+   "id": "csv62_034",
+   "text": "чувак, повернись к восточной двери",
+   "en": "dude face the east door",
+   "orders": [
+    "LOOK_AT"
+   ]
+  },
+  {
+   "id": "csv62_038",
+   "text": "чистый килл, бро, теперь держи южное окно",
+   "en": "clean kill bro, now hold the south window",
+   "orders": [
+    "HOLD_ANGLE"
+   ]
+  },
+  {
+   "id": "sttv62_001",
+   "text": "так, синюю лестницу видишь, э",
+   "en": "okay so can you see the blue stares um",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "sttv62_006",
+   "text": "тебе там видно что-нибудь",
+   "en": "you got a visual over there",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "sttv62_014",
+   "text": "сорри, сорри, мой косяк, это я",
+   "en": "sorry sorry my bad that was me",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "sttv62_023",
+   "text": "ты лучший бот на свете",
+   "en": "you're the best bought ever",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "sttv62_038",
+   "text": "красава, так, теперь смотри за восточной дверью",
+   "en": "nice one okay now watch the east door",
+   "orders": [
+    "HOLD_ANGLE"
+   ]
+  },
+  {
+   "id": "r6v64_006",
+   "text": "Чел в подвале, иди врукопашную, вырубай его.",
+   "en": "Guy in the basement, go hands-on, knock him cold.",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "r6v64_008",
+   "text": "Ствол убери, бро. Руки свободны.",
+   "en": "Gun away, buddy. Hands free.",
+   "orders": [
+    "HOLSTER"
+   ]
+  },
+  {
+   "id": "r6v64_020",
+   "text": "Что видишь на втором этаже?",
+   "en": "What are you seeing on the second floor?",
+   "orders": [
+    "STATUS_REPORT"
+   ]
+  },
+  {
+   "id": "r6v64_024",
+   "text": "Газом пахнет?",
+   "en": "You smelling gas?",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "r6v64_027",
+   "text": "Братан, в этом дыму дышать можешь?",
+   "en": "Can you breathe in that smoke, mate?",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "r6v64_028",
+   "text": "По моей команде толкни ящик к северной двери.",
+   "en": "On my go, shove that crate to the north door.",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "r6v64_030",
+   "text": "Бро, отодвинь картонную коробку с дороги.",
+   "en": "Slide that cardboard box out of the way, bro.",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "r6v64_034",
+   "text": "Маленький ящик загораживает лестницу, отодвинь его, бро.",
+   "en": "Small crate's blocking the stairs, push it aside, buddy.",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "r6v64_039",
+   "text": "Прокати бобину к задней двери.",
+   "en": "Roll the reel to the back door.",
+   "orders": [
+    "ROLL"
+   ]
+  },
+  {
+   "id": "r6v64_056",
+   "text": "Братан, подними тот ящик.",
+   "en": "Pick that crate up, mate.",
+   "orders": [
+    "COLLECT"
+   ]
+  },
+  {
+   "id": "r6v64_059",
+   "text": "Опусти оружие, не стреляй в заложника.",
+   "en": "Weapons down, don't shoot the hostage.",
+   "orders": [
+    "HOLD_FIRE"
+   ]
+  },
+  {
+   "id": "csv64_010",
+   "text": "Освободи руки, бро, мне надо, чтобы они у тебя были пустые.",
+   "en": "Go hands free for me, buddy, I need you empty-handed for this.",
+   "orders": [
+    "HOLSTER"
+   ]
+  },
+  {
+   "id": "csv64_018",
+   "text": "Доложи, что вокруг тебя сейчас?",
+   "en": "Report in, what's around you right now?",
+   "orders": [
+    "STATUS_REPORT"
+   ]
+  },
+  {
+   "id": "csv64_029",
+   "text": "Пихни картонную коробку с дороги, она дверь загораживает.",
+   "en": "Shove the cardboard box out of the way, it's blocking the door.",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "csv64_030",
+   "text": "Можешь подвинуть мне этот ящик чуть влево?",
+   "en": "Could you slide this crate a little to the left for me?",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "csv64_038",
+   "text": "Бро, можешь прокатить этот большой барабан с кабелем чуть вправо?",
+   "en": "Buddy, could you roll this big drum of cable to the right a bit?",
+   "orders": [
+    "ROLL"
+   ]
+  },
+  {
+   "id": "csv64_043",
+   "text": "Брось коробку прям там, нормально.",
+   "en": "Drop the box right there, that's fine.",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "csv64_049",
+   "text": "Так, выдвигаемся, все готовы.",
+   "en": "Alright, let's roll, everyone's ready.",
+   "orders": [
+    "GO_NOW"
+   ]
+  },
+  {
+   "id": "csv64_058",
+   "text": "Ха-ха, ты реально любишь эти коробки, да? Странный ты ботик.",
+   "en": "Haha, you really love those boxes, huh? You're a weird little bot.",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "sttv64_014",
+   "text": "э, обстановка, обстановка, что у тебя",
+   "en": "uh sitrep sitrep what you got",
+   "orders": [
+    "STATUS_REPORT"
+   ]
+  },
+  {
+   "id": "sttv64_031",
+   "text": "отодвинь ящик с дороги, э, тот, что у моей метки",
+   "en": "push the crate out of the way um the one by my pin",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "sttv64_044",
+   "text": "поставь картонную коробку сюда",
+   "en": "set the cardboard box down here",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "sttv64_047",
+   "text": "оставь тут, просто оставь коробку",
+   "en": "leave it here just leave the box",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "sttv64_048",
+   "text": "по моей команде брось большой ящик",
+   "en": "drop the big box on my goal",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "sttv64_051",
+   "text": "спрыгни здесь, спрыгни в яму",
+   "en": "drop down here drop into the pit",
+   "orders": [
+    "JUMP"
+   ]
+  },
+  {
+   "id": "seed_FOLLOW_ME_25",
+   "text": "молодец, иди за мной",
+   "en": "good job follow me",
+   "orders": [
+    "FOLLOW_ME"
+   ]
+  },
+  {
+   "id": "seed_MOVE_TO_331",
+   "text": "давай в портал",
+   "en": "take the portal",
+   "orders": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "seed_MOVE_TO_336",
+   "text": "залезай в телепорт",
+   "en": "get in the teleport",
+   "orders": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "seed_NONE_300",
+   "text": "я его убил",
+   "en": "I killed him",
+   "orders": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "seed_NONE_305",
+   "text": "он мне врезал",
+   "en": "he punched me",
+   "orders": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "seed_NONE_315",
+   "text": "жарко тут",
+   "en": "it's hot here",
+   "orders": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "seed_ATTACK_38",
+   "text": "вали того чувака",
+   "en": "kill that guy",
+   "orders": [
+    "ATTACK"
+   ]
+  },
+  {
+   "id": "seed_ATTACK_41",
+   "text": "убери того типа",
+   "en": "take that guy out",
+   "orders": [
+    "ATTACK"
+   ]
+  },
+  {
+   "id": "seed_ATTACK_45",
+   "text": "сними его",
+   "en": "drop him",
+   "orders": [
+    "ATTACK"
+   ]
+  },
+  {
+   "id": "seed_YES_30",
+   "text": "идеально",
+   "en": "perfect",
+   "orders": [
+    "YES"
+   ]
+  },
+  {
+   "id": "seed_COLLECT_53",
+   "text": "подними ту коробку",
+   "en": "lift that box",
+   "orders": [
+    "COLLECT"
+   ]
+  },
+  {
+   "id": "seed_COLLECT_56",
+   "text": "подними тот ящик",
+   "en": "get that crate up",
+   "orders": [
+    "COLLECT"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_49",
+   "text": "отнеси его вон туда",
+   "en": "take it over there",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_62",
+   "text": "перенеси это вон туда",
+   "en": "move this over there",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_69",
+   "text": "притащи мне ту коробку",
+   "en": "bring me that box",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_77",
+   "text": "принеси мне ту коробку",
+   "en": "get me that box",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_91",
+   "text": "притащи мне картонную коробку",
+   "en": "bring me the cardboard box",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_95",
+   "text": "подними ящик и оттащи вон туда",
+   "en": "lift the crate and carry it over there",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_SEE_THING_24",
+   "text": "видишь мою метку?",
+   "en": "can you see my mark",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "seed_SEE_THING_32",
+   "text": "ты его засёк?",
+   "en": "did you spot him",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "seed_SEE_THING_38",
+   "text": "видишь, куда я смотрю?",
+   "en": "do you see what I'm looking at",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "seed_SEE_THING_55",
+   "text": "видишь их вон там?",
+   "en": "see them over there",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "seed_SEE_THING_57",
+   "text": "видишь чела за машиной?",
+   "en": "do you see the guy behind the car",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "seed_SEE_ME_1",
+   "text": "ты меня видишь?",
+   "en": "you see me",
+   "orders": [
+    "SEE_ME"
+   ]
+  },
+  {
+   "id": "seed_SMALL_TALK_3",
+   "text": "чё как?",
+   "en": "what's up",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "seed_SMALL_TALK_5",
+   "text": "привет",
+   "en": "hello there",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "seed_SMALL_TALK_22",
+   "text": "огромное спасибо",
+   "en": "thank you so much",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "seed_SMALL_TALK_30",
+   "text": "ты бот?",
+   "en": "are you a bot",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_2",
+   "text": "красава",
+   "en": "well done",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_4",
+   "text": "шикарный выстрел",
+   "en": "great shot",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_11",
+   "text": "офигенно сработал",
+   "en": "awesome job",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_18",
+   "text": "красиво двигаешься",
+   "en": "nice moves",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_34",
+   "text": "в точку, красава",
+   "en": "you nailed it",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_46",
+   "text": "ты крут",
+   "en": "you rock",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_KILL_YOURSELF_3",
+   "text": "застрелись",
+   "en": "shoot yourself",
+   "orders": [
+    "KILL_YOURSELF"
+   ]
+  },
+  {
+   "id": "seed_KILL_YOURSELF_31",
+   "text": "сдохни, пожалуйста",
+   "en": "please die",
+   "orders": [
+    "KILL_YOURSELF"
+   ]
+  },
+  {
+   "id": "seed_MELEE_7",
+   "text": "надери им жопу",
+   "en": "kick their ass",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_8",
+   "text": "выбей из него всё дерьмо",
+   "en": "kick the shit out of him",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_29",
+   "text": "отпизди его нахуй",
+   "en": "fuck him up",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_30",
+   "text": "иди дай ему пизды",
+   "en": "go fuck him up",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_41",
+   "text": "разбей ему ебало",
+   "en": "smash his face in",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_44",
+   "text": "дай ему кулаком",
+   "en": "give him a punch",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_45",
+   "text": "отвесь ему леща",
+   "en": "give him a slap",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_56",
+   "text": "врежь ему, не стреляй",
+   "en": "punch him don't shoot",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_65",
+   "text": "надери тому чуваку зад",
+   "en": "kick that guy's butt",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_HOLSTER_16",
+   "text": "спрячь его",
+   "en": "stow it",
+   "orders": [
+    "HOLSTER"
+   ]
+  },
+  {
+   "id": "seed_HOLSTER_25",
+   "text": "никакого оружия в руках",
+   "en": "no weapons out",
+   "orders": [
+    "HOLSTER"
+   ]
+  },
+  {
+   "id": "seed_HOLSTER_36",
+   "text": "давай голыми руками",
+   "en": "go bare handed",
+   "orders": [
+    "HOLSTER"
+   ]
+  },
+  {
+   "id": "seed_STATUS_REPORT_7",
+   "text": "как там у тебя?",
+   "en": "how's it going over there",
+   "orders": [
+    "STATUS_REPORT"
+   ]
+  },
+  {
+   "id": "seed_STATUS_REPORT_19",
+   "text": "есть что доложить?",
+   "en": "anything to report",
+   "orders": [
+    "STATUS_REPORT"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_1",
+   "text": "тебя ранило?",
+   "en": "are you wounded",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_2",
+   "text": "травмы есть?",
+   "en": "are you injured",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_7",
+   "text": "сколько у тебя здоровья?",
+   "en": "how much health do you have",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_10",
+   "text": "аптечка нужна?",
+   "en": "you need a medkit",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_11",
+   "text": "тебе не жарко?",
+   "en": "are you hot",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_26",
+   "text": "патроны есть?",
+   "en": "got any ammo",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_38",
+   "text": "ты ещё жив?",
+   "en": "are you still alive",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_PUSH_0",
+   "text": "толкни коробку",
+   "en": "push the box",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "seed_PUSH_13",
+   "text": "отпихни его с дороги",
+   "en": "push it out of the way",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "seed_PUSH_14",
+   "text": "толкни большую коробку",
+   "en": "push the big box",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "seed_PUSH_25",
+   "text": "подвинь его",
+   "en": "slide it over",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "seed_PUSH_29",
+   "text": "толкай коробку дальше",
+   "en": "push the box along",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "seed_DROP_4",
+   "text": "поставь ящик",
+   "en": "put the crate down",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "seed_DROP_7",
+   "text": "оставь тут",
+   "en": "leave it here",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "seed_DROP_10",
+   "text": "опусти ту коробку",
+   "en": "put that box down",
+   "orders": [
+    "DROP"
+   ]
+  }
+ ],
+ "es": [
+  {
+   "id": "r6v62_004",
+   "text": "Oye, ¿ves eso?",
+   "en": "Yo, you see that?",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "r6v62_007",
+   "text": "¿Ves mi marca?",
+   "en": "Got eyes on my ping?",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "r6v62_014",
+   "text": "Gracias, tío, te debo una.",
+   "en": "Thanks, man, I owe you one.",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "r6v62_020",
+   "text": "Qué headshot más limpio, tío.",
+   "en": "Clean headshot, man.",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "r6v62_021",
+   "text": "¡Qué clutch más bestia!",
+   "en": "That was a sick clutch!",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "r6v62_025",
+   "text": "¡Vamos! Limpiaste esa sala como un pro.",
+   "en": "Hell yeah, you cleared that room like a pro.",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "r6v62_036",
+   "text": "Lo veo, está en la escalera amarilla.",
+   "en": "I see him, he's on the yellow stairs.",
+   "orders": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "csv62_015",
+   "text": "gracias por la carreada, tío",
+   "en": "thanks for the carry dude",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "csv62_017",
+   "text": "bro, cuéntame algo gracioso, que me muero de aburrimiento",
+   "en": "bro tell me something funny, I'm dying of boredom here",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "csv62_021",
+   "text": "tío, estás rotísimo",
+   "en": "dude you're cracked",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "csv62_022",
+   "text": "te cargaste la ronda entera, bro, respeto",
+   "en": "you carried the whole round bro, respect",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "csv62_026",
+   "text": "jaja mátate, bot inútil",
+   "en": "lol kys you useless bot",
+   "orders": [
+    "KILL_YOURSELF"
+   ]
+  },
+  {
+   "id": "csv62_034",
+   "text": "tío, mira hacia la puerta este",
+   "en": "dude face the east door",
+   "orders": [
+    "LOOK_AT"
+   ]
+  },
+  {
+   "id": "csv62_038",
+   "text": "buena kill bro, ahora cubre la ventana sur",
+   "en": "clean kill bro, now hold the south window",
+   "orders": [
+    "HOLD_ANGLE"
+   ]
+  },
+  {
+   "id": "sttv62_001",
+   "text": "vale, entonces ¿ves la escalera azul? em",
+   "en": "okay so can you see the blue stares um",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "sttv62_006",
+   "text": "¿tienes visual por ahí?",
+   "en": "you got a visual over there",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "sttv62_014",
+   "text": "perdón perdón, culpa mía, fui yo",
+   "en": "sorry sorry my bad that was me",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "sttv62_023",
+   "text": "eres el mejor bot del mundo",
+   "en": "you're the best bought ever",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "sttv62_038",
+   "text": "buena, vale, ahora cubre la puerta este",
+   "en": "nice one okay now watch the east door",
+   "orders": [
+    "HOLD_ANGLE"
+   ]
+  },
+  {
+   "id": "r6v64_006",
+   "text": "El tipo del sótano, ve a puño limpio y déjalo KO.",
+   "en": "Guy in the basement, go hands-on, knock him cold.",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "r6v64_008",
+   "text": "Guarda el arma, colega. Manos libres.",
+   "en": "Gun away, buddy. Hands free.",
+   "orders": [
+    "HOLSTER"
+   ]
+  },
+  {
+   "id": "r6v64_020",
+   "text": "¿Qué ves en el segundo piso?",
+   "en": "What are you seeing on the second floor?",
+   "orders": [
+    "STATUS_REPORT"
+   ]
+  },
+  {
+   "id": "r6v64_024",
+   "text": "¿Hueles a gas?",
+   "en": "You smelling gas?",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "r6v64_027",
+   "text": "¿Puedes respirar con ese humo, tío?",
+   "en": "Can you breathe in that smoke, mate?",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "r6v64_028",
+   "text": "A mi señal, empuja esa caja hasta la puerta norte.",
+   "en": "On my go, shove that crate to the north door.",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "r6v64_030",
+   "text": "Arrastra esa caja de cartón para que no estorbe, bro.",
+   "en": "Slide that cardboard box out of the way, bro.",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "r6v64_034",
+   "text": "La caja pequeña bloquea la escalera, apártala empujando, colega.",
+   "en": "Small crate's blocking the stairs, push it aside, buddy.",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "r6v64_039",
+   "text": "Rueda el carrete hasta la puerta trasera.",
+   "en": "Roll the reel to the back door.",
+   "orders": [
+    "ROLL"
+   ]
+  },
+  {
+   "id": "r6v64_056",
+   "text": "Levanta esa caja, tío.",
+   "en": "Pick that crate up, mate.",
+   "orders": [
+    "COLLECT"
+   ]
+  },
+  {
+   "id": "r6v64_059",
+   "text": "Bajad las armas, no le disparéis al rehén.",
+   "en": "Weapons down, don't shoot the hostage.",
+   "orders": [
+    "HOLD_FIRE"
+   ]
+  },
+  {
+   "id": "csv64_010",
+   "text": "Ponte manos libres, colega, necesito que tengas las manos vacías para esto.",
+   "en": "Go hands free for me, buddy, I need you empty-handed for this.",
+   "orders": [
+    "HOLSTER"
+   ]
+  },
+  {
+   "id": "csv64_018",
+   "text": "Repórtate, ¿qué tienes alrededor ahora mismo?",
+   "en": "Report in, what's around you right now?",
+   "orders": [
+    "STATUS_REPORT"
+   ]
+  },
+  {
+   "id": "csv64_029",
+   "text": "Aparta la caja de cartón empujándola, que bloquea la puerta.",
+   "en": "Shove the cardboard box out of the way, it's blocking the door.",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "csv64_030",
+   "text": "¿Me arrastras esta caja un poquito a la izquierda?",
+   "en": "Could you slide this crate a little to the left for me?",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "csv64_038",
+   "text": "Colega, ¿puedes rodar este carrete grande de cable un poco a la derecha?",
+   "en": "Buddy, could you roll this big drum of cable to the right a bit?",
+   "orders": [
+    "ROLL"
+   ]
+  },
+  {
+   "id": "csv64_043",
+   "text": "Suelta la caja ahí mismo, está bien.",
+   "en": "Drop the box right there, that's fine.",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "csv64_049",
+   "text": "Venga, vamos, ya estamos todos listos.",
+   "en": "Alright, let's roll, everyone's ready.",
+   "orders": [
+    "GO_NOW"
+   ]
+  },
+  {
+   "id": "csv64_058",
+   "text": "Jaja, cómo te gustan las cajas, ¿eh? Eres un bot rarito.",
+   "en": "Haha, you really love those boxes, huh? You're a weird little bot.",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "sttv64_014",
+   "text": "eh, reporte, reporte, ¿qué tienes?",
+   "en": "uh sitrep sitrep what you got",
+   "orders": [
+    "STATUS_REPORT"
+   ]
+  },
+  {
+   "id": "sttv64_031",
+   "text": "aparta la caja empujando em, la de mi marca",
+   "en": "push the crate out of the way um the one by my pin",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "sttv64_044",
+   "text": "pon la caja de cartón aquí en el suelo",
+   "en": "set the cardboard box down here",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "sttv64_047",
+   "text": "déjalo aquí, deja la caja y ya",
+   "en": "leave it here just leave the box",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "sttv64_048",
+   "text": "suelta la caja grande a mi señal",
+   "en": "drop the big box on my goal",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "sttv64_051",
+   "text": "salta aquí abajo, salta al foso",
+   "en": "drop down here drop into the pit",
+   "orders": [
+    "JUMP"
+   ]
+  },
+  {
+   "id": "seed_FOLLOW_ME_25",
+   "text": "bien hecho, sígueme",
+   "en": "good job follow me",
+   "orders": [
+    "FOLLOW_ME"
+   ]
+  },
+  {
+   "id": "seed_MOVE_TO_331",
+   "text": "pilla el portal",
+   "en": "take the portal",
+   "orders": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "seed_MOVE_TO_336",
+   "text": "métete al teletransportador",
+   "en": "get in the teleport",
+   "orders": [
+    "MOVE_TO"
+   ]
+  },
+  {
+   "id": "seed_NONE_300",
+   "text": "lo maté",
+   "en": "I killed him",
+   "orders": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "seed_NONE_305",
+   "text": "me pegó un puñetazo",
+   "en": "he punched me",
+   "orders": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "seed_NONE_315",
+   "text": "aquí hace calor",
+   "en": "it's hot here",
+   "orders": [
+    "NONE"
+   ]
+  },
+  {
+   "id": "seed_ATTACK_38",
+   "text": "mata a ese tío",
+   "en": "kill that guy",
+   "orders": [
+    "ATTACK"
+   ]
+  },
+  {
+   "id": "seed_ATTACK_41",
+   "text": "elimina a ese tipo",
+   "en": "take that guy out",
+   "orders": [
+    "ATTACK"
+   ]
+  },
+  {
+   "id": "seed_ATTACK_45",
+   "text": "túmbalo",
+   "en": "drop him",
+   "orders": [
+    "ATTACK"
+   ]
+  },
+  {
+   "id": "seed_YES_30",
+   "text": "perfecto",
+   "en": "perfect",
+   "orders": [
+    "YES"
+   ]
+  },
+  {
+   "id": "seed_COLLECT_53",
+   "text": "levanta esa caja",
+   "en": "lift that box",
+   "orders": [
+    "COLLECT"
+   ]
+  },
+  {
+   "id": "seed_COLLECT_56",
+   "text": "sube esa caja",
+   "en": "get that crate up",
+   "orders": [
+    "COLLECT"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_49",
+   "text": "llévalo allá",
+   "en": "take it over there",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_62",
+   "text": "mueve esto para allá",
+   "en": "move this over there",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_69",
+   "text": "tráeme esa caja",
+   "en": "bring me that box",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_77",
+   "text": "consígueme esa caja",
+   "en": "get me that box",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_91",
+   "text": "pásame la caja de cartón",
+   "en": "bring me the cardboard box",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_DELIVER_95",
+   "text": "levanta la caja y llévala para allá",
+   "en": "lift the crate and carry it over there",
+   "orders": [
+    "DELIVER"
+   ]
+  },
+  {
+   "id": "seed_SEE_THING_24",
+   "text": "¿ves mi marca?",
+   "en": "can you see my mark",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "seed_SEE_THING_32",
+   "text": "¿lo localizaste?",
+   "en": "did you spot him",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "seed_SEE_THING_38",
+   "text": "¿ves lo que estoy mirando?",
+   "en": "do you see what I'm looking at",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "seed_SEE_THING_55",
+   "text": "míralos allá",
+   "en": "see them over there",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "seed_SEE_THING_57",
+   "text": "¿ves al tío detrás del coche?",
+   "en": "do you see the guy behind the car",
+   "orders": [
+    "SEE_THING"
+   ]
+  },
+  {
+   "id": "seed_SEE_ME_1",
+   "text": "me ves, ¿no?",
+   "en": "you see me",
+   "orders": [
+    "SEE_ME"
+   ]
+  },
+  {
+   "id": "seed_SMALL_TALK_3",
+   "text": "¿qué pasa?",
+   "en": "what's up",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "seed_SMALL_TALK_5",
+   "text": "hola, qué tal",
+   "en": "hello there",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "seed_SMALL_TALK_22",
+   "text": "muchísimas gracias",
+   "en": "thank you so much",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "seed_SMALL_TALK_30",
+   "text": "¿eres un bot?",
+   "en": "are you a bot",
+   "orders": [
+    "SMALL_TALK"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_2",
+   "text": "bien hecho",
+   "en": "well done",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_4",
+   "text": "tirazo",
+   "en": "great shot",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_11",
+   "text": "qué crack, buenísimo",
+   "en": "awesome job",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_18",
+   "text": "qué buenos movimientos",
+   "en": "nice moves",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_34",
+   "text": "lo clavaste",
+   "en": "you nailed it",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_PRAISE_46",
+   "text": "eres un crack",
+   "en": "you rock",
+   "orders": [
+    "PRAISE"
+   ]
+  },
+  {
+   "id": "seed_KILL_YOURSELF_3",
+   "text": "pégate un tiro",
+   "en": "shoot yourself",
+   "orders": [
+    "KILL_YOURSELF"
+   ]
+  },
+  {
+   "id": "seed_KILL_YOURSELF_31",
+   "text": "muérete, por favor",
+   "en": "please die",
+   "orders": [
+    "KILL_YOURSELF"
+   ]
+  },
+  {
+   "id": "seed_MELEE_7",
+   "text": "patéales el culo",
+   "en": "kick their ass",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_8",
+   "text": "dale de hostias",
+   "en": "kick the shit out of him",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_29",
+   "text": "reviéntalo",
+   "en": "fuck him up",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_30",
+   "text": "ve y reviéntalo",
+   "en": "go fuck him up",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_41",
+   "text": "rómpele la cara",
+   "en": "smash his face in",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_44",
+   "text": "métele un puñetazo",
+   "en": "give him a punch",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_45",
+   "text": "métele una bofetada",
+   "en": "give him a slap",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_56",
+   "text": "pégale, no dispares",
+   "en": "punch him don't shoot",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_MELEE_65",
+   "text": "patéale el culo a ese tipo",
+   "en": "kick that guy's butt",
+   "orders": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "seed_HOLSTER_16",
+   "text": "guárdalo",
+   "en": "stow it",
+   "orders": [
+    "HOLSTER"
+   ]
+  },
+  {
+   "id": "seed_HOLSTER_25",
+   "text": "sin armas fuera",
+   "en": "no weapons out",
+   "orders": [
+    "HOLSTER"
+   ]
+  },
+  {
+   "id": "seed_HOLSTER_36",
+   "text": "ve a mano limpia",
+   "en": "go bare handed",
+   "orders": [
+    "HOLSTER"
+   ]
+  },
+  {
+   "id": "seed_STATUS_REPORT_7",
+   "text": "¿cómo va por ahí?",
+   "en": "how's it going over there",
+   "orders": [
+    "STATUS_REPORT"
+   ]
+  },
+  {
+   "id": "seed_STATUS_REPORT_19",
+   "text": "¿algo que reportar?",
+   "en": "anything to report",
+   "orders": [
+    "STATUS_REPORT"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_1",
+   "text": "¿te han herido?",
+   "en": "are you wounded",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_2",
+   "text": "¿estás lesionado?",
+   "en": "are you injured",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_7",
+   "text": "¿cuánta salud te queda?",
+   "en": "how much health do you have",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_10",
+   "text": "¿necesitas un botiquín?",
+   "en": "you need a medkit",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_11",
+   "text": "¿tienes calor?",
+   "en": "are you hot",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_26",
+   "text": "¿te queda munición?",
+   "en": "got any ammo",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_BODY_STATE_38",
+   "text": "¿todavía estás vivo?",
+   "en": "are you still alive",
+   "orders": [
+    "BODY_STATE"
+   ]
+  },
+  {
+   "id": "seed_PUSH_0",
+   "text": "empuja la caja",
+   "en": "push the box",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "seed_PUSH_13",
+   "text": "apártala empujando",
+   "en": "push it out of the way",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "seed_PUSH_14",
+   "text": "empuja la caja grande",
+   "en": "push the big box",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "seed_PUSH_25",
+   "text": "arrástrala para allá",
+   "en": "slide it over",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "seed_PUSH_29",
+   "text": "ve empujando la caja",
+   "en": "push the box along",
+   "orders": [
+    "PUSH"
+   ]
+  },
+  {
+   "id": "seed_DROP_4",
+   "text": "pon el cajón en el suelo",
+   "en": "put the crate down",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "seed_DROP_7",
+   "text": "déjalo aquí",
+   "en": "leave it here",
+   "orders": [
+    "DROP"
+   ]
+  },
+  {
+   "id": "seed_DROP_10",
+   "text": "baja esa caja",
+   "en": "put that box down",
+   "orders": [
+    "DROP"
+   ]
+  }
+ ]
+}

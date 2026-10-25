@@ -1067,6 +1067,14 @@ const std::unordered_map<std::string, std::vector<std::string>> kLines = {
     {"PRAISE", {"Thanks!", "Appreciate it.", "Just doing my job.", "Couldn't have done it without you.", "Thanks, you too."}},
     {"KILL_YOURSELF", {"Respawn timer's too long for that.", "Nice try. Who'd cover you then?", "Request denied. I like being alive.",
                        "Not today. You'd miss me.", "I'll pass. Somebody has to watch your back."}},
+    // the v64 bots (spec v63 + v64): what it sees and how it is are the game's answer (the reply carries "state")
+    {"MELEE", {"Going hands-on.", "He's getting a beating.", "On him."}},
+    {"HOLSTER", {"Putting it away.", "Hands free.", "Weapon away."}},
+    {"STATUS_REPORT", {""}},
+    {"BODY_STATE", {""}},
+    {"PUSH", {"Pushing it.", "Shoving it over.", "Moving it."}},
+    {"ROLL", {"Rolling it.", "Rolling it over.", "On it, rolling."}},
+    {"DROP", {"Putting it down.", "Setting it down.", "Dropping it."}},
 };
 // SMALL_TALK (bot v62): the answer by what the line asks, the first kind whose words it has; none: kTalk "other"
 const std::vector<std::pair<std::string, std::vector<std::string>>> kTalkWords = {
@@ -1775,7 +1783,14 @@ struct Chat {
             intent != "HOLD_FIRE" && r.action != "ask")
             reply += " Taking the other one.";
         // what it sees, how it is: the game answers (the order, if any, is dropped in ReplyJson)
-        if (intent == "MOVE_TO") {
+        if (intent == "STATUS_REPORT" || intent == "BODY_STATE") {
+            // a v64 bot reads the question itself: the words only say which part ("what do you see" the things, "are you hot"
+            // the heat); a report with no part is everything, a body question with none the whole body
+            const std::string part = StateQuestion(text, true);
+            turn->state = intent == "STATUS_REPORT" ? (part == "seen" ? "seen" : "how")
+                                                    : (part.empty() || part == "seen" || part == "how" ? "body" : part);
+            reply.clear();
+        } else if (intent == "MOVE_TO") {
             // "got any ammo?": the planner may have asked where the ammo is; the question is the bot's, not the walk's
             turn->state = StateQuestion(text, false, true);
             if (!turn->state.empty()) {
@@ -2474,7 +2489,8 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads, const std::s
 //        that wait for the answer to the question a turn asked; they come as turns of the reply to that answer,
 //        "resumed" of them),"note","route_ms","rewrite_ms"}
 //        "state" (a turn's, 2026-10-24): a question about the bot that only the game can answer, with no order and no
-//        words: "seen" (what it sees and senses), "how" (everything), "hurt", "heat", "cold", "gas", "ammo" (StateQuestion).
+//        words: "seen" (what it sees and senses), "how" (everything), "body" (all of its body), "hurt", "heat", "cold", "gas",
+//        "ammo" (StateQuestion; a v64 bot's STATUS_REPORT and BODY_STATE always carry one).
 //        With --replies-bro: "bro" "on" / "off" when the line switched the habit (bro.h; "off" comes with the bot's
 //        agreement as its words and SMALL_TALK, nothing else read), "bro_active" whether this reply was written with it
 //   {"event":"nothing","id":8,...}    the clip had no words;  {"event":"too_short","id":8}
@@ -2741,6 +2757,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
           {"bro", g_bro_replies ? json({{"active", g_replies == g_bro_replies}, {"relapse_s", g_bro.RelapseSeconds()},
                                         {"templates", g_bro_replies->Templates()}}) : json(nullptr)},
           {"place_objects", chat.brain.Places().ObjectIds()},   // what the game may send as a place's object (bot v62: teleport)
+          {"place_qualifiers", chat.brain.Places().QualifierIds()},   // ... and as its qualifier (bot v64: big, small, cardboard)
           {"voice_local", local_ready}, {"voice_local_note", local_note},
           {"chain", g_chain ? json({{"dir", g_chain->dir}, {"router", g_chain->router != nullptr}, {"cut", g_chain->cut},
                                     {"decoder", Chain::Backend()}, {"gpu", g_chain->decoder_options.gpu_layers != 0},

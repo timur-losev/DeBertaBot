@@ -134,7 +134,7 @@ def usable(g):
 # The frame lives while the bot is busy with it and CONTEXT_SECONDS after.
 CONTEXT_SECONDS = 8.0
 FRAGMENT_UNSURE = 0.5      # a line under the threshold AND under this is read for its place alone
-FIRE = ("OPEN_FIRE", "SUPPRESS", "ATTACK")                       # the enemy under the crosshair comes first
+FIRE = ("OPEN_FIRE", "SUPPRESS", "ATTACK", "MELEE")              # the enemy under the crosshair comes first (bot v64: a fist fight too)
 PIN_DEFAULT = FIRE + ("MOVE_TO", "CHECK", "ENTRY", "FLANK")      # a place not said is the standing pin
 CARRY = PIN_DEFAULT + ("HOLD_ANGLE", "LOOK_AT")                  # ... or where the same order was a moment ago
 POINTED_HERE = FIRE + ("FRAG", "FLASH", "SMOKE", "LOOK_AT", "CHECK", "HOLD_ANGLE", "SEE_THING")   # "here" is the crosshair's point
@@ -143,9 +143,11 @@ POINTED_HERE = FIRE + ("FRAG", "FLASH", "SMOKE", "LOOK_AT", "CHECK", "HOLD_ANGLE
 # a weapon named for taking it out or reloading is one the bot carries, not a weapon lying in the world ("switch to your
 # pistol"; the game reads the kind from the words)
 NO_PLACE = ("GO_BACK", "HELP_INTERACTION", "SWITCH_WEAPON", "RELOAD",
-            "SEE_ME", "SMALL_TALK", "PRAISE", "KILL_YOURSELF")   # bot v62: talk; a place in "thanks for the cover at the door" is no order's
+            "SEE_ME", "SMALL_TALK", "PRAISE", "KILL_YOURSELF",   # bot v62: talk; a place in "thanks for the cover at the door" is no order's
+            "HOLSTER", "STATUS_REPORT", "BODY_STATE", "DROP")    # bot v64: the hands, a report, the body, putting down where it stands
 PLACE_INTENTS = CARRY + ("FRAG", "FLASH", "SMOKE", "HOLD_POSITION", "JUMP", "TAKE_COVER", "FALL_BACK", "COME_BACK",
-                         "BREACH", "VAULT_WINDOW", "OPEN")       # orders that can be given again at another place
+                         "BREACH", "VAULT_WINDOW", "OPEN",       # orders that can be given again at another place
+                         "PUSH", "ROLL")                         # bot v64: the thing pushed or rolled, or where it goes
 NO_LEADS = ("no", "nope", "nah", "not", "negative", "wrong")
 SAID_WORDS = ("said", "meant", "mean")   # "No, I said the north door": the correction's own words
 
@@ -476,7 +478,9 @@ def ground_target(t, world, memory, here=False):
         return out("missing")
     cands.sort(key=lambda e: (float(e.get("distance", 0.0)), e["id"]))
     ids = [e["id"] for e in cands]
-    if pointer == "this" and gaze in ids:
+    # "this spool", and also "the spool" with the crosshair on one of them (bot v64, the owner, 2026-10-25: "я смотрю на
+    # неё, я показываю на неё прицелом. Он всё перебирает"): the one looked at, unless the line picked another way
+    if (pointer == "this" or (pointer is None and flag is None)) and gaze in ids:
         return out("resolved", gaze, ids, "gaze")
     if len(cands) == 1:
         return out("resolved", ids[0], ids, "only")
@@ -1242,6 +1246,25 @@ DEV_V60 = [
 ]
 
 
+# the warehouse (bot v64, locations_v64.json): two spools about as near, the crosshair on the farther one
+WORLD_SPOOLS = {
+    "entities": [
+        {"id": "spool_a", "object": "spool", "qualifier": None, "zone": None, "bearing": -20.0, "distance": 4.0, "elevation": 0.0, "tags": []},
+        {"id": "spool_b", "object": "spool", "qualifier": None, "zone": None, "bearing": 15.0, "distance": 5.0, "elevation": 0.0, "tags": []},
+        {"id": "crate_1", "object": "crate", "qualifier": "cardboard", "zone": None, "bearing": 60.0, "distance": 3.0, "elevation": 0.0, "tags": []},
+    ],
+    "player_pin": None, "bot_pin": None, "player_gaze": "spool_b", "player": {"downed": False},
+    "bot": {"stance": "stand", "items": [], "busy": False}, "time": 100.0,
+}
+DEV_V64 = [
+    ("roll the spool", "ROLL", {"action": "act", "entity": "spool_b", "via": "gaze"}),    # no "this": the one looked at
+    ("do you see the spool", "SEE_THING", {"action": "act", "entity": "spool_b", "via": "gaze"}),
+    ("roll the other spool", "ROLL", {"action": "act", "entity": "spool_a"}),             # "the other": not the one looked at
+    ("push this spool", "PUSH", {"action": "act", "entity": "spool_b", "via": "gaze"}),
+    ("pick up the cardboard box", "COLLECT", {"action": "act", "entity": None, "item": "cardboard box"}),   # the item; the game takes the one aimed at
+]
+
+
 def run_dev():
     os.environ.setdefault("COOP_TAG", "v54")
     import coop_bot
@@ -1264,7 +1287,8 @@ def run_dev():
     for world, dev in ((WORLD_EXAMPLE, DEV), (WORLD_BARE, DEV_BARE), (WORLD_TALK, DEV_TALK), (WORLD_FLOORS, DEV_FLOORS),
                        (WORLD_V56, DEV_V56 if "GO_BACK" in labels else []),
                        (WORLD_V56, DEV_V57 if "SWITCH_WEAPON" in labels else []),
-                       (WORLD_FARM, DEV_V60 if LOC.VOCAB["version"] >= 8 else [])):
+                       (WORLD_FARM, DEV_V60 if LOC.VOCAB["version"] >= 8 else []),
+                       (WORLD_SPOOLS, DEV_V64 if LOC.VOCAB["version"] >= 10 and "ROLL" in labels else [])):
         if not dev:
             continue
         bot = Fake()
@@ -1297,7 +1321,7 @@ def run_dev():
             good = all(got.get(k) == v for k, v in want.items())
             ok += good
             print(f"{'ok ' if good else 'NO '} {('+ ' if continued else '') + repr(text):36s} -> {r['action']:9s} {r['say']}" + (f"  order {r['order']}" if r["order"] else ""))
-    print(f"{ok}/{len(DEV) + len(DEV_BARE) + len(DEV_TALK) + len(DEV_FLOORS) + len(DEV_CHAIN) + len(DEV_CHAIN_BARE) + (len(DEV_V56) if 'GO_BACK' in labels else 0) + (len(DEV_V57) if 'SWITCH_WEAPON' in labels else 0) + (len(DEV_V60) if LOC.VOCAB['version'] >= 8 else 0)}")
+    print(f"{ok}/{len(DEV) + len(DEV_BARE) + len(DEV_TALK) + len(DEV_FLOORS) + len(DEV_CHAIN) + len(DEV_CHAIN_BARE) + (len(DEV_V56) if 'GO_BACK' in labels else 0) + (len(DEV_V57) if 'SWITCH_WEAPON' in labels else 0) + (len(DEV_V60) if LOC.VOCAB['version'] >= 8 else 0) + (len(DEV_V64) if LOC.VOCAB['version'] >= 10 and 'ROLL' in labels else 0)}")
 
 
 if __name__ == "__main__":

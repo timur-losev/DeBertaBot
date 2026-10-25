@@ -718,6 +718,66 @@
    "source": "coop_cli.cpp kLines KILL_YOURSELF"
   },
   {
+   "en": "Going hands-on.",
+   "source": "coop_cli.cpp kLines MELEE"
+  },
+  {
+   "en": "He's getting a beating.",
+   "source": "coop_cli.cpp kLines MELEE"
+  },
+  {
+   "en": "On him.",
+   "source": "coop_cli.cpp kLines MELEE"
+  },
+  {
+   "en": "Putting it away.",
+   "source": "coop_cli.cpp kLines HOLSTER"
+  },
+  {
+   "en": "Hands free.",
+   "source": "coop_cli.cpp kLines HOLSTER"
+  },
+  {
+   "en": "Weapon away.",
+   "source": "coop_cli.cpp kLines HOLSTER"
+  },
+  {
+   "en": "Pushing it.",
+   "source": "coop_cli.cpp kLines PUSH"
+  },
+  {
+   "en": "Shoving it over.",
+   "source": "coop_cli.cpp kLines PUSH"
+  },
+  {
+   "en": "Moving it.",
+   "source": "coop_cli.cpp kLines PUSH"
+  },
+  {
+   "en": "Rolling it.",
+   "source": "coop_cli.cpp kLines ROLL"
+  },
+  {
+   "en": "Rolling it over.",
+   "source": "coop_cli.cpp kLines ROLL"
+  },
+  {
+   "en": "On it, rolling.",
+   "source": "coop_cli.cpp kLines ROLL"
+  },
+  {
+   "en": "Putting it down.",
+   "source": "coop_cli.cpp kLines DROP"
+  },
+  {
+   "en": "Setting it down.",
+   "source": "coop_cli.cpp kLines DROP"
+  },
+  {
+   "en": "Dropping it.",
+   "source": "coop_cli.cpp kLines DROP"
+  },
+  {
    "en": "Anytime.",
    "source": "coop_cli.cpp kTalk thanks (SMALL_TALK)"
   },
@@ -1470,6 +1530,78 @@
    "source": "game: 'how is it going?' with nothing to report but health"
   },
   {
+   "en": "My hands are free already.",
+   "source": "game: HOLSTER with nothing in hand"
+  },
+  {
+   "en": "Weapon up.",
+   "source": "game: SWITCH_WEAPON with the weapon put away: drawn"
+  },
+  {
+   "en": "That's one of ours.",
+   "source": "game: MELEE with the crosshair on a teammate"
+  },
+  {
+   "en": "Who?",
+   "source": "game: MELEE with no one to strike"
+  },
+  {
+   "en": "I don't see anyone.",
+   "source": "game: MELEE with no one to strike"
+  },
+  {
+   "en": "He's down.",
+   "source": "game: MELEE: the one it fought is down"
+  },
+  {
+   "en": "I can't get to him.",
+   "source": "game: MELEE: no way to the one it fights"
+  },
+  {
+   "en": "Nothing to push there.",
+   "source": "game: PUSH: nothing that moves where the player points"
+  },
+  {
+   "en": "Nothing to roll there.",
+   "source": "game: ROLL: the same"
+  },
+  {
+   "en": "That won't move.",
+   "source": "game: PUSH / ROLL: a fixed part of the map"
+  },
+  {
+   "en": "I can't get behind it.",
+   "source": "game: PUSH / ROLL: no way to behind the thing"
+  },
+  {
+   "en": "There it is.",
+   "source": "game: PUSH / ROLL: the thing is at its place"
+  },
+  {
+   "en": "It won't budge.",
+   "source": "game: PUSH / ROLL: the thing does not move"
+  },
+  {
+   "en": "I'm not carrying anything.",
+   "source": "game: DROP with nothing in its hands"
+  },
+  {
+   "en": "Too high to jump on.",
+   "source": "game: JUMP onto a thing higher than the bot's jump"
+  },
+  {
+   "en": "Too high to jump over.",
+   "source": "game: JUMP over it: the same"
+  },
+  {
+   "en": "Nowhere to land over there.",
+   "source": "game: JUMP over a thing with no floor beyond it"
+  },
+  {
+   "en": "Didn't make it.",
+   "source": "game: JUMP over / onto: it landed short"
+  },
+  {
    "en": "Okay, I won't anymore.",
    "source": "coop_cli.cpp bro habit: the player told it to stop saying 'bro'"
   },
@@ -1617,6 +1749,7 @@
    "note": "the order, as the bot says it back (intent_config.json 'phrases'); lowercase, an imperative ('move there')",
    "values": [
     "attack",
+    "beat him up",
     "breach",
     "bring it",
     "build",
@@ -1655,10 +1788,16 @@
     "plant a crop",
     "plant it",
     "push in",
+    "push it",
+    "put it down",
+    "put the weapon away",
     "rappel",
     "refuse that",
     "reload",
     "repair",
+    "report",
+    "roll it",
+    "say how you are",
     "say if you see it",
     "say if you see me",
     "say maybe",
@@ -1705,6 +1844,7 @@
     "crate",
     "foundation",
     "teleport",
+    "spool",
     "place"
    ]
   }

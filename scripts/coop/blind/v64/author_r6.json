@@ -1,0 +1,962 @@
+[
+ {
+  "id": "r6v64_000",
+  "text": "Bro, he's dry on ammo. Go punch his lights out.",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "r6v64_001",
+  "text": "Hostile on my pin, butt-stroke him.",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "r6v64_002",
+  "text": "Sneak up and smack him with the stock, mate.",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "r6v64_003",
+  "text": "Guard at the south door. Beat him down, quiet.",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "south",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "r6v64_004",
+  "text": "Knife him on my call, no noise.",
+  "intent": "MELEE",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "r6v64_005",
+  "text": "That one by the car, give him a beating.",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "r6v64_006",
+  "text": "Guy in the basement, go hands-on, knock him cold.",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "r6v64_007",
+  "text": "Sling your rifle, we're clear for now.",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "r6v64_008",
+  "text": "Gun away, buddy. Hands free.",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "r6v64_009",
+  "text": "Stow your primary, mate.",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "r6v64_010",
+  "text": "Holster up, civvies around.",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "r6v64_011",
+  "text": "Go unarmed for this bit, bro.",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "r6v64_012",
+  "text": "Weapon on your back, you'll need both hands for that crate.",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "r6v64_013",
+  "text": "Put that shotgun away.",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "r6v64_014",
+  "text": "Sitrep, buddy.",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "r6v64_015",
+  "text": "What've you got, mate?",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "r6v64_016",
+  "text": "Status on your end, bro?",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "r6v64_017",
+  "text": "Talk to me. What's around you?",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "r6v64_018",
+  "text": "Report in. How you holding up?",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "r6v64_019",
+  "text": "Anything on your side? Give me a quick rundown.",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "r6v64_020",
+  "text": "What are you seeing on the second floor?",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "floor_2",
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "r6v64_021",
+  "text": "You hit, bro?",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "r6v64_022",
+  "text": "You good on ammo?",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "r6v64_023",
+  "text": "How many rounds you got left, mate?",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "r6v64_024",
+  "text": "You smelling gas?",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "r6v64_025",
+  "text": "Buddy, you bleeding?",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "r6v64_026",
+  "text": "Heat getting to you?",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "r6v64_027",
+  "text": "Can you breathe in that smoke, mate?",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "r6v64_028",
+  "text": "On my go, shove that crate to the north door.",
+  "intent": "PUSH",
+  "timing": "on_signal",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": "north",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "r6v64_029",
+  "text": "Push the big box up against the wall, mate.",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": "big",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "r6v64_030",
+  "text": "Slide that cardboard box out of the way, bro.",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": "cardboard",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "r6v64_031",
+  "text": "Push this crate up to my pin.",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "r6v64_032",
+  "text": "Get that box under the east window, just shove it.",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "window",
+   "qualifier": "east",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "r6v64_033",
+  "text": "Nudge the crate left a bit.",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": "left",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "r6v64_034",
+  "text": "Small crate's blocking the stairs, push it aside, buddy.",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": "small",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "r6v64_035",
+  "text": "Roll that spool to the main door.",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": "main",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "r6v64_036",
+  "text": "Cable reel's in the way, roll it clear.",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "spool",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "r6v64_037",
+  "text": "Roll the drum over to my ping, mate.",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "r6v64_038",
+  "text": "Big spool, roll it right, bro.",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "spool",
+   "qualifier": "big",
+   "zone": null,
+   "direction": "right",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "r6v64_039",
+  "text": "Roll the reel to the back door.",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": true
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "r6v64_040",
+  "text": "Roll the cable spool down to the yellow stairs.",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "yellow",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "r6v64_041",
+  "text": "Roll this reel behind the car, on three.",
+  "intent": "ROLL",
+  "timing": "on_signal",
+  "reference": "this",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "r6v64_042",
+  "text": "Drop the box, we got company.",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "r6v64_043",
+  "text": "Set it down, bro.",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "r6v64_044",
+  "text": "Let go of the crate, contact front!",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "r6v64_045",
+  "text": "Put that cardboard box down here.",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": "cardboard",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "r6v64_046",
+  "text": "Dump that crate, mate.",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "r6v64_047",
+  "text": "Leave the big box here, buddy.",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": "big",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "r6v64_048",
+  "text": "Drop it, drop it, two on the roof!",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "r6v64_049",
+  "text": "Push forward, mate, I'm right behind you.",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": "forward",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "r6v64_050",
+  "text": "Alright lads, roll out.",
+  "intent": "GO_NOW",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "r6v64_051",
+  "text": "Drop down into the basement, bro.",
+  "intent": "JUMP",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "direction": "down",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "r6v64_052",
+  "text": "Drop him, he's peeking!",
+  "intent": "ATTACK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "r6v64_053",
+  "text": "Draw your weapon, it's getting hot.",
+  "intent": "SWITCH_WEAPON",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "r6v64_054",
+  "text": "Do you see that big box?",
+  "intent": "SEE_THING",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": "big",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "r6v64_055",
+  "text": "Carry the cardboard box to the barn.",
+  "intent": "DELIVER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "barn",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": "cardboard box",
+  "kind": "boundary"
+ },
+ {
+  "id": "r6v64_056",
+  "text": "Pick that crate up, mate.",
+  "intent": "COLLECT",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": "crate",
+  "kind": "boundary"
+ },
+ {
+  "id": "r6v64_057",
+  "text": "Hey buddy, good to have you on the squad.",
+  "intent": "SMALL_TALK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "r6v64_058",
+  "text": "I'm hurt, I'm hurt, need a sec.",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "r6v64_059",
+  "text": "Weapons down, don't shoot the hostage.",
+  "intent": "HOLD_FIRE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ }
+]

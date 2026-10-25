@@ -72,18 +72,20 @@ constexpr size_t kAnswerMaxTokens = 6;
 // NO_LEADS, LOST_POINTERS
 constexpr double kContextSeconds = 8.0;
 constexpr double kFragmentUnsure = 0.5;
-const char* const kFire[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK"};
-const char* const kPinDefault[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MOVE_TO", "CHECK", "ENTRY", "FLANK"};
-const char* const kCarry[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MOVE_TO", "CHECK", "ENTRY", "FLANK", "HOLD_ANGLE", "LOOK_AT"};
-const char* const kPointedHere[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "FRAG", "FLASH", "SMOKE", "LOOK_AT", "CHECK", "HOLD_ANGLE", "SEE_THING"};
-const char* const kPlaceIntents[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MOVE_TO", "CHECK", "ENTRY", "FLANK", "HOLD_ANGLE", "LOOK_AT",
+const char* const kFire[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MELEE"};   // bot v64: a fist fight too
+const char* const kPinDefault[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MELEE", "MOVE_TO", "CHECK", "ENTRY", "FLANK"};
+const char* const kCarry[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MELEE", "MOVE_TO", "CHECK", "ENTRY", "FLANK", "HOLD_ANGLE", "LOOK_AT"};
+const char* const kPointedHere[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MELEE", "FRAG", "FLASH", "SMOKE", "LOOK_AT", "CHECK", "HOLD_ANGLE", "SEE_THING"};
+const char* const kPlaceIntents[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MELEE", "MOVE_TO", "CHECK", "ENTRY", "FLANK", "HOLD_ANGLE", "LOOK_AT",
                                      "FRAG", "FLASH", "SMOKE", "HOLD_POSITION", "JUMP", "TAKE_COVER", "FALL_BACK", "COME_BACK",
-                                     "BREACH", "VAULT_WINDOW", "OPEN"};
+                                     "BREACH", "VAULT_WINDOW", "OPEN", "PUSH", "ROLL"};   // bot v64: push, roll
 // world.NO_PLACE (bot v56): orders whose place is not the line's: going back (the bot's own earlier place, the game keeps
 // it), letting the player out (where the player is). Their lines' places are neither grounded nor asked about. Bot v57:
 // taking out or reloading a weapon the bot carries ("switch to your pistol" names no weapon lying in the world)
 // bot v62: the talk intents; a place in "thanks for the cover at the door" is no order's
-const char* const kNoPlace[] = {"GO_BACK", "HELP_INTERACTION", "SWITCH_WEAPON", "RELOAD", "SEE_ME", "SMALL_TALK", "PRAISE", "KILL_YOURSELF"};
+// bot v64: the hands, a report, the body, putting down where it stands
+const char* const kNoPlace[] = {"GO_BACK", "HELP_INTERACTION", "SWITCH_WEAPON", "RELOAD", "SEE_ME", "SMALL_TALK", "PRAISE", "KILL_YOURSELF",
+                                "HOLSTER", "STATUS_REPORT", "BODY_STATE", "DROP"};
 // world.ITEM_INTENTS (items_v60.json "intents") and FARM_INTENTS: the farmer's and the builder's orders. They join
 // PLACE_INTENTS: "no, by the barn" gives the same order at another place
 const char* const kItemIntents[] = {"PLANT_CROP", "WATER", "HARVEST", "FEED", "COLLECT", "DELIVER", "BUILD", "REPAIR", "DEMOLISH"};
@@ -464,7 +466,10 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
         return a->distance != b->distance ? a->distance < b->distance : a->id < b->id;
     });
     std::vector<std::string> ids = ids_of(cands);
-    if (t.pointer == PlacePointer::This && gaze && std::find(ids.begin(), ids.end(), gaze->id) != ids.end())
+    // "this spool", and also "the spool" with the crosshair on one of them (bot v64, the owner, 2026-10-25: "я смотрю на
+    // неё, я показываю на неё прицелом. Он всё перебирает"): the one looked at, unless the line picked another way
+    const bool looked = t.pointer == PlacePointer::This || (t.pointer == PlacePointer::None && t.flag == PlaceFlag::None);
+    if (looked && gaze && std::find(ids.begin(), ids.end(), gaze->id) != ids.end())
         return Out("resolved", gaze->id, ids, "gaze");
     if (cands.size() == 1) return Out("resolved", ids[0], ids, "only");
     if (t.flag == PlaceFlag::UnknownModifier) return Out("ambiguous", {}, ids, "unknown_modifier");

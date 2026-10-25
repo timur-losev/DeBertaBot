@@ -135,6 +135,14 @@ LINES = {
     "PRAISE": ["Thanks!", "Appreciate it.", "Just doing my job.", "Couldn't have done it without you.", "Thanks, you too."],
     "KILL_YOURSELF": ["Respawn timer's too long for that.", "Nice try. Who'd cover you then?", "Request denied. I like being alive.",
                       "Not today. You'd miss me.", "I'll pass. Somebody has to watch your back."],
+    # the v64 bots (spec v63 + v64): what it sees and how it is are the game's answer (the brain says nothing)
+    "MELEE": ["Going hands-on.", "He's getting a beating.", "On him."],
+    "HOLSTER": ["Putting it away.", "Hands free.", "Weapon away."],
+    "STATUS_REPORT": [""],
+    "BODY_STATE": [""],
+    "PUSH": ["Pushing it.", "Shoving it over.", "Moving it."],
+    "ROLL": ["Rolling it.", "Rolling it over.", "On it, rolling."],
+    "DROP": ["Putting it down.", "Setting it down.", "Dropping it."],
 }
 ACK = ["Copy.", "Noted.", "Heard."]                   # NONE: a callout or chatter, nothing to do
 AGAIN = ["Say again?", "Didn't catch that.", "Come again?"]

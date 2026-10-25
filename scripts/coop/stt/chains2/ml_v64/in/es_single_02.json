@@ -1,0 +1,1611 @@
+{
+"lang": "es",
+"kind": "single",
+"items": [
+{
+"id": "seed_PRAISE_36",
+"en": "you're a legend",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_37",
+"en": "legend",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_38",
+"en": "that's my boy",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_39",
+"en": "nice save",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_40",
+"en": "great save",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_41",
+"en": "nice cover",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_42",
+"en": "good cover",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_43",
+"en": "you saved me",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_44",
+"en": "you saved my life",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_45",
+"en": "best teammate ever",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_46",
+"en": "you rock",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_47",
+"en": "bravo",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_48",
+"en": "nice flank",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_49",
+"en": "nice breach",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_50",
+"en": "clean shot",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_51",
+"en": "what a shot",
+"intent": "PRAISE"
+},
+{
+"id": "seed_KILL_YOURSELF_0",
+"en": "kill yourself",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_1",
+"en": "go kill yourself",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_2",
+"en": "just kill yourself",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_3",
+"en": "shoot yourself",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_4",
+"en": "shoot yourself in the head",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_5",
+"en": "commit suicide",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_6",
+"en": "suicide",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_7",
+"en": "do a suicide",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_8",
+"en": "go die",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_9",
+"en": "just die",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_10",
+"en": "die",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_11",
+"en": "drop dead",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_12",
+"en": "go drop dead",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_13",
+"en": "end yourself",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_14",
+"en": "end it",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_15",
+"en": "off yourself",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_16",
+"en": "unalive yourself",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_17",
+"en": "kys",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_18",
+"en": "kill urself",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_19",
+"en": "self destruct",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_20",
+"en": "self-destruct",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_21",
+"en": "blow yourself up",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_22",
+"en": "frag yourself",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_23",
+"en": "throw a grenade at your feet",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_24",
+"en": "eat a grenade",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_25",
+"en": "go jump in the lava",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_26",
+"en": "delete yourself",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_27",
+"en": "uninstall yourself",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_28",
+"en": "shut yourself down",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_29",
+"en": "turn yourself off",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_30",
+"en": "kill yourself now",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_31",
+"en": "please die",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_32",
+"en": "jump to your death",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_33",
+"en": "walk into the fire",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_KILL_YOURSELF_34",
+"en": "blow your brains out",
+"intent": "KILL_YOURSELF"
+},
+{
+"id": "seed_MELEE_0",
+"en": "beat him up",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_1",
+"en": "beat them up",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_2",
+"en": "beat that guy up",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_3",
+"en": "punch him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_4",
+"en": "punch that guy",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_5",
+"en": "punch him in the face",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_6",
+"en": "kick his ass",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_7",
+"en": "kick their ass",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_8",
+"en": "kick the shit out of him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_9",
+"en": "beat the shit out of him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_10",
+"en": "beat the crap out of him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_11",
+"en": "smack him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_12",
+"en": "slap him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_13",
+"en": "smack that guy",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_14",
+"en": "rough him up",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_15",
+"en": "knock him out",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_16",
+"en": "knock him down",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_17",
+"en": "punch his lights out",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_18",
+"en": "give him a beating",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_19",
+"en": "give him a good beating",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_20",
+"en": "melee him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_21",
+"en": "melee that guy",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_22",
+"en": "hit him with your fist",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_23",
+"en": "hit him with your gun",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_24",
+"en": "hit him with the butt",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_25",
+"en": "butt stroke him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_26",
+"en": "pistol whip him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_27",
+"en": "knife him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_28",
+"en": "stab him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_29",
+"en": "fuck him up",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_30",
+"en": "go fuck him up",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_31",
+"en": "mess him up",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_32",
+"en": "beat his ass",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_33",
+"en": "whoop his ass",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_34",
+"en": "kick him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_35",
+"en": "kick that guy",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_36",
+"en": "kick him in the head",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_37",
+"en": "punch the guard",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_38",
+"en": "beat up the guard",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_39",
+"en": "go punch him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_40",
+"en": "go beat him up",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_41",
+"en": "smash his face in",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_42",
+"en": "knock his teeth out",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_43",
+"en": "teach him a lesson",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_44",
+"en": "give him a punch",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_45",
+"en": "give him a slap",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_46",
+"en": "hit him hard with your fists",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_47",
+"en": "use your fists",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_48",
+"en": "fight him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_49",
+"en": "go fight that guy",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_50",
+"en": "fist fight him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_51",
+"en": "box him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_52",
+"en": "headbutt him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_53",
+"en": "elbow him",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_54",
+"en": "take him down with your fists",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_55",
+"en": "beat him up but don't shoot",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_56",
+"en": "punch him don't shoot",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_57",
+"en": "melee attack",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_58",
+"en": "do a melee attack",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_59",
+"en": "melee",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_60",
+"en": "hit him in the face",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_61",
+"en": "beat that npc up",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_62",
+"en": "punch the npc",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_63",
+"en": "slap that dude",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_64",
+"en": "kick his butt",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_65",
+"en": "kick that guy's butt",
+"intent": "MELEE"
+},
+{
+"id": "seed_MELEE_66",
+"en": "hit him hard",
+"intent": "MELEE"
+},
+{
+"id": "seed_HOLSTER_0",
+"en": "put your gun away",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_1",
+"en": "put your weapon away",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_2",
+"en": "put the gun away",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_3",
+"en": "put your rifle away",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_4",
+"en": "put it away",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_5",
+"en": "put away your gun",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_6",
+"en": "holster your weapon",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_7",
+"en": "holster your gun",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_8",
+"en": "holster it",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_9",
+"en": "holster",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_10",
+"en": "holster your pistol",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_11",
+"en": "hands free",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_12",
+"en": "free your hands",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_13",
+"en": "get your hands free",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_14",
+"en": "stow your rifle",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_15",
+"en": "stow your weapon",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_16",
+"en": "stow it",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_17",
+"en": "sling your rifle",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_18",
+"en": "no guns",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_19",
+"en": "go unarmed",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_20",
+"en": "put the guns away",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_21",
+"en": "put all your weapons away",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_22",
+"en": "weapons in the bag",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_23",
+"en": "put your gun in your bag",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_24",
+"en": "pocket your pistol",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_25",
+"en": "no weapons out",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_26",
+"en": "unequip your weapon",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_27",
+"en": "unequip",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_28",
+"en": "empty hands",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_29",
+"en": "keep your hands empty",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_30",
+"en": "put down your gun but keep it",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_31",
+"en": "guns away",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_32",
+"en": "put the rifle on your back",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_33",
+"en": "carry nothing in your hands",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_34",
+"en": "holster up",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_35",
+"en": "bare hands",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_36",
+"en": "go bare handed",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_37",
+"en": "fists only",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_38",
+"en": "empty handed",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_39",
+"en": "no weapon in your hands",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_40",
+"en": "use your bare hands",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_HOLSTER_41",
+"en": "put your weapon in your inventory",
+"intent": "HOLSTER"
+},
+{
+"id": "seed_STATUS_REPORT_0",
+"en": "what do you see",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_1",
+"en": "what can you see",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_2",
+"en": "what can you see from there",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_3",
+"en": "what are you looking at",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_4",
+"en": "what are you seeing",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_5",
+"en": "tell me what you see",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_6",
+"en": "how are you holding up",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_7",
+"en": "how's it going over there",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_8",
+"en": "how are things over there",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_9",
+"en": "how's everything",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_10",
+"en": "sitrep",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_11",
+"en": "give me a sitrep",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_12",
+"en": "status report",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_13",
+"en": "status",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_14",
+"en": "report",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_15",
+"en": "report in",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_16",
+"en": "give me a report",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_17",
+"en": "what's the situation",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_18",
+"en": "what's the situation over there",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_19",
+"en": "anything to report",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_20",
+"en": "what's around you",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_21",
+"en": "what's around",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_22",
+"en": "what's out there",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_23",
+"en": "what's over there",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_24",
+"en": "what have you got",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_25",
+"en": "what you got",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_26",
+"en": "talk to me what do you see",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_27",
+"en": "how does it look",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_28",
+"en": "how does it look over there",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_29",
+"en": "what's going on over there",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_30",
+"en": "anything going on",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_31",
+"en": "anything new",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_32",
+"en": "describe what you see",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_33",
+"en": "look around and tell me",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_34",
+"en": "what's ahead",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_35",
+"en": "what's in front of you",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_36",
+"en": "you see anything interesting",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_37",
+"en": "anything interesting",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_38",
+"en": "what's your status",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_39",
+"en": "check in",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_40",
+"en": "how's your side",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_41",
+"en": "how's the situation",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_42",
+"en": "what's the word",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_43",
+"en": "how goes it",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_STATUS_REPORT_44",
+"en": "what's happening over there",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_BODY_STATE_0",
+"en": "are you hurt",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_1",
+"en": "are you wounded",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_2",
+"en": "are you injured",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_3",
+"en": "are you hit",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_4",
+"en": "did you get hit",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_5",
+"en": "how's your health",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_6",
+"en": "what's your health",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_7",
+"en": "how much health do you have",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_8",
+"en": "are you bleeding",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_9",
+"en": "do you need healing",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_10",
+"en": "you need a medkit",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_11",
+"en": "are you hot",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_12",
+"en": "is it hot there",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_13",
+"en": "are you burning",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_14",
+"en": "are you on fire",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_15",
+"en": "too hot for you",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_16",
+"en": "are you cold",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_17",
+"en": "are you freezing",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_18",
+"en": "is it cold there",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_19",
+"en": "you cold",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_20",
+"en": "do you smell gas",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_21",
+"en": "can you breathe",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_22",
+"en": "is there gas",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_23",
+"en": "are you choking",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_24",
+"en": "is the air okay",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_25",
+"en": "are you low on ammo",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_26",
+"en": "got any ammo",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_27",
+"en": "do you have ammo",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_28",
+"en": "how much ammo do you have",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_29",
+"en": "how many rounds do you have",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_30",
+"en": "how's your ammo",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_31",
+"en": "are you out of ammo",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_32",
+"en": "ammo check",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_33",
+"en": "how many mags do you have",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_34",
+"en": "are you okay there",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_35",
+"en": "you alright there",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_36",
+"en": "are you in one piece",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_37",
+"en": "still alive",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_38",
+"en": "are you still alive",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_39",
+"en": "how bad is it",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_BODY_STATE_40",
+"en": "how are you feeling",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_PUSH_0",
+"en": "push the box",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_1",
+"en": "push that box",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_2",
+"en": "push this box",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_3",
+"en": "push the crate",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_4",
+"en": "push that crate over there",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_5",
+"en": "push the box over there",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_6",
+"en": "shove the box",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_7",
+"en": "shove that crate",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_8",
+"en": "shove the box to the door",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_9",
+"en": "slide the crate",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_10",
+"en": "slide the box over there",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_11",
+"en": "push the box out of the way",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_12",
+"en": "push it aside",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_13",
+"en": "push it out of the way",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_14",
+"en": "push the big box",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_15",
+"en": "push the big box against the wall",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_16",
+"en": "push the cardboard box",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_17",
+"en": "push it there",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_18",
+"en": "push it to me",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_19",
+"en": "push the box toward me",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_20",
+"en": "nudge the box",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_21",
+"en": "shove it over there",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_22",
+"en": "push that thing",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_23",
+"en": "push the cart",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_24",
+"en": "shove the big box",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_25",
+"en": "slide it over",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_26",
+"en": "push the crate to the wall",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_27",
+"en": "push the barrel",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_28",
+"en": "push this crate there",
+"intent": "PUSH"
+},
+{
+"id": "seed_PUSH_29",
+"en": "push the box along",
+"intent": "PUSH"
+},
+{
+"id": "seed_ROLL_0",
+"en": "roll the spool",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_1",
+"en": "roll that spool",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_2",
+"en": "roll the spool over there",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_3",
+"en": "roll the cable spool",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_4",
+"en": "roll the cable reel",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_5",
+"en": "roll the reel to the door",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_6",
+"en": "roll the reel",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_7",
+"en": "roll that barrel",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_8",
+"en": "roll the barrel over there",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_9",
+"en": "roll it over there",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_10",
+"en": "roll it to me",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_11",
+"en": "roll it out of the way",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_12",
+"en": "roll the spool to the wall",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_13",
+"en": "roll that thing",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_14",
+"en": "roll the drum",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_15",
+"en": "roll the cable drum over there",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_16",
+"en": "roll the tire",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_17",
+"en": "roll it here",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_18",
+"en": "roll the spool toward me",
+"intent": "ROLL"
+},
+{
+"id": "seed_ROLL_19",
+"en": "roll the big spool",
+"intent": "ROLL"
+},
+{
+"id": "seed_DROP_0",
+"en": "put it down",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_1",
+"en": "drop it",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_2",
+"en": "drop the box",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_3",
+"en": "set it down",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_4",
+"en": "put the crate down",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_5",
+"en": "put the box down",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_6",
+"en": "put the box down here",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_7",
+"en": "leave it here",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_8",
+"en": "let go of it",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_9",
+"en": "drop that",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_10",
+"en": "put that box down",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_11",
+"en": "drop the crate",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_12",
+"en": "set the box down",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_13",
+"en": "put it down here",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_14",
+"en": "let it go",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_15",
+"en": "drop what you're carrying",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_16",
+"en": "put down the box",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_17",
+"en": "set that down",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_18",
+"en": "leave the box here",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_19",
+"en": "unload it",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_20",
+"en": "put it on the floor",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_21",
+"en": "drop it here",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_22",
+"en": "release it",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_23",
+"en": "let go of the box",
+"intent": "DROP"
+},
+{
+"id": "seed_DROP_24",
+"en": "you can put it down",
+"intent": "DROP"
+}
+]
+}

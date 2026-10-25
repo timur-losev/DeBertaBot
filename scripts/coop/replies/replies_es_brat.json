@@ -372,7 +372,40 @@
   "Okay, I won't anymore.": "Está bien, ya no lo digo.",
   "Got it, no more.": "Entendido, ya no más.",
   "Fine, I'll stop.": "Bueno, ya paro.",
-  "Sorry, habit.": "Perdón, hermano, es la costumbre."
+  "Sorry, habit.": "Perdón, hermano, es la costumbre.",
+  "Going hands-on.": "Voy cuerpo a cuerpo, hermano.",
+  "He's getting a beating.": "Le estoy dando una paliza, hermano.",
+  "On him.": "Voy a por él.",
+  "Putting it away.": "Lo guardo.",
+  "Hands free.": "Manos libres.",
+  "Weapon away.": "Arma guardada, hermano.",
+  "Pushing it.": "Empujando, hermano.",
+  "Shoving it over.": "Lo empujo para allá.",
+  "Moving it.": "Lo muevo.",
+  "Rolling it.": "Rodando, hermano.",
+  "Rolling it over.": "Lo hago rodar.",
+  "On it, rolling.": "Hecho, lo ruedo.",
+  "Putting it down.": "Lo dejo.",
+  "Setting it down.": "Lo dejo en el suelo.",
+  "Dropping it.": "Lo suelto.",
+  "My hands are free already.": "Hermano, ya tengo las manos libres.",
+  "Weapon up.": "Arma lista.",
+  "That's one of ours.": "Hermano, ese es de los nuestros.",
+  "Who?": "¿A quién, hermano?",
+  "I don't see anyone.": "No veo a nadie, hermano.",
+  "He's down.": "Ya cayó, hermano.",
+  "I can't get to him.": "Hermano, no puedo llegar hasta él.",
+  "Nothing to push there.": "Hermano, ahí no hay nada que empujar.",
+  "Nothing to roll there.": "Hermano, ahí no hay nada que rodar.",
+  "That won't move.": "Eso no se mueve.",
+  "I can't get behind it.": "No puedo ponerme detrás.",
+  "There it is.": "Ahí está, hermano.",
+  "It won't budge.": "No se mueve, hermano.",
+  "I'm not carrying anything.": "Hermano, no llevo nada.",
+  "Too high to jump on.": "Demasiado alto para subirme, hermano.",
+  "Too high to jump over.": "Hermano, demasiado alto para saltarlo.",
+  "Nowhere to land over there.": "Ahí no hay dónde caer, hermano.",
+  "Didn't make it.": "No llegué, hermano."
  },
  "slots": {
   "where": {
@@ -1018,6 +1051,34 @@
    "_other": {
     "text": "entendido",
     "ready": "eso"
+   },
+   "beat him up": {
+    "text": "le doy una paliza",
+    "ready": "darle una paliza"
+   },
+   "push it": {
+    "text": "lo empujo",
+    "ready": "empujarlo"
+   },
+   "put it down": {
+    "text": "lo dejo",
+    "ready": "dejarlo"
+   },
+   "put the weapon away": {
+    "text": "guardo el arma",
+    "ready": "guardar el arma"
+   },
+   "report": {
+    "text": "informo",
+    "ready": "informar"
+   },
+   "roll it": {
+    "text": "lo ruedo",
+    "ready": "rodarlo"
+   },
+   "say how you are": {
+    "text": "te cuento cómo estoy",
+    "ready": "contarte cómo estoy"
    }
   },
   "object": {
@@ -1116,6 +1177,10 @@
    "_other": {
     "text": "lugar",
     "none": "eso"
+   },
+   "spool": {
+    "text": "bobina",
+    "none": "ninguna bobina"
    }
   }
  }

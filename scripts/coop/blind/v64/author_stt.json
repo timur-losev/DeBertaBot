@@ -1,0 +1,962 @@
+[
+ {
+  "id": "sttv64_000",
+  "text": "uh punch that guy punch him out",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "sttv64_001",
+  "text": "okay so go beat the crap out of him the dude by the red stairs",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "red",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "sttv64_002",
+  "text": "smack him smack him with the but of your gun",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "sttv64_003",
+  "text": "knock that guy out when i say go",
+  "intent": "MELEE",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "sttv64_004",
+  "text": "rough up the guard near my pin",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "sttv64_005",
+  "text": "go kick his ass kick his ass dont let him get up",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "sttv64_006",
+  "text": "give him a beating um the one hiding behind the big box",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": "big",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "sttv64_007",
+  "text": "put your gun away put it away",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "sttv64_008",
+  "text": "okay hostel your weapon",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "sttv64_009",
+  "text": "stow the rifle we're friendly here",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "sttv64_010",
+  "text": "hands free buddy no guns out",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "sttv64_011",
+  "text": "uh sling your rifle for now",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "sttv64_012",
+  "text": "holster it holster it when i say go",
+  "intent": "HOLSTER",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "sttv64_013",
+  "text": "put the weapon away and keep your hands empty okay",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "sttv64_014",
+  "text": "uh sitrep sitrep what you got",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "sttv64_015",
+  "text": "what can you see from up there",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "sttv64_016",
+  "text": "how are things over there buddy",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "sttv64_017",
+  "text": "okay so whats around you anything to report",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "sttv64_018",
+  "text": "report report talk to me whats the situation",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "sttv64_019",
+  "text": "how you doing over by the greenhouse",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "greenhouse",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "sttv64_020",
+  "text": "hows it going on your end what do you see",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "sttv64_021",
+  "text": "you hurt you alright buddy",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "sttv64_022",
+  "text": "you got any armor left how many rounds you got",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "sttv64_023",
+  "text": "is it hot in there",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "sttv64_024",
+  "text": "can you breathe uh with all that gas",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "sttv64_025",
+  "text": "you freezing up on the roof or what",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "roof",
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "sttv64_026",
+  "text": "hows your health man",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "sttv64_027",
+  "text": "do you smell gas down in the basement",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "sttv64_028",
+  "text": "push the great over there",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "sttv64_029",
+  "text": "shove that big box up against the wall",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": "big",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "sttv64_030",
+  "text": "okay so slide the cardboard box to the main door",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "main",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "sttv64_031",
+  "text": "push the crate out of the way um the one by my pin",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "sttv64_032",
+  "text": "uh push the box push it to the left",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": "left",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "sttv64_033",
+  "text": "move this box out of the way just slide it dont pick it up",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "sttv64_034",
+  "text": "push the big box up to the north window on my go",
+  "intent": "PUSH",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "window",
+   "qualifier": "north",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "sttv64_035",
+  "text": "roll the spoon over there",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "sttv64_036",
+  "text": "roll that cable reel to the east door",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": "east",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "sttv64_037",
+  "text": "uh roll the school out of the way",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "spool",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "sttv64_038",
+  "text": "can you roll the cable drum toward the stairs the blue ones",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "blue",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "sttv64_039",
+  "text": "roll that barrel roll it to the right",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": "right",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "sttv64_040",
+  "text": "roll the reel by my ping over to the car",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "sttv64_041",
+  "text": "when i say go roll the spool down the ramp",
+  "intent": "ROLL",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": "down",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "sttv64_042",
+  "text": "drop it drop it right there",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "sttv64_043",
+  "text": "okay put the crate down",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "sttv64_044",
+  "text": "set the cardboard box down here",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "sttv64_045",
+  "text": "let go of that let go",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "sttv64_046",
+  "text": "uh put that great down",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "sttv64_047",
+  "text": "leave it here just leave the box",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "sttv64_048",
+  "text": "drop the big box on my goal",
+  "intent": "DROP",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "sttv64_049",
+  "text": "push up the left side",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": "left",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv64_050",
+  "text": "alright lets roll out",
+  "intent": "GO_NOW",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv64_051",
+  "text": "drop down here drop into the pit",
+  "intent": "JUMP",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": "down",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv64_052",
+  "text": "drop him drop that guy",
+  "intent": "ATTACK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv64_053",
+  "text": "pull your rifle out",
+  "intent": "SWITCH_WEAPON",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv64_054",
+  "text": "do you see the big box",
+  "intent": "SEE_THING",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": "big",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv64_055",
+  "text": "carry the cardboard box over to the barn",
+  "intent": "DELIVER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "barn",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": "cardboard box",
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv64_056",
+  "text": "pick that great up",
+  "intent": "COLLECT",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": "crate",
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv64_057",
+  "text": "whats up buddy",
+  "intent": "SMALL_TALK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv64_058",
+  "text": "uh im low on armor guys",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "sttv64_059",
+  "text": "put the box over by the south door",
+  "intent": "DELIVER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "south",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": "box",
+  "kind": "boundary"
+ }
+]

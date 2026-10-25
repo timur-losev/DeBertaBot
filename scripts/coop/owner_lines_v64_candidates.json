@@ -1,0 +1,682 @@
+[
+ {
+  "time": "2026.10.23-21.36.07",
+  "text": "Mr Le",
+  "brain": "say_again NONE 0.40",
+  "bot": "Не расслышал.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.36.30",
+  "text": "Strelay after.",
+  "brain": "say_again PRONE 0.32",
+  "bot": "Не расслышал.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.36.33",
+  "text": "Yeah.",
+  "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ stairs, basement, where you look",
+  "bot": "Уже иду туда.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.36.59",
+  "text": "Nish there.",
+  "brain": "act OPEN_FIRE 1.00 -> order OPEN_FIRE",
+  "bot": "Огонь!",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.37.06",
+  "text": "They're thinking.",
+  "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near aim on the bot",
+  "bot": "Двигаюсь с тобой.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.37.21",
+  "text": "Puścić ka mnie.",
+  "brain": "act HELP 1.00 -> order HELP",
+  "bot": "Уже иду к тебе.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.37.30",
+  "text": "Sit in the car.",
+  "brain": "act GET_IN 1.00 -> order GET_IN @ car aim on BP_Vehicle_MuscleCar_Drivable_C_UAID_F44EFC231D8052E202_1289474583",
+  "bot": "Сажусь.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.37.36",
+  "text": "Easy.",
+  "brain": "say_again RELOAD 0.21",
+  "bot": "Не расслышал.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.40.21",
+  "text": "Gonna need coming.",
+  "brain": "act HELP 0.74 -> order HELP aim on BP_Vehicle_MuscleCar_Drivable_C_UAID_F44EFC231D8052E202_1289474583",
+  "bot": "Уже иду к тебе.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.40.28",
+  "text": "Prego.",
+  "brain": "act PRONE 0.90 -> order PRONE",
+  "bot": "Тут не лечь. Держусь пониже.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.42.19",
+  "text": "Baki.",
+  "brain": "say_again CROUCH 0.45",
+  "bot": "No te entendí.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.42.23",
+  "text": "Ba aqui.",
+  "brain": "say_again CROUCH 0.48",
+  "bot": "¿Qué dijiste?",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.42.30",
+  "text": "Toma esta.",
+  "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ there near",
+  "bot": "",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.42.40",
+  "text": "Bucky.",
+  "brain": "say_again JUMP 0.38",
+  "bot": "¿Repite?",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.42.43",
+  "text": "Bah, aqui.",
+  "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ here near aim on B_Hero_ShooterMannequin_C_10",
+  "bot": "Cambio de posición.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.43.02",
+  "text": "Bad i mean",
+  "brain": "act COME_BACK 0.86 -> order COME_BACK",
+  "bot": "Regresando.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.43.11",
+  "text": "B Coche.",
+  "brain": "act STAND_UP 0.67 -> order STAND_UP",
+  "bot": "",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.43.16",
+  "text": "Uh al coche.",
+  "brain": "act GET_IN 1.00 -> order GET_IN @ car",
+  "bot": "En el vehículo.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.43.48.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.46.55",
+  "text": "You got a key.",
+  "brain": "say_again DEFUSE 0.34",
+  "bot": "¿Repite?",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.46.58",
+  "text": "Yeah,",
+  "brain": "answer YES 0.74",
+  "bot": "Sí, entendido.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.47.07",
+  "text": "Bah.",
+  "brain": "say_again NO 0.64",
+  "bot": "¿Repite?",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.47.17",
+  "text": "Atacar.",
+  "brain": "act ATTACK 1.00 -> order ATTACK",
+  "bot": "Paso a la ofensiva.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.47.27",
+  "text": "Atacar.",
+  "brain": "act ATTACK 1.00 -> order ATTACK aim on B_Hero_ShooterMannequin_C_2",
+  "bot": "¡Al ataque!",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.47.47",
+  "text": "Bye.",
+  "brain": "say_again HELP 0.63",
+  "bot": "¿Repite?",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.47.49",
+  "text": "But I",
+  "brain": "say_again GO_BACK 0.33",
+  "bot": "¿Repite?",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.47.53",
+  "text": "Bye.",
+  "brain": "say_again HELP 0.63",
+  "bot": "¿Qué dijiste?",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.47.58",
+  "text": "Baki.",
+  "brain": "say_again CROUCH 0.45",
+  "bot": "No te entendí.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.48.07",
+  "text": "Salta.",
+  "brain": "act GET_IN 1.00 -> order GET_IN",
+  "bot": "En el vehículo.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.48.17",
+  "text": "afuera",
+  "brain": "say_again VAULT_WINDOW 0.44",
+  "bot": "¿Qué dijiste?",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.48.20",
+  "text": "afuera",
+  "brain": "say_again VAULT_WINDOW 0.44",
+  "bot": "",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.48.22",
+  "text": "Va afuera.",
+  "brain": "act MOVE_TO 1.00 -> order MOVE_TO",
+  "bot": "",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.48.27",
+  "text": "Atacar las ventanas.",
+  "brain": "act ATTACK 1.00 -> order ATTACK @ window",
+  "bot": "Paso a la ofensiva.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.48.41",
+  "text": "Baki.",
+  "brain": "say_again PRONE 0.31",
+  "bot": "No te entendí.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.48.43",
+  "text": "But",
+  "brain": "say_again GO_BACK 0.50",
+  "bot": "No te entendí.",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.48.46",
+  "text": "Bah.",
+  "brain": "say_again NO 0.64",
+  "bot": "¿Repite?",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.23-21.48.49",
+  "text": "Bah, aqui.",
+  "brain": "ask ATTACK 1.00",
+  "bot": "¿Qué ventana? ¿Al frente, a 15 metros?",
+  "log": "LyraStarterGame-backup-2026.10.23-21.49.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-16.20.31",
+  "text": "Style.",
+  "brain": "act FLASH 0.79",
+  "bot": "Флешек нет, брат, только гранаты.",
+  "log": "LyraStarterGame-backup-2026.10.24-16.27.16.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-16.20.38",
+  "text": "Que flashco.",
+  "brain": "act FLASH 1.00",
+  "bot": "",
+  "log": "LyraStarterGame-backup-2026.10.24-16.27.16.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-16.20.50",
+  "text": "Que flashco.",
+  "brain": "act FLASH 1.00",
+  "bot": "Флешек нет, брат, только гранаты.",
+  "log": "LyraStarterGame-backup-2026.10.24-16.27.16.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-16.21.11",
+  "text": "Stop.",
+  "brain": "wait WAIT 1.00 -> order WAIT aim on the bot",
+  "bot": "Жду.",
+  "log": "LyraStarterGame-backup-2026.10.24-16.27.16.log",
+  "in_v61": true
+ },
+ {
+  "time": "2026.10.24-16.22.21",
+  "text": "Stine.",
+  "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near aim on the bot",
+  "bot": "Двигаюсь с тобой.",
+  "log": "LyraStarterGame-backup-2026.10.24-16.27.16.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-16.22.55",
+  "text": "Dis-le comment.",
+  "brain": "say_again ATTACK 0.27",
+  "bot": "Брат, не расслышал.",
+  "log": "LyraStarterGame-backup-2026.10.24-16.27.16.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-16.23.36",
+  "text": "Yeah.",
+  "brain": "answer YES 0.75",
+  "bot": "Понял, это да.",
+  "log": "LyraStarterGame-backup-2026.10.24-16.27.16.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-16.24.52",
+  "text": "I did.",
+  "brain": "say_again GO_NOW 0.38",
+  "bot": "Повтори, брат?",
+  "log": "LyraStarterGame-backup-2026.10.24-16.27.16.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-16.25.19",
+  "text": "Ili za mną brat.",
+  "brain": "act COVER_ME 0.79 -> order COVER_ME",
+  "bot": "Давай, брат, я на прикрытии.",
+  "log": "LyraStarterGame-backup-2026.10.24-16.27.16.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-16.26.36",
+  "text": "Yeah.",
+  "brain": "answer YES 0.75",
+  "bot": "Принял, брат: да.",
+  "log": "LyraStarterGame-backup-2026.10.24-16.27.16.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-18.55.59",
+  "text": "Yeah. Brat, di umri, brat.",
+  "brain": "answer YES 0.75 (2 order lines)",
+  "bot": "Повтори, брат?",
+  "log": "LyraStarterGame-backup-2026.10.24-19.00.21.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-18.59.42",
+  "text": "Bah.",
+  "brain": "say_again NO 0.27",
+  "bot": "Брат, не расслышал.",
+  "log": "LyraStarterGame-backup-2026.10.24-19.00.21.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-19.29.06",
+  "text": "Find the exit.",
+  "brain": "act MOVE_TO 1.00 -> order MOVE_TO",
+  "bot": "Иду к метке, брат.",
+  "log": "LyraStarterGame-backup-2026.10.24-19.30.46.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-19.48.21",
+  "text": "Move there.",
+  "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ floor 2, where you look",
+  "bot": "On my way there.",
+  "log": "LyraStarterGame-backup-2026.10.24-19.58.27.log",
+  "in_v61": true
+ },
+ {
+  "time": "2026.10.24-19.48.32",
+  "text": "Go into the teleport.",
+  "brain": "ask MOVE_TO 1.00",
+  "bot": "Which teleport? The one below, 21 m?",
+  "log": "LyraStarterGame-backup-2026.10.24-19.58.27.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-19.48.37",
+  "text": "This one, this one.",
+  "brain": "ask MOVE_TO 1.00",
+  "bot": "Which teleport? The one below, 22 m?",
+  "log": "LyraStarterGame-backup-2026.10.24-19.58.27.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-19.48.41",
+  "text": "This one.",
+  "brain": "ask MOVE_TO 1.00",
+  "bot": "Which teleport? The one below, 18 m?",
+  "log": "LyraStarterGame-backup-2026.10.24-19.58.27.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-19.48.44",
+  "text": "Right.",
+  "brain": "ask MOVE_TO 1.00",
+  "bot": "I see no teleport. Where?",
+  "log": "LyraStarterGame-backup-2026.10.24-19.58.27.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-19.48.49",
+  "text": "Come here closer.",
+  "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+  "bot": "On you.",
+  "log": "LyraStarterGame-backup-2026.10.24-19.58.27.log",
+  "in_v61": true
+ },
+ {
+  "time": "2026.10.24-19.48.56",
+  "text": "Come, come, come.",
+  "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME",
+  "bot": "Moving with you.",
+  "log": "LyraStarterGame-backup-2026.10.24-19.58.27.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-19.49.01",
+  "text": "What's this teleport? Go there.",
+  "brain": "ask MOVE_TO 1.00",
+  "bot": "Which teleport? The one ahead, 7 m?",
+  "log": "LyraStarterGame-backup-2026.10.24-19.58.27.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-19.49.06",
+  "text": "This this teleport.",
+  "brain": "ask MOVE_TO 0.97",
+  "bot": "Which teleport? The one ahead, 5 m?",
+  "log": "LyraStarterGame-backup-2026.10.24-19.58.27.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-19.49.11",
+  "text": "Yes.",
+  "brain": "resolved YES 0.99 -> order MOVE_TO @ teleport",
+  "bot": "Got it. Move there.",
+  "log": "LyraStarterGame-backup-2026.10.24-19.58.27.log",
+  "in_v61": true
+ },
+ {
+  "time": "2026.10.24-19.49.20",
+  "text": "Come to me.",
+  "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME",
+  "bot": "On you.",
+  "log": "LyraStarterGame-backup-2026.10.24-19.58.27.log",
+  "in_v61": true
+ },
+ {
+  "time": "2026.10.24-19.49.38",
+  "text": "Come to me.",
+  "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME",
+  "bot": "On you.",
+  "log": "LyraStarterGame-backup-2026.10.24-19.58.27.log",
+  "in_v61": true
+ },
+ {
+  "time": "2026.10.24-19.53.34",
+  "text": "Can you take that?",
+  "brain": "say_again SEE_THING 0.31",
+  "bot": "Say again?",
+  "log": "LyraStarterGame-backup-2026.10.24-19.58.27.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-19.53.54",
+  "text": "Grab that box.",
+  "brain": "act COLLECT 0.99 -> order COLLECT",
+  "bot": "On it, collecting.",
+  "log": "LyraStarterGame-backup-2026.10.24-19.58.27.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.24-22.50.52",
+  "text": "Pick up.",
+  "brain": "ask MOVE_TO 1.00",
+  "bot": "Не вижу оружия, брат. Куда, брат?",
+  "log": "LyraStarterGame-backup-2026.10.24-23.08.40.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.07.43",
+  "text": "Take the that box.",
+  "brain": "act DELIVER 1.00 -> order DELIVER",
+  "bot": "Bringing it.",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.07.50",
+  "text": "Take that box, bring me to me.",
+  "brain": "act DELIVER 1.00 (2 order lines) -> orders DELIVER; then DELIVER",
+  "bot": "Carrying it over.",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.08.00",
+  "text": "Just take that box.",
+  "brain": "act DELIVER 1.00 -> order DELIVER",
+  "bot": "Bringing it.",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.08.09",
+  "text": "Bring me that box.",
+  "brain": "ask DELIVER 1.00",
+  "bot": "Which crate? The one behind you, 4 m?",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.08.15",
+  "text": "This one.",
+  "brain": "act DELIVER 0.99 -> order DELIVER",
+  "bot": "Bringing it.",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.08.21",
+  "text": "Once more.",
+  "brain": "act REPEAT 1.00 -> order REPEAT aim on the bot",
+  "bot": "Trying again.",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.08.26",
+  "text": "Try again.",
+  "brain": "act REPEAT 1.00 -> order REPEAT aim on B_Hero_ShooterMannequin_C_1",
+  "bot": "One more time.",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.08.38",
+  "text": "Okay, put it back here.",
+  "brain": "act DELIVER 0.89 -> order DELIVER @ here near",
+  "bot": "Carrying it over.",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.08.45",
+  "text": "Put it back.",
+  "brain": "say_again RELOAD 0.26",
+  "bot": "Come again?",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.08.48",
+  "text": "Put it back.",
+  "brain": "say_again RELOAD 0.26",
+  "bot": "Didn't catch that.",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.08.51",
+  "text": "Put the screen back.",
+  "brain": "say_again REPAIR 0.48",
+  "bot": "Say again?",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.08.55",
+  "text": "Put this crate back",
+  "brain": "act DELIVER 1.00 -> order DELIVER",
+  "bot": "Carrying it over.",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.09.03",
+  "text": "Take take this box and put it there.",
+  "brain": "act DELIVER 1.00 -> order DELIVER",
+  "bot": "Bringing it.",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.09.09",
+  "text": "Move it here.",
+  "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ here near",
+  "bot": "On my way there.",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.09.14",
+  "text": "Take that box.",
+  "brain": "act DELIVER 1.00 -> order DELIVER",
+  "bot": "Carrying it over.",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.09.26",
+  "text": "Take that box and move it here.",
+  "brain": "act DELIVER 1.00 (2 order lines) -> orders DELIVER; then MOVE_TO @ here near",
+  "bot": "On the way with it.",
+  "log": "LyraStarterGame-backup-2026.10.25-00.10.09.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.16.11",
+  "text": "E suda.",
+  "brain": "say_again NONE 0.41",
+  "bot": "Повтори, брат?",
+  "log": "LyraStarterGame.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.16.23",
+  "text": "Should die print.",
+  "brain": "act OPEN_FIRE 0.99 -> order OPEN_FIRE",
+  "bot": "Огонь!",
+  "log": "LyraStarterGame.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.16.32",
+  "text": "Okay, spa.",
+  "brain": "say_again RELOAD 0.60",
+  "bot": "Ещё раз?",
+  "log": "LyraStarterGame.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.18.46",
+  "text": "Want to the",
+  "brain": "act MOVE_TO 1.00 -> order MOVE_TO",
+  "bot": "Иду к метке, брат.",
+  "log": "LyraStarterGame.log",
+  "in_v61": false
+ },
+ {
+  "time": "2026.10.25-00.20.13",
+  "text": "Buck.",
+  "brain": "say_again CHECK 0.19",
+  "bot": "Ещё раз?",
+  "log": "LyraStarterGame.log",
+  "in_v61": false
+ }
+]

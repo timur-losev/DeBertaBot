@@ -1066,3 +1066,35 @@ f3477e0a790432de31f049db13c18036b9eba72ac65d49309f4080d98842108e *intents_v63.js
 887785d3a5b60d23dc4511d6e0505f5c1d597749f639abd884ec00d10c777f55 *seed_commands_v63.json
 489c8be7bcaa546fbb843d144e5a0bdbc443b7bd598dcf99543f5c0a020d3ae7 *make_spec_v63.py
 2026-10-24T17:10:17+02:00
+# v64 (work machine, 2026-10-25), BEFORE any v64 test line exists; AFTER the owner's words and choices of 2026-10-24/25 (make_spec_v64.py docstring: 'how are you' to the report, the body's questions as intents, push / roll / put down with the game's code, the cardboard box he could not make the bot take): v63 (never trained) + STATUS_REPORT, BODY_STATE, PUSH, ROLL, DROP after HOLSTER, each in a family of its own; COLLECT and DELIVER one family (carry); 69 intents. 215 new seeds (3023 -> 3238), 11 relabelled (how-are-you, are-you-okay, see-anything). Place vocabulary v10 (spool; big, small, cardboard). Seeds are not blind.
+922221701d4bd600bb6787e362e001e18d240a1d23ccb601392c5e190b4fb4dd *blind/spec_v64.json
+f6064fdc6db405a51a291c90c22d907cf04e0b0d917cd8c6b20ca0dcb6edc053 *intents_v64.json
+aa0104a9f202b816167a6367a65a73b9dd4cd4d58ba7bb136f55c60a910842be *seed_commands_v64.json
+d51650e689da0fdb7786ced0d6571e448538155f3cf15091fc126d72ef089e4e *locations_v64.json
+426aefc4b351f6f79733b83803d531151b0cb30c95255ee0c1d7122c46f8e09d *make_spec_v64.py
+2026-10-25T02:26:15+02:00
+# v64 spec again, the same day and still BEFORE any v64 test line: the map of the blind spec gains the qualifiers big, small, cardboard (the place vocabulary v10 already had them), so the authors may write 'the big box' / 'the cardboard box'. Seeds unchanged.
+15a09574dea87eb2740918e9b90a1d6f4b0b7260b602f1fe0a291aff740fd14d *blind/spec_v64.json
+0861ac52114f7bba69de3d9db1e0ec34ea21975c527a2e73b2cbb74b6ec476ce *make_spec_v64.py
+2026-10-25T02:27:01+02:00
+# v64 test lines (2026-10-25): the three blind authors' 180 lines (they read only blind/spec_v64.json), BEFORE their annotation and before any v64 model; and the relabel of four earlier lines read by hand (make_relabel_v64.py).
+0ffd9d14df0c2bc7b730a4a5695b88d8e58152155a3118c13b0b13d3f0a468f7 *blind/v64/author_r6.json
+a35842a4d83f7c3df99dd5b8fae4f4e4577e3e304c30b5d2245de7c3d4169755 *blind/v64/author_cs.json
+957743297af1386898626b5462473603871aa00306773766c664b8d08495fac9 *blind/v64/author_stt.json
+ecb3a50a4f33ef9776074f294c3edfe44e0106934813598a2e5bca1865c7abd2 *blind/v64/author_r6_lines.json
+e071a72e60bb5b0768bfc0af099920f77303773668da4c681b141fee6f24a663 *blind/v64/author_cs_lines.json
+158f400feafc96e89dcf19c4e5dcc97f3456f977f24c703695c2966055684b28 *blind/v64/author_stt_lines.json
+766bfb7e35faf267b5ea7d5f3a2778d27218f29f59053b1efaef7085bf2b3024 *annot/v64/relabel_v64.json
+c3fdbe2edb71413b28d67356a0a33f1854c9bebb4989d2fd12d6b0e589d5f993 *make_relabel_v64.py
+2026-10-25T02:30:09+02:00
+# v64 annotation (2026-10-25): two blind annotators (spec + the _lines files only), 180 of 180 lines unanimous with the author.
+106e5131e6f21f6657b805b2c468a6cbe1bc37c2f34ff6b0e53d1bdc27471a85 *annot/v64/author_cs_ann1.json
+bd2d2e3c179a7ff553e881b4ccedccffc8055073510d1957ce5b62e29fb4f382 *annot/v64/author_cs_ann2.json
+18cb1d534c6dc759d53c1c43b28b7620f84a5f9c190b46a9264e2ebee6d022e8 *annot/v64/author_r6_ann1.json
+de7b792edb8ee61fcd6861a27b43718a89cd18ef0f4ed71190b2df2b3835b90c *annot/v64/author_r6_ann2.json
+db7fb399901dedee4acceb12fb6f39235be88822e45ae6d5aae97811435b8b0f *annot/v64/author_stt_ann1.json
+442c36a6a7cbf6e9fb896b600daeb2092015701d68561c92b61d315577f04200 *annot/v64/author_stt_ann2.json
+2026-10-25T02:32:54+02:00
+# v64 fix (2026-10-25, after the v64 trainings, which do not read the place vocabulary): locations_v64.json was refused by the place matcher (qualifiers big, small, cardboard allowed by no object, no 'lone'); crate now takes all three, spool big and small, a lone cardboard is a crate. No test line changes.
+b4e5ac679568d86fab09f5a74d989af04ee7ed6f3a8a63bd23ab621e72cd5b8c *locations_v64.json
+22287229becafedba9a5e4ac840123ee518f511d60ad77452ba984d09ea4cd4b *make_spec_v64.py

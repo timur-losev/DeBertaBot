@@ -60,19 +60,20 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # added after the study showed the owner's "cover from behind" going to TAKE_COVER); results files and
 # outputs carry the tag, so the v2 study stays as it was
 TAG = os.environ.get("COOP_TAG", "v2")
-V5 = TAG in ("v5", "v51", "v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62")    # 27 intents (intents_v5.json); every older tag keeps the 24 of intents_v2.json
-V51 = TAG in ("v51", "v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62")         # 29 intents (intents_v51.json): v5 + LOOK_AT, LOOK_AT_ME
-V52 = TAG in ("v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62")                # 32 intents (intents_v52.json): v51 + HELP, CHECK, SUPPRESS
-V53 = TAG in ("v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62")                       # 33 intents (intents_v53.json): v52 + JUMP
-V54 = TAG in ("v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62")                              # 41 intents (intents_v54.json): v53 + COME_BACK, three stances, four answers
-V55 = TAG in ("v55", "v56", "v57", "v58", "v60", "v61", "v62")                              # 44 intents (intents_v55.json): v54 + GET_IN, GET_OUT, REPEAT
-V56 = TAG in ("v56", "v57", "v58", "v60", "v61", "v62")                              # 45 intents (intents_v56.json): v55 - REVIVE_ME + HELP_INTERACTION, GO_BACK
-V57 = TAG in ("v57", "v58", "v60", "v61", "v62")                       # 47 intents (intents_v57.json): v56 + SWITCH_WEAPON, RELOAD
-V58 = TAG in ("v58", "v60", "v61", "v62")                              # v57's 47 intents and lines; seeds of going on with a movement
-V60 = TAG in ("v60", "v61", "v62")                              # 57 intents (intents_v60.json): v58 + the farmer's and the builder's ten
-V61 = TAG in ("v61", "v62")                              # v60's intents and lines; seeds of what bot v60 did not understand
-V62 = TAG == "v62"                                       # 62 intents (intents_v62.json): v61 + the bot that talks (see, small talk, praise, ...)
-_I = json.load(io.open(os.path.join(HERE, "intents_v62.json" if V62 else "intents_v60.json" if V60 else "intents_v57.json" if V57 else "intents_v56.json" if V56 else "intents_v55.json" if V55 else "intents_v54.json" if V54 else "intents_v53.json" if V53 else
+V5 = TAG in ("v5", "v51", "v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64")    # 27 intents (intents_v5.json); every older tag keeps the 24 of intents_v2.json
+V51 = TAG in ("v51", "v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64")         # 29 intents (intents_v51.json): v5 + LOOK_AT, LOOK_AT_ME
+V52 = TAG in ("v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64")                # 32 intents (intents_v52.json): v51 + HELP, CHECK, SUPPRESS
+V53 = TAG in ("v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64")                       # 33 intents (intents_v53.json): v52 + JUMP
+V54 = TAG in ("v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64")                              # 41 intents (intents_v54.json): v53 + COME_BACK, three stances, four answers
+V55 = TAG in ("v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64")                              # 44 intents (intents_v55.json): v54 + GET_IN, GET_OUT, REPEAT
+V56 = TAG in ("v56", "v57", "v58", "v60", "v61", "v62", "v64")                              # 45 intents (intents_v56.json): v55 - REVIVE_ME + HELP_INTERACTION, GO_BACK
+V57 = TAG in ("v57", "v58", "v60", "v61", "v62", "v64")                       # 47 intents (intents_v57.json): v56 + SWITCH_WEAPON, RELOAD
+V58 = TAG in ("v58", "v60", "v61", "v62", "v64")                              # v57's 47 intents and lines; seeds of going on with a movement
+V60 = TAG in ("v60", "v61", "v62", "v64")                              # 57 intents (intents_v60.json): v58 + the farmer's and the builder's ten
+V61 = TAG in ("v61", "v62", "v64")                              # v60's intents and lines; seeds of what bot v60 did not understand
+V62 = TAG in ("v62", "v64")                              # 62 intents (intents_v62.json): v61 + the bot that talks (see, small talk, praise, ...)
+V64 = TAG == "v64"                                       # 69 intents (intents_v64.json): v62 + MELEE, HOLSTER (spec v63) + the report, the body, push, roll, drop
+_I = json.load(io.open(os.path.join(HERE, "intents_v64.json" if V64 else "intents_v62.json" if V62 else "intents_v60.json" if V60 else "intents_v57.json" if V57 else "intents_v56.json" if V56 else "intents_v55.json" if V55 else "intents_v54.json" if V54 else "intents_v53.json" if V53 else
                                     "intents_v52.json" if V52 else "intents_v51.json" if V51 else "intents_v5.json" if V5 else
                                     "intents_v2.json"), encoding="utf-8"))
 I = {k: v for k, v in _I.items() if not k.startswith("_")}
@@ -117,6 +118,10 @@ if V60:     # the farmer's and the builder's: each its own (planting a crop is n
 NEW62 = {"SEE_THING", "SEE_ME", "SMALL_TALK", "PRAISE", "KILL_YOURSELF"}
 if V62:     # whether the bot sees a thing or the player: one question; talk, praise and the joke refusal each their own
     FAMILY.update({"SEE_THING": "see", "SEE_ME": "see", "SMALL_TALK": "small_talk", "PRAISE": "praise", "KILL_YOURSELF": "kill_yourself"})
+NEW64 = {"MELEE", "HOLSTER", "STATUS_REPORT", "BODY_STATE", "PUSH", "ROLL", "DROP"}
+if V64:     # spec v63's two and the five of v64, each its own; carrying a thing and picking it up are one (the game carries for both)
+    FAMILY.update({"MELEE": "melee", "HOLSTER": "holster", "STATUS_REPORT": "status", "BODY_STATE": "body", "PUSH": "push",
+                   "ROLL": "roll", "DROP": "drop", "COLLECT": "carry", "DELIVER": "carry"})
 assert set(FAMILY) == set(INTENTS), set(FAMILY) ^ set(INTENTS)
 AUTHORS = ["r6", "cs", "stt"]
 SEED_FILE = {"v2": "seed_commands_v2.json", "v21": "seed_commands_v21.json", "v3": "seed_commands_v3.json",
@@ -124,7 +129,7 @@ SEED_FILE = {"v2": "seed_commands_v2.json", "v21": "seed_commands_v21.json", "v3
              "v53": "seed_commands_v53.json", "v54": "seed_commands_v54.json", "v55": "seed_commands_v55.json",
              "v56": "seed_commands_v56.json", "v57": "seed_commands_v57.json", "v58": "seed_commands_v58.json",
              "v60": "seed_commands_v60.json", "v61": "seed_commands_v61.json",
-             "v62": "seed_commands_v62.json"}[TAG]
+             "v62": "seed_commands_v62.json", "v64": "seed_commands_v64.json"}[TAG]
 # "v3": the lines that name map places (blind/v3, annot/v3) join the data, with the seed set that has
 # templated location seeds; the v2 / v21 studies load exactly what they loaded before.
 # "v31": the v3 data with the seed set corrected after the v3 review (make_seeds_v31.py), and with the
@@ -146,7 +151,7 @@ SEED_FILE = {"v2": "seed_commands_v2.json", "v21": "seed_commands_v21.json", "v3
 #        make_spec_v61.py)
 # "v62": the v61 data with three praise lines read as PRAISE (annot/v62/relabel_v62.json), the v62 lines and
 #        seed_commands_v62.json (v61 + the bot that talks: make_spec_v62.py)
-PLACES = TAG in ("v3", "v31", "v5", "v51", "v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62")
+PLACES = TAG in ("v3", "v31", "v5", "v51", "v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64")
 
 # the owner's own live-test lines with the reading they asked for, and the canonical probes the v1
 # live test failed on. Not a blind check: none is a training line verbatim, but most are near copies
@@ -328,6 +333,22 @@ def _relabel_v62(items):
     return out
 
 
+def _relabel_v64(items):
+    """COOP_TAG=v64 (annot/v64/relabel_v64.json): earlier lines that the new intents take (how are you -> STATUS_REPORT, are you
+    okay -> BODY_STATE, ...); a line may keep its old reading as also accepted ("also")."""
+    lines = json.load(io.open(os.path.join(HERE, "annot", "v64", "relabel_v64.json"), encoding="utf-8"))["lines"]
+    assert set(lines) <= {it["id"] for it in items}, sorted(set(lines) - {it["id"] for it in items})
+    out = []
+    for it in items:
+        r = lines.get(it["id"])
+        if r is not None:
+            assert it["maj"] == r["from"] and it["text"] == r["text"], (it["id"], it["maj"], r)
+            ok = {r["to"], *r.get("also", [])}
+            it = dict(it, maj=r["to"], accept=ok, any=set(it["any"]) | ok, version=it["version"] + "-relabel64")
+        out.append(it)
+    return out
+
+
 def load_items(with_v2=True, with_v3=None):
     """with_v3: the lines that name map places; by default only under COOP_TAG=v3 / v31 / v5."""
     with_v3 = PLACES if with_v3 is None else with_v3
@@ -395,6 +416,11 @@ def load_items(with_v2=True, with_v3=None):
         items = _relabel_v62(items)
         if os.path.exists(os.path.join(HERE, "blind", "v62", "author_r6.json")):   # the v62 lines, once they are written
             items = _apply(items, "v62", NEW62)
+    if V64 and with_v2 and with_v3:
+        if os.path.exists(os.path.join(HERE, "annot", "v64", "relabel_v64.json")):
+            items = _relabel_v64(items)
+        if os.path.exists(os.path.join(HERE, "annot", "v64", "author_r6_ann2.json")):   # the v64 lines, once read twice
+            items = _apply(items, "v64", NEW64)
     for it in items:
         for r in it["reads"]:
             assert r["set"] <= set(INTENTS), (it["id"], r)

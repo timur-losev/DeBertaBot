@@ -1,0 +1,141 @@
+                                                 v63     v64
+v64 held-out en (109)                           97.2    98.2
+v64 held-out ru (109)                           61.5    85.3
+v64 held-out es (109)                           71.6    83.5
+owner hand rows (trained on) (79)               59.5   100.0
+dev_ru (41)                                     95.1    97.6
+blind2_ru (150)                                 81.3    84.7
+ctx_ru (150)                                    82.0    81.3
+dev_es (41)                                     97.6    95.1
+blind2_es (150)                                 78.0    78.0
+ctx_es (150)                                    83.3    82.7
+pairs en (150)                                  99.3    99.3
+pairs ru (150)                                  98.0    98.7
+pairs es (150)                                  96.7    98.0
+en blind2 (decoder alone) (150)                 89.3    88.0
+en blind2_heard3 (decoder alone) (300)          65.3    65.3
+en ctx (decoder alone) (150)                    90.0    88.0
+en ctx_heard3 (decoder alone) (299)             72.2    71.9
+
+the owner's lines (hand rows): v63 -> v64
+  ok  Подними эту коробку.                       Lift up this crate.                -> pick up this box
+  ok  Подними коробку.                           Pick up the crate.                 -> pick up the box
+  ok  Коробку подними.                           Get the crate up.                  -> pick up the box
+  ok  Коробку подниме.                           Get the crate up.                  -> pick up the box
+  ok  Подними эту картонную коробку.             Lift up this cardboard crate.      -> pick up this cardboard box
+  ok  Картонную коробку подними.                 Pick up the cardboard box.         -> pick up the cardboard box
+  ok  Подними эту картодную коробку.             Pick up this crate.                -> pick up this cardboard box
+  ok  Возьми эту картонную коробку.              Pick up this cardboard crate.      -> take this cardboard box
+  ok  Возьми картонную коробку, брат.            Grab a crate of cardboard, buddy.  -> take the cardboard box bro
+  ok  Подними большую коробку.                   Get the big crate up.              -> pick up the big box
+  ok  Возьми маленькую коробку.                  Get the small crate.               -> take the small box
+  ok  Подними маленький ящик.                    Get the small crate up.            -> pick up the small crate
+  ok  Подними эту коробку, возьми эту коробку.   Lift up this crate | take this crate -> pick up this box
+  ok  Подними это.                               Pick it up.                        -> pick this up
+  ok  Подними.                                   Get up.                            -> pick it up
+  ok  Подними её.                                Get it up.                         -> pick it up
+  ok  Возьми это.                                Take it.                           -> take this
+  ok  Сюда теперь неси.                          Nowhere special.                   -> bring it here now
+  ok  Унеси её туда.                             Take it there.                     -> carry it over there
+  ok  Обратно теперь отнеси её.                  Now go back and take it.           -> now carry it back
+  ok  Двигай эту коробку.                        Move this crate.                   -> push this box
+  ok  Толкни коробку.                            Push the crate.                    -> push the box
+  ok  Подвинь ящик вон туда.                     Shuttle the box over there.        -> push the crate over there
+  ok  Толкай её к двери.                         Slap it open near the door.        -> push it to the door
+  ok  Кати эту катушку.                          Pull on this rope.                 -> roll this spool
+  ok  Покати катушку ко мне.                     Coax the rope over to me.          -> roll the spool to me
+  ok  Покати бобину туда.                        Run the tape over there.           -> roll the reel over there
+  ok  Покати.                                    Go around the crate.               -> roll it
+  ok  Покати её.                                 Go around through the garage.      -> roll it
+  ok  Поставь коробку.                           Put a crate on it.                 -> put the box down
+  ok  Поставь её.                                Plant it.                          -> put it down
+  ok  Брось коробку.                             Throw the crate.                   -> drop the box
+  ok  Отпусти ящик.                              Throw the box away.                -> let go of the crate
+  ok  Убери оружие.                              Put your weapon down.              -> put your weapon away
+  ok  Убери вообще оружие.                       Never touch a weapon again.        -> put your weapon away completely
+  ok  Убери пистолет.                            Put your pistol down.              -> put your pistol away
+  ok  Спрячь ствол.                              Hide your gun.                     -> holster your gun
+  ok  Голые руки.                                Go easy.                           -> bare hands
+  ok  Голые руки.                                Go easy.                           -> bare hands
+  ok  Наваляй ему.                               Light him up.                      -> beat him up
+  ok  Отпизди его.                               Send him.                          -> beat the shit out of him
+  ok  Дай ему в морду.                           Hit him in the jaw.                -> punch him in the face
+  ok  Бей его кулаками.                          Hit him with your fists.           -> hit him with your fists
+  ok  Втащи ему прикладом.                       Take the gun up for him.           -> hit him with the butt of your gun
+  ok  Что ты там видишь?                         What are you looking at?           -> what do you see there
+  ok  Так, брат, что ты там видишь?              Okay so what is your problem here man -> so bro what do you see there
+  ok  Что ви что видишь там?                     What's in the dark there?          -> what do you see there
+  ok  Что видишь?                                What's on your screen?             -> what do you see
+  ok  Как дела?                                  How are you?                       -> how are you
+  ok  Как обстановка?                            What's the situation?              -> what's the situation
+  ok  Ты цел?                                    Are you still on it?               -> are you okay
+  ok  Сколько у тебя патронов?                   How many bullets do you have?      -> how much ammo do you have
+  ok  Заходи в портал за мной.                   Get in the portal behind me.       -> follow me into the portal
+  ok  Ищи выход.                                 Find a way out.                    -> find the exit
+  ok  Выход ищи.                                 Go find it.                        -> find the exit
+  ok  Что делать с этой катушкой?                What should I do with this rope?   -> what do I do with this spool
+  ok  Молодец.                                   Follow me.                         -> good job
+  ok  Молодец, брат.                             Nice, bro.                         -> good job bro
+  ok  Спасибо, брат.                             You're welcome, buddy.             -> thanks bro
+  ok  Красава.                                   Nice one.                          -> nice one
+  ok  Muérete.                                   Move up.                           -> kill yourself
+  ok  ¿Qué ves?                                  what see                           -> what do you see
+  ok  ¿Qué ves ahí?                              what are you looking at            -> what do you see there
+  ok  Entra en el portal.                        Get in the portal.                 -> go into the portal
+  ok  Levanta la caja.                           Lift the crate.                    -> pick up the box
+  ok  Levanta esa caja de cartón.                Lift up that cardboard crate.      -> pick up that cardboard box
+  ok  Coge la caja pequeña.                      Pick up the small crate.           -> take the small box
+  ok  Empuja esta caja.                          Push in on this crate.             -> push this box
+  ok  Haz rodar el carrete.                      Make a loop out of the rope.       -> roll the spool
+  ok  Rueda la bobina hacia mí.                  Screw the rope, wrap around to me. -> roll the reel to me
+  ok  Guarda el arma.                            Hold your gun.                     -> put your weapon away
+  ok  Manos vacías.                              Hands empty.                       -> bare hands
+  ok  Dale un puñetazo.                          Hit the deck.                      -> punch him
+  ok  Suelta la caja.                            Drop the crate.                    -> drop the box
+  ok  Déjala en el suelo.                        Leave it on the ground.            -> put it down
+  ok  ¿Cómo estás?                               how are you                        -> how are you
+  ok  ¿Estás bien?                               Are you okay?                      -> are you okay
+  ok  Bien hecho.                                Nice job following me.             -> good job
+  ok  Gracias, tío.                              Thanks, man.                       -> thanks man
+
+v64 held-out ru: 16 wrong
+  SMALL_TALK     thanks man, didn't know you were so quiet          read ['NONE']
+  KILL_YOURSELF  lol kill the useless bot                           read ['ATTACK']
+  HOLD_ANGLE     clean kill bro | hold the south window             read ['PRAISE', 'HOLD_ANGLE']
+  HOLSTER        put the gun away bro | hands free                  read ['HOLSTER', 'HOLSTER']
+  PUSH           small crate's blocking the stairs, move it bro     read ['NONE']
+  HOLD_FIRE      Lower your weapons. | Don't shoot at the hostage.  read ['HOLD_FIRE', 'HOLD_FIRE']
+  DROP           drop the box right there | normal                  read ['DROP', 'NONE']
+  GO_NOW         alright we push now, everyone ready                read ['ENTRY']
+  NONE           is it hot here                                     read ['BODY_STATE']
+  ATTACK         give that guy a beating                            read ['MELEE']
+  SEE_THING      did you just kick him                              read ['MELEE']
+  SMALL_TALK     hi                                                 read ['NONE']
+  KILL_YOURSELF  please kill me                                     read ['ATTACK']
+  MELEE          punch him | don't fire                             read ['MELEE', 'HOLD_FIRE']
+  HOLSTER        hide it                                            read ['TAKE_COVER']
+  PUSH           push him off the road                              read ['NONE']
+
+v64 held-out es: 18 wrong
+  PRAISE         man you're rotating so fast                        read ['NONE']
+  HOLD_ANGLE     nice kill bro | hold the south window              read ['PRAISE', 'HOLD_ANGLE']
+  MELEE          type in the basement guy | go punch his lights out and knock him out read ['NONE', 'MELEE']
+  HOLSTER        stow your weapon | free hands buddy                read ['HOLSTER', 'HOLSTER']
+  HOLD_FIRE      lower your weapons | don't shoot at the hostage    read ['HOLD_FIRE', 'HOLD_FIRE']
+  PUSH           Stop the cardboard box from moving, it's blocking the door. read ['NONE']
+  PUSH           slide the box out | push in at me, the one on my pin read ['PUSH', 'ENTRY']
+  DROP           drop it here | leave the box                       read ['DROP', 'carry']
+  JUMP           drop down here | drop into the pit                 read ['JUMP', 'JUMP']
+  NONE           punch me                                           read ['MELEE']
+  SEE_THING      look over there                                    read ['LOOK_AT']
+  SMALL_TALK     what's happening                                   read ['STATUS_REPORT']
+  PRAISE         tirazo                                             read ['NONE']
+  PRAISE         nice movement                                      read ['NONE']
+  PRAISE         you killed him                                     read ['NONE']
+  MELEE          tear it apart                                      read ['DEMOLISH']
+  MELEE          punch him | don't fire                             read ['MELEE', 'HOLD_FIRE']
+  HOLSTER        go clear                                           read ['ENTRY']
+
+v64 held-out en: 2 wrong
+  HOLD_ANGLE     clean kill bro | now hold the south window         read ['PRAISE', 'HOLD_ANGLE']
+  MELEE          don't shoot                                        read ['HOLD_FIRE']

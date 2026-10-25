@@ -1,0 +1,1621 @@
+{
+"lang": "es",
+"kind": "single",
+"items": [
+{
+"id": "seed_MOVE_TO_344",
+"en": "go to the spool",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_MOVE_TO_345",
+"en": "move to the box",
+"intent": "MOVE_TO"
+},
+{
+"id": "seed_COVER_ME_31",
+"en": "hey cover me",
+"intent": "COVER_ME"
+},
+{
+"id": "seed_COVER_ME_32",
+"en": "nice one cover me now",
+"intent": "COVER_ME"
+},
+{
+"id": "seed_COVER_ME_33",
+"en": "thanks cover me",
+"intent": "COVER_ME"
+},
+{
+"id": "seed_GO_NOW_13",
+"en": "roll out",
+"intent": "GO_NOW"
+},
+{
+"id": "seed_GO_NOW_14",
+"en": "let's roll",
+"intent": "GO_NOW"
+},
+{
+"id": "seed_GO_NOW_15",
+"en": "we roll now",
+"intent": "GO_NOW"
+},
+{
+"id": "seed_NONE_290",
+"en": "I see him",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_291",
+"en": "I see two on the roof",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_292",
+"en": "I see them",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_293",
+"en": "I can see the enemy",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_294",
+"en": "how many are left",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_295",
+"en": "don't die",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_296",
+"en": "stay alive",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_297",
+"en": "you'll die there",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_298",
+"en": "I'm dying",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_299",
+"en": "he's dead",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_300",
+"en": "I killed him",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_301",
+"en": "nice try",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_302",
+"en": "watch yourself",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_303",
+"en": "I'm punching him",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_304",
+"en": "he hit me",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_305",
+"en": "he punched me",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_306",
+"en": "I beat him up",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_307",
+"en": "nice punch",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_308",
+"en": "I'll punch him",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_309",
+"en": "I'm hurt",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_310",
+"en": "I'm cold",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_311",
+"en": "I'm low on ammo",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_312",
+"en": "I see a box",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_313",
+"en": "I'm pushing the box",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_314",
+"en": "I dropped it",
+"intent": "NONE"
+},
+{
+"id": "seed_NONE_315",
+"en": "it's hot here",
+"intent": "NONE"
+},
+{
+"id": "seed_ATTACK_36",
+"en": "kill him",
+"intent": "ATTACK"
+},
+{
+"id": "seed_ATTACK_37",
+"en": "kill them all",
+"intent": "ATTACK"
+},
+{
+"id": "seed_ATTACK_38",
+"en": "kill that guy",
+"intent": "ATTACK"
+},
+{
+"id": "seed_ATTACK_39",
+"en": "kill the enemy",
+"intent": "ATTACK"
+},
+{
+"id": "seed_ATTACK_40",
+"en": "kill everyone",
+"intent": "ATTACK"
+},
+{
+"id": "seed_ATTACK_41",
+"en": "take that guy out",
+"intent": "ATTACK"
+},
+{
+"id": "seed_ATTACK_42",
+"en": "attack him",
+"intent": "ATTACK"
+},
+{
+"id": "seed_ATTACK_43",
+"en": "engage him",
+"intent": "ATTACK"
+},
+{
+"id": "seed_ATTACK_44",
+"en": "hit them",
+"intent": "ATTACK"
+},
+{
+"id": "seed_ATTACK_45",
+"en": "drop him",
+"intent": "ATTACK"
+},
+{
+"id": "seed_ATTACK_46",
+"en": "drop that guy",
+"intent": "ATTACK"
+},
+{
+"id": "seed_OPEN_FIRE_52",
+"en": "light him up",
+"intent": "OPEN_FIRE"
+},
+{
+"id": "seed_OPEN_FIRE_53",
+"en": "put rounds on him",
+"intent": "OPEN_FIRE"
+},
+{
+"id": "seed_OPEN_FIRE_54",
+"en": "open fire on him",
+"intent": "OPEN_FIRE"
+},
+{
+"id": "seed_HOLD_FIRE_29",
+"en": "lower your weapons",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "seed_HOLD_FIRE_30",
+"en": "weapons down",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "seed_HOLD_FIRE_31",
+"en": "lower your gun",
+"intent": "HOLD_FIRE"
+},
+{
+"id": "seed_LOOK_AT_68",
+"en": "look at him",
+"intent": "LOOK_AT"
+},
+{
+"id": "seed_CHECK_78",
+"en": "go see what's there",
+"intent": "CHECK"
+},
+{
+"id": "seed_CHECK_79",
+"en": "see what's behind the door",
+"intent": "CHECK"
+},
+{
+"id": "seed_CHECK_80",
+"en": "check if they're there",
+"intent": "CHECK"
+},
+{
+"id": "seed_SUPPRESS_43",
+"en": "push them back",
+"intent": "SUPPRESS"
+},
+{
+"id": "seed_JUMP_97",
+"en": "drop into the pit",
+"intent": "JUMP"
+},
+{
+"id": "seed_JUMP_98",
+"en": "drop down the hole",
+"intent": "JUMP"
+},
+{
+"id": "seed_PRONE_20",
+"en": "hit the floor",
+"intent": "PRONE"
+},
+{
+"id": "seed_YES_28",
+"en": "good",
+"intent": "YES"
+},
+{
+"id": "seed_YES_29",
+"en": "great",
+"intent": "YES"
+},
+{
+"id": "seed_YES_30",
+"en": "perfect",
+"intent": "YES"
+},
+{
+"id": "seed_YES_31",
+"en": "okay good",
+"intent": "YES"
+},
+{
+"id": "seed_SWITCH_WEAPON_56",
+"en": "draw your weapon",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "seed_SWITCH_WEAPON_57",
+"en": "take out your gun",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "seed_SWITCH_WEAPON_58",
+"en": "gun up",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "seed_SWITCH_WEAPON_59",
+"en": "get your gun out",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "seed_SWITCH_WEAPON_60",
+"en": "arm yourself",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "seed_SWITCH_WEAPON_61",
+"en": "pull out your rifle",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "seed_SWITCH_WEAPON_62",
+"en": "weapons out",
+"intent": "SWITCH_WEAPON"
+},
+{
+"id": "seed_COLLECT_45",
+"en": "pick this up",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_46",
+"en": "pick that up",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_47",
+"en": "pick up the box",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_48",
+"en": "grab this",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_49",
+"en": "grab that crate",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_50",
+"en": "lift up the box",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_51",
+"en": "lift up the crate",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_52",
+"en": "lift up this crate",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_53",
+"en": "lift that box",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_54",
+"en": "pick up the cardboard box",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_55",
+"en": "pick up this cardboard crate",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_56",
+"en": "get that crate up",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_57",
+"en": "grab the cardboard box",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_58",
+"en": "pick that box up",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_59",
+"en": "lift the box up",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_60",
+"en": "raise the box",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_61",
+"en": "pick up the small box",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_62",
+"en": "grab that box",
+"intent": "COLLECT"
+},
+{
+"id": "seed_COLLECT_63",
+"en": "take the cardboard box",
+"intent": "COLLECT"
+},
+{
+"id": "seed_DELIVER_40",
+"en": "carry this",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_41",
+"en": "carry it",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_42",
+"en": "carry that",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_43",
+"en": "carry this there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_44",
+"en": "carry it over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_45",
+"en": "carry this to me",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_46",
+"en": "take this there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_47",
+"en": "take this over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_48",
+"en": "take that over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_49",
+"en": "take it over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_50",
+"en": "take this to my pin",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_51",
+"en": "take this and carry it there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_52",
+"en": "pick this up and carry it there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_53",
+"en": "grab this and take it over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_54",
+"en": "grab that and bring it here",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_55",
+"en": "pick it up and bring it to me",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_56",
+"en": "take this and bring it here",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_57",
+"en": "move the box",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_58",
+"en": "move the box over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_59",
+"en": "move this box",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_60",
+"en": "move that crate over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_61",
+"en": "move the crate to my pin",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_62",
+"en": "move this over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_63",
+"en": "move it over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_64",
+"en": "relocate the crate",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_65",
+"en": "shift the box over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_66",
+"en": "take the box over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_67",
+"en": "take the crate there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_68",
+"en": "bring me the box",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_69",
+"en": "bring me that box",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_70",
+"en": "bring me that",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_71",
+"en": "bring me this",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_72",
+"en": "bring that here",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_73",
+"en": "bring this over here",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_74",
+"en": "bring that to me",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_75",
+"en": "fetch the box",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_76",
+"en": "fetch me that crate",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_77",
+"en": "get me that box",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_78",
+"en": "get me the crate",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_79",
+"en": "haul the box over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_80",
+"en": "carry the box",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_81",
+"en": "carry the crate to the barn",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_82",
+"en": "carry the box to me",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_83",
+"en": "carry that crate over here",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_84",
+"en": "lug the box over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_85",
+"en": "deliver the box to my pin",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_86",
+"en": "drop this over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_87",
+"en": "put this over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_88",
+"en": "put that box over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_89",
+"en": "take this cardboard crate",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_90",
+"en": "take the cardboard box to me",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_91",
+"en": "bring me the cardboard box",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_92",
+"en": "carry the cardboard box over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_93",
+"en": "take that box and bring it here",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_94",
+"en": "pick up the box and bring it to me",
+"intent": "DELIVER"
+},
+{
+"id": "seed_DELIVER_95",
+"en": "lift the crate and carry it over there",
+"intent": "DELIVER"
+},
+{
+"id": "seed_SEE_THING_0",
+"en": "do you see that",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_1",
+"en": "do you see it",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_2",
+"en": "can you see that",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_3",
+"en": "can you see it",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_4",
+"en": "can you see him",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_5",
+"en": "do you see him",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_6",
+"en": "do you see them",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_7",
+"en": "can you see them",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_8",
+"en": "you see that",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_9",
+"en": "see that",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_10",
+"en": "see that guy",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_11",
+"en": "do you see the enemy",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_12",
+"en": "can you see the enemy",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_13",
+"en": "do you see any enemies",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_14",
+"en": "do you see anything",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_SEE_THING_15",
+"en": "see anything",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_SEE_THING_16",
+"en": "can you see anything there",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_17",
+"en": "do you see the window",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_18",
+"en": "can you see the north window",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_19",
+"en": "do you see the blue stairs",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_20",
+"en": "do you see the car",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_21",
+"en": "can you see the door from there",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_22",
+"en": "do you see my pin",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_23",
+"en": "can you see my pin",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_24",
+"en": "can you see my mark",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_25",
+"en": "do you have eyes on that",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_26",
+"en": "do you have eyes on him",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_27",
+"en": "you got eyes on that guy",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_28",
+"en": "have you got eyes on the door",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_29",
+"en": "eyes on my pin",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_30",
+"en": "can you spot him",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_31",
+"en": "can you spot that",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_32",
+"en": "did you spot him",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_33",
+"en": "you seeing this",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_34",
+"en": "are you seeing that",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_35",
+"en": "do you see this",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_36",
+"en": "do you see what I'm pointing at",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_37",
+"en": "can you see where I'm aiming",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_38",
+"en": "do you see what I'm looking at",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_39",
+"en": "do you see the guy on the roof",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_40",
+"en": "can you see the sniper",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_41",
+"en": "do you see the target",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_42",
+"en": "is he in your view",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_43",
+"en": "is that in your sight",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_44",
+"en": "do you have a line of sight on that",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_45",
+"en": "you got a visual on that",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_46",
+"en": "do you have visual",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_47",
+"en": "visual on the target",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_48",
+"en": "can you see over there",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_49",
+"en": "do you see the teleport",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_50",
+"en": "can you see the portal",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_51",
+"en": "do you see the barn",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_52",
+"en": "can you see the crate",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_53",
+"en": "do you still see him",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_54",
+"en": "do you see him now",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_55",
+"en": "see them over there",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_56",
+"en": "can you see the enemy at my pin",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_57",
+"en": "do you see the guy behind the car",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_58",
+"en": "do you see the box",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_59",
+"en": "can you see the spool",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_THING_60",
+"en": "do you see the cardboard box",
+"intent": "SEE_THING"
+},
+{
+"id": "seed_SEE_ME_0",
+"en": "do you see me",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_1",
+"en": "you see me",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_2",
+"en": "see me",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_3",
+"en": "do you have eyes on me",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_4",
+"en": "can you spot me",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_5",
+"en": "am I visible to you",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_6",
+"en": "am I in your view",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_7",
+"en": "do you see where I am",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_8",
+"en": "can you see me from there",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_9",
+"en": "are you seeing me",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_10",
+"en": "you got eyes on me",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_11",
+"en": "do you see me up here",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_12",
+"en": "can you see me down here",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_13",
+"en": "I'm here do you see me",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_14",
+"en": "can you still see me",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_15",
+"en": "do you see me now",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_16",
+"en": "hey can you see me",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_17",
+"en": "do you see me waving",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_18",
+"en": "do you see me on the roof",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_19",
+"en": "can you see me through the window",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_20",
+"en": "am I in your line of sight",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_21",
+"en": "do you have a visual on me",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_22",
+"en": "can you see me or not",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_23",
+"en": "tell me if you see me",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_24",
+"en": "do you see me over here",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_25",
+"en": "can you see me behind the car",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SEE_ME_26",
+"en": "do you see me at the door",
+"intent": "SEE_ME"
+},
+{
+"id": "seed_SMALL_TALK_0",
+"en": "how are you doing",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_SMALL_TALK_1",
+"en": "how's it going",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_SMALL_TALK_2",
+"en": "how is it going",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_SMALL_TALK_3",
+"en": "what's up",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_4",
+"en": "sup",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_5",
+"en": "hello there",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_6",
+"en": "hey buddy",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_7",
+"en": "hey man",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_8",
+"en": "yo buddy",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_9",
+"en": "good morning",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_10",
+"en": "good evening",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_11",
+"en": "good night",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_12",
+"en": "bye",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_13",
+"en": "see you later",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_14",
+"en": "see you",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_15",
+"en": "are you okay",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_SMALL_TALK_16",
+"en": "you okay",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_SMALL_TALK_17",
+"en": "are you alright",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_SMALL_TALK_18",
+"en": "you still there",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_19",
+"en": "are you there",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_20",
+"en": "thanks",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_21",
+"en": "thanks buddy",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_22",
+"en": "thank you so much",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_23",
+"en": "cheers",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_24",
+"en": "cheers mate",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_25",
+"en": "sorry",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_26",
+"en": "my bad",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_27",
+"en": "sorry about that",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_28",
+"en": "what is your name",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_29",
+"en": "what are you",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_30",
+"en": "are you a bot",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_31",
+"en": "are you human",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_32",
+"en": "are you real",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_33",
+"en": "do you like this game",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_34",
+"en": "how old are you",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_35",
+"en": "where are you from",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_36",
+"en": "tell me something",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_37",
+"en": "talk to me",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_38",
+"en": "I'm bored",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_39",
+"en": "are you tired",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_40",
+"en": "how was your day",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_41",
+"en": "how do you feel",
+"intent": "BODY_STATE"
+},
+{
+"id": "seed_SMALL_TALK_42",
+"en": "how are things",
+"intent": "STATUS_REPORT"
+},
+{
+"id": "seed_SMALL_TALK_43",
+"en": "how's your day",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_44",
+"en": "nice to meet you",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_45",
+"en": "glad you're here",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_46",
+"en": "what do you think of me",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_47",
+"en": "do you like me",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_48",
+"en": "are you happy",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_49",
+"en": "having fun",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_50",
+"en": "are you having fun",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_51",
+"en": "what's new",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_52",
+"en": "hey",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_SMALL_TALK_53",
+"en": "what do you think of this place",
+"intent": "SMALL_TALK"
+},
+{
+"id": "seed_PRAISE_0",
+"en": "nice job",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_1",
+"en": "great job",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_2",
+"en": "well done",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_3",
+"en": "good shot",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_4",
+"en": "great shot",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_5",
+"en": "nice one",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_6",
+"en": "good one",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_7",
+"en": "nice work",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_8",
+"en": "good work",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_9",
+"en": "great work",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_10",
+"en": "excellent work",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_11",
+"en": "awesome job",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_12",
+"en": "you're awesome",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_13",
+"en": "you're the best",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_14",
+"en": "you're amazing",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_15",
+"en": "good bot",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_16",
+"en": "nice kill",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_17",
+"en": "great kill",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_18",
+"en": "nice moves",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_19",
+"en": "that was amazing",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_20",
+"en": "that was awesome",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_21",
+"en": "you're doing great",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_22",
+"en": "you did great",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_23",
+"en": "perfect shot",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_24",
+"en": "beautiful shot",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_25",
+"en": "impressive",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_26",
+"en": "that was impressive",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_27",
+"en": "nice throw",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_28",
+"en": "nice grenade",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_29",
+"en": "great teamwork",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_30",
+"en": "good teamwork",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_31",
+"en": "good boy",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_32",
+"en": "nice going",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_33",
+"en": "way to go",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_34",
+"en": "you nailed it",
+"intent": "PRAISE"
+},
+{
+"id": "seed_PRAISE_35",
+"en": "you killed it",
+"intent": "PRAISE"
+}
+]
+}

@@ -1,0 +1,1082 @@
+[
+{
+"id": "r6v64_000",
+"author": "r6",
+"version": "v64",
+"text": "Bro, he's dry on ammo. Go punch his lights out.",
+"maj": "MELEE",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0000.wav"
+},
+{
+"id": "r6v64_001",
+"author": "r6",
+"version": "v64",
+"text": "Hostile on my pin, butt-stroke him.",
+"maj": "MELEE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0001.wav"
+},
+{
+"id": "r6v64_002",
+"author": "r6",
+"version": "v64",
+"text": "Sneak up and smack him with the stock, mate.",
+"maj": "MELEE",
+"voice": "Microsoft Mark",
+"wav": "v64_0002.wav"
+},
+{
+"id": "r6v64_003",
+"author": "r6",
+"version": "v64",
+"text": "Guard at the south door. Beat him down, quiet.",
+"maj": "MELEE",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0003.wav"
+},
+{
+"id": "r6v64_004",
+"author": "r6",
+"version": "v64",
+"text": "Knife him on my call, no noise.",
+"maj": "MELEE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0004.wav"
+},
+{
+"id": "r6v64_005",
+"author": "r6",
+"version": "v64",
+"text": "That one by the car, give him a beating.",
+"maj": "MELEE",
+"voice": "Microsoft Mark",
+"wav": "v64_0005.wav"
+},
+{
+"id": "r6v64_006",
+"author": "r6",
+"version": "v64",
+"text": "Guy in the basement, go hands-on, knock him cold.",
+"maj": "MELEE",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0006.wav"
+},
+{
+"id": "r6v64_007",
+"author": "r6",
+"version": "v64",
+"text": "Sling your rifle, we're clear for now.",
+"maj": "HOLSTER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0007.wav"
+},
+{
+"id": "r6v64_008",
+"author": "r6",
+"version": "v64",
+"text": "Gun away, buddy. Hands free.",
+"maj": "HOLSTER",
+"voice": "Microsoft Mark",
+"wav": "v64_0008.wav"
+},
+{
+"id": "r6v64_009",
+"author": "r6",
+"version": "v64",
+"text": "Stow your primary, mate.",
+"maj": "HOLSTER",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0009.wav"
+},
+{
+"id": "r6v64_010",
+"author": "r6",
+"version": "v64",
+"text": "Holster up, civvies around.",
+"maj": "HOLSTER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0010.wav"
+},
+{
+"id": "r6v64_011",
+"author": "r6",
+"version": "v64",
+"text": "Go unarmed for this bit, bro.",
+"maj": "HOLSTER",
+"voice": "Microsoft Mark",
+"wav": "v64_0011.wav"
+},
+{
+"id": "r6v64_012",
+"author": "r6",
+"version": "v64",
+"text": "Weapon on your back, you'll need both hands for that crate.",
+"maj": "HOLSTER",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0012.wav"
+},
+{
+"id": "r6v64_013",
+"author": "r6",
+"version": "v64",
+"text": "Put that shotgun away.",
+"maj": "HOLSTER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0013.wav"
+},
+{
+"id": "r6v64_014",
+"author": "r6",
+"version": "v64",
+"text": "Sitrep, buddy.",
+"maj": "STATUS_REPORT",
+"voice": "Microsoft Mark",
+"wav": "v64_0014.wav"
+},
+{
+"id": "r6v64_015",
+"author": "r6",
+"version": "v64",
+"text": "What've you got, mate?",
+"maj": "STATUS_REPORT",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0015.wav"
+},
+{
+"id": "r6v64_016",
+"author": "r6",
+"version": "v64",
+"text": "Status on your end, bro?",
+"maj": "STATUS_REPORT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0016.wav"
+},
+{
+"id": "r6v64_017",
+"author": "r6",
+"version": "v64",
+"text": "Talk to me. What's around you?",
+"maj": "STATUS_REPORT",
+"voice": "Microsoft Mark",
+"wav": "v64_0017.wav"
+},
+{
+"id": "r6v64_018",
+"author": "r6",
+"version": "v64",
+"text": "Report in. How you holding up?",
+"maj": "STATUS_REPORT",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0018.wav"
+},
+{
+"id": "r6v64_019",
+"author": "r6",
+"version": "v64",
+"text": "Anything on your side? Give me a quick rundown.",
+"maj": "STATUS_REPORT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0019.wav"
+},
+{
+"id": "r6v64_020",
+"author": "r6",
+"version": "v64",
+"text": "What are you seeing on the second floor?",
+"maj": "STATUS_REPORT",
+"voice": "Microsoft Mark",
+"wav": "v64_0020.wav"
+},
+{
+"id": "r6v64_021",
+"author": "r6",
+"version": "v64",
+"text": "You hit, bro?",
+"maj": "BODY_STATE",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0021.wav"
+},
+{
+"id": "r6v64_022",
+"author": "r6",
+"version": "v64",
+"text": "You good on ammo?",
+"maj": "BODY_STATE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0022.wav"
+},
+{
+"id": "r6v64_023",
+"author": "r6",
+"version": "v64",
+"text": "How many rounds you got left, mate?",
+"maj": "BODY_STATE",
+"voice": "Microsoft Mark",
+"wav": "v64_0023.wav"
+},
+{
+"id": "r6v64_024",
+"author": "r6",
+"version": "v64",
+"text": "You smelling gas?",
+"maj": "BODY_STATE",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0024.wav"
+},
+{
+"id": "r6v64_025",
+"author": "r6",
+"version": "v64",
+"text": "Buddy, you bleeding?",
+"maj": "BODY_STATE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0025.wav"
+},
+{
+"id": "r6v64_026",
+"author": "r6",
+"version": "v64",
+"text": "Heat getting to you?",
+"maj": "BODY_STATE",
+"voice": "Microsoft Mark",
+"wav": "v64_0026.wav"
+},
+{
+"id": "r6v64_027",
+"author": "r6",
+"version": "v64",
+"text": "Can you breathe in that smoke, mate?",
+"maj": "BODY_STATE",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0027.wav"
+},
+{
+"id": "r6v64_028",
+"author": "r6",
+"version": "v64",
+"text": "On my go, shove that crate to the north door.",
+"maj": "PUSH",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0028.wav"
+},
+{
+"id": "r6v64_029",
+"author": "r6",
+"version": "v64",
+"text": "Push the big box up against the wall, mate.",
+"maj": "PUSH",
+"voice": "Microsoft Mark",
+"wav": "v64_0029.wav"
+},
+{
+"id": "r6v64_030",
+"author": "r6",
+"version": "v64",
+"text": "Slide that cardboard box out of the way, bro.",
+"maj": "PUSH",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0030.wav"
+},
+{
+"id": "r6v64_031",
+"author": "r6",
+"version": "v64",
+"text": "Push this crate up to my pin.",
+"maj": "PUSH",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0031.wav"
+},
+{
+"id": "r6v64_032",
+"author": "r6",
+"version": "v64",
+"text": "Get that box under the east window, just shove it.",
+"maj": "PUSH",
+"voice": "Microsoft Mark",
+"wav": "v64_0032.wav"
+},
+{
+"id": "r6v64_033",
+"author": "r6",
+"version": "v64",
+"text": "Nudge the crate left a bit.",
+"maj": "PUSH",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0033.wav"
+},
+{
+"id": "r6v64_034",
+"author": "r6",
+"version": "v64",
+"text": "Small crate's blocking the stairs, push it aside, buddy.",
+"maj": "PUSH",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0034.wav"
+},
+{
+"id": "r6v64_035",
+"author": "r6",
+"version": "v64",
+"text": "Roll that spool to the main door.",
+"maj": "ROLL",
+"voice": "Microsoft Mark",
+"wav": "v64_0035.wav"
+},
+{
+"id": "r6v64_036",
+"author": "r6",
+"version": "v64",
+"text": "Cable reel's in the way, roll it clear.",
+"maj": "ROLL",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0036.wav"
+},
+{
+"id": "r6v64_037",
+"author": "r6",
+"version": "v64",
+"text": "Roll the drum over to my ping, mate.",
+"maj": "ROLL",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0037.wav"
+},
+{
+"id": "r6v64_038",
+"author": "r6",
+"version": "v64",
+"text": "Big spool, roll it right, bro.",
+"maj": "ROLL",
+"voice": "Microsoft Mark",
+"wav": "v64_0038.wav"
+},
+{
+"id": "r6v64_039",
+"author": "r6",
+"version": "v64",
+"text": "Roll the reel to the back door.",
+"maj": "ROLL",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0039.wav"
+},
+{
+"id": "r6v64_040",
+"author": "r6",
+"version": "v64",
+"text": "Roll the cable spool down to the yellow stairs.",
+"maj": "ROLL",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0040.wav"
+},
+{
+"id": "r6v64_041",
+"author": "r6",
+"version": "v64",
+"text": "Roll this reel behind the car, on three.",
+"maj": "ROLL",
+"voice": "Microsoft Mark",
+"wav": "v64_0041.wav"
+},
+{
+"id": "r6v64_042",
+"author": "r6",
+"version": "v64",
+"text": "Drop the box, we got company.",
+"maj": "DROP",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0042.wav"
+},
+{
+"id": "r6v64_043",
+"author": "r6",
+"version": "v64",
+"text": "Set it down, bro.",
+"maj": "DROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0043.wav"
+},
+{
+"id": "r6v64_044",
+"author": "r6",
+"version": "v64",
+"text": "Let go of the crate, contact front!",
+"maj": "DROP",
+"voice": "Microsoft Mark",
+"wav": "v64_0044.wav"
+},
+{
+"id": "r6v64_045",
+"author": "r6",
+"version": "v64",
+"text": "Put that cardboard box down here.",
+"maj": "DROP",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0045.wav"
+},
+{
+"id": "r6v64_046",
+"author": "r6",
+"version": "v64",
+"text": "Dump that crate, mate.",
+"maj": "DROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0046.wav"
+},
+{
+"id": "r6v64_047",
+"author": "r6",
+"version": "v64",
+"text": "Leave the big box here, buddy.",
+"maj": "DROP",
+"voice": "Microsoft Mark",
+"wav": "v64_0047.wav"
+},
+{
+"id": "r6v64_048",
+"author": "r6",
+"version": "v64",
+"text": "Drop it, drop it, two on the roof!",
+"maj": "DROP",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0048.wav"
+},
+{
+"id": "r6v64_049",
+"author": "r6",
+"version": "v64",
+"text": "Push forward, mate, I'm right behind you.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0049.wav"
+},
+{
+"id": "r6v64_050",
+"author": "r6",
+"version": "v64",
+"text": "Alright lads, roll out.",
+"maj": "GO_NOW",
+"voice": "Microsoft Mark",
+"wav": "v64_0050.wav"
+},
+{
+"id": "r6v64_051",
+"author": "r6",
+"version": "v64",
+"text": "Drop down into the basement, bro.",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0051.wav"
+},
+{
+"id": "r6v64_052",
+"author": "r6",
+"version": "v64",
+"text": "Drop him, he's peeking!",
+"maj": "ATTACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0052.wav"
+},
+{
+"id": "r6v64_053",
+"author": "r6",
+"version": "v64",
+"text": "Draw your weapon, it's getting hot.",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "v64_0053.wav"
+},
+{
+"id": "r6v64_054",
+"author": "r6",
+"version": "v64",
+"text": "Do you see that big box?",
+"maj": "SEE_THING",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0054.wav"
+},
+{
+"id": "r6v64_055",
+"author": "r6",
+"version": "v64",
+"text": "Carry the cardboard box to the barn.",
+"maj": "DELIVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0055.wav"
+},
+{
+"id": "r6v64_056",
+"author": "r6",
+"version": "v64",
+"text": "Pick that crate up, mate.",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "v64_0056.wav"
+},
+{
+"id": "r6v64_057",
+"author": "r6",
+"version": "v64",
+"text": "Hey buddy, good to have you on the squad.",
+"maj": "SMALL_TALK",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0057.wav"
+},
+{
+"id": "r6v64_058",
+"author": "r6",
+"version": "v64",
+"text": "I'm hurt, I'm hurt, need a sec.",
+"maj": "NONE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0058.wav"
+},
+{
+"id": "r6v64_059",
+"author": "r6",
+"version": "v64",
+"text": "Weapons down, don't shoot the hostage.",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft Mark",
+"wav": "v64_0059.wav"
+},
+{
+"id": "csv64_000",
+"author": "cs",
+"version": "v64",
+"text": "Hey, that guy's being a real pain, go punch his lights out for me.",
+"maj": "MELEE",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0060.wav"
+},
+{
+"id": "csv64_001",
+"author": "cs",
+"version": "v64",
+"text": "Wait for my signal, then sneak up and knock him out with the butt of your rifle.",
+"maj": "MELEE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0061.wav"
+},
+{
+"id": "csv64_002",
+"author": "cs",
+"version": "v64",
+"text": "Okay buddy, no need to waste bullets, just walk over and smack that dude around a bit.",
+"maj": "MELEE",
+"voice": "Microsoft Mark",
+"wav": "v64_0062.wav"
+},
+{
+"id": "csv64_003",
+"author": "cs",
+"version": "v64",
+"text": "Uh, the guy standing by my pin? Go rough him up a little.",
+"maj": "MELEE",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0063.wav"
+},
+{
+"id": "csv64_004",
+"author": "cs",
+"version": "v64",
+"text": "Honestly, just beat the living daylights out of him, I don't care how.",
+"maj": "MELEE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0064.wav"
+},
+{
+"id": "csv64_005",
+"author": "cs",
+"version": "v64",
+"text": "You wanna show this guy some kung fu? Go hit him with your fists.",
+"maj": "MELEE",
+"voice": "Microsoft Mark",
+"wav": "v64_0065.wav"
+},
+{
+"id": "csv64_006",
+"author": "cs",
+"version": "v64",
+"text": "Save your ammo and just melee him, okay? Bash him with your gun if you have to.",
+"maj": "MELEE",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0066.wav"
+},
+{
+"id": "csv64_007",
+"author": "cs",
+"version": "v64",
+"text": "Alright, I think we're safe for now, you can put your gun away.",
+"maj": "HOLSTER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0067.wav"
+},
+{
+"id": "csv64_008",
+"author": "cs",
+"version": "v64",
+"text": "Hey, could you sling that rifle? You're freaking out the chickens.",
+"maj": "HOLSTER",
+"voice": "Microsoft Mark",
+"wav": "v64_0068.wav"
+},
+{
+"id": "csv64_009",
+"author": "cs",
+"version": "v64",
+"text": "Stow your weapon for a bit, we're just doing some gardening.",
+"maj": "HOLSTER",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0069.wav"
+},
+{
+"id": "csv64_010",
+"author": "cs",
+"version": "v64",
+"text": "Go hands free for me, buddy, I need you empty-handed for this.",
+"maj": "HOLSTER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0070.wav"
+},
+{
+"id": "csv64_011",
+"author": "cs",
+"version": "v64",
+"text": "Holster it, man, nobody's shooting at us anymore.",
+"maj": "HOLSTER",
+"voice": "Microsoft Mark",
+"wav": "v64_0071.wav"
+},
+{
+"id": "csv64_012",
+"author": "cs",
+"version": "v64",
+"text": "Can you just put the pistol away? It's making me kind of nervous.",
+"maj": "HOLSTER",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0072.wav"
+},
+{
+"id": "csv64_013",
+"author": "cs",
+"version": "v64",
+"text": "Let's go unarmed for a while, no guns out, okay?",
+"maj": "HOLSTER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0073.wav"
+},
+{
+"id": "csv64_014",
+"author": "cs",
+"version": "v64",
+"text": "Hey, what's it looking like on your end?",
+"maj": "STATUS_REPORT",
+"voice": "Microsoft Mark",
+"wav": "v64_0074.wav"
+},
+{
+"id": "csv64_015",
+"author": "cs",
+"version": "v64",
+"text": "Give me a quick sitrep when you get a sec.",
+"maj": "STATUS_REPORT",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0075.wav"
+},
+{
+"id": "csv64_016",
+"author": "cs",
+"version": "v64",
+"text": "So, uh, what have you got? Anything interesting around you?",
+"maj": "STATUS_REPORT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0076.wav"
+},
+{
+"id": "csv64_017",
+"author": "cs",
+"version": "v64",
+"text": "How are you holding up, buddy? Talk me through it.",
+"maj": "STATUS_REPORT",
+"voice": "Microsoft Mark",
+"wav": "v64_0077.wav"
+},
+{
+"id": "csv64_018",
+"author": "cs",
+"version": "v64",
+"text": "Report in, what's around you right now?",
+"maj": "STATUS_REPORT",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0078.wav"
+},
+{
+"id": "csv64_019",
+"author": "cs",
+"version": "v64",
+"text": "What can you see from where you're standing?",
+"maj": "STATUS_REPORT",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0079.wav"
+},
+{
+"id": "csv64_020",
+"author": "cs",
+"version": "v64",
+"text": "Anything to report? Just gimme the situation real quick.",
+"maj": "STATUS_REPORT",
+"voice": "Microsoft Mark",
+"wav": "v64_0080.wav"
+},
+{
+"id": "csv64_021",
+"author": "cs",
+"version": "v64",
+"text": "You doing alright? You took a couple of hits back there.",
+"maj": "BODY_STATE",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0081.wav"
+},
+{
+"id": "csv64_022",
+"author": "cs",
+"version": "v64",
+"text": "Hey, how many rounds have you got left in that thing?",
+"maj": "BODY_STATE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0082.wav"
+},
+{
+"id": "csv64_023",
+"author": "cs",
+"version": "v64",
+"text": "Is it super hot where you are, or is that just me?",
+"maj": "BODY_STATE",
+"voice": "Microsoft Mark",
+"wav": "v64_0083.wav"
+},
+{
+"id": "csv64_024",
+"author": "cs",
+"version": "v64",
+"text": "Dude, can you even breathe in all that gas?",
+"maj": "BODY_STATE",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0084.wav"
+},
+{
+"id": "csv64_025",
+"author": "cs",
+"version": "v64",
+"text": "Are you freezing out there too, buddy?",
+"maj": "BODY_STATE",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0085.wav"
+},
+{
+"id": "csv64_026",
+"author": "cs",
+"version": "v64",
+"text": "How's your health looking? Do you need a medkit or are you fine?",
+"maj": "BODY_STATE",
+"voice": "Microsoft Mark",
+"wav": "v64_0086.wav"
+},
+{
+"id": "csv64_027",
+"author": "cs",
+"version": "v64",
+"text": "Are you running low on ammo, or are you still good?",
+"maj": "BODY_STATE",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0087.wav"
+},
+{
+"id": "csv64_028",
+"author": "cs",
+"version": "v64",
+"text": "Hey, can you push that big box over by the wall?",
+"maj": "PUSH",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0088.wav"
+},
+{
+"id": "csv64_029",
+"author": "cs",
+"version": "v64",
+"text": "Shove the cardboard box out of the way, it's blocking the door.",
+"maj": "PUSH",
+"voice": "Microsoft Mark",
+"wav": "v64_0089.wav"
+},
+{
+"id": "csv64_030",
+"author": "cs",
+"version": "v64",
+"text": "Could you slide this crate a little to the left for me?",
+"maj": "PUSH",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0090.wav"
+},
+{
+"id": "csv64_031",
+"author": "cs",
+"version": "v64",
+"text": "Uh, push the box at my pin over toward the north door.",
+"maj": "PUSH",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0091.wav"
+},
+{
+"id": "csv64_032",
+"author": "cs",
+"version": "v64",
+"text": "Just nudge that crate forward a bit, don't pick it up.",
+"maj": "PUSH",
+"voice": "Microsoft Mark",
+"wav": "v64_0092.wav"
+},
+{
+"id": "csv64_033",
+"author": "cs",
+"version": "v64",
+"text": "When I say go, shove the big box toward the east door so we can hide behind it.",
+"maj": "PUSH",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0093.wav"
+},
+{
+"id": "csv64_034",
+"author": "cs",
+"version": "v64",
+"text": "Move this box out of my way, would ya? Just push it aside.",
+"maj": "PUSH",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0094.wav"
+},
+{
+"id": "csv64_035",
+"author": "cs",
+"version": "v64",
+"text": "Roll that cable spool over there, will you?",
+"maj": "ROLL",
+"voice": "Microsoft Mark",
+"wav": "v64_0095.wav"
+},
+{
+"id": "csv64_036",
+"author": "cs",
+"version": "v64",
+"text": "On three, roll the reel over to the main door.",
+"maj": "ROLL",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0096.wav"
+},
+{
+"id": "csv64_037",
+"author": "cs",
+"version": "v64",
+"text": "Roll the spool on my pin out of the way, it's right in my path.",
+"maj": "ROLL",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0097.wav"
+},
+{
+"id": "csv64_038",
+"author": "cs",
+"version": "v64",
+"text": "Buddy, could you roll this big drum of cable to the right a bit?",
+"maj": "ROLL",
+"voice": "Microsoft Mark",
+"wav": "v64_0098.wav"
+},
+{
+"id": "csv64_039",
+"author": "cs",
+"version": "v64",
+"text": "Roll it out of the way, the spool I mean, not the box.",
+"maj": "ROLL",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0099.wav"
+},
+{
+"id": "csv64_040",
+"author": "cs",
+"version": "v64",
+"text": "Can you roll the cable reel down the ramp? Gently, please.",
+"maj": "ROLL",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0100.wav"
+},
+{
+"id": "csv64_041",
+"author": "cs",
+"version": "v64",
+"text": "Hey, that spool's blocking the stairs, roll it somewhere else.",
+"maj": "ROLL",
+"voice": "Microsoft Mark",
+"wav": "v64_0101.wav"
+},
+{
+"id": "csv64_042",
+"author": "cs",
+"version": "v64",
+"text": "Okay, you can put it down now.",
+"maj": "DROP",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0102.wav"
+},
+{
+"id": "csv64_043",
+"author": "cs",
+"version": "v64",
+"text": "Drop the box right there, that's fine.",
+"maj": "DROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0103.wav"
+},
+{
+"id": "csv64_044",
+"author": "cs",
+"version": "v64",
+"text": "Set the cardboard box down, we'll come back for it later.",
+"maj": "DROP",
+"voice": "Microsoft Mark",
+"wav": "v64_0104.wav"
+},
+{
+"id": "csv64_045",
+"author": "cs",
+"version": "v64",
+"text": "Just let go of that crate, we've got company!",
+"maj": "DROP",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0105.wav"
+},
+{
+"id": "csv64_046",
+"author": "cs",
+"version": "v64",
+"text": "Leave it here, buddy, your arms must be tired by now.",
+"maj": "DROP",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0106.wav"
+},
+{
+"id": "csv64_047",
+"author": "cs",
+"version": "v64",
+"text": "Put that big box down for a second, would you?",
+"maj": "DROP",
+"voice": "Microsoft Mark",
+"wav": "v64_0107.wav"
+},
+{
+"id": "csv64_048",
+"author": "cs",
+"version": "v64",
+"text": "Drop whatever you're carrying, like, right now!",
+"maj": "DROP",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0108.wav"
+},
+{
+"id": "csv64_049",
+"author": "cs",
+"version": "v64",
+"text": "Alright, let's roll, everyone's ready.",
+"maj": "GO_NOW",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0109.wav"
+},
+{
+"id": "csv64_050",
+"author": "cs",
+"version": "v64",
+"text": "Push forward to the next corner, I'm right behind you.",
+"maj": "MOVE_TO",
+"voice": "Microsoft Mark",
+"wav": "v64_0110.wav"
+},
+{
+"id": "csv64_051",
+"author": "cs",
+"version": "v64",
+"text": "Drop down into the pit there, it's a shortcut.",
+"maj": "JUMP",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0111.wav"
+},
+{
+"id": "csv64_052",
+"author": "cs",
+"version": "v64",
+"text": "Drop that guy before he reaches the barn!",
+"maj": "ATTACK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0112.wav"
+},
+{
+"id": "csv64_053",
+"author": "cs",
+"version": "v64",
+"text": "Okay, get your gun back out, we've got company.",
+"maj": "SWITCH_WEAPON",
+"voice": "Microsoft Mark",
+"wav": "v64_0113.wav"
+},
+{
+"id": "csv64_054",
+"author": "cs",
+"version": "v64",
+"text": "Can you see the cable spool from where you are?",
+"maj": "SEE_THING",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0114.wav"
+},
+{
+"id": "csv64_055",
+"author": "cs",
+"version": "v64",
+"text": "Carry the cardboard box over to the greenhouse, please.",
+"maj": "DELIVER",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0115.wav"
+},
+{
+"id": "csv64_056",
+"author": "cs",
+"version": "v64",
+"text": "Pick up that crate for me, would you?",
+"maj": "COLLECT",
+"voice": "Microsoft Mark",
+"wav": "v64_0116.wav"
+},
+{
+"id": "csv64_057",
+"author": "cs",
+"version": "v64",
+"text": "Ugh, I'm freezing, this map is brutal.",
+"maj": "NONE",
+"voice": "Microsoft David Desktop",
+"wav": "v64_0117.wav"
+},
+{
+"id": "csv64_058",
+"author": "cs",
+"version": "v64",
+"text": "Haha, you really love those boxes, huh? You're a weird little bot.",
+"maj": "SMALL_TALK",
+"voice": "Microsoft Zira Desktop",
+"wav": "v64_0118.wav"
+},
+{
+"id": "csv64_059",
+"author": "cs",
+"version": "v64",
+"text": "Hey, lower your weapon, those are friendlies!",
+"maj": "HOLD_FIRE",
+"voice": "Microsoft Mark",
+"wav": "v64_0119.wav"
+}
+]

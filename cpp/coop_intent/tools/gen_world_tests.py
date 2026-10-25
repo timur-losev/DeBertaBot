@@ -37,7 +37,7 @@ import bots  # noqa: E402
 _ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
 MODEL = os.path.normpath(_ARGS[0] if _ARGS else bots.default_bot())
 OUT = os.path.join(MODEL, "cpp")
-if bots.tag_of(MODEL) in ("v60", "v61", "v62"):     # a v60 bot reads its own place vocabulary (locations.vocab_file)
+if bots.tag_of(MODEL) in ("v60", "v61", "v62", "v64"):     # a v60 bot reads its own place vocabulary (locations.vocab_file)
     os.environ["COOP_TAG"] = bots.tag_of(MODEL)
 import coop_bot  # noqa: E402
 import locations as LOC  # noqa: E402

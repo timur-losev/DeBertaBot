@@ -1,0 +1,29 @@
+{
+ "_note": "The owner's own spoken English lines as Parakeet heard them in the game, 2026-10-24 19:29 .. 2026-10-25 00:09 (the teleport and the warehouse boxes), after owner_lines_v61.json (extract_owner_lines_v64.py -> owner_lines_v64_candidates.json, then labelled by hand from the talk around each line: the bot's answer, the line before and after; the v64 decisions: COLLECT and DELIVER one family). The Russian and Spanish sessions' lines (heard by the English recognizer as nonsense: 'Baki', 'Ili za mną brat') are left out: they are the decoder's matter. Answers to a question ('This one.', 'Yes.') are left out as in v61. 'sure': false where a word was misheard ('Put the screen back.' for 'put the crate back').",
+ "items": [
+  {"id": "owner64_0001", "text": "find the exit", "maj": "MOVE_TO", "count": 1, "said": ["2026.10.24-19.29"], "multi": false, "sure": true},
+  {"id": "owner64_0002", "text": "move there", "maj": "MOVE_TO", "count": 1, "said": ["2026.10.24-19.48"], "multi": false, "sure": true},
+  {"id": "owner64_0003", "text": "go into the teleport", "maj": "MOVE_TO", "count": 1, "said": ["2026.10.24-19.48"], "multi": false, "sure": true},
+  {"id": "owner64_0004", "text": "come here closer", "maj": "FOLLOW_ME", "count": 1, "said": ["2026.10.24-19.48"], "multi": false, "sure": true},
+  {"id": "owner64_0005", "text": "come, come, come", "maj": "FOLLOW_ME", "count": 1, "said": ["2026.10.24-19.48"], "multi": false, "sure": true},
+  {"id": "owner64_0006", "text": "what's this teleport? go there", "maj": "MOVE_TO", "count": 1, "said": ["2026.10.24-19.49"], "multi": false, "sure": true},
+  {"id": "owner64_0007", "text": "come to me", "maj": "FOLLOW_ME", "count": 2, "said": ["2026.10.24-19.49", "2026.10.24-19.49"], "multi": false, "sure": true},
+  {"id": "owner64_0008", "text": "can you take that?", "maj": "COLLECT", "count": 1, "said": ["2026.10.24-19.53"], "multi": false, "sure": true},
+  {"id": "owner64_0009", "text": "grab that box", "maj": "COLLECT", "count": 1, "said": ["2026.10.24-19.53"], "multi": false, "sure": true},
+  {"id": "owner64_0010", "text": "pick up", "maj": "COLLECT", "count": 1, "said": ["2026.10.24-22.50"], "multi": false, "sure": true},
+  {"id": "owner64_0011", "text": "take the that box", "maj": "DELIVER", "count": 1, "said": ["2026.10.25-00.07"], "multi": false, "sure": true},
+  {"id": "owner64_0012", "text": "take that box, bring me to me", "maj": "DELIVER", "count": 1, "said": ["2026.10.25-00.07"], "multi": false, "sure": true},
+  {"id": "owner64_0013", "text": "just take that box", "maj": "DELIVER", "count": 1, "said": ["2026.10.25-00.08"], "multi": false, "sure": true},
+  {"id": "owner64_0014", "text": "bring me that box", "maj": "DELIVER", "count": 1, "said": ["2026.10.25-00.08"], "multi": false, "sure": true},
+  {"id": "owner64_0015", "text": "once more", "maj": "REPEAT", "count": 1, "said": ["2026.10.25-00.08"], "multi": false, "sure": true},
+  {"id": "owner64_0016", "text": "try again", "maj": "REPEAT", "count": 1, "said": ["2026.10.25-00.08"], "multi": false, "sure": true},
+  {"id": "owner64_0017", "text": "okay, put it back here", "maj": "DELIVER", "count": 1, "said": ["2026.10.25-00.08"], "multi": false, "sure": true},
+  {"id": "owner64_0018", "text": "put it back", "maj": "DELIVER", "count": 2, "said": ["2026.10.25-00.08", "2026.10.25-00.08"], "multi": false, "sure": true},
+  {"id": "owner64_0019", "text": "put the screen back", "maj": "DELIVER", "count": 1, "said": ["2026.10.25-00.08"], "multi": false, "sure": false},
+  {"id": "owner64_0020", "text": "put this crate back", "maj": "DELIVER", "count": 1, "said": ["2026.10.25-00.08"], "multi": false, "sure": true},
+  {"id": "owner64_0021", "text": "take take this box and put it there", "maj": "DELIVER", "count": 1, "said": ["2026.10.25-00.09"], "multi": false, "sure": true},
+  {"id": "owner64_0022", "text": "move it here", "maj": "DELIVER", "count": 1, "said": ["2026.10.25-00.09"], "multi": false, "sure": true},
+  {"id": "owner64_0023", "text": "take that box", "maj": "DELIVER", "count": 1, "said": ["2026.10.25-00.09"], "multi": false, "sure": true},
+  {"id": "owner64_0024", "text": "take that box and move it here", "maj": "DELIVER", "count": 1, "said": ["2026.10.25-00.09"], "multi": true, "sure": true}
+ ]
+}

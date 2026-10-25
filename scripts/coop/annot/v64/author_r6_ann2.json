@@ -1,0 +1,848 @@
+{
+ "r6v64_000": {
+  "intent": "MELEE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_001": {
+  "intent": "MELEE",
+  "ok": [],
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_002": {
+  "intent": "MELEE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_003": {
+  "intent": "MELEE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": "south",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_004": {
+  "intent": "MELEE",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_005": {
+  "intent": "MELEE",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_006": {
+  "intent": "MELEE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_007": {
+  "intent": "HOLSTER",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_008": {
+  "intent": "HOLSTER",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_009": {
+  "intent": "HOLSTER",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_010": {
+  "intent": "HOLSTER",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_011": {
+  "intent": "HOLSTER",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_012": {
+  "intent": "HOLSTER",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_013": {
+  "intent": "HOLSTER",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_014": {
+  "intent": "STATUS_REPORT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_015": {
+  "intent": "STATUS_REPORT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_016": {
+  "intent": "STATUS_REPORT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_017": {
+  "intent": "STATUS_REPORT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_018": {
+  "intent": "STATUS_REPORT",
+  "ok": [
+   "BODY_STATE"
+  ],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_019": {
+  "intent": "STATUS_REPORT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_020": {
+  "intent": "STATUS_REPORT",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "floor_2",
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_021": {
+  "intent": "BODY_STATE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_022": {
+  "intent": "BODY_STATE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_023": {
+  "intent": "BODY_STATE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_024": {
+  "intent": "BODY_STATE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_025": {
+  "intent": "BODY_STATE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_026": {
+  "intent": "BODY_STATE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_027": {
+  "intent": "BODY_STATE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_028": {
+  "intent": "PUSH",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": "north",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_029": {
+  "intent": "PUSH",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": "big",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_030": {
+  "intent": "PUSH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": "cardboard",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_031": {
+  "intent": "PUSH",
+  "ok": [],
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_032": {
+  "intent": "PUSH",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "window",
+   "qualifier": "east",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_033": {
+  "intent": "PUSH",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": "left",
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_034": {
+  "intent": "PUSH",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": "small",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_035": {
+  "intent": "ROLL",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "door",
+   "qualifier": "main",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_036": {
+  "intent": "ROLL",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "spool",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_037": {
+  "intent": "ROLL",
+  "ok": [],
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": "spool",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_038": {
+  "intent": "ROLL",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "spool",
+   "qualifier": "big",
+   "zone": null,
+   "direction": "right",
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_039": {
+  "intent": "ROLL",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "door",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": true
+  },
+  "item": null
+ },
+ "r6v64_040": {
+  "intent": "ROLL",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "stairs",
+   "qualifier": "yellow",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_041": {
+  "intent": "ROLL",
+  "ok": [],
+  "timing": "on_signal",
+  "reference": "this",
+  "target": {
+   "object": "car",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_042": {
+  "intent": "DROP",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_043": {
+  "intent": "DROP",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_044": {
+  "intent": "DROP",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_045": {
+  "intent": "DROP",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": "cardboard",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_046": {
+  "intent": "DROP",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_047": {
+  "intent": "DROP",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": "big",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_048": {
+  "intent": "DROP",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_049": {
+  "intent": "MOVE_TO",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": "forward",
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_050": {
+  "intent": "GO_NOW",
+  "ok": [
+   "MOVE_TO"
+  ],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_051": {
+  "intent": "JUMP",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": "basement",
+   "direction": "down",
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_052": {
+  "intent": "ATTACK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_053": {
+  "intent": "SWITCH_WEAPON",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_054": {
+  "intent": "SEE_THING",
+  "ok": [],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": "big",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_055": {
+  "intent": "DELIVER",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "barn",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": "cardboard box"
+ },
+ "r6v64_056": {
+  "intent": "COLLECT",
+  "ok": [
+   "DELIVER"
+  ],
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": "crate"
+ },
+ "r6v64_057": {
+  "intent": "SMALL_TALK",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_058": {
+  "intent": "NONE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ },
+ "r6v64_059": {
+  "intent": "HOLD_FIRE",
+  "ok": [],
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null
+ }
+}

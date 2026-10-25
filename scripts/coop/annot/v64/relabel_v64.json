@@ -1,0 +1,28 @@
+{
+ "note": "make_relabel_v64.py: earlier lines the v64 intents take, read one by one",
+ "lines": {
+  "r6v62_002": {
+   "text": "You seeing anything on your end?",
+   "from": "SEE_THING",
+   "to": "STATUS_REPORT",
+   "also": [
+    "SEE_THING"
+   ]
+  },
+  "sttv62_012": {
+   "text": "hey buddy how's it going",
+   "from": "SMALL_TALK",
+   "to": "STATUS_REPORT",
+   "also": []
+  },
+  "sttv62_019": {
+   "text": "you still there um you okay",
+   "from": "SMALL_TALK",
+   "to": "BODY_STATE",
+   "also": [
+    "SMALL_TALK"
+   ]
+  }
+ },
+ "owner": {}
+}

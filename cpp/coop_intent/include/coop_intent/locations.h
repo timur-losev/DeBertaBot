@@ -129,6 +129,7 @@ public:
     const std::string& ObjectId(int i) const { return objects_[static_cast<size_t>(i)]; }
     const std::vector<std::string>& ObjectIds() const { return objects_; }   // the vocabulary's objects (the game's "ready" lists them)
     const std::string& QualifierId(int i) const { return qualifiers_[static_cast<size_t>(i)]; }
+    const std::vector<std::string>& QualifierIds() const { return qualifiers_; }   // ... and its qualifiers (bot v64: big, small, cardboard)
     const std::string& ZoneId(int i) const { return zones_[static_cast<size_t>(i)]; }
     // the index of an id, -1 if the vocabulary has none (world.h: the game's entities carry these ids)
     int ObjectIndex(const std::string& id) const { return Find(objects_, id); }

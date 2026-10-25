@@ -1,0 +1,30 @@
+[
+ {
+  "id": "csv54_042",
+  "text": "don't crouch bro, you can't see anything over the box like that",
+  "from": "WAIT",
+  "guess": "STATUS_REPORT",
+  "kind": "line"
+ },
+ {
+  "id": "r6v62_002",
+  "text": "You seeing anything on your end?",
+  "from": "SEE_THING",
+  "guess": "STATUS_REPORT",
+  "kind": "line"
+ },
+ {
+  "id": "sttv62_012",
+  "text": "hey buddy how's it going",
+  "from": "SMALL_TALK",
+  "guess": "STATUS_REPORT",
+  "kind": "line"
+ },
+ {
+  "id": "sttv62_019",
+  "text": "you still there um you okay",
+  "from": "SMALL_TALK",
+  "guess": "BODY_STATE",
+  "kind": "line"
+ }
+]

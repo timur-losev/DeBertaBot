@@ -1,0 +1,962 @@
+[
+ {
+  "id": "csv64_000",
+  "text": "Hey, that guy's being a real pain, go punch his lights out for me.",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "csv64_001",
+  "text": "Wait for my signal, then sneak up and knock him out with the butt of your rifle.",
+  "intent": "MELEE",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "csv64_002",
+  "text": "Okay buddy, no need to waste bullets, just walk over and smack that dude around a bit.",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "csv64_003",
+  "text": "Uh, the guy standing by my pin? Go rough him up a little.",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "csv64_004",
+  "text": "Honestly, just beat the living daylights out of him, I don't care how.",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "csv64_005",
+  "text": "You wanna show this guy some kung fu? Go hit him with your fists.",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "csv64_006",
+  "text": "Save your ammo and just melee him, okay? Bash him with your gun if you have to.",
+  "intent": "MELEE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "melee"
+ },
+ {
+  "id": "csv64_007",
+  "text": "Alright, I think we're safe for now, you can put your gun away.",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "csv64_008",
+  "text": "Hey, could you sling that rifle? You're freaking out the chickens.",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "csv64_009",
+  "text": "Stow your weapon for a bit, we're just doing some gardening.",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "csv64_010",
+  "text": "Go hands free for me, buddy, I need you empty-handed for this.",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "csv64_011",
+  "text": "Holster it, man, nobody's shooting at us anymore.",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "csv64_012",
+  "text": "Can you just put the pistol away? It's making me kind of nervous.",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "csv64_013",
+  "text": "Let's go unarmed for a while, no guns out, okay?",
+  "intent": "HOLSTER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "holster"
+ },
+ {
+  "id": "csv64_014",
+  "text": "Hey, what's it looking like on your end?",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "csv64_015",
+  "text": "Give me a quick sitrep when you get a sec.",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "csv64_016",
+  "text": "So, uh, what have you got? Anything interesting around you?",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "csv64_017",
+  "text": "How are you holding up, buddy? Talk me through it.",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "csv64_018",
+  "text": "Report in, what's around you right now?",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "csv64_019",
+  "text": "What can you see from where you're standing?",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "csv64_020",
+  "text": "Anything to report? Just gimme the situation real quick.",
+  "intent": "STATUS_REPORT",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "status"
+ },
+ {
+  "id": "csv64_021",
+  "text": "You doing alright? You took a couple of hits back there.",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "csv64_022",
+  "text": "Hey, how many rounds have you got left in that thing?",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "csv64_023",
+  "text": "Is it super hot where you are, or is that just me?",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "csv64_024",
+  "text": "Dude, can you even breathe in all that gas?",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "csv64_025",
+  "text": "Are you freezing out there too, buddy?",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "csv64_026",
+  "text": "How's your health looking? Do you need a medkit or are you fine?",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "csv64_027",
+  "text": "Are you running low on ammo, or are you still good?",
+  "intent": "BODY_STATE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "body"
+ },
+ {
+  "id": "csv64_028",
+  "text": "Hey, can you push that big box over by the wall?",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": "big",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "csv64_029",
+  "text": "Shove the cardboard box out of the way, it's blocking the door.",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": "cardboard",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "csv64_030",
+  "text": "Could you slide this crate a little to the left for me?",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": "left",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "csv64_031",
+  "text": "Uh, push the box at my pin over toward the north door.",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "csv64_032",
+  "text": "Just nudge that crate forward a bit, don't pick it up.",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": "forward",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "csv64_033",
+  "text": "When I say go, shove the big box toward the east door so we can hide behind it.",
+  "intent": "PUSH",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": "big",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "csv64_034",
+  "text": "Move this box out of my way, would ya? Just push it aside.",
+  "intent": "PUSH",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "push"
+ },
+ {
+  "id": "csv64_035",
+  "text": "Roll that cable spool over there, will you?",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "spool",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "csv64_036",
+  "text": "On three, roll the reel over to the main door.",
+  "intent": "ROLL",
+  "timing": "on_signal",
+  "reference": "none",
+  "target": {
+   "object": "spool",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "csv64_037",
+  "text": "Roll the spool on my pin out of the way, it's right in my path.",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "pin",
+  "target": {
+   "object": "spool",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "csv64_038",
+  "text": "Buddy, could you roll this big drum of cable to the right a bit?",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "spool",
+   "qualifier": "big",
+   "zone": null,
+   "direction": "right",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "csv64_039",
+  "text": "Roll it out of the way, the spool I mean, not the box.",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "spool",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "csv64_040",
+  "text": "Can you roll the cable reel down the ramp? Gently, please.",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "spool",
+   "qualifier": null,
+   "zone": null,
+   "direction": "down",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "csv64_041",
+  "text": "Hey, that spool's blocking the stairs, roll it somewhere else.",
+  "intent": "ROLL",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "spool",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "roll"
+ },
+ {
+  "id": "csv64_042",
+  "text": "Okay, you can put it down now.",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "csv64_043",
+  "text": "Drop the box right there, that's fine.",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "csv64_044",
+  "text": "Set the cardboard box down, we'll come back for it later.",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "crate",
+   "qualifier": "cardboard",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "csv64_045",
+  "text": "Just let go of that crate, we've got company!",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "csv64_046",
+  "text": "Leave it here, buddy, your arms must be tired by now.",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "csv64_047",
+  "text": "Put that big box down for a second, would you?",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": "crate",
+   "qualifier": "big",
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "csv64_048",
+  "text": "Drop whatever you're carrying, like, right now!",
+  "intent": "DROP",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "drop"
+ },
+ {
+  "id": "csv64_049",
+  "text": "Alright, let's roll, everyone's ready.",
+  "intent": "GO_NOW",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "csv64_050",
+  "text": "Push forward to the next corner, I'm right behind you.",
+  "intent": "MOVE_TO",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": "forward",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "csv64_051",
+  "text": "Drop down into the pit there, it's a shortcut.",
+  "intent": "JUMP",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": "down",
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "csv64_052",
+  "text": "Drop that guy before he reaches the barn!",
+  "intent": "ATTACK",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "csv64_053",
+  "text": "Okay, get your gun back out, we've got company.",
+  "intent": "SWITCH_WEAPON",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "csv64_054",
+  "text": "Can you see the cable spool from where you are?",
+  "intent": "SEE_THING",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "spool",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "csv64_055",
+  "text": "Carry the cardboard box over to the greenhouse, please.",
+  "intent": "DELIVER",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": "greenhouse",
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": "cardboard box",
+  "kind": "boundary"
+ },
+ {
+  "id": "csv64_056",
+  "text": "Pick up that crate for me, would you?",
+  "intent": "COLLECT",
+  "timing": "now",
+  "reference": "this",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": "crate",
+  "kind": "boundary"
+ },
+ {
+  "id": "csv64_057",
+  "text": "Ugh, I'm freezing, this map is brutal.",
+  "intent": "NONE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "csv64_058",
+  "text": "Haha, you really love those boxes, huh? You're a weird little bot.",
+  "intent": "SMALL_TALK",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ },
+ {
+  "id": "csv64_059",
+  "text": "Hey, lower your weapon, those are friendlies!",
+  "intent": "HOLD_FIRE",
+  "timing": "now",
+  "reference": "none",
+  "target": {
+   "object": null,
+   "qualifier": null,
+   "zone": null,
+   "direction": null,
+   "unknown_modifier": false
+  },
+  "item": null,
+  "kind": "boundary"
+ }
+]

@@ -1,0 +1,84 @@
+{
+ "base": "Qwen/Qwen3-1.7B",
+ "r": 16,
+ "alpha": 32,
+ "dropout": 0.05,
+ "lr": 0.0002,
+ "epochs": 3,
+ "system": "You are the AI teammate in a tactical co-op shooter. You get the player's line (\"now\") as a speech-to-text transcript that may be garbled, and sometimes what was said before it. The player speaks English, Russian or Spanish. Write what the player orders now in English, as orders that stand by themselves, one per line, in the order you must carry them out. An English line that gives one order or none is written back as it is; a Russian or Spanish one is written in English.",
+ "rows": {
+  "en": {
+   "singles": 14406,
+   "composed": 3000,
+   "teacher": 870,
+   "teacher_heard": 2340,
+   "context": 852,
+   "context_heard": 1816
+  },
+  "ru": {
+   "singles": 2435,
+   "composed": 1200,
+   "chains": 870,
+   "context": 1704
+  },
+  "es": {
+   "singles": 2435,
+   "composed": 1200,
+   "chains": 870,
+   "context": 1704
+  },
+  "en_rows": 27211,
+  "ml_rows": 12418,
+  "singles_left_out": 199,
+  "rows_left_out": 358,
+  "pairs": {
+   "en": {
+    "pool": 2247,
+    "held": 422,
+    "pairs": 2500,
+    "test": 150
+   },
+   "ru": {
+    "pool": 766,
+    "held": 141,
+    "pairs": 2500,
+    "test": 150
+   },
+   "es": {
+    "pool": 766,
+    "held": 141,
+    "pairs": 2500,
+    "test": 150
+   }
+  },
+  "v64": {
+   "en": {
+    "singles": 858,
+    "composed": 0,
+    "pairs": 700,
+    "held_out": 109
+   },
+   "ru": {
+    "singles": 1716,
+    "composed": 900,
+    "pairs": 700,
+    "held_out": 109
+   },
+   "es": {
+    "singles": 1716,
+    "composed": 900,
+    "pairs": 700,
+    "held_out": 109
+   },
+   "hand": {
+    "items": 79,
+    "rows": 632
+   }
+  },
+  "v63_rows": 46771,
+  "v64_rows": 8822
+ },
+ "n_rows": 55593,
+ "train_s": 15921,
+ "gpu_gb": 4.3
+}
