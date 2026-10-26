@@ -1,0 +1,80 @@
+(read by bot v65)                                v64     v65
+v64 held-out en (109)                           98.2    96.3
+v64 held-out ru (109)                           84.4    84.4
+v64 held-out es (109)                           81.7    83.5
+owner v64 hand rows (trained on) (79)          100.0   100.0
+dev_ru (41)                                     95.1    95.1
+blind2_ru (150)                                 84.7    82.7
+ctx_ru (150)                                    81.3    81.3
+dev_es (41)                                     95.1    92.7
+blind2_es (150)                                 78.0    83.3
+ctx_es (150)                                    82.0    82.7
+pairs en (150)                                  99.3    97.3
+pairs ru (150)                                  98.7   100.0
+pairs es (150)                                  98.7    99.3
+en blind2 (decoder alone) (150)                 89.3    88.0
+en blind2_heard3 (decoder alone) (300)          66.3    66.3
+en ctx (decoder alone) (150)                    88.0    90.0
+en ctx_heard3 (decoder alone) (299)             71.2    72.9
+
+right with v64, wrong with v65: 98
+  v64 held-out en        drop down here drop into the pit             -> drop down here | drop into the pit
+  v64 held-out en        lift the crate and carry it over there       -> lift the crate | carry it over there
+  v64 held-out ru        what a clutch, leather                       -> what a clutch, trash
+  v64 held-out ru        yeah man i cleared that room like a pro      -> yeah yeah, that room was clean as a prof
+  v64 held-out ru        nice one so now you watch the east door      -> nice one | now watch the east door
+  v64 held-out ru        whoa whoa you actually do love those boxes r -> ha ha you actually do like those boxes do yo
+  v64 held-out ru        lift up the crate and carry it over there    -> lift up the crate | haul it over there
+  v64 held-out ru        can you see the guy behind the car           -> see the guy behind the car
+  v64 held-out ru        you're there, nice going                     -> on site, nice one
+  v64 held-out ru        whoop his ass                                -> eat him up
+  v64 held-out es        whoa, that was a beast of a move             -> damn clutch was better than that
+  v64 held-out es        you killed whole round bro respect           -> you roasted the whole round bro, kys
+  v64 held-out es        pick up that box                             -> push that box up
+  v64 held-out es        can you see the guy behind the car           -> see the guy behind the car
+  v64 held-out es        sup                                          -> hey how's it going
+  v64 held-out es        you killed him                               -> you pinned him down
+  v64 held-out es        go kick his ass                              -> go break it
+  v64 held-out es        slide it over there                          -> drag it over there
+  v64 held-out es        set that box down                            -> push down that box
+  blind2_ru              they just flashed main and crossed through t -> flash main | push thru the smoke
+  blind2_ru              you watch the other door while I take this o -> you watch the other door | i take this one |
+  blind2_ru              send your drone in and report back           -> send your drone in | tell me what's over the
+  blind2_ru              smoke the door | hold the door               -> hold the door
+  blind2_ru              go down on your rope to the south side | put -> go down on the south side | put a charge on 
+  blind2_ru              Open the door quietly. | Frag the room.      -> Open the hatch. | Frag the room.
+  blind2_ru              kill them bro, get them out                  -> kill them bro | get them
+  blind2_ru              send the drone upstairs | come back          -> send the drone upstairs | head back down
+  blind2_ru              smoke the door | go in after I call it       -> push in
+  blind2_ru              you hatch the hatch uh no hatch is closed so -> smoke the hatch | jump down | clear the room
+  blind2_ru              open the door | flash the door               -> open the door | flash the room | push into t
+  blind2_ru              you breach the wall | flash inside the wall  -> tear down the wall | flash inside the wall |
+  ctx_ru                 Suppress the blue stairs.                    -> Lay down blue stairs.
+  ctx_ru                 frag the basement                            -> yeah yeah
+  ctx_ru                 Flash the south door. | Push in through the  -> Flash the south door. | Go in through the so
+  ctx_ru                 molly another white stairs                   -> one more
+  ctx_ru                 flash north window again                     -> again again
+  ctx_ru                 Rappel to the east window.                   -> yes yes
+  ctx_ru                 uh however you want                          -> uh how do you want to look
+  dev_es                 go up | should the car                       -> get in the car | should the car
+  blind2_es              flank through the basement | keep firing at  -> Flank through the basement. | Lay down fire 
+  blind2_es              smoke the door | hold the door               -> hold the door
+  blind2_es              Get down and take cover, they're spamming us -> Get low. | Get behind cover.
+  blind2_es              hold fire | go to my pin | look at the main  -> do not fire | you go at my mark | you look a
+  blind2_es              go stick it, i'll watch the door             -> i'm watching the door
+  blind2_es              Lay down suppressive fire on the main door a -> suppress the main door | keep shooting
+  blind2_es              you throw the smoke | you flash the room | y -> you throw smoke | you throw flash | you go i
+  blind2_es              you breach this wall | throw the grenade ins -> you break this wall | throw grenade inside t
+  blind2_es              uh jump over the sofa | hide behind the tabl -> uh jump over the sofa and hide behind the ta
+  ctx_es                 I'll take the east window myself.            -> I'll take the east window.
+  ctx_es                 frag the basement                            -> Yes.
+  ctx_es                 Pop a flash through the south door. | Push i -> Throw a flash in the south door. | Go in thr
+  ctx_es                 molly the basement                           -> nah don't flash | molly the basement
+  ctx_es                 throw the grenade on the red stairs | come b -> throw the grenade on the red stairs | uh go 
+  ctx_es                 go prone                                     -> sim dub sim dub
+  ctx_es                 Rappel to the east window.                   -> rappel to the east window | confirm
+  pairs en               harvest the turnips | jumped on | switch wea -> harvest the turnips | jumped on and switch w
+  pairs en               check | move down here | cover another windo -> check | down here | cover another window
+  pairs en               duck | get back to your spot                 -> Duck down and get back to your spot.
+  en blind2 (decoder alo Drop through the hatch. | Clear the room bel -> Drop through the hatch and clear the room be
+  en blind2 (decoder alo check the corner | defuse the bomb           -> defuse the bomb | check the corner

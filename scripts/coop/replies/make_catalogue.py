@@ -126,6 +126,7 @@ GAME = [  # the game's own lines (Source/LyraGame/CoopBot)
     # 2026-10-25: jumping over a thing or onto it
     ("Too high to jump on.", "JUMP onto a thing higher than the bot's jump"), ("Too high to jump over.", "JUMP over it: the same"),
     ("Nowhere to land over there.", "JUMP over a thing with no floor beyond it"), ("Didn't make it.", "JUMP over / onto: it landed short"),
+    ("I can't get down from here.", "JUMP off what it stands on: no floor below its edges"),
 ]
 # the brat habit (coop_cli.cpp kBroOff, kBroRelapse; bro.h): the bot agrees to stop calling the player "bro", and the brat
 # persona slips 30 s later

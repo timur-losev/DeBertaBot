@@ -1602,6 +1602,10 @@
    "source": "game: JUMP over / onto: it landed short"
   },
   {
+   "en": "I can't get down from here.",
+   "source": "game: JUMP off what it stands on: no floor below its edges"
+  },
+  {
    "en": "Okay, I won't anymore.",
    "source": "coop_cli.cpp bro habit: the player told it to stop saying 'bro'"
   },

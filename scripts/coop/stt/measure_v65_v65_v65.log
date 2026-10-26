@@ -1,0 +1,17 @@
+bot v65, decoder v65
+
+owner65: 33/33 = 100.0%   (en 33/33; English lines the scene sent to the decoder: 0)
+
+hand65: 70/70 = 100.0%   (en 4/4, es 5/5, ru 61/61; English lines the scene sent to the decoder: 0)
+
+scene65: 140/150 = 93.3%   (en 55/60, es 27/30, ru 58/60; English lines the scene sent to the decoder: 8)
+  NO  Подбери вон ту коробочку.                    -> pick that box up over there           read DELIVER        want COLLECT
+  NO  Стой.                                        -> stand                                 read HOLD_POSITION  want WAIT
+  NO  Get in, get in!                                                                       read MOVE_TO        want GET_IN
+  NO  Get down, get down!                          -> get down, get down!                   read TAKE_COVER     want JUMP
+  NO  Again.                                                                                read REPEAT         want PUSH
+  NO  Do it again.                                                                          read REPEAT         want ROLL
+  NO  Again.                                                                                read REPEAT         want JUMP
+  NO  ¡Al suelo!                                   -> hit the floor                         read PRONE          want TAKE_COVER
+  NO  ¡Cuerpo a tierra, que nos disparan!          -> Go prone, we're getting shot down!    read PRONE          want TAKE_COVER
+  NO  Quieto ahí.                                  -> stay put                              read HOLD_POSITION  want WAIT

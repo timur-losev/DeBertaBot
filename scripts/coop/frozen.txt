@@ -1098,3 +1098,18 @@ db7fb399901dedee4acceb12fb6f39235be88822e45ae6d5aae97811435b8b0f *annot/v64/auth
 # v64 fix (2026-10-25, after the v64 trainings, which do not read the place vocabulary): locations_v64.json was refused by the place matcher (qualifiers big, small, cardboard allowed by no object, no 'lone'); crate now takes all three, spool big and small, a lone cardboard is a crate. No test line changes.
 b4e5ac679568d86fab09f5a74d989af04ee7ed6f3a8a63bd23ab621e72cd5b8c *locations_v64.json
 22287229becafedba9a5e4ac840123ee518f511d60ad77452ba984d09ea4cd4b *make_spec_v64.py
+# v65 (work machine, 2026-10-25), before any v65 model: no new intent; seeds of what the v64 bot got wrong in the owner's play (+109, make_spec_v65.py: hide weapon, take = keep, put it there, throw it away, getting off and jumping on or over, don't call me bro), 5 DELIVER seeds read as COLLECT, 3 owner v64 lines read as COLLECT (annot/v65/relabel_v65.json); owner_lines_v65.json (33 English lines labelled by hand from the talk); stt/chains2/ml_v65/hand_v65.json (70 rows with the owner's intents); the plan stt/chains2/ml_v65/PLAN_v65.md. Seeds are not blind; the owner's lines and the hand rows are measured as before (owner lines out of fold).
+2026-10-25T19:25:32+01:00
+8d3ca318b190f203b500fd02f4bbedaecf85d7b0d0516eed71782fe7e1eaedd8 *seed_commands_v65.json
+1e729d280b736bc1d07cf0c863c27823c465646e8b82c2aad4d7b465893b5e5e *make_spec_v65.py
+979449cc88a98f4a54ca87709af1cdc54bb214fbcbfaf584991f839e9b70a736 *owner_lines_v65.json
+1b3ac585d2f826f77722956e92af5150405b851094cfa0b15c51ab1e5b2c1594 *annot/v65/relabel_v65.json
+0fe98f6458336caf6ac9f77b576081d552fa18daa44fce796994a8f036fdb78c *stt/chains2/ml_v65/hand_v65.json
+# v65 decoder (2026-10-25, before decoder v65 was trained): stt/chains2/ml_v65/scene_test.json, the held-out scene test (150 lines ru/en/es with a scene and the order it calls for), written blind by an agent that saw no training row; stt/chains9_v65.py, the scene rows and the neutral scenes on v64's rows (rows equal to a test item in line and scene are dropped, 12); hand_v65.json again: ten getting-off rows now answer "climb down ..." (the classifier reads "get down" as TAKE_COVER), intents unchanged.
+2026-10-25T19:39:14+01:00
+6abc0b73aba48e6f5edc84ea49708fd02eb13f7ddc486f2d833a880c1f95744b *stt/chains2/ml_v65/scene_test.json
+35ba976e94b9432cb639a1e0cdc6b72b6d54958f3c770bd26090fe0686ef4807 *stt/chains9_v65.py
+077a36e296a262c5b26bb9921658692758f08bf5425772e8d1b8ff06c114732c *stt/chains2/ml_v65/hand_v65.json
+# v65 decoder, after training (2026-10-26): stt/chains9_v65.py changed only outside the rows (export(): 40 scene turns for the chain tests; scene_parts()); the rows trained on are those of the 19:39 entry. No test item changed.
+2026-10-26T01:46:35+01:00
+43d925d7b098e461257ec2b13c827998bb79f5e4fa25a5e95c37510b4eb5558d *stt/chains9_v65.py

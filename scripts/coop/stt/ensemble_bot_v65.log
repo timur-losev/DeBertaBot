@@ -1,0 +1,31 @@
+wrote G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-ens3-v65\cpp: 3 ONNX model(s), vocab 128000 pieces, golden 5448 lines
+gate tests: 5855 rows, the two gates pick different intents on 295
+decide tests, actions per gate: {'top': ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait'], 'family': ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait']} (242 steps in 6 conversations)
+dialogue actions: ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait'] 
+location tests: 53815 lines, 41647 name a place, a direction or a pointer, 14440 of them a direction, 14260 a pointer (3927 a pin; in 8684 a pointer is a target of its own)
+  rule set v5: 14464 of the lines are the pointer batch's (16000 generated from 108 pointer patterns among the direction patterns, and 65 written out; without the ones generated twice or already there)
+item tests: 92070 lines and intents, 12774 with an item (8370 lines)
+tokenizer tests: 13617 lines (5385 with [UNK], 812 cut at 64 tokens, slots on_signal/other/negation on [1986, 767, 779])
+world tests: 1208 scenarios, 10015 steps; actions act 2360, answer 610, ask 1954, execute 86, go 81, ignore 386, negated 112, queued 464, refused 233, resolved 908, say_again 2649, wait 172
+  groundings: missing/None 2072, resolved/pin 608, resolved/gaze 550, resolved/direction 437, resolved/pin_default 386, resolved/here 281, ambiguous/distance 276, resolved/only 251, missing/pin 225, missing/zone 128, missing/this 78, ambiguous/unknown_modifier 62, resolved/inside 57, resolved/answer 51, resolved/memory 50, resolved/zone 40, resolved/nearest 20
+  priors applied on 10015 steps; 18 worlds to refuse
+  the short context: a bare no stopped the bot 85, corrections and fragments 250, repeats 46, the standing pin as the place not said 328; 257 scenarios without the game's clock
+  290 scenarios in a world without named places; 127 orders at "here"; 537 questions answered by pointing; 68 steps with a queued order at "here"
+  lines of several orders: 656 further orders of a line, 223 of them given the place of the order before them; "the other" in answer to "Which ...?" 79 times, 22 of them settled by it and 27 answered with the next one
+v65 ensemble, build_v65.py out-of-fold (three seeds): gate family, threshold 0.66
+  VCTK pool B, r6+cs       n=1370  near 78.5  wrong family 5.7%  criterion 67.1
+  typed, all lines         n=2055  near 93.5  wrong family 1.8%  criterion 89.9
+  typed, v64 lines         n= 180  near 93.3  wrong family 0.6%  criterion 92.2
+  VCTK pool B, v64 lines   n= 120  near 74.2  wrong family 3.3%  criterion 67.5
+  typed, v62 lines         n= 117  near 86.3  wrong family 3.4%  criterion 79.5
+  VCTK pool B, v62 lines   n=  79  near 72.2  wrong family 3.8%  criterion 64.6
+  typed, v60 lines         n= 180  near 98.3  wrong family 0.0%  criterion 98.3
+  VCTK pool B, v60 lines   n= 120  near 81.7  wrong family 3.3%  criterion 75.0
+  typed, v1-v58 lines      n=1578  near 93.5  wrong family 2.0%  criterion 89.5
+  VCTK pool B, v1-v58      n=1051  near 79.1  wrong family 6.4%  criterion 66.3
+  Russian voices, r6+cs    n=1170  near 71.5  wrong family 8.4%  criterion 54.7
+  German voices, r6+cs     n=1170  near 82.5  wrong family 6.5%  criterion 69.5
+  owner, per line          n= 578  right 87.0  say again / ignored 8.3%  wrong family 3.5%
+  owner, per time said     n= 977  right 91.4  say again / ignored 5.0%  wrong family 2.8%
+  owner v64 lines (boxes)  n=  24  right 87.5  say again / ignored 4.2%  wrong family 8.3%
+  owner v65 lines          n=  33  right 87.9  say again / ignored 9.1%  wrong family 3.0%

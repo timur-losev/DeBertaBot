@@ -1,0 +1,1247 @@
+{
+ "_note": "Written blind by Claude (Opus 5.5) on 2026-10-25 from the owner's scene rules only, without reading any training data, templates or other test sets; held out, never for training.",
+ "items": [
+  {
+   "id": "scene65_001",
+   "lang": "ru",
+   "before": [],
+   "scene": "a car 6 m away; last thing: cardboard box, 3 m",
+   "text": "Запрыгни.",
+   "label": "GET_IN"
+  },
+  {
+   "id": "scene65_002",
+   "lang": "ru",
+   "before": [],
+   "scene": "a car 12 m away",
+   "text": "Ну давай, запрыгивай.",
+   "label": "GET_IN"
+  },
+  {
+   "id": "scene65_003",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; a car 4 m away; last thing: cardboard box, 0 m",
+   "text": "Брат, прыгай в тачку.",
+   "label": "GET_IN"
+  },
+  {
+   "id": "scene65_004",
+   "lang": "ru",
+   "before": [],
+   "scene": "a car 9 m away; last thing: cable spool, 1 m",
+   "text": "Запрыгни на катушку.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_005",
+   "lang": "ru",
+   "before": [],
+   "scene": "a car 15 m away; last thing: big cardboard box, 2 m",
+   "text": "Запрыгни на неё.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_006",
+   "lang": "ru",
+   "before": [],
+   "scene": "a car 20 m away",
+   "text": "Залезай давай, поехали.",
+   "label": "GET_IN"
+  },
+  {
+   "id": "scene65_007",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 2 m",
+   "text": "Запрыгни.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_008",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: big cardboard box, 1 m",
+   "text": "Давай запрыгивай.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_009",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near",
+   "text": "Запрыгни туда.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_010",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 4 m",
+   "text": "Ну запрыгни уже, брат.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_011",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 1 m",
+   "text": "Запрыгни в машину.",
+   "label": "GET_IN"
+  },
+  {
+   "id": "scene65_012",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Запрыгни на ту большую коробку.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_013",
+   "lang": "ru",
+   "before": [],
+   "scene": "standing on a cable spool; no car near; last thing: cable spool, 0 m",
+   "text": "Слезь.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_014",
+   "lang": "ru",
+   "before": [],
+   "scene": "standing on a big cardboard box; no car near; last thing: big cardboard box, 0 m",
+   "text": "Спрыгни оттуда.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_015",
+   "lang": "ru",
+   "before": [],
+   "scene": "standing on a cardboard box; a car 7 m away; last thing: cardboard box, 0 m",
+   "text": "Слезай с коробки.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_016",
+   "lang": "ru",
+   "before": [],
+   "scene": "standing on a cable spool; a car 10 m away; last thing: cable spool, 0 m",
+   "text": "Ну всё, спускайся.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_017",
+   "lang": "ru",
+   "before": [],
+   "scene": "standing on a big cardboard box; no car near; last thing: big cardboard box, 0 m",
+   "text": "Брат, слезь с неё.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_018",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; standing on a big cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Спрыгни вниз.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_019",
+   "lang": "ru",
+   "before": [
+    "Запрыгни на катушку."
+   ],
+   "scene": "standing on a cable spool; no car near; last thing: cable spool, 0 m",
+   "text": "Всё, слезай.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_020",
+   "lang": "ru",
+   "before": [],
+   "scene": "standing on a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Давай вниз.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_021",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 0 m",
+   "text": "Спрыгни.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_022",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near",
+   "text": "Слезь, говорю.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_023",
+   "lang": "ru",
+   "before": [],
+   "scene": "a car 8 m away; last thing: big cardboard box, 2 m",
+   "text": "Спрыгни вниз.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_024",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 3 m",
+   "text": "Ну слезай уже.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_025",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 2 m",
+   "text": "Подними её.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_026",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Поставь её туда.",
+   "label": "DELIVER"
+  },
+  {
+   "id": "scene65_027",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; a car 5 m away; last thing: cardboard box, 0 m",
+   "text": "Брось её.",
+   "label": "DROP"
+  },
+  {
+   "id": "scene65_028",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 1 m",
+   "text": "Кати её.",
+   "label": "ROLL"
+  },
+  {
+   "id": "scene65_029",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: big cardboard box, 1 m",
+   "text": "Толкай её.",
+   "label": "PUSH"
+  },
+  {
+   "id": "scene65_030",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 2 m",
+   "text": "Перепрыгни её.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_031",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: big cardboard box, 3 m",
+   "text": "А теперь запрыгни на неё.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_032",
+   "lang": "ru",
+   "before": [
+    "Толкни большую коробку."
+   ],
+   "scene": "no car near; last thing: big cardboard box, 1 m",
+   "text": "Ещё раз.",
+   "label": "PUSH"
+  },
+  {
+   "id": "scene65_033",
+   "lang": "ru",
+   "before": [
+    "Покати катушку."
+   ],
+   "scene": "no car near; last thing: cable spool, 2 m",
+   "text": "Давай ещё раз.",
+   "label": "ROLL"
+  },
+  {
+   "id": "scene65_034",
+   "lang": "ru",
+   "before": [
+    "Запрыгни на катушку.",
+    "Слезь."
+   ],
+   "scene": "no car near; last thing: cable spool, 0 m",
+   "text": "Ещё раз.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_035",
+   "lang": "ru",
+   "before": [
+    "Перепрыгни коробку."
+   ],
+   "scene": "no car near; last thing: cardboard box, 1 m",
+   "text": "Ещё раз перепрыгни.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_036",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Ну поставь её на землю.",
+   "label": "DROP"
+  },
+  {
+   "id": "scene65_037",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Отнеси её вон туда.",
+   "label": "DELIVER"
+  },
+  {
+   "id": "scene65_038",
+   "lang": "ru",
+   "before": [
+    "Возьми коробку.",
+    "Брось её."
+   ],
+   "scene": "no car near; last thing: cardboard box, 1 m",
+   "text": "Подними её обратно.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_039",
+   "lang": "ru",
+   "before": [
+    "Толкни ящик."
+   ],
+   "scene": "no car near; last thing: big cardboard box, 2 m",
+   "text": "Толкни его ещё.",
+   "label": "PUSH"
+  },
+  {
+   "id": "scene65_040",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Выкинь её нафиг.",
+   "label": "DROP"
+  },
+  {
+   "id": "scene65_041",
+   "lang": "ru",
+   "before": [
+    "Перепрыгни через катушку."
+   ],
+   "scene": "no car near; last thing: cable spool, 1 m",
+   "text": "Ну ещё разок.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_042",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; standing on a cable spool; no car near; last thing: cable spool, 0 m",
+   "text": "Брось её, брат.",
+   "label": "DROP"
+  },
+  {
+   "id": "scene65_043",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 3 m",
+   "text": "Возьми коробку.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_044",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near",
+   "text": "Принеси мне коробку.",
+   "label": "DELIVER"
+  },
+  {
+   "id": "scene65_045",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Отдай её мне.",
+   "label": "DELIVER"
+  },
+  {
+   "id": "scene65_046",
+   "lang": "ru",
+   "before": [],
+   "scene": "a car 6 m away; last thing: cardboard box, 1 m",
+   "text": "Держи эту коробку и не бросай.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_047",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 2 m",
+   "text": "Брат, хватай коробку.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_048",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 5 m",
+   "text": "Тащи коробку сюда.",
+   "label": "DELIVER"
+  },
+  {
+   "id": "scene65_049",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; a car 10 m away; last thing: cardboard box, 0 m",
+   "text": "Неси её к машине.",
+   "label": "DELIVER"
+  },
+  {
+   "id": "scene65_050",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near",
+   "text": "Подбери вон ту коробочку.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_051",
+   "lang": "ru",
+   "before": [],
+   "scene": "standing on a cable spool; no car near; last thing: cable spool, 0 m",
+   "text": "За мной.",
+   "label": "FOLLOW_ME"
+  },
+  {
+   "id": "scene65_052",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Перезарядись.",
+   "label": "RELOAD"
+  },
+  {
+   "id": "scene65_053",
+   "lang": "ru",
+   "before": [],
+   "scene": "a car 3 m away",
+   "text": "Убери оружие.",
+   "label": "HOLSTER"
+  },
+  {
+   "id": "scene65_054",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Стой.",
+   "label": "WAIT"
+  },
+  {
+   "id": "scene65_055",
+   "lang": "ru",
+   "before": [],
+   "scene": "standing on a big cardboard box; no car near; last thing: big cardboard box, 0 m",
+   "text": "Иди туда.",
+   "label": "MOVE_TO"
+  },
+  {
+   "id": "scene65_056",
+   "lang": "ru",
+   "before": [],
+   "scene": "a car 18 m away; last thing: cardboard box, 2 m",
+   "text": "Видишь вон то?",
+   "label": "SEE_THING"
+  },
+  {
+   "id": "scene65_057",
+   "lang": "ru",
+   "before": [],
+   "scene": "a car 0 m away",
+   "text": "Вылезай из машины.",
+   "label": "GET_OUT"
+  },
+  {
+   "id": "scene65_058",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 3 m",
+   "text": "Огонь!",
+   "label": "OPEN_FIRE"
+  },
+  {
+   "id": "scene65_059",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: big cardboard box, 1 m",
+   "text": "Не стреляй пока.",
+   "label": "HOLD_FIRE"
+  },
+  {
+   "id": "scene65_060",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near",
+   "text": "Присядь.",
+   "label": "CROUCH"
+  },
+  {
+   "id": "scene65_061",
+   "lang": "en",
+   "before": [],
+   "scene": "a car 5 m away",
+   "text": "Jump in.",
+   "label": "GET_IN"
+  },
+  {
+   "id": "scene65_062",
+   "lang": "en",
+   "before": [],
+   "scene": "a car 11 m away; last thing: cardboard box, 2 m",
+   "text": "Hop in, bro.",
+   "label": "GET_IN"
+  },
+  {
+   "id": "scene65_063",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a cardboard box; a car 3 m away; last thing: cardboard box, 0 m",
+   "text": "Okay, jump in, we're leaving.",
+   "label": "GET_IN"
+  },
+  {
+   "id": "scene65_064",
+   "lang": "en",
+   "before": [],
+   "scene": "a car 8 m away; last thing: cable spool, 1 m",
+   "text": "Jump on the spool.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_065",
+   "lang": "en",
+   "before": [],
+   "scene": "a car 16 m away; last thing: big cardboard box, 2 m",
+   "text": "Hop up on that big box.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_066",
+   "lang": "en",
+   "before": [],
+   "scene": "a car 22 m away",
+   "text": "Get in, get in!",
+   "label": "GET_IN"
+  },
+  {
+   "id": "scene65_067",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 1 m",
+   "text": "Jump in.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_068",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: big cardboard box, 2 m",
+   "text": "Hop on.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_069",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near",
+   "text": "Jump up there.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_070",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 3 m",
+   "text": "Come on, hop in.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_071",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 1 m",
+   "text": "Get in the car.",
+   "label": "GET_IN"
+  },
+  {
+   "id": "scene65_072",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Jump onto the spool over there.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_073",
+   "lang": "en",
+   "before": [],
+   "scene": "standing on a cable spool; no car near; last thing: cable spool, 0 m",
+   "text": "Get down.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_074",
+   "lang": "en",
+   "before": [],
+   "scene": "standing on a big cardboard box; no car near; last thing: big cardboard box, 0 m",
+   "text": "Get off the box.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_075",
+   "lang": "en",
+   "before": [],
+   "scene": "standing on a cardboard box; a car 9 m away; last thing: cardboard box, 0 m",
+   "text": "Climb down.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_076",
+   "lang": "en",
+   "before": [],
+   "scene": "standing on a cable spool; no car near; last thing: cable spool, 0 m",
+   "text": "Okay bro, get off it.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_077",
+   "lang": "en",
+   "before": [],
+   "scene": "standing on a big cardboard box; a car 13 m away; last thing: big cardboard box, 0 m",
+   "text": "Get down from there.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_078",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a cardboard box; standing on a cable spool; no car near; last thing: cardboard box, 0 m",
+   "text": "Hop down.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_079",
+   "lang": "en",
+   "before": [
+    "Jump on that big box."
+   ],
+   "scene": "standing on a big cardboard box; no car near; last thing: big cardboard box, 0 m",
+   "text": "Alright, get down now.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_080",
+   "lang": "en",
+   "before": [],
+   "scene": "standing on a cable spool; a car 6 m away; last thing: cable spool, 0 m",
+   "text": "Get down, get down!",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_081",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near",
+   "text": "Get down!",
+   "label": "TAKE_COVER"
+  },
+  {
+   "id": "scene65_082",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 0 m",
+   "text": "Get down, sniper!",
+   "label": "TAKE_COVER"
+  },
+  {
+   "id": "scene65_083",
+   "lang": "en",
+   "before": [],
+   "scene": "a car 7 m away; last thing: cardboard box, 2 m",
+   "text": "Yo, get down!",
+   "label": "TAKE_COVER"
+  },
+  {
+   "id": "scene65_084",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Get down, they're shooting at us.",
+   "label": "TAKE_COVER"
+  },
+  {
+   "id": "scene65_085",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 2 m",
+   "text": "Pick it up.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_086",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Put it there.",
+   "label": "DELIVER"
+  },
+  {
+   "id": "scene65_087",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a cardboard box; a car 6 m away; last thing: cardboard box, 0 m",
+   "text": "Drop it.",
+   "label": "DROP"
+  },
+  {
+   "id": "scene65_088",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 1 m",
+   "text": "Roll it.",
+   "label": "ROLL"
+  },
+  {
+   "id": "scene65_089",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: big cardboard box, 1 m",
+   "text": "Push it.",
+   "label": "PUSH"
+  },
+  {
+   "id": "scene65_090",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 2 m",
+   "text": "Jump over it.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_091",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: big cardboard box, 2 m",
+   "text": "Jump on it.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_092",
+   "lang": "en",
+   "before": [
+    "Push the big box."
+   ],
+   "scene": "no car near; last thing: big cardboard box, 1 m",
+   "text": "Again.",
+   "label": "PUSH"
+  },
+  {
+   "id": "scene65_093",
+   "lang": "en",
+   "before": [
+    "Roll the spool."
+   ],
+   "scene": "no car near; last thing: cable spool, 3 m",
+   "text": "Do it again.",
+   "label": "ROLL"
+  },
+  {
+   "id": "scene65_094",
+   "lang": "en",
+   "before": [
+    "Jump on the spool.",
+    "Get down."
+   ],
+   "scene": "no car near; last thing: cable spool, 0 m",
+   "text": "Again.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_095",
+   "lang": "en",
+   "before": [
+    "Jump over that box."
+   ],
+   "scene": "no car near; last thing: cardboard box, 1 m",
+   "text": "Jump over it again.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_096",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Put it down.",
+   "label": "DROP"
+  },
+  {
+   "id": "scene65_097",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a cardboard box; a car 10 m away; last thing: cardboard box, 0 m",
+   "text": "Take it over there.",
+   "label": "DELIVER"
+  },
+  {
+   "id": "scene65_098",
+   "lang": "en",
+   "before": [
+    "Take the box.",
+    "Drop it."
+   ],
+   "scene": "no car near; last thing: cardboard box, 1 m",
+   "text": "Okay, pick it back up.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_099",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 1 m",
+   "text": "Grab this one.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_100",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a cardboard box; standing on a big cardboard box; no car near; last thing: big cardboard box, 0 m",
+   "text": "Just drop it, man.",
+   "label": "DROP"
+  },
+  {
+   "id": "scene65_101",
+   "lang": "en",
+   "before": [
+    "Roll that spool."
+   ],
+   "scene": "no car near; last thing: cable spool, 4 m",
+   "text": "Keep rolling it.",
+   "label": "ROLL"
+  },
+  {
+   "id": "scene65_102",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: big cardboard box, 0 m",
+   "text": "Push it a bit more.",
+   "label": "PUSH"
+  },
+  {
+   "id": "scene65_103",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 3 m",
+   "text": "Take the box.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_104",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near",
+   "text": "Bring me the box.",
+   "label": "DELIVER"
+  },
+  {
+   "id": "scene65_105",
+   "lang": "en",
+   "before": [],
+   "scene": "a car 4 m away; last thing: cardboard box, 2 m",
+   "text": "Hold the box.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_106",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 2 m",
+   "text": "Carry this box.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_107",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 4 m",
+   "text": "Bro, bring that box over here.",
+   "label": "DELIVER"
+  },
+  {
+   "id": "scene65_108",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Give it to me.",
+   "label": "DELIVER"
+  },
+  {
+   "id": "scene65_109",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near",
+   "text": "Grab a box.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_110",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a cardboard box; a car 12 m away; last thing: cardboard box, 0 m",
+   "text": "Put it over there by the car.",
+   "label": "DELIVER"
+  },
+  {
+   "id": "scene65_111",
+   "lang": "en",
+   "before": [],
+   "scene": "standing on a cable spool; no car near; last thing: cable spool, 0 m",
+   "text": "Follow me.",
+   "label": "FOLLOW_ME"
+  },
+  {
+   "id": "scene65_112",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Reload.",
+   "label": "RELOAD"
+  },
+  {
+   "id": "scene65_113",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: big cardboard box, 1 m",
+   "text": "Hide your weapon.",
+   "label": "HOLSTER"
+  },
+  {
+   "id": "scene65_114",
+   "lang": "en",
+   "before": [],
+   "scene": "a car 5 m away",
+   "text": "Hold up, wait.",
+   "label": "WAIT"
+  },
+  {
+   "id": "scene65_115",
+   "lang": "en",
+   "before": [],
+   "scene": "standing on a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Go over there.",
+   "label": "MOVE_TO"
+  },
+  {
+   "id": "scene65_116",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 2 m",
+   "text": "Do you see that?",
+   "label": "SEE_THING"
+  },
+  {
+   "id": "scene65_117",
+   "lang": "en",
+   "before": [],
+   "scene": "a car 0 m away",
+   "text": "Get out of the car.",
+   "label": "GET_OUT"
+  },
+  {
+   "id": "scene65_118",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near",
+   "text": "Kill that guy.",
+   "label": "ATTACK"
+  },
+  {
+   "id": "scene65_119",
+   "lang": "en",
+   "before": [],
+   "scene": "standing on a big cardboard box; no car near; last thing: big cardboard box, 0 m",
+   "text": "Hold your fire.",
+   "label": "HOLD_FIRE"
+  },
+  {
+   "id": "scene65_120",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 1 m",
+   "text": "Crouch down.",
+   "label": "CROUCH"
+  },
+  {
+   "id": "scene65_121",
+   "lang": "es",
+   "before": [],
+   "scene": "a car 6 m away",
+   "text": "Súbete.",
+   "label": "GET_IN"
+  },
+  {
+   "id": "scene65_122",
+   "lang": "es",
+   "before": [],
+   "scene": "a car 10 m away; last thing: cable spool, 2 m",
+   "text": "Súbete al carro, güey.",
+   "label": "GET_IN"
+  },
+  {
+   "id": "scene65_123",
+   "lang": "es",
+   "before": [],
+   "scene": "a car 14 m away; last thing: big cardboard box, 1 m",
+   "text": "Súbete a la caja grande.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_124",
+   "lang": "es",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 1 m",
+   "text": "Súbete.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_125",
+   "lang": "es",
+   "before": [],
+   "scene": "no car near",
+   "text": "Súbete ahí arriba.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_126",
+   "lang": "es",
+   "before": [],
+   "scene": "no car near; last thing: big cardboard box, 2 m",
+   "text": "Dale, súbete encima.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_127",
+   "lang": "es",
+   "before": [],
+   "scene": "standing on a cable spool; no car near; last thing: cable spool, 0 m",
+   "text": "Bájate.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_128",
+   "lang": "es",
+   "before": [],
+   "scene": "standing on a big cardboard box; a car 8 m away; last thing: big cardboard box, 0 m",
+   "text": "Bájate de ahí.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_129",
+   "lang": "es",
+   "before": [],
+   "scene": "standing on a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Baja de la caja.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_130",
+   "lang": "es",
+   "before": [],
+   "scene": "holding a cardboard box; standing on a big cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Venga, salta abajo.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_131",
+   "lang": "es",
+   "before": [],
+   "scene": "no car near",
+   "text": "¡Al suelo!",
+   "label": "TAKE_COVER"
+  },
+  {
+   "id": "scene65_132",
+   "lang": "es",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 0 m",
+   "text": "¡Cuerpo a tierra, que nos disparan!",
+   "label": "TAKE_COVER"
+  },
+  {
+   "id": "scene65_133",
+   "lang": "es",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 2 m",
+   "text": "Cógela.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_134",
+   "lang": "es",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Ponla ahí.",
+   "label": "DELIVER"
+  },
+  {
+   "id": "scene65_135",
+   "lang": "es",
+   "before": [],
+   "scene": "holding a cardboard box; a car 7 m away; last thing: cardboard box, 0 m",
+   "text": "Suéltala.",
+   "label": "DROP"
+  },
+  {
+   "id": "scene65_136",
+   "lang": "es",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 1 m",
+   "text": "Hazla rodar.",
+   "label": "ROLL"
+  },
+  {
+   "id": "scene65_137",
+   "lang": "es",
+   "before": [],
+   "scene": "no car near; last thing: big cardboard box, 1 m",
+   "text": "Empújala.",
+   "label": "PUSH"
+  },
+  {
+   "id": "scene65_138",
+   "lang": "es",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 2 m",
+   "text": "Sáltala.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_139",
+   "lang": "es",
+   "before": [
+    "Empuja la caja grande."
+   ],
+   "scene": "no car near; last thing: big cardboard box, 1 m",
+   "text": "Otra vez.",
+   "label": "PUSH"
+  },
+  {
+   "id": "scene65_140",
+   "lang": "es",
+   "before": [
+    "Súbete a la bobina.",
+    "Bájate."
+   ],
+   "scene": "no car near; last thing: cable spool, 0 m",
+   "text": "Otra vez.",
+   "label": "JUMP"
+  },
+  {
+   "id": "scene65_141",
+   "lang": "es",
+   "before": [
+    "Coge la caja.",
+    "Suéltala."
+   ],
+   "scene": "no car near; last thing: cardboard box, 1 m",
+   "text": "Vuelve a cogerla.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_142",
+   "lang": "es",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 3 m",
+   "text": "Coge la caja.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_143",
+   "lang": "es",
+   "before": [],
+   "scene": "no car near",
+   "text": "Tráeme la caja.",
+   "label": "DELIVER"
+  },
+  {
+   "id": "scene65_144",
+   "lang": "es",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Dámela.",
+   "label": "DELIVER"
+  },
+  {
+   "id": "scene65_145",
+   "lang": "es",
+   "before": [],
+   "scene": "a car 9 m away; last thing: cable spool, 2 m",
+   "text": "Agarra esa caja, carnal.",
+   "label": "COLLECT"
+  },
+  {
+   "id": "scene65_146",
+   "lang": "es",
+   "before": [],
+   "scene": "standing on a cable spool; no car near; last thing: cable spool, 0 m",
+   "text": "Sígueme.",
+   "label": "FOLLOW_ME"
+  },
+  {
+   "id": "scene65_147",
+   "lang": "es",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Recarga.",
+   "label": "RELOAD"
+  },
+  {
+   "id": "scene65_148",
+   "lang": "es",
+   "before": [],
+   "scene": "a car 4 m away",
+   "text": "Guarda el arma.",
+   "label": "HOLSTER"
+  },
+  {
+   "id": "scene65_149",
+   "lang": "es",
+   "before": [],
+   "scene": "no car near; last thing: big cardboard box, 1 m",
+   "text": "Quieto ahí.",
+   "label": "WAIT"
+  },
+  {
+   "id": "scene65_150",
+   "lang": "es",
+   "before": [],
+   "scene": "a car 0 m away",
+   "text": "Bájate del coche.",
+   "label": "GET_OUT"
+  }
+ ]
+}

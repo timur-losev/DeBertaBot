@@ -1,16 +1,29 @@
 // The text around the decoder (rewriter.h), without the model: the turn, the prompt, the answer's lines, the router's
 // probability. Twins of scripts/coop/stt/chains2_v54.py (turn, split) and qlora_v54.py (Turns.text).
+#include <algorithm>
 #include <cmath>
 
 #include "coop_intent/rewriter.h"
 
 namespace coop {
 
-std::string RewriterTurn(const std::vector<std::string>& before, std::string_view bot, std::string_view line) {
+std::string RewriterTurn(const std::vector<std::string>& before, std::string_view bot, std::string_view line, std::string_view scene) {
     std::string out;
     for (const std::string& b : before) out += "before: " + b + "\n";
     if (!bot.empty()) out.append("bot: ").append(bot).append("\n");
+    if (!scene.empty()) out.append("scene: ").append(scene).append("\n");
     out.append("now: ").append(line);
+    return out;
+}
+
+std::string SceneLine(const Scene& s) {
+    const auto metres = [](double m) { return std::to_string(std::lround(std::max(0.0, m))); };
+    std::string out;
+    const auto part = [&](const std::string& p) { out += (out.empty() ? "" : "; ") + p; };
+    if (!s.holding.empty()) part("holding a " + s.holding);
+    if (!s.standing_on.empty()) part("standing on a " + s.standing_on);
+    part(s.has_car && s.car_m <= kSceneCarNear ? "a car " + metres(s.car_m) + " m away" : "no car near");
+    if (!s.last.empty()) part("last thing: " + s.last + ", " + metres(s.last_m) + " m");
     return out;
 }
 

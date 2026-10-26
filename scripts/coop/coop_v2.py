@@ -60,19 +60,20 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # added after the study showed the owner's "cover from behind" going to TAKE_COVER); results files and
 # outputs carry the tag, so the v2 study stays as it was
 TAG = os.environ.get("COOP_TAG", "v2")
-V5 = TAG in ("v5", "v51", "v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64")    # 27 intents (intents_v5.json); every older tag keeps the 24 of intents_v2.json
-V51 = TAG in ("v51", "v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64")         # 29 intents (intents_v51.json): v5 + LOOK_AT, LOOK_AT_ME
-V52 = TAG in ("v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64")                # 32 intents (intents_v52.json): v51 + HELP, CHECK, SUPPRESS
-V53 = TAG in ("v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64")                       # 33 intents (intents_v53.json): v52 + JUMP
-V54 = TAG in ("v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64")                              # 41 intents (intents_v54.json): v53 + COME_BACK, three stances, four answers
-V55 = TAG in ("v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64")                              # 44 intents (intents_v55.json): v54 + GET_IN, GET_OUT, REPEAT
-V56 = TAG in ("v56", "v57", "v58", "v60", "v61", "v62", "v64")                              # 45 intents (intents_v56.json): v55 - REVIVE_ME + HELP_INTERACTION, GO_BACK
-V57 = TAG in ("v57", "v58", "v60", "v61", "v62", "v64")                       # 47 intents (intents_v57.json): v56 + SWITCH_WEAPON, RELOAD
-V58 = TAG in ("v58", "v60", "v61", "v62", "v64")                              # v57's 47 intents and lines; seeds of going on with a movement
-V60 = TAG in ("v60", "v61", "v62", "v64")                              # 57 intents (intents_v60.json): v58 + the farmer's and the builder's ten
-V61 = TAG in ("v61", "v62", "v64")                              # v60's intents and lines; seeds of what bot v60 did not understand
-V62 = TAG in ("v62", "v64")                              # 62 intents (intents_v62.json): v61 + the bot that talks (see, small talk, praise, ...)
-V64 = TAG == "v64"                                       # 69 intents (intents_v64.json): v62 + MELEE, HOLSTER (spec v63) + the report, the body, push, roll, drop
+V5 = TAG in ("v5", "v51", "v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64", "v65")    # 27 intents (intents_v5.json); every older tag keeps the 24 of intents_v2.json
+V51 = TAG in ("v51", "v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64", "v65")         # 29 intents (intents_v51.json): v5 + LOOK_AT, LOOK_AT_ME
+V52 = TAG in ("v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64", "v65")                # 32 intents (intents_v52.json): v51 + HELP, CHECK, SUPPRESS
+V53 = TAG in ("v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64", "v65")                       # 33 intents (intents_v53.json): v52 + JUMP
+V54 = TAG in ("v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64", "v65")                              # 41 intents (intents_v54.json): v53 + COME_BACK, three stances, four answers
+V55 = TAG in ("v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64", "v65")                              # 44 intents (intents_v55.json): v54 + GET_IN, GET_OUT, REPEAT
+V56 = TAG in ("v56", "v57", "v58", "v60", "v61", "v62", "v64", "v65")                              # 45 intents (intents_v56.json): v55 - REVIVE_ME + HELP_INTERACTION, GO_BACK
+V57 = TAG in ("v57", "v58", "v60", "v61", "v62", "v64", "v65")                       # 47 intents (intents_v57.json): v56 + SWITCH_WEAPON, RELOAD
+V58 = TAG in ("v58", "v60", "v61", "v62", "v64", "v65")                              # v57's 47 intents and lines; seeds of going on with a movement
+V60 = TAG in ("v60", "v61", "v62", "v64", "v65")                              # 57 intents (intents_v60.json): v58 + the farmer's and the builder's ten
+V61 = TAG in ("v61", "v62", "v64", "v65")                              # v60's intents and lines; seeds of what bot v60 did not understand
+V62 = TAG in ("v62", "v64", "v65")                              # 62 intents (intents_v62.json): v61 + the bot that talks (see, small talk, praise, ...)
+V64 = TAG in ("v64", "v65")                              # 69 intents (intents_v64.json): v62 + MELEE, HOLSTER (spec v63) + the report, the body, push, roll, drop
+V65 = TAG == "v65"                                       # v64's 69 intents and lines; seeds and owner lines of what the v64 bot got wrong (make_spec_v65.py)
 _I = json.load(io.open(os.path.join(HERE, "intents_v64.json" if V64 else "intents_v62.json" if V62 else "intents_v60.json" if V60 else "intents_v57.json" if V57 else "intents_v56.json" if V56 else "intents_v55.json" if V55 else "intents_v54.json" if V54 else "intents_v53.json" if V53 else
                                     "intents_v52.json" if V52 else "intents_v51.json" if V51 else "intents_v5.json" if V5 else
                                     "intents_v2.json"), encoding="utf-8"))
@@ -129,7 +130,7 @@ SEED_FILE = {"v2": "seed_commands_v2.json", "v21": "seed_commands_v21.json", "v3
              "v53": "seed_commands_v53.json", "v54": "seed_commands_v54.json", "v55": "seed_commands_v55.json",
              "v56": "seed_commands_v56.json", "v57": "seed_commands_v57.json", "v58": "seed_commands_v58.json",
              "v60": "seed_commands_v60.json", "v61": "seed_commands_v61.json",
-             "v62": "seed_commands_v62.json", "v64": "seed_commands_v64.json"}[TAG]
+             "v62": "seed_commands_v62.json", "v64": "seed_commands_v64.json", "v65": "seed_commands_v65.json"}[TAG]
 # "v3": the lines that name map places (blind/v3, annot/v3) join the data, with the seed set that has
 # templated location seeds; the v2 / v21 studies load exactly what they loaded before.
 # "v31": the v3 data with the seed set corrected after the v3 review (make_seeds_v31.py), and with the
@@ -151,7 +152,7 @@ SEED_FILE = {"v2": "seed_commands_v2.json", "v21": "seed_commands_v21.json", "v3
 #        make_spec_v61.py)
 # "v62": the v61 data with three praise lines read as PRAISE (annot/v62/relabel_v62.json), the v62 lines and
 #        seed_commands_v62.json (v61 + the bot that talks: make_spec_v62.py)
-PLACES = TAG in ("v3", "v31", "v5", "v51", "v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64")
+PLACES = TAG in ("v3", "v31", "v5", "v51", "v52", "v53", "v54", "v55", "v56", "v57", "v58", "v60", "v61", "v62", "v64", "v65")
 
 # the owner's own live-test lines with the reading they asked for, and the canonical probes the v1
 # live test failed on. Not a blind check: none is a training line verbatim, but most are near copies

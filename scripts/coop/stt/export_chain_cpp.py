@@ -7,7 +7,7 @@ game's: models/coop-chain-<VARIANT>-s<SEED>-v54/cpp/):
   router.onnx         the two-class router (router_v54.py train final), exported as a bot's member is (export_cpp.py);
                       it reads the bot's own token ids: deberta-v3-small and -base share one vocabulary (checked here)
   decoder.gguf        the rewriter (gguf_v54.py make): a hard link to models/gguf/<VARIANT>_s<SEED>-Q4_K_M.gguf
-  chain_tests.jsonl   per line: the earlier lines, the bot's line and the line; the token ids and the router's
+  chain_tests.jsonl   per line: the earlier lines, the bot's line, the scene (decoder v65 on) and the line; the token ids and the router's
                       probability from PyTorch; the decoder's answer from llama.cpp's own server on the CPU with the
                       prompt cache on, in file order (the C++ check runs the decoder on the CPU too: a GPU may round
                       another way)
@@ -112,6 +112,9 @@ def main():
                 time.sleep(1)
         for r in rows:
             turn = C2.turn(r["before"], r["bot"], r["line"])
+            if r.get("scene"):   # decoder v65 (chains9_v65.py): the game's scene line, right before "now:"
+                head, sep, now = turn.rpartition("now: ")
+                turn = f"{head}scene: {r['scene']}\n{sep}{now}"
             a = G.call("/completion", {"prompt": turns.text(turn), "n_predict": cfg["max_new"], "temperature": 0, "top_k": 1, "cache_prompt": True,
                                        "stop": ["<|im_end|>"], "stream": False})
             r["turn"], r["answer"] = turn, a["content"]

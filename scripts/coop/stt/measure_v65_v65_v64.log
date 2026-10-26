@@ -1,0 +1,63 @@
+bot v65, decoder v64
+
+owner65: 33/33 = 100.0%   (en 33/33; English lines the scene sent to the decoder: 0)
+
+hand65: 49/70 = 70.0%   (en 4/4, es 3/5, ru 42/61; English lines the scene sent to the decoder: 0)
+  NO  Слезь.                                       -> tear yourself out                     read KILL_YOURSELF  want JUMP
+  NO  Слезай.                                      -> get out                               read GET_OUT        want JUMP
+  NO  Слезь вниз.                                  -> head downstairs                       read MOVE_TO        want JUMP
+  NO  Да слезай вниз.                              -> yes go downstairs                     read MOVE_TO        want JUMP
+  NO  Слезь сюда.                                  -> get down here                         read MOVE_TO        want JUMP
+  NO  Слезай с коробки.                            -> get out of the box                    read NONE           want JUMP
+  NO  Слезь с катушки.                             -> pull out of the spool                 read NONE           want JUMP
+  NO  Слез вниз катушки.                           -> tear the spool down                   read DEMOLISH       want JUMP
+  NO  Сойди с ящика.                               -> push off the crate                    read PUSH           want JUMP
+  NO  Теперь слезай.                               -> Get out of the box.                   read NONE           want JUMP
+  NO  Запрыгни сюда.                               -> jump in here                          read GET_IN         want JUMP
+  NO  Запрыгни вот сюда.                           -> jump in right here                    read GET_IN         want JUMP
+  NO  Сверху на катушку запрыгни.                  -> spool up from above, hop in           read RAPPEL         want JUMP
+  NO  Теперь ещё выше.                             -> Go up further.                        read MOVE_TO        want JUMP
+  NO  В другую сторону катай.                      -> take the other side                   read HOLD_OTHER_ANGLE want ROLL
+  NO  Вместе с коробкой.                           -> take the box to me                    read DELIVER        want COLLECT
+  NO  Ещё раз запрыгни.                            -> Again.                                read REPEAT         want JUMP
+  NO  Теперь запрыгни сюда.                        -> now hop in here                       read GET_IN         want JUMP
+  NO  Переклюги на эту катушку.                    -> spool this one up                     read ROLL           want JUMP
+  NO  Bájate de la caja.                           -> get out of the crate                  read NONE           want JUMP
+  NO  Bájate.                                      -> hop out                               read GET_OUT        want JUMP
+
+scene65: 115/150 = 76.7%   (en 51/60, es 21/30, ru 43/60; English lines the scene sent to the decoder: 0)
+  NO  Запрыгни.                                    -> jump in                               read GET_IN         want JUMP
+  NO  Давай запрыгивай.                            -> hop in                                read GET_IN         want JUMP
+  NO  Запрыгни туда.                               -> jump in there                         read GET_IN         want JUMP
+  NO  Ну запрыгни уже, брат.                       -> just jump in bro                      read GET_IN         want JUMP
+  NO  Слезь.                                       -> tear yourself out                     read KILL_YOURSELF  want JUMP
+  NO  Слезай с коробки.                            -> get out of the box                    read NONE           want JUMP
+  NO  Ну всё, спускайся.                           -> okay head downstairs                  read MOVE_TO        want JUMP
+  NO  Всё, слезай.                                 -> Alright, get out.                     read GET_OUT        want JUMP
+  NO  Давай вниз.                                  -> get yourself downstairs               read MOVE_TO        want JUMP
+  NO  Слезь, говорю.                               -> cry me a river                        read NONE           want JUMP
+  NO  Ну слезай уже.                               -> just go climb out                     read GET_OUT        want JUMP
+  NO  Ещё раз.                                     -> again                                 read REPEAT         want PUSH
+  NO  Давай ещё раз.                               -> do that again                         read REPEAT         want ROLL
+  NO  Ещё раз.                                     -> once more                             read REPEAT         want JUMP
+  NO  Выкинь её нафиг.                             -> knock it out                          read MELEE          want DROP
+  NO  Ну ещё разок.                                -> once more                             read REPEAT         want JUMP
+  NO  Стой.                                        -> stay                                  read HOLD_POSITION  want WAIT
+  NO  Get in, get in!                                                                       read MOVE_TO        want GET_IN
+  NO  Jump in.                                                                              read GET_IN         want JUMP
+  NO  Come on, hop in.                                                                      read GET_IN         want JUMP
+  NO  Get down.                                                                             read TAKE_COVER     want JUMP
+  NO  Alright, get down now.                                                                read TAKE_COVER     want JUMP
+  NO  Get down, get down!                                                                   read TAKE_COVER     want JUMP
+  NO  Again.                                                                                read REPEAT         want PUSH
+  NO  Do it again.                                                                          read REPEAT         want ROLL
+  NO  Again.                                                                                read REPEAT         want JUMP
+  NO  Súbete.                                      -> jump in                               read GET_IN         want JUMP
+  NO  Dale, súbete encima.                         -> dude, hop on top of him               read NONE           want JUMP
+  NO  Bájate.                                      -> hop out                               read GET_OUT        want JUMP
+  NO  Bájate de ahí.                               -> hop out of there                      read FALL_BACK      want JUMP
+  NO  ¡Al suelo!                                   -> hit the floor                         read PRONE          want TAKE_COVER
+  NO  ¡Cuerpo a tierra, que nos disparan!          -> Go prone, they're spraying us!        read PRONE          want TAKE_COVER
+  NO  Otra vez.                                    -> Again.                                read REPEAT         want PUSH
+  NO  Otra vez.                                    -> Again.                                read REPEAT         want JUMP
+  NO  Quieto ahí.                                  -> stay put                              read HOLD_POSITION  want WAIT

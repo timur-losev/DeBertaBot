@@ -1,0 +1,776 @@
+{
+ "_note": "Hand rows for the next decoder round (v65), written 2026-10-25 from the owner's games of 2026-10-25 (game logs 10:28, 13:03, 16:16-16:20) and decoder v64's answers replayed through the deployed chain. The game covers some of them by rules until then (OVCoop::SaysGetOff / SaysGetOffOwnWords: «слезь», «спрыгни» -> JUMP off). The owner, 2026-10-25: \"в русском языке, как и в других языках есть разница - ЗАпрыгнуть, Спрыгнуть, Перепрыгнуть ... Команда 'слезть' должны тоже обработаться. Это часть как лексической, так и AI tooling логической задачи\". The English answers use the words the game reads: over (перепрыгнуть), on / onto (запрыгнуть), off / get down (спрыгнуть, слезть). Each row: lang, before (older lines, oldest first), text, en (the English answer, one order per line), was (what decoder v64 or the classifier made of it).",
+ "items": [
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Слезь.",
+   "en": [
+    "climb down"
+   ],
+   "was": "Get out. (GET_OUT)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Слезай.",
+   "en": [
+    "climb down"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Слезь вниз.",
+   "en": [
+    "climb down"
+   ],
+   "was": "Get yourself downstairs. (MOVE_TO, asked which way)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Да слезай вниз.",
+   "en": [
+    "get down from there"
+   ],
+   "was": "Da sluzai down. (FRAG 0.34)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Слезь сюда.",
+   "en": [
+    "climb down here"
+   ],
+   "was": "Get down here. (MOVE_TO down: no path from the box)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Слезай с коробки.",
+   "en": [
+    "climb down off the box"
+   ],
+   "was": "Get out of the box. (GET_OUT)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Слезь с катушки.",
+   "en": [
+    "climb down off the spool"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Слез вниз катушки.",
+   "en": [
+    "get down off the spool"
+   ],
+   "was": "unwind the spool and drop down (ROLL)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Спрыгни с катушки.",
+   "en": [
+    "jump off the spool"
+   ],
+   "was": "Drop off the spool. (JUMP 0.68)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Спрыгни с коробки.",
+   "en": [
+    "jump off the box"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Спрыгни вниз.",
+   "en": [
+    "jump down"
+   ],
+   "was": "Drop down. (JUMP, right)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Спрыгни ко мне.",
+   "en": [
+    "jump down to me"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Спрыгни сюда.",
+   "en": [
+    "jump down here"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Сойди с ящика.",
+   "en": [
+    "climb down off the crate"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Запрыгни на коробку."
+   ],
+   "text": "Теперь слезай.",
+   "en": [
+    "now climb down"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Запрыгни на эту коробку.",
+   "en": [
+    "jump on this box"
+   ],
+   "was": "JUMP, right",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "На эту коробку запрыгни.",
+   "en": [
+    "jump on this box"
+   ],
+   "was": "say again GET_IN 0.60",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Запрыгни сюда.",
+   "en": [
+    "jump up here"
+   ],
+   "was": "say again GET_IN 0.49 (four times)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Запрыгни вот сюда.",
+   "en": [
+    "jump up right here"
+   ],
+   "was": "say again GET_IN 0.61",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Запрыгни вон туда, брат.",
+   "en": [
+    "jump up there bro"
+   ],
+   "was": "JUMP, right",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Запрыгни на коробку."
+   ],
+   "text": "Запрыгни обратно.",
+   "en": [
+    "jump back on it"
+   ],
+   "was": "GET_IN 0.74",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Сверху на катушку запрыгни.",
+   "en": [
+    "jump on top of the spool"
+   ],
+   "was": "JUMP with no place",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Запрыгни на эту катушку сверху.",
+   "en": [
+    "jump on top of this spool"
+   ],
+   "was": "say again RAPPEL 0.59",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Запрыгни на коробку."
+   ],
+   "text": "Теперь ещё выше.",
+   "en": [
+    "now jump up higher"
+   ],
+   "was": "MOVE_TO",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Перепрыгни коробку.",
+   "en": [
+    "jump over the box"
+   ],
+   "was": "Hop over the box. (JUMP, right)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Перепрыгни её.",
+   "en": [
+    "jump over it"
+   ],
+   "was": "JUMP, no place",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Прыгай вперёд через коробку.",
+   "en": [
+    "jump forward over the box"
+   ],
+   "was": "JUMP forward, no place",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Перелезь сюда.",
+   "en": [
+    "climb over here"
+   ],
+   "was": "JUMP",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Запрыгни на катушку."
+   ],
+   "text": "А перепрыгни на другую катушку.",
+   "en": [
+    "now jump over onto the other spool"
+   ],
+   "was": "ask JUMP, which spool",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Запрыгни на катушку."
+   ],
+   "text": "Перепрыгни на катушку справа.",
+   "en": [
+    "jump over onto the spool on the right"
+   ],
+   "was": "MOVE_TO 0.72",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Спрыгни с неё вниз.",
+   "en": [
+    "jump down off it"
+   ],
+   "was": "JUMP down, right",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Вниз спрыгни с катушки.",
+   "en": [
+    "jump down off the spool"
+   ],
+   "was": "GET_OUT 0.66",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Запрыгни на катушку."
+   ],
+   "text": "Спрыгни туда же, где ты был.",
+   "en": [
+    "jump down back where you were"
+   ],
+   "was": "JUMP there",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "В другую сторону катай.",
+   "en": [
+    "roll it the other way"
+   ],
+   "was": "Wrap the spool on the other side (the other spool)",
+   "label": "ROLL"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "В другую сторону катушку катай.",
+   "en": [
+    "roll the spool the other way"
+   ],
+   "was": "ask ROLL, which spool",
+   "label": "ROLL"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Кати её обратно.",
+   "en": [
+    "roll it back"
+   ],
+   "was": "-",
+   "label": "ROLL"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Толкай вперёд.",
+   "en": [
+    "push it forward"
+   ],
+   "was": "MOVE_TO forward",
+   "label": "PUSH"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Толкай ещё, брат.",
+   "en": [
+    "keep pushing it bro"
+   ],
+   "was": "PUSH, right",
+   "label": "PUSH"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Бери коробку, ставь на катушку.",
+   "en": [
+    "take the box",
+    "put it on the spool"
+   ],
+   "was": "ask DELIVER 0.69, which spool",
+   "label": "COLLECT"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Подними просто, но мне не отдавай.",
+   "en": [
+    "just pick it up, don't give it to me"
+   ],
+   "was": "DROP",
+   "label": "COLLECT"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Ну и отнеси её туда к стене, аккуратно.",
+   "en": [
+    "carry it over to the wall, carefully"
+   ],
+   "was": "JUMP",
+   "label": "DELIVER"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Иди сюда."
+   ],
+   "text": "Вместе с коробкой.",
+   "en": [
+    "bring the box with you"
+   ],
+   "was": "DELIVER 0.70, right",
+   "label": "COLLECT"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Брат.",
+   "en": [
+    "bro"
+   ],
+   "was": "MOVE_TO here (should be nothing)",
+   "label": "NONE"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Не называй меня братом.",
+   "en": [
+    "don't call me bro"
+   ],
+   "was": "SMALL_TALK, right (the bro rule)",
+   "label": "SMALL_TALK"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Запрыгни на коробку.",
+    "Слезь."
+   ],
+   "text": "Ещё раз запрыгни.",
+   "en": [
+    "jump on it again"
+   ],
+   "was": "GET_IN 0.71 (no car near)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Запрыгни на катушку."
+   ],
+   "text": "Да просто запрыгни.",
+   "en": [
+    "just jump up on it"
+   ],
+   "was": "GET_IN 0.75 (no car near)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Теперь запрыгни сюда.",
+   "en": [
+    "now jump up here"
+   ],
+   "was": "GET_IN 0.71 (no car near)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Запрыгни сверху на катушку.",
+   "en": [
+    "jump up on top of the spool"
+   ],
+   "was": "RAPPEL 0.90 (No rope on me.)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "На коробку запрыгни.",
+   "en": [
+    "jump on the box"
+   ],
+   "was": "MOVE_TO 0.96",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "На катушку ты прыгни.",
+   "en": [
+    "jump on the spool"
+   ],
+   "was": "RAPPEL 0.46 -> MOVE_TO",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Залезь на катушку.",
+   "en": [
+    "climb on the spool"
+   ],
+   "was": "RAPPEL 0.32 -> MOVE_TO",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Запрыгни на катушку."
+   ],
+   "text": "Залезь.",
+   "en": [
+    "climb up on it"
+   ],
+   "was": "MOVE_TO",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Переклюги на эту катушку.",
+   "en": [
+    "jump over onto this spool"
+   ],
+   "was": "SWITCH_WEAPON (misheard «перепрыгни»)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Возьми коробку.",
+   "en": [
+    "pick up the box"
+   ],
+   "was": "DELIVER (brought it and put it down by the player)",
+   "label": "COLLECT"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Возьми эту коробку.",
+   "en": [
+    "pick up this box"
+   ],
+   "was": "DELIVER",
+   "label": "COLLECT"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Неси эту коробку.",
+   "en": [
+    "carry this box"
+   ],
+   "was": "DELIVER (to the player)",
+   "label": "COLLECT"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Возьми коробку."
+   ],
+   "text": "Мне не давай, просто неси её.",
+   "en": [
+    "don't give it to me, just carry it"
+   ],
+   "was": "WAIT",
+   "label": "COLLECT"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Возьми коробку."
+   ],
+   "text": "Нет, не бросай, просто подними её над собой.",
+   "en": [
+    "no, don't drop it, just hold it up"
+   ],
+   "was": "negated COLLECT 0.42 -> STAND_DOWN",
+   "label": "COLLECT"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Просто эту вот коробку. Да, держи её.",
+   "en": [
+    "just this box, hold it"
+   ],
+   "was": "DELIVER (to the player)",
+   "label": "COLLECT"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "text": "Принеси мне коробку.",
+   "en": [
+    "bring me the box"
+   ],
+   "was": "DELIVER, right",
+   "label": "DELIVER"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Кати эту катушку."
+   ],
+   "text": "Теперь эту.",
+   "en": [
+    "now roll this one"
+   ],
+   "was": "ROLL with no place",
+   "label": "ROLL"
+  },
+  {
+   "lang": "en",
+   "before": [],
+   "text": "jump off the box",
+   "en": [
+    "jump off the box"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "en",
+   "before": [],
+   "text": "get off the spool",
+   "en": [
+    "get off the spool"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "en",
+   "before": [],
+   "text": "get down from there",
+   "en": [
+    "get down from there"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "en",
+   "before": [],
+   "text": "climb down",
+   "en": [
+    "climb down"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "es",
+   "before": [],
+   "text": "Bájate de la caja.",
+   "en": [
+    "climb down off the box"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "es",
+   "before": [],
+   "text": "Bájate.",
+   "en": [
+    "climb down"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "es",
+   "before": [],
+   "text": "Salta de la bobina.",
+   "en": [
+    "jump off the spool"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "es",
+   "before": [],
+   "text": "Súbete a la caja.",
+   "en": [
+    "jump on the box"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "es",
+   "before": [],
+   "text": "Salta por encima de la caja.",
+   "en": [
+    "jump over the box"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  }
+ ],
+ "classifier": {
+  "_note": "For bot v65's seeds (the English the classifier reads): getting down is JUMP (direction down), not GET_OUT or MOVE_TO; the three kinds of jump keep their words. 'get down' alone stays ambiguous with taking cover: left to the game's rule (a bot standing on something).",
+  "JUMP": [
+   "get down from there",
+   "jump off the box",
+   "get off the spool",
+   "climb down",
+   "hop off",
+   "jump off it",
+   "get off the crate",
+   "jump down off the box",
+   "step off the box",
+   "jump on top of the spool",
+   "jump up here",
+   "jump back on it",
+   "now jump up higher",
+   "climb over here",
+   "jump forward over the box"
+  ],
+  "ROLL": [
+   "roll it the other way",
+   "roll the spool the other way",
+   "roll it back"
+  ],
+  "PUSH": [
+   "push it forward",
+   "keep pushing it"
+  ],
+  "COLLECT": [
+   "just pick it up, don't give it to me",
+   "pick up the box",
+   "carry this box",
+   "hold it",
+   "just this box, hold it",
+   "no, don't drop it, just hold it up",
+   "don't give it to me, just carry it"
+  ],
+  "_note_v65_context": "The game re-reads (OVCoopCommandComponent::OrderFromReply): GET_IN with no car within 25 m and the words of a jump -> JUMP; RAPPEL with them -> JUMP; a walk with «запрыгни на / залезь на» -> JUMP; DELIVER with no place and no giving -> COLLECT; a «нет» cancel whose line asks to hold it -> COLLECT. The classifier should learn the same: 'take the box' alone is COLLECT (the owner, 2026-10-25), 'bring me the box' DELIVER.",
+  "NONE": [
+   "bro"
+  ]
+ },
+ "_note_v65_en": "2026-10-25, before any v65 model: the English of ten getting-off rows changed from \"get down\" / \"get off the ...\" to \"climb down ...\": the classifier reads \"get down\" as TAKE_COVER and \"get down here\" as MOVE_TO (bot v64: 1.00 and 0.99), \"climb down\" as JUMP (1.00). The intents are the same."
+}

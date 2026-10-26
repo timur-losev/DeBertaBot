@@ -1,0 +1,370 @@
+{
+ "_note": "The owner's own spoken English lines as Parakeet heard them in the game, 2026-10-25 17:35 .. 17:43 (the warehouse yard: boxes, spools, jumps), after owner_lines_v64.json (extract_owner_lines_v65.py -> owner_lines_v65_candidates.json, then labelled by hand from the talk around each line). The owner's decisions of 2026-10-25: 'take that box' alone is COLLECT (pick it up and keep it), 'put it there' DELIVER; 'hide weapon' HOLSTER. Lines in other languages heard by the multilingual recognizer ('Widzisz mnie.', 'Kataj katusku.') and fragments ('Stove stove stove stove.', 'Still says just.') are left out. 'sure': false where a word was misheard ('Press it forward.' for 'push it forward', 'Sand up.' for 'stand up').",
+ "items": [
+  {
+   "id": "owner65_0001",
+   "text": "hide weapon",
+   "maj": "HOLSTER",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.35"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0002",
+   "text": "take that box",
+   "maj": "COLLECT",
+   "count": 2,
+   "said": [
+    "2026.10.25-17.36",
+    "2026.10.25-17.36"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0003",
+   "text": "okay, put it put it there",
+   "maj": "DELIVER",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.36"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0004",
+   "text": "why uh take that uh box again",
+   "maj": "COLLECT",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.36"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0005",
+   "text": "yeah, come here, come here and put it right there",
+   "maj": "FOLLOW_ME",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.36"
+   ],
+   "multi": true,
+   "sure": true
+  },
+  {
+   "id": "owner65_0006",
+   "text": "hop over to me",
+   "maj": "JUMP",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.36"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0007",
+   "text": "jump on this trash box and then come to me",
+   "maj": "JUMP",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.37"
+   ],
+   "multi": true,
+   "sure": true
+  },
+  {
+   "id": "owner65_0008",
+   "text": "jump on on these trash bugs",
+   "maj": "JUMP",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.37"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner65_0009",
+   "text": "you're a fucking idiot",
+   "maj": "NONE",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.37"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0010",
+   "text": "go find enemy right there",
+   "maj": "ATTACK",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.37"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0011",
+   "text": "can you see that guy st there?",
+   "maj": "SEE_THING",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.38"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0012",
+   "text": "come over to me",
+   "maj": "FOLLOW_ME",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.38"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0013",
+   "text": "hey brother",
+   "maj": "SMALL_TALK",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.38"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0014",
+   "text": "how we doing bro?",
+   "maj": "STATUS_REPORT",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.38"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0015",
+   "text": "how would you homie?",
+   "maj": "STATUS_REPORT",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.38"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner65_0016",
+   "text": "go for there",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.38"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0017",
+   "text": "come there",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.39"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0018",
+   "text": "come, come, come and see they here behind me",
+   "maj": "FOLLOW_ME",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.39"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0019",
+   "text": "sit down bro",
+   "maj": "CROUCH",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.39"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0020",
+   "text": "don't call me bro",
+   "maj": "SMALL_TALK",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.39"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0021",
+   "text": "sand up",
+   "maj": "STAND_UP",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.40"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner65_0022",
+   "text": "throw that spool",
+   "maj": "ROLL",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.40"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner65_0023",
+   "text": "come back to me",
+   "maj": "COME_BACK",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.40"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0024",
+   "text": "go inside that room",
+   "maj": "MOVE_TO",
+   "count": 2,
+   "said": [
+    "2026.10.25-17.41",
+    "2026.10.25-17.41"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0025",
+   "text": "go through that door",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.41"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0026",
+   "text": "press it forward",
+   "maj": "PUSH",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.41"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner65_0027",
+   "text": "go through that room",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.41"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0028",
+   "text": "go inside there",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.42"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0029",
+   "text": "go out through that door",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.42"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0030",
+   "text": "take that take that box",
+   "maj": "COLLECT",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.42"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0031",
+   "text": "put it there",
+   "maj": "DELIVER",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.42"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0032",
+   "text": "put in there that box",
+   "maj": "DELIVER",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.42"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner65_0033",
+   "text": "throw it away",
+   "maj": "DROP",
+   "count": 1,
+   "said": [
+    "2026.10.25-17.42"
+   ],
+   "multi": false,
+   "sure": true
+  }
+ ]
+}

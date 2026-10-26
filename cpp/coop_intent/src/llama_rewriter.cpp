@@ -153,10 +153,10 @@ bool Rewriter::Answer(std::string_view turn, std::string* answer, Stats* stats, 
     return true;
 }
 
-bool Rewriter::Rewrite(const std::vector<std::string>& before, std::string_view bot, std::string_view line,
+bool Rewriter::Rewrite(const std::vector<std::string>& before, std::string_view bot, std::string_view scene, std::string_view line,
                        std::vector<std::string>* pieces, std::string* error) {
     std::string answer;
-    if (!Answer(RewriterTurn(before, bot, line), &answer, nullptr, error)) return false;
+    if (!Answer(RewriterTurn(before, bot, line, scene), &answer, nullptr, error)) return false;
     *pieces = RewriterPieces(answer);
     return true;
 }

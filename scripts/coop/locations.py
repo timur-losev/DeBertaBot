@@ -442,7 +442,7 @@ def _no_duplicate_keys(pairs):
     return dict(pairs)
 
 
-V60_TAGS = ("v60", "v61", "v62", "v64")
+V60_TAGS = ("v60", "v61", "v62", "v64", "v65")
 
 
 def vocab_file(tag=None):
@@ -450,7 +450,7 @@ def vocab_file(tag=None):
     for the v64 bots, locations_v62.json (v9, the teleport) for the v62 bots,
     locations_v60.json for the v60 and v61 bots, else locations.json."""
     tag = tag or os.environ.get("COOP_TAG", "")
-    return os.path.join(HERE, "locations_v64.json" if tag == "v64" else "locations_v62.json" if tag == "v62" else "locations_v60.json" if tag in V60_TAGS else "locations.json")
+    return os.path.join(HERE, "locations_v64.json" if tag in ("v64", "v65") else "locations_v62.json" if tag == "v62" else "locations_v60.json" if tag in V60_TAGS else "locations.json")
 
 
 def load_vocab(path=None):

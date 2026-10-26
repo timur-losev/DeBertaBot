@@ -437,6 +437,17 @@ bool ParsePin(const json& j, coop::WorldPin* p, std::string* err) {
     return true;
 }
 
+// what the bot deals with, as the game sends it (decoder v65): {"holding", "standing_on", "car_m" (null or left out: no
+// car), "last": {"thing", "m"}}
+coop::Scene SceneFromJson(const json& s) {
+    coop::Scene sc;
+    sc.holding = StrOrEmpty(s, "holding");
+    sc.standing_on = StrOrEmpty(s, "standing_on");
+    if (s.contains("car_m") && !s["car_m"].is_null()) sc.has_car = true, sc.car_m = s["car_m"].get<double>();
+    if (s.contains("last") && s["last"].is_object()) sc.last = StrOrEmpty(s["last"], "thing"), sc.last_m = s["last"].value("m", 0.0);
+    return sc;
+}
+
 bool ParseWorld(const json& j, coop::WorldState* w, std::string* err) {
     *w = coop::WorldState();
     try {
@@ -466,6 +477,12 @@ bool ParseWorld(const json& j, coop::WorldState* w, std::string* err) {
             w->bot_stance = j["bot"].value("stance", std::string("stand"));
             w->bot_items = j["bot"].value("items", std::vector<std::string>{});
             w->bot_busy = j["bot"].value("busy", false);
+        }
+        if (j.contains("scene") && j["scene"].is_object()) {
+            const coop::Scene sc = SceneFromJson(j["scene"]);
+            w->scene = coop::SceneLine(sc);
+            w->scene_standing = !sc.standing_on.empty();
+            w->scene_car_near = sc.has_car && sc.car_m <= coop::kSceneCarNear;
         }
         if (j.contains("time") && !j["time"].is_null()) {   // the game's clock: without it the planner keeps no context
             w->has_time = true;
@@ -1218,12 +1235,12 @@ struct Chain {
         return true;
     }
 
-    bool Rewrite(const std::vector<std::string>& before, const std::string& bot, const std::string& line, std::vector<std::string>* pieces,
-                 std::string* err) {
+    bool Rewrite(const std::vector<std::string>& before, const std::string& bot, const std::string& scene, const std::string& line,
+                 std::vector<std::string>* pieces, std::string* err) {
 #ifdef COOP_WITH_LLM
-        return decoder.Rewrite(before, bot, line, pieces, err);
+        return decoder.Rewrite(before, bot, scene, line, pieces, err);
 #else
-        (void)before, (void)bot, (void)line, (void)pieces;
+        (void)before, (void)bot, (void)scene, (void)line, (void)pieces;
         return *err = "this coop_cli was built without the decoder", false;
 #endif
     }
@@ -1601,7 +1618,7 @@ struct Chat {
             for (const Said& s : said) before.push_back(s.text);
             const bool bot = !bot_said.text.empty() && Ms(now - bot_said.at) <= 1000 * c->memory_seconds;
             const auto t1 = Clock::now();
-            const bool ok = c->Rewrite(before, bot ? bot_said.text : std::string(), text, pieces, &h->note);
+            const bool ok = c->Rewrite(before, bot ? bot_said.text : std::string(), planner.World().scene, text, pieces, &h->note);
             h->rewrite_ms += Ms(Clock::now() - t1);
             if (ok) h->decoded = true;
             return ok;
@@ -1613,7 +1630,20 @@ struct Chat {
             if (foreign) h->route = 1.0;
             else if (!c->Route(m.tok.Encode(text), &h->route, err)) return false;
             h->route_ms = Ms(Clock::now() - t0);
-            if (foreign || !c->router || h->route >= c->cut) {
+            // an English line of one order the scene may change (decoder v65: chains9_v65.py): "get down" standing on a
+            // box is climbing down, "jump in" with no car near is jumping up on the thing. The classifier's own reading
+            // says which lines: one the scene could make another order goes to the decoder with the scene
+            bool scene_look = false;
+            if (!foreign && c->router && h->route < c->cut && !planner.World().scene.empty()) {
+                if (!Read(text, err)) return false;
+                const std::string& top = m.cfg.labels[std::max_element(p.begin(), p.end()) - p.begin()];
+                const coop::WorldState& w = planner.World();
+                scene_look = (w.scene_standing && (top == "TAKE_COVER" || top == "MOVE_TO" || top == "NONE" || top == "GET_OUT" ||
+                                                   top == "CROUCH" || top == "FOLLOW_ME")) ||
+                             (!w.scene_car_near && top == "GET_IN");
+                if (scene_look) h->note = "the scene may change what the line orders: the decoder reads it in the scene";
+            }
+            if (foreign || !c->router || h->route >= c->cut || scene_look) {
                 std::vector<std::string> pieces;
                 // a decoder that fails leaves the line to the classifier
                 decode(&pieces);
@@ -1888,7 +1918,7 @@ int RunChat(Model& m, int threads, const std::string& world_file) {
 int RunChainTests(Model& m, Chain& c) {
 #ifdef COOP_WITH_LLM
     const auto rows = ReadJsonl(c.dir + "/chain_tests.jsonl");
-    size_t turn_ok = 0, ids_ok = 0, routed = 0, route_close = 0, route_side = 0, answer_ok = 0, pieces_ok = 0, shown = 0;
+    size_t turn_ok = 0, ids_ok = 0, routed = 0, route_close = 0, route_side = 0, answer_ok = 0, pieces_ok = 0, shown = 0, scenes = 0, scene_ok = 0;
     double worst = 0;
     std::vector<double> ms;
     std::string err;
@@ -1896,8 +1926,15 @@ int RunChainTests(Model& m, Chain& c) {
         const auto before = r.at("before").get<std::vector<std::string>>();
         const std::string bot = r.at("bot").is_null() ? std::string() : r.at("bot").get<std::string>();
         const std::string line = r.at("line").get<std::string>();
-        const std::string turn = coop::RewriterTurn(before, bot, line);
+        const std::string scene = r.contains("scene") && !r.at("scene").is_null() ? r.at("scene").get<std::string>() : std::string();
+        const std::string turn = coop::RewriterTurn(before, bot, line, scene);
         turn_ok += turn == r.at("turn").get<std::string>();
+        if (r.contains("scene_parts")) {   // the scene line from the parts the game sends, against chains9_v65.scene_text
+            ++scenes;
+            const std::string got = coop::SceneLine(SceneFromJson(r.at("scene_parts")));
+            scene_ok += got == scene;
+            if (got != scene && shown++ < 5) std::printf("  scene: C++ %s\n         Python %s\n", got.c_str(), scene.c_str());
+        }
         const auto ids = m.tok.Encode(line);
         ids_ok += ids == r.at("ids").get<std::vector<int64_t>>();
         if (c.router && r.contains("route")) {
@@ -1922,6 +1959,7 @@ int RunChainTests(Model& m, Chain& c) {
     }
     const size_t n = rows.size();
     std::printf("chain tests, %zu lines: turn text %zu/%zu, token ids %zu/%zu\n", n, turn_ok, n, ids_ok, n);
+    if (scenes) std::printf("  scene line from the game's parts equal to Python's on %zu/%zu\n", scene_ok, scenes);
     if (routed)
         std::printf("  router: probability within 1e-4 of PyTorch on %zu/%zu (largest difference %.2g), same side of the cut %.2f on %zu/%zu\n",
                     route_close, routed, worst, c.cut, route_side, routed);
@@ -1935,7 +1973,7 @@ int RunChainTests(Model& m, Chain& c) {
                 coop::Rewriter::Backend().c_str(), exact ? "CPU" : "GPU", answer_ok, n, pieces_ok, n,
                 exact ? "" : " (not required on a GPU: --decoder-cpu is the exact check)",
                 std::accumulate(ms.begin(), ms.end(), 0.0) / std::max<size_t>(n, 1), Percentile(ms, 0.5), Percentile(ms, 0.95));
-    return turn_ok == n && ids_ok == n && route_close == routed && (!exact || pieces_ok == n) ? 0 : 1;
+    return turn_ok == n && ids_ok == n && scene_ok == scenes && route_close == routed && (!exact || pieces_ok == n) ? 0 : 1;
 #else
     (void)m;
     (void)c;

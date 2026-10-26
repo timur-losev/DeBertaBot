@@ -86,6 +86,11 @@ struct WorldState {
     bool bot_busy = false;     // the bot is still carrying out the order it took last
     bool has_time = false;     // the game sends its clock: without it there is no context
     double time = 0;           // seconds
+    // what the game says the bot deals with (its "scene": rewriter.h SceneLine), for the decoder alone: the planner does
+    // not read it. Empty: the game sent none
+    std::string scene;
+    bool scene_standing = false;   // the bot stands on a thing
+    bool scene_car_near = false;   // a car within kSceneCarNear metres (or the bot is in it)
     // per intent with an item ("BUILD", "PLANT_CROP", ...), what the game has; an intent not listed has no catalogue
     std::vector<std::pair<std::string, std::vector<CatalogEntry>>> catalog;
     const std::vector<CatalogEntry>* Catalog(const std::string& intent) const {

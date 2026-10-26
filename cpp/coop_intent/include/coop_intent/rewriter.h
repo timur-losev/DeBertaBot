@@ -21,8 +21,21 @@
 namespace coop {
 
 // The user turn the decoder was trained on (chains2_v54.turn): "before: <line>" for each earlier line of the player,
-// oldest first, "bot: <line>" if the bot said something after them, then "now: <line>"; one per row.
-std::string RewriterTurn(const std::vector<std::string>& before, std::string_view bot, std::string_view line);
+// oldest first, "bot: <line>" if the bot said something after them, "scene: <scene>" when the game sent one (decoder
+// v65, chains9_v65.py), then "now: <line>"; one per row.
+std::string RewriterTurn(const std::vector<std::string>& before, std::string_view bot, std::string_view line,
+                         std::string_view scene = {});
+
+// What the bot deals with, as the game sends it (the world's "scene"), and the line the decoder is shown
+// (chains9_v65.scene_text): "holding a <thing>; standing on a <thing>; no car near | a car <m> m away; last thing:
+// <thing>, <m> m", the parts in that order, each but the car's left out when there is nothing to say.
+constexpr double kSceneCarNear = 25;   // metres: a car farther than that is "no car near" (the game's CarNearEnough)
+struct Scene {
+    std::string holding, standing_on, last;   // empty: none
+    bool has_car = false;
+    double car_m = 0, last_m = 0;             // metres; 0 m for the car: the bot is in it
+};
+std::string SceneLine(const Scene& scene);
 
 // The prompt as the model's chat template renders it with thinking off (qlora_v54.Turns.text): the system turn, the
 // user turn, and the assistant turn opened with an empty think block.
@@ -60,8 +73,8 @@ public:
     };
     // the model's answer to one user turn, generated greedily until the end-of-turn token
     bool Answer(std::string_view turn, std::string* answer, Stats* stats, std::string* error);
-    // the orders the player gives now, each standing by itself
-    bool Rewrite(const std::vector<std::string>& before, std::string_view bot, std::string_view line,
+    // the orders the player gives now, each standing by itself; `scene`: SceneLine, empty for none
+    bool Rewrite(const std::vector<std::string>& before, std::string_view bot, std::string_view scene, std::string_view line,
                  std::vector<std::string>* pieces, std::string* error);
     // "llama.cpp b11429"
     static std::string Backend();

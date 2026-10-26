@@ -1,0 +1,25 @@
+19:39:07  train start
+W1025 19:39:14.943000 24540 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+
+
+
+
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\_dynamo\eval_frame.py:1548: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. Starting in PyTorch 2.9, calling checkpoint without use_reentrant will raise an exception. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+D:\Program\anaconda3\envs\jev\Lib\site-packages\peft\utils\save_and_load.py:313: UserWarning: Could not find a config file in Qwen/Qwen3-1.7B - will assume that the vocabulary was not modified.
+  warnings.warn(
+chains9 pieces10v65_final seed 0: 59164 rows, trained in 19207s
+scene answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\measure_v65_answers_v65.json
+v64 test answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains9_65_test64_pieces10v65_final_s0.json
+chains2 pieces10v65_final seed 0: blind 150, blind_heard 100, blind2 150, blind2_heard 100, blind2_heard3 300, ctx 150, ctx_heard3 299, ctx_heardline3 299 answered in 94s
+ml answers: dev_ru 41, blind2_ru 150, ctx_ru 150, dev_es 41, blind2_es 150, ctx_es 150 -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains9_65_ml_pieces10v65_final_s0.json
+pairs answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains9_65_pairs_pieces10v65_final_s0.json
+01:02:42  train end, gguf
+llama_model_quantize_impl: quant size  =  1050.43 MiB (5.12 BPW)
+
+llama_quantize: quantize time = 12975.62 ms
+llama_quantize:    total time = 12975.62 ms
+pieces10v65_final seed 0: 1056 MB, 38s -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\models\gguf\pieces10v65_final_s0-Q4_K_M.gguf
+01:03:29  done
