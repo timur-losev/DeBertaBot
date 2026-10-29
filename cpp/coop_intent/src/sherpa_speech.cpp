@@ -60,8 +60,9 @@ bool SpeechRecognizer::Load(const SpeechOptions& options, std::string* error) {
 }
 
 bool SpeechRecognizer::Transcribe(const float* samples, size_t count, int sample_rate, std::string* text,
-                                  std::string* error) const {
+                                  std::string* error, std::vector<SpeechWord>* words) const {
     text->clear();
+    if (words) words->clear();
     if (!impl_->recognizer) {
         if (error) *error = "the speech recognizer is not loaded";
         return false;
@@ -80,6 +81,15 @@ bool SpeechRecognizer::Transcribe(const float* samples, size_t count, int sample
     SherpaOnnxDecodeOfflineStream(impl_->recognizer, stream);
     const SherpaOnnxOfflineRecognizerResult* result = SherpaOnnxGetOfflineStreamResult(stream);
     if (result && result->text) *text = result->text;
+    if (words && result && result->timestamps && result->tokens_arr && result->count > 0) {
+        std::vector<std::string> tokens;
+        std::vector<float> starts;
+        for (int32_t i = 0; i < result->count; ++i) {
+            tokens.emplace_back(result->tokens_arr[i] ? result->tokens_arr[i] : "");
+            starts.push_back(result->timestamps[i]);
+        }
+        *words = SpeechWords(tokens, starts);
+    }
     if (result) SherpaOnnxDestroyOfflineRecognizerResult(result);
     SherpaOnnxDestroyOfflineStream(stream);
     return true;

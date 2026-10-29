@@ -1,0 +1,21 @@
+brain v66 on test66 (192 items; left out as the owner's own trained lines: ['t66_003', 't66_030', 't66_036', 't66_060', 't66_080', 't66_100', 't66_135', 't66_170']): intent 175/192 = 91.1%, intent and place 174/192 = 90.6%
+  by language: en: 49/54, es: 53/55, ru: 72/83
+  by rule: 0: 15/16, 1: 25/28, 2: 21/23, 3: 21/24, 4: 19/19, 5: 32/34, 6: 9/14, 7: 15/15, 8: 8/9, 9: 9/10
+  NO  [5] en nah use your gun                             -> nah use your gun                               read SWITCH_WEAPON (act); want OPEN_FIRE window
+  NO  [6] en don't drop it                                -> don't drop it                                  read WAIT (wait); want COLLECT 
+  NO  [6] en don't throw that crate man                   -> don't throw that crate man                     read WAIT (wait); want COLLECT 
+  NO  [6] en Don't hand it to me.                         -> Don't hand it to me.                           read WAIT (wait); want COLLECT 
+  NO  [9] en Jump over it.                                -> jump over the red table                        place None; want JUMP table
+  NO  [1] ru Подвинься, я не пролезу.                     -> Hurry up, I can't swing around.                read MOVE_TO (say_again); want GIVE_WAY 
+  NO  [1] ru Уйди, брат, не до тебя сейчас.               -> get out bro, not interested right now          read GET_OUT (act); want GIVE_WAY 
+  NO  [1] ru отвали, не мешай пройти                      -> break line of sight, let me through            read TAKE_COVER (act); want GIVE_WAY 
+  NO  [2] ru что это за фигня там                         -> what the hell is going on there                read SMALL_TALK (say_again); want WHAT_IS_IT 
+  NO  [3] ru шмальни в стекло под ногами                  -> step on the glass and pop a smock              read VAULT_WINDOW (say_again); want OPEN_FIRE window
+  NO  [3] ru заложи заряд и взорви дверь                  -> plant the charge                               read PLANT (act); want BREACH door
+  NO  [5] ru нет, лучше осколочную                        -> throw a shotgun at the door                    read SMOKE (say_again); want FRAG door
+  NO  [6] ru не ставь её на пол                           -> keep it off the floor                          read DROP (act); want COLLECT 
+  NO  [6] ru не спускай её                                -> keep holding it                                read COLLECT (act); want WAIT 
+  NO  [8] ru как ты там, братан?                          -> how you holding up buddy                       read SMALL_TALK (act); want STATUS_REPORT 
+  NO  [0] ru стой                                         -> stand                                          read HOLD_POSITION (act); want WAIT 
+  NO  [2] es que estoy mirando tio                        -> I'm looking at you bro                         read SMALL_TALK (act); want WHAT_IS_IT 
+  NO  [3] es parte esa ventana                            -> frag that window                               read FRAG (act); want MELEE window

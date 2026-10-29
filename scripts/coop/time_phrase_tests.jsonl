@@ -1,0 +1,90 @@
+{"line": "wait 5 seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "5 seconds", "seconds": 5.0}}
+{"line": "wait five seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "five seconds", "seconds": 5.0}}
+{"line": "Wait 5 seconds.", "rest": "Wait.", "time": {"capped": false, "kind": "for", "more": false, "said": "5 seconds", "seconds": 5.0}}
+{"line": "wait for 10 seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "for 10 seconds", "seconds": 10.0}}
+{"line": "hold here for 10 seconds", "rest": "hold here", "time": {"capped": false, "kind": "for", "more": false, "said": "for 10 seconds", "seconds": 10.0}}
+{"line": "Stand here for twenty seconds.", "rest": "Stand here.", "time": {"capped": false, "kind": "for", "more": false, "said": "for twenty seconds", "seconds": 20.0}}
+{"line": "cover me for 30 seconds", "rest": "cover me", "time": {"capped": false, "kind": "for", "more": false, "said": "for 30 seconds", "seconds": 30.0}}
+{"line": "run forward for 10 seconds", "rest": "run forward", "time": {"capped": false, "kind": "for", "more": false, "said": "for 10 seconds", "seconds": 10.0}}
+{"line": "jump for ten seconds", "rest": "jump", "time": {"capped": false, "kind": "for", "more": false, "said": "for ten seconds", "seconds": 10.0}}
+{"line": "Crouch for ten seconds.", "rest": "Crouch.", "time": {"capped": false, "kind": "for", "more": false, "said": "for ten seconds", "seconds": 10.0}}
+{"line": "Shoot there for five seconds.", "rest": "Shoot there.", "time": {"capped": false, "kind": "for", "more": false, "said": "for five seconds", "seconds": 5.0}}
+{"line": "follow me for a minute", "rest": "follow me", "time": {"capped": false, "kind": "for", "more": false, "said": "for a minute", "seconds": 60.0}}
+{"line": "follow me for one minute", "rest": "follow me", "time": {"capped": false, "kind": "for", "more": false, "said": "for one minute", "seconds": 60.0}}
+{"line": "wait one minute", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "one minute", "seconds": 60.0}}
+{"line": "wait 2 minutes", "rest": "wait", "time": {"capped": true, "kind": "for", "more": false, "said": "2 minutes", "seconds": 60.0}}
+{"line": "wait for 90 seconds", "rest": "wait", "time": {"capped": true, "kind": "for", "more": false, "said": "for 90 seconds", "seconds": 60.0}}
+{"line": "wait 1.5 seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "1.5 seconds", "seconds": 1.5}}
+{"line": "wait one and a half seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "one and a half seconds", "seconds": 1.5}}
+{"line": "wait twenty five seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "twenty five seconds", "seconds": 25.0}}
+{"line": "wait twenty-five seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "twenty-five seconds", "seconds": 25.0}}
+{"line": "wait 5s", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "5s", "seconds": 5.0}}
+{"line": "wait 5 sec", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "5 sec", "seconds": 5.0}}
+{"line": "wait 5 secs", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "5 secs", "seconds": 5.0}}
+{"line": "wait half a minute", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "half a minute", "seconds": 30.0}}
+{"line": "Wait a half minute.", "rest": "Wait.", "time": {"capped": false, "kind": "for", "more": false, "said": "a half minute", "seconds": 30.0}}
+{"line": "wait for half a minute, then go to the door", "rest": "wait, then go to the door", "time": {"capped": false, "kind": "for", "more": false, "said": "for half a minute", "seconds": 30.0}}
+{"line": "wait a couple of seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "a couple of seconds", "seconds": 2.0}}
+{"line": "wait a couple seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "a couple seconds", "seconds": 2.0}}
+{"line": "wait a few seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "max": 7.0, "min": 3.0, "more": false, "said": "a few seconds"}}
+{"line": "wait several seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "max": 7.0, "min": 3.0, "more": false, "said": "several seconds"}}
+{"line": "wait 10 to 15 seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "max": 15.0, "min": 10.0, "more": false, "said": "10 to 15 seconds"}}
+{"line": "wait 10-15 seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "max": 15.0, "min": 10.0, "more": false, "said": "10-15 seconds"}}
+{"line": "wait 10 or 15 seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "max": 15.0, "min": 10.0, "more": false, "said": "10 or 15 seconds"}}
+{"line": "wait about twenty seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "about twenty seconds", "seconds": 20.0}}
+{"line": "wait 10 seconds or so", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "10 seconds or so", "seconds": 10.0}}
+{"line": "wait 5 more seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "more": true, "said": "5 more seconds", "seconds": 5.0}}
+{"line": "wait another 5 seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "more": true, "said": "another 5 seconds", "seconds": 5.0}}
+{"line": "hold for another ten seconds", "rest": "hold", "time": {"capped": false, "kind": "for", "more": true, "said": "for another ten seconds", "seconds": 10.0}}
+{"line": "look at me for a second", "rest": "look at me", "time": {"capped": false, "kind": "for", "more": false, "said": "for a second", "seconds": 1.0}}
+{"line": "in ten seconds, get to the door", "rest": "get to the door", "time": {"capped": false, "kind": "after", "more": false, "said": "in ten seconds", "seconds": 10.0}}
+{"line": "In ten seconds, get to the door.", "rest": "get to the door.", "time": {"capped": false, "kind": "after", "more": false, "said": "In ten seconds", "seconds": 10.0}}
+{"line": "in 10 seconds go to the door", "rest": "go to the door", "time": {"capped": false, "kind": "after", "more": false, "said": "in 10 seconds", "seconds": 10.0}}
+{"line": "go to the door in 10 seconds", "rest": "go to the door", "time": {"capped": false, "kind": "after", "more": false, "said": "in 10 seconds", "seconds": 10.0}}
+{"line": "after five seconds follow me", "rest": "follow me", "time": {"capped": false, "kind": "after", "more": false, "said": "after five seconds", "seconds": 5.0}}
+{"line": "go to the door 10 seconds from now", "rest": "go to the door", "time": {"capped": false, "kind": "after", "more": false, "said": "10 seconds from now", "seconds": 10.0}}
+{"line": "count to ten", "rest": "wait", "time": {"capped": false, "kind": "after", "more": false, "said": "count to ten", "seconds": 10.0}}
+{"line": "hold the angle for the next 20 seconds", "rest": "hold the angle", "time": {"capped": false, "kind": "for", "more": false, "said": "for the next 20 seconds", "seconds": 20.0}}
+{"line": "Hop around here for five seconds.", "rest": "Hop around here.", "time": {"capped": false, "kind": "for", "more": false, "said": "for five seconds", "seconds": 5.0}}
+{"line": "give me 5 seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "give me 5 seconds", "seconds": 5.0}}
+{"line": "gimme a minute", "rest": "gimme a minute", "time": null}
+{"line": "give me a minute", "rest": "give me a minute", "time": null}
+{"line": "five seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "five seconds", "seconds": 5.0}}
+{"line": "Half a minute.", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "Half a minute", "seconds": 30.0}}
+{"line": "wait an hour", "rest": "wait", "time": {"capped": true, "kind": "for", "more": false, "said": "an hour", "seconds": 60.0}}
+{"line": "Stop for 3 seconds.", "rest": "Stop.", "time": {"capped": false, "kind": "for", "more": false, "said": "for 3 seconds", "seconds": 3.0}}
+{"line": "Wait five more seconds.", "rest": "Wait.", "time": {"capped": false, "kind": "for", "more": true, "said": "five more seconds", "seconds": 5.0}}
+{"line": "jump down 10 seconds", "rest": "jump down", "time": {"capped": false, "kind": "for", "more": false, "said": "10 seconds", "seconds": 10.0}}
+{"line": "wait 1 minute 30 seconds", "rest": "wait", "time": {"capped": true, "kind": "for", "more": false, "said": "1 minute 30 seconds", "seconds": 60.0}}
+{"line": "wait 0 minutes and 40 seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "0 minutes and 40 seconds", "seconds": 40.0}}
+{"line": "wait 2 to 3 minutes", "rest": "wait", "time": {"capped": true, "kind": "for", "more": false, "said": "2 to 3 minutes", "seconds": 60.0}}
+{"line": "hold the door for twenty seconds", "rest": "hold the door", "time": {"capped": false, "kind": "for", "more": false, "said": "for twenty seconds", "seconds": 20.0}}
+{"line": "stay on second for a minute", "rest": "stay on second", "time": {"capped": false, "kind": "for", "more": false, "said": "for a minute", "seconds": 60.0}}
+{"line": "for ten seconds hold this angle", "rest": "hold this angle", "time": {"capped": false, "kind": "for", "more": false, "said": "for ten seconds", "seconds": 10.0}}
+{"line": "wait between 5 and 10 seconds", "rest": "wait", "time": {"capped": false, "kind": "for", "max": 10.0, "min": 5.0, "more": false, "said": "between 5 and 10 seconds"}}
+{"line": "hold here for between 10 and 20 seconds", "rest": "hold here", "time": {"capped": false, "kind": "for", "max": 20.0, "min": 10.0, "more": false, "said": "for between 10 and 20 seconds"}}
+{"line": "wait like a second and a half", "rest": "wait", "time": {"capped": false, "kind": "for", "more": false, "said": "like a second and a half", "seconds": 1.5}}
+{"line": "wait a minute and a half", "rest": "wait", "time": {"capped": true, "kind": "for", "more": false, "said": "a minute and a half", "seconds": 60.0}}
+{"line": "stay between the doors", "rest": "stay between the doors", "time": null}
+{"line": "go prone for a few more seconds", "rest": "go prone", "time": {"capped": false, "kind": "for", "max": 7.0, "min": 3.0, "more": true, "said": "for a few more seconds"}}
+{"line": "lie down for a couple more seconds", "rest": "lie down", "time": {"capped": false, "kind": "for", "more": true, "said": "for a couple more seconds", "seconds": 2.0}}
+{"line": "watch the window for half a minute more", "rest": "watch the window", "time": {"capped": false, "kind": "for", "more": true, "said": "for half a minute more", "seconds": 30.0}}
+{"line": "cover me for 10 seconds more", "rest": "cover me", "time": {"capped": false, "kind": "for", "more": true, "said": "for 10 seconds more", "seconds": 10.0}}
+{"line": "wait a few seconds more", "rest": "wait", "time": {"capped": false, "kind": "for", "max": 7.0, "min": 3.0, "more": true, "said": "a few seconds more"}}
+{"line": "hold for just a second", "rest": "hold", "time": {"capped": false, "kind": "for", "more": false, "said": "for just a second", "seconds": 1.0}}
+{"line": "wait a minute", "rest": "wait a minute", "time": null}
+{"line": "wait a sec", "rest": "wait a sec", "time": null}
+{"line": "hang on a second", "rest": "hang on a second", "time": null}
+{"line": "just a moment", "rest": "just a moment", "time": null}
+{"line": "just a sec", "rest": "just a sec", "time": null}
+{"line": "wait just a minute", "rest": "wait just a minute", "time": null}
+{"line": "I'll be there in a minute", "rest": "I'll be there in a minute", "time": null}
+{"line": "go to the second floor", "rest": "go to the second floor", "time": null}
+{"line": "stay on second", "rest": "stay on second", "time": null}
+{"line": "hold the second door", "rest": "hold the second door", "time": null}
+{"line": "two on red", "rest": "two on red", "time": null}
+{"line": "on three, breach", "rest": "on three, breach", "time": null}
+{"line": "wait for my go", "rest": "wait for my go", "time": null}
+{"line": "wait", "rest": "wait", "time": null}
+{"line": "wait 0 seconds", "rest": "wait 0 seconds", "time": null}
+{"line": "collect five wood", "rest": "collect five wood", "time": null}

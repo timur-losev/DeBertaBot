@@ -1,0 +1,6 @@
+W1028 11:21:50.816000 40984 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]Loading weights: 100%|██████████| 106/106 [00:00<00:00, 1736.84it/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+wrote G:\Proj\ollaya\DeBertaBot\models\coop-chain-v67\cpp: decoder.gguf (1056 MB), router.onnx (it sends 73 of 220 test lines on), 220 test lines, 41 answered with several orders

@@ -49,6 +49,7 @@ add_library(coop_intent_core STATIC
   src/world.cpp
   src/intent_model.cpp
   src/speech_text.cpp
+  src/time_phrase.cpp
   src/rewriter_text.cpp
   src/localize.cpp
   src/bro.cpp)

@@ -778,6 +778,18 @@
    "source": "coop_cli.cpp kLines DROP"
   },
   {
+   "en": "Out of your way.",
+   "source": "coop_cli.cpp kLines GIVE_WAY"
+  },
+  {
+   "en": "Making room.",
+   "source": "coop_cli.cpp kLines GIVE_WAY"
+  },
+  {
+   "en": "Stepping aside.",
+   "source": "coop_cli.cpp kLines GIVE_WAY"
+  },
+  {
    "en": "Anytime.",
    "source": "coop_cli.cpp kTalk thanks (SMALL_TALK)"
   },
@@ -1016,6 +1028,42 @@
   {
    "en": "Ready.",
    "source": "coop_cli.cpp: the voice's warm-up line"
+  },
+  {
+   "en": "{n} seconds.",
+   "source": "coop_cli.cpp: the order lasts that long ('Holding up. 10 seconds.')"
+  },
+  {
+   "en": "1 second.",
+   "source": "coop_cli.cpp: the same, one second"
+  },
+  {
+   "en": "In {n} seconds.",
+   "source": "coop_cli.cpp: the order starts after that long ('Relocating. In 10 seconds.')"
+  },
+  {
+   "en": "In 1 second.",
+   "source": "coop_cli.cpp: the same, one second"
+  },
+  {
+   "en": "{n} more seconds.",
+   "source": "coop_cli.cpp: added to a timed order still running"
+  },
+  {
+   "en": "1 more second.",
+   "source": "coop_cli.cpp: the same, one second"
+  },
+  {
+   "en": "A few seconds.",
+   "source": "coop_cli.cpp: 'a few seconds', the game draws 3 to 7"
+  },
+  {
+   "en": "In a few seconds.",
+   "source": "coop_cli.cpp: starts after a few seconds"
+  },
+  {
+   "en": "About {n} seconds.",
+   "source": "coop_cli.cpp: a range said ('10 to 15 seconds'): its middle"
   },
   {
    "en": "I can't build that: no {item} in my build menu.",
@@ -1606,6 +1654,174 @@
    "source": "game: JUMP off what it stands on: no floor below its edges"
   },
   {
+   "en": "That's {thing}.",
+   "source": "game: 'what is that?': the thing under the player's crosshair (WHAT_THINGS)"
+  },
+  {
+   "en": "That's me.",
+   "source": "game: 'what is that?' at the bot"
+  },
+  {
+   "en": "Nothing there, just the sky.",
+   "source": "game: 'what is that?' with the crosshair on nothing"
+  },
+  {
+   "en": "No room to step aside.",
+   "source": "game: GIVE_WAY with no floor to either side"
+  },
+  {
+   "en": "I don't see a way out.",
+   "source": "game: 'go outside' with no spot under open sky"
+  },
+  {
+   "en": "Glass is broken.",
+   "source": "game: MELEE on glass: broken"
+  },
+  {
+   "en": "It won't break.",
+   "source": "game: MELEE on glass: four strikes and it holds"
+  },
+  {
+   "en": "I can't get to the glass.",
+   "source": "game: MELEE on glass: no way to its edge"
+  },
+  {
+   "en": "There's a ledge.",
+   "source": "game: climb (Phase 6): the way up is a ledge within a jump; followed by 'I'll jump up.'"
+  },
+  {
+   "en": "I'll jump up.",
+   "source": "game: climb: the same"
+  },
+  {
+   "en": "A gap.",
+   "source": "game: climb: the way is over a gap between two floors; followed by 'I'll jump it.'"
+  },
+  {
+   "en": "I'll jump it.",
+   "source": "game: climb: the same"
+  },
+  {
+   "en": "Too high to jump.",
+   "source": "game: climb: the ledge needs a crate as a step; followed by 'I'll get a crate.'"
+  },
+  {
+   "en": "I'll get a crate.",
+   "source": "game: climb: the same"
+  },
+  {
+   "en": "I can't get up there.",
+   "source": "game: climb: the jump up did not land, or the place is up where no ledge or crate gets it"
+  },
+  {
+   "en": "I can't jump that.",
+   "source": "game: climb: the jump over the gap did not land"
+  },
+  {
+   "en": "I can't get to the crate.",
+   "source": "game: climb: no way to the crate it meant to carry"
+  },
+  {
+   "en": "The crate's gone.",
+   "source": "game: climb: the crate it meant to carry is no longer there"
+  },
+  {
+   "en": "Time's up.",
+   "source": "game: a timed order's time is over (round v68): the bot goes back to what it did before"
+  },
+  {
+   "en": "Didn't work.",
+   "source": "game: climb: the crate the order named was put down and tried, and the jump off it fell short; followed by 'Too high, even with the crate.'"
+  },
+  {
+   "en": "Too high, even with the crate.",
+   "source": "game: climb: the same"
+  },
+  {
+   "en": "Door's shut.",
+   "source": "game: doors (Phase 2): the way goes through a shut door; followed by 'Opening it.' or 'Getting the switch.'"
+  },
+  {
+   "en": "Getting the switch.",
+   "source": "game: doors: the door opens from a switch; also OPEN on a switch-only door"
+  },
+  {
+   "en": "Door's open.",
+   "source": "game: doors: it opened the door"
+  },
+  {
+   "en": "Open.",
+   "source": "game: doors: it used a switch that is not a door's"
+  },
+  {
+   "en": "It's open already.",
+   "source": "game: OPEN on a door that is open"
+  },
+  {
+   "en": "It won't open.",
+   "source": "game: doors: used by hand and still shut"
+  },
+  {
+   "en": "The switch did nothing.",
+   "source": "game: doors: the switch used and the door still shut"
+  },
+  {
+   "en": "I can't open that.",
+   "source": "game: OPEN on a thing that is no door and no switch"
+  },
+  {
+   "en": "I can't reach the door.",
+   "source": "game: doors: no way to the door's handle side"
+  },
+  {
+   "en": "I can't reach the switch.",
+   "source": "game: doors: no way to the switch"
+  },
+  {
+   "en": "I can't get to the switch.",
+   "source": "game: OPEN on a switch door whose switch has no way to it"
+  },
+  {
+   "en": "I can't get to it.",
+   "source": "game: OPEN on a door by hand with no way to it"
+  },
+  {
+   "en": "No way there, not even through a door.",
+   "source": "game: after 'I can't get there.': the gates find no way, doors open or shut"
+  },
+  {
+   "en": "The door's shut; the switch is {n} m from it.",
+   "source": "game: after 'I can't get there.': a shut door on the way, opened by a switch (the planner then opens it)"
+  },
+  {
+   "en": "The door's shut; I can open it.",
+   "source": "game: after 'I can't get there.': a shut door it opens by hand"
+  },
+  {
+   "en": "The door's shut, and I see no switch.",
+   "source": "game: after 'I can't get there.': a shut door with no switch and no handle"
+  },
+  {
+   "en": "{n} doors are shut on the way.",
+   "source": "game: after 'I can't get there.': several shut doors; followed by 'The first's shut...'"
+  },
+  {
+   "en": "The first's shut; the switch is {n} m from it.",
+   "source": "game: the first of several shut doors, by a switch"
+  },
+  {
+   "en": "The first's shut; I can open it.",
+   "source": "game: the first of several shut doors, by hand"
+  },
+  {
+   "en": "The first's shut, and I see no switch.",
+   "source": "game: the first of several shut doors, no switch"
+  },
+  {
+   "en": "The ledge is too high, and there's nothing to stand on.",
+   "source": "game: after 'I can't get there.': the climb planner found a ledge beyond its jump and no crate to reach"
+  },
+  {
    "en": "Okay, I won't anymore.",
    "source": "coop_cli.cpp bro habit: the player told it to stop saying 'bro'"
   },
@@ -1658,6 +1874,7 @@
     "the roof",
     "the way up",
     "the way down",
+    "the way out",
     "the way in",
     "that place"
    ]
@@ -1747,7 +1964,71 @@
   },
   "thing": {
    "note": "a thing the level designer labelled, with its English article ('a spike trap'); open, and it has no values: its words in the player's language come with the line from the label itself (the forms text, acc, gen...). The table's _other is said only when a label has no words of that language: a neutral word ('что-то', 'algo')",
-   "values": []
+   "values": [
+    "an enemy",
+    "a teammate",
+    "someone",
+    "a switch",
+    "the floor",
+    "the ceiling",
+    "a wall",
+    "a door",
+    "a window",
+    "the stairs",
+    "a chair",
+    "a sofa",
+    "a table",
+    "a car",
+    "some ammo",
+    "a weapon",
+    "a health pack",
+    "a box",
+    "a cable spool",
+    "a teleport",
+    "a field",
+    "a garden bed",
+    "a greenhouse",
+    "a barn",
+    "a chicken coop",
+    "a beehive",
+    "a well",
+    "a fence",
+    "a tree",
+    "a foundation",
+    "a bed",
+    "a rock",
+    "a big rock",
+    "a small rock",
+    "the blue bed",
+    "the red bed",
+    "the yellow bed",
+    "the white bed",
+    "the brown bed",
+    "the main door",
+    "the north door",
+    "the south door",
+    "the west door",
+    "the east door",
+    "the north window",
+    "the south window",
+    "the west window",
+    "the east window",
+    "the blue table",
+    "the red table",
+    "the yellow table",
+    "the white table",
+    "the brown table",
+    "the blue stairs",
+    "the red stairs",
+    "the yellow stairs",
+    "the white stairs",
+    "the brown stairs",
+    "a cardboard box",
+    "a big box",
+    "a small box",
+    "a big spool",
+    "a small spool"
+   ]
   },
   "phrase": {
    "note": "the order, as the bot says it back (intent_config.json 'phrases'); lowercase, an imperative ('move there')",
@@ -1771,6 +2052,7 @@
     "follow me",
     "get in the vehicle",
     "get out of the vehicle",
+    "get out of the way",
     "go back",
     "go now",
     "go prone",
@@ -1807,6 +2089,7 @@
     "say maybe",
     "say no",
     "say they don't know",
+    "say what that is",
     "say yes",
     "stand up",
     "suppress",
@@ -1849,6 +2132,8 @@
     "foundation",
     "teleport",
     "spool",
+    "garden bed",
+    "rock",
     "place"
    ]
   }

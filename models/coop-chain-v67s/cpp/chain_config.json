@@ -1,0 +1,12 @@
+{
+ "decoder": "decoder.gguf",
+ "decoder_from": "Qwen/Qwen3-1.7B + pieces12v67s_final seed 0, Q4_K_M, llama.cpp b11429",
+ "system": "You are the AI teammate in a co-op shooter. Write what the player orders now in English, one order per line.",
+ "max_new": 96,
+ "context": 1024,
+ "memory_lines": 5,
+ "memory_seconds": 30.0,
+ "router": "router.onnx",
+ "cut": 0.5,
+ "router_from": "microsoft/deberta-v3-small, 19701 rows, seed 0"
+}

@@ -1,0 +1,12 @@
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  23%|██▎       | 46/202 [00:00<00:00, 442.16it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 1205.24it/s]
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  20%|█▉        | 40/202 [00:00<00:00, 393.79it/s]Loading weights:  42%|████▏     | 84/202 [00:00<00:00, 407.87it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 939.53it/s]
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  16%|█▌        | 32/202 [00:00<00:00, 316.81it/s]Loading weights:  32%|███▏      | 64/202 [00:00<00:00, 305.14it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 937.00it/s]
+G:\Proj\ollaya\DeBertaBot\scripts\coop\export_cpp.py:123: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html
+  torch.onnx.export(Wrap(model), (x["input_ids"], x["attention_mask"]), os.path.join(OUT, name),
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  17%|█▋        | 34/202 [00:00<00:00, 330.43it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 1356.65it/s]
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  14%|█▍        | 29/202 [00:00<00:00, 285.68it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 1014.95it/s]
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  20%|█▉        | 40/202 [00:00<00:00, 384.64it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 1065.41it/s]

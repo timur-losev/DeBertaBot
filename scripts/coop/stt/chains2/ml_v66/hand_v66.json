@@ -1,0 +1,572 @@
+{
+ "_note": "Hand rows for decoder v66, written 2026-10-27 from the owner's games of 2026-10-25 22:04 .. 2026-10-27 01:20 (TODO_v66.md) and decoder v65's answers replayed through the deployed chain (make_hand_v66.py). The English uses the words bot v66 reads as meant: glass is a window, «разбей» is a butt strike (MELEE), going outside is 'go outside', a correction gives the other way on the thing of the line before without the 'no'.",
+ "items": [
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Что это?",
+   "en": [
+    "what is that"
+   ],
+   "was": "say again (HOLD_ANGLE 0.61)",
+   "label": "WHAT_IS_IT"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Что это такое?",
+   "en": [
+    "what is that"
+   ],
+   "was": "say again (HOLD_ANGLE 0.61)",
+   "label": "WHAT_IS_IT"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Это что такое?",
+   "en": [
+    "what is that"
+   ],
+   "was": "-",
+   "label": "WHAT_IS_IT"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Что это было?",
+   "en": [
+    "what was that"
+   ],
+   "was": "-",
+   "label": "SMALL_TALK"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Выходи из комнаты.",
+   "en": [
+    "go outside"
+   ],
+   "was": "Get out of the room. (say again, FALL_BACK 0.51)",
+   "label": "MOVE_TO"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Выходи отсюда.",
+   "en": [
+    "go outside"
+   ],
+   "was": "Get out of here. (FALL_BACK at the player)",
+   "label": "MOVE_TO"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Выйди отсюда.",
+   "en": [
+    "go outside"
+   ],
+   "was": "Get out of here. (FALL_BACK)",
+   "label": "MOVE_TO"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Выходи отсюда, иди направо.",
+   "en": [
+    "go outside",
+    "go right"
+   ],
+   "was": "Get out of here. (FALL_BACK)",
+   "label": "MOVE_TO"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Выйди на улицу.",
+   "en": [
+    "go outside"
+   ],
+   "was": "-",
+   "label": "MOVE_TO"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Дай пройти.",
+   "en": [
+    "let me through"
+   ],
+   "was": "let them through (HELP_INTERACTION)",
+   "label": "GIVE_WAY"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Дай мне пройти.",
+   "en": [
+    "let me through"
+   ],
+   "was": "Let me through. (HELP_INTERACTION)",
+   "label": "GIVE_WAY"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Отойди.",
+   "en": [
+    "move away"
+   ],
+   "was": "-",
+   "label": "GIVE_WAY"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Уйди с дороги.",
+   "en": [
+    "get out of the way"
+   ],
+   "was": "-",
+   "label": "GIVE_WAY"
+  },
+  {
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "Move away.",
+   "en": [
+    "Move away."
+   ],
+   "was": "say again (MOVE_TO 0.43)",
+   "label": "GIVE_WAY"
+  },
+  {
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "Go away.",
+   "en": [
+    "Go away."
+   ],
+   "was": "say again (KILL_YOURSELF 0.33)",
+   "label": "GIVE_WAY"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Не отдавай мне её.",
+   "en": [
+    "keep holding it"
+   ],
+   "was": "don't give it to me (WAIT)",
+   "label": "COLLECT"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Не кидай коробку.",
+   "en": [
+    "keep holding the box"
+   ],
+   "was": "don't throw the box (WAIT)",
+   "label": "COLLECT"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "Не спускай коробку.",
+   "en": [
+    "keep holding the box"
+   ],
+   "was": "Don't drop the box. (WAIT)",
+   "label": "COLLECT"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Прямо перед тобой, да.",
+   "en": [
+    "yes that one"
+   ],
+   "was": "(DROP)",
+   "label": "YES"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Ты мой брат.",
+   "en": [
+    "you're my brother"
+   ],
+   "was": "You're my brother. (say again, SMALL_TALK 0.65)",
+   "label": "SMALL_TALK"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "С меня оружие.",
+   "en": [
+    "put your weapon away"
+   ],
+   "was": "get the weapon off me (HOLSTER 0.36)",
+   "label": "HOLSTER"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Залья на коробочку дает.",
+   "en": [
+    "climb on the box"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Catti.",
+   "en": [
+    "roll it"
+   ],
+   "was": "say again (CROUCH 0.60)",
+   "label": "ROLL"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Ka mnie.",
+   "en": [
+    "come to me"
+   ],
+   "was": "say again (HELP 0.63)",
+   "label": "FOLLOW_ME"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Kom nie.",
+   "en": [
+    "come to me"
+   ],
+   "was": "CROUCH 0.75",
+   "label": "FOLLOW_ME"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Knie.",
+   "en": [
+    "come to me"
+   ],
+   "was": "CROUCH",
+   "label": "FOLLOW_ME"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Idzi ka mnie soda.",
+   "en": [
+    "come here"
+   ],
+   "was": "FOLLOW_ME (3 order lines)",
+   "label": "FOLLOW_ME"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Girls ka mnie.",
+   "en": [
+    "come to me"
+   ],
+   "was": "say again (HELP 0.27)",
+   "label": "FOLLOW_ME"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Wierniz ka mnie.",
+   "en": [
+    "come back to me"
+   ],
+   "was": "say again (COVER_ME 0.37)",
+   "label": "COME_BACK"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Zaprywnij ka mnie.",
+   "en": [
+    "jump up to me"
+   ],
+   "was": "ask OPEN 0.75",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Okay, that I suda.",
+   "en": [
+    "come here"
+   ],
+   "was": "say again (YES 0.28)",
+   "label": "FOLLOW_ME"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "E suda.",
+   "en": [
+    "come here"
+   ],
+   "was": "NONE",
+   "label": "FOLLOW_ME"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Soda.",
+   "en": [
+    "come here"
+   ],
+   "was": "say again (FOLLOW_ME 0.40)",
+   "label": "FOLLOW_ME"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Zabrygnę jeszcze raz.",
+   "en": [
+    "jump on it again"
+   ],
+   "was": "REPEAT 0.94",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Climb yellow",
+   "en": [
+    "climb on the yellow table"
+   ],
+   "was": "say again (MOVE_TO 0.61)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Разбей стекло.",
+   "en": [
+    "break the glass"
+   ],
+   "was": "break the glass (BREACH 0.87, no place)",
+   "label": "MELEE"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Разбей стекло."
+   ],
+   "scene": "",
+   "text": "Просто прострели его.",
+   "en": [
+    "just shoot the glass"
+   ],
+   "was": "OPEN_FIRE, aim on the bot",
+   "label": "OPEN_FIRE"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Прострелит о стекло.",
+   "en": [
+    "shoot that glass"
+   ],
+   "was": "OPEN_FIRE at the crosshair, no object",
+   "label": "OPEN_FIRE"
+  },
+  {
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Ударь окно прикладом.",
+   "en": [
+    "hit the window with your rifle butt"
+   ],
+   "was": "MELEE 0.59, say again; 'rifle' a place",
+   "label": "MELEE"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Разбей стекло."
+   ],
+   "scene": "",
+   "text": "Нет, оружием.",
+   "en": [
+    "shoot the glass"
+   ],
+   "was": "Use your weapon. (SWITCH_WEAPON)",
+   "label": "OPEN_FIRE"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Разбей стекло."
+   ],
+   "scene": "",
+   "text": "Нет, из оружия.",
+   "en": [
+    "shoot the glass"
+   ],
+   "was": "Use your gun. (SWITCH_WEAPON)",
+   "label": "OPEN_FIRE"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Разбей стекло."
+   ],
+   "scene": "",
+   "text": "Нет, стреляй.",
+   "en": [
+    "shoot the glass"
+   ],
+   "was": "Shoot. (OPEN_FIRE at the crosshair)",
+   "label": "OPEN_FIRE"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Ударь окно прикладом."
+   ],
+   "scene": "",
+   "text": "Нет, оружием.",
+   "en": [
+    "shoot the window"
+   ],
+   "was": "Use your weapon. (SWITCH_WEAPON)",
+   "label": "OPEN_FIRE"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Ударь окно прикладом."
+   ],
+   "scene": "",
+   "text": "Нет, стреляй в него.",
+   "en": [
+    "shoot the window"
+   ],
+   "was": "shoot him (OPEN_FIRE, no place)",
+   "label": "OPEN_FIRE"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Слезь."
+   ],
+   "scene": "no car near; last thing: cardboard box, 1 m",
+   "text": "Запрыгни.",
+   "en": [
+    "jump up on it"
+   ],
+   "was": "jump on it again (the way down)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "ru",
+   "before": [
+    "Слезь с коробки."
+   ],
+   "scene": "no car near; last thing: cardboard box, 1 m",
+   "text": "Запрыгни обратно.",
+   "en": [
+    "jump back on it"
+   ],
+   "was": "-",
+   "label": "JUMP"
+  },
+  {
+   "lang": "en",
+   "before": [],
+   "scene": "standing on a cable spool; no car near; last thing: cable spool, 0 m",
+   "text": "Get down, get down!",
+   "en": [
+    "climb down"
+   ],
+   "was": "written back (cover)",
+   "label": "JUMP"
+  },
+  {
+   "lang": "en",
+   "before": [],
+   "scene": "a car 5 m away",
+   "text": "Get in, get in!",
+   "en": [
+    "get in the car"
+   ],
+   "was": "MOVE_TO",
+   "label": "GET_IN"
+  },
+  {
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "How we doing bro?",
+   "en": [
+    "How we doing bro?"
+   ],
+   "was": "say again",
+   "label": "STATUS_REPORT"
+  },
+  {
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "Press it forward.",
+   "en": [
+    "push it forward"
+   ],
+   "was": "SUPPRESS",
+   "label": "PUSH"
+  }
+ ]
+}

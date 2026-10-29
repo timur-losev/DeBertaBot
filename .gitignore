@@ -49,3 +49,13 @@ scripts/coop/decider/cpp/build/
 # CMake's output of a local build of coop_intent, kept by hand next to it
 cpp/coop_intent/build_*.log
 cpp/coop_intent/build_*.err
+
+# training snapshots (scripts/coop/stt/qlora_v54.py, train_v2.py: snapshot_dir): the adapter or the classifier with the
+# optimizer's state, saved every 30 minutes to resume a stopped run; weights, so never in git
+models/**/*_snapshot/
+models/**/snapshots/
+# copies of a bot's exported tests kept before its place vocabulary was re-exported (v13 -> v14 -> v15, 2026-10-28/29);
+# the current tests are next to them, these are only for going back by hand
+models/*/cpp/places*_backup/
+# the weightless check folder of rule set v9 (2026-10-27): its tests came again with bot v67 (coop-deberta-v3-ens3-v67/cpp)
+models/coop-v67-rules-check/

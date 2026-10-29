@@ -1,0 +1,53 @@
+22:26:16  train start
+W1027 22:26:23.284000 41976 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+
+
+
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\_dynamo\eval_frame.py:1548: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. Starting in PyTorch 2.9, calling checkpoint without use_reentrant will raise an exception. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+snapshot 22:29:20: epoch 1, row 992 of 74458, step 62 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains11-v67\pieces12v67_final_seed0_snapshot\snapshot.pt
+stopped on request at step 62 of 13962; run the same command again to go on
+22:29:21  stopped on request (snapshot taken); run run_chains11_v67.ps1 again to go on
+05:29:25  train start
+W1028 05:29:32.263000 8708 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+
+
+
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+resumed from the snapshot of 2026-10-27 22:29:19: epoch 1 of 3, row 992 of 74458, step 62 of 13962
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\_dynamo\eval_frame.py:1548: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. Starting in PyTorch 2.9, calling checkpoint without use_reentrant will raise an exception. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+snapshot 06:01:01: epoch 1, row 20592 of 74458, step 1287 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains11-v67\pieces12v67_final_seed0_snapshot\snapshot.pt
+snapshot 06:31:01: epoch 1, row 40128 of 74458, step 2508 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains11-v67\pieces12v67_final_seed0_snapshot\snapshot.pt
+snapshot 07:01:03: epoch 1, row 59856 of 74458, step 3741 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains11-v67\pieces12v67_final_seed0_snapshot\snapshot.pt
+snapshot 07:31:04: epoch 2, row 5088 of 74458, step 4972 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains11-v67\pieces12v67_final_seed0_snapshot\snapshot.pt
+snapshot 08:01:06: epoch 2, row 21952 of 74458, step 6026 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains11-v67\pieces12v67_final_seed0_snapshot\snapshot.pt
+snapshot 08:31:07: epoch 2, row 41024 of 74458, step 7218 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains11-v67\pieces12v67_final_seed0_snapshot\snapshot.pt
+snapshot 09:01:08: epoch 2, row 60576 of 74458, step 8440 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains11-v67\pieces12v67_final_seed0_snapshot\snapshot.pt
+snapshot 09:31:09: epoch 3, row 5824 of 74458, step 9672 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains11-v67\pieces12v67_final_seed0_snapshot\snapshot.pt
+snapshot 10:01:10: epoch 3, row 25552 of 74458, step 10905 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains11-v67\pieces12v67_final_seed0_snapshot\snapshot.pt
+snapshot 10:31:12: epoch 3, row 45248 of 74458, step 12136 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains11-v67\pieces12v67_final_seed0_snapshot\snapshot.pt
+snapshot 11:01:14: epoch 3, row 64912 of 74458, step 13365 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains11-v67\pieces12v67_final_seed0_snapshot\snapshot.pt
+snapshot 11:15:52: epoch 3, row 74458 of 74458, step 13962 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains11-v67\pieces12v67_final_seed0_snapshot\snapshot.pt
+chains11 pieces12v67_final seed 0: 74458 rows, trained in 20779s
+answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\measure_v67_answers_v67.json
+answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\measure_v66_answers_v67.json
+scene answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\measure_v65_answers_v67.json
+v64 test answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains11_67_test64_pieces12v67_final_s0.json
+chains2 pieces12v67_final seed 0: blind 150, blind_heard 100, blind2 150, blind2_heard 100, blind2_heard3 300, ctx 150, ctx_heard3 299, ctx_heardline3 299 answered in 111s
+ml answers: dev_ru 41, blind2_ru 150, ctx_ru 150, dev_es 41, blind2_es 150, ctx_es 150 -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains11_67_ml_pieces12v67_final_s0.json
+pairs answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains11_67_pairs_pieces12v67_final_s0.json
+11:20:18  train end, gguf
+llama_model_quantize_impl: quant size  =  1050.43 MiB (5.12 BPW)
+
+llama_quantize: quantize time = 13004.20 ms
+llama_quantize:    total time = 13004.20 ms
+pieces12v67_final seed 0: 1056 MB, 40s -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\models\gguf\pieces12v67_final_s0-Q4_K_M.gguf
+11:21:25  done

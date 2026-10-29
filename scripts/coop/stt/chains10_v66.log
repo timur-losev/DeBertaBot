@@ -1,0 +1,25 @@
+03:19:37  train start
+W1027 03:19:44.097000 10744 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+
+
+
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\_dynamo\eval_frame.py:1548: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. Starting in PyTorch 2.9, calling checkpoint without use_reentrant will raise an exception. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+chains10 pieces11v66_final seed 0: 62669 rows, trained in 21179s
+answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\measure_v66_answers_v66.json
+scene answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\measure_v65_answers_v66.json
+v64 test answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains10_66_test64_pieces11v66_final_s0.json
+chains2 pieces11v66_final seed 0: blind 150, blind_heard 100, blind2 150, blind2_heard 100, blind2_heard3 300, ctx 150, ctx_heard3 299, ctx_heardline3 299 answered in 100s
+ml answers: dev_ru 41, blind2_ru 150, ctx_ru 150, dev_es 41, blind2_es 150, ctx_es 150 -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains10_66_ml_pieces11v66_final_s0.json
+pairs answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains10_66_pairs_pieces11v66_final_s0.json
+09:16:25  train end, gguf
+llama_model_quantize_impl: quant size  =  1050.43 MiB (5.12 BPW)
+
+llama_quantize: quantize time = 13033.55 ms
+llama_quantize:    total time = 13033.55 ms
+pieces11v66_final seed 0: 1056 MB, 40s -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\models\gguf\pieces11v66_final_s0-Q4_K_M.gguf
+09:17:33  done

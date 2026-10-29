@@ -13,6 +13,7 @@
 #include <memory>
 #include <string>
 #include <string_view>
+#include <vector>
 
 namespace coop {
 
@@ -28,6 +29,18 @@ struct SpeechOptions {
     int threads = 2;
 };
 
+// A word of the transcript and when it began, in seconds from the clip's start (the model's token timestamps: the first
+// token of the word). The game puts each order of a line at the moment its pointer word was said ("take THIS box", run,
+// "put it HERE"): the crosshair and the player's place then, not when the talk key came up.
+struct SpeechWord {
+    std::string text;   // as printed, punctuation included
+    double start = 0;
+};
+
+// The words of a token sequence: a token that begins with SentencePiece's word mark (U+2581) or a space starts a word.
+// tokens and starts are parallel; an empty starts gives no words.
+std::vector<SpeechWord> SpeechWords(const std::vector<std::string>& tokens, const std::vector<float>& starts);
+
 class SpeechRecognizer {
 public:
     SpeechRecognizer();
@@ -38,8 +51,10 @@ public:
     bool Load(const SpeechOptions& options, std::string* error);
     bool Ready() const;
     // mono samples in -1..1; the model wants 16000 Hz (sherpa-onnx resamples another rate itself).
-    // The transcript is UTF-8, as the recognizer prints it: capitals and punctuation included
-    bool Transcribe(const float* samples, size_t count, int sample_rate, std::string* text, std::string* error) const;
+    // The transcript is UTF-8, as the recognizer prints it: capitals and punctuation included. words (optional): the
+    // transcript's words with their start times, when the model gives timestamps (empty otherwise)
+    bool Transcribe(const float* samples, size_t count, int sample_rate, std::string* text, std::string* error,
+                    std::vector<SpeechWord>* words = nullptr) const;
     // "sherpa-onnx 1.13.8"
     static std::string Backend();
     // The ONNX Runtime the recognizer runs on, "1.28.2": the one the loader gave sherpa-onnx's library. On Windows

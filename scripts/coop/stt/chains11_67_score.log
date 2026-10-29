@@ -1,0 +1,145 @@
+(read by bot v67, family gate, 0.66)             v66    v67s     v67
+v64 held-out en (109)                           97.2    97.2    98.2
+v64 held-out ru (109)                           84.4    85.3    86.2
+v64 held-out es (109)                           87.2    84.4    82.6
+owner v64 hand rows (trained on) (79)          100.0   100.0   100.0
+dev_ru (41)                                     95.1    90.2    95.1
+blind2_ru (150)                                 80.7    76.7    76.0
+ctx_ru (150)                                    79.3    80.0    80.0
+dev_es (41)                                     92.7    90.2    92.7
+blind2_es (150)                                 81.3    82.0    80.7
+ctx_es (150)                                    82.7    82.0    80.7
+pairs en (150)                                  98.7    97.3    98.7
+pairs ru (150)                                 100.0    99.3    99.3
+pairs es (150)                                  98.7    98.0    99.3
+en blind2 (decoder alone) (150)                 86.7    88.0    88.7
+en blind2_heard3 (decoder alone) (300)          62.3    65.0    65.7
+en ctx (decoder alone) (150)                    91.3    90.0    87.3
+en ctx_heard3 (decoder alone) (299)             71.6    73.9    74.6
+all but the hand rows (2358)                    83.5    83.6    83.7
+
+right with v66, wrong with v67s: 97; wrong with v66, right with v67s: 98
+  v64 held-out ru        thanks man appreciate it                     -> thanks man, keep me covered
+  v64 held-out ru        you're such a great guy, nice respect        -> bro you gave me free this round, kudos
+  v64 held-out ru        can you see the guy behind the car           -> see the guy behind the car
+  v64 held-out ru        nice work                                    -> on site, nice one
+  v64 held-out ru        punch him not shoot                          -> punch him | don't fire
+  v64 held-out ru        do it bare hands                             -> melee attack
+  v64 held-out es        you just ran the whole round bro respect     -> you lost your entire round bro, respekte
+  v64 held-out es        okay so do you see the blue stairs um        -> okay | do you see the blue stairs
+  v64 held-out es        Lower your weapons, don't shoot at the hosta -> lower your weapons | don't shoot the hostage
+  v64 held-out es        Gimme a nudge left on this crate, will you?  -> Slight left on me, will you?
+  v64 held-out es        lol how do you like the boxes uh you look li -> whoa nice boxes you uh are such a cute bot
+  v64 held-out es        drop down here drop in the pit               -> drop down here | drop into the pit
+  v64 held-out es        it's hot here                                -> is it hot here
+  v64 held-out es        eliminate that guy                           -> get that guy out of the way
+  v64 held-out es        damn good move                               -> whats the best
+  v64 held-out es        go smash it                                  -> go break it
+  dev_ru                 throw the flash | push in                    -> throw the flash | go in
+  dev_ru                 go to the door                               -> no not there by the door
+  blind2_ru              Push in and clear the site.                  -> push in and clear out site | top down
+  blind2_ru              Flash the site. | Push into the site. | Hold -> how do you silence | push into site | hold t
+  blind2_ru              send your drone in and call me when you get  -> send a drone | tell me what's there
+  blind2_ru              use the drone first | pull the hatch open    -> Look at me. | Rope down through the hatch.
+  blind2_ru              Go to the blue stairs. | Jump down. | Plant  -> jump on the blue stairs | jump down | plant 
+  blind2_ru              send the drone upstairs | come back          -> send the drone upstairs | head back
+  blind2_ru              smoke the window | molly the corner | push i -> molly the window | push in the window | come
+  blind2_ru              you watch east window                        -> you look at east window
+  blind2_ru              check the roof | come back | i'll hold main  -> check the roof | come back | hold main with 
+  blind2_ru              jump out the window | plant                  -> jump out the window | set it down
+  blind2_ru              get up on the roof | rope down | beach the w -> get on the roof | rappel down | um build a w
+  blind2_ru              go to my pin | crouch | throw the grenade |  -> go to my pin | crouch there | wait for my ma
+  blind2_ru              breach the wall | flash inside the wall | pu -> smash the wall | flash inside the wall | pus
+  ctx_ru                 Great, I got one pinned.                     -> Nice work, you took out one.
+  ctx_ru                 Breach the west door.                        -> Hit the west door.
+  ctx_ru                 pull the hatch open | drop through the hatch -> smash the hatch | jump down through the hatc
+  ctx_ru                 you hold the east window                     -> uh the east window is your call
+  ctx_ru                 throw a smoke on my pin                      -> on my pin on my pin
+  dev_es                 throw a flash | push in                      -> throw a flash | go in
+  blind2_es              look at me | crouch down                     -> see me | crouch
+  blind2_es              Drone the other side. | Breach the wall. | F -> Drone the other side. | Frag the other side.
+  blind2_es              use the drone to see what's under the hatch  -> Look at me with the drone. | Breach the hatc
+
+right with v66, wrong with v67: 101; wrong with v66, right with v67: 105
+  v64 held-out ru        yeah man i cleared that room like a pro      -> yeah man thats the best you go pro
+  v64 held-out ru        thanks man appreciate it                     -> thanks man you saved me
+  v64 held-out ru        dude, you're imba                            -> dude you're the bomb
+  v64 held-out ru        drop the box right there, easy               -> drop the box right there | good
+  v64 held-out ru        whoa whoa you actually do like those boxes h -> whoa whoa you actually love those boxes righ
+  v64 held-out ru        punch him not shoot                          -> punch him | don't shoot
+  v64 held-out ru        slide it                                     -> move it
+  v64 held-out es        okay so do you see the blue stairs um        -> okay | do you see the blue stairs
+  v64 held-out es        Lower your weapons, don't shoot at the hosta -> lower your weapons | do not shoot the hostag
+  v64 held-out es        drop down here drop in the pit               -> drop down here | drop into the pit
+  v64 held-out es        take the portal                              -> pick up the portal
+  v64 held-out es        I killed him                                 -> he killed himself
+  v64 held-out es        it's hot here                                -> do you miss the heat here
+  v64 held-out es        sup                                          -> hi there
+  v64 held-out es        go kick his ass                              -> go hostial
+  v64 held-out es        go smash it                                  -> go sew it
+  v64 held-out es        no guns out                                  -> weapons out
+  blind2_ru              Flash the site. | Push into the site. | Hold -> how do you blind them | push site | hold the
+  blind2_ru              Flash the east window. | Push into the site. -> Flash the east window. | Get in the site as 
+  blind2_ru              Go up the white stairs. | Open the door. | H -> Open the door. | Hold the corridor.
+  blind2_ru              jump in through the hatch | clear the room b -> jump in through the hatch and clear the room
+  blind2_ru              Just open the door by hand.                  -> don't blast the door, just hand it
+  blind2_ru              smoke the main door | get the defuser down | -> smoke the main door | get the defuser down |
+  blind2_ru              use the drone first | pull the hatch open    -> look at the drone | open the hatch
+  blind2_ru              Go to the blue stairs. | Jump down. | Plant  -> jump on the blue stairs | jump down | plant 
+  blind2_ru              smoke the window | molly the corner | push i -> smoke the window | molly the corner | push i
+  blind2_ru              vault in, I'll hold the door | nade the stai -> hop in, i've got the door | nade the stairs
+  blind2_ru              check the roof | come back | i'll hold main  -> check the roof | come back | follow me to ma
+  blind2_ru              you send the drone in | you clear the room   -> you send the drone first, then you clear the
+  blind2_ru              look at me look at me | follow me            -> look at me look at me now follow me
+  blind2_ru              go to my pin | crouch | throw the grenade |  -> move to my pin | crouch there | wait for my 
+  blind2_ru              breach the wall | flash inside the wall | pu -> push the wall | flash inside the wall | go i
+  ctx_ru                 I'll take the east window myself.            -> East window, I'll take it myself.
+  ctx_ru                 Breach the west door.                        -> Hit the west door.
+  ctx_ru                 pull the hatch open | drop through the hatch -> smash the hatch | drop through the hatch
+  ctx_ru                 smoke blue stairs                            -> same same on blue
+  blind2_es              look at me | crouch down                     -> see me | crouch
+  blind2_es              Drone the other side. | Breach the wall. | F -> Drone the other side. | Frag the room.
+  blind2_es              use the drone to see what's under the hatch  -> check below the hatch with the drone | breec
+  blind2_es              check the top floor | check the roof | come  -> check the top floor | the roof | come back t
+
+right with v67, wrong with v67s: 93; wrong with v67, right with v67s: 90
+  v64 held-out en        clean kill bro, now hold the south window    -> clean kill bro, now | hold the south window
+  v64 held-out ru        you gave the whole round away bro kys        -> bro you gave me free this round, kudos
+  v64 held-out ru        good job follow me                           -> nice job | follow me
+  v64 held-out ru        can you see the guy behind the car           -> see the guy behind the car
+  v64 held-out ru        sup                                          -> how goes it
+  v64 held-out ru        fantastic work                               -> that's awesome
+  v64 held-out ru        on your mark, nice one                       -> on site, nice one
+  v64 held-out ru        knock everything out of him                  -> get out of the way
+  v64 held-out ru        bare hands                                   -> melee attack
+  v64 held-out es        you totally wrecked whole round bro, no resp -> you lost your entire round bro, respekte
+  v64 held-out es        Nudge this crate left a bit for me.          -> Slight left on me, will you?
+  v64 held-out es        lol how you like the boxes huh you're a weir -> whoa nice boxes you uh are such a cute bot
+  v64 held-out es        take that guy out                            -> get that guy out of the way
+  v64 held-out es        what's up                                    -> what's going on
+  v64 held-out es        whoa nice crack                              -> whats the best
+  dev_ru                 throw a flash | push in                      -> throw the flash | go in
+  dev_ru                 go to the door                               -> no not there by the door
+  blind2_ru              push in and clear the site, top to bottom    -> push in and clear out site | top down
+  blind2_ru              send your drone in and tell me what's there  -> send a drone | tell me what's there
+  blind2_ru              send the drone upstairs | come back          -> send the drone upstairs | head back
+  blind2_ru              flash it | push in | plant the bomb | watch  -> flash it | push in | plant the bomb | look a
+  blind2_ru              smoke the door | wait for my call then push  -> you smoke the door | you go in
+  blind2_ru              I'll peek main, you watch the east window    -> you look at east window
+  blind2_ru              jump out the window | plant it               -> jump out the window | set it down
+  blind2_ru              pick me up | nade the stairs | on me         -> pick me up | frag the stairs | get back to m
+  blind2_ru              get on the roof | rappel down | uh beach wal -> get on the roof | rappel down | um build a w
+  ctx_ru                 nice one, only one down                      -> Nice work, you took out one.
+  ctx_ru                 frag the basement                            -> yeah confgured
+  ctx_ru                 you hold the east window                     -> uh the east window is your call
+  ctx_ru                 throw smoke on my pin                        -> on my pin on my pin
+  ctx_ru                 breech the hatch                             -> should the hatch
+  dev_es                 throw a flash | push in                      -> throw a flash | go in
+  blind2_es              i am droning the basement then i am rappelli -> I'm droning the basement, then I'll rappel d
+  blind2_es              light them up bro, fire at will              -> burn them out bro | fire at will
+  blind2_es              check the roof | come back | hold main for m -> check the roof | come back | hold main with 
+  blind2_es              come pick me up bro, hurry                   -> come pick me up, im down | be quick about it
+  blind2_es              flash red stairs                             -> red stairs | flash them
+  blind2_es              crouch | uh do not fire until i say          -> get down get down | uh dont shoot until i gi
+  ctx_es                 nice one, you took out an enemy              -> Nice, you took out one.
+  ctx_es                 stun the main door | fall back               -> nade the main door | fall back

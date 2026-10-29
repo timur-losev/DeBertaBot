@@ -1,0 +1,145 @@
+(read by bot v67, family gate, 0.66)             v66    v67s    v68s   v68s2
+v64 held-out en (109)                           97.2    97.2    98.2    97.2
+v64 held-out ru (109)                           84.4    85.3    92.7    87.2
+v64 held-out es (109)                           87.2    84.4    89.9    87.2
+owner v64 hand rows (trained on) (79)          100.0   100.0   100.0   100.0
+dev_ru (41)                                     95.1    90.2    95.1    95.1
+blind2_ru (150)                                 80.7    76.7    78.7    83.3
+ctx_ru (150)                                    79.3    80.0    82.7    81.3
+dev_es (41)                                     92.7    90.2    95.1    95.1
+blind2_es (150)                                 81.3    82.0    82.0    84.0
+ctx_es (150)                                    82.7    82.0    84.0    81.3
+pairs en (150)                                  98.7    97.3    97.3    97.3
+pairs ru (150)                                 100.0    99.3   100.0    98.0
+pairs es (150)                                  98.7    98.0   100.0    98.0
+en blind2 (decoder alone) (150)                 86.7    88.0    90.0    88.0
+en blind2_heard3 (decoder alone) (300)          62.3    65.0    62.7    64.0
+en ctx (decoder alone) (150)                    91.3    90.0    89.3    88.7
+en ctx_heard3 (decoder alone) (299)             71.6    73.9    72.2    72.2
+all but the hand rows (2358)                    83.5    83.6    84.6    84.1
+
+right with v67s, wrong with v68s: 76; wrong with v67s, right with v68s: 99
+  v64 held-out ru        dude, you're the best                        -> imba, dude
+  v64 held-out ru        put the gun away bro, hands free             -> put the gun away bro | hands free
+  v64 held-out ru        attack that guy                              -> val that guy
+  v64 held-out es        Just let go of the box right there, it's fin -> drop the box there and its okay
+  v64 held-out es        he punched me                                -> punch me
+  v64 held-out es        slap him                                     -> hostilities
+  blind2_ru              jump in through the hatch | clear the room d -> jump in through the hatch and clear the room
+  blind2_ru              smoke the door | just hold the door          -> smoke the door | stop, do not put it down, j
+  blind2_ru              open the window | throw smoke outside the wi -> pop the window | throw smoke outside the win
+  blind2_ru              Hold fire. | Move to the red stairs. | Go pr -> move to the red stairs | lie down
+  blind2_ru              rappel down the south side | put a charge on -> rappel down the south side | plant the charg
+  blind2_ru              do not fire | you move to my pin | you look  -> do not shoot | go to my pin | watch the main
+  blind2_ru              you send the drone to the room | you clear t -> you send the drone in first, then you clear 
+  blind2_ru              go around the left and attack them from behi -> flank from the left side | attack them from 
+  ctx_ru                 yeah smoke the main door                     -> yeah go
+  blind2_es              drop down through the hatch | clear the room -> Drop through the hatch and clear the room be
+  blind2_es              Open the hatch quietly. | Drop a frag behind -> Open the hatch quietly. | Light them up.
+  blind2_es              Smoke the defuser.                           -> don't smoke it
+  blind2_es              Smoke the door. | Push in through the door.  -> smoke the door | wait for my call then go in
+  blind2_es              fall back bro                                -> rush main | fall back bro
+  blind2_es              check the corner | defuse the bomb           -> check the corner before we defuse bro
+  blind2_es              molly the stairs                             -> wait for my call then go to the stairs
+  blind2_es              go disable the bomb                          -> i am watching the door you go stick it down
+  blind2_es              get on the roof | rope down | you break the  -> go up to roof | rope down | uh smash the sec
+  blind2_es              open the door | you go in and clear          -> open the door | flash it | push in and clear
+  ctx_es                 Breach the hatch.                            -> smash the hatch
+  ctx_es                 Frag the basement.                           -> yeah
+  ctx_es                 vault the north window                       -> Move to the north window.
+  ctx_es                 oh great great very good                     -> oh good good very good
+  ctx_es                 eh, whatever                                 -> uh how you want to do
+  pairs en               get inside the vent | disarm that thing befo -> get inside the vent and disarm that thing be
+  pairs en               jumbo | stay there                           -> jumbo and stay there
+  en blind2 (decoder alo You watch the other door, I've got this one  -> You watch the other door, I've got this one 
+  en blind2 (decoder alo Drop through the hatch. | Clear the room bel -> Drop through the hatch and clear the room be
+  en blind2 (decoder alo I'll drone the basement and then rappel the  -> Drone the basement. | Rappel the east side.
+  en blind2 (decoder alo Open the door. | Push in and clear.          -> Open the door. | Throw the flash. | Push in 
+  en blind2 (decoder alo breach the wall | flash inside the wall | pu -> breach the wall | flash inside the wall | pu
+  en blind2_heard3 (deco Open the north door. | Toss the stun in thro -> open the door | throw the smoke in
+  en blind2_heard3 (deco Open the door by hand.                       -> don't blow the door or open it by hand
+  en blind2_heard3 (deco smoke window | molly the corner | push the w -> smoke window | molly the corner | push into 
+
+right with v67s, wrong with v68s2: 84; wrong with v67s, right with v68s2: 95
+  v64 held-out ru        what a clutch, damn                          -> what the hell is that
+  v64 held-out ru        dude, you're the best                        -> imba
+  v64 held-out ru        lol kill urself, you're a useless bot        -> lol kill that useless bot
+  v64 held-out ru        put the gun away bro, hands free             -> put the gun away bro | hands free
+  v64 held-out ru        leave it here just leave the box             -> leave it just leave the box
+  v64 held-out ru        attack that guy                              -> dude
+  v64 held-out es        whoa nice win                                -> what the best way
+  v64 held-out es        man just kill yourself bot useless           -> lol kill the bot
+  v64 held-out es        push the box out of the way using um the one -> push the box out of the way | push the box f
+  v64 held-out es        he punched me                                -> punch me
+  v64 held-out es        slap him                                     -> go shoot yourself
+  v64 held-out es        smash it                                     -> unravel it
+  blind2_ru              jump in through the hatch | clear the room d -> jump in through the hatch and clear the room
+  blind2_ru              do not fire | you move to my pin | you look  -> do not shoot | you move to my pin | you watc
+  blind2_ru              go around the left and attack them from behi -> go around the left side | attack them from b
+  ctx_ru                 Flash the south door. | Push in through the  -> Flash the south door. | Go in through the so
+  ctx_ru                 yeah smoke the main door                     -> yeah go ahead
+  ctx_ru                 eh well depends                              -> uh how about you
+  blind2_es              drop down through the hatch | clear the room -> Drop down through the hatch and clear the ba
+  blind2_es              flank through the basement | fire at will on -> Flank through the basement. | Lay down fire 
+  blind2_es              fall back bro                                -> rush main then fall back bro
+  blind2_es              check the corner | defuse the bomb           -> check the corner before we defuse bro
+  blind2_es              get on the roof | rope down | you break the  -> get up on the roof | rappel down | uh smash 
+  blind2_es              open the door | you go in and clear          -> open the door | flash the room | push in and
+  ctx_es                 Breach the hatch.                            -> Repair the hatch.
+  ctx_es                 I'll take the east window myself.            -> Rappel to the east window.
+  ctx_es                 vault the north window                       -> Move to the north window.
+  ctx_es                 oh great great very good                     -> oh good good very good
+  ctx_es                 eh, whatever                                 -> uh how you wanna do it
+  ctx_es                 frag the brown stairs                        -> use grenade instead of smoke
+  pairs en               harvest the turnips | jumped on | switch wea -> harvest the turnips | jumped on and switch w
+  pairs en               try again relocating to my pin | hold the no -> try again | relocating to my pin | hold the 
+  pairs en               duck | get back to your spot                 -> Duck down and get back to your spot.
+  pairs ru               dont shoot dont shoot it is a friendly | plo -> hold fire hold fire | it is a friendly | Til
+  pairs ru               plant it, plant it | keep coming             -> plant it, plant it, and keep coming
+  pairs es               nah return to your post man, stop moving aro -> nah return to your post man, freeze | stop m
+  en blind2 (decoder alo Stun the site. | Push into the site. | Hold  -> Frag the site. | Hold the main door.
+  en blind2 (decoder alo Drop through the hatch. | Clear the room bel -> Drop through the hatch and clear the room be
+  en blind2 (decoder alo Vault in. | Frag the stairs.                 -> vault in | i hold the door | frag the stairs
+  en blind2 (decoder alo check the corner | defuse the bomb           -> check the corner before you defuse bro
+
+right with v68s, wrong with v68s2: 71; wrong with v68s, right with v68s2: 59
+  v64 held-out en        drop down here drop into the pit             -> drop down here | drop into the pit
+  v64 held-out ru        what a clutch, nice shot                     -> what the hell is that
+  v64 held-out ru        lol kill urself, useless bot                 -> lol kill that useless bot
+  v64 held-out ru        clean kill man now hold the south window     -> nice kill man | now hold the south window
+  v64 held-out ru        leave it here just leave the box             -> leave it just leave the box
+  v64 held-out ru        whats up                                     -> how goes it
+  v64 held-out ru        spot, nice one                               -> target | nice one
+  v64 held-out es        what a beastly clutch                        -> what the best way
+  v64 held-out es        jaja kill urself bot kill me                 -> lol kill the bot
+  v64 held-out es        push the box out of the way using the um the -> push the box out of the way | push the box f
+  v64 held-out es        smash it                                     -> unravel it
+  blind2_ru              flash site | push into site | hold the main  -> how do you stun | push into site | keep the 
+  blind2_ru              go up on the roof | use the rope down from t -> get on the rough | rappel down | uh breach t
+  ctx_ru                 great one fragged him                        -> great one hit, one down
+  ctx_ru                 Flash the south door. | Push in through the  -> Flash the south door. | Go in through the so
+  ctx_ru                 up to you                                    -> uh how about you
+  blind2_es              look at me | crouch down                     -> see me | crouch down
+  blind2_es              flank through the basement | fire at will on -> Flank through the basement. | Lay down fire 
+  blind2_es              im flashing main, then im gonna push         -> flash main | push main
+  blind2_es              just check the room                          -> check the room | dont frag yet
+  ctx_es                 nice one, took out a guy                     -> Nice job, you took out one.
+  ctx_es                 I'll take the east window myself.            -> Rappel to the east window.
+  ctx_es                 stun the main door | fall back               -> scout the main door | fall back
+  ctx_es                 frag blue stairs                             -> same same on blue stairs
+  ctx_es                 throw the flash again                        -> again again
+  ctx_es                 hide behind the sofa                         -> uh no not the table but the sofa
+  ctx_es                 use grenade                                  -> use grenade instead of smoke
+  pairs en               harvest the turnips | jumped on | switch wea -> harvest the turnips | jumped on and switch w
+  pairs en               try again relocating to my pin | hold the no -> try again | relocating to my pin | hold the 
+  pairs en               duck | get back to your spot                 -> Duck down and get back to your spot.
+  pairs ru               don't shoot, don't shoot, it's a friendly |  -> hold fire hold fire | it is a friendly | Til
+  pairs ru               plant it, plant it | keep coming             -> plant it, plant it, and keep coming
+  pairs ru               get the defuser down | drone the room        -> send the drone to the room using the defuser
+  pairs es               take site, check every corner | go to your s -> take site | check every corner | go to your 
+  pairs es               gimme a smoke screen out front | uh engage e -> gimme a smoke screen out front uh engage eng
+  pairs es               nah return to your post man, static | stop m -> nah return to your post man, freeze | stop m
+  en blind2 (decoder alo Stun the site. | Push into the site. | Hold  -> Frag the site. | Hold the main door.
+  en blind2 (decoder alo Throw your drone in and tell me what's in th -> send a drone | what's there
+  en blind2 (decoder alo Vault in through the door. | Frag the stairs -> vault in | i hold the door | frag the stairs
+  en blind2 (decoder alo check the roof | come back | hold main for m -> check the roof | come back | hold main with 

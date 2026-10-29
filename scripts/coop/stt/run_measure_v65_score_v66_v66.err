@@ -1,0 +1,5 @@
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  16%|█▌        | 32/202 [00:00<00:00, 304.90it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 1173.29it/s]
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  16%|█▋        | 33/202 [00:00<00:00, 317.59it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 1045.82it/s]
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  18%|█▊        | 37/202 [00:00<00:00, 367.48it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 1059.34it/s]

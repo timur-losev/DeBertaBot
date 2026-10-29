@@ -23,6 +23,7 @@ std::string SceneLine(const Scene& s) {
     if (!s.holding.empty()) part("holding a " + s.holding);
     if (!s.standing_on.empty()) part("standing on a " + s.standing_on);
     part(s.has_car && s.car_m <= kSceneCarNear ? "a car " + metres(s.car_m) + " m away" : "no car near");
+    if (!s.failed.empty()) part("failed: " + s.failed);
     if (!s.last.empty()) part("last thing: " + s.last + ", " + metres(s.last_m) + " m");
     return out;
 }

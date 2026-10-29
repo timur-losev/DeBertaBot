@@ -1,0 +1,81 @@
+(read by bot v66)                                v65     v66
+v64 held-out en (109)                           96.3    97.2
+v64 held-out ru (109)                           86.2    82.6
+v64 held-out es (109)                           82.6    88.1
+owner v64 hand rows (trained on) (79)          100.0   100.0
+dev_ru (41)                                     95.1    95.1
+blind2_ru (150)                                 80.0    81.3
+ctx_ru (150)                                    82.7    78.7
+dev_es (41)                                     92.7    92.7
+blind2_es (150)                                 82.0    80.0
+ctx_es (150)                                    84.7    82.0
+pairs en (150)                                  97.3    98.7
+pairs ru (150)                                 100.0   100.0
+pairs es (150)                                  98.0    98.7
+en blind2 (decoder alone) (150)                 86.0    83.3
+en blind2_heard3 (decoder alone) (300)          65.0    64.7
+en ctx (decoder alone) (150)                    91.3    90.7
+en ctx_heard3 (decoder alone) (299)             73.6    71.2
+
+wrong with v65, right with v66: 93
+right with v65, wrong with v66: 111
+  v64 held-out ru        clean kill bro now hold the south window     -> clean kill bro | hold the south window
+  v64 held-out ru        leave it here just leave the box             -> drop it here | just leave the box
+  v64 held-out ru        good job follow me                           -> good job | follow me
+  v64 held-out ru        get that guy                                 -> knock that guy out
+  v64 held-out ru        drop that guy                                -> beat that guy up
+  v64 held-out ru        drop him                                     -> remove it
+  v64 held-out ru        sup                                          -> how's it going
+  v64 held-out ru        way to go                                    -> damn that worked
+  v64 held-out ru        kick their asses                             -> give them their heads
+  v64 held-out ru        beat the crap out of him                     -> remove all the crap from him
+  v64 held-out ru        do you need a medkit                         -> medical kit needed
+  v64 held-out ru        are you still alive                          -> are you alive
+  v64 held-out ru        push him out of the way                      -> get him out of the way
+  v64 held-out es        Can you nudge this crate left a bit for me?  -> Gimme a nudge left on this crate, will you?
+  v64 held-out es        push the box aside pushing it to the right   -> push the box | push the box by my pin
+  v64 held-out es        Leave it here, just put the box down.        -> leave it here | put the box down
+  v64 held-out es        what's up                                    -> what's going on
+  blind2_ru              yes open it | chuck a stun grenade in there  -> open it | smoke it
+  blind2_ru              Get down and find some cover.                -> Drop prone. | Find some cover.
+  blind2_ru              I'll go down the east side.                  -> I'll go scout the basement first, then I'll 
+  blind2_ru              flash it | push in | plant the bomb | watch  -> flash it | go in | plant the bomb | watch th
+  blind2_ru              im down bro pick me up, hurry up             -> im down bro pick me up | make it quick
+  blind2_ru              don't fire | crouch down | get over to my pi -> hold fire | get down | move to my pin
+  blind2_ru              Revive me. | Frag the stairs. | Come to me.  -> revive me | nade the stairs | come back to m
+  blind2_ru              you throw the smoke | you throw the flash |  -> you throw two things | smoke first | flash t
+  blind2_ru              open the door | you go in and clear it       -> you open the door | flash the door | push in
+  blind2_ru              jump over the sofa | take cover behind the t -> uh jump over the sofa and take cover behind 
+  ctx_ru                 Hop through the east window.                 -> Hang off the east window.
+  ctx_ru                 Check the top floor.                         -> Oh no, my bad, I meant the top floor.
+  ctx_ru                 Hop out the north window.                    -> Move to the north window.
+  ctx_ru                 flash the top floor | clear the top floor    -> ok flash top floor | clear top floor
+  ctx_ru                 smoke the east door | you push in            -> smoke the east door | you're pushing in
+  ctx_ru                 frag blue stairs                             -> same same but blue
+  ctx_ru                 breach the south door                        -> open the south door
+  ctx_ru                 drone second floor                           -> sorry sorry second floor in the meaning
+  ctx_ru                 breach the hatch                             -> uh hatch hatch
+  ctx_ru                 smoke the basement | you push into the basem -> you smoke the basement | you go in the basem
+  blind2_es              I'm droning the basement, then I'm rappeling -> I'll go scout the basement first, then I'll 
+  blind2_es              Cease fire! | Pull back to the yellow stairs -> Cease fire, cease fire! Fall back to the yel
+  blind2_es              kill them bro, take them out                 -> kill them bro | take them out
+  blind2_es              smoke the door | push in                     -> smoke the door | go in after the smoke
+  blind2_es              come pick me up, im down and hurry           -> come pick me up, i'm down | be quick about i
+  blind2_es              stop shooting | crouch | get over to my ping -> Stop shooting. | Get low. | Come to my ping.
+  blind2_es              pick me up bro | plant the bomb              -> stand up | plant the bomb
+  blind2_es              I'm flashing for main now.                   -> go flash main
+  blind2_es              when i say go you climb in the window okay n -> when i say go you climb in the window | stil
+  blind2_es              you flash the room | you push in and clear t -> you flash the room | you push in the room | 
+  blind2_es              i'm going first                              -> okay so i'm gonna fire my flash and then im 
+  blind2_es              follow me to the stairs | u hold the other a -> you move with me to the stairs | you hold th
+  blind2_es              open the window | throw the molly in the win -> please open the window | throw the molly ins
+  ctx_es                 Breach the hatch.                            -> Destroy the hatch.
+  ctx_es                 flash another door                           -> Another door.
+  ctx_es                 Breach the hatch. | Drop through the hatch.  -> Break the hatch. | Drop through the hatch.
+  ctx_es                 flash the top floor | clear the top floor    -> flash top floor | clear top floor
+  ctx_es                 great great good                             -> oh good good well
+  ctx_es                 uh hold the east window                      -> uh the east window
+  ctx_es                 drone second floor                           -> sorry sorry i mean second floor
+  ctx_es                 breach the hatch                             -> uh the vent the vent
+  ctx_es                 hide behind the sofa                         -> uh not the table not the so far
+  ctx_es                 rappel to the east window                    -> move to the east window

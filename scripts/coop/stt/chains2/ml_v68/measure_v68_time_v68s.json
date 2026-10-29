@@ -1,0 +1,9286 @@
+{
+ "chain": "G:\\Proj\\ollaya\\DeBertaBot\\models\\coop-chain-v68s\\cpp",
+ "bot": "G:\\Proj\\ollaya\\DeBertaBot\\models\\coop-deberta-v3-ens3-v67\\cpp",
+ "items": [
+  {
+   "id": "t001",
+   "lang": "ru",
+   "line": "подожди 5 секунд",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: for, digits",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "wait for 5 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t002",
+   "lang": "ru",
+   "line": "погоди пять секунд, брат",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: for, number word, filler",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "wait for 5 seconds bro",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t003",
+   "lang": "ru",
+   "line": "10 секунд подожди",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: time before the verb",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "wait for 10 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t004",
+   "lang": "ru",
+   "line": "жди двадцать одну секунду",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 21
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: numeral agreement: двадцать одну секунду",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 21 seconds",
+      "seconds": 21.0
+     },
+     "line": "wait for 21 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t005",
+   "lang": "ru",
+   "line": "жди 10 сек",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: 'сек'",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "wait for 10 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t006",
+   "lang": "ru",
+   "line": "стой тут секунд десять",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,6,12: inverted order = about 10",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for about 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "hold position for about 10 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t007",
+   "lang": "ru",
+   "line": "оставайся на месте 30 секунд",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: for, digits",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 30 seconds",
+      "seconds": 30.0
+     },
+     "line": "hold position for 30 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t008",
+   "lang": "ru",
+   "line": "не двигайся двадцать пять секунд",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 25
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: compound numeral 25",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 25 seconds",
+      "seconds": 25.0
+     },
+     "line": "hold position for 25 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t009",
+   "lang": "ru",
+   "line": "держи угол 20 секунд",
+   "want": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: HOLD_ANGLE for",
+   "got": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "hold that angle for 20 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t010",
+   "lang": "ru",
+   "line": "следи за окном полминуты",
+   "want": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,7,12: полминуты = 30",
+   "got": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 30 seconds",
+      "seconds": 30.0
+     },
+     "line": "keep an eye on the window for 30 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t011",
+   "lang": "ru",
+   "line": "паси главную дверь секунд двадцать",
+   "want": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,6,12: inverted order = about 20",
+   "got": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for about 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "keep an eye on main door for about 20 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t012",
+   "lang": "ru",
+   "line": "смотри за северной дверью двадцать две секунды",
+   "want": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "kind": "for",
+      "seconds": 22
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: numeral agreement: двадцать две секунды",
+   "got": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 22 seconds",
+      "seconds": 22.0
+     },
+     "line": "watch the north door for 22 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t013",
+   "lang": "ru",
+   "line": "на 15 секунд держи этот угол",
+   "want": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "kind": "for",
+      "seconds": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: 'на N секунд' before the verb",
+   "got": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 15 seconds",
+      "seconds": 15.0
+     },
+     "line": "hold that angle for 15 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t014",
+   "lang": "ru",
+   "line": "посмотри туда 5 секунд",
+   "want": [
+    {
+     "intent": "LOOK_AT",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: LOOK_AT for",
+   "got": [
+    {
+     "intent": "LOOK_AT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "look there for 5 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t015",
+   "lang": "ru",
+   "line": "глянь вон туда на пару секунд",
+   "want": [
+    {
+     "intent": "LOOK_AT",
+     "time": {
+      "kind": "for",
+      "seconds": 2
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,4,12: на пару секунд = 2",
+   "got": [
+    {
+     "intent": "LOOK_AT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 2 seconds",
+      "seconds": 2.0
+     },
+     "line": "look there for 2 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t016",
+   "lang": "ru",
+   "line": "посмотри на меня три секунды",
+   "want": [
+    {
+     "intent": "LOOK_AT_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 3
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: LOOK_AT_ME, agreement: три секунды",
+   "got": [
+    {
+     "intent": "LOOK_AT_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 3 seconds",
+      "seconds": 3.0
+     },
+     "line": "look at me for 3 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t017",
+   "lang": "ru",
+   "line": "слышь, глянь на меня секунды на четыре",
+   "want": [
+    {
+     "intent": "LOOK_AT_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 4
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,6,12: inverted 'секунды на четыре' = about 4",
+   "got": [
+    {
+     "intent": "LOOK_AT_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 4 seconds",
+      "seconds": 4.0
+     },
+     "line": "look at me for 4 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t018",
+   "lang": "ru",
+   "line": "присядь на 10 секунд",
+   "want": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: 'на 10 секунд'",
+   "got": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "crouch for 10 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t019",
+   "lang": "ru",
+   "line": "пригнись секунд на пятнадцать",
+   "want": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "kind": "for",
+      "seconds": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,6,12: inverted 'секунд на пятнадцать'",
+   "got": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for about 15 seconds",
+      "seconds": 15.0
+     },
+     "line": "crouch for about 15 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t020",
+   "lang": "ru",
+   "line": "присядь в течение двадцати секунд",
+   "want": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: 'в течение N секунд'",
+   "got": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "crouch for 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t021",
+   "lang": "ru",
+   "line": "ляг на двадцать секунд",
+   "want": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: PRONE for",
+   "got": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "go prone for 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t022",
+   "lang": "ru",
+   "line": "ложись 10 сек",
+   "want": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: 'сек'",
+   "got": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "go prone for 10 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t023",
+   "lang": "ru",
+   "line": "заляг секунд на тридцать",
+   "want": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,6,12: inverted = about 30",
+   "got": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 30 seconds",
+      "seconds": 30.0
+     },
+     "line": "go prone for 30 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t024",
+   "lang": "ru",
+   "line": "прикрой меня 30 секунд",
+   "want": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: COVER_ME for",
+   "got": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 30 seconds",
+      "seconds": 30.0
+     },
+     "line": "cover me for 30 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t025",
+   "lang": "ru",
+   "line": "прикрывай меня в течение сорока пяти секунд",
+   "want": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 45
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: 'в течение', compound numeral in genitive",
+   "got": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 45 seconds",
+      "seconds": 45.0
+     },
+     "line": "cover me for 45 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t026",
+   "lang": "ru",
+   "line": "спрячься на пять секунд",
+   "want": [
+    {
+     "intent": "TAKE_COVER",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: TAKE_COVER for",
+   "got": [
+    {
+     "intent": "TAKE_COVER",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "take cover for 5 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t027",
+   "lang": "ru",
+   "line": "давай в укрытие секунд на десять",
+   "want": [
+    {
+     "intent": "TAKE_COVER",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,6,12: filler, inverted = about 10",
+   "got": [
+    {
+     "intent": "TAKE_COVER",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for about 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "take cover for about 10 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t028",
+   "lang": "ru",
+   "line": "не стреляй 15 секунд",
+   "want": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "kind": "for",
+      "seconds": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: HOLD_FIRE for",
+   "got": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 15 seconds",
+      "seconds": 15.0
+     },
+     "line": "hold fire for 15 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t029",
+   "lang": "ru",
+   "line": "не стреляй в течение десяти секунд",
+   "want": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: 'в течение'",
+   "got": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "hold fire for 10 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t030",
+   "lang": "ru",
+   "line": "отставить огонь на 30 сек",
+   "want": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: 'на 30 сек'",
+   "got": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 30 seconds",
+      "seconds": 30.0
+     },
+     "line": "hold fire for 30 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t031",
+   "lang": "ru",
+   "line": "за мной 20 секунд",
+   "want": [
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: FOLLOW_ME for",
+   "got": [
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "follow me for 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t032",
+   "lang": "ru",
+   "line": "иди за мной полминуты",
+   "want": [
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,7,12: полминуты = 30",
+   "got": [
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 30 seconds",
+      "seconds": 30.0
+     },
+     "line": "follow me for 30 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t033",
+   "lang": "ru",
+   "line": "беги 10 секунд вперёд",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: direction, time in the middle",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "run forward for 10 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t034",
+   "lang": "ru",
+   "line": "иди влево пять секунд",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: direction, time after",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "go left for 5 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t035",
+   "lang": "ru",
+   "line": "двигай направо секунды три",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "for",
+      "seconds": 3
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,6,12: direction, inverted = about 3",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 3 seconds",
+      "seconds": 3.0
+     },
+     "line": "move right for 3 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t036",
+   "lang": "ru",
+   "line": "секунд пять иди налево",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,6,12: inverted time before the verb",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for about 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "go left for about 5 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t037",
+   "lang": "ru",
+   "line": "отступай 10 секунд",
+   "want": [
+    {
+     "intent": "FALL_BACK",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: FALL_BACK for",
+   "got": [
+    {
+     "intent": "FALL_BACK",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "fall back for 10 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t038",
+   "lang": "ru",
+   "line": "отходи секунд пятнадцать",
+   "want": [
+    {
+     "intent": "FALL_BACK",
+     "time": {
+      "kind": "for",
+      "seconds": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,6,12: inverted = about 15",
+   "got": [
+    {
+     "intent": "FALL_BACK",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for about 15 seconds",
+      "seconds": 15.0
+     },
+     "line": "fall back for about 15 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t039",
+   "lang": "ru",
+   "line": "прыгай 10 секунд",
+   "want": [
+    {
+     "intent": "JUMP",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: JUMP for",
+   "got": [
+    {
+     "intent": "JUMP",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "jump for 10 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t040",
+   "lang": "ru",
+   "line": "попрыгай на месте пару секунд",
+   "want": [
+    {
+     "intent": "JUMP",
+     "time": {
+      "kind": "for",
+      "seconds": 2
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,4,12: пару секунд = 2",
+   "got": [
+    {
+     "intent": "JUMP",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 2 seconds",
+      "seconds": 2.0
+     },
+     "line": "jump for 2 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t041",
+   "lang": "ru",
+   "line": "стреляй туда 5 секунд",
+   "want": [
+    {
+     "intent": "OPEN_FIRE",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: OPEN_FIRE for",
+   "got": [
+    {
+     "intent": "OPEN_FIRE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "open fire for 5 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t042",
+   "lang": "ru",
+   "line": "открой огонь по окну на десять секунд",
+   "want": [
+    {
+     "intent": "OPEN_FIRE",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: 'открой огонь' is fire, not OPEN",
+   "got": [
+    {
+     "intent": "OPEN_FIRE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "open fire on the window for 10 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t043",
+   "lang": "ru",
+   "line": "подави их 20 секунд",
+   "want": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: SUPPRESS for",
+   "got": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "lay down suppressive fire for 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t044",
+   "lang": "ru",
+   "line": "прижми их огнём секунд тридцать",
+   "want": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,6,12: inverted = about 30",
+   "got": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 30 seconds",
+      "seconds": 30.0
+     },
+     "line": "lay down suppressive fire for 30 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t045",
+   "lang": "ru",
+   "line": "подожди пару секунд",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 2
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 4,12: пару секунд = 2",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 2 seconds",
+      "seconds": 2.0
+     },
+     "line": "wait for 2 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t046",
+   "lang": "ru",
+   "line": "стой на месте несколько секунд",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "min": 3,
+      "max": 7
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 4,12: несколько секунд = 3..7",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 7.0,
+      "min": 3.0,
+      "more": false,
+      "said": "for a few seconds"
+     },
+     "line": "hold position for a few seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t047",
+   "lang": "ru",
+   "line": "прикрой меня несколько секунд",
+   "want": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "min": 3,
+      "max": 7
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 4,12: несколько секунд = 3..7",
+   "got": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 7.0,
+      "min": 3.0,
+      "more": false,
+      "said": "for a few seconds"
+     },
+     "line": "cover me for a few seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t048",
+   "lang": "ru",
+   "line": "подожди секунд 10-15",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "min": 10,
+      "max": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 5,12: range 'секунд 10-15'",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 15.0,
+      "min": 10.0,
+      "more": false,
+      "said": "for 10 to 15 seconds"
+     },
+     "line": "wait for 10 to 15 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t049",
+   "lang": "ru",
+   "line": "держи угол от 20 до 30 секунд",
+   "want": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "kind": "for",
+      "min": 20,
+      "max": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 5,12: range 'от 20 до 30'",
+   "got": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 30.0,
+      "min": 20.0,
+      "more": false,
+      "said": "for 20 to 30 seconds"
+     },
+     "line": "hold that angle for 20 to 30 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t050",
+   "lang": "ru",
+   "line": "не стреляй секунд десять-пятнадцать",
+   "want": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "kind": "for",
+      "min": 10,
+      "max": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 5,12: range in words",
+   "got": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 15.0,
+      "min": 10.0,
+      "more": false,
+      "said": "for 10 to 15 seconds"
+     },
+     "line": "hold fire for 10 to 15 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t051",
+   "lang": "ru",
+   "line": "ляг секунд на 5-10",
+   "want": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "kind": "for",
+      "min": 5,
+      "max": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 5,12: range 'секунд на 5-10'",
+   "got": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 10.0,
+      "min": 5.0,
+      "more": false,
+      "said": "for 5 to 10 seconds"
+     },
+     "line": "go prone for 5 to 10 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t052",
+   "lang": "ru",
+   "line": "подожди примерно 20 секунд",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 6,12: 'примерно' = one value",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for about 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "wait for about 20 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t053",
+   "lang": "ru",
+   "line": "укрывайся около сорока секунд",
+   "want": [
+    {
+     "intent": "TAKE_COVER",
+     "time": {
+      "kind": "for",
+      "seconds": 40
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 6,12: 'около' = one value",
+   "got": [
+    {
+     "intent": "TAKE_COVER",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for about 40 seconds",
+      "seconds": 40.0
+     },
+     "line": "take cover for about 40 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t054",
+   "lang": "ru",
+   "line": "подожди полторы секунды",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 1.5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 7,12: полторы секунды = 1.5",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 1.5 seconds",
+      "seconds": 1.5
+     },
+     "line": "wait for 1.5 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t055",
+   "lang": "ru",
+   "line": "подожди одну минуту",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 3,12: numeral minute is a time, not the idiom",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 1 minute",
+      "seconds": 60.0
+     },
+     "line": "wait for 1 minute",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t056",
+   "lang": "ru",
+   "line": "стой тут одну минуту",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 3,12: numeral minute = 60",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 1 minute",
+      "seconds": 60.0
+     },
+     "line": "hold position for 1 minute",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t057",
+   "lang": "ru",
+   "line": "прикрывай меня в течение минуты",
+   "want": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,3,12: 'в течение минуты' = for a minute = 60",
+   "got": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 1 minute",
+      "seconds": 60.0
+     },
+     "line": "cover me for 1 minute",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t058",
+   "lang": "ru",
+   "line": "подожди ещё 5 секунд",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": true
+    }
+   ],
+   "why": "rule 9,12: ещё = more",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": true,
+      "said": "for 5 more seconds",
+      "seconds": 5.0
+     },
+     "line": "wait for 5 more seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t059",
+   "lang": "ru",
+   "line": "постой тут ещё секунд десять",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": true
+    }
+   ],
+   "why": "rule 6,9,12: ещё + inverted",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": true,
+      "said": "for 10 more seconds",
+      "seconds": 10.0
+     },
+     "line": "hold position for 10 more seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t060",
+   "lang": "ru",
+   "line": "прикрывай ещё 20 секунд",
+   "want": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": true
+    }
+   ],
+   "why": "rule 9,12: ещё = more",
+   "got": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": true,
+      "said": "for 20 more seconds",
+      "seconds": 20.0
+     },
+     "line": "cover me for 20 more seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t061",
+   "lang": "ru",
+   "line": "дави их ещё пару секунд",
+   "want": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "kind": "for",
+      "seconds": 2
+     },
+     "more": true
+    }
+   ],
+   "why": "rule 4,9,12: ещё пару секунд = 2 more",
+   "got": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": true,
+      "said": "for 2 more seconds",
+      "seconds": 2.0
+     },
+     "line": "lay down suppressive fire for 2 more seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t062",
+   "lang": "ru",
+   "line": "лежи ещё несколько секунд",
+   "want": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "kind": "for",
+      "min": 3,
+      "max": 7
+     },
+     "more": true
+    }
+   ],
+   "why": "rule 4,9,12: ещё несколько = more, 3..7",
+   "got": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 7.0,
+      "min": 3.0,
+      "more": true,
+      "said": "for a few more seconds"
+     },
+     "line": "go prone for a few more seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t063",
+   "lang": "ru",
+   "line": "смотри за окном ещё полминуты",
+   "want": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": true
+    }
+   ],
+   "why": "rule 7,9,12: ещё полминуты = 30 more",
+   "got": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 30 seconds",
+      "seconds": 30.0
+     },
+     "line": "watch the window for 30 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": false,
+   "intent_ok": true,
+   "ok": false,
+   "h_time_ok": false,
+   "h_intent_ok": true,
+   "h_ok": false
+  },
+  {
+   "id": "t064",
+   "lang": "ru",
+   "line": "подожди две минуты",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 8,12: две минуты cut to 60",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": true,
+      "kind": "for",
+      "more": false,
+      "said": "for 2 minutes",
+      "seconds": 60.0
+     },
+     "line": "wait for 2 minutes",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t065",
+   "lang": "ru",
+   "line": "прикрой меня полторы минуты",
+   "want": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 7,8,12: полторы минуты = 90, cut to 60",
+   "got": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": true,
+      "kind": "for",
+      "more": false,
+      "said": "for 90 seconds",
+      "seconds": 60.0
+     },
+     "line": "cover me for 90 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t066",
+   "lang": "ru",
+   "line": "стой тут 90 секунд",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 8,12: 90 cut to 60",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": true,
+      "kind": "for",
+      "more": false,
+      "said": "for 90 seconds",
+      "seconds": 60.0
+     },
+     "line": "hold position for 90 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t067",
+   "lang": "ru",
+   "line": "следи за северной дверью три минуты",
+   "want": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 8,12: три минуты cut to 60",
+   "got": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "capped": true,
+      "kind": "for",
+      "more": false,
+      "said": "for 3 minutes",
+      "seconds": 60.0
+     },
+     "line": "keep an eye on the north door for 3 minutes",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t068",
+   "lang": "ru",
+   "line": "через две минуты иди к машине",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "after",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,8,12: after, cut to 60",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": true,
+      "kind": "after",
+      "more": false,
+      "said": "in 2 minutes",
+      "seconds": 60.0
+     },
+     "line": "in 2 minutes go to the car",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t069",
+   "lang": "ru",
+   "line": "через 10 секунд иди к главной двери",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "after",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: через = after",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "in 10 seconds go to the main door",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t070",
+   "lang": "ru",
+   "line": "через пять секунд открой дверь",
+   "want": [
+    {
+     "intent": "OPEN",
+     "time": {
+      "kind": "after",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: after on OPEN",
+   "got": [
+    {
+     "intent": "OPEN",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "in 5 seconds open the door",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t071",
+   "lang": "ru",
+   "line": "секунд через десять брось гранату в окно",
+   "want": [
+    {
+     "intent": "FRAG",
+     "time": {
+      "kind": "after",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,6,12: inverted 'секунд через десять'",
+   "got": [
+    {
+     "intent": "FRAG",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "in 10 seconds throw a grenade at the window",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t072",
+   "lang": "ru",
+   "line": "через пару секунд кинь дым",
+   "want": [
+    {
+     "intent": "SMOKE",
+     "time": {
+      "kind": "after",
+      "seconds": 2
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,4,12: after a couple = 2",
+   "got": [
+    {
+     "intent": "SMOKE",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 2 seconds",
+      "seconds": 2.0
+     },
+     "line": "in 2 seconds throw a smoke",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t073",
+   "lang": "ru",
+   "line": "через несколько секунд кидай флешку",
+   "want": [
+    {
+     "intent": "FLASH",
+     "time": {
+      "kind": "after",
+      "min": 3,
+      "max": 7
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,4,12: after a few = 3..7",
+   "got": [
+    {
+     "intent": "FLASH",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "max": 7.0,
+      "min": 3.0,
+      "more": false,
+      "said": "in a few seconds"
+     },
+     "line": "in a few seconds throw a flash",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t074",
+   "lang": "ru",
+   "line": "посчитай до десяти и иди",
+   "want": [
+    {
+     "intent": "GO_NOW",
+     "time": {
+      "kind": "after",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: count to ten = after 10",
+   "got": [
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "in 10 seconds come",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": false,
+   "h_ok": false
+  },
+  {
+   "id": "t075",
+   "lang": "ru",
+   "line": "досчитай до пяти и открывай дверь",
+   "want": [
+    {
+     "intent": "OPEN",
+     "time": {
+      "kind": "after",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: count to five = after 5",
+   "got": [
+    {
+     "intent": "OPEN",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "in 5 seconds open the door",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t076",
+   "lang": "ru",
+   "line": "через 20 секунд садись в машину",
+   "want": [
+    {
+     "intent": "GET_IN",
+     "time": {
+      "kind": "after",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: after on GET_IN",
+   "got": [
+    {
+     "intent": "GET_IN",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "in 20 seconds get in the car",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t077",
+   "lang": "ru",
+   "line": "через полминуты отступай",
+   "want": [
+    {
+     "intent": "FALL_BACK",
+     "time": {
+      "kind": "after",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,7,12: after half a minute",
+   "got": [
+    {
+     "intent": "FALL_BACK",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 30 seconds",
+      "seconds": 30.0
+     },
+     "line": "in 30 seconds fall back",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t078",
+   "lang": "ru",
+   "line": "спустя 15 секунд проверь комнату",
+   "want": [
+    {
+     "intent": "CHECK",
+     "time": {
+      "kind": "after",
+      "seconds": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: 'спустя' = after",
+   "got": [
+    {
+     "intent": "CHECK",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 15 seconds",
+      "seconds": 15.0
+     },
+     "line": "in 15 seconds check the room",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t079",
+   "lang": "ru",
+   "line": "перезарядись через три секунды",
+   "want": [
+    {
+     "intent": "RELOAD",
+     "time": {
+      "kind": "after",
+      "seconds": 3
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: after said behind the verb",
+   "got": [
+    {
+     "intent": "RELOAD",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 3 seconds",
+      "seconds": 3.0
+     },
+     "line": "in 3 seconds reload",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t080",
+   "lang": "ru",
+   "line": "через 5 сек вставай",
+   "want": [
+    {
+     "intent": "STAND_UP",
+     "time": {
+      "kind": "after",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: after, 'сек'",
+   "got": [
+    {
+     "intent": "STAND_UP",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "in 5 seconds stand up",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t081",
+   "lang": "ru",
+   "line": "давай секунд через двадцать возвращайся",
+   "want": [
+    {
+     "intent": "COME_BACK",
+     "time": {
+      "kind": "after",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,6,12: inverted after",
+   "got": [
+    {
+     "intent": "COME_BACK",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "after about 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "come back after about 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t082",
+   "lang": "ru",
+   "line": "прыгни на ящик через 3 секунды",
+   "want": [
+    {
+     "intent": "JUMP",
+     "time": {
+      "kind": "after",
+      "seconds": 3
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: jump onto a thing, after",
+   "got": [
+    {
+     "intent": "JUMP",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 3 seconds",
+      "seconds": 3.0
+     },
+     "line": "in 3 seconds climb onto the crate",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t083",
+   "lang": "ru",
+   "line": "через 10-15 секунд иди на крышу",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "after",
+      "min": 10,
+      "max": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,5,12: after a range",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "max": 15.0,
+      "min": 10.0,
+      "more": false,
+      "said": "in 10 to 15 seconds"
+     },
+     "line": "in 10 to 15 seconds go to the roof",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t084",
+   "lang": "ru",
+   "line": "через сорок секунд вернись туда, где был",
+   "want": [
+    {
+     "intent": "GO_BACK",
+     "time": {
+      "kind": "after",
+      "seconds": 40
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: after on GO_BACK",
+   "got": [
+    {
+     "intent": "GO_BACK",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 40 seconds",
+      "seconds": 40.0
+     },
+     "line": "in 40 seconds go back to where you were",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t085",
+   "lang": "ru",
+   "line": "через 5 секунд прикрой меня",
+   "want": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "after",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: after on a 'for' intent",
+   "got": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "in 5 seconds cover me",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t086",
+   "lang": "ru",
+   "line": "через одну минуту подними ящик",
+   "want": [
+    {
+     "intent": "COLLECT",
+     "time": {
+      "kind": "after",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,3,12: after one minute = 60",
+   "got": [
+    {
+     "intent": "COLLECT",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 1 minute",
+      "seconds": 60.0
+     },
+     "line": "in 1 minute pick up the crate",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t087",
+   "lang": "ru",
+   "line": "подожди 10 секунд, потом иди к северной двери",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: time stays with the wait",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "wait for 10 seconds",
+     "action": "wait"
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "line": "go to the north door",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t088",
+   "lang": "ru",
+   "line": "присядь на 5 секунд, а потом прикрой меня 20 секунд",
+   "want": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    },
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: two orders, both timed",
+   "got": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "crouch for 5 seconds",
+     "action": "act"
+    },
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "cover me for 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t089",
+   "lang": "ru",
+   "line": "открой дверь и подожди там пять секунд",
+   "want": [
+    {
+     "intent": "OPEN",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: time on the second order",
+   "got": [
+    {
+     "intent": "OPEN",
+     "time": null,
+     "line": "open the door",
+     "action": "ask"
+    }
+   ],
+   "held": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": null,
+     "action": "wait",
+     "held": true
+    }
+   ],
+   "time_ok": false,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t090",
+   "lang": "ru",
+   "line": "через 10 секунд открой дверь и брось гранату",
+   "want": [
+    {
+     "intent": "OPEN",
+     "time": {
+      "kind": "after",
+      "seconds": 10
+     },
+     "more": false
+    },
+    {
+     "intent": "FRAG",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 2,10,12: after on the first, next order plain",
+   "got": [
+    {
+     "intent": "OPEN",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "in 10 seconds open the door",
+     "action": "ask"
+    }
+   ],
+   "held": [
+    {
+     "intent": "FRAG",
+     "time": null,
+     "line": null,
+     "action": "act",
+     "held": true
+    }
+   ],
+   "time_ok": false,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t091",
+   "lang": "ru",
+   "line": "беги вперёд секунд пять, потом ложись",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    },
+    {
+     "intent": "PRONE",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 6,10,12: direction timed, then plain",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for about 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "run forward for about 5 seconds",
+     "action": "act"
+    },
+    {
+     "intent": "PRONE",
+     "time": null,
+     "line": "go prone",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t092",
+   "lang": "ru",
+   "line": "иди к красному столу и стой там 30 секунд",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: place order plain, hold timed",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "line": "go to the red table",
+     "action": "ask"
+    }
+   ],
+   "held": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 30 seconds",
+      "seconds": 30.0
+     },
+     "line": null,
+     "action": "ask",
+     "held": true
+    }
+   ],
+   "time_ok": false,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t093",
+   "lang": "ru",
+   "line": "за мной 15 секунд, потом держи окно",
+   "want": [
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 15
+     },
+     "more": false
+    },
+    {
+     "intent": "HOLD_ANGLE",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: first timed, second plain",
+   "got": [
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 15 seconds",
+      "seconds": 15.0
+     },
+     "line": "follow me for 15 seconds",
+     "action": "act"
+    },
+    {
+     "intent": "HOLD_ANGLE",
+     "time": null,
+     "line": "hold the window",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t094",
+   "lang": "ru",
+   "line": "спрячься за камнем и не стреляй 20 секунд",
+   "want": [
+    {
+     "intent": "TAKE_COVER",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: time on the second order",
+   "got": [
+    {
+     "intent": "TAKE_COVER",
+     "time": null,
+     "line": "hide behind the rock",
+     "action": "ask"
+    }
+   ],
+   "held": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": null,
+     "action": "act",
+     "held": true
+    }
+   ],
+   "time_ok": false,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t095",
+   "lang": "ru",
+   "line": "подави их 10 секунд, а потом отступай",
+   "want": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    },
+    {
+     "intent": "FALL_BACK",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: first timed, second plain",
+   "got": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "lay down suppressive fire for 10 seconds",
+     "action": "act"
+    },
+    {
+     "intent": "FALL_BACK",
+     "time": null,
+     "line": "fall back",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t096",
+   "lang": "ru",
+   "line": "подожди пару секунд и кинь флешку",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 2
+     },
+     "more": false
+    },
+    {
+     "intent": "FLASH",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 4,10,12: пару секунд on the wait only",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 2 seconds",
+      "seconds": 2.0
+     },
+     "line": "wait for 2 seconds",
+     "action": "wait"
+    },
+    {
+     "intent": "FLASH",
+     "time": null,
+     "line": "throw a flash",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t097",
+   "lang": "ru",
+   "line": "кинь дым, потом через пять секунд беги к машине",
+   "want": [
+    {
+     "intent": "SMOKE",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "after",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,10,12: after on the second order",
+   "got": [
+    {
+     "intent": "SMOKE",
+     "time": null,
+     "line": "throw a smoke",
+     "action": "act"
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "in 5 seconds go to the car",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t098",
+   "lang": "ru",
+   "line": "иди влево 3 секунды, потом вправо 3 секунды",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "for",
+      "seconds": 3
+     },
+     "more": false
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "for",
+      "seconds": 3
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: two directions, both timed",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 3 seconds",
+      "seconds": 3.0
+     },
+     "line": "go left for 3 seconds",
+     "action": "act"
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 3 seconds",
+      "seconds": 3.0
+     },
+     "line": "go right for 3 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t099",
+   "lang": "ru",
+   "line": "прыгай 10 секунд, потом посмотри на меня",
+   "want": [
+    {
+     "intent": "JUMP",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    },
+    {
+     "intent": "LOOK_AT_ME",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: first timed, second plain",
+   "got": [
+    {
+     "intent": "JUMP",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "jump for 10 seconds",
+     "action": "act"
+    },
+    {
+     "intent": "LOOK_AT_ME",
+     "time": null,
+     "line": "look at me",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t100",
+   "lang": "ru",
+   "line": "ляг на 10 секунд, потом вставай и за мной",
+   "want": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    },
+    {
+     "intent": "STAND_UP",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "FOLLOW_ME",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: three orders, only the first timed",
+   "got": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "go prone for 10 seconds",
+     "action": "act"
+    },
+    {
+     "intent": "STAND_UP",
+     "time": null,
+     "line": "stand up",
+     "action": "act"
+    },
+    {
+     "intent": "FOLLOW_ME",
+     "time": null,
+     "line": "follow me",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t101",
+   "lang": "ru",
+   "line": "слышь, стой тут несколько секунд, потом иди на крышу",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "min": 3,
+      "max": 7
+     },
+     "more": false
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 4,10,12: a few on the first order",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 7.0,
+      "min": 3.0,
+      "more": false,
+      "said": "for a few seconds"
+     },
+     "line": "hold position for a few seconds",
+     "action": "act"
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "line": "go to the roof",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t102",
+   "lang": "ru",
+   "line": "посмотри туда секунд пять и стреляй",
+   "want": [
+    {
+     "intent": "LOOK_AT",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    },
+    {
+     "intent": "OPEN_FIRE",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 6,10,12: look timed, fire plain",
+   "got": [
+    {
+     "intent": "LOOK_AT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for about 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "look there for about 5 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [
+    {
+     "intent": "OPEN_FIRE",
+     "time": null,
+     "line": null,
+     "action": "act",
+     "held": true
+    }
+   ],
+   "time_ok": false,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t103",
+   "lang": "ru",
+   "line": "подожди ещё 5 секунд, потом открывай дверь",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": true
+    },
+    {
+     "intent": "OPEN",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 9,10,12: more on the wait only",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": true,
+      "said": "for 5 more seconds",
+      "seconds": 5.0
+     },
+     "line": "wait for 5 more seconds",
+     "action": "wait"
+    },
+    {
+     "intent": "OPEN",
+     "time": null,
+     "line": "open the door",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t104",
+   "lang": "ru",
+   "line": "проверь комнату, а через 20 секунд возвращайся",
+   "want": [
+    {
+     "intent": "CHECK",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "COME_BACK",
+     "time": {
+      "kind": "after",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,10,12: after on the second order",
+   "got": [
+    {
+     "intent": "CHECK",
+     "time": null,
+     "line": "check the room",
+     "action": "act"
+    },
+    {
+     "intent": "COME_BACK",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "in 20 seconds come back",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t105",
+   "lang": "ru",
+   "line": "держи угол секунд 20-30, потом отходи",
+   "want": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "kind": "for",
+      "min": 20,
+      "max": 30
+     },
+     "more": false
+    },
+    {
+     "intent": "FALL_BACK",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 5,10,12: range on the first order",
+   "got": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 30.0,
+      "min": 20.0,
+      "more": false,
+      "said": "for 20 to 30 seconds"
+     },
+     "line": "hold that angle for 20 to 30 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [
+    {
+     "intent": "FALL_BACK",
+     "time": null,
+     "line": null,
+     "action": "act",
+     "held": true
+    }
+   ],
+   "time_ok": false,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t106",
+   "lang": "ru",
+   "line": "иди на второй этаж и жди там 10 секунд",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 10,11,12: 'второй этаж' no time, the wait timed",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "line": "go to the second floor",
+     "action": "ask"
+    }
+   ],
+   "held": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": null,
+     "action": "wait",
+     "held": true
+    }
+   ],
+   "time_ok": false,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t107",
+   "lang": "ru",
+   "line": "погоди полторы секунды и прыгай",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 1.5
+     },
+     "more": false
+    },
+    {
+     "intent": "JUMP",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 7,10,12: 1.5 on the wait",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 1.5 seconds",
+      "seconds": 1.5
+     },
+     "line": "wait for 1.5 seconds",
+     "action": "wait"
+    },
+    {
+     "intent": "JUMP",
+     "time": null,
+     "line": "jump",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t108",
+   "lang": "ru",
+   "line": "брось гранату и пригнись на три секунды",
+   "want": [
+    {
+     "intent": "FRAG",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "CROUCH",
+     "time": {
+      "kind": "for",
+      "seconds": 3
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: time on the second order",
+   "got": [
+    {
+     "intent": "FRAG",
+     "time": null,
+     "line": "throw a grenade",
+     "action": "act"
+    },
+    {
+     "intent": "CROUCH",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 3 seconds",
+      "seconds": 3.0
+     },
+     "line": "crouch for 3 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t109",
+   "lang": "ru",
+   "line": "иди к синей лестнице и прикрывай меня две минуты",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 8,10,12: cap on the second order",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "line": "go to the blue stairs",
+     "action": "ask"
+    }
+   ],
+   "held": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": true,
+      "kind": "for",
+      "more": false,
+      "said": "for 2 minutes",
+      "seconds": 60.0
+     },
+     "line": null,
+     "action": "act",
+     "held": true
+    }
+   ],
+   "time_ok": false,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t110",
+   "lang": "ru",
+   "line": "посмотри на меня пару секунд и иди за мной 20 секунд",
+   "want": [
+    {
+     "intent": "LOOK_AT_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 2
+     },
+     "more": false
+    },
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 4,10,12: both timed",
+   "got": [
+    {
+     "intent": "LOOK_AT_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 2 seconds",
+      "seconds": 2.0
+     },
+     "line": "look at me for 2 seconds",
+     "action": "act"
+    },
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "follow me for 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t111",
+   "lang": "ru",
+   "line": "подожди минуту",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3: idiom, no time",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "line": "wait a minute",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t112",
+   "lang": "ru",
+   "line": "минутку",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3: idiom, no time",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "line": "wait a minute",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t113",
+   "lang": "ru",
+   "line": "секунду, брат",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3: idiom, no time",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "line": "hold on a sec bro",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t114",
+   "lang": "ru",
+   "line": "погоди секундочку",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3: idiom, no time",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "line": "hold on a sec",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t115",
+   "lang": "ru",
+   "line": "подожди минутку, потом иди к окну",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3,10: idiom wait, then plain order",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "line": "wait a minute",
+     "action": "wait"
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "line": "go to the window",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t116",
+   "lang": "ru",
+   "line": "иди на второй этаж",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 11: ordinal 'второй' is no time",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "line": "go to the second floor",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t117",
+   "lang": "ru",
+   "line": "проверь вторую комнату",
+   "want": [
+    {
+     "intent": "CHECK",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 11: ordinal 'вторую' is no time",
+   "got": [
+    {
+     "intent": "CHECK",
+     "time": null,
+     "line": "check the second room",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t118",
+   "lang": "ru",
+   "line": "прыгни на ящик ещё раз",
+   "want": [
+    {
+     "intent": "JUMP",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 9: 'ещё раз' is no time, no more",
+   "got": [
+    {
+     "intent": "JUMP",
+     "time": null,
+     "line": "jump on the crate again",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t119",
+   "lang": "ru",
+   "line": "открой северную дверь",
+   "want": [
+    {
+     "intent": "OPEN",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "no time: plain order, no time",
+   "got": [
+    {
+     "intent": "OPEN",
+     "time": null,
+     "line": "open the north door",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t120",
+   "lang": "ru",
+   "line": "стой тут",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "no time: plain order, no time",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": null,
+     "line": "stand here",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t121",
+   "lang": "es",
+   "line": "espera cinco segundos",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: for, number word",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "wait for 5 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t122",
+   "lang": "es",
+   "line": "quédate aquí diez segundos",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: HOLD_POSITION for",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "hold position for 10 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t123",
+   "lang": "es",
+   "line": "tío, no te muevas de ahí 20 segundos",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: filler, digits",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "hold position for 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t124",
+   "lang": "es",
+   "line": "vigila esa ventana 15 segundos",
+   "want": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "kind": "for",
+      "seconds": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: HOLD_ANGLE for",
+   "got": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 15 seconds",
+      "seconds": 15.0
+     },
+     "line": "keep an eye on that window for 15 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t125",
+   "lang": "es",
+   "line": "vigila la puerta norte durante veinte segundos",
+   "want": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: 'durante' = for",
+   "got": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "keep an eye on the north door for 20 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t126",
+   "lang": "es",
+   "line": "mira hacia allá cinco segundos",
+   "want": [
+    {
+     "intent": "LOOK_AT",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: LOOK_AT for",
+   "got": [
+    {
+     "intent": "LOOK_AT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "look there for 5 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t127",
+   "lang": "es",
+   "line": "mírame 3 segundos",
+   "want": [
+    {
+     "intent": "LOOK_AT_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 3
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: LOOK_AT_ME for",
+   "got": [
+    {
+     "intent": "LOOK_AT_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 3 seconds",
+      "seconds": 3.0
+     },
+     "line": "look at me for 3 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t128",
+   "lang": "es",
+   "line": "agáchate 10 segundos",
+   "want": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: CROUCH for",
+   "got": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "crouch for 10 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t129",
+   "lang": "es",
+   "line": "agáchate unos segundos, bro",
+   "want": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "kind": "for",
+      "min": 3,
+      "max": 7
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 4,12: unos segundos = 3..7",
+   "got": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 7.0,
+      "min": 3.0,
+      "more": false,
+      "said": "for a few seconds"
+     },
+     "line": "crouch for a few seconds bro",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t130",
+   "lang": "es",
+   "line": "túmbate por veinte segundos",
+   "want": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: 'por' = for",
+   "got": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "go prone for 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t131",
+   "lang": "es",
+   "line": "cúbreme 30 segundos",
+   "want": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: COVER_ME for",
+   "got": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 30 seconds",
+      "seconds": 30.0
+     },
+     "line": "cover me for 30 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t132",
+   "lang": "es",
+   "line": "cúbreme durante un minuto",
+   "want": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,3,12: 'durante un minuto' = for a minute = 60",
+   "got": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 1 minute",
+      "seconds": 60.0
+     },
+     "line": "cover me for 1 minute",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t133",
+   "lang": "es",
+   "line": "cúbrete diez segundos",
+   "want": [
+    {
+     "intent": "TAKE_COVER",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: cúbrete (take cover), not cúbreme",
+   "got": [
+    {
+     "intent": "TAKE_COVER",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "take cover for 10 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t134",
+   "lang": "es",
+   "line": "escóndete detrás de la roca 15 segundos",
+   "want": [
+    {
+     "intent": "TAKE_COVER",
+     "time": {
+      "kind": "for",
+      "seconds": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: TAKE_COVER with a place, for",
+   "got": [
+    {
+     "intent": "TAKE_COVER",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 15 seconds",
+      "seconds": 15.0
+     },
+     "line": "hide behind the rock for 15 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t135",
+   "lang": "es",
+   "line": "no dispares 15 segundos",
+   "want": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "kind": "for",
+      "seconds": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: HOLD_FIRE for",
+   "got": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 15 seconds",
+      "seconds": 15.0
+     },
+     "line": "hold fire for 15 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t136",
+   "lang": "es",
+   "line": "sígueme durante 20 segundos",
+   "want": [
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: FOLLOW_ME for",
+   "got": [
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "follow me for 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t137",
+   "lang": "es",
+   "line": "vente conmigo medio minuto",
+   "want": [
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,7,12: medio minuto = 30",
+   "got": [
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 30 seconds",
+      "seconds": 30.0
+     },
+     "line": "follow me for 30 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t138",
+   "lang": "es",
+   "line": "corre hacia adelante diez segundos",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: direction for",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "run forward for 10 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t139",
+   "lang": "es",
+   "line": "ve a la izquierda 5 segundos",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: direction for",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "go left for 5 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t140",
+   "lang": "es",
+   "line": "muévete a la derecha unos tres segundos",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "for",
+      "seconds": 3
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,6,12: 'unos tres' = about 3, not 'unos segundos'",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for about 3 seconds",
+      "seconds": 3.0
+     },
+     "line": "move right for about 3 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t141",
+   "lang": "es",
+   "line": "retírate 10 segundos",
+   "want": [
+    {
+     "intent": "FALL_BACK",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: FALL_BACK for",
+   "got": [
+    {
+     "intent": "FALL_BACK",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "fall back for 10 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t142",
+   "lang": "es",
+   "line": "salta 10 segundos",
+   "want": [
+    {
+     "intent": "JUMP",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: JUMP for",
+   "got": [
+    {
+     "intent": "JUMP",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "jump for 10 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t143",
+   "lang": "es",
+   "line": "ponte a saltar un par de segundos",
+   "want": [
+    {
+     "intent": "JUMP",
+     "time": {
+      "kind": "for",
+      "seconds": 2
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,4,12: un par de segundos = 2",
+   "got": [
+    {
+     "intent": "JUMP",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 2 seconds",
+      "seconds": 2.0
+     },
+     "line": "jump for 2 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t144",
+   "lang": "es",
+   "line": "dispara ahí 5 segundos",
+   "want": [
+    {
+     "intent": "OPEN_FIRE",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: OPEN_FIRE for",
+   "got": [
+    {
+     "intent": "OPEN_FIRE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "open fire for 5 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t145",
+   "lang": "es",
+   "line": "abre fuego contra la ventana quince segundos",
+   "want": [
+    {
+     "intent": "OPEN_FIRE",
+     "time": {
+      "kind": "for",
+      "seconds": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: 'abre fuego' is fire, not OPEN",
+   "got": [
+    {
+     "intent": "OPEN_FIRE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 15 seconds",
+      "seconds": 15.0
+     },
+     "line": "shoot the window for 15 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t146",
+   "lang": "es",
+   "line": "suprímelos 20 segundos",
+   "want": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: SUPPRESS for",
+   "got": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "lay down suppressive fire for 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t147",
+   "lang": "es",
+   "line": "espera un par de segundos",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 2
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 4,12: un par de segundos = 2",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 2 seconds",
+      "seconds": 2.0
+     },
+     "line": "wait for 2 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t148",
+   "lang": "es",
+   "line": "quédate ahí unos cuantos segundos",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "min": 3,
+      "max": 7
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 4,12: unos cuantos segundos = 3..7",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 7.0,
+      "min": 3.0,
+      "more": false,
+      "said": "for a few seconds"
+     },
+     "line": "hold position for a few seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t149",
+   "lang": "es",
+   "line": "vigila la ventana varios segundos",
+   "want": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "kind": "for",
+      "min": 3,
+      "max": 7
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 4,12: varios segundos = 3..7",
+   "got": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 7.0,
+      "min": 3.0,
+      "more": false,
+      "said": "for a few seconds"
+     },
+     "line": "keep an eye on the window for a few seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t150",
+   "lang": "es",
+   "line": "espera entre diez y quince segundos",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "min": 10,
+      "max": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 5,12: range 'entre ... y ...'",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 15.0,
+      "min": 10.0,
+      "more": false,
+      "said": "for 10 to 15 seconds"
+     },
+     "line": "wait for 10 to 15 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t151",
+   "lang": "es",
+   "line": "cúbreme de 20 a 30 segundos",
+   "want": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "min": 20,
+      "max": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 5,12: range 'de 20 a 30'",
+   "got": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 30.0,
+      "min": 20.0,
+      "more": false,
+      "said": "for 20 to 30 seconds"
+     },
+     "line": "cover me for 20 to 30 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t152",
+   "lang": "es",
+   "line": "no dispares unos diez o quince segundos",
+   "want": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "kind": "for",
+      "min": 10,
+      "max": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 5,12: range '10 o 15'",
+   "got": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 15.0,
+      "min": 10.0,
+      "more": false,
+      "said": "for 10 to 15 seconds"
+     },
+     "line": "hold fire for 10 to 15 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t153",
+   "lang": "es",
+   "line": "espera unos veinte segundos",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 6,12: 'unos veinte' = about 20",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for about 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "wait for about 20 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t154",
+   "lang": "es",
+   "line": "túmbate como diez segundos, wey",
+   "want": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 6,12: 'como' = about",
+   "got": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for about 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "go prone for about 10 seconds, bro",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t155",
+   "lang": "es",
+   "line": "mantén la posición más o menos 30 segundos",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 6,12: 'más o menos' = about",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for about 30 seconds",
+      "seconds": 30.0
+     },
+     "line": "hold position for about 30 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t156",
+   "lang": "es",
+   "line": "espera segundo y medio",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 1.5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 7,12: segundo y medio = 1.5",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 1.5 seconds",
+      "seconds": 1.5
+     },
+     "line": "wait for 1.5 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t157",
+   "lang": "es",
+   "line": "dame cinco segundos",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: give me N seconds = a timed wait",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "wait for 5 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t158",
+   "lang": "es",
+   "line": "espera 5 segundos más",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": true
+    }
+   ],
+   "why": "rule 9,12: 'más' = more",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": true,
+      "said": "for 5 more seconds",
+      "seconds": 5.0
+     },
+     "line": "wait for 5 more seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t159",
+   "lang": "es",
+   "line": "sigue cubriéndome otros cinco segundos",
+   "want": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": true
+    }
+   ],
+   "why": "rule 9,12: 'otros' = more",
+   "got": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": true,
+      "said": "for 5 more seconds",
+      "seconds": 5.0
+     },
+     "line": "cover me for 5 more seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t160",
+   "lang": "es",
+   "line": "quédate ahí diez segundos más, tío",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": true
+    }
+   ],
+   "why": "rule 9,12: 'más' = more",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": true,
+      "said": "for 10 more seconds",
+      "seconds": 10.0
+     },
+     "line": "hold position for 10 more seconds bro",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t161",
+   "lang": "es",
+   "line": "sigue suprimiendo otros veinte segundos",
+   "want": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": true
+    }
+   ],
+   "why": "rule 9,12: 'otros' = more",
+   "got": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": true,
+      "said": "for 20 more seconds",
+      "seconds": 20.0
+     },
+     "line": "keep suppressing for 20 more seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t162",
+   "lang": "es",
+   "line": "espera dos minutos",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 8,12: dos minutos cut to 60",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": true,
+      "kind": "for",
+      "more": false,
+      "said": "for 2 minutes",
+      "seconds": 60.0
+     },
+     "line": "wait for 2 minutes",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t163",
+   "lang": "es",
+   "line": "vigila la ventana minuto y medio",
+   "want": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 7,8,12: minuto y medio = 90, cut to 60",
+   "got": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "capped": true,
+      "kind": "for",
+      "more": false,
+      "said": "for 90 seconds",
+      "seconds": 60.0
+     },
+     "line": "keep an eye on the window for 90 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t164",
+   "lang": "es",
+   "line": "agáchate noventa segundos",
+   "want": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 8,12: 90 cut to 60",
+   "got": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "capped": true,
+      "kind": "for",
+      "more": false,
+      "said": "for 90 seconds",
+      "seconds": 60.0
+     },
+     "line": "crouch for 90 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t165",
+   "lang": "es",
+   "line": "en diez segundos ve a la puerta principal",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "after",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: 'en N segundos' = after",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "in 10 seconds go to the main door",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t166",
+   "lang": "es",
+   "line": "dentro de cinco segundos abre la puerta norte",
+   "want": [
+    {
+     "intent": "OPEN",
+     "time": {
+      "kind": "after",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: 'dentro de' = after",
+   "got": [
+    {
+     "intent": "OPEN",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "in 5 seconds open the north door",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t167",
+   "lang": "es",
+   "line": "a los diez segundos tira la granada",
+   "want": [
+    {
+     "intent": "FRAG",
+     "time": {
+      "kind": "after",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: 'a los N segundos' = after",
+   "got": [
+    {
+     "intent": "FRAG",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "in 10 seconds throw a grenade",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t168",
+   "lang": "es",
+   "line": "súbete al carro después de 15 segundos",
+   "want": [
+    {
+     "intent": "GET_IN",
+     "time": {
+      "kind": "after",
+      "seconds": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: 'después de' = after, said behind",
+   "got": [
+    {
+     "intent": "GET_IN",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 15 seconds",
+      "seconds": 15.0
+     },
+     "line": "in 15 seconds get in the car",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t169",
+   "lang": "es",
+   "line": "cuenta hasta cinco y tira el humo",
+   "want": [
+    {
+     "intent": "SMOKE",
+     "time": {
+      "kind": "after",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: count to five = after 5",
+   "got": [
+    {
+     "intent": "SMOKE",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "in 5 seconds throw a smoke",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t170",
+   "lang": "es",
+   "line": "en un par de segundos lanza la flash",
+   "want": [
+    {
+     "intent": "FLASH",
+     "time": {
+      "kind": "after",
+      "seconds": 2
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,4,12: after a couple = 2",
+   "got": [
+    {
+     "intent": "FLASH",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 2 seconds",
+      "seconds": 2.0
+     },
+     "line": "in 2 seconds throw a flash",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t171",
+   "lang": "es",
+   "line": "dentro de medio minuto retírate",
+   "want": [
+    {
+     "intent": "FALL_BACK",
+     "time": {
+      "kind": "after",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,7,12: after half a minute",
+   "got": [
+    {
+     "intent": "FALL_BACK",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 30 seconds",
+      "seconds": 30.0
+     },
+     "line": "in 30 seconds fall back",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t172",
+   "lang": "es",
+   "line": "en unos segundos vuelve aquí",
+   "want": [
+    {
+     "intent": "COME_BACK",
+     "time": {
+      "kind": "after",
+      "min": 3,
+      "max": 7
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,4,12: after a few = 3..7",
+   "got": [
+    {
+     "intent": "COME_BACK",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "max": 7.0,
+      "min": 3.0,
+      "more": false,
+      "said": "in a few seconds"
+     },
+     "line": "in a few seconds come back",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t173",
+   "lang": "es",
+   "line": "espera diez segundos y luego ve a la caja",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: time stays with the wait",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "wait for 10 seconds",
+     "action": "wait"
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "line": "go to the box",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t174",
+   "lang": "es",
+   "line": "agáchate 5 segundos y después cúbreme 20 segundos",
+   "want": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    },
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: two orders, both timed",
+   "got": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "crouch for 5 seconds",
+     "action": "act"
+    },
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "cover me for 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t175",
+   "lang": "es",
+   "line": "abre la puerta y espera ahí cinco segundos",
+   "want": [
+    {
+     "intent": "OPEN",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: time on the second order",
+   "got": [
+    {
+     "intent": "OPEN",
+     "time": null,
+     "line": "open the door",
+     "action": "ask"
+    }
+   ],
+   "held": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": null,
+     "action": "wait",
+     "held": true
+    }
+   ],
+   "time_ok": false,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t176",
+   "lang": "es",
+   "line": "en diez segundos abre la puerta y tira una granada",
+   "want": [
+    {
+     "intent": "OPEN",
+     "time": {
+      "kind": "after",
+      "seconds": 10
+     },
+     "more": false
+    },
+    {
+     "intent": "FRAG",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 2,10,12: after on the first, next order plain",
+   "got": [
+    {
+     "intent": "OPEN",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "in 10 seconds open the door",
+     "action": "ask"
+    }
+   ],
+   "held": [
+    {
+     "intent": "FRAG",
+     "time": null,
+     "line": null,
+     "action": "act",
+     "held": true
+    }
+   ],
+   "time_ok": false,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t177",
+   "lang": "es",
+   "line": "corre a la izquierda 3 segundos y luego túmbate",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "for",
+      "seconds": 3
+     },
+     "more": false
+    },
+    {
+     "intent": "PRONE",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: direction timed, then plain",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 3 seconds",
+      "seconds": 3.0
+     },
+     "line": "run left for 3 seconds",
+     "action": "act"
+    },
+    {
+     "intent": "PRONE",
+     "time": null,
+     "line": "go prone",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t178",
+   "lang": "es",
+   "line": "suprímelos 15 segundos y después repliégate",
+   "want": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "kind": "for",
+      "seconds": 15
+     },
+     "more": false
+    },
+    {
+     "intent": "FALL_BACK",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: first timed, second plain",
+   "got": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 15 seconds",
+      "seconds": 15.0
+     },
+     "line": "lay down suppressive fire for 15 seconds",
+     "action": "act"
+    },
+    {
+     "intent": "FALL_BACK",
+     "time": null,
+     "line": "fall back",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t179",
+   "lang": "es",
+   "line": "ve a la escalera azul y quédate ahí medio minuto",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 7,10,12: place plain, hold half a minute",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "line": "go to the blue stairs",
+     "action": "ask"
+    }
+   ],
+   "held": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 30 seconds",
+      "seconds": 30.0
+     },
+     "line": null,
+     "action": "act",
+     "held": true
+    }
+   ],
+   "time_ok": false,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t180",
+   "lang": "es",
+   "line": "tira el humo y en cinco segundos corre hacia el coche",
+   "want": [
+    {
+     "intent": "SMOKE",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "after",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,10,12: after on the second order",
+   "got": [
+    {
+     "intent": "SMOKE",
+     "time": null,
+     "line": "throw the smoke",
+     "action": "act"
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "in 5 seconds go to the car",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t181",
+   "lang": "es",
+   "line": "escóndete y no dispares durante 20 segundos",
+   "want": [
+    {
+     "intent": "TAKE_COVER",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: time on the second order",
+   "got": [
+    {
+     "intent": "TAKE_COVER",
+     "time": null,
+     "line": "take cover",
+     "action": "act"
+    },
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "hold fire for 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t182",
+   "lang": "es",
+   "line": "sube al segundo piso y espera ahí 10 segundos",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 10,11,12: 'segundo piso' no time, the wait timed",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "line": "go up to 2F",
+     "action": "act"
+    },
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "wait for 10 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t183",
+   "lang": "es",
+   "line": "espera un momento",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3: idiom, no time",
+   "got": [
+    {
+     "intent": "GO_BACK",
+     "time": null,
+     "line": "just a moment",
+     "action": "say_again"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": false,
+   "h_ok": false
+  },
+  {
+   "id": "t184",
+   "lang": "es",
+   "line": "un segundo, bro",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3: idiom, no time",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "line": "hold on a sec bro",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t185",
+   "lang": "es",
+   "line": "espérame un segundito",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3: idiom, no time",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "line": "hold on a sec",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t186",
+   "lang": "es",
+   "line": "dame un segundo",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3: idiom 'give me a second', no time",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "line": "wait a sec",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t187",
+   "lang": "es",
+   "line": "aguanta un momentito, tío",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3: idiom, no time",
+   "got": [
+    {
+     "intent": "LOOK_AT_ME",
+     "time": null,
+     "line": "just a moment bro",
+     "action": "say_again"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": false,
+   "h_ok": false
+  },
+  {
+   "id": "t188",
+   "lang": "es",
+   "line": "sube al segundo piso",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 11: ordinal 'segundo' is no time",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "line": "go up to 2nd floor",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t189",
+   "lang": "es",
+   "line": "espera un momento y luego abre la puerta",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "OPEN",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3,10: idiom wait, then plain order",
+   "got": [
+    {
+     "intent": "GO_BACK",
+     "time": null,
+     "line": "just a moment",
+     "action": "say_again"
+    },
+    {
+     "intent": "OPEN",
+     "time": null,
+     "line": "open the door",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": false,
+   "h_ok": false
+  },
+  {
+   "id": "t190",
+   "lang": "es",
+   "line": "recoge la caja",
+   "want": [
+    {
+     "intent": "COLLECT",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "no time: plain order, no time",
+   "got": [
+    {
+     "intent": "COLLECT",
+     "time": null,
+     "line": "pick up the box",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t191",
+   "lang": "en",
+   "line": "gimme 5 seconds",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: give me N seconds = a timed wait",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "gimme 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "gimme 5 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t192",
+   "lang": "en",
+   "line": "yo hold here like 10 secs",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,6,12: 'like' = about, 'secs'",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "like 10 secs",
+      "seconds": 10.0
+     },
+     "line": "yo hold here like 10 secs",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t193",
+   "lang": "en",
+   "line": "watch that door for 30 seconds",
+   "want": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: HOLD_ANGLE for",
+   "got": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 30 seconds",
+      "seconds": 30.0
+     },
+     "line": "watch that door for 30 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t194",
+   "lang": "en",
+   "line": "look over there for five seconds",
+   "want": [
+    {
+     "intent": "LOOK_AT",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: LOOK_AT for",
+   "got": [
+    {
+     "intent": "LOOK_AT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for five seconds",
+      "seconds": 5.0
+     },
+     "line": "look over there for five seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t195",
+   "lang": "en",
+   "line": "look at me for 3 seconds",
+   "want": [
+    {
+     "intent": "LOOK_AT_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 3
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: LOOK_AT_ME for",
+   "got": [
+    {
+     "intent": "LOOK_AT_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 3 seconds",
+      "seconds": 3.0
+     },
+     "line": "look at me for 3 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t196",
+   "lang": "en",
+   "line": "go prone for twenty seconds",
+   "want": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: PRONE for",
+   "got": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for twenty seconds",
+      "seconds": 20.0
+     },
+     "line": "go prone for twenty seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t197",
+   "lang": "en",
+   "line": "lie down 10 secs",
+   "want": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: no 'for', 'secs'",
+   "got": [
+    {
+     "intent": "PRONE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "10 secs",
+      "seconds": 10.0
+     },
+     "line": "lie down 10 secs",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t198",
+   "lang": "en",
+   "line": "cover me for half a minute",
+   "want": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,7,12: half a minute = 30",
+   "got": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for half a minute",
+      "seconds": 30.0
+     },
+     "line": "cover me for half a minute",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t199",
+   "lang": "en",
+   "line": "take cover for ten seconds",
+   "want": [
+    {
+     "intent": "TAKE_COVER",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: TAKE_COVER for",
+   "got": [
+    {
+     "intent": "TAKE_COVER",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for ten seconds",
+      "seconds": 10.0
+     },
+     "line": "take cover for ten seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t200",
+   "lang": "en",
+   "line": "hide behind the rock for 20 seconds",
+   "want": [
+    {
+     "intent": "TAKE_COVER",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: TAKE_COVER with a place, for",
+   "got": [
+    {
+     "intent": "TAKE_COVER",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "hide behind the rock for 20 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t201",
+   "lang": "en",
+   "line": "hold fire for 15 seconds",
+   "want": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "kind": "for",
+      "seconds": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: HOLD_FIRE for",
+   "got": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 15 seconds",
+      "seconds": 15.0
+     },
+     "line": "hold fire for 15 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t202",
+   "lang": "en",
+   "line": "don't shoot for a few seconds",
+   "want": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "kind": "for",
+      "min": 3,
+      "max": 7
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 4,12: a few seconds = 3..7",
+   "got": [
+    {
+     "intent": "HOLD_FIRE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 7.0,
+      "min": 3.0,
+      "more": false,
+      "said": "for a few seconds"
+     },
+     "line": "don't shoot for a few seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t203",
+   "lang": "en",
+   "line": "c'mon follow me for 20 seconds",
+   "want": [
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: FOLLOW_ME for",
+   "got": [
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "c'mon follow me for 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t204",
+   "lang": "en",
+   "line": "run left for five seconds",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: direction for",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for five seconds",
+      "seconds": 5.0
+     },
+     "line": "run left for five seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t205",
+   "lang": "en",
+   "line": "fall back for ten seconds",
+   "want": [
+    {
+     "intent": "FALL_BACK",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: FALL_BACK for",
+   "got": [
+    {
+     "intent": "FALL_BACK",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for ten seconds",
+      "seconds": 10.0
+     },
+     "line": "fall back for ten seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t206",
+   "lang": "en",
+   "line": "jump around for 5 seconds",
+   "want": [
+    {
+     "intent": "JUMP",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: JUMP for",
+   "got": [
+    {
+     "intent": "JUMP",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "jump around for 5 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t207",
+   "lang": "en",
+   "line": "open fire for ten seconds",
+   "want": [
+    {
+     "intent": "OPEN_FIRE",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,12: OPEN_FIRE for, not OPEN",
+   "got": [
+    {
+     "intent": "OPEN_FIRE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for ten seconds",
+      "seconds": 10.0
+     },
+     "line": "open fire for ten seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t208",
+   "lang": "en",
+   "line": "pin em down for like 20 seconds",
+   "want": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 1,6,12: SUPPRESS, 'like' = about",
+   "got": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for like 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "pin em down for like 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t209",
+   "lang": "en",
+   "line": "hold here a couple seconds",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 2
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 4,12: a couple seconds = 2",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "a couple seconds",
+      "seconds": 2.0
+     },
+     "line": "hold here a couple seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t210",
+   "lang": "en",
+   "line": "cover me for several seconds",
+   "want": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "min": 3,
+      "max": 7
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 4,12: several seconds = 3..7",
+   "got": [
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 7.0,
+      "min": 3.0,
+      "more": false,
+      "said": "for several seconds"
+     },
+     "line": "cover me for several seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t211",
+   "lang": "en",
+   "line": "hold that angle for 10 to 15 seconds",
+   "want": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "kind": "for",
+      "min": 10,
+      "max": 15
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 5,12: range '10 to 15'",
+   "got": [
+    {
+     "intent": "HOLD_ANGLE",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 15.0,
+      "min": 10.0,
+      "more": false,
+      "said": "for 10 to 15 seconds"
+     },
+     "line": "hold that angle for 10 to 15 seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t212",
+   "lang": "en",
+   "line": "wait between 5 and 10 seconds",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "min": 5,
+      "max": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 5,12: range 'between ... and ...'",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 10.0,
+      "min": 5.0,
+      "more": false,
+      "said": "between 5 and 10 seconds"
+     },
+     "line": "wait between 5 and 10 seconds",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t213",
+   "lang": "en",
+   "line": "crouch for about 20 seconds",
+   "want": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 6,12: 'about' = one value",
+   "got": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for about 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "crouch for about 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t214",
+   "lang": "en",
+   "line": "wait like a second and a half",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 1.5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 7,12: a second and a half = 1.5",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "like a second and a half",
+      "seconds": 1.5
+     },
+     "line": "wait like a second and a half",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t215",
+   "lang": "en",
+   "line": "wait one minute",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 3,12: numeral minute is a time, not the idiom",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "one minute",
+      "seconds": 60.0
+     },
+     "line": "wait one minute",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t216",
+   "lang": "en",
+   "line": "stay there 5 more seconds",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": true
+    }
+   ],
+   "why": "rule 9,12: 'N more' = more",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": true,
+      "said": "5 more seconds",
+      "seconds": 5.0
+     },
+     "line": "stay there 5 more seconds",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t217",
+   "lang": "en",
+   "line": "keep suppressing for another ten seconds",
+   "want": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": true
+    }
+   ],
+   "why": "rule 9,12: 'another' = more",
+   "got": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": true,
+      "said": "for another ten seconds",
+      "seconds": 10.0
+     },
+     "line": "keep suppressing for another ten seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t218",
+   "lang": "en",
+   "line": "hold here for two minutes",
+   "want": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 8,12: two minutes cut to 60",
+   "got": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": true,
+      "kind": "for",
+      "more": false,
+      "said": "for two minutes",
+      "seconds": 60.0
+     },
+     "line": "hold here for two minutes",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t219",
+   "lang": "en",
+   "line": "suppress them for 120 seconds",
+   "want": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 8,12: 120 cut to 60",
+   "got": [
+    {
+     "intent": "SUPPRESS",
+     "time": {
+      "capped": true,
+      "kind": "for",
+      "more": false,
+      "said": "for 120 seconds",
+      "seconds": 60.0
+     },
+     "line": "suppress them for 120 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t220",
+   "lang": "en",
+   "line": "wait a minute and a half",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 60
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 3,8,12: not the idiom: 90, cut to 60",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": true,
+      "kind": "for",
+      "more": false,
+      "said": "a minute and a half",
+      "seconds": 60.0
+     },
+     "line": "wait a minute and a half",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t221",
+   "lang": "en",
+   "line": "after ten seconds throw a frag",
+   "want": [
+    {
+     "intent": "FRAG",
+     "time": {
+      "kind": "after",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: 'after N seconds' = after",
+   "got": [
+    {
+     "intent": "FRAG",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "after ten seconds",
+      "seconds": 10.0
+     },
+     "line": "after ten seconds throw a frag",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t222",
+   "lang": "en",
+   "line": "get in the car 20 seconds from now",
+   "want": [
+    {
+     "intent": "GET_IN",
+     "time": {
+      "kind": "after",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: 'from now' = after",
+   "got": [
+    {
+     "intent": "GET_IN",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "20 seconds from now",
+      "seconds": 20.0
+     },
+     "line": "get in the car 20 seconds from now",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t223",
+   "lang": "en",
+   "line": "count to five then pop smoke",
+   "want": [
+    {
+     "intent": "SMOKE",
+     "time": {
+      "kind": "after",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: count to five = after 5",
+   "got": [
+    {
+     "intent": "SMOKE",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "in 5 seconds throw a smoke",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t224",
+   "lang": "en",
+   "line": "check the room in 10 secs",
+   "want": [
+    {
+     "intent": "CHECK",
+     "time": {
+      "kind": "after",
+      "seconds": 10
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: 'in N secs' said behind = after",
+   "got": [
+    {
+     "intent": "CHECK",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 10 secs",
+      "seconds": 10.0
+     },
+     "line": "check the room in 10 secs",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t225",
+   "lang": "en",
+   "line": "in thirty seconds fall back",
+   "want": [
+    {
+     "intent": "FALL_BACK",
+     "time": {
+      "kind": "after",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,12: after on a 'for' intent",
+   "got": [
+    {
+     "intent": "FALL_BACK",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 30 seconds",
+      "seconds": 30.0
+     },
+     "line": "in 30 seconds fall back",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t226",
+   "lang": "en",
+   "line": "wait 10 seconds then go to the main door",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "kind": "for",
+      "seconds": 10
+     },
+     "more": false
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: time stays with the wait",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "wait for 10 seconds",
+     "action": "wait"
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "line": "go to the main door",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t227",
+   "lang": "en",
+   "line": "crouch for 5 seconds then cover me for twenty seconds",
+   "want": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "kind": "for",
+      "seconds": 5
+     },
+     "more": false
+    },
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 20
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: two orders, both timed",
+   "got": [
+    {
+     "intent": "CROUCH",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "crouch for 5 seconds",
+     "action": "act"
+    },
+    {
+     "intent": "COVER_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 20 seconds",
+      "seconds": 20.0
+     },
+     "line": "cover me for 20 seconds",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t228",
+   "lang": "en",
+   "line": "in ten seconds open the north door and throw a frag",
+   "want": [
+    {
+     "intent": "OPEN",
+     "time": {
+      "kind": "after",
+      "seconds": 10
+     },
+     "more": false
+    },
+    {
+     "intent": "FRAG",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 2,10,12: after on the first, next order plain",
+   "got": [
+    {
+     "intent": "OPEN",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 10 seconds",
+      "seconds": 10.0
+     },
+     "line": "in 10 seconds open the north door",
+     "action": "ask"
+    }
+   ],
+   "held": [
+    {
+     "intent": "FRAG",
+     "time": null,
+     "line": null,
+     "action": "act",
+     "held": true
+    }
+   ],
+   "time_ok": false,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t229",
+   "lang": "en",
+   "line": "run forward for 3 seconds then go prone",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "for",
+      "seconds": 3
+     },
+     "more": false
+    },
+    {
+     "intent": "PRONE",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: direction timed, then plain",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 3 seconds",
+      "seconds": 3.0
+     },
+     "line": "run forward for 3 seconds",
+     "action": "act"
+    },
+    {
+     "intent": "PRONE",
+     "time": null,
+     "line": "go prone",
+     "action": "act"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t230",
+   "lang": "en",
+   "line": "go to the roof and hold there for 30 seconds",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "kind": "for",
+      "seconds": 30
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: place plain, hold timed",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "line": "go to the roof",
+     "action": "ask"
+    }
+   ],
+   "held": [
+    {
+     "intent": "HOLD_POSITION",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 30 seconds",
+      "seconds": 30.0
+     },
+     "line": null,
+     "action": "act",
+     "held": true
+    }
+   ],
+   "time_ok": false,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t231",
+   "lang": "en",
+   "line": "follow me for 15 seconds then watch the window",
+   "want": [
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "kind": "for",
+      "seconds": 15
+     },
+     "more": false
+    },
+    {
+     "intent": "HOLD_ANGLE",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 10,12: first timed, second plain",
+   "got": [
+    {
+     "intent": "FOLLOW_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "more": false,
+      "said": "for 15 seconds",
+      "seconds": 15.0
+     },
+     "line": "follow me for 15 seconds",
+     "action": "act"
+    },
+    {
+     "intent": "HOLD_ANGLE",
+     "time": null,
+     "line": "keep an eye on the window",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t232",
+   "lang": "en",
+   "line": "pop smoke and in five seconds run to the car",
+   "want": [
+    {
+     "intent": "SMOKE",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "kind": "after",
+      "seconds": 5
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 2,10,12: after on the second order",
+   "got": [
+    {
+     "intent": "SMOKE",
+     "time": null,
+     "line": "pop smoke",
+     "action": "act"
+    },
+    {
+     "intent": "MOVE_TO",
+     "time": {
+      "capped": false,
+      "kind": "after",
+      "more": false,
+      "said": "in 5 seconds",
+      "seconds": 5.0
+     },
+     "line": "in 5 seconds go to the car",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t233",
+   "lang": "en",
+   "line": "jump on the crate then look at me for a few seconds",
+   "want": [
+    {
+     "intent": "JUMP",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "LOOK_AT_ME",
+     "time": {
+      "kind": "for",
+      "min": 3,
+      "max": 7
+     },
+     "more": false
+    }
+   ],
+   "why": "rule 4,10,12: jump onto plain, a few on the look",
+   "got": [
+    {
+     "intent": "JUMP",
+     "time": null,
+     "line": "jump on the crate",
+     "action": "ask"
+    }
+   ],
+   "held": [
+    {
+     "intent": "LOOK_AT_ME",
+     "time": {
+      "capped": false,
+      "kind": "for",
+      "max": 7.0,
+      "min": 3.0,
+      "more": false,
+      "said": "for a few seconds"
+     },
+     "line": null,
+     "action": "act",
+     "held": true
+    }
+   ],
+   "time_ok": false,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t234",
+   "lang": "en",
+   "line": "wait a minute",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3: idiom, no time",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "line": "wait a minute",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t235",
+   "lang": "en",
+   "line": "hang on a sec",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3: idiom, no time",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "line": "hang on a sec",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t236",
+   "lang": "en",
+   "line": "just a moment",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3: idiom, no time",
+   "got": [
+    {
+     "intent": "GO_BACK",
+     "time": null,
+     "line": "just a moment",
+     "action": "say_again"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": false,
+   "h_ok": false
+  },
+  {
+   "id": "t237",
+   "lang": "en",
+   "line": "hold on a second bro",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3: idiom, no time",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "line": "hold on a second bro",
+     "action": "wait"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t238",
+   "lang": "en",
+   "line": "gimme a sec",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3: idiom 'give me a sec', no time",
+   "got": [
+    {
+     "intent": "LOOK_AT",
+     "time": null,
+     "line": "gimme a sec",
+     "action": "say_again"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": false,
+   "ok": false,
+   "h_time_ok": true,
+   "h_intent_ok": false,
+   "h_ok": false
+  },
+  {
+   "id": "t239",
+   "lang": "en",
+   "line": "go to the second floor",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 11: ordinal 'second' is no time",
+   "got": [
+    {
+     "intent": "MOVE_TO",
+     "time": null,
+     "line": "go to the second floor",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  },
+  {
+   "id": "t240",
+   "lang": "en",
+   "line": "hang on a sec, then open the door",
+   "want": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "more": false
+    },
+    {
+     "intent": "OPEN",
+     "time": null,
+     "more": false
+    }
+   ],
+   "why": "rule 3,10: idiom wait, then plain order",
+   "got": [
+    {
+     "intent": "WAIT",
+     "time": null,
+     "line": "hang on a sec",
+     "action": "wait"
+    },
+    {
+     "intent": "OPEN",
+     "time": null,
+     "line": "open the door",
+     "action": "ask"
+    }
+   ],
+   "held": [],
+   "time_ok": true,
+   "intent_ok": true,
+   "ok": true,
+   "h_time_ok": true,
+   "h_intent_ok": true,
+   "h_ok": true
+  }
+ ]
+}

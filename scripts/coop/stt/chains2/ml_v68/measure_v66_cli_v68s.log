@@ -1,0 +1,13 @@
+brain v68s on test66 (192 items, the game's path): intent 180/192 = 93.8%, intent and place 180/192 = 93.8%   (en 50/54, es 53/55, ru 77/83)
+  NO  en nah use your gun                             -> nah use your gun                             read SWITCH_WEAPON  want OPEN_FIRE
+  NO  en don't drop it                                -> don't drop it                                read WAIT           want COLLECT
+  NO  en don't throw that crate man                   -> don't throw that crate man                   read WAIT           want COLLECT
+  NO  en Don't hand it to me.                         -> Don't hand it to me.                         read WAIT           want COLLECT
+  NO  ru отвали, не мешай пройти                      -> flake, don't interrupt                       read WAIT           want GIVE_WAY
+  NO  ru шмальни в стекло под ногами                  -> shove the glass under your feet              read PUSH           want OPEN_FIRE
+  NO  ru заложи заряд и взорви дверь                  -> plant the bomb                               read PLANT          want BREACH
+  NO  ru не спускай её                                -> keep holding it                              read COLLECT        want WAIT
+  NO  ru Ты мой брат, понял?                          -> you're my brother do you hear me             read NONE           want SMALL_TALK
+  NO  ru стой                                         -> hold position                                read HOLD_POSITION  want WAIT
+  NO  es vete que estoy ocupado                       -> busy body                                    read CROUCH         want GIVE_WAY
+  NO  es que estoy mirando tio                        -> look at me bro                               read LOOK_AT_ME     want WHAT_IS_IT

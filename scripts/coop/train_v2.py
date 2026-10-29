@@ -82,7 +82,34 @@ def batcher(tok, items, device):
     return batch
 
 
-def train_predict(size, train, test, seed, device, epochs=None):
+SNAPSHOT_EVERY = 30 * 60   # seconds between snapshots of a training (the owner, 2026-10-27: every 30 minutes)
+
+
+def _fingerprint(size, train, test, seed, epochs):
+    """What a snapshot was taken of: the model size, the seed, the epochs, the training items in order, the test ids."""
+    import hashlib
+    h = hashlib.sha1(json.dumps([size, seed, epochs], sort_keys=True).encode("utf-8"))
+    for i in train:
+        h.update(json.dumps([i.get("id"), i.get("text"), i.get("maj")], ensure_ascii=False).encode("utf-8"))
+    for i in test:
+        h.update(str(i.get("id")).encode("utf-8"))
+    return h.hexdigest()
+
+
+def _save_snapshot(path, model, opt, sched, epoch, b, order, n, fp):
+    tmp = path + ".tmp"
+    torch.save({"fingerprint": fp, "model": model.state_dict(), "opt": opt.state_dict(), "sched": sched.state_dict(), "epoch": epoch,
+                "b": b, "order": order, "py_random": random.getstate(), "torch_rng": torch.get_rng_state(),
+                "cuda_rng": torch.cuda.get_rng_state_all() if torch.cuda.is_available() else None,
+                "saved": time.strftime("%Y-%m-%d %H:%M:%S")}, tmp)
+    os.replace(tmp, path)       # a crash while writing leaves the snapshot before it whole
+    print(f"snapshot {time.strftime('%H:%M:%S')}: epoch {epoch + 1}, row {min(b, n)} of {n} -> {path}", flush=True)
+
+
+def train_predict(size, train, test, seed, device, epochs=None, snapshot_dir=None, snapshot_every=SNAPSHOT_EVERY):
+    """snapshot_dir: every snapshot_every seconds the model, the optimizer, the schedule, the random states and the place in
+    the epoch go to <snapshot_dir>/snapshot.pt; a call with the same data, seed and epochs goes on from there. A file
+    <snapshot_dir>/STOP (stt/stop_training.ps1) makes it take a snapshot at the next step and exit with code 3."""
     name = MODELS[size]
     random.seed(seed)
     torch.manual_seed(seed)
@@ -100,16 +127,49 @@ def train_predict(size, train, test, seed, device, epochs=None):
     opt = torch.optim.AdamW(model.parameters(), lr=HP["lr"][size], weight_decay=HP["weight_decay"],
                             fused=device == "cuda")
     sched = get_linear_schedule_with_warmup(opt, int(HP["warmup"] * steps), steps)
+    snap = os.path.join(snapshot_dir, "snapshot.pt") if snapshot_dir else None
+    stop = os.path.join(snapshot_dir, "STOP") if snapshot_dir else None
+    fp = _fingerprint(size, train, test, seed, epochs) if snap else None
+    start_epoch, start_b, resumed = 0, 0, False
+    if snap:
+        os.makedirs(snapshot_dir, exist_ok=True)
+        if os.path.exists(stop):
+            os.remove(stop)             # a stop asked of an earlier run, not of this one
+        if os.path.exists(snap):
+            s = torch.load(snap, map_location="cpu", weights_only=False)
+            if s.get("fingerprint") == fp:
+                model.load_state_dict(s["model"])
+                opt.load_state_dict(s["opt"])
+                sched.load_state_dict(s["sched"])
+                random.setstate(s["py_random"])
+                torch.set_rng_state(s["torch_rng"])
+                if s["cuda_rng"] is not None and torch.cuda.is_available():
+                    torch.cuda.set_rng_state_all(s["cuda_rng"])
+                start_epoch, start_b, order, resumed = s["epoch"], s["b"], s["order"], True
+                print(f"resumed from the snapshot of {s['saved']}: epoch {start_epoch + 1} of {epochs}, row {min(start_b, len(order))} of {len(order)}", flush=True)
+            else:
+                print(f"{snap}: a snapshot of other data, not used (it is replaced)", flush=True)
+            del s
+    last = time.time()
     model.train()
-    for _ in range(epochs):
-        random.shuffle(order)
-        for b in range(0, len(order), HP["batch"]):
+    for epoch in range(start_epoch, epochs):
+        if not (resumed and epoch == start_epoch):
+            random.shuffle(order)       # a resumed epoch keeps the order it was shuffled into
+        for b in range(start_b if resumed and epoch == start_epoch else 0, len(order), HP["batch"]):
             idx = order[b:b + HP["batch"]]
             loss = model(**train_batch(idx), labels=labels[torch.tensor(idx, device=device)]).loss
             loss.backward()
             opt.step()
             sched.step()
             opt.zero_grad()
+            if snap and time.time() - last >= snapshot_every:
+                _save_snapshot(snap, model, opt, sched, epoch, b + HP["batch"], order, len(order), fp)
+                last = time.time()
+            if stop and os.path.exists(stop):
+                _save_snapshot(snap, model, opt, sched, epoch, b + HP["batch"], order, len(order), fp)
+                os.remove(stop)
+                print("stopped on request; run the same command again to go on", flush=True)
+                sys.exit(3)
     model.eval()
     out = {}
     with torch.no_grad():

@@ -91,6 +91,9 @@ struct WorldState {
     std::string scene;
     bool scene_standing = false;   // the bot stands on a thing
     bool scene_car_near = false;   // a car within kSceneCarNear metres (or the bot is in it)
+    // where the crosshair was while the talk key was down: seconds since the key went down, and the entity under it then
+    // (empty: none the brain knows). For the planner nothing; coop_cli reads each order line's pointer at its own moment
+    std::vector<std::pair<double, std::string>> talk_trail;
     // per intent with an item ("BUILD", "PLANT_CROP", ...), what the game has; an intent not listed has no catalogue
     std::vector<std::pair<std::string, std::vector<CatalogEntry>>> catalog;
     const std::vector<CatalogEntry>* Catalog(const std::string& intent) const {
@@ -105,6 +108,12 @@ struct ItemInfo {
     std::string said, id;
 };
 
+// (rule set v9) the thing an order is done with: its entity (empty: none) and the object named (-1: none); world.means_of
+struct MeansInfo {
+    std::string entity;
+    int object = -1;
+};
+
 // the world state the game hands over; false with a message on anything the rules cannot read
 bool ValidateWorld(const WorldState& w, const LocationMatcher& places, std::string* error);
 
@@ -113,7 +122,7 @@ struct Grounding {
     std::string status;      // "resolved", "ambiguous", "missing"
     std::string entity;      // resolved: the entity (empty for a direction, "here" or a zone, which the planner takes as is)
     std::vector<std::string> candidates;   // the entities of its kind that fit, nearest first
-    std::string via;         // how: "pin", "gaze", "memory", "zone", "direction", "here", "only", "nearest", "unknown_modifier", "distance", "this"
+    std::string via;         // how: "pin", "gaze", "memory", "zone", "direction", "here", "only", "nearest", "unknown_modifier", "distance", "this", "it"
 };
 
 struct Prior {
@@ -124,6 +133,10 @@ const std::vector<Prior>& DefaultPriors();   // world.PRIORS
 
 struct Memory {
     std::string last_entity, last_order;
+    // the game's clock when last_entity was named, for "it" (rule set v8, world.IT_SECONDS); has_last_time false: the game
+    // sent no time then
+    bool has_last_time = false;
+    double last_time = 0;
     // the order taken last: what the next line may correct, repeat or give a new place to
     struct Frame {
         bool has = false;
@@ -150,6 +163,7 @@ struct Memory {
         std::vector<std::string> candidates;
         int offered = 0;    // the candidate last offered ("The one on the left, 8 m?")
         ItemInfo item;      // what the order asked about acts on
+        MeansInfo means;    // rule set v9: the thing its line said it is done with (the settled order keeps it)
     } question;
 };
 
@@ -169,6 +183,11 @@ struct Order {
     // catalogue entry, each empty when there is none
     bool has_item = false;
     std::string item, item_id;
+    // rule set v9 (bot v67): the thing the order is done with ("climb onto the white table using the crate"): its entity
+    // (empty: none in the world, the game picks its own) and the object the line named (-1: none)
+    bool has_means = false;
+    std::string means;
+    int means_object = -1;
 };
 
 struct PlannerResult {
@@ -194,6 +213,9 @@ std::string Deixis(std::string_view text);
 bool Elliptical(std::string_view text);
 // a grounding the game can act on: an entity, a direction, "here", or a floor that has places
 bool Usable(const Grounding& g);
+// world.without_lost_it (rule set v8): an "it" that points at nothing is no place. Removes it from the record and the
+// grounding, the primary moved as LocationMatcher::Find would pick it among the targets left
+void WithoutLostIt(PlaceRecord* record, std::vector<Grounding>* grounding);
 // (the row with the multipliers that hold, not renormalized; whether any held)
 bool ApplyPriors(std::vector<double>* probs, const std::vector<std::string>& labels, const WorldState& world,
                  const Memory& memory, const std::vector<Prior>& priors);
@@ -213,6 +235,9 @@ public:
     // bot, not a walk to the ammo the planner asked "Where?" about): the question it asked is no longer open. Not in
     // world.py: no planner step calls it
     void DropQuestion() { memory_.has_question = false; }
+    // the crosshair's entity for the order line being read: the one under it when its pointer word was said (coop_cli: the
+    // game's talk_trail and the recognizer's word times). Not in world.py: no planner step calls it
+    void SetGaze(const std::string& entity) { world_.player_gaze = entity; }
     const std::string& PendingEntity() const { return pending_entity_; }
     bool PendingHere() const { return pending_here_; }   // the queued order's place is "here"
     bool PendingNear() const { return pending_near_; }   // ... and it pointed with "this" / "here"
@@ -222,10 +247,11 @@ public:
 
 private:
     Order MakeOrder(int intent, const PlaceRecord& record, const std::vector<Grounding>& grounding, int k, bool other, bool nearby = false,
-                    const PlaceTarget* said = nullptr, const ItemInfo* item = nullptr);
+                    const PlaceTarget* said = nullptr, const ItemInfo* item = nullptr, const MeansInfo* means = nullptr);
     bool PlantsCrops() const;   // a bare "plant" is planting a crop: no bomb on the bot, seeds in its bag
     // what the order acts on; false with *refused set when the intent's catalogue lacks it
     bool ItemOf(std::string_view text, const std::string& intent, ItemInfo* item, std::string* refused) const;
+    bool DropsByThing(std::string_view text, const PlaceRecord& record) const;   // DROP + a thing named: DELIVER
     // a further order of the line being read: a place it names as the order before it did is that order's place
     void SamePlace(const PlaceRecord& record, std::vector<Grounding>* grounding) const;
     void Ask(int intent, const PlaceRecord& record, const std::vector<Grounding>& grounding, int k, bool other, bool queued,
@@ -241,6 +267,7 @@ private:
     bool PlaceAnswer(std::string_view text, const Decision& d, PlannerResult* out);
     void SettlePlace(const Memory::Question& q, const PlaceRecord& rec, const Grounding& g, bool queued, bool nearby, PlannerResult* out);
     void DropPending();
+    void Named(const std::string& entity);   // the conversation is about this thing now: "it" means it (rule set v8)
     const WorldEntity* Entity(const std::string& id) const;
     // ---- the short context
     const std::string& Label(int intent) const;

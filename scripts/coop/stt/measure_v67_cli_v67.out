@@ -1,0 +1,92 @@
+brain v67 on test67 (240 items): intent 176/240 = 73.3%, + target 163/240 = 67.9%, + means 151/240 = 62.9%
+  by language (intent / + target / + means): en: 55/49/45 of 80, es: 46/42/39 of 60, ru: 75/72/67 of 100
+  by category (intent / + target / + means): 1: 31/31/25 of 42, 2: 12/12/10 of 38, 3: 27/27/25 of 40, 4: 32/26/24 of 36, 5: 26/23/23 of 36, 6: 48/44/44 of 48
+  NO  [1] en Yo, stack the box under the window and go through. -> nothing   want VAULT_WINDOW window/None by crate   | 
+  NO  [1] en Roll the spoon over to the fence and hop over.     -> JUMP fence/None by None (act)   want JUMP fence/None by spool   | jump over the fence using the spoon
+  NO  [1] en Get over the fence from the car roof.              -> JUMP fence/None by None (act)   want JUMP fence/None by car   | Get over the fence from the car roof.
+  NO  [1] en Climb the tree off the car.                        -> nothing   want JUMP tree/None by car   | 
+  NO  [1] en Get on the big crate, push the small box next to i -> PUSH crate/small by crate (act)   want JUMP crate/big by crate   | push the small box next to the big crate using the big crate
+  NO  [1] en Jump the fence, use the table as a step.           -> nothing   want JUMP fence/None by table   | 
+  NO  [1] en Set it under the window and climb through.         -> VAULT_WINDOW window/None by None (act)   want VAULT_WINDOW window/None by spool   | Set it under the window and climb through.
+  NO  [2] en Put the box by the white table, then climb on the  -> DELIVER table/white by None (act); JUMP table/white by None (act); JUMP fence/None by None (act)   want JUMP table/white by crate; JUMP fence/None by None   | Put the box by the white table
+  NO  [2] en Roll the spool under the window, climb through and -> ROLL spool/None by None (act); VAULT_WINDOW window/None by None (act); OPEN door/None by None (ask)   want VAULT_WINDOW window/None by spool; OPEN door/None by None   | Roll the spool under the window.
+  NO  [2] en Push the table against the door, take cover behind -> PUSH table/None by None (ask)   want PUSH door/None by table; TAKE_COVER sofa/None by None; RELOAD None/None by None   | Push the table against the door
+  NO  [2] en Use the crate to get on the car and cover me.      -> COVER_ME crate/None by None (ask)   want JUMP car/None by crate; COVER_ME None/None by None   | cover me using the crate
+  NO  [2] en Grab the small box and carry it to the window.     -> DELIVER window/None by crate (act)   want COLLECT crate/small by None; DELIVER window/None by crate   | bring it to the window using the small box
+  NO  [2] en Smash the window with the box and then climb in.   -> MELEE window/None by crate (act); GET_IN None/None by None (act)   want MELEE window/None by crate; VAULT_WINDOW window/None by None   | smash the window with the box
+  NO  [2] en Stay low, push the box to the red table and climb  -> CROUCH None/None by None (act); PUSH crate/None by None (ask)   want CROUCH None/None by None; JUMP table/red by crate   | stay low
+  NO  [2] en Push the sofa under the window, go through, then j -> PUSH sofa/None by None (act); JUMP None/None by None (act)   want VAULT_WINDOW window/None by sofa; JUMP None/None by None   | Push the sofa under the window.
+  NO  [2] en Roll the reel to the car, get on the roof and jump -> ROLL car/None by None (act); JUMP tree/None by None (act)   want JUMP car/None by spool; JUMP tree/None by None   | roll the car toward me using the reel
+  NO  [2] en Use the chair to climb on the brown table, then lo -> JUMP table/None by chair (ask)   want JUMP table/brown by chair; LOOK_AT door/None by None   | climb onto the brown table using the chair
+  NO  [3] en Use the box.                                       -> COLLECT crate/None by None (ask)   want JUMP table/white by crate   | Use the box.
+  NO  [3] en Roll the spool over.                               -> ROLL spool/None by None (act)   want JUMP fence/None by spool   | Roll the spool over.
+  NO  [3] en Set it down by the table.                          -> DELIVER table/None by None (ask)   want JUMP table/brown by crate   | Set it down by the table.
+  NO  [3] en Drag the table over then.                          -> PUSH table/None by None (ask)   want JUMP fence/None by table   | Drag the table over then.
+  NO  [3] en Never mind.                                        -> nothing   want WAIT None/None by None   | 
+  NO  [3] en Try it from the car.                               -> nothing   want JUMP fence/None by car   | 
+  NO  [3] en Push the small one next to it.                     -> PUSH small/None by None (ask)   want JUMP crate/big by crate   | Push the small one next to it.
+  NO  [3] en Roll it over there.                                -> ROLL table/red by None (act)   want JUMP table/red by spool   | Roll it over there.
+  NO  [4] en Put the box next to it.                            -> DELIVER None/None by None (act)   want DELIVER table/red by crate   | Put the box next to it.
+  NO  [4] en Jump on it.                                        -> JUMP None/None by None (act)   want JUMP table/yellow by None   | Jump on it.
+  NO  [4] en Roll it to the fence.                              -> ROLL fence/None by None (act)   want ROLL fence/None by spool   | Roll it to the fence.
+  NO  [4] en Shove it against the door.                         -> PUSH door/None by None (ask)   want PUSH door/None by sofa   | Shove it against the door.
+  NO  [4] en Put the crate under it and climb in.               -> DELIVER crate/None by None (ask)   want VAULT_WINDOW window/None by crate   | put it on top of the crate
+  NO  [4] en Now get on the table.                              -> JUMP table/None by None (ask)   want JUMP table/white by crate   | Now get on the table.
+  NO  [5] en Block the door with the sofa.                      -> HOLD_ANGLE door/None by sofa (ask)   want PUSH door/None by sofa   | Block the door with the sofa.
+  NO  [5] en Push the crate to the door and hide behind it.     -> PUSH crate/None by None (ask)   want PUSH door/None by crate; TAKE_COVER crate/None by None   | Push the crate to the door and hide behind it.
+  NO  [5] en Put the small box on top of the big crate.         -> DELIVER None/None by None (act)   want DELIVER crate/big by crate   | Put the small box on top of the big crate.
+  NO  [6] en Pick up the box.                                   -> COLLECT None/None by None (act)   want COLLECT crate/None by None   | Pick up the box.
+  NO  [1] ru Брат, по коробке на крышу машины.                  -> BUILD car/None by crate (act)   want JUMP car/None by crate   | build it on the car using the box
+  NO  [1] ru Подкати катушку к забору и перелесь.               -> WATER fence/None by spool (act)   want JUMP fence/None by spool   | water the fence using the spool
+  NO  [1] ru Залезай в окно с дивана.                           -> VAULT_WINDOW window/None by None (act)   want VAULT_WINDOW window/None by sofa   | get in the window from the sofa
+  NO  [1] ru Залезь на большой контейнер, маленький ящик подста -> JUMP crate/big by None (act); DROP None/None by None (act)   want JUMP crate/big by crate   | climb onto the big container
+  NO  [1] ru На синий стол по катушке давай.                    -> COLLECT None/None by spool (act)   want JUMP table/blue by spool   | pick up the blue table using the spool
+  NO  [1] ru Залезь на машину, картонную коробку подставь.      -> GET_IN car/None by None (act); DROP None/None by None (act)   want JUMP car/None by crate   | Get in the car.
+  NO  [1] ru Поставь её под окно и залезай.                     -> DELIVER window/None by None (act); VAULT_WINDOW None/None by None (act)   want VAULT_WINDOW window/None by spool   | put it under the window
+  NO  [2] ru Придвинь стол к двери, потом прячься за машиной.   -> TAKE_COVER door/None by table (ask)   want PUSH door/None by table; TAKE_COVER car/None by None   | hide the door using the table
+  NO  [2] ru Залезь на машину по коробке и прикрывай меня.      -> COVER_ME crate/None by None (ask)   want JUMP car/None by crate; COVER_ME None/None by None   | cover me using the box
+  NO  [2] ru По стулу на красный стол и держи окно.             -> HOLD_ANGLE window/None by chair (act)   want JUMP table/red by chair; HOLD_ANGLE window/None by None   | hold the window using the chair on the red table
+  NO  [2] ru Возьми маленький ящик и отнеси к окну.             -> DELIVER window/None by crate (act)   want COLLECT crate/small by None; DELIVER window/None by crate   | bring it to the window using the small crate
+  NO  [2] ru Закати катушку к забору, перелезь и жди меня там.  -> ROLL spool/None by None (act); JUMP spool/None by None (act); HOLD_POSITION None/None by None (act)   want JUMP fence/None by spool; HOLD_POSITION None/None by None   | roll the spool to the fence
+  NO  [2] ru Толкни диван к окну, пролезь в окно, спрыгни вниз  -> VAULT_WINDOW window/None by None (act); JUMP None/None by None (act); COVER_ME None/None by None (act)   want VAULT_WINDOW window/None by sofa; JUMP None/None by None; COVER_ME None/None by None   | climb through the window
+  NO  [2] ru Ящик к забору, перелезай, потом иди к машине.      -> MOVE_TO fence/None by None (act); JUMP fence/None by None (act); MOVE_TO car/None by None (act)   want JUMP fence/None by crate; MOVE_TO car/None by None   | Get over to the fence.
+  NO  [2] ru Сначала выбей окно ящиком, потом лезь внутрь.      -> MELEE window/None by None (act); VAULT_WINDOW window/None by None (act)   want MELEE window/None by crate; VAULT_WINDOW window/None by None   | break the window
+  NO  [2] ru Подставь стул под окно, залезь и проверь ящики.    -> CHECK window/None by chair (act); OPEN crate/None by None (ask)   want VAULT_WINDOW window/None by chair; CHECK crate/None by None   | check the window using the chair
+  NO  [2] ru Подкати бобину к машине, залезь на крышу и прыгай  -> JUMP roof/None by spool (ask)   want JUMP car/None by spool; JUMP tree/None by None   | climb onto the roof using the spool
+  NO  [2] ru Поставь коробку у белого стола и иди за мной.      -> FOLLOW_ME crate/None by None (ask)   want DELIVER table/white by crate; FOLLOW_ME None/None by None   | follow me using the box at the white table
+  NO  [3] ru Поставь её к столу.                                -> DELIVER table/None by None (ask)   want JUMP table/white by crate   | put it next to the table
+  NO  [3] ru Ладно, забей.                                      -> nothing   want WAIT None/None by None   | 
+  NO  [3] ru Подкати её.                                        -> JUMP table/white by car (act)   want JUMP table/white by spool   | climb onto the white table using the car
+  NO  [4] ru Прыгай на него.                                    -> JUMP None/None by None (act)   want JUMP table/blue by None   | jump on it
+  NO  [4] ru Теперь залезай на стол.                            -> JUMP table/white by None (act)   want JUMP table/white by spool   | now climb onto the white table
+  NO  [4] ru Подтащи под него диван и залезай.                  -> TAKE_COVER window/None by sofa (act)   want VAULT_WINDOW window/None by sofa   | hide in the window using the sofa
+  NO  [4] ru Залезь по ней на стол.                             -> VAULT_WINDOW crate/None by None (ask)   want JUMP table/red by crate   | climb through the crate on the red table
+  NO  [5] ru Придвинь стол к двери, чтоб не вошли.              -> HOLD_ANGLE door/None by table (ask)   want PUSH door/None by table   | block the door using the table
+  NO  [5] ru Забаррикадируй дверь диваном.                      -> REPAIR sofa/None by door (act)   want PUSH door/None by sofa   | reinforce the sofa using the door
+  NO  [5] ru Толкни ящик к двери и спрячься за ним.             -> TAKE_COVER door/None by crate (ask)   want PUSH door/None by crate; TAKE_COVER crate/None by None   | hide behind the door using the crate
+  NO  [5] ru Разбей стекло стулом.                              -> MELEE chair/None by window (act)   want MELEE window/None by chair   | break the chair with your glass
+  NO  [5] ru Толкни машину к забору.                            -> ENTRY fence/None by car (act)   want PUSH fence/None by car   | push the fence using the car
+  NO  [5] ru Подвинь диван к окну.                              -> ROLL sofa/None by None (act)   want PUSH window/None by sofa   | roll the sofa to the window
+  NO  [5] ru Подкати катушку к окну и спрячься за ней.          -> TAKE_COVER window/None by spool (act)   want ROLL window/None by spool; TAKE_COVER spool/None by None   | hide behind the window using the spool
+  NO  [6] ru Возьми коробку.                                    -> COLLECT None/None by None (act)   want COLLECT crate/None by None   | pick up the box
+  NO  [1] es Métete por la ventana desde el sofá.               -> VAULT_WINDOW window/None by None (act)   want VAULT_WINDOW window/None by sofa   | climb through the window from the sofa
+  NO  [1] es Pon una caja debajo de la ventana y cuélate.       -> TAKE_COVER window/None by crate (act)   want VAULT_WINDOW window/None by crate   | hide using the box under the window
+  NO  [1] es Salta la valla, usa la mesa de escalón.            -> JUMP fence/None by None (act)   want JUMP fence/None by table   | jump over the fence using the step table
+  NO  [2] es Pon la caja junto a la mesa blanca, súbete a la me -> DELIVER table/white by None (act); JUMP table/white by None (act); JUMP fence/None by None (act)   want JUMP table/white by crate; JUMP fence/None by None   | put the box down by the white table
+  NO  [2] es Empuja la mesa hasta la valla, salta al otro lado  -> PUSH table/None by None (ask)   want JUMP fence/None by table; COVER_ME None/None by None   | push the table to the fence
+  NO  [2] es Rueda la bobina bajo la ventana, entra y abre la p -> ROLL spool/None by None (act); ENTRY door/None by None (ask)   want VAULT_WINDOW window/None by spool; OPEN door/None by None   | Roll the spool under the window.
+  NO  [2] es Súbete al techo del coche con la caja, agáchate y  -> JUMP roof/None by crate (ask)   want JUMP car/None by crate; CROUCH None/None by None; HOLD_ANGLE window/None by None   | climb onto the car roof using the box
+  NO  [2] es Coge la caja pequeña y llévala a la ventana.       -> DELIVER window/None by None (act)   want COLLECT crate/small by None; DELIVER window/None by crate   | take the small box over to the window
+  NO  [2] es Agáchate, pon la silla junto a la mesa roja y súbe -> CROUCH None/None by None (act); HOLD_ANGLE table/red by chair (act); JUMP table/red by None (act)   want CROUCH None/None by None; JUMP table/red by chair   | crouch
+  NO  [2] es Pon la caja junto a la mesa azul y sígueme.        -> FOLLOW_ME table/blue by None (act)   want DELIVER table/blue by crate; FOLLOW_ME None/None by None   | follow me using the blue table
+  NO  [3] es Usa la bovina.                                     -> JUMP fence/None by None (act)   want JUMP fence/None by spool   | jump over the fence using the cow
+  NO  [3] es Déjala al lado de la mesa.                         -> DELIVER table/red by None (act)   want JUMP table/red by crate   | put it next to the red table
+  NO  [3] es Arrastra la mesa hasta ahí.                        -> PUSH @this/None by None (ask)   want JUMP fence/None by table   | push the table over there
+  NO  [3] es Bueno, olvídalo.                                   -> nothing   want WAIT None/None by None   | 
+  NO  [4] es Ponle una caja al lado y súbete.                   -> DELIVER table/red by None (act); GET_IN None/None by None (act)   want JUMP table/red by crate   | put a box next to the red table
+  NO  [4] es Súbete encima.                                     -> JUMP None/None by None (act)   want JUMP table/blue by None   | jump on it
+  NO  [5] es Bloquea la puerta con el sofá.                     -> REPAIR door/None by sofa (ask)   want PUSH door/None by sofa   | reinforce the door using the sofa
+  NO  [5] es Empuja la caja hasta la puerta y escóndete detrás. -> TAKE_COVER door/None by crate (ask)   want PUSH door/None by crate; TAKE_COVER crate/None by None   | hide behind the door using the box
+  NO  [5] es Pon la caja pequeña encima de la grande.           -> DELIVER None/None by None (act)   want DELIVER crate/big by crate   | put the small box on top of the large one
+  NO  [6] es Coge la caja.                                      -> COLLECT None/None by None (act)   want COLLECT crate/None by None   | pick up the box
+  NO  [6] es Salta la vaya.                                     -> JUMP None/None by None (act)   want JUMP fence/None by None   | jump over the way

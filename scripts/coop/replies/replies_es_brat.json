@@ -388,6 +388,9 @@
   "Putting it down.": "Lo dejo.",
   "Setting it down.": "Lo dejo en el suelo.",
   "Dropping it.": "Lo suelto.",
+  "Out of your way.": "Me aparto, hermano.",
+  "Making room.": "Te dejo paso.",
+  "Stepping aside.": "Me hago a un lado, hermano.",
   "My hands are free already.": "Hermano, ya tengo las manos libres.",
   "Weapon up.": "Arma lista.",
   "That's one of ours.": "Hermano, ese es de los nuestros.",
@@ -406,7 +409,58 @@
   "Too high to jump over.": "Hermano, demasiado alto para saltarlo.",
   "Nowhere to land over there.": "Ahí no hay dónde caer, hermano.",
   "Didn't make it.": "No llegué, hermano.",
-  "I can't get down from here.": "No puedo bajar de aquí, hermano."
+  "That's {thing}.": "Es {thing}, hermano.",
+  "That's me.": "Soy yo, hermano.",
+  "Nothing there, just the sky.": "Ahí no hay nada, hermano, solo cielo.",
+  "No room to step aside.": "No tengo sitio para apartarme, hermano.",
+  "I don't see a way out.": "No veo la salida, hermano.",
+  "Glass is broken.": "Cristal roto, hermano.",
+  "It won't break.": "No se rompe, hermano.",
+  "I can't get to the glass.": "No llego al cristal, hermano.",
+  "I can't get down from here.": "No puedo bajar de aquí, hermano.",
+  "There's a ledge.": "Hermano, hay un saliente.",
+  "I'll jump up.": "Subo de un salto, hermano.",
+  "A gap.": "Hermano, hay un hueco.",
+  "I'll jump it.": "Lo salto, hermano.",
+  "Too high to jump.": "Demasiado alto para saltar, hermano.",
+  "I'll get a crate.": "Traigo una caja, hermano.",
+  "I can't get up there.": "Hermano, no puedo subir ahí.",
+  "I can't jump that.": "Eso no lo puedo saltar, hermano.",
+  "I can't get to the crate.": "No llego a la caja, hermano.",
+  "The crate's gone.": "Hermano, la caja ya no está.",
+  "{n} seconds.": "{n} {n:segundo|segundos}.",
+  "1 second.": "1 segundo.",
+  "In {n} seconds.": "En {n} {n:segundo|segundos}.",
+  "In 1 second.": "En 1 segundo.",
+  "{n} more seconds.": "{n} {n:segundo|segundos} más.",
+  "1 more second.": "1 segundo más.",
+  "A few seconds.": "Unos segundos.",
+  "In a few seconds.": "En unos segundos.",
+  "About {n} seconds.": "Unos {n} {n:segundo|segundos}.",
+  "Time's up.": "Se acabó el tiempo, hermano.",
+  "Didn't work.": "No funcionó, hermano.",
+  "Too high, even with the crate.": "Demasiado alto, incluso con la caja, hermano.",
+  "Door's shut.": "La puerta está cerrada, hermano.",
+  "Getting the switch.": "Voy al interruptor, hermano.",
+  "Door's open.": "Puerta abierta, hermano.",
+  "Open.": "Abierto, hermano.",
+  "It's open already.": "Hermano, ya está abierta.",
+  "It won't open.": "No se abre, hermano.",
+  "The switch did nothing.": "Hermano, el interruptor no hizo nada.",
+  "I can't open that.": "Eso no lo puedo abrir, hermano.",
+  "I can't reach the door.": "No llego a la puerta, hermano.",
+  "I can't reach the switch.": "Hermano, no llego al interruptor.",
+  "I can't get to the switch.": "No puedo llegar al interruptor, hermano.",
+  "I can't get to it.": "No puedo llegar, hermano.",
+  "No way there, not even through a door.": "Hermano, no hay forma de llegar, ni por una puerta.",
+  "The door's shut; the switch is {n} m from it.": "La puerta está cerrada, hermano; el interruptor está a {n} {n:metro|metros}.",
+  "The door's shut; I can open it.": "La puerta está cerrada, hermano; puedo abrirla.",
+  "The door's shut, and I see no switch.": "Hermano, la puerta está cerrada y no veo ningún interruptor.",
+  "{n} doors are shut on the way.": "Hermano, hay {n} {n:puerta cerrada|puertas cerradas} en el camino.",
+  "The first's shut; the switch is {n} m from it.": "La primera está cerrada, hermano; el interruptor está a {n} {n:metro|metros}.",
+  "The first's shut; I can open it.": "La primera está cerrada, hermano; puedo abrirla.",
+  "The first's shut, and I see no switch.": "Hermano, la primera está cerrada y no veo ningún interruptor.",
+  "The ledge is too high, and there's nothing to stand on.": "Hermano, el saliente es demasiado alto y no hay nada donde subirse."
  },
  "slots": {
   "where": {
@@ -491,6 +545,9 @@
    },
    "that place": {
     "text": "ese lugar"
+   },
+   "the way out": {
+    "text": "por dónde salir"
    },
    "_other": {
     "text": "ese lugar"
@@ -796,11 +853,208 @@
    }
   },
   "thing": {
+   "an enemy": {
+    "text": "un enemigo"
+   },
+   "a teammate": {
+    "text": "un compañero"
+   },
+   "someone": {
+    "text": "alguien"
+   },
+   "a switch": {
+    "text": "un interruptor"
+   },
+   "the floor": {
+    "text": "el suelo"
+   },
+   "the ceiling": {
+    "text": "el techo"
+   },
+   "a wall": {
+    "text": "una pared"
+   },
+   "a door": {
+    "text": "una puerta"
+   },
+   "a window": {
+    "text": "una ventana"
+   },
+   "the stairs": {
+    "text": "la escalera"
+   },
+   "a chair": {
+    "text": "una silla"
+   },
+   "a sofa": {
+    "text": "un sofá"
+   },
+   "a table": {
+    "text": "una mesa"
+   },
+   "a car": {
+    "text": "un coche"
+   },
+   "some ammo": {
+    "text": "munición"
+   },
+   "a weapon": {
+    "text": "un arma"
+   },
+   "a health pack": {
+    "text": "un botiquín"
+   },
+   "a box": {
+    "text": "una caja"
+   },
+   "a cable spool": {
+    "text": "una bobina de cable"
+   },
+   "a teleport": {
+    "text": "un teletransportador"
+   },
+   "a field": {
+    "text": "un campo"
+   },
+   "a garden bed": {
+    "text": "un bancal"
+   },
+   "a greenhouse": {
+    "text": "un invernadero"
+   },
+   "a barn": {
+    "text": "un granero"
+   },
+   "a chicken coop": {
+    "text": "un gallinero"
+   },
+   "a beehive": {
+    "text": "una colmena"
+   },
+   "a well": {
+    "text": "un pozo"
+   },
+   "a fence": {
+    "text": "una valla"
+   },
+   "a tree": {
+    "text": "un árbol"
+   },
+   "a foundation": {
+    "text": "unos cimientos"
+   },
+   "the main door": {
+    "text": "la puerta principal"
+   },
+   "the north door": {
+    "text": "la puerta norte"
+   },
+   "the south door": {
+    "text": "la puerta sur"
+   },
+   "the west door": {
+    "text": "la puerta oeste"
+   },
+   "the east door": {
+    "text": "la puerta este"
+   },
+   "the north window": {
+    "text": "la ventana norte"
+   },
+   "the south window": {
+    "text": "la ventana sur"
+   },
+   "the west window": {
+    "text": "la ventana oeste"
+   },
+   "the east window": {
+    "text": "la ventana este"
+   },
+   "the blue table": {
+    "text": "la mesa azul"
+   },
+   "the red table": {
+    "text": "la mesa roja"
+   },
+   "the yellow table": {
+    "text": "la mesa amarilla"
+   },
+   "the white table": {
+    "text": "la mesa blanca"
+   },
+   "the brown table": {
+    "text": "la mesa marrón"
+   },
+   "the blue stairs": {
+    "text": "la escalera azul"
+   },
+   "the red stairs": {
+    "text": "la escalera roja"
+   },
+   "the yellow stairs": {
+    "text": "la escalera amarilla"
+   },
+   "the white stairs": {
+    "text": "la escalera blanca"
+   },
+   "the brown stairs": {
+    "text": "la escalera marrón"
+   },
+   "a cardboard box": {
+    "text": "una caja de cartón"
+   },
+   "a big box": {
+    "text": "una caja grande"
+   },
+   "a small box": {
+    "text": "una caja pequeña"
+   },
+   "a big spool": {
+    "text": "una bobina grande"
+   },
+   "a small spool": {
+    "text": "una bobina pequeña"
+   },
    "_other": {
     "text": "algo"
+   },
+   "a bed": {
+    "text": "una cama"
+   },
+   "a rock": {
+    "text": "una roca"
+   },
+   "a big rock": {
+    "text": "una roca grande"
+   },
+   "a small rock": {
+    "text": "una roca pequeña"
+   },
+   "the blue bed": {
+    "text": "la cama azul"
+   },
+   "the red bed": {
+    "text": "la cama roja"
+   },
+   "the yellow bed": {
+    "text": "la cama amarilla"
+   },
+   "the white bed": {
+    "text": "la cama blanca"
+   },
+   "the brown bed": {
+    "text": "la cama marrón"
    }
   },
   "phrase": {
+   "get out of the way": {
+    "text": "me aparto",
+    "ready": "apartarme"
+   },
+   "say what that is": {
+    "text": "te digo qué es",
+    "ready": "decirte qué es"
+   },
    "attack": {
     "text": "voy al ataque",
     "ready": "atacar"
@@ -1128,8 +1382,8 @@
     "none": "ningún campo"
    },
    "bed": {
-    "text": "parcela",
-    "none": "ninguna parcela"
+    "text": "cama",
+    "none": "ninguna cama"
    },
    "greenhouse": {
     "text": "invernadero",
@@ -1182,6 +1436,14 @@
    "spool": {
     "text": "bobina",
     "none": "ninguna bobina"
+   },
+   "garden bed": {
+    "text": "parcela",
+    "none": "ninguna parcela"
+   },
+   "rock": {
+    "text": "roca",
+    "none": "ninguna roca"
    }
   }
  }

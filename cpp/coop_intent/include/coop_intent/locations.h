@@ -65,13 +65,22 @@ struct LocationVocab {
     // a word list of rule set v5, by its name: "pin_noun", "point_det", ... A loader sets has_pointers
     // when "words" has any such list; Init then wants every one of them, and "directions"
     static bool PointerList(std::string_view name) { return name.rfind("pin_", 0) == 0 || name.rfind("point_", 0) == 0; }
+    // rule set v8: "words" holds the it_* lists (the "it" pointer: "jump over it"). Without them (has_it false) no target
+    // gets that pointer. A loader sets has_it when "words" has any such list; Init then wants every one of them
+    bool has_it = false;
+    static bool ItList(std::string_view name) { return name.rfind("it_", 0) == 0; }
+    // rule set v9 (round v67): "words" holds the means_* lists (the thing an order is done with: "climb onto the table using
+    // the crate"). A loader sets has_means when "words" has any such list; Init then wants every one of them
+    bool has_means = false;
+    static bool MeansList(std::string_view name) { return name.rfind("means_", 0) == 0; }
     std::vector<std::string> ignore;
     std::unordered_map<std::string, std::vector<std::string>> words;   // the rules' word lists
 };
 
 // whose place it is. A place with a role is not a destination: the player's own (Mine), the enemy's
-// (Them), the place to leave (From), negated or corrected (Not), only reported on (Status)
-enum class PlaceRole { None, Not, From, Mine, Them, Status };
+// (Them), the place to leave (From), negated or corrected (Not), only reported on (Status); rule set v9: the thing the
+// order is done with (Means: "using the crate", "standing on the spool")
+enum class PlaceRole { None, Not, From, Mine, Them, Status, Means };
 // UnknownModifier: the player singled out one object in a way the map names cannot express ("the back
 // door"): do not fall back to the nearest one. Other: the other one of its kind. Unsure: a lone name
 // before a word the vocabulary does not know; most are real places
@@ -86,12 +95,13 @@ enum class PlaceDirection { None, Up, Down, Left, Right, Forward, Back };
 // "where i'm looking"). It is a place's or a direction's when said in its noun phrase, right after it
 // or on the way to it ("the window by my ping", "get up there", "that room by the north door"); any
 // other pointer is a target of its own, with no object, qualifier, zone or direction ("stay at my
-// pin", "check that room")
-enum class PlacePointer { None, Pin, This };
+// pin", "check that room"). It (rule set v8): "it" after a preposition or a verb of the it_* lists ("jump
+// over it", "open it"), always a target of its own; the planner grounds it from the conversation first
+enum class PlacePointer { None, Pin, This, It };
 const char* PlaceRoleName(PlaceRole r);   // "not", "from", "mine", "them", "status" or ""
 const char* PlaceFlagName(PlaceFlag f);   // "unknown_modifier", "unsure", "other" or ""
 const char* PlaceDirectionName(PlaceDirection d);   // "up", "down", "left", "right", "forward", "back" or ""
-const char* PlacePointerName(PlacePointer p);   // "pin", "this" or ""
+const char* PlacePointerName(PlacePointer p);   // "pin", "this", "it" or ""
 
 struct PlaceTarget {
     int object = -1, qualifier = -1, zone = -1;   // indices into the vocabulary, -1: none
@@ -136,12 +146,17 @@ public:
     int QualifierIndex(const std::string& id) const { return Find(qualifiers_, id); }
     int ZoneIndex(const std::string& id) const { return Find(zones_, id); }
     bool Vertical(int object) const { return object >= 0 && vertical_[static_cast<size_t>(object)]; }
+    // the object takes the qualifier (vocabulary "qualifiers" of the object); -1 for either: false
+    bool Allows(int object, int qualifier) const {
+        return object >= 0 && qualifier >= 0 && allowed_[static_cast<size_t>(object)][static_cast<size_t>(qualifier)];
+    }
     // the phrase index (items.cpp, world.cpp): the kind of a phrase given as tokens joined by one space -- "object",
     // "qualifier", "named", "zone", "zone_end", "ignore" -- or nullptr; *index: its object / qualifier / zone (named:
     // its object)
     const char* PhraseKind(const std::string& joined, int* index = nullptr) const;
     size_t MaxPhraseLen() const { return max_len_; }
     bool InList(const char* list, const std::string& word) const { return In(list, word); }
+    bool HasMeans() const { return means_; }   // rule set v9: an order carries the thing it is done with
 
 private:
     enum class Kind { Object, Qualifier, Named, Zone, Ignore, ZoneEnd };
@@ -159,6 +174,8 @@ private:
     bool ready_ = false;
     bool directions_ = false;                  // rule set v4: the vocabulary has "directions"
     bool pointers_ = false;                    // rule set v5: ... and the pin_* / point_* word lists
+    bool its_ = false;                         // rule set v8: ... and the it_* word lists
+    bool means_ = false;                       // rule set v9: ... and the means_* word lists
     std::vector<std::string> objects_, qualifiers_, zones_;
     std::vector<std::vector<bool>> allowed_;   // [object][qualifier]
     std::vector<int> lone_;                    // qualifier -> object or -1

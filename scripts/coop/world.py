@@ -38,6 +38,10 @@ RELATIVE_ZONES = ("up", "down")   # "upstairs", "downstairs": a floor named by w
 # "inside" (bot v56, locations.json version 7): indoors, where the player looks. No entity is "inside": the planner hands
 # it to the game as it is (via "inside"), and an object said with it is not narrowed by it
 INSIDE = "inside"
+# "outside" (bot v66, vocabulary v12): out of the room or the building ("go outside", "get out of the room"). No entity either:
+# the game finds the nearest point under open sky
+OUTSIDE = "outside"
+WAY_ZONES = (INSIDE, OUTSIDE)
 STOREY = 1.5               # ... the next floor that way: the places within 1.5 m of the nearest one in height
 STANCES = ("stand", "crouch", "prone")
 
@@ -84,7 +88,7 @@ ANSWER_MAX_TOKENS = 6
 # what the bot calls a floor it has no place for ("I can't find the roof.")
 ZONE_NAMES = {"basement": "the basement", "floor_1": "the first floor", "floor_2": "the second floor",
               "top_floor": "the top floor", "roof": "the roof", "up": "the way up", "down": "the way down",
-              "inside": "the way in"}
+              "inside": "the way in", "outside": "the way out"}
 
 
 def words(text):
@@ -112,7 +116,7 @@ def elliptical(text):
 def usable(g):
     """A grounding the game can act on: an entity, a direction (a way up or down too), "here", "inside", or a floor that
     has places."""
-    return g["status"] == "resolved" and (g["entity"] is not None or g["via"] in ("direction", "here", INSIDE) or
+    return g["status"] == "resolved" and (g["entity"] is not None or g["via"] in ("direction", "here") + WAY_ZONES or
                                           (g["via"] == "zone" and bool(g["candidates"])))
 
 
@@ -133,6 +137,10 @@ def usable(g):
 #                      "Shoot there"): the conversation moves on instead of "say again".
 # The frame lives while the bot is busy with it and CONTEXT_SECONDS after.
 CONTEXT_SECONDS = 8.0
+# "it" (rule set v8, the owner, 2026-10-27: "Can you see the white table?" "Yes." "Jump over it." is the table, not where
+# the crosshair is): the last thing an order or an answer named, while it is this fresh (seconds; the decoder's memory
+# keeps 30 s of lines too). Older, or a game that sends no time: the time is not checked when either clock is missing
+IT_SECONDS = 30.0
 FRAGMENT_UNSURE = 0.5      # a line under the threshold AND under this is read for its place alone
 FIRE = ("OPEN_FIRE", "SUPPRESS", "ATTACK", "MELEE")              # the enemy under the crosshair comes first (bot v64: a fist fight too)
 PIN_DEFAULT = FIRE + ("MOVE_TO", "CHECK", "ENTRY", "FLANK")      # a place not said is the standing pin
@@ -144,7 +152,8 @@ POINTED_HERE = FIRE + ("FRAG", "FLASH", "SMOKE", "LOOK_AT", "CHECK", "HOLD_ANGLE
 # pistol"; the game reads the kind from the words)
 NO_PLACE = ("GO_BACK", "HELP_INTERACTION", "SWITCH_WEAPON", "RELOAD",
             "SEE_ME", "SMALL_TALK", "PRAISE", "KILL_YOURSELF",   # bot v62: talk; a place in "thanks for the cover at the door" is no order's
-            "HOLSTER", "STATUS_REPORT", "BODY_STATE", "DROP")    # bot v64: the hands, a report, the body, putting down where it stands
+            "HOLSTER", "STATUS_REPORT", "BODY_STATE", "DROP",    # bot v64: the hands, a report, the body, putting down where it stands
+            "GIVE_WAY", "WHAT_IS_IT")      # bot v66: out of the player's way (the game picks the side), the thing under the crosshair
 PLACE_INTENTS = CARRY + ("FRAG", "FLASH", "SMOKE", "HOLD_POSITION", "JUMP", "TAKE_COVER", "FALL_BACK", "COME_BACK",
                          "BREACH", "VAULT_WINDOW", "OPEN",       # orders that can be given again at another place
                          "PUSH", "ROLL")                         # bot v64: the thing pushed or rolled, or where it goes
@@ -195,6 +204,23 @@ REFUSE = {"BUILD": "I can't build that: no {item} in my build menu.",
           "DELIVER": "I can't bring that: I have no {item}.",
           "REPAIR": "I can't repair that: I see no {item}.",
           "DEMOLISH": "I can't tear that down: I see no {item}."}
+# place vocabulary v14 (2026-10-28): "bed" is a bed to sleep on and the farm's is "garden_bed". The farmer's words since bot
+# v60 ("hoe the beds", "water that bed", the decoder's "dig up the onions in that bed" for «на той грядке») call the garden
+# bed a bed: a garden order on a bed is on the garden bed (a bed with a colour stays the bed). "the north bed" is the
+# vocabulary's own (named phrases: a bed has no sides)
+GARDEN_INTENTS = ("PLANT_CROP", "WATER", "HARVEST", "TILL")
+
+
+def garden_record(record, intent, vocab=None):
+    """The places of a garden order with each bed the garden bed; the record itself when nothing changes (or the
+    vocabulary has no garden_bed)."""
+    allowed = (vocab or LOC.VOCAB)["allowed"]
+    if intent not in GARDEN_INTENTS or "garden_bed" not in allowed or not record or not record["targets"]:
+        return record
+    if not any(t["object"] == "bed" and (t["qualifier"] is None or t["qualifier"] in allowed["garden_bed"]) for t in record["targets"]):
+        return record
+    return dict(record, targets=[dict(t, object="garden_bed") if t["object"] == "bed" and
+                                 (t["qualifier"] is None or t["qualifier"] in allowed["garden_bed"]) else t for t in record["targets"]])
 
 
 def singular(w):
@@ -241,6 +267,17 @@ def item_object(item):
         if p is not None and p[0] == "object":
             return p[1]
     return None
+
+
+def drops_by_thing(text, record):
+    """A DROP line that names a thing to put it down by, in words: the line's primary place without the carried thing
+    itself ("put the box down by the table": the box is what goes down), an object, and no pointer ("here", "there",
+    "it", the pin: DROP's own spot as before). Zones stay DROP's too ("put it down outside")."""
+    if not record or not record["targets"]:
+        return False
+    rest = without_item_place(record, IT.find(text, "DELIVER")["item"], "DELIVER")
+    k = rest["primary"]
+    return k >= 0 and rest["targets"][k]["object"] is not None and rest["targets"][k].get("pointer") is None
 
 
 def without_item_place(record, item, intent):
@@ -392,6 +429,51 @@ def dist_between(a, b):
 
 # ---------------------------------------------------------------- grounding
 
+def recent(memory, world):
+    """The last thing named is still what "it" means: named IT_SECONDS ago or less, by the game's clock (not checked
+    when the game sends no time or the thing was named without one)."""
+    now, then = world.get("time"), memory.get("last_time")
+    return now is None or then is None or 0.0 <= float(now) - float(then) <= IT_SECONDS
+
+
+def fresh(memory, world):
+    """The last thing named, IT_SECONDS ago or less by the game's clock; unlike recent(), never without both times."""
+    now, then = world.get("time"), memory.get("last_time")
+    return now is not None and then is not None and 0.0 <= float(now) - float(then) <= IT_SECONDS
+
+
+# rule set v9 (round v67): the vocabulary has the means_* lists, and an order carries the thing it is done with
+MEANS_ON = "means_lead" in LOC.VOCAB["w"]
+
+
+def means_of(record, grounding):
+    """(rule set v9) The thing an order is done with ("climb onto the white table using the crate"): the first target of
+    role "means", grounded -- the nearest of several (never a question), None when the world has none (the game picks its
+    own) -> (entity, object)."""
+    for t, g in zip(record["targets"] if record else [], grounding or []):
+        if t["role"] == "means":
+            if g["status"] == "resolved":
+                return g["entity"], t["object"]
+            return (g["candidates"][0] if g["status"] == "ambiguous" and g["candidates"] else None), t["object"]
+    return None, None
+
+
+def without_lost_it(record, grounding):
+    """(rule set v8) An "it" that points at nothing (nothing named lately, the crosshair on nothing) is no place: the
+    record and grounding without it, the primary moved as locations.find() would pick it among the targets left."""
+    lost = {k for k, (t, g) in enumerate(zip(record["targets"], grounding)) if t.get("pointer") == "it" and g["status"] == "missing"}
+    if not lost:
+        return record, grounding
+    targets = [t for k, t in enumerate(record["targets"]) if k not in lost]
+    grounding = [g for k, g in enumerate(grounding) if k not in lost]
+    p = record["primary"]
+    if p in lost:      # an "it" is the primary only when the line names no place, direction or pin: the rest are pointers
+        primary = next((k for k, t in enumerate(targets) if t["role"] is None), 0 if targets else -1)
+    else:
+        primary = p - sum(1 for k in lost if k < p) if p >= 0 else -1
+    return dict(record, targets=targets, primary=primary), grounding
+
+
 def ground_target(t, world, memory, here=False):
     """One target of a place record -> {"status", "entity", "candidates", "via"}.
     status: resolved (entity, or a direction / "here" / a floor with places, which the planner takes as is),
@@ -420,6 +502,15 @@ def ground_target(t, world, memory, here=False):
         cands.sort(key=lambda e: (dist_between(e, pin), e["id"]))
         return out("resolved", cands[0]["id"], [e["id"] for e in cands], "pin")
 
+    if pointer == "it":
+        # "jump over it" (rule set v8): the thing the talk was about lately, else where the player looks; neither:
+        # "missing", and step() drops the target (the order goes with no place, as before rule set v8)
+        if last is not None and last in by_id and recent(memory, world):
+            return out("resolved", last, via="memory")
+        if gaze is not None and gaze in by_id:
+            return out("resolved", gaze, via="gaze")
+        return out("missing", via="it")
+
     if obj is None:
         if pointer == "this":
             # "here": where the speaker stands, whatever the crosshair is on
@@ -433,8 +524,8 @@ def ground_target(t, world, memory, here=False):
             if pin is not None:
                 return out("resolved", pin["entity"] or pin["id"], via="pin")     # the one place that is marked
             return out("missing", via="this")
-        if zone == INSIDE:
-            return out("resolved", None, [], INSIDE)     # the game finds the way in, where the player looks
+        if zone in WAY_ZONES:
+            return out("resolved", None, [], zone)       # the game finds the way in (where the player looks) or out
         if zone is not None:
             cands = [e for e in ents if on_zone(e, zone)]
             if zone in RELATIVE_ZONES:
@@ -452,7 +543,7 @@ def ground_target(t, world, memory, here=False):
     # out is the direction, and the game takes the nearest way that way, the one the player looks at first; the stairs
     # the world has go with it as the candidates. Only the stairs under the crosshair are those stairs ("go up these
     # stairs" looking at them). Never a question: stairs the world does not have are no reason to ask either
-    if direction in ("up", "down") and obj in LOC.VOCAB["vertical"] and qual is None and zone in (None, INSIDE) and \
+    if direction in ("up", "down") and obj in LOC.VOCAB["vertical"] and qual is None and zone in (None,) + WAY_ZONES and \
             flag is None:
         cands.sort(key=lambda e: (float(e.get("distance", 0.0)), e["id"]))
         ids = [e["id"] for e in cands]
@@ -467,7 +558,7 @@ def ground_target(t, world, memory, here=False):
         return out("missing")
     if qual is not None:
         cands = [e for e in cands if e.get("qualifier") == qual]
-    if zone is not None and zone != INSIDE:
+    if zone is not None and zone not in WAY_ZONES:
         cands = [e for e in cands if on_zone(e, zone)]     # "the door upstairs": a door on a floor above
     # "up the blue stairs": up is the way along a vertical object, not where it stands
     if direction is not None and not (direction in ("up", "down") and obj in LOC.VOCAB["vertical"]):
@@ -487,6 +578,11 @@ def ground_target(t, world, memory, here=False):
     if flag == "unknown_modifier":
         # "the back door": the player singled one out in a way the map names cannot express; never the nearest
         return out("ambiguous", None, ids, "unknown_modifier")
+    # "the table" of the thing the talk was about (the owner, 2026-10-27: «На белый стол», then «Поставь коробку у стола»
+    # asked "Which table?"): the one named last, IT_SECONDS fresh by the game's clock, as "it" is; the crosshair on one of
+    # them comes first. Weaker than "it": with no clock the age is unknown, and the bot asks as before
+    if pointer is None and flag is None and last in ids and fresh(memory, world):
+        return out("resolved", last, ids, "memory")
     if obj in FETCHED or float(cands[1].get("distance", 0.0)) >= CLEARLY_NEARER * float(cands[0].get("distance", 0.0)):
         return out("resolved", ids[0], ids, "nearest")
     return out("ambiguous", None, ids, "distance")
@@ -543,7 +639,8 @@ def new_memory():
     # frame: the order taken last -- {"intent", "t" (its place target or None), "g" (that target's grounding or None),
     # "other", "near", "time", "said" (what the order's own line called the place, when the place came from the answer
     # to "Where?": the door of "smoke the door", where "t" is the "there" that answered; else None)}
-    return {"last_entity": None, "last_order": None, "question": None, "frame": None}
+    # last_time: the game's clock when last_entity was named (None: the game sent no time), for "it" (IT_SECONDS)
+    return {"last_entity": None, "last_time": None, "last_order": None, "question": None, "frame": None}
 
 
 # the place of an order whose line named none: the standing pin, as if the line had said "my pin"
@@ -556,7 +653,7 @@ LOST_POINTERS = ("there", "here")
 
 def object_word(record, k, world):
     t = record["targets"][k]
-    return t["object"] or "place"
+    return (t["object"] or "place").replace("_", " ")   # v14's garden_bed is "a garden bed" in what the bot says
 
 
 class Planner:
@@ -721,12 +818,17 @@ class Planner:
         iid = match_catalog(said, cat)
         return {"said": said, "id": iid, "refused": None if iid is not None else REFUSE[intent].format(item=said)}
 
-    def _order(self, intent, record, grounding, k, other, near=False, said=None, item=None):
+    def _named(self, entity):
+        """The conversation is about this thing now: "it" means it (rule set v8), by the game's clock."""
+        now = self.world.get("time")
+        self.memory["last_entity"], self.memory["last_time"] = entity, float(now) if now is not None else None
+
+    def _order(self, intent, record, grounding, k, other, near=False, said=None, item=None, means=None):
         t = record["targets"][k] if k >= 0 else None
         g = grounding[k] if k >= 0 else None
         ent = g["entity"] if g else None
         if ent is not None:
-            self.memory["last_entity"] = ent
+            self._named(ent)
         self.memory["last_order"] = intent
         if intent != "GO_NOW":      # "go" with nothing queued is not an order to come back to
             now = self.world.get("time")
@@ -740,6 +842,8 @@ class Planner:
                  "near": bool(near and t is not None and t.get("pointer") == "this")}
         if intent in ITEM_INTENTS:     # what it acts on: the words said and the catalogue entry (the v60 bots' orders only)
             order["item"], order["item_id"] = (item["said"], item["id"]) if item else (None, None)
+        if MEANS_ON:                   # rule set v9: the thing it is done with (a question's order keeps its line's)
+            order["means"], order["means_object"] = means if means is not None else means_of(record, grounding)
         return order
 
     def _ask(self, intent, record, grounding, k, other, queued, item=None):
@@ -752,10 +856,14 @@ class Planner:
                     "zone": f"I can't find {ZONE_NAMES.get(zone, 'that place')}."}.get(g["via"], f"I see no {obj}.")
             self.memory["question"] = {"kind": "missing", "intent": intent, "record": record, "k": k, "other": other,
                                        "queued": queued, "candidates": [], "offered": 0, "item": item}
+            if MEANS_ON:
+                self.memory["question"]["means"] = means_of(record, grounding)
             return "ask", what + " Where?"
         cands = g["candidates"]
         self.memory["question"] = {"kind": "which", "intent": intent, "record": record, "k": k, "other": other,
                                    "queued": queued, "candidates": cands, "offered": 0, "item": item}
+        if MEANS_ON:
+            self.memory["question"]["means"] = means_of(record, grounding)
         return "ask", f"Which {obj}? The one {describe(by_id[cands[0]])}?"
 
     def _answer(self, intent):
@@ -804,10 +912,10 @@ class Planner:
             self.bot.pending, self.bot.pending_places, self.bot.pending_other = q["intent"], q["record"], q["other"]
             self._drop_pending()
             self.pending_entity, self.pending_item = entity, q.get("item")
-            self.memory["last_entity"] = entity
+            self._named(entity)
             return "resolved", say + f" Ready to {self.bot.phrase[q['intent']]}. On your go.", None
         return "resolved", say + f" {self.bot.phrase[q['intent']].capitalize()}.", \
-            self._order(q["intent"], rec, grounding, 0, q["other"], said=said, item=q.get("item"))
+            self._order(q["intent"], rec, grounding, 0, q["other"], said=said, item=q.get("item"), means=q.get("means"))
 
     def _settle_place(self, q, rec, g, queued, near):
         """The "Where?" question's order with the place the player pointed at: rec is that place's record (one
@@ -819,10 +927,11 @@ class Planner:
             self.pending_entity, self.pending_here, self.pending_near = g["entity"], g["via"] == "here", near
             self.pending_item = q.get("item")
             if g["entity"] is not None:
-                self.memory["last_entity"] = g["entity"]
+                self._named(g["entity"])
             return "resolved", f"Got it. Ready to {phrase}. On your go.", None
         return "resolved", f"Got it. {phrase.capitalize()}.", \
-            self._order(q["intent"], rec, [g], 0, q["other"], near, said=q["record"]["targets"][q["k"]], item=q.get("item"))
+            self._order(q["intent"], rec, [g], 0, q["other"], near, said=q["record"]["targets"][q["k"]], item=q.get("item"),
+                        means=q.get("means"))
 
     def _place_answer(self, q, text, action, intent, record, grounding):
         """A "Where?" answered by pointing ("there", "at my pin", "on the left", "that one"), or by "yes" / "go" once
@@ -854,6 +963,14 @@ class Planner:
         reply, rec = self.bot.decide(text, probs2)
         action, intent = rec["action"], rec["intent"]
         record = rec["places"]
+        if action in ("act", "queued") and intent == "DROP" and drops_by_thing(text, record):
+            # "put it down next to the white table" (the owner, 2026-10-27): DROP puts the thing down where the bot stands
+            # and takes no place, so the table was lost and the box went down far from it. A line that names a thing to
+            # put it by carries it there
+            intent = "DELIVER"
+            reply = f"{self.bot.phrase[intent].capitalize()}." if action == "act" else f"Ready to {self.bot.phrase[intent]}. On your go."
+            if action == "queued":
+                self.bot.pending = intent
         if intent in NO_PLACE and action in ("act", "queued"):
             record = {"targets": [], "primary": -1}
         item = None
@@ -873,7 +990,15 @@ class Planner:
             record = without_item_place(record, item["said"], intent)
             if action == "queued":
                 self.bot.pending_places = record
+        if action in ("act", "queued"):
+            garden = garden_record(record, intent)
+            if garden is not record:
+                record = garden
+                if action == "queued":
+                    self.bot.pending_places = record
         grounding = ground(record, self.world, self.memory, text, intent) if record and record["targets"] else []
+        if grounding:
+            record, grounding = without_lost_it(record, grounding)
         if continued and self.frame_in_line:
             self._same_place(record, grounding)
         near = deixis(text) is not None
@@ -983,6 +1108,9 @@ class Planner:
                                            item=self.pending_item)
             else:
                 g2 = ground(ex, self.world, self.memory) if ex and ex["targets"] else []
+                if g2:
+                    ex, g2 = without_lost_it(ex, g2)
+                    k = ex["primary"] if ex["targets"] else -1
                 out["order"] = self._order(rec["executed"], ex, g2, k, rec["executed_other"], self.pending_near, item=self.pending_item)
             self._drop_pending()
         elif action == "go":
@@ -1192,6 +1320,45 @@ DEV_CHAIN_BARE = [
 ]
 
 
+# the thing the talk is about (the owner, 2026-10-27: «На белый стол», then «Поставь коробку у стола» asked "Which table?"):
+# "the table" is the one named last, by the game's clock, while it is fresh; later the bot asks again (vocabulary v11 and
+# later: the tables' colours)
+WORLD_TABLES = {
+    "entities": [{"id": "gaze_1", "object": None, "qualifier": None, "zone": None, "bearing": 0.0, "distance": 3.0, "elevation": 0.0, "tags": []},
+                 {"id": "table_w", "object": "table", "qualifier": "white", "zone": None, "bearing": 0.0, "distance": 8.0, "elevation": 0.0, "tags": []},
+                 {"id": "table_b", "object": "table", "qualifier": "blue", "zone": None, "bearing": 25.0, "distance": 9.0, "elevation": 0.0, "tags": []}],
+    "player_pin": None, "bot_pin": None, "player_gaze": "gaze_1", "player": {"downed": False}, "bot": {"stance": "stand", "items": []},
+}
+DEV_SAME_THING = [
+    ("go to the table", "MOVE_TO", {"action": "ask"}, {"time": 100.0}),                                     # nothing named yet
+    ("go to the white table", "MOVE_TO", {"action": "resolved", "entity": "table_w"}, {"time": 110.0}),       # the answer
+    ("check the table", "CHECK", {"action": "act", "entity": "table_w", "via": "memory"}, {"time": 120.0}),  # the white one
+    ("go to the blue table", "MOVE_TO", {"action": "act", "entity": "table_b"}, {"time": 130.0}),
+    ("check the table", "CHECK", {"action": "act", "entity": "table_b", "via": "memory"}, {"time": 158.0}),  # now the blue one
+    ("go to the table", "MOVE_TO", {"action": "ask"}, {"time": 200.0}),                                     # 42 s on: asked again
+]
+
+# rule set v9 (round v67): the thing an order is done with, any thing for any order (the owner, 2026-10-27)
+WORLD_MEANS = copy.deepcopy(WORLD_TABLES)
+WORLD_MEANS["entities"] += [
+    {"id": "crate_1", "object": "crate", "qualifier": None, "zone": None, "bearing": -20.0, "distance": 3.0, "elevation": 0.0, "tags": []},
+    {"id": "crate_2", "object": "crate", "qualifier": "big", "zone": None, "bearing": 40.0, "distance": 6.0, "elevation": 0.0, "tags": []},
+    {"id": "spool_1", "object": "spool", "qualifier": None, "zone": None, "bearing": 90.0, "distance": 5.0, "elevation": 0.0, "tags": []},
+    {"id": "fence_1", "object": "fence", "qualifier": None, "zone": None, "bearing": 0.0, "distance": 15.0, "elevation": 0.0, "tags": []}]
+DEV_MEANS = [
+    ("climb onto the white table using the crate", "JUMP", {"action": "act", "entity": "table_w", "means": "crate_1"}, {"time": 100.0}),
+    ("use the big box to climb onto the blue table", "JUMP", {"action": "act", "entity": "table_b", "means": "crate_2"}, {"time": 110.0}),
+    ("jump over the fence standing on the spool", "JUMP", {"action": "act", "entity": "fence_1", "means": "spool_1"}, {"time": 120.0}),
+    ("break the white table with the spool", "MELEE", {"action": "act", "entity": "table_w", "means": "spool_1"}, {"time": 130.0}),
+    ("go to the table using the crate", "MOVE_TO", {"action": "act", "entity": "table_w", "means": "crate_1"}, {"time": 135.0}),   # the one named
+    ("hide behind the fence using the table", "TAKE_COVER", {"action": "act", "entity": "fence_1", "means": "table_w"}, {"time": 140.0}),  # the same
+    ("climb onto the table using the spool", "JUMP", {"action": "ask"}, {"time": 300.0}),                          # nothing named lately
+    ("the blue table", "JUMP", {"action": "resolved", "entity": "table_b", "means": "spool_1"}, {"time": 303.0}),    # the question keeps it
+    ("climb onto the white table using a car", "JUMP", {"action": "act", "entity": "table_w", "means": None}, {"time": 320.0}),  # none here
+    ("climb onto the white table", "JUMP", {"action": "act", "entity": "table_w", "means": None}, {"time": 330.0}),
+]
+
+
 def talk_change(pl, change):
     """Applies a DEV_TALK change to the planner's world; returns whether the line is to be under the threshold."""
     w = copy.deepcopy(pl.world)
@@ -1245,6 +1412,30 @@ DEV_V60 = [
     ("no, by the barn", "NONE", {"action": "resolved", "intent": "BUILD", "entity": "barn_1", "item_id": "barricade"}),
 ]
 
+# place vocabulary v15 (2026-10-29): a bed to sleep on, the farm's garden bed and a rock; the farmer's "bed" is the garden bed
+WORLD_GARDEN = {
+    "entities": [
+        {"id": "garden_bed_n", "object": "garden_bed", "qualifier": "north", "zone": None, "bearing": -30.0, "distance": 10.0, "elevation": 0.0, "tags": []},
+        {"id": "bed_y", "object": "bed", "qualifier": "yellow", "zone": None, "bearing": 60.0, "distance": 6.0, "elevation": 0.0, "tags": []},
+        {"id": "rock_1", "object": "rock", "qualifier": "big", "zone": None, "bearing": -70.0, "distance": 9.0, "elevation": 0.0, "tags": []},
+    ],
+    "player_pin": None, "bot_pin": None, "player_gaze": None, "player": {"downed": False},
+    "bot": {"stance": "stand", "items": [], "busy": False}, "time": 100.0,
+    "catalog": {"PLANT_CROP": [{"id": "seed_carrot", "words": ["carrot", "carrot seeds"]}]},
+}
+DEV_V68 = [
+    ("plant carrots in the north bed", "PLANT_CROP", {"action": "act", "entity": "garden_bed_n", "item_id": "seed_carrot"}),   # named phrase
+    ("hoe the beds", "TILL", {"action": "act", "entity": "garden_bed_n"}),          # a garden order: the garden bed
+    ("water that bed", "WATER", {"action": "act", "entity": "garden_bed_n"}),
+    ("harvest the carrot bed", "HARVEST", {"action": "act", "entity": "garden_bed_n"}),
+    ("go to the bed", "MOVE_TO", {"action": "act", "entity": "bed_y"}),             # any other order: the bed
+    ("go to the north bed", "MOVE_TO", {"action": "act", "entity": "garden_bed_n"}),
+    ("water the yellow bed", "WATER", {"action": "act", "entity": "bed_y"}),        # a colour: the bed, whatever the order
+    ("climb onto the big rock", "JUMP", {"action": "act", "entity": "rock_1"}),
+    ("plant carrots in the bed on my go", "PLANT_CROP", {"action": "queued"}),
+    ("go", "GO_NOW", {"action": "execute", "intent": "PLANT_CROP", "entity": "garden_bed_n"}),
+]
+
 
 # the warehouse (bot v64, locations_v64.json): two spools about as near, the crosshair on the farther one
 WORLD_SPOOLS = {
@@ -1288,7 +1479,10 @@ def run_dev():
                        (WORLD_V56, DEV_V56 if "GO_BACK" in labels else []),
                        (WORLD_V56, DEV_V57 if "SWITCH_WEAPON" in labels else []),
                        (WORLD_FARM, DEV_V60 if LOC.VOCAB["version"] >= 8 else []),
-                       (WORLD_SPOOLS, DEV_V64 if LOC.VOCAB["version"] >= 10 and "ROLL" in labels else [])):
+                       (WORLD_GARDEN, DEV_V68 if LOC.VOCAB["version"] >= 15 and "TILL" in labels else []),
+                       (WORLD_SPOOLS, DEV_V64 if LOC.VOCAB["version"] >= 10 and "ROLL" in labels else []),
+                       (WORLD_TABLES, DEV_SAME_THING if LOC.VOCAB["version"] >= 11 else []),
+                       (WORLD_MEANS, DEV_MEANS if MEANS_ON else [])):
         if not dev:
             continue
         bot = Fake()
@@ -1304,7 +1498,7 @@ def run_dev():
             if r["order"]:
                 got.update(entity=r["order"]["entity"], zone=r["order"]["zone"], via=r["order"]["via"], near=r["order"]["near"],
                            direction=r["order"]["direction"], intent=r["order"]["intent"], candidates=r["order"]["candidates"],
-                           item=r["order"].get("item"), item_id=r["order"].get("item_id"))
+                           item=r["order"].get("item"), item_id=r["order"].get("item_id"), means=r["order"].get("means"))
             good = all(got.get(k) == v for k, v in want.items())
             ok += good
             print(f"{'ok ' if good else 'NO '} {text!r:36s} -> {r['action']:9s} {r['say']}" + (f"  order {r['order']}" if r["order"] else ""))
@@ -1321,7 +1515,7 @@ def run_dev():
             good = all(got.get(k) == v for k, v in want.items())
             ok += good
             print(f"{'ok ' if good else 'NO '} {('+ ' if continued else '') + repr(text):36s} -> {r['action']:9s} {r['say']}" + (f"  order {r['order']}" if r["order"] else ""))
-    print(f"{ok}/{len(DEV) + len(DEV_BARE) + len(DEV_TALK) + len(DEV_FLOORS) + len(DEV_CHAIN) + len(DEV_CHAIN_BARE) + (len(DEV_V56) if 'GO_BACK' in labels else 0) + (len(DEV_V57) if 'SWITCH_WEAPON' in labels else 0) + (len(DEV_V60) if LOC.VOCAB['version'] >= 8 else 0) + (len(DEV_V64) if LOC.VOCAB['version'] >= 10 and 'ROLL' in labels else 0)}")
+    print(f"{ok}/{len(DEV) + len(DEV_BARE) + len(DEV_TALK) + len(DEV_FLOORS) + len(DEV_CHAIN) + len(DEV_CHAIN_BARE) + (len(DEV_V56) if 'GO_BACK' in labels else 0) + (len(DEV_V57) if 'SWITCH_WEAPON' in labels else 0) + (len(DEV_V60) if LOC.VOCAB['version'] >= 8 else 0) + (len(DEV_V68) if LOC.VOCAB['version'] >= 15 and 'TILL' in labels else 0) + (len(DEV_V64) if LOC.VOCAB['version'] >= 10 and 'ROLL' in labels else 0) + (len(DEV_SAME_THING) if LOC.VOCAB['version'] >= 11 else 0) + (len(DEV_MEANS) if MEANS_ON else 0)}")
 
 
 if __name__ == "__main__":

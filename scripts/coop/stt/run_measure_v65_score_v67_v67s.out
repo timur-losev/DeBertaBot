@@ -1,0 +1,16 @@
+bot v67, decoder v67s
+
+owner65: 33/33 = 100.0%   (en 33/33; English lines the scene sent to the decoder: 0)
+
+hand65: 70/70 = 100.0%   (en 4/4, es 5/5, ru 61/61; English lines the scene sent to the decoder: 0)
+
+scene65: 141/150 = 94.0%   (en 55/60, es 27/30, ru 59/60; English lines the scene sent to the decoder: 8)
+  NO  Стой.                                        -> stand by                              read HOLD_POSITION  want WAIT
+  NO  Get in, get in!                                                                       read MOVE_TO        want GET_IN
+  NO  Alright, get down now.                                                                read TAKE_COVER     want JUMP
+  NO  Again.                                                                                read REPEAT         want PUSH
+  NO  Do it again.                                                                          read REPEAT         want ROLL
+  NO  Again.                                                                                read REPEAT         want JUMP
+  NO  ¡Al suelo!                                   -> go prone                              read PRONE          want TAKE_COVER
+  NO  ¡Cuerpo a tierra, que nos disparan!          -> Go prone, they're shooting us.        read PRONE          want TAKE_COVER
+  NO  Quieto ahí.                                  -> stay put                              read HOLD_POSITION  want WAIT

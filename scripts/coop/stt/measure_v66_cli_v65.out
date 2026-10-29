@@ -1,0 +1,107 @@
+brain v65 on test66 (192 items; left out as the owner's own trained lines: ['t66_003', 't66_030', 't66_036', 't66_060', 't66_080', 't66_100', 't66_135', 't66_170']): intent 110/192 = 57.3%, intent and place 88/192 = 45.8%
+  by language: en: 24/54, es: 26/55, ru: 38/83
+  by rule: 0: 15/16, 1: 2/28, 2: 7/23, 3: 7/24, 4: 5/19, 5: 20/34, 6: 5/14, 7: 12/15, 8: 8/9, 9: 7/10
+  NO  [1] en move away bro                                -> move away bro                                  read MOVE_TO (say_again); want GIVE_WAY 
+  NO  [1] en Step aside real quick.                       -> Step aside real quick.                         read TAKE_COVER (say_again); want GIVE_WAY 
+  NO  [1] en dude get out of my way                       -> dude get out of my way                         read HELP_INTERACTION (say_again); want GIVE_WAY 
+  NO  [1] en You're in my way, man.                       -> You're in my way, man.                         read HELP_INTERACTION (say_again); want GIVE_WAY 
+  NO  [1] en let me pass                                  -> let me pass                                    read HELP_INTERACTION (act); want GIVE_WAY 
+  NO  [1] en Move over, I can't get past you.             -> Move over, I can't get past you.               read MOVE_TO (act); want GIVE_WAY 
+  NO  [1] en go away I'm busy                             -> go away I'm busy                               read HOLSTER (say_again); want GIVE_WAY 
+  NO  [2] en what's that                                  -> what's that                                    read HOLD_ANGLE (act); want WHAT_IS_IT 
+  NO  [2] en yo what is this thing                        -> yo what is this thing                          read SMALL_TALK (say_again); want WHAT_IS_IT 
+  NO  [2] en What am I even looking at here?              -> What am I even looking at here?                read NONE (ignore); want WHAT_IS_IT 
+  NO  [2] en hey what is that over there                  -> hey what is that over there                    read STATUS_REPORT (say_again); want WHAT_IS_IT 
+  NO  [2] en Whoa, what was that?                         -> Whoa, what was that?                           read NONE (say_again); want SMALL_TALK 
+  NO  [3] en shoot out the glass                          -> shoot out the glass                            place None; want OPEN_FIRE window
+  NO  [3] en Fire at the glass!                           -> Fire at the glass!                             place None; want OPEN_FIRE window
+  NO  [3] en smash the glass                              -> smash the glass                                place None; want MELEE window
+  NO  [3] en Break that window, bro.                      -> Break that window, bro.                        read BREACH (say_again); want MELEE window
+  NO  [3] en hit that window with your stock              -> hit that window with your stock                read OPEN_FIRE (act); want MELEE window
+  NO  [4] en go outside                                   -> go outside                                     place None; want MOVE_TO outside
+  NO  [4] en Head outside, bro.                           -> Head outside, bro.                             place None; want MOVE_TO outside
+  NO  [4] en leave the building                           -> leave the building                             place None; want MOVE_TO outside
+  NO  [4] en get out of the room man                      -> get out of the room man                        read FALL_BACK (say_again); want MOVE_TO outside
+  NO  [5] en No, shoot it.                                -> No, shoot it.                                  place None; want OPEN_FIRE window
+  NO  [5] en nah use your gun                             -> nah use your gun                               read SWITCH_WEAPON (act); want OPEN_FIRE window
+  NO  [5] en No, hit it with the rifle butt.              -> Hit it with the rifle butt.                    place None; want MELEE window
+  NO  [5] en No, use smoke.                               -> Use a smoke.                                   place None; want SMOKE door
+  NO  [6] en don't drop it                                -> don't drop it                                  read WAIT (wait); want COLLECT 
+  NO  [6] en don't throw that crate man                   -> don't throw that crate man                     read WAIT (wait); want COLLECT 
+  NO  [6] en Don't hand it to me.                         -> Don't hand it to me.                           read WAIT (wait); want COLLECT 
+  NO  [7] en take this one                                -> take this one                                  read MOVE_TO (ask); want COLLECT 
+  NO  [9] en Jump over it.                                -> Jump over it.                                  place None; want JUMP table
+  NO  [1] ru Отойди немного, брат.                        -> take a breather bro                            read RELOAD (say_again); want GIVE_WAY 
+  NO  [1] ru отойди в сторонку                            -> get back here                                  read COME_BACK (act); want GIVE_WAY 
+  NO  [1] ru дай пройти брат                              -> let brother through                            read HELP_INTERACTION (act); want GIVE_WAY 
+  NO  [1] ru Подвинься, я не пролезу.                     -> Move up, I can't swing.                        read MOVE_TO (act); want GIVE_WAY 
+  NO  [1] ru посторонись-ка                               -> check your side                                read CHECK (act); want GIVE_WAY 
+  NO  [1] ru Ты мне дорогу загораживаешь.                 -> You're blocking my path.                       read NONE (ignore); want GIVE_WAY 
+  NO  [1] ru ну пропусти меня                             -> let me through                                 read HELP_INTERACTION (act); want GIVE_WAY 
+  NO  [1] ru Сдвинься в сторону, мешаешь.                 -> Move aside, you're blocking.                   read FALL_BACK (act); want GIVE_WAY 
+  NO  [1] ru не стой у меня на пути                       -> not stop on my path                            read WAIT (wait); want GIVE_WAY 
+  NO  [1] ru Уйди, брат, не до тебя сейчас.               -> Get out, bro, not now.                         read GET_OUT (act); want GIVE_WAY 
+  NO  [1] ru отвали, не мешай пройти                      -> back off, don't hassle me                      read FALL_BACK (act); want GIVE_WAY 
+  NO  [2] ru а это что такое                              -> what is that                                   read HOLD_ANGLE (say_again); want WHAT_IS_IT 
+  NO  [2] ru брат, что это за штука?                      -> what's this thing                              read STATUS_REPORT (say_again); want WHAT_IS_IT 
+  NO  [2] ru что это за фигня там                         -> what's that over there                         read STATUS_REPORT (say_again); want WHAT_IS_IT 
+  NO  [2] ru На что я сейчас смотрю?                      -> what am I looking at right now                 read STATUS_REPORT (act); want WHAT_IS_IT 
+  NO  [2] ru это что вообще такое                         -> what the heck is that                          read HOLD_ANGLE (say_again); want WHAT_IS_IT 
+  NO  [2] ru ого, что это сейчас было                     -> whoa what was just going on                    read STATUS_REPORT (act); want SMALL_TALK 
+  NO  [3] ru Прострели стекло.                            -> shoot the glass                                place None; want OPEN_FIRE window
+  NO  [3] ru пальни по стеклу                             -> pin them down on the glass                     read SUPPRESS (act); want OPEN_FIRE window
+  NO  [3] ru шмальни в стекло под ногами                  -> smack your feet against the glass              read SMOKE (say_again); want OPEN_FIRE window
+  NO  [3] ru выбей стекло                                 -> pop the glass                                  read OPEN (act); want MELEE window
+  NO  [3] ru Разбей окно в полу.                          -> break the window on the floor                  read BREACH (act); want MELEE window
+  NO  [3] ru ударь по стеклу прикладом                    -> hit the glass with the butt of your gun        place None; want MELEE window
+  NO  [3] ru заложи заряд и взорви дверь                  -> plant the charge                               read PLANT (act); want BREACH door
+  NO  [4] ru выйди наружу брат                            -> go outdoor bro                                 place None; want MOVE_TO outside
+  NO  [4] ru марш на улицу                                -> get out on the street                          read GET_OUT (say_again); want MOVE_TO outside
+  NO  [4] ru выбирайся из здания                          -> get out of the building                        read JUMP (act); want MOVE_TO outside
+  NO  [4] ru Выйди из помещения.                          -> get out of the room                            read FALL_BACK (say_again); want MOVE_TO outside
+  NO  [4] ru иди-ка на улицу                              -> go out on the street                           read PRONE (say_again); want MOVE_TO outside
+  NO  [4] ru Зайди внутрь.                                -> get inside of it                               read GET_IN (act); want MOVE_TO inside
+  NO  [5] ru не, стреляй давай                            -> shoot now                                      place None; want OPEN_FIRE window
+  NO  [5] ru нет, прострели его                           -> shoot him                                      place None; want OPEN_FIRE window
+  NO  [5] ru Нет, прикладом.                              -> Hit the table with the rifle.                  read OPEN_FIRE (resolved); want MELEE window
+  NO  [5] ru нет, просто разбей его                       -> deny it                                        read NO (answer); want MELEE window
+  NO  [5] ru нет, подави его                              -> Suppress him.                                  place None; want SUPPRESS window
+  NO  [5] ru нет, лучше осколочную                        -> Throw a flash over the door.                   read FLASH (act); want FRAG door
+  NO  [5] ru Оружием.                                     -> arms                                           read HOLSTER (say_again); want SWITCH_WEAPON 
+  NO  [6] ru не ставь её на пол                           -> don't put it on the floor                      read WAIT (wait); want COLLECT 
+  NO  [6] ru не кидай катушку, брат                       -> don't throw the spool bro                      read WAIT (wait); want COLLECT 
+  NO  [6] ru Не выбрасывай коробку.                       -> don't throw away the box                       read WAIT (wait); want COLLECT 
+  NO  [6] ru не бросай                                    -> keep holding it                                read COLLECT (act); want WAIT 
+  NO  [7] ru иди вот этой дорогой                         -> take this route                                read FLANK (ask); want MOVE_TO 
+  NO  [8] ru Да, прямо перед тобой.                       -> Yes, right in front of you.                    read NONE (say_again); want YES 
+  NO  [9] ru прострели его                                -> should him                                     place None; want OPEN_FIRE window
+  NO  [0] ru стой                                         -> stand                                          read HOLD_POSITION (act); want WAIT 
+  NO  [1] es apartate tio                                 -> get outta here bro                             read FALL_BACK (act); want GIVE_WAY 
+  NO  [1] es quítate de en medio                          -> break line of sight                            read TAKE_COVER (act); want GIVE_WAY 
+  NO  [1] es venga, déjame pasar                          -> let me through                                 read HELP_INTERACTION (act); want GIVE_WAY 
+  NO  [1] es Hazte a un lado.                             -> get out of the way                             read ROLL (say_again); want GIVE_WAY 
+  NO  [1] es estás en medio muévete                       -> move yourself                                  read MOVE_TO (act); want GIVE_WAY 
+  NO  [1] es Quítate de mi camino.                        -> Clear my path.                                 read ENTRY (act); want GIVE_WAY 
+  NO  [1] es vete que estoy ocupado                       -> go tell me I'm busy                            read SMALL_TALK (say_again); want GIVE_WAY 
+  NO  [1] es muévete a un lado porfa                      -> move aside please                              read MOVE_TO (act); want GIVE_WAY 
+  NO  [2] es ¿Qué es eso?                                 -> what is that                                   read HOLD_ANGLE (say_again); want WHAT_IS_IT 
+  NO  [2] es oye, ¿y esto qué es?                         -> hey what is this                               read SMALL_TALK (act); want WHAT_IS_IT 
+  NO  [2] es ¿qué es esa cosa?                            -> what is that thing                             read WATER (say_again); want WHAT_IS_IT 
+  NO  [2] es que estoy mirando tio                        -> look at me man                                 read LOOK_AT_ME (act); want WHAT_IS_IT 
+  NO  [2] es ¿Qué fue eso?                                -> what was that                                  read WATER (say_again); want SMALL_TALK 
+  NO  [3] es Dispara al cristal.                          -> fire on the glass                              place None; want OPEN_FIRE window
+  NO  [3] es dispárale al vidrio                          -> should the glass                               place None; want OPEN_FIRE window
+  NO  [3] es Rompe el cristal.                            -> break the glass                                read BREACH (act); want MELEE window
+  NO  [3] es parte esa ventana                            -> go to that window                              read MOVE_TO (act); want MELEE window
+  NO  [3] es dale con la culata al cristal                -> hit him with the butt of your glass            place None; want MELEE window
+  NO  [4] es Sal de la habitación.                        -> get out of the room                            read FALL_BACK (say_again); want MOVE_TO outside
+  NO  [4] es sal fuera venga                              -> get out of here                                read FALL_BACK (act); want MOVE_TO outside
+  NO  [4] es vete afuera del edificio                     -> get out of the building                        read JUMP (act); want MOVE_TO outside
+  NO  [4] es sal a la calle, tío                          -> get out on the street man                      read PRONE (say_again); want MOVE_TO outside
+  NO  [5] es No, dispárale.                               -> shoot him                                      place None; want OPEN_FIRE window
+  NO  [5] es no, con el arma                              -> use your gun                                   read SWITCH_WEAPON (act); want OPEN_FIRE window
+  NO  [5] es No, con la culata.                           -> Shoot with the butt.                           read OPEN_FIRE (act); want MELEE window
+  NO  [6] es no me la des, tío                            -> don't give it to me man                        read WAIT (wait); want COLLECT 
+  NO  [6] es No tires la caja.                            -> don't box it                                   read WAIT (wait); want COLLECT 
+  NO  [7] es coge este camino                             -> take this route                                read FLANK (ask); want MOVE_TO 
+  NO  [9] es dispárale                                    -> should him                                     place None; want OPEN_FIRE window

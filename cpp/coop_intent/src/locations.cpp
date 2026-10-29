@@ -32,6 +32,10 @@ const char* const kPointerWordLists[] = {
     "pin_noun", "pin_det", "pin_block_prev", "pin_wait_verb", "pin_wait_prep", "pin_past", "pin_past_lead",
     "pin_past_fill", "pin_verb", "point_det", "point_not_prev", "point_not_next", "point_not_noun", "point_pron_next",
     "point_person", "point_rel_prev", "point_loc", "point_loc_lead", "point_here_not", "point_exist_next", "point_ing"};
+// rule set v8 (locations.py IT_LISTS): the "it" pointer. A vocabulary has all of them or none, and only with the lists above
+const char* const kItWordLists[] = {"it_word", "it_prep", "it_verb", "it_of_lead", "it_not_next"};
+// rule set v9 (locations.py MEANS_LISTS): the means, the thing an order is done with. All of them or none
+const char* const kMeansWordLists[] = {"means_lead", "means_not_prev", "means_on_lead", "means_use", "means_use_not_next"};
 // locations.py DIRECTIONS, in the order of PlaceDirection after None: the rules name the six
 const char* const kDirections[] = {"up", "down", "left", "right", "forward", "back"};
 
@@ -130,6 +134,7 @@ const char* PlaceRoleName(PlaceRole r) {
         case PlaceRole::Mine: return "mine";
         case PlaceRole::Them: return "them";
         case PlaceRole::Status: return "status";
+        case PlaceRole::Means: return "means";
         case PlaceRole::None: break;
     }
     return "";
@@ -162,6 +167,7 @@ const char* PlacePointerName(PlacePointer p) {
     switch (p) {
         case PlacePointer::Pin: return "pin";
         case PlacePointer::This: return "this";
+        case PlacePointer::It: return "it";
         case PlacePointer::None: break;
     }
     return "";
@@ -210,8 +216,11 @@ bool LocationMatcher::Init(const LocationVocab& v, std::string* error) {
     max_len_ = 1;
     directions_ = v.has_directions;
     pointers_ = v.has_pointers;
+    its_ = v.has_it;
+    means_ = v.has_means;
     // the pointer rules (step 7) stand on step 6: its noun phrases and its direction targets
     if (pointers_ && !directions_) return fail("the pin_* and point_* word lists (rule set v5) need \"directions\"");
+    if (its_ && !pointers_) return fail("the it_* word lists (rule set v8) need the pin_* and point_* lists");
     for (const auto& o : v.objects) {
         if (IndexOf(objects_, o.id) >= 0) return fail("duplicate object id " + o.id);
         if (o.words.empty()) return fail("object " + o.id + " has no words");
@@ -288,6 +297,12 @@ bool LocationMatcher::Init(const LocationVocab& v, std::string* error) {
             if (!word_list(name)) return false;
     if (pointers_)
         for (const char* name : kPointerWordLists)
+            if (!word_list(name)) return false;
+    if (its_)
+        for (const char* name : kItWordLists)
+            if (!word_list(name)) return false;
+    if (means_)
+        for (const char* name : kMeansWordLists)
             if (!word_list(name)) return false;
     // a list no rule reads: locations.py refuses the vocabulary too (in a rule set v3 one, any dir_* list;
     // in a rule set v3 or v4 one, any pin_* or point_* list)
@@ -700,6 +715,20 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
         return true;
     };
 
+    // (rule set v9) the thing the order is done with: "using the crate", "with this box", "standing on the spool", "use the chair
+    // to get up"; not a way up or down ("go up using the stairs": the stairs' direction, as before)
+    auto means_lead = [&](int j, const Work* t) {
+        if (Vertical(t->t.object) || !next_to(j, t)) return false;
+        const std::string& w = word(j);
+        if (In("means_lead", w)) return !(j > 0 && !tbrk(j) && In("means_not_prev", word(j - 1)));   // "help me with the door"
+        if (w == "on" && j > 0 && !tbrk(j) && In("means_on_lead", word(j - 1))) return true;
+        if (In("means_use", w)) {
+            const int k = t->last + 1;   // "use the crate | to climb ...": "to" and a word that starts no place
+            return k + 1 < n && !tbrk(k) && word(k) == "to" && !tbrk(k + 1) && !In("means_use_not_next", word(k + 1));
+        }
+        return false;
+    };
+
     // the role of group[ti]; the group is the targets in line order (in step 6: with the directions)
     auto assign_role = [&](size_t ti, Work* t, const std::vector<Work*>& group) {
         // "they're on red and blue": a place joined to the one before it by and / or shares its role
@@ -724,6 +753,10 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
         while (j >= 0 && steps < kRoleWindow && t->first - j <= kRoleReach) {
             if (tbrk(j + 1) || In("role_stop", word(j)) || owned(j)) break;
             const std::string* w = &word(j);
+            if (means_ && means_lead(j, t)) {
+                t->t.role = PlaceRole::Means;
+                break;
+            }
             bool soft = false;
             if (In("role_them_soft", *w)) {   // "stack is sitting on ...", "guy on ..."; not "stack up on the north door"
                 const int k = after(j, "soft_fill");
@@ -1287,6 +1320,11 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
                     } else if (w == "here" && ends && !in("point_here_not", prev)) {
                         p = kThis;                // "i need backup here", "smoke here"; not "almost here"
                     }
+                } else if (its_ && In("it_word", w)) {
+                    // (rule set v8) "jump over it", "open it", "get on top of it": the thing the talk was about. Not "do
+                    // it", "take it", "put it down", "it's clear"
+                    const bool led = in("it_prep", prev) || in("it_verb", prev) || (prev && *prev == "of" && in("it_of_lead", prev2));
+                    if (led && !in("it_not_next", nxt)) p = PlacePointer::It;
                 }
                 if (p == kNoPointer) continue;
                 if (att) {
@@ -1323,6 +1361,7 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
                 // order verb and at most six words stand between, or across one comma as a bare pointer; a pin
                 // only through prepositions and determiners
                 for (Work* t : ptr) {
+                    if (t->t.pointer == PlacePointer::It) continue;   // (rule set v8) what the talk was about, never the place after it
                     Work* u = nullptr;
                     for (Work* x : targets)
                         if (!x->lone && t->last < x->first && x->first < n) {

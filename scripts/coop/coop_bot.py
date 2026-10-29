@@ -143,6 +143,9 @@ LINES = {
     "PUSH": ["Pushing it.", "Shoving it over.", "Moving it."],
     "ROLL": ["Rolling it.", "Rolling it over.", "On it, rolling."],
     "DROP": ["Putting it down.", "Setting it down.", "Dropping it."],
+    # the v66 bots: out of the player's way; what the thing looked at is, is the game's answer (the brain says nothing)
+    "GIVE_WAY": ["Out of your way.", "Making room.", "Stepping aside."],
+    "WHAT_IS_IT": [""],
 }
 ACK = ["Copy.", "Noted.", "Heard."]                   # NONE: a callout or chatter, nothing to do
 AGAIN = ["Say again?", "Didn't catch that.", "Come again?"]

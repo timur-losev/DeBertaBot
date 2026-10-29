@@ -1,0 +1,36 @@
+wrote G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-ens3-v67\cpp: 3 ONNX model(s), vocab 128000 pieces, golden 7082 lines
+gate tests: 7489 rows, the two gates pick different intents on 305
+decide tests, actions per gate: {'top': ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait'], 'family': ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait']} (242 steps in 6 conversations)
+dialogue actions: ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait'] 
+location tests: 62872 lines, 49752 name a place, a direction or a pointer, 15385 of them a direction, 20280 a pointer (5814 a pin; in 13823 a pointer is a target of its own)
+  rule set v5: 21719 of the lines are the pointer batch's (16000 generated from 108 pointer patterns among the direction patterns, and 65 written out; without the ones generated twice or already there)
+item tests: 91663 lines and intents, 12427 with an item (8333 lines)
+tokenizer tests: 15251 lines (5465 with [UNK], 788 cut at 64 tokens, slots on_signal/other/negation on [1954, 793, 793])
+  rule set v8: 300 conversations about a thing and "it"; "it" read from the talk 543 times, from the crosshair 308 times
+  put it down by a thing: 150 conversations, 162 DROP lines carried to the thing named (DELIVER)
+  the thing the talk is about: 150 conversations, a bare object read from the talk 57 times
+  rule set v9: 150 conversations with a means; 115 orders carry one
+world tests: 1958 scenarios, 14599 steps; actions act 4745, answer 813, ask 2713, execute 129, go 100, ignore 432, negated 132, queued 553, refused 259, resolved 1190, say_again 3288, wait 245
+  groundings: missing/None 2903, resolved/gaze 1584, resolved/only 1193, resolved/memory 779, resolved/pin 618, resolved/direction 490, resolved/pin_default 428, ambiguous/distance 393, missing/pin 248, resolved/nearest 220, resolved/here 216, missing/zone 149, missing/this 107, ambiguous/unknown_modifier 67, resolved/outside 51, resolved/inside 44, resolved/zone 39, resolved/answer 38
+  priors applied on 14599 steps; 18 worlds to refuse
+  the short context: a bare no stopped the bot 100, corrections and fragments 380, repeats 59, the standing pin as the place not said 381; 411 scenarios without the game's clock
+  285 scenarios in a world without named places; 102 orders at "here"; 645 questions answered by pointing; 30 steps with a queued order at "here"
+  lines of several orders: 574 further orders of a line, 196 of them given the place of the order before them; "the other" in answer to "Which ...?" 87 times, 22 of them settled by it and 30 answered with the next one
+v67 ensemble, build_v67.py out-of-fold (three seeds): gate family, threshold 0.66 (the owner's; fitted 0.78)
+  VCTK pool B, r6+cs       n=1370  near 78.6  wrong family 6.4%  criterion 65.9
+  typed, all lines         n=2055  near 93.9  wrong family 2.2%  criterion 89.5
+  typed, v64 lines         n= 180  near 96.7  wrong family 1.1%  criterion 94.4
+  VCTK pool B, v64 lines   n= 120  near 72.5  wrong family 2.5%  criterion 67.5
+  typed, v62 lines         n= 117  near 83.8  wrong family 6.0%  criterion 71.8
+  VCTK pool B, v62 lines   n=  79  near 70.9  wrong family 5.1%  criterion 60.8
+  typed, v60 lines         n= 180  near 99.4  wrong family 0.0%  criterion 99.4
+  VCTK pool B, v60 lines   n= 120  near 86.7  wrong family 2.5%  criterion 81.7
+  typed, v1-v58 lines      n=1578  near 93.7  wrong family 2.3%  criterion 89.2
+  VCTK pool B, v1-v58      n=1051  near 79.0  wrong family 7.3%  criterion 64.3
+  Russian voices, r6+cs    n=1170  near 70.9  wrong family 8.0%  criterion 54.9
+  German voices, r6+cs     n=1170  near 81.1  wrong family 5.9%  criterion 69.3
+  owner, per line          n= 649  right 88.0  say again / ignored 7.4%  wrong family 3.9%
+  owner, per time said     n=1061  right 91.9  say again / ignored 4.6%  wrong family 3.0%
+  owner v64 lines (boxes)  n=  24  right 87.5  say again / ignored 4.2%  wrong family 8.3%
+  owner v65 lines          n=  33  right 97.0  say again / ignored 3.0%  wrong family 0.0%
+  owner v66 lines          n=  71  right 93.0  say again / ignored 2.8%  wrong family 2.8%

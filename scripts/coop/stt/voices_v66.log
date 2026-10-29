@@ -1,0 +1,9 @@
+03:12:50  start
+03:12:50  export seeds               0 s  224 new seed commands
+03:12:51  windows seeds              1 s  wav_seedclean: 224 new files
+03:15:31  piper/kokoro seeds       160 s  kokoro 160s
+03:16:00  stt seedclean             28 s      'Take the left path.' | None
+03:16:28  stt seedkokoro            28 s      'Take the left path.' | None
+03:16:56  stt seedkokorox           28 s      'Take the last bus.' | None
+03:17:22  stt seedvctkA             26 s      'Take the left path.' | None
+03:17:22  done

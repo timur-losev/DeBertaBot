@@ -23,6 +23,7 @@
 //                                 with --tts-piper DIR it hands the game each line as audio instead (Piper, voice.h);
 //                                 with both, the system's voice is there for a Piper voice that does not load
 //   coop_cli --speech-text-tests FILE   SpeechTextForClassifier against the Python `norm` (no model)
+//   coop_cli --time-tests FILE    FindTimePhrase against scripts/coop/time_phrase.py (time_phrase_tests.jsonl; no model)
 // with speech-to-text (a build that found sherpa-onnx under third_party/):
 //   coop_cli --voice              the chat with a microphone: hold SPACE and talk, release to send; a typed
 //                                 line still works (Windows, macOS)
@@ -99,6 +100,7 @@
 #include "coop_intent/localize.h"
 #include "coop_intent/rewriter.h"
 #include "coop_intent/speech.h"
+#include "coop_intent/time_phrase.h"
 #include "coop_intent/tokenizer.h"
 #include "coop_intent/unicode.h"
 #include "coop_intent/voice.h"
@@ -297,8 +299,11 @@ bool LoadConfig(Model& m, std::string* err) {
             // the pin_* and point_* word lists came with rule set v5: a bot exported before it has none, and
             // its places are matched by rule set v4 (or v3) as before. LocationMatcher::Init refuses a
             // vocabulary that has only some of them, or has them without "directions"
-            for (const auto& list : c.locations.words)
+            for (const auto& list : c.locations.words) {
                 c.locations.has_pointers = c.locations.has_pointers || coop::LocationVocab::PointerList(list.first);
+                c.locations.has_it = c.locations.has_it || coop::LocationVocab::ItList(list.first);   // rule set v8
+                c.locations.has_means = c.locations.has_means || coop::LocationVocab::MeansList(list.first);   // rule set v9
+            }
         }
         if (j.contains("items")) {   // what the farmer's and the builder's orders act on (scripts/coop/items_v60.json): v60 bots
             const json& I = j.at("items");
@@ -445,6 +450,7 @@ coop::Scene SceneFromJson(const json& s) {
     sc.standing_on = StrOrEmpty(s, "standing_on");
     if (s.contains("car_m") && !s["car_m"].is_null()) sc.has_car = true, sc.car_m = s["car_m"].get<double>();
     if (s.contains("last") && s["last"].is_object()) sc.last = StrOrEmpty(s["last"], "thing"), sc.last_m = s["last"].value("m", 0.0);
+    sc.failed = StrOrEmpty(s, "failed");   // decoder v67: "<order>, <why>" of an order the bot could not carry out lately
     return sc;
 }
 
@@ -477,6 +483,16 @@ bool ParseWorld(const json& j, coop::WorldState* w, std::string* err) {
             w->bot_stance = j["bot"].value("stance", std::string("stand"));
             w->bot_items = j["bot"].value("items", std::vector<std::string>{});
             w->bot_busy = j["bot"].value("busy", false);
+        }
+        // where the crosshair was while the talk key was down: [{"t": seconds since the key went down, "gaze": an entity id or null}]
+        if (j.contains("talk_trail") && j["talk_trail"].is_array()) {
+            for (const json& s : j["talk_trail"]) {
+                const std::string g = StrOrEmpty(s, "gaze");
+                bool known = g.empty();
+                for (const coop::WorldEntity& e : w->entities) known = known || e.id == g;
+                if (known) w->talk_trail.emplace_back(s.value("t", 0.0), g);
+            }
+            std::sort(w->talk_trail.begin(), w->talk_trail.end(), [](const auto& a, const auto& b) { return a.first < b.first; });
         }
         if (j.contains("scene") && j["scene"].is_object()) {
             const coop::Scene sc = SceneFromJson(j["scene"]);
@@ -533,7 +549,9 @@ std::string OrderStr(const coop::PlannerResult& r, const Model& m, const coop::L
     return s + "]/" + (*dir ? dir : "-") + "/" + (o.zone >= 0 ? places.ZoneId(o.zone) : "-") + "/" + (*ptr ? ptr : "-") + "/" + (o.other ? "1" : "0") +
            "/" + (o.via.empty() ? "-" : o.via) + "/" + (o.nearby ? "1" : "0") +
            (with_object ? "/" + (o.object >= 0 ? places.ObjectId(o.object) : std::string("-")) : std::string()) +
-           (o.has_item ? "/item:" + (o.item.empty() ? std::string("-") : o.item) + "/" + (o.item_id.empty() ? std::string("-") : o.item_id) : std::string());
+           (o.has_item ? "/item:" + (o.item.empty() ? std::string("-") : o.item) + "/" + (o.item_id.empty() ? std::string("-") : o.item_id) : std::string()) +
+           (o.has_means ? "/means:" + (o.means.empty() ? std::string("-") : o.means) + "/" + (o.means_object >= 0 ? places.ObjectId(o.means_object) : std::string("-"))
+                        : std::string());
 }
 std::string OrderStr(const json& o) {
     if (o.is_null()) return "-";
@@ -544,7 +562,8 @@ std::string OrderStr(const json& o) {
     return s + "]/" + LabelStr(o["direction"]) + "/" + LabelStr(o["zone"]) + "/" + LabelStr(o["pointer"]) + "/" + FlagStr(o["other"]) +
            "/" + (o.contains("via") ? LabelStr(o["via"]) : std::string("(no via: regenerate world_tests.jsonl)")) + "/" +
            (o.contains("near") ? FlagStr(o["near"]) : std::string("?")) + (o.contains("object") ? "/" + LabelStr(o["object"]) : std::string()) +
-           (o.contains("item") ? "/item:" + LabelStr(o["item"]) + "/" + LabelStr(o["item_id"]) : std::string());
+           (o.contains("item") ? "/item:" + LabelStr(o["item"]) + "/" + LabelStr(o["item_id"]) : std::string()) +
+           (o.contains("means") ? "/means:" + LabelStr(o["means"]) + "/" + LabelStr(o["means_object"]) : std::string());
 }
 // the frame of the previous order: intent / it had a place / the place's entity / how it was found / when / it keeps
 // what the order's own line called the place
@@ -1092,6 +1111,9 @@ const std::unordered_map<std::string, std::vector<std::string>> kLines = {
     {"PUSH", {"Pushing it.", "Shoving it over.", "Moving it."}},
     {"ROLL", {"Rolling it.", "Rolling it over.", "On it, rolling."}},
     {"DROP", {"Putting it down.", "Setting it down.", "Dropping it."}},
+    // the v66 bots: out of the player's way; what the thing looked at is, is the game's answer (the reply carries "state")
+    {"GIVE_WAY", {"Out of your way.", "Making room.", "Stepping aside."}},
+    {"WHAT_IS_IT", {""}},
 };
 // SMALL_TALK (bot v62): the answer by what the line asks, the first kind whose words it has; none: kTalk "other"
 const std::vector<std::pair<std::string, std::vector<std::string>>> kTalkWords = {
@@ -1255,6 +1277,49 @@ struct Chain {
 };
 
 Chain* g_chain = nullptr;   // set by --chain DIR; every Chat uses it
+
+// --serve: the game shows the bot's brain starting (2026-10-28, the owner: "прогресс стартовой инициализации моделей бота").
+// Before each part loads, one line {"event":"loading","part":"...","at":0.41,"until":0.6,"expect_ms":2900,"ms":6179}: "at" and
+// "until" are the shares of the whole start done when the part begins and when it should end, "expect_ms" how long it should
+// take (the game moves its bar on within the part by the clock), "ms" the time since the start. The shares come from the parts
+// this start will load and their times on the work machine (2026-10-28, i9 + RTX: kLoadMs); "ready" is the end. Other modes
+// print nothing of it.
+bool g_load_events = false;
+Clock::time_point g_load_t0;
+std::vector<std::pair<std::string, double>> g_load_plan;   // the parts this start loads, in order, with their expected ms
+
+double ExpectedLoadMs(const std::string& part) {
+    static const std::pair<const char*, double> kLoadMs[] = {
+        {"the intent classifier", 6200}, {"the language model", 2900}, {"the planner", 60}, {"the voice", 1600},
+        {"the voice in the player's language", 1650}, {"speech recognition", 2550}, {"the microphone", 60}};
+    for (const auto& p : kLoadMs)
+        if (part == p.first) return p.second;
+    return 500;
+}
+
+void PlanLoading(const std::vector<std::string>& parts) {
+    g_load_plan.clear();
+    for (const std::string& p : parts) g_load_plan.emplace_back(p, ExpectedLoadMs(p));
+}
+
+void Loading(const char* part) {
+    if (!g_load_events) return;
+    double total = 0, before = 0, expect = ExpectedLoadMs(part);
+    bool found = false;
+    for (const auto& p : g_load_plan) {
+        total += p.second;
+        if (p.first == part) found = true;
+        else if (!found) before += p.second;
+    }
+    const double at = found && total > 0 ? before / total : 0.0;
+    const double until = found && total > 0 ? (before + expect) / total : at;
+    const json j = {{"event", "loading"}, {"part", part}, {"at", at}, {"until", until}, {"expect_ms", static_cast<int>(expect)},
+                    {"ms", static_cast<int>(Ms(Clock::now() - g_load_t0))}};
+    std::fflush(stdout);   // the log lines printed so far first: they are the game's log
+    std::fputs(j.dump().c_str(), stdout);
+    std::fputc('\n', stdout);
+    std::fflush(stdout);
+}
 
 // --language en|ru|es: the player's language. English goes as it always went (the router sends a line to the decoder only
 // when it gives several orders or leans on the talk). Russian and Spanish lines all go to the decoder (a chain whose decoder
@@ -1548,7 +1613,93 @@ struct Chat {
         std::string state;      // a question only the game can answer (StateQuestion): "seen", "how", "hurt", "heat", ...
         std::vector<float> p;   // the classifier's probabilities
         double ms = 0;
+        double at = -1;         // when its pointer word was said, seconds since the talk key went down; -1: not known
+        coop::TimePhrase time;  // the time said with it (round v68): "wait 5 seconds", "in 10 seconds go to the door"
     };
+
+    // A time said with an order outlives the line it was said in (round v68): the order the bot asked about ("hold the
+    // door for 20 seconds" -> "Which door?" -> "the north one"), the one queued for "go", the last one for "again"
+    coop::TimePhrase asked_time, queued_time, last_time;
+
+    // the bot's words for the time ("10 seconds.", "In 10 seconds.", "A few seconds."), one sentence the reply tables
+    // translate (one {n} a sentence, whole numbers: the game keeps the exact time)
+    static std::string TimeWords(const coop::TimePhrase& t) {
+        if (!t.found) return {};
+        if (t.range) {
+            const bool few = t.min == 3.0 && t.max == 7.0;
+            if (few) return t.after ? "In a few seconds." : "A few seconds.";
+            return "About " + std::to_string(static_cast<int>(std::lround((t.min + t.max) / 2.0))) + " seconds.";
+        }
+        const int n = std::max(1, static_cast<int>(std::lround(t.seconds)));
+        const std::string unit = n == 1 ? " second." : " seconds.";
+        if (t.after) return "In " + std::to_string(n) + unit;
+        if (t.more) return std::to_string(n) + (n == 1 ? " more second." : " more seconds.");
+        return std::to_string(n) + unit;
+    }
+
+    // The words of the spoken line being heard and where their clock starts (respond sets them for one Hear): each order
+    // line with a pointer ("this", "here", «эту», «сюда», "aquí") is read with the crosshair where it was when that word
+    // was said, from the game's talk_trail ("take this box", run, "put it here", let go of the key)
+    std::vector<coop::SpeechWord> words;
+    double clip_start = 0;
+
+    // lower case for the pointer words: ASCII and Cyrillic, the punctuation the recognizer prints dropped
+    static std::string LowerWord(const std::string& w) {
+        std::u32string u = coop::DecodeUtf8(w), out;
+        for (char32_t c : u) {
+            if (c >= U'A' && c <= U'Z') c += 32;
+            else if (c >= U'А' && c <= U'Я') c += 32;
+            else if (c == U'Ё') c = U'ё';
+            if ((c >= U'a' && c <= U'z') || (c >= U'а' && c <= U'я') || c == U'ё' || c >= 0xC0) out += c;
+        }
+        return coop::EncodeUtf8(out);
+    }
+    static bool IsPointer(const std::string& lower) {
+        static const std::unordered_set<std::string> kPointers = {
+            "this", "that", "these", "those", "here", "there",
+            "\xD1\x8D\xD1\x82\xD0\xBE", "\xD1\x8D\xD1\x82\xD1\x83", "\xD1\x8D\xD1\x82\xD0\xBE\xD1\x82", "\xD1\x8D\xD1\x82\xD0\xB0",   // это эту этот эта
+            "\xD1\x8D\xD1\x82\xD0\xB8", "\xD1\x8D\xD1\x82\xD0\xBE\xD0\xB9", "\xD1\x8D\xD1\x82\xD0\xBE\xD0\xB3\xD0\xBE",                 // эти этой этого
+            "\xD1\x82\xD0\xBE\xD1\x82", "\xD1\x82\xD1\x83", "\xD1\x82\xD0\xB0", "\xD1\x82\xD0\xB5",                                    // тот ту та те
+            "\xD1\x81\xD1\x8E\xD0\xB4\xD0\xB0", "\xD1\x82\xD1\x83\xD0\xB4\xD0\xB0", "\xD0\xB7\xD0\xB4\xD0\xB5\xD1\x81\xD1\x8C",       // сюда туда здесь
+            "\xD1\x82\xD0\xB0\xD0\xBC", "\xD0\xB2\xD0\xBE\xD0\xBD",                                                                     // там вон
+            "esto", "esta", "este", "eso", "esa", "ese", "estos", "estas", "aqu\xC3\xAD", "all\xC3\xAD", "ah\xC3\xAD", "ac\xC3\xA1",
+            "all\xC3\xA1"};
+        return kPointers.count(lower) > 0;
+    }
+    // when each pointer of the line was said, seconds since the key went down; a run of them ("вон туда", "right there")
+    // is one, at its first word
+    std::vector<double> PointerMoments() const {
+        std::vector<double> out;
+        bool last = false;
+        for (const coop::SpeechWord& w : words) {
+            const bool pointer = IsPointer(LowerWord(w.text));
+            if (pointer && !last) out.push_back(w.start + clip_start);
+            last = pointer;
+        }
+        return out;
+    }
+    static bool LinePoints(const std::string& line) {
+        std::string word;
+        for (size_t i = 0; i <= line.size(); ++i) {
+            const char c = i < line.size() ? line[i] : ' ';
+            if (c == ' ' || c == ',' || c == '.' || c == '!' || c == '?' || c == ';') {
+                if (!word.empty() && IsPointer(LowerWord(word))) return true;
+                word.clear();
+            } else {
+                word += c;
+            }
+        }
+        return false;
+    }
+    // the entity under the crosshair at a moment of the talk_trail; empty: none known then (the line's own gaze stays)
+    std::string TrailGaze(double at) const {
+        std::string g;
+        for (const auto& [t, id] : planner.World().talk_trail) {
+            if (t > at) break;
+            g = id;
+        }
+        return g;
+    }
 
     // what one line of the player led to: a turn per order line gone through, and how the line got there
     struct Heard {
@@ -1678,10 +1829,21 @@ struct Chat {
         std::string kept;
         for (const Line& l : todo) kept += (kept.empty() ? "" : " ") + l.heard + (std::string(".!?").find(l.heard.back()) == std::string::npos ? "." : "");
         if (todo.empty()) todo.push_back({heard, text});
+        // each order line with a pointer is read with the crosshair as it was at its own pointer word, in the order said
+        const std::vector<double> moments = PointerMoments();
+        const std::string line_gaze = planner.World().player_gaze;
+        size_t next_moment = 0;
         for (size_t k = 0; k < todo.size(); ++k) {
             Turn t;
             t.line = todo[k].heard;
-            if (!Think(todo[k].heard, todo[k].text, &t, err, k > 0)) return false;
+            if (next_moment < moments.size() && LinePoints(todo[k].heard)) {
+                t.at = moments[next_moment++];
+                const std::string g = TrailGaze(t.at);
+                if (!g.empty()) planner.SetGaze(g);
+            }
+            const bool ok = Think(todo[k].heard, todo[k].text, &t, err, k > 0);
+            planner.SetGaze(line_gaze);
+            if (!ok) return false;
             if (k == 0 && !second.empty() && t.r.action == "say_again" && planner.Mem().has_question) {
                 // "say again" changed nothing in the bot or the planner: the decoder's reading of the answer goes instead
                 t = Turn();
@@ -1780,7 +1942,13 @@ struct Chat {
 
     // the line through the classifier and the planner, and the reply chosen for it; nothing is printed. continued: a
     // further order line of the line the player just said (world.h, "a line of several orders")
-    bool Think(const std::string& heard, const std::string& text, Turn* turn, std::string* err, bool continued = false) {
+    bool Think(const std::string& heard_line, const std::string& text_line, Turn* turn, std::string* err, bool continued = false) {
+        // the time said with the order (round v68, time_phrase.h): it never changes what the order is, so the classifier,
+        // the slots and the places read the line without it ("run forward for 10 seconds" was MOVE_TO 0.69, "run forward"
+        // is not in doubt); the time goes with the turn
+        std::string heard = heard_line, text = text_line;
+        turn->time = coop::FindTimePhrase(heard_line, &heard);
+        if (turn->time.found) coop::FindTimePhrase(text_line, &text);
         if (!Read(text, err)) return false;
         turn->p = p;
         turn->ms = read_ms;   // the classifier's time for this text, whichever step asked for it first
@@ -1820,6 +1988,10 @@ struct Chat {
             turn->state = intent == "STATUS_REPORT" ? (part == "seen" ? "seen" : "how")
                                                     : (part.empty() || part == "seen" || part == "how" ? "body" : part);
             reply.clear();
+        } else if (intent == "WHAT_IS_IT") {
+            // "what is that" (bot v66): the game names the thing under the crosshair
+            turn->state = "what";
+            reply.clear();
         } else if (intent == "MOVE_TO") {
             // "got any ammo?": the planner may have asked where the ammo is; the question is the bot's, not the walk's
             turn->state = StateQuestion(text, false, true);
@@ -1831,6 +2003,22 @@ struct Chat {
             turn->state = StateQuestion(text, intent == "SMALL_TALK" || intent == "NONE" || d.action == coop::Action::Ignore);
             if (!turn->state.empty()) reply.clear();
         }
+        // the time of an order made later from an earlier line: the answer to the bot's question, "go" for a queued order,
+        // "again"; a time said now wins
+        if (!turn->time.found) {
+            if (r.action == "resolved" && asked_time.found) turn->time = asked_time;
+            else if (d.action == coop::Action::Execute && queued_time.found) turn->time = queued_time;
+            else if (intent == "REPEAT" && last_time.found) turn->time = last_time;
+        }
+        if (r.action == "ask") asked_time = turn->time;
+        else if (r.action != "resolved" && !planner.Mem().has_question) asked_time = coop::TimePhrase{};
+        if (d.action == coop::Action::Queued) queued_time = turn->time;
+        else if (d.action == coop::Action::Execute || d.action == coop::Action::Wait || d.action == coop::Action::Negated) queued_time = coop::TimePhrase{};
+        const bool orders = r.action == "resolved" || d.action == coop::Action::Act || d.action == coop::Action::Execute ||
+                            d.action == coop::Action::Wait || d.action == coop::Action::Go;
+        if (orders) last_time = turn->time;
+        // ... and the bot says it ("Holding up. 10 seconds."), with an order it takes now; a question waits for its answer
+        if (turn->time.found && orders && r.action != "ask" && !reply.empty()) reply += " " + TimeWords(turn->time);
         return true;
     }
 
@@ -1995,6 +2183,33 @@ int RunSpeechTextTests(const std::string& path) {
     }
     std::printf("speech text tests, %zu lines: the classifier's text equals the Python one on %zu/%zu\n", rows.size(), same, rows.size());
     return same == rows.size() ? 0 : 1;
+}
+
+// --time-tests FILE: the C++ time phrases against the Python's (scripts/coop/time_phrase.py --write)
+int RunTimeTests(const std::string& path) {
+    std::string raw;
+    if (!ReadFile(path, &raw)) return std::fprintf(stderr, "cannot read %s\n", path.c_str()), 1;
+    size_t n = 0, same = 0;
+    std::istringstream in(raw);
+    for (std::string line; std::getline(in, line);) {
+        if (line.empty() || line[0] != '{') continue;
+        const json r = json::parse(line);
+        ++n;
+        std::string rest;
+        const coop::TimePhrase t = coop::FindTimePhrase(r.at("line").get<std::string>(), &rest);
+        json got = nullptr;
+        if (t.found) {
+            got = {{"kind", t.after ? "after" : "for"}, {"more", t.more}, {"capped", t.capped}, {"said", t.said}};
+            if (t.range) got["min"] = t.min, got["max"] = t.max;
+            else got["seconds"] = t.seconds;
+        }
+        const bool ok = got == r.at("time") && rest == r.at("rest").get<std::string>();
+        if (ok) ++same;
+        else std::printf("  %s: C++ %s %s, Python %s %s\n", Escaped(r.at("line")).c_str(), got.dump().c_str(), Escaped(rest).c_str(),
+                         r.at("time").dump().c_str(), Escaped(r.at("rest")).c_str());
+    }
+    std::printf("time tests, %zu lines: the C++ equals the Python on %zu/%zu\n", n, same, n);
+    return n > 0 && same == n ? 0 : 1;
 }
 
 // samples in -1..1 as 16-bit little-endian PCM
@@ -2188,10 +2403,16 @@ bool HearAndRespond(Chat& chat, const coop::SpeechRecognizer& stt, const std::ve
                     std::string* err) {
     const auto t0 = Clock::now();
     std::string heard;
-    if (!stt.Transcribe(clip.data(), clip.size(), rate, &heard, err)) return false;
+    std::vector<coop::SpeechWord> words;
+    if (!stt.Transcribe(clip.data(), clip.size(), rate, &heard, err, &words)) return false;
     heard = StripPy(heard);
     std::printf("%s%s   [%.1f s of audio, recognized in %.0f ms]\n", prefix, heard.empty() ? "(nothing recognized)" : heard.c_str(),
                 static_cast<double>(clip.size()) / rate, Ms(Clock::now() - t0));
+    if (!words.empty()) {   // when each word began, as the game is told it
+        std::string w;
+        for (const coop::SpeechWord& x : words) w += (w.empty() ? "" : " ") + x.text + "@" + std::to_string(x.start).substr(0, 4);
+        std::printf("%s  words: %s\n", prefix, w.c_str());
+    }
     if (heard.empty()) return true;
     return chat.Respond(heard, coop::SpeechTextForClassifier(heard), err);
 }
@@ -2511,6 +2732,8 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads, const std::s
 //        label has; the reply table takes the player's (localize.h Terms)
 //   {"cmd":"reset"} {"cmd":"threshold","value":0.7} {"cmd":"ping"} {"cmd":"quit"}
 //
+//   {"event":"loading","part":"the language model","at":0.41,"until":0.61,"expect_ms":2900,"ms":6090}   before each part
+//        of the start loads (Loading): the game shows the brain waking up; "ready" ends it
 //   {"event":"ready","labels":[...],"gate":"family","threshold":0.68,"stt":true,"mic":true,"tts":true,...}
 //   {"event":"reply","id":7,"heard":"hold the door","spoken":false,"intent":"HOLD_ANGLE","prob":1.0,
 //    "action":"ask","say":"Which door? The one ahead, 8 m?","order":null,"question":{...},...}
@@ -2528,7 +2751,14 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads, const std::s
 //        "resumed" of them),"note","route_ms","rewrite_ms"}
 //        "state" (a turn's, 2026-10-24): a question about the bot that only the game can answer, with no order and no
 //        words: "seen" (what it sees and senses), "how" (everything), "body" (all of its body), "hurt", "heat", "cold", "gas",
-//        "ammo" (StateQuestion; a v64 bot's STATUS_REPORT and BODY_STATE always carry one).
+//        "ammo" (StateQuestion; a v64 bot's STATUS_REPORT and BODY_STATE always carry one); "what" (bot v66's WHAT_IS_IT:
+//        the game names the thing under the crosshair).
+//        "time" (a turn's, round v68, time_phrase.h): the time said with the order, null when none: {"kind": "for" (it
+//        lasts that long) | "after" (it starts after it), "seconds": 10 | "min": 3, "max": 7 (a random time, the game
+//        draws), "more" (added to a timed order still running), "capped" (longer than 60 s, cut), "said"}. WAIT carries it
+//        too (its order is null). The classifier, the slots and the places read the line without it; the bot's words get
+//        one sentence for it ("10 seconds.", "In 10 seconds.", "A few seconds."). Kept for the order the bot asked about,
+//        the one queued for "go" and "again".
 //        With --replies-bro: "bro" "on" / "off" when the line switched the habit (bro.h; "off" comes with the bot's
 //        agreement as its words and SMALL_TALK, nothing else read), "bro_active" whether this reply was written with it
 //   {"event":"nothing","id":8,...}    the clip had no words;  {"event":"too_short","id":8}
@@ -2551,6 +2781,7 @@ json ReplyJson(Chat& chat, const Chat::Turn& t) {
     j["prob"] = d.prob;
     j["action"] = r.action;
     j["say"] = t.reply;
+    if (t.at >= 0) j["at_s"] = std::round(t.at * 1000) / 1000;   // the moment of its pointer word: the game grounds it then
     if (g_replies && !t.reply.empty()) {
         std::string local;
         if (Localize(t.reply, &local)) j["say"] = local, j["say_en"] = t.reply;
@@ -2561,6 +2792,17 @@ json ReplyJson(Chat& chat, const Chat::Turn& t) {
     j["other"] = d.other;
     j["negated"] = d.negated;
     j["adjusted"] = r.adjusted;
+    // round v68: the time said with the order, on the turn (WAIT has no order object): {"kind": "for" | "after", "seconds":
+    // 10} or {"kind", "min": 3, "max": 7} (the game draws), "more" (add to a timed order still running), "capped" (said
+    // longer than 60 s), "said"; null when none
+    if (t.time.found) {
+        json time = {{"kind", t.time.after ? "after" : "for"}, {"more", t.time.more}, {"capped", t.time.capped}, {"said", t.time.said}};
+        if (t.time.range) time["min"] = t.time.min, time["max"] = t.time.max;
+        else time["seconds"] = t.time.seconds;
+        j["time"] = time;
+    } else {
+        j["time"] = nullptr;
+    }
     json top = json::array();
     for (int i : coop::TopK(t.p, 3)) top.push_back({m.cfg.labels[static_cast<size_t>(i)], t.p[static_cast<size_t>(i)]});
     j["top"] = top;
@@ -2580,6 +2822,10 @@ json ReplyJson(Chat& chat, const Chat::Turn& t) {
         if (o.has_item) {   // the farmer's and the builder's orders: what it acts on, as said, and the game's catalogue entry
             j["order"]["item"] = or_null(o.item);
             j["order"]["item_id"] = or_null(o.item_id);
+        }
+        if (o.has_means) {  // rule set v9 (bot v67): the thing it is done with ("using the crate"), and its object
+            j["order"]["means"] = or_null(o.means);
+            j["order"]["means_object"] = o.means_object >= 0 ? json(places.ObjectId(o.means_object)) : json(nullptr);
         }
     } else {
         j["order"] = nullptr;
@@ -2656,6 +2902,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
     Chat chat(m);
     chat.why = false;
     std::string err;
+    Loading("the planner");
     if (!chat.Init(&err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
     bool stt_ready = false, mic_ready = false, tts_ready = false;
     std::string stt_note, mic_note, tts_note, tts_kind;
@@ -2666,6 +2913,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
 #ifdef COOP_WITH_STT
     coop::PiperVoice voice, voice_local;
     if (piper) {
+        Loading("the voice");
         piper_ready = voice.Load(*piper, &err);
         tts_ready = piper_ready;
         tts_note = piper_ready ? voice.Describe() : err;
@@ -2673,6 +2921,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
     }
     // the player's language's voice (--voice-local): the lines written in it are said with it
     if (piper_ready && local_voice) {
+        Loading("the voice in the player's language");
         local_ready = voice_local.Load(*local_voice, &err);
         local_note = local_ready ? voice_local.Describe() : err;
     }
@@ -2694,6 +2943,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
 #ifdef COOP_WITH_STT
     coop::SpeechRecognizer stt;
     if (want_stt) {
+        Loading("speech recognition");
         stt_ready = LoadSpeech(stt, speech, &err);
         if (!stt_ready) stt_note = err;
     } else {
@@ -2702,6 +2952,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
 #ifdef _WIN32
     MicCapture mic;
     if (stt_ready) {
+        Loading("the microphone");
         mic_ready = mic.Start(&err);
         if (!mic_ready) mic_note = err;
     }
@@ -2829,7 +3080,10 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 }
             }
             // a heard or typed line through the classifier and the planner
-            auto respond = [&](const std::string& raw, bool spoken, double audio_s, double stt_ms) {
+            // words: the transcript's words with their start times (SpeechWord); clip_start: where the clip's second 0 is from
+            // the talk key going down (the microphone's pre-roll comes before it)
+            auto respond = [&](const std::string& raw, bool spoken, double audio_s, double stt_ms,
+                               const std::vector<coop::SpeechWord>* words = nullptr, double clip_start = 0) {
                 const std::string heard = StripPy(raw);
                 if (heard.empty()) {
                     send({{"event", "nothing"}, {"id", id}, {"audio_s", audio_s}, {"stt_ms", stt_ms}});
@@ -2863,12 +3117,16 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 }
                 Chat::Heard h;
                 json turns = json::array();
-                if (!chat.Hear(heard, spoken ? coop::SpeechTextForClassifier(heard) : heard, &h, &err, [&](const Chat::Heard&, const Chat::Turn& t) {
+                chat.words = words ? *words : std::vector<coop::SpeechWord>();
+                chat.clip_start = clip_start;
+                const bool heard_ok = chat.Hear(heard, spoken ? coop::SpeechTextForClassifier(heard) : heard, &h, &err, [&](const Chat::Heard&, const Chat::Turn& t) {
                         json turn = ReplyJson(chat, t);
                         turn.erase("event");
                         turn["line"] = t.line;
                         turns.push_back(std::move(turn));
-                    })) {
+                    });
+                chat.words.clear();
+                if (!heard_ok) {
                     fail(err);
                     return;
                 }
@@ -2922,6 +3180,12 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 j["spoken"] = spoken;
                 j["audio_s"] = audio_s;
                 j["stt_ms"] = stt_ms;
+                if (words && !words->empty()) {   // when each word was said: the game grounds each order at its own moment
+                    json w = json::array();
+                    for (const coop::SpeechWord& x : *words) w.push_back({{"w", x.text}, {"t", std::round(x.start * 1000) / 1000}});
+                    j["words"] = std::move(w);
+                    j["clip_start_s"] = clip_start;
+                }
                 send(j);
             };
             if (cmd == "text") {
@@ -2961,11 +3225,13 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 } else {
                     const auto t0 = Clock::now();
                     std::string heard;
-                    if (!stt.Transcribe(clip.data(), clip.size(), MicCapture::kSampleRate, &heard, &err)) {
+                    std::vector<coop::SpeechWord> words;
+                    if (!stt.Transcribe(clip.data(), clip.size(), MicCapture::kSampleRate, &heard, &err, &words)) {
                         fail(err);
                         continue;
                     }
-                    respond(heard, true, static_cast<double>(clip.size()) / MicCapture::kSampleRate, Ms(Clock::now() - t0));
+                    respond(heard, true, static_cast<double>(clip.size()) / MicCapture::kSampleRate, Ms(Clock::now() - t0), &words,
+                            -MicCapture::kPreRollSeconds);
                 }
 #else
                 fail("no microphone in this build");
@@ -2984,11 +3250,12 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 }
                 const auto t0 = Clock::now();
                 std::string heard;
-                if (!stt.Transcribe(x.data(), x.size(), rate, &heard, &err)) {
+                std::vector<coop::SpeechWord> words;
+                if (!stt.Transcribe(x.data(), x.size(), rate, &heard, &err, &words)) {
                     fail(err);
                     continue;
                 }
-                respond(heard, true, static_cast<double>(x.size()) / rate, Ms(Clock::now() - t0));
+                respond(heard, true, static_cast<double>(x.size()) / rate, Ms(Clock::now() - t0), &words, 0);
 #else
                 fail("this coop_cli was built without speech-to-text");
 #endif
@@ -3127,6 +3394,7 @@ int main(int argc, char** argv) {
         else if (a == "--tts") serve_tts = true;
         else if (a == "--tokenize" && i + 1 < argc) mode = "tokenize", tokenize_text = argv[++i];
         else if (a == "--speech-text-tests" && i + 1 < argc) mode = "speech-text-tests", speech_text_file = argv[++i];
+        else if (a == "--time-tests" && i + 1 < argc) mode = "time-tests", speech_text_file = argv[++i];
         else if (a == "--stt-model" && i + 1 < argc) speech.model_dir = argv[++i];
         else if (a == "--stt-threads" && i + 1 < argc) speech.threads = std::atoi(argv[++i]);
         else if (a == "--voice") mode = "voice";
@@ -3150,6 +3418,7 @@ int main(int argc, char** argv) {
     }
     std::string err;
     if (mode == "speech-text-tests") return RunSpeechTextTests(speech_text_file);
+    if (mode == "time-tests") return RunTimeTests(speech_text_file);
     if (mode == "tts-demo") {
 #ifdef COOP_WITH_STT
         if (piper.model_dir.empty()) return std::fprintf(stderr, "--tts-demo needs --tts-piper DIR\n"), 2;
@@ -3187,6 +3456,21 @@ int main(int argc, char** argv) {
     }
     const double mem0 = WorkingSetMb();
     const auto t0 = Clock::now();
+    g_load_events = mode == "serve";
+    g_load_t0 = t0;
+    if (g_load_events) {
+        std::vector<std::string> parts = {"the intent classifier"};
+        if (!chain.dir.empty()) parts.push_back("the language model");
+        parts.push_back("the planner");
+        if (!piper.model_dir.empty()) parts.push_back("the voice");
+        if (!piper.model_dir.empty() && !voice_local.model_dir.empty()) parts.push_back("the voice in the player's language");
+        if (serve_stt) {
+            parts.push_back("speech recognition");
+            parts.push_back("the microphone");
+        }
+        PlanLoading(parts);
+    }
+    Loading("the intent classifier");
     if (!LoadModels(m, opt, parallel, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
     const double load_ms = Ms(Clock::now() - t0);
     {   // a model that does not fit the config (another label set) is refused here, not mid-game
@@ -3198,6 +3482,7 @@ int main(int argc, char** argv) {
     }
     if (mode == "chain-tests" && chain.dir.empty()) return std::fprintf(stderr, "--chain-tests needs --chain DIR\n"), 2;
     if (!chain.dir.empty()) {
+        Loading("the language model");
         if (!LoadChain(chain, opt, decoder_cpu, decoder_threads, &err)) return std::fprintf(stderr, "%s: %s\n", chain.dir.c_str(), err.c_str()), 1;
         std::printf("chain: %s (%s, decoder on the %s, %d threads, loaded in %.0f ms)\n", chain.dir.c_str(),
                     chain.router ? "router and decoder" : "decoder, no router: every line goes to it", decoder_cpu ? "CPU" : "GPU",

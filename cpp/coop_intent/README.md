@@ -102,6 +102,32 @@ zone `inside` (locations.json version 7): "inside" said on the way to a map obje
 a place of its own ("get inside the car" = the car, "go inside through the west door" = the west door); a bare
 "inside", "indoors", "in the building" is the zone. The bots exported before keep their records.
 
+Rule set v8 (2026-10-27, the owner on the test range: "Can you see the white table?" "Yes." "Jump over it." jumped
+over a crate the bot had pushed before) adds a third pointer, `it`, taken only by a vocabulary with the `it_*` word lists
+(`scripts/coop/locations_v65.json`, version 11, made by `make_locations_v65.py`; the v65 bot was exported again with it,
+no training). "it" after an `it_prep` preposition ("jump over it", "get on it", "hide behind it"), an `it_verb` verb
+("open it", "shoot it", "pick it up") or "of" after `top` / `front` / `side` is a target of its own and never joins a
+place; "do it", "take it", "put it down", "it's" are not. The planner grounds it from the conversation first: the last
+thing an order or a settled question named, if the game's clock says it was 30 s ago or less (`world.IT_SECONDS`,
+`Memory::last_time`); then the crosshair. An "it" that points at nothing is dropped (`WithoutLostIt`), and the line is
+an order with no place, as before. Version 11 also lets a table take the colours (blue, red, yellow, white, brown): "the
+white table" was an unknown modifier, and the bot asked "Which table?" from the nearest. Checked on the v65 bot:
+places 60988/60988 (with 8000 generated "it" lines), planner 12076/12076 (with 300 conversations about a thing and "it"),
+decisions 244/244, dialogue 77/77, gates 11710/11710, items 92070/92070, tokenizer 13617/13617; chain tests 200/200 (CPU).
+
+DROP by a thing (2026-10-27, the owner on the test range: «Поставь его рядом с белым столом» with a crate in hand).
+- **What went wrong:** the decoder writes "put it down next to the white table", the classifier reads DROP, and DROP takes
+  no place (NO_PLACE). The table was lost, and the bot put the box down where it stood.
+- **The rule:** a DROP line whose primary place names a thing in words is DELIVER to it (`world.drops_by_thing`,
+  `Planner::DropsByThing`, before NO_PLACE drops the place).
+  - The carried thing itself is not the place: "put the box down" stays DROP, as `without_item_place` reads it for
+    DELIVER.
+  - A pointer ("here", "there", "it", the pin) or a zone ("outside") keeps DROP's own spot.
+  - The answer to "Which table?" that the decoder writes as "put it down the white table" now settles the question's
+    DELIVER.
+- **Tests:** `gen_world_tests.py` adds 150 conversations (`DROP_BY`, seed 8101). On bot v66: planner 12836/12836, the
+  other seven checks equal.
+
 ## Layout
 
 | file | what | into UE5 |
@@ -180,8 +206,8 @@ build\Release\coop_cli.exe --serve --no-spin --threads 1 --tts   # the bot as a 
     `voices.bin`; a `voice.json` in the folder gives its speaker and language). A line the game hands to `say` in English
     is translated first, sentence by sentence: sentences this brain already wrote stay as they are. The `speech` event's
     `text` and `lang` say what was said.
-  - `--replies-check FILE` translates every template with every value of each slot: every table (371 templates since
-    2026-10-24) passes 1048 of 1048.
+  - `--replies-check FILE` translates every template with every value of each slot: every table (438 templates since
+    2026-10-27, the door and climb lines of the GOAP phases added) passes 1361 of 1361.
   - A `say` may bring `terms`: the words of the level's labelled things in the player's language (the open slot `thing`;
     `Localizer::Terms`). A form `*` writes the English words as they came (the English table of the habit below).
 - `--replies-bro FILE --bro on|off --bro-relapse SECONDS` (2026-10-24, [bro.h](include/coop_intent/bro.h)): the habit of
@@ -315,6 +341,16 @@ game then sends to its server is an order, not this process's output.
   the world the game sent, `via` how the place was found ("gaze", "pin", "direction", "here" = where the speaker
   is, ...) and `near` that the line pointed with "this" or "here". `action` is the bot's (act, queued, execute, go, wait, negated, answer, say_again, ignore) or the
   planner's (ask, resolved). The whole protocol is in the comment above `RunServe` in `tools/coop_cli.cpp`.
+- **Each order at the moment of its pointer word** (2026-10-26). A spoken reply (`ptt_up`, `wav`) carries the
+  recognizer's words with their start times, `"words":[{"w":"Take","t":0.32},{"w":"this","t":0.88},...]`, and
+  `"clip_start_s"` (where the clip's second 0 is from the talk key going down: -0.2 for the microphone's pre-roll, 0 for
+  a file). The game may send `"talk_trail":[{"t":0.1,"gaze":"crate_26"},{"t":3.1,"gaze":null},...]` in the world: the
+  entity under the crosshair while the key was down. The k-th pointer of the heard words ("this", "that", "here",
+  "there", «эту», «это», «сюда», «туда», «вон», "aquí", "allí"...; a run of them is one) goes to the k-th order line
+  that points; that line is planned with the trail's entity of that moment as `player_gaze` (`Planner::SetGaze`), and
+  its turn carries `"at_s"`, the moment in seconds since the key went down, so that the game grounds it with the
+  crosshair and the player's place then ("take this box", run, "put it here"). A typed line has no words: nothing
+  changes. `SpeechWords` builds the words from Parakeet's token timestamps (SentencePiece's word mark).
 - A stdout line that does not start with `{` is a log line. The service ends when its stdin closes: it never
   outlives the game.
 - `--no-stt`: no recognizer and no microphone, typed lines only (headless tests). `--tts`: `say` speaks.

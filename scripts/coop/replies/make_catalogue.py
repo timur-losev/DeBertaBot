@@ -17,8 +17,8 @@ import io, json, os, re
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.normpath(os.path.join(HERE, "..", "..", ".."))
 CLI = os.path.join(REPO, "cpp", "coop_intent", "tools", "coop_cli.cpp")
-CONFIG = os.path.join(REPO, "scripts", "coop", "intents_v64.json")   # bot v64's phrases ("label") and places (locations_v64.json)
-PLACES = os.path.join(REPO, "scripts", "coop", "locations_v64.json")
+CONFIG = os.path.join(REPO, "scripts", "coop", "intents_v66.json")   # bot v66's phrases ("label") and places (locations_v66.json)
+PLACES = os.path.join(REPO, "scripts", "coop", "locations_v68.json")   # v14 (2026-10-28): bed is a bed, garden_bed, rock
 
 PLANNER = [
     ("Copy, stopping.", "world.cpp: a negated order stops the bot"),
@@ -43,6 +43,16 @@ PLANNER = [
     ("Going!", "coop_cli.cpp: 'go' with nothing queued"),
     ("Taking the other one.", "coop_cli.cpp: 'the other one'"),
     ("Ready.", "coop_cli.cpp: the voice's warm-up line"),
+    # round v68: the time said with an order, one sentence after the order's own words (coop_cli.cpp TimeWords)
+    ("{n} seconds.", "coop_cli.cpp: the order lasts that long ('Holding up. 10 seconds.')"),
+    ("1 second.", "coop_cli.cpp: the same, one second"),
+    ("In {n} seconds.", "coop_cli.cpp: the order starts after that long ('Relocating. In 10 seconds.')"),
+    ("In 1 second.", "coop_cli.cpp: the same, one second"),
+    ("{n} more seconds.", "coop_cli.cpp: added to a timed order still running"),
+    ("1 more second.", "coop_cli.cpp: the same, one second"),
+    ("A few seconds.", "coop_cli.cpp: 'a few seconds', the game draws 3 to 7"),
+    ("In a few seconds.", "coop_cli.cpp: starts after a few seconds"),
+    ("About {n} seconds.", "coop_cli.cpp: a range said ('10 to 15 seconds'): its middle"),
 ]
 REFUSE = [  # world.cpp kRefuse: the item the player named is not in the game's catalogue
     ("I can't build that: no {item} in my build menu.", "BUILD"), ("I can't plant that: I have no {item} to plant.", "PLANT_CROP"),
@@ -127,7 +137,61 @@ GAME = [  # the game's own lines (Source/LyraGame/CoopBot)
     ("Too high to jump on.", "JUMP onto a thing higher than the bot's jump"), ("Too high to jump over.", "JUMP over it: the same"),
     ("Nowhere to land over there.", "JUMP over a thing with no floor beyond it"), ("Didn't make it.", "JUMP over / onto: it landed short"),
     ("I can't get down from here.", "JUMP off what it stands on: no floor below its edges"),
+    # bot v66 (2026-10-27): what the thing looked at is, out of the way, out of the room, a butt strike on glass
+    ("That's {thing}.", "'what is that?': the thing under the player's crosshair (WHAT_THINGS)"), ("That's me.", "'what is that?' at the bot"),
+    ("Nothing there, just the sky.", "'what is that?' with the crosshair on nothing"),
+    ("No room to step aside.", "GIVE_WAY with no floor to either side"), ("I don't see a way out.", "'go outside' with no spot under open sky"),
+    ("Glass is broken.", "MELEE on glass: broken"), ("It won't break.", "MELEE on glass: four strikes and it holds"),
+    ("I can't get to the glass.", "MELEE on glass: no way to its edge"),
+    # 2026-10-27: doors (GOAP Phase 2: a shut door on the way, by hand or by its switch) and climbing (Phase 6: ledges, gaps, a crate as a step)
+    ("There's a ledge.", "climb (Phase 6): the way up is a ledge within a jump; followed by 'I'll jump up.'"),
+    ("I'll jump up.", "climb: the same"),
+    ("A gap.", "climb: the way is over a gap between two floors; followed by 'I'll jump it.'"),
+    ("I'll jump it.", "climb: the same"),
+    ("Too high to jump.", "climb: the ledge needs a crate as a step; followed by 'I'll get a crate.'"),
+    ("I'll get a crate.", "climb: the same"),
+    ("I can't get up there.", "climb: the jump up did not land, or the place is up where no ledge or crate gets it"),
+    ("I can't jump that.", "climb: the jump over the gap did not land"),
+    ("I can't get to the crate.", "climb: no way to the crate it meant to carry"),
+    ("The crate's gone.", "climb: the crate it meant to carry is no longer there"),
+    ("Time's up.", "a timed order's time is over (round v68): the bot goes back to what it did before"),
+    ("Didn't work.", "climb: the crate the order named was put down and tried, and the jump off it fell short; followed by 'Too high, even with the crate.'"),
+    ("Too high, even with the crate.", "climb: the same"),
+    ("Door's shut.", "doors (Phase 2): the way goes through a shut door; followed by 'Opening it.' or 'Getting the switch.'"),
+    ("Getting the switch.", "doors: the door opens from a switch; also OPEN on a switch-only door"),
+    ("Door's open.", "doors: it opened the door"),
+    ("Open.", "doors: it used a switch that is not a door's"),
+    ("It's open already.", "OPEN on a door that is open"),
+    ("It won't open.", "doors: used by hand and still shut"),
+    ("The switch did nothing.", "doors: the switch used and the door still shut"),
+    ("I can't open that.", "OPEN on a thing that is no door and no switch"),
+    ("I can't reach the door.", "doors: no way to the door's handle side"),
+    ("I can't reach the switch.", "doors: no way to the switch"),
+    ("I can't get to the switch.", "OPEN on a switch door whose switch has no way to it"),
+    ("I can't get to it.", "OPEN on a door by hand with no way to it"),
+    # 2026-10-28: the reasons after "I can't get there." (Planner/OVGateSubsystem.cpp Explain, the climb planner's why-not)
+    ("No way there, not even through a door.", "after 'I can't get there.': the gates find no way, doors open or shut"),
+    ("The door's shut; the switch is {n} m from it.", "after 'I can't get there.': a shut door on the way, opened by a switch (the planner then opens it)"),
+    ("The door's shut; I can open it.", "after 'I can't get there.': a shut door it opens by hand"),
+    ("The door's shut, and I see no switch.", "after 'I can't get there.': a shut door with no switch and no handle"),
+    ("{n} doors are shut on the way.", "after 'I can't get there.': several shut doors; followed by 'The first's shut...'"),
+    ("The first's shut; the switch is {n} m from it.", "the first of several shut doors, by a switch"),
+    ("The first's shut; I can open it.", "the first of several shut doors, by hand"),
+    ("The first's shut, and I see no switch.", "the first of several shut doors, no switch"),
+    ("The ledge is too high, and there's nothing to stand on.", "after 'I can't get there.': the climb planner found a ledge beyond its jump and no crate to reach"),
 ]
+# what the bot calls the thing under the crosshair (LyraStarterGame58 CoopBot OVCoop::ThingName and the client's BuildWorld):
+# the slot "thing" lists them, so that the reply tables say them in the player's language
+WHAT_THINGS = ["an enemy", "a teammate", "someone", "a switch", "the floor", "the ceiling", "a wall",
+               "a door", "a window", "the stairs", "a chair", "a sofa", "a table", "a car", "some ammo", "a weapon", "a health pack",
+               "a box", "a cable spool", "a teleport", "a field", "a garden bed", "a greenhouse", "a barn", "a chicken coop", "a beehive",
+               "a well", "a fence", "a tree", "a foundation", "a bed", "a rock", "a big rock", "a small rock",
+               "the blue bed", "the red bed", "the yellow bed", "the white bed", "the brown bed",
+               "the main door", "the north door", "the south door", "the west door", "the east door",
+               "the north window", "the south window", "the west window", "the east window",
+               "the blue table", "the red table", "the yellow table", "the white table", "the brown table",
+               "the blue stairs", "the red stairs", "the yellow stairs", "the white stairs", "the brown stairs",
+               "a cardboard box", "a big box", "a small box", "a big spool", "a small spool"]
 # the brat habit (coop_cli.cpp kBroOff, kBroRelapse; bro.h): the bot agrees to stop calling the player "bro", and the brat
 # persona slips 30 s later
 BRO = [("Okay, I won't anymore.", "the player told it to stop saying 'bro'"), ("Got it, no more.", "the same"),
@@ -152,7 +216,7 @@ SLOTS_NOTE = {
 SLOT_VALUES = {
     "where": ["on your pin", "here", "there", "to the left", "to the right", "forward", "back", "up", "down"],
     "sector": ["above", "below", "ahead", "behind you", "on the left", "on the right"],
-    "zone": ["the basement", "the first floor", "the second floor", "the top floor", "the roof", "the way up", "the way down",
+    "zone": ["the basement", "the first floor", "the second floor", "the top floor", "the roof", "the way up", "the way down", "the way out",
              "the way in", "that place"],
     "side": [s + h for s in ("ahead", "on us", "behind us", "right", "left") for h in ("", ", high", ", low")],
     "weapon": ["pistol", "rifle", "shotgun", "weapon"],
@@ -160,7 +224,7 @@ SLOT_VALUES = {
     "item": ["wall", "floor", "ramp", "roof", "door", "window", "stairs", "fence", "pillar", "foundation", "corn", "wheat",
              "carrots", "potatoes", "tomatoes", "seeds", "plants", "crops", "chickens", "cows", "pigs", "animals", "eggs", "milk",
              "wood", "planks", "stone", "metal", "ammo", "water", "field", "barn", "well"],
-    "thing": [],
+    "thing": WHAT_THINGS,   # open: a label the level designer gave is said as it is
 }
 
 
@@ -188,7 +252,8 @@ def sentences(line):
 def main():
     cfg = json.load(io.open(CONFIG, encoding="utf-8"))
     phrases = sorted({v["label"] for k, v in cfg.items() if not k.startswith("_") and isinstance(v, dict) and "label" in v})
-    objects = [o["id"] for o in json.load(io.open(PLACES, encoding="utf-8"))["objects"]] + ["place"]
+    # as the planner says them (world.py object_word: "garden_bed" is "garden bed")
+    objects = [o["id"].replace("_", " ") for o in json.load(io.open(PLACES, encoding="utf-8"))["objects"]] + ["place"]
     seen, out = {}, []
     for line, src in (chat_lines() + PLANNER + [(t, "world.cpp kRefuse " + i) for t, i in REFUSE] + [(t, "game: " + n) for t, n in GAME] +
                       [(t, "coop_cli.cpp bro habit: " + n) for t, n in BRO]):

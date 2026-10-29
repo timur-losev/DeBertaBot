@@ -1,0 +1,27 @@
+bot v67, decoder v68s; test66 items left out as the owner's own trained lines: ['t66_003', 't66_030', 't66_036', 't66_060', 't66_080', 't66_100', 't66_135', 't66_170']
+
+owner66: intent 71/71 = 100.0%, intent and place 71/71 = 100.0%   (en 71/71)
+
+hand66: intent 49/50 = 98.0%, intent and place 49/50 = 98.0%   (en 5/6, ru 44/44)
+  NO  Get in, get in!                                                                              read MOVE_TO        want GET_IN
+
+test66: intent 179/192 = 93.2%, intent and place 174/192 = 90.6%   (en 45/54, es 53/55, ru 76/83)
+  by rule: 0: 15/16, 1: 25/28, 2: 22/23, 3: 22/24, 4: 19/19, 5: 28/34, 6: 10/14, 7: 14/15, 8: 9/9, 9: 10/10
+  NO  Уйди, брат, не до тебя сейчас.               -> disengage, bro, not right now                read FALL_BACK      want GIVE_WAY
+  NO  отвали, не мешай пройти                      -> scratch that, don't interfere                read WAIT           want GIVE_WAY
+  NO  vete que estoy ocupado                       -> go busy                                      read NONE           want GIVE_WAY
+  NO  que estoy mirando tio                        -> look at me bro                               read LOOK_AT_ME     want WHAT_IS_IT
+  NO  шмальни в стекло под ногами                  -> shoot the glass on your feet                 read NONE           want OPEN_FIRE
+  NO  заложи заряд и взорви дверь                  -> plant the charge                             read PLANT          want BREACH
+  NO  nah use your gun                                                                             read SWITCH_WEAPON  want OPEN_FIRE
+  NO  No, hit it with the rifle butt.                                                              place: want window
+  NO  No, use smoke.                                                                               place: want door
+  NO  no, flashbang it                                                                             place: want door
+  NO  No, throw a frag.                                                                            place: want window
+  NO  no, suppress it                                                                              place: want window
+  NO  не спускай её                                -> keep holding it                              read COLLECT        want WAIT
+  NO  don't drop it                                                                                read WAIT           want COLLECT
+  NO  don't throw that crate man                                                                   read WAIT           want COLLECT
+  NO  Don't hand it to me.                                                                         read WAIT           want COLLECT
+  NO  бери вот это                                 -> take this                                    read NONE           want COLLECT
+  NO  стой                                         -> stand up                                     read STAND_UP       want WAIT

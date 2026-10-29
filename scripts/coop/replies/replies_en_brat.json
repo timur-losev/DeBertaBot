@@ -388,6 +388,9 @@
   "Putting it down.": "Putting it down.",
   "Setting it down.": "Setting it down.",
   "Dropping it.": "Dropping it.",
+  "Out of your way.": "Out of your way, bro.",
+  "Making room.": "Making room.",
+  "Stepping aside.": "Stepping aside, bro.",
   "My hands are free already.": "Bro, my hands are free already.",
   "Weapon up.": "Weapon up.",
   "That's one of ours.": "Bro, that's one of ours.",
@@ -406,7 +409,58 @@
   "Too high to jump over.": "Bro, too high to jump over.",
   "Nowhere to land over there.": "Nowhere to land over there, bro.",
   "Didn't make it.": "Didn't make it, bro.",
-  "I can't get down from here.": "Bro, I can't get down from here."
+  "That's {thing}.": "That's {thing}, bro.",
+  "That's me.": "That's me, bro.",
+  "Nothing there, just the sky.": "Nothing there, bro, just the sky.",
+  "No room to step aside.": "No room to step aside, bro.",
+  "I don't see a way out.": "I don't see a way out, bro.",
+  "Glass is broken.": "Glass is broken, bro.",
+  "It won't break.": "It won't break, bro.",
+  "I can't get to the glass.": "I can't get to the glass, bro.",
+  "I can't get down from here.": "Bro, I can't get down from here.",
+  "There's a ledge.": "Bro, there's a ledge.",
+  "I'll jump up.": "I'll jump up, bro.",
+  "A gap.": "A gap, bro.",
+  "I'll jump it.": "I'll jump it, bro.",
+  "Too high to jump.": "Too high to jump, bro.",
+  "I'll get a crate.": "I'll get a crate, bro.",
+  "I can't get up there.": "Bro, I can't get up there.",
+  "I can't jump that.": "I can't jump that, bro.",
+  "I can't get to the crate.": "I can't get to the crate, bro.",
+  "The crate's gone.": "The crate's gone, bro.",
+  "{n} seconds.": "{n} seconds.",
+  "1 second.": "1 second.",
+  "In {n} seconds.": "In {n} seconds.",
+  "In 1 second.": "In 1 second.",
+  "{n} more seconds.": "{n} more seconds.",
+  "1 more second.": "1 more second.",
+  "A few seconds.": "A few seconds.",
+  "In a few seconds.": "In a few seconds.",
+  "About {n} seconds.": "About {n} seconds.",
+  "Time's up.": "Time's up, bro.",
+  "Didn't work.": "Didn't work, bro.",
+  "Too high, even with the crate.": "Too high, even with the crate, bro.",
+  "Door's shut.": "Door's shut, bro.",
+  "Getting the switch.": "Getting the switch, bro.",
+  "Door's open.": "Door's open, bro.",
+  "Open.": "Open, bro.",
+  "It's open already.": "It's open already, bro.",
+  "It won't open.": "It won't open, bro.",
+  "The switch did nothing.": "The switch did nothing, bro.",
+  "I can't open that.": "I can't open that, bro.",
+  "I can't reach the door.": "I can't reach the door, bro.",
+  "I can't reach the switch.": "I can't reach the switch, bro.",
+  "I can't get to the switch.": "I can't get to the switch, bro.",
+  "I can't get to it.": "I can't get to it, bro.",
+  "No way there, not even through a door.": "No way there, not even through a door, bro.",
+  "The door's shut; the switch is {n} m from it.": "The door's shut; the switch is {n} m from it, bro.",
+  "The door's shut; I can open it.": "The door's shut; I can open it, bro.",
+  "The door's shut, and I see no switch.": "The door's shut, and I see no switch, bro.",
+  "{n} doors are shut on the way.": "{n} doors are shut on the way, bro.",
+  "The first's shut; the switch is {n} m from it.": "The first's shut; the switch is {n} m from it, bro.",
+  "The first's shut; I can open it.": "The first's shut; I can open it, bro.",
+  "The first's shut, and I see no switch.": "The first's shut, and I see no switch, bro.",
+  "The ledge is too high, and there's nothing to stand on.": "The ledge is too high, and there's nothing to stand on, bro."
  },
  "slots": {
   "where": {
@@ -491,6 +545,9 @@
    },
    "that place": {
     "text": "that place"
+   },
+   "the way out": {
+    "text": "the way out"
    },
    "_other": {
     "text": "*"
@@ -706,11 +763,206 @@
    }
   },
   "thing": {
+   "an enemy": {
+    "text": "an enemy"
+   },
+   "a teammate": {
+    "text": "a teammate"
+   },
+   "someone": {
+    "text": "someone"
+   },
+   "a switch": {
+    "text": "a switch"
+   },
+   "the floor": {
+    "text": "the floor"
+   },
+   "the ceiling": {
+    "text": "the ceiling"
+   },
+   "a wall": {
+    "text": "a wall"
+   },
+   "a door": {
+    "text": "a door"
+   },
+   "a window": {
+    "text": "a window"
+   },
+   "the stairs": {
+    "text": "the stairs"
+   },
+   "a chair": {
+    "text": "a chair"
+   },
+   "a sofa": {
+    "text": "a sofa"
+   },
+   "a table": {
+    "text": "a table"
+   },
+   "a car": {
+    "text": "a car"
+   },
+   "some ammo": {
+    "text": "some ammo"
+   },
+   "a weapon": {
+    "text": "a weapon"
+   },
+   "a health pack": {
+    "text": "a health pack"
+   },
+   "a box": {
+    "text": "a box"
+   },
+   "a cable spool": {
+    "text": "a cable spool"
+   },
+   "a teleport": {
+    "text": "a teleport"
+   },
+   "a field": {
+    "text": "a field"
+   },
+   "a garden bed": {
+    "text": "a garden bed"
+   },
+   "a greenhouse": {
+    "text": "a greenhouse"
+   },
+   "a barn": {
+    "text": "a barn"
+   },
+   "a chicken coop": {
+    "text": "a chicken coop"
+   },
+   "a beehive": {
+    "text": "a beehive"
+   },
+   "a well": {
+    "text": "a well"
+   },
+   "a fence": {
+    "text": "a fence"
+   },
+   "a tree": {
+    "text": "a tree"
+   },
+   "a foundation": {
+    "text": "a foundation"
+   },
+   "the main door": {
+    "text": "the main door"
+   },
+   "the north door": {
+    "text": "the north door"
+   },
+   "the south door": {
+    "text": "the south door"
+   },
+   "the west door": {
+    "text": "the west door"
+   },
+   "the east door": {
+    "text": "the east door"
+   },
+   "the north window": {
+    "text": "the north window"
+   },
+   "the south window": {
+    "text": "the south window"
+   },
+   "the west window": {
+    "text": "the west window"
+   },
+   "the east window": {
+    "text": "the east window"
+   },
+   "the blue table": {
+    "text": "the blue table"
+   },
+   "the red table": {
+    "text": "the red table"
+   },
+   "the yellow table": {
+    "text": "the yellow table"
+   },
+   "the white table": {
+    "text": "the white table"
+   },
+   "the brown table": {
+    "text": "the brown table"
+   },
+   "the blue stairs": {
+    "text": "the blue stairs"
+   },
+   "the red stairs": {
+    "text": "the red stairs"
+   },
+   "the yellow stairs": {
+    "text": "the yellow stairs"
+   },
+   "the white stairs": {
+    "text": "the white stairs"
+   },
+   "the brown stairs": {
+    "text": "the brown stairs"
+   },
+   "a cardboard box": {
+    "text": "a cardboard box"
+   },
+   "a big box": {
+    "text": "a big box"
+   },
+   "a small box": {
+    "text": "a small box"
+   },
+   "a big spool": {
+    "text": "a big spool"
+   },
+   "a small spool": {
+    "text": "a small spool"
+   },
    "_other": {
     "text": "*"
+   },
+   "a bed": {
+    "text": "a bed"
+   },
+   "a rock": {
+    "text": "a rock"
+   },
+   "a big rock": {
+    "text": "a big rock"
+   },
+   "a small rock": {
+    "text": "a small rock"
+   },
+   "the blue bed": {
+    "text": "the blue bed"
+   },
+   "the red bed": {
+    "text": "the red bed"
+   },
+   "the yellow bed": {
+    "text": "the yellow bed"
+   },
+   "the white bed": {
+    "text": "the white bed"
+   },
+   "the brown bed": {
+    "text": "the brown bed"
    }
   },
   "phrase": {
+   "get out of the way": {
+    "text": "get out of the way"
+   },
+   "say what that is": {
+    "text": "say what that is"
+   },
    "attack": {
     "text": "attack"
    },
@@ -997,6 +1249,12 @@
    },
    "spool": {
     "text": "spool"
+   },
+   "garden bed": {
+    "text": "garden bed"
+   },
+   "rock": {
+    "text": "rock"
    }
   }
  }

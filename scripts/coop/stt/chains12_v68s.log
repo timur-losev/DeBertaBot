@@ -1,0 +1,41 @@
+2026-10-29 01:51:35  train start
+W1029 01:51:43.250000 31408 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+
+
+
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\_dynamo\eval_frame.py:1548: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. Starting in PyTorch 2.9, calling checkpoint without use_reentrant will raise an exception. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+snapshot 02:22:35: epoch 1, row 44480 of 79271, step 2780 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains12-v68\pieces13v68s_final_seed0_snapshot\snapshot.pt
+snapshot 02:52:36: epoch 2, row 9680 of 79271, step 5560 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains12-v68\pieces13v68s_final_seed0_snapshot\snapshot.pt
+snapshot 03:22:37: epoch 2, row 54064 of 79271, step 8334 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains12-v68\pieces13v68s_final_seed0_snapshot\snapshot.pt
+snapshot 03:52:38: epoch 3, row 19136 of 79271, step 11106 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains12-v68\pieces13v68s_final_seed0_snapshot\snapshot.pt
+snapshot 04:22:39: epoch 3, row 63760 of 79271, step 13895 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains12-v68\pieces13v68s_final_seed0_snapshot\snapshot.pt
+snapshot 04:33:11: epoch 3, row 79271 of 79271, step 14865 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains12-v68\pieces13v68s_final_seed0_snapshot\snapshot.pt
+chains12 pieces13v68s_final seed 0: 79271 rows, trained in 9688s
+answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\measure_v67_answers_v68s.json
+answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\measure_v66_answers_v68s.json
+scene answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\measure_v65_answers_v68s.json
+v64 test answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains12_68_test64_pieces13v68s_final_s0.json
+chains2 pieces13v68s_final seed 0: blind 150, blind_heard 100, blind2 150, blind2_heard 100, blind2_heard3 300, ctx 150, ctx_heard3 299, ctx_heardline3 299 answered in 94s
+ml answers: dev_ru 41, blind2_ru 150, ctx_ru 150, dev_es 41, blind2_es 150, ctx_es 150 -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains12_68_ml_pieces13v68s_final_s0.json
+pairs answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains12_68_pairs_pieces13v68s_final_s0.json
+04:36:37  train end, gguf
+llama_model_quantize_impl: quant size  =  1050.43 MiB (5.12 BPW)
+
+llama_quantize: quantize time = 13062.42 ms
+llama_quantize:    total time = 13062.42 ms
+pieces13v68s_final seed 0: 1056 MB, 40s -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\models\gguf\pieces13v68s_final_s0-Q4_K_M.gguf
+04:37:27  export
+W1029 04:37:37.668000 43688 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 106/106 [00:00<00:00, 1553.82it/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+wrote G:\Proj\ollaya\DeBertaBot\models\coop-chain-v68s\cpp: decoder.gguf (1056 MB), router.onnx (it sends 76 of 220 test lines on), 220 test lines, 43 answered with several orders
+04:39:39  done (exit 0)

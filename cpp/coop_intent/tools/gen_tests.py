@@ -86,7 +86,7 @@ DECIDE_ONLY = "--decide-only" in sys.argv
 ITEMS_ONLY = "--items-only" in sys.argv     # item_tests.jsonl alone (a v60 bot's config, no model)
 MODEL = os.path.normpath(_ARGS[0] if _ARGS else bots.default_bot())
 OUT = os.path.join(MODEL, "cpp")
-if bots.tag_of(MODEL) in ("v60", "v61", "v62", "v64"):     # a v60 bot reads its own place vocabulary (locations.vocab_file)
+if bots.tag_of(MODEL) in ("v60", "v61", "v62", "v64", "v65", "v66", "v67"):     # a v60 bot reads its own place vocabulary (locations.vocab_file)
     os.environ["COOP_TAG"] = bots.tag_of(MODEL)
 import coop_bot  # noqa: E402
 import locations as LOC  # noqa: E402
@@ -742,6 +742,34 @@ PTR_TARGETED = ["Stay at my pin.", "my pin", "the ping", "that marker", "on my m
                 # "one"; a third lead
                 "that room, basement, north door", "over there, basement, north door", "my pin, basement, north door",
                 "that one, the north door", "check that one, the north door", "the stairs right over in there"]
+# Rule set v8 in patterns: the "it" pointer after an it_prep preposition, an it_verb verb, "of" after an it_of_lead
+# word, and next to them what it must not take ("do it", "take it", "with it", "it's", "of it" alone), with places,
+# pointers and roles around it (it never joins the place after it). Only with a vocabulary that has the it_* lists
+IT_PATTERNS = [p for p in """
+order_verb? it_prep it_word it_not_next?
+it_verb it_word it_not_next? up|down|out?
+order_verb preposition|determiner? it_of_lead of it_word
+order_verb? of|with|for|from|it_of_lead it_word
+order_verb|preposition it_word preposition determiner? PLACE
+order_verb it_prep|it_verb it_word preposition determiner? PLACE
+it_verb it_word , determiner? PLACE
+order_verb it_prep it_word and|then order_verb determiner PLACE
+order_verb determiner PLACE and|then order_verb it_prep it_word
+it_verb it_word and|then order_verb point_loc
+order_verb point_det THING and|, it_verb|order_verb it_prep|it_word it_word?
+role_mine|role_them be? it_prep it_word
+role_mine aux? order_verb it_prep it_word , role_stop order_verb determiner PLACE
+negator|role_not aux? it_verb|order_verb it_prep? it_word
+it_word be|status_next determiner? PLACE?
+it_prep it_word , pin_det pin_noun
+do|take|put|get|hit|hold|use|drop|throw it_word down|up|away|out?
+""".split("\n") if p]
+IT_TARGETED = ["jump over it", "So jump over it.", "Come over it.", "open it", "pick it up", "get on top of it",
+               "get in front of it", "on the other side of it", "do it", "take it", "put it down", "put it on the table",
+               "drop it", "on it's way", "go for it", "hide behind it and watch the door", "carry it to the table",
+               "jump over it, the table", "i'm on it", "shoot at it", "hold it", "keep an eye on it", "get in it",
+               "watch it", "check it out", "jump over it and come back here", "it's clear", "is it clear"]
+IT_LINES = 8000       # the generated lines of rule set v8 (location_tests)
 OCLOCK = ["o'clock", "o'clock", "oclock", "oclock", "o clock", "O'Clock", "o’clock"]
 # step 6d with the "other" target of step 5c in the line: the first is compared, on the others
 # locations.find() raises (location_tests() below)
@@ -756,6 +784,11 @@ PLACE_TARGETED = ["go right, left side is clear, i've got the north door, you ta
 def has_pointers(v):
     """The vocabulary has the word lists of rule set v5 (locations.json "words": pin_*, point_*)."""
     return any(k.startswith(("pin_", "point_")) for k in v["words"])
+
+
+def has_it(v):
+    """The vocabulary has the word lists of rule set v8 (the "it" pointer: it_*)."""
+    return any(k.startswith("it_") for k in v["words"])
 
 
 def place_lines(n, seed=23, patterns=0.0, use=DIR_PATTERNS):
@@ -857,8 +890,11 @@ def location_tests(texts):
     # and both go through the roles and the primary rule together). Only a vocabulary with the pointer lists gets
     # them, after every other line: those do not depend on these
     pointers = []
-    if has_pointers(json.load(io.open(LOC.vocab_file(), encoding="utf-8"))):
+    vocab = json.load(io.open(LOC.vocab_file(), encoding="utf-8"))
+    if has_pointers(vocab):
         pointers = PTR_TARGETED + place_lines(PTR_LINES, seed=31, patterns=0.75, use=2 * PTR_PATTERNS + DIR_PATTERNS)
+    if has_it(vocab):     # rule set v8: the "it" clauses among the pointer clauses, after every other line
+        pointers += IT_TARGETED + place_lines(IT_LINES, seed=37, patterns=0.75, use=3 * IT_PATTERNS + PTR_PATTERNS)
     older = set(texts) | set(more)
     # how many lines the pointer batch adds (None: the vocabulary has no pointer lists), for main()'s summary
     location_tests.pointer_lines = len(set(pointers) - older) if pointers else None

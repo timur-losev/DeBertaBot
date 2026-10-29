@@ -1,0 +1,29 @@
+brain v68s2 on test68 things (123 items): intent 108/123 = 87.8%, + target 99/123 = 80.5%, + means 97/123 = 78.9%
+  by language (intent / + target / + means): en: 24/22/21 of 27, es: 31/27/27 of 35, ru: 53/50/49 of 61
+  by category (intent / + target / + means): 1: 17/15/15 of 19, 2: 15/14/12 of 17, 3: 18/18/18 of 18, 4: 16/16/16 of 17, 5: 7/4/4 of 17, 6: 18/15/15 of 18, 7: 17/17/17 of 17
+  NO  [1] en Yo, what's that stone over there?                  -> nothing   want WHAT_IS_IT rock/None by None   | 
+  NO  [2] en Get on the white table from the small rock.        -> JUMP table/white by None (act)   want JUMP table/white by rock   | Get on the white table from the small rock.
+  NO  [5] en Jump over the rock and cover me.                   -> JUMP rock/None by None (ask)   want JUMP rock/None by None; COVER_ME None/None by None   | Jump over the rock and cover me.
+  NO  [5] en Grab the small stone and take it to the yellow bed -> DELIVER None/None by rock (act)   want COLLECT rock/small by None; DELIVER bed/yellow by rock   | bring the yellow bed using the small stone
+  NO  [5] en Water the south bed, then harvest the north one.   -> WATER garden_bed/south by None (act); HARVEST field/None by None (ask)   want WATER garden_bed/south by None; HARVEST garden_bed/north by None   | water the south bed / harvest the north field
+  NO  [6] en Get behind the big one.                            -> TAKE_COVER big/None by None (ask)   want TAKE_COVER rock/big by None   | Get behind the big one.
+  NO  [1] ru Подними с земли маленький камень.                  -> COLLECT None/None by None (act)   want COLLECT rock/small by None   | pick up the small rock
+  NO  [1] ru Поставь ящик у грядки.                             -> PLANT garden_bed/None by crate (ask)   want DELIVER garden_bed/None by crate   | plant the bomb at the garden bed using the crate
+  NO  [2] ru Разбей окно камнем.                                -> MELEE window/None by None (act)   want MELEE window/None by rock   | break the window with your fist
+  NO  [2] ru Подтащи кровать под окно и вылезай.                -> GET_OUT bed/None by bed (act)   want VAULT_WINDOW window/None by bed   | get out using the bed
+  NO  [2] ru Задвинь дверь кроватью, чтоб не вломились.         -> TAKE_COVER bed/None by None (ask)   want PUSH door/None by bed   | hide the bed door so they can't push in
+  NO  [4] ru Что это за кровать там стоит?                      -> WATER garden_bed/None by None (ask)   want WHAT_IS_IT bed/None by None   | what is that bed
+  NO  [5] ru Перепрыгни через камень и беги к сараю.            -> JUMP rock/None by None (ask)   want JUMP rock/None by None; MOVE_TO barn/None by None   | jump over the rock
+  NO  [5] ru Полей северную грядку, потом прополи южную.        -> WATER garden_bed/north by None (act); ENTRY south/None by None (ask)   want WATER garden_bed/north by None; TILL garden_bed/south by None   | water the north garden bed / clear the south
+  NO  [5] ru Возьми маленький камень и отнеси к кровати.        -> DELIVER bed/None by rock (ask)   want COLLECT rock/small by None; DELIVER bed/None by rock   | bring it to the bed using the small rock
+  NO  [5] ru Сдвинь валун к двери и укройся за ним.             -> TAKE_COVER door/None by rock (ask)   want PUSH door/None by rock; TAKE_COVER rock/None by None   | hide behind the door using the boulder
+  NO  [5] ru Посади лук на южной грядке, а северную полей.      -> PLANT_CROP garden_bed/south by None (act); WATER field/None by None (ask)   want PLANT_CROP garden_bed/south by None; WATER garden_bed/north by None   | Plant the garlic in the south garden bed / water the north field
+  NO  [6] ru Толкни его к двери.                                -> PUSH door/None by None (ask)   want PUSH door/None by rock   | push it to the door
+  NO  [1] es ¿Qué es esa roca de ahí?                           -> WHAT_IS_IT None/None by None (act)   want WHAT_IS_IT rock/None by None   | What is that rock over there?
+  NO  [2] es Empuja la cama hasta la puerta.                    -> PUSH door/None by bed (ask)   want PUSH door/None by bed   | shove the door using the bed
+  NO  [5] es Salta la roca y luego sígueme.                     -> JUMP rock/None by None (ask)   want JUMP rock/None by None; FOLLOW_ME None/None by None   | jump over the rock
+  NO  [5] es Coge la piedra pequeña y déjala junto a la cama am -> DELIVER bed/yellow by rock (act)   want COLLECT rock/small by None; DELIVER bed/yellow by rock   | put it next to the yellow bed using the small stone
+  NO  [5] es Riega el bancal norte y después cosecha el del sur -> WATER garden_bed/north by None (act); HARVEST [unsure]/None by None (ask)   want WATER garden_bed/north by None; HARVEST garden_bed/south by None   | water the north garden bed / harvest the south crop
+  NO  [5] es Recarga, escóndete detrás de la cama y no dispares -> RELOAD None/None by None (act); TAKE_COVER bed/None by None (ask)   want RELOAD None/None by None; TAKE_COVER bed/None by None; HOLD_FIRE None/None by None   | reload / hide behind the bed
+  NO  [5] es Empuja el peñasco hasta la puerta y escóndete detr -> TAKE_COVER door/None by rock (ask)   want PUSH door/None by rock; TAKE_COVER rock/None by None   | hide behind the door using the boulder
+  NO  [6] es Empújalo hasta la valla.                           -> PUSH fence/None by None (act)   want PUSH fence/None by rock   | push it to the fence

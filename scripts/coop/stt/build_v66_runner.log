@@ -1,0 +1,14 @@
+03:17:51  started oof 0
+03:17:51  started oof 1
+03:17:51  started oof 2
+05:45:20  started final 0
+05:45:30  started final 1
+05:47:35  started final 2
+all six processes finished in 10,717 s
+build_v66_final_0.log: final seed 0: 17119 training lines (2055 lines + 3571 seeds + 649 owner lines typed, 10844 heard by Parakeet), 12 epochs, cuda, saved, 1777s
+build_v66_final_1.log: final seed 1: 17119 training lines (2055 lines + 3571 seeds + 649 owner lines typed, 10844 heard by Parakeet), 12 epochs, cuda, saved, 1764s
+build_v66_final_2.log: final seed 2: 17119 training lines (2055 lines + 3571 seeds + 649 owner lines typed, 10844 heard by Parakeet), 12 epochs, cuda, saved, 1716s
+build_v66_oof_0.log: oof seed 0 fold 4: 13727 training lines, 15 epochs, 2345 test lines, cuda, 8839s
+build_v66_oof_1.log: oof seed 1 fold 4: 13799 training lines, 15 epochs, 2396 test lines, cuda, 8846s
+build_v66_oof_2.log: oof seed 2 fold 4: 13741 training lines, 15 epochs, 2361 test lines, cuda, 8972s
+build_v66_runner.log: build_v66_oof_2.log: oof seed 2 fold 4: 13741 training lines, 15 epochs, 2361 test lines, cuda, 8972s

@@ -52,6 +52,15 @@ Rule sets (the word lists are in locations.json "words"):
       car, "go inside through the west door" = the west door). rules/v7 holds the frozen bytes.
       The v60 bots (farmer and builder, COOP_TAG v60) read rule set v7 with locations_v60.json, version 8 (the farm's and
       the building site's places, make_locations_v60.py); every other tag reads locations.json, version 7. Same code.
+  v8  this file (2026-10-27, the owner on the test range: "if we talk about a table and then I say jump over it, it is
+      the table, not where I was pointing"): a third pointer, "it", for a vocabulary with the it_* word lists (version
+      11, locations_v65.json; v12 for round v66); one without them is matched by rule set v7, as before. "it" is a target of its own when
+      it is the object of an it_prep preposition ("jump over it", "get on it", "hide behind it"), of an it_verb verb
+      ("open it", "shoot it", "pick it up") or of "of" after an it_of_lead word ("on top of it"), and no it_not_next
+      word follows. Never "do it", "take it", "put it down": the thing carried is no place. world.py grounds it from
+      the conversation first (the last thing an order or an answer named, within IT_SECONDS), then the crosshair; an
+      "it" that points at nothing is dropped, and the line is an order with no place, as before. Unlike a "this" it
+      never joins the place after it.
 
   mentions    left to right, the longest vocabulary phrase at each token: object, qualifier, named
               place (object + qualifier in one phrase), zone, or an "ignore" phrase ("off the table").
@@ -238,6 +247,11 @@ Rule sets (the word lists are in locations.json "words"):
                               need backup here"; not "almost here") -- never before a point_exist_next word or a
                               number ("there's two", "here they come").
                               "where" + a point_ing word within four words ("where i'm looking").
+                it            (rule set v8, a vocabulary with the it_* lists) an it_word word ("it") after an
+                              it_prep word ("over it", "on it", "behind it"), an it_verb word ("open it", "shoot it")
+                              or "of" after an it_of_lead word ("on top of it"), with no punctuation between and no
+                              it_not_next word after it ("on it's way"). Always a target of its own: it never joins
+                              a place. world.py reads it from the conversation, not from the crosshair first.
               Whose pointer it is. It is a place's when it stands in that place's noun phrase or right after
               it ("that north door", "the window by my ping", "the door i marked", "the stairs over there"), and
               a bare direction's when it follows it ("get up there"). A target keeps a pin over a this. Any other
@@ -293,7 +307,12 @@ WORD_LISTS = ("before_fill", "after_fill", "tail", "zone_after_fill", "lone_foll
               "pin_noun", "pin_det", "pin_block_prev", "pin_wait_verb", "pin_wait_prep", "pin_past", "pin_past_lead", "pin_past_fill",
               "pin_verb", "point_det", "point_not_prev", "point_not_next", "point_not_noun", "point_pron_next", "point_person", "point_rel_prev",
               "point_loc", "point_loc_lead", "point_here_not", "point_exist_next", "point_ing")
-POINTERS = ("pin", "this")
+POINTERS = ("pin", "this", "it")
+# rule set v8: the lists of the "it" pointer. A vocabulary has all of them or none (then the rule is off)
+IT_LISTS = ("it_word", "it_prep", "it_verb", "it_of_lead", "it_not_next")
+# rule set v9 (round v67, the owner, 2026-10-27: "a thing is a thing, and things combine"): the lists of the means, the
+# thing an order is done with ("climb onto the white table using the crate"). All of them or none (then the rule is off)
+MEANS_LISTS = ("means_lead", "means_not_prev", "means_on_lead", "means_use", "means_use_not_next")
 
 
 def _is_token_byte(c):
@@ -425,8 +444,16 @@ def validate(v):
     for k in WORD_LISTS:
         if k not in v["words"]:
             errs.append(f"missing word list {k!r}")
+    if any(k in v["words"] for k in IT_LISTS):      # rule set v8: all of them or none
+        for k in IT_LISTS:
+            if k not in v["words"]:
+                errs.append(f"missing word list {k!r} (the it_* lists come together)")
+    if any(k in v["words"] for k in MEANS_LISTS):   # rule set v9: all of them or none
+        for k in MEANS_LISTS:
+            if k not in v["words"]:
+                errs.append(f"missing word list {k!r} (the means_* lists come together)")
     for k, ws in v["words"].items():
-        if k not in WORD_LISTS:
+        if k not in WORD_LISTS and k not in IT_LISTS and k not in MEANS_LISTS:
             errs.append(f"unknown word list {k!r}")
         for w in ws:
             if not _phrase_ok(w) or " " in w:
@@ -442,15 +469,22 @@ def _no_duplicate_keys(pairs):
     return dict(pairs)
 
 
-V60_TAGS = ("v60", "v61", "v62", "v64", "v65")
+V60_TAGS = ("v60", "v61", "v62", "v64", "v65", "v66", "v67")
 
 
 def vocab_file(tag=None):
-    """The place vocabulary of a study tag (default: COOP_TAG): locations_v64.json (v10, the spool; big, small, cardboard)
-    for the v64 bots, locations_v62.json (v9, the teleport) for the v62 bots,
-    locations_v60.json for the v60 and v61 bots, else locations.json."""
+    """The place vocabulary of a study tag (default: COOP_TAG): locations_v67.json (v13: the means of rule set v9) for the v67
+    bots, locations_v66.json (v12: glass is a window, the zone
+    outside, the weapon used is no place) for the v66 bots, locations_v65.json (v11, colours on tables, the it_* lists of
+    rule set v8) for the v65 bot (since 2026-10-27; it was trained and first exported with v10), locations_v64.json (v10, the spool; big, small, cardboard) for the v64 bots, locations_v62.json (v9, the
+    teleport) for the v62 bots, locations_v60.json for the v60 and v61 bots, else locations.json.
+    COOP_PLACES names another file of this folder for any tag: a newer vocabulary for a bot already trained (the place names
+    are not learned), e.g. COOP_PLACES=locations_v68.json (v14: bed, garden_bed, rock) for the v67 bots."""
+    if os.environ.get("COOP_PLACES"):
+        return os.path.join(HERE, os.environ["COOP_PLACES"])
     tag = tag or os.environ.get("COOP_TAG", "")
-    return os.path.join(HERE, "locations_v64.json" if tag in ("v64", "v65") else "locations_v62.json" if tag == "v62" else "locations_v60.json" if tag in V60_TAGS else "locations.json")
+    return os.path.join(HERE, "locations_v67.json" if tag == "v67" else "locations_v66.json" if tag == "v66" else "locations_v65.json" if tag == "v65" else "locations_v64.json" if tag == "v64" else
+                        "locations_v62.json" if tag == "v62" else "locations_v60.json" if tag in V60_TAGS else "locations.json")
 
 
 def load_vocab(path=None):
@@ -498,6 +532,8 @@ def find(text, vocab=VOCAB):
     """-> {"targets": [...in line order...], "primary": index or -1, "target": the primary's
     {object, qualifier, zone, direction, pointer, role, flag} or None}. Token positions: "first" / "last"."""
     W = vocab["w"]
+    has_it = "it_word" in W               # rule set v8: the "it" pointer (validate: the it_* lists come together)
+    has_means = "means_lead" in W         # rule set v9: the means (validate: the means_* lists come together)
     toks, carry = [], 0
     for w, a, b, br in tokenize(text):
         if w in W["filler"]:              # "hold the north uh door": the recogniser's fillers are not words of the line
@@ -797,6 +833,21 @@ def find(text, vocab=VOCAB):
     def next_to(j, t):       # only determiners and neutral words between token j and the place
         return all(words[x] in W["determiner"] or words[x] in W["neutral_modifier"] for x in range(j + 1, t["first"]))
 
+    def means_lead(j, t):
+        # (rule set v9) the thing the order is done with: "using the crate", "with this box", "standing on the spool",
+        # "use the chair to get up"; not a way up or down ("go up using the stairs": the stairs' direction, as before)
+        if t["object"] in vocab["vertical"] or not next_to(j, t):
+            return False
+        w = words[j]
+        if w in W["means_lead"]:
+            return not (j > 0 and not toks[j][3] and words[j - 1] in W["means_not_prev"])   # "help me with the door"
+        if w == "on" and j > 0 and not toks[j][3] and words[j - 1] in W["means_on_lead"]:
+            return True
+        if w in W["means_use"]:
+            k = t["last"] + 1          # "use the crate | to climb ...": "to" and a word that starts no place
+            return k + 1 < n and not toks[k][3] and words[k] == "to" and not toks[k + 1][3] and words[k + 1] not in W["means_use_not_next"]
+        return False
+
     def assign_role(ti, t, group):
         # "they're on red and blue": a place joined to the one before it by and / or shares its role
         if ti and group[ti - 1]["role"] in ("mine", "them", "not"):
@@ -811,6 +862,9 @@ def find(text, vocab=VOCAB):
             if toks[j + 1][3] or words[j] in W["role_stop"] or j in owned:
                 break
             w = words[j]
+            if has_means and means_lead(j, t):
+                t["role"] = "means"
+                break
             soft = False
             if w in W["role_them_soft"]:   # "stack is sitting on ...", "guy on ..."; not "stack up on the north door"
                 k = after(j, "soft_fill")
@@ -1282,6 +1336,12 @@ def find(text, vocab=VOCAB):
                 kind = "this"                              # "There!", "here, the window"
             elif w == "here" and (i + 1 >= n or toks[i + 1][3] > 0) and prev not in W["point_here_not"]:
                 kind = "this"                              # "i need backup here", "smoke here"
+        elif has_it and w in W["it_word"]:
+            # (rule set v8) "jump over it", "open it", "get on top of it": the thing the talk was about. Not "do it",
+            # "take it", "put it down", "it's clear"
+            led = prev in W["it_prep"] or prev in W["it_verb"] or (prev == "of" and prev2 in W["it_of_lead"])
+            if led and nxt not in W["it_not_next"]:
+                kind = "it"
         if kind is None:
             continue
         if att is not None:
@@ -1300,6 +1360,8 @@ def find(text, vocab=VOCAB):
         # 7b. a pointer said on the way to a place is that place's: "that room by the north door", "over there, the
         # north door", "my pin by the north door"
         for t in ptr:
+            if t["pointer"] == "it":
+                continue                       # (rule set v8) "it" is what the talk was about, never the place after it
             u = next((x for x in targets if "lone" not in x and t["last"] < x["first"] < n), None)
             if u is None or u["role"] != t["role"] or u["pointer"] is not None:
                 continue

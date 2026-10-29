@@ -1,0 +1,219 @@
+{
+ "base": "Qwen/Qwen3-1.7B",
+ "r": 16,
+ "alpha": 32,
+ "dropout": 0.05,
+ "lr": 0.0002,
+ "epochs": 3,
+ "system": "You are the AI teammate in a co-op shooter. Write what the player orders now in English, one order per line.",
+ "rows": {
+  "en": {
+   "singles": 14406,
+   "composed": 3000,
+   "teacher": 870,
+   "teacher_heard": 2340,
+   "context": 852,
+   "context_heard": 1816
+  },
+  "ru": {
+   "singles": 2435,
+   "composed": 1200,
+   "chains": 870,
+   "context": 1704
+  },
+  "es": {
+   "singles": 2435,
+   "composed": 1200,
+   "chains": 870,
+   "context": 1704
+  },
+  "en_rows": 27211,
+  "ml_rows": 12418,
+  "singles_left_out": 199,
+  "rows_left_out": 358,
+  "pairs": {
+   "en": {
+    "pool": 2247,
+    "held": 422,
+    "pairs": 2500,
+    "test": 150
+   },
+   "ru": {
+    "pool": 766,
+    "held": 141,
+    "pairs": 2500,
+    "test": 150
+   },
+   "es": {
+    "pool": 766,
+    "held": 141,
+    "pairs": 2500,
+    "test": 150
+   }
+  },
+  "v64": {
+   "en": {
+    "singles": 858,
+    "composed": 0,
+    "pairs": 700,
+    "held_out": 109
+   },
+   "ru": {
+    "singles": 1716,
+    "composed": 900,
+    "pairs": 700,
+    "held_out": 109
+   },
+   "es": {
+    "singles": 1716,
+    "composed": 900,
+    "pairs": 700,
+    "held_out": 109
+   },
+   "hand": {
+    "items": 79,
+    "rows": 632
+   }
+  },
+  "v63_rows": 46771,
+  "v64_rows": 55593,
+  "v65": {
+   "scene_rows": {
+    "jump_in_car/ru": 144,
+    "jump_in_car/es": 84,
+    "jump_in_car/en": 60,
+    "jump_in_no_car/ru": 144,
+    "jump_in_no_car/es": 72,
+    "jump_in_no_car/en": 50,
+    "jump_in_nothing/ru": 96,
+    "jump_in_nothing/es": 48,
+    "jump_in_nothing/en": 40,
+    "jump_on_named/ru": 96,
+    "jump_on_named/es": 48,
+    "jump_on_named/en": 40,
+    "car_named/ru": 48,
+    "car_named/es": 36,
+    "car_named/en": 30,
+    "down_standing/ru": 272,
+    "down_standing/es": 96,
+    "down_standing/en": 100,
+    "down_floor/ru": 80,
+    "down_floor/es": 48,
+    "down_floor/en": 40,
+    "out_of_car/ru": 64,
+    "out_of_car/es": 48,
+    "out_of_car/en": 30,
+    "holding/ru": 272,
+    "holding/es": 108,
+    "holding/en": 70,
+    "last_thing/ru": 208,
+    "last_thing/es": 96,
+    "last_thing/en": 60,
+    "take_bring/ru": 128,
+    "take_bring/es": 60,
+    "take_bring/en": 40,
+    "again/ru": 96,
+    "again/es": 72
+   },
+   "hand": {
+    "items": 70,
+    "rows": 560
+   },
+   "dropped_as_test": 13,
+   "v64_rows_given_a_scene": 23383
+  },
+  "v65_rows": 59164,
+  "v66": {
+   "template_rows": {
+    "give_way/ru": 308,
+    "give_way/es": 120,
+    "give_way/en": 48,
+    "give_way_not/ru": 42,
+    "give_way_not/es": 20,
+    "give_way_not/en": 12,
+    "what_is_it/ru": 196,
+    "what_is_it/es": 80,
+    "what_is_it/en": 24,
+    "what_is_it_not/ru": 70,
+    "what_is_it_not/es": 30,
+    "what_is_it_not/en": 12,
+    "glass/ru": 210,
+    "glass/es": 80,
+    "glass/en": 24,
+    "door_breach/ru": 42,
+    "door_breach/es": 20,
+    "door_breach/en": 12,
+    "outside/ru": 238,
+    "outside/es": 80,
+    "outside/en": 30,
+    "holding_not/ru": 168,
+    "holding_not/es": 60,
+    "holding_not/en": 24,
+    "not_holding_not/ru": 56,
+    "not_holding_not/es": 20,
+    "not_holding_not/en": 12,
+    "words/ru": 182,
+    "words/es": 60,
+    "words/en": 24,
+    "correction/ru": 420,
+    "correction/es": 120,
+    "correction/en": 48,
+    "correction_control/ru": 84,
+    "correction_control/es": 20,
+    "it_named/ru": 140,
+    "it_named/es": 60
+   },
+   "hand": {
+    "items": 50,
+    "rows": 400
+   },
+   "dropped_as_test": 91
+  },
+  "v66_rows": 62669,
+  "v68": {
+   "generated": {
+    "combo/ru": 2799,
+    "combo/es": 1679,
+    "combo/en": 1260,
+    "pronoun/ru": 500,
+    "bare/ru": 500,
+    "pronoun/es": 300,
+    "bare/es": 300,
+    "pronoun/en": 250,
+    "bare/en": 250,
+    "failed/ru": 1120,
+    "failed_ctl/ru": 280,
+    "failed/es": 640,
+    "failed_ctl/es": 160,
+    "failed/en": 560,
+    "failed_ctl/en": 140,
+    "multi/ru": 500,
+    "multi/es": 300,
+    "multi/en": 250,
+    "time_for/ru": 1120,
+    "time_for/es": 639,
+    "time_for/en": 256,
+    "time_after/ru": 600,
+    "time_after/es": 360,
+    "time_after/en": 150,
+    "time_more/ru": 260,
+    "time_more/es": 150,
+    "time_more/en": 60,
+    "time_idiom/ru": 218,
+    "time_idiom/es": 119,
+    "time_idiom/en": 42,
+    "time_multi/ru": 450,
+    "time_multi/es": 270,
+    "time_multi/en": 120
+   },
+   "old_rows_garden_bed": 150,
+   "time_test_items": 240,
+   "dropped_as_test": 14
+  },
+  "v68_things_rows": 11788,
+  "v68_time_rows": 4814
+ },
+ "n_rows": 79271,
+ "train_s": 9649,
+ "gpu_gb": 3.9
+}

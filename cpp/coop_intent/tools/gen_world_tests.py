@@ -37,7 +37,7 @@ import bots  # noqa: E402
 _ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
 MODEL = os.path.normpath(_ARGS[0] if _ARGS else bots.default_bot())
 OUT = os.path.join(MODEL, "cpp")
-if bots.tag_of(MODEL) in ("v60", "v61", "v62", "v64"):     # a v60 bot reads its own place vocabulary (locations.vocab_file)
+if bots.tag_of(MODEL) in ("v60", "v61", "v62", "v64", "v65", "v66", "v67"):     # a v60 bot reads its own place vocabulary (locations.vocab_file)
     os.environ["COOP_TAG"] = bots.tag_of(MODEL)
 import coop_bot  # noqa: E402
 import locations as LOC  # noqa: E402
@@ -119,6 +119,14 @@ WAYS = [("go up by the stairs", "MOVE_TO"), ("take the steps down", "MOVE_TO"), 
         ("get indoors", "MOVE_TO"), ("get inside the car", "GET_IN"), ("check inside", "CHECK"), ("go inside through the west door", "MOVE_TO"),
         ("stand on my pin", "HOLD_POSITION"), ("stand here", "HOLD_POSITION"), ("stairs on my pin", "MOVE_TO"), ("go up", "MOVE_TO"),
         ("hold inside the room", "HOLD_POSITION"), ("go up the steps behind you", "MOVE_TO")]
+# bot v66: out of the player's way and "what is that" take no place from the line (NO_PLACE); "outside" is the game's, like
+# "inside". Drawn only for a bot with those labels
+V66 = "GIVE_WAY" in CFG["labels"]
+if V66:
+    PLAIN = PLAIN + [("move away", "GIVE_WAY"), ("get out of my way", "GIVE_WAY"), ("move away from the door", "GIVE_WAY"),
+                     ("what is that", "WHAT_IS_IT"), ("what's that thing over there", "WHAT_IS_IT")]
+    WAYS = WAYS + [("go outside", "MOVE_TO"), ("get out of the room", "MOVE_TO"), ("leave the room on my go", "MOVE_TO"),
+                   ("wait outside", "HOLD_POSITION"), ("go outside through the north door", "MOVE_TO")]
 
 
 # bot v60: the farmer and the builder (world.py, "the farmer's and the builder's orders"). A world with the farm's places and
@@ -127,6 +135,11 @@ WAYS = [("go up by the stairs", "MOVE_TO"), ("take the steps down", "MOVE_TO"), 
 V60 = "BUILD" in CFG["labels"]
 FARM_OBJECTS = [o for o in ("field", "bed", "greenhouse", "barn", "coop", "beehive", "well", "fence", "tree", "crate", "foundation",
                             "door", "window") if o in OBJECTS]
+# place vocabulary v15 (2026-10-29): a bed to sleep on and the farm's garden bed, and the farmer's lines that call the garden bed
+# a bed (world.garden_record). Only for such a vocabulary, so the farm scenarios of an older bot stay what they were
+GARDEN = "garden_bed" in OBJECTS
+if GARDEN:
+    FARM_OBJECTS += ["garden_bed", "garden_bed", "rock"]
 CATALOG_POOL = {
     "BUILD": [("wall_wood", ["wall", "wooden wall"]), ("wall_stone", ["stone wall"]), ("fence", ["fence"]), ("barricade", ["barricade", "sandbag wall"]),
               ("ramp", ["ramp"]), ("ladder", ["ladder"]), ("watchtower", ["watchtower", "watch tower"]), ("door", ["door"]), ("roof", ["roof"]),
@@ -164,6 +177,12 @@ FARM_LINES = [
     ("tear down the fence", "DEMOLISH"), ("demolish that wall", "DEMOLISH"), ("knock down the old shed", "DEMOLISH"),
     ("remove the barricade", "DEMOLISH"), ("tear it down", "DEMOLISH"), ("tear down the tower", "DEMOLISH"),
     ("go to the barn", "MOVE_TO"), ("take cover behind the fence", "TAKE_COVER"), ("dig in", "HOLD_POSITION"), ("cover me while i build", "COVER_ME")]
+if GARDEN:
+    FARM_LINES = FARM_LINES + [
+        ("plant carrots in the north bed", "PLANT_CROP"), ("hoe the beds", "TILL"), ("water that bed", "WATER"), ("water the beds", "WATER"),
+        ("dig up the onions in the south bed", "HARVEST"), ("rake the bed on the right", "TILL"), ("harvest the carrot bed", "HARVEST"),
+        ("go to the bed", "MOVE_TO"), ("go to the north bed", "MOVE_TO"), ("water the yellow bed", "WATER"), ("climb onto the rock", "JUMP"),
+        ("hide behind the big rock", "TAKE_COVER"), ("plant wheat in the garden bed on my go", "PLANT_CROP"), ("go prone behind the bed", "PRONE")]
 FARM_AFTER = ["no, by the barn", "no, in the north field", "no, here", "there", "on my pin", "again", "no", "the other one", "at the south field",
               "no, the other field", "over there"]
 
@@ -566,6 +585,127 @@ def chain_scenario(rng, n_lines, gate, threshold):
     return {"world": world, "gate": gate, "threshold": threshold, "steps": steps}
 
 
+# ---- rule set v8: "it" is the thing the talk was about (world.py IT_SECONDS). A thing is named (an order, a question the
+# bot asks about and the player settles), then "it" comes after 0.5 to 90 s, with the crosshair on another thing, on a free
+# point or on nothing, and the game's clock sent or not. Drawn only for a vocabulary with the it_* lists, with a generator of
+# its own: the scenarios above stay what they were
+IT = any(k.startswith("it_") for k in VOC["words"])
+IT_NAME = [(t, k) for t, k in (
+    ("can you see the white table", "SEE_THING"), ("can you see the table", "SEE_THING"), ("go to the blue table", "MOVE_TO"),
+    ("check the table", "CHECK"), ("look at the red table", "LOOK_AT"), ("go to the crate", "MOVE_TO"), ("open the door", "OPEN"),
+    ("hold the north door", "HOLD_ANGLE"), ("go to the yellow table on my go", "MOVE_TO"), ("check that", "CHECK"),
+    ("go there", "MOVE_TO"), ("jump on the white table", "JUMP"), ("push the crate", "PUSH"), ("see the box", "SEE_THING")) if k in CFG["labels"]]
+IT_ORDERS = [(t, k) for t, k in (
+    ("jump over it", "JUMP"), ("so jump over it", "JUMP"), ("come over it", "JUMP"), ("get on it", "JUMP"), ("get on top of it", "JUMP"),
+    ("climb on it", "JUMP"), ("open it", "OPEN"), ("check it out", "CHECK"), ("shoot at it", "OPEN_FIRE"), ("go to it", "MOVE_TO"),
+    ("hide behind it", "TAKE_COVER"), ("jump over it on my go", "JUMP"), ("look at it", "LOOK_AT"), ("pick it up", "COLLECT"),
+    ("push it", "PUSH"), ("jump over it and come back", "JUMP"), ("do it", "JUMP"), ("take it", "MOVE_TO"), ("put it down", "DROP"),
+    ("get in it", "GET_IN"), ("no, jump over it", "JUMP"), ("hold it", "WAIT"), ("jump over it, the table", "JUMP"),
+    ("jump over it", "NONE"), ("over it", "JUMP"), ("go to it and hold the door", "MOVE_TO"), ("jump", "JUMP"), ("go", "GO_NOW"),
+    ("hide behind it there", "TAKE_COVER")) if k in CFG["labels"]]
+
+
+def it_world(rng):
+    w = W.empty_world()
+    colours = [q for q in OBJECTS.get("table", [])]
+    for i in range(rng.choice([1, 2, 3, 4])):
+        w["entities"].append({"id": f"table_{i}", "object": "table", "qualifier": rng.choice(colours + [None]) if colours else None,
+                              "zone": None, "bearing": float(rng.choice([0, 10, -30, 45, 90, -120, 180])),
+                              "distance": float(rng.choice([3, 5, 8, 9, 12, 13, 19])), "elevation": float(rng.choice([0.0, 0.9, 2.0])), "tags": []})
+    for obj in ("crate", "door"):
+        if obj in OBJECTS and rng.random() < 0.6:
+            w["entities"].append({"id": f"{obj}_9", "object": obj, "qualifier": rng.choice(OBJECTS[obj] + [None, None]) if OBJECTS[obj] else None,
+                                  "zone": None, "bearing": float(rng.choice([15, -60, 100])), "distance": float(rng.choice([4, 9, 14])),
+                                  "elevation": 0.0, "tags": []})
+    for i in range(rng.choice([0, 1, 1])):     # a free point the crosshair is on
+        w["entities"].append({"id": f"gaze_{i}", "object": None, "qualifier": None, "zone": None, "bearing": 5.0,
+                              "distance": float(rng.choice([2, 9, 30])), "elevation": 0.0, "tags": []})
+    ids = [e["id"] for e in w["entities"]]
+    w["player_gaze"] = rng.choice(ids + [None, None])
+    if rng.random() < 0.3:
+        w["player_pin"] = {"id": "pin_1", "entity": rng.choice(ids + [None]), "bearing": 30.0, "distance": 9.0, "elevation": 0.0}
+    if rng.random() < 0.8:
+        w["time"] = float(rng.choice([0.0, 100.0, 3600.0]))
+        w["bot"]["busy"] = False
+    return w
+
+
+# "put it down next to the white table" (2026-10-27): DROP with a thing named to put it by is DELIVER there
+# (world.drops_by_thing); with "here", "it", the pin, a zone or only the carried thing it stays DROP
+DROP_BY = [(t, k) for t, k in (
+    ("put it down next to the white table", "DROP"), ("put it down by the white table", "DROP"), ("put it down the white table", "DROP"),
+    ("put the box down next to the table", "DROP"), ("drop it by the door", "DROP"), ("set it down by the red table on my go", "DROP"),
+    ("put it down here", "DROP"), ("put it down outside", "DROP"), ("drop it next to it", "DROP"), ("put the crate down", "DROP"),
+    ("drop it", "DROP"), ("put it down by the other table", "DROP"), ("put it down on my pin", "DROP"), ("put it down by the table", "DROP"),
+    ("put it next to the white table", "DELIVER"), ("pick it up", "COLLECT")) if k in CFG["labels"]]
+
+
+# "the table" of the thing the talk is about (2026-10-27: «На белый стол», then «Поставь коробку у стола» asked "Which table?"):
+# a bare object is the one named last while it is fresh by the game's clock (world.fresh); the crosshair on one comes first
+SAME_THING = [(t, k) for t, k in (
+    ("go to the table", "MOVE_TO"), ("jump onto the table", "JUMP"), ("climb on the table", "JUMP"), ("check the table", "CHECK"),
+    ("put the box down by the table", "DROP"), ("put it next to the table", "DELIVER"), ("open the door", "OPEN"),
+    ("hold the door", "HOLD_ANGLE"), ("push the crate", "PUSH"), ("pick up the crate", "COLLECT"), ("go to the other table", "MOVE_TO"),
+    ("hide behind the table", "TAKE_COVER"), ("go to the table on my go", "MOVE_TO"), ("jump over the table", "JUMP"),
+    ("go to the back door", "MOVE_TO")) if k in CFG["labels"]]
+
+# rule set v9 (round v67, the owner, 2026-10-27: any thing with any order): the thing an order is done with
+MEANS_ORDERS = [(t, k) for t, k in (
+    ("climb onto the white table using the crate", "JUMP"), ("use the crate to climb onto the table", "JUMP"),
+    ("jump over the table standing on the box", "JUMP"), ("break the door with the crate", "MELEE"), ("go to the table using it", "MOVE_TO"),
+    ("hide behind the door using the table", "TAKE_COVER"), ("open the door with this crate", "OPEN"), ("help me with the door", "HELP"),
+    ("climb onto the red table using that one", "JUMP"), ("push the crate with the table", "PUSH"), ("use the crate to the left", "MOVE_TO"),
+    ("climb onto it using the crate", "JUMP"), ("climb onto the table", "JUMP"), ("go up using the stairs", "MOVE_TO"),
+    ("check the door using the big box", "CHECK")) if k in CFG["labels"]]
+
+
+def it_scenario(rng, n_steps, gate, threshold, orders=None):
+    orders = orders or IT_ORDERS
+    bot = Fake(gate, threshold)
+    world = it_world(rng)
+    pl = W.Planner(bot, world)
+    steps, now = [], world
+    for i in range(n_steps):
+        if i:
+            now = moved_on(rng, now)
+            if rng.random() < 0.3:      # the player looks elsewhere
+                now["player_gaze"] = rng.choice([e["id"] for e in now["entities"]] + [None])
+            pl.set_world(now)
+        q = pl.memory["question"]
+        r = rng.random()
+        if q is not None and r < 0.7:
+            if ANSWER_LABELS and rng.random() < 0.7:
+                intent = rng.choice(ANSWER_LABELS)
+                text = rng.choice(ANSWERS_TXT[intent])
+            else:
+                text, intent = rng.choice(NARROW + ["the white one", "the red table", "it"]), rng.choice(["NONE", q["intent"]])
+        elif bot.pending and r < 0.4:
+            text, intent = rng.choice([("go", "GO_NOW"), ("now", "GO_NOW"), ("wait", "WAIT")])
+        elif r < 0.4:
+            text, intent = rng.choice(IT_NAME)
+        else:
+            text, intent = rng.choice(orders)
+        if intent not in CFG["labels"]:
+            intent = "NONE"
+        for _try in range(50):
+            conf = rng.choice([0.45, 0.8, 0.9, 0.95, 0.99])
+            probs = probs_for(rng, bot.labels, intent, conf)
+            adj, _ = W.apply_priors(probs, bot.labels, pl.world, pl.memory)
+            _, c = bot.pick(adj)
+            if abs(c - threshold) > 0.02 and abs(c - W.FRAGMENT_UNSURE) > 0.02:
+                break
+        res = pl.step(text, probs)
+        STATS["it_memory"] += any(g["via"] == "memory" for g in res["ground"]) and "it" in W.words(text)
+        STATS["it_gaze"] += any(g["via"] == "gaze" for g in res["ground"]) and "it" in W.words(text)
+        STATS["same_memory"] += any(g["via"] == "memory" for g in res["ground"]) and "it" not in W.words(text)
+        STATS["means"] += bool(res.get("order") and res["order"].get("means"))
+        row = step_row(text, probs, res, pl, bot)
+        if i:
+            row["world"] = now
+        steps.append(row)
+    return {"world": world, "gate": gate, "threshold": threshold, "steps": steps}
+
+
 def refused():
     base = json.loads(json.dumps(W.WORLD_EXAMPLE))
     bad = []
@@ -682,6 +822,15 @@ def main():
             res = pl.step(text, probs)
             steps.append(step_row(text, probs, res, pl, bot))
         rows.append({"world": W.WORLD_FARM, "gate": "top", "threshold": 0.6, "steps": steps})
+        if GARDEN and W.LOC.VOCAB["version"] >= 15:
+            bot = Fake("top", 0.6)
+            pl = W.Planner(bot, W.WORLD_GARDEN)
+            steps = []
+            for text, intent, _ in W.DEV_V68:
+                probs = probs_for(rng, bot.labels, intent, 0.9)
+                res = pl.step(text, probs)
+                steps.append(step_row(text, probs, res, pl, bot))
+            rows.append({"world": W.WORLD_GARDEN, "gate": "top", "threshold": 0.6, "steps": steps})
         rng3 = random.Random(6001)
         for i in range(300):
             gate = "family" if i % 3 == 2 else "top"
@@ -706,6 +855,36 @@ def main():
     for i in range(300):
         gate = "family" if i % 3 == 2 else "top"
         rows.append(chain_scenario(rng2, rng2.choice([3, 5, 8, 12]), gate, rng2.choice([0.5, 0.6, 0.66, 0.78])))
+    if IT:
+        rng4 = random.Random(8001)
+        for i in range(300):
+            gate = "family" if i % 3 == 2 else "top"
+            rows.append(it_scenario(rng4, rng4.choice([3, 5, 8, 12]), gate, rng4.choice([0.5, 0.6, 0.66, 0.78])))
+        print(f"  rule set v8: 300 conversations about a thing and \"it\"; \"it\" read from the talk {STATS['it_memory']} times, "
+              f"from the crosshair {STATS['it_gaze']} times")
+    if "DROP" in CFG["labels"] and "DELIVER" in CFG["labels"]:
+        rng5 = random.Random(8101)
+        first = len(rows)
+        for i in range(150):
+            gate = "family" if i % 3 == 2 else "top"
+            rows.append(it_scenario(rng5, rng5.choice([3, 5, 8]), gate, rng5.choice([0.5, 0.6, 0.66, 0.78]), DROP_BY))
+        moved = sum(1 for r in rows[first:] for s in r["steps"] if s["intent"] == "DELIVER" and W.words(s["text"])[:1] in (["put"], ["drop"], ["set"])
+                    and s["text"] != "put it next to the white table")
+        print(f"  put it down by a thing: 150 conversations, {moved} DROP lines carried to the thing named (DELIVER)")
+    if IT:
+        rng6 = random.Random(8201)
+        before = STATS["same_memory"]
+        for i in range(150):
+            gate = "family" if i % 3 == 2 else "top"
+            rows.append(it_scenario(rng6, rng6.choice([3, 5, 8, 12]), gate, rng6.choice([0.5, 0.6, 0.66, 0.78]), SAME_THING))
+        print(f"  the thing the talk is about: 150 conversations, a bare object read from the talk {STATS['same_memory'] - before} times")
+    if W.MEANS_ON:
+        rng7 = random.Random(8301)
+        before = STATS["means"]
+        for i in range(150):
+            gate = "family" if i % 3 == 2 else "top"
+            rows.append(it_scenario(rng7, rng7.choice([3, 5, 8]), gate, rng7.choice([0.5, 0.6, 0.66, 0.78]), MEANS_ORDERS))
+        print(f"  rule set v9: 150 conversations with a means; {STATS['means'] - before} orders carry one")
     n_steps = sum(len(r["steps"]) for r in rows)
     actions = {}
     for r in rows:

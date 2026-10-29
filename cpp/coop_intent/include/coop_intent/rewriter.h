@@ -34,6 +34,9 @@ struct Scene {
     std::string holding, standing_on, last;   // empty: none
     bool has_car = false;
     double car_m = 0, last_m = 0;             // metres; 0 m for the car: the bot is in it
+    // decoder v67: an order the bot could not carry out lately, "<the order's English>, <why>" ("climb onto the white table,
+    // too high"); after the car's part as "failed: ...". Empty: none
+    std::string failed;
 };
 std::string SceneLine(const Scene& scene);
 

@@ -253,7 +253,7 @@
   "DONT_KNOW"
  ],
  "locations": {
-  "version": 10,
+  "version": 11,
   "objects": [
    {
     "id": "door",
@@ -335,7 +335,13 @@
      "table",
      "tables"
     ],
-    "qualifiers": []
+    "qualifiers": [
+     "blue",
+     "red",
+     "yellow",
+     "white",
+     "brown"
+    ]
    },
    {
     "id": "car",
@@ -3255,6 +3261,90 @@
     "looking",
     "aiming",
     "facing"
+   ],
+   "it_word": [
+    "it"
+   ],
+   "it_prep": [
+    "over",
+    "on",
+    "onto",
+    "upon",
+    "to",
+    "toward",
+    "towards",
+    "at",
+    "behind",
+    "through",
+    "into",
+    "in",
+    "inside",
+    "near",
+    "by",
+    "beside",
+    "under",
+    "underneath",
+    "below",
+    "beneath",
+    "above",
+    "around",
+    "across",
+    "along",
+    "past",
+    "off",
+    "up",
+    "down",
+    "outside",
+    "beyond"
+   ],
+   "it_verb": [
+    "jump",
+    "climb",
+    "vault",
+    "hop",
+    "cross",
+    "enter",
+    "open",
+    "close",
+    "shut",
+    "breach",
+    "blow",
+    "check",
+    "clear",
+    "search",
+    "guard",
+    "defend",
+    "secure",
+    "shoot",
+    "smash",
+    "break",
+    "kick",
+    "bust",
+    "push",
+    "roll",
+    "grab",
+    "carry",
+    "pick",
+    "fetch",
+    "repair",
+    "fix",
+    "mend",
+    "demolish",
+    "dismantle"
+   ],
+   "it_of_lead": [
+    "top",
+    "front",
+    "side"
+   ],
+   "it_not_next": [
+    "s",
+    "is",
+    "was",
+    "will",
+    "ll",
+    "d",
+    "would"
    ]
   }
  },

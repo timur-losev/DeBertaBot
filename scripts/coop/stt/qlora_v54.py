@@ -95,12 +95,38 @@ def padded(seqs, pad):
     return x.to(DEVICE), m.to(DEVICE)
 
 
-def train(name, rows, seed, hp, system=SYSTEM, checkpoint=False):
+SNAPSHOT_EVERY = 30 * 60   # seconds between snapshots of a training (the owner, 2026-10-27: every 30 minutes)
+
+
+def _fingerprint(name, rows, seed, hp, system):
+    """What a snapshot was taken of: the model, the rows in order, the seed, the recipe and the system turn."""
+    import hashlib
+    h = hashlib.sha1(json.dumps([name, seed, hp, system], sort_keys=True).encode("utf-8"))
+    for r in rows:
+        h.update(json.dumps(r, sort_keys=True, ensure_ascii=False).encode("utf-8"))
+    return h.hexdigest()
+
+
+def _save_snapshot(path, model, opt, sched, epoch, b, order, step, fp):
+    from peft import get_peft_model_state_dict
+    tmp = path + ".tmp"
+    torch.save({"fingerprint": fp, "adapter": get_peft_model_state_dict(model), "opt": opt.state_dict(), "sched": sched.state_dict(),
+                "epoch": epoch, "b": b, "order": order, "step": step, "py_random": random.getstate(), "torch_rng": torch.get_rng_state(),
+                "cuda_rng": torch.cuda.get_rng_state_all(), "saved": time.strftime("%Y-%m-%d %H:%M:%S")}, tmp)
+    os.replace(tmp, path)       # a crash while writing leaves the snapshot before it whole
+    print(f"snapshot {time.strftime('%H:%M:%S')}: epoch {epoch + 1}, row {min(b, len(order))} of {len(order)}, step {step} -> {path}", flush=True)
+
+
+def train(name, rows, seed, hp, system=SYSTEM, checkpoint=False, snapshot_dir=None, snapshot_every=SNAPSHOT_EVERY):
     """rows: [{"text", "maj"}], or "orders" (a list of intents) or "answer" (the answer as written) in place of "maj".
     The loss is on the answer's tokens only.
     checkpoint: gradient checkpointing, for long lines. A batch of 16 single lines (about 75 tokens with the prompt)
-    peaks at 11 GB; the joined lines of chains_v54.py are twice as long and went past 24 GB without it."""
-    from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+    peaks at 11 GB; the joined lines of chains_v54.py are twice as long and went past 24 GB without it.
+    snapshot_dir: every snapshot_every seconds the adapter, the optimizer, the schedule, the random states and the place in
+    the epoch go to <snapshot_dir>/snapshot.pt (and once more at the end); a training started again with the same rows,
+    seed and recipe goes on from there (the same command after a crash or a stop). A snapshot of other rows is not used.
+    A file <snapshot_dir>/STOP (stop_training.ps1) makes it take a snapshot at the next step and exit with code 3."""
+    from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training, set_peft_model_state_dict
     random.seed(seed)
     torch.manual_seed(seed)
     model, tok = load(name)
@@ -112,11 +138,35 @@ def train(name, rows, seed, hp, system=SYSTEM, checkpoint=False):
     steps = hp["epochs"] * B.steps(len(data))
     opt = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=hp["lr"], weight_decay=T.HP["weight_decay"])
     sched = get_linear_schedule_with_warmup(opt, int(T.HP["warmup"] * steps), steps)
+    snap = os.path.join(snapshot_dir, "snapshot.pt") if snapshot_dir else None
+    fp = _fingerprint(name, rows, seed, hp, system) if snap else None
+    start_epoch, start_b, step, resumed = 0, 0, 0, False
+    if snap and os.path.exists(snap):
+        s = torch.load(snap, map_location="cpu", weights_only=False)
+        if s.get("fingerprint") == fp:
+            set_peft_model_state_dict(model, s["adapter"])
+            opt.load_state_dict(s["opt"])
+            sched.load_state_dict(s["sched"])
+            random.setstate(s["py_random"])
+            torch.set_rng_state(s["torch_rng"])
+            torch.cuda.set_rng_state_all(s["cuda_rng"])
+            start_epoch, start_b, step, order, resumed = s["epoch"], s["b"], s["step"], s["order"], True
+            print(f"resumed from the snapshot of {s['saved']}: epoch {start_epoch + 1} of {hp['epochs']}, row {min(start_b, len(order))} of "
+                  f"{len(order)}, step {step} of {steps}", flush=True)
+        else:
+            print(f"{snap}: a snapshot of other rows or another recipe, not used (it is replaced)", flush=True)
+        del s
+    if snap:
+        os.makedirs(snapshot_dir, exist_ok=True)
+        if os.path.exists(os.path.join(snapshot_dir, "STOP")):
+            os.remove(os.path.join(snapshot_dir, "STOP"))   # a stop asked of an earlier run, not of this one
+    last = time.time()
     lm = model.get_base_model()
     model.train()
-    for _ in range(hp["epochs"]):
-        random.shuffle(order)
-        for b in range(0, len(order), T.HP["batch"]):
+    for epoch in range(start_epoch, hp["epochs"]):
+        if not (resumed and epoch == start_epoch):
+            random.shuffle(order)       # a resumed epoch keeps the order it was shuffled into
+        for b in range(start_b if resumed and epoch == start_epoch else 0, len(order), T.HP["batch"]):
             idx = order[b:b + T.HP["batch"]]
             x, m = padded([data[j][0] + data[j][1] for j in idx], turns.pad)
             y = torch.full_like(x, -100)
@@ -139,6 +189,18 @@ def train(name, rows, seed, hp, system=SYSTEM, checkpoint=False):
             opt.step()
             sched.step()
             opt.zero_grad()
+            step += 1
+            if snap and time.time() - last >= snapshot_every:
+                _save_snapshot(snap, model, opt, sched, epoch, b + T.HP["batch"], order, step, fp)
+                last = time.time()
+            if snap and os.path.exists(os.path.join(snapshot_dir, "STOP")):
+                # stop_training.ps1: a snapshot now, and out (exit code 3); the same command later goes on from here
+                _save_snapshot(snap, model, opt, sched, epoch, b + T.HP["batch"], order, step, fp)
+                os.remove(os.path.join(snapshot_dir, "STOP"))
+                print(f"stopped on request at step {step} of {steps}; run the same command again to go on", flush=True)
+                sys.exit(3)
+    if snap:   # the end too: started again, the same command goes straight to what follows the training
+        _save_snapshot(snap, model, opt, sched, hp["epochs"] - 1, len(order), order, step, fp)
     del opt, sched
     T.free_cache(DEVICE)
     return model, turns

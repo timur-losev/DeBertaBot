@@ -1,0 +1,404 @@
+{
+  "HOLD_ANGLE": {
+    "target": "optional",
+    "canon": ["hold that angle", "keep an eye on {T}"],
+    "en": [
+      ["hold that angle", 0], ["hold this angle", 0], ["watch that angle", 0], ["lock that angle down", 0], ["keep that angle", 0],
+      ["watch {T}", 1], ["keep an eye on {T}", 1], ["eyes on {T}", 1], ["cover {T}", 1], ["keep watching {T}", 1],
+      ["hold the angle on {T}", 1], ["keep your eyes on {T}", 1], ["watch {T} for me", 1]
+    ],
+    "ru": [
+      ["держи угол", 0], ["держи этот угол", 0], ["держи сектор", 0], ["следи за углом", 0], ["паси угол", 0],
+      ["держи направление", 0],
+      ["следи за {T:ins}", 1], ["присмотри за {T:ins}", 1], ["держи на прицеле {T:acc}", 1], ["держи {T:acc} на прицеле", 1],
+      ["паси {T:acc}", 1], ["не своди глаз с {T:gen}", 1], ["глаз не спускай с {T:gen}", 1], ["контролируй {T:acc}", 1],
+      ["держи угол у {T:gen}", 1], ["наблюдай за {T:ins}", 1]
+    ],
+    "es": [
+      ["aguanta ese ángulo", 0], ["mantén ese ángulo", 0], ["vigila ese ángulo", 0], ["cubre ese ángulo", 0],
+      ["vigila {T}", 1], ["no le quites el ojo {T:a}", 1], ["no pierdas de vista {T}", 1], ["cubre {T}", 1],
+      ["ojo {T:a}", 1], ["mantén la vista en {T}", 1], ["vigílame {T}", 1]
+    ],
+    "ru_inf": ["держать угол", "следить за {T:ins}"],
+    "es_inf": ["aguantar ese ángulo", "vigilar {T}"]
+  },
+  "HOLD_OTHER_ANGLE": {
+    "target": "none",
+    "canon": ["hold the other angle"],
+    "en": [
+      ["hold the other angle", 0], ["take the other angle", 0], ["watch the other angle", 0], ["you take the other side", 0],
+      ["cover the other side", 0], ["watch the other side", 0], ["i've got this one, you take the other", 0],
+      ["take the opposite angle", 0], ["switch to the other angle", 0], ["i'll hold this angle, you watch the other one", 0]
+    ],
+    "ru": [
+      ["держи другой угол", 0], ["держи другую сторону", 0], ["бери другую сторону", 0], ["следи за другой стороной", 0],
+      ["паси другой угол", 0], ["я этот держу, ты бери другой", 0], ["возьми противоположный угол", 0],
+      ["держи противоположную сторону", 0], ["переключись на другой угол", 0], ["прикрой другую сторону", 0],
+      ["держи второй угол", 0], ["держи другой сектор", 0]
+    ],
+    "es": [
+      ["aguanta el otro ángulo", 0], ["vigila el otro lado", 0], ["cubre el otro ángulo", 0], ["tú toma el otro lado", 0],
+      ["yo tengo este, tú el otro", 0], ["cámbiate al otro ángulo", 0], ["cubre el lado opuesto", 0]
+    ],
+    "ru_inf": ["держать другой угол"],
+    "es_inf": ["aguantar el otro ángulo"]
+  },
+  "DRONE": {
+    "target": "optional",
+    "canon": ["send a drone", "send a drone to {T}"],
+    "en": [
+      ["send a drone", 0], ["drone first", 0], ["send the drone in", 0], ["get a drone out", 0], ["pop a drone", 0],
+      ["let's drone first", 0],
+      ["drone {T}", 1], ["send a drone to {T}", 1], ["fly the drone to {T}", 1], ["drone out {T}", 1],
+      ["get a drone on {T}", 1], ["send the drone over to {T}", 1], ["get drone eyes on {T}", 1]
+    ],
+    "ru": [
+      ["запусти дрон", 0], ["пусти дрон", 0], ["давай дрон", 0], ["сначала дрон", 0], ["разведай дроном", 0],
+      ["дрон запускай", 0], ["кидай дрон", 0],
+      ["запусти дрон к {T:dat}", 1], ["пусти дрон к {T:dat}", 1], ["отправь дрон к {T:dat}", 1], ["задронь {T:acc}", 1],
+      ["продронь {T:acc}", 1], ["разведай дроном {T:acc}", 1], ["загони дрон за {T:acc}", 1], ["дрон к {T:dat}", 1],
+      ["запусти дрон в сторону {T:gen}", 1]
+    ],
+    "es": [
+      ["manda un dron", 0], ["saca el dron", 0], ["primero el dron", 0], ["lanza el dron", 0],
+      ["manda el dron {T:a}", 1], ["lleva el dron {T:a}", 1], ["dronea {T}", 1], ["mete el dron detrás {T:de}", 1],
+      ["manda el dron hacia {T}", 1]
+    ],
+    "ru_inf": ["запустить дрон", "запустить дрон к {T:dat}"],
+    "es_inf": ["mandar un dron", "mandar el dron {T:a}"]
+  },
+  "FLASH": {
+    "target": "optional",
+    "canon": ["throw a flash", "throw a flash at {T}", "throw a flash behind {T}"],
+    "en": [
+      ["throw a flash", 0], ["pop a flash", 0], ["flashbang", 0], ["throw a flashbang", 0], ["flash in", 0], ["stun them", 0],
+      ["throw a flash at {T}", 1], ["flash {T}", 1], ["toss a flash at {T}", 1], ["pop a flash on {T}", 1], ["flashbang {T}", 1],
+      ["throw a flash behind {T}", 2], ["flash behind {T}", 2], ["toss a flashbang behind {T}", 2]
+    ],
+    "ru": [
+      ["кинь флешку", 0], ["закинь флешку", 0], ["флешку кидай", 0], ["слепуху кидай", 0], ["слепи их", 0],
+      ["кинь световую", 0], ["светошумовую давай", 0],
+      ["кинь флешку в {T:acc}", 1], ["закинь флешку к {T:dat}", 1], ["флешку к {T:dat}", 1], ["кинь световую к {T:dat}", 1],
+      ["флешани {T:acc}", 1], ["брось флешку в сторону {T:gen}", 1], ["кинь слепуху к {T:dat}", 1],
+      ["кинь флешку за {T:acc}", 2], ["закинь светошумовую за {T:acc}", 2], ["флешку за {T:acc}", 2], ["закинь слепуху за {T:acc}", 2]
+    ],
+    "es": [
+      ["tira una flash", 0], ["lanza una flash", 0], ["tira una cegadora", 0], ["échales una flash", 0], ["ciégalos", 0],
+      ["tira una flash {T:a}", 1], ["lanza una flash hacia {T}", 1], ["tira una cegadora {T:a}", 1], ["flashea {T}", 1],
+      ["tira una flash detrás {T:de}", 2], ["mete una flash detrás {T:de}", 2]
+    ],
+    "ru_inf": ["кинуть флешку", "кинуть флешку в {T:acc}", "кинуть флешку за {T:acc}"],
+    "es_inf": ["tirar una flash", "tirar una flash {T:a}", "tirar una flash detrás {T:de}"]
+  },
+  "SMOKE": {
+    "target": "optional",
+    "canon": ["throw a smoke", "throw a smoke at {T}"],
+    "en": [
+      ["throw a smoke", 0], ["pop smoke", 0], ["throw smoke", 0], ["drop a smoke", 0], ["we need smoke", 0],
+      ["smoke {T}", 1], ["throw a smoke at {T}", 1], ["pop smoke on {T}", 1], ["put smoke on {T}", 1], ["drop a smoke by {T}", 1],
+      ["throw smoke in front of {T}", 1], ["smoke off {T}", 1]
+    ],
+    "ru": [
+      ["кинь дым", 0], ["закинь дым", 0], ["дым кидай", 0], ["поставь дым", 0], ["кинь смок", 0], ["закинь смок", 0],
+      ["дымовую давай", 0], ["задыми", 0],
+      ["закинь дым к {T:dat}", 1], ["кинь дым к {T:dat}", 1], ["задыми {T:acc}", 1], ["поставь дым перед {T:ins}", 1],
+      ["кинь дымовую к {T:dat}", 1], ["закинь смок к {T:dat}", 1], ["закрой дымом {T:acc}", 1], ["дым к {T:dat}", 1],
+      ["кинь дым в сторону {T:gen}", 1], ["поставь смок у {T:gen}", 1]
+    ],
+    "es": [
+      ["tira un humo", 0], ["tira humo", 0], ["lanza una de humo", 0], ["pon humo", 0], ["necesito humo", 0],
+      ["tira humo {T:a}", 1], ["lanza una de humo {T:a}", 1], ["pon humo delante {T:de}", 1], ["échale humo {T:a}", 1],
+      ["tira un humo hacia {T}", 1]
+    ],
+    "ru_inf": ["кинуть дым", "закинуть дым к {T:dat}"],
+    "es_inf": ["tirar un humo", "tirar humo {T:a}"]
+  },
+  "FRAG": {
+    "target": "optional",
+    "canon": ["throw a grenade", "throw a grenade at {T}", "throw a grenade behind {T}", "throw a grenade over {T}"],
+    "en": [
+      ["throw a grenade", 0], ["throw a nade", 0], ["frag out", 0], ["toss a frag", 0], ["nade them", 0],
+      ["frag {T}", 1], ["nade {T}", 1], ["throw a grenade at {T}", 1], ["throw a frag at {T}", 1], ["throw a molotov at {T}", 1],
+      ["throw a grenade behind {T}", 2], ["nade behind {T}", 2], ["toss a frag behind {T}", 2],
+      ["throw a grenade over {T}", 3], ["lob a nade over {T}", 3]
+    ],
+    "ru": [
+      ["кинь гранату", 0], ["кидай гранату", 0], ["закинь гранату", 0], ["гранату давай", 0], ["кинь осколочную", 0],
+      ["кинь эфку", 0],
+      ["кинь гранату в {T:acc}", 1], ["кинь гранату к {T:dat}", 1], ["гранату к {T:dat}", 1], ["закинь гранатку к {T:dat}", 1],
+      ["кинь молотов в {T:acc}", 1], ["брось гранату в сторону {T:gen}", 1],
+      ["кинь гранату за {T:acc}", 2], ["закинь гранату за {T:acc}", 2], ["кинь эфку за {T:acc}", 2], ["гранату за {T:acc}", 2],
+      ["перекинь гранату через {T:acc}", 3], ["закинь гранату через {T:acc}", 3]
+    ],
+    "es": [
+      ["tira una granada", 0], ["lanza una granada", 0], ["suelta una granada", 0], ["tira una frag", 0],
+      ["tira una granada {T:a}", 1], ["lanza una granada {T:a}", 1], ["tira un molotov {T:a}", 1], ["granada {T:a}", 1],
+      ["tira una granada detrás {T:de}", 2], ["mete una granada detrás {T:de}", 2],
+      ["tira una granada por encima {T:de}", 3], ["pasa una granada por encima {T:de}", 3]
+    ],
+    "ru_inf": ["кинуть гранату", "кинуть гранату в {T:acc}", "кинуть гранату за {T:acc}", "перекинуть гранату через {T:acc}"],
+    "es_inf": ["tirar una granada", "tirar una granada {T:a}", "tirar una granada detrás {T:de}", "tirar una granada por encima {T:de}"]
+  },
+  "COVER_ME": {
+    "target": "none",
+    "canon": ["cover me", "watch my back"],
+    "en": [
+      ["cover me", 0], ["cover me, i'm moving", 0], ["cover me while i move", 0], ["keep me covered", 0], ["back me up", 0],
+      ["cover me while i reload", 0], ["cover my push", 0],
+      ["watch my back", 1], ["watch my six", 1], ["keep an eye on my back", 1], ["cover my back", 1]
+    ],
+    "ru": [
+      ["прикрой меня", 0], ["прикрой", 0], ["прикрывай", 0], ["прикрывай меня", 0], ["прикрой, я пошёл", 0],
+      ["прикрой, я перебегаю", 0], ["прикрой меня, пока я перезаряжаюсь", 0], ["я иду, прикрывай", 0], ["подстрахуй меня", 0],
+      ["следи за моей спиной", 1], ["прикрой спину", 1], ["прикрой мне спину", 1], ["присмотри за моей спиной", 1],
+      ["держи мой тыл", 1], ["паси мне спину", 1]
+    ],
+    "es": [
+      ["cúbreme", 0], ["cúbreme que voy", 0], ["cúbreme mientras me muevo", 0], ["cúbreme mientras recargo", 0],
+      ["dame cobertura", 0], ["respáldame", 0],
+      ["vigila mi espalda", 1], ["cúbreme la espalda", 1], ["cuida mi espalda", 1], ["guárdame las espaldas", 1]
+    ],
+    "ru_inf": ["прикрыть меня", "прикрыть мне спину"],
+    "es_inf": ["cubrirme", "vigilar mi espalda"]
+  },
+  "ATTACK": {
+    "target": "optional",
+    "canon": ["attack the enemy", "attack the enemy at {T}"],
+    "en": [
+      ["attack them", 0], ["engage", 0], ["take them out", 0], ["go get them", 0], ["engage the enemy", 0], ["kill them", 0],
+      ["hunt them down", 0],
+      ["attack {T}", 1], ["engage at {T}", 1], ["attack the enemy at {T}", 1], ["take them out at {T}", 1],
+      ["kill the guy behind {T}", 1], ["engage the enemies by {T}", 1], ["go after the guys at {T}", 1]
+    ],
+    "ru": [
+      ["атакуй", 0], ["в атаку", 0], ["вали их", 0], ["убей их", 0], ["мочи их", 0], ["нападай", 0], ["атакуй противника", 0],
+      ["найди их и убей", 0],
+      ["атакуй {T:acc}", 1], ["атакуй врага у {T:gen}", 1], ["вали того, кто за {T:ins}", 1], ["убей того, кто у {T:gen}", 1],
+      ["нападай на тех, кто у {T:gen}", 1], ["вынеси тех, кто за {T:ins}", 1], ["атакуй тех, кто засел за {T:ins}", 1]
+    ],
+    "es": [
+      ["ataca", 0], ["atácalos", 0], ["a por ellos", 0], ["ve por ellos", 0], ["mátalos", 0], ["acaba con ellos", 0],
+      ["ataca {T}", 1], ["ataca al enemigo junto {T:a}", 1], ["mata al que está detrás {T:de}", 1],
+      ["acaba con los que están detrás {T:de}", 1]
+    ],
+    "ru_inf": ["атаковать", "атаковать врага у {T:gen}"],
+    "es_inf": ["atacar", "atacar al enemigo junto {T:a}"]
+  },
+  "OPEN_FIRE": {
+    "target": "optional",
+    "canon": ["open fire", "shoot {T}"],
+    "en": [
+      ["open fire", 0], ["fire at will", 0], ["weapons free", 0], ["start shooting", 0], ["light them up", 0], ["shoot them", 0],
+      ["shoot {T}", 1], ["shoot at {T}", 1], ["open fire on {T}", 1], ["fire at {T}", 1], ["put rounds into {T}", 1],
+      ["light up {T}", 1], ["unload on {T}", 1], ["blast {T}", 1]
+    ],
+    "ru": [
+      ["огонь", 0], ["открывай огонь", 0], ["стреляй", 0], ["пали", 0], ["огонь на поражение", 0], ["начинай стрелять", 0],
+      ["огонь по готовности", 0],
+      ["стреляй по {T:dat}", 1], ["прострели {T:acc}", 1], ["стреляй в {T:acc}", 1], ["открой огонь по {T:dat}", 1],
+      ["огонь по {T:dat}", 1], ["пальни в {T:acc}", 1], ["пали по {T:dat}", 1], ["шмальни в {T:acc}", 1],
+      ["выстрели в {T:acc}", 1], ["расстреляй {T:acc}", 1]
+    ],
+    "es": [
+      ["abre fuego", 0], ["fuego", 0], ["dispara", 0], ["fuego a discreción", 0], ["empieza a disparar", 0],
+      ["dispara {T:a}", 1], ["dispárale {T:a}", 1], ["abre fuego contra {T}", 1], ["dale plomo {T:a}", 1], ["fuego sobre {T}", 1],
+      ["métele tiros {T:a}", 1]
+    ],
+    "ru_inf": ["открыть огонь", "стрелять по {T:dat}"],
+    "es_inf": ["abrir fuego", "disparar {T:a}"]
+  },
+  "HOLD_FIRE": {
+    "target": "none",
+    "canon": ["hold fire"],
+    "en": [
+      ["hold fire", 0], ["hold your fire", 0], ["cease fire", 0], ["stop shooting", 0], ["don't shoot", 0], ["weapons tight", 0],
+      ["check your fire", 0], ["quit shooting", 0], ["stop firing", 0]
+    ],
+    "ru": [
+      ["не стреляй", 0], ["прекрати огонь", 0], ["отставить огонь", 0], ["стоп огонь", 0], ["хватит стрелять", 0], ["не пали", 0],
+      ["прекрати стрелять", 0], ["не открывай огонь", 0], ["перестань стрелять", 0], ["огонь не открывать", 0],
+      ["не стреляй, свои", 0]
+    ],
+    "es": [
+      ["alto el fuego", 0], ["no dispares", 0], ["deja de disparar", 0], ["cesa el fuego", 0], ["para de disparar", 0],
+      ["no abras fuego", 0], ["no dispares, son amigos", 0]
+    ],
+    "ru_inf": ["прекратить огонь"],
+    "es_inf": ["dejar de disparar"]
+  },
+  "SUPPRESS": {
+    "target": "optional",
+    "canon": ["lay down suppressive fire", "lay down suppressive fire on {T}"],
+    "en": [
+      ["suppress them", 0], ["suppressive fire", 0], ["lay down suppressive fire", 0], ["pin them down", 0],
+      ["keep their heads down", 0], ["give me covering fire", 0],
+      ["suppress {T}", 1], ["suppressive fire on {T}", 1], ["pin them down at {T}", 1], ["lay down fire on {T}", 1],
+      ["keep {T} suppressed", 1], ["covering fire on {T}", 1], ["put fire on {T}", 1]
+    ],
+    "ru": [
+      ["подави их", 0], ["огонь на подавление", 0], ["подавляй", 0], ["прижми их", 0], ["прижми их огнём", 0],
+      ["не давай им высунуться", 0], ["прикрой огнём", 0],
+      ["подави {T:acc}", 1], ["огонь на подавление по {T:dat}", 1], ["прижми их у {T:gen}", 1], ["подавляй {T:acc}", 1],
+      ["держи под огнём {T:acc}", 1], ["залей огнём {T:acc}", 1], ["не давай им высунуться из-за {T:gen}", 1],
+      ["постреляй по {T:dat}, чтобы не высовывались", 1]
+    ],
+    "es": [
+      ["fuego de supresión", 0], ["suprímelos", 0], ["fuego de cobertura", 0], ["mantenlos agachados", 0],
+      ["no los dejes asomarse", 0],
+      ["suprime {T}", 1], ["fuego de supresión sobre {T}", 1], ["mantén {T} bajo fuego", 1], ["fuego de cobertura hacia {T}", 1],
+      ["que no se asomen detrás {T:de}", 1]
+    ],
+    "ru_inf": ["подавить их огнём", "подавить {T:acc}"],
+    "es_inf": ["hacer fuego de supresión", "suprimir {T}"]
+  },
+  "LOOK_AT": {
+    "target": "optional",
+    "canon": ["look there", "look at {T}", "turn around"],
+    "en": [
+      ["look there", 0], ["look over there", 0], ["look where i'm pointing", 0], ["look that way", 0], ["face that way", 0],
+      ["look at {T}", 1], ["take a look at {T}", 1], ["face {T}", 1], ["turn to {T}", 1], ["turn towards {T}", 1],
+      ["have a look at {T}", 1], ["look toward {T}", 1],
+      ["turn around", 2], ["look behind you", 2]
+    ],
+    "ru": [
+      ["посмотри туда", 0], ["глянь туда", 0], ["смотри туда", 0], ["посмотри, куда я показываю", 0], ["повернись туда", 0],
+      ["посмотри на {T:acc}", 1], ["глянь на {T:acc}", 1], ["смотри на {T:acc}", 1], ["повернись к {T:dat}", 1],
+      ["взгляни на {T:acc}", 1], ["посмотри в сторону {T:gen}", 1], ["развернись к {T:dat}", 1], ["повернись лицом к {T:dat}", 1],
+      ["обернись", 2], ["посмотри назад", 2], ["развернись", 2]
+    ],
+    "es": [
+      ["mira allí", 0], ["mira para allá", 0], ["mira ahí", 0], ["mira hacia allá", 0],
+      ["mira {T}", 1], ["mira hacia {T}", 1], ["voltea hacia {T}", 1], ["gírate hacia {T}", 1],
+      ["date la vuelta", 2], ["mira atrás", 2], ["voltéate", 2]
+    ],
+    "ru_inf": ["посмотреть туда", "посмотреть на {T:acc}", "обернуться"],
+    "es_inf": ["mirar allí", "mirar {T}", "darte la vuelta"]
+  },
+  "LOOK_AT_ME": {
+    "target": "none",
+    "canon": ["look at me"],
+    "en": [
+      ["look at me", 0], ["face me", 0], ["turn to me", 0], ["look my way", 0], ["turn around and look at me", 0],
+      ["hey, look at me", 0], ["turn towards me", 0], ["look over here at me", 0]
+    ],
+    "ru": [
+      ["посмотри на меня", 0], ["глянь на меня", 0], ["смотри на меня", 0], ["повернись ко мне", 0], ["обернись ко мне", 0],
+      ["развернись ко мне", 0], ["сюда посмотри", 0], ["на меня смотри", 0], ["взгляни на меня", 0], ["повернись лицом ко мне", 0]
+    ],
+    "es": [
+      ["mírame", 0], ["gírate hacia mí", 0], ["voltea hacia mí", 0], ["date la vuelta y mírame", 0], ["mira para acá", 0],
+      ["oye, mírame", 0], ["ponte de cara a mí", 0]
+    ],
+    "ru_inf": ["посмотреть на меня"],
+    "es_inf": ["mirarme"]
+  },
+  "CHECK": {
+    "target": "optional",
+    "canon": ["check there", "check {T}", "check behind {T}"],
+    "en": [
+      ["check there", 0], ["check over there", 0], ["go see what's there", 0], ["see if it's clear", 0],
+      ["check {T}", 1], ["go check {T}", 1], ["check out {T}", 1], ["inspect {T}", 1], ["see if {T} is clear", 1],
+      ["make sure {T} is clear", 1], ["go see what's at {T}", 1],
+      ["check behind {T}", 2], ["go check behind {T}", 2], ["see what's behind {T}", 2]
+    ],
+    "ru": [
+      ["проверь там", 0], ["проверь, что там", 0], ["глянь, что там", 0], ["сходи проверь, что там", 0], ["проверь, чисто ли там", 0],
+      ["проверь {T:acc}", 1], ["сходи проверь {T:acc}", 1], ["глянь, что у {T:gen}", 1], ["проверь, что у {T:gen}", 1],
+      ["осмотри {T:acc}", 1], ["проверь, чисто ли у {T:gen}", 1],
+      ["проверь за {T:ins}", 2], ["глянь за {T:ins}", 2], ["посмотри, что за {T:ins}", 2], ["проверь, есть ли кто за {T:ins}", 2],
+      ["загляни за {T:acc}", 2]
+    ],
+    "es": [
+      ["revisa ahí", 0], ["revisa allá", 0], ["ve a ver qué hay", 0], ["checa ahí", 0],
+      ["revisa {T}", 1], ["ve a revisar {T}", 1], ["checa {T}", 1], ["comprueba {T}", 1],
+      ["revisa detrás {T:de}", 2], ["mira qué hay detrás {T:de}", 2], ["asómate detrás {T:de}", 2]
+    ],
+    "ru_inf": ["проверить там", "проверить {T:acc}", "проверить за {T:ins}"],
+    "es_inf": ["revisar ahí", "revisar {T}", "revisar detrás {T:de}"]
+  },
+  "SEE_THING": {
+    "target": "optional",
+    "canon": ["do you see that", "can you see {T}"],
+    "en": [
+      ["do you see that", 0], ["can you see that", 0], ["you seeing this", 0], ["do you see what i'm pointing at", 0],
+      ["you got eyes on that", 0],
+      ["can you see {T}", 1], ["do you see {T}", 1], ["you see {T}", 1], ["do you have eyes on {T}", 1], ["can you spot {T}", 1],
+      ["you got a visual on {T}", 1], ["is {T} in your view", 1], ["do you see {T} from there", 1]
+    ],
+    "ru": [
+      ["видишь?", 0], ["видишь это?", 0], ["ты это видишь?", 0], ["видишь, куда я показываю?", 0], ["видишь, на что я смотрю?", 0],
+      ["видишь {T:acc}?", 1], ["ты видишь {T:acc}?", 1], ["{T:acc} видишь?", 1], ["ты {T:acc} видишь?", 1],
+      ["видишь оттуда {T:acc}?", 1], ["можешь разглядеть {T:acc}?", 1], ["у тебя {T:nom} в поле зрения?", 1]
+    ],
+    "es": [
+      ["¿ves eso?", 0], ["¿estás viendo esto?", 0], ["¿ves a dónde apunto?", 0], ["¿ves eso de ahí?", 0],
+      ["¿ves {T}?", 1], ["¿puedes ver {T}?", 1], ["¿alcanzas a ver {T}?", 1], ["¿tienes {T} a la vista?", 1],
+      ["¿desde ahí ves {T}?", 1]
+    ],
+    "ru_inf": ["увидеть это", "увидеть {T:acc}"],
+    "es_inf": ["ver eso", "ver {T}"]
+  },
+  "SEE_ME": {
+    "target": "none",
+    "canon": ["do you see me"],
+    "en": [
+      ["do you see me", 0], ["can you see me", 0], ["you see me", 0], ["do you have eyes on me", 0], ["can you spot me", 0],
+      ["am i in your view", 0], ["can you see me from there", 0], ["you got eyes on me", 0], ["do you see where i am", 0],
+      ["can you still see me", 0]
+    ],
+    "ru": [
+      ["видишь меня?", 0], ["ты меня видишь?", 0], ["меня видишь?", 0], ["видно меня?", 0], ["ты меня видишь оттуда?", 0],
+      ["я у тебя в поле зрения?", 0], ["видишь, где я?", 0], ["ты меня ещё видишь?", 0], ["видишь, где я стою?", 0]
+    ],
+    "es": [
+      ["¿me ves?", 0], ["¿puedes verme?", 0], ["¿me alcanzas a ver?", 0], ["¿me ves desde ahí?", 0], ["¿todavía me ves?", 0],
+      ["¿ves dónde estoy?", 0], ["¿me tienes a la vista?", 0]
+    ],
+    "ru_inf": ["увидеть меня"],
+    "es_inf": ["verme"]
+  },
+  "WHAT_IS_IT": {
+    "target": "none",
+    "canon": ["what is that"],
+    "en": [
+      ["what is that", 0], ["what's that", 0], ["what is this", 0], ["what's that thing", 0], ["what am i looking at", 0],
+      ["what's that over there", 0], ["what kind of thing is that", 0], ["tell me what that is", 0], ["what do you call that", 0],
+      ["what's that called", 0], ["identify that", 0]
+    ],
+    "ru": [
+      ["что это?", 0], ["что это такое?", 0], ["это что такое?", 0], ["а это что?", 0], ["что это за штука?", 0],
+      ["что это за хрень?", 0], ["что это вон там?", 0], ["на что я смотрю?", 0], ["как это называется?", 0], ["скажи, что это", 0]
+    ],
+    "es": [
+      ["¿qué es eso?", 0], ["¿qué es esto?", 0], ["¿y eso qué es?", 0], ["¿qué es esa cosa?", 0], ["¿qué estoy mirando?", 0],
+      ["¿cómo se llama eso?", 0], ["dime qué es eso", 0], ["¿qué es eso de ahí?", 0]
+    ],
+    "ru_inf": ["узнать, что это"],
+    "es_inf": ["saber qué es eso"]
+  },
+  "STATUS_REPORT": {
+    "target": "none",
+    "canon": ["what do you see", "status report", "how are you holding up"],
+    "en": [
+      ["what do you see", 0], ["what can you see", 0], ["tell me what you see", 0], ["what's around you", 0],
+      ["what are you looking at", 0], ["describe what you see", 0],
+      ["status report", 1], ["sitrep", 1], ["give me a sitrep", 1], ["report in", 1], ["what's the situation", 1],
+      ["anything to report", 1],
+      ["how are you holding up", 2], ["how's it going over there", 2], ["how's your side", 2]
+    ],
+    "ru": [
+      ["что видишь?", 0], ["что ты видишь?", 0], ["что там видно?", 0], ["что вокруг тебя?", 0], ["расскажи, что видишь", 0],
+      ["что у тебя перед глазами?", 0],
+      ["доложи обстановку", 1], ["доклад", 1], ["докладывай", 1], ["какая обстановка?", 1], ["что у тебя там?", 1],
+      ["что по обстановке?", 1], ["есть что доложить?", 1], ["как обстановка у тебя?", 1],
+      ["как ты там?", 2], ["как ты там держишься?", 2], ["как у тебя там?", 2]
+    ],
+    "es": [
+      ["¿qué ves?", 0], ["¿qué puedes ver?", 0], ["dime qué ves", 0], ["¿qué hay a tu alrededor?", 0],
+      ["dame un informe", 1], ["reporta", 1], ["¿cuál es la situación?", 1], ["¿algo que reportar?", 1],
+      ["¿cómo vas por ahí?", 2], ["¿cómo lo llevas?", 2], ["¿qué tal por allá?", 2]
+    ],
+    "ru_inf": ["рассказать, что видишь", "доложить обстановку", "сказать, как ты там"],
+    "es_inf": ["decir qué ves", "dar un informe", "decir cómo vas"]
+  }
+}

@@ -1,0 +1,2085 @@
+{
+ "_note": "Written blind by Claude on 2026-10-27 from the v66 round's rules only, without reading any training data, templates or other test sets; held out, never for training.",
+ "items": [
+  {
+   "id": "t66_001",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Отойди немного, брат.",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_002",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "отойди в сторонку",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_003",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Уйди с дороги!",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_004",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "дай пройти брат",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_005",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Подвинься, я не пролезу.",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_006",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "посторонись-ка",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_007",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Ты мне дорогу загораживаешь.",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_008",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "ну пропусти меня",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_009",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Сдвинься в сторону, мешаешь.",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_010",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "не стой у меня на пути",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_011",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Уйди, брат, не до тебя сейчас.",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_012",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "отвали, не мешай пройти",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_013",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Отступай!",
+   "label": "FALL_BACK",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_014",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "move away bro",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_015",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "Step aside real quick.",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_016",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "dude get out of my way",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_017",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "You're in my way, man.",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_018",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "let me pass",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_019",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "Move over, I can't get past you.",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_020",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "go away I'm busy",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_021",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "Get out!",
+   "label": "GET_OUT",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_022",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "apartate tio",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_023",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "quítate de en medio",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_024",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "venga, déjame pasar",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_025",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "Hazte a un lado.",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_026",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "estás en medio muévete",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_027",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "Quítate de mi camino.",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_028",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "vete que estoy ocupado",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_029",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "muévete a un lado porfa",
+   "label": "GIVE_WAY",
+   "place": null,
+   "rule": 1
+  },
+  {
+   "id": "t66_030",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Что это?",
+   "label": "WHAT_IS_IT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_031",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "а это что такое",
+   "label": "WHAT_IS_IT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_032",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "брат, что это за штука?",
+   "label": "WHAT_IS_IT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_033",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "что это за фигня там",
+   "label": "WHAT_IS_IT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_034",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "На что я сейчас смотрю?",
+   "label": "WHAT_IS_IT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_035",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "это что вообще такое",
+   "label": "WHAT_IS_IT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_036",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Что это было?",
+   "label": "SMALL_TALK",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_037",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "ого, что это сейчас было",
+   "label": "SMALL_TALK",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_038",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Что видишь?",
+   "label": "STATUS_REPORT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_039",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "брат, что ты там видишь",
+   "label": "STATUS_REPORT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_040",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Видишь вон ту катушку?",
+   "label": "SEE_THING",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_041",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "what's that",
+   "label": "WHAT_IS_IT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_042",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "yo what is this thing",
+   "label": "WHAT_IS_IT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_043",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "What am I even looking at here?",
+   "label": "WHAT_IS_IT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_044",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "hey what is that over there",
+   "label": "WHAT_IS_IT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_045",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "Whoa, what was that?",
+   "label": "SMALL_TALK",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_046",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "what do you see out there",
+   "label": "STATUS_REPORT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_047",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "Do you see that crate?",
+   "label": "SEE_THING",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_048",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "¿Qué es eso?",
+   "label": "WHAT_IS_IT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_049",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "oye, ¿y esto qué es?",
+   "label": "WHAT_IS_IT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_050",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "¿qué es esa cosa?",
+   "label": "WHAT_IS_IT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_051",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "que estoy mirando tio",
+   "label": "WHAT_IS_IT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_052",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "¿Qué fue eso?",
+   "label": "SMALL_TALK",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_053",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "¿qué ves por ahí?",
+   "label": "STATUS_REPORT",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_054",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "¿Ves aquella caja de madera?",
+   "label": "SEE_THING",
+   "place": null,
+   "rule": 2
+  },
+  {
+   "id": "t66_055",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Прострели стекло.",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_056",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "пальни по стеклу",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_057",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "стреляй в это окно",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_058",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "шмальни в стекло под ногами",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_059",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "расстреляй это окно нафиг",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_060",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Разбей стекло.",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_061",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "выбей стекло",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_062",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Разбей окно в полу.",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_063",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "ударь по стеклу прикладом",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_064",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "долбани прикладом в окно",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_065",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "заложи заряд и взорви дверь",
+   "label": "BREACH",
+   "place": "door",
+   "rule": 3
+  },
+  {
+   "id": "t66_066",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "shoot out the glass",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_067",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "put some rounds in that window",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_068",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "Fire at the glass!",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_069",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "smash the glass",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_070",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "Break that window, bro.",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_071",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "hit that window with your stock",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_072",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "Blow the door open.",
+   "label": "BREACH",
+   "place": "door",
+   "rule": 3
+  },
+  {
+   "id": "t66_073",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "Dispara al cristal.",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_074",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "pégale unos tiros a la ventana",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_075",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "dispárale al vidrio",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_076",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "Rompe el cristal.",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_077",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "parte esa ventana",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_078",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "dale con la culata al cristal",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 3
+  },
+  {
+   "id": "t66_079",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "Vuela la puerta.",
+   "label": "BREACH",
+   "place": "door",
+   "rule": 3
+  },
+  {
+   "id": "t66_080",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Выходи из комнаты.",
+   "label": "MOVE_TO",
+   "place": "outside",
+   "rule": 4
+  },
+  {
+   "id": "t66_081",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "выйди наружу брат",
+   "label": "MOVE_TO",
+   "place": "outside",
+   "rule": 4
+  },
+  {
+   "id": "t66_082",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "марш на улицу",
+   "label": "MOVE_TO",
+   "place": "outside",
+   "rule": 4
+  },
+  {
+   "id": "t66_083",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "выбирайся из здания",
+   "label": "MOVE_TO",
+   "place": "outside",
+   "rule": 4
+  },
+  {
+   "id": "t66_084",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Выйди из помещения.",
+   "label": "MOVE_TO",
+   "place": "outside",
+   "rule": 4
+  },
+  {
+   "id": "t66_085",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "иди-ка на улицу",
+   "label": "MOVE_TO",
+   "place": "outside",
+   "rule": 4
+  },
+  {
+   "id": "t66_086",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "вылезай из машины",
+   "label": "GET_OUT",
+   "place": null,
+   "rule": 4
+  },
+  {
+   "id": "t66_087",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Зайди внутрь.",
+   "label": "MOVE_TO",
+   "place": "inside",
+   "rule": 4
+  },
+  {
+   "id": "t66_088",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "заходи в здание",
+   "label": "MOVE_TO",
+   "place": "inside",
+   "rule": 4
+  },
+  {
+   "id": "t66_089",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "go outside",
+   "label": "MOVE_TO",
+   "place": "outside",
+   "rule": 4
+  },
+  {
+   "id": "t66_090",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "Head outside, bro.",
+   "label": "MOVE_TO",
+   "place": "outside",
+   "rule": 4
+  },
+  {
+   "id": "t66_091",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "leave the building",
+   "label": "MOVE_TO",
+   "place": "outside",
+   "rule": 4
+  },
+  {
+   "id": "t66_092",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "get out of the room man",
+   "label": "MOVE_TO",
+   "place": "outside",
+   "rule": 4
+  },
+  {
+   "id": "t66_093",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "get out of here, quick",
+   "label": "FALL_BACK",
+   "place": null,
+   "rule": 4
+  },
+  {
+   "id": "t66_094",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "Sal de la habitación.",
+   "label": "MOVE_TO",
+   "place": "outside",
+   "rule": 4
+  },
+  {
+   "id": "t66_095",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "sal fuera venga",
+   "label": "MOVE_TO",
+   "place": "outside",
+   "rule": 4
+  },
+  {
+   "id": "t66_096",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "vete afuera del edificio",
+   "label": "MOVE_TO",
+   "place": "outside",
+   "rule": 4
+  },
+  {
+   "id": "t66_097",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "sal a la calle, tío",
+   "label": "MOVE_TO",
+   "place": "outside",
+   "rule": 4
+  },
+  {
+   "id": "t66_098",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "Sal del coche.",
+   "label": "GET_OUT",
+   "place": null,
+   "rule": 4
+  },
+  {
+   "id": "t66_099",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "entra al edificio",
+   "label": "MOVE_TO",
+   "place": "inside",
+   "rule": 4
+  },
+  {
+   "id": "t66_100",
+   "lang": "ru",
+   "before": [
+    "Разбей стекло."
+   ],
+   "scene": "",
+   "text": "Нет, оружием.",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_101",
+   "lang": "ru",
+   "before": [
+    "Разбей окно."
+   ],
+   "scene": "",
+   "text": "не, стреляй давай",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_102",
+   "lang": "ru",
+   "before": [
+    "Выбей стекло прикладом."
+   ],
+   "scene": "",
+   "text": "нет, прострели его",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_103",
+   "lang": "ru",
+   "before": [
+    "Прострели стекло."
+   ],
+   "scene": "",
+   "text": "Нет, прикладом.",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_104",
+   "lang": "ru",
+   "before": [
+    "Стреляй в окно."
+   ],
+   "scene": "",
+   "text": "нет, просто разбей его",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_105",
+   "lang": "ru",
+   "before": [
+    "Кинь гранату к двери."
+   ],
+   "scene": "",
+   "text": "Нет, дымом.",
+   "label": "SMOKE",
+   "place": "door",
+   "rule": 5
+  },
+  {
+   "id": "t66_106",
+   "lang": "ru",
+   "before": [
+    "Брось гранату в дверь."
+   ],
+   "scene": "",
+   "text": "нет, флешку кидай",
+   "label": "FLASH",
+   "place": "door",
+   "rule": 5
+  },
+  {
+   "id": "t66_107",
+   "lang": "ru",
+   "before": [
+    "Брось дым к окну."
+   ],
+   "scene": "",
+   "text": "Нет, гранату.",
+   "label": "FRAG",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_108",
+   "lang": "ru",
+   "before": [
+    "Стреляй по окну."
+   ],
+   "scene": "",
+   "text": "нет, подави его",
+   "label": "SUPPRESS",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_109",
+   "lang": "ru",
+   "before": [
+    "Брось светошумовую к двери."
+   ],
+   "scene": "",
+   "text": "нет, лучше осколочную",
+   "label": "FRAG",
+   "place": "door",
+   "rule": 5
+  },
+  {
+   "id": "t66_110",
+   "lang": "ru",
+   "before": [
+    "Кинь дымовую к окну."
+   ],
+   "scene": "",
+   "text": "нет, флешкой",
+   "label": "FLASH",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_111",
+   "lang": "ru",
+   "before": [
+    "Брось гранату к окну."
+   ],
+   "scene": "",
+   "text": "Не, дым.",
+   "label": "SMOKE",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_112",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Оружием.",
+   "label": "SWITCH_WEAPON",
+   "place": null,
+   "rule": 5
+  },
+  {
+   "id": "t66_113",
+   "lang": "ru",
+   "before": [
+    "Иди за мной."
+   ],
+   "scene": "",
+   "text": "Используй оружие.",
+   "label": "SWITCH_WEAPON",
+   "place": null,
+   "rule": 5
+  },
+  {
+   "id": "t66_114",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Нет.",
+   "label": "NO",
+   "place": null,
+   "rule": 5
+  },
+  {
+   "id": "t66_115",
+   "lang": "ru",
+   "before": [
+    "Как дела, брат?"
+   ],
+   "scene": "",
+   "text": "нет",
+   "label": "NO",
+   "place": null,
+   "rule": 5
+  },
+  {
+   "id": "t66_116",
+   "lang": "en",
+   "before": [
+    "Smash the window."
+   ],
+   "scene": "",
+   "text": "No, shoot it.",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_117",
+   "lang": "en",
+   "before": [
+    "Break that glass."
+   ],
+   "scene": "",
+   "text": "nah use your gun",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_118",
+   "lang": "en",
+   "before": [
+    "Shoot the glass."
+   ],
+   "scene": "",
+   "text": "No, hit it with the rifle butt.",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_119",
+   "lang": "en",
+   "before": [
+    "Toss a frag at the door."
+   ],
+   "scene": "",
+   "text": "No, use smoke.",
+   "label": "SMOKE",
+   "place": "door",
+   "rule": 5
+  },
+  {
+   "id": "t66_120",
+   "lang": "en",
+   "before": [
+    "Frag the door."
+   ],
+   "scene": "",
+   "text": "no, flashbang it",
+   "label": "FLASH",
+   "place": "door",
+   "rule": 5
+  },
+  {
+   "id": "t66_121",
+   "lang": "en",
+   "before": [
+    "Throw smoke at the window."
+   ],
+   "scene": "",
+   "text": "No, throw a frag.",
+   "label": "FRAG",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_122",
+   "lang": "en",
+   "before": [
+    "Shoot at the window."
+   ],
+   "scene": "",
+   "text": "no, suppress it",
+   "label": "SUPPRESS",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_123",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "Use your weapon.",
+   "label": "SWITCH_WEAPON",
+   "place": null,
+   "rule": 5
+  },
+  {
+   "id": "t66_124",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "No.",
+   "label": "NO",
+   "place": null,
+   "rule": 5
+  },
+  {
+   "id": "t66_125",
+   "lang": "en",
+   "before": [
+    "Follow me."
+   ],
+   "scene": "",
+   "text": "use your weapon man",
+   "label": "SWITCH_WEAPON",
+   "place": null,
+   "rule": 5
+  },
+  {
+   "id": "t66_126",
+   "lang": "es",
+   "before": [
+    "Rompe la ventana."
+   ],
+   "scene": "",
+   "text": "No, dispárale.",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_127",
+   "lang": "es",
+   "before": [
+    "Rompe el cristal."
+   ],
+   "scene": "",
+   "text": "no, con el arma",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_128",
+   "lang": "es",
+   "before": [
+    "Dispara al cristal."
+   ],
+   "scene": "",
+   "text": "No, con la culata.",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_129",
+   "lang": "es",
+   "before": [
+    "Lanza una granada a la puerta."
+   ],
+   "scene": "",
+   "text": "No, humo.",
+   "label": "SMOKE",
+   "place": "door",
+   "rule": 5
+  },
+  {
+   "id": "t66_130",
+   "lang": "es",
+   "before": [
+    "Echa humo a la puerta."
+   ],
+   "scene": "",
+   "text": "no, una cegadora",
+   "label": "FLASH",
+   "place": "door",
+   "rule": 5
+  },
+  {
+   "id": "t66_131",
+   "lang": "es",
+   "before": [
+    "Lanza humo a la ventana."
+   ],
+   "scene": "",
+   "text": "No, mejor una granada.",
+   "label": "FRAG",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_132",
+   "lang": "es",
+   "before": [
+    "Dispara a la ventana."
+   ],
+   "scene": "",
+   "text": "no, fuego de supresión",
+   "label": "SUPPRESS",
+   "place": "window",
+   "rule": 5
+  },
+  {
+   "id": "t66_133",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "Usa el arma.",
+   "label": "SWITCH_WEAPON",
+   "place": null,
+   "rule": 5
+  },
+  {
+   "id": "t66_134",
+   "lang": "es",
+   "before": [
+    "Sígueme."
+   ],
+   "scene": "",
+   "text": "No.",
+   "label": "NO",
+   "place": null,
+   "rule": 5
+  },
+  {
+   "id": "t66_135",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "не отдавай мне её",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 6
+  },
+  {
+   "id": "t66_136",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a wooden crate; no car near; last thing: wooden crate, 0 m",
+   "text": "ящик не бросай",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 6
+  },
+  {
+   "id": "t66_137",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a small box; a car 12 m away; last thing: small box, 0 m",
+   "text": "не ставь её на пол",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 6
+  },
+  {
+   "id": "t66_138",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cable spool; no car near; last thing: cable spool, 0 m",
+   "text": "не кидай катушку, брат",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 6
+  },
+  {
+   "id": "t66_139",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a big box; no car near; last thing: big box, 0 m",
+   "text": "Не выбрасывай коробку.",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 6
+  },
+  {
+   "id": "t66_140",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near",
+   "text": "не бросай",
+   "label": "WAIT",
+   "place": null,
+   "rule": 6
+  },
+  {
+   "id": "t66_141",
+   "lang": "ru",
+   "before": [],
+   "scene": "standing on a cable spool; no car near; last thing: cardboard box, 3 m",
+   "text": "не спускай её",
+   "label": "WAIT",
+   "place": null,
+   "rule": 6
+  },
+  {
+   "id": "t66_142",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "don't drop it",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 6
+  },
+  {
+   "id": "t66_143",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a crate; a car 9 m away; last thing: crate, 0 m",
+   "text": "don't throw that crate man",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 6
+  },
+  {
+   "id": "t66_144",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a small box; a car 12 m away; last thing: small box, 0 m",
+   "text": "Don't hand it to me.",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 6
+  },
+  {
+   "id": "t66_145",
+   "lang": "en",
+   "before": [],
+   "scene": "a car 7 m away; last thing: crate, 5 m",
+   "text": "don't throw it",
+   "label": "WAIT",
+   "place": null,
+   "rule": 6
+  },
+  {
+   "id": "t66_146",
+   "lang": "es",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "no la sueltes",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 6
+  },
+  {
+   "id": "t66_147",
+   "lang": "es",
+   "before": [],
+   "scene": "holding a cable spool; no car near; last thing: cable spool, 0 m",
+   "text": "no me la des, tío",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 6
+  },
+  {
+   "id": "t66_148",
+   "lang": "es",
+   "before": [],
+   "scene": "holding a big box; no car near; last thing: big box, 0 m",
+   "text": "No tires la caja.",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 6
+  },
+  {
+   "id": "t66_149",
+   "lang": "es",
+   "before": [],
+   "scene": "no car near",
+   "text": "no la tires",
+   "label": "WAIT",
+   "place": null,
+   "rule": 6
+  },
+  {
+   "id": "t66_150",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 1 m",
+   "text": "возьми её",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 7
+  },
+  {
+   "id": "t66_151",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: wooden crate, 2 m",
+   "text": "бери вот это",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 7
+  },
+  {
+   "id": "t66_152",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: small box, 1 m",
+   "text": "хватай её, брат",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 7
+  },
+  {
+   "id": "t66_153",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: cable spool, 2 m",
+   "text": "подбери вот эту",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 7
+  },
+  {
+   "id": "t66_154",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cardboard box; no car near; last thing: cardboard box, 0 m",
+   "text": "выкинь её",
+   "label": "DROP",
+   "place": null,
+   "rule": 7
+  },
+  {
+   "id": "t66_155",
+   "lang": "ru",
+   "before": [],
+   "scene": "holding a cable spool; no car near; last thing: cable spool, 0 m",
+   "text": "выбрось это нафиг",
+   "label": "DROP",
+   "place": null,
+   "rule": 7
+  },
+  {
+   "id": "t66_156",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "иди вот этой дорогой",
+   "label": "MOVE_TO",
+   "place": null,
+   "rule": 7
+  },
+  {
+   "id": "t66_157",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: box, 1 m",
+   "text": "take this one",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 7
+  },
+  {
+   "id": "t66_158",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: crate, 2 m",
+   "text": "Grab that.",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 7
+  },
+  {
+   "id": "t66_159",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "take this path bro",
+   "label": "MOVE_TO",
+   "place": null,
+   "rule": 7
+  },
+  {
+   "id": "t66_160",
+   "lang": "en",
+   "before": [],
+   "scene": "holding a small box; a car 12 m away; last thing: small box, 0 m",
+   "text": "chuck it away",
+   "label": "DROP",
+   "place": null,
+   "rule": 7
+  },
+  {
+   "id": "t66_161",
+   "lang": "es",
+   "before": [],
+   "scene": "no car near; last thing: cardboard box, 1 m",
+   "text": "cógela, venga",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 7
+  },
+  {
+   "id": "t66_162",
+   "lang": "es",
+   "before": [],
+   "scene": "a car 15 m away; last thing: small box, 2 m",
+   "text": "agarra esa",
+   "label": "COLLECT",
+   "place": null,
+   "rule": 7
+  },
+  {
+   "id": "t66_163",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "coge este camino",
+   "label": "MOVE_TO",
+   "place": null,
+   "rule": 7
+  },
+  {
+   "id": "t66_164",
+   "lang": "es",
+   "before": [],
+   "scene": "holding a box; no car near; last thing: box, 0 m",
+   "text": "tírala lejos",
+   "label": "DROP",
+   "place": null,
+   "rule": 7
+  },
+  {
+   "id": "t66_165",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Ты мой брат, понял?",
+   "label": "SMALL_TALK",
+   "place": null,
+   "rule": 8
+  },
+  {
+   "id": "t66_166",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "как ты там, братан?",
+   "label": "STATUS_REPORT",
+   "place": null,
+   "rule": 8
+  },
+  {
+   "id": "t66_167",
+   "lang": "ru",
+   "before": [],
+   "scene": "no car near; last thing: big box, 1 m",
+   "text": "дави её вперёд",
+   "label": "PUSH",
+   "place": null,
+   "rule": 8
+  },
+  {
+   "id": "t66_168",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Да, прямо перед тобой.",
+   "label": "YES",
+   "place": null,
+   "rule": 8
+  },
+  {
+   "id": "t66_169",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "you're my brother man",
+   "label": "SMALL_TALK",
+   "place": null,
+   "rule": 8
+  },
+  {
+   "id": "t66_170",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "how we doing bro",
+   "label": "STATUS_REPORT",
+   "place": null,
+   "rule": 8
+  },
+  {
+   "id": "t66_171",
+   "lang": "en",
+   "before": [],
+   "scene": "no car near; last thing: big box, 1 m",
+   "text": "keep pressing it forward",
+   "label": "PUSH",
+   "place": null,
+   "rule": 8
+  },
+  {
+   "id": "t66_172",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "eres mi hermano, tío",
+   "label": "SMALL_TALK",
+   "place": null,
+   "rule": 8
+  },
+  {
+   "id": "t66_173",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "¿qué tal vamos, hermano?",
+   "label": "STATUS_REPORT",
+   "place": null,
+   "rule": 8
+  },
+  {
+   "id": "t66_174",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "Sí, la que tienes justo delante.",
+   "label": "YES",
+   "place": null,
+   "rule": 8
+  },
+  {
+   "id": "t66_175",
+   "lang": "ru",
+   "before": [
+    "Видишь белый стол?"
+   ],
+   "scene": "",
+   "text": "Перепрыгни через него.",
+   "label": "JUMP",
+   "place": "table",
+   "rule": 9
+  },
+  {
+   "id": "t66_176",
+   "lang": "ru",
+   "before": [
+    "Видишь тот стол?"
+   ],
+   "scene": "",
+   "text": "запрыгни на него",
+   "label": "JUMP",
+   "place": "table",
+   "rule": 9
+  },
+  {
+   "id": "t66_177",
+   "lang": "ru",
+   "before": [
+    "Видишь окно в полу?"
+   ],
+   "scene": "",
+   "text": "прострели его",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 9
+  },
+  {
+   "id": "t66_178",
+   "lang": "ru",
+   "before": [
+    "Видишь дверь справа?"
+   ],
+   "scene": "",
+   "text": "подорви её",
+   "label": "BREACH",
+   "place": "door",
+   "rule": 9
+  },
+  {
+   "id": "t66_179",
+   "lang": "en",
+   "before": [
+    "Can you see the red table?"
+   ],
+   "scene": "",
+   "text": "Jump over it.",
+   "label": "JUMP",
+   "place": "table",
+   "rule": 9
+  },
+  {
+   "id": "t66_180",
+   "lang": "en",
+   "before": [
+    "see that window down there?"
+   ],
+   "scene": "",
+   "text": "smash it",
+   "label": "MELEE",
+   "place": "window",
+   "rule": 9
+  },
+  {
+   "id": "t66_181",
+   "lang": "en",
+   "before": [
+    "You see that door?"
+   ],
+   "scene": "",
+   "text": "go to it",
+   "label": "MOVE_TO",
+   "place": "door",
+   "rule": 9
+  },
+  {
+   "id": "t66_182",
+   "lang": "es",
+   "before": [
+    "¿Ves la mesa blanca?"
+   ],
+   "scene": "",
+   "text": "Salta por encima de ella.",
+   "label": "JUMP",
+   "place": "table",
+   "rule": 9
+  },
+  {
+   "id": "t66_183",
+   "lang": "es",
+   "before": [
+    "¿Ves esa ventana?"
+   ],
+   "scene": "",
+   "text": "dispárale",
+   "label": "OPEN_FIRE",
+   "place": "window",
+   "rule": 9
+  },
+  {
+   "id": "t66_184",
+   "lang": "es",
+   "before": [
+    "¿Ves la puerta?"
+   ],
+   "scene": "",
+   "text": "ve hacia ella",
+   "label": "MOVE_TO",
+   "place": "door",
+   "rule": 9
+  },
+  {
+   "id": "t66_185",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Иди к двери.",
+   "label": "MOVE_TO",
+   "place": "door",
+   "rule": 0
+  },
+  {
+   "id": "t66_186",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "стой",
+   "label": "WAIT",
+   "place": null,
+   "rule": 0
+  },
+  {
+   "id": "t66_187",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Брось гранату!",
+   "label": "FRAG",
+   "place": null,
+   "rule": 0
+  },
+  {
+   "id": "t66_188",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "огонь",
+   "label": "OPEN_FIRE",
+   "place": null,
+   "rule": 0
+  },
+  {
+   "id": "t66_189",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "за мной, брат",
+   "label": "FOLLOW_ME",
+   "place": null,
+   "rule": 0
+  },
+  {
+   "id": "t66_190",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "Садись в машину.",
+   "label": "GET_IN",
+   "place": null,
+   "rule": 0
+  },
+  {
+   "id": "t66_191",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "иди к окну",
+   "label": "MOVE_TO",
+   "place": "window",
+   "rule": 0
+  },
+  {
+   "id": "t66_192",
+   "lang": "ru",
+   "before": [],
+   "scene": "",
+   "text": "убери оружие",
+   "label": "HOLSTER",
+   "place": null,
+   "rule": 0
+  },
+  {
+   "id": "t66_193",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "go to the door",
+   "label": "MOVE_TO",
+   "place": "door",
+   "rule": 0
+  },
+  {
+   "id": "t66_194",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "Open fire!",
+   "label": "OPEN_FIRE",
+   "place": null,
+   "rule": 0
+  },
+  {
+   "id": "t66_195",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "follow me",
+   "label": "FOLLOW_ME",
+   "place": null,
+   "rule": 0
+  },
+  {
+   "id": "t66_196",
+   "lang": "en",
+   "before": [],
+   "scene": "",
+   "text": "get in the car",
+   "label": "GET_IN",
+   "place": null,
+   "rule": 0
+  },
+  {
+   "id": "t66_197",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "ve a la puerta",
+   "label": "MOVE_TO",
+   "place": "door",
+   "rule": 0
+  },
+  {
+   "id": "t66_198",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "Sígueme.",
+   "label": "FOLLOW_ME",
+   "place": null,
+   "rule": 0
+  },
+  {
+   "id": "t66_199",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "espera",
+   "label": "WAIT",
+   "place": null,
+   "rule": 0
+  },
+  {
+   "id": "t66_200",
+   "lang": "es",
+   "before": [],
+   "scene": "",
+   "text": "súbete al coche",
+   "label": "GET_IN",
+   "place": null,
+   "rule": 0
+  }
+ ]
+}

@@ -71,6 +71,8 @@ constexpr size_t kAnswerMaxTokens = 6;
 // world.py, "a short context": CONTEXT_SECONDS, FRAGMENT_UNSURE, FIRE, PIN_DEFAULT, CARRY, POINTED_HERE, PLACE_INTENTS,
 // NO_LEADS, LOST_POINTERS
 constexpr double kContextSeconds = 8.0;
+// world.IT_SECONDS (rule set v8): "it" is the last thing named while it is this fresh, by the game's clock
+constexpr double kItSeconds = 30.0;
 constexpr double kFragmentUnsure = 0.5;
 const char* const kFire[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MELEE"};   // bot v64: a fist fight too
 const char* const kPinDefault[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MELEE", "MOVE_TO", "CHECK", "ENTRY", "FLANK"};
@@ -85,11 +87,14 @@ const char* const kPlaceIntents[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MELEE",
 // bot v62: the talk intents; a place in "thanks for the cover at the door" is no order's
 // bot v64: the hands, a report, the body, putting down where it stands
 const char* const kNoPlace[] = {"GO_BACK", "HELP_INTERACTION", "SWITCH_WEAPON", "RELOAD", "SEE_ME", "SMALL_TALK", "PRAISE", "KILL_YOURSELF",
-                                "HOLSTER", "STATUS_REPORT", "BODY_STATE", "DROP"};
+                                "HOLSTER", "STATUS_REPORT", "BODY_STATE", "DROP",
+                                "GIVE_WAY", "WHAT_IS_IT"};   // bot v66: out of the player's way (the game picks the side), the thing looked at
 // world.ITEM_INTENTS (items_v60.json "intents") and FARM_INTENTS: the farmer's and the builder's orders. They join
 // PLACE_INTENTS: "no, by the barn" gives the same order at another place
 const char* const kItemIntents[] = {"PLANT_CROP", "WATER", "HARVEST", "FEED", "COLLECT", "DELIVER", "BUILD", "REPAIR", "DEMOLISH"};
 const char* const kFarmIntents[] = {"PLANT_CROP", "WATER", "HARVEST", "FEED", "COLLECT", "DELIVER", "BUILD", "REPAIR", "DEMOLISH", "TILL"};
+// world.GARDEN_INTENTS (place vocabulary v14): a garden order on a "bed" is on the farm's garden bed (GardenPlaces)
+const char* const kGardenIntents[] = {"PLANT_CROP", "WATER", "HARVEST", "TILL"};
 // world.REFUSE: what the bot says when the game's catalogue lacks the item ("{item}" is the words said)
 const std::pair<const char*, const char*> kRefuse[] = {
     {"BUILD", "I can't build that: no {item} in my build menu."}, {"PLANT_CROP", "I can't plant that: I have no {item} to plant."},
@@ -194,7 +199,7 @@ std::string LastWord(const std::string& p) {
 std::string ZoneName(const std::string& zone) {
     static const std::pair<const char*, const char*> kNames[] = {
         {"basement", "the basement"}, {"floor_1", "the first floor"}, {"floor_2", "the second floor"}, {"top_floor", "the top floor"},
-        {"roof", "the roof"}, {"up", "the way up"}, {"down", "the way down"}, {"inside", "the way in"}};
+        {"roof", "the roof"}, {"up", "the way up"}, {"down", "the way down"}, {"inside", "the way in"}, {"outside", "the way out"}};
     for (const auto& n : kNames)
         if (zone == n.first) return n.second;
     return "that place";
@@ -306,6 +311,19 @@ static int ItemObject(const std::string& item, const LocationMatcher& places) {
     return -1;
 }
 
+static PlaceRecord WithoutItemPlace(const PlaceRecord& record, const std::string& item, bool keeps_object, const LocationMatcher& places);
+
+// world.drops_by_thing: a DROP line that names a thing to put it down by, in words (the primary place without the carried
+// thing itself is an object, with no pointer: "here", "it" and the pin stay DROP's own spot, and so do zones)
+bool Planner::DropsByThing(std::string_view text, const PlaceRecord& record) const {
+    if (record.targets.empty() || brain_->LabelIndex("DELIVER") < 0) return false;
+    const ItemFound f = brain_->Items().Find(text, "DELIVER", brain_->Places());
+    const PlaceRecord rest = WithoutItemPlace(record, f.has_item ? f.item : std::string(), brain_->Items().KeepsObject("DELIVER"), brain_->Places());
+    if (rest.primary < 0) return false;
+    const PlaceTarget& t = rest.targets[static_cast<size_t>(rest.primary)];
+    return t.object >= 0 && t.pointer == PlacePointer::None;
+}
+
 // world.without_item_place: the line's places without the one that is the item itself (BUILD, COLLECT, DELIVER)
 static PlaceRecord WithoutItemPlace(const PlaceRecord& record, const std::string& item, bool keeps_object, const LocationMatcher& places) {
     const int obj = keeps_object ? ItemObject(item, places) : -1;
@@ -327,6 +345,20 @@ static PlaceRecord WithoutItemPlace(const PlaceRecord& record, const std::string
     }
     out.primary = primary;
     return out;
+}
+
+// world.garden_record: a garden order's beds are the garden bed (a bed with a qualifier the garden bed lacks stays the
+// bed); false when nothing changed or the vocabulary has no garden_bed
+static bool GardenPlaces(PlaceRecord* record, const std::string& intent, const LocationMatcher& places) {
+    const int bed = places.ObjectIndex("bed"), garden = places.ObjectIndex("garden_bed");
+    if (bed < 0 || garden < 0 || !OneOf(intent, kGardenIntents)) return false;
+    bool changed = false;
+    for (PlaceTarget& t : record->targets)
+        if (t.object == bed && (t.qualifier < 0 || places.Allows(garden, t.qualifier))) {
+            t.object = garden;
+            changed = true;
+        }
+    return changed;
 }
 
 std::string Deixis(std::string_view text) {
@@ -354,7 +386,7 @@ std::vector<std::string> AfterNo(const std::vector<std::string>& w) {
 }
 
 bool Usable(const Grounding& g) {
-    return g.status == "resolved" && (!g.entity.empty() || g.via == "direction" || g.via == "here" || g.via == "inside" ||
+    return g.status == "resolved" && (!g.entity.empty() || g.via == "direction" || g.via == "here" || g.via == "inside" || g.via == "outside" ||
                                       (g.via == "zone" && !g.candidates.empty()));
 }
 
@@ -364,11 +396,79 @@ static bool RelativeZone(const std::string& zone) { return zone == "up" || zone 
 // world.INSIDE (bot v56): indoors, where the player looks. No entity is "inside": the game finds the way in, and an object
 // said with it is not narrowed by it
 static const char* const kInside = "inside";
+// world.OUTSIDE (bot v66, vocabulary v12): out of the room or the building. No entity either: the game finds the nearest point
+// under open sky
+static const char* const kOutside = "outside";
+static bool WayZone(const std::string& zone) { return zone == kInside || zone == kOutside; }
 
 // whether an entity is on the floor the line names: its own zone, or any marked floor above / below the speaker
 static bool OnZone(const WorldEntity& e, const std::string& zone) {
     if (RelativeZone(zone)) return !e.zone.empty() && InSector(zone == "up" ? PlaceDirection::Up : PlaceDirection::Down, 0.0, e.elevation);
     return e.zone == zone;
+}
+
+// world.recent: the last thing named is still what "it" means -- named kItSeconds ago or less by the game's clock (not
+// checked when the game sends no time or the thing was named without one)
+static bool Recent(const Memory& memory, const WorldState& world) {
+    if (!world.has_time || !memory.has_last_time) return true;
+    const double age = world.time - memory.last_time;
+    return 0.0 <= age && age <= kItSeconds;
+}
+
+// world.means_of (rule set v9): the thing an order is done with -- the first target of role Means, grounded: the nearest of
+// several (never a question), none when the world has none (the game picks its own)
+static MeansInfo MeansOf(const PlaceRecord& record, const std::vector<Grounding>& grounding) {
+    MeansInfo m;
+    for (size_t i = 0; i < record.targets.size() && i < grounding.size(); ++i) {
+        if (record.targets[i].role != PlaceRole::Means) continue;
+        const Grounding& g = grounding[i];
+        if (g.status == "resolved") m.entity = g.entity;
+        else if (g.status == "ambiguous" && !g.candidates.empty()) m.entity = g.candidates[0];
+        m.object = record.targets[i].object;
+        break;
+    }
+    return m;
+}
+
+// world.fresh: as Recent, but never without both times (the bare "the table" of the last thing named)
+static bool Fresh(const Memory& memory, const WorldState& world) {
+    if (!world.has_time || !memory.has_last_time) return false;
+    const double age = world.time - memory.last_time;
+    return 0.0 <= age && age <= kItSeconds;
+}
+
+void WithoutLostIt(PlaceRecord* record, std::vector<Grounding>* grounding) {
+    std::vector<bool> lost(record->targets.size(), false);
+    bool any = false;
+    for (size_t k = 0; k < record->targets.size() && k < grounding->size(); ++k) {
+        lost[k] = record->targets[k].pointer == PlacePointer::It && (*grounding)[k].status == "missing";
+        any = any || lost[k];
+    }
+    if (!any) return;
+    const int p = record->primary;
+    std::vector<PlaceTarget> targets;
+    std::vector<Grounding> kept;
+    int before = 0;   // the lost ones before the primary
+    for (size_t k = 0; k < record->targets.size(); ++k) {
+        if (lost[k]) {
+            if (static_cast<int>(k) < p) ++before;
+            continue;
+        }
+        targets.push_back(record->targets[k]);
+        kept.push_back((*grounding)[k]);
+    }
+    int primary = -1;
+    if (p >= 0 && lost[static_cast<size_t>(p)]) {
+        // an "it" is the primary only when the line names no place, direction or pin: the rest are pointers
+        for (size_t k = 0; k < targets.size() && primary < 0; ++k)
+            if (targets[k].role == PlaceRole::None) primary = static_cast<int>(k);
+        if (primary < 0 && !targets.empty()) primary = 0;
+    } else if (p >= 0) {
+        primary = p - before;
+    }
+    record->targets = std::move(targets);
+    record->primary = primary;
+    *grounding = std::move(kept);
 }
 
 static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, const Memory& memory, const LocationMatcher& places, bool here) {
@@ -387,6 +487,13 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
         return ids;
     };
 
+    if (t.pointer == PlacePointer::It) {
+        // "jump over it" (rule set v8): the thing the talk was about lately, else where the player looks; neither:
+        // "missing", and Step drops the target (the order goes with no place, as before rule set v8)
+        if (last && Recent(memory, world)) return Out("resolved", last->id, {}, "memory");
+        if (gaze) return Out("resolved", gaze->id, {}, "gaze");
+        return Out("missing", {}, {}, "it");
+    }
     if (t.pointer == PlacePointer::Pin) {
         if (!world.has_player_pin) return Out("missing", {}, {}, "pin");
         const WorldPin& pin = world.player_pin;
@@ -413,7 +520,7 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
             if (world.has_player_pin) return Out("resolved", world.player_pin.entity.empty() ? world.player_pin.id : world.player_pin.entity, {}, "pin");
             return Out("missing", {}, {}, "this");
         }
-        if (zone == kInside) return Out("resolved", {}, {}, "inside");   // the game finds the way in, where the player looks
+        if (WayZone(zone)) return Out("resolved", {}, {}, zone == kInside ? kInside : kOutside);   // the game finds the way in (where the player looks) or out
         if (!zone.empty()) {
             std::vector<const WorldEntity*> on;
             for (const WorldEntity& e : world.entities)
@@ -438,7 +545,7 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
     // world has go with it as the candidates. Only the stairs under the crosshair are those stairs. Never a question:
     // stairs the world does not have are no reason to ask either
     if ((t.direction == PlaceDirection::Up || t.direction == PlaceDirection::Down) && places.Vertical(t.object) && qual.empty() &&
-        (zone.empty() || zone == kInside) && t.flag == PlaceFlag::None) {
+        (zone.empty() || WayZone(zone)) && t.flag == PlaceFlag::None) {
         std::stable_sort(cands.begin(), cands.end(), [](const WorldEntity* a, const WorldEntity* b) {
             return a->distance != b->distance ? a->distance < b->distance : a->id < b->id;
         });
@@ -455,7 +562,7 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
     }
     auto keep = [&](auto pred) { cands.erase(std::remove_if(cands.begin(), cands.end(), [&](const WorldEntity* e) { return !pred(e); }), cands.end()); };
     if (!qual.empty()) keep([&](const WorldEntity* e) { return e->qualifier == qual; });
-    if (!zone.empty() && zone != kInside) keep([&](const WorldEntity* e) { return OnZone(*e, zone); });   // "the door upstairs": a door on a floor above
+    if (!zone.empty() && !WayZone(zone)) keep([&](const WorldEntity* e) { return OnZone(*e, zone); });   // "the door upstairs": a door on a floor above
     // "up the blue stairs": up is the way along a vertical object, not where it stands
     const bool along = (t.direction == PlaceDirection::Up || t.direction == PlaceDirection::Down) && places.Vertical(t.object);
     if (t.direction != PlaceDirection::None && !along)
@@ -473,6 +580,12 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
         return Out("resolved", gaze->id, ids, "gaze");
     if (cands.size() == 1) return Out("resolved", ids[0], ids, "only");
     if (t.flag == PlaceFlag::UnknownModifier) return Out("ambiguous", {}, ids, "unknown_modifier");
+    // "the table" of the thing the talk was about (the owner, 2026-10-27: «На белый стол», then «Поставь коробку у стола» asked
+    // "Which table?"): the one named last, kItSeconds fresh by the game's clock, as "it" is; the crosshair on one of them comes
+    // first. Weaker than "it": with no clock the age is unknown, and the bot asks as before
+    if (t.pointer == PlacePointer::None && t.flag == PlaceFlag::None && last && Fresh(memory, world) &&
+        std::find(ids.begin(), ids.end(), last->id) != ids.end())
+        return Out("resolved", last->id, ids, "memory");
     if (Fetched(obj) || cands[1]->distance >= kClearlyNearer * cands[0]->distance) return Out("resolved", ids[0], ids, "nearest");
     return Out("ambiguous", {}, ids, "distance");
 }
@@ -539,6 +652,12 @@ void Planner::Reset() {
     memory_ = Memory();
     DropPending();
     frame_in_line_ = false;
+}
+
+void Planner::Named(const std::string& entity) {
+    memory_.last_entity = entity;
+    memory_.has_last_time = world_.has_time;
+    memory_.last_time = world_.time;
 }
 
 void Planner::DropPending() {
@@ -739,7 +858,7 @@ void Planner::SamePlace(const PlaceRecord& record, std::vector<Grounding>* groun
 }
 
 Order Planner::MakeOrder(int intent, const PlaceRecord& record, const std::vector<Grounding>& grounding, int k, bool other, bool nearby,
-                         const PlaceTarget* said, const ItemInfo* item) {
+                         const PlaceTarget* said, const ItemInfo* item, const MeansInfo* means) {
     Order o;
     o.intent = intent;
     o.other = other;
@@ -782,7 +901,13 @@ Order Planner::MakeOrder(int intent, const PlaceRecord& record, const std::vecto
         o.pointer = t.pointer;
         o.via = g.via;
         o.nearby = nearby && t.pointer == PlacePointer::This;
-        if (!g.entity.empty()) memory_.last_entity = g.entity;
+        if (!g.entity.empty()) Named(g.entity);
+    }
+    if (brain_->Places().HasMeans()) {   // rule set v9: the thing it is done with (a question's order keeps its line's)
+        const MeansInfo m = means ? *means : MeansOf(record, grounding);
+        o.has_means = true;
+        o.means = m.entity;
+        o.means_object = m.object;
     }
     memory_.last_order = brain_->Config().labels[static_cast<size_t>(intent)];
     return o;
@@ -792,7 +917,9 @@ void Planner::Ask(int intent, const PlaceRecord& record, const std::vector<Groun
                   PlannerResult* out, const ItemInfo* item) {
     const Grounding& g = grounding[static_cast<size_t>(k)];
     const PlaceTarget& t = record.targets[static_cast<size_t>(k)];
-    const std::string obj = t.object >= 0 ? brain_->Places().ObjectId(t.object) : "place";
+    std::string obj = t.object >= 0 ? brain_->Places().ObjectId(t.object) : "place";
+    for (char& c : obj)
+        if (c == '_') c = ' ';   // v14's garden_bed is "a garden bed" in what the bot says (world.py object_word)
     Memory::Question& q = memory_.question;
     q = Memory::Question();
     q.intent = intent;
@@ -801,6 +928,7 @@ void Planner::Ask(int intent, const PlaceRecord& record, const std::vector<Groun
     q.other = other;
     q.queued = queued;
     if (item) q.item = *item;
+    if (brain_->Places().HasMeans()) q.means = MeansOf(record, grounding);   // rule set v9
     memory_.has_question = true;
     out->action = "ask";
     if (g.status == "missing") {
@@ -843,7 +971,7 @@ void Planner::Settle(const Memory::Question& q, const std::string& entity, const
         DropPending();
         pending_entity_ = entity;
         pending_item_ = q.item;
-        memory_.last_entity = entity;
+        Named(entity);
         out->say = say + " Ready to " + phrase + ". On your go.";
         return;
     }
@@ -853,7 +981,7 @@ void Planner::Settle(const Memory::Question& q, const std::string& entity, const
     rec.primary = 0;
     out->say = say + " " + Capitalized(phrase) + ".";
     out->has_order = true;
-    out->order = MakeOrder(q.intent, rec, grounding, 0, q.other, false, said, &q.item);
+    out->order = MakeOrder(q.intent, rec, grounding, 0, q.other, false, said, &q.item, brain_->Places().HasMeans() ? &q.means : nullptr);
 }
 
 // world.Planner._settle_place
@@ -867,13 +995,14 @@ void Planner::SettlePlace(const Memory::Question& q, const PlaceRecord& rec, con
         pending_here_ = g.via == "here";
         pending_near_ = nearby;
         pending_item_ = q.item;
-        if (!g.entity.empty()) memory_.last_entity = g.entity;
+        if (!g.entity.empty()) Named(g.entity);
         out->say = "Got it. Ready to " + phrase + ". On your go.";
         return;
     }
     out->say = "Got it. " + Capitalized(phrase) + ".";
     out->has_order = true;
-    out->order = MakeOrder(q.intent, rec, {g}, 0, q.other, nearby, &q.record.targets[static_cast<size_t>(q.k)], &q.item);
+    out->order = MakeOrder(q.intent, rec, {g}, 0, q.other, nearby, &q.record.targets[static_cast<size_t>(q.k)], &q.item,
+                           brain_->Places().HasMeans() ? &q.means : nullptr);
 }
 
 // world.Planner._place_answer
@@ -955,9 +1084,14 @@ PlannerResult Planner::Step(std::string_view text, const std::vector<float>& pro
     out.intent = d.intent;
     out.prob = d.prob;
     out.action = ActionName(d.action);
+    const bool order_line = d.intent >= 0 && (d.action == Action::Act || d.action == Action::Queued);
+    if (order_line && Label(d.intent) == "DROP" && DropsByThing(text, d.places)) {
+        // "put it down next to the white table" (world.drops_by_thing): a thing named to put it by carries it there
+        d.intent = out.intent = out.decision.intent = brain_->LabelIndex("DELIVER");
+        if (d.action == Action::Queued) brain_->SetPending(d.intent, brain_->PendingPlaces(), brain_->PendingOther());
+    }
     if (d.intent >= 0 && (d.action == Action::Act || d.action == Action::Queued) && OneOf(Label(d.intent), kNoPlace))
         d.places = PlaceRecord();   // going back, letting the player out: the line's place is not the order's
-    const bool order_line = d.intent >= 0 && (d.action == Action::Act || d.action == Action::Queued);
     if (order_line && Label(d.intent) == "PLANT" && PlantsCrops()) {
         // a bare "plant it": no bomb on the bot, seeds in its bag
         d.intent = out.intent = out.decision.intent = brain_->LabelIndex("PLANT_CROP");
@@ -977,9 +1111,15 @@ PlannerResult Planner::Step(std::string_view text, const std::vector<float>& pro
         d.places = WithoutItemPlace(d.places, item.said, brain_->Items().KeepsObject(Label(d.intent)), brain_->Places());
         if (d.action == Action::Queued) brain_->SetPending(brain_->Pending(), d.places, brain_->PendingOther());
     }
+    if (order_line && d.intent >= 0 && GardenPlaces(&d.places, Label(d.intent), brain_->Places()) && d.action == Action::Queued)
+        brain_->SetPending(brain_->Pending(), d.places, brain_->PendingOther());
     PlaceRecord record = d.places;   // a copy: an order that names no place may get one from the context
     const LocationMatcher& places = brain_->Places();
-    if (!record.targets.empty()) out.ground = Ground(record, world_, memory_, places, text, d.intent >= 0 ? Label(d.intent) : std::string());
+    if (!record.targets.empty()) {
+        out.ground = Ground(record, world_, memory_, places, text, d.intent >= 0 ? Label(d.intent) : std::string());
+        WithoutLostIt(&record, &out.ground);   // (rule set v8) an "it" that points at nothing is no place
+        d.places = record;   // Context and PlaceAnswer read the line's places: world.py hands them the same record
+    }
     if (continued && frame_in_line_) SamePlace(record, &out.ground);
     const bool nearby = !Deixis(text).empty();
     const bool had_question = memory_.has_question;
@@ -1094,8 +1234,14 @@ PlannerResult Planner::Step(std::string_view text, const std::vector<float>& pro
             out.order = MakeOrder(d.executed, PlaceRecord(), {}, -1, d.executed_other, false, nullptr, &pending_item_);
         } else {
             std::vector<Grounding> g2;
-            if (!ex.targets.empty()) g2 = Ground(ex, world_, memory_, places);
-            out.order = MakeOrder(d.executed, ex, g2, k, d.executed_other, pending_near_, nullptr, &pending_item_);
+            PlaceRecord ex2 = ex;
+            int k2 = k;
+            if (!ex2.targets.empty()) {
+                g2 = Ground(ex2, world_, memory_, places);
+                WithoutLostIt(&ex2, &g2);
+                k2 = ex2.targets.empty() ? -1 : ex2.primary;
+            }
+            out.order = MakeOrder(d.executed, ex2, g2, k2, d.executed_other, pending_near_, nullptr, &pending_item_);
         }
         DropPending();
     } else if (d.action == Action::Go) {

@@ -1,0 +1,799 @@
+{
+ "_note": "The owner's own spoken English lines as Parakeet heard them in the game, 2026-10-25 22:04 .. 2026-10-27 01:20 (the warehouse yard; the test range), after owner_lines_v65.json (extract_owner_lines_v66.py -> owner_lines_v66_candidates.json, labelled by hand from the talk around each line: make_owner_lines_v66.py). Choices applied: take it / this / that = COLLECT; move away / go away = GIVE_WAY; going up onto the 3 m platform = MOVE_TO. 'sure': false where a word was misheard.",
+ "items": [
+  {
+   "id": "owner66_0001",
+   "text": "roll it",
+   "maj": "ROLL",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.14"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0002",
+   "text": "you stay there",
+   "maj": "HOLD_POSITION",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.15"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0003",
+   "text": "jump on it",
+   "maj": "JUMP",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.15"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0004",
+   "text": "take it",
+   "maj": "COLLECT",
+   "count": 5,
+   "said": [
+    "2026.10.25-22.17",
+    "2026.10.25-22.17",
+    "2026.10.25-22.18",
+    "2026.10.25-22.18",
+    "2026.10.27-01.14"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0005",
+   "text": "take the books",
+   "maj": "COLLECT",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.18"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner66_0006",
+   "text": "move away",
+   "maj": "GIVE_WAY",
+   "count": 3,
+   "said": [
+    "2026.10.25-22.18",
+    "2026.10.25-22.18",
+    "2026.10.25-22.19"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0007",
+   "text": "fallback",
+   "maj": "FALL_BACK",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.19"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0008",
+   "text": "go away",
+   "maj": "GIVE_WAY",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.19"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0009",
+   "text": "go up by by there",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.21"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0010",
+   "text": "find the way there",
+   "maj": "MOVE_TO",
+   "count": 2,
+   "said": [
+    "2026.10.25-22.21",
+    "2026.10.25-22.21"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0011",
+   "text": "find a way there",
+   "maj": "MOVE_TO",
+   "count": 2,
+   "said": [
+    "2026.10.25-22.21",
+    "2026.10.25-22.24"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0012",
+   "text": "jump down from from there",
+   "maj": "JUMP",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.21"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0013",
+   "text": "find a way here",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.22"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0014",
+   "text": "find a way, dear",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.22"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner66_0015",
+   "text": "take that box and move it out there",
+   "maj": "DELIVER",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.22"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0016",
+   "text": "take this box",
+   "maj": "COLLECT",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.22"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0017",
+   "text": "move down there",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.22"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0018",
+   "text": "drop it",
+   "maj": "DROP",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.22"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0019",
+   "text": "jump on this",
+   "maj": "JUMP",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.23"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0020",
+   "text": "jump down from there",
+   "maj": "JUMP",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.23"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0021",
+   "text": "go to that window",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.25-22.24"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0022",
+   "text": "no move here now",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.06"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner66_0023",
+   "text": "move here now",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.06"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0024",
+   "text": "open the door",
+   "maj": "OPEN",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.07"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0025",
+   "text": "come inside",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.07"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0026",
+   "text": "jump on the blue table",
+   "maj": "JUMP",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.07"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0027",
+   "text": "jump, come come to me",
+   "maj": "JUMP",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.07"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0028",
+   "text": "go go to me",
+   "maj": "FOLLOW_ME",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.07"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0029",
+   "text": "thank you",
+   "maj": "SMALL_TALK",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.08"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0030",
+   "text": "hide the weapon",
+   "maj": "HOLSTER",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.09"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0031",
+   "text": "hard weapon",
+   "maj": "HOLSTER",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.09"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner66_0032",
+   "text": "grab the box",
+   "maj": "COLLECT",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.09"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0033",
+   "text": "mood here",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.09"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner66_0034",
+   "text": "kill yourself",
+   "maj": "KILL_YOURSELF",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.10"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0035",
+   "text": "put the dare",
+   "maj": "DELIVER",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.10"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner66_0036",
+   "text": "jump onto it",
+   "maj": "JUMP",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.10"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0037",
+   "text": "drop that box",
+   "maj": "DROP",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.11"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0038",
+   "text": "and take this box",
+   "maj": "COLLECT",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.11"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0039",
+   "text": "uh follow me",
+   "maj": "FOLLOW_ME",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.11"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0040",
+   "text": "open that room",
+   "maj": "OPEN",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.13"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0041",
+   "text": "clear the trump",
+   "maj": "ENTRY",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.13"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner66_0042",
+   "text": "grab the chair",
+   "maj": "COLLECT",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.14"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0043",
+   "text": "don't call me bra",
+   "maj": "SMALL_TALK",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.14"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner66_0044",
+   "text": "go up on this platform",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.14"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0045",
+   "text": "go uh go up by blue stairs",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.14"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0046",
+   "text": "go on top of this platform",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.14"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0047",
+   "text": "go to the roof",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.15"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0048",
+   "text": "don't call me a bra",
+   "maj": "SMALL_TALK",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.15"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner66_0049",
+   "text": "what is your name",
+   "maj": "SMALL_TALK",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.15"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0050",
+   "text": "can you see this wall",
+   "maj": "SEE_THING",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.15"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0051",
+   "text": "what can we see inside",
+   "maj": "STATUS_REPORT",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.15"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner66_0052",
+   "text": "what can you see in round",
+   "maj": "STATUS_REPORT",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.16"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner66_0053",
+   "text": "clear that room",
+   "maj": "ENTRY",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.16"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0054",
+   "text": "go inside",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.16"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0055",
+   "text": "can you see the floor",
+   "maj": "SEE_THING",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.16"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0056",
+   "text": "can you see the screen",
+   "maj": "SEE_THING",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.16"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0057",
+   "text": "can you see the stable",
+   "maj": "SEE_THING",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.16"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner66_0058",
+   "text": "can you see this red table",
+   "maj": "SEE_THING",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.16"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0059",
+   "text": "can you see white table",
+   "maj": "SEE_THING",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.17"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0060",
+   "text": "turn around",
+   "maj": "LOOK_AT",
+   "count": 4,
+   "said": [
+    "2026.10.27-01.17",
+    "2026.10.27-01.17",
+    "2026.10.27-01.17",
+    "2026.10.27-01.17"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0061",
+   "text": "can you see the white table",
+   "maj": "SEE_THING",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.17"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0062",
+   "text": "no, no",
+   "maj": "NO",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.17"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0063",
+   "text": "so go to there",
+   "maj": "MOVE_TO",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.17"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0064",
+   "text": "can you see the red table",
+   "maj": "SEE_THING",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.18"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0065",
+   "text": "uh can you see the white table",
+   "maj": "SEE_THING",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.18"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0066",
+   "text": "so jump over it",
+   "maj": "JUMP",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.18"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0067",
+   "text": "come come back to me",
+   "maj": "COME_BACK",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.19"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0068",
+   "text": "can you see the yellow table",
+   "maj": "SEE_THING",
+   "count": 3,
+   "said": [
+    "2026.10.27-01.19",
+    "2026.10.27-01.19",
+    "2026.10.27-01.20"
+   ],
+   "multi": false,
+   "sure": true
+  },
+  {
+   "id": "owner66_0069",
+   "text": "come over it",
+   "maj": "JUMP",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.19"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner66_0070",
+   "text": "so come over it",
+   "maj": "JUMP",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.20"
+   ],
+   "multi": false,
+   "sure": false
+  },
+  {
+   "id": "owner66_0071",
+   "text": "jump over it",
+   "maj": "JUMP",
+   "count": 1,
+   "said": [
+    "2026.10.27-01.20"
+   ],
+   "multi": false,
+   "sure": true
+  }
+ ]
+}
