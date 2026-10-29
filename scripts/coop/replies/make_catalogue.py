@@ -33,7 +33,12 @@ PLANNER = [
     ("Copy, never mind.", "world.cpp: the player dropped the question"),
     ("I'll take the one {sector}, {n} m.", "world.cpp: the bot picks a candidate itself"),
     ("Which one, then?", "world.cpp: the player said no to every candidate; followed by 'Point at it.'"),
-    ("Point at it.", "world.cpp"),
+    ("Point at it.", "world.cpp; coop_cli.cpp the long-term memory: a name or a colour with nothing under the crosshair"),
+    # the long-term memory (coop_cli.cpp --memory, teach.h): what the player teaches the bot
+    ("What did you mean?", "coop_cli.cpp memory: after 'not that'; the next line is the meaning"),
+    ("Got it, I'll remember.", "coop_cli.cpp memory: a name, a colour or a meaning kept (before the order's own words)"),
+    ("Forgotten.", "coop_cli.cpp memory: 'forget the name', 'forget <a line>'"),
+    ("I don't remember that.", "coop_cli.cpp memory: 'forget ...' with nothing kept"),
     ("{Phrase}.", "world.cpp: the order said back, e.g. 'Move there.', 'Hold position.'"),
     ("{Phrase}, {where}.", "world.cpp: the order said back with where, e.g. 'Open fire, on your pin.'"),
     ("Ready to {phrase}.", "coop_cli.cpp / world.cpp: an order queued for the player's signal; followed by 'On your go.'"),

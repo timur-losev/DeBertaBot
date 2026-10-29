@@ -96,6 +96,11 @@ struct WorldState {
     std::vector<std::pair<double, std::string>> talk_trail;
     // per intent with an item ("BUILD", "PLANT_CROP", ...), what the game has; an intent not listed has no catalogue
     std::vector<std::pair<std::string, std::vector<CatalogEntry>>> catalog;
+    // the map the entities are on (the long-term memory keeps a thing's name and colour per map); empty: not sent
+    std::string map;
+    // the things the line names by a name or a colour the player taught (coop_cli, bot_memory.h): among the entities a
+    // place of the line fits, one of these is that place. Not from the game and not in world.py: empty, nothing changes
+    std::vector<std::string> named;
     const std::vector<CatalogEntry>* Catalog(const std::string& intent) const {
         for (const auto& c : catalog)
             if (c.first == intent) return &c.second;
@@ -122,7 +127,8 @@ struct Grounding {
     std::string status;      // "resolved", "ambiguous", "missing"
     std::string entity;      // resolved: the entity (empty for a direction, "here" or a zone, which the planner takes as is)
     std::vector<std::string> candidates;   // the entities of its kind that fit, nearest first
-    std::string via;         // how: "pin", "gaze", "memory", "zone", "direction", "here", "only", "nearest", "unknown_modifier", "distance", "this", "it"
+    std::string via;         // how: "pin", "gaze", "memory", "zone", "direction", "here", "only", "nearest", "unknown_modifier", "distance", "this", "it",
+                             // "name" (a thing the player named it so: WorldState::named)
 };
 
 struct Prior {
@@ -238,6 +244,8 @@ public:
     // the crosshair's entity for the order line being read: the one under it when its pointer word was said (coop_cli: the
     // game's talk_trail and the recognizer's word times). Not in world.py: no planner step calls it
     void SetGaze(const std::string& entity) { world_.player_gaze = entity; }
+    // the things the line being read names by the player's own words (WorldState::named). Not in world.py either
+    void SetNamed(std::vector<std::string> entities) { world_.named = std::move(entities); }
     const std::string& PendingEntity() const { return pending_entity_; }
     bool PendingHere() const { return pending_here_; }   // the queued order's place is "here"
     bool PendingNear() const { return pending_near_; }   // ... and it pointed with "this" / "here"

@@ -573,6 +573,10 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
         return a->distance != b->distance ? a->distance < b->distance : a->id < b->id;
     });
     std::vector<std::string> ids = ids_of(cands);
+    // a thing the player taught a name or a colour of, named so in the line (WorldState::named, coop_cli's long-term
+    // memory): that one, wherever the crosshair is. Not in world.py: the game never sends it
+    for (const std::string& id : world.named)
+        if (std::find(ids.begin(), ids.end(), id) != ids.end()) return Out("resolved", id, ids, "name");
     // "this spool", and also "the spool" with the crosshair on one of them (bot v64, the owner, 2026-10-25: "я смотрю на
     // неё, я показываю на неё прицелом. Он всё перебирает"): the one looked at, unless the line picked another way
     const bool looked = t.pointer == PlacePointer::This || (t.pointer == PlacePointer::None && t.flag == PlaceFlag::None);

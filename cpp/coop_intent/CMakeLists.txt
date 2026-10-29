@@ -52,7 +52,8 @@ add_library(coop_intent_core STATIC
   src/time_phrase.cpp
   src/rewriter_text.cpp
   src/localize.cpp
-  src/bro.cpp)
+  src/bro.cpp
+  src/teach.cpp)
 target_include_directories(coop_intent_core PUBLIC include)
 target_include_directories(coop_intent_core PRIVATE third_party)   # nlohmann/json for the reply tables (localize.cpp)
 target_link_libraries(coop_intent_core PUBLIC Threads::Threads)
@@ -72,6 +73,28 @@ target_link_libraries(coop_intent_ort PUBLIC coop_intent_core "${ORT_LIB}")
 add_executable(coop_cli tools/coop_cli.cpp)
 target_include_directories(coop_cli PRIVATE third_party)
 target_link_libraries(coop_cli PRIVATE coop_intent_ort)
+
+# The bot's long-term memory (bot_memory.h), optional: the core of the owner's Wick (github.com/timur-losev/Wick, Apache
+# 2.0) -- its store, SQLite and structured facts -- from a checkout next to this repo's folder (G:/Proj/Wick beside
+# G:/Proj/ollaya) or -DWICK_DIR=... Wick is C++20: it and bot_memory.cpp build as C++20, the rest stays C++17 (the
+# header bot_memory.h is C++17). Without it coop_cli builds as before and --memory says there is no memory.
+set(WICK_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../Wick" CACHE PATH "Wick checkout (the bot's long-term memory)")
+if(EXISTS "${WICK_DIR}/include/waxcpp/memory_orchestrator.hpp")
+  enable_language(C)   # SQLite's amalgamation
+  set(WAXCPP_BUILD_TESTS OFF CACHE BOOL "Build waxcpp tests" FORCE)
+  set(WAXCPP_BUILD_SERVER OFF CACHE BOOL "Build waxcpp server targets" FORCE)
+  add_subdirectory("${WICK_DIR}" "${CMAKE_CURRENT_BINARY_DIR}/wick" EXCLUDE_FROM_ALL)
+  add_library(coop_intent_memory STATIC src/bot_memory.cpp)
+  target_compile_features(coop_intent_memory PRIVATE cxx_std_20)
+  target_link_libraries(coop_intent_memory PUBLIC coop_intent_core PRIVATE waxcpp)
+  get_filename_component(WICK_DIR_ABS "${WICK_DIR}" ABSOLUTE)
+  message(STATUS "long-term memory: Wick at ${WICK_DIR_ABS}")
+else()
+  add_library(coop_intent_memory STATIC src/bot_memory_none.cpp)
+  target_link_libraries(coop_intent_memory PUBLIC coop_intent_core)
+  message(STATUS "Wick is not in ${WICK_DIR}: coop_cli is built without the long-term memory (--memory)")
+endif()
+target_link_libraries(coop_cli PRIVATE coop_intent_memory)
 get_filename_component(COOP_MODEL_DIR_ABS "${COOP_MODEL_DIR}" ABSOLUTE)
 target_compile_definitions(coop_cli PRIVATE COOP_DEFAULT_MODEL_DIR="${COOP_MODEL_DIR_ABS}")
 if(WIN32)

@@ -991,7 +991,23 @@
   },
   {
    "en": "Point at it.",
-   "source": "world.cpp"
+   "source": "world.cpp; coop_cli.cpp the long-term memory: a name or a colour with nothing under the crosshair"
+  },
+  {
+   "en": "What did you mean?",
+   "source": "coop_cli.cpp memory: after 'not that'; the next line is the meaning"
+  },
+  {
+   "en": "Got it, I'll remember.",
+   "source": "coop_cli.cpp memory: a name, a colour or a meaning kept (before the order's own words)"
+  },
+  {
+   "en": "Forgotten.",
+   "source": "coop_cli.cpp memory: 'forget the name', 'forget <a line>'"
+  },
+  {
+   "en": "I don't remember that.",
+   "source": "coop_cli.cpp memory: 'forget ...' with nothing kept"
   },
   {
    "en": "{Phrase}.",

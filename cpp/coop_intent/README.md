@@ -531,6 +531,42 @@ Traps and limits:
 - The decoder's own misses are in the report: on lines heard through the recognizer it loses most when the
   recognizer changed the key word or the pronoun.
 
+## The long-term memory (`--memory`, optional, 2026-10-29)
+
+What the player teaches the bot, kept in one file per player (`include/coop_intent/bot_memory.h`) and read before
+the router, the decoder and the classifier see a line. The teaching lines are found by rule in the transcript as
+said, in Russian, English and Spanish (`teach.h`); no model reads them, and no training round is needed for them.
+
+| The player says | The bot keeps | Afterwards |
+|---|---|---|
+| "No, I meant follow me" / «нет, я имел в виду иди за мной» / «quise decir sígueme» | the line said before it (and the ones just before that it could not read and that sound like it) -> the order lines of the meaning | the same words, or of 3+ words one word more or less (`NearLine`), give those order lines: no router, no decoder |
+| "not that" / «не то» / «eso no» | asks "What did you mean?"; the next line is the meaning | as above |
+| "call this the workbench" / «назови это верстак» / «это оружейка» (the crosshair on a thing the game marks) | the thing's name, per map and language | "go to the workbench" / «залезь на верстак»: the name is written as the thing's kind ("иди к table": the decoder writes it in English as it is) and the planner takes that thing among the ones the place fits (`WorldState::named`, via "name") |
+| "this box is green" / «этот ящик зелёный» | the thing's colour (twelve colours, `ColourIds`) | "go to the green box": that box |
+| "forget the name" (the crosshair on it), "forget the workbench", «забудь банан» | forgets a name or a line | -- |
+
+A plain «это X» / "this is X" is a name only when the bot reads no order in the line; none of these is a teaching line
+while the bot's question is open (a line then is its answer), except "I meant <another order>". A "no" within 10 s of
+a line the memory read is a doubt about the kept line, and the second doubt forgets it. The serve commands `teach`,
+`forget` and `recall` do the same by hand (a HUD, a test); `--memory-dump FILE` prints everything a file keeps, the
+rows for a training round. The bot's four new sentences are in the reply tables (`make_catalogue.py`).
+
+The store is the core of the owner's Wick (github.com/timur-losev/Wick, Apache 2.0): its structured facts with
+revisions, in an append-only file with a write-ahead log; no embeddings, every key is the player's own words. Why
+words and no vectors: on the owner's 916 heard lines of 2026-10-16..21, the same words or one word more or less fixed
+18 misread lines and harmed none, while looser matching (character trigrams under 0.75) harmed lines. CMake builds
+Wick from a checkout next to this repository's folder (`G:/Proj/Wick` beside `G:/Proj/ollaya`, or `-DWICK_DIR=...`)
+as C++20; `bot_memory.cpp` builds as C++20 too, and the rest, with the header `bot_memory.h`, stays C++17. Without Wick
+coop_cli builds as before and `--memory` says there is no memory (`bot_memory_none.cpp`).
+
+Checks: `coop_cli --teach-tests tools/teach_tests.json` (the rules, no model; 76 cases) and
+`python scripts/coop/memory_tests.py [--ru]` (the whole brain through `--serve`: 34 English steps over two processes
+on one file, 14 Russian ones with the decoder on the CPU).
+
+Limits: only a thing the game sends among the world's entities can be named (an unmarked mesh is "a wall" to the
+brain); a word for a whole kind («верстак — это стол») is not kept yet; names and colours are per map only once the
+game sends `"map"` in the world.
+
 ## Speech-to-text (optional)
 
 The voice chain in one process: microphone -> NVIDIA Parakeet TDT 0.6B v2 (sherpa-onnx) -> the bot.
