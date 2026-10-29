@@ -1,6 +1,8 @@
 // The bot's long-term memory on Wick's structured facts (bot_memory.h). Built as C++20 with Wick's core.
 #include "coop_intent/bot_memory.h"
 
+#include <cstdio>
+#include <cstdlib>
 #include <filesystem>
 #include <stdexcept>
 
@@ -64,6 +66,9 @@ struct BotMemory::Impl {
         colours.clear();
         for (const waxcpp::StructuredMemoryEntry& e : wax->RecallFactsByEntityPrefix("", -1)) {
             std::string a, b;
+            // when it was kept: a compacted file has the first time in "kept_ms"
+            const std::string kept = Meta(e.metadata, "kept_ms");
+            const int64_t at = kept.empty() ? e.timestamp_ms : std::atoll(kept.c_str());
             if (Split(e.entity, "line", &a, &b) && e.attribute == "means") {
                 MemoryLine l;
                 l.lang = a;
@@ -73,12 +78,12 @@ struct BotMemory::Impl {
                 l.source = Meta(e.metadata, "source");
                 const std::string d = Meta(e.metadata, "doubts");
                 l.doubts = d.empty() ? 0 : std::atoi(d.c_str());
-                l.at_ms = e.timestamp_ms;
+                l.at_ms = at;
                 lines.push_back(std::move(l));
             } else if (Split(e.entity, "name", &a, &b)) {
-                names.push_back({a, b, e.attribute, e.value, e.timestamp_ms});
+                names.push_back({a, b, e.attribute, e.value, at});
             } else if (Split(e.entity, "colour", &a, &b) && e.attribute == "colour") {
-                colours.push_back({a, b, e.value, e.timestamp_ms});
+                colours.push_back({a, b, e.value, at});
             }
         }
     }
@@ -100,20 +105,79 @@ struct BotMemory::Impl {
 BotMemory::BotMemory() : impl_(std::make_unique<Impl>()) {}
 BotMemory::~BotMemory() { Close(); }
 
+namespace {
+
+waxcpp::OrchestratorConfig MemoryConfig() {
+    waxcpp::OrchestratorConfig cfg;
+    cfg.enable_vector_search = false;   // no embedder: the keys are words
+    cfg.enable_text_search = true;
+    cfg.enable_structured_memory = true;
+    cfg.query_embedding_policy = waxcpp::QueryEmbeddingPolicy::kNever;
+    cfg.rag.search_mode = {waxcpp::SearchModeKind::kTextOnly, 0.0f};
+    cfg.require_on_device_providers = false;
+#ifdef WAXCPP_ORCHESTRATOR_WAL_SIZE
+    // the store's write-ahead log is held by the file from the start: Wick's 256 MiB would make every player's file
+    // 268 MB. Every write here is committed at once (Flush), so the log never holds more than one write: 1 MiB
+    cfg.wal_size_bytes = 1024 * 1024;
+#endif
+    return cfg;
+}
+
+// Every commit appends the store's whole table of contents and leaves the old one behind: 600 writes made a 31 MB file
+// (2026-10-29). A file over this is written anew at open, the facts in force and nothing else
+constexpr std::uintmax_t kCompactAbove = 4ull * 1024 * 1024;
+
+std::filesystem::path PathOf(const std::string& utf8) { return std::filesystem::path(std::u8string(utf8.begin(), utf8.end())); }
+std::filesystem::path With(const std::filesystem::path& p, const char* suffix) {
+    std::filesystem::path q = p;
+    q += suffix;
+    return q;
+}
+void RemoveStore(const std::filesystem::path& p) {
+    std::error_code ec;
+    std::filesystem::remove(p, ec);
+    std::filesystem::remove(With(p, ".writer.lease"), ec);
+}
+
+}  // namespace
+
 bool BotMemory::Open(const std::string& path, std::string* err) {
     Close();
     try {
-        const std::filesystem::path p(std::u8string(path.begin(), path.end()));
+        const std::filesystem::path p = PathOf(path);
         if (p.has_parent_path()) std::filesystem::create_directories(p.parent_path());
-        waxcpp::OrchestratorConfig cfg;
-        cfg.enable_vector_search = false;   // no embedder: the keys are words
-        cfg.enable_text_search = true;
-        cfg.enable_structured_memory = true;
-        cfg.query_embedding_policy = waxcpp::QueryEmbeddingPolicy::kNever;
-        cfg.rag.search_mode = {waxcpp::SearchModeKind::kTextOnly, 0.0f};
-        cfg.require_on_device_providers = false;
-        impl_->wax = std::make_unique<waxcpp::MemoryOrchestrator>(p, cfg);
+        // a compaction cut short between its two renames left the old file as .bak
+        const std::filesystem::path bak = With(p, ".bak");
+        if (!std::filesystem::exists(p) && std::filesystem::exists(bak)) std::filesystem::rename(bak, p);
+        impl_->wax = std::make_unique<waxcpp::MemoryOrchestrator>(p, MemoryConfig());
         impl_->path = path;
+        if (std::filesystem::file_size(p) > kCompactAbove) {
+            // the facts in force into a new file (their own times kept), then the new file in the old one's place
+            const std::vector<waxcpp::StructuredMemoryEntry> facts = impl_->wax->RecallFactsByEntityPrefix("", -1);
+            const std::filesystem::path fresh = With(p, ".compact");
+            RemoveStore(fresh);
+            {
+                waxcpp::MemoryOrchestrator out(fresh, MemoryConfig());
+                size_t n = 0;
+                for (const waxcpp::StructuredMemoryEntry& e : facts) {
+                    waxcpp::Metadata m = e.metadata;
+                    if (!m.count("kept_ms")) m["kept_ms"] = std::to_string(e.timestamp_ms);
+                    out.RememberFact(e.entity, e.attribute, e.value, m);
+                    if (++n % 500 == 0) out.Flush();   // the log holds a few thousand at most
+                }
+                out.Flush();
+                out.Close();
+            }
+            const auto before = std::filesystem::file_size(p);
+            impl_->wax->Close();
+            impl_->wax.reset();
+            std::filesystem::rename(p, bak);
+            std::filesystem::rename(fresh, p);
+            RemoveStore(bak);
+            std::fprintf(stderr, "memory: %s compacted, %llu -> %llu bytes, %zu facts\n", path.c_str(), static_cast<unsigned long long>(before),
+                         static_cast<unsigned long long>(std::filesystem::file_size(p)), facts.size());
+            impl_->wax = std::make_unique<waxcpp::MemoryOrchestrator>(p, MemoryConfig());
+        }
         impl_->Reload();
         return true;
     } catch (const std::exception& e) {

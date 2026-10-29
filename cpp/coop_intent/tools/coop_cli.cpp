@@ -468,6 +468,7 @@ bool ParseWorld(const json& j, coop::WorldState* w, std::string* err) {
         for (const json& e : j.value("entities", json::array())) {
             coop::WorldEntity x;
             x.id = e.at("id").get<std::string>();
+            x.key = StrOrEmpty(e, "key");   // the long-term memory's name for the thing (world.h)
             x.object = StrOrEmpty(e, "object");
             x.qualifier = StrOrEmpty(e, "qualifier");
             x.zone = StrOrEmpty(e, "zone");
@@ -1962,6 +1963,7 @@ struct Chat {
         std::string say;
         bool remembered = false;       // a meaning was kept: kRemembered goes before the order's own words
         json info = json::object();
+        coop::Localizer::Terms terms;  // the words of `say` the reply tables do not have: a name the player gave a thing
     };
 
     static constexpr double kRecentMs = 60000;    // "I meant ..." is about a line said this long ago at most
@@ -1987,6 +1989,19 @@ struct Chat {
     const coop::WorldEntity* EntityById(const std::string& id) const {
         for (const coop::WorldEntity& e : planner.World().entities)
             if (e.id == id) return &e;
+        return nullptr;
+    }
+    // the memory keeps a thing by its key (the actor in the level, world.h), the game's ids change from line to line
+    static const std::string& KeyOf(const coop::WorldEntity& e) { return e.key.empty() ? e.id : e.key; }
+    const coop::WorldEntity* EntityByKey(const std::string& key) const {
+        for (const coop::WorldEntity& e : planner.World().entities)
+            if (KeyOf(e) == key) return &e;
+        return nullptr;
+    }
+    // the name the player gave this thing in their language on this map; nullptr: none
+    const coop::MemoryName* NameOf(const coop::WorldEntity& e) const {
+        for (const coop::MemoryName& n : g_memory->Names())
+            if (n.map == planner.World().map && n.lang == g_language && n.entity == KeyOf(e)) return &n;
         return nullptr;
     }
     const std::string& LabelOf(const Turn& t) const {
@@ -2085,7 +2100,7 @@ struct Chat {
             return coop::MemoryWords(a->name).size() > coop::MemoryWords(b->name).size();
         });
         for (const coop::MemoryName* n : names) {
-            const coop::WorldEntity* e = EntityById(n->entity);
+            const coop::WorldEntity* e = EntityByKey(n->entity);
             if (!e || e->object.empty()) continue;   // not in this world, or of no kind the words can name
             std::string kind = e->object;            // world.py object_word: "garden_bed" is "garden bed"
             std::replace(kind.begin(), kind.end(), '_', ' ');
@@ -2104,7 +2119,8 @@ struct Chat {
         }
         for (const std::string& c : coop::ColoursIn(norms))
             for (const coop::MemoryColour& mc : g_memory->Colours())
-                if (mc.map == w.map && mc.colour == c && EntityById(mc.entity)) add(mc.entity);
+                if (mc.map == w.map && mc.colour == c)
+                    if (const coop::WorldEntity* e = EntityByKey(mc.entity)) add(e->id);
         std::sort(cuts.begin(), cuts.end(), [](const Cut& a, const Cut& b) { return a.begin > b.begin; });
         std::string out = line;
         for (const Cut& c : cuts) out.replace(c.begin, c.end - c.begin, c.with);
@@ -2198,6 +2214,7 @@ struct Chat {
             case coop::TeachKind::Colour: {
                 const std::string thing = PointedThing();
                 const coop::WorldEntity* e = thing.empty() ? nullptr : EntityById(thing);
+                if (e && e->object.empty()) e = nullptr;   // a point on the floor or a wall ("gaze_17"): no thing to name
                 if (!e) {
                     if (tl.plain || tl.kind == coop::TeachKind::Colour) break;   // «это X» at nothing: a line like any other
                     return answer(kPointAtIt, "no_thing");
@@ -2211,11 +2228,11 @@ struct Chat {
                 }
                 std::string problem;
                 const bool name = tl.kind == coop::TeachKind::Name;
-                const bool ok = name ? g_memory->KeepName({map, e->id, g_language, tl.rest, 0}, &problem)
-                                     : g_memory->KeepColour({map, e->id, tl.colour, 0}, &problem);
+                const bool ok = name ? g_memory->KeepName({map, KeyOf(*e), g_language, tl.rest, 0}, &problem)
+                                     : g_memory->KeepColour({map, KeyOf(*e), tl.colour, 0}, &problem);
                 if (!ok) MemoryError(memo, problem);
-                if (name) memo->info["kept_name"] = {{"entity", e->id}, {"name", tl.rest}};
-                else memo->info["kept_colour"] = {{"entity", e->id}, {"colour", tl.colour}};
+                if (name) memo->info["kept_name"] = {{"entity", e->id}, {"key", KeyOf(*e)}, {"name", tl.rest}};
+                else memo->info["kept_colour"] = {{"entity", e->id}, {"key", KeyOf(*e)}, {"colour", tl.colour}};
                 return answer(kRemembered, name ? "kept_name" : "kept_colour");
             }
             case coop::TeachKind::Forget: {
@@ -2224,8 +2241,10 @@ struct Chat {
                 if (tl.rest.empty()) {   // the thing under the crosshair
                     const std::string thing = PointedThing();
                     if (thing.empty()) return answer(kPointAtIt, "no_thing");
-                    if (!g_memory->ForgetThing(map, thing, &any, &problem)) MemoryError(memo, problem);
-                    memo->info["forgot_thing"] = thing;
+                    const coop::WorldEntity* ge = EntityById(thing);
+                    const std::string key = ge ? KeyOf(*ge) : thing;
+                    if (!g_memory->ForgetThing(map, key, &any, &problem)) MemoryError(memo, problem);
+                    memo->info["forgot_thing"] = key;
                     return answer(any ? kForgotten : kNotKept, any ? "forgot" : "not_kept");
                 }
                 if (g_memory->ForgetLine(g_language, tl.rest, &problem)) {   // a kept line said so
@@ -2260,6 +2279,19 @@ struct Chat {
             return true;
         }
         if (!HearNamed(heard, spoken, h, memo, err, each)) return false;
+        // "what is that?" at a thing the player named: the bot says the name (the game would say the thing's kind). The
+        // reply tables' "That's {thing}." takes the name as it is (memo->terms)
+        if (h->turns.size() == 1 && h->turns[0].state == "what") {
+            const std::string thing = PointedThing();
+            const coop::WorldEntity* e = thing.empty() ? nullptr : EntityById(thing);
+            if (const coop::MemoryName* n = e ? NameOf(*e) : nullptr) {
+                const std::string called = (g_language == "en" ? "the " : "") + n->name;
+                memo->terms["thing"][called] = {{"text", n->name}, {"acc", n->name}};
+                memo->info["name_of"] = {{"entity", e->id}, {"name", n->name}};
+                RememberLine(norm, *h, {});
+                return answer("That's " + called + ".", "named_thing");
+            }
+        }
         // "no" right after a line the memory read: a doubt about the kept line
         if (!recent.empty() && !recent.back().kept.empty() && Ms(now - recent.back().at) <= kDoubtMs && Cancelled(*h)) {
             bool removed = false;
@@ -3591,7 +3623,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                     json turn = {{"intent", "SMALL_TALK"}, {"prob", 1.0}, {"action", "act"}, {"say", memo.say}, {"line", heard},
                                  {"order", {{"intent", "SMALL_TALK"}}}, {"question", nullptr}, {"time", nullptr}};
                     std::string local;
-                    if (g_replies && Localize(memo.say, &local)) turn["say"] = local, turn["say_en"] = memo.say;
+                    if (g_replies && Localize(memo.say, &local, memo.terms.empty() ? nullptr : &memo.terms)) turn["say"] = local, turn["say_en"] = memo.say;
                     json j = turn;
                     j.erase("line");
                     j["event"] = "reply";
@@ -3958,7 +3990,15 @@ int main(int argc, char** argv) {
     if (mode == "teach-tests") return RunTeachTests(speech_text_file);
     coop::BotMemory memory;
     if (!memory_file.empty()) {
-        if (memory.Open(memory_file, &err)) {
+        // a brain the game is still stopping holds the file a moment longer (its lease goes with its process: 2026-10-29, a
+        // brain started at once after a language switch found it held)
+        bool opened = memory.Open(memory_file, &err);
+        for (const auto until = Clock::now() + std::chrono::seconds(5);
+             !opened && err.find("lease already held") != std::string::npos && Clock::now() < until;) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            opened = memory.Open(memory_file, &err);
+        }
+        if (opened) {
             g_memory = &memory;
         } else {
             // the memory is optional: a bot without it hears as before (the reason goes to "ready")

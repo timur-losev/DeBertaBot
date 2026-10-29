@@ -563,9 +563,22 @@ Checks: `coop_cli --teach-tests tools/teach_tests.json` (the rules, no model; 76
 `python scripts/coop/memory_tests.py [--ru]` (the whole brain through `--serve`: 34 English steps over two processes
 on one file, 14 Russian ones with the decoder on the CPU).
 
-Limits: only a thing the game sends among the world's entities can be named (an unmarked mesh is "a wall" to the
-brain); a word for a whole kind («верстак — это стол») is not kept yet; names and colours are per map only once the
-game sends `"map"` in the world.
+A name or a colour is kept by the entity's `key` (world.h: the actor in the level; the game's ids count the markers in
+range and change from line to line), per the world's `map`. "What is that?" at a named thing is answered by the brain
+itself with the name ("That's the workbench.", «Это верстак.»: the tables' "That's {thing}." with the name as a term);
+at any other thing the game answers as before. `deploy_brain.ps1` asks the exe for the memory (`--memory-dump`) and
+writes `"memory": true` into `deployed.json`; the game passes `--memory` only then.
+
+The file's size. A Wick store holds its write-ahead log from the start, 256 MiB by default: every player's file was
+268 MB. `bot_memory.cpp` makes it 1 MiB (`OrchestratorConfig::wal_size_bytes`, added to Wick on 2026-10-29; a Wick
+without it builds, with the big file), since every write is committed at once. Every commit also appends the store's
+whole table of contents and leaves the old one: 600 writes made 31 MB. A file over 4 MiB is therefore written anew at
+open, the facts in force only (31 MB -> 1.1 MB, 300 facts kept; a cut-short rename leaves `.bak`, taken back at the next
+open). A brain that starts while the one before it still holds the file (its lease goes with its process) tries again
+for 5 s; the game asks a brain to "quit" before it ends it.
+
+Limits: only a thing the game sends among the world's entities, with an object, can be named (an unmarked mesh, a point
+on the floor, is not); a word for a whole kind («верстак — это стол») is not kept yet.
 
 ## Speech-to-text (optional)
 

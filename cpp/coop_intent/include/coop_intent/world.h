@@ -56,6 +56,10 @@ namespace coop {
 
 struct WorldEntity {
     std::string id;
+    // what the thing is called from one line to the next and one game to the next (the actor in the level), when the game's
+    // ids are not ("Place_RedTable_3" counts the markers in range): the long-term memory keeps names and colours by it.
+    // Empty: the id. Not in world.py: no rule reads it
+    std::string key;
     std::string object, qualifier, zone;   // vocabulary ids; empty: none
     double bearing = 0, distance = 0, elevation = 0;
     std::vector<std::string> tags;         // "closed", "cover", "bomb", ...: the priors read them

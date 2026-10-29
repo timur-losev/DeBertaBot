@@ -9,7 +9,7 @@ The English scenario runs the classifier alone; the Russian one (--ru) needs the
 
 Exit 1 on any step that reads otherwise. Build-time tooling: nothing in the game runs it.
 """
-import argparse, io, json, os, subprocess, sys, tempfile
+import argparse, io, json, os, re, subprocess, sys, tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.normpath(os.path.join(HERE, "..", ".."))
@@ -25,8 +25,12 @@ ENTITIES = [
 
 
 def world(t, gaze=None):
-    return {"entities": ENTITIES, "player_gaze": gaze, "player": {"downed": False}, "bot": {"stance": "stand", "items": []},
-            "time": t, "map": "/Game/Maps/L_MemoryTest"}
+    """As the game sends it: an entity's id changes from line to line ("Place_RedTable_3" counts the markers in range), its
+    key (the actor) does not. `gaze` and the checks name a thing by its key; a reply's entity id is read without its count."""
+    n = int(t) // 10
+    entities = [dict(e, id=f"{e['id']}_{n}", key=e["id"]) for e in ENTITIES]
+    return {"entities": entities, "player_gaze": f"{gaze}_{n}" if gaze else None, "player": {"downed": False},
+            "bot": {"stance": "stand", "items": []}, "time": t, "map": "/Game/Maps/L_MemoryTest"}
 
 
 # a step: a line (with the crosshair on `gaze`) or a command, and what the reply must say. A check is a dotted path in the
@@ -48,6 +52,9 @@ EN = [
     # a plain "this is X" with no order in it
     ("text", "This is the garage", "D_1", {"memory.did": "kept_name", "memory.kept_name.entity": "D_1"}),
     ("text", "open the garage", None, {"intent": "OPEN", "order.entity": "D_1"}),
+    # "what is that?" at a thing with a name: the name; at one without: the game's answer (state "what")
+    ("text", "What is that?", "D_1", {"memory.did": "named_thing", "say": "That's the garage.", "order.intent": "SMALL_TALK", "state": {"absent": True}}),
+    ("text", "What is that?", "T_Red", {"state": "what", "memory.did": {"absent": True}}),
     # colours
     ("text", "This box is green.", "C_2", {"memory.did": "kept_colour", "memory.kept_colour.colour": "green"}),
     ("text", "go to the green box", None, {"order.entity": "C_2", "order.via": "name"}),
@@ -81,6 +88,7 @@ RU = [
     ("text", "Назови это верстак.", "T_White", {"memory.did": "kept_name", "memory.kept_name.name": "верстак", "say_en": "Got it, I'll remember."}),
     ("text", "Иди к верстаку.", None, {"intent": "MOVE_TO", "order.entity": "T_White", "memory.read_as": "Иди к table."}),
     ("text", "Залезь на верстак", "T_Red", {"order.entity": "T_White"}),
+    ("text", "Что это?", "T_White", {"memory.did": "named_thing", "say": "Это верстак.", "say_en": "That's верстак."}),
     ("text", "Этот ящик зелёный.", "C_1", {"memory.did": "kept_colour", "memory.kept_colour.colour": "green"}),
     ("text", "Иди к зелёному ящику", None, {"order.entity": "C_1"}),
     ("text", "банан", None, {}),
@@ -110,6 +118,8 @@ def check(reply, expect):
     bad = []
     for path, want in expect.items():
         got = get(reply, path)
+        if path.endswith("entity") and isinstance(got, str):
+            got = re.sub(r"_\d+$", "", got)   # the thing, whatever the line's count
         if isinstance(want, dict) and "absent" in want:
             ok = got is KeyError or got is None
         elif isinstance(want, dict) and "starts" in want:

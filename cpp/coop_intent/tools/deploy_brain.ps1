@@ -154,8 +154,14 @@ foreach ($d in Get-ChildItem $Target -Directory -Filter 'voice_*') {
     if (-not $localFrom.Contains($n) -and (Test-Path "$($d.FullName)\voice.json")) { $localFrom[$n] = (Get-Content "$($d.FullName)\voice.json" -Raw | ConvertFrom-Json).from + ' (kept)' }
 }
 $cfg = Get-Content "$botDir\intent_config.json" -Raw | ConvertFrom-Json
+# the long-term memory (coop_cli --memory, a build that found Wick): the game passes --memory only to a brain whose
+# deployed.json says it has one, so that an older exe is never started with a flag it does not know
+$probe = Join-Path ([IO.Path]::GetTempPath()) "coop_memory_probe_$PID"
+& "$Target\coop_cli.exe" --memory-dump "$probe\probe.mv2s" *> $null
+$memory = $LASTEXITCODE -eq 0
+Remove-Item $probe -Recurse -Force -ErrorAction SilentlyContinue
 [ordered]@{ bot = $Bot; labels = $cfg.labels.Count; gate = $cfg.gate; threshold = $cfg.threshold; members = $members; chain = $chainFrom; voice = $voiceFrom
-            decider = $deciderFrom; stt_multilingual = $sttMultiFrom; replies = $repliesFrom; local_voices = $localFrom
+            decider = $deciderFrom; stt_multilingual = $sttMultiFrom; replies = $repliesFrom; local_voices = $localFrom; memory = $memory
             exe_built = (Get-Item "$Build\coop_cli.exe").LastWriteTime.ToString('s'); from = $repo; deployed = (Get-Date).ToString('s') } |
     ConvertTo-Json | Set-Content "$Target\deployed.json" -Encoding UTF8
 "deployed {0} ({1} labels, {2} gate, threshold {3}) to {4}: {5:n1} GB" -f $Bot, $cfg.labels.Count, $cfg.gate, $cfg.threshold, $Target,
