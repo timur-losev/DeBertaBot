@@ -345,6 +345,16 @@
    {"say": "Залезь на красный стол.", "expect": {"order.entity": "T_Red"}},
    {"say": "Что это?", "gaze": "T_White", "expect": {"memory.did": "coloured_thing", "say": "Это зелёный стол."}},
    {"say": "Запрыгни на него.", "expect": {"intent": "JUMP", "order.entity": "T_White"}}
+  ]},
+  {"name": "ru_offer_reset", "lang": "ru", "chain": true, "replies": "ru", "steps": [
+   {"say": "Иди садись на диван.", "expect": {"action": "say_again"}, "add": [{"id": "S_1", "key": "S_1", "object": "sofa", "qualifier": null, "bearing": 20.0, "distance": 8.0, "elevation": 0.0}]},
+   {"say": "Иди на диван.", "expect": {"memory.did": "offered_meaning"}, "add": [{"id": "S_1", "key": "S_1", "object": "sofa", "qualifier": null, "bearing": 20.0, "distance": 8.0, "elevation": 0.0}]},
+   {"say": "Что это?", "gaze": "T_White", "expect": {"state": "what"}, "add": [{"id": "S_1", "key": "S_1", "object": "sofa", "qualifier": null, "bearing": 20.0, "distance": 8.0, "elevation": 0.0}]},
+   {"say": "Нет, это фонарь.", "expect": {"memory.did": "offered_name", "say": "Запомнить, что это фонарь?"}, "add": [{"id": "S_1", "key": "S_1", "object": "sofa", "qualifier": null, "bearing": 20.0, "distance": 8.0, "elevation": 0.0}]},
+   {"say": "Da.", "expect": {"memory.did": "kept_name", "memory.kept_name.name": "фонарь", "memory.kept_name.key": "T_White"}, "add": [{"id": "S_1", "key": "S_1", "object": "sofa", "qualifier": null, "bearing": 20.0, "distance": 8.0, "elevation": 0.0}]},
+   {"cmd": {"cmd": "recall"}, "expect": {"memory.lines.#": 0, "memory.names.#": 1}},
+   {"say": "Что это?", "gaze": "T_White", "expect": {"memory.did": "named_thing", "say": "Это фонарь."}, "add": [{"id": "S_1", "key": "S_1", "object": "sofa", "qualifier": null, "bearing": 20.0, "distance": 8.0, "elevation": 0.0}]},
+   {"say": "Нет, это стол.", "expect": {"memory.did": "forgot_name"}, "add": [{"id": "S_1", "key": "S_1", "object": "sofa", "qualifier": null, "bearing": 20.0, "distance": 8.0, "elevation": 0.0}]}
   ]}
  ]
 }

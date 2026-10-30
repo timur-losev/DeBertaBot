@@ -2247,6 +2247,9 @@ struct Chat {
         const bool is_room = RoomName(e, spoken_words, &room);
         std::string name;
         for (const std::string& w : is_room ? room : spoken_words) name += (name.empty() ? "" : " ") + w;
+        // a new question: nothing of the one before it stays (2026-10-30: an unanswered "Shall I remember that ... means ...?"
+        // left its kind behind, and "yes" to "Shall I remember it as X?" kept that line instead of the name)
+        offer = Offer();
         offer.open = true;
         offer.key = is_room ? RoomKey(e) : KeyOf(e);
         offer.name = name;

@@ -288,5 +288,8 @@
  {"line": "Подойди поближе", "lang": "ru", "kind": "none"},
  {"thing": "Не это белый стол.", "expect": ["белый", "стол"], "denied": true},
  {"thing": "Не это, а верстак", "expect": ["верстак"], "denied": true},
- {"thing": "Это не стол, а верстак.", "expect": ["верстак"]}
+ {"thing": "Это не стол, а верстак.", "expect": ["верстак"]},
+ {"yes_no": "Da.", "expect": 1},
+ {"yes_no": "Net.", "expect": -1},
+ {"yes_no": "Da, da.", "expect": 1}
 ]

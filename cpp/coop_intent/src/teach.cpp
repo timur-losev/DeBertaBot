@@ -1044,13 +1044,15 @@ int YesNo(std::string_view heard) {
     if (w.empty()) return 0;
     std::string line;
     for (const std::string& x : w) line += (line.empty() ? "" : " ") + x;
-    if (IsAny(line, {"да", "да да", "ага", "угу", "давай", "конечно", "да конечно", "запомни", "да запомни", "запоминай",
+    // "da", "net": the recognizer writes a short Russian answer in Latin letters now and then (the owner's log, 2026-10-30)
+    if (IsAny(line, {"да", "да да", "ага", "угу", "давай", "конечно", "да конечно", "запомни", "да запомни", "запоминай", "da",
+                     "da da",
                      "точно", "верно", "именно", "ладно", "хорошо", "ок", "окей", "да давай", "yes", "yeah", "yep", "yup",
                      "sure", "ok", "okay", "right", "correct", "yes please", "do it", "remember it", "yes remember it",
                      "yeah remember it", "of course", "sí", "si", "claro", "sí claro", "si claro", "vale", "dale",
                      "correcto", "exacto", "recuérdalo", "recuerdalo", "sí recuérdalo", "si recuerdalo"}))
         return 1;
-    static const std::unordered_set<std::string> kNo = {"нет", "неа", "не", "no", "nope", "nah", "don't", "dont"};
+    static const std::unordered_set<std::string> kNo = {"нет", "неа", "не", "no", "nope", "nah", "don't", "dont", "net", "nyet", "niet"};
     if (w.size() <= 4 && kNo.count(w[0])) return -1;
     return 0;
 }
