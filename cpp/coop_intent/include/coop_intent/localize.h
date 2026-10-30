@@ -50,6 +50,13 @@ public:
     // one English template with every slot filled with its first value (and {n} with 23): what the coverage check
     // translates back (coop_cli --replies-check)
     std::vector<std::string> Examples() const;
+    // the forms of one English value of a slot ({"text": "стол", "which": "какой", "gen": "стола"}); nullptr: the table has
+    // no such slot or value (the brain names a thing in the player's language with them: coop_cli's taught colours)
+    const std::map<std::string, std::string>* Forms(const std::string& slot, const std::string& english) const;
+    // a slot's English values (lower case)
+    std::vector<std::string> Values(const std::string& slot) const;
+    // the translations of the templates with no slot («Выдвигаюсь.», «Понял, брат.»): the lines the bot says as they are
+    std::vector<std::string> FixedSentences() const;
 
 private:
     struct Impl;

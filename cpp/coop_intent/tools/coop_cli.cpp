@@ -59,6 +59,9 @@
 //                                 serve commands teach, forget and recall
 //   coop_cli --memory-dump FILE   everything FILE keeps, as JSON (no model): the lines it holds are rows for a training round
 //   coop_cli --teach-tests FILE   the teaching lines' rules and the memory's text rules (tools/teach_tests.json; no model)
+//   coop_cli --memory-store-tests DIR   the memory's store in a folder of its own, made anew (no model): keeping, reading
+//                                 back in a new store, the matching rule, doubts, a file held twice, compaction, a cut-short
+//                                 compaction, an unreadable file, a folder named in Cyrillic
 // every mode first prints the bot it runs on (directory, labels, gate, threshold)
 // options: --model-dir DIR (export_cpp.py output: intent_config.json, vocab.tsv and the model files
 //          it lists under "members"), --threads N (per model, default 4),
@@ -66,6 +69,7 @@
 //          --no-spin (ONNX Runtime worker threads sleep between calls), --sequential (an ensemble's
 //          members one after another instead of one thread each)
 #include <algorithm>
+#include <array>
 #include <chrono>
 #include <clocale>
 #include <cmath>
@@ -79,10 +83,12 @@
 #include <iostream>
 #include <iterator>
 #include <limits>
+#include <map>
 #include <memory>
 #include <mutex>
 #include <numeric>
 #include <random>
+#include <set>
 #include <sstream>
 #include <stdexcept>
 #include <string>
@@ -1386,6 +1392,14 @@ const std::string kRemembered = "Got it, I'll remember.";   // a name, a colour,
 const std::string kForgotten = "Forgotten.";
 const std::string kNotKept = "I don't remember that.";
 const std::string kPointAtIt = "Point at it.";              // a name or a colour with no thing under the crosshair
+const std::string kAskWhat = "Then what is it?";            // "no" right after "what is that?": the next line says it
+const std::string kNotRemembered = "All right, I won't remember it.";   // "no" to "Shall I remember it as X?"
+const std::string kNoColour = "I don't know what colour it is.";       // "what colour is it?" at a thing of no known colour
+const std::string kGotIt = "Got it.";                       // "no, it's a table" about the table: nothing to keep
+// a door whose inside the level marks (the game's tag "inside"): «это гараж» at it names the room behind it (2026-10-30, the
+// owner: the bot knows walls and doors, not rooms; the door is where a room starts)
+const std::string kOfferRoomA = "Shall I remember that ", kOfferRoomB = " is behind this door?";
+const std::string kDoorToA = "That's the door to ";
 
 // a line the game put together from a reply this brain wrote in the player's language and its own English words ("No
 // flashbangs, only frags." + "Зачищаю комнату."): each sentence that is a sentence of a line written here stays, each
@@ -1571,6 +1585,7 @@ struct Chat {
     std::deque<Said> said;             // the player's earlier lines, oldest first: as the classifier read them, or, for
                                        // a line the decoder rewrote, the orders it wrote
     Said bot_said;                     // the planner's own words after them (a question, a settled order); empty: none
+    int what_said_lines = -1;          // bot_said is the answer to "what is that?": the lines said since (-1: it is not)
     std::vector<std::string> held;     // order lines of a rewritten line that wait for the answer to the bot's question
     bool chain_on = true;              // /chain
     std::string read_text;             // Read(): the text `p` is for
@@ -1926,7 +1941,19 @@ struct Chat {
                 // the player's language (chains6_v62.py), the bot's own lines in English
                 said.push_back({foreign || kept.empty() ? text : kept, now});
                 while (said.size() > g_chain->memory_lines) said.pop_front();
-                const std::string& own = h->turns.back().r.say;
+                std::string own = h->turns.back().r.say;
+                // "what is that?": the game says the answer, and the decoder hears it as the bot's line ("That's the white
+                // table."), so «Запрыгни на него» next is onto that table (2026-10-30, the owner's log: onto the rock before)
+                // In the game's own words (its object and qualifier), not a taught name or colour: the planner reads the
+                // decoder's English by them («зелёный» taught to the white table made it "the green table": "Which table?")
+                what_said_lines = -1;
+                if (own.empty() && h->turns.back().state == "what")
+                    if (const coop::WorldEntity* e = PointedEntity()) {
+                        what_said_lines = 0;   // for the next line only (Listen): a later «Это стол.» read with it was "repair"
+                        std::string kind_words = (e->qualifier.empty() ? std::string() : e->qualifier + " ") + e->object;
+                        std::replace(kind_words.begin(), kind_words.end(), '_', ' ');
+                        own = "That's the " + kind_words + ".";
+                    }
                 bot_said = own.empty() ? Said() : Said{own, now};
             }
         }
@@ -1950,18 +1977,48 @@ struct Chat {
         std::string norm;              // as heard (MemoryNorm)
         Clock::time_point at;
         bool failed = false;           // the bot asked to hear it again
+        int intent = -1;               // the order the bot read in it (its first); -1: none
         std::string kept;              // the kept line the memory read it by (its heard words); empty: none
     };
     std::deque<Recent> recent;         // the last few, kRecentMs at most: what "I meant ..." and "not that" are about
     bool asked_meaning = false;        // the bot asked "What did you mean?": the next line is the meaning
     Clock::time_point asked_at;
     std::vector<std::string> asked_keys;   // ... of these heard lines
+    bool asked_failed = false;             // ... the last of which the bot could not read
+    int asked_intent = -1;                 // ... or read as this order
+    // the bot just said what a thing is ("what is that?", "what colour is it?"): what the player says it is next corrects it
+    // (2026-10-30, the owner: «Что это?» "the white table", «Нет, это жёлтый стол»)
+    std::string what_key;                  // the thing (its key); empty: none
+    Clock::time_point what_at;
+    bool asked_what = false;               // the bot asked "Then what is it?": the next line says it
+    Clock::time_point asked_what_at;
+    struct Offer {                         // the bot asked "Shall I remember it as X?"; "yes" keeps the name
+        bool open = false;
+        std::string key, name;             // key: the thing's, or the room's behind a door (RoomKey)
+        Clock::time_point at;
+        // ... or "Shall I remember that "X" means "Y"?" (OfferMeaning): "yes" keeps the heard lines `keys` as the order lines
+        bool meaning = false;
+        std::vector<std::string> keys, lines;
+        std::string intent;
+        // ... or "Like this: "за́мок"?" (a pronunciation): "yes" keeps how the voice says `word`
+        bool pronounce = false;
+        std::string word, say;
+        // ... or "Shall I say "пошёл" instead of "выдвигаюсь"?" (the bot's own line): `word` its sentence (normalized), `say`
+        // the new words (empty: nothing)
+        bool phrase = false;
+        bool phrase_word = false;          // ... `word` is words inside the bot's sentences, not a whole one
+        // ... or "Shall I keep 3 m from you?" (a setting): `word` its name, `value`
+        bool setting = false;
+        double value = 0;
+    } offer;
+    std::deque<std::string> lines_said;      // the bot's last sentences in the player's language, as the tables wrote them (HeardFromBot)
 
     // what the memory did with a line: the reply's "memory"
     struct Memo {
         bool answered = false;         // the memory answered the line itself with `say` (English); no order went out
         std::string say;
         bool remembered = false;       // a meaning was kept: kRemembered goes before the order's own words
+        std::string ask;               // a question after the order's own words (English; OfferMeaning)
         json info = json::object();
         coop::Localizer::Terms terms;  // the words of `say` the reply tables do not have: a name the player gave a thing
     };
@@ -1969,11 +2026,17 @@ struct Chat {
     static constexpr double kRecentMs = 60000;    // "I meant ..." is about a line said this long ago at most
     static constexpr double kMeaningMs = 30000;   // the answer to "What did you mean?" comes this soon
     static constexpr double kDoubtMs = 10000;     // a "no" this soon after a line the memory read doubts the kept line
+    static constexpr double kWhatMs = 20000;      // "no, it's X" is about the bot's answer to "what is that?" this soon
+    static constexpr double kOfferMs = 30000;     // "yes" to "Shall I remember it as X?" comes this soon
+    static constexpr double kNearM = 3.0;         // "no, it's the lantern": a lantern this near the thing asked about is it
 
     void ForgetTalk() {
         recent.clear();
         asked_meaning = false;
         asked_keys.clear();
+        what_key.clear();
+        asked_what = false;
+        offer.open = false;
     }
 
     // what the line points at: the thing under the crosshair at its first pointer word ("this", «это»), else when the
@@ -1998,11 +2061,380 @@ struct Chat {
             if (KeyOf(e) == key) return &e;
         return nullptr;
     }
-    // the name the player gave this thing in their language on this map; nullptr: none
-    const coop::MemoryName* NameOf(const coop::WorldEntity& e) const {
+    // the name the player gave the thing kept by this key in their language on this map; nullptr: none
+    const coop::MemoryName* NameByKey(const std::string& key) const {
         for (const coop::MemoryName& n : g_memory->Names())
-            if (n.map == planner.World().map && n.lang == g_language && n.entity == KeyOf(e)) return &n;
+            if (n.map == planner.World().map && n.lang == g_language && n.entity == key) return &n;
         return nullptr;
+    }
+    const coop::MemoryName* NameOf(const coop::WorldEntity& e) const { return NameByKey(KeyOf(e)); }
+    // Rooms (2026-10-30). The bot sees no rooms, only doors: a door whose inside the level marks (AOVCoopPlaceMarker's
+    // InsidePoint, the game's tag "inside"; a barn's gate too) leads into one, and a name for the room is kept by the door's
+    // key + "/room". "go to the garage" is read as the door named so, and the order goes in (or out) through it (RoomOrder)
+    static bool HasInside(const coop::WorldEntity& e) {
+        return !e.object.empty() && std::find(e.tags.begin(), e.tags.end(), "inside") != e.tags.end();
+    }
+    static std::string RoomKey(const coop::WorldEntity& e) { return KeyOf(e) + "/room"; }
+    static bool IsRoomKey(const std::string& key) { return key.size() > 5 && key.compare(key.size() - 5, 5, "/room") == 0; }
+    // the thing a kept name or colour is about: the thing of that key, or the door of a room
+    const coop::WorldEntity* EntityOfKey(const std::string& key) const {
+        if (!IsRoomKey(key)) return EntityByKey(key);
+        const coop::WorldEntity* door = EntityByKey(key.substr(0, key.size() - 5));
+        return door && HasInside(*door) ? door : nullptr;
+    }
+    // the words name the room behind the door `e`, not the door: a door with an inside, and words of another kind than the
+    // door's («гараж», "the storage"); «дверь в гараж» leaves the room's own words in *room
+    bool RoomName(const coop::WorldEntity& e, const std::vector<std::string>& spoken_words, std::vector<std::string>* room) const {
+        if (!HasInside(e) || spoken_words.empty()) return false;
+        static const std::set<std::string> kInto = {"в", "во", "to", "into", "of", "a", "al", "del", "de"};
+        if (spoken_words.size() >= 3 && KindOf({spoken_words[0]}) == e.object && kInto.count(spoken_words[1])) {
+            size_t b = 2;
+            while (b < spoken_words.size() && (spoken_words[b] == "the" || spoken_words[b] == "la" || spoken_words[b] == "el")) ++b;
+            if (b < spoken_words.size()) {
+                room->assign(spoken_words.begin() + static_cast<std::ptrdiff_t>(b), spoken_words.end());
+                return true;
+            }
+        }
+        if (KindOf(spoken_words) == e.object) return false;
+        *room = spoken_words;
+        return true;
+    }
+    // the thing under the crosshair, if it is a thing of a kind (not a point on the floor, "gaze_17")
+    const coop::WorldEntity* PointedEntity() const {
+        const std::string thing = PointedThing();
+        const coop::WorldEntity* e = thing.empty() ? nullptr : EntityById(thing);
+        return e && !e->object.empty() ? e : nullptr;
+    }
+    // the colour the player taught this thing on this map; nullptr: none
+    const coop::MemoryColour* TaughtColour(const coop::WorldEntity& e) const {
+        for (const coop::MemoryColour& c : g_memory->Colours())
+            if (c.map == planner.World().map && c.entity == KeyOf(e)) return &c;
+        return nullptr;
+    }
+    // its colour: the one the player taught, else the game's (a qualifier that is a colour: the "white" table); empty: none
+    std::string ColourOfThing(const coop::WorldEntity& e) const {
+        if (const coop::MemoryColour* c = TaughtColour(e)) return c->colour;
+        const std::vector<std::string>& ids = coop::ColourIds();
+        return std::find(ids.begin(), ids.end(), e.qualifier) != ids.end() ? e.qualifier : std::string();
+    }
+    // a thing the words name by a name the player taught, on this map; nullptr: none
+    const coop::WorldEntity* NamedIn(const std::vector<std::string>& spoken_words) const {
+        for (const coop::MemoryName& n : g_memory->Names()) {
+            size_t b = 0, en = 0;
+            if (n.map != planner.World().map || n.lang != g_language || IsRoomKey(n.entity) ||   // a room has no colour
+                !coop::FindWords(spoken_words, coop::MemoryWords(n.name), 0, &b, &en))
+                continue;
+            if (const coop::WorldEntity* e = EntityByKey(n.entity)) return e;
+        }
+        return nullptr;
+    }
+    static bool EndsWith(const std::string& s, const std::string& end) {
+        return s.size() >= end.size() && s.compare(s.size() - end.size(), end.size(), end) == 0;
+    }
+    // "the yellow table" (a kind, with a colour or none) as the bot says it, and its words in the player's language in
+    // memo->terms («жёлтый стол», «la mesa amarilla»): the reply tables' "{thing}" takes them
+    std::string ThingWordsFor(const std::string& kind, const std::string& colour, Memo* memo) const {
+        std::string k = kind;
+        std::replace(k.begin(), k.end(), '_', ' ');
+        const std::string adj_en = colour.empty() ? std::string() : coop::ColourAdjective(colour, "en", 'm', false);
+        const std::string en = "the " + (adj_en.empty() ? k : adj_en + " " + k);
+        std::map<std::string, std::string> forms = {{"text", en}, {"acc", en}};
+        const std::string lang = g_replies ? g_replies->Language() : std::string("en");
+        const std::map<std::string, std::string>* f = g_replies ? g_replies->Forms("object", k) : nullptr;
+        if (f && f->count("text") && lang == "ru") {
+            const std::string noun = f->at("text"), which = f->count("which") ? f->at("which") : std::string();
+            const char g = which == "какая" ? 'f' : which == "какое" ? 'n' : which == "какие" ? 'p' : 'm';
+            std::string acc = noun;   // a feminine noun in -а / -я is -у / -ю
+            if (g == 'f' && EndsWith(acc, "а")) acc = acc.substr(0, acc.size() - std::string("а").size()) + "у";
+            else if (g == 'f' && EndsWith(acc, "я")) acc = acc.substr(0, acc.size() - std::string("я").size()) + "ю";
+            const std::string adj = colour.empty() ? std::string() : coop::ColourAdjective(colour, "ru", g, false),
+                              adj_acc = colour.empty() ? std::string() : coop::ColourAdjective(colour, "ru", g, true);
+            forms = {{"text", adj.empty() ? noun : adj + " " + noun}, {"acc", adj_acc.empty() ? acc : adj_acc + " " + acc}};
+        } else if (f && f->count("text") && lang == "es") {
+            const std::string noun = f->at("text"), none = f->count("none") ? f->at("none") : std::string();
+            const bool fem = none.rfind("ninguna", 0) == 0 ||
+                             (none.rfind("ningún", 0) != 0 && (EndsWith(noun, "a") || EndsWith(noun, "ión")));
+            const std::string adj = colour.empty() ? std::string() : coop::ColourAdjective(colour, "es", fem ? 'f' : 'm', false);
+            const std::string text = std::string(fem ? "la " : "el ") + noun + (adj.empty() ? "" : " " + adj);
+            forms = {{"text", text}, {"acc", text}};
+        }
+        memo->terms["thing"][en] = forms;
+        return en;
+    }
+    // how the bot names this thing: the name the player gave it, else its kind with its colour (ThingWordsFor)
+    std::string Called(const coop::WorldEntity& e, Memo* memo) const {
+        if (const coop::MemoryName* n = NameOf(e)) {
+            const std::string called = (g_language == "en" ? "the " : "") + n->name;
+            memo->terms["thing"][called] = {{"text", called}, {"acc", called}};
+            return called;
+        }
+        return ThingWordsFor(e.object, ColourOfThing(e), memo);
+    }
+    // the kind of thing (the vocabulary's object id) the words name: the vocabulary's English words ("box": crate), the
+    // reply table's word for each kind («стол», «ящик», «mesa») and for its things («коробка»: "a box"); empty: none
+    std::string KindOf(const std::vector<std::string>& spoken_words) const {
+        const coop::LocationMatcher& places = brain.Places();
+        if (!places.Ready() || spoken_words.empty()) return {};
+        auto english = [&](const std::vector<std::string>& w) -> std::string {
+            for (size_t n = std::min<size_t>(3, w.size()); n >= 1; --n)
+                for (size_t b = 0; b + n <= w.size(); ++b) {
+                    std::string joined;
+                    for (size_t i = b; i < b + n; ++i) joined += (joined.empty() ? "" : " ") + w[i];
+                    int idx = -1;
+                    const char* kind = places.PhraseKind(joined, &idx);
+                    if (kind && std::string(kind) == "object" && idx >= 0) return places.ObjectId(idx);
+                }
+            return {};
+        };
+        const std::string en = english(spoken_words);
+        if (!en.empty() || !g_replies || g_replies->Language() == "en") return en;
+        size_t b = 0, e = 0;
+        for (const std::string& v : g_replies->Values("object")) {
+            const auto* f = g_replies->Forms("object", v);
+            if (!f || !f->count("text")) continue;
+            std::string id = v;
+            std::replace(id.begin(), id.end(), ' ', '_');
+            if (places.ObjectIndex(id) >= 0 && coop::FindWords(spoken_words, coop::MemoryWords(coop::MemoryNorm(f->at("text"))), 0, &b, &e)) return id;
+        }
+        for (const std::string& v : g_replies->Values("thing")) {
+            const auto* f = g_replies->Forms("thing", v);
+            if (!f || !f->count("text")) continue;
+            const std::string id = english(coop::MemoryWords(coop::MemoryNorm(v)));
+            if (!id.empty() && coop::FindWords(spoken_words, coop::MemoryWords(coop::MemoryNorm(f->at("text"))), 0, &b, &e)) return id;
+        }
+        return {};
+    }
+    // a thing of `kind` (and `colour`, if one is said) within kNearM of `e`, not `e`; nullptr: none
+    const coop::WorldEntity* NearThing(const coop::WorldEntity& e, const std::string& kind, const std::string& colour) const {
+        auto at = [](const coop::WorldEntity& x) {
+            const double r = x.bearing * 3.14159265358979323846 / 180.0;
+            return std::array<double, 3>{x.distance * std::cos(r), x.distance * std::sin(r), x.elevation};
+        };
+        const auto pe = at(e);
+        const coop::WorldEntity* best = nullptr;
+        double best_d = kNearM;
+        for (const coop::WorldEntity& x : planner.World().entities) {
+            if (&x == &e || x.object != kind || (!colour.empty() && ColourOfThing(x) != colour)) continue;
+            const auto px = at(x);
+            const double d = std::sqrt((px[0] - pe[0]) * (px[0] - pe[0]) + (px[1] - pe[1]) * (px[1] - pe[1]) +
+                                       (px[2] - pe[2]) * (px[2] - pe[2]));
+            if (d <= best_d) best = &x, best_d = d;
+        }
+        return best;
+    }
+    // «нет, это камень» about a rock the player named otherwise (2026-10-30, the owner: «фонарь», then «нет, это камень» was "Got
+    // it." and the name stayed): its name in this language goes, and the bot calls it by its kind again. False: none to forget
+    bool ForgetOwnName(const coop::WorldEntity& e, Memo* memo) const {
+        const coop::MemoryName* n = NameOf(e);
+        if (!n) return false;
+        const std::string name = n->name;
+        bool any = false;
+        std::string problem;
+        if (!g_memory->ForgetName(planner.World().map, KeyOf(e), g_language, &any, &problem)) MemoryError(memo, problem);
+        memo->info["forgot_name"] = {{"entity", e.id}, {"key", KeyOf(e)}, {"name", name}};
+        return any;
+    }
+    static bool Answer(Memo* memo, const std::string& say, const char* did) {
+        memo->answered = true;
+        memo->say = say;
+        memo->info["did"] = did;
+        return true;
+    }
+    // the bot asks "Shall I remember it as X?" with the words as the player said them; "yes" keeps the name (Listen). At a
+    // door with an inside, words of another kind name the room behind it: "Shall I remember that X is behind this door?"
+    bool OfferName(const coop::WorldEntity& e, const std::vector<std::string>& spoken_words, Clock::time_point now, Memo* memo) {
+        std::vector<std::string> room;
+        const bool is_room = RoomName(e, spoken_words, &room);
+        std::string name;
+        for (const std::string& w : is_room ? room : spoken_words) name += (name.empty() ? "" : " ") + w;
+        offer.open = true;
+        offer.key = is_room ? RoomKey(e) : KeyOf(e);
+        offer.name = name;
+        offer.at = now;
+        const std::string called = (g_language == "en" ? "the " : "") + name;
+        memo->terms["thing"][called] = {{"text", called}, {"acc", called}};
+        memo->info["offered_name"] = {{"entity", e.id}, {"key", offer.key}, {"name", name}};
+        if (is_room) {
+            memo->info["offered_name"]["room"] = true;
+            return Answer(memo, kOfferRoomA + called + kOfferRoomB, "offered_name");
+        }
+        return Answer(memo, "Shall I remember it as " + called + "?", "offered_name");
+    }
+    // the bot's sentences it said last, as the reply tables wrote them (in the player's language): what «так не говори» and
+    // «вместо «выдвигаюсь» говори …» are about
+    void HeardFromBot(const std::string& text) {
+        for (const std::string& sentence : coop::SplitSentences(text)) {
+            if (coop::MemoryWords(coop::MemoryNorm(sentence)).empty()) continue;
+            lines_said.push_back(sentence);
+            while (lines_said.size() > 12) lines_said.pop_front();
+        }
+    }
+    // a sentence as the phrases are kept: normalized, without the habit's «брат» (the same line with and without it)
+    static std::string PhraseKey(const std::string& sentence) {
+        static const std::unordered_set<std::string> kFiller = {"брат", "братан", "братишка", "bro", "brother", "hermano"};
+        std::string out;
+        for (const std::string& w : coop::MemoryWords(coop::MemoryNorm(sentence)))
+            if (!kFiller.count(w)) out += (out.empty() ? "" : " ") + w;
+        return out;
+    }
+    // «вместо «выдвигаюсь» говори «пошёл»», «так не говори»: the bot's own line, said otherwise (2026-10-30, the owner: the player
+    // teaches the bot everything). The line must be one the bot says: one of its last sentences, or a fixed one of the reply table
+    bool OfferPhrase(const coop::TeachLine& t, Clock::time_point now, Memo* memo) {
+        std::string key, shown;
+        bool word = false;
+        if (t.said.empty()) {   // «так не говори»: the bot's last line (its first sentence)
+            if (lines_said.empty()) return Answer(memo, kPointAtIt, "no_line");
+            shown = lines_said.back();
+            key = PhraseKey(shown);
+        } else {
+            key = PhraseKey(t.said);
+            for (auto it = lines_said.rbegin(); it != lines_said.rend() && shown.empty(); ++it)
+                if (PhraseKey(*it) == key) shown = *it;
+            if (shown.empty() && g_replies)
+                for (const std::string& f : g_replies->FixedSentences())
+                    if (PhraseKey(f) == key) {
+                        shown = f;
+                        break;
+                    }
+            // words inside the bot's sentences («не говори брат», «вместо «метров» говори «шагов»»): every sentence with them
+            if (shown.empty()) {
+                const std::vector<std::string> said_words = coop::MemoryWords(coop::MemoryNorm(t.said));
+                auto inside = [&](const std::string& sentence) {
+                    const std::vector<std::string> sw = coop::MemoryWords(coop::MemoryNorm(sentence));
+                    for (size_t i = 0; i + said_words.size() <= sw.size(); ++i) {
+                        bool same = true;
+                        for (size_t k = 0; k < said_words.size() && same; ++k) same = sw[i + k] == said_words[k];
+                        if (same) return true;
+                    }
+                    return false;
+                };
+                for (auto it = lines_said.rbegin(); it != lines_said.rend() && shown.empty(); ++it)
+                    if (inside(*it)) shown = *it;
+                if (shown.empty() && g_replies)
+                    for (const std::string& f : g_replies->FixedSentences())
+                        if (inside(f)) {
+                            shown = f;
+                            break;
+                        }
+                if (!shown.empty() && !said_words.empty()) {
+                    key.clear();
+                    for (const std::string& w : said_words) key += (key.empty() ? "" : " ") + w;
+                    word = true;
+                }
+            }
+            if (shown.empty()) {
+                memo->terms["said"][t.said] = {{"text", t.said}};
+                return Answer(memo, "I don't say \"" + t.said + "\".", "not_a_line");
+            }
+        }
+        if (key.empty()) return Answer(memo, kPointAtIt, "no_line");
+        std::string to = t.rest;
+        while (!to.empty() && std::string(" .!?,«»\"'").find(to.back()) != std::string::npos) to.pop_back();
+        offer = Offer();
+        offer.open = true;
+        offer.phrase = true;
+        offer.phrase_word = word;
+        offer.word = key;
+        offer.say = to;
+        offer.at = now;
+        memo->info["offered_phrase"] = {{"from", key}, {"to", to}, {"line", shown}, {"word", word}};
+        memo->terms["said"][key] = {{"text", key}};
+        if (to.empty()) return Answer(memo, "Shall I stop saying \"" + key + "\"?", "offered_phrase");
+        const std::string meant = coop::MemoryNorm(to);
+        memo->terms["meant"][meant] = {{"text", to}};
+        return Answer(memo, "Shall I say \"" + meant + "\" instead of \"" + key + "\"?", "offered_phrase");
+    }
+    // the bot's settings the game lets the player change by voice, with the game's own values (OVCoopBotDefinition: FollowDistance
+    // 450, EngageRange 3500, VoiceSpeed 1; fire at will) for "nearer" and "faster" when none is kept
+    static double SettingNow(const std::string& name) {
+        if (g_memory && g_memory->IsOpen())
+            for (const coop::MemorySetting& x : g_memory->Settings())
+                if (x.name == name) return x.value;
+        return name == "follow_m" ? 4.5 : name == "engage_m" ? 35.0 : name == "voice_speed" ? 1.0 : 0.0;
+    }
+    static json SettingsJson() {
+        json out = json::object();
+        if (g_memory && g_memory->IsOpen())
+            for (const coop::MemorySetting& x : g_memory->Settings()) out[x.name] = x.value;
+        return out;
+    }
+    // «держись в трёх метрах»: the bot says the setting back and asks before it keeps it
+    bool OfferSetting(const coop::TeachLine& t, Clock::time_point now, Memo* memo) {
+        double v = t.scale > 0 ? SettingNow(t.setting) * t.scale : t.value;
+        std::string ask;
+        if (t.setting == "follow_m") {
+            v = std::clamp(std::round(v), 1.0, 20.0);
+            ask = "Shall I keep " + std::to_string(static_cast<int>(v)) + " m from you?";
+        } else if (t.setting == "engage_m") {
+            v = std::clamp(std::round(v), 3.0, 60.0);
+            ask = "Shall I open fire within " + std::to_string(static_cast<int>(v)) + " m?";
+        } else if (t.setting == "fire_on_command") {
+            ask = v > 0.5 ? "Shall I shoot only on your command?" : "Shall I shoot on my own?";
+        } else if (t.setting == "voice_speed") {
+            v = std::clamp(std::round(v * 20.0) / 20.0, 0.6, 1.6);
+            ask = t.scale > 1 ? "Shall I speak faster?" : t.scale > 0 ? "Shall I speak slower?" : "Shall I speak at the usual speed?";
+        } else {
+            return false;
+        }
+        offer = Offer();
+        offer.open = true;
+        offer.setting = true;
+        offer.word = t.setting;
+        offer.value = v;
+        offer.at = now;
+        memo->info["offered_setting"] = {{"name", t.setting}, {"value", v}};
+        return Answer(memo, ask, "offered_setting");
+    }
+    // how the voice says a word, said back the new way: "Like this: "за́мок"?" (the reply is spoken, so the player hears it);
+    // "yes" keeps it (Listen)
+    bool OfferSaying(const coop::TeachLine& t, Clock::time_point now, Memo* memo) {
+        const std::string say = t.rest.empty() ? coop::StressedWord(t.said, t.stress, t.vowel) : t.rest;
+        offer = Offer();
+        offer.open = true;
+        offer.pronounce = true;
+        offer.word = t.said;
+        offer.say = say;
+        offer.at = now;
+        memo->info["offered_saying"] = {{"word", t.said}, {"say", say}};
+        memo->terms["said"][say] = {{"text", say}};
+        return Answer(memo, "Like this: \"" + say + "\"?", "offered_saying");
+    }
+    // "no, it's the yellow table" with a yellow table next to the one asked about: the bot names that one, and the next
+    // correction is about it
+    bool PointedAt(const coop::WorldEntity& f, Clock::time_point now, Memo* memo) {
+        what_key = KeyOf(f);
+        what_at = now;
+        memo->info["pointed_at"] = {{"entity", f.id}, {"key", KeyOf(f)}};
+        return Answer(memo, "That's " + Called(f, memo) + ".", "pointed_at");
+    }
+    // what the player says the thing `e` is right after the bot named it (ThingWords' words): its colour («нет, это жёлтый
+    // стол», «нет, он жёлтый»: kept), the thing beside it they meant (a yellow table next to it: the bot names that one), or
+    // a name of its own («красный фонарь», «гараж»: the bot asks before it keeps it); «нет, это стол» about the table: nothing
+    bool CorrectThing(const coop::WorldEntity& e, const std::vector<std::string>& spoken_words, Clock::time_point now, Memo* memo) {
+        what_key.clear();
+        const std::vector<std::string> colours = coop::ColoursIn(spoken_words);
+        std::vector<std::string> noun;
+        for (const std::string& w : spoken_words)
+            if (coop::ColoursIn({w}).empty() && !coop::GenericThingWord(w)) noun.push_back(w);
+        const std::string colour = colours.size() == 1 ? colours[0] : std::string();
+        const std::string kind = noun.empty() ? e.object : KindOf(noun);
+        memo->info["correction"] = {{"entity", e.id}, {"words", spoken_words}, {"kind", kind}, {"colour", colour}};
+        if (colours.size() > 1) return OfferName(e, spoken_words, now, memo);
+        if (kind == e.object) {
+            std::vector<std::string> room;   // «нет, это дверь в гараж»: the room behind it
+            if (colours.empty() && RoomName(e, spoken_words, &room)) return OfferName(e, spoken_words, now, memo);
+            if (colour.empty() || colour == ColourOfThing(e))
+                return ForgetOwnName(e, memo) ? Answer(memo, kRemembered, "forgot_name") : Answer(memo, kGotIt, "same_thing");
+            if (!noun.empty())
+                if (const coop::WorldEntity* f = NearThing(e, kind, colour)) return PointedAt(*f, now, memo);
+            std::string problem;
+            if (!g_memory->KeepColour({planner.World().map, KeyOf(e), colour, 0}, &problem)) MemoryError(memo, problem);
+            memo->info["kept_colour"] = {{"entity", e.id}, {"key", KeyOf(e)}, {"colour", colour}};
+            return Answer(memo, kRemembered, "kept_colour");
+        }
+        if (!kind.empty())
+            if (const coop::WorldEntity* f = NearThing(e, kind, colour)) return PointedAt(*f, now, memo);
+        return OfferName(e, spoken_words, now, memo);
     }
     const std::string& LabelOf(const Turn& t) const {
         static const std::string kNone = "NONE";
@@ -2025,22 +2457,96 @@ struct Chat {
         }
         return keys;
     }
-    static bool Understood(const Heard& h) {
+    // a meaning the bot read as orders: no "say again", no "no", no cancel ("I said open fire, but no, don't fire")
+    bool Understood(const Heard& h) const {
         if (h.turns.empty()) return false;
-        for (const Turn& t : h.turns)
-            if (t.r.action == "say_again" || t.r.action == "ignore") return false;
-        return true;
-    }
-    // a plain «это X» / "this is X" is a name when the bot reads no order in it
-    bool NoOrder(const Heard& h) const {
         for (const Turn& t : h.turns) {
             const std::string& label = LabelOf(t);
-            if (!(t.r.action == "say_again" || t.r.action == "ignore" || label == "NONE" || label == "SMALL_TALK")) return false;
+            if (t.r.action == "say_again" || t.r.action == "ignore" || t.r.action == "negated" || label == "NO" || label == "NONE") return false;
         }
+        return true;
+    }
+    // the meaning is what the line before meant, not a new place for the order it gave: "go to the door", then "I meant
+    // the window" is the same order at another place (the planner's short context), and "go to the door" must not mean
+    // "the window" from then on (2026-10-29, teach_corpus_check.py: «я сказал на кухню», "dije sur, no norte"). So a line
+    // the bot could not read, or read as another order than the meaning's
+    static bool Misread(bool failed, int intent, const Heard& meaning) {
+        return failed || meaning.turns.empty() || meaning.turns[0].r.decision.intent != intent;
+    }
+    // a plain «это X» / "this is X" is a name when the bot reads no order in it ("this is the workbench": say again)
+    bool NoOrder(const Heard& h) const {
+        for (const Turn& t : h.turns)
+            if (!(t.r.action == "say_again" || t.r.action == "ignore" || LabelOf(t) == "NONE")) return false;
         return true;
     }
     bool Cancelled(const Heard& h) const {
         return !h.turns.empty() && (h.turns[0].r.action == "negated" || LabelOf(h.turns[0]) == "NO");
+    }
+    // two lines are about the same thing: a word of four letters or more in both, or two words with the same start (five
+    // letters, or the whole of the shorter one: «диван» and «дивану», «стол» and «столу»), and not a word every line has
+    static bool SharesWord(const std::string& a, const std::string& b) {
+        static const std::unordered_set<std::string> kCommon = {
+            "иди", "идти", "давай", "пожалуйста", "брат", "братан", "сюда", "туда", "этот", "эту", "этого", "этой", "тот", "ту",
+            "того", "вон", "там", "тут", "здесь", "сейчас", "теперь", "быстро", "просто", "come", "please", "there", "here", "this",
+            "that", "with", "what", "now", "quickly", "just", "bro", "brother", "the", "aquí", "allí", "ahora", "hermano", "por",
+            "favor", "este", "esta", "ese", "esa"};
+        auto letters = [](const std::string& w) {
+            std::vector<std::string> out;
+            for (size_t i = 0; i < w.size();) {
+                const unsigned char c = static_cast<unsigned char>(w[i]);
+                const size_t n = c < 0x80 ? 1 : (c >> 5) == 0x6 ? 2 : (c >> 4) == 0xE ? 3 : 4;
+                out.push_back(w.substr(i, n));
+                i += n;
+            }
+            return out;
+        };
+        for (const std::string& x : coop::MemoryWords(a)) {
+            if (kCommon.count(x)) continue;
+            const std::vector<std::string> lx = letters(x);
+            if (lx.size() < 4) continue;
+            for (const std::string& y : coop::MemoryWords(b)) {
+                if (kCommon.count(y)) continue;
+                const std::vector<std::string> ly = letters(y);
+                if (ly.size() < 4) continue;
+                const size_t shorter = std::min(lx.size(), ly.size());
+                size_t same = 0;
+                while (same < shorter && lx[same] == ly[same]) ++same;
+                if (same >= std::min<size_t>(5, shorter)) return true;
+            }
+        }
+        return false;
+    }
+    // A line the bot read after lines just before it it could not read about the same thing (the owner, 2026-10-30: «Иди
+    // садись на диван» twice "say again", then «Иди на диван»): the bot carries out the order and asks "Shall I remember that
+    // "иди садись на диван" means "иди на диван"?"; "yes" keeps those lines as this one's orders (Listen). Never kept unasked:
+    // the player may have said something else entirely
+    void OfferMeaning(const std::string& norm, const Heard& h, Clock::time_point now, Memo* memo) {
+        if (memo->answered || memo->remembered || planner.Mem().has_question || !Understood(h)) return;
+        for (const Turn& t : h.turns)
+            if (!(t.r.action == "act" || t.r.action == "resolved")) return;
+        std::vector<std::string> keys;
+        Clock::time_point after = now;
+        for (auto it = recent.rbegin(); it != recent.rend(); ++it) {
+            if (!it->failed || Ms(after - it->at) > kMeaningMs) break;   // only the run of misses right before it
+            after = it->at;
+            if (it->norm != norm && SharesWord(it->norm, norm) && std::find(keys.begin(), keys.end(), it->norm) == keys.end())
+                keys.push_back(it->norm);
+        }
+        if (keys.empty()) return;
+        std::reverse(keys.begin(), keys.end());   // the first way it was said first
+        offer = Offer();
+        offer.open = true;
+        offer.meaning = true;
+        offer.keys = keys;
+        offer.at = now;
+        for (const Turn& t : h.turns) offer.lines.push_back(t.line);
+        for (const std::string& line : h.held) offer.lines.push_back(line);
+        offer.intent = LabelOf(h.turns[0]);
+        memo->info["did"] = "offered_meaning";
+        memo->info["offered_meaning"] = {{"heard", keys}, {"meant", norm}, {"lines", offer.lines}, {"intent", offer.intent}};
+        memo->ask = "Shall I remember that \"" + keys[0] + "\" means \"" + norm + "\"?";
+        memo->terms["said"][keys[0]] = {{"text", keys[0]}};
+        memo->terms["meant"][norm] = {{"text", norm}};
     }
     void RememberLine(const std::string& norm, const Heard& h, const std::string& kept) {
         Recent r;
@@ -2048,6 +2554,7 @@ struct Chat {
         r.at = Clock::now();
         r.failed = !h.turns.empty() &&
                    std::all_of(h.turns.begin(), h.turns.end(), [](const Turn& t) { return t.r.action == "say_again"; });
+        r.intent = h.turns.empty() || r.failed ? -1 : h.turns[0].r.decision.intent;
         r.kept = kept;
         recent.push_back(std::move(r));
         while (recent.size() > 8) recent.pop_front();
@@ -2078,8 +2585,9 @@ struct Chat {
     }
 
     // the line with the names the player taught written as the thing's kind ("иди к верстаку" -> "иди к table"), and the
-    // things its names and colours name, in *named
-    std::string WithNames(const std::string& line, std::vector<std::string>* named) const {
+    // things its names and colours name, in *named; a room's name is its door's ("иди в гараж" -> "иди в door"), and the
+    // door goes in *rooms too
+    std::string WithNames(const std::string& line, std::vector<std::string>* named, std::vector<std::string>* rooms) const {
         const coop::WorldState& w = planner.World();
         const std::vector<coop::SpanWord> spans = coop::SpanWords(line);
         std::vector<std::string> norms;
@@ -2100,7 +2608,7 @@ struct Chat {
             return coop::MemoryWords(a->name).size() > coop::MemoryWords(b->name).size();
         });
         for (const coop::MemoryName* n : names) {
-            const coop::WorldEntity* e = EntityByKey(n->entity);
+            const coop::WorldEntity* e = EntityOfKey(n->entity);
             if (!e || e->object.empty()) continue;   // not in this world, or of no kind the words can name
             std::string kind = e->object;            // world.py object_word: "garden_bed" is "garden bed"
             std::replace(kind.begin(), kind.end(), '_', ' ');
@@ -2113,6 +2621,7 @@ struct Chat {
                     for (size_t i = b; i < en; ++i) used[i] = true;
                     cuts.push_back({spans[b].begin, spans[en - 1].end, kind});
                     add(e->id);
+                    if (IsRoomKey(n->entity) && std::find(rooms->begin(), rooms->end(), e->id) == rooms->end()) rooms->push_back(e->id);
                 }
                 from = en;
             }
@@ -2130,10 +2639,11 @@ struct Chat {
     // Hear with the names and colours the player taught (WithNames)
     template <class Each>
     bool HearNamed(const std::string& line, bool spoken, Heard* h, Memo* memo, std::string* err, Each&& each) {
-        std::vector<std::string> named;
-        const std::string read_as = g_memory && g_memory->IsOpen() ? WithNames(line, &named) : line;
+        std::vector<std::string> named, rooms;
+        const std::string read_as = g_memory && g_memory->IsOpen() ? WithNames(line, &named, &rooms) : line;
         if (named.empty()) return Hear(line, spoken ? coop::SpeechTextForClassifier(line) : line, h, err, each);
         memo->info["named"] = named;
+        if (!rooms.empty()) memo->info["rooms"] = rooms;   // RoomOrder
         if (read_as != line) memo->info["read_as"] = read_as;
         planner.SetNamed(named);
         const bool ok = Hear(read_as, spoken ? coop::SpeechTextForClassifier(read_as) : read_as, h, err, each);
@@ -2141,11 +2651,60 @@ struct Chat {
         return ok;
     }
 
+    // an order through a room's door: its "room" says whether the bot goes in or out through the door ("in", "out"), by the
+    // order's English. A line that named a room (memo "rooms", WithNames): "exit through the door" is out, "go in through the
+    // door" and "wait at the door" in; "go outside" with no place gets the room's door as its "door". A door with an inside
+    // (HasInside) the order says in or out of: «зайди внутрь» with the crosshair on it is "go inside" at the door. The game
+    // takes the door's inside or outside
+    void RoomOrder(const Memo& memo, const Turn& t, json* turn) const {
+        const std::vector<std::string> rooms =
+            memo.info.contains("rooms") ? memo.info["rooms"].get<std::vector<std::string>>() : std::vector<std::string>();
+        // «выйди из гаража» read as "get out of the door": GET_OUT is out of a car, and out of a room the line named is out through
+        // its door, however sure the classifier was (2026-10-30, the game's run: say_again GET_OUT 0.62 with the decoder on the GPU)
+        if (!rooms.empty() && !turn->contains("state") && turn->value("intent", json(nullptr)) == json("GET_OUT")) {
+            const std::string en = "Moving.";
+            std::string local;
+            (*turn)["intent"] = "MOVE_TO";
+            (*turn)["action"] = "act";
+            (*turn)["say"] = g_replies && Localize(en, &local) ? local : en;
+            (*turn)["say_en"] = en;
+            (*turn)["order"] = {{"intent", "MOVE_TO"}, {"entity", nullptr}, {"candidates", json::array()}, {"direction", nullptr},
+                                {"zone", "outside"}, {"pointer", nullptr}, {"other", false}, {"via", "outside"}, {"near", false},
+                                {"object", nullptr}, {"door", rooms[0]}, {"room", "out"}};
+            (*turn)["room_exit"] = true;
+            return;
+        }
+        if (!turn->contains("order") || !(*turn)["order"].is_object()) return;
+        json& order = (*turn)["order"];
+        const std::string entity = order.value("entity", json(nullptr)).is_string() ? order["entity"].get<std::string>() : std::string();
+        const std::string via = order.value("via", json(nullptr)).is_string() ? order["via"].get<std::string>() : std::string();
+        static const std::unordered_set<std::string> kOut = {"exit", "out", "outside", "outdoors", "leave", "outta"};
+        static const std::unordered_set<std::string> kIn = {"in", "inside", "into", "indoors", "enter"};
+        bool out = false, in = false;
+        for (const std::string& w : coop::MemoryWords(coop::MemoryNorm(t.line))) {
+            out = out || kOut.count(w) > 0;
+            in = in || kIn.count(w) > 0;
+        }
+        if (!entity.empty() && std::find(rooms.begin(), rooms.end(), entity) != rooms.end()) {
+            order["room"] = out ? "out" : "in";
+        } else if (entity.empty() && !rooms.empty() && (via == "inside" || via == "outside")) {
+            order["door"] = rooms[0];
+            order["room"] = via == "outside" ? "out" : "in";
+        } else if (const coop::WorldEntity* e = entity.empty() || !(in || out) ? nullptr : EntityById(entity)) {
+            if (HasInside(*e)) order["room"] = out ? "out" : "in";
+        }
+    }
+
     // A line of the player through the long-term memory and then Hear (see above). memo->answered: the memory answered
     // the line itself (its words in memo->say), and the turns `each` saw are not the reply
     template <class Each>
     bool Listen(const std::string& heard, bool spoken, Heard* h, Memo* memo, std::string* err, Each&& each) {
         *memo = Memo();
+        // the answer to "what is that?" is the decoder's context for the line right after it only
+        if (what_said_lines >= 0 && ++what_said_lines > 1) {
+            bot_said = Said();
+            what_said_lines = -1;
+        }
         if (!g_memory || !g_memory->IsOpen()) return Hear(heard, spoken ? coop::SpeechTextForClassifier(heard) : heard, h, err, each);
         const auto now = Clock::now();
         while (!recent.empty() && Ms(now - recent.front().at) > kRecentMs) recent.pop_front();
@@ -2165,14 +2724,135 @@ struct Chat {
             return true;
         };
 
+        // the thing the bot just named is open to a correction on the next line alone: any line closes it, and the answers
+        // that name a thing open it again below
+        const std::string what_was = what_key;
+        what_key.clear();
+
+        // the answer to "Shall I remember it as X?": "yes" keeps the name, "no" does not, anything else drops the question
+        if (offer.open) {
+            const Offer o = offer;
+            offer.open = false;
+            if (o.pronounce && Ms(now - o.at) <= kOfferMs && !open) {
+                // «нет, на второй слог», «на о»: the stress again, of the same word (before "no": it starts with one)
+                std::vector<std::string> w = coop::MemoryWords(norm);
+                while (!w.empty() && (w[0] == "нет" || w[0] == "не" || w[0] == "а")) w.erase(w.begin());
+                std::string again = "в слове " + o.word + " ударение";
+                for (const std::string& x : w) again += " " + x;
+                const coop::TeachLine t = !w.empty() && w[0] == "на" ? coop::ReadTeach(again, g_language) : coop::TeachLine();
+                if (t.kind == coop::TeachKind::Pronounce && !t.forget) return OfferSaying(t, now, memo);
+            }
+            const int yn = Ms(now - o.at) <= kOfferMs && !open ? coop::YesNo(heard) : 0;
+            if (yn > 0 && o.meaning) {
+                coop::MemoryLine l;
+                l.lang = g_language;
+                l.lines = o.lines;
+                l.intent = o.intent;
+                l.source = "voice";
+                std::string problem;
+                for (const std::string& key : o.keys) {
+                    l.heard = key;
+                    if (!g_memory->KeepLine(l, &problem)) MemoryError(memo, problem);
+                }
+                memo->info["kept_line"] = {{"heard", o.keys}, {"lines", o.lines}, {"intent", o.intent}};
+                return answer(kRemembered, "kept_line");
+            }
+            if (yn < 0 && o.meaning) return answer(kNotRemembered, "not_kept_line");
+            if (yn > 0 && o.pronounce) {
+                std::string problem;
+                if (!g_memory->KeepSaying({g_language, o.word, o.say, 0}, &problem)) MemoryError(memo, problem);
+                memo->info["kept_saying"] = {{"word", o.word}, {"say", o.say}};
+                return answer(kRemembered, "kept_saying");
+            }
+            if (yn < 0 && o.pronounce) return answer(kNotRemembered, "not_kept_saying");
+            if (yn > 0 && o.phrase) {
+                std::string problem;
+                if (!g_memory->KeepPhrase({g_language, o.word, o.say, 0, o.phrase_word}, &problem)) MemoryError(memo, problem);
+                memo->info["kept_phrase"] = {{"from", o.word}, {"to", o.say}, {"word", o.phrase_word}};
+                return answer(kRemembered, "kept_phrase");
+            }
+            if (yn < 0 && o.phrase) return answer(kNotRemembered, "not_kept_phrase");
+            if (yn > 0 && o.setting) {
+                std::string problem;
+                if (!g_memory->KeepSetting({o.word, o.value, 0}, &problem)) MemoryError(memo, problem);
+                memo->info["kept_setting"] = {{"name", o.word}, {"value", o.value}};
+                memo->info["behaviour"] = SettingsJson();
+                return answer(kRemembered, "kept_setting");
+            }
+            if (yn < 0 && o.setting) return answer(kNotRemembered, "not_kept_setting");
+            if (yn > 0) {
+                std::string problem;
+                if (!g_memory->KeepName({map, o.key, g_language, o.name, 0}, &problem)) MemoryError(memo, problem);
+                const coop::WorldEntity* e = EntityOfKey(o.key);
+                memo->info["kept_name"] = {{"entity", e ? e->id : o.key}, {"key", o.key}, {"name", o.name}};
+                if (IsRoomKey(o.key)) memo->info["kept_name"]["room"] = true;
+                return answer(kRemembered, "kept_name");
+            }
+            if (yn < 0) return answer(kNotRemembered, "not_kept_name");
+        }
+
+        // "what colour is it?" (the owner, 2026-10-30: «какого цвета этот стул?»): the colour the player taught, else the
+        // game's; a thing named by a taught name first, else the one under the crosshair
+        std::vector<std::string> asked_words;
+        if (!open && coop::ColourQuestion(heard, &asked_words)) {
+            const coop::WorldEntity* e = NamedIn(asked_words);
+            if (!e) e = PointedEntity();
+            if (!e) return answer(kPointAtIt, "no_thing");
+            what_key = KeyOf(*e);
+            what_at = now;
+            const std::string colour = ColourOfThing(*e);
+            memo->info["colour_of"] = {{"entity", e->id}, {"colour", colour}};
+            if (colour.empty()) return answer(kNoColour, "no_colour");
+            return answer("That's " + ThingWordsFor(e->object, colour, memo) + ".", "colour_of");
+        }
+
+        // what the thing the bot just named is (the owner, 2026-10-30: «Что это?» "the white table", «Нет, это жёлтый
+        // стол» was read as "no"): «нет, это красный фонарь», «это жёлтый стол», «это не стол, а верстак»; a bare «нет»
+        // asks "Then what is it?" and the next line says it (the words alone too: «фонарь», unless it is an order)
+        {
+            const bool answering = asked_what && Ms(now - asked_what_at) <= kMeaningMs && !open;
+            asked_what = false;
+            const bool after = !open && !what_was.empty() && Ms(now - what_at) <= kWhatMs;
+            const coop::WorldEntity* e = answering || after ? EntityByKey(what_was) : nullptr;
+            // the crosshair on another thing now: the line is about that one («это гараж» at the door), not the answer
+            if (const coop::WorldEntity* now_at = e ? PointedEntity() : nullptr)
+                if (KeyOf(*now_at) != what_was) e = nullptr;
+            if (e && !answering && coop::BareDenial(heard)) {
+                what_key = what_was;   // the next line says what it is
+                asked_what = true;
+                asked_what_at = now;
+                what_at = now;
+                return answer(kAskWhat, "asked_what");
+            }
+            coop::ThingWords tw = e ? coop::ReadThingWords(heard, false) : coop::ThingWords();
+            bool bare = false;
+            if (e && !tw.ok && answering) {
+                tw = coop::ReadThingWords(heard, true);
+                bare = tw.ok;
+            }
+            if (tw.ok) {
+                if (bare) {   // «стой» is an order, not what the thing is
+                    if (!HearNamed(heard, spoken, h, memo, err, each)) return false;
+                    if (!NoOrder(*h)) {
+                        what_key.clear();
+                        RememberLine(norm, *h, {});
+                        return true;
+                    }
+                }
+                memo->info["teach"] = "correction";
+                return CorrectThing(*e, tw.words, now, memo);
+            }
+        }
+
         // the answer to "What did you mean?"
         const bool meaning = asked_meaning && Ms(now - asked_at) <= kMeaningMs && tl.kind == coop::TeachKind::None && !open;
         const std::vector<std::string> meaning_keys = asked_keys;
         asked_meaning = false;
         if (meaning) {
             if (!HearNamed(heard, spoken, h, memo, err, each)) return false;
-            if (Understood(*h)) KeepMeaning(meaning_keys, *h, memo);
-            else memo->info["did"] = "meaning_not_read";
+            if (!Understood(*h)) memo->info["did"] = "meaning_not_read";
+            else if (!Misread(asked_failed, asked_intent, *h)) memo->info["did"] = "same_order";   // "not that" -- "the window"
+            else KeepMeaning(meaning_keys, *h, memo);
             return true;
         }
 
@@ -2181,13 +2861,20 @@ struct Chat {
                 if (recent.empty()) break;   // nothing said before it: a line like any other
                 const std::vector<std::string> keys = MeaningKeys();
                 const std::string old = recent.back().kept;   // the kept line that read it wrong goes
+                const bool failed = recent.back().failed;
+                const int intent = recent.back().intent;
                 if (!HearNamed(tl.rest, spoken, h, memo, err, each)) return false;
                 if (!Understood(*h)) {
                     memo->info["did"] = "meaning_not_read";
                     return true;
                 }
-                if (open && h->turns[0].r.decision.intent == asked) {   // "I meant the red one": the answer to the question
+                // "I meant the red table": the answer to the question, settled by the planner (or the order asked about)
+                if (open && (h->turns[0].r.decision.intent == asked || h->turns[0].r.action == "resolved" || h->turns[0].r.action == "ask")) {
                     memo->info["did"] = "answered_question";
+                    return true;
+                }
+                if (!Misread(failed && !open, open ? asked : intent, *h)) {   // "I meant the window": the same order, another place
+                    memo->info["did"] = "same_order";
                     return true;
                 }
                 std::string e;
@@ -2206,6 +2893,8 @@ struct Chat {
                     recent.back().kept.clear();
                 }
                 asked_keys = MeaningKeys();
+                asked_failed = recent.back().failed;
+                asked_intent = recent.back().intent;
                 asked_meaning = true;
                 asked_at = now;
                 return answer(kAskMeaning, "asked_meaning");
@@ -2219,21 +2908,94 @@ struct Chat {
                     if (tl.plain || tl.kind == coop::TeachKind::Colour) break;   // «это X» at nothing: a line like any other
                     return answer(kPointAtIt, "no_thing");
                 }
-                if (tl.plain) {   // «это верстак» is a name only when the bot reads no order in it
+                // «это красный фонарь»: a colour said as part of a thing of another kind than this one's is a name
+                const bool other = tl.kind == coop::TeachKind::Colour && tl.attributive && KindOf(tl.noun) != e->object;
+                if (tl.plain || other) {
+                    // «это гараж» is a name only when the bot reads no order in it, and it asks before it keeps it: «это
+                    // ловушка» is a warning (2026-10-30, the owner: "the player may mean something else entirely")
                     if (!HearNamed(heard, spoken, h, memo, err, each)) return false;
                     if (!NoOrder(*h)) {
                         RememberLine(norm, *h, {});
                         return true;
                     }
+                    const std::vector<std::string> name_words = coop::MemoryWords(tl.rest);
+                    std::vector<std::string> room;   // «это дверь в гараж»: a name, of the room behind it
+                    if (!other && KindOf(name_words) == e->object && !RoomName(*e, name_words, &room))   // «это стол» at a table
+                        return ForgetOwnName(*e, memo) ? answer(kRemembered, "forgot_name") : answer(kGotIt, "same_thing");
+                    return OfferName(*e, name_words, now, memo);
                 }
+                if (tl.kind == coop::TeachKind::Colour && tl.colour == ColourOfThing(*e)) return answer(kGotIt, "same_thing");
                 std::string problem;
                 const bool name = tl.kind == coop::TeachKind::Name;
-                const bool ok = name ? g_memory->KeepName({map, KeyOf(*e), g_language, tl.rest, 0}, &problem)
+                // «назови это гаражом» at a door with an inside: the room behind it
+                std::vector<std::string> room;
+                const bool is_room = name && RoomName(*e, coop::MemoryWords(tl.rest), &room);
+                std::string room_name;
+                for (const std::string& w : room) room_name += (room_name.empty() ? "" : " ") + w;
+                const std::string key = is_room ? RoomKey(*e) : KeyOf(*e), kept = is_room ? room_name : tl.rest;
+                const bool ok = name ? g_memory->KeepName({map, key, g_language, kept, 0}, &problem)
                                      : g_memory->KeepColour({map, KeyOf(*e), tl.colour, 0}, &problem);
                 if (!ok) MemoryError(memo, problem);
-                if (name) memo->info["kept_name"] = {{"entity", e->id}, {"key", KeyOf(*e)}, {"name", tl.rest}};
-                else memo->info["kept_colour"] = {{"entity", e->id}, {"key", KeyOf(*e)}, {"colour", tl.colour}};
+                if (name) memo->info["kept_name"] = {{"entity", e->id}, {"key", key}, {"name", kept}};
+                if (is_room) memo->info["kept_name"]["room"] = true;
+                if (!name) memo->info["kept_colour"] = {{"entity", e->id}, {"key", KeyOf(*e)}, {"colour", tl.colour}};
                 return answer(kRemembered, name ? "kept_name" : "kept_colour");
+            }
+            case coop::TeachKind::Means: {
+                // «когда я говорю бабах, это значит кидай гранату» (2026-10-30, the owner: the player teaches the bot everything):
+                // the meaning is read now and not carried out (the reply is the memory's), and the bot asks before it keeps it
+                if (!HearNamed(tl.rest, spoken, h, memo, err, each)) return false;
+                bool read = Understood(*h);
+                for (const Turn& t : h->turns) read = read && (t.r.action == "act" || t.r.action == "resolved");
+                planner.DropQuestion();   // only read: no question of it stays open
+                const std::string meant = coop::MemoryNorm(tl.rest);
+                memo->terms["said"][tl.said] = {{"text", tl.said}};
+                memo->terms["meant"][meant] = {{"text", meant}};
+                if (!read) {
+                    memo->info["means"] = {{"said", tl.said}, {"meant", tl.rest}};
+                    return answer("I don't understand \"" + meant + "\".", "means_not_read");
+                }
+                offer = Offer();
+                offer.open = true;
+                offer.meaning = true;
+                offer.keys = {tl.said};
+                offer.at = now;
+                for (const Turn& t : h->turns) offer.lines.push_back(t.line);
+                for (const std::string& line : h->held) offer.lines.push_back(line);
+                offer.intent = LabelOf(h->turns[0]);
+                memo->info["offered_meaning"] = {{"heard", offer.keys}, {"meant", meant}, {"lines", offer.lines}, {"intent", offer.intent}};
+                return answer("Shall I remember that \"" + tl.said + "\" means \"" + meant + "\"?", "offered_meaning");
+            }
+            case coop::TeachKind::Pronounce: {
+                // «в слове замок ударение на первый слог», «говори Buddy как Бадди»: how the voice says a word
+                if (tl.forget) {
+                    bool any = false;
+                    std::string problem;
+                    if (!g_memory->ForgetSaying(g_language, tl.said, &any, &problem)) MemoryError(memo, problem);
+                    memo->info["forgot_saying"] = tl.said;
+                    return answer(any ? kForgotten : kNotKept, any ? "forgot_saying" : "not_kept");
+                }
+                return OfferSaying(tl, now, memo);
+            }
+            case coop::TeachKind::Speech: {
+                if (tl.forget) {   // «говори как раньше»
+                    bool any = false;
+                    std::string problem;
+                    if (!g_memory->ForgetPhrases(g_language, &any, &problem)) MemoryError(memo, problem);
+                    return answer(any ? kForgotten : kNotKept, any ? "forgot_phrases" : "not_kept");
+                }
+                return OfferPhrase(tl, now, memo);
+            }
+            case coop::TeachKind::Behaviour: {
+                if (tl.forget) {   // «веди себя как раньше»
+                    bool any = false;
+                    std::string problem;
+                    if (!g_memory->ForgetSettings(&any, &problem)) MemoryError(memo, problem);
+                    memo->info["behaviour"] = SettingsJson();
+                    return answer(any ? kForgotten : kNotKept, any ? "forgot_settings" : "not_kept");
+                }
+                if (OfferSetting(tl, now, memo)) return true;
+                break;
             }
             case coop::TeachKind::Forget: {
                 std::string problem;
@@ -2244,6 +3006,11 @@ struct Chat {
                     const coop::WorldEntity* ge = EntityById(thing);
                     const std::string key = ge ? KeyOf(*ge) : thing;
                     if (!g_memory->ForgetThing(map, key, &any, &problem)) MemoryError(memo, problem);
+                    if (ge && HasInside(*ge)) {   // at a door: the room behind it too
+                        bool room_any = false;
+                        if (!g_memory->ForgetThing(map, RoomKey(*ge), &room_any, &problem)) MemoryError(memo, problem);
+                        any = any || room_any;
+                    }
                     memo->info["forgot_thing"] = key;
                     return answer(any ? kForgotten : kNotKept, any ? "forgot" : "not_kept");
                 }
@@ -2282,16 +3049,32 @@ struct Chat {
         // "what is that?" at a thing the player named: the bot says the name (the game would say the thing's kind). The
         // reply tables' "That's {thing}." takes the name as it is (memo->terms)
         if (h->turns.size() == 1 && h->turns[0].state == "what") {
-            const std::string thing = PointedThing();
-            const coop::WorldEntity* e = thing.empty() ? nullptr : EntityById(thing);
+            const coop::WorldEntity* e = PointedEntity();
+            if (e) what_key = KeyOf(*e), what_at = now;   // «нет, это ...» next corrects the answer
             if (const coop::MemoryName* n = e ? NameOf(*e) : nullptr) {
                 const std::string called = (g_language == "en" ? "the " : "") + n->name;
-                memo->terms["thing"][called] = {{"text", n->name}, {"acc", n->name}};
+                memo->terms["thing"][called] = {{"text", called}, {"acc", called}};
                 memo->info["name_of"] = {{"entity", e->id}, {"name", n->name}};
                 RememberLine(norm, *h, {});
                 return answer("That's " + called + ".", "named_thing");
             }
+            // a door into a room the player named: "That's the door to the garage."
+            if (const coop::MemoryName* n = e && HasInside(*e) ? NameByKey(RoomKey(*e)) : nullptr) {
+                const std::string called = (g_language == "en" ? "the " : "") + n->name;
+                memo->terms["thing"][called] = {{"text", called}, {"acc", called}};
+                memo->info["name_of"] = {{"entity", e->id}, {"name", n->name}, {"room", true}};
+                RememberLine(norm, *h, {});
+                return answer(kDoorToA + called + ".", "room_door");
+            }
+            // a colour the player taught: "That's the yellow table." (the game knows its own, "the white table")
+            if (const coop::MemoryColour* c = e ? TaughtColour(*e) : nullptr) {
+                memo->info["colour_of"] = {{"entity", e->id}, {"colour", c->colour}};
+                RememberLine(norm, *h, {});
+                return answer("That's " + ThingWordsFor(e->object, c->colour, memo) + ".", "coloured_thing");
+            }
         }
+        // a line read right after misses about the same thing: "Shall I remember that "X" means "Y"?"
+        OfferMeaning(norm, *h, now, memo);
         // "no" right after a line the memory read: a doubt about the kept line
         if (!recent.empty() && !recent.back().kept.empty() && Ms(now - recent.back().at) <= kDoubtMs && Cancelled(*h)) {
             bool removed = false;
@@ -2390,9 +3173,12 @@ struct Chat {
                                                     : (part.empty() || part == "seen" || part == "how" ? "body" : part);
             reply.clear();
         } else if (intent == "WHAT_IS_IT") {
-            // "what is that" (bot v66): the game names the thing under the crosshair
+            // "what is that" (bot v66): the game names the thing under the crosshair, and that thing is the one talked about
+            // now: «Что это?» "the white table", «Запрыгни на него» is onto it, not onto the rock of an order 27 s before (the
+            // owner's log, 2026-10-30; "it" is the thing named last, rule set v8)
             turn->state = "what";
             reply.clear();
+            if (const coop::WorldEntity* e = PointedEntity()) planner.Named(e->id);
         } else if (intent == "MOVE_TO") {
             // "got any ammo?": the planner may have asked where the ammo is; the question is the bot's, not the walk's
             turn->state = StateQuestion(text, false, true);
@@ -3259,8 +4045,124 @@ json ReplyJson(Chat& chat, const Chat::Turn& t) {
 }
 
 // everything the long-term memory keeps (serve "recall", --memory-dump): the lines and what they mean, the names, the colours
+// the bot's line with the sentences the player asked it to say otherwise («вместо «выдвигаюсь» говори «пошёл»»), in the line's
+// language; a sentence they asked it not to say is left out (2026-10-30)
+// the first letter of a line a capital (ASCII, Cyrillic а-я and ё, Latin-1 á..ñ): a sentence that lost its first word
+std::string CapitalFirst(std::string s) {
+    if (s.empty()) return s;
+    const unsigned char c0 = static_cast<unsigned char>(s[0]);
+    if (c0 >= 'a' && c0 <= 'z') {
+        s[0] = static_cast<char>(c0 - 'a' + 'A');
+    } else if (s.size() >= 2) {
+        const unsigned cp = ((c0 & 0x1Fu) << 6) | (static_cast<unsigned char>(s[1]) & 0x3Fu);
+        unsigned up = cp;
+        if (c0 >= 0xC0 && c0 < 0xE0) {
+            if (cp >= 0x430 && cp <= 0x44F) up = cp - 0x20;
+            else if (cp == 0x451) up = 0x401;
+            else if (cp >= 0xE0 && cp <= 0xFE && cp != 0xF7) up = cp - 0x20;
+        }
+        if (up != cp) {
+            s[0] = static_cast<char>(0xC0 | (up >> 6));
+            s[1] = static_cast<char>(0x80 | (up & 0x3F));
+        }
+    }
+    return s;
+}
+
+// the sentence with the words the player asked to say otherwise («брат» -> nothing, «метров» -> «шагов»), as said (the spans of
+// SpanWords); a word left out takes the comma before it along («Понял, брат, запомню.» -> «Понял, запомню.»)
+std::string Reworded(const std::string& sentence, const coop::MemoryPhrase& p, bool* changed) {
+    const std::vector<std::string> words = coop::MemoryWords(p.from);
+    const std::vector<coop::SpanWord> sw = coop::SpanWords(sentence);
+    if (words.empty()) return sentence;
+    std::string out;
+    size_t at = 0;
+    for (size_t i = 0; i + words.size() <= sw.size();) {
+        bool same = true;
+        for (size_t k = 0; k < words.size() && same; ++k) same = sw[i + k].norm == words[k];
+        if (!same) {
+            ++i;
+            continue;
+        }
+        size_t from = sw[i].begin, to = sw[i + words.size() - 1].end;
+        if (p.to.empty()) {
+            size_t b = from;
+            while (b > at && sentence[b - 1] == ' ') --b;
+            if (b > at && sentence[b - 1] == ',') from = b - 1;   // «Понял, брат»: the comma before it goes
+            else {                                               // «Брат, не вижу»: the comma and space after it
+                while (to < sentence.size() && (sentence[to] == ',' || sentence[to] == ' ')) ++to;
+            }
+        }
+        out += sentence.substr(at, from - at) + p.to;
+        at = to;
+        i += words.size();
+        *changed = true;
+    }
+    out += sentence.substr(at);
+    return out == sentence ? sentence : CapitalFirst(out);
+}
+
+std::string Rephrased(const std::string& text, const std::string& lang) {
+    if (!g_memory || !g_memory->IsOpen() || g_memory->Phrases().empty() || text.empty()) return text;
+    std::string out;
+    bool changed = false;
+    for (const std::string& line_sentence : coop::SplitSentences(text)) {
+        std::string sentence = line_sentence;
+        for (const coop::MemoryPhrase& x : g_memory->Phrases())   // words inside it first
+            if (x.lang == lang && x.word) sentence = Reworded(sentence, x, &changed);
+        const std::string key = Chat::PhraseKey(sentence);
+        const coop::MemoryPhrase* p = nullptr;
+        for (const coop::MemoryPhrase& x : g_memory->Phrases())
+            if (x.lang == lang && !x.word && x.from == key) p = &x;
+        std::string piece = sentence;
+        if (p) {
+            changed = true;
+            piece = p->to;
+            if (!piece.empty() && std::string(".!?").find(piece.back()) == std::string::npos) {
+                const char end = sentence.empty() ? '.' : sentence.back();
+                piece += std::string(".!?").find(end) != std::string::npos ? std::string(1, end) : std::string(".");
+            }
+            piece = CapitalFirst(piece);
+        }
+        if (piece.empty()) continue;
+        out += (out.empty() ? "" : " ") + piece;
+    }
+    return changed ? out : text;
+}
+
+// the line as the voice is to say it: the words the player taught a pronunciation of, in the voice's language, the way they
+// taught it («за́мок», «бадди»); the text shown stays as it is (2026-10-30)
+std::string Pronounced(const std::string& text, const std::string& lang) {
+    if (!g_memory || !g_memory->IsOpen() || g_memory->Sayings().empty()) return text;
+    const std::vector<coop::SpanWord> sw = coop::SpanWords(text);
+    std::string out;
+    size_t at = 0;
+    for (size_t i = 0; i < sw.size();) {
+        size_t taken = 0;
+        for (const coop::MemorySaying& x : g_memory->Sayings()) {
+            if (x.lang != lang) continue;
+            const std::vector<std::string> words = coop::MemoryWords(x.word);
+            if (words.empty() || i + words.size() > sw.size()) continue;
+            bool same = true;
+            for (size_t k = 0; k < words.size() && same; ++k) same = sw[i + k].norm == words[k];
+            if (!same) continue;
+            out += text.substr(at, sw[i].begin - at) + x.say;
+            at = sw[i + words.size() - 1].end;
+            taken = words.size();
+            break;
+        }
+        i += taken ? taken : 1;
+    }
+    return out + text.substr(at);
+}
+
 json MemoryJson(const coop::BotMemory& mem) {
-    json lines = json::array(), names = json::array(), colours = json::array();
+    json lines = json::array(), names = json::array(), colours = json::array(), sayings = json::array(), phrases = json::array(),
+         settings = json::object();
+    for (const coop::MemoryPhrase& x : mem.Phrases()) phrases.push_back({{"lang", x.lang}, {"from", x.from}, {"to", x.to}, {"at_ms", x.at_ms}});
+    for (const coop::MemorySetting& x : mem.Settings()) settings[x.name] = x.value;
+    for (const coop::MemorySaying& x : mem.Sayings())
+        sayings.push_back({{"lang", x.lang}, {"word", x.word}, {"say", x.say}, {"at_ms", x.at_ms}});
     for (const coop::MemoryLine& l : mem.Lines())
         lines.push_back({{"lang", l.lang}, {"heard", l.heard}, {"lines", l.lines}, {"intent", l.intent}, {"source", l.source},
                          {"doubts", l.doubts}, {"at_ms", l.at_ms}});
@@ -3268,12 +4170,21 @@ json MemoryJson(const coop::BotMemory& mem) {
         names.push_back({{"map", n.map}, {"entity", n.entity}, {"lang", n.lang}, {"name", n.name}, {"at_ms", n.at_ms}});
     for (const coop::MemoryColour& c : mem.Colours())
         colours.push_back({{"map", c.map}, {"entity", c.entity}, {"colour", c.colour}, {"at_ms", c.at_ms}});
-    return {{"path", mem.Path()}, {"lines", lines}, {"names", names}, {"colours", colours}};
+    return {{"path", mem.Path()}, {"lines", lines}, {"names", names}, {"colours", colours}, {"sayings", sayings}, {"phrases", phrases},
+            {"settings", settings}};
 }
 
 // --teach-tests FILE (tools/teach_tests.json): the teaching lines' rules and the memory's text rules (teach.h), no model.
 //   {"line": "...", "kind": "meant" | "not_that" | "name" | "colour" | "forget" | "none", "rest": "...", "colour": "...",
 //    "plain": true}   ReadTeach (rest, colour and plain checked when given)
+//    "attributive": true, "noun": ["..."]}          ... and a colour's attributive and noun
+//   {"thing": "line", "bare": false, "expect": ["word", ...] | null, "denied": true}   ReadThingWords (null: not ok)
+//   {"denial": "line", "expect": true}               BareDenial
+//   {"colour_question": "line", "expect": true, "rest": ["..."]}   ColourQuestion
+//   {"yes_no": "line", "expect": 1 | -1 | 0}         YesNo
+//   {"adjective": ["yellow", "ru", "f", true], "expect": "жёлтую"}   ColourAdjective (id, lang, gender, accusative)
+//   {"stressed": ["замок", 1, ""], "expect": "за́мок"}   StressedWord (word, syllable, vowel)
+//   line cases also check "said", "stress", "vowel", "forget" (means, pronounce)
 //   {"near": ["kept", "line"], "expect": true}      NearLine
 //   {"form": ["said", "taught"], "expect": true}    WordForm
 //   {"colours": "line", "expect": ["green"]}        ColoursIn
@@ -3302,7 +4213,46 @@ int RunTeachTests(const std::string& path) {
             if (c.contains("rest")) ok = ok && t.rest == c["rest"].get<std::string>();
             if (c.contains("colour")) ok = ok && t.colour == c["colour"].get<std::string>();
             if (c.contains("plain")) ok = ok && t.plain == c["plain"].get<bool>();
-            if (!ok) wrong(c, kind + " rest \"" + t.rest + "\" colour \"" + t.colour + "\" plain " + (t.plain ? "true" : "false"));
+            if (c.contains("attributive")) ok = ok && t.attributive == c["attributive"].get<bool>();
+            if (c.contains("said")) ok = ok && t.said == c["said"].get<std::string>();
+            if (c.contains("stress")) ok = ok && t.stress == c["stress"].get<int>();
+            if (c.contains("vowel")) ok = ok && t.vowel == c["vowel"].get<std::string>();
+            if (c.contains("forget")) ok = ok && t.forget == c["forget"].get<bool>();
+            if (c.contains("setting")) ok = ok && t.setting == c["setting"].get<std::string>();
+            if (c.contains("value")) ok = ok && std::abs(t.value - c["value"].get<double>()) < 1e-6;
+            if (c.contains("scale")) ok = ok && std::abs(t.scale - c["scale"].get<double>()) < 1e-6;
+            if (c.contains("noun")) ok = ok && t.noun == c["noun"].get<std::vector<std::string>>();
+            if (!ok)
+                wrong(c, kind + " rest \"" + t.rest + "\" said \"" + t.said + "\" setting " + t.setting + " " + std::to_string(t.value) + " x" +
+                             std::to_string(t.scale) + (t.forget ? " forget" : "") + " stress " + std::to_string(t.stress) + " vowel \"" + t.vowel +
+                             "\" colour \"" + t.colour + "\" plain " + (t.plain ? "true" : "false") +
+                             " attributive " + (t.attributive ? "true" : "false") + " noun " + json(t.noun).dump());
+        } else if (c.contains("thing")) {
+            const coop::ThingWords t = coop::ReadThingWords(c["thing"].get<std::string>(), c.value("bare", false));
+            const json want = c.at("expect");
+            bool ok = want.is_null() ? !t.ok : (t.ok && t.words == want.get<std::vector<std::string>>());
+            if (c.contains("denied")) ok = ok && t.denied == c["denied"].get<bool>();
+            if (!ok) wrong(c, std::string(t.ok ? "ok " : "not ok ") + json(t.words).dump() + (t.denied ? " denied" : ""));
+        } else if (c.contains("denial")) {
+            const bool got = coop::BareDenial(c["denial"].get<std::string>());
+            if (got != c.at("expect").get<bool>()) wrong(c, got ? "true" : "false");
+        } else if (c.contains("colour_question")) {
+            std::vector<std::string> rest;
+            const bool got = coop::ColourQuestion(c["colour_question"].get<std::string>(), &rest);
+            bool ok = got == c.at("expect").get<bool>();
+            if (c.contains("rest")) ok = ok && rest == c["rest"].get<std::vector<std::string>>();
+            if (!ok) wrong(c, std::string(got ? "true " : "false ") + json(rest).dump());
+        } else if (c.contains("yes_no")) {
+            const int got = coop::YesNo(c["yes_no"].get<std::string>());
+            if (got != c.at("expect").get<int>()) wrong(c, std::to_string(got));
+        } else if (c.contains("stressed")) {
+            const json& a = c["stressed"];
+            const std::string got = coop::StressedWord(a[0].get<std::string>(), a[1].get<int>(), a[2].get<std::string>());
+            if (got != c.at("expect").get<std::string>()) wrong(c, got);
+        } else if (c.contains("adjective")) {
+            const json& a = c["adjective"];
+            const std::string got = coop::ColourAdjective(a[0].get<std::string>(), a[1].get<std::string>(), a[2].get<std::string>()[0], a[3].get<bool>());
+            if (got != c.at("expect").get<std::string>()) wrong(c, got);
         } else if (c.contains("near")) {
             const bool got = coop::NearLine(coop::MemoryNorm(c["near"][0].get<std::string>()), coop::MemoryNorm(c["near"][1].get<std::string>()));
             if (got != c.at("expect").get<bool>()) wrong(c, got ? "true" : "false");
@@ -3326,6 +4276,150 @@ int RunTeachTests(const std::string& path) {
         }
     }
     std::printf("teach tests: %zu cases, %zu wrong\n", n, bad);
+    return bad ? 1 : 0;
+}
+
+// --memory-store-tests DIR: the long-term memory's store (bot_memory.h) on its own, in DIR (made anew, removed after). Each
+// check prints ok or FAIL with what it got; exit 1 on any FAIL, 2 when this coop_cli has no memory (built without Wick)
+int RunMemoryStoreTests(const std::string& dir_utf8) {
+    namespace fs = std::filesystem;
+    auto u8 = [](const std::string& s) { return fs::u8path(s); };   // C++17: a UTF-8 path
+    const fs::path dir = u8(dir_utf8);
+    std::error_code ec;
+    fs::remove_all(dir, ec);
+    fs::create_directories(dir, ec);
+    // the player's folder named in Cyrillic: the path goes from UTF-8 to the file system as it is
+    const std::string sub = dir_utf8 + "/\xD0\xBF\xD0\xB0\xD0\xBC\xD1\x8F\xD1\x82\xD1\x8C";   // память
+    const std::string file = sub + "/player.mv2s";
+    size_t bad = 0, n = 0;
+    auto check = [&](const char* what, bool ok, const std::string& got = {}) {
+        ++n;
+        if (!ok) ++bad;
+        std::printf("  %s %s%s\n", ok ? "ok  " : "FAIL", what, ok || got.empty() ? "" : ("  -- got " + got).c_str());
+    };
+    // everything kept, "path" aside
+    auto state = [](const coop::BotMemory& m) {
+        json j = MemoryJson(m);
+        j.erase("path");
+        return j.dump();
+    };
+    std::string err;
+    {
+        coop::BotMemory probe;
+        if (!probe.Open(file, &err) && err.find("without Wick") != std::string::npos)
+            return std::printf("memory store tests: %s\n", err.c_str()), 2;
+    }
+    fs::remove_all(u8(sub), ec);
+
+    coop::BotMemory a;
+    check("a new file in a folder named in Cyrillic", a.Open(file, &err) && a.IsOpen() && fs::exists(u8(file)), err);
+    check("a new file is small (the write-ahead log 1 MiB, not 256)", fs::file_size(u8(file), ec) < 2u * 1024 * 1024,
+          std::to_string(fs::file_size(u8(file), ec)));
+    const coop::MemoryLine l1{"en", "banana", {"follow me"}, "FOLLOW_ME", "voice", 0, 0};
+    const coop::MemoryLine l2{"en", "mango smoothie now", {"hold position"}, "HOLD_POSITION", "voice", 0, 0};
+    const coop::MemoryLine l3{"ru", "\xD0\xB1\xD0\xB0\xD0\xBD\xD0\xB0\xD0\xBD", {"Follow me."}, "FOLLOW_ME", "voice", 0, 0};   // банан
+    const coop::MemoryLine chain{"en", "storm it", {"throw a flashbang in the room", "go in"}, "FLASH", "cmd", 0, 0};
+    const bool kept = a.KeepLine(l1, &err) && a.KeepLine(l2, &err) && a.KeepLine(l3, &err) && a.KeepLine(chain, &err) &&
+                      a.KeepName({"/Game/Maps/L_Test", "Marker_4", "en", "workbench", 0}, &err) &&
+                      a.KeepName({"/Game/Maps/L_Test", "Marker_4", "ru", "\xD0\xB2\xD0\xB5\xD1\x80\xD1\x81\xD1\x82\xD0\xB0\xD0\xBA", 0}, &err) &&
+                      a.KeepColour({"/Game/Maps/L_Test", "Crate_2/crate", "green", 0}, &err);
+    check("lines, names in two languages, a colour kept", kept && a.Lines().size() == 4 && a.Names().size() == 2 && a.Colours().size() == 1, err);
+    const coop::MemoryLine* got = a.LineFor("en", "banana");
+    check("the same words", got && got->lines == std::vector<std::string>{"follow me"} && got->intent == "FOLLOW_ME");
+    got = a.LineFor("en", "mango smoothie now please");
+    check("one word more (3+ words)", got && got->heard == "mango smoothie now");
+    got = a.LineFor("en", "mango now");
+    check("one word less, 2 words left: no", got == nullptr);
+    check("two words more: no", a.LineFor("en", "mango smoothie now right now please") == nullptr);
+    check("a short line: the same words only", a.LineFor("en", "banana please") == nullptr);
+    check("another language: no", a.LineFor("es", "banana") == nullptr && a.LineFor("ru", "banana") == nullptr);
+    check("a Russian line in Russian", a.LineFor("ru", "\xD0\xB1\xD0\xB0\xD0\xBD\xD0\xB0\xD0\xBD") != nullptr);
+    got = a.LineFor("en", "storm it");
+    check("a line of two orders keeps both, in order", got && got->lines.size() == 2 && got->lines[1] == "go in");
+    coop::MemoryLine l1b = l1;
+    l1b.lines = {"come here"};
+    l1b.intent = "MOVE_TO";
+    check("a new meaning replaces the old one", a.KeepLine(l1b, &err) && a.Lines().size() == 4 && a.LineFor("en", "banana")->lines[0] == "come here", err);
+    bool removed = true;
+    check("the first doubt keeps the line", a.DoubtLine("en", "banana", &removed, &err) && !removed && a.LineFor("en", "banana")->doubts == 1, err);
+    check("the second doubt forgets it", a.DoubtLine("en", "banana", &removed, &err) && removed && a.LineFor("en", "banana") == nullptr, err);
+    err = "x";
+    check("forgetting a line never kept: false, no error", !a.ForgetLine("en", "kiwi", &err) && err.empty(), err);
+    bool any = false;
+    check("forgetting a thing: its names in every language and its colour stays",
+          a.ForgetThing("/Game/Maps/L_Test", "Marker_4", &any, &err) && any && a.Names().empty() && a.Colours().size() == 1, err);
+    check("a thing never named: nothing to forget", a.ForgetThing("/Game/Maps/L_Test", "Marker_9", &any, &err) && !any, err);
+    check("a name is per map", a.KeepName({"/Game/Maps/L_Other", "Marker_4", "en", "shed", 0}, &err) &&
+                                   a.ForgetThing("/Game/Maps/L_Test", "Marker_4", &any, &err) && !any && a.Names().size() == 1, err);
+    a.KeepName({"/Game/Maps/L_Test", "Marker_4", "en", "workbench", 0}, &err);
+    a.KeepName({"/Game/Maps/L_Test", "Marker_4", "en", "bench", 0}, &err);
+    check("one name a thing and language: the new one replaces it", a.Names().size() == 2, std::to_string(a.Names().size()));
+    const std::string kept_state = state(a);
+    const int64_t at = a.Lines().front().at_ms;
+
+    coop::BotMemory b;
+    check("the file held by an open store: another store is refused", !b.Open(file, &err) && err.find("lease already held") != std::string::npos, err);
+    a.Close();
+    check("after it closes, it opens", b.Open(file, &err), err);
+    check("everything read back by a new store", state(b) == kept_state);
+    if (state(b) != kept_state) std::printf("       kept: %s\n       read: %s\n", kept_state.c_str(), state(b).c_str());
+    check("a line's time read back", !b.Lines().empty() && b.Lines().front().at_ms == at);
+
+    // compaction: every commit leaves the old table of contents behind; a file over 4 MiB is written anew at open
+    for (int i = 0; i < 450; ++i) b.KeepLine({"en", "word number " + std::to_string(i), {"follow me"}, "FOLLOW_ME", "cmd", 0, 0}, &err);
+    const auto big = fs::file_size(u8(file), ec);
+    const std::string many = state(b);
+    const size_t lines_before = b.Lines().size();
+    b.Close();
+    check("450 writes grow the file past 4 MiB", big > 4u * 1024 * 1024, std::to_string(big));
+    coop::BotMemory c;
+    check("opened again: compacted under 2 MiB", c.Open(file, &err) && fs::file_size(u8(file), ec) < 2u * 1024 * 1024,
+          err + " " + std::to_string(fs::file_size(u8(file), ec)));
+    check("compaction keeps every fact and its time", c.Lines().size() == lines_before && state(c) == many,
+          std::to_string(c.Lines().size()) + " lines");
+    c.Close();
+
+    // a compaction cut short between its two renames: the old file is .bak, the new one not yet in its place
+    fs::rename(u8(file), u8(file + ".bak"), ec);
+    coop::BotMemory d;
+    check("a cut-short compaction: the .bak is taken back", d.Open(file, &err) && d.Lines().size() == lines_before && !fs::exists(u8(file + ".bak")), err);
+    d.Close();
+
+    // files the store cannot read: put aside, not lost, and a new memory starts
+    auto unreadable = [&](const char* what, const std::string& name, const std::string& bytes) {
+        const std::string f = sub + "/" + name;
+        {
+            std::ofstream o(u8(f), std::ios::binary);
+            o << bytes;
+        }
+        coop::BotMemory m;
+        const bool opened = m.Open(f, &err);
+        const bool aside = !m.PutAside().empty() && fs::exists(u8(m.PutAside()));
+        check(what, opened && m.Lines().empty() && aside, err + " aside: " + m.PutAside());
+        const bool keeps = opened && m.KeepLine(l1, &err);
+        m.Close();
+        coop::BotMemory again;
+        check("... and the new memory keeps what it is taught", keeps && again.Open(f, &err) && again.Lines().size() == 1, err);
+    };
+    unreadable("an empty file: put aside, a new memory", "empty.mv2s", "");
+    unreadable("a file of garbage: put aside, a new memory", "garbage.mv2s", std::string(4096, '\x5A'));
+    {
+        // a real file cut in half (a crash while it was written)
+        std::ifstream in(u8(file), std::ios::binary);
+        std::string bytes((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
+        bytes.resize(bytes.size() / 2);
+        const std::string f = sub + "/cut.mv2s";
+        {
+            std::ofstream o(u8(f), std::ios::binary);
+            o << bytes;
+        }
+        coop::BotMemory m;
+        const bool opened = m.Open(f, &err);
+        check("a file cut in half: it opens (repaired or put aside), no crash", opened, err);
+        std::printf("       (cut in half: %s, %zu lines)\n", m.PutAside().empty() ? "repaired" : "put aside", m.Lines().size());
+    }
+    fs::remove_all(dir, ec);
+    std::printf("memory store tests: %zu checks, %zu failed\n", n, bad);
     return bad ? 1 : 0;
 }
 
@@ -3416,6 +4510,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
         std::string text, speaker;
         float speed = 0;
         bool local = false;   // in the player's language, with voice_local
+        std::string voiced;   // the text as the voice says it (Pronounced); empty: text
     };
     std::mutex out_mutex, jobs_mutex;
     std::condition_variable jobs_cv;
@@ -3491,12 +4586,13 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 std::vector<float> x;
                 std::string speak_err;
                 const coop::PiperVoice& v = job.local ? voice_local : voice;
-                if (!v.Speak(job.text, &x, &speak_err, job.speaker, job.speed)) {
+                if (!v.Speak(job.voiced.empty() ? job.text : job.voiced, &x, &speak_err, job.speaker, job.speed)) {
                     send({{"event", "error"}, {"id", job.id}, {"cmd", "say"}, {"message", speak_err}});
                     continue;
                 }
                 const int rate = v.SampleRate();
-                send({{"event", "speech"}, {"id", job.id}, {"text", job.text}, {"lang", job.local && g_replies ? g_replies->Language() : std::string("en")},
+                send({{"event", "speech"}, {"id", job.id}, {"text", job.text}, {"voiced", job.voiced.empty() ? json(nullptr) : json(job.voiced)},
+                      {"lang", job.local && g_replies ? g_replies->Language() : std::string("en")},
                       {"rate", rate},
                       {"audio_s", rate > 0 ? static_cast<double>(x.size()) / rate : 0.0}, {"ms", Ms(Clock::now() - t0)}, {"pcm16", Base64(Pcm16(x))}});
             }
@@ -3536,9 +4632,12 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                             : json(nullptr)},
           {"language", g_language},
           {"memory", g_memory && g_memory->IsOpen() ? json({{"path", g_memory->Path()}, {"lines", g_memory->Lines().size()},
-                                                            {"names", g_memory->Names().size()}, {"colours", g_memory->Colours().size()}})
+                                                            {"names", g_memory->Names().size()}, {"colours", g_memory->Colours().size()},
+                                                            {"put_aside", g_memory->PutAside().empty() ? json(nullptr) : json(g_memory->PutAside())}})
                                                      : json(nullptr)},
           {"memory_note", g_memory_note},
+          // the bot's settings the player set by voice (follow_m, engage_m, fire_on_command, voice_speed): the game applies them
+          {"behaviour", Chat::SettingsJson()},
           {"decider", g_decider ? json({{"dir", g_decider->dir}, {"mode", g_decider->mode}, {"source", g_decider->source},
                                         {"threads", g_decider->options.threads}, {"gpu", g_decider->options.gpu_layers != 0}})
                                 : json(nullptr)}});
@@ -3610,6 +4709,12 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                         json turn = ReplyJson(chat, t);
                         turn.erase("event");
                         turn["line"] = t.line;
+                        chat.RoomOrder(memo, t, &turn);   // in or out through a room's door
+                        if (turn.contains("say") && turn["say"].is_string()) {
+                            const std::string said = turn["say"].get<std::string>();
+                            chat.HeardFromBot(said);
+                            turn["say"] = Rephrased(said, g_replies ? g_replies->Language() : std::string("en"));
+                        }
                         turns.push_back(std::move(turn));
                     });
                 chat.words.clear();
@@ -3624,6 +4729,8 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                                  {"order", {{"intent", "SMALL_TALK"}}}, {"question", nullptr}, {"time", nullptr}};
                     std::string local;
                     if (g_replies && Localize(memo.say, &local, memo.terms.empty() ? nullptr : &memo.terms)) turn["say"] = local, turn["say_en"] = memo.say;
+                    chat.HeardFromBot(turn["say"].get<std::string>());
+                    turn["say"] = Rephrased(turn["say"].get<std::string>(), g_replies ? g_replies->Language() : std::string("en"));
                     json j = turn;
                     j.erase("line");
                     j["event"] = "reply";
@@ -3637,6 +4744,15 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                     j["memory"] = memo.info;
                     send(j);
                     return;
+                }
+                if (!memo.ask.empty() && !turns.empty()) {
+                    // the bot's question after the order's own words ("Moving. Shall I remember that ...?")
+                    json& first = turns.at(0);
+                    std::string q = memo.ask, local;
+                    if (g_replies && Localize(memo.ask, &local, &memo.terms)) q = local;
+                    const std::string said = first.value("say", std::string());
+                    first["say"] = said.empty() ? q : said + " " + q;
+                    if (first.contains("say_en")) first["say_en"] = first["say_en"].get<std::string>() + " " + memo.ask;
                 }
                 if (memo.remembered && !turns.empty()) {
                     // a meaning was kept: the bot says so before the order's own words
@@ -3708,6 +4824,11 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
             };
             if (cmd == "text") {
                 respond(q.at("text").get<std::string>(), false, 0, 0);
+            } else if (cmd == "rephrase") {
+                // {"cmd":"rephrase","text":"Понял, брат, запомню.","lang":"ru"}: the line with the player's phrases and pronunciations
+                const std::string lang = q.value("lang", g_replies ? g_replies->Language() : std::string("en"));
+                const std::string text = Rephrased(q.at("text").get<std::string>(), lang);
+                send({{"event", "rephrased"}, {"id", id}, {"text", text}, {"voiced", Pronounced(text, lang)}});
             } else if (cmd == "world") {
                 send({{"event", "world"}, {"id", id}, {"entities", chat.planner.World().entities.size()}});
             } else if (cmd == "ptt_down") {
@@ -3811,7 +4932,19 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                             // English with the habit: the game's line in the persona's words, said by the English voice
                             if (!q.value("localized", false) && !IsLocalized(text) && LocalizeMixed(text, &local, &terms)) text = local;
                         }
-                        jobs.push_back({id, text, in_local ? std::string() : q.value("speaker", std::string()), q.value("speed", 0.0f), in_local});
+                        const std::string line_lang = in_local && g_replies ? g_replies->Language() : std::string("en");
+                        chat.HeardFromBot(text);
+                        text = Rephrased(text, line_lang);
+                        if (text.empty()) {   // a line the player asked the bot not to say
+                            send({{"event", "hushed"}, {"id", id}});
+                            continue;
+                        }
+                        const std::string voiced = Pronounced(text, line_lang);
+                        float speed = q.value("speed", 0.0f);
+                        const double tuned = Chat::SettingNow("voice_speed");   // «говори медленнее»
+                        if (std::abs(tuned - 1.0) > 1e-3) speed = static_cast<float>((speed > 0 ? speed : 1.0f) * tuned);
+                        jobs.push_back({id, text, in_local ? std::string() : q.value("speaker", std::string()), speed, in_local,
+                                        voiced == text ? std::string() : voiced});
                         jobs_cv.notify_one();
                     }
                 } else if (cmd == "say" && !id.is_null()) {
@@ -3969,6 +5102,7 @@ int main(int argc, char** argv) {
         else if (a == "--memory" && i + 1 < argc) memory_file = argv[++i];
         else if (a == "--memory-dump" && i + 1 < argc) mode = "memory-dump", memory_file = argv[++i];
         else if (a == "--teach-tests" && i + 1 < argc) mode = "teach-tests", speech_text_file = argv[++i];
+        else if (a == "--memory-store-tests" && i + 1 < argc) mode = "memory-store-tests", speech_text_file = argv[++i];
         else {
             std::fprintf(stderr, "usage: coop_cli [--golden | --tokenizer-tests | --dialogue | --gate-tests | --decide-tests |\n"
                                  "                 --location-tests | --world-tests | --item-tests | --bench | --tokenize TEXT | --speech-text-tests FILE |\n"
@@ -3988,6 +5122,7 @@ int main(int argc, char** argv) {
     if (mode == "speech-text-tests") return RunSpeechTextTests(speech_text_file);
     if (mode == "time-tests") return RunTimeTests(speech_text_file);
     if (mode == "teach-tests") return RunTeachTests(speech_text_file);
+    if (mode == "memory-store-tests") return RunMemoryStoreTests(speech_text_file);
     coop::BotMemory memory;
     if (!memory_file.empty()) {
         // a brain the game is still stopping holds the file a moment longer (its lease goes with its process: 2026-10-29, a
@@ -4000,6 +5135,7 @@ int main(int argc, char** argv) {
         }
         if (opened) {
             g_memory = &memory;
+            if (!memory.PutAside().empty()) g_memory_note = "the file could not be read: put aside as " + memory.PutAside() + ", a new memory starts";
         } else {
             // the memory is optional: a bot without it hears as before (the reason goes to "ready")
             g_memory_note = err;

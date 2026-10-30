@@ -559,9 +559,27 @@ Wick from a checkout next to this repository's folder (`G:/Proj/Wick` beside `G:
 as C++20; `bot_memory.cpp` builds as C++20 too, and the rest, with the header `bot_memory.h`, stays C++17. Without Wick
 coop_cli builds as before and `--memory` says there is no memory (`bot_memory_none.cpp`).
 
-Checks: `coop_cli --teach-tests tools/teach_tests.json` (the rules, no model; 76 cases) and
-`python scripts/coop/memory_tests.py [--ru]` (the whole brain through `--serve`: 34 English steps over two processes
-on one file, 14 Russian ones with the decoder on the CPU).
+Checks, all of them by `python scripts/coop/memory_checks.py [--quick] [--full] [--game]` (2026-10-29):
+
+| Check | What it holds the memory to | Result |
+|---|---|---|
+| `coop_cli --teach-tests tools/teach_tests.json` | the teaching rules and the text rules by hand: forms, colours in three languages, spans | 139/139 |
+| `teach_corpus_check.py` | the rules on every order line the repository holds (the owner's, the held-out tests v64..v68, the decoder's v62 translations): none is a teaching line but 20 looked at by hand | 16458 lines, 0 unexpected |
+| `coop_cli --memory-store-tests DIR` | the file alone: read back by a new store (times too), the matching rule, doubts, a file held twice, 450 writes and the compaction, a cut-short compaction, empty / garbage / cut files put aside, a folder named in Cyrillic | 32/32 |
+| `memory_tests.py` (`memory_scenarios.json`) | the whole brain through `--serve`, the world's ids changing on every line as the game's do: 10 scenarios, English, Russian and Spanish through the chain, the habit, no memory, a broken file, a restart on the same file, another language on it | 124 steps |
+| `memory_invariance.py [--chain]` | an empty memory changes no reply | en 1163, ru 299, es 177 lines: 0 differ |
+| `memory_replay.py` | the owner's 913 real lines through bot v58 (the live bot of those days; v61 on was trained on them) taught at every miss | 88.0 -> 89.6%, 15 fixed, 0 harmed |
+| `--game` | the game's automation test `Project.OV.CoopBot.Memory` and the E2E `Tests/E2E/memory.txt`, its client log checked mark by mark | |
+
+What the checks found and changed (2026-10-29): "I meant the window" after "go to the door" is a new place for the same
+order, not a new meaning of the line (kept only when the line before was not read or read as another order); a cancel or
+"I said open fire, but no" is no meaning; «Вот это клатч, жесть!», "Forget the roof, get down to the basement" are no
+teaching lines; "I meant the red table" while the bot asks "Which table?" is the answer; a file the store cannot read is
+put aside instead of leaving the player without a memory; the time a fact was kept is kept in it; Wick's traces are
+quiet; the English answer to "what is that" keeps its "the". And outside the memory: the planner crashed (an access
+violation) on an answer to "Which table?" after the game's ids changed between the two lines -- the candidates it kept
+were not in the new world. Now the ids follow their things by key (`Planner::RemapIds`), and a candidate gone out of
+range is not offered (`PruneCandidates`); the parity checks are unchanged (world 15142/15142, dialogue 77/77).
 
 A name or a colour is kept by the entity's `key` (world.h: the actor in the level; the game's ids count the markers in
 range and change from line to line), per the world's `map`. "What is that?" at a named thing is answered by the brain
@@ -579,6 +597,53 @@ for 5 s; the game asks a brain to "quit" before it ends it.
 
 Limits: only a thing the game sends among the world's entities, with an object, can be named (an unmarked mesh, a point
 on the floor, is not); a word for a whole kind («верстак — это стол») is not kept yet.
+
+Corrections and questions (2026-10-30, the owner's lines «Что это?» "the white table", «Нет, это жёлтый стол»). The line
+right after the bot named a thing ("what is that?", "what colour is it?") may correct it (`ReadThingWords`): a colour of
+the same kind is kept; a thing of that kind and colour within 3 m is the one meant ("That's the yellow table."); words of
+another kind are offered as a name ("Shall I remember it as the red lantern?"; "yes" keeps it, "no" does not); a bare
+"no" asks "Then what is it?". A plain «это X» outside that window is offered too, never kept at once (an explicit «назови
+это X» is). "What colour is it?" (`ColourQuestion`) says the taught colour or the game's, else "I don't know what colour it
+is.". A thing taught a colour is found by it even when the game has another thing of that colour (`world.cpp`).
+
+Rooms (2026-10-30, the owner: the bot sees walls and doors, not rooms; a room starts at its door). A thing the game tags
+`"inside"` (a door whose inside the level marks: `AOVCoopPlaceMarker::InsidePoint`) leads into a room. Words of another
+kind than the door said at it ("this is the garage", «нет, это склад», «это дверь в гараж») name the room behind it: "Shall
+I remember that the garage is behind this door?", kept by the door's key + `/room`. "What is that?" at the door: "That's
+the door to the garage." A line that names the room is read as that door ("go to the garage" -> "go to the door", the
+reply's memory `"rooms"`), and each order on the door gets `"room": "in"` or `"out"` by its English (exit, out, leave:
+out); so does an order at a tagged door that says in or out ("go inside" read as the door under the crosshair), and an
+order `outside` / `inside` with no place gets the named room's door as `"door"`. The game walks to the door's inside or
+outside point. "Forget the name" at the door forgets the room's too. Scenarios `en_rooms`, `ru_rooms`.
+
+Teaching the bot anything (2026-10-30, the owner: one way to teach the bot everything; each kind of what is taught is one
+rule set, and the bot never keeps one unasked):
+- **What a line means after a miss.** A line the bot reads right after lines it could not read that share a word with it
+  («Иди садись на диван» twice "say again", then «Иди на диван») is carried out and the bot asks "Shall I remember that
+  "иди садись на диван" means "иди на диван"?" (`OfferMeaning`); "yes" keeps the missed lines as its orders.
+- **Concepts.** «когда я говорю бабах, это значит кидай гранату», "whenever I say boom, it means ...", «cuando digo bum,
+  significa ...», «бабах значит ...» (`ReadMeans`): the meaning is read now and not carried out, then the same question; one
+  the bot cannot read: 'I don't understand "..."'. Several orders in it are kept as several. «Когда скажу «го», ныряй за
+  грузовик» and "when I say go, ..." stay an order on the signal (the planner's); with "it means" in them they are a rule.
+- **Pronunciation.** «в слове замок ударение на первый слог» / «... на о», «говори Buddy как Бадди», «говори не Лира, а
+  Лайра», "pronounce X as Y" (`ReadPronounce`): the bot answers 'Like this: "за́мок"?' (its voice says it so), «нет, на второй
+  слог» asks again, "yes" keeps it (`MemorySaying`, per language). Every line the voice says then has the word stressed
+  (U+0301 after the vowel, which the espeak-ng phonemes of the Piper voices follow) or respelled (`Pronounced`); the text on
+  the screen stays as it is. «говори замок как раньше» forgets it. Exact word forms only («замок», not «замка»).
+- **The bot's own lines.** «вместо «выдвигаюсь» говори «пошёл»», «не говори «уже иду туда»», «так не говори» (its last
+  line), «так не говори, говори «есть»», "say Y instead of X", «no digas X, di Y» (`ReadSpeech`): the line must be one the bot
+  says (its last sentences, or a reply table's sentence with no slot: `Localizer::FixedSentences`), else 'I don't say "X".';
+  words inside its sentences too («вместо «тобой» говори «вами»», «не говори брат»). "Shall I say "Y" instead of "X"?" /
+  "Shall I stop saying "X"?"; "yes" keeps it (`MemoryPhrase`, per language). `Rephrased` writes every line the bot says with
+  them, its chat replies and the game's lines (`say`); a sentence it should not say is left out. «говори как раньше» forgets
+  them all. `{"cmd":"rephrase","text":...}` shows a line as it would be said.
+- **Behaviour.** «держись в трёх метрах (от меня)», «не подходи ближе чем на два метра», «держись поближе / подальше» (x0.6,
+  x1.5), «открывай огонь с двадцати метров», «стреляй только по моей команде» / «можешь стрелять сам», «говори медленнее /
+  быстрее», "stay 3 meters from me", "only shoot on my command", «mantente a tres metros» (`ReadBehaviour`, numbers by
+  `ReadNumber`): "Shall I keep 3 m from you?", "yes" keeps it (`MemorySetting`: follow_m, engage_m, fire_on_command,
+  voice_speed). The reply's memory and "ready" carry `"behaviour"` (every setting kept); the game applies the first three to
+  its bot (`FOVCoopBotTuning`), the brain the voice's speed itself. «веди себя как раньше» forgets them all.
+- Scenarios `ru_meaning`, `en_teach`, `ru_teach`, `ru_speech`, `en_behaviour`.
 
 ## Speech-to-text (optional)
 

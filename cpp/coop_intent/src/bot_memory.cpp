@@ -1,10 +1,13 @@
 // The bot's long-term memory on Wick's structured facts (bot_memory.h). Built as C++20 with Wick's core.
 #include "coop_intent/bot_memory.h"
 
+#include <chrono>
 #include <cstdio>
 #include <cstdlib>
 #include <filesystem>
+#include <iostream>
 #include <stdexcept>
+#include <streambuf>
 
 #include "coop_intent/teach.h"
 #include "waxcpp/memory_orchestrator.hpp"
@@ -13,11 +16,25 @@ namespace coop {
 
 namespace {
 
+// Wick traces every open and rebuild on std::cerr ("[STORE-TRACE] ...", a dozen lines a start), and the game logs the
+// brain's stderr: quiet while the memory calls it. coop_cli's own messages go through fprintf and are not touched
+struct QuietCerr {
+    struct Null : std::streambuf {
+        int overflow(int c) override { return c; }
+    } null;
+    std::streambuf* old;
+    QuietCerr() : old(std::cerr.rdbuf(&null)) {}
+    ~QuietCerr() { std::cerr.rdbuf(old); }
+};
+
 constexpr char kSep = '|';
 
 std::string LineEntity(const std::string& lang, const std::string& heard) { return "line|" + lang + kSep + heard; }
 std::string NameEntity(const std::string& map, const std::string& entity) { return "name|" + map + kSep + entity; }
 std::string ColourEntity(const std::string& map, const std::string& entity) { return "colour|" + map + kSep + entity; }
+std::string SayEntity(const std::string& lang, const std::string& word) { return "say|" + lang + kSep + word; }
+std::string PhraseEntity(const std::string& lang, const std::string& from) { return "phrase|" + lang + kSep + from; }
+std::string SettingEntity(const std::string& name) { return std::string("setting|player") + kSep + name; }
 
 // "line|ru|heard" -> {"ru", "heard"}; false when it is not of that kind
 bool Split(const std::string& entity, const std::string& kind, std::string* a, std::string* b) {
@@ -55,15 +72,22 @@ std::string Meta(const waxcpp::Metadata& m, const char* key) {
 struct BotMemory::Impl {
     std::unique_ptr<waxcpp::MemoryOrchestrator> wax;
     std::string path;
+    std::string broken;   // where a file the store could not read was put aside at the last Open; empty: none
     std::vector<MemoryLine> lines;
     std::vector<MemoryName> names;
     std::vector<MemoryColour> colours;
+    std::vector<MemorySaying> sayings;
+    std::vector<MemoryPhrase> phrases;
+    std::vector<MemorySetting> settings;
 
     // the facts in force, read back after every write: a few hundred at most
     void Reload() {
         lines.clear();
         names.clear();
         colours.clear();
+        sayings.clear();
+        phrases.clear();
+        settings.clear();
         for (const waxcpp::StructuredMemoryEntry& e : wax->RecallFactsByEntityPrefix("", -1)) {
             std::string a, b;
             // when it was kept: a compacted file has the first time in "kept_ms"
@@ -84,6 +108,12 @@ struct BotMemory::Impl {
                 names.push_back({a, b, e.attribute, e.value, at});
             } else if (Split(e.entity, "colour", &a, &b) && e.attribute == "colour") {
                 colours.push_back({a, b, e.value, at});
+            } else if (Split(e.entity, "say", &a, &b) && e.attribute == "say") {
+                sayings.push_back({a, b, e.value, at});
+            } else if (Split(e.entity, "phrase", &a, &b) && e.attribute == "say") {
+                phrases.push_back({a, b, Meta(e.metadata, "mute") == "1" ? std::string() : e.value, at, Meta(e.metadata, "word") == "1"});
+            } else if (Split(e.entity, "setting", &a, &b) && e.attribute == "value") {
+                settings.push_back({b, std::atof(e.value.c_str()), at});
             }
         }
     }
@@ -91,6 +121,7 @@ struct BotMemory::Impl {
     template <class F>
     bool Write(std::string* err, F&& f) {
         if (!wax) return *err = "the memory is not open", false;
+        const QuietCerr quiet;
         try {
             f();
             wax->Flush();
@@ -143,13 +174,31 @@ void RemoveStore(const std::filesystem::path& p) {
 
 bool BotMemory::Open(const std::string& path, std::string* err) {
     Close();
+    impl_->broken.clear();
+    const QuietCerr quiet;
     try {
         const std::filesystem::path p = PathOf(path);
         if (p.has_parent_path()) std::filesystem::create_directories(p.parent_path());
         // a compaction cut short between its two renames left the old file as .bak
         const std::filesystem::path bak = With(p, ".bak");
         if (!std::filesystem::exists(p) && std::filesystem::exists(bak)) std::filesystem::rename(bak, p);
-        impl_->wax = std::make_unique<waxcpp::MemoryOrchestrator>(p, MemoryConfig());
+        try {
+            impl_->wax = std::make_unique<waxcpp::MemoryOrchestrator>(p, MemoryConfig());
+        } catch (const std::exception& e) {
+            // a file the store cannot read (cut short, overwritten, empty) is put aside, not lost, and a new memory starts:
+            // the player's game goes on with one. A file another brain holds is no broken file: the caller tries again
+            const std::string why = e.what();
+            if (why.find("lease already held") != std::string::npos || !std::filesystem::exists(p)) throw;
+            const auto now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+            const std::filesystem::path aside = With(p, (".broken-" + std::to_string(now)).c_str());
+            std::filesystem::rename(p, aside);
+            std::error_code ec;
+            std::filesystem::remove(With(p, ".writer.lease"), ec);
+            std::fprintf(stderr, "memory: %s could not be read (%s): put aside as %s, a new memory starts\n", path.c_str(), why.c_str(),
+                         reinterpret_cast<const char*>(aside.u8string().c_str()));
+            impl_->broken = reinterpret_cast<const char*>(aside.u8string().c_str());
+            impl_->wax = std::make_unique<waxcpp::MemoryOrchestrator>(p, MemoryConfig());
+        }
         impl_->path = path;
         if (std::filesystem::file_size(p) > kCompactAbove) {
             // the facts in force into a new file (their own times kept), then the new file in the old one's place
@@ -188,6 +237,7 @@ bool BotMemory::Open(const std::string& path, std::string* err) {
 
 void BotMemory::Close() {
     if (!impl_->wax) return;
+    const QuietCerr quiet;
     try {
         impl_->wax->Close();
     } catch (...) {
@@ -200,6 +250,14 @@ void BotMemory::Close() {
 
 bool BotMemory::IsOpen() const { return impl_->wax != nullptr; }
 const std::string& BotMemory::Path() const { return impl_->path; }
+const std::string& BotMemory::PutAside() const { return impl_->broken; }
+
+// when a fact was kept, as the memory reads it back: the caller's time (a doubt keeps the line's first time), else now. Kept in
+// the fact itself: the store's own time of a fact read back is its frame's, a few ms off the time the fact had when written
+static std::string KeptMs(int64_t at_ms) {
+    if (at_ms > 0) return std::to_string(at_ms);
+    return std::to_string(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
+}
 
 bool BotMemory::KeepLine(const MemoryLine& line, std::string* err) {
     if (line.heard.empty() || line.lines.empty()) return *err = "memory: a line to keep needs the heard words and a meaning", false;
@@ -207,7 +265,8 @@ bool BotMemory::KeepLine(const MemoryLine& line, std::string* err) {
     for (const std::string& l : line.lines) value += (value.empty() ? "" : "\n") + l;
     return impl_->Write(err, [&] {
         impl_->wax->RememberFact(LineEntity(line.lang, line.heard), "means", value,
-                                 {{"intent", line.intent}, {"source", line.source}, {"doubts", std::to_string(line.doubts)}});
+                                 {{"intent", line.intent}, {"source", line.source}, {"doubts", std::to_string(line.doubts)},
+                                  {"kept_ms", KeptMs(line.at_ms)}});
     });
 }
 
@@ -244,13 +303,15 @@ bool BotMemory::ForgetLine(const std::string& lang, const std::string& heard, st
 
 bool BotMemory::KeepName(const MemoryName& name, std::string* err) {
     if (name.entity.empty() || name.name.empty()) return *err = "memory: a name needs the thing and the words", false;
-    return impl_->Write(err, [&] { impl_->wax->RememberFact(NameEntity(name.map, name.entity), name.lang, name.name, {{"kind", "name"}}); });
+    return impl_->Write(err, [&] { impl_->wax->RememberFact(NameEntity(name.map, name.entity), name.lang, name.name,
+                                                           {{"kind", "name"}, {"kept_ms", KeptMs(name.at_ms)}}); });
 }
 
 bool BotMemory::KeepColour(const MemoryColour& colour, std::string* err) {
     if (colour.entity.empty() || colour.colour.empty()) return *err = "memory: a colour needs the thing and the colour", false;
     return impl_->Write(err, [&] {
-        impl_->wax->RememberFact(ColourEntity(colour.map, colour.entity), "colour", colour.colour, {{"kind", "colour"}});
+        impl_->wax->RememberFact(ColourEntity(colour.map, colour.entity), "colour", colour.colour,
+                                 {{"kind", "colour"}, {"kept_ms", KeptMs(colour.at_ms)}});
     });
 }
 
@@ -268,8 +329,72 @@ bool BotMemory::ForgetThing(const std::string& map, const std::string& entity, b
     });
 }
 
+bool BotMemory::ForgetName(const std::string& map, const std::string& entity, const std::string& lang, bool* any, std::string* err) {
+    *any = false;
+    for (const MemoryName& n : impl_->names) *any = *any || (n.map == map && n.entity == entity && n.lang == lang);
+    if (!*any) return true;
+    return impl_->Write(err, [&] { impl_->wax->ForgetFact(NameEntity(map, entity), lang); });
+}
+
 const std::vector<MemoryLine>& BotMemory::Lines() const { return impl_->lines; }
 const std::vector<MemoryName>& BotMemory::Names() const { return impl_->names; }
 const std::vector<MemoryColour>& BotMemory::Colours() const { return impl_->colours; }
+const std::vector<MemorySaying>& BotMemory::Sayings() const { return impl_->sayings; }
+const std::vector<MemoryPhrase>& BotMemory::Phrases() const { return impl_->phrases; }
+const std::vector<MemorySetting>& BotMemory::Settings() const { return impl_->settings; }
+
+bool BotMemory::KeepPhrase(const MemoryPhrase& phrase, std::string* err) {
+    if (phrase.from.empty()) return *err = "memory: a phrase needs the bot's line", false;
+    const bool mute = phrase.to.empty();
+    return impl_->Write(err, [&] {
+        impl_->wax->RememberFact(PhraseEntity(phrase.lang, phrase.from), "say", mute ? std::string("-") : phrase.to,
+                                 {{"kind", "phrase"}, {"mute", mute ? "1" : "0"}, {"word", phrase.word ? "1" : "0"},
+                                  {"kept_ms", KeptMs(phrase.at_ms)}});
+    });
+}
+
+bool BotMemory::ForgetPhrases(const std::string& lang, bool* any, std::string* err) {
+    std::vector<std::string> from;
+    for (const MemoryPhrase& p : impl_->phrases)
+        if (p.lang == lang) from.push_back(p.from);
+    *any = !from.empty();
+    if (!*any) return true;
+    return impl_->Write(err, [&] {
+        for (const std::string& f : from) impl_->wax->ForgetFact(PhraseEntity(lang, f), "say");
+    });
+}
+
+bool BotMemory::KeepSetting(const MemorySetting& setting, std::string* err) {
+    if (setting.name.empty()) return *err = "memory: a setting needs its name", false;
+    char value[32];
+    std::snprintf(value, sizeof value, "%.3f", setting.value);
+    return impl_->Write(err, [&] {
+        impl_->wax->RememberFact(SettingEntity(setting.name), "value", value, {{"kind", "setting"}, {"kept_ms", KeptMs(setting.at_ms)}});
+    });
+}
+
+bool BotMemory::ForgetSettings(bool* any, std::string* err) {
+    std::vector<std::string> names;
+    for (const MemorySetting& x : impl_->settings) names.push_back(x.name);
+    *any = !names.empty();
+    if (!*any) return true;
+    return impl_->Write(err, [&] {
+        for (const std::string& n : names) impl_->wax->ForgetFact(SettingEntity(n), "value");
+    });
+}
+
+bool BotMemory::KeepSaying(const MemorySaying& saying, std::string* err) {
+    if (saying.word.empty() || saying.say.empty()) return *err = "memory: a saying needs the word and how to say it", false;
+    return impl_->Write(err, [&] {
+        impl_->wax->RememberFact(SayEntity(saying.lang, saying.word), "say", saying.say, {{"kind", "say"}, {"kept_ms", KeptMs(saying.at_ms)}});
+    });
+}
+
+bool BotMemory::ForgetSaying(const std::string& lang, const std::string& word, bool* any, std::string* err) {
+    *any = false;
+    for (const MemorySaying& s : impl_->sayings) *any = *any || (s.lang == lang && s.word == word);
+    if (!*any) return true;
+    return impl_->Write(err, [&] { impl_->wax->ForgetFact(SayEntity(lang, word), "say"); });
+}
 
 }  // namespace coop

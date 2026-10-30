@@ -245,6 +245,8 @@ public:
     // bot, not a walk to the ammo the planner asked "Where?" about): the question it asked is no longer open. Not in
     // world.py: no planner step calls it
     void DropQuestion() { memory_.has_question = false; }
+    // the conversation is about this thing now: "it" means it (rule set v8); coop_cli: also the thing "what is that?" named
+    void Named(const std::string& entity);
     // the crosshair's entity for the order line being read: the one under it when its pointer word was said (coop_cli: the
     // game's talk_trail and the recognizer's word times). Not in world.py: no planner step calls it
     void SetGaze(const std::string& entity) { world_.player_gaze = entity; }
@@ -279,7 +281,8 @@ private:
     bool PlaceAnswer(std::string_view text, const Decision& d, PlannerResult* out);
     void SettlePlace(const Memory::Question& q, const PlaceRecord& rec, const Grounding& g, bool queued, bool nearby, PlannerResult* out);
     void DropPending();
-    void Named(const std::string& entity);   // the conversation is about this thing now: "it" means it (rule set v8)
+    void RemapIds(const WorldState& next);   // ids held from the last world follow their things by key to the next one
+    void PruneCandidates();                  // the open question's candidates the world no longer has
     const WorldEntity* Entity(const std::string& id) const;
     // ---- the short context
     const std::string& Label(int intent) const;

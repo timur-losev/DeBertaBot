@@ -1010,6 +1010,82 @@
    "source": "coop_cli.cpp memory: 'forget ...' with nothing kept"
   },
   {
+   "en": "Then what is it?",
+   "source": "coop_cli.cpp memory: 'no' right after the bot answered 'what is that?'; the next line says what it is"
+  },
+  {
+   "en": "Shall I remember it as {thing}?",
+   "source": "coop_cli.cpp memory: 'no, it's a red lantern', 'this is the garage': the name as the player said it (in their language); 'yes' keeps it"
+  },
+  {
+   "en": "All right, I won't remember it.",
+   "source": "coop_cli.cpp memory: 'no' to 'Shall I remember it as ...?'"
+  },
+  {
+   "en": "I don't know what colour it is.",
+   "source": "coop_cli.cpp memory: 'what colour is it?' at a thing whose colour neither the game nor the player gave"
+  },
+  {
+   "en": "Shall I remember that {thing} is behind this door?",
+   "source": "coop_cli.cpp memory: 'this is the garage' at a door whose inside the level marks: the room behind it; 'yes' keeps the name"
+  },
+  {
+   "en": "That's the door to {thing}.",
+   "source": "coop_cli.cpp memory: 'what is that?' at a door into a room the player named"
+  },
+  {
+   "en": "Shall I remember that \"{said}\" means \"{meant}\"?",
+   "source": "coop_cli.cpp memory (OfferMeaning): a line the bot read right after lines about the same thing it could not read; 'yes' keeps them as its orders"
+  },
+  {
+   "en": "I don't understand \"{meant}\".",
+   "source": "coop_cli.cpp memory: 'when I say X, it means Y' with a Y the bot cannot read"
+  },
+  {
+   "en": "Like this: \"{said}\"?",
+   "source": "coop_cli.cpp memory: a word said the way the player taught ('the stress in zamok is on the first syllable'); 'yes' keeps it"
+  },
+  {
+   "en": "I don't say \"{said}\".",
+   "source": "coop_cli.cpp memory: 'instead of X say Y' with an X the bot never says"
+  },
+  {
+   "en": "Shall I stop saying \"{said}\"?",
+   "source": "coop_cli.cpp memory: 'don't say X', 'don't say that' about the bot's own line; 'yes' keeps it"
+  },
+  {
+   "en": "Shall I say \"{meant}\" instead of \"{said}\"?",
+   "source": "coop_cli.cpp memory: 'instead of X say Y' about the bot's own line; 'yes' keeps it"
+  },
+  {
+   "en": "Shall I keep {n} m from you?",
+   "source": "coop_cli.cpp memory: 'stay 3 meters from me', 'stay closer': the follow distance; 'yes' keeps it"
+  },
+  {
+   "en": "Shall I open fire within {n} m?",
+   "source": "coop_cli.cpp memory: 'open fire within 20 meters': the range it shoots from; 'yes' keeps it"
+  },
+  {
+   "en": "Shall I shoot only on your command?",
+   "source": "coop_cli.cpp memory: 'only shoot on my command'; 'yes' keeps it"
+  },
+  {
+   "en": "Shall I shoot on my own?",
+   "source": "coop_cli.cpp memory: 'you can shoot on your own'; 'yes' keeps it"
+  },
+  {
+   "en": "Shall I speak faster?",
+   "source": "coop_cli.cpp memory: 'talk faster'; 'yes' keeps it"
+  },
+  {
+   "en": "Shall I speak slower?",
+   "source": "coop_cli.cpp memory: 'talk slower'; 'yes' keeps it"
+  },
+  {
+   "en": "Shall I speak at the usual speed?",
+   "source": "coop_cli.cpp memory: 'talk at normal speed'; 'yes' keeps it"
+  },
+  {
    "en": "{Phrase}.",
    "source": "world.cpp: the order said back, e.g. 'Move there.', 'Hold position.'"
   },
@@ -1263,7 +1339,11 @@
   },
   {
    "en": "I don't see a way in.",
-   "source": "game: 'go inside' with no covered spot"
+   "source": "game: 'go inside' with no door near"
+  },
+  {
+   "en": "I'm inside already.",
+   "source": "game: 'go inside' in the room of every door near"
   },
   {
    "en": "No free car around.",
@@ -1687,7 +1767,11 @@
   },
   {
    "en": "I don't see a way out.",
-   "source": "game: 'go outside' with no spot under open sky"
+   "source": "game: 'go outside' with no door near"
+  },
+  {
+   "en": "I'm outside already.",
+   "source": "game: 'go outside' in no room of a door near"
   },
   {
    "en": "Glass is broken.",
@@ -1855,6 +1939,14 @@
   }
  ],
  "slots": {
+  "said": {
+   "note": "the player's own words, a line the bot could not read, quoted in their language (lowercase, no stops); open, no values: the line comes with it",
+   "values": []
+  },
+  "meant": {
+   "note": "the player's own words of the line the bot then read, quoted as 'said' is",
+   "values": []
+  },
   "where": {
    "note": "where the order goes, after a comma: 'Open fire, on your pin.'",
    "values": [

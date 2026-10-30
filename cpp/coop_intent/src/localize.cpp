@@ -15,7 +15,10 @@ namespace {
 
 // slots whose English value may be any words: the item a player named, a weapon the game calls by its asset's name, a
 // thing the level designer labelled ("spike trap": its words in the player's language come with the line, Terms)
-bool OpenSlot(const std::string& slot) { return slot == "item" || slot == "weapon" || slot == "thing"; }
+// said, meant: the player's own words, quoted ("Shall I remember that "{said}" means "{meant}"?", coop_cli OfferMeaning)
+bool OpenSlot(const std::string& slot) {
+    return slot == "item" || slot == "weapon" || slot == "thing" || slot == "said" || slot == "meant";
+}
 
 struct Token {
     enum Kind { Lit, Slot, Num } kind = Lit;
@@ -219,6 +222,18 @@ Localizer::Localizer() : impl_(new Impl) {}
 Localizer::~Localizer() = default;
 bool Localizer::Loaded() const { return !impl_->templates.empty(); }
 const std::string& Localizer::Language() const { return impl_->language; }
+
+const std::map<std::string, std::string>* Localizer::Forms(const std::string& slot, const std::string& english) const {
+    const auto st = impl_->slots.find(slot);
+    if (st == impl_->slots.end()) return nullptr;
+    const auto f = st->second.forms.find(Lower(english));
+    return f == st->second.forms.end() ? nullptr : &f->second;
+}
+
+std::vector<std::string> Localizer::Values(const std::string& slot) const {
+    const auto st = impl_->slots.find(slot);
+    return st == impl_->slots.end() ? std::vector<std::string>() : st->second.values;
+}
 size_t Localizer::Templates() const { return impl_->templates.size(); }
 
 bool Localizer::Load(const std::string& path, std::string* error) {
@@ -290,6 +305,20 @@ bool Localizer::Translate(const std::string& english, std::string* out, std::str
     }
     *out = result;
     return true;
+}
+
+std::vector<std::string> Localizer::FixedSentences() const {
+    std::vector<std::string> out;
+    for (const Template& t : impl_->templates) {
+        std::string text;
+        bool fixed = true;
+        for (const Token& k : t.out) {
+            if (k.kind != Token::Lit) fixed = false;
+            else text += k.text;
+        }
+        if (fixed && !text.empty()) out.push_back(text);
+    }
+    return out;
 }
 
 std::vector<std::string> Localizer::Examples() const {

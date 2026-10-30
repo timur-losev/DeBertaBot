@@ -236,6 +236,25 @@
   "Got it, I'll remember.": "Got it, bro, I'll remember.",
   "Forgotten.": "Forgotten, bro.",
   "I don't remember that.": "I don't remember that, bro.",
+  "Then what is it?": "Then what is it, bro?",
+  "Shall I remember it as {thing}?": "Shall I remember it as {thing}, bro?",
+  "All right, I won't remember it.": "All right, bro, I won't remember it.",
+  "I don't know what colour it is.": "I don't know what colour it is, bro.",
+  "Shall I remember that \"{said}\" means \"{meant}\"?": "Bro, shall I remember that \"{said}\" means \"{meant}\"?",
+  "I don't understand \"{meant}\".": "Bro, I don't understand \"{meant}\".",
+  "Like this: \"{said}\"?": "Like this, bro: \"{said}\"?",
+  "I don't say \"{said}\".": "Bro, I don't say \"{said}\".",
+  "Shall I stop saying \"{said}\"?": "Shall I stop saying \"{said}\", bro?",
+  "Shall I say \"{meant}\" instead of \"{said}\"?": "Shall I say \"{meant}\" instead of \"{said}\", bro?",
+  "Shall I keep {n} m from you?": "Shall I keep {n} m from you, bro?",
+  "Shall I open fire within {n} m?": "Shall I open fire within {n} m, bro?",
+  "Shall I shoot only on your command?": "Shall I shoot only on your command, bro?",
+  "Shall I shoot on my own?": "Shall I shoot on my own, bro?",
+  "Shall I speak faster?": "Shall I speak faster, bro?",
+  "Shall I speak slower?": "Shall I speak slower, bro?",
+  "Shall I speak at the usual speed?": "Shall I speak at the usual speed, bro?",
+  "Shall I remember that {thing} is behind this door?": "Shall I remember that {thing} is behind this door, bro?",
+  "That's the door to {thing}.": "That's the door to {thing}, bro.",
   "{Phrase}.": "{Phrase}, bro.",
   "{Phrase}, {where}.": "{Phrase}, {where}, bro.",
   "Ready to {phrase}.": "Ready to {phrase}, bro.",
@@ -291,6 +310,7 @@
   "I'm down, back in a moment.": "I'm down, back in a moment, bro.",
   "I'm down, give me a moment.": "I'm down, bro, give me a moment.",
   "I don't see a way in.": "Bro, I don't see a way in.",
+  "I'm inside already.": "I'm inside already, bro.",
   "No free car around.": "No free car around, bro.",
   "Back where?": "Back where, bro?",
   "I haven't moved.": "Bro, I haven't moved.",
@@ -418,6 +438,7 @@
   "Nothing there, just the sky.": "Nothing there, bro, just the sky.",
   "No room to step aside.": "No room to step aside, bro.",
   "I don't see a way out.": "I don't see a way out, bro.",
+  "I'm outside already.": "I'm outside already, bro.",
   "Glass is broken.": "Glass is broken, bro.",
   "It won't break.": "It won't break, bro.",
   "I can't get to the glass.": "I can't get to the glass, bro.",
@@ -765,6 +786,12 @@
    "_other": {
     "text": "*"
    }
+  },
+  "said": {
+   "_other": {"text": "that"}
+  },
+  "meant": {
+   "_other": {"text": "that"}
   },
   "thing": {
    "an enemy": {

@@ -39,6 +39,30 @@ PLANNER = [
     ("Got it, I'll remember.", "coop_cli.cpp memory: a name, a colour or a meaning kept (before the order's own words)"),
     ("Forgotten.", "coop_cli.cpp memory: 'forget the name', 'forget <a line>'"),
     ("I don't remember that.", "coop_cli.cpp memory: 'forget ...' with nothing kept"),
+    ("Then what is it?", "coop_cli.cpp memory: 'no' right after the bot answered 'what is that?'; the next line says what it is"),
+    ("Shall I remember it as {thing}?", "coop_cli.cpp memory: 'no, it's a red lantern', 'this is the garage': the name as the "
+                                        "player said it (in their language); 'yes' keeps it"),
+    ("All right, I won't remember it.", "coop_cli.cpp memory: 'no' to 'Shall I remember it as ...?'"),
+    ("I don't know what colour it is.", "coop_cli.cpp memory: 'what colour is it?' at a thing whose colour neither the game "
+                                        "nor the player gave"),
+    ("Shall I remember that {thing} is behind this door?", "coop_cli.cpp memory: 'this is the garage' at a door whose inside the "
+                                                            "level marks: the room behind it; 'yes' keeps the name"),
+    ("That's the door to {thing}.", "coop_cli.cpp memory: 'what is that?' at a door into a room the player named"),
+    ('Shall I remember that "{said}" means "{meant}"?', "coop_cli.cpp memory (OfferMeaning): a line the bot read right after lines "
+                                                         "about the same thing it could not read; 'yes' keeps them as its orders"),
+    ('I don\'t understand "{meant}".', "coop_cli.cpp memory: 'when I say X, it means Y' with a Y the bot cannot read"),
+    ('Like this: "{said}"?', "coop_cli.cpp memory: a word said the way the player taught ('the stress in zamok is on the first "
+                             "syllable'); 'yes' keeps it"),
+    ("I don't say \"{said}\".", "coop_cli.cpp memory: 'instead of X say Y' with an X the bot never says"),
+    ("Shall I stop saying \"{said}\"?", "coop_cli.cpp memory: 'don't say X', 'don't say that' about the bot's own line; 'yes' keeps it"),
+    ("Shall I say \"{meant}\" instead of \"{said}\"?", "coop_cli.cpp memory: 'instead of X say Y' about the bot's own line; 'yes' keeps it"),
+    ("Shall I keep {n} m from you?", "coop_cli.cpp memory: 'stay 3 meters from me', 'stay closer': the follow distance; 'yes' keeps it"),
+    ("Shall I open fire within {n} m?", "coop_cli.cpp memory: 'open fire within 20 meters': the range it shoots from; 'yes' keeps it"),
+    ("Shall I shoot only on your command?", "coop_cli.cpp memory: 'only shoot on my command'; 'yes' keeps it"),
+    ("Shall I shoot on my own?", "coop_cli.cpp memory: 'you can shoot on your own'; 'yes' keeps it"),
+    ("Shall I speak faster?", "coop_cli.cpp memory: 'talk faster'; 'yes' keeps it"),
+    ("Shall I speak slower?", "coop_cli.cpp memory: 'talk slower'; 'yes' keeps it"),
+    ("Shall I speak at the usual speed?", "coop_cli.cpp memory: 'talk at normal speed'; 'yes' keeps it"),
     ("{Phrase}.", "world.cpp: the order said back, e.g. 'Move there.', 'Hold position.'"),
     ("{Phrase}, {where}.", "world.cpp: the order said back with where, e.g. 'Open fire, on your pin.'"),
     ("Ready to {phrase}.", "coop_cli.cpp / world.cpp: an order queued for the player's signal; followed by 'On your go.'"),
@@ -82,7 +106,7 @@ GAME = [  # the game's own lines (Source/LyraGame/CoopBot)
     ("Frag's coming back!", "its grenade bounced back"), ("Grenade by you, move!", "grenade near the player"),
     ("I'm in.", "in the car"), ("I can't get out.", "car"), ("Copy.", "dead and given an order; followed by the next"),
     ("I'm down, back in a moment.", "dead and given an order"), ("I'm down, give me a moment.", "dead and given an order"),
-    ("I don't see a way in.", "'go inside' with no covered spot"), ("No free car around.", "GET_IN"),
+    ("I don't see a way in.", "'go inside' with no door near"), ("I'm inside already.", "'go inside' in the room of every door near"), ("No free car around.", "GET_IN"),
     ("Back where?", "GO_BACK before any move; followed by 'I haven't moved.'"), ("I haven't moved.", "GO_BACK"),
     ("Where are you?", "FOLLOW_ME with the player out of reach"), ("Up where?", "'go up' with no way up; followed by 'Mark it.'"),
     ("Down where?", "'go down' with no way down"), ("Mark it.", "asks for a pin"), ("No cover here, staying low.", "TAKE_COVER"),
@@ -145,7 +169,8 @@ GAME = [  # the game's own lines (Source/LyraGame/CoopBot)
     # bot v66 (2026-10-27): what the thing looked at is, out of the way, out of the room, a butt strike on glass
     ("That's {thing}.", "'what is that?': the thing under the player's crosshair (WHAT_THINGS)"), ("That's me.", "'what is that?' at the bot"),
     ("Nothing there, just the sky.", "'what is that?' with the crosshair on nothing"),
-    ("No room to step aside.", "GIVE_WAY with no floor to either side"), ("I don't see a way out.", "'go outside' with no spot under open sky"),
+    ("No room to step aside.", "GIVE_WAY with no floor to either side"), ("I don't see a way out.", "'go outside' with no door near"),
+    ("I'm outside already.", "'go outside' in no room of a door near"),
     ("Glass is broken.", "MELEE on glass: broken"), ("It won't break.", "MELEE on glass: four strikes and it holds"),
     ("I can't get to the glass.", "MELEE on glass: no way to its edge"),
     # 2026-10-27: doors (GOAP Phase 2: a shut door on the way, by hand or by its switch) and climbing (Phase 6: ledges, gaps, a crate as a step)
@@ -218,7 +243,12 @@ SLOTS_NOTE = {
              "its words in the player's language come with the line from the label itself (the forms text, acc, gen...). "
              "The table's _other is said only when a label has no words of that language: a neutral word ('что-то', 'algo')",
 }
+SLOTS_NOTE["said"] = ("the player's own words, a line the bot could not read, quoted in their language (lowercase, no stops); "
+                      "open, no values: the line comes with it")
+SLOTS_NOTE["meant"] = "the player's own words of the line the bot then read, quoted as 'said' is"
 SLOT_VALUES = {
+    "said": [],
+    "meant": [],
     "where": ["on your pin", "here", "there", "to the left", "to the right", "forward", "back", "up", "down"],
     "sector": ["above", "below", "ahead", "behind you", "on the left", "on the right"],
     "zone": ["the basement", "the first floor", "the second floor", "the top floor", "the roof", "the way up", "the way down", "the way out",

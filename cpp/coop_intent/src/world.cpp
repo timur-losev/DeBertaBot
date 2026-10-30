@@ -561,7 +561,13 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
         return Out("missing");
     }
     auto keep = [&](auto pred) { cands.erase(std::remove_if(cands.begin(), cands.end(), [&](const WorldEntity* e) { return !pred(e); }), cands.end()); };
-    if (!qual.empty()) keep([&](const WorldEntity* e) { return e->qualifier == qual; });
+    // a thing the player taught a colour or a name (WorldState::named, coop_cli) is what the line calls it, whatever the
+    // game's own qualifier: the white table taught yellow is "the yellow table" (2026-10-30, the owner's «иди к жёлтому
+    // столу»). Empty in world.py's worlds: nothing changes there
+    if (!qual.empty())
+        keep([&](const WorldEntity* e) {
+            return e->qualifier == qual || std::find(world.named.begin(), world.named.end(), e->id) != world.named.end();
+        });
     if (!zone.empty() && !WayZone(zone)) keep([&](const WorldEntity* e) { return OnZone(*e, zone); });   // "the door upstairs": a door on a floor above
     // "up the blue stairs": up is the way along a vertical object, not where it stands
     const bool along = (t.direction == PlaceDirection::Up || t.direction == PlaceDirection::Down) && places.Vertical(t.object);
@@ -647,8 +653,54 @@ void Planner::Init(BotBrain* brain, std::vector<Prior> priors) {
 
 bool Planner::SetWorld(const WorldState& world, std::string* error) {
     if (!ValidateWorld(world, brain_->Places(), error)) return false;
+    RemapIds(world);
     world_ = world;
     return true;
+}
+
+// The game's ids count the things in range ("white_table_3") and change from line to line; its keys (the actor) do not. What
+// the planner holds by id -- the question's candidates, the thing named last, the order's frame, the queued order's place --
+// follows its thing to the new id. Not in world.py: a world without keys changes nothing (2026-10-29, memory_tests.py: an
+// answer to "Which table?" after the ids changed crashed the brain on a candidate the new world did not have)
+void Planner::RemapIds(const WorldState& next) {
+    std::unordered_map<std::string, std::string> key_of, id_of;   // old id -> key, key -> new id
+    for (const WorldEntity& e : world_.entities)
+        if (!e.key.empty()) key_of[e.id] = e.key;
+    if (key_of.empty()) return;
+    for (const WorldEntity& e : next.entities)
+        if (!e.key.empty()) id_of[e.key] = e.id;
+    auto follow = [&](std::string& id) {
+        const auto k = key_of.find(id);
+        if (k == key_of.end()) return;
+        const auto n = id_of.find(k->second);
+        if (n != id_of.end()) id = n->second;
+    };
+    follow(memory_.last_entity);
+    follow(memory_.frame.ground.entity);
+    for (std::string& c : memory_.frame.ground.candidates) follow(c);
+    for (std::string& c : memory_.question.candidates) follow(c);
+    follow(pending_entity_);
+}
+
+// A candidate of the open question the world no longer has (gone out of range) is not offered or picked. When it is the one
+// the bot offered last, or none is left, the question is gone: "yes" must not pick another thing than the one asked about
+void Planner::PruneCandidates() {
+    if (!memory_.has_question || memory_.question.kind != "which") return;
+    Memory::Question& q = memory_.question;
+    std::vector<std::string> kept;
+    int offered = -1;
+    for (size_t i = 0; i < q.candidates.size(); ++i) {
+        if (!Entity(q.candidates[i])) continue;
+        if (static_cast<int>(i) == q.offered) offered = static_cast<int>(kept.size());
+        kept.push_back(q.candidates[i]);
+    }
+    if (kept.size() == q.candidates.size()) return;
+    if (kept.empty() || offered < 0) {
+        memory_.has_question = false;
+        return;
+    }
+    q.candidates = std::move(kept);
+    q.offered = offered;
 }
 
 void Planner::Reset() {
@@ -1126,6 +1178,7 @@ PlannerResult Planner::Step(std::string_view text, const std::vector<float>& pro
     }
     if (continued && frame_in_line_) SamePlace(record, &out.ground);
     const bool nearby = !Deixis(text).empty();
+    PruneCandidates();
     const bool had_question = memory_.has_question;
 
     if (had_question && memory_.question.kind == "which" && d.other && record.targets.empty() &&

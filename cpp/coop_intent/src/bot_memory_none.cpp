@@ -8,6 +8,9 @@ struct BotMemory::Impl {
     std::vector<MemoryLine> lines;
     std::vector<MemoryName> names;
     std::vector<MemoryColour> colours;
+    std::vector<MemorySaying> sayings;
+    std::vector<MemoryPhrase> phrases;
+    std::vector<MemorySetting> settings;
 };
 
 BotMemory::BotMemory() : impl_(std::make_unique<Impl>()) {}
@@ -19,6 +22,7 @@ bool BotMemory::Open(const std::string& path, std::string* err) {
 void BotMemory::Close() {}
 bool BotMemory::IsOpen() const { return false; }
 const std::string& BotMemory::Path() const { return impl_->path; }
+const std::string& BotMemory::PutAside() const { return impl_->path; }
 bool BotMemory::KeepLine(const MemoryLine&, std::string* err) { return *err = "no memory", false; }
 const MemoryLine* BotMemory::LineFor(const std::string&, const std::string&) const { return nullptr; }
 bool BotMemory::DoubtLine(const std::string&, const std::string&, bool* removed, std::string* err) {
@@ -32,8 +36,30 @@ bool BotMemory::ForgetThing(const std::string&, const std::string&, bool* any, s
     *any = false;
     return *err = "no memory", false;
 }
+bool BotMemory::ForgetName(const std::string&, const std::string&, const std::string&, bool* any, std::string* err) {
+    *any = false;
+    return *err = "no memory", false;
+}
 const std::vector<MemoryLine>& BotMemory::Lines() const { return impl_->lines; }
 const std::vector<MemoryName>& BotMemory::Names() const { return impl_->names; }
 const std::vector<MemoryColour>& BotMemory::Colours() const { return impl_->colours; }
+const std::vector<MemorySaying>& BotMemory::Sayings() const { return impl_->sayings; }
+const std::vector<MemoryPhrase>& BotMemory::Phrases() const { return impl_->phrases; }
+const std::vector<MemorySetting>& BotMemory::Settings() const { return impl_->settings; }
+bool BotMemory::KeepPhrase(const MemoryPhrase&, std::string* err) { return *err = "no memory", false; }
+bool BotMemory::ForgetPhrases(const std::string&, bool* any, std::string* err) {
+    *any = false;
+    return *err = "no memory", false;
+}
+bool BotMemory::KeepSetting(const MemorySetting&, std::string* err) { return *err = "no memory", false; }
+bool BotMemory::ForgetSettings(bool* any, std::string* err) {
+    *any = false;
+    return *err = "no memory", false;
+}
+bool BotMemory::KeepSaying(const MemorySaying&, std::string* err) { return *err = "no memory", false; }
+bool BotMemory::ForgetSaying(const std::string&, const std::string&, bool* any, std::string* err) {
+    *any = false;
+    return *err = "no memory", false;
+}
 
 }  // namespace coop
