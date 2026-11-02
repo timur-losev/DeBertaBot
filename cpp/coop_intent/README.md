@@ -109,7 +109,9 @@ no training). "it" after an `it_prep` preposition ("jump over it", "get on it", 
 ("open it", "shoot it", "pick it up") or "of" after `top` / `front` / `side` is a target of its own and never joins a
 place; "do it", "take it", "put it down", "it's" are not. The planner grounds it from the conversation first: the last
 thing an order or a settled question named, if the game's clock says it was 30 s ago or less (`world.IT_SECONDS`,
-`Memory::last_time`); then the crosshair. An "it" that points at nothing is dropped (`WithoutLostIt`), and the line is
+`Memory::last_time`); then the crosshair. "What is that?" names what the crosshair is on (coop_cli), a spot of no kind
+too ("That's a wall.", 2026-11-01: «Перепрыгни её» after it jumped the wall of an order 8 s before): the spot's id is not
+kept by the next world, so "it" is then where the player looks. An "it" that points at nothing is dropped (`WithoutLostIt`), and the line is
 an order with no place, as before. Version 11 also lets a table take the colours (blue, red, yellow, white, brown): "the
 white table" was an unknown modifier, and the bot asked "Which table?" from the nearest. Checked on the v65 bot:
 places 60988/60988 (with 8000 generated "it" lines), planner 12076/12076 (with 300 conversations about a thing and "it"),
@@ -219,6 +221,42 @@ build\Release\coop_cli.exe --serve --no-spin --threads 1 --tts   # the bot as a 
 - `state` in a reply (2026-10-24): a question about the bot only the game can answer, with no order and no words: `seen`
   ("what do you see?", also «что видишь?» / «qué ves?» in the player's own words), `how`, `hurt`, `heat`, `cold`, `gas`,
   `ammo` ("got any ammo?" is read as a walk to the ammo: the planner's "Where?" is dropped). `StateQuestion` in coop_cli.cpp.
+  `doing` (2026-11-01): "where are you going?", "what are you doing?", "where are you?", or the player's own short line
+  («ты куда пошёл», «что делаешь», «где ты», «adónde vas», `DoingInOwnWords`); the game says where it goes and what it does.
+- `"close": true` on an OPEN order (2026-11-01): "close / shut the door (it, the window, the gate)" is read as OPEN with the
+  word made "open" (`CloseToOpen`; the classifier has no CLOSE), and a Russian or Spanish line that says it («закрой
+  дверь», «закрывай дверь», «cierra la puerta», `CloseInOwnWords`) is that whatever the decoder wrote ("Cover the door.").
+- A decoder's "flank" with no flank said (2026-11-01, decoder v68: «зайди через главную дверь» -> "Flank through the main
+  door."): with a door, a passage or a room in the line and none of «фланг», «обойди», «тыл», «сзади», «сбоку», «справа»,
+  «слева» (`FlankInOwnWords`, `WayInInOwnWords`), the piece is "go inside through the main door".
+- Parakeet v3 has no ё: `<unk>` beside a Cyrillic letter is written ё («пош<unk>л» -> «пошёл», `sherpa_speech.cpp`).
+- "go up the blue stairs to the roof" (the decoder's English for «поднимись по ней на крышу»; the place parser takes the
+  stairs and drops the roof): two order lines, "go up the blue stairs" and "go to the roof" (`SplitWayTo`: stairs, staircase,
+  steps or a ladder with up / down / climb, and a place after "to", "onto", "into"; 2026-11-01).
+- The last lesson undone (2026-11-01, the owner): «не надо было запоминать», «зря запомнил», «отмени это», «забудь последнее»,
+  "don't remember that", "undo that", «no lo recuerdes» forget the last thing the memory kept (`Chat::last_kept`, noted
+  after every line: a meaning and its patterns, a thing's name or colour (`BotMemory::ForgetColour`), the bot's or the
+  player's name, a pronunciation): "Forgotten." (`"did": "forgot_last"`, `"undone"`). «забудь это», "forget it",
+  «olvídalo» alone do it only as the line right after the lesson (later they are "never mind"); with nothing kept: "I
+  don't remember that." (`nothing_to_undo`); a setting or a phrase of the bot's: "I can't undo that one."; an open "Shall I
+  remember ...?" takes «не надо запоминать» as its "no". Forgetting goes back to nothing, not to what was kept before.
+- The bot's last line again (2026-11-01, the owner): «не расслышал», «что ты сказал?», «повтори, что сказал», «ещё раз?» (with
+  the question mark: without it «ещё раз» is REPEAT, the order again), "say again?", "what did you say?", «¿qué dijiste?»,
+  within a minute of it: «Я сказал: иду к метке.» / "I said: ..." / «Dije: ...» (the brat persona «Брат, я сказал: ...»),
+  the line as it was said (`HeardFromBot`: the replies and the game's lines), `"did": "repeated"`.
+- An order on the player's signal is not a lesson (2026-11-02, the owner: «Запомни, когда я скажу давай, ты пойдешь и
+  поднимешь эту коробку» was offered as the meaning of «давай», his «Давай.» kept it, and from then on «давай» picked the
+  box up instead of releasing the order waiting for it). «когда я скажу X, ...» / "when I say X, ..." is one order queued
+  for the go, with or without «запомни» / "remember"; a lesson needs "it means" («это значит», «значит», "means") or the
+  habit form («когда я говорю», «каждый раз, когда я говорю», "whenever I say") (`ReadMeans`, teach.cpp).
+- The orders after a queued one wait for the go too (2026-11-02): «Когда я скажу давай, возьми коробку, после этого перенеси
+  её на камень» is "When I say go, pick up the box" (queued) and "carry it to the rock", which the planner alone would carry
+  out at once. The rest of the line waits in `Chat::after_go` (reported in `"held"`) and follows the go's `execute`; it is
+  dropped when nothing is queued any more (cancelled, another order took its place, reset).
+- A bare "it" in a line that names the item is the item (2026-11-02, world.py and world.cpp `without_item_place`): "pick up
+  this box and carry it to the rock" with the crosshair on the box made the box's own spot the place ("it" read from the
+  crosshair); now it goes to the rock, and "take this crate and carry it" is a DELIVER with no place said. `gen_world_tests.py` CARRY_IT: 150
+  conversations (seed 8301); world 15902/15902 on bot v67 with the v15 places (`COOP_PLACES=locations_v68.json`).
 - `--decider DIR` (a build with llama.cpp) adds an optional second reader of every line beside the ensemble:
   - The model is decider-2b with the bot's LoRA, as a GGUF ([decider.h](include/coop_intent/decider.h)). `DIR` is
     `scripts/coop/decider/export_game.py`'s folder.
@@ -327,14 +365,28 @@ game then sends to its server is an order, not this process's output.
 ```
 {"cmd":"text","id":7,"text":"hold the door","world":{...}}     a typed line and the world it is said in
 {"cmd":"ptt_down"}  ...  {"cmd":"ptt_up","id":8,"world":{...}}  the talk key: the clip, then recognize, classify, plan
+{"cmd":"open_mic","on":true,"silence_s":0.6,"source":"mic"|"script"}  {"cmd":"mic_wav","path":"clip.wav"}   the open microphone
+{"event":"speech_end","seg":3,"audio_s":1.4,"start_ago_s":2.1,"end_ago_s":0.5}  ...  {"cmd":"vad_up","id":8,"seg":3,"window":false,"world":{...}}
 {"cmd":"wav","id":9,"path":"clip.wav"}   {"cmd":"world","world":{...}}   {"cmd":"say","text":"Contact left!"}
 {"cmd":"reset"}  {"cmd":"threshold","value":0.7}  {"cmd":"ping"}  {"cmd":"hush"}  {"cmd":"quit"}
 
 {"event":"ready","labels":[...],"gate":"family","threshold":0.68,"stt":true,"mic":true,"tts":true,...}
 {"event":"reply","id":7,"heard":"hold the door","intent":"HOLD_ANGLE","prob":1.0,"action":"ask",
  "say":"Which door? The one ahead, 8 m?","order":null,"question":{...},"top":[...],"ground":[...],...}
-{"event":"nothing"|"too_short"|"error", ...}
+{"event":"nothing"|"too_short"|"not_called"|"error", ...}
 ```
+
+- **The open microphone** (2026-11-01, the owner: no talk key; the bot hears a line when it is called by its name, and for
+  8 s after its words without it). `--vad silero_vad.onnx` (Silero VAD v5, MIT; `scripts/coop/stt/models/silero_vad`,
+  `deploy_brain.ps1 -Vad` puts it in `<Target>ad`) loads the voice detector (`VoiceActivity`, `speech.h`); `ready` says
+  `"vad"`. `open_mic` turns it on: a thread takes what the microphone hears (`MicCapture::Tap` / `Drain`), or the clips
+  `mic_wav` gives it at the clock's pace (`"source":"script"`, for the game's end-to-end checks), and cuts lines at a pause
+  of `silence_s`; each goes out as `speech_end` (with 0.3 s before and 0.15 s after the detector's cut: without them «Стой
+  здесь» was «то есть здесь»), and the game sends it back as `vad_up` with its world. Recognized on the main thread; a line
+  that does not call the bot by its name (`CalledBy`) and is not in the game's window (`"window"`) is `not_called`, nothing
+  else happens; else it goes on as `ptt_up`. Nothing is cut while the talk key is down. Checked by hand through `--serve`
+  (`take_box_put_here.wav`: two lines at its pause, both `not_called`, then both read with `"window": true`) and in the game
+  (`Tests/E2E/open_mic.txt`).
 
 - `world` is `WorldState` as JSON (`scripts/coop/world_example.json`); `order` is what the game carries out now:
   `{"intent","entity","candidates","direction","zone","pointer","other","via","near"}`, `entity` being an id of
@@ -545,7 +597,9 @@ said, in Russian, English and Spanish (`teach.h`); no model reads them, and no t
 | "this box is green" / «этот ящик зелёный» | the thing's colour (twelve colours, `ColourIds`) | "go to the green box": that box |
 | "forget the name" (the crosshair on it), "forget the workbench", «забудь банан» | forgets a name or a line | -- |
 
-A plain «это X» / "this is X" is a name only when the bot reads no order in the line; none of these is a teaching line
+A plain «это X» / "this is X" is a name only when the bot reads no order in the line; a colour line only when it has no
+place word («вот на жёлтую кровать залезь», "it's on the red table") and the bot reads no order in it (2026-11-01: the
+owner's «Вот на желтую кровать залез.» at the yellow bed was "the same colour", and the jump was dropped); none of these is a teaching line
 while the bot's question is open (a line then is its answer), except "I meant <another order>". A "no" within 10 s of
 a line the memory read is a doubt about the kept line, and the second doubt forgets it. The serve commands `teach`,
 `forget` and `recall` do the same by hand (a HUD, a test); `--memory-dump FILE` prints everything a file keeps, the
@@ -620,11 +674,15 @@ Teaching the bot anything (2026-10-30, the owner: one way to teach the bot every
 rule set, and the bot never keeps one unasked):
 - **What a line means after a miss.** A line the bot reads right after lines it could not read that share a word with it
   («Иди садись на диван» twice "say again", then «Иди на диван») is carried out and the bot asks "Shall I remember that
-  "иди садись на диван" means "иди на диван"?" (`OfferMeaning`); "yes" keeps the missed lines as its orders.
+  "иди садись на диван" means "иди на диван"?" (`OfferMeaning`); "yes" keeps the missed lines as its orders. A missed line
+  of more than 6 words is not offered (2026-11-01: a garbled one would never be heard the same way again, and the question
+  quoting it ran 9 s).
 - **Concepts.** «когда я говорю бабах, это значит кидай гранату», "whenever I say boom, it means ...", «cuando digo bum,
   significa ...», «бабах значит ...» (`ReadMeans`): the meaning is read now and not carried out, then the same question; one
   the bot cannot read: 'I don't understand "..."'. Several orders in it are kept as several. «Когда скажу «го», ныряй за
   грузовик» and "when I say go, ..." stay an order on the signal (the planner's); with "it means" in them they are a rule.
+  After «запомни», "remember" or «recuerda» a bare «это» or a dash is the middle too (2026-11-01, the owner: «Запомни, что
+  ях — это ляж на пол»); X is then 1..3 words, not a pronoun («запомни, это гараж» stays a name).
 - **Pronunciation.** «в слове замок ударение на первый слог» / «... на о», «говори Buddy как Бадди», «говори не Лира, а
   Лайра», "pronounce X as Y" (`ReadPronounce`): the bot answers 'Like this: "за́мок"?' (its voice says it so), «нет, на второй
   слог» asks again, "yes" keeps it (`MemorySaying`, per language). Every line the voice says then has the word stressed
@@ -644,6 +702,72 @@ rule set, and the bot never keeps one unasked):
   voice_speed). The reply's memory and "ready" carry `"behaviour"` (every setting kept); the game applies the first three to
   its bot (`FOVCoopBotTuning`), the brain the voice's speed itself. «веди себя как раньше» forgets them all.
 - Scenarios `ru_meaning`, `en_teach`, `ru_teach`, `ru_speech`, `en_behaviour`.
+
+Which one, said as a callout (2026-10-30, the owner: "Which chair? Above, 8 m?" tells the player nothing). The planner's
+"Which chair? The one ahead, 8 m?" becomes "Which chair? You mean the red chair?" (`WhichCallout`): the thing offered by the
+name the player taught it, else by its colour when no other candidate has that colour, else by its qualifier ("the north
+door") when no other has it; with nothing of its own, "The one ahead?" when no other candidate is that way, and the metres
+only when they are all that tells them apart. A colour the vocabulary does not give a kind ("the red chair": chairs have no
+colours there) is kept as `PlaceTarget::said_qualifier`, and the planner takes the things of that kind the map gives that
+qualifier (or the player taught that colour) instead of asking. Neither is in the Python twins: their worlds give no thing
+such a qualifier, and the parity checks are unchanged (location 62747, world 15142, decide 244, item 91674, dialogue 77).
+Scenarios `ru_callout`, `en_callout`.
+
+Taught as "the same", for any thing (2026-10-31, the owner: «Смотри, запрыгнуть на стул и присесть. Это то же самое, что
+сесть на стул. Научись.» was read as a jump; "no built-in rule, I want to teach it myself"):
+- `ReadSame` (teach.h): «A — это то же самое, что B», «Смотри, A. Это то же самое, что B. Научись.», "A is the same as B",
+  "That's the same as B" after A, «A es lo mismo que B». The marker needs its own «это» / "is" / «es» or a dash before it:
+  «делай то же самое, что и я», "do the same as me" are orders (the corpus check: 16458 lines, none taken).
+- Either side may be the meaning: the bot reads both, and the meaning is the side it reads as orders (both read: the one of
+  more orders, then of more words). A meaning is read as a line of its own (`ReadMeaning`): a capital first and a stop at the
+  end, no talk before it, English through the decoder too; when the whole gives fewer orders than its parts («Запрыгнуть на
+  диван и присесть.» was "crouch using the sofa"), each part alone. The decoder reads such infinitives unevenly; imperatives
+  («Запрыгни на диван и присядь.») well.
+- A place both lines name after a preposition is a slot (`MakePattern`): «сесть на {x}» means "jump on {x}", "crouch", the
+  meaning's English order lines with the place as {x} (`EnglishPattern`). "Yes" keeps it beside the line itself, as a line
+  whose heard words hold {x} (source "pattern"; "pattern_said" when the English names no place: the meaning as said, read with
+  the place). A line said as the pattern (`MatchPattern`: its verbs in any form, the place 1-5 words, no «и» in it) gets the
+  English lines with the place it names in English: the decoder's reading of the line itself ("Sit on the sofa." -> "the sofa";
+  «сядь на него» -> "it" or the thing the talk named). The meaning is never decoded again. Meanings kept otherwise ("not that",
+  "I meant", the offer after misses) keep their pattern too: «иди садись на диван» / «иди на диван» works for the bed.
+- Verbs in another form (`VerbForm`, `SameLine`): «сесть», «сядь», «садись»; «лечь», «ляг», «ложись»; «siéntate»,
+  «sentarse». A kept line matches its other forms after NearLine (bot_memory.h `LineFor`).
+- «забудь сесть на стул» forgets the line, its other forms and its patterns.
+- The offer after misses leaves out the same order at another place: «сядь на диван» missed, then «сядь на кровать» is no
+  meaning of it (`AnotherPlace`). A sound for the answer to "Shall I remember ...?" ("B." for «да») asks "Yes or no?" and keeps
+  the question.
+- A taught name wins over the kind word (2026-10-31, the owner named the rock «диван»; «сядь на диван», a line taught while
+  «диван» was the sofa, went to the real sofa; the owner chose "the name wins"): a kept line's English lines name the named
+  thing's kind where they named the kind the name's words mean ("Climb onto the sofa." -> "Climb onto the rock.",
+  `LinesWithNames`), and the planner takes that thing, as an ordinary line («иди к дивану» -> "иди к rock") and a pattern
+  already did. A meaning's pattern is kept for every heard way of it, not the first only ("set на диван", "сядь на диван").
+- Scenarios `ru_same`, `en_same`, `ru_offer_pattern`, `ru_name_wins`; teach tests 353.
+
+The bot's name and the player's (2026-10-31, the owner: the player names their bot and tells it their own name; the bot
+answers to its name and says the player's now and then):
+- `ReadPersonName` (teach.h, kinds `bot_name` and `player_name`): «тебя зовут Рекс», «я буду звать тебя Рекс», «твоё имя
+  Рекс», "your name is Rex", "I'll call you Rex", «te llamas Rex»; «меня зовут Тимур», «зови меня просто Тим», "my name is
+  Tim", "call me Tim", «me llamo Tim». The name is 1 to 3 words, the rest of the line (a part of it: «Меня зовут Тимур, а
+  тебя?»), kept as said with capitals («Рекс»). None in a question («тебя зовут Рекс?») or with words no name has: «меня зовут
+  на ужин», «меня зовут ужинать», "call me when you're in position", "call me a medic", "I'll call you back". Kept at once (as
+  «назови это X» is), in the memory as `MemoryPerson` ("person|bot|name", "person|player|name"). «забудь своё имя», «забудь
+  моё имя», "forget your name" forget them.
+- The bot's name is the player's, else the game's (the world's `"bot": {"name"}`, its player state). «как тебя зовут?», "who
+  are you?": "My name is Rex." (no name at all: the small talk as before). «как меня зовут?»: "Your name is Tim." or "I don't
+  know your name yet." (`NameQuestion`).
+- Called by its name (`CalledBy`) at the start or the end of a line, as it is, one letter off («Рэкс») or one letter of it
+  not heard («Рес», 2026-11-01: the open microphone's recognizer; «Маш» for «Маша»), with "hey" / «эй» before it: «Рекс!»
+  alone is answered ("Yes?", "Right here.", "I hear you."), «Рекс, сядь» and «встань, Рекс» are read without it (the reply's
+  memory `"called"`). Another form (a letter more) is no call: «иди к Рексу», «скажи Рексу». After «это», "that" or a
+  preposition the name at the end is a thing («залезь на этот камень» to a bot named Камень), unless a comma stands before
+  it: «Что это, Бади?» calls the bot (2026-11-01, read as a line of its own and answered "Take care out there.").
+- The player's name in the bot's voiced lines (`WithPlayerName`, the serve command `say`): at the end of the first sentence
+  («Понял, Тимур.»), when that sentence is short (5 words at most) and no question, the line has no name and no «брат» in it,
+  on one such line in four (`--name-chance`, default 25; never on two of three lines in a row): about one bot line in seven.
+- For the game: "ready" has `"names": {"bot", "player"}` (null: none), a reply that kept or forgot the bot's name has memory
+  `"bot_name"` (null: forgotten); the game renames the bot's player state, so every player sees the name.
+- The reply tables' open slot `{name}` (the name as said) and six sentences; replies-check 1715 x5. Scenarios `ru_names`,
+  `ru_names_again` (a new brain on the same file: "ready" carries both names), `en_names`; teach tests 420; store 35.
 
 ## Speech-to-text (optional)
 

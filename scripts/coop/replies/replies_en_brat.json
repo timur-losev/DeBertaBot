@@ -114,6 +114,7 @@
   "Going prone.": "Going prone.",
   "Lying down.": "Lying down.",
   "Flat on the ground.": "Bro, flat on the ground.",
+  "Crawling.": "Crawling.",
   "Standing up.": "Standing up.",
   "On my feet.": "Bro, on my feet.",
   "Up.": "Up.",
@@ -226,7 +227,9 @@
   "I see no {object}.": "I see no {object}, bro.",
   "Where?": "Where, bro?",
   "Which {object}?": "Which {object}, bro?",
+  "You mean {thing}?": "You mean {thing}, bro?",
   "The one {sector}, {n} m?": "The one {sector}, {n} m?",
+  "The one {sector}?": "The one {sector}, bro?",
   "Got it.": "Got it, bro.",
   "Copy, never mind.": "Copy, bro, never mind.",
   "I'll take the one {sector}, {n} m.": "Bro, I'll take the one {sector}, {n} m.",
@@ -237,6 +240,7 @@
   "Forgotten.": "Forgotten, bro.",
   "I don't remember that.": "I don't remember that, bro.",
   "Then what is it?": "Then what is it, bro?",
+  "Yes or no?": "Yes or no, bro?",
   "Shall I remember it as {thing}?": "Shall I remember it as {thing}, bro?",
   "All right, I won't remember it.": "All right, bro, I won't remember it.",
   "I don't know what colour it is.": "I don't know what colour it is, bro.",
@@ -485,7 +489,23 @@
   "The first's shut; the switch is {n} m from it.": "The first's shut; the switch is {n} m from it, bro.",
   "The first's shut; I can open it.": "The first's shut; I can open it, bro.",
   "The first's shut, and I see no switch.": "The first's shut, and I see no switch, bro.",
-  "The ledge is too high, and there's nothing to stand on.": "The ledge is too high, and there's nothing to stand on, bro."
+  "The ledge is too high, and there's nothing to stand on.": "The ledge is too high, and there's nothing to stand on, bro.",
+  "I'm {name} now.": "I'm {name} now, bro.",
+  "My name is {name}.": "My name's {name}, bro.",
+  "Nice to meet you, {name}.": "Nice to meet you, {name}.",
+  "Your name is {name}.": "Your name's {name}, bro.",
+  "I don't know your name yet.": "I don't know your name yet, bro.",
+  "Yes?": "Yeah, bro?",
+  "Heading to {thing}.": "Bro, heading to {thing}.",
+  "Going in through {thing}.": "Going in through {thing}, bro.",
+  "Going out through {thing}.": "Going out through {thing}, bro.",
+  "Heading to your pin.": "Heading to your pin, bro.",
+  "Heading where you pointed.": "Heading where you pointed, bro.",
+  "Closing it.": "Closing it, bro.",
+  "It's shut already.": "It's shut already, bro.",
+  "It won't close.": "It won't close, bro.",
+  "I can't close that.": "I can't close that, bro.",
+  "I can't undo that one.": "Can't undo that one, bro."
  },
  "slots": {
   "where": {
@@ -788,10 +808,14 @@
    }
   },
   "said": {
-   "_other": {"text": "that"}
+   "_other": {
+    "text": "that"
+   }
   },
   "meant": {
-   "_other": {"text": "that"}
+   "_other": {
+    "text": "that"
+   }
   },
   "thing": {
    "an enemy": {
@@ -985,6 +1009,45 @@
    },
    "the brown bed": {
     "text": "the brown bed"
+   },
+   "the sofa": {
+    "text": "the sofa"
+   },
+   "the chair": {
+    "text": "the chair"
+   },
+   "the rock": {
+    "text": "the rock"
+   },
+   "the roof": {
+    "text": "the roof"
+   },
+   "the bed": {
+    "text": "the bed"
+   },
+   "the car": {
+    "text": "the car"
+   },
+   "the box": {
+    "text": "the box"
+   },
+   "the crate": {
+    "text": "the crate"
+   },
+   "the spool": {
+    "text": "the spool"
+   },
+   "the door": {
+    "text": "the door"
+   },
+   "the window": {
+    "text": "the window"
+   },
+   "the table": {
+    "text": "the table"
+   },
+   "the switch": {
+    "text": "the switch"
    }
   },
   "phrase": {
@@ -1286,6 +1349,11 @@
    },
    "rock": {
     "text": "rock"
+   }
+  },
+  "name": {
+   "_other": {
+    "text": "*"
    }
   }
  }

@@ -649,6 +649,15 @@ SAME_THING = [(t, k) for t, k in (
     ("hide behind the table", "TAKE_COVER"), ("go to the table on my go", "MOVE_TO"), ("jump over the table", "JUMP"),
     ("go to the back door", "MOVE_TO")) if k in CFG["labels"]]
 
+# "pick up this box and carry it to the rock" (2026-11-02, the owner): with the item named in the line, a bare "it" is that
+# item, not the thing the crosshair is on (world.without_item_place); the place is the thing it goes to
+CARRY_IT = [(t, k) for t, k in (
+    ("pick up this crate and carry it to the white table", "DELIVER"), ("take this crate and bring it to the red table", "DELIVER"),
+    ("take the crate and carry it to the door", "DELIVER"), ("pick up this crate and carry it to the table on my go", "DELIVER"),
+    ("take this crate and carry it", "DELIVER"), ("grab the crate and put it next to the white table", "DELIVER"),
+    ("carry it to the white table", "DELIVER"), ("bring the crate to the table", "DELIVER"), ("take it to the red table", "DELIVER"),
+    ("pick up this crate", "COLLECT"), ("carry the crate to it", "DELIVER"), ("bring it to me", "DELIVER")) if k in CFG["labels"]]
+
 # rule set v9 (round v67, the owner, 2026-10-27: any thing with any order): the thing an order is done with
 MEANS_ORDERS = [(t, k) for t, k in (
     ("climb onto the white table using the crate", "JUMP"), ("use the crate to climb onto the table", "JUMP"),
@@ -878,6 +887,14 @@ def main():
             gate = "family" if i % 3 == 2 else "top"
             rows.append(it_scenario(rng6, rng6.choice([3, 5, 8, 12]), gate, rng6.choice([0.5, 0.6, 0.66, 0.78]), SAME_THING))
         print(f"  the thing the talk is about: 150 conversations, a bare object read from the talk {STATS['same_memory'] - before} times")
+    if IT and "DELIVER" in CFG["labels"]:
+        rng7 = random.Random(8301)
+        first = len(rows)
+        for i in range(150):
+            gate = "family" if i % 3 == 2 else "top"
+            rows.append(it_scenario(rng7, rng7.choice([3, 5, 8]), gate, rng7.choice([0.5, 0.6, 0.66, 0.78]), CARRY_IT))
+        carried = sum(1 for r in rows[first:] for s in r["steps"] if s["intent"] == "DELIVER" and "crate" in W.words(s["text"]) and "it" in W.words(s["text"]))
+        print(f"  the crate and \"it\": 150 conversations, {carried} lines that name the crate and say \"it\"")
     if W.MEANS_ON:
         rng7 = random.Random(8301)
         before = STATS["means"]

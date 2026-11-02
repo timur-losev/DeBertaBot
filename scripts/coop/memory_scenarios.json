@@ -54,7 +54,7 @@
    {"say": "forget the smoke", "expect": {"memory.teach": "forget", "memory.did": {"absent": true}}},
    {"say": "This is where we go", "gaze": "T_Red", "expect": {"memory.teach": "none", "memory.did": {"absent": true}}},
    {"say": "open the door", "expect": {"order.entity": "D_1"}},
-   {"say": "go to the table", "expect": {"action": "ask", "say": {"starts": "Which table? The one ahead"}}},
+   {"say": "go to the table", "expect": {"action": "ask", "say": "Which table? You mean the white table?"}},
    {"say": "I meant the red table", "expect": {"memory.did": "answered_question", "order.entity": "T_Red"}},
    {"say": "open the door", "expect": {"order.entity": "D_1"}},
    {"say": "go to the table", "expect": {"action": "ask"}},
@@ -295,6 +295,12 @@
    {"cmd": {"cmd": "recall"}, "expect": {"memory.sayings.#": 1, "memory.sayings.0.word": "замок"}},
    {"say": "Говори замок как раньше.", "expect": {"memory.did": "forgot_saying", "say": "Всё, забыл."}}
   ]},
+  {"name": "ru_on_go", "lang": "ru", "chain": true, "replies": "ru", "steps": [
+   {"say": "Запомни, когда я скажу давай, ты пойдешь и поднимешь эту коробку.", "expect": {"memory.teach": "none", "action": "queued", "intent": "COLLECT"}},
+   {"say": "Давай.", "expect": {"action": "execute", "memory.did": {"absent": true}}},
+   {"say": "Когда я скажу давай, возьми ящик, после этого отнеси его к белому столу.", "expect": {"action": "queued", "turns.#": 1, "turns.0.intent": "COLLECT"}},
+   {"say": "Давай.", "expect": {"action": "execute", "turns.#": 2, "turns.1.order.intent": "DELIVER", "turns.1.order.entity": "T_White"}}
+  ]},
   {"name": "ru_speech", "lang": "ru", "chain": true, "replies": "ru", "steps": [
    {"say": "Вместо «Понял, запомню» говори «Принято».", "expect": {"memory.did": "offered_phrase", "memory.offered_phrase.from": "понял запомню", "say": "Говорить «Принято» вместо «понял запомню»?"}},
    {"say": "Да.", "expect": {"memory.did": "kept_phrase", "say": "Принято."}},
@@ -337,6 +343,11 @@
    {"say": "What is that?", "gaze": "T_White", "expect": {"state": "what"}},
    {"say": "jump on it", "expect": {"intent": "JUMP", "order.entity": "T_White"}}
   ]},
+  {"name": "en_it_after_what_spot", "lang": "en", "steps": [
+   {"say": "jump over the red table", "expect": {"intent": "JUMP", "order.entity": "T_Red"}},
+   {"say": "What is that?", "gaze": "gaze_7", "add": [{"id": "gaze_7", "bearing": 20.0, "distance": 9.0, "elevation": 0.0}], "expect": {"state": "what"}},
+   {"say": "jump over it", "gaze": "gaze_8", "add": [{"id": "gaze_8", "bearing": 20.0, "distance": 9.0, "elevation": 0.0}], "expect": {"intent": "JUMP", "order.entity": "gaze_8"}}
+  ]},
   {"name": "ru_it_after_what", "lang": "ru", "chain": true, "replies": "ru", "steps": [
    {"say": "Иди к красному столу.", "expect": {"intent": "MOVE_TO", "order.entity": "T_Red"}},
    {"say": "Что это?", "gaze": "T_White", "expect": {"state": "what"}},
@@ -355,6 +366,118 @@
    {"cmd": {"cmd": "recall"}, "expect": {"memory.lines.#": 0, "memory.names.#": 1}},
    {"say": "Что это?", "gaze": "T_White", "expect": {"memory.did": "named_thing", "say": "Это фонарь."}, "add": [{"id": "S_1", "key": "S_1", "object": "sofa", "qualifier": null, "bearing": 20.0, "distance": 8.0, "elevation": 0.0}]},
    {"say": "Нет, это стол.", "expect": {"memory.did": "forgot_name"}, "add": [{"id": "S_1", "key": "S_1", "object": "sofa", "qualifier": null, "bearing": 20.0, "distance": 8.0, "elevation": 0.0}]}
+  ]},
+  {"name": "ru_callout", "lang": "ru", "chain": true, "replies": "ru", "steps": [
+   {"say": "Иди к столу.", "expect": {"action": "ask", "say": "Какой стол? Ты про белый стол?"}, "add": [{"id": "CH_Red", "key": "CH_Red", "object": "chair", "qualifier": "red", "bearing": -40.0, "distance": 7.0, "elevation": 1.1}, {"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": 60.0, "distance": 9.0, "elevation": 0.0}, {"id": "D_North", "key": "D_North", "object": "door", "qualifier": "north", "bearing": 80.0, "distance": 14.0, "elevation": 0.0}]},
+   {"say": "Да.", "expect": {"order.entity": "T_White"}, "add": [{"id": "CH_Red", "key": "CH_Red", "object": "chair", "qualifier": "red", "bearing": -40.0, "distance": 7.0, "elevation": 1.1}, {"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": 60.0, "distance": 9.0, "elevation": 0.0}, {"id": "D_North", "key": "D_North", "object": "door", "qualifier": "north", "bearing": 80.0, "distance": 14.0, "elevation": 0.0}]},
+   {"say": "Иди к стулу.", "expect": {"action": "ask", "say": "Какой стул? Ты про красный стул?"}, "add": [{"id": "CH_Red", "key": "CH_Red", "object": "chair", "qualifier": "red", "bearing": -40.0, "distance": 7.0, "elevation": 1.1}, {"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": 60.0, "distance": 9.0, "elevation": 0.0}, {"id": "D_North", "key": "D_North", "object": "door", "qualifier": "north", "bearing": 80.0, "distance": 14.0, "elevation": 0.0}]},
+   {"say": "Да.", "expect": {"order.entity": "CH_Red"}, "add": [{"id": "CH_Red", "key": "CH_Red", "object": "chair", "qualifier": "red", "bearing": -40.0, "distance": 7.0, "elevation": 1.1}, {"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": 60.0, "distance": 9.0, "elevation": 0.0}, {"id": "D_North", "key": "D_North", "object": "door", "qualifier": "north", "bearing": 80.0, "distance": 14.0, "elevation": 0.0}]},
+   {"say": "Иди к красному стулу.", "expect": {"intent": "MOVE_TO", "order.entity": "CH_Red"}, "add": [{"id": "CH_Red", "key": "CH_Red", "object": "chair", "qualifier": "red", "bearing": -40.0, "distance": 7.0, "elevation": 1.1}, {"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": 60.0, "distance": 9.0, "elevation": 0.0}, {"id": "D_North", "key": "D_North", "object": "door", "qualifier": "north", "bearing": 80.0, "distance": 14.0, "elevation": 0.0}]},
+   {"say": "Отнеси ящик на красный стул.", "expect": {"order.entity": "CH_Red"}, "add": [{"id": "CH_Red", "key": "CH_Red", "object": "chair", "qualifier": "red", "bearing": -40.0, "distance": 7.0, "elevation": 1.1}, {"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": 60.0, "distance": 9.0, "elevation": 0.0}, {"id": "D_North", "key": "D_North", "object": "door", "qualifier": "north", "bearing": 80.0, "distance": 14.0, "elevation": 0.0}]},
+   {"say": "Иди к двери.", "expect": {"action": "ask", "say": "Какая дверь? Впереди?"}, "add": [{"id": "CH_Red", "key": "CH_Red", "object": "chair", "qualifier": "red", "bearing": -40.0, "distance": 7.0, "elevation": 1.1}, {"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": 60.0, "distance": 9.0, "elevation": 0.0}, {"id": "D_North", "key": "D_North", "object": "door", "qualifier": "north", "bearing": 80.0, "distance": 14.0, "elevation": 0.0}]}
+  ]},
+  {"name": "en_callout", "lang": "en", "steps": [
+   {"say": "go to the table", "add": [{"id": "CH_Red", "key": "CH_Red", "object": "chair", "qualifier": "red", "bearing": -40.0, "distance": 7.0, "elevation": 1.1}, {"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": 60.0, "distance": 9.0, "elevation": 0.0}, {"id": "D_North", "key": "D_North", "object": "door", "qualifier": "north", "bearing": 80.0, "distance": 14.0, "elevation": 0.0}], "expect": {"action": "ask", "say": "Which table? You mean the white table?"}},
+   {"say": "yes", "add": [{"id": "CH_Red", "key": "CH_Red", "object": "chair", "qualifier": "red", "bearing": -40.0, "distance": 7.0, "elevation": 1.1}, {"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": 60.0, "distance": 9.0, "elevation": 0.0}, {"id": "D_North", "key": "D_North", "object": "door", "qualifier": "north", "bearing": 80.0, "distance": 14.0, "elevation": 0.0}], "expect": {"order.entity": "T_White"}},
+   {"say": "go to the chair", "add": [{"id": "CH_Red", "key": "CH_Red", "object": "chair", "qualifier": "red", "bearing": -40.0, "distance": 7.0, "elevation": 1.1}, {"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": 60.0, "distance": 9.0, "elevation": 0.0}, {"id": "D_North", "key": "D_North", "object": "door", "qualifier": "north", "bearing": 80.0, "distance": 14.0, "elevation": 0.0}], "expect": {"action": "ask", "say": "Which chair? You mean the red chair?"}},
+   {"say": "no, the other one", "add": [{"id": "CH_Red", "key": "CH_Red", "object": "chair", "qualifier": "red", "bearing": -40.0, "distance": 7.0, "elevation": 1.1}, {"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": 60.0, "distance": 9.0, "elevation": 0.0}, {"id": "D_North", "key": "D_North", "object": "door", "qualifier": "north", "bearing": 80.0, "distance": 14.0, "elevation": 0.0}], "expect": {"order.entity": "CH_1"}},
+   {"say": "go to the red chair", "add": [{"id": "CH_Red", "key": "CH_Red", "object": "chair", "qualifier": "red", "bearing": -40.0, "distance": 7.0, "elevation": 1.1}, {"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": 60.0, "distance": 9.0, "elevation": 0.0}, {"id": "D_North", "key": "D_North", "object": "door", "qualifier": "north", "bearing": 80.0, "distance": 14.0, "elevation": 0.0}], "expect": {"order.entity": "CH_Red", "say": {"not": ""}}}
+  ]},
+  {"name": "ru_same", "lang": "ru", "chain": true, "replies": "ru", "steps": [
+   {"say": "Сядь на диван.", "expect": {}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]},
+   {"say": "Сядь на кровать.", "expect": {"memory.offered_meaning": {"absent": true}}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]},
+   {"say": "Смотри, запрыгнуть на стул и присесть. Это то же самое, что сесть на стул. Научись.", "expect": {"memory.did": "offered_meaning", "memory.offered_meaning.heard": ["сесть на стул"], "memory.offered_meaning.pattern.heard": "сесть на {x}", "memory.same.meaning": "first", "say": {"contains": "«сесть на стул»"}}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]},
+   {"say": "B.", "expect": {"memory.did": "asked_yes_no", "say": "Да или нет?"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]},
+   {"say": "Да.", "expect": {"memory.did": "kept_line", "memory.kept_pattern.heard": "сесть на {x}"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]},
+   {"say": "Сядь на стул.", "expect": {"memory.did": "used_line", "turns.0.intent": "JUMP", "turns.0.order.entity": "CH_1", "turns.1.intent": "CROUCH"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]},
+   {"say": "Сядь на диван.", "expect": {"memory.did": "used_pattern", "turns.0.intent": "JUMP", "turns.0.order.entity": "SF_1", "turns.1.intent": "CROUCH"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]},
+   {"say": "Садись на кровать.", "expect": {"memory.did": "used_pattern", "turns.0.intent": "JUMP", "turns.0.order.entity": "BD_1", "turns.1.intent": "CROUCH"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]},
+   {"say": "Сядь на него.", "gaze": "SF_1", "expect": {"memory.did": "used_pattern", "turns.0.intent": "JUMP", "turns.0.order.entity": "BD_1", "turns.1.intent": "CROUCH"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]},
+   {"say": "Забудь сесть на стул.", "expect": {"memory.did": "forgot", "memory.forgot_also": ["сесть на {x}"]}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]},
+   {"say": "Сядь на диван.", "expect": {"memory.used_pattern": {"absent": true}}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]}
+  ]},
+  {"name": "en_same", "lang": "en", "chain": true, "steps": [
+   {"say": "Sitting on the chair is the same as jumping on the chair and crouching.", "expect": {"memory.did": "offered_meaning", "memory.offered_meaning.heard": ["sitting on the chair"], "memory.offered_meaning.pattern.heard": "sitting on {x}"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]},
+   {"say": "yes", "expect": {"memory.did": "kept_line"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]},
+   {"say": "sitting on the sofa", "expect": {"memory.did": "used_pattern", "turns.0.intent": "JUMP", "turns.0.order.entity": "SF_1", "turns.1.intent": "CROUCH"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]}
+  ]},
+  {"name": "ru_offer_pattern", "lang": "ru", "chain": true, "replies": "ru", "steps": [
+   {"say": "Иди садись на диван.", "expect": {"action": "say_again"}, "add": [{"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]},
+   {"say": "Иди на диван.", "expect": {"memory.did": "offered_meaning", "memory.offered_meaning.pattern.heard": "иди садись на {x}"}, "add": [{"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]},
+   {"say": "Да.", "expect": {"memory.did": "kept_line", "memory.kept_pattern.heard": "иди садись на {x}"}, "add": [{"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]},
+   {"say": "Иди садись на кровать.", "expect": {"memory.did": "used_pattern", "turns.0.intent": "MOVE_TO", "turns.0.order.entity": "BD_1"}, "add": [{"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}, {"id": "BD_1", "key": "BD_1", "object": "bed", "qualifier": "yellow", "bearing": 80.0, "distance": 9.0, "elevation": 0.0}]}
+  ]},
+  {"name": "ru_name_wins", "lang": "ru", "chain": true, "replies": "ru", "steps": [
+   {"say": "Когда я говорю сядь на диван, это значит запрыгни на диван и присядь.", "expect": {"memory.did": "offered_meaning", "memory.offered_meaning.pattern.heard": "сядь на {x}"}, "add": [{"id": "R_1", "key": "R_1", "object": "rock", "qualifier": null, "bearing": -30.0, "distance": 6.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 60.0, "distance": 7.0, "elevation": 0.0}]},
+   {"say": "Да.", "expect": {"memory.did": "kept_line"}, "add": [{"id": "R_1", "key": "R_1", "object": "rock", "qualifier": null, "bearing": -30.0, "distance": 6.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 60.0, "distance": 7.0, "elevation": 0.0}]},
+   {"say": "Что это?", "gaze": "R_1", "expect": {"intent": "WHAT_IS_IT"}, "add": [{"id": "R_1", "key": "R_1", "object": "rock", "qualifier": null, "bearing": -30.0, "distance": 6.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 60.0, "distance": 7.0, "elevation": 0.0}]},
+   {"say": "Нет, это диван.", "gaze": "R_1", "expect": {"memory.did": "offered_name"}, "add": [{"id": "R_1", "key": "R_1", "object": "rock", "qualifier": null, "bearing": -30.0, "distance": 6.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 60.0, "distance": 7.0, "elevation": 0.0}]},
+   {"say": "Да.", "gaze": "R_1", "expect": {"memory.did": "kept_name", "memory.kept_name.key": "R_1"}, "add": [{"id": "R_1", "key": "R_1", "object": "rock", "qualifier": null, "bearing": -30.0, "distance": 6.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 60.0, "distance": 7.0, "elevation": 0.0}]},
+   {"say": "Сядь на диван.", "expect": {"memory.did": "used_line", "turns.0.intent": "JUMP", "turns.0.order.entity": "R_1", "turns.1.intent": "CROUCH"}, "add": [{"id": "R_1", "key": "R_1", "object": "rock", "qualifier": null, "bearing": -30.0, "distance": 6.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 60.0, "distance": 7.0, "elevation": 0.0}]},
+   {"say": "Иди к дивану.", "expect": {"turns.0.intent": "MOVE_TO", "turns.0.order.entity": "R_1"}, "add": [{"id": "R_1", "key": "R_1", "object": "rock", "qualifier": null, "bearing": -30.0, "distance": 6.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 60.0, "distance": 7.0, "elevation": 0.0}]},
+   {"say": "Сядь на камень.", "expect": {"memory.did": "used_pattern", "turns.0.intent": "JUMP", "turns.0.order.entity": "R_1"}, "add": [{"id": "R_1", "key": "R_1", "object": "rock", "qualifier": null, "bearing": -30.0, "distance": 6.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 60.0, "distance": 7.0, "elevation": 0.0}]}
+  ]},
+  {"name": "ru_names", "lang": "ru", "chain": true, "replies": "ru", "bot_name": "Buddy", "steps": [
+   {"say": "Как тебя зовут?", "expect": {"memory.did": "said_bot_name", "say": "Меня зовут Buddy."}},
+   {"say": "Тебя зовут Рекс.", "expect": {"memory.did": "kept_bot_name", "memory.bot_name": "Рекс", "say": "Теперь я Рекс."}},
+   {"say": "Как тебя зовут?", "expect": {"memory.did": "said_bot_name", "say": "Меня зовут Рекс."}},
+   {"say": "Рекс!", "expect": {"memory.did": "called", "say": {"in": ["Да?", "Я тут.", "Слышу тебя."]}}},
+   {"say": "Рекс, сядь.", "expect": {"memory.called": "Рекс", "turns.0.intent": "CROUCH"}},
+   {"say": "Встань, Рекс.", "expect": {"memory.called": "Рекс", "turns.0.intent": "STAND_UP"}},
+   {"say": "Рэкс, ложись.", "expect": {"memory.called": "Рекс", "turns.0.intent": "PRONE"}},
+   {"say": "Buddy!", "expect": {"memory.called": {"absent": true}}},
+   {"say": "Как меня зовут?", "expect": {"memory.did": "no_player_name", "say": "Я пока не знаю, как тебя зовут."}},
+   {"say": "Меня зовут Тимур.", "expect": {"memory.did": "kept_player_name", "memory.player_name": "Тимур", "say": "Приятно познакомиться, Тимур."}},
+   {"say": "Ты знаешь, как меня зовут?", "expect": {"memory.did": "said_player_name", "say": "Тебя зовут Тимур."}},
+   {"say": "Меня зовут на ужин.", "expect": {"memory.player_name": {"absent": true}}}
+  ]},
+  {"name": "ru_names_again", "lang": "ru", "chain": true, "replies": "ru", "bot_name": "Buddy", "memory": "reuse:ru_names", "ready": {"names.bot": "Рекс", "names.player": "Тимур"}, "steps": [
+   {"say": "Как меня зовут?", "expect": {"say": "Тебя зовут Тимур."}},
+   {"say": "Рекс, ты где?", "expect": {"memory.called": "Рекс"}},
+   {"say": "Забудь своё имя.", "expect": {"memory.did": "forgot_bot_name", "memory.bot_name": null}},
+   {"say": "Как тебя зовут?", "expect": {"say": "Меня зовут Buddy."}},
+   {"say": "Забудь моё имя.", "expect": {"memory.did": "forgot_player_name"}},
+   {"say": "Как меня зовут?", "expect": {"memory.did": "no_player_name"}}
+  ]},
+  {"name": "en_names", "lang": "en", "bot_name": "Buddy", "steps": [
+   {"say": "What's your name?", "expect": {"memory.did": "said_bot_name", "say": "My name is Buddy."}},
+   {"say": "Your name is Rex.", "expect": {"memory.did": "kept_bot_name", "memory.bot_name": "Rex", "say": "I'm Rex now."}},
+   {"say": "Rex, follow me.", "expect": {"memory.called": "Rex", "intent": "FOLLOW_ME"}},
+   {"say": "Hey Rex", "expect": {"memory.did": "called", "say": {"in": ["Yes?", "Right here.", "I hear you."]}}},
+   {"say": "Call me Tim.", "expect": {"memory.did": "kept_player_name", "say": "Nice to meet you, Tim."}},
+   {"say": "What's my name?", "expect": {"memory.did": "said_player_name", "say": "Your name is Tim."}},
+   {"say": "Call me when you're in position.", "expect": {"memory.player_name": {"absent": true}}}
+  ]},
+  {"name": "ru_colour_order", "lang": "ru", "chain": true, "replies": "ru", "steps": [
+   {"say": "Вот на красный стол залезь.", "gaze": "T_Red", "expect": {"memory.teach": "none", "memory.did": {"absent": true}, "intent": "JUMP", "order.entity": "T_Red"}},
+   {"say": "Вот красный ящик возьми.", "gaze": "C_1", "expect": {"memory.kept_colour": {"absent": true}, "memory.did": {"absent": true}, "intent": "COLLECT"}},
+   {"say": "Этот ящик зелёный.", "gaze": "C_1", "expect": {"memory.did": "kept_colour", "memory.kept_colour.colour": "green"}},
+   {"say": "Запомни, что ях это ляж на пол.", "expect": {"memory.did": "offered_meaning", "intent": "SMALL_TALK", "say": "Запомнить, что «ях» — это «ляж на пол»?"}},
+   {"say": "Да.", "expect": {"memory.did": "kept_line", "say": "Понял, запомню."}},
+   {"say": "Ях.", "expect": {"memory.did": "used_line", "intent": "PRONE"}}
+  ]},
+  {"name": "ru_undo_last", "lang": "ru", "chain": true, "replies": "ru", "steps": [
+   {"say": "Запомни, что ях это ляж на пол.", "expect": {"memory.did": "offered_meaning"}},
+   {"say": "Да.", "expect": {"memory.did": "kept_line"}},
+   {"say": "Не надо было запоминать.", "expect": {"memory.did": "forgot_last", "say": "Всё, забыл.", "memory.undone": "kept_line"}},
+   {"say": "Ях.", "expect": {"memory.did": {"not": "used_line"}}},
+   {"say": "Этот ящик зелёный.", "gaze": "C_1", "expect": {"memory.did": "kept_colour"}},
+   {"say": "Забудь это.", "expect": {"memory.did": "forgot_last", "memory.undone": "kept_colour"}},
+   {"cmd": {"cmd": "recall"}, "expect": {"memory.lines.#": 0, "memory.colours.#": 0}},
+   {"say": "Запомни, что ях это ляж на пол.", "expect": {"memory.did": "offered_meaning"}},
+   {"say": "Не надо запоминать.", "expect": {"memory.did": "not_kept_line"}},
+   {"say": "Не надо было запоминать.", "expect": {"memory.did": "nothing_to_undo", "say": "Такого не помню."}}
+  ]},
+  {"name": "ru_repeat_line", "lang": "ru", "chain": true, "replies": "ru", "steps": [
+   {"say": "Иди к красному столу.", "expect": {"intent": "MOVE_TO", "order.entity": "T_Red"}},
+   {"say": "Не расслышал.", "expect": {"memory.did": "repeated", "say": {"starts": "Я сказал: "}, "order.intent": "SMALL_TALK"}},
+   {"say": "Ещё раз?", "expect": {"memory.did": "repeated", "say": {"starts": "Я сказал: "}}},
+   {"say": "Что ты сказал?", "expect": {"memory.did": "repeated", "say": {"starts": "Я сказал: "}}}
+  ]},
+  {"name": "en_repeat_line", "lang": "en", "steps": [
+   {"say": "go to the red table", "expect": {"intent": "MOVE_TO", "order.entity": "T_Red"}},
+   {"say": "Say again?", "expect": {"memory.did": "repeated", "say": {"starts": "I said: "}}},
+   {"say": "jump again", "expect": {"memory.did": {"not": "repeated"}}}
   ]}
  ]
 }

@@ -6,8 +6,13 @@
 //   line    a heard line -> the English order lines it means. Entity "line|<lang>|<heard, normalized>", attribute
 //           "means", the value the order lines one per row; metadata intent (the first line's, as the bot read it when it
 //           was taught), source ("voice", "cmd"), doubts (the player cancelled what it gave right after).
+//           A pattern (2026-10-31, teach.h MakePattern) is a line too: heard with the place as {x} («сесть на {x}»), the
+//           value its meaning as the player said it, in the player's language («запрыгнуть на {x} и присесть»), source
+//           "pattern". LineFor never gives one; coop_cli reads the meaning with the place said.
 //   name    a thing's name. Entity "name|<map>|<entity id>", attribute the language, the value the name, normalized.
 //   colour  a thing's colour. Entity "colour|<map>|<entity id>", attribute "colour", the value a colour id (teach.h).
+//   person  the bot's own name and the player's (2026-10-31, the owner: «тебя зовут Рекс», «меня зовут Тимур»). Entity
+//           "person|<who>|name" (who: "bot", "player"), attribute "name", the value the name as said (its capitals kept).
 //
 // The header is C++17 (coop_cli includes it); the store and Wick build as C++20 behind it. Every write is flushed to
 // the file before the call returns.
@@ -52,6 +57,12 @@ struct MemoryPhrase {
     bool word = false;   // from is words inside the bot's sentences («брат», «метров»), not a whole sentence
 };
 
+// a name of the bot or of the player (2026-10-31): who "bot" or "player", the name as said («Рекс», "Tim")
+struct MemoryPerson {
+    std::string who, name;
+    int64_t at_ms = 0;
+};
+
 // one of the bot's settings the player set by voice (2026-10-30): follow_m, engage_m, fire_on_command (0 / 1), voice_speed
 struct MemorySetting {
     std::string name;
@@ -77,7 +88,8 @@ public:
 
     // a new pair, or a new meaning of a heard line kept before (the old one stays in the file's history)
     bool KeepLine(const MemoryLine& line, std::string* err);
-    // the kept line a heard line (normalized) means: the same words first, then NearLine; nullptr: none
+    // the kept line a heard line (normalized) means: the same words first, then NearLine, then SameLine (its verbs in
+    // another form); never a pattern; nullptr: none
     const MemoryLine* LineFor(const std::string& lang, const std::string& heard) const;
     // one more doubt about a kept line; the second removes it (*removed)
     bool DoubtLine(const std::string& lang, const std::string& heard, bool* removed, std::string* err);
@@ -90,6 +102,8 @@ public:
     bool ForgetThing(const std::string& map, const std::string& entity, bool* any, std::string* err);
     // its name in one language only (its colour stays): «нет, это камень» about a rock named otherwise
     bool ForgetName(const std::string& map, const std::string& entity, const std::string& lang, bool* any, std::string* err);
+    // its colour only (its names stay): the last lesson undone, «не надо было запоминать» (2026-11-01)
+    bool ForgetColour(const std::string& map, const std::string& entity, bool* any, std::string* err);
     // how the voice says a word: a new one replaces the old; forgetting it says the word as the voice would (*any: there was one)
     bool KeepSaying(const MemorySaying& saying, std::string* err);
     bool ForgetSaying(const std::string& lang, const std::string& word, bool* any, std::string* err);
@@ -99,6 +113,11 @@ public:
     // the bot's settings: a new value replaces the old; ForgetSettings forgets them all
     bool KeepSetting(const MemorySetting& setting, std::string* err);
     bool ForgetSettings(bool* any, std::string* err);
+    // the bot's name and the player's: a new one replaces the old (*any: there was one to forget)
+    bool KeepPerson(const MemoryPerson& person, std::string* err);
+    bool ForgetPerson(const std::string& who, bool* any, std::string* err);
+    // the name kept for who; nullptr: none
+    const MemoryPerson* PersonFor(const std::string& who) const;
 
     const std::vector<MemoryLine>& Lines() const;
     const std::vector<MemoryName>& Names() const;
@@ -106,6 +125,7 @@ public:
     const std::vector<MemorySaying>& Sayings() const;
     const std::vector<MemoryPhrase>& Phrases() const;
     const std::vector<MemorySetting>& Settings() const;
+    const std::vector<MemoryPerson>& People() const;
 
 private:
     struct Impl;

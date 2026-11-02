@@ -113,6 +113,7 @@
   "Going prone.": "Cuerpo a tierra.",
   "Lying down.": "Me tiro al suelo.",
   "Flat on the ground.": "Pegado al suelo.",
+  "Crawling.": "Me arrastro.",
   "Standing up.": "Me levanto.",
   "On my feet.": "De pie.",
   "Up.": "Arriba.",
@@ -179,7 +180,9 @@
   "I see no {object}.": "No veo {object.none}.",
   "Where?": "¿Dónde?",
   "Which {object}?": "¿Qué {object}?",
+  "You mean {thing}?": "¿Te refieres a {thing}?",
   "The one {sector}, {n} m?": "¿{Sector}, a {n} {n:metro|metros}?",
+  "The one {sector}?": "¿{Sector}?",
   "Got it.": "Entendido.",
   "Copy, never mind.": "Recibido, olvídalo.",
   "I'll take the one {sector}, {n} m.": "Elijo yo: {sector}, a {n} {n:metro|metros}.",
@@ -190,6 +193,7 @@
   "Forgotten.": "Listo, olvidado.",
   "I don't remember that.": "No recuerdo eso.",
   "Then what is it?": "¿Entonces qué es?",
+  "Yes or no?": "¿Sí o no?",
   "Shall I remember it as {thing}?": "¿Lo recuerdo como {thing}?",
   "All right, I won't remember it.": "Vale, no lo recuerdo.",
   "I don't know what colour it is.": "No sé de qué color es.",
@@ -484,7 +488,23 @@
   "The first's shut; the switch is {n} m from it.": "La primera está cerrada; el interruptor está a {n} {n:metro|metros}.",
   "The first's shut; I can open it.": "La primera está cerrada; puedo abrirla.",
   "The first's shut, and I see no switch.": "La primera está cerrada y no veo ningún interruptor.",
-  "The ledge is too high, and there's nothing to stand on.": "El saliente es demasiado alto y no hay nada donde subirse."
+  "The ledge is too high, and there's nothing to stand on.": "El saliente es demasiado alto y no hay nada donde subirse.",
+  "I'm {name} now.": "Ahora soy {name}.",
+  "My name is {name}.": "Me llamo {name}.",
+  "Nice to meet you, {name}.": "Mucho gusto, {name}.",
+  "Your name is {name}.": "Te llamas {name}.",
+  "I don't know your name yet.": "Todavía no sé cómo te llamas.",
+  "Yes?": "¿Sí?",
+  "Heading to {thing}.": "Voy hacia {thing}.",
+  "Going in through {thing}.": "Entro por {thing}.",
+  "Going out through {thing}.": "Salgo por {thing}.",
+  "Heading to your pin.": "Voy a tu marca.",
+  "Heading where you pointed.": "Voy adonde señalaste.",
+  "Closing it.": "La cierro.",
+  "It's shut already.": "Ya está cerrado.",
+  "It won't close.": "No se cierra.",
+  "I can't close that.": "Eso no se puede cerrar.",
+  "I can't undo that one.": "Eso no lo puedo deshacer."
  },
  "slots": {
   "where": {
@@ -666,7 +686,20 @@
    "the red bed": {"text": "la cama roja"},
    "the yellow bed": {"text": "la cama amarilla"},
    "the white bed": {"text": "la cama blanca"},
-   "the brown bed": {"text": "la cama marrón"}
+   "the brown bed": {"text": "la cama marrón"},
+   "the sofa": {"text": "el sofá"},
+   "the chair": {"text": "la silla"},
+   "the rock": {"text": "la roca"},
+   "the roof": {"text": "el tejado"},
+   "the bed": {"text": "la cama"},
+   "the car": {"text": "el coche"},
+   "the box": {"text": "la caja"},
+   "the crate": {"text": "la caja"},
+   "the spool": {"text": "la bobina"},
+   "the door": {"text": "la puerta"},
+   "the window": {"text": "la ventana"},
+   "the table": {"text": "la mesa"},
+   "the switch": {"text": "el interruptor"}
   },
   "phrase": {
    "get out of the way": {"text": "me aparto", "ready": "apartarme"},
@@ -770,6 +803,9 @@
    "spool": {"text": "bobina", "none": "ninguna bobina"},
    "garden bed": {"text": "parcela", "none": "ninguna parcela"},
    "rock": {"text": "roca", "none": "ninguna roca"}
+  },
+  "name": {
+   "_other": {"text": "*"}
   }
  }
 }

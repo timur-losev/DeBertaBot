@@ -281,15 +281,21 @@ def drops_by_thing(text, record):
 
 
 def without_item_place(record, item, intent):
-    """The line's places without the one that is the item itself (BUILD, COLLECT, DELIVER): the order goes to the next."""
+    """The line's places without the one that is the item itself (BUILD, COLLECT, DELIVER): the order goes to the next. A
+    bare "it" in a line that names the item is the item too: "pick up this box and carry it to the rock" goes to the rock
+    (2026-11-02: with the crosshair on the box, "it" made the box's own spot the place)."""
     obj = item_object(item) if intent in IT.ITEMS["keeps_object"] else None
     if obj is None or not record or not record["targets"]:
         return record
-    keep = [t for t in record["targets"] if t["object"] != obj]
-    if len(keep) == len(record["targets"]):
+    if all(t["object"] != obj for t in record["targets"]):
         return record
+
+    def item_too(t):
+        return t["object"] == obj or (t.get("pointer") == "it" and t["object"] is None and t["zone"] is None and
+                                      t.get("direction") is None and t["role"] is None)
+    keep = [t for t in record["targets"] if not item_too(t)]
     k = record["primary"]
-    if k >= 0 and record["targets"][k]["object"] != obj:
+    if k >= 0 and not item_too(record["targets"][k]):
         primary = next(i for i, t in enumerate(keep) if t is record["targets"][k])
     else:
         primary = next((i for i, t in enumerate(keep) if t["role"] is None), -1)

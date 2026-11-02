@@ -456,6 +456,7 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
         free_q[static_cast<size_t>(best)] = 0;
         if (!allows(t->t.object, q->a)) {   // "blue door": not a place on these maps
             t->t.flag = PlaceFlag::UnknownModifier;
+            t->t.said_qualifier = q->a;   // a map may still have one (world.cpp)
             t->first = q->first;
             continue;
         }

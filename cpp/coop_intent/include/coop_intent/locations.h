@@ -110,6 +110,10 @@ struct PlaceTarget {
     PlaceRole role = PlaceRole::None;
     PlaceFlag flag = PlaceFlag::None;
     bool inferred = false;              // the object was not said ("take blue", "you take the south one")
+    // a qualifier said of the object that the vocabulary does not give its kind ("red chair": chairs have no colours in it),
+    // flag UnknownModifier; -1: none. The map may give it (a marker's qualifier): world.cpp keeps the things that have it.
+    // Not in locations.py
+    int said_qualifier = -1;
 };
 
 // locations.tokenize: the line's tokens, each with the punctuation before it (0 none, 1 comma, 2 . ; : ! ?)

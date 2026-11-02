@@ -11,6 +11,7 @@ struct BotMemory::Impl {
     std::vector<MemorySaying> sayings;
     std::vector<MemoryPhrase> phrases;
     std::vector<MemorySetting> settings;
+    std::vector<MemoryPerson> people;
 };
 
 BotMemory::BotMemory() : impl_(std::make_unique<Impl>()) {}
@@ -40,6 +41,10 @@ bool BotMemory::ForgetName(const std::string&, const std::string&, const std::st
     *any = false;
     return *err = "no memory", false;
 }
+bool BotMemory::ForgetColour(const std::string&, const std::string&, bool* any, std::string* err) {
+    *any = false;
+    return *err = "no memory", false;
+}
 const std::vector<MemoryLine>& BotMemory::Lines() const { return impl_->lines; }
 const std::vector<MemoryName>& BotMemory::Names() const { return impl_->names; }
 const std::vector<MemoryColour>& BotMemory::Colours() const { return impl_->colours; }
@@ -56,6 +61,13 @@ bool BotMemory::ForgetSettings(bool* any, std::string* err) {
     *any = false;
     return *err = "no memory", false;
 }
+bool BotMemory::KeepPerson(const MemoryPerson&, std::string* err) { return *err = "no memory", false; }
+bool BotMemory::ForgetPerson(const std::string&, bool* any, std::string* err) {
+    *any = false;
+    return *err = "no memory", false;
+}
+const MemoryPerson* BotMemory::PersonFor(const std::string&) const { return nullptr; }
+const std::vector<MemoryPerson>& BotMemory::People() const { return impl_->people; }
 bool BotMemory::KeepSaying(const MemorySaying&, std::string* err) { return *err = "no memory", false; }
 bool BotMemory::ForgetSaying(const std::string&, const std::string&, bool* any, std::string* err) {
     *any = false;

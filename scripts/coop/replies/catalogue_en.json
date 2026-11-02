@@ -1010,8 +1010,16 @@
    "source": "coop_cli.cpp memory: 'forget ...' with nothing kept"
   },
   {
+   "en": "I can't undo that one.",
+   "source": "coop_cli.cpp kCannotUndo: «не надо было запоминать» after a setting or a phrase was kept (2026-11-01)"
+  },
+  {
    "en": "Then what is it?",
    "source": "coop_cli.cpp memory: 'no' right after the bot answered 'what is that?'; the next line says what it is"
+  },
+  {
+   "en": "Yes or no?",
+   "source": "coop_cli.cpp kYesOrNo: a sound for the answer to 'Shall I remember ...?' (the owner's «да» heard as 'B.'); the question stays"
   },
   {
    "en": "Shall I remember it as {thing}?",
@@ -1022,8 +1030,40 @@
    "source": "coop_cli.cpp memory: 'no' to 'Shall I remember it as ...?'"
   },
   {
+   "en": "I'm {name} now.",
+   "source": "coop_cli.cpp memory: 'your name is Rex' -- the player named the bot"
+  },
+  {
+   "en": "My name is {name}.",
+   "source": "coop_cli.cpp memory: 'what's your name?' -- the name the player gave the bot, else the game's"
+  },
+  {
+   "en": "Nice to meet you, {name}.",
+   "source": "coop_cli.cpp memory: 'my name is Tim' -- the player told the bot their name"
+  },
+  {
+   "en": "Your name is {name}.",
+   "source": "coop_cli.cpp memory: 'what's my name?'"
+  },
+  {
+   "en": "I don't know your name yet.",
+   "source": "coop_cli.cpp memory: 'what's my name?' before the player told it"
+  },
+  {
+   "en": "Yes?",
+   "source": "coop_cli.cpp kCalled: the player said the bot's name and nothing else ('Rex!'); also 'Right here.', 'I hear you.'"
+  },
+  {
    "en": "I don't know what colour it is.",
    "source": "coop_cli.cpp memory: 'what colour is it?' at a thing whose colour neither the game nor the player gave"
+  },
+  {
+   "en": "The one {sector}?",
+   "source": "coop_cli.cpp WhichCallout: 'Which door? The one ahead?' when nothing else sets it apart and no other one is that way"
+  },
+  {
+   "en": "You mean {thing}?",
+   "source": "coop_cli.cpp WhichCallout: 'Which chair? You mean the red chair?', the thing offered by its name, colour or qualifier instead of its distance"
   },
   {
    "en": "Shall I remember that {thing} is behind this door?",
@@ -1922,6 +1962,46 @@
    "source": "game: after 'I can't get there.': the climb planner found a ledge beyond its jump and no crate to reach"
   },
   {
+   "en": "Crawling.",
+   "source": "game: a walk on the belly: 'crawl to me', 'crawl to the box'"
+  },
+  {
+   "en": "Heading to {thing}.",
+   "source": "game: 'where are you going?' (state doing): the place of the walk under way"
+  },
+  {
+   "en": "Going in through {thing}.",
+   "source": "game: 'where are you going?': into a room by its door"
+  },
+  {
+   "en": "Going out through {thing}.",
+   "source": "game: 'where are you going?': out of a room by its door"
+  },
+  {
+   "en": "Heading to your pin.",
+   "source": "game: 'where are you going?': to the player's pin"
+  },
+  {
+   "en": "Heading where you pointed.",
+   "source": "game: 'where are you going?': to a spot the player pointed at"
+  },
+  {
+   "en": "Closing it.",
+   "source": "game: 'close the door' (coop_cli: OPEN read from a close; the game: by hand)"
+  },
+  {
+   "en": "It's shut already.",
+   "source": "game: 'close the door' at a door that is shut"
+  },
+  {
+   "en": "It won't close.",
+   "source": "game: 'close the door': used by hand and still open"
+  },
+  {
+   "en": "I can't close that.",
+   "source": "game: 'close' at a thing that does not shut"
+  },
+  {
    "en": "Okay, I won't anymore.",
    "source": "coop_cli.cpp bro habit: the player told it to stop saying 'bro'"
   },
@@ -1941,6 +2021,10 @@
  "slots": {
   "said": {
    "note": "the player's own words, a line the bot could not read, quoted in their language (lowercase, no stops); open, no values: the line comes with it",
+   "values": []
+  },
+  "name": {
+   "note": "a person's name as the player said it: the bot's own ('Rex') or the player's ('Tim'); open, no values: the line comes with it. Said as it is, in the nominative ('*': the words themselves)",
    "values": []
   },
   "meant": {
@@ -2135,7 +2219,20 @@
     "a big box",
     "a small box",
     "a big spool",
-    "a small spool"
+    "a small spool",
+    "the sofa",
+    "the chair",
+    "the rock",
+    "the roof",
+    "the bed",
+    "the car",
+    "the box",
+    "the crate",
+    "the spool",
+    "the door",
+    "the window",
+    "the table",
+    "the switch"
    ]
   },
   "phrase": {

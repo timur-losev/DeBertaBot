@@ -17,7 +17,7 @@ namespace {
 // thing the level designer labelled ("spike trap": its words in the player's language come with the line, Terms)
 // said, meant: the player's own words, quoted ("Shall I remember that "{said}" means "{meant}"?", coop_cli OfferMeaning)
 bool OpenSlot(const std::string& slot) {
-    return slot == "item" || slot == "weapon" || slot == "thing" || slot == "said" || slot == "meant";
+    return slot == "item" || slot == "weapon" || slot == "thing" || slot == "said" || slot == "meant" || slot == "name";
 }
 
 struct Token {

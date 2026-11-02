@@ -26,6 +26,8 @@ struct MicCapture::Impl {
     std::deque<short> recent;     // the pre-roll, when no clip is being taken
     std::vector<short> clip;
     bool taking = false;
+    bool tapping = false;
+    std::deque<short> tapped;     // the open microphone's, until Drain
 
     // called by the queue when a buffer is done
     static void Filled(void* self, AudioQueueRef queue, AudioQueueBufferRef buffer, const AudioTimeStamp*, UInt32,
@@ -35,6 +37,11 @@ struct MicCapture::Impl {
         const size_t n = buffer->mAudioDataByteSize / sizeof(short);
         {
             std::lock_guard<std::mutex> g(s.lock);
+            if (s.tapping) {
+                s.tapped.insert(s.tapped.end(), p, p + n);
+                const size_t most = static_cast<size_t>(60 * MicCapture::kSampleRate);
+                while (s.tapped.size() > most) s.tapped.pop_front();
+            }
             if (s.taking) {
                 s.clip.insert(s.clip.end(), p, p + n);
             } else {
@@ -137,4 +144,19 @@ std::vector<float> MicCapture::End() {
     std::vector<float> out(clip.size());
     for (size_t i = 0; i < clip.size(); ++i) out[i] = clip[i] / 32768.0f;
     return out;
+}
+
+void MicCapture::Tap(bool on) {
+    Impl& s = *impl_;
+    std::lock_guard<std::mutex> g(s.lock);
+    s.tapping = on;
+    if (!on) s.tapped.clear();
+}
+
+void MicCapture::Drain(std::vector<float>* out) {
+    Impl& s = *impl_;
+    std::lock_guard<std::mutex> g(s.lock);
+    out->reserve(out->size() + s.tapped.size());
+    for (const short x : s.tapped) out->push_back(x / 32768.0f);
+    s.tapped.clear();
 }

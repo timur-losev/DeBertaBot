@@ -284,6 +284,190 @@ bool FindWords(const std::vector<std::string>& line, const std::vector<std::stri
     return false;
 }
 
+namespace {
+
+// a verb's stem (VerbForm)
+std::u32string VerbStem(const std::string& word) {
+    std::u32string u = DecodeUtf8(word);
+    for (char32_t& c : u) {   // Spanish without its accents
+        switch (c) {
+            case U'á': c = U'a'; break;
+            case U'é': c = U'e'; break;
+            case U'í': c = U'i'; break;
+            case U'ó': c = U'o'; break;
+            case U'ú': c = U'u'; break;
+            default: break;
+        }
+    }
+    auto ends = [&](std::u32string_view e) { return u.size() >= e.size() && u.compare(u.size() - e.size(), e.size(), e) == 0; };
+    // «лечь», «залечь»: the root is «лег» («ляг», «ложись»)
+    if (ends(U"лечь")) return u.substr(0, u.size() - 4) + U"лег";
+    static const std::u32string_view kEnds[] = {
+        U"ться", U"тись", U"йтесь", U"ьтесь", U"итесь", U"ись", U"йся", U"ься", U"йте", U"ьте", U"ите", U"ть", U"ти", U"чь",
+        U"и", U"й", U"ь", U"arse", U"erse", U"irse", U"ate", U"ete", U"ite", U"ar", U"er", U"ir", U"te", U"se"};
+    for (std::u32string_view e : kEnds)
+        if (u.size() >= e.size() + 2 && ends(e)) {
+            u.resize(u.size() - e.size());
+            break;
+        }
+    static const std::u32string kVowels = U"аеиоуыэюяaeiou";
+    if (u.size() >= 3 && kVowels.find(u.back()) != std::u32string::npos) u.pop_back();
+    // the roots that change between the forms, one way
+    static const std::pair<std::u32string_view, std::u32string_view> kRoots[] = {
+        {U"сяд", U"сед"}, {U"сад", U"сед"}, {U"сес", U"сед"}, {U"ляг", U"лег"}, {U"лож", U"лег"}, {U"беж", U"бег"},
+        {U"возьм", U"вз"}};
+    for (const auto& r : kRoots)
+        if (ends(r.first)) {
+            u = u.substr(0, u.size() - r.first.size()) + std::u32string(r.second);
+            break;
+        }
+    // Spanish e/ie, o/ue («siéntate», «sentarse»)
+    for (size_t i = 0; i + 1 < u.size(); ++i)
+        if ((u[i] == U'i' && u[i + 1] == U'e') || (u[i] == U'u' && u[i + 1] == U'e')) {
+            u = u.substr(0, i) + (u[i] == U'i' ? U"e" : U"o") + u.substr(i + 2);
+            break;
+        }
+    return u;
+}
+
+// words that tie a pattern's parts: no place is one of them or has one inside
+bool PatternGlue(const std::string& x) {
+    static const std::unordered_set<std::string> kGlue = {
+        "и", "а", "но", "или", "потом", "затем", "and", "or", "but", "then", "y", "o", "pero", "luego", "despues", "después"};
+    return kGlue.count(x) > 0;
+}
+bool Preposition(const std::string& x) {
+    static const std::unordered_set<std::string> kPrep = {
+        "на", "в", "во", "к", "ко", "у", "за", "под", "над", "по", "до", "с", "со", "из", "от", "около", "возле", "через",
+        "перед", "между", "мимо", "вокруг", "внутрь", "onto", "on", "to", "at", "in", "into", "behind", "under", "over", "near",
+        "by", "from", "through", "towards", "toward", "inside", "across", "up", "en", "a", "al", "sobre", "hacia", "detrás",
+        "detras", "junto", "de", "del", "por", "bajo", "dentro", "encima", "debajo", "cerca", "frente", "hasta"};
+    return kPrep.count(x) > 0;
+}
+// a word said before or after a line that is not part of it
+bool PatternFiller(const std::string& x) {
+    static const std::unordered_set<std::string> kFill = {
+        "брат", "братан", "братишка", "давай", "ну", "пожалуйста", "теперь", "эй", "слушай", "please", "bro", "now", "hey",
+        "ok", "okay", "hermano", "porfa", "ahora", "oye", "vale"};
+    return kFill.count(x) > 0;
+}
+
+}  // namespace
+
+bool VerbForm(const std::string& said, const std::string& taught) {
+    if (said == taught) return true;
+    if (DecodeUtf8(said).size() < 3 || DecodeUtf8(taught).size() < 3) return false;
+    const std::u32string a = VerbStem(said), b = VerbStem(taught);
+    if (a == b) return true;
+    const std::u32string& s = a.size() <= b.size() ? a : b;
+    const std::u32string& l = a.size() <= b.size() ? b : a;
+    if (s.size() >= 3 && l.size() - s.size() <= 2 && l.compare(0, s.size(), s) == 0) return true;
+    // the last consonant alternates («спрятаться», «спрячься»)
+    if (s.size() >= 4 && l.size() - s.size() <= 1 && l.compare(0, s.size() - 1, s, 0, s.size() - 1) == 0) return true;
+    return false;
+}
+
+bool SameWord(const std::string& said, const std::string& taught) {
+    return said == taught || WordForm(said, taught) || WordForm(taught, said) || VerbForm(said, taught);
+}
+
+bool SameLine(const std::string& kept, const std::string& line) {
+    const std::vector<std::string> a = MemoryWords(kept), b = MemoryWords(line);
+    if (a.empty() || a.size() != b.size()) return false;
+    for (size_t i = 0; i < a.size(); ++i)
+        if (!SameWord(b[i], a[i])) return false;
+    return true;
+}
+
+TaughtPattern MakePattern(const std::string& said, std::string_view meant) {
+    TaughtPattern out;
+    out.key = said;
+    out.meaning = std::string(meant);
+    const std::vector<std::string> s = MemoryWords(said);
+    const std::vector<SpanWord> ms = SpanWords(meant);
+    std::vector<std::string> m;
+    for (const SpanWord& x : ms) m.push_back(x.norm);
+    // an article («the», «la»; Spanish «a» is a preposition too) is part of the place when both say it
+    static const std::unordered_set<std::string> kArticle = {"a", "an", "the", "el", "la", "los", "las", "un", "una"};
+    auto thing_word = [](const std::string& a, const std::string& b) {
+        if (a == b && kArticle.count(a)) return true;
+        return !PatternGlue(a) && !Preposition(a) && !PatternGlue(b) && !Preposition(b) &&
+               (a == b || WordForm(a, b) || WordForm(b, a));
+    };
+    size_t best_i = 0, best_len = 0;
+    for (size_t i = 1; i < s.size(); ++i) {
+        if (!Preposition(s[i - 1])) continue;
+        for (size_t j = 1; j < m.size(); ++j) {
+            if (!Preposition(m[j - 1])) continue;
+            size_t len = 0;
+            while (len < 4 && i + len < s.size() && j + len < m.size() && thing_word(s[i + len], m[j + len])) ++len;
+            if (len > best_len) best_i = i, best_len = len;
+        }
+    }
+    if (!best_len) return out;
+    // every place in the meaning that names the same thing after a preposition
+    std::vector<std::pair<size_t, size_t>> cuts;   // word spans [b, e) in m
+    for (size_t j = 1; j + best_len <= m.size(); ++j) {
+        if (!Preposition(m[j - 1])) continue;
+        bool all = true;
+        for (size_t t = 0; t < best_len && all; ++t) all = thing_word(s[best_i + t], m[j + t]);
+        if (all) cuts.push_back({j, j + best_len});
+    }
+    if (cuts.empty()) return out;
+    std::vector<std::string> key(s.begin(), s.begin() + static_cast<std::ptrdiff_t>(best_i));
+    key.push_back("{x}");
+    key.insert(key.end(), s.begin() + static_cast<std::ptrdiff_t>(best_i + best_len), s.end());
+    out.key = Join(key, 0, key.size());
+    std::string text;
+    size_t at = 0;
+    for (const auto& c : cuts) {
+        text += std::string(meant.substr(at, ms[c.first].begin - at)) + "{x}";
+        at = ms[c.second - 1].end;
+    }
+    text += std::string(meant.substr(at));
+    out.meaning = text;
+    out.slot = true;
+    return out;
+}
+
+bool MatchPattern(const std::string& key, std::string_view heard, std::string* slot, size_t* fixed) {
+    const std::vector<std::string> k = MemoryWords(key);
+    const std::vector<SpanWord> hs = SpanWords(heard);
+    size_t b = 0, e = hs.size();
+    while (b < e && PatternFiller(hs[b].norm)) ++b;
+    while (e > b && PatternFiller(hs[e - 1].norm)) --e;
+    if (k.empty() || b >= e) return false;
+    const auto x = std::find(k.begin(), k.end(), "{x}");
+    const size_t n = e - b;
+    if (x == k.end()) {
+        if (n != k.size()) return false;
+        for (size_t i = 0; i < n; ++i)
+            if (!SameWord(hs[b + i].norm, k[i])) return false;
+        if (slot) slot->clear();
+        if (fixed) *fixed = k.size();
+        return true;
+    }
+    const size_t pre = static_cast<size_t>(x - k.begin()), post = k.size() - pre - 1;
+    if (n < pre + post + 1 || n > pre + post + 5) return false;
+    for (size_t i = 0; i < pre; ++i)
+        if (!SameWord(hs[b + i].norm, k[i])) return false;
+    for (size_t i = 0; i < post; ++i)
+        if (!SameWord(hs[e - post + i].norm, k[pre + 1 + i])) return false;
+    const size_t sb = b + pre, se = e - post;
+    for (size_t i = sb; i < se; ++i)
+        if (PatternGlue(hs[i].norm)) return false;
+    if (slot) *slot = std::string(heard.substr(hs[sb].begin, hs[se - 1].end - hs[sb].begin));
+    if (fixed) *fixed = k.size() - 1;
+    return true;
+}
+
+std::string FillPattern(const std::string& meaning, const std::string& slot) {
+    std::string out;
+    size_t at = 0;
+    for (size_t f; (f = meaning.find("{x}", at)) != std::string::npos; at = f + 3) out += meaning.substr(at, f - at) + slot;
+    return out + meaning.substr(at);
+}
+
 const std::vector<std::string>& ColourIds() {
     static const std::vector<std::string> kIds = [] {
         std::vector<std::string> v;
@@ -313,6 +497,8 @@ const char* TeachKindName(TeachKind k) {
         case TeachKind::Pronounce: return "pronounce";
         case TeachKind::Speech: return "speech";
         case TeachKind::Behaviour: return "behaviour";
+        case TeachKind::BotName: return "bot_name";
+        case TeachKind::PlayerName: return "player_name";
         default: return "none";
     }
 }
@@ -349,19 +535,31 @@ bool ReadMeans(std::string_view heard, const std::vector<std::string>& w, TeachL
         const std::string_view gap = heard.substr(sw[j - 1].end, sw[j].begin - sw[j - 1].end);
         return gap.find("\xE2\x80\x94") != std::string_view::npos || gap.find("\xE2\x80\x93") != std::string_view::npos;
     };
-    size_t x0 = AfterAny(w, 0, kHabit);
+    // «запомни, что ях — это ляж на пол», "remember, boom means throw a grenade", «recuerda que bum es lanza una granada»
+    // (2026-11-01, the owner): after «запомни» a bare «это» or a dash is the middle too; X is still a few words of its own
+    static const std::initializer_list<std::string_view> kRemember = {"запомни что", "запомни", "remember that", "remember",
+                                                                       "recuerda que", "recuerda"};
+    size_t r0 = AfterAny(w, 0, kRemember);
+    const bool remember = r0 != std::string::npos && r0 < w.size();
+    if (!remember) r0 = 0;
+    size_t x0 = AfterAny(w, r0, kHabit);
     const bool lead = x0 != std::string::npos;
+    bool once = false;
     if (!lead) {
-        x0 = AfterAny(w, 0, kOnce);
-        if (x0 == std::string::npos) x0 = 0;
+        x0 = AfterAny(w, r0, kOnce);
+        once = x0 != std::string::npos;
+        if (!once) x0 = r0;
     }
+    // «запомни, когда я скажу давай, ты пойдешь и поднимешь эту коробку» (2026-11-02, the owner) is still one order on the
+    // signal, not a lesson: after «когда я скажу» only "it means" makes a rule, «запомни» or not
+    const bool loose = lead || (remember && !once);
     for (size_t j = x0 + 1; j < w.size() && j <= x0 + 6; ++j) {
         size_t k = std::string::npos;
-        const size_t m = AfterAny(w, j, lead ? kMiddle : kStrong);
+        const size_t m = AfterAny(w, j, loose ? kMiddle : kStrong);
         if (m != std::string::npos) k = m;
-        else if (lead && stop_before(j)) k = j;
+        else if (loose && stop_before(j)) k = j;
         if (k == std::string::npos) continue;
-        if (lead && k == j) {   // after the comma: a marker may still come («когда я говорю бабах, это значит ...»)
+        if (loose && k == j) {   // after the comma: a marker may still come («когда я говорю бабах, это значит ...»)
             const size_t m2 = AfterAny(w, k, kMiddle);
             if (m2 != std::string::npos && m2 < w.size()) k = m2;
         }
@@ -374,6 +572,100 @@ bool ReadMeans(std::string_view heard, const std::vector<std::string>& w, TeachL
         size_t end = heard.size();
         while (end > sw[k].begin && std::string_view(" \t.!?").find(heard[end - 1]) != std::string_view::npos) --end;
         out->rest = std::string(heard.substr(sw[k].begin, end - sw[k].begin));
+        return true;
+    }
+    return false;
+}
+
+// «запрыгнуть на стул и присесть — это то же самое, что сесть на стул», «Смотри, запрыгнуть на стул и присесть. Это то же
+// самое, что сесть на стул. Научись.» (2026-10-31, the owner), "sitting down is the same as crouching", «sentarse en la silla es
+// lo mismo que saltar a la silla y agacharse»: two ways of saying one thing. Which is the meaning is coop_cli's to find (the
+// side it reads as orders); here the two sides as said. The marker has its own «это» / "is" / «es» or a dash before it:
+// «делай то же самое, что и я», "do the same as me", «haz lo mismo que yo» are orders. A side that is only «это» / "that" is
+// the sentence before. Fillers round the sides («смотри», «научись», "remember that", «recuerda») are not part of them
+bool ReadSame(std::string_view heard, TeachLine* out) {
+    const std::vector<SpanWord> sw = SpanWords(heard);
+    if (sw.size() < 3) return false;
+    std::vector<std::string> w;
+    for (const SpanWord& x : sw) w.push_back(x.norm);
+    // the sentence of each word: the stops before it
+    std::vector<int> sentence(sw.size(), 0);
+    {
+        int s = 0;
+        size_t at = 0;
+        for (size_t i = 0; i < sw.size(); ++i) {
+            for (; at < sw[i].begin; ++at)
+                if (heard[at] == '.' || heard[at] == '!' || heard[at] == '?' || heard[at] == ';' || heard[at] == '\n') ++s;
+            sentence[i] = s;
+            at = sw[i].end;
+        }
+    }
+    static const std::initializer_list<std::string_view> kOwn = {
+        "это то же самое что и", "это то же самое что", "это тоже самое что и", "это тоже самое что", "это то же что и",
+        "это то же что", "это одно и то же что", "это все равно что", "is the same as", "is the same thing as",
+        "means the same as", "means the same thing as", "that's the same as", "thats the same as", "that is the same as",
+        "it's the same as", "its the same as", "it is the same as", "this is the same as", "that's the same thing as",
+        "it's the same thing as", "es lo mismo que", "eso es lo mismo que", "es igual que", "significa lo mismo que"};
+    static const std::initializer_list<std::string_view> kAfterDash = {
+        "то же самое что и", "то же самое что", "тоже самое что и", "тоже самое что", "то же что и", "то же что",
+        "одно и то же что", "все равно что", "the same as", "same as", "lo mismo que"};
+    static const std::unordered_set<std::string> kThat = {"это", "вот", "и", "а", "this", "that", "it", "and", "so", "eso",
+                                                          "esto", "y"};
+    static const std::initializer_list<std::string_view> kLead = {
+        "смотри", "слушай", "запомни", "запомни что", "знай", "знай что", "учти", "учти что", "научись", "ну", "так", "вот",
+        "короче", "итак", "брат", "братан", "look", "listen", "remember", "remember that", "learn", "learn that", "so", "ok",
+        "okay", "now", "bro", "mira", "escucha", "recuerda", "recuerda que", "aprende", "aprende que", "oye", "bueno", "pues",
+        "hermano"};
+    static const std::unordered_set<std::string> kTail = {"понял", "поняла", "запомни", "запомнил", "научись", "ясно", "окей",
+                                                          "ок", "брат", "братан", "ok", "okay", "remember", "learn", "bro",
+                                                          "right", "entendido", "recuerda", "aprende", "vale", "hermano"};
+    // a dash between two words as said
+    auto dash_before = [&](size_t j) {
+        if (j == 0) return false;
+        const std::string_view gap = heard.substr(sw[j - 1].end, sw[j].begin - sw[j - 1].end);
+        return gap.find('-') != std::string_view::npos || gap.find("\xE2\x80\x94") != std::string_view::npos ||
+               gap.find("\xE2\x80\x93") != std::string_view::npos;
+    };
+    // the fillers a side starts with, off; never past `e`
+    auto lead_off = [&](size_t b, size_t e) {
+        for (int step = 0; step < 4 && b < e; ++step) {
+            const size_t k = AfterAny(w, b, kLead);
+            if (k == std::string::npos || k > e) break;
+            b = k;
+        }
+        return b;
+    };
+    auto sentence_start = [&](size_t i) {
+        while (i > 0 && sentence[i - 1] == sentence[i]) --i;
+        return i;
+    };
+    for (size_t j = 0; j < w.size(); ++j) {
+        size_t k = AfterAny(w, j, kOwn);
+        if (k == std::string::npos && dash_before(j)) k = AfterAny(w, j, kAfterDash);
+        if (k == std::string::npos || k >= w.size() || sentence[k] != sentence[j]) continue;
+        // the second side: to its sentence's end, a filler after it off
+        size_t re = k;
+        while (re < w.size() && sentence[re] == sentence[k]) ++re;
+        while (re > k && kTail.count(w[re - 1])) --re;
+        // the first side: its sentence up to the marker, or the sentence before when that is only «это»
+        size_t lb = lead_off(sentence_start(j), j), le = j;
+        bool only_that = true;
+        for (size_t i = lb; i < le; ++i) only_that = only_that && kThat.count(w[i]) > 0;
+        if (only_that) {
+            const size_t own = sentence_start(j);
+            if (own == 0) return false;   // no sentence before it
+            le = own;
+            lb = lead_off(sentence_start(own - 1), le);
+        }
+        if (lb >= le || re <= k || le - lb > 10 || re - k > 10) return false;
+        bool plain = true;   // «это то же самое, что и я»: a side of pronouns only is no line
+        for (size_t i = k; i < re; ++i) plain = plain && (PlainStop(w[i]) || kThat.count(w[i]));
+        if (plain) return false;
+        out->kind = TeachKind::Means;
+        out->same = true;
+        out->said_text = std::string(heard.substr(sw[lb].begin, sw[le - 1].end - sw[lb].begin));
+        out->said = Join(w, lb, le);
+        out->rest = std::string(heard.substr(sw[k].begin, sw[re - 1].end - sw[k].begin));
         return true;
     }
     return false;
@@ -720,6 +1012,110 @@ std::string StressedWord(const std::string& word, int syllable, const std::strin
     return EncodeUtf8(out);
 }
 
+namespace {
+
+// a word as a name is written: its first letter a capital (ASCII, Latin-1, Cyrillic)
+std::string CapitalWord(std::string_view word) {
+    std::u32string u = DecodeUtf8(word);
+    if (u.empty()) return std::string(word);
+    char32_t& c = u[0];
+    if (c >= U'a' && c <= U'z') c -= 32;
+    else if (c >= 0xE0 && c <= 0xFE && c != 0xF7) c -= 32;
+    else if (c >= 0x430 && c <= 0x44F) c -= 32;
+    else if (c == 0x451) c = 0x401;
+    return EncodeUtf8(u);
+}
+
+// words no name is made of: «меня зовут на ужин», «меня зовут ужинать», "call me when you're ready", "I'll call you back",
+// "call me a medic", «te llamo luego»
+bool NotAName(const std::string& x) {
+    static const std::unordered_set<std::string> kNot = {
+        "на", "в", "во", "к", "ко", "по", "за", "с", "со", "у", "о", "об", "от", "до", "из", "для", "когда", "если", "потом",
+        "позже", "сейчас", "обратно", "назад", "домой", "всех", "никак", "иначе", "также", "же", "бы", "ли", "и", "а", "но",
+        "или", "when", "if", "back", "later", "in", "on", "at", "to", "for", "out", "up", "off", "over", "a", "an", "the", "and",
+        "or", "but", "again", "maybe", "anything", "something", "whatever", "sometime", "soon", "tomorrow", "tonight", "cuando",
+        "luego", "después", "despues", "más", "mas", "tarde", "en", "por", "para", "con", "y", "pero", "otra", "vez", "mañana",
+        "manana"};
+    if (kNot.count(x) || PlainStop(x)) return true;
+    // a Russian verb: no name ends so
+    const std::u32string u = DecodeUtf8(x);
+    auto ends = [&](std::u32string_view e) { return u.size() > e.size() && u.compare(u.size() - e.size(), e.size(), e) == 0; };
+    return ends(U"ть") || ends(U"ться") || ends(U"тись") || ends(U"чь");
+}
+
+// «тебя зовут Рекс», «я буду звать тебя Рекс», «меня зовут Тимур», «зови меня Тимур», "your name is Rex", "call me Tim",
+// «te llamas Rex», «me llamo Tim» (2026-10-31, the owner): the bot's name or the player's, 1 to 3 words, the rest of the line.
+// A question («тебя зовут Рекс?») is none. «забудь своё имя», «забудь моё имя»: forget it
+bool ReadPersonName(std::string_view heard, const std::vector<std::string>& w, TeachLine* out) {
+    static const std::initializer_list<std::string_view> kLead = {
+        "ну", "слушай", "эй", "брат", "давай", "теперь", "так", "итак", "короче", "с этого момента", "отныне", "кстати", "а",
+        "hey", "ok", "okay", "so", "now", "well", "from now on", "by the way", "listen", "bro", "alright", "all right", "oye",
+        "bueno", "vale", "ahora", "desde ahora", "a partir de ahora", "por cierto", "hermano", "mira", "y"};
+    size_t i = 0;
+    for (int step = 0; step < 3; ++step) {
+        const size_t k = AfterAny(w, i, kLead);
+        if (k == std::string::npos || k >= w.size()) break;
+        i = k;
+    }
+    {
+        const size_t bot = AfterAny(w, i, {"забудь свое имя", "забудь твое имя", "забудь как тебя зовут", "забудь свое новое имя",
+                                           "forget your name", "forget your new name", "olvida tu nombre", "olvídate de tu nombre",
+                                           "olvidate de tu nombre"});
+        const size_t player = AfterAny(w, i, {"забудь мое имя", "забудь как меня зовут", "forget my name", "olvida mi nombre",
+                                              "olvida cómo me llamo", "olvida como me llamo", "olvídate de mi nombre",
+                                              "olvidate de mi nombre"});
+        if (bot == w.size() || player == w.size()) {
+            out->kind = bot == w.size() ? TeachKind::BotName : TeachKind::PlayerName;
+            out->forget = true;
+            return true;
+        }
+    }
+    if (heard.find('?') != std::string_view::npos || heard.find("\xC2\xBF") != std::string_view::npos) return false;   // ? ¿
+    static const std::initializer_list<std::string_view> kBot = {
+        "тебя зовут", "тебя теперь зовут", "теперь тебя зовут", "тебя будут звать", "твое имя", "твое имя будет",
+        "твое новое имя", "твое имя теперь", "твое новое имя будет", "я буду звать тебя", "я буду называть тебя",
+        "буду звать тебя", "буду называть тебя", "я тебя буду звать", "я тебя буду называть", "я тебя назову", "я назову тебя",
+        "назову тебя", "назовем тебя", "давай назовем тебя", "давай я буду звать тебя", "ты будешь зваться", "будешь зваться",
+        "ты теперь зовешься", "ты зовешься", "отныне тебя зовут",
+        "your name is", "your name's", "your names", "your name will be", "your new name is", "your name is now", "i'll call you",
+        "ill call you", "i will call you", "i'm going to call you", "im going to call you", "i'm gonna call you",
+        "im gonna call you", "i name you", "i'll name you", "ill name you", "let's call you", "lets call you", "you're called",
+        "youre called", "you are called", "you'll be called", "youll be called", "you will be called", "i'm calling you",
+        "im calling you", "i call you",
+        "te llamas", "te vas a llamar", "te llamarás", "te llamaras", "tu nombre es", "tu nombre será", "tu nombre sera",
+        "tu nuevo nombre es", "te voy a llamar", "te llamaré", "te llamare", "te llamaremos", "vas a llamarte"};
+    static const std::initializer_list<std::string_view> kPlayer = {
+        "меня зовут", "меня теперь зовут", "теперь меня зовут", "мое имя", "мое имя будет", "зови меня", "называй меня",
+        "можешь звать меня", "можешь называть меня", "меня можно звать", "меня все зовут",
+        "my name is", "my name's", "my names", "my name will be", "call me", "you can call me", "just call me", "i'm called",
+        "im called", "i am called", "people call me", "everyone calls me", "the name's", "the names",
+        "me llamo", "mi nombre es", "llámame", "llamame", "puedes llamarme", "me puedes llamar", "me llaman"};
+    TeachKind kind = TeachKind::None;
+    size_t k = AfterAny(w, i, kBot);
+    if (k != std::string::npos) kind = TeachKind::BotName;
+    else if ((k = AfterAny(w, i, kPlayer)) != std::string::npos) kind = TeachKind::PlayerName;
+    if (kind == TeachKind::None || k >= w.size()) return false;
+    // "now", "just" and a filler round the name: «зови меня просто Тимур», "call me Tim, please"
+    static const std::unordered_set<std::string> kRound = {"теперь", "просто", "now", "just", "ahora", "solo", "sólo", "брат",
+                                                           "bro", "hermano", "пожалуйста", "please", "ok", "okay", "ладно", "vale"};
+    size_t a = k, b = w.size();
+    while (a < b && kRound.count(w[a])) ++a;
+    while (b > a && kRound.count(w[b - 1])) --b;
+    if (b == a || b - a > 3) return false;
+    for (size_t j = a; j < b; ++j)
+        if (NotAName(w[j])) return false;
+    const std::vector<SpanWord> sw = SpanWords(heard);
+    if (sw.size() != w.size()) return false;
+    std::string said;
+    for (size_t j = a; j < b; ++j) said += (said.empty() ? "" : " ") + CapitalWord(heard.substr(sw[j].begin, sw[j].end - sw[j].begin));
+    out->kind = kind;
+    out->rest = Join(w, a, b);
+    out->said_text = said;
+    return true;
+}
+
+}  // namespace
+
 static TeachLine ReadTeachOne(std::string_view heard, const std::string& lang) {
     (void)lang;   // the rules of the three languages never meet in one line: all of them are read
     TeachLine out;
@@ -741,7 +1137,11 @@ static TeachLine ReadTeachOne(std::string_view heard, const std::string& lang) {
         return out;
     }
 
-    // «когда я говорю X, это значит Y»: a line of the player's own for one the bot understands (2026-10-30)
+    // «A — это то же самое, что B»: the same, either side the meaning (2026-10-31). Before «X — это Y» below: «Запомни, сесть
+    // на диван — это то же самое, что ...»
+    if (ReadSame(heard, &out)) return out;
+    // «когда я говорю X, это значит Y», «запомни, что X — это Y»: a line of the player's own for one the bot understands
+    // (2026-10-30, 2026-11-01)
     if (ReadMeans(heard, w, &out)) return out;
     // «в слове замок ударение на первый слог», «говори Buddy как Бадди»: how the voice says a word
     if (ReadPronounce(w, &out)) return out;
@@ -749,6 +1149,8 @@ static TeachLine ReadTeachOne(std::string_view heard, const std::string& lang) {
     if (ReadSpeech(heard, w, &out)) return out;
     // «держись в трёх метрах», «стреляй только по моей команде»: the bot's settings
     if (ReadBehaviour(w, &out)) return out;
+    // «тебя зовут Рекс», «меня зовут Тимур»: the bot's name and the player's (before "forget": «забудь моё имя»)
+    if (ReadPersonName(heard, w, &out)) return out;
 
     // "I meant ...": what the line before meant
     {
@@ -801,7 +1203,14 @@ static TeachLine ReadTeachOne(std::string_view heard, const std::string& lang) {
                                                                "esto", "esta", "este", "eso", "esa", "ese", "es"};
         static const std::unordered_set<std::string> kNot = {"не", "нет", "not", "no", "isn't", "isnt", "nunca"};
         const bool negated = std::any_of(w.begin(), w.end(), [](const std::string& x) { return kNot.count(x) > 0; });
-        if (w.size() <= 5 && kFirst.count(w[0]) && !negated) {
+        // a place word: «вот на жёлтую кровать залезь», "it's on the red table" are orders or where a thing is, not its colour
+        // (2026-11-01, the owner's «Вот на желтую кровать залез.» was "the same colour", and the order was dropped)
+        static const std::unordered_set<std::string> kPlace = {
+            "на", "в", "во", "к", "ко", "за", "под", "над", "через", "по", "до", "от", "из", "у", "около", "возле", "туда", "сюда",
+            "on", "onto", "to", "into", "in", "at", "over", "under", "behind", "through", "near", "there", "here",
+            "en", "al", "sobre", "hacia", "bajo", "debajo", "detrás", "detras", "allí", "alli", "aquí", "aqui"};
+        const bool place = std::any_of(w.begin(), w.end(), [](const std::string& x) { return kPlace.count(x) > 0; });
+        if (w.size() <= 5 && kFirst.count(w[0]) && !negated && !place) {
             const std::vector<std::string> c = ColoursIn(w);
             if (c.size() == 1) {
                 out.kind = TeachKind::Colour;
@@ -874,7 +1283,16 @@ TeachLine ReadTeach(std::string_view heard, const std::string& lang) {
     TeachLine found;
     for (std::string_view part : parts) {
         const TeachLine t = ReadTeachOne(part, lang);
+        // «Меня зовут Тимур, а тебя?», «Слушай. Тебя зовут Рекс, понял?»: a name of the bot or the player in a part of the line;
+        // the first one
+        if (t.kind == TeachKind::BotName || t.kind == TeachKind::PlayerName) {
+            const size_t after = static_cast<size_t>(part.data() - heard.data()) + part.size();
+            const bool asked = after < heard.size() && heard[after] == '?';   // «Тебя зовут Рекс?» is a question
+            if (!asked && found.kind == TeachKind::None) found = t;
+            continue;
+        }
         if (t.kind != TeachKind::Name || t.plain) continue;
+        if (found.kind == TeachKind::BotName || found.kind == TeachKind::PlayerName) continue;
         // "scrap the rappel, call it off", "call it in": "call it" in a part of a line is the radio's, no name
         if (MemoryNorm(part).rfind("call ", 0) == 0) continue;
         bool stop = false;
@@ -1099,6 +1517,124 @@ std::string ColourAdjective(const std::string& id, const std::string& lang, char
     std::string s = id;
     std::replace(s.begin(), s.end(), '_', ' ');
     return s;
+}
+
+int NameQuestion(std::string_view heard) {
+    std::vector<std::string> w = WithoutFiller(MemoryWords(MemoryNorm(heard)));
+    static const std::unordered_set<std::string> kLead = {"а", "ну", "слушай", "скажи", "эй", "так", "hey", "so", "and", "ok",
+                                                          "okay", "oye", "y", "dime"};
+    while (!w.empty() && kLead.count(w[0])) w.erase(w.begin());
+    const std::string line = Join(w, 0, w.size());
+    if (IsAny(line, {"как тебя зовут", "как тебя звать", "как зовут тебя", "тебя как зовут", "как твое имя", "какое у тебя имя",
+                     "какое твое имя", "ты кто", "кто ты", "кто ты такой", "ты кто такой", "напомни как тебя зовут",
+                     "у тебя есть имя", "есть у тебя имя", "твое имя", "как тебя называть", "как к тебе обращаться",
+                     "what's your name", "whats your name", "what is your name", "your name", "who are you", "who're you",
+                     "what are you called", "what do i call you", "what should i call you", "what can i call you",
+                     "tell me your name", "do you have a name", "have you got a name", "you got a name", "say your name",
+                     "cómo te llamas", "como te llamas", "cuál es tu nombre", "cual es tu nombre", "quién eres", "quien eres",
+                     "tienes nombre", "tu nombre", "cómo te llamo", "como te llamo"}))
+        return 1;
+    if (IsAny(line, {"как меня зовут", "ты знаешь как меня зовут", "знаешь как меня зовут", "ты помнишь как меня зовут",
+                     "помнишь как меня зовут", "как мое имя", "какое у меня имя", "ты знаешь мое имя", "знаешь мое имя",
+                     "ты помнишь мое имя", "помнишь мое имя", "кто я", "ты знаешь кто я", "мое имя", "назови мое имя",
+                     "what's my name", "whats my name", "what is my name", "do you know my name", "do you remember my name",
+                     "you know my name", "remember my name", "say my name", "who am i", "do you know who i am",
+                     "what do you call me", "what am i called", "cómo me llamo", "como me llamo", "sabes cómo me llamo",
+                     "sabes como me llamo", "cuál es mi nombre", "cual es mi nombre", "sabes mi nombre", "recuerdas mi nombre",
+                     "te acuerdas de mi nombre", "quién soy", "quien soy", "sabes quién soy", "sabes quien soy", "di mi nombre"}))
+        return 2;
+    return 0;
+}
+
+namespace {
+
+// a word of a name as said when the name calls the bot: the same, or (4+ letters) one letter off («Рэкс» for «Рекс»), or one
+// letter of it not heard («Рес» for «Рекс», 2026-11-01: the open microphone's recognizer; «Маш» for «Маша» is a call too). Not a
+// letter more: that is another form, a call is the name as it is, and «иди к Рексу», «скажи Рексу» call nobody
+bool NameWord(const std::string& said, const std::string& name) {
+    if (said == name) return true;
+    const std::u32string a = DecodeUtf8(said), b = DecodeUtf8(name);
+    if (b.size() >= 4 && a.size() + 1 == b.size()) {
+        size_t i = 0;
+        while (i < a.size() && a[i] == b[i]) ++i;
+        return std::equal(a.begin() + static_cast<std::ptrdiff_t>(i), a.end(), b.begin() + static_cast<std::ptrdiff_t>(i) + 1);
+    }
+    if (b.size() < 4 || a.size() != b.size()) return false;
+    size_t diff = 0;
+    for (size_t i = 0; i < a.size(); ++i) diff += a[i] != b[i];
+    return diff <= 1;
+}
+
+// a byte of punctuation or space at the edge of what is left of a line (a dash written as UTF-8 is cut by its bytes)
+bool EdgeByte(char c) { return std::string_view(" \t,;:-").find(c) != std::string_view::npos || (static_cast<unsigned char>(c) & 0x80) != 0; }
+
+}  // namespace
+
+bool CalledBy(std::string_view heard, const std::string& name, std::string* rest) {
+    const std::vector<std::string> nw = MemoryWords(MemoryNorm(name));
+    const std::vector<SpanWord> sw = SpanWords(heard);
+    if (nw.empty() || sw.size() < nw.size()) return false;
+    static const std::unordered_set<std::string> kHey = {"эй", "ей", "слушай", "hey", "yo", "oi", "oye"};
+    static const std::unordered_set<std::string> kFill = {"эй", "ей", "слушай", "hey", "yo", "oi", "oye", "брат", "братан", "bro",
+                                                          "dude", "hermano", "ну", "please", "пожалуйста", "ты", "you"};
+    auto at = [&](size_t i) {
+        if (i + nw.size() > sw.size()) return false;
+        for (size_t k = 0; k < nw.size(); ++k)
+            if (!NameWord(sw[i + k].norm, nw[k])) return false;
+        return true;
+    };
+    // words [wb, we) as said, from the first one's start to `e` with the commas and spaces before `e` cut (a word's own bytes
+    // stay whole); nothing when they are fillers only («Рекс, брат!», «Эй, Рекс!»)
+    auto left = [&](size_t wb, size_t we, size_t e) {
+        bool words = false;
+        for (size_t j = wb; j < we; ++j) words = words || !kFill.count(sw[j].norm);
+        if (!words) return std::string();
+        const size_t b = sw[wb].begin;
+        while (e > sw[we - 1].end && EdgeByte(heard[e - 1])) --e;
+        return CapitalWord(heard.substr(b, e - b));
+    };
+    size_t i = 0;
+    if (!at(0) && kHey.count(sw[0].norm)) i = 1;   // «Эй, Рекс, ...»
+    if (at(i)) {
+        const size_t after = i + nw.size();
+        *rest = after < sw.size() ? left(after, sw.size(), heard.size()) : std::string();
+        return true;
+    }
+    const size_t from = sw.size() - nw.size();
+    // a bot named as a thing («Камень»): «залезь на камень», "jump on the rock" name the thing, they call nobody
+    static const std::unordered_set<std::string> kThingBefore = {
+        "the", "a", "an", "this", "that", "my", "your", "his", "her", "its", "our", "el", "la", "los", "las", "un", "una", "este",
+        "esta", "ese", "esa", "mi", "tu", "su", "этот", "эта", "это", "эту", "тот", "та", "ту", "мой", "моя", "мою", "твой",
+        "твоя", "твою", "свой", "свою"};
+    // ... unless a comma stands before the name: «Что это, Бади?» calls the bot (2026-11-01, the owner's log: read as a line of its
+    // own, "buddy", and answered "Take care out there.")
+    bool comma = false;
+    if (from > 0)
+        for (size_t c = sw[from - 1].end; c < sw[from].begin && !comma; ++c) comma = heard[c] == ',';
+    if (from > 0 && at(from) && (comma || (!Preposition(sw[from - 1].norm) && !kThingBefore.count(sw[from - 1].norm)))) {
+        // the line before the name and the stop after it: "Come here, Rex." -> "Come here."
+        size_t tail = sw.back().end;
+        while (tail < heard.size() && heard[tail] == ' ') ++tail;
+        std::string head = left(0, from, sw[from].begin);
+        if (!head.empty()) {
+            while (!head.empty() && std::string_view(".!?").find(head.back()) != std::string_view::npos) head.pop_back();
+            head += std::string(heard.substr(tail));
+            if (head.find_last_of(".!?") != head.size() - 1) head += '.';
+        }
+        *rest = head;
+        return true;
+    }
+    return false;
+}
+
+std::string WithAddress(const std::string& line, const std::string& name) {
+    if (name.empty() || line.empty()) return line;
+    size_t end = std::string::npos;   // the first sentence's stop: . ! ? before a space or at the end
+    for (size_t i = 0; i < line.size() && end == std::string::npos; ++i)
+        if ((line[i] == '.' || line[i] == '!' || line[i] == '?') && (i + 1 == line.size() || line[i + 1] == ' ')) end = i;
+    if (end == std::string::npos) return line + ", " + name;
+    while (end > 0 && (line[end - 1] == '.' || line[end - 1] == '!' || line[end - 1] == '?')) --end;   // "..." from its first
+    return line.substr(0, end) + ", " + name + line.substr(end);
 }
 
 }  // namespace coop

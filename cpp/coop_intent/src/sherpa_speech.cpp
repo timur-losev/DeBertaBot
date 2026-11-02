@@ -11,6 +11,31 @@
 
 namespace coop {
 
+namespace {
+
+// Parakeet TDT v3 has no ё among its tokens: «пошёл» comes out «пош<unk>л» (2026-11-01, the owner's «Ты куда пош<unk>л?» was read
+// as HOLSTER). An <unk> with a Cyrillic letter beside it is ё; any other is left as it is
+bool CyrillicByte(const std::string& s, size_t at, bool before) {
+    // a Cyrillic letter in UTF-8 is two bytes, the first 0xD0 or 0xD1
+    if (before) return at >= 2 && (static_cast<unsigned char>(s[at - 2]) == 0xD0 || static_cast<unsigned char>(s[at - 2]) == 0xD1);
+    return at < s.size() && (static_cast<unsigned char>(s[at]) == 0xD0 || static_cast<unsigned char>(s[at]) == 0xD1);
+}
+
+std::string WithYo(std::string s) {
+    static const std::string kUnk = "<unk>";
+    for (size_t at = s.find(kUnk); at != std::string::npos; at = s.find(kUnk, at)) {
+        if (CyrillicByte(s, at, true) || CyrillicByte(s, at + kUnk.size(), false)) {
+            s.replace(at, kUnk.size(), "\xD1\x91");   // ё
+            at += 2;
+        } else {
+            at += kUnk.size();
+        }
+    }
+    return s;
+}
+
+}  // namespace
+
 struct SpeechRecognizer::Impl {
     const SherpaOnnxOfflineRecognizer* recognizer = nullptr;
     ~Impl() {
@@ -80,7 +105,7 @@ bool SpeechRecognizer::Transcribe(const float* samples, size_t count, int sample
     SherpaOnnxAcceptWaveformOffline(stream, sample_rate, samples, static_cast<int32_t>(count));
     SherpaOnnxDecodeOfflineStream(impl_->recognizer, stream);
     const SherpaOnnxOfflineRecognizerResult* result = SherpaOnnxGetOfflineStreamResult(stream);
-    if (result && result->text) *text = result->text;
+    if (result && result->text) *text = WithYo(result->text);
     if (words && result && result->timestamps && result->tokens_arr && result->count > 0) {
         std::vector<std::string> tokens;
         std::vector<float> starts;
@@ -89,10 +114,98 @@ bool SpeechRecognizer::Transcribe(const float* samples, size_t count, int sample
             starts.push_back(result->timestamps[i]);
         }
         *words = SpeechWords(tokens, starts);
+        for (SpeechWord& w : *words) w.text = WithYo(w.text);
     }
     if (result) SherpaOnnxDestroyOfflineRecognizerResult(result);
     SherpaOnnxDestroyOfflineStream(stream);
     return true;
 }
+
+// ---- VoiceActivity: Silero VAD through sherpa-onnx's C API -----------------------------------------------------------------
+
+struct VoiceActivity::Impl {
+    const SherpaOnnxVoiceActivityDetector* vad = nullptr;
+    std::string model;   // the config keeps the pointer
+    VadOptions options;
+    std::vector<float> pending;   // less than a window, until the next Accept
+    long long fed = 0;
+    static constexpr int kWindow = 512;   // Silero v5 at 16 kHz
+    ~Impl() {
+        if (vad) SherpaOnnxDestroyVoiceActivityDetector(vad);
+    }
+};
+
+VoiceActivity::VoiceActivity() : impl_(new Impl) {}
+VoiceActivity::~VoiceActivity() = default;
+
+bool VoiceActivity::Ready() const { return impl_->vad != nullptr; }
+
+bool VoiceActivity::Load(const VadOptions& options, std::string* error) {
+    if (!std::ifstream(std::filesystem::u8path(options.model), std::ios::binary)) {
+        if (error) *error = "cannot open " + options.model;
+        return false;
+    }
+    Impl& s = *impl_;
+    if (s.vad) SherpaOnnxDestroyVoiceActivityDetector(s.vad), s.vad = nullptr;
+    s.options = options;
+    s.model = options.model;
+    SherpaOnnxVadModelConfig config;
+    std::memset(&config, 0, sizeof config);
+    config.silero_vad.model = s.model.c_str();
+    config.silero_vad.threshold = options.threshold;
+    config.silero_vad.min_silence_duration = options.min_silence;
+    config.silero_vad.min_speech_duration = options.min_speech;
+    config.silero_vad.max_speech_duration = options.max_speech;
+    config.silero_vad.window_size = Impl::kWindow;
+    config.sample_rate = kSampleRate;
+    config.num_threads = 1;
+    config.provider = "cpu";
+    s.vad = SherpaOnnxCreateVoiceActivityDetector(&config, options.max_speech + 10.0f);
+    s.pending.clear();
+    s.fed = 0;
+    if (!s.vad) {
+        if (error) *error = "sherpa-onnx refused the voice detector " + options.model;
+        return false;
+    }
+    return true;
+}
+
+void VoiceActivity::Accept(const float* samples, size_t count) {
+    Impl& s = *impl_;
+    if (!s.vad) return;
+    s.pending.insert(s.pending.end(), samples, samples + count);
+    size_t at = 0;
+    for (; at + Impl::kWindow <= s.pending.size(); at += Impl::kWindow) {
+        SherpaOnnxVoiceActivityDetectorAcceptWaveform(s.vad, s.pending.data() + at, Impl::kWindow);
+        s.fed += Impl::kWindow;
+    }
+    s.pending.erase(s.pending.begin(), s.pending.begin() + static_cast<std::ptrdiff_t>(at));
+}
+
+bool VoiceActivity::Speaking() const { return impl_->vad && SherpaOnnxVoiceActivityDetectorDetected(impl_->vad) != 0; }
+
+bool VoiceActivity::Pop(VadPhrase* out) {
+    Impl& s = *impl_;
+    if (!s.vad || SherpaOnnxVoiceActivityDetectorEmpty(s.vad)) return false;
+    const SherpaOnnxSpeechSegment* seg = SherpaOnnxVoiceActivityDetectorFront(s.vad);
+    if (seg) {
+        out->start = seg->start;
+        out->samples.assign(seg->samples, seg->samples + seg->n);
+        SherpaOnnxDestroySpeechSegment(seg);
+    }
+    SherpaOnnxVoiceActivityDetectorPop(s.vad);
+    return seg != nullptr;
+}
+
+void VoiceActivity::Reset() {
+    Impl& s = *impl_;
+    if (!s.vad) return;
+    // made again: a phrase's start counts from 0 for certain (the C API does not say whether its reset restarts the count)
+    const VadOptions options = s.options;
+    std::string unused;
+    Load(options, &unused);
+}
+
+long long VoiceActivity::Fed() const { return impl_->fed; }
 
 }  // namespace coop

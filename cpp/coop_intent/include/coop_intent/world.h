@@ -102,6 +102,9 @@ struct WorldState {
     std::vector<std::pair<std::string, std::vector<CatalogEntry>>> catalog;
     // the map the entities are on (the long-term memory keeps a thing's name and colour per map); empty: not sent
     std::string map;
+    // the bot's name in the game (its player state's: the definition's, or the one the player gave it); for coop_cli, which
+    // answers to it. Not in world.py: no rule reads it
+    std::string bot_name;
     // the things the line names by a name or a colour the player taught (coop_cli, bot_memory.h): among the entities a
     // place of the line fits, one of these is that place. Not from the game and not in world.py: empty, nothing changes
     std::vector<std::string> named;

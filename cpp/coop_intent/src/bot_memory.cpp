@@ -35,6 +35,7 @@ std::string ColourEntity(const std::string& map, const std::string& entity) { re
 std::string SayEntity(const std::string& lang, const std::string& word) { return "say|" + lang + kSep + word; }
 std::string PhraseEntity(const std::string& lang, const std::string& from) { return "phrase|" + lang + kSep + from; }
 std::string SettingEntity(const std::string& name) { return std::string("setting|player") + kSep + name; }
+std::string PersonEntity(const std::string& who) { return "person|" + who + kSep + "name"; }
 
 // "line|ru|heard" -> {"ru", "heard"}; false when it is not of that kind
 bool Split(const std::string& entity, const std::string& kind, std::string* a, std::string* b) {
@@ -79,6 +80,7 @@ struct BotMemory::Impl {
     std::vector<MemorySaying> sayings;
     std::vector<MemoryPhrase> phrases;
     std::vector<MemorySetting> settings;
+    std::vector<MemoryPerson> people;
 
     // the facts in force, read back after every write: a few hundred at most
     void Reload() {
@@ -88,6 +90,7 @@ struct BotMemory::Impl {
         sayings.clear();
         phrases.clear();
         settings.clear();
+        people.clear();
         for (const waxcpp::StructuredMemoryEntry& e : wax->RecallFactsByEntityPrefix("", -1)) {
             std::string a, b;
             // when it was kept: a compacted file has the first time in "kept_ms"
@@ -114,6 +117,8 @@ struct BotMemory::Impl {
                 phrases.push_back({a, b, Meta(e.metadata, "mute") == "1" ? std::string() : e.value, at, Meta(e.metadata, "word") == "1"});
             } else if (Split(e.entity, "setting", &a, &b) && e.attribute == "value") {
                 settings.push_back({b, std::atof(e.value.c_str()), at});
+            } else if (Split(e.entity, "person", &a, &b) && b == "name" && e.attribute == "name") {
+                people.push_back({a, e.value, at});
             }
         }
     }
@@ -246,6 +251,10 @@ void BotMemory::Close() {
     impl_->lines.clear();
     impl_->names.clear();
     impl_->colours.clear();
+    impl_->sayings.clear();
+    impl_->phrases.clear();
+    impl_->settings.clear();
+    impl_->people.clear();
 }
 
 bool BotMemory::IsOpen() const { return impl_->wax != nullptr; }
@@ -272,10 +281,15 @@ bool BotMemory::KeepLine(const MemoryLine& line, std::string* err) {
 
 const MemoryLine* BotMemory::LineFor(const std::string& lang, const std::string& heard) const {
     if (heard.empty()) return nullptr;
+    // a pattern («сесть на {x}», MakePattern) is no line: coop_cli matches those (MatchPattern)
+    auto line = [&](const MemoryLine& l) { return l.lang == lang && l.heard.find("{x}") == std::string::npos; };
     for (const MemoryLine& l : impl_->lines)
-        if (l.lang == lang && l.heard == heard) return &l;
+        if (line(l) && l.heard == heard) return &l;
     for (const MemoryLine& l : impl_->lines)
-        if (l.lang == lang && NearLine(l.heard, heard)) return &l;
+        if (line(l) && NearLine(l.heard, heard)) return &l;
+    // its verbs in another form: «сесть на стул» taught, «сядь на стул» said (2026-10-31)
+    for (const MemoryLine& l : impl_->lines)
+        if (line(l) && SameLine(l.heard, heard)) return &l;
     return nullptr;
 }
 
@@ -336,12 +350,39 @@ bool BotMemory::ForgetName(const std::string& map, const std::string& entity, co
     return impl_->Write(err, [&] { impl_->wax->ForgetFact(NameEntity(map, entity), lang); });
 }
 
+bool BotMemory::ForgetColour(const std::string& map, const std::string& entity, bool* any, std::string* err) {
+    *any = false;
+    for (const MemoryColour& c : impl_->colours) *any = *any || (c.map == map && c.entity == entity);
+    if (!*any) return true;
+    return impl_->Write(err, [&] { impl_->wax->ForgetFact(ColourEntity(map, entity), "colour"); });
+}
+
 const std::vector<MemoryLine>& BotMemory::Lines() const { return impl_->lines; }
 const std::vector<MemoryName>& BotMemory::Names() const { return impl_->names; }
 const std::vector<MemoryColour>& BotMemory::Colours() const { return impl_->colours; }
 const std::vector<MemorySaying>& BotMemory::Sayings() const { return impl_->sayings; }
 const std::vector<MemoryPhrase>& BotMemory::Phrases() const { return impl_->phrases; }
 const std::vector<MemorySetting>& BotMemory::Settings() const { return impl_->settings; }
+const std::vector<MemoryPerson>& BotMemory::People() const { return impl_->people; }
+
+bool BotMemory::KeepPerson(const MemoryPerson& person, std::string* err) {
+    if (person.who.empty() || person.name.empty()) return *err = "memory: a person's name needs whose it is and the name", false;
+    return impl_->Write(err, [&] {
+        impl_->wax->RememberFact(PersonEntity(person.who), "name", person.name, {{"kind", "person"}, {"kept_ms", KeptMs(person.at_ms)}});
+    });
+}
+
+bool BotMemory::ForgetPerson(const std::string& who, bool* any, std::string* err) {
+    *any = PersonFor(who) != nullptr;
+    if (!*any) return true;
+    return impl_->Write(err, [&] { impl_->wax->ForgetFact(PersonEntity(who), "name"); });
+}
+
+const MemoryPerson* BotMemory::PersonFor(const std::string& who) const {
+    for (const MemoryPerson& p : impl_->people)
+        if (p.who == who) return &p;
+    return nullptr;
+}
 
 bool BotMemory::KeepPhrase(const MemoryPhrase& phrase, std::string* err) {
     if (phrase.from.empty()) return *err = "memory: a phrase needs the bot's line", false;

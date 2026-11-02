@@ -14,6 +14,7 @@
 # Layout written:  <Target>\coop_cli.exe, onnxruntime.dll, sherpa-onnx-c-api.dll
 #                  <Target>\bot\      intent_config.json, vocab.tsv, model*.onnx
 #                  <Target>\stt\      encoder.int8.onnx, decoder.int8.onnx, joiner.int8.onnx, tokens.txt
+#                  <Target>\vad\      silero_vad.onnx, LICENSE (the open microphone, -Vad; 2.3 MB)
 #                  <Target>\deployed.json   what was copied, from where, when
 # with -Chain (rewriter.h; the game then starts the service with `--chain <Target>\chain`):
 #                  <Target>\llama.dll, ggml*.dll, libomp.dll      llama.cpp, from a build that found it (setup_llama.ps1)
@@ -43,7 +44,10 @@ param(
     [string]$Replies = (Join-Path $PSScriptRoot '..\..\..\scripts\coop\replies'),
     # the players' languages' voices: name=folder[@speaker] ("ru=...\vits-piper-ru_RU-denis-medium", "es_kokoro=...\kokoro-multi-lang-v1_0@53");
     # the name's first two letters are the voice's language. Each goes to <Target>\voice_<name>; none given keeps what is there
-    [string[]]$LocalVoices = @()
+    [string[]]$LocalVoices = @(),
+    # the open microphone's voice detector (Silero VAD v5, MIT; coop_cli --vad, 2026-11-01) -> <Target>\vad\silero_vad.onnx and
+    # its LICENSE; '' or a folder without it leaves <Target>\vad as it is
+    [string]$Vad = (Join-Path $PSScriptRoot '..\..\..\scripts\coop\stt\models\silero_vad')
 )
 $ErrorActionPreference = 'Stop'
 $repo = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
@@ -60,6 +64,11 @@ Copy-Item "$botDir\intent_config.json", "$botDir\vocab.tsv" "$Target\bot" -Force
 Get-ChildItem "$Target\bot" -Filter '*.onnx' | Where-Object { $members -notcontains $_.Name } | Remove-Item -Force   # another bot's members
 foreach ($f in $members) { Copy-Item "$botDir\$f" "$Target\bot" -Force }
 foreach ($f in 'encoder.int8.onnx', 'decoder.int8.onnx', 'joiner.int8.onnx', 'tokens.txt') { Copy-Item "$Stt\$f" "$Target\stt" -Force }
+if ($Vad -and (Test-Path "$Vad\silero_vad.onnx")) {
+    New-Item -ItemType Directory -Force "$Target\vad" | Out-Null
+    Copy-Item "$Vad\silero_vad.onnx" "$Target\vad" -Force
+    if (Test-Path "$Vad\LICENSE") { Copy-Item "$Vad\LICENSE" "$Target\vad" -Force }
+}
 # llama.cpp's DLLs go with the exe whenever its build found llama.cpp: the exe links them, chain or no chain (a brain
 # deployed without -Chain, e.g. the v6x one, otherwise ends at once with STATUS_DLL_NOT_FOUND, 0xC0000135)
 if (Test-Path "$Build\llama.dll") {

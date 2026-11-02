@@ -67,4 +67,42 @@ private:
     std::unique_ptr<Impl> impl_;
 };
 
+// Phrases in an open microphone (2026-11-01, the owner: no talk key, the bot hears a line when it is called by its name):
+// Silero VAD v5 (silero_vad.onnx, MIT, scripts/coop/stt/models/silero_vad) through sherpa-onnx cuts the stream into phrases,
+// each ended by a pause of min_silence seconds.
+struct VadOptions {
+    std::string model;             // silero_vad.onnx
+    float threshold = 0.5f;        // speech probability
+    float min_silence = 0.6f;      // the pause that ends a phrase, s
+    float min_speech = 0.25f;      // shorter is not a phrase, s
+    float max_speech = 20.0f;      // a longer one is cut
+};
+
+// A phrase: its samples (16 kHz, -1..1) and where it began, in samples fed since Load or Reset
+struct VadPhrase {
+    long long start = 0;
+    std::vector<float> samples;
+};
+
+class VoiceActivity {
+public:
+    static constexpr int kSampleRate = 16000;
+    VoiceActivity();
+    ~VoiceActivity();
+    VoiceActivity(const VoiceActivity&) = delete;
+    VoiceActivity& operator=(const VoiceActivity&) = delete;
+
+    bool Load(const VadOptions& options, std::string* error);
+    bool Ready() const;
+    void Accept(const float* samples, size_t count);   // 16 kHz, any count
+    bool Speaking() const;                             // inside a phrase now
+    bool Pop(VadPhrase* out);                          // the oldest phrase that ended; false: none
+    void Reset();                                      // drops everything, the count starts again
+    long long Fed() const;                             // samples fed since Load or Reset
+
+private:
+    struct Impl;
+    std::unique_ptr<Impl> impl_;
+};
+
 }  // namespace coop

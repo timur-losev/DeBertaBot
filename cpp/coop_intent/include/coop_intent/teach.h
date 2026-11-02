@@ -13,6 +13,10 @@
 //   means     «когда я говорю бабах, это значит кидай гранату», "when I say boom, it means throw a grenade", «cuando digo
 //             bum, significa lanza una granada»: a line of the player's own for what the bot already understands (2026-10-30,
 //             the owner: the player teaches the bot everything; one kind of what is taught). The bot asks before it keeps it.
+//             Also «A — это то же самое, что B», «Смотри, A. Это то же самое, что B. Научись.», "A is the same as B", «A es lo
+//             mismo que B» (2026-10-31, the owner taught «сесть на стул» so): either side may be the meaning (`same`), the bot
+//             takes the one it reads as orders. A place both sides name is a slot (MakePattern): «сесть на {x}» means
+//             «запрыгнуть на {x} и присесть» for any thing, «него» too.
 //   pronounce «в слове замок ударение на первый слог», «говори Buddy как Бадди», "pronounce Buddy as Baddy": how the bot's
 //             voice says a word (the text on the screen stays as it is). The bot says it the new way and asks.
 //   speech    «вместо «выдвигаюсь» говори «пошёл»», «не говори «брат»», «так не говори, говори «есть»», "say Y instead of X",
@@ -20,6 +24,11 @@
 //   behaviour «держись в трёх метрах», «держись поближе», «открывай огонь с двадцати метров», «стреляй только по моей
 //             команде» / «стреляй сам», «говори медленнее», "stay 3 meters from me", «mantente a 3 metros»: one of the bot's
 //             settings the game lets the player change. The bot asks; «веди себя как раньше» forgets them all.
+//   bot name  «тебя зовут Рекс», «я буду звать тебя Рекс», "your name is Rex", "I'll call you Rex", «te llamas Rex»: the
+//             bot's own name (2026-10-31, the owner: the player names their bot, and the bot answers to it). «забудь своё
+//             имя», "forget your name": the game's name again.
+//   player name «меня зовут Тимур», «зови меня Тимур», "my name is Tim", "call me Tim", «me llamo Tim»: the player's name;
+//             the bot says it now and then. «забудь моё имя», "forget my name".
 //
 // Every rule reads the whole line: a line that only starts like one of these ("this is where we go") is an order.
 #pragma once
@@ -53,6 +62,34 @@ double TrigramJaccard(const std::string& a, const std::string& b);
 // «оружейка» «оружейку», "table" "tables". Fleeting vowels («угол», «угла») are not caught
 bool WordForm(const std::string& said, const std::string& taught);
 
+// a verb said in another of its forms (2026-10-31, the owner taught «сесть на стул» and says «сядь на стул»): the infinitive
+// and the imperative of one verb, reflexive or not («сесть», «сядь», «садись»; «запрыгнуть», «запрыгни»; «лечь», «ляг»,
+// «ложись»; «sentarse», «siéntate»), by their stems: the endings off, one last vowel off, a few Russian roots' alternations
+// written one way. Two stems of 3+ letters one of which begins the other with at most two letters more match too
+// («прыгнуть», «прыгай»). Words of two letters match only themselves
+bool VerbForm(const std::string& said, const std::string& taught);
+// a word of a taught line said as it was taught: the same word, another form of it (WordForm, either way) or of its verb
+bool SameWord(const std::string& said, const std::string& taught);
+
+// A meaning taught with a place both lines name (2026-10-31): «сесть на стул» means «запрыгнуть на стул и присесть», so «сесть
+// на {x}» means «запрыгнуть на {x} и присесть» -- «сядь на диван», «сядь на него». The place: the longest run of 1 to 4 words
+// (the same words or their forms) after a preposition in both lines, no conjunction or preposition in it. key: the said
+// words with the place as {x}; meaning: the meaning as said with every time it names that place as {x}. slot false: no
+// place in both, key the said words and meaning as said
+struct TaughtPattern {
+    std::string key, meaning;
+    bool slot = false;
+};
+TaughtPattern MakePattern(const std::string& said, std::string_view meant);
+// a heard line said as a pattern's key: its words in their forms (SameWord), {x} 1 to 5 words of the line with no conjunction
+// in them («сядь на стул и стреляй» is two orders); a filler before or after («брат», «давай», "please") does not count. *slot: the place as said in `heard`; *fixed:
+// the key's words that are not {x}
+bool MatchPattern(const std::string& key, std::string_view heard, std::string* slot, size_t* fixed);
+// the meaning with {x} as the place said
+std::string FillPattern(const std::string& meaning, const std::string& slot);
+// a line said as a kept one in its words' forms: as many words, each SameWord (bot_memory.h LineFor, after NearLine)
+bool SameLine(const std::string& kept, const std::string& line);
+
 // where a taught name (its words) is said in a line (its words), word by word in that order; false: nowhere.
 // *begin, *end: the span in the line's words
 bool FindWords(const std::vector<std::string>& line, const std::vector<std::string>& name, size_t from, size_t* begin, size_t* end);
@@ -63,8 +100,9 @@ const std::vector<std::string>& ColourIds();
 // the colour ids the words of a line name, in line order, each once
 std::vector<std::string> ColoursIn(const std::vector<std::string>& words);
 
-enum class TeachKind { None, Meant, NotThat, Name, Colour, Forget, Means, Pronounce, Speech, Behaviour };
-// "none", "meant", "not_that", "name", "colour", "forget", "means", "pronounce", "speech", "behaviour"
+enum class TeachKind { None, Meant, NotThat, Name, Colour, Forget, Means, Pronounce, Speech, Behaviour, BotName, PlayerName };
+// "none", "meant", "not_that", "name", "colour", "forget", "means", "pronounce", "speech", "behaviour", "bot_name",
+// "player_name"
 const char* TeachKindName(TeachKind k);
 
 struct TeachLine {
@@ -91,6 +129,12 @@ struct TeachLine {
     // fire_on_command, voice_speed; empty with `forget`: all as before) to `value`, or the current value times `scale`
     std::string setting;
     double value = 0, scale = 0;
+    // means said as «A — это то же самое, что B»: `said_text` A as said (`said` normalized), `rest` B as said, and either may
+    // be the meaning
+    bool same = false;
+    std::string said_text;
+    // bot name, player name: `rest` the name normalized, `said_text` as said with each word's first letter a capital
+    // («Рекс», "Tim"); `forget`: «забудь своё имя» / «забудь моё имя»
 };
 
 // a number said in words or digits in ru / en / es («двух», «двадцать пять», "three", «tres», "2,5"), from words[i]; *next:
@@ -127,6 +171,20 @@ int YesNo(std::string_view heard);
 
 // words that name no kind of thing: «штука», «вещь», "thing", "one", «cosa»
 bool GenericThingWord(const std::string& word);
+
+// A question about a name (2026-10-31): 1 the bot's own («как тебя зовут?», "what's your name?", "who are you?", «¿cómo te
+// llamas?»), 2 the player's («как меня зовут?», "do you know my name?", «¿cómo me llamo?»), 0 neither
+int NameQuestion(std::string_view heard);
+
+// The line calls the bot by its name, at its start or its end («Рекс, иди сюда», «Эй, Рекс!», "come here, Rex"): the name's
+// words as they are (a call is no other form: «иди к Рексу» calls nobody), or one letter off in a word of 4+ letters (the
+// recognizer's «Рэкс» for «Рекс»).
+// *rest: the line without the name as said, its first letter a capital (empty: the name alone, a filler or "hey" at most)
+bool CalledBy(std::string_view heard, const std::string& name, std::string* rest);
+
+// The bot's line with the player's name said to them at the end of its first sentence: «Понял.» -> «Понял, Тимур.»,
+// "On my way. Ten seconds." -> "On my way, Tim. Ten seconds."
+std::string WithAddress(const std::string& line, const std::string& name);
 
 // a colour (ColourIds) as the bot says it of a thing. en: "yellow", "light blue"; ru: for a noun of gender 'm', 'f', 'n'
 // or 'p' (plural), accusative or not («жёлтый», «жёлтую»); es: 'm' or 'f' («amarillo», «amarilla»). Empty: unknown

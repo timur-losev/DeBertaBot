@@ -324,18 +324,25 @@ bool Planner::DropsByThing(std::string_view text, const PlaceRecord& record) con
     return t.object >= 0 && t.pointer == PlacePointer::None;
 }
 
-// world.without_item_place: the line's places without the one that is the item itself (BUILD, COLLECT, DELIVER)
+// world.without_item_place: the line's places without the one that is the item itself (BUILD, COLLECT, DELIVER); a bare
+// "it" in a line that names the item is the item too ("pick up this box and carry it to the rock": to the rock)
 static PlaceRecord WithoutItemPlace(const PlaceRecord& record, const std::string& item, bool keeps_object, const LocationMatcher& places) {
     const int obj = keeps_object ? ItemObject(item, places) : -1;
     if (obj < 0 || record.targets.empty()) return record;
+    bool named = false;
+    for (const PlaceTarget& t : record.targets) named = named || t.object == obj;
+    if (!named) return record;
+    auto item_too = [obj](const PlaceTarget& t) {
+        return t.object == obj || (t.pointer == PlacePointer::It && t.object < 0 && t.zone < 0 &&
+                                   t.direction == PlaceDirection::None && t.role == PlaceRole::None);
+    };
     PlaceRecord out;
     int primary = -1;
     for (size_t i = 0; i < record.targets.size(); ++i) {
-        if (record.targets[i].object == obj) continue;
+        if (item_too(record.targets[i])) continue;
         if (static_cast<int>(i) == record.primary) primary = static_cast<int>(out.targets.size());
         out.targets.push_back(record.targets[i]);
     }
-    if (out.targets.size() == record.targets.size()) return record;
     if (primary < 0) {
         for (size_t i = 0; i < out.targets.size(); ++i)
             if (out.targets[i].role == PlaceRole::None) {
@@ -568,6 +575,20 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
         keep([&](const WorldEntity* e) {
             return e->qualifier == qual || std::find(world.named.begin(), world.named.end(), e->id) != world.named.end();
         });
+    // "the red chair" (the owner, 2026-10-30): the vocabulary gives chairs no colour, the map's marker does. The things of the
+    // kind that have the qualifier said (or the colour the player taught, WorldState::named) are what the line means; with
+    // none, it is a modifier the map cannot express, as before. Not in world.py: its worlds give no thing such a qualifier
+    bool said_kept = false;
+    if (t.flag == PlaceFlag::UnknownModifier && t.said_qualifier >= 0) {
+        const std::string said = places.QualifierId(t.said_qualifier);
+        std::vector<const WorldEntity*> with;
+        for (const WorldEntity* e : cands)
+            if (e->qualifier == said || std::find(world.named.begin(), world.named.end(), e->id) != world.named.end()) with.push_back(e);
+        if (!with.empty()) {
+            cands = std::move(with);
+            said_kept = true;
+        }
+    }
     if (!zone.empty() && !WayZone(zone)) keep([&](const WorldEntity* e) { return OnZone(*e, zone); });   // "the door upstairs": a door on a floor above
     // "up the blue stairs": up is the way along a vertical object, not where it stands
     const bool along = (t.direction == PlaceDirection::Up || t.direction == PlaceDirection::Down) && places.Vertical(t.object);
@@ -589,7 +610,7 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
     if (looked && gaze && std::find(ids.begin(), ids.end(), gaze->id) != ids.end())
         return Out("resolved", gaze->id, ids, "gaze");
     if (cands.size() == 1) return Out("resolved", ids[0], ids, "only");
-    if (t.flag == PlaceFlag::UnknownModifier) return Out("ambiguous", {}, ids, "unknown_modifier");
+    if (t.flag == PlaceFlag::UnknownModifier && !said_kept) return Out("ambiguous", {}, ids, "unknown_modifier");
     // "the table" of the thing the talk was about (the owner, 2026-10-27: «На белый стол», then «Поставь коробку у стола» asked
     // "Which table?"): the one named last, kItSeconds fresh by the game's clock, as "it" is; the crosshair on one of them comes
     // first. Weaker than "it": with no clock the age is unknown, and the bot asks as before

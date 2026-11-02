@@ -19,6 +19,10 @@ public:
     bool Start(std::string* error);
     void Begin();                    // the key went down
     std::vector<float> End();        // the key went up: the clip, samples in -1..1
+    // the open microphone (coop_cli --serve's "open_mic", 2026-11-01): with the tap on, everything heard is kept for Drain,
+    // clip or no clip (60 s at most: the oldest goes); off drops it
+    void Tap(bool on);
+    void Drain(std::vector<float>* out);   // appends what was heard since the last Drain, samples in -1..1
 
 private:
     struct Impl;

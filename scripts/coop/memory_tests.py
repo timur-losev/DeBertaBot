@@ -28,7 +28,7 @@ KEYS = {e["id"] for e in ENTITIES}
 MAP = "/Game/Maps/L_MemoryTest"
 
 
-def world(t, step, tags=None):
+def world(t, step, tags=None, bot_name=None):
     n = int(t) // 10
     drop = set(step.get("drop", []))
     tags = tags or {}
@@ -36,8 +36,10 @@ def world(t, step, tags=None):
     gaze = step.get("gaze")
     if gaze in KEYS:
         gaze = f"{gaze}_{n}"
-    return {"entities": entities, "player_gaze": gaze, "player": {"downed": False}, "bot": {"stance": "stand", "items": []},
-            "time": t, "map": step.get("map", MAP)}
+    bot = {"stance": "stand", "items": []}
+    if bot_name:
+        bot["name"] = bot_name   # the game's name of the bot (its player state's)
+    return {"entities": entities, "player_gaze": gaze, "player": {"downed": False}, "bot": bot, "time": t, "map": step.get("map", MAP)}
 
 
 def strip_count(v):
@@ -167,7 +169,7 @@ def run(args, sc, folder):
             print(f"  ok  (a pause of {step['pause']} s)")
             continue
         if "say" in step:
-            r = b.send({"cmd": "text", "text": step["say"], "world": world(t, step, sc.get("tags"))})
+            r = b.send({"cmd": "text", "text": step["say"], "world": world(t, step, sc.get("tags"), sc.get("bot_name"))})
             shown = step["say"] + (f" @{step['gaze']}" if step.get("gaze") else "")
         else:
             r = b.send(step["cmd"])

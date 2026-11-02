@@ -39,12 +39,24 @@ PLANNER = [
     ("Got it, I'll remember.", "coop_cli.cpp memory: a name, a colour or a meaning kept (before the order's own words)"),
     ("Forgotten.", "coop_cli.cpp memory: 'forget the name', 'forget <a line>'"),
     ("I don't remember that.", "coop_cli.cpp memory: 'forget ...' with nothing kept"),
+    ("I can't undo that one.", "coop_cli.cpp kCannotUndo: «не надо было запоминать» after a setting or a phrase was kept (2026-11-01)"),
     ("Then what is it?", "coop_cli.cpp memory: 'no' right after the bot answered 'what is that?'; the next line says what it is"),
+    ("Yes or no?", "coop_cli.cpp kYesOrNo: a sound for the answer to 'Shall I remember ...?' (the owner's «да» heard as 'B.'); the question stays"),
     ("Shall I remember it as {thing}?", "coop_cli.cpp memory: 'no, it's a red lantern', 'this is the garage': the name as the "
                                         "player said it (in their language); 'yes' keeps it"),
     ("All right, I won't remember it.", "coop_cli.cpp memory: 'no' to 'Shall I remember it as ...?'"),
+    # the bot's name and the player's (coop_cli.cpp, 2026-10-31): {name} is the name as the player said it
+    ("I'm {name} now.", "coop_cli.cpp memory: 'your name is Rex' -- the player named the bot"),
+    ("My name is {name}.", "coop_cli.cpp memory: 'what's your name?' -- the name the player gave the bot, else the game's"),
+    ("Nice to meet you, {name}.", "coop_cli.cpp memory: 'my name is Tim' -- the player told the bot their name"),
+    ("Your name is {name}.", "coop_cli.cpp memory: 'what's my name?'"),
+    ("I don't know your name yet.", "coop_cli.cpp memory: 'what's my name?' before the player told it"),
+    ("Yes?", "coop_cli.cpp kCalled: the player said the bot's name and nothing else ('Rex!'); also 'Right here.', 'I hear you.'"),
     ("I don't know what colour it is.", "coop_cli.cpp memory: 'what colour is it?' at a thing whose colour neither the game "
                                         "nor the player gave"),
+    ("The one {sector}?", "coop_cli.cpp WhichCallout: 'Which door? The one ahead?' when nothing else sets it apart and no other one is that way"),
+    ("You mean {thing}?", "coop_cli.cpp WhichCallout: 'Which chair? You mean the red chair?', the thing offered by its name, colour or "
+                          "qualifier instead of its distance"),
     ("Shall I remember that {thing} is behind this door?", "coop_cli.cpp memory: 'this is the garage' at a door whose inside the "
                                                             "level marks: the room behind it; 'yes' keeps the name"),
     ("That's the door to {thing}.", "coop_cli.cpp memory: 'what is that?' at a door into a room the player named"),
@@ -209,6 +221,20 @@ GAME = [  # the game's own lines (Source/LyraGame/CoopBot)
     ("The first's shut; I can open it.", "the first of several shut doors, by hand"),
     ("The first's shut, and I see no switch.", "the first of several shut doors, no switch"),
     ("The ledge is too high, and there's nothing to stand on.", "after 'I can't get there.': the climb planner found a ledge beyond its jump and no crate to reach"),
+    # 2026-10-31: lying down («ложись») and crawling («ползи к ящику», "crawl to me"): the client's line for a crawl the brain read
+    # as something else (ROLL, RAPPEL, a jump) or not at all
+    ("Crawling.", "a walk on the belly: 'crawl to me', 'crawl to the box'"),
+    # 2026-11-01: what it is doing and where it goes ("where are you going?", «Ты куда пошёл?»: the state "doing", AnswerState),
+    # and closing a door («закрой дверь»: OPEN the other way)
+    ("Heading to {thing}.", "'where are you going?' (state doing): the place of the walk under way"),
+    ("Going in through {thing}.", "'where are you going?': into a room by its door"),
+    ("Going out through {thing}.", "'where are you going?': out of a room by its door"),
+    ("Heading to your pin.", "'where are you going?': to the player's pin"),
+    ("Heading where you pointed.", "'where are you going?': to a spot the player pointed at"),
+    ("Closing it.", "'close the door' (coop_cli: OPEN read from a close; the game: by hand)"),
+    ("It's shut already.", "'close the door' at a door that is shut"),
+    ("It won't close.", "'close the door': used by hand and still open"),
+    ("I can't close that.", "'close' at a thing that does not shut"),
 ]
 # what the bot calls the thing under the crosshair (LyraStarterGame58 CoopBot OVCoop::ThingName and the client's BuildWorld):
 # the slot "thing" lists them, so that the reply tables say them in the player's language
@@ -221,7 +247,9 @@ WHAT_THINGS = ["an enemy", "a teammate", "someone", "a switch", "the floor", "th
                "the north window", "the south window", "the west window", "the east window",
                "the blue table", "the red table", "the yellow table", "the white table", "the brown table",
                "the blue stairs", "the red stairs", "the yellow stairs", "the white stairs", "the brown stairs",
-               "a cardboard box", "a big box", "a small box", "a big spool", "a small spool"]
+               "a cardboard box", "a big box", "a small box", "a big spool", "a small spool",
+               # the place of a walk under way, said with "the" ("Heading to {thing}.", 2026-11-01)
+               "the sofa", "the chair", "the rock", "the roof", "the bed", "the car", "the box", "the crate", "the spool", "the door", "the window", "the table", "the switch"]
 # the brat habit (coop_cli.cpp kBroOff, kBroRelapse; bro.h): the bot agrees to stop calling the player "bro", and the brat
 # persona slips 30 s later
 BRO = [("Okay, I won't anymore.", "the player told it to stop saying 'bro'"), ("Got it, no more.", "the same"),
@@ -246,8 +274,11 @@ SLOTS_NOTE = {
 SLOTS_NOTE["said"] = ("the player's own words, a line the bot could not read, quoted in their language (lowercase, no stops); "
                       "open, no values: the line comes with it")
 SLOTS_NOTE["meant"] = "the player's own words of the line the bot then read, quoted as 'said' is"
+SLOTS_NOTE["name"] = ("a person's name as the player said it: the bot's own ('Rex') or the player's ('Tim'); open, no values: "
+                      "the line comes with it. Said as it is, in the nominative ('*': the words themselves)")
 SLOT_VALUES = {
     "said": [],
+    "name": [],
     "meant": [],
     "where": ["on your pin", "here", "there", "to the left", "to the right", "forward", "back", "up", "down"],
     "sector": ["above", "below", "ahead", "behind you", "on the left", "on the right"],
