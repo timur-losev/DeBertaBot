@@ -1,0 +1,6022 @@
+{
+ "_note": "The owner's spoken lines in the game, 2026.10.31-13.00 .. 2026.11.02-12.00 (log time; the test range), made by extract_owner_talk_v69.py; the room talk on the open microphone left out. decoder: the English order lines where the client logged them; brain: the result; bot: its replies in the player's language.",
+ "items": [
+  {
+   "id": "talk69_0001",
+   "time": "2026.10.31-20.55.29",
+   "text": "Is that",
+   "decoder": [
+    "Is that"
+   ],
+   "brain": "act WHAT_IS_IT 0.79",
+   "bot": [
+    "Это стул, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-20.57.45.log"
+  },
+  {
+   "id": "talk69_0002",
+   "time": "2026.10.31-20.55.32",
+   "text": "Yeah, what",
+   "decoder": [],
+   "brain": "say_again YES 0.36",
+   "bot": [
+    "Брат, не расслышал."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-20.57.45.log"
+  },
+  {
+   "id": "talk69_0003",
+   "time": "2026.10.31-20.55.35",
+   "text": "W",
+   "decoder": [],
+   "brain": "say_again CROUCH 0.18",
+   "bot": [
+    "Брат, не расслышал."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-20.57.45.log"
+  },
+  {
+   "id": "talk69_0004",
+   "time": "2026.10.31-20.55.40",
+   "text": "Говорит, залез сюда.",
+   "decoder": [
+    "Talk to me, get up here."
+   ],
+   "brain": "act MOVE_TO 0.97 -> order MOVE_TO @ red chair up near",
+   "bot": [
+    "Уже иду туда, брат.",
+    "Брат, тут уступ. Запрыгну, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-20.57.45.log"
+  },
+  {
+   "id": "talk69_0005",
+   "time": "2026.10.31-20.55.51",
+   "text": "Можешь залезть выше?",
+   "decoder": [],
+   "brain": "act JUMP 0.99 -> order JUMP",
+   "bot": [
+    "Понял, брат, прыгаю.",
+    "Брат, покажи мне."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-20.57.45.log"
+  },
+  {
+   "id": "talk69_0006",
+   "time": "2026.10.31-20.55.58",
+   "text": "Залезть прям на самый верх.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO aim on nothing",
+   "bot": [
+    "Иду к метке, брат.",
+    "Брат, тут уступ. Запрыгну, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-20.57.45.log"
+  },
+  {
+   "id": "talk69_0007",
+   "time": "2026.10.31-20.56.40",
+   "text": "Вот это верхний. Брат, можешь спрятаться под землю?",
+   "decoder": [
+    "What's this top? Can you hide under it, mate?"
+   ],
+   "brain": "act TAKE_COVER 1.00 -> order TAKE_COVER @ red chair",
+   "bot": [
+    "Брат, ищу укрытие.",
+    "Укрытия нет, брат, пригнусь."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-20.57.45.log"
+  },
+  {
+   "id": "talk69_0008",
+   "time": "2026.10.31-20.56.52",
+   "text": "Спрячься под землю.",
+   "decoder": [],
+   "brain": "act TAKE_COVER 1.00 -> order TAKE_COVER",
+   "bot": [
+    "Прячусь.",
+    "Спрыгиваю.",
+    "Я в укрытии, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-20.57.45.log"
+  },
+  {
+   "id": "talk69_0009",
+   "time": "2026.10.31-20.56.58",
+   "text": "Еще ниже.",
+   "decoder": [],
+   "brain": "act MOVE_TO 0.67 -> order MOVE_TO",
+   "bot": [
+    "Брат, меняю позицию.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-20.57.45.log"
+  },
+  {
+   "id": "talk69_0010",
+   "time": "2026.10.31-20.57.04",
+   "text": "Brat.",
+   "decoder": [],
+   "brain": "say_again PRONE 0.36",
+   "bot": [
+    "Брат, не расслышал."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-20.57.45.log"
+  },
+  {
+   "id": "talk69_0011",
+   "time": "2026.10.31-23.29.30",
+   "text": "Как тебя зовут?",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Меня зовут Buddy, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0012",
+   "time": "2026.10.31-23.29.35",
+   "text": "Нет, тебя зовут Тимур.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Теперь я Тимур, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0013",
+   "time": "2026.10.31-23.29.39",
+   "text": "Как тебя зовут?",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Меня зовут Тимур, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0014",
+   "time": "2026.10.31-23.29.45",
+   "text": "Тимур, иди сюда.",
+   "decoder": [
+    "come here"
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Иду за тобой, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0015",
+   "time": "2026.10.31-23.29.48",
+   "text": "Тим димон туда.",
+   "decoder": [
+    "go there"
+   ],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ there",
+   "bot": [
+    "Уже иду туда, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0016",
+   "time": "2026.10.31-23.29.52",
+   "text": "Тимур, что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "На позиции, брат.",
+    "Это коробка, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0017",
+   "time": "2026.10.31-23.29.55",
+   "text": "Why is me uh",
+   "decoder": [],
+   "brain": "act COVER_ME 0.94 -> order COVER_ME",
+   "bot": [
+    "Прикрою тебе спину, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0018",
+   "time": "2026.10.31-23.29.58",
+   "text": "Возьми коробку.",
+   "decoder": [],
+   "brain": "act COLLECT 1.00 -> order COLLECT",
+   "bot": [
+    "Подбираю.",
+    "Ясно, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0019",
+   "time": "2026.10.31-23.30.03",
+   "text": "Залез с коробкой на красном кровать.",
+   "decoder": [],
+   "brain": "ask JUMP 1.00",
+   "bot": [
+    "Не вижу кровати, брат. Куда, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0020",
+   "time": "2026.10.31-23.30.06",
+   "text": "Вон туда yellowbit.",
+   "decoder": [],
+   "brain": "act COLLECT 1.00 -> order COLLECT",
+   "bot": [
+    "Понял, брат, собираю.",
+    "Ясно, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0021",
+   "time": "2026.10.31-23.30.09",
+   "text": "Что это такое?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это жёлтая кровать, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0022",
+   "time": "2026.10.31-23.30.13",
+   "text": "Вот на желтую кровать залез.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Ясно, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0023",
+   "time": "2026.10.31-23.30.17",
+   "text": "The leaves.",
+   "decoder": [],
+   "brain": "say_again HARVEST 0.63",
+   "bot": [
+    "Ещё раз?"
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0024",
+   "time": "2026.10.31-23.30.20",
+   "text": "Залезь.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ yellow bed",
+   "bot": [
+    "Понял, брат, прыгаю.",
+    "Брат, тут уступ. Запрыгну, брат.",
+    "Брат, тут провал. Перепрыгну, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0025",
+   "time": "2026.10.31-23.30.30",
+   "text": "Yeah.",
+   "decoder": [],
+   "brain": "answer YES 0.75",
+   "bot": [
+    "Да, понял, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0026",
+   "time": "2026.10.31-23.30.32",
+   "text": "Yeah.",
+   "decoder": [],
+   "brain": "answer YES 0.75",
+   "bot": [
+    "Принял, брат: да."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0027",
+   "time": "2026.10.31-23.30.35",
+   "text": "Прыляж.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ yellow bed",
+   "bot": [
+    "Перепрыгиваю.",
+    "Спрыгиваю.",
+    "Не допрыгнул, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0028",
+   "time": "2026.10.31-23.30.41",
+   "text": "Yeah.",
+   "decoder": [],
+   "brain": "answer YES 0.75",
+   "bot": [
+    "Да, понял, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0029",
+   "time": "2026.10.31-23.30.43",
+   "text": "Иди сюда.",
+   "decoder": [
+    "come here"
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Двигаюсь с тобой."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0030",
+   "time": "2026.10.31-23.30.47",
+   "text": "Ляж на пол.",
+   "decoder": [],
+   "brain": "act PRONE 1.00 -> order PRONE aim on the bot",
+   "bot": [
+    "Ложусь."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0031",
+   "time": "2026.10.31-23.30.51",
+   "text": "Stay.",
+   "decoder": [],
+   "brain": "act HOLD_POSITION 1.00 -> order HOLD_POSITION aim on the bot",
+   "bot": [
+    "Брат, остаюсь на месте."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0032",
+   "time": "2026.10.31-23.30.54",
+   "text": "Stine.",
+   "decoder": [],
+   "brain": "say_again PRONE 0.26",
+   "bot": [
+    "Повтори, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0033",
+   "time": "2026.10.31-23.30.56",
+   "text": "Встань.",
+   "decoder": [],
+   "brain": "act STAND_UP 1.00 -> order STAND_UP aim on the bot",
+   "bot": [
+    "Брат, я на ногах."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0034",
+   "time": "2026.10.31-23.31.01",
+   "text": "Возьми коробку.",
+   "decoder": [],
+   "brain": "act COLLECT 1.00 -> order COLLECT",
+   "bot": [
+    "Собираю.",
+    "Ясно, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0035",
+   "time": "2026.10.31-23.31.05",
+   "text": "Yeah.",
+   "decoder": [],
+   "brain": "answer YES 0.75",
+   "bot": [
+    "Да, понял, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0036",
+   "time": "2026.10.31-23.31.07",
+   "text": "Yeah.",
+   "decoder": [],
+   "brain": "answer YES 0.75",
+   "bot": [
+    "Принял, брат: да."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0037",
+   "time": "2026.10.31-23.31.09",
+   "text": "Yeah.",
+   "decoder": [],
+   "brain": "answer YES 0.75",
+   "bot": [
+    "Да, понял, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0038",
+   "time": "2026.10.31-23.31.12",
+   "text": "Lash.",
+   "decoder": [],
+   "brain": "answer YES 0.75",
+   "bot": [
+    "Принял, брат: да."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0039",
+   "time": "2026.10.31-23.31.14",
+   "text": "Ляжи.",
+   "decoder": [],
+   "brain": "act PRONE 1.00 -> order PRONE aim on the bot",
+   "bot": [
+    "Лёг."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0040",
+   "time": "2026.10.31-23.31.18",
+   "text": "Правильно.",
+   "decoder": [],
+   "brain": "answer YES 0.75",
+   "bot": [
+    "Да, понял, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0041",
+   "time": "2026.10.31-23.31.25",
+   "text": "Запомню, что ляж, ях это пляж на пол.",
+   "decoder": [],
+   "brain": "say_again BREACH 0.58",
+   "bot": [
+    "Повтори, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0042",
+   "time": "2026.10.31-23.31.30",
+   "text": "Запомни, что ях это ляж на пол.",
+   "decoder": [
+    "Remember, you'll go prone on the floor for this job."
+   ],
+   "brain": "act PRONE 0.75 -> order PRONE aim on the bot",
+   "bot": [
+    "Лёг. Брат, запомнить, что «запомню что ляж ях это пляж на пол» — это «запомни что ях это ляж на пол»?"
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0043",
+   "time": "2026.10.31-23.31.41",
+   "text": "Нет.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Ладно, брат, не запоминаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0044",
+   "time": "2026.10.31-23.31.44",
+   "text": "Stop.",
+   "decoder": [],
+   "brain": "wait WAIT 1.00 -> order WAIT",
+   "bot": [
+    "Жду."
+   ],
+   "log": "LyraStarterGame-backup-2026.10.31-23.31.55.log"
+  },
+  {
+   "id": "talk69_0045",
+   "time": "2026.11.01-13.21.18",
+   "text": "Как тебя зовут?",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Меня зовут Тимур, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0046",
+   "time": "2026.11.01-13.21.27",
+   "text": "Меня как зовут?",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Само собой, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0047",
+   "time": "2026.11.01-13.21.36",
+   "text": "Меня зовут Лох.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Будем знакомы, Лох."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0048",
+   "time": "2026.11.01-13.21.40",
+   "text": "Тебя зовут бади.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Теперь я Бади, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0049",
+   "time": "2026.11.01-13.21.45",
+   "text": "Байди сюда.",
+   "decoder": [
+    "come here"
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Брат, я прямо за тобой."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0050",
+   "time": "2026.11.01-13.21.51",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это стул, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0051",
+   "time": "2026.11.01-13.21.54",
+   "text": "Залез на него.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ red chair",
+   "bot": [
+    "Понял, брат, прыгаю.",
+    "Брат, тут уступ. Запрыгну, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0052",
+   "time": "2026.11.01-13.22.08",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это камень, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0053",
+   "time": "2026.11.01-13.22.11",
+   "text": "Сядь на камень.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ rock",
+   "bot": [
+    "Перепрыгиваю.",
+    "Спрыгиваю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0054",
+   "time": "2026.11.01-13.22.21",
+   "text": "Залез на камень.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ rock aim on the bot",
+   "bot": [
+    "Прыгаю.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0055",
+   "time": "2026.11.01-13.22.25",
+   "text": "Запрыги на камень.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ rock aim on the bot",
+   "bot": [
+    "Прыгаю.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0056",
+   "time": "2026.11.01-13.22.29",
+   "text": "Встань сюда.",
+   "decoder": [
+    "Stand here."
+   ],
+   "brain": "act HOLD_POSITION 1.00 -> order HOLD_POSITION @ here near",
+   "bot": [
+    "Брат, остаюсь на месте."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0057",
+   "time": "2026.11.01-13.22.33",
+   "text": "Прям сюда встань, прям куда я показываю.",
+   "decoder": [
+    "Stand right here, right where I'm pointing."
+   ],
+   "brain": "act HOLD_POSITION 1.00 -> order HOLD_POSITION @ rock",
+   "bot": [
+    "Брат, остаюсь на месте."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0058",
+   "time": "2026.11.01-13.22.37",
+   "text": "You should have.",
+   "decoder": [],
+   "brain": "say_again NONE 0.65",
+   "bot": [
+    "Брат, не расслышал."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0059",
+   "time": "2026.11.01-13.22.39",
+   "text": "Иди сюда.",
+   "decoder": [
+    "come here"
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Двигаюсь с тобой."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0060",
+   "time": "2026.11.01-13.22.42",
+   "text": "Ляш.",
+   "decoder": [],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near aim on the bot",
+   "bot": [
+    "Иду за тобой, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0061",
+   "time": "2026.11.01-13.22.45",
+   "text": "Yeah.",
+   "decoder": [],
+   "brain": "answer YES 0.75",
+   "bot": [
+    "Понял, это да."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0062",
+   "time": "2026.11.01-13.22.48",
+   "text": "Left на пол.",
+   "decoder": [],
+   "brain": "act PRONE 0.95 -> order PRONE aim on the bot",
+   "bot": [
+    "Брат, лежу на земле."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0063",
+   "time": "2026.11.01-13.22.51",
+   "text": "It's done.",
+   "decoder": [],
+   "brain": "say_again GO_NOW 0.62",
+   "bot": [
+    "Повтори, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0064",
+   "time": "2026.11.01-13.22.53",
+   "text": "Stay.",
+   "decoder": [],
+   "brain": "act HOLD_POSITION 1.00 -> order HOLD_POSITION aim on the bot",
+   "bot": [
+    "Стою здесь, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0065",
+   "time": "2026.11.01-13.22.57",
+   "text": "Все, встань.",
+   "decoder": [],
+   "brain": "act STAND_UP 1.00 -> order STAND_UP aim on the bot",
+   "bot": [
+    "Брат, я на ногах."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0066",
+   "time": "2026.11.01-13.23.02",
+   "text": "Ляж.",
+   "decoder": [],
+   "brain": "act PRONE 1.00 -> order PRONE aim on the bot",
+   "bot": [
+    "Лёг."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0067",
+   "time": "2026.11.01-13.23.07",
+   "text": "Тай на ноги.",
+   "decoder": [],
+   "brain": "act PRONE 0.75 -> order PRONE aim on the bot",
+   "bot": [
+    "Ложусь."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0068",
+   "time": "2026.11.01-13.23.10",
+   "text": "Встань на ноги.",
+   "decoder": [],
+   "brain": "act STAND_UP 1.00 -> order STAND_UP aim on the bot",
+   "bot": [
+    "Брат, я на ногах."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0069",
+   "time": "2026.11.01-13.23.14",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это стена, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0070",
+   "time": "2026.11.01-13.23.16",
+   "text": "А это что?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это стена, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0071",
+   "time": "2026.11.01-13.23.20",
+   "text": "А это что?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это стена, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0072",
+   "time": "2026.11.01-13.23.22",
+   "text": "А это что?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это синяя лестница, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0073",
+   "time": "2026.11.01-13.23.27",
+   "text": "А это что?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это пол, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0074",
+   "time": "2026.11.01-13.23.30",
+   "text": "А это что?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это стена, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0075",
+   "time": "2026.11.01-13.23.33",
+   "text": "Перепрыгни.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ blue stairs",
+   "bot": [
+    "Понял, брат, прыгаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0076",
+   "time": "2026.11.01-13.23.38",
+   "text": "через стену вот эту",
+   "decoder": [
+    "jump over this wall"
+   ],
+   "brain": "act JUMP 1.00 -> order JUMP @ there near",
+   "bot": [
+    "Прыгаю.",
+    "Прыгаю, Лох."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0077",
+   "time": "2026.11.01-13.23.44",
+   "text": "Ещ<unk> раз.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ there",
+   "bot": [
+    "Прыгаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0078",
+   "time": "2026.11.01-13.23.48",
+   "text": "Через стену прям.",
+   "decoder": [],
+   "brain": "say_again JUMP 0.43",
+   "bot": [
+    "Ещё раз?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0079",
+   "time": "2026.11.01-13.23.51",
+   "text": "Перепрыгнем через эту стену.",
+   "decoder": [
+    "Hop over this wall."
+   ],
+   "brain": "act JUMP 1.00 -> order JUMP @ there near",
+   "bot": [
+    "Понял, брат, прыгаю. Брат, запомнить, что «через стену прям» — это «перепрыгнем через эту стену»?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0080",
+   "time": "2026.11.01-13.24.04",
+   "text": "Yeah.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Понял, брат, запомню."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0081",
+   "time": "2026.11.01-13.24.15",
+   "text": "Перепрыгни эту стену.",
+   "decoder": [
+    "jump over this wall"
+   ],
+   "brain": "act JUMP 1.00 -> order JUMP @ there near",
+   "bot": [
+    "Прыгаю.",
+    "Брат, слишком высоко, не перепрыгну."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0082",
+   "time": "2026.11.01-13.24.23",
+   "text": "A tu.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ there near",
+   "bot": [
+    "Прыгаю.",
+    "Прыгаю, Лох."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0083",
+   "time": "2026.11.01-13.24.33",
+   "text": "Открой дверь, заходи вовнутрь.",
+   "decoder": [],
+   "brain": "act OPEN 0.99 -> order OPEN @ north door, inside",
+   "bot": [
+    "Понял, брат.",
+    "Открываю.",
+    "Дверь открыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0084",
+   "time": "2026.11.01-13.24.43",
+   "text": "Second one.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ sofa near",
+   "bot": [
+    "Перепрыгиваю.",
+    "Не допрыгнул, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0085",
+   "time": "2026.11.01-13.24.48",
+   "text": "Сядь, сядь на диван.",
+   "decoder": [],
+   "brain": "act TAKE_COVER 1.00 -> order TAKE_COVER @ sofa",
+   "bot": [
+    "Брат, ищу укрытие."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0086",
+   "time": "2026.11.01-13.24.52",
+   "text": "Сядь на диван.",
+   "decoder": [],
+   "brain": "resolved JUMP 0.32 -> order TAKE_COVER @ sofa",
+   "bot": [
+    "Ясно, брат. Ухожу в укрытие, туда, брат.",
+    "Я в укрытии, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0087",
+   "time": "2026.11.01-13.24.55",
+   "text": "Вот диван сядь на него.",
+   "decoder": [],
+   "brain": "act CROUCH 0.75 -> order CROUCH @ sofa",
+   "bot": [
+    "На одно колено, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0088",
+   "time": "2026.11.01-13.24.59",
+   "text": "Idzie kam je soda.",
+   "decoder": [],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Иду за тобой, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0089",
+   "time": "2026.11.01-13.25.02",
+   "text": "Stunning.",
+   "decoder": [],
+   "brain": "say_again FLASH 0.34",
+   "bot": [
+    "Ещё раз?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0090",
+   "time": "2026.11.01-13.25.04",
+   "text": "Встань.",
+   "decoder": [],
+   "brain": "act STAND_UP 1.00 -> order STAND_UP",
+   "bot": [
+    "Встал.",
+    "Встал, Лох."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0091",
+   "time": "2026.11.01-13.25.09",
+   "text": "Меня зовут Эмти.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Будем знакомы, Эмти."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0092",
+   "time": "2026.11.01-13.25.14",
+   "text": "Залезь, залезь на диван.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ sofa",
+   "bot": [
+    "Понял, брат, прыгаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0093",
+   "time": "2026.11.01-13.25.18",
+   "text": "Ляж на диван.",
+   "decoder": [],
+   "brain": "act PRONE 1.00 -> order PRONE @ sofa aim on the bot",
+   "bot": [
+    "Брат, лежу на земле."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0094",
+   "time": "2026.11.01-13.25.22",
+   "text": "Style.",
+   "decoder": [],
+   "brain": "say_again ENTRY 0.27",
+   "bot": [
+    "Брат, не расслышал."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0095",
+   "time": "2026.11.01-13.25.25",
+   "text": "Wstaň.",
+   "decoder": [],
+   "brain": "act STAND_UP 1.00 -> order STAND_UP aim on the bot",
+   "bot": [
+    "Встаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0096",
+   "time": "2026.11.01-13.25.30",
+   "text": "Сядь на диван.",
+   "decoder": [],
+   "brain": "act CROUCH 1.00 -> order CROUCH @ sofa aim on the bot",
+   "bot": [
+    "Пониже."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0097",
+   "time": "2026.11.01-13.25.34",
+   "text": "Сядь на стул.",
+   "decoder": [],
+   "brain": "say_again GET_IN 0.24",
+   "bot": [
+    "Брат, не расслышал."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0098",
+   "time": "2026.11.01-13.25.36",
+   "text": "Сядь на стул.",
+   "decoder": [],
+   "brain": "say_again GET_IN 0.24",
+   "bot": [
+    "Повтори, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0099",
+   "time": "2026.11.01-13.25.40",
+   "text": "Запрыги на стул и присядь.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 (2 order lines) -> orders JUMP @ chair; then CROUCH",
+   "bot": [
+    "Прыгаю. Брат, запомнить, что «сядь на стул» — это «запрыги на стул и присядь»?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0100",
+   "time": "2026.11.01-13.25.50",
+   "text": "Da.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Понял, брат, запомню."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0101",
+   "time": "2026.11.01-13.25.55",
+   "text": "Слей со стула на пол.",
+   "decoder": [],
+   "brain": "act DROP 0.98 -> order DROP",
+   "bot": [
+    "Ставлю.",
+    "Ставлю, Эмти.",
+    "Брат, у меня ничего нет в руках."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0102",
+   "time": "2026.11.01-13.26.03",
+   "text": "Слезая со стула на пол.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP down",
+   "bot": [
+    "Понял, брат, прыгаю.",
+    "Спрыгиваю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0103",
+   "time": "2026.11.01-13.26.07",
+   "text": "Иди сюда ко мне.",
+   "decoder": [
+    "come here to me"
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Двигаюсь с тобой."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0104",
+   "time": "2026.11.01-13.26.13",
+   "text": "Сядь на стул.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 (2 order lines) -> orders JUMP @ chair; then CROUCH",
+   "bot": [
+    "Прыгаю.",
+    "Прыгаю, Эмти."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0105",
+   "time": "2026.11.01-13.26.17",
+   "text": "No.",
+   "decoder": [],
+   "brain": "negated NO 0.75 -> order STAND_DOWN aim on the bot",
+   "bot": [
+    "Понял, брат, прекращаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0106",
+   "time": "2026.11.01-13.26.21",
+   "text": "Выйди в эту дверь.",
+   "decoder": [
+    "go out through this door"
+   ],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ main door, outside near",
+   "bot": [
+    "Брат, меняю позицию."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0107",
+   "time": "2026.11.01-13.26.24",
+   "text": "Иди сюда.",
+   "decoder": [
+    "come here"
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Брат, я прямо за тобой."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0108",
+   "time": "2026.11.01-13.26.29",
+   "text": "Закрой эту дверь.",
+   "decoder": [
+    "close this door"
+   ],
+   "brain": "act OPEN_FIRE 0.98 -> order OPEN_FIRE @ north door near aim on the bot",
+   "bot": [
+    "Открываю огонь, брат!"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0109",
+   "time": "2026.11.01-13.26.32",
+   "text": "Закрой дверь.",
+   "decoder": [],
+   "brain": "act OPEN_FIRE 0.99 -> order OPEN_FIRE @ north door",
+   "bot": [
+    "Открываю огонь, брат!"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0110",
+   "time": "2026.11.01-13.26.36",
+   "text": "Stun.",
+   "decoder": [],
+   "brain": "act FLASH 1.00",
+   "bot": [
+    "Флешек нет, брат, только гранаты."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0111",
+   "time": "2026.11.01-13.26.39",
+   "text": "Stein, stain, stay, stain.",
+   "decoder": [],
+   "brain": "say_again HOLD_POSITION 0.45",
+   "bot": [
+    "Повтори, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0112",
+   "time": "2026.11.01-13.26.41",
+   "text": "Поднимись.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO aim on the bot",
+   "bot": [
+    "Брат, меняю позицию.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0113",
+   "time": "2026.11.01-13.26.46",
+   "text": "Встань, поднимись на на ноги.",
+   "decoder": [],
+   "brain": "act STAND_UP 1.00 -> order STAND_UP",
+   "bot": [
+    "Брат, я на ногах."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0114",
+   "time": "2026.11.01-13.26.49",
+   "text": "Открой эту дверь.",
+   "decoder": [
+    "open this door"
+   ],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door near",
+   "bot": [
+    "Понял, брат.",
+    "Иду к выключателю, брат.",
+    "Дверь открыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0115",
+   "time": "2026.11.01-13.26.57",
+   "text": "Возьми эту коробку, принеси ее сюда ко мне.",
+   "decoder": [
+    "take this box bring it here"
+   ],
+   "brain": "act DELIVER 1.00 -> order DELIVER @ here near",
+   "bot": [
+    "Несу.",
+    "Несу, Эмти.",
+    "Ясно, брат.",
+    "Держи, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0116",
+   "time": "2026.11.01-13.27.05",
+   "text": "Унеси ее обратно.",
+   "decoder": [],
+   "brain": "act DELIVER 0.99 -> order DELIVER @ main door aim on the bot",
+   "bot": [
+    "Несу.",
+    "Ясно, брат.",
+    "Держи, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0117",
+   "time": "2026.11.01-13.27.11",
+   "text": "обратно туда где ты там был туда ее принеси",
+   "decoder": [],
+   "brain": "act GO_BACK 1.00 (2 order lines) -> orders GO_BACK aim on the bot; then GO_BACK aim on the bot",
+   "bot": [
+    "Иду обратно, брат.",
+    "Я вернулся, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0118",
+   "time": "2026.11.01-13.27.15",
+   "text": "С коробкой.",
+   "decoder": [],
+   "brain": "act COLLECT 1.00 -> order COLLECT aim on the bot",
+   "bot": [
+    "Понял, брат, собираю.",
+    "Ясно, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0119",
+   "time": "2026.11.01-13.27.20",
+   "text": "Отнеси ее вон туда.",
+   "decoder": [
+    "take it over there"
+   ],
+   "brain": "act DELIVER 1.00 -> order DELIVER @ main door aim on the bot",
+   "bot": [
+    "Уже несу, брат.",
+    "Доставил, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0120",
+   "time": "2026.11.01-13.27.25",
+   "text": "Дальше, дальше, вон туда.",
+   "decoder": [
+    "Further, further over there"
+   ],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ there aim on the bot",
+   "bot": [
+    "Брат, меняю позицию.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0121",
+   "time": "2026.11.01-13.27.28",
+   "text": "вместе с коробкой",
+   "decoder": [],
+   "brain": "act COLLECT 1.00 -> order COLLECT",
+   "bot": [
+    "Собираю.",
+    "Ясно, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0122",
+   "time": "2026.11.01-13.27.34",
+   "text": "и отнести коробку вон туда",
+   "decoder": [
+    "take the box over there"
+   ],
+   "brain": "act DELIVER 1.00 -> order DELIVER",
+   "bot": [
+    "Брат, сейчас доставлю.",
+    "Доставил, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0123",
+   "time": "2026.11.01-13.27.43",
+   "text": "Возьми эту коробку, поставь ее на камень.",
+   "decoder": [
+    "pick up this box"
+   ],
+   "brain": "act COLLECT 1.00 (2 order lines) -> orders COLLECT; then DELIVER @ rock",
+   "bot": [
+    "Собираю.",
+    "Уже несу, брат.",
+    "Ясно, брат.",
+    "Доставил, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0124",
+   "time": "2026.11.01-13.28.01",
+   "text": "Залезть на этот псиний стол",
+   "decoder": [
+    "climb on this dogpile table"
+   ],
+   "brain": "act JUMP 1.00 -> order JUMP @ blue table near",
+   "bot": [
+    "Перепрыгиваю.",
+    "Брат, слишком высоко, не запрыгну. Принесу ящик, брат.",
+    "Ясно, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0125",
+   "time": "2026.11.01-13.28.10",
+   "text": "На синий стол, я.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ blue table",
+   "bot": [
+    "Понял, брат, прыгаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0126",
+   "time": "2026.11.01-13.28.16",
+   "text": "Запрыгни на желтый стол.",
+   "decoder": [],
+   "brain": "ask JUMP 1.00",
+   "bot": [
+    "Не вижу стола, брат. Куда, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0127",
+   "time": "2026.11.01-13.28.21",
+   "text": "Вот сюда на желтую кровать.",
+   "decoder": [
+    "jump on the yellow bed here"
+   ],
+   "brain": "resolved JUMP 1.00 -> order JUMP @ yellow bed near",
+   "bot": [
+    "Ясно, брат. Прыгаю, брат.",
+    "Не могу, брат, туда не пройти."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0128",
+   "time": "2026.11.01-13.28.30",
+   "text": "Попробуй еще раз, повторайся, ты сможешь.",
+   "decoder": [],
+   "brain": "act REPEAT 1.00 -> order REPEAT",
+   "bot": [
+    "Повторяю.",
+    "Не могу, брат, туда не пройти."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0129",
+   "time": "2026.11.01-13.28.40",
+   "text": "Запрыгни на красный стул, потом перепрыгни на желтую кровать.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 (2 order lines) -> orders JUMP @ red chair; then JUMP @ yellow bed",
+   "bot": [
+    "Прыгаю.",
+    "Понял, брат, прыгаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0130",
+   "time": "2026.11.01-13.28.51",
+   "text": "Получилось?",
+   "decoder": [],
+   "brain": "ignore NONE 1.00",
+   "bot": [
+    "Услышал.",
+    "Услышал, Эмти."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0131",
+   "time": "2026.11.01-13.28.56",
+   "text": "Меня зовут Нео.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Будем знакомы, Нео."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0132",
+   "time": "2026.11.01-13.29.02",
+   "text": "Залезть на крышу здесь.",
+   "decoder": [
+    "get on the roof here"
+   ],
+   "brain": "act MOVE_TO 1.00 -> order JUMP @ roof near",
+   "bot": [
+    "Прыгаю.",
+    "Спрыгиваю.",
+    "Не допрыгнул, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0133",
+   "time": "2026.11.01-13.29.13",
+   "text": "По лестнице залезть по этой.",
+   "decoder": [
+    "take the stairs up here"
+   ],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO up near",
+   "bot": [
+    "Иду к метке, брат.",
+    "На позиции, брат.",
+    "On you, bro."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0134",
+   "time": "2026.11.01-13.30.04",
+   "text": "Don't call me bro.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0135",
+   "time": "2026.11.01-13.30.10",
+   "text": "What's this?",
+   "decoder": [
+    "What's this?"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0136",
+   "time": "2026.11.01-13.30.14",
+   "text": "Go on top of this.",
+   "decoder": [
+    "Go on top of this."
+   ],
+   "brain": "act MOVE_TO 0.99 -> order MOVE_TO @ white table near",
+   "bot": [
+    "On my way there, Нео."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0137",
+   "time": "2026.11.01-13.30.21",
+   "text": "climb on the white table.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ white table",
+   "bot": [
+    "In position, Нео."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0138",
+   "time": "2026.11.01-13.30.31",
+   "text": "Go on top of yellow bed.",
+   "decoder": [],
+   "brain": "act MOVE_TO 0.98 -> order MOVE_TO @ yellow bed",
+   "bot": [
+    "Bro, there's a ledge. I'll jump up, bro.",
+    "A gap, bro. I'll jump it, bro.",
+    "In position, bro."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0139",
+   "time": "2026.11.01-13.30.45",
+   "text": "Open this door.",
+   "decoder": [
+    "Open this door."
+   ],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door near",
+   "bot": [
+    "Copy, bro.",
+    "Jumping down, Нео.",
+    "Getting the switch, bro.",
+    "Door's open, bro."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0140",
+   "time": "2026.11.01-13.30.52",
+   "text": "What's this?",
+   "decoder": [
+    "What's this?"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "That's a sofa, bro."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0141",
+   "time": "2026.11.01-13.30.57",
+   "text": "Lie down on sofa.",
+   "decoder": [],
+   "brain": "act PRONE 1.00 -> order PRONE @ sofa",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-13.36.19.log"
+  },
+  {
+   "id": "talk69_0142",
+   "time": "2026.11.01-16.28.25",
+   "text": "Hide weapon.",
+   "decoder": [],
+   "brain": "act HOLSTER 1.00 -> order HOLSTER aim on the bot",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0143",
+   "time": "2026.11.01-16.28.30",
+   "text": "What's this?",
+   "decoder": [
+    "What's this?"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "That's a box, Нео."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0144",
+   "time": "2026.11.01-16.28.36",
+   "text": "Now call me bra.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0145",
+   "time": "2026.11.01-16.28.44",
+   "text": "Call me Michael.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0146",
+   "time": "2026.11.01-16.28.48",
+   "text": "What's this?",
+   "decoder": [
+    "What's this?"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0147",
+   "time": "2026.11.01-16.28.51",
+   "text": "Go on top of this.",
+   "decoder": [
+    "Go on top of this."
+   ],
+   "brain": "act MOVE_TO 0.99 -> order MOVE_TO @ rock, where you look near",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0148",
+   "time": "2026.11.01-16.28.57",
+   "text": "climb on this.",
+   "decoder": [
+    "climb on this."
+   ],
+   "brain": "act JUMP 1.00 -> order JUMP @ rock near",
+   "bot": [
+    "Going over, Michael."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0149",
+   "time": "2026.11.01-16.29.06",
+   "text": "Uh climb back.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0150",
+   "time": "2026.11.01-16.29.09",
+   "text": "Go back.",
+   "decoder": [],
+   "brain": "act GO_BACK 1.00 -> order GO_BACK",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0151",
+   "time": "2026.11.01-16.29.12",
+   "text": "Come, go back to me.",
+   "decoder": [],
+   "brain": "act COME_BACK 1.00 -> order COME_BACK",
+   "bot": [
+    "Coming back, Michael."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0152",
+   "time": "2026.11.01-16.29.17",
+   "text": "Jamed all.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0153",
+   "time": "2026.11.01-16.29.24",
+   "text": "Find away here.",
+   "decoder": [
+    "Find away here."
+   ],
+   "brain": "say_again TAKE_COVER 0.62",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0154",
+   "time": "2026.11.01-16.29.27",
+   "text": "Find a way here.",
+   "decoder": [
+    "Find a way here."
+   ],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ here near",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0155",
+   "time": "2026.11.01-16.29.37",
+   "text": "No.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0156",
+   "time": "2026.11.01-16.29.41",
+   "text": "What's this?",
+   "decoder": [
+    "What's this?"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "That's the white table, Michael."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0157",
+   "time": "2026.11.01-16.29.45",
+   "text": "Go on top of all this.",
+   "decoder": [
+    "Go on top of all this."
+   ],
+   "brain": "act MOVE_TO 0.91 -> order MOVE_TO",
+   "bot": [
+    "In position, Michael."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0158",
+   "time": "2026.11.01-16.29.54",
+   "text": "Go on top of this.",
+   "decoder": [
+    "Go on top of this."
+   ],
+   "brain": "act MOVE_TO 0.99 -> order MOVE_TO @ red chair near",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0159",
+   "time": "2026.11.01-16.30.03",
+   "text": "What's this?",
+   "decoder": [
+    "What's this?"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "That's a chair, Michael."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0160",
+   "time": "2026.11.01-16.30.07",
+   "text": "Go on top of this chair.",
+   "decoder": [
+    "Go on top of this chair."
+   ],
+   "brain": "act JUMP 1.00 -> order JUMP @ red chair near",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0161",
+   "time": "2026.11.01-16.30.11",
+   "text": "What's this?",
+   "decoder": [
+    "What's this?"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0162",
+   "time": "2026.11.01-16.30.14",
+   "text": "Go on top of this.",
+   "decoder": [
+    "Go on top of this."
+   ],
+   "brain": "act MOVE_TO 0.99 -> order MOVE_TO @ yellow bed near",
+   "bot": [
+    "In position, Michael."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0163",
+   "time": "2026.11.01-16.30.21",
+   "text": "Come here.",
+   "decoder": [
+    "Come here."
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0164",
+   "time": "2026.11.01-16.30.25",
+   "text": "What's this?",
+   "decoder": [
+    "What's this?"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0165",
+   "time": "2026.11.01-16.30.29",
+   "text": "Really?",
+   "decoder": [],
+   "brain": "act PRAISE 0.73",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0166",
+   "time": "2026.11.01-16.30.34",
+   "text": "What's this?",
+   "decoder": [
+    "What's this?"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0167",
+   "time": "2026.11.01-16.30.44",
+   "text": "Don't follow me.",
+   "decoder": [],
+   "brain": "wait WAIT 1.00 -> order WAIT",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0168",
+   "time": "2026.11.01-16.30.48",
+   "text": "What's this?",
+   "decoder": [
+    "What's this?"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0169",
+   "time": "2026.11.01-16.30.54",
+   "text": "Uh go on top of this rock.",
+   "decoder": [
+    "Uh go on top of this rock."
+   ],
+   "brain": "act JUMP 1.00 -> order JUMP @ rock near",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0170",
+   "time": "2026.11.01-16.31.01",
+   "text": "Okay. Come back.",
+   "decoder": [],
+   "brain": "act COME_BACK 1.00 -> order COME_BACK",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0171",
+   "time": "2026.11.01-16.31.06",
+   "text": "Come back where he was.",
+   "decoder": [],
+   "brain": "act GO_BACK 1.00 -> order GO_BACK",
+   "bot": [],
+   "log": "LyraStarterGame-backup-2026.11.01-16.31.21.log"
+  },
+  {
+   "id": "talk69_0172",
+   "time": "2026.11.01-19.22.26",
+   "text": "Как тебя зовут?",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Меня зовут Бади."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.27.32.log"
+  },
+  {
+   "id": "talk69_0173",
+   "time": "2026.11.01-19.54.57",
+   "text": "Как тебя зовут?",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Меня зовут Бади."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0174",
+   "time": "2026.11.01-19.55.04",
+   "text": "Ба, иди сюда, возьми эту коробку, поставь ее на камень.",
+   "decoder": [
+    "Come here.",
+    "Pick up this box."
+   ],
+   "brain": "act FOLLOW_ME 1.00 (3 order lines) -> orders FOLLOW_ME @ here near; then COLLECT; then DELIVER @ rock aim on the bot",
+   "bot": [
+    "Я прямо за тобой.",
+    "Собираю.",
+    "Собираю, Michael.",
+    "Несу.",
+    "Ясно.",
+    "Доставил."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0175",
+   "time": "2026.11.01-19.55.15",
+   "text": "Молодец.",
+   "decoder": [],
+   "brain": "act PRAISE 1.00",
+   "bot": [
+    "Просто делаю свою работу."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0176",
+   "time": "2026.11.01-19.55.19",
+   "text": "Залезть на белый стол.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ white table",
+   "bot": [
+    "Перепрыгиваю.",
+    "Слишком высоко, не запрыгну, Michael. Принесу ящик.",
+    "Ясно."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0177",
+   "time": "2026.11.01-19.55.23",
+   "text": "Без коробки.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ white table",
+   "bot": [
+    "Прыгаю.",
+    "Слишком высоко, не запрыгну. Принесу ящик.",
+    "Ясно.",
+    "На позиции."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0178",
+   "time": "2026.11.01-19.55.33",
+   "text": "Sleeve.",
+   "decoder": [],
+   "brain": "say_again HOLSTER 0.17",
+   "bot": [
+    "Не расслышал."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0179",
+   "time": "2026.11.01-19.55.36",
+   "text": "Sleeze.",
+   "decoder": [],
+   "brain": "say_again CROUCH 0.35",
+   "bot": [
+    "Не расслышал."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0180",
+   "time": "2026.11.01-19.55.39",
+   "text": "Слезь со стола.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP down",
+   "bot": [
+    "Понял, прыгаю.",
+    "Спрыгиваю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0181",
+   "time": "2026.11.01-19.55.44",
+   "text": "Окей, иди ко мне сюда.",
+   "decoder": [
+    "Okay, come here to me."
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Я прямо за тобой."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0182",
+   "time": "2026.11.01-19.55.47",
+   "text": "Убери оружие.",
+   "decoder": [],
+   "brain": "act HOLSTER 1.00 -> order HOLSTER aim on the bot",
+   "bot": [
+    "Убираю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0183",
+   "time": "2026.11.01-19.55.53",
+   "text": "Что это, бади?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00 (2 order lines)",
+   "bot": [
+    "Береги себя там.",
+    "Это стена, Michael."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0184",
+   "time": "2026.11.01-19.55.59",
+   "text": "Поперепрыгни ее.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ there",
+   "bot": [
+    "Понял, прыгаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0185",
+   "time": "2026.11.01-19.56.04",
+   "text": "А это что?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это стена."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0186",
+   "time": "2026.11.01-19.56.07",
+   "text": "Перепрыгни ее.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ there",
+   "bot": [
+    "Перепрыгиваю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0187",
+   "time": "2026.11.01-19.56.10",
+   "text": "Другую.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP",
+   "bot": [
+    "Понял, прыгаю. Беру другой вариант.",
+    "Покажи мне."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0188",
+   "time": "2026.11.01-19.56.15",
+   "text": "Вот эту. Вот эту стену.",
+   "decoder": [
+    "Hop over this wall here."
+   ],
+   "brain": "act JUMP 1.00 -> order JUMP @ where you look near",
+   "bot": [
+    "Прыгаю.",
+    "Прыгаю, Michael.",
+    "Покажи мне."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0189",
+   "time": "2026.11.01-19.56.16",
+   "text": "What is that?",
+   "decoder": [
+    "What is that?"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это пол."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0190",
+   "time": "2026.11.01-19.56.20",
+   "text": "Иди сюда.",
+   "decoder": [
+    "Come here."
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Я прямо за тобой."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0191",
+   "time": "2026.11.01-19.56.29",
+   "text": "Иди вот сюда, прям куда показываю.",
+   "decoder": [
+    "Come right here, straight to where I'm pointing."
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ there",
+   "bot": [
+    "Двигаюсь с тобой.",
+    "Двигаюсь с тобой, Michael."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0192",
+   "time": "2026.11.01-19.56.39",
+   "text": "Иди сюда, вот сюда.",
+   "decoder": [
+    "Come here, right here."
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Двигаюсь с тобой."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0193",
+   "time": "2026.11.01-19.56.43",
+   "text": "Иди на мо на мою метку.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ your pin",
+   "bot": [
+    "Уже иду туда.",
+    "Спрыгиваю.",
+    "На позиции."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0194",
+   "time": "2026.11.01-19.56.56",
+   "text": "Перепрыгнуть через эту стену.",
+   "decoder": [
+    "Hop over that wall."
+   ],
+   "brain": "act JUMP 1.00 -> order JUMP @ there",
+   "bot": [
+    "Перепрыгиваю.",
+    "Слишком высоко, не перепрыгну, Michael."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0195",
+   "time": "2026.11.01-19.57.04",
+   "text": "Перепрыгни через эту стену.",
+   "decoder": [
+    "hop over that wall"
+   ],
+   "brain": "act JUMP 1.00 -> order JUMP @ there",
+   "bot": [
+    "Перепрыгиваю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0196",
+   "time": "2026.11.01-19.57.56",
+   "text": "Вот привет.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Привет, рад тебя видеть."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0197",
+   "time": "2026.11.01-19.58.00",
+   "text": "Как тебя зовут?",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Меня зовут Бади."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0198",
+   "time": "2026.11.01-19.58.04",
+   "text": "А меня как зовут?",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Ха. Неплохо сказано."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0199",
+   "time": "2026.11.01-19.58.09",
+   "text": "А меня зовут Тимур.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Приятно познакомиться, Тимур."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0200",
+   "time": "2026.11.01-19.58.13",
+   "text": "Бади, иди сюда.",
+   "decoder": [
+    "come here"
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Двигаюсь с тобой."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0201",
+   "time": "2026.11.01-19.58.18",
+   "text": "Бади, что это такое передо мной?",
+   "decoder": [
+    "what is that in front of me"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это стена."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0202",
+   "time": "2026.11.01-19.58.21",
+   "text": "Перепрыгни через нее.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ there",
+   "bot": [
+    "Понял, прыгаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0203",
+   "time": "2026.11.01-19.58.27",
+   "text": "Через стену перепрыгни.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP",
+   "bot": [
+    "Перепрыгиваю.",
+    "Покажи мне, Тимур."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0204",
+   "time": "2026.11.01-19.58.31",
+   "text": "Вот это через эту стену перепрыгивай.",
+   "decoder": [
+    "Vault over this wall."
+   ],
+   "brain": "act JUMP 1.00 -> order JUMP @ there near",
+   "bot": [
+    "Перепрыгиваю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0205",
+   "time": "2026.11.01-19.58.36",
+   "text": "Нифига себе.",
+   "decoder": [],
+   "brain": "act KILL_YOURSELF 1.00",
+   "bot": [
+    "Запрос отклонён. Мне и живым неплохо."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0206",
+   "time": "2026.11.01-19.58.38",
+   "text": "А это что такое?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это стена."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0207",
+   "time": "2026.11.01-19.58.49",
+   "text": "Иди сюда ко мне.",
+   "decoder": [
+    "come here to me"
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Двигаюсь с тобой."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-19.59.49.log"
+  },
+  {
+   "id": "talk69_0208",
+   "time": "2026.11.01-20.49.22",
+   "text": "Убери оружие.",
+   "decoder": [],
+   "brain": "act HOLSTER 1.00 -> order HOLSTER aim on the bot aim on nothing",
+   "bot": [
+    "Оружие убрал, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0209",
+   "time": "2026.11.01-20.49.27",
+   "text": "Так что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это белый стол, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0210",
+   "time": "2026.11.01-20.49.32",
+   "text": "Лезь за мной.",
+   "decoder": [],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME",
+   "bot": [
+    "Двигаюсь с тобой."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0211",
+   "time": "2026.11.01-20.49.40",
+   "text": "Залезай за мной на желтой кровать.",
+   "decoder": [],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ yellow bed",
+   "bot": [
+    "Двигаюсь с тобой."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0212",
+   "time": "2026.11.01-20.49.46",
+   "text": "Залезай за мной на кровать.",
+   "decoder": [],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ yellow bed",
+   "bot": [
+    "Иду за тобой, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0213",
+   "time": "2026.11.01-20.49.56",
+   "text": "Иди сюда, на мою метку.",
+   "decoder": [
+    "Come here, to my pin."
+   ],
+   "brain": "ask FOLLOW_ME 1.00",
+   "bot": [
+    "Не вижу метки, брат. Куда, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0214",
+   "time": "2026.11.01-20.50.01",
+   "text": "Вот здесь. Здесь она здесь.",
+   "decoder": [
+    "Go here, right here."
+   ],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ here near",
+   "bot": [
+    "Иду к метке, брат.",
+    "Брат, тут уступ. Запрыгну, брат.",
+    "Брат, тут провал. Перепрыгну, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0215",
+   "time": "2026.11.01-20.50.14",
+   "text": "Как тебя зовут?",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Меня зовут Бади, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0216",
+   "time": "2026.11.01-20.50.17",
+   "text": "Как меня зовут.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Тебя зовут Тимур, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0217",
+   "time": "2026.11.01-20.50.23",
+   "text": "Окей, прыгай вниз за мной.",
+   "decoder": [],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME",
+   "bot": [
+    "Двигаюсь с тобой.",
+    "Спрыгиваю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0218",
+   "time": "2026.11.01-20.50.32",
+   "text": "пройди здесь",
+   "decoder": [
+    "go here"
+   ],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ here near",
+   "bot": [
+    "Брат, меняю позицию.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0219",
+   "time": "2026.11.01-20.50.37",
+   "text": "Пройди через проход.",
+   "decoder": [],
+   "brain": "ask FLANK 1.00",
+   "bot": [
+    "Какая дверь, брат? Ты про главную дверь, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0220",
+   "time": "2026.11.01-20.50.45",
+   "text": "Да, и заходи туда.",
+   "decoder": [
+    "Yes, go in there."
+   ],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ white table",
+   "bot": [
+    "Брат, меняю позицию.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0221",
+   "time": "2026.11.01-20.50.55",
+   "text": "Заходи в главную дверь.",
+   "decoder": [],
+   "brain": "act FLANK 1.00 -> order FLANK @ main door",
+   "bot": [
+    "Обхожу.",
+    "Брат, я на фланге."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0222",
+   "time": "2026.11.01-20.51.03",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это главная дверь, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0223",
+   "time": "2026.11.01-20.51.07",
+   "text": "Заходи в нее.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ main door, inside",
+   "bot": [
+    "Иду к метке, брат.",
+    "Дверь закрыта, брат. Иду к выключателю, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0224",
+   "time": "2026.11.01-20.51.17",
+   "text": "Выходи из главной двери.",
+   "decoder": [],
+   "brain": "act MOVE_TO 0.89 -> order MOVE_TO @ main door, outside",
+   "bot": [
+    "Иду к метке, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0225",
+   "time": "2026.11.01-20.51.22",
+   "text": "Закрывай дверь.",
+   "decoder": [],
+   "brain": "act OPEN_FIRE 0.97 -> order OPEN_FIRE @ main door",
+   "bot": [
+    "Открываю огонь, брат!"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0226",
+   "time": "2026.11.01-20.51.32",
+   "text": "Иди камни сюда.",
+   "decoder": [
+    "bring the stones over here"
+   ],
+   "brain": "act DELIVER 1.00 -> order DELIVER",
+   "bot": [
+    "Несу.",
+    "Ясно, брат.",
+    "Держи, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0227",
+   "time": "2026.11.01-20.51.40",
+   "text": "Не, отнеси обратно.",
+   "decoder": [],
+   "brain": "act DELIVER 1.00 -> order DELIVER aim on the bot",
+   "bot": [
+    "Несу.",
+    "Ясно, брат.",
+    "Держи, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0228",
+   "time": "2026.11.01-20.51.47",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это пол, брат.",
+    "Иду за тобой, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0229",
+   "time": "2026.11.01-20.52.11",
+   "text": "Бри оружие.",
+   "decoder": [],
+   "brain": "say_again SWITCH_WEAPON 0.37",
+   "bot": [
+    "Повтори, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0230",
+   "time": "2026.11.01-20.52.15",
+   "text": "Убери оружие, брат.",
+   "decoder": [],
+   "brain": "act HOLSTER 1.00 -> order HOLSTER",
+   "bot": [
+    "Руки свободны. Брат, запомнить, что «бри оружие» — это «убери оружие брат»?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0231",
+   "time": "2026.11.01-20.52.23",
+   "text": "Yeah.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Понял, брат, запомню."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0232",
+   "time": "2026.11.01-20.52.32",
+   "text": "Бади, не надо запоминать было.",
+   "decoder": [],
+   "brain": "wait WAIT 1.00 -> order WAIT",
+   "bot": [
+    "Понял, брат, жду."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0233",
+   "time": "2026.11.01-20.52.36",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это главная дверь, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0234",
+   "time": "2026.11.01-20.52.41",
+   "text": "Ты можешь ее открыть?",
+   "decoder": [],
+   "brain": "act OPEN 0.68 -> order OPEN @ main door",
+   "bot": [
+    "Понял, брат.",
+    "Иду к выключателю, брат.",
+    "Дверь открыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0235",
+   "time": "2026.11.01-20.52.49",
+   "text": "Закрой дверь.",
+   "decoder": [],
+   "brain": "act HOLD_ANGLE 0.82 -> order HOLD_ANGLE @ main door",
+   "bot": [
+    "Брат, угол под контролем."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0236",
+   "time": "2026.11.01-20.52.54",
+   "text": "Вернись ко мне сюда.",
+   "decoder": [
+    "Come back over to me here."
+   ],
+   "brain": "act COME_BACK 1.00 -> order COME_BACK @ here near",
+   "bot": [
+    "Уже возвращаюсь, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0237",
+   "time": "2026.11.01-20.53.00",
+   "text": "Зайди через главную дверь.",
+   "decoder": [],
+   "brain": "act FLANK 1.00 -> order FLANK @ main door",
+   "bot": [
+    "Обхожу.",
+    "Обхожу, Тимур.",
+    "Брат, я на фланге."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0238",
+   "time": "2026.11.01-20.53.07",
+   "text": "Зайди через главную дверь.",
+   "decoder": [],
+   "brain": "act FLANK 1.00 -> order FLANK @ main door",
+   "bot": [
+    "Обхожу.",
+    "Брат, я на фланге."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0239",
+   "time": "2026.11.01-20.53.13",
+   "text": "Зайди через дверь.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ main door, inside",
+   "bot": [
+    "Уже иду туда, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0240",
+   "time": "2026.11.01-20.53.20",
+   "text": "Ляш на диван.",
+   "decoder": [],
+   "brain": "act SUPPRESS 1.00 -> order SUPPRESS @ sofa",
+   "bot": [
+    "Брат, прижимаю их огнём."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0241",
+   "time": "2026.11.01-20.53.26",
+   "text": "Ляж на диван.",
+   "decoder": [],
+   "brain": "act MOVE_TO 0.98 -> order MOVE_TO @ sofa",
+   "bot": [
+    "Иду к метке, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0242",
+   "time": "2026.11.01-20.53.32",
+   "text": "Запрыгнем на диван.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ sofa aim on the bot",
+   "bot": [
+    "Понял, брат, прыгаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0243",
+   "time": "2026.11.01-20.53.37",
+   "text": "Теперь ляж полностью.",
+   "decoder": [],
+   "brain": "act PRONE 1.00 -> order PRONE aim on the bot",
+   "bot": [
+    "Ложусь."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0244",
+   "time": "2026.11.01-20.53.41",
+   "text": "Stay.",
+   "decoder": [],
+   "brain": "act HOLD_POSITION 1.00 -> order HOLD_POSITION aim on the bot",
+   "bot": [
+    "Брат, остаюсь на месте."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0245",
+   "time": "2026.11.01-20.53.43",
+   "text": "Wstań.",
+   "decoder": [],
+   "brain": "act STAND_UP 1.00 -> order STAND_UP aim on the bot",
+   "bot": [
+    "Брат, я на ногах."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0246",
+   "time": "2026.11.01-20.53.49",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это стул, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0247",
+   "time": "2026.11.01-20.53.52",
+   "text": "Сядь на стул.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 (2 order lines) -> orders JUMP @ chair; then CROUCH",
+   "bot": [
+    "Перепрыгиваю.",
+    "Пониже."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0248",
+   "time": "2026.11.01-20.54.00",
+   "text": "Слей со стула.",
+   "decoder": [],
+   "brain": "act DROP 1.00 -> order DROP",
+   "bot": [
+    "Бросаю.",
+    "Брат, у меня ничего нет в руках."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0249",
+   "time": "2026.11.01-20.54.03",
+   "text": "Слезь со стула.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP down",
+   "bot": [
+    "Перепрыгиваю.",
+    "Спрыгиваю, Тимур."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0250",
+   "time": "2026.11.01-20.54.10",
+   "text": "Quando eu paxu.",
+   "decoder": [],
+   "brain": "say_again HOLD_POSITION 0.48",
+   "bot": [
+    "Повтори, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0251",
+   "time": "2026.11.01-20.54.13",
+   "text": "Ты куда пош<unk>л?",
+   "decoder": [],
+   "brain": "act SMALL_TALK 0.73",
+   "bot": [
+    "Принял."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0252",
+   "time": "2026.11.01-20.54.17",
+   "text": "Иди сюда.",
+   "decoder": [
+    "come here"
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Брат, я прямо за тобой."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-20.54.39.log"
+  },
+  {
+   "id": "talk69_0253",
+   "time": "2026.11.01-21.51.54",
+   "text": "Убери оружие.",
+   "decoder": [],
+   "brain": "act HOLSTER 1.00 -> order HOLSTER",
+   "bot": [
+    "Оружие убрал, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0254",
+   "time": "2026.11.01-21.52.04",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это стена, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0255",
+   "time": "2026.11.01-21.52.09",
+   "text": "Я прыгну через нее.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ there",
+   "bot": [
+    "Понял, брат, прыгаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0256",
+   "time": "2026.11.01-21.52.14",
+   "text": "А это что?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это стена, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0257",
+   "time": "2026.11.01-21.52.19",
+   "text": "Перепрыгни через нее.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ there",
+   "bot": [
+    "Перепрыгиваю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0258",
+   "time": "2026.11.01-21.52.25",
+   "text": "А это что?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это стена, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0259",
+   "time": "2026.11.01-21.52.29",
+   "text": "Перепрыгни через нее.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ there",
+   "bot": [
+    "Понял, брат, прыгаю.",
+    "Не допрыгнул, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0260",
+   "time": "2026.11.01-21.52.33",
+   "text": "Sto",
+   "decoder": [],
+   "brain": "wait WAIT 1.00 -> order WAIT",
+   "bot": [
+    "Понял, брат, жду."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0261",
+   "time": "2026.11.01-21.52.56",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это камень, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0262",
+   "time": "2026.11.01-21.53.01",
+   "text": "Залезь на него.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ rock",
+   "bot": [
+    "Понял, брат, прыгаю.",
+    "Перепрыгиваю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0263",
+   "time": "2026.11.01-21.53.12",
+   "text": "Залез на камень.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ rock",
+   "bot": [
+    "Прыгаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0264",
+   "time": "2026.11.01-21.53.15",
+   "text": "Skies.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ rock",
+   "bot": [
+    "Прыгаю.",
+    "Прыгаю, Тимур.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0265",
+   "time": "2026.11.01-21.53.18",
+   "text": "S.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP",
+   "bot": [
+    "Перепрыгиваю.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0266",
+   "time": "2026.11.01-21.53.22",
+   "text": "Слезь сюда.",
+   "decoder": [
+    "climb down here"
+   ],
+   "brain": "act JUMP 1.00 -> order JUMP @ there down near",
+   "bot": [
+    "Понял, брат, прыгаю.",
+    "Спрыгиваю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0267",
+   "time": "2026.11.01-21.53.27",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это камень, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0268",
+   "time": "2026.11.01-21.53.31",
+   "text": "Залезть на него.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ rock",
+   "bot": [
+    "Прыгаю.",
+    "Прыгаю, Тимур."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0269",
+   "time": "2026.11.01-21.53.36",
+   "text": "Иди сюда.",
+   "decoder": [
+    "come here"
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Двигаюсь с тобой.",
+    "Спрыгиваю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0270",
+   "time": "2026.11.01-21.53.41",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это коробка, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0271",
+   "time": "2026.11.01-21.53.45",
+   "text": "Можешь ее поднять?",
+   "decoder": [],
+   "brain": "act COLLECT 1.00 -> order COLLECT @ crate",
+   "bot": [
+    "Понял, брат, собираю.",
+    "Ясно, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0272",
+   "time": "2026.11.01-21.53.51",
+   "text": "Окиси на крышу.",
+   "decoder": [],
+   "brain": "resolved BREACH 0.30 -> order COLLECT @ roof",
+   "bot": [
+    "Ясно, брат. Собираю, брат.",
+    "Ясно, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0273",
+   "time": "2026.11.01-21.53.58",
+   "text": "Отнеси на крышу коробку.",
+   "decoder": [],
+   "brain": "act DELIVER 1.00 -> order DELIVER @ roof aim on the bot",
+   "bot": [
+    "Брат, сейчас доставлю.",
+    "Доставил, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0274",
+   "time": "2026.11.01-21.54.06",
+   "text": "Теперь и сюда.",
+   "decoder": [
+    "Now bring it here."
+   ],
+   "brain": "act DELIVER 1.00 -> order DELIVER @ here near",
+   "bot": [
+    "Уже несу, брат.",
+    "Ясно, брат.",
+    "Держи, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0275",
+   "time": "2026.11.01-21.54.11",
+   "text": "Пробку отнеси на крышу и оставь там.",
+   "decoder": [
+    "Carry the jam to the roof and leave it there."
+   ],
+   "brain": "act DELIVER 1.00 -> order DELIVER @ roof",
+   "bot": [
+    "Несу.",
+    "Ясно, брат.",
+    "Доставил, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0276",
+   "time": "2026.11.01-21.54.20",
+   "text": "Вернись ко мне.",
+   "decoder": [],
+   "brain": "act COME_BACK 1.00 -> order COME_BACK",
+   "bot": [
+    "Иду назад.",
+    "Иду назад, Тимур."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0277",
+   "time": "2026.11.01-21.54.28",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это белый стол, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0278",
+   "time": "2026.11.01-21.54.33",
+   "text": "Залез на него.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ white table",
+   "bot": [
+    "Прыгаю.",
+    "Брат, слишком высоко, не запрыгну. Принесу ящик, брат.",
+    "Ясно, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0279",
+   "time": "2026.11.01-21.54.44",
+   "text": "Ляж на белый стол.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order PRONE @ white table aim on the bot",
+   "bot": [
+    "Понял, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0280",
+   "time": "2026.11.01-21.54.49",
+   "text": "Ляж на красный стул.",
+   "decoder": [],
+   "brain": "act PRONE 0.75 -> order PRONE @ red chair",
+   "bot": [
+    "Понял, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0281",
+   "time": "2026.11.01-21.54.59",
+   "text": "Слезь и ляж на синий стол.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 (2 order lines) -> orders JUMP down; then PRONE @ blue table",
+   "bot": [
+    "Понял, брат, прыгаю.",
+    "Спрыгиваю.",
+    "Ложусь."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0282",
+   "time": "2026.11.01-21.55.14",
+   "text": "Stun.",
+   "decoder": [],
+   "brain": "act FLASH 1.00",
+   "bot": [
+    "Флешек нет, брат, только гранаты."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0283",
+   "time": "2026.11.01-21.55.17",
+   "text": "И ляж на желтую кровать.",
+   "decoder": [],
+   "brain": "act PRONE 0.75 -> order PRONE @ yellow bed",
+   "bot": [
+    "Понял, брат.",
+    "Брат, тут уступ. Запрыгну, брат.",
+    "Не могу, брат, туда не пройти."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0284",
+   "time": "2026.11.01-21.55.29",
+   "text": "Ты можешь пробуй еще раз на желтую кровать.",
+   "decoder": [],
+   "brain": "act REPEAT 1.00 -> order REPEAT @ yellow bed",
+   "bot": [
+    "Пробую снова, брат.",
+    "Брат, тут уступ. Запрыгну, брат.",
+    "Не могу, брат, туда не пройти."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0285",
+   "time": "2026.11.01-21.55.42",
+   "text": "Запрыгне на красный стул.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ red chair",
+   "bot": [
+    "Перепрыгиваю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0286",
+   "time": "2026.11.01-21.55.47",
+   "text": "Перепрыгнем на желтую кровать.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ yellow bed",
+   "bot": [
+    "Понял, брат, прыгаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0287",
+   "time": "2026.11.01-21.55.51",
+   "text": "Lasta.",
+   "decoder": [],
+   "brain": "say_again NONE 0.51",
+   "bot": [
+    "Ещё раз?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0288",
+   "time": "2026.11.01-21.55.54",
+   "text": "Yeah.",
+   "decoder": [],
+   "brain": "answer YES 0.75",
+   "bot": [
+    "Понял, это да."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0289",
+   "time": "2026.11.01-21.55.58",
+   "text": "Заляж.",
+   "decoder": [],
+   "brain": "act PRONE 1.00 -> order PRONE aim on the bot",
+   "bot": [
+    "Ложусь.",
+    "Ложусь, Тимур."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0290",
+   "time": "2026.11.01-21.56.05",
+   "text": "Spine blade.",
+   "decoder": [],
+   "brain": "say_again COME_BACK 0.27",
+   "bot": [
+    "Повтори, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0291",
+   "time": "2026.11.01-21.56.08",
+   "text": "Встань, блядь.",
+   "decoder": [],
+   "brain": "act STAND_UP 1.00 -> order STAND_UP aim on the bot",
+   "bot": [
+    "Брат, я на ногах."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0292",
+   "time": "2026.11.01-21.56.12",
+   "text": "Открой дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door",
+   "bot": [
+    "Понял, брат.",
+    "Спрыгиваю.",
+    "Иду к выключателю, брат.",
+    "Дверь открыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0293",
+   "time": "2026.11.01-21.56.25",
+   "text": "Закрой дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door",
+   "bot": [
+    "Понял, брат.",
+    "Иду к выключателю, брат.",
+    "Дверь закрыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0294",
+   "time": "2026.11.01-21.56.32",
+   "text": "Открой дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door",
+   "bot": [
+    "Понял, брат.",
+    "Иду к выключателю, брат.",
+    "Дверь открыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0295",
+   "time": "2026.11.01-21.56.40",
+   "text": "Заходи в комнату.",
+   "decoder": [],
+   "brain": "act ENTRY 1.00 -> order ENTRY",
+   "bot": [
+    "Вхожу, вхожу!",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0296",
+   "time": "2026.11.01-21.56.45",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это диван, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0297",
+   "time": "2026.11.01-21.56.49",
+   "text": "Sight that you want.",
+   "decoder": [
+    "Sight that you want."
+   ],
+   "brain": "say_again LOOK_AT 0.20",
+   "bot": [
+    "Ещё раз?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0298",
+   "time": "2026.11.01-21.56.53",
+   "text": "Сядь на диван.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 (2 order lines) -> orders JUMP @ sofa; then CROUCH",
+   "bot": [
+    "Прыгаю.",
+    "Пригибаюсь."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0299",
+   "time": "2026.11.01-21.56.59",
+   "text": "А теперь сюда.",
+   "decoder": [
+    "Come here."
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Иду за тобой, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0300",
+   "time": "2026.11.01-21.57.03",
+   "text": "Сядь на стол.",
+   "decoder": [],
+   "brain": "ask JUMP 1.00",
+   "bot": [
+    "Какой стол, брат? Ты про белый стол, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0301",
+   "time": "2026.11.01-21.57.07",
+   "text": "Stop.",
+   "decoder": [],
+   "brain": "wait WAIT 1.00 -> order WAIT",
+   "bot": [
+    "Брат, я наготове."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0302",
+   "time": "2026.11.01-21.57.09",
+   "text": "Stool, stuff, stuff.",
+   "decoder": [],
+   "brain": "say_again COLLECT 0.23",
+   "bot": [
+    "Брат, не расслышал."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0303",
+   "time": "2026.11.01-21.57.13",
+   "text": "Zet na spol.",
+   "decoder": [],
+   "brain": "say_again COLLECT 0.19",
+   "bot": [
+    "Брат, не расслышал."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0304",
+   "time": "2026.11.01-21.57.18",
+   "text": "Сядь на стул.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 (2 order lines) -> orders JUMP @ chair; then CROUCH",
+   "bot": [
+    "Понял, брат, прыгаю.",
+    "Пониже."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0305",
+   "time": "2026.11.01-21.57.30",
+   "text": "Поднимись на ноги и иди сюда.",
+   "decoder": [
+    "come here"
+   ],
+   "brain": "act STAND_UP 1.00 (2 order lines) -> orders STAND_UP; then FOLLOW_ME @ here near",
+   "bot": [
+    "Брат, я на ногах.",
+    "Двигаюсь с тобой."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0306",
+   "time": "2026.11.01-21.57.41",
+   "text": "Стой там.",
+   "decoder": [
+    "Stand there"
+   ],
+   "brain": "act HOLD_POSITION 1.00 -> order HOLD_POSITION",
+   "bot": [
+    "Не двигаюсь."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0307",
+   "time": "2026.11.01-21.57.56",
+   "text": "Зарез ко мне на желтую кровать.",
+   "decoder": [],
+   "brain": "act MELEE 1.00 -> order MELEE @ yellow bed",
+   "bot": [
+    "Щас огребёт, брат.",
+    "Кого, брат? Никого не вижу, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0308",
+   "time": "2026.11.01-21.58.05",
+   "text": "Залезть ко мне на желтую кровать.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ yellow bed",
+   "bot": [
+    "Понял, брат, прыгаю.",
+    "Брат, тут уступ. Запрыгну, брат.",
+    "Брат, тут провал. Перепрыгну, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0309",
+   "time": "2026.11.01-21.58.21",
+   "text": "Как дела?",
+   "decoder": [],
+   "brain": "act STATUS_REPORT 1.00",
+   "bot": [
+    "Ни царапины, брат. У меня тут всё тихо."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0310",
+   "time": "2026.11.01-21.58.32",
+   "text": "Посмотри на меня.",
+   "decoder": [],
+   "brain": "act LOOK_AT_ME 1.00 -> order LOOK_AT_ME aim on the bot aim on nothing",
+   "bot": [
+    "Да, брат, вижу тебя."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0311",
+   "time": "2026.11.01-21.58.38",
+   "text": "Посмотрим на главную дверь.",
+   "decoder": [],
+   "brain": "act LOOK_AT 1.00 -> order LOOK_AT @ main door",
+   "bot": [
+    "Вижу, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0312",
+   "time": "2026.11.01-21.58.42",
+   "text": "Закрой ее.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door",
+   "bot": [
+    "Понял, брат.",
+    "Спрыгиваю.",
+    "Иду к выключателю, брат.",
+    "Дверь закрыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0313",
+   "time": "2026.11.01-21.58.50",
+   "text": "Найди камень.",
+   "decoder": [],
+   "brain": "act MOVE_TO 0.99 -> order MOVE_TO @ rock",
+   "bot": [
+    "Брат, меняю позицию.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0314",
+   "time": "2026.11.01-21.59.00",
+   "text": "Залезть на него.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ rock",
+   "bot": [
+    "Перепрыгиваю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0315",
+   "time": "2026.11.01-21.59.06",
+   "text": "Найди синюю лестницу.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ blue stairs",
+   "bot": [
+    "Уже иду туда, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0316",
+   "time": "2026.11.01-21.59.13",
+   "text": "Поднимись по ней на крышу.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ blue stairs up",
+   "bot": [
+    "Иду к метке, брат.",
+    "На позиции, брат.",
+    "Иду за тобой, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0317",
+   "time": "2026.11.01-21.59.31",
+   "text": "Найди синюю лестницу.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ blue stairs, where you look aim on the bot",
+   "bot": [
+    "Брат, меняю позицию.",
+    "Спрыгиваю.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0318",
+   "time": "2026.11.01-21.59.42",
+   "text": "Нать десенюю лестницу.",
+   "decoder": [],
+   "brain": "act FRAG 1.00 -> order FRAG @ blue stairs",
+   "bot": [
+    "Граната!",
+    "Брат, слишком близко для гранаты."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0319",
+   "time": "2026.11.01-21.59.49",
+   "text": "Найди синюю лестницу.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ blue stairs, where you look",
+   "bot": [
+    "Уже иду туда, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0320",
+   "time": "2026.11.01-21.59.55",
+   "text": "Поднимись по ней на крышу.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ blue stairs, where you look up aim on the bot",
+   "bot": [
+    "Иду к метке, брат.",
+    "На позиции, брат.",
+    "Иду за тобой, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0321",
+   "time": "2026.11.01-22.06.25",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это камень, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0322",
+   "time": "2026.11.01-22.06.30",
+   "text": "Залезь на него наверх.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ rock",
+   "bot": [
+    "Прыгаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0323",
+   "time": "2026.11.01-22.06.39",
+   "text": "Слезь не выйди на крышу без оружия.",
+   "decoder": [],
+   "brain": "act JUMP 0.99 (2 order lines) -> orders JUMP @ rock; then MOVE_TO",
+   "bot": [
+    "Прыгаю.",
+    "Брат, меняю позицию.",
+    "Я уже снаружи, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0324",
+   "time": "2026.11.01-22.06.51",
+   "text": "Убери оружие.",
+   "decoder": [],
+   "brain": "act HOLSTER 1.00 -> order HOLSTER",
+   "bot": [
+    "Оружие убрал, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0325",
+   "time": "2026.11.01-22.06.55",
+   "text": "На крышу залезь.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ roof",
+   "bot": [
+    "Иду к метке, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0326",
+   "time": "2026.11.01-22.07.12",
+   "text": "Найди путь, чтобы състь на тот стул.",
+   "decoder": [
+    "Find a way to eat at that chair."
+   ],
+   "brain": "act MOVE_TO 0.99 -> order MOVE_TO @ chair",
+   "bot": [
+    "Иду к метке, брат.",
+    "Спрыгиваю.",
+    "Дверь закрыта, брат. Открываю.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0327",
+   "time": "2026.11.01-22.07.24",
+   "text": "Теперь сядь на тот стул.",
+   "decoder": [
+    "jump on that chair"
+   ],
+   "brain": "act JUMP 1.00 (2 order lines) -> orders JUMP @ chair; then CROUCH",
+   "bot": [
+    "Перепрыгиваю.",
+    "Пониже."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0328",
+   "time": "2026.11.01-22.07.32",
+   "text": "Sleep.",
+   "decoder": [],
+   "brain": "say_again MOVE_TO 0.31",
+   "bot": [
+    "Ещё раз?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0329",
+   "time": "2026.11.01-22.07.35",
+   "text": "Посмотри на меня.",
+   "decoder": [],
+   "brain": "act LOOK_AT_ME 1.00 -> order LOOK_AT_ME aim on the bot",
+   "bot": [
+    "Повернулся к тебе, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0330",
+   "time": "2026.11.01-22.07.40",
+   "text": "Что, слишком громко?",
+   "decoder": [],
+   "brain": "ignore NONE 0.75",
+   "bot": [
+    "Принял."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0331",
+   "time": "2026.11.01-22.07.44",
+   "text": "Secret, eh?",
+   "decoder": [],
+   "brain": "act MOVE_TO 0.96 -> order MOVE_TO",
+   "bot": [
+    "Иду к метке, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0332",
+   "time": "2026.11.01-22.09.09",
+   "text": "But",
+   "decoder": [],
+   "brain": "act GIVE_WAY 0.67 -> order GIVE_WAY",
+   "bot": [
+    "Освобождаю проход."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0333",
+   "time": "2026.11.01-22.09.12",
+   "text": "Body.",
+   "decoder": [],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME",
+   "bot": [
+    "Иду за тобой, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0334",
+   "time": "2026.11.01-22.09.16",
+   "text": "Как тебя зовут?",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Меня зовут Бади, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0335",
+   "time": "2026.11.01-22.09.19",
+   "text": "Бади.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Да, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0336",
+   "time": "2026.11.01-22.09.22",
+   "text": "Стать о ноги.",
+   "decoder": [],
+   "brain": "act CROUCH 0.75 -> order CROUCH aim on the bot",
+   "bot": [
+    "На одно колено, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0337",
+   "time": "2026.11.01-22.09.25",
+   "text": "Встань на ноги.",
+   "decoder": [],
+   "brain": "act STAND_UP 1.00 -> order STAND_UP aim on the bot",
+   "bot": [
+    "Встал.",
+    "Встал, Тимур."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0338",
+   "time": "2026.11.01-22.09.30",
+   "text": "Поднимись на желтую кровать.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ yellow bed",
+   "bot": [
+    "Уже иду туда, брат.",
+    "Брат, тут уступ. Запрыгну, брат.",
+    "Брат, тут провал. Перепрыгну, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0339",
+   "time": "2026.11.01-22.09.42",
+   "text": "Открой дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door",
+   "bot": [
+    "Понял, брат.",
+    "Спрыгиваю.",
+    "Иду к выключателю, брат.",
+    "Дверь открыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0340",
+   "time": "2026.11.01-22.09.50",
+   "text": "Лях на диван.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ sofa",
+   "bot": [
+    "Иду к метке, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0341",
+   "time": "2026.11.01-22.09.57",
+   "text": "Ляж на диван.",
+   "decoder": [],
+   "brain": "act PRONE 1.00 -> order PRONE @ sofa",
+   "bot": [
+    "Понял, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0342",
+   "time": "2026.11.01-22.10.06",
+   "text": "Запомни, что лях на диван- это ляж на диван.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Брат, запомнить, что «лях на диван» — это «ляж на диван»?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0343",
+   "time": "2026.11.01-22.10.13",
+   "text": "Day.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO",
+   "bot": [
+    "Брат, меняю позицию.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0344",
+   "time": "2026.11.01-22.10.23",
+   "text": "Запомню, что лях на диван- это ляж на диван.",
+   "decoder": [
+    "I remember that lying on the sofa is the same as lying on the floor."
+   ],
+   "brain": "say_again NONE 0.40",
+   "bot": [
+    "Брат, не расслышал."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0345",
+   "time": "2026.11.01-22.10.30",
+   "text": "Запомни, что лях на диван это ляжный диван.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Брат, запомнить, что «лях на диван» — это «ляжный диван»?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0346",
+   "time": "2026.11.01-22.10.39",
+   "text": "Нет.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Ладно, брат, не запоминаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0347",
+   "time": "2026.11.01-22.10.47",
+   "text": "Запомню, что ляг на диван- это ляж на диван.",
+   "decoder": [],
+   "brain": "act PRONE 1.00 -> order PRONE @ sofa",
+   "bot": [
+    "Брат, лежу на земле."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0348",
+   "time": "2026.11.01-22.10.56",
+   "text": "Запомню, что лях на диванё это ляж на диван.",
+   "decoder": [
+    "I remember that lying on the sofa is the same as lying on the sofa"
+   ],
+   "brain": "say_again NONE 0.64",
+   "bot": [
+    "Ещё раз?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0349",
+   "time": "2026.11.01-22.11.03",
+   "text": "Запомни, что лях на диван это ляжена диван.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Брат, запомнить, что «лях на диван» — это «ляжена диван»?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0350",
+   "time": "2026.11.01-22.11.10",
+   "text": "Da.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Понял, брат, запомню."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0351",
+   "time": "2026.11.01-22.11.16",
+   "text": "Иди вот на ту метку.",
+   "decoder": [
+    "Go over to that pin."
+   ],
+   "brain": "ask MOVE_TO 1.00",
+   "bot": [
+    "Не вижу метки, брат. Куда, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0352",
+   "time": "2026.11.01-22.11.19",
+   "text": "Иди вон туда, куда показываю.",
+   "decoder": [
+    "Go over there, where I'm pointing."
+   ],
+   "brain": "resolved MOVE_TO 1.00 -> order MOVE_TO @ there",
+   "bot": [
+    "Ясно, брат. Иду туда, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0353",
+   "time": "2026.11.01-22.11.25",
+   "text": "Теперь лях на диван.",
+   "decoder": [],
+   "brain": "act JUMP 0.98 -> order JUMP @ sofa",
+   "bot": [
+    "Перепрыгиваю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0354",
+   "time": "2026.11.01-22.11.31",
+   "text": "Лях на диван.",
+   "decoder": [],
+   "brain": "act JUMP 0.98 -> order JUMP @ sofa aim on the bot",
+   "bot": [
+    "Прыгаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0355",
+   "time": "2026.11.01-22.11.36",
+   "text": "Ляж на диван.",
+   "decoder": [],
+   "brain": "act MOVE_TO 0.98 -> order MOVE_TO @ sofa aim on the bot",
+   "bot": [
+    "Брат, меняю позицию.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0356",
+   "time": "2026.11.01-22.11.45",
+   "text": "Yeah.",
+   "decoder": [],
+   "brain": "answer YES 0.75",
+   "bot": [
+    "Да, понял, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0357",
+   "time": "2026.11.01-22.11.53",
+   "text": "Ляж на пол.",
+   "decoder": [],
+   "brain": "act PRONE 1.00 -> order PRONE",
+   "bot": [
+    "Лёг."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0358",
+   "time": "2026.11.01-22.11.59",
+   "text": "Встань.",
+   "decoder": [],
+   "brain": "act STAND_UP 1.00 -> order STAND_UP",
+   "bot": [
+    "Встаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0359",
+   "time": "2026.11.01-22.12.04",
+   "text": "Ляж на сафу.",
+   "decoder": [],
+   "brain": "act PRONE 1.00 -> order PRONE @ sofa",
+   "bot": [
+    "Понял, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0360",
+   "time": "2026.11.01-22.12.09",
+   "text": "Stein Safe.",
+   "decoder": [],
+   "brain": "say_again TAKE_COVER 0.45",
+   "bot": [
+    "Ещё раз?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0361",
+   "time": "2026.11.01-22.12.12",
+   "text": "Встань с Софы.",
+   "decoder": [],
+   "brain": "say_again JUMP 0.61",
+   "bot": [
+    "Брат, не расслышал."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0362",
+   "time": "2026.11.01-22.12.16",
+   "text": "Слезь Сафи.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ sofa aim on the bot",
+   "bot": [
+    "Перепрыгиваю.",
+    "Перепрыгиваю, Тимур."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0363",
+   "time": "2026.11.01-22.12.23",
+   "text": "вылези отсюда вообще выйди",
+   "decoder": [],
+   "brain": "act FALL_BACK 1.00 -> order FALL_BACK",
+   "bot": [
+    "Отступаю.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0364",
+   "time": "2026.11.01-22.12.29",
+   "text": "Иди за мной.",
+   "decoder": [],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME",
+   "bot": [
+    "Двигаюсь с тобой."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0365",
+   "time": "2026.11.01-22.12.38",
+   "text": "Возьми этот ящик.",
+   "decoder": [
+    "take this crate"
+   ],
+   "brain": "act COLLECT 1.00 -> order COLLECT",
+   "bot": [
+    "Понял, брат, собираю.",
+    "Ясно, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0366",
+   "time": "2026.11.01-22.12.44",
+   "text": "Залезай за мной.",
+   "decoder": [],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME",
+   "bot": [
+    "Иду за тобой, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0367",
+   "time": "2026.11.01-22.12.46",
+   "text": "Dele vai, eles vai.",
+   "decoder": [],
+   "brain": "say_again GO_NOW 0.43",
+   "bot": [
+    "Повтори, брат?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0368",
+   "time": "2026.11.01-22.12.49",
+   "text": "Найди путь, найди путь ко мне сюда.",
+   "decoder": [
+    "find the way find the way to me here"
+   ],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ here near",
+   "bot": [
+    "Брат, меняю позицию.",
+    "Брат, тут уступ. Запрыгну, брат.",
+    "Ближе не подойти, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0369",
+   "time": "2026.11.01-22.13.01",
+   "text": "Перепрыгивай ко мне, перепрыгивай. Давай, ты сможешь перепрыгивай.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ where you look",
+   "bot": [
+    "Прыгаю.",
+    "Прыгаю, Тимур.",
+    "Спрыгиваю.",
+    "Не допрыгнул, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0370",
+   "time": "2026.11.01-22.13.16",
+   "text": "Попробуй еще раз.",
+   "decoder": [],
+   "brain": "act REPEAT 1.00 -> order REPEAT",
+   "bot": [
+    "Пробую снова, брат.",
+    "Брат, слишком высоко, не запрыгну."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0371",
+   "time": "2026.11.01-22.13.23",
+   "text": "Найди путь, попробуй еще раз.",
+   "decoder": [],
+   "brain": "act MOVE_TO 0.97 (2 order lines) -> orders MOVE_TO; then REPEAT",
+   "bot": [
+    "Брат, меняю позицию. Брат, беру другой вариант.",
+    "Брат, тут уступ. Запрыгну, брат.",
+    "Брат, тут провал. Перепрыгну, брат.",
+    "Пробую снова, брат.",
+    "Здесь я так не могу, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0372",
+   "time": "2026.11.01-22.13.53",
+   "text": "Молодец, все получилось.",
+   "decoder": [],
+   "brain": "act PRAISE 1.00",
+   "bot": [
+    "Просто делаю свою работу."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0373",
+   "time": "2026.11.01-22.14.02",
+   "text": "В общем, заходи туда в комнату и закрой за собой главную дверь.",
+   "decoder": [
+    "In general, get over there in the room"
+   ],
+   "brain": "act MOVE_TO 1.00 (2 order lines) -> order MOVE_TO @ main door, inside",
+   "bot": [
+    "Брат, меняю позицию. Не вижу двери, брат. Куда, брат?",
+    "Спрыгиваю.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0374",
+   "time": "2026.11.01-22.14.10",
+   "text": "Вот дверь закрою ее.",
+   "decoder": [],
+   "brain": "resolved OPEN 1.00 -> order OPEN @ main door near",
+   "bot": [
+    "Понял, брат.",
+    "Иду к выключателю, брат.",
+    "Дверь закрыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0375",
+   "time": "2026.11.01-22.14.21",
+   "text": "Выйди оттуда через главную дверь.",
+   "decoder": [],
+   "brain": "say_again RAPPEL 0.56",
+   "bot": [
+    "Брат, не расслышал."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0376",
+   "time": "2026.11.01-22.14.26",
+   "text": "Выйди оттуда через головную дверь.",
+   "decoder": [],
+   "brain": "act FALL_BACK 1.00 -> order FALL_BACK",
+   "bot": [
+    "Отхожу. Брат, запомнить, что «выйди оттуда через главную дверь» — это «выйди оттуда через головную дверь»?",
+    "Брат, тут уступ. Запрыгну, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0377",
+   "time": "2026.11.01-22.14.43",
+   "text": "Нет.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Ладно, брат, не запоминаю."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0378",
+   "time": "2026.11.01-22.14.49",
+   "text": "Войди через главную дверь.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ main door, inside",
+   "bot": [
+    "Уже иду туда, брат.",
+    "Спрыгиваю.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0379",
+   "time": "2026.11.01-22.15.01",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это главная дверь, брат.",
+    "Иду за тобой, брат.",
+    "Брат, тут провал. Перепрыгну, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0380",
+   "time": "2026.11.01-22.15.15",
+   "text": "Убери оружие.",
+   "decoder": [],
+   "brain": "act HOLSTER 1.00 -> order HOLSTER",
+   "bot": [
+    "Руки свободны."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0381",
+   "time": "2026.11.01-22.15.23",
+   "text": "Войди туда через главную дверь.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ main door, inside",
+   "bot": [
+    "Брат, меняю позицию.",
+    "Спрыгиваю.",
+    "Дверь закрыта, брат. Иду к выключателю, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0382",
+   "time": "2026.11.01-22.15.34",
+   "text": "Закрой дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door aim on the bot",
+   "bot": [
+    "Понял, брат.",
+    "Иду к выключателю, брат.",
+    "Дверь закрыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0383",
+   "time": "2026.11.01-22.15.45",
+   "text": "Вернись ко мне.",
+   "decoder": [],
+   "brain": "act COME_BACK 1.00 -> order COME_BACK aim on the bot",
+   "bot": [
+    "Уже возвращаюсь, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0384",
+   "time": "2026.11.01-22.15.53",
+   "text": "Выйди через главную дверь.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ main door, inside",
+   "bot": [
+    "Брат, меняю позицию.",
+    "Дверь закрыта, брат. Иду к выключателю, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0385",
+   "time": "2026.11.01-22.16.03",
+   "text": "Закрой дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door",
+   "bot": [
+    "Понял, брат.",
+    "Иду к выключателю, брат.",
+    "Дверь закрыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0386",
+   "time": "2026.11.01-22.16.08",
+   "text": "Выйди через главную дверь.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ main door",
+   "bot": [
+    "Брат, меняю позицию.",
+    "Дверь закрыта, брат. Иду к выключателю, брат.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0387",
+   "time": "2026.11.01-22.16.19",
+   "text": "Открой другую дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ north door",
+   "bot": [
+    "Понял, брат.",
+    "Брат, она и так открыта."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0388",
+   "time": "2026.11.01-22.16.23",
+   "text": "Другую.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door",
+   "bot": [
+    "Понял, брат.",
+    "Брат, она и так открыта."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0389",
+   "time": "2026.11.01-22.16.31",
+   "text": "Открой вон ту дверь.",
+   "decoder": [
+    "Open that door over there."
+   ],
+   "brain": "act OPEN 1.00 -> order OPEN @ north door aim on the bot",
+   "bot": [
+    "Понял, брат.",
+    "Открываю.",
+    "Дверь открыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0390",
+   "time": "2026.11.01-22.16.36",
+   "text": "Выйди через главную дверь.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ main door",
+   "bot": [
+    "Брат, меняю позицию.",
+    "На позиции, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0391",
+   "time": "2026.11.01-22.16.43",
+   "text": "Закрой другую дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ north door aim on the bot",
+   "bot": [
+    "Понял, брат.",
+    "Закрываю, брат.",
+    "Дверь закрыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0392",
+   "time": "2026.11.01-22.16.50",
+   "text": "Закрой другую дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door",
+   "bot": [
+    "Понял, брат.",
+    "Иду к выключателю, брат.",
+    "Дверь закрыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0393",
+   "time": "2026.11.01-22.16.58",
+   "text": "Открой любую дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door",
+   "bot": [
+    "Понял, брат.",
+    "Иду к выключателю, брат.",
+    "Дверь открыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0394",
+   "time": "2026.11.01-22.17.05",
+   "text": "Другую дверь открой.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ north door",
+   "bot": [
+    "Понял, брат.",
+    "Открываю.",
+    "Дверь открыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0395",
+   "time": "2026.11.01-22.17.11",
+   "text": "Закрой главную дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door aim on the bot",
+   "bot": [
+    "Понял, брат.",
+    "Иду к выключателю, брат.",
+    "Дверь закрыта, брат."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0396",
+   "time": "2026.11.01-22.17.18",
+   "text": "Закрой другую дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ north door",
+   "bot": [
+    "Понял, брат.",
+    "Брат, уже закрыто."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0397",
+   "time": "2026.11.01-22.17.24",
+   "text": "Другую дверь, другую закрой.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door",
+   "bot": [
+    "Понял, брат.",
+    "Брат, уже закрыто."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.17.51.log"
+  },
+  {
+   "id": "talk69_0398",
+   "time": "2026.11.01-22.20.22",
+   "text": "B.",
+   "decoder": [],
+   "brain": "say_again CROUCH 0.29",
+   "bot": [
+    "Повтори?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.26.51.log"
+  },
+  {
+   "id": "talk69_0399",
+   "time": "2026.11.01-22.20.24",
+   "text": "Bad.",
+   "decoder": [],
+   "brain": "say_again YES 0.39",
+   "bot": [
+    "Ещё раз?"
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.26.51.log"
+  },
+  {
+   "id": "talk69_0400",
+   "time": "2026.11.01-22.20.27",
+   "text": "Бани.",
+   "decoder": [],
+   "brain": "act SMALL_TALK 1.00",
+   "bot": [
+    "Я тут."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.26.51.log"
+  },
+  {
+   "id": "talk69_0401",
+   "time": "2026.11.01-22.20.32",
+   "text": "Найди синюю лестницу.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ blue stairs, where you look",
+   "bot": [
+    "Иду к метке.",
+    "На позиции, Тимур."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.26.51.log"
+  },
+  {
+   "id": "talk69_0402",
+   "time": "2026.11.01-22.20.42",
+   "text": "Поднимись по ней на крышу.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ blue stairs up",
+   "bot": [
+    "Меняю позицию.",
+    "На позиции."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.26.51.log"
+  },
+  {
+   "id": "talk69_0403",
+   "time": "2026.11.01-22.20.47",
+   "text": "Найди синюю лестницу.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ blue stairs, where you look",
+   "bot": [
+    "Меняю позицию.",
+    "На позиции."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.26.51.log"
+  },
+  {
+   "id": "talk69_0404",
+   "time": "2026.11.01-22.20.52",
+   "text": "Поднимись по ней на крышу.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ blue stairs, where you look up aim on the bot",
+   "bot": [
+    "Меняю позицию.",
+    "На позиции, Тимур."
+   ],
+   "log": "LyraStarterGame-backup-2026.11.01-22.26.51.log"
+  },
+  {
+   "id": "talk69_0405",
+   "time": "2026.11.01-23.21.54",
+   "text": "Убери оружие.",
+   "decoder": [],
+   "brain": "act HOLSTER 1.00 -> order HOLSTER aim on the bot",
+   "bot": [
+    "Убираю."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0406",
+   "time": "2026.11.01-23.21.59",
+   "text": "Найди синюю лестницу.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ blue stairs, where you look",
+   "bot": [
+    "Иду к метке.",
+    "На позиции."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0407",
+   "time": "2026.11.01-23.22.07",
+   "text": "Поднимись по ней на крышу.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 (2 order lines) -> orders MOVE_TO @ blue stairs up; then MOVE_TO @ roof",
+   "bot": [
+    "Иду к метке.",
+    "На позиции."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0408",
+   "time": "2026.11.01-23.22.18",
+   "text": "Открой дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door",
+   "bot": [
+    "Понял.",
+    "К выключателю не пройти, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0409",
+   "time": "2026.11.01-23.22.27",
+   "text": "Иди сюда.",
+   "decoder": [
+    "Come here."
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Я прямо за тобой."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0410",
+   "time": "2026.11.01-23.22.32",
+   "text": "I'm quite here.",
+   "decoder": [
+    "I'm quite here."
+   ],
+   "brain": "act HELP_INTERACTION 0.77 -> order HELP_INTERACTION",
+   "bot": [
+    "Секунду, иду.",
+    "Я на месте. Что делать?"
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0411",
+   "time": "2026.11.01-23.22.36",
+   "text": "Открой дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ main door",
+   "bot": [
+    "Понял.",
+    "Иду к выключателю.",
+    "Дверь открыта."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0412",
+   "time": "2026.11.01-23.22.41",
+   "text": "Сядь на стол.",
+   "decoder": [],
+   "brain": "ask JUMP 1.00",
+   "bot": [
+    "Какой стол? Ты про белый стол?"
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0413",
+   "time": "2026.11.01-23.22.47",
+   "text": "Da.",
+   "decoder": [],
+   "brain": "resolved YES 1.00 (2 order lines) -> orders JUMP @ white table; then CROUCH",
+   "bot": [
+    "Ясно. Прыгаю.",
+    "Слишком высоко, не запрыгну. Принесу ящик.",
+    "Ясно.",
+    "На одно колено."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0414",
+   "time": "2026.11.01-23.23.03",
+   "text": "Встань на ноги.",
+   "decoder": [],
+   "brain": "act STAND_UP 1.00 -> order STAND_UP",
+   "bot": [
+    "На ногах."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0415",
+   "time": "2026.11.01-23.23.08",
+   "text": "Залезть на красный стул.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ red chair",
+   "bot": [
+    "Перепрыгиваю."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0416",
+   "time": "2026.11.01-23.23.15",
+   "text": "Возьми ящика и отнеси его камню.",
+   "decoder": [],
+   "brain": "act COLLECT 1.00 (2 order lines) -> orders COLLECT; then DELIVER @ red chair",
+   "bot": [
+    "Подбираю.",
+    "Спрыгиваю.",
+    "Уже несу.",
+    "Ясно.",
+    "Тут уступ. Запрыгну.",
+    "Доставил, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0417",
+   "time": "2026.11.01-23.23.32",
+   "text": "Доставь ящик к камню.",
+   "decoder": [],
+   "brain": "act DELIVER 1.00 -> order DELIVER @ rock",
+   "bot": [
+    "Несу.",
+    "Спрыгиваю.",
+    "Ясно.",
+    "Доставил."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0418",
+   "time": "2026.11.01-23.23.42",
+   "text": "Залез на камень.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ rock",
+   "bot": [
+    "Перепрыгиваю.",
+    "Не допрыгнул, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0419",
+   "time": "2026.11.01-23.23.47",
+   "text": "Попробую еще раз.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ rock aim on the bot",
+   "bot": [
+    "Понял, прыгаю."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0420",
+   "time": "2026.11.01-23.23.53",
+   "text": "Перепрыгни на ящик.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ crate",
+   "bot": [
+    "Прыгаю."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0421",
+   "time": "2026.11.01-23.23.58",
+   "text": "Перепрыгнем на другой ящик.",
+   "decoder": [],
+   "brain": "ask JUMP 1.00",
+   "bot": [
+    "Какой ящик? Справа, 8 метров?"
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0422",
+   "time": "2026.11.01-23.24.03",
+   "text": "Da.",
+   "decoder": [],
+   "brain": "resolved YES 1.00 -> order JUMP @ crate",
+   "bot": [
+    "Ясно. Прыгаю."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0423",
+   "time": "2026.11.01-23.24.06",
+   "text": "Yeah.",
+   "decoder": [],
+   "brain": "answer YES 0.75",
+   "bot": [
+    "Да, понял.",
+    "Да, понял, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0424",
+   "time": "2026.11.01-23.24.09",
+   "text": "Иди сюда.",
+   "decoder": [
+    "Come here."
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Я прямо за тобой."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0425",
+   "time": "2026.11.01-23.24.12",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это я."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0426",
+   "time": "2026.11.01-23.24.14",
+   "text": "А это что?",
+   "decoder": [
+    "What is that?"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это я."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0427",
+   "time": "2026.11.01-23.24.17",
+   "text": "Это что?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это коробка, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0428",
+   "time": "2026.11.01-23.24.21",
+   "text": "Залезть на коробку.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ crate",
+   "bot": [
+    "Прыгаю."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0429",
+   "time": "2026.11.01-23.24.25",
+   "text": "Перепрыги на эту коробку.",
+   "decoder": [
+    "jump over onto this box"
+   ],
+   "brain": "act JUMP 1.00 -> order JUMP @ crate near",
+   "bot": [
+    "Понял, прыгаю."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0430",
+   "time": "2026.11.01-23.24.32",
+   "text": "Подожди пять секунд.",
+   "decoder": [],
+   "brain": "wait WAIT 0.99 -> order WAIT aim on the bot",
+   "bot": [
+    "Наготове. 5 секунд.",
+    "Время вышло."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0431",
+   "time": "2026.11.01-23.24.43",
+   "text": "Подожди пять секунд, потом перепрыгни через эту стену.",
+   "decoder": [
+    "jump over that wall"
+   ],
+   "brain": "wait WAIT 0.99 (2 order lines) -> orders WAIT; then JUMP @ there",
+   "bot": [
+    "Понял, жду. 5 секунд.",
+    "Понял, жду, Тимур. 5 секунд.",
+    "Перепрыгиваю.",
+    "Время вышло."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0432",
+   "time": "2026.11.01-23.25.03",
+   "text": "Models.",
+   "decoder": [],
+   "brain": "say_again LOOK_AT 0.24",
+   "bot": [
+    "Не расслышал."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0433",
+   "time": "2026.11.01-23.25.05",
+   "text": "Oh I did.",
+   "decoder": [],
+   "brain": "say_again GO_NOW 0.54",
+   "bot": [
+    "Повтори?"
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0434",
+   "time": "2026.11.01-23.25.08",
+   "text": "Молодец.",
+   "decoder": [],
+   "brain": "act PRAISE 1.00",
+   "bot": [
+    "Спасибо!"
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0435",
+   "time": "2026.11.01-23.25.12",
+   "text": "Открой северную дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ north door",
+   "bot": [
+    "Понял.",
+    "Она и так открыта, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0436",
+   "time": "2026.11.01-23.25.16",
+   "text": "Северную дверь открой.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ north door",
+   "bot": [
+    "Понял.",
+    "Туда не подойти."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0437",
+   "time": "2026.11.01-23.25.21",
+   "text": "Вот туда перейди.",
+   "decoder": [
+    "Go over there."
+   ],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ there",
+   "bot": [
+    "Уже иду туда.",
+    "Перепрыгиваю.",
+    "На позиции, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0438",
+   "time": "2026.11.01-23.25.27",
+   "text": "Открой северную дверь.",
+   "decoder": [],
+   "brain": "act OPEN 1.00 -> order OPEN @ north door",
+   "bot": [
+    "Понял.",
+    "Открываю.",
+    "Дверь открыта."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0439",
+   "time": "2026.11.01-23.25.33",
+   "text": "Зайди в комнату.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO",
+   "bot": [
+    "Уже иду туда.",
+    "На позиции."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0440",
+   "time": "2026.11.01-23.25.38",
+   "text": "Выйди из комнаты через главную дверь.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO",
+   "bot": [
+    "Уже иду туда.",
+    "На позиции."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0441",
+   "time": "2026.11.01-23.25.42",
+   "text": "Иди сюда.",
+   "decoder": [
+    "come here"
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Я прямо за тобой."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0442",
+   "time": "2026.11.01-23.25.46",
+   "text": "Stop.",
+   "decoder": [],
+   "brain": "wait WAIT 1.00 -> order WAIT",
+   "bot": [
+    "Понял, жду."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0443",
+   "time": "2026.11.01-23.25.48",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это жёлтая кровать."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0444",
+   "time": "2026.11.01-23.25.52",
+   "text": "Залез на нее.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ yellow bed",
+   "bot": [
+    "Перепрыгиваю.",
+    "Тут уступ. Запрыгну.",
+    "Тут уступ, Тимур. Запрыгну.",
+    "Тут провал. Перепрыгну.",
+    "На позиции."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0445",
+   "time": "2026.11.01-23.26.04",
+   "text": "Теперь найди сиднюю лестницу.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ blue stairs, where you look",
+   "bot": [
+    "Меняю позицию.",
+    "Спрыгиваю."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0446",
+   "time": "2026.11.01-23.26.10",
+   "text": "Поднимись по ней наверх.",
+   "decoder": [],
+   "brain": "act MOVE_TO 1.00 (2 order lines) -> orders MOVE_TO up; then MOVE_TO up",
+   "bot": [
+    "Иду к метке.",
+    "На позиции, Тимур.",
+    "Иду туда, наверх.",
+    "Куда наверх? Поставь метку."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0447",
+   "time": "2026.11.01-23.26.18",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это стена."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0448",
+   "time": "2026.11.01-23.26.21",
+   "text": "Перепрыгни ее.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ there",
+   "bot": [
+    "Перепрыгиваю.",
+    "Спрыгиваю, Тимур.",
+    "Не допрыгнул."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0449",
+   "time": "2026.11.01-23.26.30",
+   "text": "Не получилось.",
+   "decoder": [],
+   "brain": "answer NO 0.75",
+   "bot": [
+    "Понял, это нет."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0450",
+   "time": "2026.11.01-23.26.33",
+   "text": "Иди сюда.",
+   "decoder": [
+    "Come here."
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Двигаюсь с тобой.",
+    "Перепрыгиваю."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0451",
+   "time": "2026.11.01-23.26.39",
+   "text": "I guess that.",
+   "decoder": [
+    "I guess that."
+   ],
+   "brain": "answer MAYBE 0.75",
+   "bot": [
+    "Может быть, понял.",
+    "Может быть, понял, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0452",
+   "time": "2026.11.01-23.26.43",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это белый стол."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0453",
+   "time": "2026.11.01-23.26.46",
+   "text": "Залез на него.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ white table",
+   "bot": [
+    "Прыгаю.",
+    "Слишком высоко, не запрыгну. Принесу ящик.",
+    "Ясно.",
+    "На позиции, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0454",
+   "time": "2026.11.01-23.26.55",
+   "text": "Залезть на красную кровать.",
+   "decoder": [],
+   "brain": "ask JUMP 1.00",
+   "bot": [
+    "Не вижу кровати. Куда?"
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0455",
+   "time": "2026.11.01-23.27.00",
+   "text": "Залезть на желтую кровать.",
+   "decoder": [],
+   "brain": "resolved JUMP 1.00 -> order JUMP @ yellow bed",
+   "bot": [
+    "Ясно. Прыгаю.",
+    "Не допрыгнул."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0456",
+   "time": "2026.11.01-23.27.07",
+   "text": "Поставь ящик и залезть на желтую кровать.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ yellow bed",
+   "bot": [
+    "Прыгаю.",
+    "Слишком высоко, не запрыгну, Тимур. Принесу ящик.",
+    "Ясно.",
+    "Не вышло. Слишком высоко, даже с ящиком."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0457",
+   "time": "2026.11.01-23.27.23",
+   "text": "Но у меня получилось.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ yellow bed",
+   "bot": [
+    "Перепрыгиваю.",
+    "Слишком высоко, не запрыгну. Принесу ящик.",
+    "Ясно.",
+    "Не вышло. Слишком высоко, даже с ящиком."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0458",
+   "time": "2026.11.01-23.27.30",
+   "text": "У меня получилось все.",
+   "decoder": [],
+   "brain": "say_again GO_NOW 0.51",
+   "bot": [
+    "Не расслышал.",
+    "Не расслышал, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0459",
+   "time": "2026.11.01-23.27.34",
+   "text": "Иди вот сюда встань.",
+   "decoder": [
+    "come here"
+   ],
+   "brain": "act FOLLOW_ME 1.00 (2 order lines) -> orders FOLLOW_ME @ here near; then STAND_UP",
+   "bot": [
+    "Иду за тобой.",
+    "Встаю."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0460",
+   "time": "2026.11.01-23.27.41",
+   "text": "Иди впереди меня.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ yellow bed",
+   "bot": [
+    "Понял, прыгаю.",
+    "Тут уступ, Тимур. Запрыгну.",
+    "Тут уступ. Запрыгну.",
+    "Тут провал. Перепрыгну.",
+    "На позиции."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0461",
+   "time": "2026.11.01-23.27.53",
+   "text": "Gdzie ka mi się to?",
+   "decoder": [],
+   "brain": "say_again HOLD_ANGLE 0.48",
+   "bot": [
+    "Ещё раз?"
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0462",
+   "time": "2026.11.01-23.27.56",
+   "text": "Иди ко мне сюда.",
+   "decoder": [
+    "come here"
+   ],
+   "brain": "act FOLLOW_ME 1.00 -> order FOLLOW_ME @ here near",
+   "bot": [
+    "Иду за тобой.",
+    "Спрыгиваю, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0463",
+   "time": "2026.11.01-23.28.06",
+   "text": "Когда я скажу прыгает, ты прыгнешь.",
+   "decoder": [],
+   "brain": "queued JUMP 0.99",
+   "bot": [
+    "Готов прыгнуть. Жду команды."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0464",
+   "time": "2026.11.01-23.28.10",
+   "text": "Давай.",
+   "decoder": [],
+   "brain": "execute GO_NOW 1.00 -> order JUMP",
+   "bot": [
+    "Выполняю! Перепрыгиваю."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0465",
+   "time": "2026.11.01-23.28.18",
+   "text": "Когда я скажу иди к камню, ты подойдешь к нему и запрыгнешь.",
+   "decoder": [],
+   "brain": "queued MOVE_TO 0.91",
+   "bot": [
+    "Готов идти туда. Жду команды."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0466",
+   "time": "2026.11.01-23.28.23",
+   "text": "Давай.",
+   "decoder": [],
+   "brain": "execute GO_NOW 1.00 -> order MOVE_TO @ rock aim on the bot",
+   "bot": [
+    "Выполняю! Меняю позицию.",
+    "Выполняю, Тимур! Меняю позицию.",
+    "На позиции."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0467",
+   "time": "2026.11.01-23.28.31",
+   "text": "Да прыгай на камеру.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP",
+   "bot": [
+    "Прыгаю.",
+    "Покажи мне."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0468",
+   "time": "2026.11.01-23.28.36",
+   "text": "Вот этот камень.",
+   "decoder": [
+    "Jump on this rock."
+   ],
+   "brain": "act JUMP 1.00 -> order JUMP @ rock near",
+   "bot": [
+    "Понял, прыгаю.",
+    "Понял, прыгаю, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0469",
+   "time": "2026.11.01-23.28.45",
+   "text": "Когда я скажу давай, ты подойдешь к этой коробке, возьмешь ее и отнесешь ее к красному стулу.",
+   "decoder": [
+    "When I say go, you get there, pick it up and carry it to the red chair."
+   ],
+   "brain": "queued DELIVER 0.87",
+   "bot": [
+    "Готов принести. Жду команды."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0470",
+   "time": "2026.11.01-23.28.49",
+   "text": "Давай.",
+   "decoder": [],
+   "brain": "execute GO_NOW 1.00 -> order DELIVER @ red chair",
+   "bot": [
+    "Выполняю! Сейчас доставлю.",
+    "Спрыгиваю.",
+    "Ясно, Тимур.",
+    "Тут уступ. Запрыгну.",
+    "Доставил."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0471",
+   "time": "2026.11.01-23.29.00",
+   "text": "Hiddy soda.",
+   "decoder": [],
+   "brain": "say_again TAKE_COVER 0.27",
+   "bot": [
+    "Повтори?"
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0472",
+   "time": "2026.11.01-23.29.07",
+   "text": "Ты подождешь пять секунд, потом возьмешь этот ящик и доставишь его камню.",
+   "decoder": [
+    "pick up this crate and shovel it"
+   ],
+   "brain": "wait WAIT 0.99 (2 order lines) -> order WAIT",
+   "bot": [
+    "Понял, жду. 5 секунд. Повтори?",
+    "Время вышло, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0473",
+   "time": "2026.11.01-23.29.20",
+   "text": "Ты подождешь 5 секунд, потом возьмешь этот ящик и отнесешь его камню.",
+   "decoder": [
+    "carry this crate over to the camera"
+   ],
+   "brain": "wait WAIT 0.99 (2 order lines) -> orders WAIT; then DELIVER",
+   "bot": [
+    "Жду. 5 секунд.",
+    "Сейчас доставлю.",
+    "Время вышло.",
+    "Ясно.",
+    "Спрыгиваю.",
+    "Держи."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0474",
+   "time": "2026.11.01-23.29.36",
+   "text": "Камню.",
+   "decoder": [],
+   "brain": "act DELIVER 1.00 -> order DELIVER @ rock aim on the bot",
+   "bot": [
+    "Несу.",
+    "Несу, Тимур.",
+    "Ясно.",
+    "Доставил."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0475",
+   "time": "2026.11.01-23.29.45",
+   "text": "Забудь про ящика.",
+   "decoder": [],
+   "brain": "wait WAIT 1.00 -> order WAIT",
+   "bot": [
+    "Жду."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0476",
+   "time": "2026.11.01-23.29.52",
+   "text": "Не бери ящик и подойди к этой стене.",
+   "decoder": [
+    "come to this wall"
+   ],
+   "brain": "wait WAIT 1.00 (2 order lines) -> orders WAIT; then MOVE_TO @ there near",
+   "bot": [
+    "Понял, жду."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0477",
+   "time": "2026.11.01-23.29.55",
+   "text": "Подойди к этой стене.",
+   "decoder": [
+    "move to this wall"
+   ],
+   "brain": "act MOVE_TO 1.00 -> order MOVE_TO @ there near",
+   "bot": [
+    "Уже иду туда.",
+    "На позиции."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0478",
+   "time": "2026.11.01-23.30.02",
+   "text": "Не бери этот ящик.",
+   "decoder": [
+    "Don't take this crate."
+   ],
+   "brain": "wait WAIT 1.00 -> order WAIT",
+   "bot": [
+    "Жду."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0479",
+   "time": "2026.11.01-23.30.08",
+   "text": "Не бери этот ящик, потом подойди к этой стене.",
+   "decoder": [
+    "dont take this crate",
+    "move to this wall"
+   ],
+   "brain": "wait WAIT 1.00 (2 order lines) -> orders WAIT; then MOVE_TO @ there near",
+   "bot": [
+    "Наготове."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0480",
+   "time": "2026.11.01-23.30.15",
+   "text": "Бещика подойди к камню.",
+   "decoder": [],
+   "brain": "act BREACH 1.00 -> order BREACH @ rock",
+   "bot": [
+    "Зарядов нет. Тогда просто захожу.",
+    "На позиции."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0481",
+   "time": "2026.11.01-23.30.23",
+   "text": "Это что?",
+   "decoder": [],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это стена, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0482",
+   "time": "2026.11.01-23.30.26",
+   "text": "A stuff.",
+   "decoder": [],
+   "brain": "say_again ATTACK 0.55",
+   "bot": [
+    "Ещё раз?"
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0483",
+   "time": "2026.11.01-23.30.28",
+   "text": "А это что?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это коробка."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0484",
+   "time": "2026.11.01-23.30.32",
+   "text": "А это что?",
+   "decoder": [
+    "What is that?"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это синий стол."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0485",
+   "time": "2026.11.01-23.30.38",
+   "text": "Используй эту коробку, залезть на синий стол.",
+   "decoder": [
+    "climb on the blue table using this box"
+   ],
+   "brain": "act JUMP 1.00 -> order JUMP @ blue table",
+   "bot": [
+    "Понял, прыгаю.",
+    "Слишком высоко, не запрыгну. Принесу ящик.",
+    "Ясно, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0486",
+   "time": "2026.11.01-23.30.55",
+   "text": "Используя коробку залезть на синий стол.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ blue table",
+   "bot": [
+    "Прыгаю."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0487",
+   "time": "2026.11.01-23.31.05",
+   "text": "Используя коробку залезть на желтую кровать.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ yellow bed",
+   "bot": [
+    "Прыгаю.",
+    "Туда не пройти."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0488",
+   "time": "2026.11.01-23.31.12",
+   "text": "Возьми коробку и залезь на синий стол.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ blue table",
+   "bot": [
+    "Перепрыгиваю.",
+    "На позиции."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0489",
+   "time": "2026.11.01-23.31.17",
+   "text": "Что это?",
+   "decoder": [
+    "what is that"
+   ],
+   "brain": "act WHAT_IS_IT 1.00",
+   "bot": [
+    "Это коробка."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0490",
+   "time": "2026.11.01-23.31.22",
+   "text": "Возьми ее и залезь на синий стол.",
+   "decoder": [],
+   "brain": "act JUMP 0.86 -> order JUMP @ blue table",
+   "bot": [
+    "Перепрыгиваю.",
+    "На позиции.",
+    "Иду за тобой, Тимур."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0491",
+   "time": "2026.11.01-23.31.37",
+   "text": "Возьми эту коробку и залезь на синий стол.",
+   "decoder": [
+    "pick up this box"
+   ],
+   "brain": "act COLLECT 1.00 (2 order lines) -> orders COLLECT; then JUMP @ blue table",
+   "bot": [
+    "Собираю.",
+    "Перепрыгиваю.",
+    "Ясно."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0492",
+   "time": "2026.11.01-23.31.46",
+   "text": "We need come.",
+   "decoder": [],
+   "brain": "say_again HELP 0.63",
+   "bot": [
+    "Повтори?"
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0493",
+   "time": "2026.11.01-23.31.49",
+   "text": "Вернись ко мне.",
+   "decoder": [],
+   "brain": "act COME_BACK 1.00 -> order COME_BACK",
+   "bot": [
+    "Уже возвращаюсь.",
+    "Уже возвращаюсь, Тимур.",
+    "Спрыгиваю."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0494",
+   "time": "2026.11.01-23.31.56",
+   "text": "Используя коробку залезть на синий стол.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ blue table aim on the bot",
+   "bot": [
+    "Прыгаю."
+   ],
+   "log": "LyraStarterGame.log"
+  },
+  {
+   "id": "talk69_0495",
+   "time": "2026.11.01-23.32.02",
+   "text": "Используя коробку, залезть на желтую кровать.",
+   "decoder": [],
+   "brain": "act JUMP 1.00 -> order JUMP @ yellow bed",
+   "bot": [
+    "Понял, прыгаю.",
+    "Туда не пройти."
+   ],
+   "log": "LyraStarterGame.log"
+  }
+ ]
+}

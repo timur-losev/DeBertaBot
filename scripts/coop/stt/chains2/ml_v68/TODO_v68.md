@@ -332,3 +332,200 @@ did not get over says "Didn't make it.").
 - A new intent for "didn't work / не получилось / не вышло / you missed / no funcionó"; the reaction is the owner's choice:
   say why (from the failure the game recorded, the scene's "failed: ..."), try again, or both (explain, then retry on
   "давай ещё").
+
+## 3. Lying down and crawling (the owner, 2026-10-31: «ложись», with the animations; «ползи ...» crawls)
+
+The game lies the bot down now (LyraStarterGame58 CoopBot "Lying down", `UOVProneComponent`). What the brain still misses
+(the game's client rules cover them until a round teaches them; `OVCoop::SaysLieDown`, `OVCoop::SaysCrawl`):
+- «ложись» (lower case, nothing before it) -> decoder "get down" -> TAKE_COVER: the first «ложись» of every E2E run on 2026-10-31 (8 of 8; the later ones in a run were PRONE);
+  «Ложись!» typed alone -> PRONE. Rows: «ложись», «ложись быстро», «ляг», «ляж», «лечь» -> "go prone"; "get down" stays
+  TAKE_COVER (or getting off a thing: the game's rule).
+- No crawl yet: «ползи ко мне» -> "roll over to me" ROLL (say again), «ползи к ящику» -> RAPPEL, «ползи за мной» -> FOLLOW_ME
+  (right, but no crawl in it), "crawl forward" -> JUMP, "crawl to the box" -> MOVE_TO. Wanted: the decoder keeps "crawl"
+  ("crawl to me", "crawl to the box", "crawl forward", "crawl after me") and the classifier reads it as the walk it is
+  (COME_BACK, MOVE_TO, FOLLOW_ME); the game reads "crawl" in the order line (`Words`) for a line of several orders.
+- «залечь!» -> MOVE_TO "Relocating." (should be PRONE).
+
+## 5. The owner's voice tests of 2026-10-31 .. 11-01: what was misread (for round v69)
+
+The owner, 2026-11-02: «пока не запускаем обучение, но все должно быть залогировано — я дам команду». Nothing here is
+trained until he says so.
+
+Source: `scripts/coop/owner_talk_v69_candidates.json`, 495 spoken lines from 2026.10.31-20.55 to 2026.11.01-23.32 (log
+time, the test range). It was made by `extract_owner_talk_v69.py` and leaves out the room talk. The game keeps only its last
+10 logs, so that file is the record. The lines below, one per row, are in `owner_misreads_v69.txt` next to this file.
+
+"Now" is the brain deployed 2026-11-01 (coop_cli md5 6b5a311a…), reading the line alone with no talk before it, unless it
+says "after". The own-words guards in coop_cli (FlankInOwnWords, WayInInOwnWords, CloseInOwnWords, CloseToOpen,
+UndoInOwnWords, DoingInOwnWords, SplitWayTo) are stopgaps: the round should teach the decoder these lines, so that the
+guards only catch what is left.
+
+### 5a. Doors
+
+- «Заходи в главную дверь.», «Зайди через главную дверь.» (×2) → FLANK "Flank's set.". Now: MOVE_TO into the room through
+  the main door.
+- «Пройди через проход.» → FLANK with a which-door question. Now: JUMP "go through the hatch". Wanted: through the doorway.
+- «Да, и заходи туда.» (the answer to «Ты про главную дверь?») → MOVE_TO to the white table. Now: "Куда?". Wanted: yes, the
+  main door, go in through it.
+- «Выйди оттуда через главную дверь.» → say again (RAPPEL 0.56). «…через головную дверь.» → FALL_BACK. Now: MOVE_TO "go
+  outside using the main door" with no door named, and GET_OUT "the head door". Wanted: outside through the main door.
+- «Выйди через главную дверь.» → MOVE_TO inside (once), to the door (twice). Now: VAULT_WINDOW "climb through the main
+  door". Wanted: outside through the main door.
+- «вылези отсюда вообще выйди» → FALL_BACK (now too). Wanted: out of the room the bot is in.
+- «Закрой эту дверь.», «Закрой дверь.» → OPEN_FIRE (×2), HOLD_ANGLE. «Закрывай дверь.» → OPEN_FIRE. Now: closes, but only
+  by CloseToOpen; the decoder writes "open the door". Wanted from the decoder: "close the door". The classifier has no
+  CLOSE: the brain sends OPEN with the close flag.
+- «В общем, заходи туда в комнату и закрой за собой главную дверь.» → in, then "Не вижу двери. Куда?". Now: "open the main
+  door behind you" → a which-question. Wanted: in, then close the main door behind it.
+
+### 5b. Lying down, sitting, getting up and down (see also section 3)
+
+- Lying down on the sofa, wanted PRONE on the sofa:
+  - «Ляж на диван.» → MOVE_TO (×2; PRONE the other two times). Now: CROUCH "get low using the sofa".
+  - «Ляш на диван.» → SUPPRESS. Now: MELEE "bash the sofa".
+  - «Лях на диван.» → MOVE_TO, JUMP. Now: SUPPRESS.
+
+  Read right at the time: «Ляж на белый стол / на красный стул / на жёлтую кровать / на сафу / на пол», «Заляж».
+- Alone, wanted PRONE:
+  - «Ляш.» → FOLLOW_ME. Now: the same.
+  - «Прыляж.» (приляг) → JUMP. Now: the same.
+- «Сядь, сядь на диван.» → TAKE_COVER. Now: the same. «Сядь на диван.», «Вот диван сядь на него.», «Сядь на стул.» →
+  TAKE_COVER, CROUCH, or say again (GET_IN 0.24). Now: CROUCH "crouch on the X".
+
+  The meaning (jump on, then crouch) is the owner's own lesson («сесть на {x}», kept in his memory) and is not for training
+  (teach-not-built-in). Wanted from the decoder only: a faithful "sit on the sofa", not "get down" or "take cover".
+- «Слезь Сафи.» (с софы) → JUMP onto the sofa. Now: "climb down from the sofa", which is right. «Встань с Софы.» → say
+  again. Now: STAND_UP. Wanted: get off the sofa (JUMP down).
+- «Слей со стула на пол.», «Слей со стула.» (the recognizer's «слезь») → DROP (×2). Now: DELIVER and DROP. Wanted: get
+  off the chair.
+- «Поднимись.», said to make it stand (after «встань» was misheard twice) → MOVE_TO. Now: JUMP "climb up". Wanted:
+  STAND_UP while lying or crouching. The game knows the body state, so a rule may fit better than rows.
+- «Тай на ноги.», «Стать о ноги.» (встань на ноги) → PRONE, CROUCH. Now: STAND_UP (right).
+
+### 5c. Boxes
+
+- «Возьми ящика и отнеси его камню.» → DELIVER to the red chair, the thing the talk named before. Now, alone: COLLECT
+  "carry the rock using the crate".
+
+  Probes of 2026-11-02, not the owner's lines: «Отнеси его камню.» → COLLECT "carry the rock" or "carry it with you".
+  «Отнеси коробку камню.» → COLLECT "carry the box of rock", and in other runs "to the bomb" and "to the stone".
+
+  Wanted: DELIVER to the rock (a dative with no «к»).
+- «Ты подождёшь пять секунд, потом возьмёшь этот ящик и доставишь его камню.» → WAIT, then "pick up this crate and shovel
+  it": say again, so the second order was lost. Now: the same.
+
+  «…и отнесёшь его камню.» → "carry this crate over to the camera", a DELIVER with no place, which went to the player. Now:
+  "carry this crate to the rock" (right).
+- «Возьми коробку и залезь на синий стол.» and «Возьми её и залезь на синий стол.» → JUMP only: the COLLECT was dropped.
+  Now: both read right (COLLECT, then JUMP). «Возьми эту коробку и залезь…» was right then too.
+- «Поставь ящик и залезь на жёлтую кровать.» → JUMP only. Now: "climb on the yellow bed using the crate", so the put-down is
+  still lost. Wanted: DROP, then JUMP.
+- «Без коробки.», said after "Too high to jump. I'll get a crate." → JUMP again, and it fetched a crate again. Now: "climb on
+  the white table without the box" → JUMP; the game has no "without the crate" and fetches one anyway. Wanted: the order
+  keeps "without the crate", and the game climbs without one or says it can't.
+- «Не бери ящик и подойди к этой стене.», «Не бери этот ящик, потом подойди к этой стене.» → WAIT, then a MOVE_TO that never
+  ran, because the queue waits for the WAIT to end. Now: the same. Wanted: the walk only. A negated order inside a line of
+  several orders needs a brain rule (drop it, or cancel the carry), not a WAIT.
+- «Забудь про ящика.» → WAIT. Wanted: the owner's call (cancel the carry, put it down?).
+- «Бещика подойди к камню.» (the recognizer's «без ящика») → BREACH at the rock. Now: MOVE_TO to the rock.
+- «Унеси её обратно.» → DELIVER to the main door. «Не, отнеси обратно.» → DELIVER to the player. «обратно туда где ты там
+  был туда её принеси» → GO_BACK (×2). Now: "carry it back" with no place, and GO_BACK + "bring it to her". Wanted: carry it
+  back to where it was picked up. The game would need to keep the pick-up spot.
+- «Окиси на крышу.» (отнеси) → BREACH, then COLLECT at the roof. Now: say again, which is better.
+- «Иди камни сюда.» → DELIVER "bring the stones over here" (now too). What was meant is unclear (maybe «иди к камню»).
+
+### 5d. Questions and talk
+
+- «Ты куда пош<unk>л?» → SMALL_TALK "Принял.". Now: answered as the doing question (ё from `<unk>`, DoingInOwnWords).
+- «Получилось?» → "Услышал.". Now: PRAISE "Приятно слышать.". Wanted: whether the last order worked (section 2).
+- «Не получилось.» → NO "Понял, это нет." (now too). See section 2.
+- «Но у меня получилось.» → JUMP onto the yellow bed again. «У меня получилось всё.» → say again. Now: say again ("i did
+  it"). Wanted: small talk, a remark that is no order.
+- «Меня как зовут?», «А меня как зовут?», with no name taught yet → "Само собой." and "Ха. Неплохо сказано.". Now:
+  "Принял." and "Само собой.". With a taught name, it says the name. Wanted: "I don't know your name yet." (a brain rule
+  and a new reply line in the five tables).
+- «Нифига себе.» → KILL_YOURSELF 1.00. Now: NO "not really" → "Принял: нет.". Wanted: small talk.
+- "Really?" → PRAISE "Thanks!". Now: say again. Wanted: small talk.
+- «Бади, не надо запоминать было.» → WAIT. Now: undoes the last lesson, but only by UndoInOwnWords; the decoder writes
+  "don't forget".
+- «Что это, бади?» → WHAT_IS_IT and a second line ("Береги себя там."). Now: one line (right).
+- "Body." (the bot's name «Бади») → FOLLOW_ME. Now: STAND_UP "get up". Wanted: the name alone means "Да?". The recognizer
+  also wrote «Бани», "B.", "Bad.".
+- «Запомню, что лях на диван — это ляж на диван.» and similar (the recognizer's «запомни») → say again, PRONE, or a junk
+  lesson offer (×4). Now: PRONE or say again. Wanted: read as «запомни».
+
+  The owner's memory (void.mv2s, dumped 2026-11-02) keeps two lessons he did not mean:
+  - «лях на диван» = "Get down on the sofa." (JUMP). At 22:11 the recognizer wrote «…это ляжена диван», and he said
+    «Da». That is why «Лях на диван.» jumped onto the sofa at 22:11-22:12.
+  - «бри оружие» = "put your weapon away bro". He tried to undo it at 20:52 («Бади, не надо запоминать было.» → WAIT),
+    before the voice undo existed.
+
+  «Забудь "лях на диван"» and «Забудь "бри оружие"» remove them.
+
+### 5e. Moving
+
+- "Go on top of this." → MOVE_TO, which stops at the thing's foot (the owner's rule of 2026-10-31). "Go on top of all
+  this." → MOVE_TO. Now: JUMP "climb onto this" (right).
+- «Иди вот сюда, прям куда показываю.» → FOLLOW_ME there. Now: MOVE_TO (right).
+- «Иди вот сюда встань.» → FOLLOW_ME and STAND_UP. Now: MOVE_TO and STAND_UP. Wanted: go here and stay.
+- «Иди впереди меня.» → JUMP onto the yellow bed. Now: say again, "go ahead and lead me". Wanted: walk ahead of the player.
+  No intent does that: a new one or a FOLLOW_ME variant is the owner's call.
+- «Через стену прям.», after «Перепрыгни эту стену» (a continuation) → say again. Now: asks where. Wanted: JUMP over the
+  wall the crosshair is on.
+- «Поднимись по ней наверх.», after «Найди синюю лестницу» → MOVE_TO up (×2), then "Up where? Mark it.". Now: "Go up the
+  blue stairs" (right). Since 2026-11-01 the game takes that to the top.
+- «Когда я скажу иди к камню, ты подойдёшь к нему и запрыгнешь.» → a queued MOVE_TO only, so the jump was lost. Now: the same
+  ("move to the rock and jump in" is one MOVE_TO). Wanted: queued MOVE_TO, then JUMP onto the rock.
+- «Найди путь, попробуй ещё раз.» → MOVE_TO "other" and REPEAT → "I can't do that here.". Now: the same. Wanted: a REPEAT of
+  the last order (a jump onto the yellow bed).
+- "Uh climb back." → JUMP with no place (now too). What was meant is unclear.
+
+### 5f. Junk read as orders
+
+The classifier was sure about junk the recognizer wrote. Wanted: such lines go to "say again". FRAG, MELEE or FLASH from
+junk is the worst case, so these lines are negatives for the router and the classifier.
+
+| Heard | Then | Now |
+|---|---|---|
+| "Why is me uh" | COVER_ME 0.94 | say again |
+| "Secret, eh?" | MOVE_TO 0.96 | WHAT_IS_IT |
+| "But" | GIVE_WAY 0.67 | say again |
+| "I'm quite here." | HELP_INTERACTION 0.77 | say again |
+| "Second one." | JUMP onto the sofa | HOLD_POSITION |
+| «Нать десенюю лестницу.» (найди синюю) | FRAG 1.00 | FLANK |
+| «Зарез ко мне на жёлтую кровать.» (залезь) | MELEE | FOLLOW_ME onto the bed |
+| "Stun." (встань) | FLASH | FLASH |
+| "Skies." (слезь) | JUMP onto the rock | say again |
+| "A tu." | JUMP | not re-checked |
+| «Да прыгай на камеру.» (на камень) | JUMP with no place, "Point at it." | "climb onto the camera" |
+
+### 5g. The speech recognizer (Parakeet), not the decoder
+
+In the Russian mode, short Russian words come out as English, Polish or Czech:
+
+| Said | Heard |
+|---|---|
+| «встань» | "Stine.", "Stunning.", "Stun." (→ FLASH ×2), "Stein, stain, stay, stain.", "Style.", "Stein Safe." («встань с софы»), "Spine blade." ("Wstaň." and "Wstań." were read right) |
+| «слезь» | "Sleeve.", "Sleeze.", "Skies.", "S.", "Sleep.", «Слей» |
+| «ляг», «ляж» | "Lash.", "Lasta.", «Ляш», «Лях», «Прыляж» (приляг) |
+| «да» | "Day." (→ MOVE_TO while a lesson offer was open) |
+| «Бади» | "Body.", "Bad.", "B.", «Бани», «Байди» |
+| «сядь на стул», «сядь на диван» | "Stool, stuff, stuff.", "Zet na spol.", "Sight that you want." |
+| «иди сюда», «иди ко мне» | "Hiddy soda.", "Idzie kam je soda.", "Gdzie ka mi się to?" |
+
+Misheard words: «без ящика» → «Бещика», «камень» → «камеру», «отнеси» → «окиси», «коробку» → «пробку», «залезь» →
+«зарез», «найди синюю» → «нать десенюю», «запомни» → «запомню».
+
+The owner decides between three options, discussed 2026-11-02:
+- word replacement taught by the player («Бещика — это то же самое, что без ящика»), not built yet;
+- decoder rows with the typical mishears;
+- a recognizer held to Russian.
+
+The memory as it is keeps only whole lines and place patterns. A probe on 2026-11-02 showed that it fixes «ляж на {x}»
+fully and one taught line exactly, but not one word across lines.
+
+### 5h. The open microphone
+
+On 2026-11-01 at 19:57 (5 lines) and 21:57 (1 line), talk to someone in the room reached the brain. One long line became
+GO_NOW, and the bot went. The owner (2026-11-01): room talk is not a problem for now. These lines are left out of the
+candidates file.
