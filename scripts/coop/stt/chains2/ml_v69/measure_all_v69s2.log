@@ -1,0 +1,18 @@
+08:03:52  start v69s2
+chain v69s2 on the owner test (47 lines, the game's path): with held 45/47 = 95.7%, at once 43/47 = 91.5%
+  NO  [5] es Empuja la mesa contra la puerta.                   -> ENTRY door/None by table (ask)   want PUSH door/None by table   | push the door with the table
+  NO  [5] es Bloquea la puerta con el sofá.                     -> REPAIR door/None by sofa (ask)   want PUSH door/None by sofa   | reinforce the door using the sofa
+  NO  [5] es Empuja la caja hasta la puerta y escóndete detrás. -> TAKE_COVER door/None by crate (ask)   want PUSH door/None by crate; TAKE_COVER crate/None by None   | hide behind the door using the box
+  NO  [6] es Coge la caja.                                      -> COLLECT None/None by None (act)   want COLLECT crate/None by None   | pick up the box
+W1104 08:06:48.565000 32728 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+  NO  [5] es Coge la piedra pequeña y déjala junto a la cama am -> COLLECT None/None by None (act); DELIVER bed/yellow by None (act)   want COLLECT rock/small by None; DELIVER bed/yellow by rock   | pick up the small stone / put it next to the yellow bed
+  NO  [5] es Riega el bancal norte y después cosecha el del sur -> WATER garden_bed/north by None (act); HARVEST [unsure]/None by None (ask)   want WATER garden_bed/north by None; HARVEST garden_bed/south by None   | water the north garden bed / harvest the south crop
+  NO  [5] es Recarga, escóndete detrás de la cama y no dispares -> RELOAD None/None by None (act); TAKE_COVER bed/None by None (ask)   want RELOAD None/None by None; TAKE_COVER bed/None by None; HOLD_FIRE None/None by None   | Reload / hide behind the bed
+  NO  [5] es Empuja el peñasco hasta la puerta y escóndete detr -> TAKE_COVER door/None by rock (ask)   want PUSH door/None by rock; TAKE_COVER rock/None by None   | hide behind the door using the boulder
+   NO: t140 es muévete a la derecha unos tres segundos | want [('MOVE_TO', {'kind': 'for', 'seconds': 3})] | got [('MOVE_TO', 'move right for a few seconds', {'kind': 'for', 'min': 3.0, 'max': 7.0, 'more': False})]
+   NO: t172 es en unos segundos vuelve aquí | want [('COME_BACK', {'kind': 'after', 'min': 3, 'max': 7})] | got [('FOLLOW_ME', 'in a few seconds come here', {'kind': 'after', 'min': 3.0, 'max': 7.0, 'more': False})]
+   NO: t175 es abre la puerta y espera ahí cinco segundos | want [('OPEN', None), ('WAIT', {'kind': 'for', 'seconds': 5})] | got [('OPEN', 'open the door', None), ('HOLD_POSITION', None, {'kind': 'for', 'seconds': 5.0, 'more': False})]
+   NO: t185 es espérame un segundito | want [('WAIT', None)] | got [('WAIT', 'wait for a sec', {'kind': 'for', 'seconds': 1.0, 'more': False})]
+   NO: t236 en just a moment | want [('WAIT', None)] | got [('GO_BACK', 'just a moment', None)]
+   NO: t238 en gimme a sec | want [('WAIT', None)] | got [('LOOK_AT', 'gimme a sec', None)]
+08:10:43  done v69s2

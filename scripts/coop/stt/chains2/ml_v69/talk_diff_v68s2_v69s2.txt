@@ -1,0 +1,283 @@
+talk69_0004  Говорит, залез сюда.
+    v68s2: act SMALL_TALK  Talk to me.  
+    v69s2: ask MOVE_TO  Talk to me, get up here.  
+talk69_0006  Залезть прям на самый верх.
+    v68s2: act MOVE_TO  Get up right on the top.  
+    v69s2: say_again GET_IN  Get in the top spot right now.  
+talk69_0007  Вот это верхний. Брат, можешь спрятаться под землю?
+    v68s2: act TAKE_COVER  These are the top ones. Bro, can you hide down?  
+    v69s2: ask JUMP  Climb up to top floor, bro  ['can you hide under ground']
+talk69_0008  Спрячься под землю.
+    v68s2: act TAKE_COVER  Take cover.  
+    v69s2: act MOVE_TO  Get yourself underground.  
+talk69_0009  Еще ниже.
+    v68s2: act TAKE_COVER  Take cover lower.  
+    v69s2: act MOVE_TO  Go further down.  
+talk69_0012  Нет, тебя зовут Тимур.
+    v68s2: negated NO  No, you're not called Timur.  
+    v69s2: act SMALL_TALK  Hello, my name is Timur.  
+talk69_0020  Вон туда yellowbit.
+    v68s2: resolved JUMP  Climb on the yellow bed over there.  
+    v69s2: ask GET_IN  Get in the yellow bit.  
+talk69_0023  The leaves.
+    v68s2: say_again COME_BACK  The leaves.  
+    v69s2: act FOLLOW_ME  Come here.  
+talk69_0027  Прыляж.
+    v68s2: act JUMP  jump up on it  
+    v69s2: act PRONE  lie down  
+talk69_0032  Stine.
+    v68s2: act STAND_UP  Get up.  
+    v69s2: act HOLD_POSITION  Stay put.  
+talk69_0041  Запомню, что ляж, ях это пляж на пол.
+    v68s2: say_again BREACH  I'll remember to go prone, I'll beach it for you.  
+    v69s2: say_again NONE  I'll remember to lay it, it's a nice beach for me.  
+talk69_0042  Запомни, что ях это ляж на пол.
+    v68s2: act PRONE  Remember, you're supposed to go prone on the floor.  
+    v69s2: say_again NONE  Remember, I'm anchoring, he'll collapse on the floor.  
+talk69_0048  Тебя зовут бади.
+    v68s2: say_again NONE  You're called Bad.  
+    v69s2: act SMALL_TALK  What's your name, Bad?  
+talk69_0053  Сядь на камень.
+    v68s2: act JUMP  climb on the rock  
+    v69s2: act CROUCH  sit down on the rock  
+talk69_0059  Иди сюда.
+    v68s2: act FOLLOW_ME  Come here.  
+    v69s2: act MOVE_TO  go here  
+talk69_0060  Ляш.
+    v68s2: act FOLLOW_ME  Come here.  
+    v69s2: act PRONE  Go prone.  
+talk69_0062  Left на пол.
+    v68s2: say_again PRONE  Go left on the floor.  
+    v69s2: act MOVE_TO  Go left to the floor.  
+talk69_0064  Stay.
+    v68s2: act HOLD_POSITION  Stay.  
+    v69s2: act PRONE  Stay on the floor.  
+talk69_0067  Тай на ноги.
+    v68s2: act STAND_UP  stand up  
+    v69s2: act CROUCH  crouch  
+talk69_0077  Ещ<unk> раз.
+    v68s2: act JUMP  jump over it again  
+    v69s2: act REPEAT  again  
+talk69_0085  Сядь, сядь на диван.
+    v68s2: act TAKE_COVER  Get down, get down on the sofa.  
+    v69s2: act CROUCH  sit down on the sofa  
+talk69_0086  Сядь на диван.
+    v68s2: resolved JUMP  Sit on the sofa.  
+    v69s2: act CROUCH  sit down on the sofa  
+talk69_0096  Сядь на диван.
+    v68s2: act JUMP  Get on the sofa.  
+    v69s2: act CROUCH  sit down on the sofa  
+talk69_0097  Сядь на стул.
+    v68s2: resolved GET_IN  Sit on the chair.  
+    v69s2: act CROUCH  Sit down on the chair.  
+talk69_0098  Сядь на стул.
+    v68s2: resolved GET_IN  sit on the chair  
+    v69s2: act CROUCH  sit down on the chair  
+talk69_0101  Слей со стула на пол.
+    v68s2: act DROP  Dump that chair on the floor.  
+    v69s2: act JUMP  climb down off the chair  
+talk69_0104  Сядь на стул.
+    v68s2: say_again GET_IN  sit on the chair  
+    v69s2: act CROUCH  sit down on the chair  
+talk69_0112  Поднимись.
+    v68s2: act MOVE_TO  move up  
+    v69s2: act JUMP  climb up  
+talk69_0115  Возьми эту коробку, принеси ее сюда ко мне.
+    v68s2: act DELIVER  Take this box, bring it here to me.  
+    v69s2: act COLLECT | act DELIVER  pick up this box | carry it to me  
+talk69_0117  обратно туда где ты там был туда ее принеси
+    v68s2: act GO_BACK | act DELIVER  back to where you were | there you bring it back  
+    v69s2: act GO_BACK | act GO_BACK  back to where you were | bring it back to where you were  
+talk69_0120  Дальше, дальше, вон туда.
+    v68s2: act MOVE_TO  Go further over there.  
+    v69s2: say_again REPEAT  more more over there  
+talk69_0121  вместе с коробкой
+    v68s2: act COLLECT  bring the box with you  
+    v69s2: act DELIVER  Bring it here with the box.  
+talk69_0125  На синий стол, я.
+    v68s2: resolved BUILD  On the blue table, me.  
+    v69s2: resolved JUMP  Climb onto the blue table, mate.  
+talk69_0130  Получилось?
+    v68s2: answer YES  that works  
+    v69s2: ignore NONE  did you get it  
+talk69_0165  Really?
+    v68s2: say_again NONE  Really?  
+    v69s2: say_again PRAISE  Seriously?  
+talk69_0179  Sleeze.
+    v68s2: act GET_OUT  get out  
+    v69s2: act SMOKE  Sleeze.  
+talk69_0183  Что это, бади?
+    v68s2: act WHAT_IS_IT | act PRAISE  what is that | good job  
+    v69s2: act WHAT_IS_IT  what is that  
+talk69_0188  Вот эту. Вот эту стену.
+    v68s2: act JUMP  Hop over this wall here.  
+    v69s2: ask LOOK_AT  Look at this wall.  
+talk69_0200  Бади, иди сюда.
+    v68s2: act FOLLOW_ME  Come here.  
+    v69s2: act MOVE_TO  go here  
+talk69_0203  Через стену перепрыгни.
+    v68s2: act VAULT_WINDOW  Vault the wall.  
+    v69s2: ask JUMP  jump over this wall  
+talk69_0205  Нифига себе.
+    v68s2: act KILL_YOURSELF  fuck myself  
+    v69s2: say_again PRAISE  seriously?  
+talk69_0211  Залезай за мной на желтой кровать.
+    v68s2: act FOLLOW_ME  follow me using the yellow bed  
+    v69s2: act JUMP  climb onto the yellow bed  
+talk69_0212  Залезай за мной на кровать.
+    v68s2: act FOLLOW_ME  follow me using the bed  
+    v69s2: act JUMP  climb onto the bed  
+talk69_0214  Вот здесь. Здесь она здесь.
+    v68s2: act MOVE_TO  Go here, right here.  
+    v69s2: resolved FOLLOW_ME  Find here, where she is.  
+talk69_0229  Бри оружие.
+    v68s2: say_again SWITCH_WEAPON  Bri оружие.  
+    v69s2: ask BREACH  Breach the weapon.  
+talk69_0232  Бади, не надо запоминать было.
+    v68s2: wait WAIT  Go ahead and don't bother remembering what you had before.  
+    v69s2: ignore NONE  actually dont memorize the was gonna be okay  
+talk69_0240  Ляш на диван.
+    v68s2: act SUPPRESS  Lay down suppressive fire on the sofa.  
+    v69s2: act PRONE  lie down on the sofa  
+talk69_0248  Слей со стула.
+    v68s2: act DROP  put it down  
+    v69s2: act JUMP  climb down off the chair  
+talk69_0250  Quando eu paxu.
+    v68s2: act JUMP  climb down from the chair  
+    v69s2: act HOLD_POSITION  when i pax  
+talk69_0260  Sto
+    v68s2: act CROUCH  Sto  
+    v69s2: go GO_NOW  Go.  
+talk69_0265  S.
+    v68s2: act JUMP  climb onto the rock  
+    v69s2: ask GET_IN  Get in the car.  
+talk69_0272  Окиси на крышу.
+    v68s2: say_again BREACH  oxidize the roof  
+    v69s2: say_again HOLD_POSITION  Corrosion on the roof.  
+talk69_0274  Теперь и сюда.
+    v68s2: resolved DELIVER  now carry it here  
+    v69s2: act FOLLOW_ME  Now, over here.  
+talk69_0287  Lasta.
+    v68s2: say_again NONE  Last one.  
+    v69s2: wait WAIT  Wait.  
+talk69_0298  Сядь на диван.
+    v68s2: say_again JUMP  Sit on the sofa.  
+    v69s2: act CROUCH  Sit down on the sofa.  
+talk69_0303  Zet na spol.
+    v68s2: act PRONE  zet on the floor  
+    v69s2: say_again ATTACK  zet on your friend  
+talk69_0304  Сядь на стул.
+    v68s2: say_again GET_IN  Sit on the chair.  
+    v69s2: act CROUCH  Sit down on the chair.  
+talk69_0307  Зарез ко мне на желтую кровать.
+    v68s2: act MELEE  Sword me on the yellow bed.  
+    v69s2: say_again REPAIR  reinforce me at the yellow bed  
+talk69_0313  Найди камень.
+    v68s2: act MOVE_TO  find a rock  
+    v69s2: say_again COLLECT  find the rock  
+talk69_0318  Нать десенюю лестницу.
+    v68s2: act MOVE_TO  Move up the blue stairs.  
+    v69s2: act FRAG  Nade the stairs.  
+talk69_0323  Слезь не выйди на крышу без оружия.
+    v68s2: act GET_OUT | ask MOVE_TO  Get out | go to the roof  ['put your weapon away']
+    v69s2: act JUMP | ask MOVE_TO  climb down | go to the roof using the weapon  
+talk69_0325  На крышу залезь.
+    v68s2: ask MOVE_TO  get on the roof  
+    v69s2: ask JUMP  climb onto the roof  
+talk69_0326  Найди путь, чтобы състь на тот стул.
+    v68s2: resolved MOVE_TO  Find a way to eat at that chair.  
+    v69s2: say_again COLLECT  eat the stool  
+talk69_0330  Что, слишком громко?
+    v68s2: say_again HOLD_ANGLE  Why so loud?  
+    v69s2: say_again NONE  What, it's too loud?  
+talk69_0333  Body.
+    v68s2: act STAND_UP  get up  
+    v69s2: act FOLLOW_ME  come here  
+talk69_0335  Бади.
+    v68s2: act PRAISE  bad boy  
+    v69s2: negated NO  not bad  
+talk69_0336  Стать о ноги.
+    v68s2: act PRONE  go prone  
+    v69s2: act STAND_UP  stand up  
+talk69_0340  Лях на диван.
+    v68s2: act SUPPRESS  Lay down suppressive fire on the sofa.  
+    v69s2: act PRONE  lie down on the sofa  
+talk69_0343  Day.
+    v68s2: say_again SMALL_TALK  Day.  
+    v69s2: act PRONE  Go prone on the sofa.  
+talk69_0345  Запомни, что лях на диван это ляжный диван.
+    v68s2: say_again REPAIR  Remember that the sofa on the left is a bunk sofa.  
+    v69s2: say_again PRONE  Remember that lying down on the sofa is a lie.  
+talk69_0355  Ляж на диван.
+    v68s2: act MOVE_TO  Go on the sofa.  
+    v69s2: act PRONE  lie down on the sofa  
+talk69_0356  Yeah.
+    v68s2: answer YES  Yeah.  
+    v69s2: act PRONE  Lie down on the sofa.  
+talk69_0360  Stein Safe.
+    v68s2: act PRONE  Go prone on the sofa.  
+    v69s2: say_again GET_IN  Get in the Safer.  
+talk69_0363  вылези отсюда вообще выйди
+    v68s2: act FALL_BACK  get out of here just get out  
+    v69s2: act MOVE_TO  get out of the room  
+talk69_0367  Dele vai, eles vai.
+    v68s2: say_again DEFUSE  Delete, they're coming.  
+    v69s2: say_again DELIVER  Deliver it, it's going to be used.  
+talk69_0369  Перепрыгивай ко мне, перепрыгивай. Давай, ты сможешь перепры
+    v68s2: act JUMP  Hop over to me, hop over to me. You got this.  
+    v69s2: act JUMP | act JUMP  jump over to me jump over | you can jump over  
+talk69_0371  Найди путь, попробуй еще раз.
+    v68s2: act MOVE_TO | act REPEAT  find the way | try again  
+    v69s2: act REPEAT  try again  
+talk69_0373  В общем, заходи туда в комнату и закрой за собой главную две
+    v68s2: act MOVE_TO  In general, go inside the room and open the main door behind you.  
+    v69s2: act MOVE_TO | act OPEN  go inside | open the main door  
+talk69_0375  Выйди оттуда через главную дверь.
+    v68s2: act FALL_BACK  Get out of there through the main door.  
+    v69s2: act MOVE_TO  leave through the main door  
+talk69_0399  Bad.
+    v68s2: say_again YES  Bad.  
+    v69s2: answer NO  not bad  
+talk69_0400  Бани.
+    v68s2: say_again DEFUSE  ban it  
+    v69s2: act COME_BACK  come back  
+talk69_0449  Не получилось.
+    v68s2: answer NO  that's a fail  
+    v69s2: act REPEAT  try again  
+talk69_0457  Но у меня получилось.
+    v68s2: say_again REPAIR  But I managed.  
+    v69s2: ignore NONE  i made it  
+talk69_0459  Иди вот сюда встань.
+    v68s2: act MOVE_TO | act STAND_UP  Go over here. | Stand up.  
+    v69s2: act MOVE_TO  go here stand up  
+talk69_0461  Gdzie ka mi się to?
+    v68s2: ignore NONE  Where did that happen?  
+    v69s2: act WHAT_IS_IT  what's that  
+talk69_0463  Когда я скажу прыгает, ты прыгнешь.
+    v68s2: go GO_NOW  When I say go, you go.  
+    v69s2: queued JUMP  jump when i say go  
+talk69_0472  Ты подождешь пять секунд, потом возьмешь этот ящик и достави
+    v68s2: wait WAIT | act COLLECT | act MELEE  wait for 5 seconds | pick up this crate | smash it  
+    v69s2: wait WAIT | act COLLECT | act DELIVER  wait for 5 seconds | pick up this crate | carry it to the rock  
+talk69_0473  Ты подождешь 5 секунд, потом возьмешь этот ящик и отнесешь е
+    v68s2: wait WAIT | act DELIVER  you wait for 5 seconds | pick up this crate and carry it to the red chair  
+    v69s2: wait WAIT | act COLLECT | act DELIVER  wait for 5 seconds | pick up this crate | carry it to the kam  
+talk69_0474  Камню.
+    v68s2: act MELEE  smash it  
+    v69s2: say_again MOVE_TO  Take the hammer.  
+talk69_0475  Забудь про ящика.
+    v68s2: wait WAIT  never mind the crate  
+    v69s2: act FRAG  throw the rock in the red chair  
+talk69_0476  Не бери ящик и подойди к этой стене.
+    v68s2: wait WAIT | act MOVE_TO  Don't take the crate | come to this wall  
+    v69s2: act MOVE_TO  Move up to this wall.  
+talk69_0480  Бещика подойди к камню.
+    v68s2: act BREACH  Breach the rock.  
+    v69s2: act FOLLOW_ME  come here  
+talk69_0485  Используй эту коробку, залезть на синий стол.
+    v68s2: act JUMP  climb on the blue table using this box  
+    v69s2: act COLLECT | act JUMP  Use this box. | Climb onto the blue table.  
+talk69_0492  We need come.
+    v68s2: act HELP  We need come.  
+    v69s2: act FOLLOW_ME  come here  
+94 of 495 lines read with other intents

@@ -33,6 +33,11 @@ BRAINS["v67s"] = (BRAINS["v67"][0], os.path.join(REPO, "models", "coop-chain-v67
 BRAINS["v67s15"] = BRAINS["v67s"]
 BRAINS["v68s"] = (BRAINS["v67"][0], os.path.join(REPO, "models", "coop-chain-v68s", "cpp"))
 BRAINS["v68s2"] = (BRAINS["v67"][0], os.path.join(REPO, "models", "coop-chain-v68s2", "cpp"))
+# round v69 (2026-11-04): v68s2now = the deployed v68s2 on today's coop_cli (its rules changed since 2026-10-29), v69 the new decoder
+BRAINS["v68s2now"] = BRAINS["v68s2"]
+BRAINS["v69"] = (BRAINS["v67"][0], os.path.join(REPO, "models", "coop-chain-v69", "cpp"))
+BRAINS["v69s2"] = (BRAINS["v67"][0], os.path.join(REPO, "models", "coop-chain-v69s2", "cpp"))
+BRAINS["v69s3"] = (BRAINS["v67"][0], os.path.join(REPO, "models", "coop-chain-v69s3", "cpp"))
 # one entity of every object, some with their qualifiers (several tables and crates, as the test range has)
 ENTITIES = [("table_w", "table", "white", 0, 6), ("table_r", "table", "red", 30, 9), ("table_b", "table", "blue", -40, 8),
             ("table_y", "table", "yellow", 70, 12), ("crate_1", "crate", None, 10, 3), ("crate_big", "crate", "big", -15, 5),

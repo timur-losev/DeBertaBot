@@ -1,0 +1,18 @@
+04:51:26  start v69
+chain v69 on the owner test (47 lines, the game's path): 42/47 = 89.4%
+  NO  [5] es Empuja la caja hasta la puerta y escóndete detrás. -> PUSH crate/None by None (ask)   want PUSH door/None by crate; TAKE_COVER crate/None by None   | shove the box to the door
+  NO  [5] es Pon la caja pequeña encima de la grande.           -> DELIVER None/None by None (act)   want DELIVER crate/big by crate   | put the small box on top of the big one
+  NO  [6] es Coge la caja.                                      -> COLLECT None/None by None (act)   want COLLECT crate/None by None   | pick up the box
+  NO  [6] es Salta la vaya.                                     -> JUMP None/None by None (act)   want JUMP fence/None by None   | jump over it
+W1104 04:54:17.471000 8028 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+  NO  [5] es Coge la piedra pequeña y déjala junto a la cama am -> DELIVER bed/yellow by None (act)   want COLLECT rock/small by None; DELIVER bed/yellow by rock   | put the small stone next to the yellow bed
+  NO  [5] es Riega el bancal norte y después cosecha el del sur -> WATER garden_bed/north by None (act); HARVEST [unsure]/None by None (ask)   want WATER garden_bed/north by None; HARVEST garden_bed/south by None   | water the north garden bed / harvest the south crop
+  NO  [5] es Recarga, escóndete detrás de la cama y no dispares -> RELOAD None/None by None (act); TAKE_COVER bed/None by None (ask)   want RELOAD None/None by None; TAKE_COVER bed/None by None; HOLD_FIRE None/None by None   | Reload / hide behind the bed
+  NO  [5] es Empuja el peñasco hasta la puerta y escóndete detr -> TAKE_COVER door/None by rock (ask)   want PUSH door/None by rock; TAKE_COVER rock/None by None   | hide behind the door using the boulder
+  es     70  at once: whole  94.3%  time  94.3%  intents  94.3%   with held: whole 100.0%  time 100.0%  intents 100.0%
+  en     50  at once: whole  90.0%  time  94.0%  intents  90.0%   with held: whole  96.0%  time 100.0%  intents  96.0%
+   NO: t061 ru дави их ещё пару секунд | want [('SUPPRESS', {'kind': 'for', 'seconds': 2})] | got [('ATTACK', 'attack the enemy for 2 more seconds', {'kind': 'for', 'seconds': 2.0, 'more': True})]
+   NO: t071 ru секунд через десять брось гранату в окно | want [('FRAG', {'kind': 'after', 'seconds': 10})] | got [('FRAG', 'throw a grenade at the window for about 10 seconds', {'kind': 'for', 'seconds': 10.0, 'more': False})]
+   NO: t236 en just a moment | want [('WAIT', None)] | got [('GO_BACK', 'just a moment', None)]
+   NO: t238 en gimme a sec | want [('WAIT', None)] | got [('LOOK_AT', 'gimme a sec', None)]
+04:58:11  done v69

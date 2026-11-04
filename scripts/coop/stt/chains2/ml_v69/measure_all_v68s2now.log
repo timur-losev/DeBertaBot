@@ -1,0 +1,18 @@
+01:53:36  start v68s2now
+chain v68s2 on the owner test (47 lines, the game's path): 17/47 = 36.2%
+  NO  [5] es Bloquea la puerta con el sofá.                     -> HOLD_ANGLE door/None by sofa (ask)   want PUSH door/None by sofa   | lock down the door using the sofa
+  NO  [5] es Empuja la caja hasta la puerta y escóndete detrás. -> TAKE_COVER door/None by crate (ask)   want PUSH door/None by crate; TAKE_COVER crate/None by None   | hide behind the door using the box
+  NO  [6] es Coge la caja.                                      -> COLLECT None/None by None (act)   want COLLECT crate/None by None   | pick up the box
+  NO  [6] es Salta la vaya.                                     -> JUMP None/None by None (act)   want JUMP fence/None by None   | jump over the way
+W1104 01:56:46.349000 7188 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+  NO  [5] es Riega el bancal norte y después cosecha el del sur -> WATER garden_bed/north by None (act); HARVEST [unsure]/None by None (ask)   want WATER garden_bed/north by None; HARVEST garden_bed/south by None   | water the north garden bed / harvest the south crop
+  NO  [5] es Recarga, escóndete detrás de la cama y no dispares -> RELOAD None/None by None (act); TAKE_COVER bed/None by None (ask)   want RELOAD None/None by None; TAKE_COVER bed/None by None; HOLD_FIRE None/None by None   | reload / hide behind the bed
+  NO  [5] es Empuja el peñasco hasta la puerta y escóndete detr -> TAKE_COVER door/None by rock (ask)   want PUSH door/None by rock; TAKE_COVER rock/None by None   | hide behind the door using the boulder
+  NO  [6] es Empújalo hasta la valla.                           -> PUSH fence/None by None (act)   want PUSH fence/None by rock   | push it to the fence
+  en     50  at once: whole  90.0%  time  94.0%  intents  90.0%   with held: whole  96.0%  time 100.0%  intents  96.0%
+   NO: t017 ru слышь, глянь на меня секунды на четыре | want [('LOOK_AT_ME', {'kind': 'for', 'seconds': 4})] | got [('LOOK_AT_ME', 'look at me for a few seconds', {'kind': 'for', 'min': 3.0, 'max': 7.0, 'more': False})]
+   NO: t035 ru двигай направо секунды три | want [('MOVE_TO', {'kind': 'for', 'seconds': 3})] | got [('FRAG', 'nade right for 3 seconds', {'kind': 'for', 'seconds': 3.0, 'more': False})]
+   NO: t185 es espérame un segundito | want [('WAIT', None)] | got [('WAIT', 'wait for a second', {'kind': 'for', 'seconds': 1.0, 'more': False})]
+   NO: t236 en just a moment | want [('WAIT', None)] | got [('GO_BACK', 'just a moment', None)]
+   NO: t238 en gimme a sec | want [('WAIT', None)] | got [('LOOK_AT', 'gimme a sec', None)]
+02:00:56  done v68s2now
