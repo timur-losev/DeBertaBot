@@ -16,6 +16,8 @@ __pycache__/
 cpp/coop_intent/third_party/onnxruntime-*
 # sherpa-onnx's C API, copied per platform from the Python package of the same version (cpp/coop_intent/README.md)
 cpp/coop_intent/third_party/sherpa-onnx-*
+cpp/coop_intent/third_party/cuda-runtime-*
+cpp/coop_intent/third_party/_dl_*
 
 # speech chain (scripts/coop/stt/README.md): synthesized test audio, downloaded speech models and the tools' environment are
 # regenerated or downloaded per machine; the transcripts, lists, scripts and results next to them are in git

@@ -275,24 +275,45 @@ def drops_by_thing(text, record):
     "it", the pin: DROP's own spot as before). Zones stay DROP's too ("put it down outside")."""
     if not record or not record["targets"]:
         return False
-    rest = without_item_place(record, IT.find(text, "DELIVER")["item"], "DELIVER")
+    rest = without_item_place(record, IT.find(text, "DELIVER")["item"], "DELIVER", text)
     k = rest["primary"]
     return k >= 0 and rest["targets"][k]["object"] is not None and rest["targets"][k].get("pointer") is None
 
 
-def without_item_place(record, item, intent):
+def item_it(text):
+    """An "it" of the line is the thing acted on (after an it_verb word: "carry it to the rock") and none is a place (after
+    an it_prep word or "top of": "on it", "next to it", "on top of it")."""
+    W = LOC.VOCAB["w"]
+    if "it_word" not in W:
+        return False
+    w = words(text)
+    verb = place = False
+    for k in range(1, len(w)):
+        if w[k] not in W["it_word"]:
+            continue
+        prev, prev2 = w[k - 1], w[k - 2] if k >= 2 else ""
+        if prev in W["it_prep"] or (prev == "of" and prev2 in W["it_of_lead"]):
+            place = True
+        elif prev in W["it_verb"]:
+            verb = True
+    return verb and not place
+
+
+def without_item_place(record, item, intent, text=""):
     """The line's places without the one that is the item itself (BUILD, COLLECT, DELIVER): the order goes to the next. A
-    bare "it" in a line that names the item is the item too: "pick up this box and carry it to the rock" goes to the rock
-    (2026-11-02: with the crosshair on the box, "it" made the box's own spot the place)."""
+    bare "it" that is the thing acted on, in a line that names the item, is the item too: "pick up this box and carry it to
+    the rock" goes to the rock (2026-11-02: with the crosshair on the box, "it" made the box's own spot the place); "bring
+    this box on top of it", "put the box next to it" keep their "it" (item_it)."""
     obj = item_object(item) if intent in IT.ITEMS["keeps_object"] else None
     if obj is None or not record or not record["targets"]:
         return record
     if all(t["object"] != obj for t in record["targets"]):
         return record
+    it_is_item = item_it(text)
 
     def item_too(t):
-        return t["object"] == obj or (t.get("pointer") == "it" and t["object"] is None and t["zone"] is None and
-                                      t.get("direction") is None and t["role"] is None)
+        return t["object"] == obj or (it_is_item and t.get("pointer") == "it" and t["object"] is None and t["zone"] is None
+                                      and t.get("direction") is None and t["role"] is None)
     keep = [t for t in record["targets"] if not item_too(t)]
     k = record["primary"]
     if k >= 0 and not item_too(record["targets"][k]):
@@ -536,6 +557,10 @@ def ground_target(t, world, memory, here=False):
             cands = [e for e in ents if on_zone(e, zone)]
             if zone in RELATIVE_ZONES:
                 cands = next_floor(cands)
+            if not cands and zone in RELATIVE_ZONES:
+                # "go upstairs" where no floor that way is marked (the owner, 2026-11-04: "up" is floors, things, rocks,
+                # stairs, roofs): the way up or down, which the game finds (stairs, where the player looks, the navmesh)
+                return out("resolved", None, [], "direction")
             if not cands:
                 return out("missing", via="zone")    # a floor the world has no place on: the bot cannot find it
             return out("resolved", None, [e["id"] for e in cands], "zone")
@@ -564,11 +589,37 @@ def ground_target(t, world, memory, here=False):
         return out("missing")
     if qual is not None:
         cands = [e for e in cands if e.get("qualifier") == qual]
-    if zone is not None and zone not in WAY_ZONES:
-        cands = [e for e in cands if on_zone(e, zone)]     # "the door upstairs": a door on a floor above
+    # up or down said with a thing (the owner, 2026-11-04: «залезь на неё наверх», "climb on this bed upstairs" -> "I see no bed",
+    # the crosshair on the bed he stood on): "upstairs" / "downstairs" (a zone) or "up" / "down" (a direction; along a vertical
+    # object it is the way, below)
+    zone_v = zone in RELATIVE_ZONES
+    dir_v = direction in ("up", "down") and obj not in LOC.VOCAB["vertical"]
+    if zone is not None and zone not in WAY_ZONES and not zone_v:
+        cands = [e for e in cands if on_zone(e, zone)]     # "the door on the second floor"
     # "up the blue stairs": up is the way along a vertical object, not where it stands
-    if direction is not None and not (direction in ("up", "down") and obj in LOC.VOCAB["vertical"]):
+    if direction is not None and direction not in ("up", "down"):
         cands = [e for e in cands if in_sector(direction, float(e.get("bearing", 0.0)), float(e.get("elevation", 0.0)))]
+    base = cands
+    if zone_v:
+        cands = [e for e in cands if on_zone(e, zone)]     # "the door upstairs": a door on a floor above
+    if dir_v:
+        cands = [e for e in cands if in_sector(direction, float(e.get("bearing", 0.0)), float(e.get("elevation", 0.0)))]
+    if (zone_v or dir_v) and base:
+        # up or down picks out the things of that kind that are that way; it is as often the way onto the thing or off it. "This
+        # bed" with the crosshair on a bed is that bed whatever it says. With none that way: on a map whose floors are not marked
+        # where these things stand, the ones that are that way by height alone ("the bed upstairs" on a balcony); then up or down
+        # said nothing of where it is (a direction always, a floor when the map cannot tell or the crosshair is on one of them)
+        ids_base = [e["id"] for e in base]
+        dropped = gaze in ids_base and gaze not in [e["id"] for e in cands]
+        unmarked = not any(e.get("zone") is not None for e in base)
+        if pointer == "this" and dropped:
+            cands = base
+        elif not cands:
+            if zone_v and unmarked:
+                cands = [e for e in base if in_sector(zone, 0.0, float(e.get("elevation", 0.0))) and
+                         (not dir_v or in_sector(direction, float(e.get("bearing", 0.0)), float(e.get("elevation", 0.0))))]
+            if not cands and (not zone_v or unmarked or (dropped and pointer is None and flag is None)):
+                cands = base
     if flag == "other" and last is not None:
         cands = [e for e in cands if e["id"] != last]
     if not cands:
@@ -841,8 +892,11 @@ class Planner:
             self.memory["frame"] = {"intent": intent, "t": t, "g": g, "other": other, "near": bool(near),
                                     "time": float(now) if now is not None else None, "said": said, "item": item}
             self.frame_in_line = True
+        direction = t.get("direction") if t else None
+        if direction is None and g and g["via"] == "direction" and t["zone"] in RELATIVE_ZONES:
+            direction = t["zone"]      # "go upstairs" with no floor that way marked: the way up (ground_target)
         order = {"intent": intent, "entity": ent, "candidates": g["candidates"] if g else [],
-                 "direction": t.get("direction") if t else None, "zone": t["zone"] if t else None,
+                 "direction": direction, "zone": t["zone"] if t else None,
                  "object": t["object"] if t else None,
                  "pointer": t.get("pointer") if t else None, "other": other, "via": g["via"] if g else None,
                  "near": bool(near and t is not None and t.get("pointer") == "this")}
@@ -993,7 +1047,7 @@ class Planner:
                 self.memory["question"] = None
                 return {"action": "refused", "say": item["refused"], "ground": [], "order": None, "question": None,
                         "intent": intent, "prob": rec["prob"], "probs_adjusted": adjusted}
-            record = without_item_place(record, item["said"], intent)
+            record = without_item_place(record, item["said"], intent, text)
             if action == "queued":
                 self.bot.pending_places = record
         if action in ("act", "queued"):
@@ -1174,7 +1228,8 @@ DEV_BARE = [
     ("at my pin", "HOLD_POSITION", {"action": "resolved", "entity": "pin", "intent": "HOLD_ANGLE"}),
     ("check the stairs", "CHECK", {"action": "ask"}),
     ("on the left", "NONE", {"action": "resolved", "direction": "left", "intent": "CHECK"}),
-    ("go upstairs", "MOVE_TO", {"action": "ask"}),                                          # "I can't find the way up. Where?"
+    ("go to the basement", "MOVE_TO", {"action": "ask"}),                                   # "I can't find the basement. Where?" ("go
+                                                                                            # upstairs": the way up, DEV_UP)
     ("no", "NO", {"action": "resolved"}),
     ("breach there on my go", "BREACH", {"action": "queued"}),
     ("go", "GO_NOW", {"action": "execute", "entity": "gaze_1"}),
@@ -1251,6 +1306,36 @@ DEV_FLOORS = [
 ]
 
 
+# "up" with a thing (the owner, 2026-11-04, the test range: on the yellow bed, «Что это?» -> "That's the yellow bed.", then «Залезь на
+# неё наверх» -> "climb on the yellow bed upstairs" -> "I see no bed. Where?"): no floor is marked; the speaker stands as high as the
+# bed's top, the red chair is 1.7 m above the feet
+WORLD_UP = {
+    "entities": [
+        {"id": "bed_y", "object": "bed", "qualifier": "yellow", "zone": None, "bearing": -20.0, "distance": 1.5, "elevation": 0.0, "tags": []},
+        {"id": "table_w", "object": "table", "qualifier": "white", "zone": None, "bearing": 160.0, "distance": 8.0, "elevation": -0.7, "tags": []},
+        {"id": "table_b", "object": "table", "qualifier": "blue", "zone": None, "bearing": 140.0, "distance": 9.0, "elevation": -1.1, "tags": []},
+        {"id": "chair_r", "object": "chair", "qualifier": "red", "zone": None, "bearing": 120.0, "distance": 5.0, "elevation": 1.7, "tags": []},
+        {"id": "rock_1", "object": "rock", "qualifier": None, "zone": None, "bearing": 40.0, "distance": 7.0, "elevation": -1.6, "tags": []},
+        {"id": "stairs_b", "object": "stairs", "qualifier": "blue", "zone": None, "bearing": 70.0, "distance": 9.0, "elevation": -2.0, "tags": []},
+    ],
+    "player_pin": None, "bot_pin": None, "player_gaze": "bed_y", "player": {"downed": False}, "bot": {"stance": "stand", "items": []},
+}
+DEV_UP = [
+    ("climb on the yellow bed upstairs", "JUMP", {"action": "act", "entity": "bed_y", "via": "gaze"}),      # the crosshair on it
+    ("climb on this bed upstairs", "JUMP", {"action": "act", "entity": "bed_y", "via": "gaze"}),
+    ("climb up onto the rock", "JUMP", {"action": "act", "entity": "rock_1", "via": "only"}),             # up: the way onto it
+    ("get up on the chair", "JUMP", {"action": "act", "entity": "chair_r"}),                              # it is up there
+    ("go up the stairs", "MOVE_TO", {"action": "act", "entity": None, "via": "direction", "direction": "up"}),
+    ("go upstairs", "MOVE_TO", {"action": "act", "entity": None, "via": "direction", "direction": "up", "zone": "up"}),  # no floors: the way up
+    ("go downstairs", "MOVE_TO", {"action": "act", "entity": None, "via": "direction", "direction": "down"}),
+]
+WORLD_UP_TABLE = dict(WORLD_UP, player_gaze="table_w")
+WORLD_UP_NONE = dict(WORLD_UP, player_gaze=None)
+DEV_UP_TABLE = [("climb on the table upstairs", "JUMP", {"action": "act", "entity": "table_w", "via": "gaze"})]
+DEV_UP_NONE = [("climb on the table upstairs", "JUMP", {"action": "ask"}),                                  # which one: two tables
+               ("climb on the yellow bed upstairs", "JUMP", {"action": "act", "entity": "bed_y", "via": "only"})]
+
+
 # bot v56: two stairs and a pin, the crosshair on a wall. A way up or down by the stairs is the direction, never a question
 # (the game takes the way); "inside" is the game's; "stairs on my pin" answers "Which stairs?"; going back and letting the
 # player out take no place from the line
@@ -1270,7 +1355,7 @@ DEV_V56 = [
     ("go up", "MOVE_TO", {"action": "act", "entity": None, "via": "direction", "direction": "up", "candidates": []}),
     ("go inside", "MOVE_TO", {"action": "act", "entity": None, "via": "inside", "zone": "inside"}),
     ("get indoors", "MOVE_TO", {"action": "act", "entity": None, "via": "inside"}),
-    ("go to the next floor", "MOVE_TO", {"action": "ask"}),                       # no place is marked on the floor above
+    ("go to the next floor", "MOVE_TO", {"action": "act", "via": "direction", "direction": "up"}),   # none marked above: the way up
     ("go by these stairs", "MOVE_TO", {"action": "ask"}),                         # the crosshair is not on stairs: which?
     ("stairs on my pin", "VAULT_WINDOW", {"action": "resolved", "entity": "stairs_b", "intent": "MOVE_TO"}, {"low": True}),
     ("stand on my pin", "HOLD_POSITION", {"action": "act", "entity": "pin", "via": "pin"}),
@@ -1488,7 +1573,10 @@ def run_dev():
                        (WORLD_GARDEN, DEV_V68 if LOC.VOCAB["version"] >= 15 and "TILL" in labels else []),
                        (WORLD_SPOOLS, DEV_V64 if LOC.VOCAB["version"] >= 10 and "ROLL" in labels else []),
                        (WORLD_TABLES, DEV_SAME_THING if LOC.VOCAB["version"] >= 11 else []),
-                       (WORLD_MEANS, DEV_MEANS if MEANS_ON else [])):
+                       (WORLD_MEANS, DEV_MEANS if MEANS_ON else []),
+                       (WORLD_UP, DEV_UP if LOC.VOCAB["version"] >= 15 else []),
+                       (WORLD_UP_TABLE, DEV_UP_TABLE if LOC.VOCAB["version"] >= 15 else []),
+                       (WORLD_UP_NONE, DEV_UP_NONE if LOC.VOCAB["version"] >= 15 else [])):
         if not dev:
             continue
         bot = Fake()
@@ -1521,7 +1609,7 @@ def run_dev():
             good = all(got.get(k) == v for k, v in want.items())
             ok += good
             print(f"{'ok ' if good else 'NO '} {('+ ' if continued else '') + repr(text):36s} -> {r['action']:9s} {r['say']}" + (f"  order {r['order']}" if r["order"] else ""))
-    print(f"{ok}/{len(DEV) + len(DEV_BARE) + len(DEV_TALK) + len(DEV_FLOORS) + len(DEV_CHAIN) + len(DEV_CHAIN_BARE) + (len(DEV_V56) if 'GO_BACK' in labels else 0) + (len(DEV_V57) if 'SWITCH_WEAPON' in labels else 0) + (len(DEV_V60) if LOC.VOCAB['version'] >= 8 else 0) + (len(DEV_V68) if LOC.VOCAB['version'] >= 15 and 'TILL' in labels else 0) + (len(DEV_V64) if LOC.VOCAB['version'] >= 10 and 'ROLL' in labels else 0) + (len(DEV_SAME_THING) if LOC.VOCAB['version'] >= 11 else 0) + (len(DEV_MEANS) if MEANS_ON else 0)}")
+    print(f"{ok}/{len(DEV) + len(DEV_BARE) + len(DEV_TALK) + len(DEV_FLOORS) + len(DEV_CHAIN) + len(DEV_CHAIN_BARE) + (len(DEV_V56) if 'GO_BACK' in labels else 0) + (len(DEV_V57) if 'SWITCH_WEAPON' in labels else 0) + (len(DEV_V60) if LOC.VOCAB['version'] >= 8 else 0) + (len(DEV_V68) if LOC.VOCAB['version'] >= 15 and 'TILL' in labels else 0) + (len(DEV_V64) if LOC.VOCAB['version'] >= 10 and 'ROLL' in labels else 0) + (len(DEV_SAME_THING) if LOC.VOCAB['version'] >= 11 else 0) + (len(DEV_MEANS) if MEANS_ON else 0) + (len(DEV_UP) + len(DEV_UP_TABLE) + len(DEV_UP_NONE) if LOC.VOCAB['version'] >= 15 else 0)}")
 
 
 if __name__ == "__main__":

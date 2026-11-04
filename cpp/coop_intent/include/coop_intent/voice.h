@@ -25,6 +25,12 @@ struct VoiceOptions {
     float speed = 1.0f;
     // a Kokoro model's language ("es"); empty: voice.json's, else the model's default
     std::string lang;
+    // where the voice runs (2026-11-02, the owner: a switch between the CPU and the GPU): "cpu", "cuda" (sherpa-onnx's
+    // CUDA build and its ONNX Runtime next to the exe, CUDA 12 and cuDNN 9 on the machine), or "auto": a Kokoro voice on
+    // the GPU, a Piper voice on the CPU (measured on the i9-10900K and an RTX 4090: Piper 40-100 ms a line on 4-6 threads,
+    // slower on the GPU; Kokoro about 500 ms on any number of threads, 110 ms on the GPU). A voice that does not load on
+    // the GPU loads on the CPU (PiperVoice::Provider says which)
+    std::string provider = "cpu";
 };
 
 class PiperVoice {
@@ -47,6 +53,8 @@ public:
     std::vector<std::string> Speakers() const;
     // "en_GB-vctk-medium, p311 (38 of 109)", for the log
     std::string Describe() const;
+    // where the loaded voice runs: "cpu" or "cuda"
+    const std::string& Provider() const;
 
 private:
     struct Impl;

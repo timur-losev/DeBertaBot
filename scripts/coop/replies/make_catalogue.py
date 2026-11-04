@@ -123,6 +123,10 @@ GAME = [  # the game's own lines (Source/LyraGame/CoopBot)
     ("Where are you?", "FOLLOW_ME with the player out of reach"), ("Up where?", "'go up' with no way up; followed by 'Mark it.'"),
     ("Down where?", "'go down' with no way down"), ("Mark it.", "asks for a pin"), ("No cover here, staying low.", "TAKE_COVER"),
     ("Too close for a frag.", "FRAG"), ("Too far for a frag.", "FRAG"), ("You're in my way.", "FRAG: the player in the arc"),
+    ("You're in my way. I'll go round.", "a walk stopped by the player who does not step aside: round them by another way"),
+    ("Someone's in my way. I'll go round.", "a walk stopped by somebody else (a player, a bot): round them"),
+    ("You're in my way. I can't get past.", "a walk stopped by the player, no way round: it waits for them to move"),
+    ("Someone's in my way. I can't get past.", "the same, stopped by somebody else"),
     ("No clear throw from here.", "FRAG"), ("Nowhere to jump down here.", "JUMP down"), ("I can't reach you.", "FOLLOW_ME"),
     ("Contact here!", "CHECK found an enemy"), ("Clear.", "CHECK found none"), ("Frag's not ready.", "FRAG on cooldown"),
     ("I'm out of ammo!", "nothing left"), ("That's too far.", "order too far from the player"),
@@ -150,6 +154,10 @@ GAME = [  # the game's own lines (Source/LyraGame/CoopBot)
     # article in English ("a spike trap"); its words in the player's language come with the line (the label's own names)
     ("I see {thing} {sector}, {n} m.", "'what do you see?': a labelled thing in sight, where it is from the player and how far"),
     ("And {thing} {sector}, {n} m.", "'what do you see?': the next labelled thing in sight"),
+    # 2026-11-02, the owner: the places in sight too (a table, a rock: the markers' things), and two or more of one name said once
+    ("I see several {things}, the nearest {sector}, {n} m.", "'what do you see?': two or more of one kind in sight ('several boxes'), "
+                                                             "where the nearest of them is and how far"),
+    ("And several {things}, the nearest {sector}, {n} m.", "'what do you see?': the next kind of which two or more are in sight"),
     ("I can feel {thing} {sector}.", "'what do you see?': a labelled heat, cold or gas source near the bot, out of sight"),
     ("Enemy {sector}, {n} m.", "'what do you see?': one enemy in sight"),
     ("{n} enemies in sight.", "'what do you see?': several enemies in sight; followed by 'The nearest ...'"),
@@ -235,6 +243,33 @@ GAME = [  # the game's own lines (Source/LyraGame/CoopBot)
     ("It's shut already.", "'close the door' at a door that is shut"),
     ("It won't close.", "'close the door': used by hand and still open"),
     ("I can't close that.", "'close' at a thing that does not shut"),
+    # 2026-11-03, the owner («он должен сообщить о своем текущем статусе»): the fuller answer to 'what are you doing?' / 'where are
+    # you going?' (the game's DoingLine: the fight, what it does now, the seconds left, what it carries, the next order of the line;
+    # each a sentence), and the status report ('how is it going?') says it after the health and the ammo
+    ("Shooting.", "'what are you doing?': it fights; followed by 'Enemy {sector}, {n} m.'"),
+    ("Sitting on {thing}.", "'what are you doing?': crouched up on a thing (the chair, the sofa)"),
+    ("Standing on {thing}.", "'what are you doing?': standing up on a thing"),
+    ("Lying on {thing}.", "'what are you doing?': lying on a thing (the sofa, the bed)"),
+    ("Crouching here.", "'what are you doing?': crouched where it stands"),
+    ("Waiting for your go.", "'what are you doing?': a line of orders waits for the player's 'go'"),
+    ("{n} more seconds.", "'what are you doing?': the seconds left of a timed order"),
+    ("One more second.", "'what are you doing?': the same, one second"),
+    ("I've got {thing}.", "'what are you doing?': what it carries ('the box', 'the crate', 'the spool')"),
+    ("Then to you.", "'what are you doing?': the next order of the line: to the player"),
+    ("Then back.", "the next order: GO_BACK"), ("Then I wait.", "the next order: WAIT"), ("Then I crouch.", "the next order: CROUCH"),
+    ("Then I lie down.", "the next order: PRONE"), ("Then I lie down on {thing}.", "the next order: PRONE on a thing"),
+    ("Then up onto {thing}.", "the next order: up onto a thing (JUMP onto, 'stand on the chair')"),
+    ("Then I stand up.", "the next order: STAND_UP"), ("Then I stay put.", "the next order: HOLD_POSITION"),
+    ("Then down.", "the next order: a jump down"), ("Then over {thing}.", "the next order: a jump over a thing"),
+    ("Then a jump.", "the next order: a jump with no thing named"),
+    ("Then I pick up {thing}.", "the next order: COLLECT a thing"), ("Then I pick it up.", "the next order: COLLECT"),
+    ("Then I carry it to {thing}.", "the next order: DELIVER to a thing"), ("Then I carry it over.", "the next order: DELIVER"),
+    ("Then I put it down.", "the next order: DROP"), ("Then I open {thing}.", "the next order: OPEN a door"),
+    ("Then I close {thing}.", "the next order: close a door"), ("Then one more order.", "the next order, of a kind not named"),
+    ("Then to your pin.", "the next order: to the player's pin"), ("Then in through {thing}.", "the next order: in by a door"),
+    ("Then out through {thing}.", "the next order: out by a door"), ("Then to {thing}.", "the next order: a walk to a place"),
+    ("Then where you pointed.", "the next order: a walk to a spot the player pointed at"),
+    ("And {n} more after that.", "the orders of the line after the next one"),
 ]
 # what the bot calls the thing under the crosshair (LyraStarterGame58 CoopBot OVCoop::ThingName and the client's BuildWorld):
 # the slot "thing" lists them, so that the reply tables say them in the player's language
@@ -271,6 +306,9 @@ SLOTS_NOTE = {
              "its words in the player's language come with the line from the label itself (the forms text, acc, gen...). "
              "The table's _other is said only when a label has no words of that language: a neutral word ('что-то', 'algo')",
 }
+SLOTS_NOTE["things"] = ("a kind of thing in the plural, after 'several': 'I see several boxes, the nearest on the right, 3 m.' (the game's "
+                        "SeenLine; a kind not listed is said one by one). Russian and Spanish: the whole 'several ...' in the value "
+                        "(«несколько коробок», «varias cajas»), the sentence has no word of its own for 'several'")
 SLOTS_NOTE["said"] = ("the player's own words, a line the bot could not read, quoted in their language (lowercase, no stops); "
                       "open, no values: the line comes with it")
 SLOTS_NOTE["meant"] = "the player's own words of the line the bot then read, quoted as 'said' is"
@@ -291,6 +329,10 @@ SLOT_VALUES = {
              "carrots", "potatoes", "tomatoes", "seeds", "plants", "crops", "chickens", "cows", "pigs", "animals", "eggs", "milk",
              "wood", "planks", "stone", "metal", "ammo", "water", "field", "barn", "well"],
     "thing": WHAT_THINGS,   # open: a label the level designer gave is said as it is
+    # the game's SeenLine plurals (LyraStarterGame58 CoopBot OVCoopBotController.cpp, Several)
+    "things": ["boxes", "crates", "tables", "chairs", "sofas", "beds", "rocks", "doors", "windows", "cars", "teleports", "spools",
+               "cable spools", "trees", "fences", "fields", "garden beds", "greenhouses", "barns", "chicken coops", "beehives", "wells",
+               "foundations", "switches", "health packs", "weapons"],
 }
 
 

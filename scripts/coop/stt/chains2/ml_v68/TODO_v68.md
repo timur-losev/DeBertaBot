@@ -529,3 +529,73 @@ fully and one taught line exactly, but not one word across lines.
 On 2026-11-01 at 19:57 (5 lines) and 21:57 (1 line), talk to someone in the room reached the brain. One long line became
 GO_NOW, and the bot went. The owner (2026-11-01): room talk is not a problem for now. These lines are left out of the
 candidates file.
+
+### 5i. Carrying a box up onto a thing (the owner, 2026-11-02, English; the brain fixed what it could, the rest is here)
+
+- "Using the blue table and the red chair, bring the box to the yellow bed." The decoder (with no context) wrote "bring the
+  yellow bed to the box using the blue table and the red chair": the item and the place swapped, DELIVER to the crate. Wanted:
+  the box to the yellow bed, the two tables as the means. (In the game the same line kept as said gave DELIVER @ red chair until
+  2026-11-02: "using A and B" made only A the means; the place parser now gives "and" the means role too.)
+- "on the top of yellow bag." and "So bring this box on top of Yellow Bat." (the speech recognizer: bed -> bag, Bat). Both were
+  read as a way up with no stairs ("I see no stairs. Where?"). Wanted: the yellow bed (a "which?" at worst), not stairs.
+- "Pick it up, move it away through the yellow bed." -> COLLECT @ blue stairs and a second line not read ("didn't catch that").
+- Fixed in the brain on 2026-11-02, not the decoder's: "Bring this box on top of it." lost its "it" (a rule of the same day; an
+  "it" after a preposition is a place again).
+
+### 5j. Getting up off a thing and teaching to sit (the owner, 2026-11-02 22:17-22:23, Russian, persona brat)
+
+- «Встань с дивана, сядь на стул.» -> one order, "Stand up on the sofa, sit on the chair." (STAND_UP @ sofa): «с дивана» is
+  off the sofa, not on it, and the second order was lost. Wanted: STAND_UP off the sofa; then sit on the chair (the player's
+  lesson, or JUMP onto the chair + CROUCH). The game now reads «встань с ...» as off by the player's own words (SaysGetOff).
+- «Встань с дивана и сядь на стул.» -> "Stand up on the sofa." + CROUCH @ chair; «Киев встань с дивана, сядь на стул.» ->
+  CROUCH @ chair alone. The brain now uses a taught «сядь на {x}» for that part of the line (used_line_part).
+- «Попрыгни на стул и присядь, значит сядь на стул.» (a lesson without «запомни») -> JUMP @ chair + CROUCH + a third line not
+  read. Lessons need «запомни» first; with it the brain reads the meaning first now (teach.cpp ReadMeans, same).
+- «Забудь встать на стул.» -> WAIT ("Понял, жду."): a forget of a line never taught.
+- «Сядь на стул.» with no lesson -> GET_IN 0.24 -> MOVE_TO @ chair, and the reply "Move there, there." («Иду туда, туда»).
+- «Сдесь ко мне, придурок.» -> FOLLOW_ME asked "I see no place. Where?" (the recognizer's «Сдесь» for «здесь»).
+- «Теперь перепрыгни через эту стену и беги за мной.» -> the jump, then "didn't catch that" for «беги за мной».
+- «Ко мне, ко мне, снезь ко мне.» -> JUMP down only; wanted down and to the player.
+- «Вернись обратно.» -> COME_BACK one time, GO_BACK the next; «Google туда вернись.» -> GO_BACK twice. The owner, 2026-11-03:
+  «вернись» is mostly the previous place, to him only with «ко мне». The decoder writes "come back" for «вернись»,
+  «вернись обратно», «вернись назад», «возвращайся», «vuelve», «regresa» (and "Go back." typed in the Russian mode). A rule
+  in coop_cli (BackInOwnWords, BareBackPiece) makes them "go back" now. Wanted from the decoder: "go back" for these lines,
+  "come back to me" only for «ко мне», «сюда», «aquí», «conmigo». Then the rule only catches what is left.
+- Seen in an E2E of 2026-11-03 (not the owner's line): «Запрыгни на стул и присядь.» -> one order, CROUCH @ chair ("crouch
+  using the chair"); the jump was lost. Wanted: JUMP @ chair, then CROUCH.
+
+### 5k. A network game with two players and two bots (the owner, 2026-11-03 16:38-16:43, Russian, persona brat)
+
+- «Я покатал стену, перепрыгни через нее.» (the recognizer's «покатал»; the crosshair on a 1 m wall) -> JUMP @ north door: the
+  "it" rule (v8) took the north door named 30 s before, though this line named the wall. A wall is no place on the range, so
+  it was not remembered as named. Wanted: "it" after a thing named in the same line is that thing (the crosshair). A rule
+  question (locations.py + world.py + the C++ mirror, with parity), not the decoder's; left for the owner's word.
+- «А и сюда, вот сюда встань.» -> ROLL @ here ("Roll the wall here, right here."): the decoder's five-line memory carried
+  "rolled the wall" from the line before. Wanted: HOLD_POSITION / MOVE_TO @ here.
+- «Перепрыгни стену.» / «Иди перепрыгни через стену.» (the crosshair on the wall) -> JUMP with no place. The game now takes the
+  crosshair's spot when no place is said and the crosshair is on something to jump (AimIsJumpable); the decoder may still
+  write "jump over the wall" with a pointer.
+- «Ляс на диван тоже.» -> JUMP @ sofa (wanted PRONE @ sofa), «Ляшный диван.» -> CROUCH @ sofa, «Ляж.» -> PRONE (right): the
+  recognizer's «ляс», «ляшный», «ляж» for «ляг».
+
+### 5l. The climb lane, network game (the owner, 2026-11-03 21:35-21:37, Russian)
+
+- «Иди на красный стул.» (the bot on the blue table, said after «...перепрыгни на жёлтую кровать» had failed) -> JUMP @ yellow
+  bed, "using the red chair" (the decoder's line "jump over to the yellow bed using the red chair"): the yellow bed came from the
+  line before. Wanted: JUMP (or MOVE_TO) @ red chair. The game took the red chair's marker as a step crate and ran at the red
+  chair's face; the game side is fixed (no run straight at a take-off behind a wall, a marker is no step).
+- «Синий ступ.» (the recognizer, «синий стул»?) -> JUMP @ yellow bed "using the blue stairs". Wanted: a which-question, or
+  nothing: two words with no verb after a failure.
+- «Ляжный диван.» -> say_again DEMOLISH 0.38, then «Ляж на диван.» -> PRONE @ sofa (right): the recognizer again (5k).
+
+### 5m. "Up" (наверх), the test range (the owner, 2026-11-04 00:25, Russian, persona brat)
+
+- «Залез залезть на нее наверх.» after «Что это?» -> "That's the yellow bed." -> the decoder's "climb on the yellow bed upstairs",
+  and «Вот на эту кровать залез наверх.» -> "climb on this bed upstairs": «наверх» written as "upstairs" (a floor above). Wanted:
+  "climb up onto the yellow bed" / "climb onto this bed". The planner is fixed (up with a thing narrows only to the things that
+  way; world.py DEV_UP), so these act now; the decoder's rows should still say "up onto", not "upstairs", for «на X наверх».
+- «Отнеси коробку наверх.» -> "take the box up" -> COLLECT (replayed, not said): wanted DELIVER up (onto the thing the crosshair
+  is on, else the way up). Not said by the owner yet; for the generator's carry rows.
+- Found by the way (E2E unmarked_questions.txt run in ru mode, same on the old and the new coop_cli): the bot's "Не вижу лестницы.
+  Куда?" answered "on the left" is rewritten by the decoder to "check the stairs on the left", a new order, and the bot asks
+  again (the English path settles it: CHECK left). An answer with a direction alone should stay an answer.

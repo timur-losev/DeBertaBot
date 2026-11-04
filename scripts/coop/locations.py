@@ -850,7 +850,7 @@ def find(text, vocab=VOCAB):
 
     def assign_role(ti, t, group):
         # "they're on red and blue": a place joined to the one before it by and / or shares its role
-        if ti and group[ti - 1]["role"] in ("mine", "them", "not"):
+        if ti and group[ti - 1]["role"] in ("mine", "them", "not", "means"):
             u = group[ti - 1]
             g = [words[x] for x in range(u["last"] + 1, t["first"])]
             if g and brk(u["last"], t["first"]) < 2 and any(x in ("and", "or") for x in g) \

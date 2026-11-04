@@ -223,12 +223,22 @@ build\Release\coop_cli.exe --serve --no-spin --threads 1 --tts   # the bot as a 
   `ammo` ("got any ammo?" is read as a walk to the ammo: the planner's "Where?" is dropped). `StateQuestion` in coop_cli.cpp.
   `doing` (2026-11-01): "where are you going?", "what are you doing?", "where are you?", or the player's own short line
   («ты куда пошёл», «что делаешь», «где ты», «adónde vas», `DoingInOwnWords`); the game says where it goes and what it does.
+  The own words win over a status report too (2026-11-03: «Чем занят?» was "what's up" and «Доложи, что делаешь» a status
+  report, both "how"); «зачем ты туда идёшь» is this question as well. The reply tables' Russian things have a prepositional
+  form `prep` («Сижу на стуле», the game's fuller answer).
 - `"close": true` on an OPEN order (2026-11-01): "close / shut the door (it, the window, the gate)" is read as OPEN with the
   word made "open" (`CloseToOpen`; the classifier has no CLOSE), and a Russian or Spanish line that says it («закрой
   дверь», «закрывай дверь», «cierra la puerta», `CloseInOwnWords`) is that whatever the decoder wrote ("Cover the door.").
 - A decoder's "flank" with no flank said (2026-11-01, decoder v68: «зайди через главную дверь» -> "Flank through the main
   door."): with a door, a passage or a room in the line and none of «фланг», «обойди», «тыл», «сзади», «сбоку», «справа»,
   «слева» (`FlankInOwnWords`, `WayInInOwnWords`), the piece is "go inside through the main door".
+- Going back (2026-11-03, the owner: «вернись» is mostly the previous place): a Russian or Spanish line with «вернись»,
+  «вернись обратно», «возвращайся», «назад», «vuelve», «regresa» or "go back" and none of «ко мне», «сюда», «aquí», «conmigo»
+  makes the decoder's bare going back ("come back", "Come back to me.", "come back to where you were") "go back" (GO_BACK,
+  the game's history of places); with them, "come back to me" (COME_BACK). A going back to a place of its own ("come back
+  to the rock") is left as written. In a line of several orders each part is looked at alone (`LineParts`; a part that
+  only says «ко мне» belongs to the going back before it). `BackInOwnWords`, `BareBackPiece`; scenarios `ru_go_back_words`,
+  `es_go_back_words`.
 - Parakeet v3 has no ё: `<unk>` beside a Cyrillic letter is written ё («пош<unk>л» -> «пошёл», `sherpa_speech.cpp`).
 - "go up the blue stairs to the roof" (the decoder's English for «поднимись по ней на крышу»; the place parser takes the
   stairs and drops the roof): two order lines, "go up the blue stairs" and "go to the roof" (`SplitWayTo`: stairs, staircase,
@@ -255,8 +265,13 @@ build\Release\coop_cli.exe --serve --no-spin --threads 1 --tts   # the bot as a 
   dropped when nothing is queued any more (cancelled, another order took its place, reset).
 - A bare "it" in a line that names the item is the item (2026-11-02, world.py and world.cpp `without_item_place`): "pick up
   this box and carry it to the rock" with the crosshair on the box made the box's own spot the place ("it" read from the
-  crosshair); now it goes to the rock, and "take this crate and carry it" is a DELIVER with no place said. `gen_world_tests.py` CARRY_IT: 150
-  conversations (seed 8301); world 15902/15902 on bot v67 with the v15 places (`COOP_PLACES=locations_v68.json`).
+  crosshair); now it goes to the rock, and "take this crate and carry it" is a DELIVER with no place said. Only an "it" after
+  an `it_verb` word is the item (`item_it`): after an `it_prep` word or "top of" it is the place ("bring this box on top of
+  it", "put the box next to it": the same evening the first rule had taken those places away). `gen_world_tests.py` CARRY_IT:
+  150 conversations (seed 8301); world 15974/15974 on bot v67 with the v15 places (`COOP_PLACES=locations_v68.json`).
+- "using A and B" (2026-11-02, the owner: "using the blue table and red chair, bring that box on top of the yellow bed" went to
+  the red chair): a place joined by "and" / "or" to a means is a means too (locations.py `assign_role`, locations.cpp); the
+  place is the one after "on top of". Location tests unchanged (62747/62747), the dev lines as before.
 - `--decider DIR` (a build with llama.cpp) adds an optional second reader of every line beside the ensemble:
   - The model is decider-2b with the bot's LoRA, as a GGUF ([decider.h](include/coop_intent/decider.h)). `DIR` is
     `scripts/coop/decider/export_game.py`'s folder.
@@ -344,6 +359,17 @@ items; whether the player is down). Nothing here touches the model; a step costs
   1.5 m above or below the speaker, narrowed to the nearest floor that way (the places within 1.5 m of the nearest
   one in height: one floor up, not the roof); "the door upstairs" is a door on a floor above. The game still takes
   the nearest of the candidates.
+- **Up or down with a thing** (2026-11-04, the owner on the test range: up on the yellow bed, «Что это?» then «Залезь на неё
+  наверх» -> "climb on the yellow bed upstairs" -> "I see no bed. Where?"; "наверх" is floors, things, rocks, stairs, roofs).
+  "Upstairs" / "downstairs" (a zone) or "up" / "down" (a direction, not along stairs) said with a thing narrows the things of
+  that kind to the ones that way only when some are; it is as often the way onto the thing or off it. "This bed" with the
+  crosshair on a bed is that bed whatever it says. With none that way: on a map whose floors are not marked where these things
+  stand, the ones that way by height alone; then the things as if up or down had not been said (always for a direction; for a
+  floor when the map does not mark these things' floors, or the crosshair is on one of them). "Go upstairs" where no floor
+  that way is marked is the way up (`via: "direction"`, the order's `direction` up), which the game finds. `world.py`
+  `ground_target` / `GroundTarget`, `DEV_UP`; `gen_world_tests.py` adds 200 conversations (`UP_ORDERS`, `up_world`, seed
+  8401). On bot v67 (COOP_PLACES=locations_v68.json): planner 16711/16711; every first difference from the old rule over the
+  file is a line with up, down, upstairs, downstairs or above.
 - **Checked:** `gen_world_tests.py` writes 600 random worlds (entities with twins at similar distances, pins,
   gazes, stances) and conversations of orders, answers and narrowing places through the Python planner;
   `coop_cli --world-tests` compares action, words, grounding, order, question, queue and memory step by step.
@@ -418,6 +444,33 @@ game then sends to its server is an order, not this process's output.
   `"tts_kind":"piper"|"system"` and `"tts_note"` (`piper en_GB-vctk-medium, p311 (38 of 109)`).
 - `--tts-piper DIR --tts-demo OUTDIR [--tts-text "..."] [--tts-speaker p254,p311]`: one WAV per speaker saying
   the line, to choose the bot's voice by ear (`scripts/coop/stt/tts_demo_piper/`, all 109, is not in git).
+- `--tts-provider cpu|cuda|auto` (2026-11-02, the owner: the voice switchable between the CPU and the GPU; the CPU by
+  default): `cuda` puts both voices (the bot's and `--voice-local`) on the GPU through ONNX Runtime's CUDA provider, `auto`
+  only a Kokoro voice (each where it is faster, below). It needs sherpa-onnx's CUDA build next to the
+  exe (`third_party/sherpa-onnx-1.13.8-win-x64-cuda`, the release `sherpa-onnx-v1.13.8-cuda-12.x-cudnn-9.x-onnxruntime1.28.2-win-x64-cuda`:
+  the same sherpa-onnx on the same ONNX Runtime 1.28.2, so the recognizer and the bot on the CPU stay what they were: stt tests
+  422/422 on `wav_clean` and 1170/1170 on `wav_ru`, golden 7082/7082 on bot v67), its `onnxruntime_providers_cuda.dll` and
+  `_shared.dll`, and CUDA 12.8+'s `cudart64_12.dll` (the provider calls `cudaLibraryLoadData`, which CUDA 12.6's lacks: "Error
+  127"; `third_party/cuda-runtime-12.9-win-x64` is NVIDIA's `cuda_cudart` 12.9.79 redistributable). cuBLAS and cuDNN 9 come
+  from the machine: `PrepareCuda` (sherpa_voice.cpp) puts the highest `CUDA_PATH_V12_*` (or the toolkit's `v12.*`) and cuDNN 9's
+  CUDA 12 folder (`CUDNN_PATH`, or `Program Files\NVIDIA\CUDNN\v9*\bin\12.*`) in front of the process's PATH;
+  `COOP_CUDA_DLL_DIRS` names others. A voice that does not load on the GPU loads on the CPU; `ready` says where:
+  `"tts_provider"`, `"voice_local_provider"` (`"cpu"`/`"cuda"`). `deploy_brain.ps1 -CudaVoice` deploys the CUDA build
+  (480 MB more). Measured on an RTX 4090 against 4 CPU threads (i9-10900K), after the GPU's first line (400 to 550 ms of
+  warm-up): Russian Piper 69 vs 44 ms a short line and 383 vs 233 ms a long one, English Piper (VCTK) 265 vs 109 ms, Spanish
+  Kokoro 106 vs 604 ms. Only Kokoro gains: a VITS voice's many small kernels cost more on the GPU than they save.
+- `--tts-threads N` (default 1): the voices' CPU threads. Given, `--voice-local` gets as many; not given, at least 4 (the
+  game passes its *Voice Threads* setting, 4, since 2026-11-02; before, none, and the bot's English voice ran on one).
+  Measured on the i9-10900K, ms a line after the first, threads 1 / 2 / 4 / 6 / 8 / 10, and the RTX 4090:
+
+  | voice | 1 | 2 | 4 | 6 | 8 | 10 | GPU |
+  |---|---|---|---|---|---|---|---|
+  | Russian Piper (denis), a short line | 89 | 59 | 45 | 40 | 43 | 41 | 80 |
+  | Russian Piper, a long line | 527 | 335 | 234 | 218 | 214 | 224 | 392 |
+  | English Piper (VCTK) | 229 | 143 | 104 | 97 | 99 | 98 | 270 |
+  | Spanish Kokoro | 1645 | 942 | 604 | 510 | 505 | 525 | 109 |
+
+  Nothing gains past 6 threads, and they take cores from the game, the recognizer and the decoder.
 - Measured through the pipes from Python: 0.5 ms over the classifier's own time per typed line; a 3 s clip
   recognized in about 260 ms; ready in 5 s without speech and 7 to 12 s with it.
 - `tools/deploy_brain.ps1 -Target <dir>` writes the folder a game needs: `coop_cli.exe`, `onnxruntime.dll`,
@@ -667,7 +720,9 @@ I remember that the garage is behind this door?", kept by the door's key + `/roo
 the door to the garage." A line that names the room is read as that door ("go to the garage" -> "go to the door", the
 reply's memory `"rooms"`), and each order on the door gets `"room": "in"` or `"out"` by its English (exit, out, leave:
 out); so does an order at a tagged door that says in or out ("go inside" read as the door under the crosshair), and an
-order `outside` / `inside` with no place gets the named room's door as `"door"`. The game walks to the door's inside or
+order `outside` / `inside` with no place gets the named room's door as `"door"`. The "in" of a time is not into a room ("in
+5 seconds go to the main door", "go to the door in a moment": `RoomOrder`, 2026-11-04; the timer E2E had the bot go in
+through the main door). The game walks to the door's inside or
 outside point. "Forget the name" at the door forgets the room's too. Scenarios `en_rooms`, `ru_rooms`.
 
 Teaching the bot anything (2026-10-30, the owner: one way to teach the bot everything; each kind of what is taught is one

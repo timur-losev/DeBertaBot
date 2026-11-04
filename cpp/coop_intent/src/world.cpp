@@ -311,29 +311,49 @@ static int ItemObject(const std::string& item, const LocationMatcher& places) {
     return -1;
 }
 
-static PlaceRecord WithoutItemPlace(const PlaceRecord& record, const std::string& item, bool keeps_object, const LocationMatcher& places);
+static PlaceRecord WithoutItemPlace(const PlaceRecord& record, const std::string& item, bool keeps_object, const LocationMatcher& places,
+                                    std::string_view text);
 
 // world.drops_by_thing: a DROP line that names a thing to put it down by, in words (the primary place without the carried
 // thing itself is an object, with no pointer: "here", "it" and the pin stay DROP's own spot, and so do zones)
 bool Planner::DropsByThing(std::string_view text, const PlaceRecord& record) const {
     if (record.targets.empty() || brain_->LabelIndex("DELIVER") < 0) return false;
     const ItemFound f = brain_->Items().Find(text, "DELIVER", brain_->Places());
-    const PlaceRecord rest = WithoutItemPlace(record, f.has_item ? f.item : std::string(), brain_->Items().KeepsObject("DELIVER"), brain_->Places());
+    const PlaceRecord rest = WithoutItemPlace(record, f.has_item ? f.item : std::string(), brain_->Items().KeepsObject("DELIVER"), brain_->Places(), text);
     if (rest.primary < 0) return false;
     const PlaceTarget& t = rest.targets[static_cast<size_t>(rest.primary)];
     return t.object >= 0 && t.pointer == PlacePointer::None;
 }
 
+// world.item_it: an "it" of the line is the thing acted on (after an it_verb word: "carry it to the rock") and none is a
+// place (after an it_prep word or "top of": "on it", "next to it", "on top of it")
+static bool ItemIt(std::string_view text, const LocationMatcher& places) {
+    if (!places.InList("it_word", "it")) return false;
+    const std::vector<std::string> w = Words(text);
+    bool verb = false, place = false;
+    for (size_t k = 1; k < w.size(); ++k) {
+        if (!places.InList("it_word", w[k])) continue;
+        const std::string& prev = w[k - 1];
+        const std::string prev2 = k >= 2 ? w[k - 2] : std::string();
+        if (places.InList("it_prep", prev) || (prev == "of" && places.InList("it_of_lead", prev2))) place = true;
+        else if (places.InList("it_verb", prev)) verb = true;
+    }
+    return verb && !place;
+}
+
 // world.without_item_place: the line's places without the one that is the item itself (BUILD, COLLECT, DELIVER); a bare
-// "it" in a line that names the item is the item too ("pick up this box and carry it to the rock": to the rock)
-static PlaceRecord WithoutItemPlace(const PlaceRecord& record, const std::string& item, bool keeps_object, const LocationMatcher& places) {
+// "it" that is the thing acted on, in a line that names the item, is the item too ("pick up this box and carry it to the
+// rock": to the rock; "bring this box on top of it" keeps its "it": ItemIt)
+static PlaceRecord WithoutItemPlace(const PlaceRecord& record, const std::string& item, bool keeps_object, const LocationMatcher& places,
+                                    std::string_view text) {
     const int obj = keeps_object ? ItemObject(item, places) : -1;
     if (obj < 0 || record.targets.empty()) return record;
     bool named = false;
     for (const PlaceTarget& t : record.targets) named = named || t.object == obj;
     if (!named) return record;
-    auto item_too = [obj](const PlaceTarget& t) {
-        return t.object == obj || (t.pointer == PlacePointer::It && t.object < 0 && t.zone < 0 &&
+    const bool it_is_item = ItemIt(text, places);
+    auto item_too = [obj, it_is_item](const PlaceTarget& t) {
+        return t.object == obj || (it_is_item && t.pointer == PlacePointer::It && t.object < 0 && t.zone < 0 &&
                                    t.direction == PlaceDirection::None && t.role == PlaceRole::None);
     };
     PlaceRecord out;
@@ -538,6 +558,9 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
                 for (const WorldEntity* e : on) nearest = std::min(nearest, std::abs(e->elevation));
                 on.erase(std::remove_if(on.begin(), on.end(), [&](const WorldEntity* e) { return std::abs(e->elevation) > nearest + kStorey; }), on.end());
             }
+            // "go upstairs" where no floor that way is marked (the owner, 2026-11-04: "up" is floors, things, rocks, stairs, roofs):
+            // the way up or down, which the game finds (stairs, where the player looks, the navmesh)
+            if (on.empty() && RelativeZone(zone)) return Out("resolved", {}, {}, "direction");
             if (on.empty()) return Out("missing", {}, {}, "zone");   // a floor the world has no place on
             return Out("resolved", {}, ids_of(on), "zone");
         }
@@ -589,11 +612,38 @@ static Grounding GroundTarget(const PlaceTarget& t, const WorldState& world, con
             said_kept = true;
         }
     }
-    if (!zone.empty() && !WayZone(zone)) keep([&](const WorldEntity* e) { return OnZone(*e, zone); });   // "the door upstairs": a door on a floor above
+    // up or down said with a thing (the owner, 2026-11-04: «залезь на неё наверх», "climb on this bed upstairs" -> "I see no bed",
+    // the crosshair on the bed he stood on): "upstairs" / "downstairs" (a zone) or "up" / "down" (a direction; along a vertical
+    // object it is the way, below)
+    const bool vertical_dir = t.direction == PlaceDirection::Up || t.direction == PlaceDirection::Down;
+    const bool zone_v = RelativeZone(zone);
+    const bool dir_v = vertical_dir && !places.Vertical(t.object);
+    if (!zone.empty() && !WayZone(zone) && !zone_v) keep([&](const WorldEntity* e) { return OnZone(*e, zone); });   // "the door on the second floor"
     // "up the blue stairs": up is the way along a vertical object, not where it stands
-    const bool along = (t.direction == PlaceDirection::Up || t.direction == PlaceDirection::Down) && places.Vertical(t.object);
-    if (t.direction != PlaceDirection::None && !along)
+    if (t.direction != PlaceDirection::None && !vertical_dir)
         keep([&](const WorldEntity* e) { return InSector(t.direction, e->bearing, e->elevation); });
+    const std::vector<const WorldEntity*> base = cands;
+    if (zone_v) keep([&](const WorldEntity* e) { return OnZone(*e, zone); });   // "the door upstairs": a door on a floor above
+    if (dir_v) keep([&](const WorldEntity* e) { return InSector(t.direction, e->bearing, e->elevation); });
+    if ((zone_v || dir_v) && !base.empty()) {
+        // up or down picks out the things of that kind that are that way; it is as often the way onto the thing or off it. "This
+        // bed" with the crosshair on a bed is that bed whatever it says. With none that way: on a map whose floors are not marked
+        // where these things stand, the ones that are that way by height alone ("the bed upstairs" on a balcony); then up or down
+        // said nothing of where it is (a direction always, a floor when the map cannot tell or the crosshair is on one of them)
+        const bool dropped = gaze && std::find(base.begin(), base.end(), gaze) != base.end() &&
+                             std::find(cands.begin(), cands.end(), gaze) == cands.end();
+        const bool unmarked = std::none_of(base.begin(), base.end(), [](const WorldEntity* e) { return !e->zone.empty(); });
+        if (t.pointer == PlacePointer::This && dropped) {
+            cands = base;
+        } else if (cands.empty()) {
+            if (zone_v && unmarked) {
+                const PlaceDirection way = zone == "up" ? PlaceDirection::Up : PlaceDirection::Down;
+                for (const WorldEntity* e : base)
+                    if (InSector(way, 0.0, e->elevation) && (!dir_v || InSector(t.direction, e->bearing, e->elevation))) cands.push_back(e);
+            }
+            if (cands.empty() && (!zone_v || unmarked || (dropped && t.pointer == PlacePointer::None && t.flag == PlaceFlag::None))) cands = base;
+        }
+    }
     if (t.flag == PlaceFlag::Other && last) keep([&](const WorldEntity* e) { return e->id != last->id; });
     if (cands.empty()) return Out("missing");
     std::stable_sort(cands.begin(), cands.end(), [](const WorldEntity* a, const WorldEntity* b) {
@@ -973,6 +1023,11 @@ Order Planner::MakeOrder(int intent, const PlaceRecord& record, const std::vecto
         o.entity = g.entity;
         o.candidates = g.candidates;
         o.direction = t.direction;
+        if (o.direction == PlaceDirection::None && g.via == "direction" && t.zone >= 0) {
+            // "go upstairs" with no floor that way marked: the way up (GroundTarget)
+            const std::string z = brain_->Places().ZoneId(t.zone);
+            if (RelativeZone(z)) o.direction = z == "up" ? PlaceDirection::Up : PlaceDirection::Down;
+        }
         o.zone = t.zone;
         o.object = t.object;
         o.pointer = t.pointer;
@@ -1185,7 +1240,7 @@ PlannerResult Planner::Step(std::string_view text, const std::vector<float>& pro
             out.say = refused;
             return out;
         }
-        d.places = WithoutItemPlace(d.places, item.said, brain_->Items().KeepsObject(Label(d.intent)), brain_->Places());
+        d.places = WithoutItemPlace(d.places, item.said, brain_->Items().KeepsObject(Label(d.intent)), brain_->Places(), text);
         if (d.action == Action::Queued) brain_->SetPending(brain_->Pending(), d.places, brain_->PendingOther());
     }
     if (order_line && d.intent >= 0 && GardenPlaces(&d.places, Label(d.intent), brain_->Places()) && d.action == Action::Queued)

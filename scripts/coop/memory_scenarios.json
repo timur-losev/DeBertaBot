@@ -478,6 +478,26 @@
    {"say": "go to the red table", "expect": {"intent": "MOVE_TO", "order.entity": "T_Red"}},
    {"say": "Say again?", "expect": {"memory.did": "repeated", "say": {"starts": "I said: "}}},
    {"say": "jump again", "expect": {"memory.did": {"not": "repeated"}}}
+  ]},
+  {"name": "ru_teach_meaning_first", "lang": "ru", "chain": true, "replies": "ru", "steps": [
+   {"say": "Запомни, запрыгни на стул и присядь, значит сядь на стул.", "expect": {"memory.did": "offered_meaning", "memory.offered_meaning.heard": ["сядь на стул"], "memory.offered_meaning.pattern.heard": "сядь на {x}", "memory.same.meaning": "first"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}]},
+   {"say": "Да.", "expect": {"memory.did": "kept_line"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}]},
+   {"say": "Сядь на диван.", "expect": {"memory.did": "used_pattern", "turns.0.intent": "JUMP", "turns.0.order.entity": "SF_1", "turns.1.intent": "CROUCH"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}]},
+   {"say": "Встань с дивана и сядь на стул.", "expect": {"memory.did": "used_line_part", "turns.1.intent": "JUMP", "turns.1.order.entity": "CH_1", "turns.2.intent": "CROUCH"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "SF_1", "key": "SF_1", "object": "sofa", "qualifier": null, "bearing": 50.0, "distance": 6.0, "elevation": 0.0}]}
+  ]},
+  {"name": "ru_go_back_words", "lang": "ru", "chain": true, "replies": "ru", "steps": [
+   {"say": "Сядь на стул.", "expect": {}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "RK_1", "key": "RK_1", "object": "rock", "qualifier": null, "bearing": 30.0, "distance": 12.0, "elevation": 0.0}]},
+   {"say": "Вернись обратно.", "expect": {"turns.0.intent": "GO_BACK"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "RK_1", "key": "RK_1", "object": "rock", "qualifier": null, "bearing": 30.0, "distance": 12.0, "elevation": 0.0}]},
+   {"say": "Вернись.", "expect": {"turns.0.intent": "GO_BACK"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "RK_1", "key": "RK_1", "object": "rock", "qualifier": null, "bearing": 30.0, "distance": 12.0, "elevation": 0.0}]},
+   {"say": "Вернись ко мне.", "expect": {"turns.0.intent": "COME_BACK"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "RK_1", "key": "RK_1", "object": "rock", "qualifier": null, "bearing": 30.0, "distance": 12.0, "elevation": 0.0}]},
+   {"say": "Вернись, пожалуйста, ко мне.", "expect": {"turns.0.intent": "COME_BACK"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "RK_1", "key": "RK_1", "object": "rock", "qualifier": null, "bearing": 30.0, "distance": 12.0, "elevation": 0.0}]},
+   {"say": "Иди к камню и вернись.", "expect": {"turns.0.intent": "MOVE_TO", "turns.0.order.entity": "RK_1", "turns.1.intent": "GO_BACK"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "RK_1", "key": "RK_1", "object": "rock", "qualifier": null, "bearing": 30.0, "distance": 12.0, "elevation": 0.0}]},
+   {"say": "Вернись к камню.", "expect": {"turns.0.intent": "COME_BACK", "turns.0.order.entity": "RK_1"}, "add": [{"id": "CH_1", "key": "CH_1", "object": "chair", "qualifier": null, "bearing": -40.0, "distance": 5.0, "elevation": 0.0}, {"id": "RK_1", "key": "RK_1", "object": "rock", "qualifier": null, "bearing": 30.0, "distance": 12.0, "elevation": 0.0}]}
+  ]},
+  {"name": "es_go_back_words", "lang": "es", "chain": true, "replies": "es", "steps": [
+   {"say": "Vuelve.", "expect": {"turns.0.intent": "GO_BACK"}},
+   {"say": "Vuelve aquí.", "expect": {"turns.0.intent": "COME_BACK"}},
+   {"say": "Regresa.", "expect": {"turns.0.intent": "GO_BACK"}}
   ]}
  ]
 }

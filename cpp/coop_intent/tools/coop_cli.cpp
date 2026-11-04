@@ -35,7 +35,9 @@
 //   coop_cli --tts-piper DIR --tts-demo OUTDIR [--tts-text TEXT] [--tts-speaker A,B,...]   one WAV per speaker of a
 //                                 Piper voice saying TEXT (no bot is loaded): to choose the bot's voice by ear
 // the bot's voice (voice.h): --tts-piper DIR (a sherpa-onnx Piper export), --tts-speaker NAME ("p311" or a number),
-//          --tts-speed X (> 1 faster), --tts-threads N (default 1)
+//          --tts-speed X (> 1 faster), --tts-threads N (default 1; given, the player's language's voice gets as many, else
+//          at least 4), --tts-provider cpu|cuda|auto (default cpu: the voices on the GPU with sherpa-onnx's CUDA build next
+//          to the exe and CUDA 12 + cuDNN 9 on the machine, else on the CPU; auto: a Kokoro voice on the GPU, Piper on the CPU)
 // with the decoder (a build that found llama.cpp under third_party/, tools/setup_llama.ps1):
 //   --chain DIR                   in the chat, --voice, --stt-wav and --serve: a line that gives several orders, or
 //                                 leans on what was said before it, is rewritten as orders that stand by themselves
@@ -71,6 +73,7 @@
 //          --no-spin (ONNX Runtime worker threads sleep between calls), --sequential (an ensemble's
 //          members one after another instead of one thread each)
 #include <algorithm>
+#include <cctype>
 #include <array>
 #include <chrono>
 #include <clocale>
@@ -1236,7 +1239,8 @@ bool DoingInOwnWords(const std::string& line) {
     const std::string s = OwnWords(line);
     if (OwnWordCount(s) > 6) return false;
     return AnyIn(s, {" куда идешь ", " куда ты идешь ", " ты куда ", " куда ты ", " куда пошел ", " куда собрался ", " куда направляешься ",
-                     " что делаешь ", " что ты делаешь ", " чем занят ", " чем ты занят ", " где ты ", " ты где ",
+                     " что делаешь ", " что ты делаешь ", " чем занят ", " чем ты занят ", " где ты ", " ты где ", " зачем ты туда ",
+                     " зачем туда ", " зачем идешь ", " зачем ты идешь ", " куда ты направляешься ",
                      " adonde vas ", " adónde vas ", " a donde vas ", " a dónde vas ", " que haces ", " qué haces ", " que estas haciendo ",
                      " qué estás haciendo ", " donde estas ", " dónde estás "});
 }
@@ -1355,6 +1359,60 @@ std::vector<std::string> SplitWayTo(const std::string& line) {
         }
     }
     return {line};
+}
+
+// to the player in the player's own words: «ко мне», «сюда», «aquí», «conmigo» (padded: OwnWords)
+bool ToMeInOwnWords(const std::string& padded) {
+    return AnyIn(padded, {" ко мне ", " сюда ", " к нам ", " поближе ", " ближе ко мне ", " aquí ", " aqui ", " acá ", " aca ", " conmigo ",
+                          " a mí ", " a mi lado ", " hacia mí ", " hacia mi ", " junto a mí ", " junto a mi ", " to me ", " here "});
+}
+// a part of a line that only says to whom: «ко мне», «сюда, пожалуйста» («вернись, пожалуйста, ко мне» is cut at its commas)
+bool OnlyToMeInOwnWords(const std::string& part) {
+    std::string s = OwnWords(part);
+    for (const char* filler : {" пожалуйста ", " давай ", " быстро ", " скорее ", " ну ", " por favor ", " rápido ", " rapido "})
+        for (size_t at; (at = s.find(filler)) != std::string::npos;) s.replace(at, std::string(filler).size(), " ");
+    return s == " ко мне " || s == " сюда " || s == " сюда ко мне " || s == " ко мне сюда " || s == " к нам " || s == " aquí " ||
+           s == " aqui " || s == " acá " || s == " aca " || s == " conmigo " || s == " a mi lado ";
+}
+// «вернись», «вернись обратно», «возвращайся», «назад» in the player's own words: "back" (to where the bot stood: GO_BACK), "me" (to
+// the player: «вернись ко мне», «возвращайся сюда»: COME_BACK), or empty when no going back is said. The decoder writes most of
+// them "come back", which is to the player (2026-11-03, the owner: «иногда нужно вернуться ко мне, но чаще нужно вернуться в
+// предыдущую позицию»; his log of 2026-11-02: «Вернись обратно.» was COME_BACK once and GO_BACK the next time)
+std::string BackInOwnWords(const std::string& line) {
+    const std::string s = OwnWords(line);
+    if (!AnyIn(s, {" вернись ", " вернитесь ", " возвращайся ", " возвращайтесь ", " вертайся ", " обратно ", " назад ", " vuelve ",
+                   " volved ", " vuelva ", " regresa ", " regresad ", " regrese ", " atrás ", " atras ", " go back "}))
+        return {};
+    return ToMeInOwnWords(s) ? "me" : "back";
+}
+// the decoder's English for a going back with no other place: "come back", "Come back to me.", "go back to where you were", "get back
+// here", "return". A place of its own ("come back to the rock") is no bare one
+bool BareBackPiece(const std::string& piece) {
+    std::string low;
+    for (char c : piece) low += static_cast<char>(c >= 'A' && c <= 'Z' ? c - 'A' + 'a' : c);
+    while (!low.empty() && std::string(".,!? ").find(low.back()) != std::string::npos) low.pop_back();
+    std::string rest;
+    bool verb = false;
+    for (const char* v : {"come on back", "come back", "go back", "get back", "head back", "return"}) {
+        const std::string vs(v);
+        if (low.rfind(vs, 0) == 0 && (low.size() == vs.size() || low[vs.size()] == ' ')) {
+            rest = low.substr(vs.size());
+            verb = true;
+            break;
+        }
+    }
+    if (!verb) return false;
+    for (const char* filler : {" right now", " now", " please", " quickly", " immediately", " bro", " buddy"})
+        for (size_t at; (at = rest.find(filler)) != std::string::npos;) rest.erase(at, std::string(filler).size());
+    while (!rest.empty() && rest.front() == ' ') rest.erase(rest.begin());
+    while (!rest.empty() && rest.back() == ' ') rest.pop_back();
+    static const std::unordered_set<std::string> kNoPlace = {
+        "", "to me", "here", "over here", "back here", "right here", "there", "over there", "back there", "again", "back",
+        "to where you were", "where you were", "to where you stood", "where you stood", "to where you came from", "the way you came",
+        "to your place", "to your spot", "to your position", "to your post", "to the place", "to the spot", "to the same place",
+        "to your previous position", "to the previous position", "to the previous place", "to your old place", "to the old place",
+        "to the old spot", "to where you started", "to the start"};
+    return kNoPlace.count(rest) > 0;
 }
 
 // "what do you see?" as a Russian or Spanish player says it (lower case, Cyrillic and accents included)
@@ -2038,6 +2096,18 @@ struct Chat {
                 }
                 // «закрывай дверь»: one order, to close, whatever the decoder wrote ("Cover the door.")
                 const bool close_said = foreign && pieces.size() == 1 && CloseInOwnWords(heard);
+                // «вернись (обратно)» with no «ко мне»: back to where the bot stood ("go back", GO_BACK), whatever the decoder
+                // wrote ("come back" is to the player); «вернись ко мне»: to the player. One kind per going back said, in order
+                std::vector<std::string> back_said;
+                if (foreign && pieces.size() == 1) {
+                    if (std::string k = BackInOwnWords(heard); !k.empty()) back_said.push_back(k);
+                } else if (foreign) {
+                    for (const std::string& part : LineParts(heard)) {
+                        if (std::string k = BackInOwnWords(part); !k.empty()) back_said.push_back(k);
+                        else if (!back_said.empty() && back_said.back() == "back" && OnlyToMeInOwnWords(part)) back_said.back() = "me";
+                    }
+                }
+                size_t next_back = 0;
                 for (std::string piece : pieces) {
                     // bot v62: the classifier reads an English "hi" / "hi there" as the owner's misheard "hide (there)"
                     // (v57). The decoder's English for «привет», «hola» is no mishearing: it is a greeting
@@ -2064,6 +2134,18 @@ struct Chat {
                             for (const char* q : {"main", "north", "south", "west", "east"})
                                 if (what != "it" && piece.find(q) != std::string::npos) what = "the " + std::string(q) + what.substr(3);
                             piece = "open " + what;
+                        }
+                        if (!back_said.empty() && BareBackPiece(piece)) {
+                            const std::string& kind = back_said[std::min(next_back++, back_said.size() - 1)];
+                            const std::string written = coop::SpeechTextForClassifier(piece);
+                            const bool go = written.rfind("go back", 0) == 0;
+                            const bool come = written.rfind("come back", 0) == 0 && written.find("to me") != std::string::npos;
+                            if ((kind == "back" && !go) || (kind == "me" && !come)) {
+                                const std::string was = piece;
+                                piece = kind == "back" ? "go back" : "come back to me";
+                                h->note = std::string(kind == "back" ? "a going back with no «ко мне» said" : "a going back to the player") + ": \"" +
+                                          was + "\" read as \"" + piece + "\"";
+                            }
                         }
                     }
                     std::string read = piece;
@@ -3023,6 +3105,25 @@ struct Chat {
             if (const std::string place = EnglishPlace(piece); !place.empty()) return place;
         return {};
     }
+    // a line's parts: cut at «и», "and", «y», «потом», "then" and at commas and stops, as said («Встань с дивана и сядь на
+    // стул.» -> «Встань с дивана», «сядь на стул»)
+    static std::vector<std::string> LineParts(const std::string& text) {
+        static const std::unordered_set<std::string> kJoin = {"и", "потом", "затем", "and", "then", "y", "luego"};
+        const std::vector<coop::SpanWord> sw = coop::SpanWords(text);
+        std::vector<std::string> parts;
+        size_t from = 0;
+        for (size_t i = 0; i < sw.size(); ++i) {
+            const std::string gap = i > 0 ? text.substr(sw[i - 1].end, sw[i].begin - sw[i - 1].end) : std::string();
+            const bool comma = gap.find_first_of(",.;!?") != std::string::npos;
+            if (comma && i > from) parts.push_back(text.substr(sw[from].begin, sw[i - 1].end - sw[from].begin)), from = i;
+            if (kJoin.count(sw[i].norm)) {
+                if (i > from) parts.push_back(text.substr(sw[from].begin, sw[i - 1].end - sw[from].begin));
+                from = i + 1;
+            }
+        }
+        if (from < sw.size()) parts.push_back(text.substr(sw[from].begin, sw.back().end - sw[from].begin));
+        return parts;
+    }
     // a taught meaning read as orders, not carried out (Means): the line as the recognizer would write it, read alone; when it
     // gives fewer orders than its parts («Запрыгнуть на диван и присесть.» was one, "crouch using the sofa"), each part alone
     // («Запрыгнуть на диван.», «Присесть.»), if that reads more. *read: every line an order
@@ -3037,20 +3138,7 @@ struct Chat {
         if (!HearNamed(AsLine(text), spoken, h, memo, err, quiet)) return false;
         planner.DropQuestion();   // only read: no question of it stays open
         *read = as_orders(*h);
-        // its parts: cut at «и», "and", «y», «потом», "then" and at commas
-        static const std::unordered_set<std::string> kJoin = {"и", "потом", "затем", "and", "then", "y", "luego"};
-        const std::vector<coop::SpanWord> sw = coop::SpanWords(text);
-        std::vector<std::string> parts;
-        size_t from = 0;
-        for (size_t i = 0; i < sw.size(); ++i) {
-            const bool comma = i > 0 && text.substr(sw[i - 1].end, sw[i].begin - sw[i - 1].end).find(',') != std::string::npos;
-            if (comma && i > from) parts.push_back(text.substr(sw[from].begin, sw[i - 1].end - sw[from].begin)), from = i;
-            if (kJoin.count(sw[i].norm)) {
-                if (i > from) parts.push_back(text.substr(sw[from].begin, sw[i - 1].end - sw[from].begin));
-                from = i + 1;
-            }
-        }
-        if (from < sw.size()) parts.push_back(text.substr(sw[from].begin, sw.back().end - sw[from].begin));
+        const std::vector<std::string> parts = LineParts(text);
         if (parts.size() < 2 || h->turns.size() + h->held.size() >= parts.size()) return true;
         Heard all;
         bool all_read = true;
@@ -3286,10 +3374,26 @@ struct Chat {
         const std::string via = order.value("via", json(nullptr)).is_string() ? order["via"].get<std::string>() : std::string();
         static const std::unordered_set<std::string> kOut = {"exit", "out", "outside", "outdoors", "leave", "outta"};
         static const std::unordered_set<std::string> kIn = {"in", "inside", "into", "indoors", "enter"};
+        // "in" of a time is not into a room: "in 5 seconds go to the main door", "go to the door in a moment" (2026-11-04, the timer
+        // E2E: the bot went in through the main door and its switch)
+        static const std::unordered_set<std::string> kTimeUnit = {"second", "seconds", "sec", "secs", "minute", "minutes", "min", "mins",
+                                                                  "moment", "bit", "jiffy", "while", "hour", "hours"};
+        static const std::unordered_set<std::string> kTimeFill = {"a", "an", "the", "few", "couple", "of", "half", "more", "next", "another",
+                                                                  "some", "one", "two", "three", "four", "five", "six", "seven", "eight",
+                                                                  "nine", "ten", "fifteen", "twenty", "thirty", "forty", "fifty", "sixty"};
+        auto of_time = [&](const std::vector<std::string>& ws, size_t i) {   // ws[i] == "in": "in 5 seconds", "in a few seconds"
+            for (size_t j = i + 1; j < ws.size() && j <= i + 4; ++j) {
+                if (kTimeUnit.count(ws[j])) return true;
+                const bool number = !ws[j].empty() && std::all_of(ws[j].begin(), ws[j].end(), [](unsigned char c) { return std::isdigit(c) != 0; });
+                if (!number && !kTimeFill.count(ws[j])) return false;
+            }
+            return false;
+        };
         bool out = false, in = false;
-        for (const std::string& w : coop::MemoryWords(coop::MemoryNorm(t.line))) {
-            out = out || kOut.count(w) > 0;
-            in = in || kIn.count(w) > 0;
+        const std::vector<std::string> line_words = coop::MemoryWords(coop::MemoryNorm(t.line));
+        for (size_t i = 0; i < line_words.size(); ++i) {
+            out = out || kOut.count(line_words[i]) > 0;
+            in = in || (kIn.count(line_words[i]) > 0 && !(line_words[i] == "in" && of_time(line_words, i)));
         }
         if (!entity.empty() && std::find(rooms.begin(), rooms.end(), entity) != rooms.end()) {
             order["room"] = out ? "out" : "in";
@@ -3874,6 +3978,76 @@ struct Chat {
                 }
             }
         }
+        // a line of several parts, one of them a line or a pattern the player taught (2026-11-02, the owner: «сядь на стул» said
+        // alone was its lesson, «встань с дивана и сядь на стул» was not): the taught part by its lesson, each other part read
+        // alone (as a taught meaning is), all in the order said
+        if (g_memory && g_memory->IsOpen()) {
+            const std::vector<std::string> parts = LineParts(heard);
+            std::vector<std::vector<std::string>> part_lines(parts.size());
+            std::vector<std::string> used;
+            for (size_t i = 0; parts.size() > 1 && i < parts.size(); ++i) {
+                // the words round a part that are no part of what was taught («ну сядь на стул», «а потом ...»)
+                std::string part = parts[i];
+                static const std::initializer_list<const char*> kLead = {"ну ", "а ", "давай ", "теперь ", "так ", "now ", "ok ", "okay ",
+                                                                         "so ", "bueno ", "ahora ", "pues "};
+                for (bool cut = true; cut;) {
+                    cut = false;
+                    const std::string low = coop::MemoryNorm(part);
+                    for (const char* lead : kLead)
+                        if (low.rfind(lead, 0) == 0 && low.size() > std::strlen(lead)) {
+                            const std::vector<coop::SpanWord> pw = coop::SpanWords(part);
+                            if (pw.size() > 1) part = part.substr(pw[1].begin), cut = true;
+                            break;
+                        }
+                }
+                if (const coop::MemoryLine* kept = g_memory->LineFor(g_language, coop::MemoryNorm(part))) {
+                    part_lines[i] = kept->lines;
+                    used.push_back(kept->heard);
+                    continue;
+                }
+                std::string slot;
+                if (const coop::MemoryLine* found = PatternFor(part, &slot)) {
+                    const coop::MemoryLine pat = *found;
+                    if (pat.source == "pattern") {
+                        const std::string place = HeardPlace(part, spoken);
+                        if (place.empty()) continue;
+                        for (const std::string& l : pat.lines) part_lines[i].push_back(coop::FillPattern(l, place));
+                    } else {
+                        Heard x;
+                        bool read = false;
+                        if (!ReadMeaning(coop::FillPattern(pat.lines[0], slot), spoken, &x, memo, err, &read)) return false;
+                        if (!read) continue;
+                        for (const Turn& t : x.turns) part_lines[i].push_back(t.line);
+                        for (const std::string& l : x.held) part_lines[i].push_back(l);
+                    }
+                    used.push_back(pat.heard);
+                }
+            }
+            if (!used.empty()) {
+                for (size_t i = 0; i < parts.size(); ++i) {
+                    if (!part_lines[i].empty()) continue;
+                    Heard x;
+                    bool read = false;
+                    if (!ReadMeaning(parts[i], spoken, &x, memo, err, &read)) return false;
+                    for (const Turn& t : x.turns) part_lines[i].push_back(t.line);
+                    for (const std::string& l : x.held) part_lines[i].push_back(l);
+                }
+                std::vector<std::string> lines;
+                for (const std::vector<std::string>& pl : part_lines) lines.insert(lines.end(), pl.begin(), pl.end());
+                std::vector<std::string> named, rooms;
+                lines = LinesWithNames(lines, heard, &named, &rooms);
+                memo->info["did"] = "used_line_part";
+                memo->info["used_line_part"] = {{"heard", used}, {"parts", parts}, {"lines", lines}};
+                if (!named.empty()) memo->info["named"] = named;
+                if (!rooms.empty()) memo->info["rooms"] = rooms;   // RoomOrder
+                planner.SetNamed(named);
+                const bool ok = Hear(heard, spoken ? coop::SpeechTextForClassifier(heard) : heard, h, err, each, &lines);
+                planner.SetNamed({});
+                if (!ok) return false;
+                RememberLine(norm, *h, used[0]);
+                return true;
+            }
+        }
         if (!HearNamed(heard, spoken, h, memo, err, each)) return false;
         // "what is that?" at a thing the player named: the bot says the name (the game would say the thing's kind). The
         // reply tables' "That's {thing}." takes the name as it is (memo->terms)
@@ -4296,7 +4470,8 @@ int RunTtsDemo(const coop::VoiceOptions& options, const std::string& out_dir, co
     std::string err;
     const auto t0 = Clock::now();
     if (!voice.Load(options, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
-    std::printf("voice: %s, %d Hz, loaded in %.0f ms\n", voice.Describe().c_str(), voice.SampleRate(), Ms(Clock::now() - t0));
+    std::printf("voice: %s, %d Hz, on the %s, loaded in %.0f ms\n", voice.Describe().c_str(), voice.SampleRate(),
+                voice.Provider() == "cuda" ? "GPU (CUDA)" : "CPU", Ms(Clock::now() - t0));
     std::vector<std::string> speakers;
     if (!only.empty()) {
         std::stringstream list(only);
@@ -5438,7 +5613,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
     // the bot's voice as audio for the game (Piper): made on a thread of its own, so that a line being made never
     // holds up the talk key; one line at a time, three waiting at most
     bool piper_ready = false, local_ready = false;
-    std::string local_note;
+    std::string local_note, tts_provider, local_provider;   // where the voices run: "cpu" or "cuda" (--tts-provider)
 #ifdef COOP_WITH_STT
     coop::PiperVoice voice, voice_local;
     if (piper) {
@@ -5446,6 +5621,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
         piper_ready = voice.Load(*piper, &err);
         tts_ready = piper_ready;
         tts_note = piper_ready ? voice.Describe() : err;
+        if (piper_ready) tts_provider = voice.Provider();
         if (piper_ready) tts_kind = "piper";
     }
     // the player's language's voice (--voice-local): the lines written in it are said with it
@@ -5453,6 +5629,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
         Loading("the voice in the player's language");
         local_ready = voice_local.Load(*local_voice, &err);
         local_note = local_ready ? voice_local.Describe() : err;
+        if (local_ready) local_provider = voice_local.Provider();
     }
 #else
     if (piper) tts_note = "this coop_cli was built without sherpa-onnx: no Piper voice";
@@ -5691,6 +5868,10 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
           {"place_objects", chat.brain.Places().ObjectIds()},   // what the game may send as a place's object (bot v62: teleport)
           {"place_qualifiers", chat.brain.Places().QualifierIds()},   // ... and as its qualifier (bot v64: big, small, cardboard)
           {"voice_local", local_ready}, {"voice_local_note", local_note},
+          {"tts_provider", tts_provider.empty() ? json(nullptr) : json(tts_provider)},
+          {"voice_local_provider", local_provider.empty() ? json(nullptr) : json(local_provider)},
+          {"tts_threads", tts_provider.empty() ? json(nullptr) : json(piper->threads)},   // the voices' CPU threads
+          {"voice_local_threads", local_provider.empty() ? json(nullptr) : json(local_voice->threads)},
           {"chain", g_chain ? json({{"dir", g_chain->dir}, {"router", g_chain->router != nullptr}, {"cut", g_chain->cut},
                                     {"decoder", Chain::Backend()}, {"gpu", g_chain->decoder_options.gpu_layers != 0},
                                     {"memory_lines", g_chain->memory_lines}, {"memory_seconds", g_chain->memory_seconds}})
@@ -5867,8 +6048,11 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                     only["say"] = "";
                     only.erase("say_en");
                 }
-                // "where are you going?" in the player's own words (2026-11-01, «Ты куда пош<unk>л?» was HOLSTER): the game answers
-                if (g_language != "en" && turns.size() == 1 && !turns.at(0).contains("state") && DoingInOwnWords(heard)) {
+                // "where are you going?" in the player's own words (2026-11-01, «Ты куда пош<unk>л?» was HOLSTER): the game answers.
+                // Over a "how" too (2026-11-03, the owner: «Чем занят?» was "what's up", «Доложи, что делаешь» a status report: the
+                // health and the ammo, not what it does)
+                if (g_language != "en" && turns.size() == 1 && DoingInOwnWords(heard) &&
+                    (!turns.at(0).contains("state") || turns.at(0).value("state", std::string()) == "how")) {
                     json& only = turns.at(0);
                     only["state"] = "doing";
                     only["order"] = nullptr;
@@ -6215,6 +6399,7 @@ int main(int argc, char** argv) {
     std::string decider_tests;
     bool decoder_cpu = false;
     int decoder_threads = 4;
+    bool tts_threads_set = false;   // --tts-threads given: both voices get that many
     coop::VoiceOptions piper, voice_local;
     std::string replies_file, bro_file, bro_check;
     bool bro_on = false;
@@ -6227,7 +6412,8 @@ int main(int argc, char** argv) {
         else if (a == "--tts-piper" && i + 1 < argc) piper.model_dir = argv[++i];
         else if (a == "--tts-speaker" && i + 1 < argc) piper.speaker = argv[++i];
         else if (a == "--tts-speed" && i + 1 < argc) piper.speed = static_cast<float>(std::atof(argv[++i]));
-        else if (a == "--tts-threads" && i + 1 < argc) piper.threads = std::atoi(argv[++i]);
+        else if (a == "--tts-threads" && i + 1 < argc) piper.threads = std::max(1, std::atoi(argv[++i])), tts_threads_set = true;
+        else if (a == "--tts-provider" && i + 1 < argc) piper.provider = argv[++i];
         else if (a == "--tts-demo" && i + 1 < argc) mode = "tts-demo", tts_demo_dir = argv[++i];
         else if (a == "--tts-text" && i + 1 < argc) tts_text = argv[++i];
         else if (a == "--chain" && i + 1 < argc) chain.dir = argv[++i];
@@ -6279,7 +6465,7 @@ int main(int argc, char** argv) {
                                  "                 --serve [--no-stt] [--tts | --tts-piper DIR] | --tts-piper DIR --tts-demo OUTDIR [--tts-text TEXT]]\n"
                                  "                [--model-dir DIR] [--threads N] [--no-spin] [--sequential] [--world FILE]\n"
                                  "                [--stt-model DIR] [--stt-threads N] [--vad silero_vad.onnx]\n"
-                                 "                [--tts-speaker NAME[,NAME...]] [--tts-speed X] [--tts-threads N]\n"
+                                 "                [--tts-speaker NAME[,NAME...]] [--tts-speed X] [--tts-threads N] [--tts-provider cpu|cuda|auto]\n"
                                  "                [--chain DIR [--chain-tests] [--decoder-cpu] [--decoder-threads N]]\n"
                                  "                [--language en|ru|es] [--memory FILE [--name-chance P]] | --memory-dump FILE | --teach-tests FILE\n"
                                  "                [--decider DIR [--decider-tests FILE] [--decider-mode avg|only] [--decider-threads N]\n"
@@ -6288,6 +6474,8 @@ int main(int argc, char** argv) {
         }
     }
     std::string err;
+    if (piper.provider != "cpu" && piper.provider != "cuda" && piper.provider != "auto")
+        return std::fprintf(stderr, "--tts-provider is cpu, cuda or auto, not %s\n", piper.provider.c_str()), 2;
     if (mode == "speech-text-tests") return RunSpeechTextTests(speech_text_file);
     if (mode == "time-tests") return RunTimeTests(speech_text_file);
     if (mode == "teach-tests") return RunTeachTests(speech_text_file);
@@ -6412,7 +6600,10 @@ int main(int argc, char** argv) {
                     bro_on ? "on" : "off", bro_relapse > 0 ? (", comes back " + std::to_string(static_cast<int>(bro_relapse)) + " s after it is stopped").c_str() : "");
     }
     if (mode == "replies-check") return RunRepliesCheck(replies);
-    voice_local.threads = std::max(piper.threads, 4);   // a Kokoro voice needs them: about 3 s a line on one thread, 0.5 s on four
+    // the player's language's voice: --tts-threads when given (the game's setting, 2026-11-02), else at least four (a Kokoro
+    // voice needs them: about 1.6 s a line on one thread, 0.6 s on four)
+    voice_local.threads = tts_threads_set ? piper.threads : std::max(piper.threads, 4);
+    voice_local.provider = piper.provider;                 // both voices where --tts-provider says ("auto": each by its kind)
     if (mode == "decider-tests" && decider.dir.empty()) return std::fprintf(stderr, "--decider-tests needs --decider DIR\n"), 2;
     if (!decider.dir.empty() && !LoadDecider(decider, m.cfg.labels, &err)) {
         // the second reader is optional: a brain whose decider does not load (another label set, a missing file) goes on

@@ -16,6 +16,11 @@
 #                  <Target>\stt\      encoder.int8.onnx, decoder.int8.onnx, joiner.int8.onnx, tokens.txt
 #                  <Target>\vad\      silero_vad.onnx, LICENSE (the open microphone, -Vad; 2.3 MB)
 #                  <Target>\deployed.json   what was copied, from where, when
+# with -CudaVoice (the voices on the GPU when the game asks, coop_cli --tts-provider cuda; 2026-11-02): sherpa-onnx's CUDA build of
+# the same version on the same ONNX Runtime 1.28.2 in place of the CPU one (the transcripts and the bot's probabilities on the CPU
+# stay equal: stt tests 422/422 and 1170/1170, golden 7082/7082), its CUDA provider and NVIDIA's CUDA 12.9 runtime (the provider
+# needs 12.8 or later; cuBLAS and cuDNN 9 come from the machine's CUDA 12 and cuDNN installs, voice.cpp PrepareCuda):
+#                  <Target>\onnxruntime_providers_cuda.dll, onnxruntime_providers_shared.dll, cudart64_12.dll, CUDA_RUNTIME_LICENSE.txt (480 MB)
 # with -Chain (rewriter.h; the game then starts the service with `--chain <Target>\chain`):
 #                  <Target>\llama.dll, ggml*.dll, libomp.dll      llama.cpp, from a build that found it (setup_llama.ps1)
 #                  <Target>\chain\    chain_config.json, router.onnx, decoder.gguf (1 GB)
@@ -47,7 +52,13 @@ param(
     [string[]]$LocalVoices = @(),
     # the open microphone's voice detector (Silero VAD v5, MIT; coop_cli --vad, 2026-11-01) -> <Target>\vad\silero_vad.onnx and
     # its LICENSE; '' or a folder without it leaves <Target>\vad as it is
-    [string]$Vad = (Join-Path $PSScriptRoot '..\..\..\scripts\coop\stt\models\silero_vad')
+    [string]$Vad = (Join-Path $PSScriptRoot '..\..\..\scripts\coop\stt\models\silero_vad'),
+    # the voices can run on the GPU: sherpa-onnx's CUDA build (third_party\sherpa-onnx-1.13.8-win-x64-cuda, the release
+    # sherpa-onnx-v1.13.8-cuda-12.x-cudnn-9.x-onnxruntime1.28.2-win-x64-cuda) and the CUDA 12.9 runtime
+    # (third_party\cuda-runtime-12.9-win-x64, NVIDIA's cuda_cudart redistributable). Without it the CUDA files go
+    [switch]$CudaVoice,
+    [string]$CudaSherpa = (Join-Path $PSScriptRoot '..	hird_party\sherpa-onnx-1.13.8-win-x64-cuda\lib'),
+    [string]$CudaRuntime = (Join-Path $PSScriptRoot '..	hird_party\cuda-runtime-12.9-win-x64')
 )
 $ErrorActionPreference = 'Stop'
 $repo = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
@@ -60,6 +71,18 @@ foreach ($need in "$Build\coop_cli.exe", "$Build\onnxruntime.dll", "$Build\sherp
 $members = (Get-Content "$botDir\intent_config.json" -Raw | ConvertFrom-Json).members
 New-Item -ItemType Directory -Force "$Target\bot", "$Target\stt" | Out-Null
 Copy-Item "$Build\coop_cli.exe", "$Build\onnxruntime.dll", "$Build\sherpa-onnx-c-api.dll" $Target -Force
+$cudaFiles = 'onnxruntime_providers_cuda.dll', 'onnxruntime_providers_shared.dll', 'cudart64_12.dll', 'CUDA_RUNTIME_LICENSE.txt'
+if ($CudaVoice) {
+    foreach ($need in "$CudaSherpa\onnxruntime.dll", "$CudaSherpa\sherpa-onnx-c-api.dll", "$CudaSherpa\onnxruntime_providers_cuda.dll",
+                      "$CudaSherpa\onnxruntime_providers_shared.dll", "$CudaRuntimein\cudart64_12.dll") {
+        if (-not (Test-Path $need)) { throw "missing for -CudaVoice: $need" }
+    }
+    Copy-Item "$CudaSherpa\onnxruntime.dll", "$CudaSherpa\sherpa-onnx-c-api.dll", "$CudaSherpa\onnxruntime_providers_cuda.dll",
+              "$CudaSherpa\onnxruntime_providers_shared.dll", "$CudaRuntimein\cudart64_12.dll" $Target -Force
+    if (Test-Path "$CudaRuntime\LICENSE") { Copy-Item "$CudaRuntime\LICENSE" "$Target\CUDA_RUNTIME_LICENSE.txt" -Force }
+} else {
+    foreach ($f in $cudaFiles) { Remove-Item "$Target\$f" -Force -ErrorAction SilentlyContinue }   # a CPU brain: no provider of another build
+}
 Copy-Item "$botDir\intent_config.json", "$botDir\vocab.tsv" "$Target\bot" -Force
 Get-ChildItem "$Target\bot" -Filter '*.onnx' | Where-Object { $members -notcontains $_.Name } | Remove-Item -Force   # another bot's members
 foreach ($f in $members) { Copy-Item "$botDir\$f" "$Target\bot" -Force }
@@ -171,6 +194,7 @@ $memory = $LASTEXITCODE -eq 0
 Remove-Item $probe -Recurse -Force -ErrorAction SilentlyContinue
 [ordered]@{ bot = $Bot; labels = $cfg.labels.Count; gate = $cfg.gate; threshold = $cfg.threshold; members = $members; chain = $chainFrom; voice = $voiceFrom
             decider = $deciderFrom; stt_multilingual = $sttMultiFrom; replies = $repliesFrom; local_voices = $localFrom; memory = $memory
+            voice_gpu = [bool]$CudaVoice
             exe_built = (Get-Item "$Build\coop_cli.exe").LastWriteTime.ToString('s'); from = $repo; deployed = (Get-Date).ToString('s') } |
     ConvertTo-Json | Set-Content "$Target\deployed.json" -Encoding UTF8
 "deployed {0} ({1} labels, {2} gate, threshold {3}) to {4}: {5:n1} GB" -f $Bot, $cfg.labels.Count, $cfg.gate, $cfg.threshold, $Target,

@@ -1179,7 +1179,7 @@
   },
   {
    "en": "{n} more seconds.",
-   "source": "coop_cli.cpp: added to a timed order still running"
+   "source": "coop_cli.cpp: added to a timed order still running; game: 'what are you doing?': the seconds left of a timed order"
   },
   {
    "en": "1 more second.",
@@ -1427,7 +1427,19 @@
   },
   {
    "en": "You're in my way.",
-   "source": "game: FRAG: the player in the arc"
+   "source": "game: FRAG: the player in the arc; game: a walk stopped by the player who does not step aside: round them by another way; game: a walk stopped by the player, no way round: it waits for them to move"
+  },
+  {
+   "en": "I'll go round.",
+   "source": "game: a walk stopped by the player who does not step aside: round them by another way; game: a walk stopped by somebody else (a player, a bot): round them"
+  },
+  {
+   "en": "Someone's in my way.",
+   "source": "game: a walk stopped by somebody else (a player, a bot): round them; game: the same, stopped by somebody else"
+  },
+  {
+   "en": "I can't get past.",
+   "source": "game: a walk stopped by the player, no way round: it waits for them to move; game: the same, stopped by somebody else"
   },
   {
    "en": "No clear throw from here.",
@@ -1604,6 +1616,14 @@
   {
    "en": "And {thing} {sector}, {n} m.",
    "source": "game: 'what do you see?': the next labelled thing in sight"
+  },
+  {
+   "en": "I see several {things}, the nearest {sector}, {n} m.",
+   "source": "game: 'what do you see?': two or more of one kind in sight ('several boxes'), where the nearest of them is and how far"
+  },
+  {
+   "en": "And several {things}, the nearest {sector}, {n} m.",
+   "source": "game: 'what do you see?': the next kind of which two or more are in sight"
   },
   {
    "en": "I can feel {thing} {sector}.",
@@ -2002,6 +2022,142 @@
    "source": "game: 'close' at a thing that does not shut"
   },
   {
+   "en": "Shooting.",
+   "source": "game: 'what are you doing?': it fights; followed by 'Enemy {sector}, {n} m.'"
+  },
+  {
+   "en": "Sitting on {thing}.",
+   "source": "game: 'what are you doing?': crouched up on a thing (the chair, the sofa)"
+  },
+  {
+   "en": "Standing on {thing}.",
+   "source": "game: 'what are you doing?': standing up on a thing"
+  },
+  {
+   "en": "Lying on {thing}.",
+   "source": "game: 'what are you doing?': lying on a thing (the sofa, the bed)"
+  },
+  {
+   "en": "Crouching here.",
+   "source": "game: 'what are you doing?': crouched where it stands"
+  },
+  {
+   "en": "Waiting for your go.",
+   "source": "game: 'what are you doing?': a line of orders waits for the player's 'go'"
+  },
+  {
+   "en": "One more second.",
+   "source": "game: 'what are you doing?': the same, one second"
+  },
+  {
+   "en": "I've got {thing}.",
+   "source": "game: 'what are you doing?': what it carries ('the box', 'the crate', 'the spool')"
+  },
+  {
+   "en": "Then to you.",
+   "source": "game: 'what are you doing?': the next order of the line: to the player"
+  },
+  {
+   "en": "Then back.",
+   "source": "game: the next order: GO_BACK"
+  },
+  {
+   "en": "Then I wait.",
+   "source": "game: the next order: WAIT"
+  },
+  {
+   "en": "Then I crouch.",
+   "source": "game: the next order: CROUCH"
+  },
+  {
+   "en": "Then I lie down.",
+   "source": "game: the next order: PRONE"
+  },
+  {
+   "en": "Then I lie down on {thing}.",
+   "source": "game: the next order: PRONE on a thing"
+  },
+  {
+   "en": "Then up onto {thing}.",
+   "source": "game: the next order: up onto a thing (JUMP onto, 'stand on the chair')"
+  },
+  {
+   "en": "Then I stand up.",
+   "source": "game: the next order: STAND_UP"
+  },
+  {
+   "en": "Then I stay put.",
+   "source": "game: the next order: HOLD_POSITION"
+  },
+  {
+   "en": "Then down.",
+   "source": "game: the next order: a jump down"
+  },
+  {
+   "en": "Then over {thing}.",
+   "source": "game: the next order: a jump over a thing"
+  },
+  {
+   "en": "Then a jump.",
+   "source": "game: the next order: a jump with no thing named"
+  },
+  {
+   "en": "Then I pick up {thing}.",
+   "source": "game: the next order: COLLECT a thing"
+  },
+  {
+   "en": "Then I pick it up.",
+   "source": "game: the next order: COLLECT"
+  },
+  {
+   "en": "Then I carry it to {thing}.",
+   "source": "game: the next order: DELIVER to a thing"
+  },
+  {
+   "en": "Then I carry it over.",
+   "source": "game: the next order: DELIVER"
+  },
+  {
+   "en": "Then I put it down.",
+   "source": "game: the next order: DROP"
+  },
+  {
+   "en": "Then I open {thing}.",
+   "source": "game: the next order: OPEN a door"
+  },
+  {
+   "en": "Then I close {thing}.",
+   "source": "game: the next order: close a door"
+  },
+  {
+   "en": "Then one more order.",
+   "source": "game: the next order, of a kind not named"
+  },
+  {
+   "en": "Then to your pin.",
+   "source": "game: the next order: to the player's pin"
+  },
+  {
+   "en": "Then in through {thing}.",
+   "source": "game: the next order: in by a door"
+  },
+  {
+   "en": "Then out through {thing}.",
+   "source": "game: the next order: out by a door"
+  },
+  {
+   "en": "Then to {thing}.",
+   "source": "game: the next order: a walk to a place"
+  },
+  {
+   "en": "Then where you pointed.",
+   "source": "game: the next order: a walk to a spot the player pointed at"
+  },
+  {
+   "en": "And {n} more after that.",
+   "source": "game: the orders of the line after the next one"
+  },
+  {
    "en": "Okay, I won't anymore.",
    "source": "coop_cli.cpp bro habit: the player told it to stop saying 'bro'"
   },
@@ -2233,6 +2389,37 @@
     "the window",
     "the table",
     "the switch"
+   ]
+  },
+  "things": {
+   "note": "a kind of thing in the plural, after 'several': 'I see several boxes, the nearest on the right, 3 m.' (the game's SeenLine; a kind not listed is said one by one). Russian and Spanish: the whole 'several ...' in the value («несколько коробок», «varias cajas»), the sentence has no word of its own for 'several'",
+   "values": [
+    "boxes",
+    "crates",
+    "tables",
+    "chairs",
+    "sofas",
+    "beds",
+    "rocks",
+    "doors",
+    "windows",
+    "cars",
+    "teleports",
+    "spools",
+    "cable spools",
+    "trees",
+    "fences",
+    "fields",
+    "garden beds",
+    "greenhouses",
+    "barns",
+    "chicken coops",
+    "beehives",
+    "wells",
+    "foundations",
+    "switches",
+    "health packs",
+    "weapons"
    ]
   },
   "phrase": {

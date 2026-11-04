@@ -566,6 +566,21 @@ bool ReadMeans(std::string_view heard, const std::vector<std::string>& w, TeachL
         if (k >= w.size()) return false;
         // «это значит, что ты прав»: X must be words of its own, not a pronoun
         static const std::unordered_set<std::string> kPronoun = {"это", "то", "оно", "that", "this", "it", "eso", "esto"};
+        if (!lead && !kPronoun.count(w[x0]) && j - x0 > 3 && remember && !once && AfterAny(w, j, kStrong) != std::string::npos) {
+            // «запомни, запрыгни на стул и присядь, значит сядь на стул» (2026-11-02, the owner): the meaning said first and its
+            // words after «значит»; a side of more than three words after «запомни» may be either, as in «A — это то же самое,
+            // что B»: coop_cli takes the side it reads as orders as the meaning
+            size_t end = heard.size();
+            while (end > sw[k].begin && std::string_view(" \t.!?").find(heard[end - 1]) != std::string_view::npos) --end;
+            size_t lead_end = sw[j - 1].end;
+            while (lead_end > sw[x0].begin && std::string_view(" \t,:;-").find(heard[lead_end - 1]) != std::string_view::npos) --lead_end;
+            out->kind = TeachKind::Means;
+            out->same = true;
+            out->said_text = std::string(heard.substr(sw[x0].begin, lead_end - sw[x0].begin));
+            out->said = Join(w, x0, j);
+            out->rest = std::string(heard.substr(sw[k].begin, end - sw[k].begin));
+            return true;
+        }
         if (!lead && (kPronoun.count(w[x0]) || j - x0 > 3)) return false;
         out->kind = TeachKind::Means;
         out->said = Join(w, x0, j);

@@ -656,7 +656,12 @@ CARRY_IT = [(t, k) for t, k in (
     ("take the crate and carry it to the door", "DELIVER"), ("pick up this crate and carry it to the table on my go", "DELIVER"),
     ("take this crate and carry it", "DELIVER"), ("grab the crate and put it next to the white table", "DELIVER"),
     ("carry it to the white table", "DELIVER"), ("bring the crate to the table", "DELIVER"), ("take it to the red table", "DELIVER"),
-    ("pick up this crate", "COLLECT"), ("carry the crate to it", "DELIVER"), ("bring it to me", "DELIVER")) if k in CFG["labels"]]
+    ("pick up this crate", "COLLECT"), ("carry the crate to it", "DELIVER"), ("bring it to me", "DELIVER"),
+    # ... but an "it" after a preposition is the place (2026-11-02: "bring this box on top of it" after "yellow bed, can you
+    # see it?" had lost its place), and "using A and B" makes both the means
+    ("bring this crate on top of it", "DELIVER"), ("put the crate next to it", "DELIVER"), ("put this crate on it", "DELIVER"),
+    ("using the white table and the red table, bring the crate to the door", "DELIVER"),
+    ("bring the crate to the door using the white table and the red table", "DELIVER")) if k in CFG["labels"]]
 
 # rule set v9 (round v67, the owner, 2026-10-27: any thing with any order): the thing an order is done with
 MEANS_ORDERS = [(t, k) for t, k in (
@@ -668,10 +673,38 @@ MEANS_ORDERS = [(t, k) for t, k in (
     ("check the door using the big box", "CHECK")) if k in CFG["labels"]]
 
 
-def it_scenario(rng, n_steps, gate, threshold, orders=None):
+# "up" with a thing (2026-11-04, the owner: «залезь на неё наверх» -> "climb on the yellow bed upstairs" -> "I see no bed", the
+# crosshair on the bed he stood on): up or down narrows the things of the kind to the ones that way only when some are; else it is
+# the way onto it (world.ground_target). Tables at three heights, on a map with their floors marked or not
+UP_ORDERS = [(t, k) for t, k in (
+    ("climb on the table upstairs", "JUMP"), ("climb on this table upstairs", "JUMP"), ("climb onto that table upstairs", "JUMP"),
+    ("get up on the white table", "JUMP"), ("climb up onto the table", "JUMP"), ("jump up on the red table", "JUMP"),
+    ("climb up on that table", "JUMP"), ("jump down from the table", "JUMP"), ("climb on it upstairs", "JUMP"),
+    ("go to the table upstairs", "MOVE_TO"), ("go to the door downstairs", "MOVE_TO"), ("hold the door upstairs", "HOLD_ANGLE"),
+    ("check the table above", "CHECK"), ("go down to the crate", "MOVE_TO"), ("go upstairs", "MOVE_TO"), ("go downstairs", "MOVE_TO"),
+    ("go to the next floor", "MOVE_TO"), ("go up", "MOVE_TO"), ("climb on the white table upstairs on my go", "JUMP"),
+    ("look at the table downstairs", "LOOK_AT")) if k in CFG["labels"]]
+
+
+def up_world(rng):
+    w = it_world(rng)
+    if rng.random() < 0.4:     # the floors marked where the things stand
+        for e in w["entities"]:
+            if e["object"] is not None:
+                e["zone"] = "floor_2" if float(e["elevation"]) >= 1.5 else "floor_1"
+        if rng.random() < 0.5:
+            w["entities"].append({"id": "two_1", "object": None, "qualifier": None, "zone": "floor_2", "bearing": -45.0, "distance": 10.0,
+                                  "elevation": 3.2, "tags": []})
+    if rng.random() < 0.3:     # the speaker up on something: the things below the feet
+        for e in w["entities"]:
+            e["elevation"] = float(e["elevation"]) - 1.0
+    return w
+
+
+def it_scenario(rng, n_steps, gate, threshold, orders=None, make_world=None):
     orders = orders or IT_ORDERS
     bot = Fake(gate, threshold)
-    world = it_world(rng)
+    world = (make_world or it_world)(rng)
     pl = W.Planner(bot, world)
     steps, now = [], world
     for i in range(n_steps):
@@ -902,6 +935,23 @@ def main():
             gate = "family" if i % 3 == 2 else "top"
             rows.append(it_scenario(rng7, rng7.choice([3, 5, 8]), gate, rng7.choice([0.5, 0.6, 0.66, 0.78]), MEANS_ORDERS))
         print(f"  rule set v9: 150 conversations with a means; {STATS['means'] - before} orders carry one")
+    if IT and W.LOC.VOCAB["version"] >= 15 and "JUMP" in CFG["labels"]:
+        # "up" with a thing: the scripted check (world.DEV_UP), then conversations at random, with a generator of their own
+        rng8 = random.Random(8401)
+        for world, dev in ((W.WORLD_UP, W.DEV_UP), (W.WORLD_UP_TABLE, W.DEV_UP_TABLE), (W.WORLD_UP_NONE, W.DEV_UP_NONE)):
+            bot = Fake("top", 0.6)
+            pl = W.Planner(bot, world)
+            steps = []
+            for text, intent, _ in dev:
+                if intent not in CFG["labels"]:
+                    continue
+                probs = probs_for(rng8, bot.labels, intent, 0.9)
+                res = pl.step(text, probs)
+                steps.append(step_row(text, probs, res, pl, bot))
+            rows.append({"world": world, "gate": "top", "threshold": 0.6, "steps": steps})
+        for i in range(200):
+            gate = "family" if i % 3 == 2 else "top"
+            rows.append(it_scenario(rng8, rng8.choice([3, 5, 8]), gate, rng8.choice([0.5, 0.6, 0.66, 0.78]), UP_ORDERS, up_world))
     n_steps = sum(len(r["steps"]) for r in rows)
     actions = {}
     for r in rows:

@@ -735,7 +735,7 @@ PlaceRecord LocationMatcher::Find(std::string_view utf8) const {
         // "they're on red and blue": a place joined to the one before it by and / or shares its role
         if (ti > 0) {
             const Work* u = group[ti - 1];
-            if (u->t.role == PlaceRole::Mine || u->t.role == PlaceRole::Them || u->t.role == PlaceRole::Not) {
+            if (u->t.role == PlaceRole::Mine || u->t.role == PlaceRole::Them || u->t.role == PlaceRole::Not || u->t.role == PlaceRole::Means) {
                 bool joined = false, only = true;
                 int count = 0;
                 for (int x = u->last + 1; x < t->first; ++x) {
