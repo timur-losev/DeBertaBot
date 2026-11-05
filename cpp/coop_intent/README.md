@@ -236,9 +236,15 @@ build\Release\coop_cli.exe --serve --no-spin --threads 1 --tts   # the bot as a 
   «вернись обратно», «возвращайся», «назад», «vuelve», «regresa» or "go back" and none of «ко мне», «сюда», «aquí», «conmigo»
   makes the decoder's bare going back ("come back", "Come back to me.", "come back to where you were") "go back" (GO_BACK,
   the game's history of places); with them, "come back to me" (COME_BACK). A going back to a place of its own ("come back
-  to the rock") is left as written. In a line of several orders each part is looked at alone (`LineParts`; a part that
+  to the rock") is left as written, and "go back to the rock" (decoder v69s3's English for «вернись к камню») is read as
+  "come back to the rock", COME_BACK at it: GO_BACK takes no place (`GoBackToPlace`, 2026-11-04). In a line of several orders each part is looked at alone (`LineParts`; a part that
   only says «ко мне» belongs to the going back before it). `BackInOwnWords`, `BareBackPiece`; scenarios `ru_go_back_words`,
   `es_go_back_words`.
+- Leaving the thing carried with no place (2026-11-04, the owner's game: «Возьми эту коробку, залезть на синий стол, перелезть на
+  белый стол и оставь там коробку.» -> decoder v69s3's last line "Leave the box behind.", read as DELIVER with the box for its
+  place: the bot jumped down and carried the box back to the crate marker it came from): "leave the box / the crate / it" with
+  nothing after it but "behind", "where it is", "here" or "down" is "put the box down" (DROP: where the bot is, up on the white
+  table here). "Leave it there" stays as written (there may be a spot). `LeaveItemPiece`.
 - Parakeet v3 has no ё: `<unk>` beside a Cyrillic letter is written ё («пош<unk>л» -> «пошёл», `sherpa_speech.cpp`).
 - "go up the blue stairs to the roof" (the decoder's English for «поднимись по ней на крышу»; the place parser takes the
   stairs and drops the roof): two order lines, "go up the blue stairs" and "go to the roof" (`SplitWayTo`: stairs, staircase,
@@ -442,6 +448,15 @@ game then sends to its server is an order, not this process's output.
   first real one from paying the model's first run (1.7 s; then 70 to 185 ms a line, about a tenth of its length,
   on one core). With `--tts` too, the system's voice speaks when the Piper voice does not load. `ready` says which:
   `"tts_kind":"piper"|"system"` and `"tts_note"` (`piper en_GB-vctk-medium, p311 (38 of 109)`).
+- **Streamed lines** (2026-11-04, the owner: the voice was slow to start). A `say` with `"stream":true` sends each
+  sentence of a line but the last as soon as sherpa-onnx has made it (`{"event":"speech_part","id":12,"part":0,
+  "audio_s":1.5,"ms":390,"pcm16":...}`, `PiperVoice::Speak` with a `SentenceFn`), then `speech` with the last sentence
+  alone (`"part"`, `"parts"`, `"first_ms"`; its `audio_s` and `ms` are the whole line's). A line of one sentence is one
+  `speech`, as without it. The parts add up to the whole line sample for sample (`--tts-demo` says so for each line).
+  Measured with the brat voice on 4 threads, the owner's game running: «Туда не пройти, брат. Поищу другой путь. Жди
+  меня здесь.» heard after 390 ms, not 1030. `hush` and `ptt_down` now also stop the line being made after its sentence
+  (`"hushed"`). And `ptt_up`'s `"tail_s"` (how long the game kept the clip going after the key came up) takes that
+  much off the clip's own 0.15 s tail (`MicCapture::End`): a game with a tail of 0.2 s no longer waits 0.15 s more.
 - `--tts-piper DIR --tts-demo OUTDIR [--tts-text "..."] [--tts-speaker p254,p311]`: one WAV per speaker saying
   the line, to choose the bot's voice by ear (`scripts/coop/stt/tts_demo_piper/`, all 109, is not in git).
 - `--tts-provider cpu|cuda|auto` (2026-11-02, the owner: the voice switchable between the CPU and the GPU; the CPU by
@@ -788,6 +803,15 @@ Taught as "the same", for any thing (2026-10-31, the owner: «Смотри, за
 - Verbs in another form (`VerbForm`, `SameLine`): «сесть», «сядь», «садись»; «лечь», «ляг», «ложись»; «siéntate»,
   «sentarse». A kept line matches its other forms after NearLine (bot_memory.h `LineFor`).
 - «забудь сесть на стул» forgets the line, its other forms and its patterns.
+- A kept line of any length after a word of forgetting (`ForgetWhat`: "forget", "forget about", «забудь», «забудь про», «olvida»)
+  is forgotten with its patterns, and a line said so never runs a kept line (2026-11-05, the owner: "Forget sit down on the
+  chair." was one word more than the kept line, so `NearLine` took it for that line and the bot did the lesson; ReadTeach's own
+  forget takes only a name or a short line, as "forget the pistol just start shooting" is a change of plan). An article or a
+  demonstrative stands for another in a kept line (`SameWord`: "sit down on this chair" for the taught "... the chair"), and a
+  first «что» / «que» of a kept key is left out (`KeptWords`: the owner's memory held «что сядь на {x}»). "When I say X, that
+  means Y" with a strong marker takes an X of up to six words, as "whenever I say" does (`ReadMeans`; before, more than three
+  words made it an order on the signal). Teach tests `tools/teach_tests.json` (474); scenarios `en_teach_long_forget`,
+  `ru_teach_long_forget`.
 - The offer after misses leaves out the same order at another place: «сядь на диван» missed, then «сядь на кровать» is no
   meaning of it (`AnotherPlace`). A sound for the answer to "Shall I remember ...?" ("B." for «да») asks "Yes or no?" and keeps
   the question.

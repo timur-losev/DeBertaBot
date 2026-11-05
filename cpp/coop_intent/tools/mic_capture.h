@@ -18,7 +18,9 @@ public:
     ~MicCapture();
     bool Start(std::string* error);
     void Begin();                    // the key went down
-    std::vector<float> End();        // the key went up: the clip, samples in -1..1
+    // the key went up: the clip, samples in -1..1. Waited: how long the caller already let the microphone run after the key
+    // came up (the game's TalkTailSeconds, ptt_up's "tail_s"); End waits only what is left of kTailSeconds
+    std::vector<float> End(double waited_s = 0);
     // the open microphone (coop_cli --serve's "open_mic", 2026-11-01): with the tap on, everything heard is kept for Drain,
     // clip or no clip (60 s at most: the oldest goes); off drops it
     void Tap(bool on);

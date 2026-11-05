@@ -10,6 +10,7 @@
 // hold a voice.json, {"speaker": "53", "lang": "es"}, the speaker and the language used when none is asked for.
 #pragma once
 
+#include <functional>
 #include <memory>
 #include <string>
 #include <vector>
@@ -45,6 +46,13 @@ public:
     // mono samples in -1..1 at SampleRate(). Speaker: as in VoiceOptions, empty for the one loaded; speed 0: as loaded
     bool Speak(const std::string& utf8, std::vector<float>* samples, std::string* error, const std::string& speaker = {},
                float speed = 0.0f) const;
+    // a sentence of the line, handed out as soon as it is made (2026-11-04: the game plays the first while the next is
+    // made). Last: it is the line's last sentence. Returns false to stop making the rest (a hush)
+    using SentenceFn = std::function<bool(const float* samples, size_t n, bool last)>;
+    // the same, each sentence to on_sentence in order as well (sherpa-onnx makes one sentence at a time, max_num_sentences
+    // 1); *samples is the whole line, or the sentences made before a stop. *stopped: on_sentence asked to stop
+    bool Speak(const std::string& utf8, std::vector<float>* samples, std::string* error, const std::string& speaker, float speed,
+               const SentenceFn& on_sentence, bool* stopped = nullptr) const;
     int SampleRate() const;
     int NumSpeakers() const;
     // a speaker's number by name or number, -1 when the model has no such speaker

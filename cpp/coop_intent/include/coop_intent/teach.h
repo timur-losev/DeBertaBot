@@ -89,6 +89,9 @@ bool MatchPattern(const std::string& key, std::string_view heard, std::string* s
 std::string FillPattern(const std::string& meaning, const std::string& slot);
 // a line said as a kept one in its words' forms: as many words, each SameWord (bot_memory.h LineFor, after NearLine)
 bool SameLine(const std::string& kept, const std::string& line);
+// "forget sit down on the chair", «забудь сядь на стул», «olvida ...»: the words after the word of forgetting, normalized; empty
+// when the line does not start with one (coop_cli: a kept line of any length said so is forgotten, never carried out)
+std::string ForgetWhat(std::string_view heard);
 
 // where a taught name (its words) is said in a line (its words), word by word in that order; false: nowhere.
 // *begin, *end: the span in the line's words

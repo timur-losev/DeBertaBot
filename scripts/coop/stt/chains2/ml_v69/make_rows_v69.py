@@ -717,6 +717,10 @@ def remark_fail(rng, out):
         out.append(row("remark_fail", "ru", line, ["it didn't work"], rng, maybe_before("ru", rng, 0.5), tail=False))
 
 
+# runs 3-5 had «возьми эту коробку, залезь на X» -> "climb onto X using this box"; the owner, 2026-11-04: the step only with «используя»
+USE_TAKE = True
+
+
 def use_climb(rng, out):
     """«Используй эту коробку, залезь на X», «юзни X, залезь на Y»: the thing is the step (v69s2: "use this box | climb onto X")."""
     for _ in range(60):
@@ -727,7 +731,7 @@ def use_climb(rng, out):
             ts, _ = thing(step, rng)
             s_ru, s_en = ts.ru["acc"], ts.en
         to, _ = thing(rng.choice([o for o in ["table", "bed", "car", "rock"] if o != step]), rng)
-        v = rng.choice(["используй", "юзни", "возьми"]) if step == "box" else rng.choice(["используй", "юзни"])
+        v = rng.choice(["используй", "юзни"] + (["возьми"] if USE_TAKE else [])) if step == "box" else rng.choice(["используй", "юзни"])
         line = rng.choice([f"{v} {s_ru}, {rng.choice(CLIMB_RU)} на {to.ru['acc']}", f"{v} {s_ru} и {rng.choice(CLIMB_RU)} на {to.ru['acc']}",
                            f"{v} {s_ru}, залезть на {to.ru['acc']}"])
         out.append(row("use_climb", "ru", line, [f"climb onto {to.en} using {s_en}"], rng))
@@ -742,12 +746,17 @@ def forget_thing(rng, out):
                        [f"never mind {item_en}"], rng))
 
 
+# bare «стой»: run 3 and 4 wrote "hold position"; the owner, 2026-11-04: «стой» is «жди» ("wait", WAIT: it stops, and «иди» goes on).
+# decoder_rows sets it per run
+STOI = "hold position"
+
+
 def short_after(rng, out):
     """A short word after an order to lie, sit or climb is that word, not the order again (v69s2, the owner's log: «Yeah.» -> "lie down on
     the sofa", «Stay.» -> "stay on the floor")."""
     for _ in range(90):
         before = [rng.choice(["ляг на диван", "ляж на диван", "сядь на стул", "залезь на синий стол", "ляг", "сядь на диван", "ложись на кровать"])]
-        line, ans = rng.choice([("да", "yes"), ("ага", "yes"), ("yeah", "yeah"), ("да, да", "yes"), ("нет", "no"), ("окей", "okay"), ("стой", "hold position"),
+        line, ans = rng.choice([("да", "yes"), ("ага", "yes"), ("yeah", "yeah"), ("да, да", "yes"), ("нет", "no"), ("окей", "okay"), ("стой", STOI),
                                 ("stay", "stay"), ("встань", "stand up"), ("встань на ноги", "stand up")])
         out.append(row("short_after", "ru", line, [ans], rng, before=before, lead=False, tail=False))
 
@@ -755,9 +764,217 @@ def short_after(rng, out):
 KINDS_3 = KINDS_2 + (statement, on_go_davai, back_after, here_bare, remark_fail, use_climb, forget_thing, short_after)
 
 
+# ---------------------------------------------------------------- run 4: what v69s3 harmed (its memory scenarios and the owner's 495
+# real lines read against v68s2's, 2026-11-04)
+
+def here_named(rng, out):
+    """«Тимур, иди сюда», «иди ко мне сюда», «иди сюда ко мне»: "come here" alone (v69s3: "go here", "come here | stay here")."""
+    for _ in range(80):
+        name = rng.choice(["Тимур, ", "бади, ", "Рекс, ", "брат, ", "эй, ", "слышь, ", "", ""])
+        line = name + rng.choice(["иди сюда", "иди ко мне сюда", "иди сюда ко мне", "иди ко мне", "давай ко мне сюда", "подойди ко мне сюда"])
+        out.append(row("here_named", "ru", line, ["come here"], rng, maybe_before("ru", rng, 0.4), lead=False))
+
+
+def stand_here(rng, out):
+    """«Встань сюда», «встань тут», «встань вот здесь» alone: "stay here" (HOLD_POSITION; v68s2 "Stand here.", v69s3 "stand up here",
+    which is read as a getting up and asked again)."""
+    for _ in range(50):
+        line = rng.choice(["встань сюда", "встань тут", "встань здесь", "встань вот здесь", "встань вот тут", "встань вот сюда", "стань сюда",
+                           "стань тут"])
+        out.append(row("stand_here", "ru", line, ["stay here"], rng, maybe_before("ru", rng, 0.3)))
+
+
+def using_climb(rng, out):
+    """«Используя коробку, залезь(-ть) на X», «с помощью ящика залезь на X»: the thing is the step (v69s3: "come back to me using the
+    box" for the owner's «Используя коробку залезть на синий стол.»)."""
+    for _ in range(60):
+        s_ru_acc, s_ru_gen, s_en = rng.choice([("коробку", "коробки", "the box"), ("эту коробку", "этой коробки", "this box"),
+                                               ("ящик", "ящика", "the crate"), ("этот ящик", "этого ящика", "this crate"),
+                                               ("стул", "стула", "the chair"), ("катушку", "катушки", "the spool")])
+        to, _ = thing(rng.choice(["table", "table", "bed", "car", "rock"]), rng)
+        climb = rng.choice(CLIMB_RU + ["залезть", "запрыгнуть"])
+        line = rng.choice([f"используя {s_ru_acc}, {climb} на {to.ru['acc']}", f"используя {s_ru_acc} {climb} на {to.ru['acc']}",
+                           f"с помощью {s_ru_gen} {climb} на {to.ru['acc']}", f"{climb} на {to.ru['acc']}, используя {s_ru_acc}"])
+        out.append(row("using_climb", "ru", line, [f"climb onto {to.en} using {s_en}"], rng))
+
+
+def go_after_queued(rng, out):
+    """«Давай.» after an order that waits for the go is the go alone, not the order again (v69s3: "Go. | jump onto the rock")."""
+    for _ in range(70):
+        to, _ = thing(rng.choice(["rock", "table", "bed", "chair", "crate"]), rng)
+        before = [rng.choice([f"когда я скажу давай, ты прыгнешь на {to.ru['acc']}", f"когда я скажу давай, залезь на {to.ru['acc']}",
+                              f"когда скажу давай, иди к {to.ru['dat']}", f"по моей команде запрыгни на {to.ru['acc']}",
+                              "когда я скажу давай, возьми ящик", "когда я скажу давай, ты откроешь дверь"])]
+        line = rng.choice(["давай", "давай", "давай!", "го", "пошёл", "вперёд", "давай, давай"])
+        out.append(row("go_after_queued", "ru", line, ["go"], rng, before=before, lead=False, tail=False))
+
+
+def on_go_word(rng, out):
+    """«Когда я скажу прыгай, ты прыгнешь (на X)»: an order that waits for the word, as with «давай» (v69s3: "jump when i jump", at
+    once)."""
+    for _ in range(60):
+        to, _ = thing(rng.choice(["rock", "table", "bed", "chair", "crate", "sofa"]), rng)
+        word = rng.choice(["прыгай", "прыгает", "прыгни", "го", "вперёд", "сейчас", "пошёл"])
+        line, en = rng.choice([(f"когда я скажу {word}, ты прыгнешь", "on my go jump"),
+                               (f"когда я скажу {word}, ты прыгнешь на {to.ru['acc']}", f"on my go jump onto {to.en}"),
+                               (f"когда я скажу {word}, запрыгни на {to.ru['acc']}", f"on my go jump onto {to.en}"),
+                               (f"когда я скажу {word}, ты пойдёшь к {to.ru['dat']}", f"on my go go to {to.en}")])
+        out.append(row("on_go_word", "ru", line, [en], rng, lead=False, tail=False))
+
+
+def short_en_after(rng, out):
+    """English short words in the Russian mode after an order to sit, lie or climb are those words (v69s3: «No.» -> "sit down");
+    «получилось?» is a question, no go (v69s3: "did it", GO_NOW)."""
+    for _ in range(60):
+        before = [rng.choice(["сядь на стул", "сядь на диван", "ляг на диван", "залезь на синий стол", "иди к камню", "открой дверь"])]
+        line, ans = rng.choice([("no", "no"), ("No.", "no"), ("yes", "yes"), ("Yes.", "yes"), ("okay", "okay"), ("OK.", "okay"),
+                                ("получилось?", "did it work?"), ("ну что, получилось?", "did it work?")])
+        out.append(row("short_en_after", "ru", line, [ans], rng, before=before, dressed=False))
+
+
+def named_door_words(rng, out):
+    """The brain writes a door's taught name as "door" before the decoder reads the line («Выйди из гаража» -> «Выйди из door»; v69s3:
+    "leave door", not read): the way out or in through that door."""
+    for _ in range(50):
+        line, ans = rng.choice([("выйди из door", "leave through the door"), ("выйди из door", "leave through the door"),
+                                ("выходи из door", "leave through the door"), ("зайди в door", "go in through the door"),
+                                ("иди в door", "go in through the door")])
+        out.append(row("named_door_words", "ru", line, [ans], rng))
+
+
+KINDS_4 = KINDS_3 + (here_named, stand_here, using_climb, go_after_queued, on_go_word, short_en_after, named_door_words)
+
+
+# ---------------------------------------------------------------- run 5: the owner's answers of 2026-11-04 ~14:00
+# «Поставь ящик и залезь на…»: «сначала поставить ящик. но если будет команда "используя его" (ящик, камень, стул и тд - пока носить
+# можно только ящик, но потом можно будет носить всё), то надо будет следовать команде». «Стой»: это «жди».
+
+PUT_X_RU = [("ящик", "the crate"), ("коробку", "the box"), ("этот ящик", "the crate"), ("эту коробку", "the box"), ("его", "it"), ("её", "it")]
+PUT_X_MORE_RU = [("стул", "the chair"), ("катушку", "the spool"), ("камень", "the rock")]   # carried later (the owner)
+NEAR_RU = [("у", "gen"), ("возле", "gen"), ("рядом с", "ins"), ("к", "dat")]
+
+
+def put_then(rng, out):
+    """«Поставь / положи X (у Y) и <order>»: X put down first ("put X down", or "put X next to Y"), then the order; the step is X only
+    when the line says «используя его» ("climb onto Z using X"). «Подставь X», «под окно», "under", «debajo» say the thing is a step
+    and stay "using X" (the rounds before); this is the plain putting."""
+    def first_en(x_en, near):
+        return f"put {x_en} next to {near.en}" if near else ("put it down" if x_en == "it" else f"put {x_en} down")
+    for _ in range(200):                                       # Russian
+        x_ru, x_en = rng.choice(PUT_X_RU * 3 + PUT_X_MORE_RU)
+        to, _ = thing(rng.choice(["table", "table", "bed", "bed", "car", "rock", "chair", "sofa"]), rng)
+        near = None
+        put = f"{rng.choice(['поставь', 'поставь', 'положи', 'опусти'])} {x_ru}"
+        if rng.random() < 0.4:
+            near = to if rng.random() < 0.6 else thing(rng.choice(["table", "bed", "rock", "sofa"]), rng)[0]
+            prep, case = rng.choice(NEAR_RU)
+            if prep == "рядом с":
+                prep = "рядом " + ru_with(near.ru[case])
+            put += f" {prep} {near.ru[case]}"
+        pron = L.RU_PRON[to.ru_gender]["acc"][1]
+        onto_ru = pron if near is to and rng.random() < 0.5 else to.ru["acc"]
+        then_ru, then_en = rng.choice([(f"{rng.choice(CLIMB_RU)} на {onto_ru}", f"climb onto {to.en}")] * 4 + [
+            (f"запрыгни на {onto_ru}", f"jump onto {to.en}"), ("иди за мной", "follow me"), ("иди ко мне", "come here"),
+            ("присядь", "crouch"), ("прикрой меня", "cover me"), ("жди", "wait")])
+        sep = rng.choice([" и ", " и ", ", потом ", " и потом ", ", а потом "])
+        out.append(row("put_then", "ru", (put + sep + then_ru).replace("к вс", "ко вс"),
+                       [first_en(x_en, near), then_en], rng))
+    for _ in range(40):                                        # ... «используя его»: the thing is the step, as the line says
+        x_ru, x_en = rng.choice([("ящик", "the crate"), ("коробку", "the box"), ("стул", "the chair"), ("камень", "the rock")])
+        to, _ = thing(rng.choice(["table", "bed", "car", "rock"]), rng)
+        use = rng.choice(["используя его" if x_en in ("the crate", "the chair", "the rock") else "используя её", "с его помощью"
+                          if x_en != "the box" else "с её помощью"])
+        line = f"{rng.choice(['поставь', 'положи'])} {x_ru} и {rng.choice(CLIMB_RU)} на {to.ru['acc']}, {use}"
+        out.append(row("put_then", "ru", line, [f"put {x_en} down", f"climb onto {to.en} using {x_en}"], rng))
+    for _ in range(60):                                        # Spanish
+        x_es, x_en = rng.choice([("la caja", "the box"), ("esa caja", "the box"), ("el cajón", "the crate"), ("la silla", "the chair"),
+                                 ("el carrete", "the spool")])
+        _, es_o = thing(rng.choice(["table", "bed", "car", "rock"]), rng)
+        near = rng.random() < 0.5
+        put = f"{rng.choice(['pon', 'deja', 'coloca'])} {x_es}" + (f" junto {es_o.es['T:a']}" if near else "")
+        then_es, then_en = rng.choice([(f"súbete {es_o.es['T:a']}", f"climb onto {es_o.en}")] * 3 + [("sígueme", "follow me"),
+                                                                                                    ("agáchate", "crouch")])
+        first = f"put {x_en} next to {es_o.en}" if near else f"put {x_en} down"
+        line = re.sub(r"\ba el\b", "al", f"{put} y {then_es}")
+        out.append(row("put_then", "es", line, [first, then_en], rng))
+    for _ in range(40):                                        # English
+        x = rng.choice(["the box", "the crate", "this box", "it"])
+        to, _ = thing(rng.choice(["table", "bed", "car", "rock"]), rng)
+        near = rng.random() < 0.5
+        put = (f"put {x} {rng.choice(['by', 'next to'])} {to.en}" if near else f"put {x} down")
+        then = rng.choice([f"climb onto {to.en}", f"climb on {to.en}", "follow me"])
+        line = f"{put}{rng.choice([' and ', ', then ', ' and then '])}{then}"
+        x_def = x.replace("this ", "the ")
+        first = f"put {x_def} next to {to.en}" if near else ("put it down" if x == "it" else f"put {x_def} down")
+        out.append(row("put_then", "en", line, [first, then if not then.startswith("climb on ") else f"climb onto {to.en}"], rng))
+
+
+def means_from_5(rng, out):
+    """means_from with the owner's answer: its Spanish «pon X junto a Y y súbete», «pon X y súbete a Y» put X first (put_then); the
+    rest is as before («со стула», «подставь», «debajo de la ventana», «desde»: the step)."""
+    kept = []
+    means_from(rng, kept)
+    for r in kept:
+        now = r["text"].split("now: ")[-1]
+        if r["lang"] == "es" and re.search(r"(?i)\bpon\b", now) and not re.search(r"(?i)debajo", now):
+            continue
+        out.append(r)
+
+
+def drop_put_using(rows):
+    """The rows of the rounds before that read a plain putting before an order as its means («Поставь ящик и лезь на аптечку» -> "climb
+    onto the medkit using the crate", «pon la silla y súbete a la cama», "put the car by the white stairs and climb through it": 344 of
+    v68s2's rows, rule set v9's generator) are left out: the owner, 2026-11-04, the thing is put down first. «Подставь», «под», «debajo»,
+    "under" say a step and are kept. Returns (rows, the number left out)."""
+    frame = re.compile(r"(?i)(\b(по?ставь|положи|поставим)\b[^,.]*?\s(и|,\s*потом|,\s*затем)\s)|(\b(pon|coloca|ponga)\b[^,.]*?\sy\s)|"
+                       r"(\b(put|place)\b[^,.]*?\s(and|then)\s)")
+    support = re.compile(r"(?i)(подстав|\bпод\b|debajo|\bunder\b|underneath)")
+    out = [r for r in rows if not (frame.search(r["text"].split("now: ")[-1]) and "using" in r["answer"]
+                                   and not support.search(r["text"].split("now: ")[-1]))]
+    return out, len(rows) - len(out)
+
+
+KINDS_5 = tuple(means_from_5 if k is means_from else k for k in KINDS_4) + (put_then,)
+
+
+# ---------------------------------------------------------------- run 6: the owner's game of 2026-11-04 ~15:00 (decoder v69s3)
+# «Возьми эту коробку, залезть на синий стол, перелезть на белый стол и оставь там коробку.» -> v69s3: "... | Leave the box behind."
+# (DELIVER to the box's own crate marker: the bot jumped down and carried it back; coop_cli LeaveItemPiece reads it as a put-down now),
+# and alone «Возьми коробку, залезь на синий стол» -> "climb onto the blue table using the box" (the step only with «используя»)
+
+def take_climb(rng, out):
+    """«Возьми коробку, залезь на X (, перелезь на Y) (и оставь там коробку)»: the box is picked up and carried up, then put down there."""
+    for _ in range(100):
+        item_ru, item_en, pron = rng.choice([("коробку", "the box", "её"), ("эту коробку", "this box", "её"), ("ящик", "the crate", "его"),
+                                             ("этот ящик", "this crate", "его"), ("любую коробку", "any box", "её")])
+        take = rng.choice(["возьми", "возьми", "бери", "подними", "хватай", "забери"])
+        objs = rng.sample(["table", "table", "bed", "car", "rock", "chair"], 2)
+        t1, _ = thing(objs[0], rng)
+        parts_ru = [f"{take} {item_ru}", f"{rng.choice(CLIMB_RU + ['залезть'])} на {t1.ru['acc']}"]
+        parts_en = [f"pick up {item_en}", f"climb onto {t1.en}"]
+        if rng.random() < 0.5:
+            t2, _ = thing(objs[1], rng)
+            if t2.en != t1.en:
+                parts_ru.append(f"{rng.choice(['перелезь', 'перепрыгни', 'перелезть', 'потом перелезь'])} на {t2.ru['acc']}")
+                parts_en.append(f"jump onto {t2.en}")
+        if rng.random() < 0.6:
+            box = "коробку" if "короб" in item_ru else "ящик"
+            parts_ru.append(rng.choice([f"оставь там {box}", f"оставь {pron} там", f"поставь {pron} там", f"скинь {box}", f"поставь {box}",
+                                        f"оставь {box} там"]))
+            parts_en.append("put it down" if rng.random() < 0.3 else f"put {item_en.replace('this ', 'the ').replace('any ', 'the ')} down")
+        line = ", ".join(parts_ru[:-1]) + rng.choice([", ", " и ", ", потом "]) + parts_ru[-1]
+        out.append(row("take_climb", "ru", line, parts_en, rng, lead=rng.random() < 0.5))
+
+
+KINDS_6 = KINDS_5 + (take_climb,)
+
+
 def decoder_rows(rng, run=1):
+    global STOI, USE_TAKE
+    STOI = "wait" if run >= 5 else "hold position"
+    USE_TAKE = run < 6
     out = []
-    for kind in {1: KINDS, 2: KINDS_2}.get(run, KINDS_3):
+    for kind in {1: KINDS, 2: KINDS_2, 3: KINDS_3, 4: KINDS_4, 5: KINDS_5}.get(run, KINDS_6):
         kind(rng, out)
     seen, kept = set(), []
     for r in out:

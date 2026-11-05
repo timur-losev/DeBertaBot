@@ -1,0 +1,21 @@
+12:42:59  start v69s3
+chain v69s3 on the owner test (47 lines, the game's path): with held 44/47 = 93.6%, at once 42/47 = 89.4%
+  NO  [5] es Empuja la caja hasta la puerta y escóndete detrás. -> TAKE_COVER door/None by crate (ask)   want PUSH door/None by crate; TAKE_COVER crate/None by None   | hide behind the door using the box
+  NO  [5] es Pon la caja pequeña encima de la grande.           -> DELIVER None/None by None (act)   want DELIVER crate/big by crate   | put the small box on top of the big one
+  NO  [6] es Coge la caja.                                      -> COLLECT None/None by None (act)   want COLLECT crate/None by None   | pick up the box
+  NO  [6] es Salta la vaya.                                     -> JUMP None/None by None (act)   want JUMP fence/None by None   | jump over the way
+W1104 12:47:00.323000 17684 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+  NO  [5] es Riega el bancal norte y después cosecha el del sur -> WATER garden_bed/north by None (act); HARVEST [unsure]/None by None (ask)   want WATER garden_bed/north by None; HARVEST garden_bed/south by None   | water the north garden bed / harvest the south crop
+  NO  [5] es Recarga, escóndete detrás de la cama y no dispares -> RELOAD None/None by None (act); TAKE_COVER bed/None by None (ask)   want RELOAD None/None by None; TAKE_COVER bed/None by None; HOLD_FIRE None/None by None   | Reload / hide behind the bed
+  NO  [5] es Empuja el peñasco hasta la puerta y escóndete detr -> TAKE_COVER door/None by rock (ask)   want PUSH door/None by rock; TAKE_COVER rock/None by None   | hide behind the door using the boulder
+  NO  [6] es Empújalo hasta la valla.                           -> PUSH fence/None by None (act)   want PUSH fence/None by rock   | shove it to the fence
+  ru    120  at once: whole  92.5%  time  92.5%  intents  92.5%   with held: whole  99.2%  time  99.2%  intents  99.2%
+  es     70  at once: whole  94.3%  time  94.3%  intents  94.3%   with held: whole 100.0%  time 100.0%  intents 100.0%
+  en     50  at once: whole  90.0%  time  94.0%  intents  90.0%   with held: whole  96.0%  time 100.0%  intents  96.0%
+   NO: t017 ru слышь, глянь на меня секунды на четыре | want [('LOOK_AT_ME', {'kind': 'for', 'seconds': 4})] | got [('NONE', 'hear me', None), ('LOOK_AT_ME', 'look at me for 4 seconds', {'kind': 'for', 'seconds': 4.0, 'more': False})]
+   NO: t236 en just a moment | want [('WAIT', None)] | got [('GO_BACK', 'just a moment', None)]
+   NO: t238 en gimme a sec | want [('WAIT', None)] | got [('LOOK_AT', 'gimme a sec', None)]
+memory tests: 42 scenarios, 19 wrong
+v69s3: 495 lines -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains2\ml_v69\replay_owner_talk_v69s3.jsonl
+95 of 495 lines read with other intents
+13:02:23  done v69s3

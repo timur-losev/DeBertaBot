@@ -457,5 +457,20 @@
  {"called": ["Что это, бади?", "Бади"], "expect": true, "rest": "Что это?"},
  {"called": ["Что это, Рекс?", "Рекс"], "expect": true, "rest": "Что это?"},
  {"called": ["Залезь на этот камень.", "Камень"], "expect": false},
- {"called": ["What is that, Rex?", "Rex"], "expect": true, "rest": "What is that?"}
+ {"called": ["What is that, Rex?", "Rex"], "expect": true, "rest": "What is that?"},
+ {"line": "When I say sit down on this chair, that means you should jump on it and sit down.", "kind": "means", "said": "sit down on this chair", "rest": "you should jump on it and sit down"},
+ {"line": "Remember, when I say sit down on this chair, that means you should jump on it and sit down.", "kind": "means", "said": "sit down on this chair"},
+ {"line": "Когда я скажу сядь на этот стул, это значит запрыгни на него и присядь.", "lang": "ru", "kind": "means", "said": "сядь на этот стул", "rest": "запрыгни на него и присядь"},
+ {"line": "When I say move up to the door, throw a grenade.", "kind": "none"},
+ {"same_line": ["sit down on the chair", "sit down on this chair"], "expect": true},
+ {"same_line": ["sit down on a chair", "Sit down on that chair."], "expect": true},
+ {"same_line": ["sit down on the chair", "sit down on the sofa"], "expect": false},
+ {"same_line": ["что сядь на стул", "сядь на стул"], "expect": true},
+ {"match": ["что сядь на {x}", "Сядь на диван."], "expect": true, "slot": "диван"},
+ {"near": ["что сядь на стул", "сядь на этот стул"], "expect": true},
+ {"forget_what": "Forget sit down on the chair.", "rest": "sit down on the chair"},
+ {"forget_what": "Забудь, сядь на стул.", "rest": "сядь на стул"},
+ {"forget_what": "Забудь про сядь на стул", "rest": "сядь на стул"},
+ {"forget_what": "Sit down on the chair.", "rest": ""},
+ {"forget_what": "Forget.", "rest": ""}
 ]

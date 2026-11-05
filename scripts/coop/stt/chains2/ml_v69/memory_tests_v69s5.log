@@ -1,0 +1,506 @@
+-- en_basics (en)
+  ok  banana                                         -> CHECK say_again None | Didn't catch that. | {}
+  ok  No, I meant follow me.                         -> FOLLOW_ME act None | Got it, I'll remember. On you. | {"did": "kept_line", "kept_line": {"heard": ["banana"], "intent": "FOLLOW_ME", "lines": ["follow me"]}}
+  ok  banana                                         -> FOLLOW_ME act None | On you. | {"did": "used_line", "used_line": {"heard": "banana", "lines": ["follow me"]}}
+  ok  mango smoothie now                             -> COLLECT say_again None | Come again? | {}
+  ok  Not that.                                      -> SMALL_TALK act None | What did you mean? | {"did": "asked_meaning"}
+  ok  hold position                                  -> HOLD_POSITION act None | Got it, I'll remember. Holding here. | {"did": "kept_line", "kept_line": {"heard": ["mango smoothie now"], "intent": "HOLD_POSITION", "lines": ["hold position"]}}
+  ok  mango smoothie now please                      -> HOLD_POSITION act None | Holding here. | {"did": "used_line", "used_line": {"heard": "mango smoothie now", "lines": ["hold position"]}}
+  ok  mango                                          -> MOVE_TO say_again None | Say again? | {}
+  ok  Call this the workbench. @T_White              -> SMALL_TALK act None | Got it, I'll remember. | {"did": "kept_name", "kept_name": {"entity": "T_White_19", "key": "T_White", "name": "workbench"}}
+  ok  go to the workbench                            -> MOVE_TO act T_White | On my way there. | {"named": ["T_White_20"], "read_as": "go to the table"}
+  ok  go to the workbench @T_Red                     -> MOVE_TO act T_White | On my way there. | {"named": ["T_White_21"], "read_as": "go to the table"}
+  ok  Call this the workbench.                       -> SMALL_TALK act None | Point at it. | {"did": "no_thing"}
+  ok  This is the garage @D_1                        -> SMALL_TALK act None | Shall I remember it as the garage? | {"did": "offered_name", "offered_name": {"entity": "D_1_23", "key": "D_1", "name": "garage"}}
+  ok  yes                                            -> SMALL_TALK act None | Got it, I'll remember. | {"did": "kept_name", "kept_name": {"entity": "D_1_24", "key": "D_1", "name": "garage"}}
+  ok  open the garage                                -> OPEN act D_1 | Getting it open. | {"named": ["D_1_25"], "read_as": "open the door"}
+  ok  What is that? @D_1                             -> SMALL_TALK act None | That's the garage. | {"did": "named_thing", "name_of": {"entity": "D_1_26", "name": "garage"}}
+  ok  What is that? @T_Red                           -> WHAT_IS_IT act None |  | {}
+  ok  This box is green. @C_2                        -> SMALL_TALK act None | Got it, I'll remember. | {"did": "kept_colour", "kept_colour": {"colour": "green", "entity": "C_2_28", "key": "C_2"}}
+  ok  go to the green box                            -> MOVE_TO act C_2 | Moving to the ping. | {"named": ["C_2_29"]}
+  ok  go to the green box @C_1                       -> MOVE_TO act C_2 | Relocating. | {"named": ["C_2_30"]}
+  ok  Forget the name. @T_White                      -> SMALL_TALK act None | Forgotten. | {"did": "forgot", "forgot_thing": "T_White"}
+  ok  go to the workbench                            -> MOVE_TO act None | Relocating. | {}
+  ok  Forget the name. @T_White                      -> SMALL_TALK act None | I don't remember that. | {"did": "not_kept", "forgot_thing": "T_White"}
+  ok  forget banana                                  -> SMALL_TALK act None | Forgotten. | {"did": "forgot", "forgot_line": "banana"}
+  ok  banana                                         -> CHECK say_again None | Didn't catch that. | {}
+  ok  Forget it.                                     -> WAIT wait None | Copy, waiting. | {}
+  ok  {"cmd": "teach", "heard": "kiwi", "lines": ["f -> taught  None |  | "(all)"
+  ok  kiwi                                           -> FOLLOW_ME act None | Right behind you. | {"did": "used_line", "used_line": {"heard": "kiwi", "lines": ["follow me"]}}
+  ok  no                                             -> NO answer None | Understood: no. | {"doubted_line": "kiwi"}
+  ok  kiwi                                           -> FOLLOW_ME act None | Right behind you. | {"did": "used_line", "used_line": {"heard": "kiwi", "lines": ["follow me"]}}
+  ok  no                                             -> NO answer None | Copy, that's a no. | {"forgot_line": "kiwi"}
+  ok  kiwi                                           -> ENTRY say_again None | Come again? | {}
+  ok  {"cmd": "forget", "heard": "nothing like it"}  -> forgot  None |  | "(all)"
+  ok  {"cmd": "recall"}                              -> memory  None |  | "(all)"
+en_basics: 34 steps, 0 wrong
+-- en_restart (en, memory reuse:en_basics)
+  ok  mango smoothie now                             -> HOLD_POSITION act None | Not moving. | {"did": "used_line", "used_line": {"heard": "mango smoothie now", "lines": ["hold position"]}}
+  ok  go to the garage                               -> MOVE_TO act D_1 | On my way there. | {"named": ["D_1_12"], "read_as": "go to the door"}
+  ok  go to the green box                            -> MOVE_TO act C_2 | Moving to the ping. | {"named": ["C_2_13"]}
+en_restart: 3 steps, 0 wrong
+-- en_no_teaching (en)
+  ok  go to the red table                            -> MOVE_TO act T_Red | Moving to the ping. | {}
+  ok  I meant the white table                        -> PUSH say_again None | Didn't catch that. | {"did": "meaning_not_read"}
+  ok  go to the red table                            -> MOVE_TO act T_Red | On my way there. | {}
+  ok  Not that.                                      -> SMALL_TALK act None | What did you mean? | {"did": "asked_meaning"}
+  ok  go to the white table                          -> MOVE_TO act T_White | Relocating. | {"did": "same_order"}
+  ok  zorbl                                          -> CROUCH say_again None | Didn't catch that. | {}
+  ok  I meant blorf                                  -> FRAG say_again None | Come again? | {"did": "meaning_not_read"}
+  ok  zorbl                                          -> CROUCH say_again None | Say again? | {}
+  ok  forget the smoke                               -> NONE ignore None | Heard. | {}
+  ok  This is where we go @T_Red                     -> MOVE_TO act None | Moving to the ping. | {}
+  ok  open the door                                  -> OPEN act D_1 | Opening, not going in. | {}
+  ok  go to the table                                -> MOVE_TO ask None | Which table? You mean the white table? | {}
+  ok  I meant the red table                          -> ATTACK resolved T_Red | Got it. Move there. | {"did": "answered_question"}
+  ok  open the door                                  -> OPEN act D_1 | Opening, not going in. | {}
+  ok  go to the table                                -> MOVE_TO ask None | Which table? You mean the white table? | {}
+  ok  not that                                       -> NO ask None | Which table? You mean the red table? | {}
+  ok  open the door                                  -> OPEN act D_1 | Opening, not going in. | {}
+  ok  go to the table                                -> MOVE_TO ask None | Which table? You mean the white table? | {}
+  ok  yes                                            -> YES resolved T_White | Got it. Move there. | {}
+  ok  open the door                                  -> OPEN act D_1 | Opening, not going in. | {}
+  ok  go to the table                                -> MOVE_TO ask None | Which table? You mean the white table? | {}
+  ok  yes                                            -> YES answer None | Yes, got it. | {}
+  ok  open the door                                  -> OPEN act D_1 | Getting it open. | {}
+  ok  go to the table                                -> MOVE_TO ask None | Which table? You mean the white table? | {}
+  ok  no                                             -> NO resolved None | Which one, then? Point at it. | {}
+  ok  {"cmd": "recall"}                              -> memory  None |  | "(all)"
+en_no_teaching: 26 steps, 0 wrong
+-- en_variants_and_things (en)
+  ok  banana split                                   -> DRONE say_again None | Come again? | {}
+  ok  banana splat                                   -> PRONE say_again None | Come again? | {}
+  ok  I meant follow me                              -> FOLLOW_ME act None | Got it, I'll remember. Moving with you. | {"did": "kept_line", "kept_line": {"heard": ["banana splat", "banana split"], "intent": "FOLLOW_ME", "lines": ["follow me"]}}
+  ok  banana split                                   -> FOLLOW_ME act None | On you. | {"did": "used_line", "used_line": {"heard": "banana split", "lines": ["follow me"]}}
+  ok  banana splat                                   -> FOLLOW_ME act None | Moving with you. | {"did": "used_line", "used_line": {"heard": "banana splat", "lines": ["follow me"]}}
+  ok  call this the workbench @T_White               -> SMALL_TALK act None | Got it, I'll remember. | {"did": "kept_name", "kept_name": {"entity": "T_White_16", "key": "T_White", "name": "workbench"}}
+  ok  call this the big workbench @T_Red             -> SMALL_TALK act None | Got it, I'll remember. | {"did": "kept_name", "kept_name": {"entity": "T_Red_17", "key": "T_Red", "name": "big workbench"}}
+  ok  go to the big workbench                        -> MOVE_TO act T_Red | Moving to the ping. | {"named": ["T_Red_18"], "read_as": "go to the table"}
+  ok  go to the workbench                            -> MOVE_TO act T_White | Moving to the ping. | {"named": ["T_White_19"], "read_as": "go to the table"}
+  ok  call this the chest @C_1                       -> SMALL_TALK act None | Got it, I'll remember. | {"did": "kept_name", "kept_name": {"entity": "C_1_20", "key": "C_1", "name": "chest"}}
+  ok  jump on the chest                              -> JUMP act C_1 | Jumping. | {"named": ["C_1_21"], "read_as": "jump on the crate"}
+  ok  go to the workbench                            -> MOVE_TO act None | Relocating. | {}
+  ok  go to the workbench                            -> MOVE_TO act None | On my way there. | {}
+  ok  call this the spot @gaze_7                     -> SMALL_TALK act None | Point at it. | {"did": "no_thing"}
+  ok  {"cmd": "teach", "heard": "kiwi", "lines": ["w -> taught  None |  | "(all)"
+  ok  kiwi                                           -> WAIT wait None | Copy, waiting. 5 seconds. | {"did": "used_line", "used_line": {"heard": "kiwi", "lines": ["wait 5 seconds"]}}
+  ok  {"cmd": "teach", "heard": "storm it", "lines": -> taught  None |  | "(all)"
+  ok  storm it                                       -> FRAG act D_1 | Nade going in. | {"did": "used_line", "used_line": {"heard": "storm it", "lines": ["frag the door", "go to the door"]}}
+  ok  this box is green @C_2                         -> SMALL_TALK act None | Got it, I'll remember. | {"did": "kept_colour", "kept_colour": {"colour": "green", "entity": "C_2_29", "key": "C_2"}}
+  ok  forget the name @C_2                           -> SMALL_TALK act None | Forgotten. | {"did": "forgot", "forgot_thing": "C_2"}
+  ok  go to the green box                            -> MOVE_TO ask None | Which crate? You mean the chest? | {}
+  ok  kiwi                                           -> WAIT wait None | Standing by. 5 seconds. | {"did": "used_line", "used_line": {"heard": "kiwi", "lines": ["wait 5 seconds"]}}
+  ok  (a pause of 11 s)
+  ok  no                                             -> NO answer None | Understood: no. | {}
+  ok  {"cmd": "teach"}                               -> error  None |  | null
+  ok  {"cmd": "forget"}                              -> error  None |  | null
+en_variants_and_things: 26 steps, 0 wrong
+-- en_no_memory (en, memory none)
+  ok  No, I meant follow me.                         -> FOLLOW_ME act None | Moving with you. | null
+  ok  {"cmd": "recall"}                              -> error  None |  | null
+en_no_memory: 2 steps, 0 wrong
+-- en_broken_file (en, memory garbage)
+  ok  banana                                         -> CHECK say_again None | Come again? | {}
+  ok  I meant follow me                              -> FOLLOW_ME act None | Got it, I'll remember. On you. | {"did": "kept_line", "kept_line": {"heard": ["banana"], "intent": "FOLLOW_ME", "lines": ["follow me"]}}
+  ok  banana                                         -> FOLLOW_ME act None | Moving with you. | {"did": "used_line", "used_line": {"heard": "banana", "lines": ["follow me"]}}
+en_broken_file: 3 steps, 0 wrong
+-- en_bro (en)
+  ok  call this the workbench @T_White               -> SMALL_TALK act None | Got it, bro, I'll remember. | {"did": "kept_name", "kept_name": {"entity": "T_White_11", "key": "T_White", "name": "workbench"}}
+  ok  what is that @T_White                          -> SMALL_TALK act None | That's the workbench, bro. | {"did": "named_thing", "name_of": {"entity": "T_White_12", "name": "workbench"}}
+en_bro: 2 steps, 0 wrong
+-- ru (ru, chain)
+  ok  Назови это верстак. @T_White                   -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_name", "kept_name": {"entity": "T_White_11", "key": "T_White", "name": "верстак"}}
+  ok  Иди к верстаку.                                -> MOVE_TO act T_White | Иду к метке. | {"named": ["T_White_12"], "read_as": "Иди к table."}
+  ok  Залезь на верстак @T_Red                       -> JUMP act T_White | Перепрыгиваю. | {"named": ["T_White_13"], "read_as": "Залезь на table"}
+  ok  Что это? @T_White                              -> SMALL_TALK act None | Это верстак. | {"did": "named_thing", "name_of": {"entity": "T_White_14", "name": "верстак"}}
+  ok  Этот ящик зелёный. @C_1                        -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_colour", "kept_colour": {"colour": "green", "entity": "C_1_15", "key": "C_1"}}
+  ok  Иди к зелёному ящику                           -> MOVE_TO act C_1 | Меняю позицию. | {"named": ["C_1_16"]}
+  ok  банан                                          -> MOVE_TO ask None | Какой ящик? Ты про зелёный ящик? | {}
+  ok  Нет, я имел в виду иди за мной.                -> FOLLOW_ME act None | Понял, запомню. Иду за тобой. | {"did": "kept_line", "kept_line": {"heard": ["банан"], "intent": "FOLLOW_ME", "lines": ["follow me"]}}
+  ok  банан                                          -> FOLLOW_ME act None | Иду за тобой. | {"did": "used_line", "used_line": {"heard": "банан", "lines": ["follow me"]}}
+  ok  киви апельсин манго                            -> BREACH say_again None | Повтори? | {}
+  ok  Не то.                                         -> SMALL_TALK act None | А что ты имел в виду? | {"did": "asked_meaning"}
+  ok  стой на месте                                  -> HOLD_POSITION act None | Понял, запомню. Не двигаюсь. | {"did": "kept_line", "kept_line": {"heard": ["киви апельсин манго"], "intent": "HOLD_POSITION", "lines": ["stay put"]}}
+  ok  киви апельсин манго                            -> HOLD_POSITION act None | Стою здесь. | {"did": "used_line", "used_line": {"heard": "киви апельсин манго", "lines": ["stay put"]}}
+  ok  иди к красному столу                           -> MOVE_TO act T_Red | Иду к метке. | {}
+  ok  я имел в виду к белому столу                   -> MOVE_TO act T_White | Иду к метке. | {"did": "same_order"}
+  ok  {"cmd": "teach", "heard": "штурм", "lines": [" -> taught  None |  | "(all)"
+  ok  штурм                                          -> FRAG act D_1 | Кидаю гранату. | {"did": "used_line", "used_line": {"heard": "штурм", "lines": ["frag the door", "go to the door"]}}
+  ok  Забудь верстак                                 -> SMALL_TALK act None | Всё, забыл. | {"did": "forgot", "forgot_thing": "T_White"}
+  ok  Иди к верстаку                                 -> MOVE_TO act None | Меняю позицию. | {}
+ru: 19 steps, 0 wrong
+-- ru_other_language (ru, chain, memory reuse:en_basics)
+  ok  mango smoothie now                             -> COLLECT say_again None | Didn't catch that. | {}
+  ok  иди к garage                                   -> MOVE_TO act None | Relocating. | {}
+ru_other_language: 2 steps, 0 wrong
+-- es (es, chain)
+  ok  Llámalo el taller. @T_White                    -> SMALL_TALK act None | Entendido, lo recordaré. | {"did": "kept_name", "kept_name": {"entity": "T_White_11", "key": "T_White", "name": "taller"}}
+  ok  Ve al taller.                                  -> MOVE_TO act T_White | Voy para allá. | {"named": ["T_White_12"], "read_as": "Ve al table."}
+  ok  ¿Qué es eso? @T_White                          -> SMALL_TALK act None | Es taller. | {"did": "named_thing", "name_of": {"entity": "T_White_13", "name": "taller"}}
+  ok  plátano                                        -> YES say_again None | ¿Qué dijiste? | {}
+  ok  No, quise decir sígueme.                       -> FOLLOW_ME act None | Entendido, lo recordaré. Voy contigo. | {"did": "kept_line", "kept_line": {"heard": ["plátano"], "intent": "FOLLOW_ME", "lines": ["Follow me."]}}
+  ok  plátano                                        -> FOLLOW_ME act None | Justo detrás de ti. | {"did": "used_line", "used_line": {"heard": "plátano", "lines": ["Follow me."]}}
+  ok  Esta caja es verde. @C_2                       -> SMALL_TALK act None | Entendido, lo recordaré. | {"did": "kept_colour", "kept_colour": {"colour": "green", "entity": "C_2_17", "key": "C_2"}}
+  ok  Ve a la caja verde.                            -> MOVE_TO act C_2 | Voy para allá. | {"named": ["C_2_18"]}
+es: 8 steps, 0 wrong
+-- en_what (en)
+  ok  What is that? @T_White                         -> WHAT_IS_IT act None |  | {}
+  ok  No, it's the yellow table.                     -> SMALL_TALK act None | That's the yellow table. | {"correction": {"colour": "yellow", "entity": "T_White_12", "kind": "table", "words": ["yellow", "table"]}, "did": "pointed_at", "pointed_at": {"entity": "T_Yel", "key": "T_Yel"}}
+  ok  Nope.                                          -> SMALL_TALK act None | Then what is it? | {"did": "asked_what"}
+  ok  the workbench                                  -> SMALL_TALK act None | Shall I remember it as the workbench? | {"correction": {"colour": "", "entity": "T_Yel", "kind": "", "words": ["workbench"]}, "did": "offered_name", "offered_name": {"entity": "T_Yel", "key": "T_Yel", "name": "workbench"}}
+  ok  yes                                            -> SMALL_TALK act None | Got it, I'll remember. | {"did": "kept_name", "kept_name": {"entity": "T_Yel", "key": "T_Yel", "name": "workbench"}}
+  ok  What is this? @T_White                         -> WHAT_IS_IT act None |  | {}
+  ok  It's a red lantern.                            -> SMALL_TALK act None | Shall I remember it as the red lantern? | {"correction": {"colour": "red", "entity": "T_White_17", "kind": "", "words": ["red", "lantern"]}, "did": "offered_name", "offered_name": {"entity": "T_White_17", "key": "T_White", "name": "red lantern"}}
+  ok  no                                             -> SMALL_TALK act None | All right, I won't remember it. | {"did": "not_kept_name"}
+  ok  what colour is the table @T_White              -> SMALL_TALK act None | That's the white table. | {"colour_of": {"colour": "white", "entity": "T_White_19"}, "did": "colour_of"}
+  ok  No, it's a white table.                        -> SMALL_TALK act None | Got it. | {"correction": {"colour": "white", "entity": "T_White_20", "kind": "table", "words": ["white", "table"]}, "did": "same_thing"}
+  ok  This is the garage @D_1                        -> SMALL_TALK act None | Shall I remember it as the garage? | {"did": "offered_name", "offered_name": {"entity": "D_1_21", "key": "D_1", "name": "garage"}}
+  ok  go to the red table                            -> MOVE_TO act T_Red | Moving to the ping. | {}
+  ok  yes                                            -> YES answer None | Yes, got it. | {}
+  ok  What color is it?                              -> SMALL_TALK act None | Point at it. | {"did": "no_thing"}
+  ok  what colour is this @C_1                       -> SMALL_TALK act None | I don't know what colour it is. | {"colour_of": {"colour": "", "entity": "C_1_25"}, "did": "no_colour"}
+  ok  it's blue                                      -> SMALL_TALK act None | Got it, I'll remember. | {"correction": {"colour": "blue", "entity": "C_1_26", "kind": "crate", "words": ["blue"]}, "did": "kept_colour", "kept_colour": {"colour": "blue", "entity": "C_1_26", "key": "C_1"}}
+  ok  go to the blue box                             -> MOVE_TO act C_1 | Moving to the ping. | {"named": ["C_1_27"]}
+  ok  What is that? @T_Red                           -> WHAT_IS_IT act None |  | {}
+  ok  No, it's yellow.                               -> SMALL_TALK act None | Got it, I'll remember. | {"correction": {"colour": "yellow", "entity": "T_Red_29", "kind": "table", "words": ["yellow"]}, "did": "kept_colour", "kept_colour": {"colour": "yellow", "entity": "T_Red_29", "key": "T_Red"}}
+  ok  What is that? @T_Red                           -> SMALL_TALK act None | That's the yellow table. | {"colour_of": {"colour": "yellow", "entity": "T_Red_30"}, "did": "coloured_thing"}
+  ok  go to the yellow table                         -> MOVE_TO act T_Red | Moving to the ping. | {"named": ["T_Red_31"]}
+  ok  go to the yellow table                         -> MOVE_TO act T_Red | Moving to the ping. | {"named": ["T_Red_32"]}
+  ok  go to the white table                          -> MOVE_TO act T_White | Moving to the ping. | {}
+en_what: 23 steps, 0 wrong
+-- ru_what (ru, chain)
+  ok  Что это? @T_White                              -> WHAT_IS_IT act None |  | {}
+  ok  Нет, это жёлтый стол.                          -> SMALL_TALK act None | Понял, запомню. | {"correction": {"colour": "yellow", "entity": "T_White_12", "kind": "table", "words": ["желтый", "стол"]}, "did": "kept_colour", "kept_colour": {"colour": "yellow", "entity": "T_White_12", "key": "T_White"}}
+  ok  Что это? @T_White                              -> SMALL_TALK act None | Это жёлтый стол. | {"colour_of": {"colour": "yellow", "entity": "T_White_13"}, "did": "coloured_thing"}
+  ok  Какого цвета этот стол? @T_White               -> SMALL_TALK act None | Это жёлтый стол. | {"colour_of": {"colour": "yellow", "entity": "T_White_14"}, "did": "colour_of"}
+  ok  Иди к жёлтому столу                            -> MOVE_TO act T_White | Уже иду туда. | {"named": ["T_White_15"]}
+  ok  Какого цвета этот стол? @T_Red                 -> SMALL_TALK act None | Это красный стол. | {"colour_of": {"colour": "red", "entity": "T_Red_16"}, "did": "colour_of"}
+  ok  Нет, это красный фонарь.                       -> SMALL_TALK act None | Запомнить, что это красный фонарь? | {"correction": {"colour": "red", "entity": "T_Red_17", "kind": "", "words": ["красный", "фонарь"]}, "did": "offered_name", "offered_name": {"entity": "T_Red_17", "key": "T_Red", "name": "красный фонарь"}}
+  ok  Да.                                            -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_name", "kept_name": {"entity": "T_Red_18", "key": "T_Red", "name": "красный фонарь"}}
+  ok  Что это? @T_Red                                -> SMALL_TALK act None | Это красный фонарь. | {"did": "named_thing", "name_of": {"entity": "T_Red_19", "name": "красный фонарь"}}
+  ok  Иди к красному фонарю                          -> MOVE_TO act T_Red | Уже иду туда. | {"named": ["T_Red_20"], "read_as": "Иди к table"}
+  ok  Что это? @C_1                                  -> WHAT_IS_IT act None |  | {}
+  ok  Нет.                                           -> SMALL_TALK act None | А что это тогда? | {"did": "asked_what"}
+  ok  Это сундук.                                    -> SMALL_TALK act None | Запомнить, что это сундук? | {"correction": {"colour": "", "entity": "C_1_23", "kind": "", "words": ["сундук"]}, "did": "offered_name", "offered_name": {"entity": "C_1_23", "key": "C_1", "name": "сундук"}}
+  ok  Нет.                                           -> SMALL_TALK act None | Ладно, не запоминаю. | {"did": "not_kept_name"}
+  ok  Какого цвета этот ящик? @C_2                   -> SMALL_TALK act None | Не знаю, какого это цвета. | {"colour_of": {"colour": "", "entity": "C_2_25"}, "did": "no_colour"}
+  ok  Он зелёный.                                    -> SMALL_TALK act None | Понял, запомню. | {"correction": {"colour": "green", "entity": "C_2_26", "kind": "crate", "words": ["зеленый"]}, "did": "kept_colour", "kept_colour": {"colour": "green", "entity": "C_2_26", "key": "C_2"}}
+  ok  Что это? @C_2                                  -> SMALL_TALK act None | Это зелёный ящик. | {"colour_of": {"colour": "green", "entity": "C_2_27"}, "did": "coloured_thing"}
+  ok  Что это? @T_White                              -> SMALL_TALK act None | Это жёлтый стол. | {"colour_of": {"colour": "yellow", "entity": "T_White_28"}, "did": "coloured_thing"}
+  ok  Это не стол, а верстак.                        -> SMALL_TALK act None | Запомнить, что это верстак? | {"correction": {"colour": "", "entity": "T_White_29", "kind": "", "words": ["верстак"]}, "did": "offered_name", "offered_name": {"entity": "T_White_29", "key": "T_White", "name": "верстак"}}
+  ok  Давай.                                         -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_name", "kept_name": {"entity": "T_White_30", "key": "T_White", "name": "верстак"}}
+  ok  Иди к верстаку                                 -> MOVE_TO act T_White | Уже иду туда. | {"named": ["T_White_31"], "read_as": "Иди к table"}
+ru_what: 21 steps, 0 wrong
+-- es_what (es, chain)
+  ok  ¿Qué es eso? @T_White                          -> WHAT_IS_IT act None |  | {}
+  ok  No, es una mesa amarilla.                      -> SMALL_TALK act None | Entendido, lo recordaré. | {"correction": {"colour": "yellow", "entity": "T_White_12", "kind": "table", "words": ["mesa", "amarilla"]}, "did": "kept_colour", "kept_colour": {"colour": "yellow", "entity": "T_White_12", "key": "T_White"}}
+  ok  ¿De qué color es? @T_White                     -> SMALL_TALK act None | Es la mesa amarilla. | {"colour_of": {"colour": "yellow", "entity": "T_White_13"}, "did": "colour_of"}
+  ok  ¿Qué es eso? @C_1                              -> WHAT_IS_IT act None |  | {}
+  ok  No, es una linterna roja.                      -> SMALL_TALK act None | ¿Lo recuerdo como linterna roja? | {"correction": {"colour": "red", "entity": "C_1_15", "kind": "", "words": ["linterna", "roja"]}, "did": "offered_name", "offered_name": {"entity": "C_1_15", "key": "C_1", "name": "linterna roja"}}
+  ok  Sí.                                            -> SMALL_TALK act None | Entendido, lo recordaré. | {"did": "kept_name", "kept_name": {"entity": "C_1_16", "key": "C_1", "name": "linterna roja"}}
+es_what: 6 steps, 0 wrong
+-- en_rooms (en)
+  ok  What is that? @D_1                             -> WHAT_IS_IT act None |  | {}
+  ok  This is the garage @D_1                        -> SMALL_TALK act None | Shall I remember that the garage is behind this door? | {"correction": {"colour": "", "entity": "D_1_12", "kind": "", "words": ["garage"]}, "did": "offered_name", "offered_name": {"entity": "D_1_12", "key": "D_1/room", "name": "garage", "room": true}}
+  ok  yes                                            -> SMALL_TALK act None | Got it, I'll remember. | {"did": "kept_name", "kept_name": {"entity": "D_1_13", "key": "D_1/room", "name": "garage", "room": true}}
+  ok  What is that? @D_1                             -> SMALL_TALK act None | That's the door to the garage. | {"did": "room_door", "name_of": {"entity": "D_1_14", "name": "garage", "room": true}}
+  ok  go to the garage                               -> MOVE_TO act D_1 | Moving to the ping. | {"named": ["D_1_15"], "read_as": "go to the door", "rooms": ["D_1_15"]}
+  ok  get out of the garage                          -> MOVE_TO act None | Moving. | {"named": ["D_1_16"], "read_as": "get out of the door", "rooms": ["D_1_16"]}
+  ok  go to the door                                 -> MOVE_TO act D_1 | Moving to the ping. | {}
+  ok  What is that? @D_1                             -> SMALL_TALK act None | That's the door to the garage. | {"did": "room_door", "name_of": {"entity": "D_1_18", "name": "garage", "room": true}}
+  ok  No, it's the workshop.                         -> SMALL_TALK act None | Shall I remember that the workshop is behind this door? | {"correction": {"colour": "", "entity": "D_1_19", "kind": "", "words": ["workshop"]}, "did": "offered_name", "offered_name": {"entity": "D_1_19", "key": "D_1/room", "name": "workshop", "room": t
+  ok  no                                             -> SMALL_TALK act None | All right, I won't remember it. | {"did": "not_kept_name"}
+  ok  This is the door @D_1                          -> SMALL_TALK act None | Got it. | {"did": "same_thing"}
+  ok  go outside @D_1                                -> MOVE_TO act None | On my way there. | {}
+  ok  Forget the name. @D_1                          -> SMALL_TALK act None | Forgotten. | {"did": "forgot", "forgot_thing": "D_1"}
+  ok  What is that? @D_1                             -> WHAT_IS_IT act None |  | {}
+  ok  Call this the shed @D_1                        -> SMALL_TALK act None | Got it, I'll remember. | {"did": "kept_name", "kept_name": {"entity": "D_1_25", "key": "D_1/room", "name": "shed", "room": true}}
+  ok  go to the shed                                 -> MOVE_TO act D_1 | Moving to the ping. | {"named": ["D_1_26"], "read_as": "go to the door", "rooms": ["D_1_26"]}
+  ok  This is the white table @T_White               -> SMALL_TALK act None | Got it. | {"did": "same_thing"}
+  ok  This is the workbench @T_White                 -> SMALL_TALK act None | Shall I remember it as the workbench? | {"did": "offered_name", "offered_name": {"entity": "T_White_28", "key": "T_White", "name": "workbench"}}
+en_rooms: 18 steps, 0 wrong
+-- ru_rooms (ru, chain)
+  ok  Что это? @D_1                                  -> WHAT_IS_IT act None |  | {}
+  ok  Это гараж. @D_1                                -> SMALL_TALK act None | Запомнить, что за этой дверью гараж? | {"correction": {"colour": "", "entity": "D_1_12", "kind": "", "words": ["гараж"]}, "did": "offered_name", "offered_name": {"entity": "D_1_12", "key": "D_1/room", "name": "гараж", "room": true}}
+  ok  Да.                                            -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_name", "kept_name": {"entity": "D_1_13", "key": "D_1/room", "name": "гараж", "room": true}}
+  ok  Что это? @D_1                                  -> SMALL_TALK act None | Это дверь, за ней гараж. | {"did": "room_door", "name_of": {"entity": "D_1_14", "name": "гараж", "room": true}}
+  ok  Иди в гараж                                    -> MOVE_TO act D_1 | Уже иду туда. | {"named": ["D_1_15"], "read_as": "Иди в door", "rooms": ["D_1_15"]}
+  ok  Выйди из гаража                                -> MOVE_TO act D_1 | Иду к метке. | {"named": ["D_1_16"], "read_as": "Выйди из door", "rooms": ["D_1_16"]}
+  ok  Зайди в гараж                                  -> MOVE_TO act D_1 | Иду к метке. | {"named": ["D_1_17"], "read_as": "Зайди в door", "rooms": ["D_1_17"]}
+  ok  Жди в гараже                                   -> HOLD_POSITION act D_1 | Остаюсь на месте. | {"named": ["D_1_18"], "read_as": "Жди в door", "rooms": ["D_1_18"]}
+  ok  Иди к двери                                    -> MOVE_TO act D_1 | Уже иду туда. | {}
+  ok  Что это? @D_1                                  -> SMALL_TALK act None | Это дверь, за ней гараж. | {"did": "room_door", "name_of": {"entity": "D_1_20", "name": "гараж", "room": true}}
+  ok  Нет, это склад.                                -> SMALL_TALK act None | Запомнить, что за этой дверью склад? | {"correction": {"colour": "", "entity": "D_1_21", "kind": "", "words": ["склад"]}, "did": "offered_name", "offered_name": {"entity": "D_1_21", "key": "D_1/room", "name": "склад", "room": true}}
+  ok  Нет.                                           -> SMALL_TALK act None | Ладно, не запоминаю. | {"did": "not_kept_name"}
+  ok  Что это? @D_1                                  -> SMALL_TALK act None | Это дверь, за ней гараж. | {"did": "room_door", "name_of": {"entity": "D_1_23", "name": "гараж", "room": true}}
+  ok  Нет, это дверь в склад                         -> SMALL_TALK act None | Запомнить, что за этой дверью склад? | {"correction": {"colour": "", "entity": "D_1_24", "kind": "door", "words": ["дверь", "в", "склад"]}, "did": "offered_name", "offered_name": {"entity": "D_1_24", "key": "D_1/room", "name": "склад", "room": true}}
+  ok  Не надо.                                       -> SMALL_TALK act None | Ладно, не запоминаю. | {"did": "not_kept_name"}
+  ok  Выйди наружу @D_1                              -> MOVE_TO act None | Уже иду туда. | {}
+  ok  Зайди внутрь @D_1                              -> MOVE_TO act None | Уже иду туда. | {}
+ru_rooms: 17 steps, 0 wrong
+-- ru_rename (ru, chain)
+  ok  Что это? @T_White                              -> WHAT_IS_IT act None |  | {}
+  ok  Нет, это фонарь.                               -> SMALL_TALK act None | Запомнить, что это фонарь? | {"correction": {"colour": "", "entity": "T_White_12", "kind": "", "words": ["фонарь"]}, "did": "offered_name", "offered_name": {"entity": "T_White_12", "key": "T_White", "name": "фонарь"}}
+  ok  Да.                                            -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_name", "kept_name": {"entity": "T_White_13", "key": "T_White", "name": "фонарь"}}
+  ok  Что это? @T_White                              -> SMALL_TALK act None | Это фонарь. | {"did": "named_thing", "name_of": {"entity": "T_White_14", "name": "фонарь"}}
+  ok  Нет, это стол.                                 -> SMALL_TALK act None | Понял, запомню. | {"correction": {"colour": "", "entity": "T_White_15", "kind": "table", "words": ["стол"]}, "did": "forgot_name", "forgot_name": {"entity": "T_White_15", "key": "T_White", "name": "фонарь"}}
+  ok  Что это? @T_White                              -> WHAT_IS_IT act None |  | {}
+  ok  Называй теперь это фонарь. @T_White            -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_name", "kept_name": {"entity": "T_White_17", "key": "T_White", "name": "фонарь"}}
+  ok  Называй это теперь верстак. @T_White           -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_name", "kept_name": {"entity": "T_White_18", "key": "T_White", "name": "верстак"}}
+  ok  Что это? @T_White                              -> SMALL_TALK act None | Это верстак. | {"did": "named_thing", "name_of": {"entity": "T_White_19", "name": "верстак"}}
+  ok  Ты что, не понимаешь, это стол.                -> SMALL_TALK act None | Понял, запомню. | {"correction": {"colour": "", "entity": "T_White_20", "kind": "table", "words": ["стол"]}, "did": "forgot_name", "forgot_name": {"entity": "T_White_20", "key": "T_White", "name": "верстак"}}
+  ok  Это называется фонарь. Называй теперь это фона -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_name", "kept_name": {"entity": "T_White_21", "key": "T_White", "name": "фонарь"}}
+  ok  Это стол. @T_White                             -> SMALL_TALK act None | Понял, запомню. | {"did": "forgot_name", "forgot_name": {"entity": "T_White_22", "key": "T_White", "name": "фонарь"}}
+  ok  Это стол. @T_White                             -> SMALL_TALK act None | Ясно. | {"did": "same_thing"}
+  ok  Называй теперь это камень просто. @C_1         -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_name", "kept_name": {"entity": "C_1_24", "key": "C_1", "name": "камень"}}
+ru_rename: 14 steps, 0 wrong
+-- ru_meaning (ru, chain)
+  ok  Иди отдохни на диване.                         -> MOVE_TO say_again None | Не расслышал. | {}
+  ok  Иди отдохни на диване вон на том.              -> MOVE_TO act S_1 | Иду к метке. | {}
+  BAD Иди на диван.                                  -> MOVE_TO act S_1 | Уже иду туда. | {}
+        memory.did: want 'offered_meaning', got (none)
+        memory.offered_meaning.heard.0: want 'иди отдохни на диване', got (none)
+        say: want {'contains': 'Запомнить, что «иди отдохни на диване» — это «иди на диван»?'}, got 'Уже иду туда.'
+  BAD Да.                                            -> YES answer None | Да, понял. | {}
+        memory.did: want 'kept_line', got (none)
+        say: want 'Понял, запомню.', got 'Да, понял.'
+  BAD Иди отдохни на диване.                         -> PRONE act S_1 | Ложусь. | {}
+        intent: want 'MOVE_TO', got 'PRONE'
+        memory.did: want 'used_line', got (none)
+  ok  Иди помедитируй на стуле.                      -> MOVE_TO say_again None | Ещё раз? | {}
+  ok  Иди к белому столу.                            -> MOVE_TO act T_White | Меняю позицию. | {}
+  ok  Иди помедитируй на стуле.                      -> MOVE_TO say_again None | Не расслышал. | {}
+  ok  Залезь на этот стул.                           -> JUMP act Ch_1 | Прыгаю. Запомнить, что «иди помедитируй на стуле» — это «залезь на этот стул»? | {"did": "offered_meaning", "offered_meaning": {"heard": ["иди помедитируй на стуле"], "intent": "JUMP", "lines": ["Climb onto this chair."], "meant": "залезь на этот стул"}}
+  ok  Нет.                                           -> SMALL_TALK act None | Ладно, не запоминаю. | {"did": "not_kept_line"}
+  ok  Иди помедитируй на стуле.                      -> MOVE_TO say_again None | Ещё раз? | {}
+ru_meaning: 11 steps, 3 wrong
+-- en_teach (en)
+  ok  Whenever I say boom, it means go to the white  -> SMALL_TALK act None | Shall I remember that "boom" means "go to the white table"? | {"did": "offered_meaning", "offered_meaning": {"heard": ["boom"], "intent": "MOVE_TO", "lines": ["Go to the white table."], "meant": "go to the white table"}}
+  ok  yes                                            -> SMALL_TALK act None | Got it, I'll remember. | {"did": "kept_line", "kept_line": {"heard": ["boom"], "intent": "MOVE_TO", "lines": ["Go to the white table."]}}
+  ok  boom                                           -> MOVE_TO act T_White | Moving to the ping. | {"did": "used_line", "used_line": {"heard": "boom", "lines": ["Go to the white table."]}}
+  ok  When I say go, go to the red table.            -> MOVE_TO queued None | Ready to move there. On your go. | {}
+  ok  Whenever I say blah, it means blorp zork.      -> SMALL_TALK act None | I don't understand "blorp zork". | {"did": "means_not_read", "means": {"meant": "blorp zork", "said": "blah"}}
+  ok  Pronounce Buddy as Baddy                       -> SMALL_TALK act None | Like this: "baddy"? | {"did": "offered_saying", "offered_saying": {"say": "baddy", "word": "buddy"}}
+  ok  yes                                            -> SMALL_TALK act None | Got it, I'll remember. | {"did": "kept_saying", "kept_saying": {"say": "baddy", "word": "buddy"}}
+  ok  {"cmd": "recall"}                              -> memory  None |  | "(all)"
+  ok  Say Buddy like before                          -> SMALL_TALK act None | Forgotten. | {"did": "forgot_saying", "forgot_saying": "buddy"}
+  ok  {"cmd": "recall"}                              -> memory  None |  | "(all)"
+en_teach: 10 steps, 0 wrong
+-- ru_teach (ru, chain)
+  ok  Когда я говорю бабах, это значит иди к белому  -> SMALL_TALK act None | Запомнить, что «бабах» — это «иди к белому столу»? | {"did": "offered_meaning", "offered_meaning": {"heard": ["бабах"], "intent": "MOVE_TO", "lines": ["go to the white table"], "meant": "иди к белому столу"}}
+  ok  Да.                                            -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_line", "kept_line": {"heard": ["бабах"], "intent": "MOVE_TO", "lines": ["go to the white table"]}}
+  ok  Бабах!                                         -> MOVE_TO act T_White | Меняю позицию. | {"did": "used_line", "used_line": {"heard": "бабах", "lines": ["go to the white table"]}}
+  ok  Когда скажу го, иди к красному столу.          -> MOVE_TO queued None | Готов идти туда. Жду команды. | {}
+  ok  В слове замок ударение на первый слог.         -> SMALL_TALK act None | Так: «за́мок»? | {"did": "offered_saying", "offered_saying": {"say": "за́мок", "word": "замок"}}
+  ok  Нет, на второй слог.                           -> SMALL_TALK act None | Так: «замо́к»? | {"did": "offered_saying", "offered_saying": {"say": "замо́к", "word": "замок"}}
+  ok  Да.                                            -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_saying", "kept_saying": {"say": "замо́к", "word": "замок"}}
+  ok  Говори Buddy как Бадди.                        -> SMALL_TALK act None | Так: «бадди»? | {"did": "offered_saying", "offered_saying": {"say": "бадди", "word": "buddy"}}
+  ok  Нет.                                           -> SMALL_TALK act None | Ладно, не запоминаю. | {"did": "not_kept_saying"}
+  ok  {"cmd": "recall"}                              -> memory  None |  | "(all)"
+  ok  Говори замок как раньше.                       -> SMALL_TALK act None | Всё, забыл. | {"did": "forgot_saying", "forgot_saying": "замок"}
+ru_teach: 11 steps, 0 wrong
+-- ru_on_go (ru, chain)
+  ok  Запомни, когда я скажу давай, ты пойдешь и под -> COLLECT queued None | Готов собрать. Жду команды. | {}
+  ok  Давай.                                         -> GO_NOW execute None | Выполняю! Подбираю. | {}
+  ok  Когда я скажу давай, возьми ящик, после этого  -> COLLECT queued None | Готов собрать. Жду команды. | {}
+  ok  Давай.                                         -> GO_NOW execute None | Выполняю! Подбираю. | {}
+ru_on_go: 4 steps, 0 wrong
+-- ru_speech (ru, chain)
+  ok  Вместо «Понял, запомню» говори «Принято».      -> SMALL_TALK act None | Говорить «Принято» вместо «понял запомню»? | {"did": "offered_phrase", "offered_phrase": {"from": "понял запомню", "line": "Понял, запомню.", "to": "Принято", "word": false}}
+  ok  Да.                                            -> SMALL_TALK act None | Принято. | {"did": "kept_phrase", "kept_phrase": {"from": "понял запомню", "to": "Принято", "word": false}}
+  ok  {"cmd": "rephrase", "text": "Понял, запомню. У -> rephrased  None |  | null
+  ok  Не говори «Уже иду туда».                      -> SMALL_TALK act None | Больше не говорить «уже иду туда»? | {"did": "offered_phrase", "offered_phrase": {"from": "уже иду туда", "line": "Уже иду туда.", "to": "", "word": false}}
+  ok  Да.                                            -> SMALL_TALK act None | Принято. | {"did": "kept_phrase", "kept_phrase": {"from": "уже иду туда", "to": "", "word": false}}
+  ok  {"cmd": "rephrase", "text": "Уже иду туда. Дви -> rephrased  None |  | null
+  ok  Вместо «тобой» говори «вами».                  -> SMALL_TALK act None | Говорить «вами» вместо «тобой»? | {"did": "offered_phrase", "offered_phrase": {"from": "тобой", "line": "Граната рядом с тобой, уходи!", "to": "вами", "word": true}}
+  ok  Да.                                            -> SMALL_TALK act None | Принято. | {"did": "kept_phrase", "kept_phrase": {"from": "тобой", "to": "вами", "word": true}}
+  ok  {"cmd": "rephrase", "text": "Двигаюсь с тобой. -> rephrased  None |  | null
+  ok  Вместо «бабах» говори «ура».                   -> SMALL_TALK act None | Я не говорю «бабах». | {"did": "not_a_line"}
+  ok  Говори как раньше.                             -> SMALL_TALK act None | Всё, забыл. | {"did": "forgot_phrases"}
+  ok  {"cmd": "rephrase", "text": "Уже иду туда."}   -> rephrased  None |  | null
+  ok  Держись в трёх метрах от меня.                 -> SMALL_TALK act None | Держаться в 3 метрах от тебя? | {"did": "offered_setting", "offered_setting": {"name": "follow_m", "value": 3.0}}
+  ok  Да.                                            -> SMALL_TALK act None | Понял, запомню. | {"behaviour": {"follow_m": 3.0}, "did": "kept_setting", "kept_setting": {"name": "follow_m", "value": 3.0}}
+  ok  Держись поближе.                               -> SMALL_TALK act None | Держаться в 2 метрах от тебя? | {"did": "offered_setting", "offered_setting": {"name": "follow_m", "value": 2.0}}
+  ok  Нет.                                           -> SMALL_TALK act None | Ладно, не запоминаю. | {"did": "not_kept_setting"}
+  ok  Стреляй только по моей команде.                -> SMALL_TALK act None | Стрелять только по твоей команде? | {"did": "offered_setting", "offered_setting": {"name": "fire_on_command", "value": 1.0}}
+  ok  Да.                                            -> SMALL_TALK act None | Понял, запомню. | {"behaviour": {"fire_on_command": 1.0, "follow_m": 3.0}, "did": "kept_setting", "kept_setting": {"name": "fire_on_command", "value": 1.0}}
+  ok  Говори помедленнее.                            -> SMALL_TALK act None | Говорить медленнее? | {"did": "offered_setting", "offered_setting": {"name": "voice_speed", "value": 0.8}}
+  ok  Да.                                            -> SMALL_TALK act None | Понял, запомню. | {"behaviour": {"fire_on_command": 1.0, "follow_m": 3.0, "voice_speed": 0.8}, "did": "kept_setting", "kept_setting": {"name": "voice_speed", "value": 0.8}}
+  ok  {"cmd": "recall"}                              -> memory  None |  | "(all)"
+  ok  Веди себя как раньше.                          -> SMALL_TALK act None | Всё, забыл. | {"behaviour": {}, "did": "forgot_settings"}
+  ok  Иди к белому столу.                            -> MOVE_TO act T_White | Уже иду туда. | {}
+ru_speech: 23 steps, 0 wrong
+-- en_behaviour (en)
+  ok  Stay 3 meters from me.                         -> SMALL_TALK act None | Shall I keep 3 m from you? | {"did": "offered_setting", "offered_setting": {"name": "follow_m", "value": 3.0}}
+  ok  yes                                            -> SMALL_TALK act None | Got it, I'll remember. | {"behaviour": {"follow_m": 3.0}, "did": "kept_setting", "kept_setting": {"name": "follow_m", "value": 3.0}}
+  ok  Open fire within twenty meters.                -> SMALL_TALK act None | Shall I open fire within 20 m? | {"did": "offered_setting", "offered_setting": {"name": "engage_m", "value": 20.0}}
+  ok  yes                                            -> SMALL_TALK act None | Got it, I'll remember. | {"behaviour": {"engage_m": 20.0, "follow_m": 3.0}, "did": "kept_setting", "kept_setting": {"name": "engage_m", "value": 20.0}}
+  ok  You can shoot on your own.                     -> SMALL_TALK act None | Shall I shoot on my own? | {"did": "offered_setting", "offered_setting": {"name": "fire_on_command", "value": 0.0}}
+  ok  no                                             -> SMALL_TALK act None | All right, I won't remember it. | {"did": "not_kept_setting"}
+  ok  go to the white table                          -> MOVE_TO act T_White | Relocating. | {}
+  ok  Don't say that.                                -> SMALL_TALK act None | Shall I stop saying "relocating"? | {"did": "offered_phrase", "offered_phrase": {"from": "relocating", "line": "Relocating.", "to": "", "word": false}}
+  ok  yes                                            -> SMALL_TALK act None | Got it, I'll remember. | {"did": "kept_phrase", "kept_phrase": {"from": "relocating", "to": "", "word": false}}
+  ok  Stay here                                      -> HOLD_POSITION act None | Holding here. | {}
+en_behaviour: 10 steps, 0 wrong
+-- en_it_after_what (en)
+  ok  go to the red table                            -> MOVE_TO act T_Red | On my way there. | {}
+  ok  What is that? @T_White                         -> WHAT_IS_IT act None |  | {}
+  ok  jump on it                                     -> JUMP act T_White | Jumping. | {}
+en_it_after_what: 3 steps, 0 wrong
+-- en_it_after_what_spot (en)
+  ok  jump over the red table                        -> JUMP act T_Red | Going over. | {}
+  ok  What is that? @gaze_7                          -> WHAT_IS_IT act None |  | {}
+  ok  jump over it @gaze_8                           -> JUMP act gaze_8 | Jumping. | {}
+en_it_after_what_spot: 3 steps, 0 wrong
+-- ru_it_after_what (ru, chain)
+  ok  Иди к красному столу.                          -> MOVE_TO act T_Red | Иду к метке. | {}
+  ok  Что это? @T_White                              -> WHAT_IS_IT act None |  | {}
+  ok  Запрыгни на него.                              -> JUMP act T_White | Понял, прыгаю. | {}
+  ok  Этот стол зелёный. @T_White                    -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_colour", "kept_colour": {"colour": "green", "entity": "T_White_14", "key": "T_White"}}
+  ok  Залезь на красный стол.                        -> JUMP act T_Red | Понял, прыгаю. | {}
+  ok  Что это? @T_White                              -> SMALL_TALK act None | Это зелёный стол. | {"colour_of": {"colour": "green", "entity": "T_White_16"}, "did": "coloured_thing"}
+  ok  Запрыгни на него.                              -> JUMP act T_White | Прыгаю. | {}
+ru_it_after_what: 7 steps, 0 wrong
+-- ru_offer_reset (ru, chain)
+  ok  Иди отдохни на диване.                         -> MOVE_TO say_again None | Повтори? | {}
+  ok  Иди на диван.                                  -> MOVE_TO act S_1 | Уже иду туда. Запомнить, что «иди отдохни на диване» — это «иди на диван»? | {"did": "offered_meaning", "offered_meaning": {"heard": ["иди отдохни на диване"], "intent": "MOVE_TO", "lines": ["go to the sofa"], "meant": "иди на диван", "pattern": {"heard": 
+  ok  Что это? @T_White                              -> WHAT_IS_IT act None |  | {}
+  ok  Нет, это фонарь.                               -> SMALL_TALK act None | Запомнить, что это фонарь? | {"correction": {"colour": "", "entity": "T_White_14", "kind": "", "words": ["фонарь"]}, "did": "offered_name", "offered_name": {"entity": "T_White_14", "key": "T_White", "name": "фонарь"}}
+  ok  Da.                                            -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_name", "kept_name": {"entity": "T_White_15", "key": "T_White", "name": "фонарь"}}
+  ok  {"cmd": "recall"}                              -> memory  None |  | "(all)"
+  ok  Что это? @T_White                              -> SMALL_TALK act None | Это фонарь. | {"did": "named_thing", "name_of": {"entity": "T_White_17", "name": "фонарь"}}
+  ok  Нет, это стол.                                 -> SMALL_TALK act None | Понял, запомню. | {"correction": {"colour": "", "entity": "T_White_18", "kind": "table", "words": ["стол"]}, "did": "forgot_name", "forgot_name": {"entity": "T_White_18", "key": "T_White", "name": "фонарь"}}
+ru_offer_reset: 8 steps, 0 wrong
+-- ru_callout (ru, chain)
+  ok  Иди к столу.                                   -> MOVE_TO ask None | Какой стол? Ты про белый стол? | {}
+  ok  Да.                                            -> YES resolved T_White | Ясно. Иду туда. | {}
+  ok  Иди к стулу.                                   -> MOVE_TO ask None | Какой стул? Ты про красный стул? | {}
+  ok  Да.                                            -> YES resolved CH_Red | Ясно. Иду туда. | {}
+  ok  Иди к красному стулу.                          -> MOVE_TO act CH_Red | Иду к метке. | {}
+  ok  Отнеси ящик на красный стул.                   -> DELIVER act CH_Red | Уже несу. | {}
+  ok  Иди к двери.                                   -> MOVE_TO ask None | Какая дверь? Впереди? | {}
+ru_callout: 7 steps, 0 wrong
+-- en_callout (en)
+  ok  go to the table                                -> MOVE_TO ask None | Which table? You mean the white table? | {}
+  ok  yes                                            -> YES resolved T_White | Got it. Move there. | {}
+  ok  go to the chair                                -> MOVE_TO ask None | Which chair? You mean the red chair? | {}
+  ok  no, the other one                              -> HOLD_OTHER_ANGLE resolved CH_1 | Got it. Move there. | {}
+  ok  go to the red chair                            -> MOVE_TO act CH_Red | Relocating. | {}
+en_callout: 5 steps, 0 wrong
+-- ru_same (ru, chain)
+  ok  Сядь на диван.                                 -> CROUCH act SF_1 | На одно колено. | {}
+  ok  Сядь на кровать.                               -> CROUCH act BD_1 | Пригибаюсь. | {}
+  ok  Смотри, запрыгнуть на стул и присесть. Это то  -> SMALL_TALK act None | Запомнить, что «сесть на стул» — это «запрыгнуть на стул и присесть»? | {"did": "offered_meaning", "offered_meaning": {"heard": ["сесть на стул"], "intent": "JUMP", "lines": ["jump onto the chair", "crouch"], "meant": "запрыгнуть на стул и присесть", "
+  ok  B.                                             -> SMALL_TALK act None | Да или нет? | {"did": "asked_yes_no"}
+  ok  Да.                                            -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_line", "kept_line": {"heard": ["сесть на стул"], "intent": "JUMP", "lines": ["jump onto the chair", "crouch"]}, "kept_pattern": {"heard": "сесть на {x}", "lines": ["jump onto {x}", "crouch"], "source": "pattern"}, "kept_
+  ok  Сядь на стул.                                  -> JUMP act CH_1 | Перепрыгиваю. | {"did": "used_line", "used_line": {"heard": "сесть на стул", "lines": ["jump onto the chair", "crouch"]}}
+  ok  Сядь на диван.                                 -> JUMP act SF_1 | Перепрыгиваю. | {"did": "used_pattern", "used_pattern": {"heard": "сесть на {x}", "lines": ["jump onto the sofa", "crouch"], "place": "the sofa"}}
+  ok  Садись на кровать.                             -> JUMP act BD_1 | Понял, прыгаю. | {"did": "used_pattern", "used_pattern": {"heard": "сесть на {x}", "lines": ["jump onto the bed", "crouch"], "place": "the bed"}}
+  ok  Сядь на него. @SF_1                            -> JUMP act BD_1 | Прыгаю. | {"did": "used_pattern", "used_pattern": {"heard": "сесть на {x}", "lines": ["jump onto the bed", "crouch"], "place": "the bed"}}
+  ok  Забудь сесть на стул.                          -> SMALL_TALK act None | Всё, забыл. | {"did": "forgot", "forgot_also": ["сесть на {x}"], "forgot_line": "сесть на стул"}
+  ok  Сядь на диван.                                 -> CROUCH act SF_1 | На одно колено. | {}
+ru_same: 11 steps, 0 wrong
+-- en_same (en, chain)
+  ok  Sitting on the chair is the same as jumping on -> SMALL_TALK act None | Shall I remember that "sitting on the chair" means "jumping on the chair and crouching"? | {"did": "offered_meaning", "offered_meaning": {"heard": ["sitting on the chair"], "intent": "JUMP", "lines": ["jump on the chair", "crouch"], "meant": "jumping o
+  ok  yes                                            -> SMALL_TALK act None | Got it, I'll remember. | {"did": "kept_line", "kept_line": {"heard": ["sitting on the chair"], "intent": "JUMP", "lines": ["jump on the chair", "crouch"]}, "kept_pattern": {"heard": "sitting on {x}", "lines": ["jump on {x}", "crouch"], "source": "patte
+  ok  sitting on the sofa                            -> JUMP act SF_1 | On it, jumping. | {"did": "used_pattern", "used_pattern": {"heard": "sitting on {x}", "lines": ["jump on the sofa", "crouch"], "place": "the sofa"}}
+en_same: 3 steps, 0 wrong
+-- ru_offer_pattern (ru, chain)
+  ok  Иди отдохни на диване.                         -> MOVE_TO say_again None | Ещё раз? | {}
+  ok  Иди на диван.                                  -> MOVE_TO act SF_1 | Уже иду туда. Запомнить, что «иди отдохни на диване» — это «иди на диван»? | {"did": "offered_meaning", "offered_meaning": {"heard": ["иди отдохни на диване"], "intent": "MOVE_TO", "lines": ["go to the sofa"], "meant": "иди на диван", "pattern": {"heard":
+  ok  Да.                                            -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_line", "kept_line": {"heard": ["иди отдохни на диване"], "intent": "MOVE_TO", "lines": ["go to the sofa"]}, "kept_pattern": {"heard": "иди отдохни на {x}", "lines": ["go to {x}"], "source": "pattern"}, "kept_patterns": [
+  ok  Иди отдохни на кровати.                        -> MOVE_TO act BD_1 | Меняю позицию. | {"did": "used_pattern", "used_pattern": {"heard": "иди отдохни на {x}", "lines": ["go to the bed"], "place": "the bed"}}
+ru_offer_pattern: 4 steps, 0 wrong
+-- ru_name_wins (ru, chain)
+  ok  Когда я говорю сядь на диван, это значит запры -> SMALL_TALK act None | Запомнить, что «сядь на диван» — это «запрыгни на диван и присядь»? | {"did": "offered_meaning", "offered_meaning": {"heard": ["сядь на диван"], "intent": "JUMP", "lines": ["jump onto the sofa", "crouch"], "meant": "запрыгни на диван и присядь", "patte
+  ok  Да.                                            -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_line", "kept_line": {"heard": ["сядь на диван"], "intent": "JUMP", "lines": ["jump onto the sofa", "crouch"]}, "kept_pattern": {"heard": "сядь на {x}", "lines": ["jump onto {x}", "crouch"], "source": "pattern"}, "kept_pa
+  ok  Что это? @R_1                                  -> WHAT_IS_IT act None |  | {}
+  ok  Нет, это диван. @R_1                           -> SMALL_TALK act None | Запомнить, что это диван? | {"correction": {"colour": "", "entity": "R_1", "kind": "sofa", "words": ["диван"]}, "did": "offered_name", "offered_name": {"entity": "R_1", "key": "R_1", "name": "диван"}}
+  ok  Да. @R_1                                       -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_name", "kept_name": {"entity": "R_1", "key": "R_1", "name": "диван"}}
+  ok  Сядь на диван.                                 -> JUMP act R_1 | Перепрыгиваю. | {"did": "used_line", "named": ["R_1"], "used_line": {"heard": "сядь на диван", "kept_lines": ["jump onto the sofa", "crouch"], "lines": ["jump onto the rock", "crouch"]}}
+  ok  Иди к дивану.                                  -> MOVE_TO act R_1 | Иду к метке. | {"named": ["R_1"], "read_as": "Иди к rock."}
+  ok  Сядь на камень.                                -> JUMP act R_1 | Прыгаю. | {"did": "used_pattern", "used_pattern": {"heard": "сядь на {x}", "lines": ["jump onto the rock", "crouch"], "place": "the rock"}}
+ru_name_wins: 8 steps, 0 wrong
+-- ru_names (ru, chain)
+  ok  Как тебя зовут?                                -> SMALL_TALK act None | Меня зовут Buddy. | {"bot_name_said": "Buddy", "did": "said_bot_name"}
+  ok  Тебя зовут Рекс.                               -> SMALL_TALK act None | Теперь я Рекс. | {"bot_name": "Рекс", "did": "kept_bot_name"}
+  ok  Как тебя зовут?                                -> SMALL_TALK act None | Меня зовут Рекс. | {"bot_name_said": "Рекс", "did": "said_bot_name"}
+  ok  Рекс!                                          -> SMALL_TALK act None | Слышу тебя. | {"called": "Рекс", "did": "called"}
+  ok  Рекс, сядь.                                    -> CROUCH act None | Пригибаюсь. | {"called": "Рекс"}
+  ok  Встань, Рекс.                                  -> STAND_UP act None | На ногах. | {"called": "Рекс"}
+  ok  Рэкс, ложись.                                  -> PRONE act None | Лёг. | {"called": "Рекс"}
+  ok  Buddy!                                         -> SMALL_TALK act None | Само собой. | {}
+  ok  Как меня зовут?                                -> SMALL_TALK act None | Я пока не знаю, как тебя зовут. | {"did": "no_player_name"}
+  ok  Меня зовут Тимур.                              -> SMALL_TALK act None | Приятно познакомиться, Тимур. | {"did": "kept_player_name", "player_name": "Тимур"}
+  ok  Ты знаешь, как меня зовут?                     -> SMALL_TALK act None | Тебя зовут Тимур. | {"did": "said_player_name"}
+  ok  Меня зовут на ужин.                            -> HELP say_again None | Повтори? | {}
+ru_names: 12 steps, 0 wrong
+-- ru_names_again (ru, chain, memory reuse:ru_names)
+  ok  Как меня зовут?                                -> SMALL_TALK act None | Тебя зовут Тимур. | {"did": "said_player_name"}
+  ok  Рекс, ты где?                                  -> SMALL_TALK act None |  | {"called": "Рекс"}
+  ok  Забудь своё имя.                               -> SMALL_TALK act None | Всё, забыл. | {"bot_name": null, "did": "forgot_bot_name"}
+  ok  Как тебя зовут?                                -> SMALL_TALK act None | Меня зовут Buddy. | {"bot_name_said": "Buddy", "did": "said_bot_name"}
+  ok  Забудь моё имя.                                -> SMALL_TALK act None | Всё, забыл. | {"did": "forgot_player_name"}
+  ok  Как меня зовут?                                -> SMALL_TALK act None | Я пока не знаю, как тебя зовут. | {"did": "no_player_name"}
+ru_names_again: 6 steps, 0 wrong
+-- en_names (en)
+  ok  What's your name?                              -> SMALL_TALK act None | My name is Buddy. | {"bot_name_said": "Buddy", "did": "said_bot_name"}
+  ok  Your name is Rex.                              -> SMALL_TALK act None | I'm Rex now. | {"bot_name": "Rex", "did": "kept_bot_name"}
+  ok  Rex, follow me.                                -> FOLLOW_ME act None | On you. | {"called": "Rex"}
+  ok  Hey Rex                                        -> SMALL_TALK act None | I hear you. | {"called": "Rex", "did": "called"}
+  ok  Call me Tim.                                   -> SMALL_TALK act None | Nice to meet you, Tim. | {"did": "kept_player_name", "player_name": "Tim"}
+  ok  What's my name?                                -> SMALL_TALK act None | Your name is Tim. | {"did": "said_player_name"}
+  ok  Call me when you're in position.               -> FOLLOW_ME act None | Right behind you. | {}
+en_names: 7 steps, 0 wrong
+-- ru_colour_order (ru, chain)
+  ok  Вот на красный стол залезь. @T_Red             -> JUMP act T_Red | Перепрыгиваю. | {}
+  ok  Вот красный ящик возьми. @C_1                  -> COLLECT act None | Понял, собираю. | {}
+  ok  Этот ящик зелёный. @C_1                        -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_colour", "kept_colour": {"colour": "green", "entity": "C_1_13", "key": "C_1"}}
+  ok  Запомни, что ях это ляж на пол.                -> SMALL_TALK act None | Запомнить, что «ях» — это «ляж на пол»? | {"did": "offered_meaning", "offered_meaning": {"heard": ["ях"], "intent": "PRONE", "lines": ["lie down on the floor"], "meant": "ляж на пол"}}
+  ok  Да.                                            -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_line", "kept_line": {"heard": ["ях"], "intent": "PRONE", "lines": ["lie down on the floor"]}}
+  ok  Ях.                                            -> PRONE act None | Лёг. | {"did": "used_line", "used_line": {"heard": "ях", "lines": ["lie down on the floor"]}}
+ru_colour_order: 6 steps, 0 wrong
+-- ru_undo_last (ru, chain)
+  ok  Запомни, что ях это ляж на пол.                -> SMALL_TALK act None | Запомнить, что «ях» — это «ляж на пол»? | {"did": "offered_meaning", "offered_meaning": {"heard": ["ях"], "intent": "PRONE", "lines": ["lie down on the floor"], "meant": "ляж на пол"}}
+  ok  Да.                                            -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_line", "kept_line": {"heard": ["ях"], "intent": "PRONE", "lines": ["lie down on the floor"]}}
+  ok  Не надо было запоминать.                       -> SMALL_TALK act None | Всё, забыл. | {"did": "forgot_last", "undone": "kept_line", "undone_what": {"heard": ["ях"], "intent": "PRONE", "lines": ["lie down on the floor"]}}
+  ok  Ях.                                            -> YES answer None | Да, понял. | {}
+  ok  Этот ящик зелёный. @C_1                        -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_colour", "kept_colour": {"colour": "green", "entity": "C_1_15", "key": "C_1"}}
+  ok  Забудь это.                                    -> SMALL_TALK act None | Всё, забыл. | {"did": "forgot_last", "undone": "kept_colour", "undone_what": {"colour": "green", "entity": "C_1_15", "key": "C_1"}}
+  ok  {"cmd": "recall"}                              -> memory  None |  | "(all)"
+  ok  Запомни, что ях это ляж на пол.                -> SMALL_TALK act None | Запомнить, что «ях» — это «ляж на пол»? | {"did": "offered_meaning", "offered_meaning": {"heard": ["ях"], "intent": "PRONE", "lines": ["lie down on the floor"], "meant": "ляж на пол"}}
+  ok  Не надо запоминать.                            -> SMALL_TALK act None | Ладно, не запоминаю. | {"did": "not_kept_line"}
+  ok  Не надо было запоминать.                       -> SMALL_TALK act None | Такого не помню. | {"did": "nothing_to_undo"}
+ru_undo_last: 10 steps, 0 wrong
+-- ru_repeat_line (ru, chain)
+  ok  Иди к красному столу.                          -> MOVE_TO act T_Red | Уже иду туда. | {}
+  ok  Не расслышал.                                  -> SMALL_TALK act None | Я сказал: уже иду туда. | {"did": "repeated", "repeated": "Уже иду туда."}
+  ok  Ещё раз?                                       -> SMALL_TALK act None | Я сказал: уже иду туда. | {"did": "repeated", "repeated": "Уже иду туда."}
+  ok  Что ты сказал?                                 -> SMALL_TALK act None | Я сказал: уже иду туда. | {"did": "repeated", "repeated": "Уже иду туда."}
+ru_repeat_line: 4 steps, 0 wrong
+-- en_repeat_line (en)
+  ok  go to the red table                            -> MOVE_TO act T_Red | Moving to the ping. | {}
+  ok  Say again?                                     -> SMALL_TALK act None | I said: moving to the ping. | {"did": "repeated", "repeated": "Moving to the ping."}
+  ok  jump again                                     -> JUMP act None | On it, jumping. | {}
+en_repeat_line: 3 steps, 0 wrong
+-- ru_teach_meaning_first (ru, chain)
+  ok  Запомни, запрыгни на стул и присядь, значит ся -> SMALL_TALK act None | Запомнить, что «сядь на стул» — это «запрыгни на стул и присядь»? | {"did": "offered_meaning", "offered_meaning": {"heard": ["сядь на стул"], "intent": "JUMP", "lines": ["jump onto the chair", "crouch"], "meant": "запрыгни на стул и присядь", "pattern"
+  ok  Да.                                            -> SMALL_TALK act None | Понял, запомню. | {"did": "kept_line", "kept_line": {"heard": ["сядь на стул"], "intent": "JUMP", "lines": ["jump onto the chair", "crouch"]}, "kept_pattern": {"heard": "сядь на {x}", "lines": ["jump onto {x}", "crouch"], "source": "pattern"}, "kept_pa
+  ok  Сядь на диван.                                 -> JUMP act SF_1 | Прыгаю. | {"did": "used_pattern", "used_pattern": {"heard": "сядь на {x}", "lines": ["jump onto the sofa", "crouch"], "place": "the sofa"}}
+  ok  Встань с дивана и сядь на стул.                -> JUMP act None | Понял, прыгаю. | {"did": "used_line_part", "used_line_part": {"heard": ["сядь на стул"], "lines": ["climb down off the sofa", "jump onto the chair", "crouch"], "parts": ["Встань с дивана", "сядь на стул"]}}
+ru_teach_meaning_first: 4 steps, 0 wrong
+-- ru_go_back_words (ru, chain)
+  ok  Сядь на стул.                                  -> CROUCH act CH_1 | Пониже. | {}
+  ok  Вернись обратно.                               -> GO_BACK act None | Возвращаюсь на место. | {}
+  ok  Вернись.                                       -> GO_BACK act None | Иду обратно. | {}
+  ok  Вернись ко мне.                                -> COME_BACK act None | Возвращаюсь. | {}
+  ok  Вернись, пожалуйста, ко мне.                   -> COME_BACK act None | Уже возвращаюсь. | {}
+  ok  Иди к камню и вернись.                         -> MOVE_TO act RK_1 | Иду к метке. | {}
+  ok  Вернись к камню.                               -> COME_BACK act RK_1 | Иду назад. | {}
+ru_go_back_words: 7 steps, 0 wrong
+-- es_go_back_words (es, chain)
+  ok  Vuelve.                                        -> GO_BACK act None | Vuelvo atrás. | {}
+  ok  Vuelve aquí.                                   -> COME_BACK act None | Regresando. | {}
+  ok  Regresa.                                       -> GO_BACK act None | Vuelvo a donde estaba. | {}
+es_go_back_words: 3 steps, 0 wrong
+memory tests: 42 scenarios, 3 wrong

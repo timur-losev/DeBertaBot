@@ -132,9 +132,9 @@ void MicCapture::Begin() {
     s.taking = true;
 }
 
-std::vector<float> MicCapture::End() {
+std::vector<float> MicCapture::End(double waited_s) {
     Impl& s = *impl_;
-    std::this_thread::sleep_for(std::chrono::duration<double>(kTailSeconds));
+    if (const double left = kTailSeconds - waited_s; left > 0) std::this_thread::sleep_for(std::chrono::duration<double>(left));
     std::vector<short> clip;
     {
         std::lock_guard<std::mutex> g(s.lock);

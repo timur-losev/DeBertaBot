@@ -256,6 +256,29 @@ bool PiperVoice::Load(const VoiceOptions& options, std::string* error) {
 }
 
 bool PiperVoice::Speak(const std::string& utf8, std::vector<float>* samples, std::string* error, const std::string& speaker, float speed) const {
+    return Speak(utf8, samples, error, speaker, speed, SentenceFn());
+}
+
+namespace {
+
+// sherpa-onnx's callback: once a batch of max_num_sentences (1) is made, with the progress p (1 at the last)
+struct SentenceSink {
+    const PiperVoice::SentenceFn* fn = nullptr;
+    bool stopped = false;
+};
+
+int32_t OnSentence(const float* samples, int32_t n, float p, void* arg) {
+    SentenceSink& sink = *static_cast<SentenceSink*>(arg);
+    if (sink.stopped) return 0;
+    if (!(*sink.fn)(samples, n > 0 ? static_cast<size_t>(n) : 0, p >= 1.0f)) sink.stopped = true;
+    return sink.stopped ? 0 : 1;
+}
+
+}  // namespace
+
+bool PiperVoice::Speak(const std::string& utf8, std::vector<float>* samples, std::string* error, const std::string& speaker, float speed,
+                       const SentenceFn& on_sentence, bool* stopped) const {
+    if (stopped) *stopped = false;
     samples->clear();
     if (!impl_->tts) {
         if (error) *error = "the voice is not loaded";
@@ -272,7 +295,12 @@ bool PiperVoice::Speak(const std::string& utf8, std::vector<float>* samples, std
     config.sid = sid;
     config.speed = speed > 0 ? speed : impl_->speed;
     config.silence_scale = 0.2f;
-    const SherpaOnnxGeneratedAudio* audio = SherpaOnnxOfflineTtsGenerateWithConfig(impl_->tts, utf8.c_str(), &config, nullptr, nullptr);
+    SentenceSink sink;
+    sink.fn = &on_sentence;
+    const SherpaOnnxGeneratedAudio* audio = SherpaOnnxOfflineTtsGenerateWithConfig(impl_->tts, utf8.c_str(), &config,
+                                                                                   on_sentence ? OnSentence : nullptr, on_sentence ? &sink : nullptr);
+    if (stopped) *stopped = sink.stopped;
+    if (!audio && sink.stopped) return true;   // stopped before anything was kept
     if (!audio) {
         if (error) *error = "sherpa-onnx made no audio of \"" + utf8 + "\"";
         return false;

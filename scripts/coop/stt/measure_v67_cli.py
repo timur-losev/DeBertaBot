@@ -38,6 +38,10 @@ BRAINS["v68s2now"] = BRAINS["v68s2"]
 BRAINS["v69"] = (BRAINS["v67"][0], os.path.join(REPO, "models", "coop-chain-v69", "cpp"))
 BRAINS["v69s2"] = (BRAINS["v67"][0], os.path.join(REPO, "models", "coop-chain-v69s2", "cpp"))
 BRAINS["v69s3"] = (BRAINS["v67"][0], os.path.join(REPO, "models", "coop-chain-v69s3", "cpp"))
+BRAINS["v69s4"] = (BRAINS["v67"][0], os.path.join(REPO, "models", "coop-chain-v69s4", "cpp"))
+BRAINS["v69s5"] = (BRAINS["v67"][0], os.path.join(REPO, "models", "coop-chain-v69s5", "cpp"))
+# test67 after the owner's answer of 2026-11-04 ~14:00 (t67_112, t67_119, t67_175: a thing put is put first), the same chains again
+BRAINS["v68s2b"], BRAINS["v69s3b"] = BRAINS["v68s2"], BRAINS["v69s3"]
 # one entity of every object, some with their qualifiers (several tables and crates, as the test range has)
 ENTITIES = [("table_w", "table", "white", 0, 6), ("table_r", "table", "red", 30, 9), ("table_b", "table", "blue", -40, 8),
             ("table_y", "table", "yellow", 70, 12), ("crate_1", "crate", None, 10, 3), ("crate_big", "crate", "big", -15, 5),

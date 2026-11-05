@@ -235,9 +235,17 @@ std::vector<std::string> MemoryWords(std::string_view norm) {
     return w;
 }
 
+// a kept line's or pattern's words. A first «что» / «que» is left out: what is left of «запомни, что X — это Y» / «recuerda que X
+// es Y» when it was kept with X (2026-11-05: the owner's memory had «что сядь на {x}», so «сядь на диван» never matched it)
+static std::vector<std::string> KeptWords(const std::string& kept) {
+    std::vector<std::string> w = MemoryWords(kept);
+    if (w.size() >= 2 && (w[0] == "что" || w[0] == "que")) w.erase(w.begin());
+    return w;
+}
+
 bool NearLine(const std::string& kept, const std::string& line) {
     if (kept == line) return true;
-    const std::vector<std::string> a = MemoryWords(kept), b = MemoryWords(line);
+    const std::vector<std::string> a = KeptWords(kept), b = MemoryWords(line);
     if (a.size() < 3 || b.size() < 3) return false;
     const std::unordered_set<std::string> sa(a.begin(), a.end()), sb(b.begin(), b.end());
     auto within = [](const std::unordered_set<std::string>& x, const std::unordered_set<std::string>& y) {
@@ -368,15 +376,30 @@ bool VerbForm(const std::string& said, const std::string& taught) {
 }
 
 bool SameWord(const std::string& said, const std::string& taught) {
+    // an article or a demonstrative for another ("sit down on this chair" said, "sit down on the chair" taught: 2026-11-05, the
+    // owner's lesson that did not come back); Russian has none, and a word more or less is NearLine's
+    static const std::unordered_set<std::string> kDeterminer = {"the", "this", "that", "a", "an", "el", "la", "los", "las", "este",
+                                                                  "esta", "ese", "esa", "un", "una"};
+    if (said != taught && kDeterminer.count(said) && kDeterminer.count(taught)) return true;
     return said == taught || WordForm(said, taught) || WordForm(taught, said) || VerbForm(said, taught);
 }
 
 bool SameLine(const std::string& kept, const std::string& line) {
-    const std::vector<std::string> a = MemoryWords(kept), b = MemoryWords(line);
+    const std::vector<std::string> a = KeptWords(kept), b = MemoryWords(line);
     if (a.empty() || a.size() != b.size()) return false;
     for (size_t i = 0; i < a.size(); ++i)
         if (!SameWord(b[i], a[i])) return false;
     return true;
+}
+
+std::string ForgetWhat(std::string_view heard) {
+    const std::vector<SpanWord> sw = SpanWords(heard);
+    std::vector<std::string> w;
+    for (const SpanWord& x : sw) w.push_back(x.norm);
+    const size_t k = AfterAny(w, 0, {"забудь", "забудь про", "забудь что", "забудь фразу", "forget", "forget about", "forget the line",
+                                     "olvida", "olvida que", "olvídate de", "olvidate de"});
+    if (k == std::string::npos || k >= w.size()) return {};
+    return Join(w, k, w.size());
 }
 
 TaughtPattern MakePattern(const std::string& said, std::string_view meant) {
@@ -431,7 +454,7 @@ TaughtPattern MakePattern(const std::string& said, std::string_view meant) {
 }
 
 bool MatchPattern(const std::string& key, std::string_view heard, std::string* slot, size_t* fixed) {
-    const std::vector<std::string> k = MemoryWords(key);
+    const std::vector<std::string> k = KeptWords(key);
     const std::vector<SpanWord> hs = SpanWords(heard);
     size_t b = 0, e = hs.size();
     while (b < e && PatternFiller(hs[b].norm)) ++b;
@@ -581,7 +604,10 @@ bool ReadMeans(std::string_view heard, const std::vector<std::string>& w, TeachL
             out->rest = std::string(heard.substr(sw[k].begin, end - sw[k].begin));
             return true;
         }
-        if (!lead && (kPronoun.count(w[x0]) || j - x0 > 3)) return false;
+        // "when I say X, that means Y": after «когда я скажу» / "when I say" only a strong marker gets here (not loose), and then X
+        // may be a line of up to six words as after "whenever I say" (2026-11-05, the owner: "When I say sit down on this chair,
+        // that means you should jump on it and sit down." was taken for an order on the signal)
+        if (!lead && (kPronoun.count(w[x0]) || (j - x0 > 3 && !once))) return false;
         out->kind = TeachKind::Means;
         out->said = Join(w, x0, j);
         size_t end = heard.size();

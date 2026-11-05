@@ -18,7 +18,11 @@ said the opposite of the rounds before, and the contrast rows means_from), "3" f
 taken back at 09:0x: the memory scenarios failed 27 steps, because statements that teach were written as orders («Это верстак.» ->
 "climb onto the crate"), «когда я скажу давай, …» lost "on my go", «вернись обратно» after «сядь» was "sit back down"; run 3 adds
 make_rows_v69's statement, on_go_davai, back_after, here_bare, remark_fail, use_climb, forget_thing and short_after, and keeps
-the memory scenarios' lines out of the new rows).
+the memory scenarios' lines out of the new rows), "4" for v69s4 (v69s3 was better on the owner's lines, but 5 memory steps
+and about 20 of his 495 real lines were harmed: «Используя коробку залезть …» -> "come back to me", «иди ко мне сюда» -> "come here |
+stay here", «Давай.» after an order on the go -> the order again, «No.» -> "sit down"; run 4 adds make_rows_v69's KINDS_4; stopped at 13:58 for the owner's answers), "5" for v69s5 (run 4's rows with the owner's answers of
+2026-11-04 ~14:00: «поставь X и залезь на Y» puts X down first, «используя его» makes it the step -- put_then rows, means_from's
+Spanish «pon X y súbete» likewise, 344 old rows that read a plain putting as the means left out; bare «стой» is "wait").
 
     python chains13_v69.py data       the rows, counted, with samples
     python chains13_v69.py train      -> models/coop-qwen3-qlora-chains13-v69/pieces13v69_final_seed0; answers on the test sets
@@ -66,6 +70,9 @@ def scenario_lines():
 def training():
     rows, counts, split = _training_v68()
     rows, back_fixed = R69.fix_old_rows(rows)
+    put_dropped = 0
+    if RUN >= 5:     # the owner, 2026-11-04: «поставь X и залезь» puts X down first (make_rows_v69.drop_put_using)
+        rows, put_dropped = R69.drop_put_using(rows)
     new = P12.with_neutral_scenes(R69.decoder_rows(random.Random(6901), RUN), random.Random(6902))
     held, _ = P12.test_keys()
     owner, n_owner = owner_lines()
@@ -78,7 +85,8 @@ def training():
     for r in kept:
         by[f"{r['case']}/{r['lang']}"] = by.get(f"{r['case']}/{r['lang']}", 0) + 1
     counts["v69"] = {"generated": by, "old_rows_back_fixed": back_fixed, "owner_test_items": n_owner,
-                     "dropped_as_test": len(new) - len(kept), "old_rows_dropped_as_owner_test": old_n - len(rows)}
+                     "dropped_as_test": len(new) - len(kept), "old_rows_dropped_as_owner_test": old_n - len(rows),
+                     "old_put_using_rows_dropped": put_dropped}
     counts["v68s2_rows"], counts["v69_rows"] = len(rows), len(kept)
     return rows + [{"text": r["text"], "answer": r["answer"]} for r in kept], counts, split
 

@@ -75,6 +75,7 @@
 #include <algorithm>
 #include <cctype>
 #include <array>
+#include <atomic>
 #include <chrono>
 #include <clocale>
 #include <cmath>
@@ -1414,6 +1415,47 @@ bool BareBackPiece(const std::string& piece) {
         "to the old spot", "to where you started", "to the start"};
     return kNoPlace.count(rest) > 0;
 }
+// the decoder's leaving of the thing carried with no place of its own: "Leave the box behind." (v69s3 for «…, перелезь на белый
+// стол и оставь там коробку», 2026-11-04, the owner's log), "Leave the box where it is." («Оставь там коробку.»), "leave it here".
+// The classifier read them as DELIVER with the box for its place, and the bot carried it back to the crate marker it came from.
+// It is the thing put down where the bot is: "put the box down" (DROP), returned. "Leave it there" stays: there may be a spot
+std::string LeaveItemPiece(const std::string& piece) {
+    std::string low;
+    for (char c : piece) low += static_cast<char>(c >= 'A' && c <= 'Z' ? c - 'A' + 'a' : c);
+    while (!low.empty() && std::string(".,!? ").find(low.back()) != std::string::npos) low.pop_back();
+    if (low.rfind("leave ", 0) != 0) return {};
+    const std::string rest = low.substr(6);
+    for (const char* item : {"the box", "this box", "that box", "the crate", "this crate", "that crate", "the spool", "it"}) {
+        const std::string is(item);
+        if (rest.rfind(is, 0) != 0 || (rest.size() > is.size() && rest[is.size()] != ' ')) continue;
+        std::string tail = rest.substr(is.size());
+        while (!tail.empty() && tail.front() == ' ') tail.erase(tail.begin());
+        for (const char* filler : {" bro", " buddy", " please", " now"})
+            if (tail.size() >= std::string(filler).size() && tail.compare(tail.size() - std::string(filler).size(), std::string::npos, filler) == 0)
+                tail.erase(tail.size() - std::string(filler).size());
+        static const std::unordered_set<std::string> kNoPlace = {"", "behind", "where it is", "here", "right here", "down", "down here"};
+        if (!kNoPlace.count(tail)) return {};
+        return "put " + is + " down";
+    }
+    return {};
+}
+// the decoder's going back to a place of its own, "go back to the rock" (decoder v69s3 for «вернись к камню»; v68s2 wrote "come
+// back to the rock"): the place, after "to", in *place. GO_BACK is the bot's history of places and takes no place, so the line is
+// read as "come back to the rock" (COME_BACK at it), as it always was
+bool GoBackToPlace(const std::string& piece, std::string* place) {
+    if (BareBackPiece(piece)) return false;
+    std::string low;
+    for (char c : piece) low += static_cast<char>(c >= 'A' && c <= 'Z' ? c - 'A' + 'a' : c);
+    while (!low.empty() && std::string(".,!? ").find(low.back()) != std::string::npos) low.pop_back();
+    for (const char* v : {"go back to ", "get back to ", "head back to ", "go back over to ", "go back up to ", "go back down to "}) {
+        const std::string vs(v);
+        if (low.rfind(vs, 0) == 0 && low.size() > vs.size()) {
+            *place = low.substr(vs.size());
+            return *place != "me" && place->rfind("me ", 0) != 0;   // "to me ..." is no place of its own
+        }
+    }
+    return false;
+}
 
 // "what do you see?" as a Russian or Spanish player says it (lower case, Cyrillic and accents included)
 bool SeenInOwnWords(const std::string& line) {
@@ -2135,7 +2177,16 @@ struct Chat {
                                 if (what != "it" && piece.find(q) != std::string::npos) what = "the " + std::string(q) + what.substr(3);
                             piece = "open " + what;
                         }
-                        if (!back_said.empty() && BareBackPiece(piece)) {
+                        if (std::string put = LeaveItemPiece(piece); !put.empty()) {
+                            h->note = "a leaving of the thing with no place: \"" + piece + "\" read as \"" + put + "\"";
+                            piece = put;
+                        }
+                        if (std::string place; !back_said.empty() && GoBackToPlace(piece, &place)) {
+                            const std::string was = piece;
+                            piece = "come back to " + place;
+                            ++next_back;
+                            h->note = "a going back to a place of its own: \"" + was + "\" read as \"" + piece + "\"";
+                        } else if (!back_said.empty() && BareBackPiece(piece)) {
                             const std::string& kind = back_said[std::min(next_back++, back_said.size() - 1)];
                             const std::string written = coop::SpeechTextForClassifier(piece);
                             const bool go = written.rfind("go back", 0) == 0;
@@ -3925,8 +3976,32 @@ struct Chat {
                 break;
         }
 
+        // "forget sit down on the chair", «забудь сядь на стул»: a line the memory keeps, of any length, after a word of forgetting
+        // (ReadTeach's Forget takes a name or a short line only: "forget the pistol just start shooting" is a change of plan). A
+        // line said with "forget" is never the kept line itself (2026-11-05, the owner's log: NearLine took "Forget sit down on the
+        // chair." for the kept line, one word more, and the bot did what it had been taught)
+        const std::string forget_what = coop::ForgetWhat(heard);
+        if (!forget_what.empty()) {
+            std::vector<std::string> gone;
+            for (const coop::MemoryLine& l : g_memory->Lines())
+                if (l.lang == g_language && (IsPattern(l) ? coop::MatchPattern(l.heard, forget_what, nullptr, nullptr)
+                                                          : l.heard == forget_what || coop::NearLine(l.heard, forget_what) ||
+                                                                coop::SameLine(l.heard, forget_what)))
+                    gone.push_back(l.heard);
+            bool forgot_line = false;
+            for (const std::string& k : gone) {
+                std::string e;
+                if (g_memory->ForgetLine(g_language, k, &e)) forgot_line = true;
+                else if (!e.empty()) MemoryError(memo, e);
+            }
+            if (forgot_line) {
+                memo->info["forgot_line"] = forget_what;
+                memo->info["forgot_also"] = gone;
+                return answer(kForgotten, "forgot");
+            }
+        }
         // a line the memory keeps: the order lines kept for it, with the things the player named in it (LinesWithNames)
-        if (const coop::MemoryLine* kept = g_memory->LineFor(g_language, norm)) {
+        if (const coop::MemoryLine* kept = forget_what.empty() ? g_memory->LineFor(g_language, norm) : nullptr) {
             const coop::MemoryLine line = *kept;
             std::vector<std::string> named, rooms;
             const std::vector<std::string> lines = LinesWithNames(line.lines, heard, &named, &rooms);
@@ -3944,7 +4019,7 @@ struct Chat {
         }
         // a pattern the player taught (2026-10-31: «сесть на {x}» means «запрыгнуть на {x} и присесть»): its meaning with this
         // line's place, read as the player's own line («сядь на диван» -> «запрыгнуть на диван и присесть», «сядь на него»)
-        {
+        if (forget_what.empty()) {
             std::string slot;
             if (const coop::MemoryLine* found = PatternFor(heard, &slot)) {
                 const coop::MemoryLine pat = *found;
@@ -4486,13 +4561,26 @@ int RunTtsDemo(const coop::VoiceOptions& options, const std::string& out_dir, co
     for (const std::string& s : speakers) {
         std::vector<float> x;
         const auto t1 = Clock::now();
-        if (!voice.Speak(text, &x, &err, s)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
+        // sentence by sentence, as "say" with "stream" sends them: when the first was ready, and whether they add up to the line
+        std::vector<float> joined;
+        std::vector<double> sentence_ms;
+        const auto on_sentence = [&](const float* p, size_t n, bool) {
+            sentence_ms.push_back(Ms(Clock::now() - t1));
+            joined.insert(joined.end(), p, p + n);
+            return true;
+        };
+        if (!voice.Speak(text, &x, &err, s, 0.0f, on_sentence)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
         const double ms = Ms(Clock::now() - t1), seconds = static_cast<double>(x.size()) / voice.SampleRate();
         total_ms += ms;
         total_s += seconds;
         const std::string path = out_dir + "/" + s + ".wav";
         if (!WriteWav(path, x, voice.SampleRate(), &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 1;
-        std::printf("%-6s %.2f s of audio in %.0f ms\n", s.c_str(), seconds, ms);
+        std::string sentences;
+        if (sentence_ms.size() > 1) {
+            sentences = ", " + std::to_string(sentence_ms.size()) + " sentences, the first in " + std::to_string(static_cast<int>(sentence_ms[0] + 0.5)) + " ms";
+            sentences += joined == x ? " (they add up to the line)" : " (THEY DIFFER from the line: " + std::to_string(joined.size()) + " vs " + std::to_string(x.size()) + " samples)";
+        }
+        std::printf("%-6s %.2f s of audio in %.0f ms%s\n", s.c_str(), seconds, ms, sentences.c_str());
     }
     std::printf("%zu speakers: %.2f s of audio a line on average, made in %.0f ms (%.3f of real time)\n", speakers.size(),
                 total_s / speakers.size(), total_ms / speakers.size(), total_s > 0 ? total_ms / 1000.0 / total_s : 0.0);
@@ -4919,6 +5007,8 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads, const std::s
 //   {"cmd":"ptt_down"}                                           the talk key went down: the clip starts (with
 //                                                                its 0.2 s pre-roll), the bot's voice stops
 //   {"cmd":"ptt_up","id":8,"world":{...}}                        the key came up: recognize, classify, plan
+//                                                                ("tail_s": 0.2, how long the game kept the clip going after
+//                                                                the key came up: the clip's own 0.15 s tail waits only the rest)
 //   {"cmd":"ptt_cancel"}                                         drop the clip
 //   {"cmd":"open_mic","on":true,"silence_s":0.6,"source":"mic"}  the open microphone (--vad, 2026-11-01): the voice detector
 //                                                                cuts phrases out of what the microphone hears ("source":
@@ -4940,7 +5030,10 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads, const std::s
 //   {"cmd":"say","id":12,"text":"Contact left!","speaker":"p311","speed":1.0}   with --tts-piper: the line as audio,
 //                                                                answered by "speech" (speaker and speed optional:
 //                                                                the ones the service was started with); "hush" and
-//                                                                "ptt_down" drop the lines not made yet
+//                                                                "ptt_down" drop the lines not made yet, and stop the
+//                                                                one being made after its sentence ("hushed")
+//                                                                "stream":true: a line of several sentences comes as one
+//                                                                "speech_part" per sentence but the last, as each is made
 //        "terms":{"thing":{"a spike trap":{"ru":{"text":"ловушка с шипами","acc":"ловушку с шипами"},"es":{"text":
 //        "una trampa de pinchos"}}}}: the words of the level's labelled things the line names, in the languages the
 //        label has; the reply table takes the player's (localize.h Terms)
@@ -4988,7 +5081,12 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads, const std::s
 //   {"event":"nothing","id":8,...}    the clip had no words;  {"event":"too_short","id":8}
 //   {"event":"speech","id":12,"text":"Contact left!","rate":22050,"audio_s":0.9,"ms":61,"pcm16":"<base64>"}
 //        the line as 16-bit little-endian mono samples (--tts-piper); the game plays it from the bot.
-//        {"event":"hushed","id":12}: the line was dropped before it was made ("hush", "ptt_down", a queue of three)
+//        Streamed ("say" with "stream":true) and of several sentences: first {"event":"speech_part","id":12,"part":0,
+//        "text":...,"rate":22050,"audio_s":1.1,"ms":150,"pcm16":...} for each sentence but the last (audio_s: that sentence's,
+//        ms: since the line was begun), then "speech" with the last sentence's samples alone and "part" (its number),
+//        "parts", "first_ms"; its "audio_s" and "ms" are the whole line's. The game plays the parts one after another
+//        {"event":"hushed","id":12}: the line was dropped before it was made, or stopped while it was ("hush", "ptt_down",
+//        a queue of three)
 //        "ready" says which voice: "tts_kind" "piper" (the lines come back as audio) or "system" (the process speaks)
 //   {"event":"error","id":7,"cmd":"text","message":"..."}        the request was refused; the service goes on
 // The service ends when stdin closes (the game is gone) or on "quit".
@@ -5352,6 +5450,9 @@ int RunTeachTests(const std::string& path) {
         } else if (c.contains("same_line")) {
             const bool got = coop::SameLine(coop::MemoryNorm(c["same_line"][0].get<std::string>()), coop::MemoryNorm(c["same_line"][1].get<std::string>()));
             if (got != c.at("expect").get<bool>()) wrong(c, got ? "true" : "false");
+        } else if (c.contains("forget_what")) {
+            const std::string got = coop::ForgetWhat(c["forget_what"].get<std::string>());
+            if (got != c.at("rest").get<std::string>()) wrong(c, "\"" + got + "\"");
         } else if (c.contains("pattern")) {
             const coop::TaughtPattern t = coop::MakePattern(coop::MemoryNorm(c["pattern"][0].get<std::string>()), c["pattern"][1].get<std::string>());
             bool ok = t.slot == c.value("slot", true);
@@ -5641,11 +5742,14 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
         float speed = 0;
         bool local = false;   // in the player's language, with voice_local
         std::string voiced;   // the text as the voice says it (Pronounced); empty: text
+        bool stream = false;  // "say"'s "stream": each sentence but the last goes out as soon as it is made ("speech_part")
     };
     std::mutex out_mutex, jobs_mutex;
     std::condition_variable jobs_cv;
     std::deque<SpeechJob> jobs;
     bool jobs_done = false;
+    bool making = false;                    // the speaker thread is making a line (under jobs_mutex)
+    std::atomic<bool> stop_making{false};   // a hush came while it was: the rest of that line is not made
     std::thread speaker;
 #ifdef COOP_WITH_STT
     coop::SpeechRecognizer stt;
@@ -5707,33 +5811,76 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 SpeechJob job;
                 {
                     std::unique_lock<std::mutex> lock(jobs_mutex);
+                    making = false;
                     jobs_cv.wait(lock, [&] { return jobs_done || !jobs.empty(); });
                     if (jobs.empty()) return;   // done, and nothing left to say
                     job = std::move(jobs.front());
                     jobs.pop_front();
+                    making = true;
+                    stop_making = false;
                 }
                 const auto t0 = Clock::now();
                 std::vector<float> x;
                 std::string speak_err;
                 const coop::PiperVoice& v = job.local ? voice_local : voice;
-                if (!v.Speak(job.voiced.empty() ? job.text : job.voiced, &x, &speak_err, job.speaker, job.speed)) {
+                const int rate = v.SampleRate();
+                auto line_event = [&](const char* name) {   // the fields every event of the line has
+                    return json{{"event", name}, {"id", job.id}, {"text", job.text}, {"voiced", job.voiced.empty() ? json(nullptr) : json(job.voiced)},
+                                {"lang", job.local && g_replies ? g_replies->Language() : std::string("en")}, {"rate", rate}};
+                };
+                // streamed (2026-11-04): each sentence but the last goes out as it is made, so the game plays the first while the
+                // next is made; the last goes with "speech", which ends the line. A line of one sentence is one "speech", as before
+                int parts = 0;
+                double first_ms = -1;
+                std::vector<float> last;
+                const auto on_sentence = [&](const float* s, size_t n, bool is_last) {
+                    if (stop_making) return false;   // hushed: the rest is not made
+                    if (!job.stream) return true;
+                    if (is_last) {
+                        last.assign(s, s + n);
+                        return true;
+                    }
+                    const double ms = Ms(Clock::now() - t0);
+                    if (parts == 0) first_ms = ms;
+                    json part = line_event("speech_part");
+                    part["part"] = parts++;
+                    part["audio_s"] = rate > 0 ? static_cast<double>(n) / rate : 0.0;
+                    part["ms"] = ms;
+                    part["pcm16"] = Base64(Pcm16(std::vector<float>(s, s + n)));
+                    send(part);
+                    return true;
+                };
+                bool stopped = false;
+                if (!v.Speak(job.voiced.empty() ? job.text : job.voiced, &x, &speak_err, job.speaker, job.speed, on_sentence, &stopped)) {
                     send({{"event", "error"}, {"id", job.id}, {"cmd", "say"}, {"message", speak_err}});
                     continue;
                 }
-                const int rate = v.SampleRate();
-                send({{"event", "speech"}, {"id", job.id}, {"text", job.text}, {"voiced", job.voiced.empty() ? json(nullptr) : json(job.voiced)},
-                      {"lang", job.local && g_replies ? g_replies->Language() : std::string("en")},
-                      {"rate", rate},
-                      {"audio_s", rate > 0 ? static_cast<double>(x.size()) / rate : 0.0}, {"ms", Ms(Clock::now() - t0)}, {"pcm16", Base64(Pcm16(x))}});
+                if (stopped) {
+                    send({{"event", "hushed"}, {"id", job.id}});
+                    continue;
+                }
+                json done = line_event("speech");
+                done["audio_s"] = rate > 0 ? static_cast<double>(x.size()) / rate : 0.0;   // the whole line
+                done["ms"] = Ms(Clock::now() - t0);
+                if (parts > 0) {   // the sentences before it went as "speech_part": this one carries the last
+                    done["part"] = parts;
+                    done["parts"] = parts + 1;
+                    done["first_ms"] = first_ms;
+                    done["pcm16"] = Base64(Pcm16(last));
+                } else {
+                    done["pcm16"] = Base64(Pcm16(x));
+                }
+                send(done);
             }
         });
     }
 #endif
-    // the lines not made yet are dropped, and whoever asked for them is told
+    // the lines not made yet are dropped, and whoever asked for them is told; the one being made stops after its sentence
     auto drop_lines = [&]() {
         std::lock_guard<std::mutex> lock(jobs_mutex);
         for (const SpeechJob& j : jobs) send({{"event", "hushed"}, {"id", j.id}});
         jobs.clear();
+        if (making) stop_making = true;
     };
     struct JoinSpeaker {   // every way out of the loop below ends the speaker thread
         std::function<void()> f;
@@ -6125,7 +6272,10 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 }
                 listening = false;
                 const double held = Ms(Clock::now() - down);
-                const std::vector<float> clip = mic.End();
+                // the game kept the microphone on after the key came up ("tail_s", its TalkTailSeconds): no second wait for the
+                // last syllable (2026-11-04: it was 150 ms more on every line)
+                const double waited = q.contains("tail_s") && q["tail_s"].is_number() ? q["tail_s"].get<double>() : 0.0;
+                const std::vector<float> clip = mic.End(std::clamp(waited, 0.0, 10.0));
                 if (cmd == "ptt_cancel") {
                     send({{"event", "cancelled"}, {"id", id}});
                 } else if (held < 200) {
@@ -6295,7 +6445,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                         const double tuned = Chat::SettingNow("voice_speed");   // «говори медленнее»
                         if (std::abs(tuned - 1.0) > 1e-3) speed = static_cast<float>((speed > 0 ? speed : 1.0f) * tuned);
                         jobs.push_back({id, text, in_local ? std::string() : q.value("speaker", std::string()), speed, in_local,
-                                        voiced == text ? std::string() : voiced});
+                                        voiced == text ? std::string() : voiced, q.value("stream", false)});
                         jobs_cv.notify_one();
                     }
                 } else if (cmd == "say" && !id.is_null()) {

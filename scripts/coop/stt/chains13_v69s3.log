@@ -1,0 +1,42 @@
+2026-11-04 09:25:26  train start
+W1104 09:25:33.976000 44064 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+
+
+
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\_dynamo\eval_frame.py:1548: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. Starting in PyTorch 2.9, calling checkpoint without use_reentrant will raise an exception. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+snapshot 09:56:24: epoch 1, row 43184 of 83376, step 2699 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains13-v69\pieces13v69s3_final_seed0_snapshot\snapshot.pt
+snapshot 10:26:25: epoch 2, row 2976 of 83376, step 5397 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains13-v69\pieces13v69s3_final_seed0_snapshot\snapshot.pt
+snapshot 10:56:26: epoch 2, row 46048 of 83376, step 8089 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains13-v69\pieces13v69s3_final_seed0_snapshot\snapshot.pt
+snapshot 11:26:27: epoch 3, row 5904 of 83376, step 10791 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains13-v69\pieces13v69s3_final_seed0_snapshot\snapshot.pt
+snapshot 11:56:28: epoch 3, row 49360 of 83376, step 13507 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains13-v69\pieces13v69s3_final_seed0_snapshot\snapshot.pt
+snapshot 12:26:30: epoch 3, row 76016 of 83376, step 15173 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains13-v69\pieces13v69s3_final_seed0_snapshot\snapshot.pt
+snapshot 12:34:26: epoch 3, row 83376 of 83376, step 15633 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains13-v69\pieces13v69s3_final_seed0_snapshot\snapshot.pt
+chains12 pieces13v69s3_final seed 0: 83376 rows, trained in 11331s
+answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\measure_v67_answers_v69s3.json
+answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\measure_v66_answers_v69s3.json
+scene answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\measure_v65_answers_v69s3.json
+v64 test answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains12_68_test64_pieces13v69s3_final_s0.json
+chains2 pieces13v69s3_final seed 0: blind 150, blind_heard 100, blind2 150, blind2_heard 100, blind2_heard3 300, ctx 150, ctx_heard3 299, ctx_heardline3 299 answered in 118s
+ml answers: dev_ru 41, blind2_ru 150, ctx_ru 150, dev_es 41, blind2_es 150, ctx_es 150 -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains12_68_ml_pieces13v69s3_final_s0.json
+pairs answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains12_68_pairs_pieces13v69s3_final_s0.json
+12:39:01  train end, gguf
+llama_model_quantize_impl: quant size  =  1050.43 MiB (5.12 BPW)
+
+llama_quantize: quantize time = 16102.44 ms
+llama_quantize:    total time = 16102.44 ms
+pieces13v69s3_final seed 0: 1056 MB, 47s -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\models\gguf\pieces13v69s3_final_s0-Q4_K_M.gguf
+12:39:59  export
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]
+Loading weights:  23%|██▎       | 24/106 [00:00<00:00, 232.24it/s]
+Loading weights: 100%|██████████| 106/106 [00:00<00:00, 959.02it/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+wrote G:\Proj\ollaya\DeBertaBot\models\coop-chain-v69s3\cpp: decoder.gguf (1056 MB), router.onnx (it sends 76 of 220 test lines on), 220 test lines, 41 answered with several orders
+12:42:59  done (exit 0)
