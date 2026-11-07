@@ -42,6 +42,9 @@ BRAINS["v69s4"] = (BRAINS["v67"][0], os.path.join(REPO, "models", "coop-chain-v6
 BRAINS["v69s5"] = (BRAINS["v67"][0], os.path.join(REPO, "models", "coop-chain-v69s5", "cpp"))
 # test67 after the owner's answer of 2026-11-04 ~14:00 (t67_112, t67_119, t67_175: a thing put is put first), the same chains again
 BRAINS["v68s2b"], BRAINS["v69s3b"] = BRAINS["v68s2"], BRAINS["v69s3"]
+# 2026-11-06, the owner: the decoder on every English line too (coop_cli --decoder-every-line); v69s5now = v69s5 on today's coop_cli
+BRAINS["v69s5now"] = BRAINS["v69s5all"] = BRAINS["v69s5"]
+EXTRA = {"v69s5all": ["--decoder-every-line"]}
 # one entity of every object, some with their qualifiers (several tables and crates, as the test range has)
 ENTITIES = [("table_w", "table", "white", 0, 6), ("table_r", "table", "red", 30, 9), ("table_b", "table", "blue", -40, 8),
             ("table_y", "table", "yellow", 70, 12), ("crate_1", "crate", None, 10, 3), ("crate_big", "crate", "big", -15, 5),
@@ -80,6 +83,7 @@ class Brain:
         args = [CLI, "--serve", "--model-dir", bot, "--threads", "2", "--no-spin", "--chain", chain, "--decoder-threads", "6", "--decoder-cpu"]
         if lang != "en":
             args += ["--language", lang]
+        args += EXTRA.get(tag, [])
         self.p = subprocess.Popen(args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True, encoding="utf-8")
         self.n = 0
         while self.read().get("event") != "ready":

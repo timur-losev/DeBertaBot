@@ -191,6 +191,14 @@ build\Release\coop_cli.exe --world ..\..\scripts\coop\world_example.json   # cha
 build\Release\coop_cli.exe --serve --no-spin --threads 1 --tts   # the bot as a service: JSON lines on stdin / stdout
 ```
 
+- `--decoder-every-line` (2026-11-06, the owner's wish; the game passes it by default): English lines go to the decoder
+  too, every one, as ru and es lines do, and the router is not asked. A line the decoder writes back as it is still goes to
+  the classifier as the player's own. Measured with chain v69s5 (decoder on the CPU): the owner's 649 English game lines
+  read the same; test66 English 50 -> 52 of 54; test67 English 46 -> 54 of 80 (10 better, 2 worse: "Use the couch to get
+  through the window." became "let me through using the couch", "Push the table against the door." became "push the door
+  using the table"); the English memory scenarios with the chain: en_no_teaching 1 -> 10 wrong steps, as "go to the table"
+  right after talk of the red table goes there instead of asking "Which table?" (the other 17 equal).
+  `python scripts/coop/memory_tests.py --all-chain --decoder-every-line` runs the scenarios that way.
 - `--language en|ru|es` sets the player's language; the default is en.
   - For ru and es, every line goes to the decoder of `--chain`, and the router is not asked. The chain must be v62 or
     later, trained on the three languages (`scripts/coop/stt/chains6_v62.py`). The decoder writes the line as English

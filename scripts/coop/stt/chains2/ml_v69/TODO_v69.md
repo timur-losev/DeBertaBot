@@ -296,3 +296,20 @@ Run 6 candidates: `take_climb` (ready), the long «когда я скажу да
   I deliver it to Y", "... and I carried it to Y" -> "pick up X | carry it onto Y" (a first-person verb after an order with "and"
   is a misheard imperative), with the same lines that are a statement kept as statements ("I delivered it to the yellow bed." alone).
 - The game half (the step crate taking the order's box) is fixed in the game (RestoreOrderCarry, PickUp's reach up and down).
+
+## For run 6, from the owner's English game of 2026-11-06 20:27-20:31 (every English line now goes to the decoder)
+
+- "grabbed this box and delivered it uh on top of the white table." (his "grab this box and deliver it on top of ..."): the
+  past tense of the recognizer. The decoder writes it back as it is, and the place matcher knows no "delivered", so the place
+  is the box (C_1) and the bot carried it to the player ("Here you go."). With "deliver", "take", "grab" (and "uh" left in)
+  the white table is found. Rows: "grabbed/took X and delivered/brought/put it on Y" -> "pick up X | put it on Y". The other
+  way (not trained): the place vocabulary's order verbs take the past forms (delivered, grabbed, brought, took, carried),
+  a vocabulary v16 and the bot's files re-exported, parity both twins.
+- "Take this box and put it on the white table using that box." -> DELIVER @ white table with no means (two boxes in one
+  line: the step is lost). "Put it on the white table using this box." alone has the means. Rows: "take X and put it on Y
+  using that box" -> "pick up X | put it on Y using that crate".
+- --decoder-every-line on test67 English: "Use the couch to get through the window." -> "let me through using the couch"
+  (GIVE_WAY; want VAULT_WINDOW by the sofa), "Push the table against the door." -> "push the door using the table" (ENTRY;
+  want PUSH door by table). Rows for both.
+- The owner on "to" (2026-11-06): ««to» как «к столу» - это ок, не надо переучивать»: "deliver it to the white table" stays at
+  its foot; "on", "onto", "on top of" put it up there.

@@ -1,0 +1,8 @@
+brain v69s5all on test66 (192 items, the game's path): intent 185/192 = 96.4%, intent and place 185/192 = 96.4%   (en 52/54, es 54/55, ru 79/83)
+  NO  en nah use your gun                             -> nah use your gun                             read SWITCH_WEAPON  want OPEN_FIRE
+  NO  en don't throw that crate man                   -> don't throw that crate man                   read WAIT           want COLLECT
+  NO  ru отвали, не мешай пройти                      -> knock him down, don't let him get in         read MELEE          want GIVE_WAY
+  NO  ru шмальни в стекло под ногами                  -> smash the glass underfoot                    read MELEE          want OPEN_FIRE
+  NO  ru заложи заряд и взорви дверь                  -> plant the bomb                               read PLANT          want BREACH
+  NO  ru не спускай её                                -> keep holding it                              read COLLECT        want WAIT
+  NO  es parte esa ventana                            -> partition that window                        read HOLD_ANGLE     want MELEE

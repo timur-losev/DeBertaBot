@@ -49,6 +49,7 @@
 //   --language en|ru|es           the player's language (default en). ru and es: every line goes to the decoder of --chain
 //                                 (chain v62 or later: trained on three languages), which writes English orders; the
 //                                 router is not asked. Speech: --stt-model with Parakeet TDT 0.6B v3 (25 languages)
+//   --decoder-every-line          English lines go to the decoder too, every one (the router is not asked), as ru and es
 //   --decider DIR                 a second reader of every line beside the ensemble (decider.h: decider-2b with the
 //                                 bot's LoRA, GGUF; DIR is scripts/coop/decider/export_game.py's output). Off without it.
 //                                 --decider-mode avg (default: the two readers' probabilities averaged) | only (the
@@ -1600,6 +1601,13 @@ void Loading(const char* part) {
 // classifier, the place matcher and the planner then read English as before. The router is English and is not asked.
 std::string g_language = "en";
 
+// --decoder-every-line: English lines go to the decoder too, every one, as Russian and Spanish do; the router is not asked
+// (2026-11-06, the owner: «пусть LLM работает даже в английской версии на каждой фразе», after his English game where
+// "grabbed this box and delivered it uh on top of the white table" stayed with the classifier (router 0.03) and the place
+// matcher took the box for the place). A line the decoder writes back as it is still goes to the classifier as the player's
+// own; an answer to the bot's question is read as the player's line first, as before
+bool g_decode_every_line = false;
+
 // --replies FILE (localize.h): the bot's lines in the player's language. Each reply's "say" is written in it ("say_en" keeps
 // the English); a line the game hands to "say" in English is written in it too, and said with --voice-local DIR, the
 // player's language's voice. A sentence the table has no template for keeps the whole line English (and its English voice),
@@ -2103,7 +2111,7 @@ struct Chat {
         const bool foreign = g_language != "en";
         if (c) {
             const auto t0 = Clock::now();
-            if (foreign || taught_alone) h->route = 1.0;
+            if (foreign || taught_alone || g_decode_every_line) h->route = 1.0;
             else if (!c->Route(m.tok.Encode(text), &h->route, err)) return false;
             h->route_ms = Ms(Clock::now() - t0);
             // an English line of one order the scene may change (decoder v65: chains9_v65.py): "get down" standing on a
@@ -6571,6 +6579,7 @@ int main(int argc, char** argv) {
         else if (a == "--decoder-threads" && i + 1 < argc) decoder_threads = std::atoi(argv[++i]);
         else if (a == "--chain-tests") mode = "chain-tests";
         else if (a == "--language" && i + 1 < argc) g_language = argv[++i];
+        else if (a == "--decoder-every-line") g_decode_every_line = true;
         else if (a == "--replies-bro" && i + 1 < argc) bro_file = argv[++i];
         else if (a == "--bro" && i + 1 < argc) bro_on = std::string(argv[++i]) == "on";
         else if (a == "--bro-relapse" && i + 1 < argc) bro_relapse = std::atof(argv[++i]);
@@ -6729,6 +6738,9 @@ int main(int argc, char** argv) {
     if (g_language != "en")
         std::printf("language: %s (every line to the decoder, written in English%s)\n", g_language.c_str(),
                     g_chain ? "" : "; NO decoder is loaded (--chain DIR): the classifier gets the lines as they are and reads little");
+    else if (g_decode_every_line)
+        std::printf("language: en, every line to the decoder (--decoder-every-line)%s\n",
+                    g_chain ? "" : "; NO decoder is loaded (--chain DIR): the flag does nothing");
     coop::Localizer replies;
     if (!replies_file.empty()) {
         if (!replies.Load(replies_file, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 2;

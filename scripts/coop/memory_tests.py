@@ -5,7 +5,7 @@ an earlier scenario's, none, or a file of garbage; the player's language, the ch
 tables, the habit), says its lines one at a time with a world and checks the replies. The world is the game's: its ids
 change on every line ("T_White_12"), its keys do not; a step names a thing by its key.
 
-    python memory_tests.py [--only NAME ...] [--no-chain] [--exe coop_cli.exe] [--bot DIR] [--chain DIR] [--keep]
+    python memory_tests.py [--only NAME ...] [--no-chain] [--exe coop_cli.exe] [--bot DIR] [--chain DIR] [--keep] [--decoder-every-line] [--all-chain]
 
 Exit 1 on any step that reads otherwise. Build-time tooling: nothing in the game runs it.
 """
@@ -98,8 +98,10 @@ class Brain:
         if memory:
             cmd += ["--memory", memory]
         lang = sc.get("lang", "en")
-        if sc.get("chain"):
+        if sc.get("chain") or args.all_chain:
             cmd += ["--chain", args.chain, "--decoder-cpu", "--decoder-threads", "4"]
+            if args.decoder_every_line:
+                cmd += ["--decoder-every-line"]
         if lang != "en":
             cmd += ["--language", lang]
         if sc.get("replies"):
@@ -200,6 +202,8 @@ def main():
     ap.add_argument("--only", action="append", help="this scenario (and the ones it reuses the file of)")
     ap.add_argument("--no-chain", action="store_true", help="leave out the scenarios that need the decoder")
     ap.add_argument("--keep", action="store_true", help="keep the memory files")
+    ap.add_argument("--decoder-every-line", action="store_true", help="English lines to the decoder too, every one (coop_cli's flag)")
+    ap.add_argument("--all-chain", action="store_true", help="the chain in every scenario, as the game runs the brain")
     args = ap.parse_args()
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", line_buffering=True)
     scenarios = json.load(io.open(args.scenarios, encoding="utf-8"))["scenarios"]
