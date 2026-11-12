@@ -1,0 +1,30 @@
+{
+ "model": "talk.gguf",
+ "model_from": "Qwen/Qwen3-1.7B (Apache-2.0) + talk1e2 seed 0 (2 epochs, QLoRA r16 on every projection, scripts/coop/stt/talk/talk_train.py), merged, llama.cpp b11429 Q4_K_M",
+ "context": 2048,
+ "max_new": 72,
+ "temperature": 0.7,
+ "top_p": 0.8,
+ "top_k": 20,
+ "seed": null,
+ "memory_turns": 4,
+ "memory_seconds": 120,
+ "roles": {
+  "bot": {
+   "file": "roles/bot.txt",
+   "names": {
+    "en": "Buddy",
+    "ru": "Бади",
+    "es": "Buddy"
+   }
+  },
+  "seller": {
+   "file": "roles/seller.txt",
+   "names": {
+    "en": "Max",
+    "ru": "Макс",
+    "es": "Max"
+   }
+  }
+ }
+}

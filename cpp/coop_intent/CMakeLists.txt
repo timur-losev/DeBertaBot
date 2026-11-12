@@ -51,6 +51,7 @@ add_library(coop_intent_core STATIC
   src/speech_text.cpp
   src/time_phrase.cpp
   src/rewriter_text.cpp
+  src/talk_text.cpp
   src/localize.cpp
   src/bro.cpp
   src/teach.cpp)
@@ -180,8 +181,8 @@ endif()
 set(LLAMA_BUILD "b11429" CACHE STRING "llama.cpp build tag")
 set(LLAMA_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party/llama.cpp-${LLAMA_BUILD}-win-x64" CACHE PATH "llama.cpp (include/, lib/, bin/)")
 if(WIN32 AND EXISTS "${LLAMA_DIR}/include/llama.h" AND EXISTS "${LLAMA_DIR}/lib/llama.lib")
-  # also the optional second reader of a line (decider.h: coop_cli --decider DIR)
-  add_library(coop_intent_llm STATIC src/llama_rewriter.cpp src/llama_decider.cpp)
+  # also the optional second reader of a line (decider.h: coop_cli --decider DIR) and the talk in a role (talker.h: --talk DIR)
+  add_library(coop_intent_llm STATIC src/llama_rewriter.cpp src/llama_decider.cpp src/llama_talker.cpp)
   target_include_directories(coop_intent_llm PRIVATE "${LLAMA_DIR}/include")
   target_compile_definitions(coop_intent_llm PRIVATE LLAMA_SHARED GGML_SHARED COOP_LLAMA_BUILD="${LLAMA_BUILD}")
   target_link_libraries(coop_intent_llm PUBLIC coop_intent_core "${LLAMA_DIR}/lib/llama.lib")

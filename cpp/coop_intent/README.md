@@ -659,6 +659,80 @@ Traps and limits:
 - The decoder's own misses are in the report: on lines heard through the recognizer it loses most when the
   recognizer changed the key word or the pronoun.
 
+## The talk in a role (`--talk`, optional, 2026-11-11)
+
+The owner: «бот будет отыгрывать свою роль, сначала просто репликами и ответами ... роутить «не команды» на LLM», and
+then a seller of a burger place, a person of their own behind the counter, «модель должна переключать роли на ходу».
+The decoder of `--chain` cannot do it: it was trained to write orders, and with a role's system turn it still writes the
+line back as English ("ты есть будешь?" -> "are you there"). The model its adapter was trained on can: Qwen3-1.7B as its
+author published it (Apache-2.0), converted by the same llama.cpp build (`convert_hf_to_gguf.py`, `llama-quantize`
+Q4_K_M, 1.2 GB), no adapter (`include/coop_intent/talker.h`, `src/llama_talker.cpp`, `src/talk_text.cpp`).
+
+- **Where.** `--talk DIR`, or the brain's own `talk/` beside its `bot/` (the game's brain folder: a brain deployed with
+  `talk/` talks without the game passing anything); `--no-talk` turns it off. `DIR/talk_config.json` names the model,
+  its sampling (temperature 0.7, top-p 0.8, top-k 20: Qwen3's advice with thinking off), the talk each role keeps
+  (`memory_turns` 4 exchanges, `memory_seconds` 120) and the roles: `{"bot": {"file": "roles/bot.txt", "names":
+  {"en": "Buddy", "ru": "Бади"}}, "seller": {...}}`. It runs where the decoder runs (`--decoder-cpu`, or `--talk-cpu`),
+  with the decoder's threads. `--talk-seed N` fixes the draw (tests): the same prompt then gets the same answer.
+- **A role** is a text file in English (who the speaker is, what they can and cannot do, how they speak). The brain adds
+  what the speaker is called (the bot: the name the player gave it, else the game's; others: their `names`), for the bot
+  what it holds and stands on and the thing the player looks at (not every thing around: shown a list, the model worked
+  them into every answer), the habit of «брат» when it is on, and "Answer in <the player's language> only, in one or two
+  short sentences". The game may give a role its own text: `{"cmd":"role","name":"seller","text":"...","names":{...}}`
+  (no text: the file's again; a new text starts the role's talk over).
+- **Which lines.** A line to the bot (no `"to"`) of one turn that gives no order: `SMALL_TALK` (also when the classifier
+  was not sure of it), `BODY_STATE` with no part of the body named («ты живой?», «хочешь пива?», "do you eat?"; the
+  owner's choice), `NONE` ending with "?", and a question the classifier is not sure of within 60 s of the bot's last
+  answer in its role, unless it reads as an order the classifier could not quite pin down: its top label at 0.6 or more and
+  under 0.15 of talk in it (`SMALL_TALK` + `NONE` + `BODY_STATE`, the reply's `talk_p`) asks again as before. Measured
+  2026-11-12: without that, of 23 orders said as questions only "maybe go to the bank?" right after small talk (MOVE_TO 0.65)
+  went to the talk ("The bank's about fourteen meters off", and no walk); with it, 0 of 23 read differently from the brain
+  without the talk, and 9 of 11 talk follow-ups after small talk still reach the model («хочешь пива?» is MOVE_TO 0.48
+  there); "why do you say that?" (HOLD_ANGLE 0.66) asks again. Not while the bot waits for the answer to its own question. The questions the game answers from the
+  bot's facts stay the game's: what it sees, its health, heat, ammo, what it is doing, how it is. Orders never come from
+  the talk. The reply is `SMALL_TALK` with the model's words (`"talk"`: the role, the time, the tokens, what the brain
+  would have said, `"was"`); a model with nothing sayable keeps the brain's own words (`"talk_error"`).
+- **A line to someone else**: `"to": "<role>"` on `text`, `ptt_up`, `wav`: the role answers, the bot hears nothing of it
+  (no habit, no lesson, no name of the bot's): `{"event":"reply","to":"seller","intent":"TALK","action":"talk","say":...}`.
+- **Orders to someone else** (2026-11-12, the owner: «чтобы любому NPC можно было отдать именно приказ и поговорить»). A role
+  the game says a body of its own takes orders (`"orders": true` on its `role`) gets its lines read as the bot's are
+  (the classifier, the planner, the decoder; not the long-term memory, the habit or the bot's name), and an order the
+  classifier is sure of is theirs: the reply is the bot's reply with `"to": "<role>"` and `"person": true`, its words from
+  the plain reply table (no «брат»), and the game hands the order to their body. Every other line is talk in their role
+  (`PersonTalks`): what the bot would talk about (`TalkFor`), how they are (`state` how, hurt, body), a line with nothing to
+  carry out or that the planner would ask back about ("Which door?": the role answers in its own words), and an order the
+  classifier is not sure of (top under 0.6, or 0.15 of talk: «откройте мне счёт» read as OPEN at 0.5 is the teller's
+  business, not a door); the reply's `talk.was` keeps how each turn was read. What they see, what that is, what they do:
+  the game answers from their body (`state` as for the bot). A line to another than the line before it (the bot, a person)
+  drops the planner's open question and the decoder's short context: those were the other talk's. The role request's
+  `"gender": "woman" | "man"` adds, in Russian and Spanish, "When you speak <the language>, use the feminine (masculine)
+  forms for yourself" (two tellers share one role text; Anna said «Я бы ... хотел»), and nothing more about who they are.
+- **The words.** Think blocks, markup, a "Name:" before the words, quotes, pictographs out; a capital at each sentence's
+  start and the English "I"; an answer cut by the token limit loses its last unfinished sentence. One more draw when the
+  answer is empty, has Chinese, Japanese or Korean in it («я не помню自己的 возраст») or is not in the player's language.
+  The words are written in the player's language already: the game hands them back to `say` and the language's voice
+  says them.
+
+Measured 2026-11-11 (CPU, 6 threads, i9-10900K; scratchpad probes, not committed): 0.3 to 2.4 s an answer, about 1 s
+typical, 21.6 tokens/s; a role's first line pays its system turn (2 to 4 s; then it stays in the context). English
+answers keep the role ("I don't eat. I run on a battery and recharge."), the seller keeps the menu and the prices and
+remembers the order ("Ты заказал двойной бургер с картошкой."). Russian is the weak part of a 1.7B model as published:
+«ты есть будешь?» is read as "you are" 12 times of 12 (with the role in English or in Russian), while «будешь есть?» and
+«ты кушать хочешь?» get «Нет, я не ем.» 12 of 12; odd words, wrong sums. Qwen3-4B was not better in Russian and is
+twice as slow. The fix for Russian is a round of training on talk in the roles, not a bigger model.
+
+**Round talk-1 (2026-11-12, `scripts/coop/stt/talk/`).** 2030 rows written to `TALK.md` by eleven writers (the bot and the
+seller in Russian, English and Spanish, six invented roles so that any role text is followed, speech-recognizer noise), 300
+held-out rows by two others; `talk_train.py` builds the prompt as this code does (its twin of `TalkSystem` and `TalkPrompt`)
+and trains QLoRA (r16 on every projection, 2e-4) on the answers; `talk_eval.py` answers the held-out rows through
+llama-server and pairs them for a blind judge. Good answers of 300 (each judged on its own: understood, in the role, the
+language, the sums): the 1.7B as published 89 (99 at temperature 0.4); the 1.7B taught 3 epochs read «есть» right but was
+worse in Russian (the bot's good answers 14 of 100 against 31) and was not used; **Qwen3-4B taught 3 epochs: 143, at 0.4:
+162** — the Russian bot 39/100 (35 before; understood 84 against 70, in the role 93 against 79, but its Russian is right
+in 57 against 69: it says more and errs more), the Russian seller 25/60 (10; sums right 16 against 5), English 40/50 and
+24/30, Spanish 21/35 and 13/25. The game's brain has it since 2026-11-12 (`models/coop-talk-v3-4b/cpp`, 2.4 GB, about
+100 ms an answer on the GPU; `temperature` 0.4 in its config).
+
 ## The long-term memory (`--memory`, optional, 2026-10-29)
 
 What the player teaches the bot, kept in one file per player (`include/coop_intent/bot_memory.h`) and read before

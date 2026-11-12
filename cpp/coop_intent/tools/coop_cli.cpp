@@ -120,6 +120,7 @@
 #include "coop_intent/localize.h"
 #include "coop_intent/rewriter.h"
 #include "coop_intent/speech.h"
+#include "coop_intent/talker.h"
 #include "coop_intent/teach.h"
 #include "coop_intent/time_phrase.h"
 #include "coop_intent/tokenizer.h"
@@ -1138,6 +1139,10 @@ const std::unordered_map<std::string, std::vector<std::string>> kLines = {
     // the v66 bots: out of the player's way; what the thing looked at is, is the game's answer (the reply carries "state")
     {"GIVE_WAY", {"Out of your way.", "Making room.", "Stepping aside."}},
     {"WHAT_IS_IT", {""}},
+    // round v70: the game says what it does with the car and the body (OVCoopBotDriving.cpp, UOVBodyStateComponent): no word here
+    {"DRIVE", {""}},
+    {"BODY_MOVE", {""}},
+    {"BODY_COMBO", {""}},
 };
 // SMALL_TALK (bot v62): the answer by what the line asks, the first kind whose words it has; none: kTalk "other"
 const std::vector<std::pair<std::string, std::vector<std::string>>> kTalkWords = {
@@ -1552,6 +1557,135 @@ struct Chain {
 
 Chain* g_chain = nullptr;   // set by --chain DIR; every Chat uses it
 
+// ---- the talk in a role (talker.h): --talk DIR, or the brain's own talk/ beside its bot/ (the game's brain folder, so that
+// a brain deployed with it talks without the game passing anything). DIR/talk_config.json:
+//   {"model": "talk.gguf", "context": 2048, "max_new": 72, "temperature": 0.7, "top_p": 0.8, "top_k": 20, "seed": null,
+//    "memory_turns": 4, "memory_seconds": 120,
+//    "roles": {"bot": {"file": "roles/bot.txt", "names": {"en": "Buddy", "ru": "Бади", "es": "Buddy"}},
+//              "seller": {"file": "roles/seller.txt", "names": {...}}}}
+// A role's file is its character, in English; the brain adds what the speaker is called (the bot: the name the player gave it,
+// else the game's), what is around (the bot's), the habit of «брат», and the language to answer in. The game may give a role
+// a text of its own ("role"). Each role keeps its own talk: the last memory_turns exchanges of the last memory_seconds
+struct Talk {
+    std::string dir, found;   // found: "--talk" or "beside the bot"
+    coop::TalkerOptions options;
+    bool seed_set = false;    // --talk-seed: the config's seed is not taken
+    size_t memory_turns = 4;
+    double memory_seconds = 120;
+    struct Role {
+        std::string text;                          // its character, as said to the model
+        std::string file, file_text;               // the brain's file for it (talk_config.json) and its text; none: the game's alone
+        std::string source;                        // where the text in use came from: the file, or "game"
+        std::map<std::string, std::string> names;  // what the speaker is called, per language
+        bool orders = false;                       // a body of theirs in the game takes orders (the game's "role" says so)
+        std::string gender;                        // "woman", "man" (the game's "role"); empty: not said
+    };
+    std::map<std::string, Role> roles;
+    struct Exchange {
+        std::string user, assistant;
+        Clock::time_point at;
+    };
+    std::map<std::string, std::deque<Exchange>> talks;   // per role, oldest first
+    double load_ms = 0;
+#ifdef COOP_WITH_LLM
+    coop::Talker model;
+#endif
+
+    bool Ready() const {
+#ifdef COOP_WITH_LLM
+        return model.Ready();
+#else
+        return false;
+#endif
+    }
+    // the role's talk so far, as the model is shown it
+    std::vector<coop::TalkTurn> Before(const std::string& role) {
+        std::deque<Exchange>& d = talks[role];
+        const auto now = Clock::now();
+        while (!d.empty() && Ms(now - d.front().at) > memory_seconds * 1000.0) d.pop_front();
+        while (d.size() > memory_turns) d.pop_front();
+        std::vector<coop::TalkTurn> out;
+        for (const Exchange& e : d) out.push_back({e.user, e.assistant});
+        return out;
+    }
+    void Keep(const std::string& role, const std::string& user, const std::string& assistant) {
+        std::deque<Exchange>& d = talks[role];
+        d.push_back({user, assistant, Clock::now()});
+        while (d.size() > memory_turns) d.pop_front();
+    }
+    json RoleNames() const {
+        json out = json::array();
+        for (const auto& r : roles) out.push_back(r.first);
+        return out;
+    }
+    // the role answered in the last `seconds`: a talk is going on
+    bool TalkingNow(const std::string& role, double seconds = 60) const {
+        const auto it = talks.find(role);
+        return it != talks.end() && !it->second.empty() && Ms(Clock::now() - it->second.back().at) <= seconds * 1000.0;
+    }
+};
+
+Talk* g_talk = nullptr;      // set by --talk DIR (or found beside the bot); every Chat uses it
+std::string g_talk_note;     // why there is none
+
+// --voice-local-extra NAME=DIR (2026-11-12, the owner: the people of a level speak in voices of their own): more voices of the
+// player's language beside --voice-local; a "say" with "local_voice": NAME is said with that one, and "local_speaker" picks one
+// of its speakers (the Kazakh model's six for Russian, Kokoro's for Spanish)
+std::vector<std::pair<std::string, coop::VoiceOptions>> g_voice_local_extra;
+
+// a role's file as the model is shown it: no byte-order mark, LF line ends, no blank lines at either end
+std::string RoleText(std::string text) {
+    if (text.rfind("\xEF\xBB\xBF", 0) == 0) text.erase(0, 3);
+    std::string out;
+    for (char c : text)
+        if (c != '\r') out += c;
+    while (!out.empty() && (out.back() == '\n' || out.back() == ' ' || out.back() == '\t')) out.pop_back();
+    size_t b = 0;
+    while (b < out.size() && (out[b] == '\n' || out[b] == ' ' || out[b] == '\t')) ++b;
+    return out.substr(b);
+}
+
+bool LoadTalk(Talk& t, bool cpu, int threads, std::string* err) {
+    const auto t0 = Clock::now();
+    std::string text;
+    if (!ReadFile(t.dir + "/talk_config.json", &text)) return *err = "cannot read talk_config.json", false;
+    try {
+        const json j = json::parse(text);
+        t.options.model_path = t.dir + "/" + j.at("model").get<std::string>();
+        t.options.context = j.value("context", 2048);
+        t.options.max_new = j.value("max_new", 72);
+        t.options.temperature = j.value("temperature", 0.7f);
+        t.options.top_p = j.value("top_p", 0.8f);
+        t.options.top_k = j.value("top_k", 20);
+        if (!t.seed_set && j.contains("seed") && j["seed"].is_number_unsigned()) t.options.seed = j["seed"].get<uint32_t>();
+        t.memory_turns = j.value("memory_turns", size_t{4});
+        t.memory_seconds = j.value("memory_seconds", 120.0);
+        for (const auto& [name, r] : j.at("roles").items()) {
+            Talk::Role role;
+            role.file = role.source = r.at("file").get<std::string>();
+            std::string body;
+            if (!ReadFile(t.dir + "/" + role.file, &body)) return *err = "cannot read the role " + name + ": " + role.file, false;
+            role.file_text = role.text = RoleText(body);
+            if (r.contains("names") && r["names"].is_object())
+                for (const auto& [lang, n] : r["names"].items())
+                    if (n.is_string()) role.names[lang] = n.get<std::string>();
+            t.roles[name] = std::move(role);
+        }
+    } catch (const std::exception& e) {
+        return *err = std::string("talk_config.json: ") + e.what(), false;
+    }
+    if (!t.roles.count("bot")) return *err = "talk_config.json has no role \"bot\"", false;
+    t.options.gpu_layers = cpu ? 0 : 99;
+    t.options.threads = threads;
+#ifdef COOP_WITH_LLM
+    if (!t.model.Load(t.options, err)) return false;
+#else
+    return *err = "this coop_cli was built without llama.cpp (tools/setup_llama.ps1): no talking model", false;
+#endif
+    t.load_ms = Ms(Clock::now() - t0);
+    return true;
+}
+
 // --serve: the game shows the bot's brain starting (2026-10-28, the owner: "прогресс стартовой инициализации моделей бота").
 // Before each part loads, one line {"event":"loading","part":"...","at":0.41,"until":0.6,"expect_ms":2900,"ms":6179}: "at" and
 // "until" are the shares of the whole start done when the part begins and when it should end, "expect_ms" how long it should
@@ -1564,8 +1698,9 @@ std::vector<std::pair<std::string, double>> g_load_plan;   // the parts this sta
 
 double ExpectedLoadMs(const std::string& part) {
     static const std::pair<const char*, double> kLoadMs[] = {
-        {"the intent classifier", 6200}, {"the language model", 2900}, {"the planner", 60}, {"the voice", 1600},
-        {"the voice in the player's language", 1650}, {"speech recognition", 2550}, {"the microphone", 60}};
+        {"the intent classifier", 6200}, {"the language model", 2900}, {"the talking model", 1500}, {"the planner", 60}, {"the voice", 1600},
+        {"the voice in the player's language", 1650}, {"more voices in the player's language", 2500}, {"speech recognition", 2550},
+        {"the microphone", 60}};
     for (const auto& p : kLoadMs)
         if (part == p.first) return p.second;
     return 500;
@@ -1629,6 +1764,14 @@ bool Localize(const std::string& english, std::string* local, const coop::Locali
 }
 
 bool IsLocalized(const std::string& line) { return std::find(g_localized.begin(), g_localized.end(), line) != g_localized.end(); }
+
+// a line this brain wrote in the player's language by other means than the tables (the talk in a role, talker.h): the game
+// hands it back to "say" as it is, and it is said with the player's language's voice
+void KeepLocalized(const std::string& line) {
+    if (!g_replies || line.empty()) return;
+    g_localized.push_back(line);
+    if (g_localized.size() > 64) g_localized.pop_front();
+}
 
 // --replies-bro FILE, --bro on|off, --bro-relapse SECONDS (bro.h): the habit of calling the player «брат» / "bro" /
 // "hermano". While it is on the lines are written from the persona's table (English too: an English table of the same
@@ -2510,6 +2653,76 @@ struct Chat {
         if (!g_memory || !g_memory->IsOpen()) return {};
         const coop::MemoryPerson* person = g_memory->PersonFor("player");
         return person ? person->name : std::string();
+    }
+
+    // ---- the talk in a role (talker.h, Talk) ----
+    static const char* LanguageName(const std::string& lang) { return lang == "ru" ? "Russian" : lang == "es" ? "Spanish" : "English"; }
+    static std::string ThingWords(const coop::WorldEntity& e) {
+        std::string s = e.qualifier.empty() ? e.object : e.qualifier + " " + e.object;
+        for (char& c : s) c = c == '_' ? ' ' : c;
+        return s;
+    }
+    // The system turn for a role: its character, what the speaker is called, for the bot what it holds and what is near the
+    // player (the world of this line), the habit of «брат», and the language to answer in
+    std::string TalkSystem(const std::string& role) const {
+        const Talk::Role& r = g_talk->roles.at(role);
+        std::string name = role == "bot" ? BotName() : std::string();
+        if (name.empty()) {
+            auto it = r.names.find(g_language);
+            if (it == r.names.end()) it = r.names.find("en");
+            if (it != r.names.end()) name = it->second;
+        }
+        std::string s = r.text;
+        for (size_t at = s.find("{name}"); at != std::string::npos && !name.empty(); at = s.find("{name}", at + name.size())) s.replace(at, 6, name);
+        s += "\n";
+        if (!name.empty()) s += "\nYour name is " + name + ".";
+        // a woman or a man (2026-11-12: Anna, a teller of the role both tellers share, said «Я бы ... хотел»): the forms of the words
+        // she says of herself in Russian and Spanish; nothing about who she is besides (the robot stays a robot)
+        if (!r.gender.empty() && g_language != "en")
+            s += std::string("\nWhen you speak ") + LanguageName(g_language) + ", use the " + (r.gender == "woman" ? "feminine" : "masculine") +
+                 " forms for yourself.";
+        if (role == "bot") {
+            const std::string player = PlayerName();
+            if (!player.empty()) s += "\nThe player's name is " + player + ".";
+            // what it holds and stands on, the car; and the thing the player looks at ("what do you think of this car?"). Not the
+            // things around: shown a list, the model works them into every answer («могу поднять красный автомобиль»)
+            const coop::WorldState& w = planner.World();
+            if (!w.scene.empty()) s += "\nYou now: " + w.scene + ".";
+            for (const coop::WorldEntity& e : w.entities)
+                if (!w.player_gaze.empty() && e.id == w.player_gaze && !e.object.empty()) s += "\nThe player is looking at the " + ThingWords(e) + ".";
+            if (g_replies != nullptr && g_replies == g_bro_replies)
+                s += std::string("\nYou call the player \"") + (g_language == "ru" ? "брат" : g_language == "es" ? "hermano" : "bro") + "\" now and then.";
+        }
+        s += std::string("\nAnswer in ") + LanguageName(g_language) + " only, in one or two short sentences.";
+        return s;
+    }
+    // The role's answer to the line, in the role's talk so far; one more draw when the answer is empty or not in the player's
+    // language. False (and *err): no answer to say, the caller keeps its own words. *info: how it went, for the reply
+    bool TalkReply(const std::string& role, const std::string& line, std::string* say, json* info, std::string* err) {
+        const auto t0 = Clock::now();
+        const std::string system = TalkSystem(role);
+        const std::vector<coop::TalkTurn> before = g_talk->Before(role);
+        std::string raw, answer;
+        coop::Talker::Stats st;
+        int tries = 0;
+        bool ok = false;
+        for (; tries < 2 && !ok; ++tries) {
+#ifdef COOP_WITH_LLM
+            if (!g_talk->model.Reply(system, before, line, &raw, &st, err, tries > 0)) return false;
+#else
+            return *err = "this coop_cli was built without llama.cpp", false;
+#endif
+            answer = coop::TalkAnswer(raw, st.cut_off);
+            ok = !answer.empty() && coop::TalkInLanguage(answer, g_language);
+        }
+        *info = {{"role", role}, {"ms", std::round(Ms(Clock::now() - t0))}, {"tokens", st.generated}, {"cached", st.cached},
+                 {"evaluated", st.evaluated}, {"dropped", st.dropped}, {"tries", tries}, {"cut_off", st.cut_off},
+                 {"before", before.size()}};
+        if (raw != answer) (*info)["raw"] = raw;
+        if (!ok) return *err = "the talking model gave nothing to say in " + std::string(LanguageName(g_language)) + ": \"" + raw + "\"", false;
+        g_talk->Keep(role, line, answer);
+        *say = answer;
+        return true;
     }
     // a name said in a reply: the tables' open slot {name} gets it as said (their match lowers ASCII letters only)
     static void NameTerm(Memo* memo, const std::string& name) {
@@ -5121,6 +5334,57 @@ std::string RepeatLine(const std::string& line) {
     return lead + coop::EncodeUtf8(u);
 }
 
+// Whether the talking model answers a line of one turn in the bot's role (2026-11-11, the owner: the lines that give no order,
+// and the questions about the bot the game answers now with its body's state, «ты живой?», «хочешь пива?», "do you eat?"):
+// small talk the planner does not answer itself (also when the classifier was not sure of it), a question about the bot that
+// names no part of it (BODY_STATE "body"), and a question the classifier finds no order in (NONE, the line ends with "?").
+// Questions the game answers from the bot's facts stay its: what it sees, its health, heat, ammo, what it is doing, how it is
+// talking: the bot answered in its role a moment ago (Talk::TalkingNow): a question the classifier is not sure of is the talk
+// going on («почему ты так думаешь?» after its answer was HOLD_ANGLE 0.4, "say again?")
+bool TalkFor(const json& turn, const std::string& heard, bool talking) {
+    const std::string intent = turn.value("intent", std::string()), action = turn.value("action", std::string());
+    const std::string state = turn.contains("state") && turn["state"].is_string() ? turn["state"].get<std::string>() : std::string();
+    if (action != "act" && action != "say_again" && action != "ignore" && action != "answer") return false;
+    size_t e = heard.size();
+    while (e > 0 && (heard[e - 1] == ' ' || heard[e - 1] == '\t')) --e;
+    const bool question = e > 0 && heard[e - 1] == '?';
+    if (intent == "SMALL_TALK") return state.empty();
+    if (intent == "BODY_STATE") return state == "body";
+    if (intent == "NONE" && state.empty()) return question;
+    // an unsure question right after the talk: the talk's, unless it reads as an order the classifier could not quite pin down
+    // -- its top label fairly likely and almost no talk in it: that asks again as before (2026-11-12: "maybe go to the bank?"
+    // after small talk, MOVE_TO 0.65, got "The bank's about fourteen meters off" and no walk; «хочешь пива?» after small talk is
+    // MOVE_TO 0.48 and is talk). talk_p: SMALL_TALK + NONE + BODY_STATE (set in respond)
+    constexpr double kTalkShare = 0.15, kOrderSure = 0.6;
+    const bool order_like = turn.value("talk_p", 0.0) < kTalkShare && turn.value("prob", 0.0) >= kOrderSure;
+    return action == "say_again" && state.empty() && question && talking && !order_like;
+}
+
+// Whether a person of the level whose body takes orders (2026-11-12, the owner: «чтобы любому NPC можно было отдать именно приказ
+// и поговорить») answers a line in their role rather than carry it out. Talk is what they are there for: every turn of the line
+// must be talk for it to be, and a turn is talk when the bot would talk too (TalkFor), when it asks how they are (the game's
+// "how", "hurt" and "body" answers are a soldier's: health, heat, ammo), when it gives nothing to carry out or the planner would
+// ask back about it ("Which door?": their role answers in its own words instead), and when the classifier is not sure of the
+// order (its top label under 0.6, or 0.15 of talk in it: «откройте мне счёт» read as OPEN at 0.5 is the teller's business, not a
+// door). What they see, what that is, what they do: the game answers from their body, as it does for the bot.
+bool PersonTalks(const json& turns, const std::string& heard, bool talking) {
+    if (turns.empty()) return true;
+    for (const json& t : turns) {
+        const std::string state = t.contains("state") && t["state"].is_string() ? t["state"].get<std::string>() : std::string();
+        const std::string action = t.value("action", std::string());
+        if (TalkFor(t, heard, talking) || state == "how" || state == "hurt" || state == "body") continue;
+        if (!state.empty()) return false;
+        if (!t.contains("order") || t["order"].is_null() || action == "ask" || action == "say_again" || action == "ignore") continue;
+        if (t["order"].is_object() && t["order"].contains("intent") && t["order"]["intent"].is_string() &&
+            t["order"]["intent"].get<std::string>() == "SMALL_TALK")
+            continue;
+        constexpr double kTalkShare = 0.15, kOrderSure = 0.6;
+        if (t.value("prob", 0.0) < kOrderSure || t.value("talk_p", 0.0) >= kTalkShare) continue;
+        return false;   // an order it is sure of
+    }
+    return true;
+}
+
 json ReplyJson(Chat& chat, const Chat::Turn& t) {
     const Model& m = chat.m;
     const coop::PlannerResult& r = t.r;
@@ -5744,13 +6008,32 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
     if (piper) tts_note = "this coop_cli was built without sherpa-onnx: no Piper voice";
 #endif
     (void)local_voice;
+    // more voices of the player's language (--voice-local-extra): loaded when its own voice is
+    json extra_info = json::object();
+#ifdef COOP_WITH_STT
+    std::map<std::string, std::unique_ptr<coop::PiperVoice>> voices_extra;
+    if (local_ready && !g_voice_local_extra.empty()) {
+        Loading("more voices in the player's language");
+        for (const auto& [name, options] : g_voice_local_extra) {
+            auto v = std::make_unique<coop::PiperVoice>();
+            std::string verr;
+            if (v->Load(options, &verr)) {
+                extra_info[name] = {{"voice", v->Describe()}, {"speakers", v->NumSpeakers()}, {"provider", v->Provider()}};
+                voices_extra[name] = std::move(v);
+            } else {
+                extra_info[name] = {{"error", verr}};
+            }
+        }
+    }
+#endif
     struct SpeechJob {
         json id;
-        std::string text, speaker;
+        std::string text, speaker;   // speaker: of the voice the line is said with (a local voice's own, for a local line)
         float speed = 0;
         bool local = false;   // in the player's language, with voice_local
         std::string voiced;   // the text as the voice says it (Pronounced); empty: text
         bool stream = false;  // "say"'s "stream": each sentence but the last goes out as soon as it is made ("speech_part")
+        std::string local_name;   // a local line: one of the --voice-local-extra voices ("local_voice"); empty: voice_local
     };
     std::mutex out_mutex, jobs_mutex;
     std::condition_variable jobs_cv;
@@ -5830,7 +6113,12 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 const auto t0 = Clock::now();
                 std::vector<float> x;
                 std::string speak_err;
-                const coop::PiperVoice& v = job.local ? voice_local : voice;
+                const coop::PiperVoice* chosen = job.local ? &voice_local : &voice;
+                if (job.local && !job.local_name.empty()) {
+                    const auto extra = voices_extra.find(job.local_name);
+                    if (extra != voices_extra.end()) chosen = extra->second.get();
+                }
+                const coop::PiperVoice& v = *chosen;
                 const int rate = v.SampleRate();
                 auto line_event = [&](const char* name) {   // the fields every event of the line has
                     return json{{"event", name}, {"id", job.id}, {"text", job.text}, {"voiced", job.voiced.empty() ? json(nullptr) : json(job.voiced)},
@@ -6023,6 +6311,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
           {"place_objects", chat.brain.Places().ObjectIds()},   // what the game may send as a place's object (bot v62: teleport)
           {"place_qualifiers", chat.brain.Places().QualifierIds()},   // ... and as its qualifier (bot v64: big, small, cardboard)
           {"voice_local", local_ready}, {"voice_local_note", local_note},
+          {"voice_local_extra", extra_info},   // --voice-local-extra: name -> voice, speakers, provider (or error)
           {"tts_provider", tts_provider.empty() ? json(nullptr) : json(tts_provider)},
           {"voice_local_provider", local_provider.empty() ? json(nullptr) : json(local_provider)},
           {"tts_threads", tts_provider.empty() ? json(nullptr) : json(piper->threads)},   // the voices' CPU threads
@@ -6044,9 +6333,16 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                      {"player", Chat::PlayerName().empty() ? json(nullptr) : json(Chat::PlayerName())}}},
           {"decider", g_decider ? json({{"dir", g_decider->dir}, {"mode", g_decider->mode}, {"source", g_decider->source},
                                         {"threads", g_decider->options.threads}, {"gpu", g_decider->options.gpu_layers != 0}})
-                                : json(nullptr)}});
+                                : json(nullptr)},
+          // the talk in a role (talker.h): where it was found, the model, where it runs, the roles
+          {"talk", g_talk ? json({{"dir", g_talk->dir}, {"found", g_talk->found}, {"model", g_talk->options.model_path},
+                                  {"gpu", g_talk->options.gpu_layers != 0}, {"threads", g_talk->options.threads},
+                                  {"roles", g_talk->RoleNames()}, {"load_ms", std::round(g_talk->load_ms)}})
+                          : json(nullptr)},
+          {"talk_note", g_talk_note}});
     bool listening = false;
     Clock::time_point down = Clock::now();
+    std::string last_to = "bot";   // whom the line before was said to (the game's "to"; the bot when none)
     for (std::string line; std::getline(std::cin, line);) {
         if (!line.empty() && line.back() == '\r') line.pop_back();
         if (line.empty()) continue;
@@ -6068,6 +6364,8 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                     continue;
                 }
             }
+            // whom the line is said to (the game's "to", talker.h): the bot when none
+            const std::string to = q.is_object() ? q.value("to", std::string()) : std::string();
             // a heard or typed line through the classifier and the planner
             // words: the transcript's words with their start times (SpeechWord); clip_start: where the clip's second 0 is from
             // the talk key going down (the microphone's pre-roll comes before it)
@@ -6076,6 +6374,141 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 const std::string heard = StripPy(raw);
                 if (heard.empty()) {
                     send({{"event", "nothing"}, {"id", id}, {"audio_s", audio_s}, {"stt_ms", stt_ms}});
+                    return;
+                }
+                // a line to another than the line before it (the bot, a person of the level): what the planner asked the one before
+                // is not asked of this one, and the decoder's short context (the lines said to the one before, and their words back)
+                // is not this talk's (2026-11-12)
+                {
+                    const std::string whom = to.empty() ? std::string("bot") : to;
+                    if (whom != last_to) {
+                        if (chat.planner.Mem().has_question) chat.planner.DropQuestion();
+                        chat.said.clear();
+                        chat.bot_said = Chat::Said();
+                        last_to = whom;
+                    }
+                }
+                // a line to someone else the game has (its "to": the seller at the counter, 2026-11-11): their role answers it
+                // (talker.h), and the bot hears nothing of it -- no habit, no lesson, no name of the bot's
+                if (!to.empty() && to != "bot") {
+                    if (!g_talk || !g_talk->Ready()) {
+                        fail("no talking model: " + g_talk_note);
+                        return;
+                    }
+                    if (!g_talk->roles.count(to)) {
+                        fail("no role \"" + to + "\" (talk_config.json's roles, or the game's \"role\")");
+                        return;
+                    }
+                    // the answer in their role; was: what the classifier made of the line, when it was asked
+                    auto talk_in_role = [&](const json& was) {
+                        std::string said, talk_err;
+                        json info;
+                        if (!chat.TalkReply(to, heard, &said, &info, &talk_err)) {
+                            fail(talk_err);
+                            return;
+                        }
+                        if (!was.is_null()) info["was"] = was;
+                        said = Rephrased(said, g_language);
+                        KeepLocalized(said);
+                        json turn = {{"intent", "TALK"}, {"prob", 1.0}, {"action", "talk"}, {"say", said}, {"line", heard}, {"order", nullptr},
+                                     {"question", nullptr}, {"to", to}, {"talk", info}};
+                        json j = turn;
+                        j.erase("line");
+                        j["event"] = "reply";
+                        j["turns"] = json::array({turn});
+                        j["id"] = id;
+                        j["heard"] = heard;
+                        j["spoken"] = spoken;
+                        j["audio_s"] = audio_s;
+                        j["stt_ms"] = stt_ms;
+                        send(j);
+                    };
+                    if (!g_talk->roles[to].orders) {
+                        talk_in_role(nullptr);   // nobody of theirs in the game takes orders: every line is talk
+                        return;
+                    }
+                    // a body of theirs takes orders (2026-11-12, the owner: «чтобы любому NPC можно было отдать именно приказ и
+                    // поговорить»): the line through the classifier, the planner and the decoder as the bot's lines go, without the
+                    // bot's long-term memory, its habit or its name; their words for an order from the plain table (no «брат»)
+                    coop::Localizer* const replies_were = g_replies;
+                    g_replies = g_plain_replies;
+                    Chat::Heard h;
+                    json turns = json::array();
+                    chat.words = words ? *words : std::vector<coop::SpeechWord>();
+                    chat.clip_start = clip_start;
+                    const bool heard_ok = chat.Hear(heard, spoken ? coop::SpeechTextForClassifier(heard) : heard, &h, &err,
+                        [&](const Chat::Heard&, const Chat::Turn& t) {
+                            json turn = ReplyJson(chat, t);
+                            turn.erase("event");
+                            turn["line"] = t.line;
+                            double talk_p = 0;
+                            for (const char* label : {"SMALL_TALK", "NONE", "BODY_STATE"}) {
+                                const auto it = std::find(chat.m.cfg.labels.begin(), chat.m.cfg.labels.end(), label);
+                                if (it != chat.m.cfg.labels.end() && static_cast<size_t>(it - chat.m.cfg.labels.begin()) < t.p.size())
+                                    talk_p += t.p[static_cast<size_t>(it - chat.m.cfg.labels.begin())];
+                            }
+                            turn["talk_p"] = std::round(talk_p * 1000) / 1000;
+                            if (turn.contains("say") && turn["say"].is_string())
+                                turn["say"] = Rephrased(turn["say"].get<std::string>(), g_replies ? g_replies->Language() : std::string("en"));
+                            turns.push_back(std::move(turn));
+                        });
+                    chat.words.clear();
+                    g_replies = replies_were;
+                    if (!heard_ok) {
+                        fail(err);
+                        return;
+                    }
+                    // "what do you see?", "where are you going?" in the player's own words: the game answers from their body
+                    if (g_language != "en" && turns.size() == 1 && !turns.at(0).contains("state") && SeenInOwnWords(heard)) {
+                        json& only = turns.at(0);
+                        only["state"] = "seen";
+                        only["order"] = nullptr;
+                        only["say"] = "";
+                        only.erase("say_en");
+                    }
+                    if (g_language != "en" && turns.size() == 1 && DoingInOwnWords(heard) &&
+                        (!turns.at(0).contains("state") || turns.at(0).value("state", std::string()) == "how")) {
+                        json& only = turns.at(0);
+                        only["state"] = "doing";
+                        only["order"] = nullptr;
+                        only["say"] = "";
+                        only.erase("say_en");
+                    }
+                    if (PersonTalks(turns, heard, g_talk->TalkingNow(to))) {
+                        // talk: what the planner asked or queued about the line is not theirs to ask (their role answers instead)
+                        if (chat.planner.Mem().has_question) chat.planner.DropQuestion();
+                        json was = json::array();
+                        for (const json& t : turns)
+                            was.push_back({{"intent", t.value("intent", json(nullptr))}, {"prob", t.value("prob", json(nullptr))},
+                                           {"action", t.value("action", json(nullptr))}, {"talk_p", t.value("talk_p", json(nullptr))}});
+                        talk_in_role(was);
+                        return;
+                    }
+                    for (const json& t : turns)
+                        if (t.contains("say") && t["say"].is_string() && !t["say"].get<std::string>().empty())
+                            chat.HeardFromBot(t["say"].get<std::string>());   // their words, the decoder's context of this talk
+                    json j = turns.at(0);   // the reply as it was before --chain: the first order's
+                    j.erase("line");
+                    j["event"] = "reply";
+                    j["to"] = to;          // the order is theirs: the game gives it to their body
+                    j["person"] = true;
+                    if (g_chain) {
+                        j["turns"] = std::move(turns);
+                        j["chain"] = {{"route", h.route >= 0 ? json(h.route) : json(nullptr)}, {"decoded", h.decoded}, {"rewritten", h.rewritten},
+                                      {"resumed", h.resumed}, {"held", h.held}, {"note", h.note}, {"route_ms", h.route_ms}, {"rewrite_ms", h.rewrite_ms}};
+                    }
+                    j["id"] = id;
+                    j["heard"] = heard;
+                    j["spoken"] = spoken;
+                    j["audio_s"] = audio_s;
+                    j["stt_ms"] = stt_ms;
+                    if (words && !words->empty()) {
+                        json w = json::array();
+                        for (const coop::SpeechWord& x : *words) w.push_back({{"w", x.text}, {"t", std::round(x.start * 1000) / 1000}});
+                        j["words"] = std::move(w);
+                        j["clip_start_s"] = clip_start;
+                    }
+                    send(j);
                     return;
                 }
                 // the habit first, by the words as said: "stop calling me bro" is about the habit and nothing else (the
@@ -6113,6 +6546,18 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                         json turn = ReplyJson(chat, t);
                         turn.erase("event");
                         turn["line"] = t.line;
+                        // how much the classifier sees talk in the line (SMALL_TALK + NONE + BODY_STATE, the questions about the
+                        // bot itself: «хочешь пива?» wavers between it, SMALL_TALK and MOVE_TO): TalkFor gives an unsure line to the
+                        // talk only when it is not an order the classifier merely could not pin down
+                        if (g_talk) {
+                            double talk_p = 0;
+                            for (const char* label : {"SMALL_TALK", "NONE", "BODY_STATE"}) {
+                                const auto it = std::find(chat.m.cfg.labels.begin(), chat.m.cfg.labels.end(), label);
+                                if (it != chat.m.cfg.labels.end() && static_cast<size_t>(it - chat.m.cfg.labels.begin()) < t.p.size())
+                                    talk_p += t.p[static_cast<size_t>(it - chat.m.cfg.labels.begin())];
+                            }
+                            turn["talk_p"] = std::round(talk_p * 1000) / 1000;
+                        }
                         chat.RoomOrder(memo, t, &turn);   // in or out through a room's door
                         if (turn.contains("say") && turn["say"].is_string()) {
                             const std::string said = turn["say"].get<std::string>();
@@ -6213,6 +6658,31 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                     only["order"] = nullptr;
                     only["say"] = "";
                     only.erase("say_en");
+                }
+                // the talk in the bot's role (talker.h, 2026-11-11): a line of one turn that gives no order is answered by the
+                // talking model instead of the fixed lines (TalkFor); not while the bot waits for the answer to its question.
+                // The words it had stay under "talk"."was"; a model with nothing to say leaves them as they were
+                if (g_talk && g_talk->Ready() && turns.size() == 1 && !chat.planner.Mem().has_question &&
+                    TalkFor(turns.at(0), heard, g_talk->TalkingNow("bot"))) {
+                    json& only = turns.at(0);
+                    std::string said, talk_err;
+                    json info;
+                    if (chat.TalkReply("bot", heard, &said, &info, &talk_err)) {
+                        info["was"] = {{"intent", only.value("intent", json(nullptr))}, {"action", only.value("action", json(nullptr))},
+                                       {"state", only.contains("state") ? only["state"] : json(nullptr)}, {"say", only.value("say", json(nullptr))}};
+                        said = Rephrased(said, g_language);
+                        only["intent"] = "SMALL_TALK";
+                        only["action"] = "act";
+                        only["order"] = {{"intent", "SMALL_TALK"}};
+                        only.erase("state");
+                        only.erase("say_en");
+                        only["say"] = said;
+                        only["talk"] = info;
+                        KeepLocalized(said);
+                        chat.HeardFromBot(said);
+                    } else {
+                        only["talk_error"] = talk_err;
+                    }
                 }
                 json j = turns.at(0);   // the reply as it was before --chain: the first order's
                 j.erase("line");
@@ -6452,8 +6922,11 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                         float speed = q.value("speed", 0.0f);
                         const double tuned = Chat::SettingNow("voice_speed");   // «говори медленнее»
                         if (std::abs(tuned - 1.0) > 1e-3) speed = static_cast<float>((speed > 0 ? speed : 1.0f) * tuned);
-                        jobs.push_back({id, text, in_local ? std::string() : q.value("speaker", std::string()), speed, in_local,
+                        // a local line: the player's language's voice, or one of the more ("local_voice") and a speaker of it
+                        // ("local_speaker"); an English line: the bot's voice and "speaker"
+                        jobs.push_back({id, text, in_local ? q.value("local_speaker", std::string()) : q.value("speaker", std::string()), speed, in_local,
                                         voiced == text ? std::string() : voiced, q.value("stream", false)});
+                        if (in_local) jobs.back().local_name = q.value("local_voice", std::string());
                         jobs_cv.notify_one();
                     }
                 } else if (cmd == "say" && !id.is_null()) {
@@ -6469,7 +6942,46 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 chat.planner.Reset();
                 chat.Forget();
                 chat.ForgetTalk();
+                if (g_talk) g_talk->talks.clear();
                 send({{"event", "reset"}, {"id", id}});
+            } else if (cmd == "role") {
+                // the game's own text for a role (talker.h): the bot's definition, a person placed in the level. {"cmd":"role",
+                // "name":"seller","text":"...","names":{"ru":"Макс","en":"Max"}}; no text: the brain's file's again. A new text
+                // starts the role's talk over
+                if (!g_talk) {
+                    fail("no talking model: " + g_talk_note);
+                    continue;
+                }
+                const std::string name = q.at("name").get<std::string>();
+                const std::string text = RoleText(q.value("text", std::string()));
+                Talk::Role& r = g_talk->roles[name];
+                const std::string before = r.text;
+                if (!text.empty()) {
+                    r.text = text;
+                    r.source = "game";
+                } else if (!r.file_text.empty()) {
+                    r.text = r.file_text;
+                    r.source = r.file;
+                } else {
+                    g_talk->roles.erase(name);
+                    fail("the role " + name + " has no text, and the brain has no file for it");
+                    continue;
+                }
+                if (q.contains("names") && q["names"].is_object())
+                    for (const auto& [lang, n] : q["names"].items())
+                        if (n.is_string()) r.names[lang] = n.get<std::string>();
+                // "orders": a body of theirs in the game takes orders (2026-11-12): a line to them may be an order for it
+                r.orders = q.contains("orders") && q["orders"].is_boolean() && q["orders"].get<bool>();
+                // "gender": "woman" | "man": the forms of the words they say of themselves (TalkSystem)
+                {
+                    const std::string g = q.contains("gender") && q["gender"].is_string() ? q["gender"].get<std::string>() : std::string();
+                    const std::string was = r.gender;
+                    r.gender = g == "woman" || g == "man" ? g : std::string();
+                    if (r.gender != was) g_talk->talks.erase(name);   // their talk so far was in the other forms
+                }
+                if (r.text != before) g_talk->talks.erase(name);   // another character: its talk starts over (the game sends it before each line)
+                send({{"event", "role"}, {"id", id}, {"name", name}, {"source", r.source}, {"chars", r.text.size()}, {"names", r.names},
+                      {"orders", r.orders}, {"gender", r.gender.empty() ? json(nullptr) : json(r.gender)}, {"roles", g_talk->RoleNames()}});
             } else if (cmd == "teach" || cmd == "forget" || cmd == "recall") {
                 // the long-term memory by hand (a HUD, a test): {"cmd":"teach","heard":"on my goal","lines":["go"]},
                 // {"cmd":"teach","entity":"Place_Door_03","name":"оружейка"}, {"cmd":"teach","entity":...,"colour":"green"},
@@ -6564,9 +7076,15 @@ int main(int argc, char** argv) {
     double bro_relapse = 0;
     std::string tts_demo_dir, tts_text = "Contact left! Moving to the ping. Which door? The one ahead, 8 m?";
     std::string memory_file;
+    Talk talk;
+    bool no_talk = false, talk_cpu = false;
     for (int i = 1; i < argc; ++i) {
         const std::string a = argv[i];
         if (a == "--model-dir" && i + 1 < argc) m.dir = argv[++i];
+        else if (a == "--talk" && i + 1 < argc) talk.dir = argv[++i], talk.found = "--talk";
+        else if (a == "--no-talk") no_talk = true;
+        else if (a == "--talk-cpu") talk_cpu = true;
+        else if (a == "--talk-seed" && i + 1 < argc) talk.options.seed = static_cast<uint32_t>(std::strtoul(argv[++i], nullptr, 10)), talk.seed_set = true;
         else if (a == "--tts-piper" && i + 1 < argc) piper.model_dir = argv[++i];
         else if (a == "--tts-speaker" && i + 1 < argc) piper.speaker = argv[++i];
         else if (a == "--tts-speed" && i + 1 < argc) piper.speed = static_cast<float>(std::atof(argv[++i]));
@@ -6587,6 +7105,15 @@ int main(int argc, char** argv) {
         else if (a == "--replies" && i + 1 < argc) replies_file = argv[++i];
         else if (a == "--replies-check" && i + 1 < argc) mode = "replies-check", replies_file = argv[++i];
         else if (a == "--voice-local" && i + 1 < argc) voice_local.model_dir = argv[++i];
+        else if (a == "--voice-local-extra" && i + 1 < argc) {
+            const std::string s = argv[++i];
+            const size_t eq = s.find('=');
+            if (eq == std::string::npos || eq == 0 || eq + 1 == s.size())
+                return std::fprintf(stderr, "--voice-local-extra is NAME=DIR, not %s\n", s.c_str()), 2;
+            coop::VoiceOptions o;
+            o.model_dir = s.substr(eq + 1);
+            g_voice_local_extra.emplace_back(s.substr(0, eq), o);
+        }
         else if (a == "--decider" && i + 1 < argc) decider.dir = argv[++i];
         else if (a == "--decider-mode" && i + 1 < argc) decider.mode = argv[++i];
         else if (a == "--decider-threads" && i + 1 < argc) decider.options.threads = std::atoi(argv[++i]);
@@ -6628,7 +7155,8 @@ int main(int argc, char** argv) {
                                  "                [--chain DIR [--chain-tests] [--decoder-cpu] [--decoder-threads N]]\n"
                                  "                [--language en|ru|es] [--memory FILE [--name-chance P]] | --memory-dump FILE | --teach-tests FILE\n"
                                  "                [--decider DIR [--decider-tests FILE] [--decider-mode avg|only] [--decider-threads N]\n"
-                                 "                 [--decider-gpu-layers N]]\n");
+                                 "                 [--decider-gpu-layers N]]\n"
+                                 "                [--talk DIR | --no-talk] [--talk-cpu] [--talk-seed N] [--voice-local-extra NAME=DIR ...]\n");
             return 2;
         }
     }
@@ -6700,14 +7228,30 @@ int main(int argc, char** argv) {
     }
     const double mem0 = WorkingSetMb();
     const auto t0 = Clock::now();
+    // the talk in a role (talker.h): --talk DIR, else the brain's own talk/ beside its bot/ (the game's brain folder holds bot/,
+    // chain/, talk/: a brain deployed with talk/ talks, whatever the game passes); --no-talk: none. Only --serve talks
+    if (no_talk) {
+        talk.dir.clear();
+        g_talk_note = "switched off (--no-talk)";
+    } else if (talk.dir.empty() && mode == "serve") {
+        std::filesystem::path bot = U8Path(m.dir);
+        if (!bot.has_filename()) bot = bot.parent_path();
+        const std::filesystem::path beside = bot.parent_path() / "talk";
+        std::error_code ec;
+        if (std::filesystem::exists(beside / "talk_config.json", ec)) talk.dir = beside.u8string(), talk.found = "beside the bot";
+        else g_talk_note = "no --talk DIR, and no talk/talk_config.json beside the bot";
+    }
     g_load_events = mode == "serve";
     g_load_t0 = t0;
     if (g_load_events) {
         std::vector<std::string> parts = {"the intent classifier"};
         if (!chain.dir.empty()) parts.push_back("the language model");
+        if (!talk.dir.empty()) parts.push_back("the talking model");
         parts.push_back("the planner");
         if (!piper.model_dir.empty()) parts.push_back("the voice");
         if (!piper.model_dir.empty() && !voice_local.model_dir.empty()) parts.push_back("the voice in the player's language");
+        if (!piper.model_dir.empty() && !voice_local.model_dir.empty() && !g_voice_local_extra.empty())
+            parts.push_back("more voices in the player's language");
         if (serve_stt) {
             parts.push_back("speech recognition");
             parts.push_back("the microphone");
@@ -6732,6 +7276,20 @@ int main(int argc, char** argv) {
                     chain.router ? "router and decoder" : "decoder, no router: every line goes to it", decoder_cpu ? "CPU" : "GPU",
                     decoder_threads, chain.load_ms);
         g_chain = &chain;
+    }
+    if (!talk.dir.empty()) {
+        // optional: a brain whose talking model does not load answers small talk with its fixed lines, as before
+        Loading("the talking model");
+        if (LoadTalk(talk, decoder_cpu || talk_cpu, decoder_threads, &err)) {
+            g_talk = &talk;
+            std::string roles;
+            for (const auto& r : talk.roles) roles += (roles.empty() ? "" : ", ") + r.first;
+            std::printf("talk: %s (%s; %s, %d threads, roles %s; loaded in %.0f ms)\n", talk.dir.c_str(), talk.found.c_str(),
+                        talk.options.gpu_layers ? "GPU" : "CPU", talk.options.threads, roles.c_str(), talk.load_ms);
+        } else {
+            g_talk_note = talk.dir + ": " + err;
+            std::fprintf(stderr, "talk: %s; small talk gets the fixed lines\n", g_talk_note.c_str());
+        }
     }
     if (g_language != "en" && g_language != "ru" && g_language != "es")
         return std::fprintf(stderr, "--language is en, ru or es, not %s\n", g_language.c_str()), 2;
@@ -6766,6 +7324,10 @@ int main(int argc, char** argv) {
     // voice needs them: about 1.6 s a line on one thread, 0.6 s on four)
     voice_local.threads = tts_threads_set ? piper.threads : std::max(piper.threads, 4);
     voice_local.provider = piper.provider;                 // both voices where --tts-provider says ("auto": each by its kind)
+    for (auto& extra : g_voice_local_extra) {             // the more voices of the player's language as its own
+        extra.second.threads = voice_local.threads;
+        extra.second.provider = voice_local.provider;
+    }
     if (mode == "decider-tests" && decider.dir.empty()) return std::fprintf(stderr, "--decider-tests needs --decider DIR\n"), 2;
     if (!decider.dir.empty() && !LoadDecider(decider, m.cfg.labels, &err)) {
         // the second reader is optional: a brain whose decider does not load (another label set, a missing file) goes on

@@ -1,0 +1,16 @@
+{
+ "model": "talk.gguf",
+ "model_from": "Qwen/Qwen3-1.7B as its author published it (Apache-2.0), converted by llama.cpp b11429 (convert_hf_to_gguf.py, llama-quantize Q4_K_M); no adapter",
+ "context": 2048,
+ "max_new": 72,
+ "temperature": 0.7,
+ "top_p": 0.8,
+ "top_k": 20,
+ "seed": null,
+ "memory_turns": 4,
+ "memory_seconds": 120,
+ "roles": {
+  "bot": {"file": "roles/bot.txt", "names": {"en": "Buddy", "ru": "Бади", "es": "Buddy"}},
+  "seller": {"file": "roles/seller.txt", "names": {"en": "Max", "ru": "Макс", "es": "Max"}}
+ }
+}
