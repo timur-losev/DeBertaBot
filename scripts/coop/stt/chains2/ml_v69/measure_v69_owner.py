@@ -15,7 +15,8 @@ import io, json, os, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.normpath(os.path.join(HERE, "..", "..", "..", "..", ".."))
 CLI = os.path.join(REPO, "cpp", "coop_intent", "build", "Release", "coop_cli.exe")
-BOT = os.path.join(REPO, "models", "coop-deberta-v3-ens3-v67", "cpp")
+BOT = os.environ.get("COOP_BOT", os.path.join(REPO, "models", "coop-deberta-v3-ens3-v67", "cpp"))   # round v70: its own bot
+EVERY_LINE = os.environ.get("COOP_EVERY_LINE") == "1"   # the decoder on every English line too, as the game runs it since 2026-11-06
 NO_ORDER = {"SMALL_TALK", "PRAISE", "NONE", "YES", "NO", "MAYBE", "DONT_KNOW", None}
 
 
@@ -35,6 +36,8 @@ class Brain:
         args = [CLI, "--serve", "--no-stt", "--model-dir", BOT, "--threads", "2", "--no-spin"]
         if chain:
             args += ["--chain", chain, "--decoder-cpu", "--decoder-threads", "6"]
+            if EVERY_LINE:
+                args += ["--decoder-every-line"]
         if lang != "en":
             args += ["--language", lang]
         self.p = subprocess.Popen(args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, encoding="utf-8", bufsize=1)
@@ -100,8 +103,8 @@ def fits(want, got):
 
 
 def main():
-    tag = sys.argv[1]
-    chain = os.path.join(REPO, "models", f"coop-chain-{tag}", "cpp")
+    tag, _, chain_tag = sys.argv[1].partition("=")   # NAME=CHAIN: a chain measured under another name (its own log)
+    chain = os.path.join(REPO, "models", f"coop-chain-{chain_tag or tag}", "cpp")
     items = json.load(io.open(os.path.join(HERE, "test_v69_owner.json"), encoding="utf-8"))["items"]
     rows = []
     plain = Brain(None, "en")      # the held lines: no chain

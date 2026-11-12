@@ -545,7 +545,57 @@
   "Then to {thing}.": "Then to {thing}.",
   "Then where you pointed.": "Then where you pointed.",
   "And {n} more after that.": "And {n} more after that.",
-  "I can't undo that one.": "Can't undo that one, bro."
+  "I can't undo that one.": "Can't undo that one, bro.",
+  "I'll get the car.": "I'll get the car, bro.",
+  "There's no car here.": "Bro, there's no car here.",
+  "I'm not driving.": "Bro, I'm not driving.",
+  "Stopping.": "Stopping.",
+  "Faster.": "Faster.",
+  "That's as fast as I go here.": "That's as fast as I go here, bro.",
+  "Slower.": "Slower.",
+  "Any slower and we stop.": "Any slower and we stop, bro.",
+  "I don't know the roads here.": "Bro, I don't know the roads here.",
+  "I'm not on a road.": "I'm not on a road, bro.",
+  "Driving on.": "Driving on.",
+  "Straight on.": "Straight on.",
+  "There's no road straight on.": "There's no road straight on, bro.",
+  "The road ends here.": "The road ends here, bro.",
+  "At the crossroads.": "At the crossroads, bro.",
+  "End of the road.": "End of the road, bro.",
+  "Left or right?": "Left or right, bro?",
+  "Turning left at the crossroads.": "Turning left at the crossroads, bro.",
+  "Turning right at the crossroads.": "Turning right at the crossroads, bro.",
+  "Taking the second left.": "Taking the second left.",
+  "Taking the second right.": "Taking the second right.",
+  "Taking the third left.": "Taking the third left.",
+  "Taking the third right.": "Taking the third right.",
+  "Taking the next left.": "Taking the next left.",
+  "Taking the next right.": "Taking the next right.",
+  "Driving to the crossroads.": "Driving to the crossroads, bro.",
+  "There's no left turn here.": "There's no left turn here, bro.",
+  "There's no right turn here.": "There's no right turn here, bro.",
+  "There's no left turn ahead.": "Bro, there's no left turn ahead.",
+  "There's no right turn ahead.": "Bro, there's no right turn ahead.",
+  "There's no second left ahead.": "There's no second left ahead, bro.",
+  "There's no second right ahead.": "There's no second right ahead, bro.",
+  "There's no further left ahead.": "Bro, there's no further left ahead.",
+  "There's no further right ahead.": "Bro, there's no further right ahead.",
+  "Where to?": "Where to, bro?",
+  "No road goes there.": "Bro, no road goes there.",
+  "We're here.": "We're here, bro.",
+  "On my way.": "On my way, bro.",
+  "Driving to {thing}.": "Bro, driving to {thing}.",
+  "Pulling over.": "Pulling over.",
+  "Parked.": "Parked, bro.",
+  "No room to pull over here.": "No room to pull over here, bro.",
+  "Turning round.": "Turning round.",
+  "Turned round.": "Turned round, bro.",
+  "Out of the way!": "Out of the way!",
+  "Something's blocking the road.": "Bro, something's blocking the road.",
+  "The car's stuck.": "Bro, the car's stuck.",
+  "I can't move like that.": "Bro, I can't move like that.",
+  "I know these combos: {name}.": "Bro, I know these combos: {name}.",
+  "I don't know any combos yet.": "Bro, I don't know any combos yet."
  },
  "slots": {
   "where": {
@@ -1117,6 +1167,126 @@
    },
    "the switch": {
     "text": "the switch"
+   },
+   "a bank": {
+    "text": "a bank"
+   },
+   "the bank": {
+    "text": "the bank"
+   },
+   "a restaurant": {
+    "text": "a restaurant"
+   },
+   "the restaurant": {
+    "text": "the restaurant"
+   },
+   "a cafe": {
+    "text": "a cafe"
+   },
+   "the cafe": {
+    "text": "the cafe"
+   },
+   "a shop": {
+    "text": "a shop"
+   },
+   "the shop": {
+    "text": "the shop"
+   },
+   "a hotel": {
+    "text": "a hotel"
+   },
+   "the hotel": {
+    "text": "the hotel"
+   },
+   "a pharmacy": {
+    "text": "a pharmacy"
+   },
+   "the pharmacy": {
+    "text": "the pharmacy"
+   },
+   "a gas station": {
+    "text": "a gas station"
+   },
+   "the gas station": {
+    "text": "the gas station"
+   },
+   "a parking lot": {
+    "text": "a parking lot"
+   },
+   "the parking lot": {
+    "text": "the parking lot"
+   },
+   "a junction": {
+    "text": "a junction"
+   },
+   "the junction": {
+    "text": "the junction"
+   },
+   "a traffic light": {
+    "text": "a traffic light"
+   },
+   "the traffic light": {
+    "text": "the traffic light"
+   },
+   "a crosswalk": {
+    "text": "a crosswalk"
+   },
+   "the crosswalk": {
+    "text": "the crosswalk"
+   },
+   "a counter": {
+    "text": "a counter"
+   },
+   "the counter": {
+    "text": "the counter"
+   },
+   "a kiosk": {
+    "text": "a kiosk"
+   },
+   "the kiosk": {
+    "text": "the kiosk"
+   },
+   "a bench": {
+    "text": "a bench"
+   },
+   "the bench": {
+    "text": "the bench"
+   },
+   "a bin": {
+    "text": "a bin"
+   },
+   "the bin": {
+    "text": "the bin"
+   },
+   "an ATM": {
+    "text": "an ATM"
+   },
+   "the ATM": {
+    "text": "the ATM"
+   },
+   "a parasol": {
+    "text": "a parasol"
+   },
+   "the parasol": {
+    "text": "the parasol"
+   },
+   "a menu": {
+    "text": "a menu"
+   },
+   "the menu": {
+    "text": "the menu"
+   },
+   "a kitchen": {
+    "text": "a kitchen"
+   },
+   "the kitchen": {
+    "text": "the kitchen"
+   },
+   "a drinks machine": {
+    "text": "a drinks machine"
+   },
+   "the drinks machine": {
+    "text": "the drinks machine"
    }
   },
   "phrase": {
@@ -1335,6 +1505,15 @@
    },
    "say how you are": {
     "text": "say how you are"
+   },
+   "drive the car": {
+    "text": "drive the car"
+   },
+   "move a body part": {
+    "text": "move a body part"
+   },
+   "teach or play a combo": {
+    "text": "teach or play a combo"
    }
   },
   "object": {
@@ -1418,6 +1597,66 @@
    },
    "rock": {
     "text": "rock"
+   },
+   "bank": {
+    "text": "bank"
+   },
+   "restaurant": {
+    "text": "restaurant"
+   },
+   "cafe": {
+    "text": "cafe"
+   },
+   "shop": {
+    "text": "shop"
+   },
+   "hotel": {
+    "text": "hotel"
+   },
+   "pharmacy": {
+    "text": "pharmacy"
+   },
+   "gas station": {
+    "text": "gas station"
+   },
+   "parking": {
+    "text": "parking lot"
+   },
+   "junction": {
+    "text": "junction"
+   },
+   "traffic light": {
+    "text": "traffic light"
+   },
+   "crosswalk": {
+    "text": "crosswalk"
+   },
+   "counter": {
+    "text": "counter"
+   },
+   "kiosk": {
+    "text": "kiosk"
+   },
+   "bench": {
+    "text": "bench"
+   },
+   "bin": {
+    "text": "bin"
+   },
+   "atm": {
+    "text": "ATM"
+   },
+   "parasol": {
+    "text": "parasol"
+   },
+   "menu": {
+    "text": "menu"
+   },
+   "kitchen": {
+    "text": "kitchen"
+   },
+   "drinks machine": {
+    "text": "drinks machine"
    }
   },
   "name": {

@@ -1163,6 +1163,14 @@ static TeachLine ReadTeachOne(std::string_view heard, const std::string& lang) {
     const std::string norm = MemoryNorm(heard);
     const std::vector<std::string> w = MemoryWords(norm);
     if (w.empty()) return out;
+    // round v70: a combo of the body's moves («запомни связку двойка: джеб, прямой», «забудь связку двойка», "remember this combo",
+    // «olvida el combo») is the brain's (BODY_COMBO), not a lesson or a forgetting of the memory's
+    for (const std::string& x : w) {
+        if (x.rfind("связк", 0) == 0 || x.rfind("комбинаци", 0) == 0 || x == "комбо" || x == "combo" || x == "combos" ||
+            x.rfind("combinaci", 0) == 0) {
+            return out;
+        }
+    }
 
     // "not that": the whole line
     if (IsAny(norm, {"не то", "нет не то", "это не то", "не так", "нет не так", "ты не понял", "ты меня не понял",

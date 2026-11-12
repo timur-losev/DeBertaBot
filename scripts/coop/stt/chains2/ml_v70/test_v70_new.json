@@ -1,0 +1,2922 @@
+{
+ "_note": "Round v70's BLIND held-out test of the new commands (2026-11-11): DRIVE, BODY_MOVE, BODY_COMBO and their contrasts. Written from TODO_v70.md sections 1, 3 and 10 and the game's grammar (OVBodyStateComponent.cpp header) only; no row of make_rows_v70.py / make_spec_v70.py / intents_v70.json was read, and section 10's example phrasings are avoided. scene: 'car' = the bot is at the wheel and the player sits beside it; 'foot' = no car is being driven. group: car_drive, car_wait (a bare stop in a car stays WAIT), foot_drive (said on foot: the bot gets into the nearest free car), foot_contrast (on foot the same words are not DRIVE), body_move, strike (in place, no target), melee_contrast (a strike AT someone stays MELEE), crouch_contrast (a bare squat stays CROUCH), combo_teach / combo_play / combo_forget / combo_list. want: the orders in order of saying. DRIVE: drive (forward|turn|around|to|park|faster|slower|stop), side + count for turns (next = 1), place for 'to'; an 'alt' list holds other acceptable slot sets (replacing the given drive/place). BODY_MOVE / BODY_COMBO: body = the canonical console line (lower case, digits, right side unwritten, a left punch = jab, fast = speed 2, slowly = speed 0.5, sharply = sharp 1, smoothly = sharp 0, hard/soft, unsaid angle omitted); 'alt' = other acceptable lines. Combo names in the nominative as said. Contrasts: 'alt_intent' = other acceptable intents; must_not = intents that are a failure anywhere in the reply. Not tested on purpose: kneeling (section 10 says «встань на колени» = 'kneel', the round's brief says it stays CROUCH: an owner decision to settle first), nod/wave/bow (no canon yet).",
+ "items": [
+  {
+   "id": "d_ru_001",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "давай прямо брат",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "forward"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_002",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "двигай вперёд по дороге",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "forward"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_003",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "едем дальше по этой улице",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "forward"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_004",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "продолжай ехать прямо",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "forward"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_005",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "катим вперёд до следующего перекрёстка",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "forward",
+     "alt": [
+      {
+       "drive": "to",
+       "place": "junction"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "d_ru_006",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "на ближайшем перекрёстке сворачивай налево",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "left",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "d_ru_007",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "направо поворачивай",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "right",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "d_ru_008",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "давай налево",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "left",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "d_ru_009",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "сверни направо на следующем повороте",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "right",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "d_ru_010",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "поверни-ка налево брат",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "left",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "d_ru_011",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "на втором перекрёстке сверни налево",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "left",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "id": "d_ru_012",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "второй направо",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "right",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "id": "d_ru_013",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "направо на 2-м перекрёстке",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "right",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "id": "d_ru_014",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "третий поворот налево",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "left",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "id": "d_ru_015",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "на 3 перекрёстке направо сворачиваем",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "right",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "id": "d_ru_016",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "разверни тачку",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "around"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_017",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "делай разворот",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "around"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_018",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "разворачиваемся, мы проехали",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "around"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_019",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "гони к банку",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "bank"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_020",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "вези нас в ресторан",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "restaurant"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_021",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "давай в кафешку заедем",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "cafe"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_022",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "рули к аптеке",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "pharmacy"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_023",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "на следующем направо, а потом к заправке",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "right",
+     "count": 1
+    },
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "gas station"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_024",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "к моей метке давай",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "pin"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_025",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "вон туда езжай",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "there"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_026",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "доедь до светофора",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "traffic light"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_027",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "паркуйся",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "park"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_028",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "прижмись к обочине",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "park"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_029",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "найди где встать и припаркуй машину",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "park"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_030",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "поддай газу",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "faster"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_031",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "давай побыстрее брат опаздываем",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "faster"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_032",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "сбавь скорость",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "slower"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_033",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "потише едь",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "slower"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_034",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "затормози",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "stop"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_035",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "останавливай тачку",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "stop"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_036",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "прямо до перекрёстка а там налево",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "forward"
+    },
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "left",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "d_ru_037",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "останавливайся и вылезаем",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "stop",
+     "alt": [
+      {
+       "drive": "park"
+      }
+     ]
+    },
+    {
+     "intent": "GET_OUT"
+    }
+   ]
+  },
+  {
+   "id": "d_en_001",
+   "lang": "en",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "just go straight ahead",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "forward"
+    }
+   ]
+  },
+  {
+   "id": "d_en_002",
+   "lang": "en",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "take the next right",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "right",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "d_en_003",
+   "lang": "en",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "second left, bro",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "left",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "id": "d_en_004",
+   "lang": "en",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "hang a right at the third intersection",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "right",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "id": "d_en_005",
+   "lang": "en",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "pull a u-turn",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "around"
+    }
+   ]
+  },
+  {
+   "id": "d_en_006",
+   "lang": "en",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "head to the bank",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "bank"
+    }
+   ]
+  },
+  {
+   "id": "d_en_007",
+   "lang": "en",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "drive over there",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "there"
+    }
+   ]
+  },
+  {
+   "id": "d_en_008",
+   "lang": "en",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "find a spot and park it",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "park"
+    }
+   ]
+  },
+  {
+   "id": "d_en_009",
+   "lang": "en",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "step on it",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "faster"
+    }
+   ]
+  },
+  {
+   "id": "d_en_010",
+   "lang": "en",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "slow down and pull into the parking lot",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "slower"
+    },
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "parking lot"
+    }
+   ]
+  },
+  {
+   "id": "d_en_011",
+   "lang": "en",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "hit the brakes",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "stop"
+    }
+   ]
+  },
+  {
+   "id": "d_en_012",
+   "lang": "en",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "go straight and then take a left at the junction",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "forward"
+    },
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "left",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "d_es_001",
+   "lang": "es",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "sigue recto tío",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "forward"
+    }
+   ]
+  },
+  {
+   "id": "d_es_002",
+   "lang": "es",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "gira a la izquierda en el próximo cruce",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "left",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "d_es_003",
+   "lang": "es",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "la segunda a la derecha",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "right",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "id": "d_es_004",
+   "lang": "es",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "da la vuelta con el coche",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "around"
+    }
+   ]
+  },
+  {
+   "id": "d_es_005",
+   "lang": "es",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "llévanos al hotel",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "hotel"
+    }
+   ]
+  },
+  {
+   "id": "d_es_006",
+   "lang": "es",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "aparca por aquí",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "park"
+    }
+   ]
+  },
+  {
+   "id": "d_es_007",
+   "lang": "es",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "acelera un poco",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "faster"
+    }
+   ]
+  },
+  {
+   "id": "d_es_008",
+   "lang": "es",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "frena ya",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "stop"
+    }
+   ]
+  },
+  {
+   "id": "d_es_009",
+   "lang": "es",
+   "scene": "car",
+   "group": "car_drive",
+   "text": "más despacio y en el cruce a la derecha",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "slower"
+    },
+    {
+     "intent": "DRIVE",
+     "drive": "turn",
+     "side": "right",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "d_ru_038",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_wait",
+   "text": "стоп стоп",
+   "want": [
+    {
+     "intent": "WAIT"
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_ru_039",
+   "lang": "ru",
+   "scene": "car",
+   "group": "car_wait",
+   "text": "стой, стой, погоди",
+   "want": [
+    {
+     "intent": "WAIT"
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_ru_040",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_drive",
+   "text": "поехали в магаз",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "shop"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_041",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_drive",
+   "text": "прыгай за руль и вези меня в гостиницу",
+   "want": [
+    {
+     "intent": "GET_IN"
+    },
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "hotel"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_042",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_drive",
+   "text": "сгоняй на машине на заправку",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "gas station"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_043",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_drive",
+   "text": "довези меня до ресторана",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "restaurant"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_044",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_drive",
+   "text": "едь на парковку",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "parking lot"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_045",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_drive",
+   "text": "погнали к банку на тачке",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "bank"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_046",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_drive",
+   "text": "поезжай к моей отметке",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "pin"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_047",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_drive",
+   "text": "садись за руль, едем в кафе",
+   "want": [
+    {
+     "intent": "GET_IN"
+    },
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "cafe"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_048",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_drive",
+   "text": "подкинь меня до перекрёстка",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "junction",
+     "alt": [
+      {
+       "drive": "forward"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "d_ru_049",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_drive",
+   "text": "езжай вон туда на машине",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "there"
+    }
+   ]
+  },
+  {
+   "id": "d_en_013",
+   "lang": "en",
+   "scene": "foot",
+   "group": "foot_drive",
+   "text": "grab a car and drive us to the hotel",
+   "want": [
+    {
+     "intent": "GET_IN"
+    },
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "hotel"
+    }
+   ]
+  },
+  {
+   "id": "d_en_014",
+   "lang": "en",
+   "scene": "foot",
+   "group": "foot_drive",
+   "text": "let's drive to the pharmacy",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "pharmacy"
+    }
+   ]
+  },
+  {
+   "id": "d_en_015",
+   "lang": "en",
+   "scene": "foot",
+   "group": "foot_drive",
+   "text": "give me a ride to the shop",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "shop"
+    }
+   ]
+  },
+  {
+   "id": "d_es_010",
+   "lang": "es",
+   "scene": "foot",
+   "group": "foot_drive",
+   "text": "vamos en coche al banco",
+   "want": [
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "bank"
+    }
+   ]
+  },
+  {
+   "id": "d_es_011",
+   "lang": "es",
+   "scene": "foot",
+   "group": "foot_drive",
+   "text": "súbete al coche y llévame a la gasolinera",
+   "want": [
+    {
+     "intent": "GET_IN"
+    },
+    {
+     "intent": "DRIVE",
+     "drive": "to",
+     "place": "gas station"
+    }
+   ]
+  },
+  {
+   "id": "d_ru_050",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_contrast",
+   "text": "повернись налево",
+   "want": [
+    {
+     "intent": "LOOK_AT"
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_ru_051",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_contrast",
+   "text": "ну-ка поверни направо",
+   "want": [
+    {
+     "intent": "LOOK_AT"
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_ru_052",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_contrast",
+   "text": "давай налево поворачивай",
+   "want": [
+    {
+     "intent": "LOOK_AT",
+     "alt_intent": [
+      "MOVE_TO"
+     ]
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_ru_053",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_contrast",
+   "text": "разворачивайся назад",
+   "want": [
+    {
+     "intent": "LOOK_AT"
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_ru_054",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_contrast",
+   "text": "кругом!",
+   "want": [
+    {
+     "intent": "LOOK_AT"
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_ru_055",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_contrast",
+   "text": "обернись",
+   "want": [
+    {
+     "intent": "LOOK_AT"
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_ru_056",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_contrast",
+   "text": "вперёд!",
+   "want": [
+    {
+     "intent": "GO_NOW",
+     "alt_intent": [
+      "MOVE_TO"
+     ]
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_ru_057",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_contrast",
+   "text": "иди вперёд",
+   "want": [
+    {
+     "intent": "MOVE_TO",
+     "alt_intent": [
+      "GO_NOW"
+     ]
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_ru_058",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_contrast",
+   "text": "стоять!",
+   "want": [
+    {
+     "intent": "WAIT",
+     "alt_intent": [
+      "HOLD_POSITION"
+     ]
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_ru_059",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "foot_contrast",
+   "text": "стоп, подожди",
+   "want": [
+    {
+     "intent": "WAIT"
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_en_016",
+   "lang": "en",
+   "scene": "foot",
+   "group": "foot_contrast",
+   "text": "turn left",
+   "want": [
+    {
+     "intent": "LOOK_AT"
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_en_017",
+   "lang": "en",
+   "scene": "foot",
+   "group": "foot_contrast",
+   "text": "turn around bro",
+   "want": [
+    {
+     "intent": "LOOK_AT"
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_en_018",
+   "lang": "en",
+   "scene": "foot",
+   "group": "foot_contrast",
+   "text": "stop",
+   "want": [
+    {
+     "intent": "WAIT"
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_es_012",
+   "lang": "es",
+   "scene": "foot",
+   "group": "foot_contrast",
+   "text": "gira a la derecha",
+   "want": [
+    {
+     "intent": "LOOK_AT"
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "d_es_013",
+   "lang": "es",
+   "scene": "foot",
+   "group": "foot_contrast",
+   "text": "adelante tío",
+   "want": [
+    {
+     "intent": "GO_NOW",
+     "alt_intent": [
+      "MOVE_TO"
+     ]
+    }
+   ],
+   "must_not": [
+    "DRIVE"
+   ]
+  },
+  {
+   "id": "b_ru_001",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "подними левую руку",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise arm_l"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_002",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "правую руку подними на 45 градусов",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise arm_r 45"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_003",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "ну-ка руки вверх",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise arms 180"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_004",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "подними правую руку вверх до упора",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise arm_r 180"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_005",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "расставь руки в стороны",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise arms 90 out 90"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_006",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "опусти левую руку",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "lower arm_l"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_007",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "вытяни обе руки вперёд",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise arms",
+     "alt": [
+      "raise arms 90"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "b_ru_008",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "подними правую руку на 90 и отведи вправо на 30",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise arm_r 90 right 30"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_009",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "медленно подними левую руку",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise arm_l speed 0.5"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_010",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "резко опусти руки",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "lower arms sharp 1"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_011",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "быстро поверни голову вправо",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "turn head right speed 2"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_012",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "поверни башку налево на 60 градусов",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "turn head left 60"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_013",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "плавно наклони голову влево",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "tilt head left sharp 0"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_014",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "опусти голову",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "lower head"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_015",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "подними голову на тридцать градусов",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise head 30"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_016",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "нагнись вперёд на 60",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "lower torso 60"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_017",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "прогнись назад",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise torso"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_018",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "наклонись вправо",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "tilt torso right",
+     "alt": [
+      "tilt body right"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "b_ru_019",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "поверни корпус налево",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "turn torso left"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_020",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "повернись всем телом налево",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "turn body left"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_021",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "развернись всем телом на 180 градусов направо",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "turn body right 180"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_022",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "повернись налево на девяносто градусов",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "turn body left 90"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_023",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "сделай присед градусов на сорок пять",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "lower body 45"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_024",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "опустись всем телом на 100 градусов",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "lower body 100"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_025",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "подними левую ногу на 90",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise leg_l 90"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_026",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "подними руки и поверни голову налево",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise arms",
+     "alt": [
+      "raise arms 180"
+     ]
+    },
+    {
+     "intent": "BODY_MOVE",
+     "body": "turn head left"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_027",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "наклонись вперёд на 30 и поверни голову направо",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "lower torso 30"
+    },
+    {
+     "intent": "BODY_MOVE",
+     "body": "turn head right"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_028",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "расслабь руки",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "relax arms"
+    }
+   ]
+  },
+  {
+   "id": "b_ru_029",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "расслабься полностью",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "relax all",
+     "alt": [
+      "relax"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "b_en_001",
+   "lang": "en",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "raise your left arm 45 degrees",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise arm_l 45"
+    }
+   ]
+  },
+  {
+   "id": "b_en_002",
+   "lang": "en",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "hands up all the way",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise arms 180"
+    }
+   ]
+  },
+  {
+   "id": "b_en_003",
+   "lang": "en",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "spread your arms out to the sides",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise arms 90 out 90"
+    }
+   ]
+  },
+  {
+   "id": "b_en_004",
+   "lang": "en",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "slowly turn your head to the right",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "turn head right speed 0.5"
+    }
+   ]
+  },
+  {
+   "id": "b_en_005",
+   "lang": "en",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "lean forward 45 degrees",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "lower torso 45"
+    }
+   ]
+  },
+  {
+   "id": "b_en_006",
+   "lang": "en",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "turn your whole body left ninety degrees",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "turn body left 90"
+    }
+   ]
+  },
+  {
+   "id": "b_en_007",
+   "lang": "en",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "lift your right leg bro",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise leg_r"
+    }
+   ]
+  },
+  {
+   "id": "b_en_008",
+   "lang": "en",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "put your arms down and tilt your head right",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "lower arms"
+    },
+    {
+     "intent": "BODY_MOVE",
+     "body": "tilt head right"
+    }
+   ]
+  },
+  {
+   "id": "b_es_001",
+   "lang": "es",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "levanta el brazo derecho y gira la cabeza a la izquierda",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "raise arm_r"
+    },
+    {
+     "intent": "BODY_MOVE",
+     "body": "turn head left"
+    }
+   ]
+  },
+  {
+   "id": "b_es_002",
+   "lang": "es",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "baja los brazos despacio",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "lower arms speed 0.5"
+    }
+   ]
+  },
+  {
+   "id": "b_es_003",
+   "lang": "es",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "inclina la cabeza a la derecha",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "tilt head right"
+    }
+   ]
+  },
+  {
+   "id": "b_es_004",
+   "lang": "es",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "inclínate hacia delante 30 grados",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "lower torso 30"
+    }
+   ]
+  },
+  {
+   "id": "b_es_005",
+   "lang": "es",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "agáchate noventa grados con el cuerpo",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "lower body 90"
+    }
+   ]
+  },
+  {
+   "id": "b_es_006",
+   "lang": "es",
+   "scene": "foot",
+   "group": "body_move",
+   "text": "relájate tío",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "relax all",
+     "alt": [
+      "relax"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "b_ru_030",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "strike",
+   "text": "бей кулаком",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "punch"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_ru_031",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "strike",
+   "text": "прямой правой",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "punch"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_ru_032",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "strike",
+   "text": "давай джеб",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "jab",
+     "alt": [
+      "punch left"
+     ]
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_ru_033",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "strike",
+   "text": "левой прямой, быстро",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "jab speed 2",
+     "alt": [
+      "punch left speed 2"
+     ]
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_ru_034",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "strike",
+   "text": "хук правой",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "hook"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_ru_035",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "strike",
+   "text": "левый хук со всей силы",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "hook left hard"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_ru_036",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "strike",
+   "text": "апер кот",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "uppercut"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_ru_037",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "strike",
+   "text": "апперкот левой",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "uppercut left"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_ru_038",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "strike",
+   "text": "удар локтем, резко",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "elbow sharp 1"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_ru_039",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "strike",
+   "text": "пни ногой",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "kick"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_ru_040",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "strike",
+   "text": "боковой удар ногой",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "sidekick"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_ru_041",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "strike",
+   "text": "высокий удар ногой",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "kick high"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_ru_042",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "strike",
+   "text": "левым коленом ударь",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "knee left"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_ru_043",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "strike",
+   "text": "сделай удар головой",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "headbutt"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_ru_044",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "strike",
+   "text": "прикладом ударь слабенько",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "butt soft"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_en_009",
+   "lang": "en",
+   "scene": "foot",
+   "group": "strike",
+   "text": "throw a jab",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "jab",
+     "alt": [
+      "punch left"
+     ]
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_en_010",
+   "lang": "en",
+   "scene": "foot",
+   "group": "strike",
+   "text": "right hook, hard",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "hook hard"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_en_011",
+   "lang": "en",
+   "scene": "foot",
+   "group": "strike",
+   "text": "left uppercut",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "uppercut left"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_en_012",
+   "lang": "en",
+   "scene": "foot",
+   "group": "strike",
+   "text": "do a side kick",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "sidekick"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_en_013",
+   "lang": "en",
+   "scene": "foot",
+   "group": "strike",
+   "text": "knee strike, fast",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "knee speed 2"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_en_014",
+   "lang": "en",
+   "scene": "foot",
+   "group": "strike",
+   "text": "low kick with the left leg",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "kick left low"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_es_007",
+   "lang": "es",
+   "scene": "foot",
+   "group": "strike",
+   "text": "lanza un gancho de izquierda",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "hook left"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_es_008",
+   "lang": "es",
+   "scene": "foot",
+   "group": "strike",
+   "text": "da una patada alta",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "kick high"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_es_009",
+   "lang": "es",
+   "scene": "foot",
+   "group": "strike",
+   "text": "un codazo fuerte",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "elbow hard"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_es_010",
+   "lang": "es",
+   "scene": "foot",
+   "group": "strike",
+   "text": "dale un golpe de culata al aire",
+   "want": [
+    {
+     "intent": "BODY_MOVE",
+     "body": "butt"
+    }
+   ],
+   "must_not": [
+    "MELEE"
+   ]
+  },
+  {
+   "id": "b_ru_045",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "melee_contrast",
+   "text": "врежь ему",
+   "want": [
+    {
+     "intent": "MELEE"
+    }
+   ],
+   "must_not": [
+    "BODY_MOVE"
+   ]
+  },
+  {
+   "id": "b_ru_046",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "melee_contrast",
+   "text": "пни этого гада",
+   "want": [
+    {
+     "intent": "MELEE"
+    }
+   ],
+   "must_not": [
+    "BODY_MOVE"
+   ]
+  },
+  {
+   "id": "b_ru_047",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "melee_contrast",
+   "text": "дай ему прикладом",
+   "want": [
+    {
+     "intent": "MELEE"
+    }
+   ],
+   "must_not": [
+    "BODY_MOVE"
+   ]
+  },
+  {
+   "id": "b_ru_048",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "melee_contrast",
+   "text": "вмажь ему хук справа",
+   "want": [
+    {
+     "intent": "MELEE"
+    }
+   ],
+   "must_not": [
+    "BODY_MOVE"
+   ]
+  },
+  {
+   "id": "b_ru_049",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "melee_contrast",
+   "text": "коленом его, коленом",
+   "want": [
+    {
+     "intent": "MELEE"
+    }
+   ],
+   "must_not": [
+    "BODY_MOVE"
+   ]
+  },
+  {
+   "id": "b_ru_050",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "melee_contrast",
+   "text": "ударь врага кулаком",
+   "want": [
+    {
+     "intent": "MELEE"
+    }
+   ],
+   "must_not": [
+    "BODY_MOVE"
+   ]
+  },
+  {
+   "id": "b_en_015",
+   "lang": "en",
+   "scene": "foot",
+   "group": "melee_contrast",
+   "text": "punch that guy",
+   "want": [
+    {
+     "intent": "MELEE"
+    }
+   ],
+   "must_not": [
+    "BODY_MOVE"
+   ]
+  },
+  {
+   "id": "b_en_016",
+   "lang": "en",
+   "scene": "foot",
+   "group": "melee_contrast",
+   "text": "elbow him in the face",
+   "want": [
+    {
+     "intent": "MELEE"
+    }
+   ],
+   "must_not": [
+    "BODY_MOVE"
+   ]
+  },
+  {
+   "id": "b_es_011",
+   "lang": "es",
+   "scene": "foot",
+   "group": "melee_contrast",
+   "text": "pégale un puñetazo",
+   "want": [
+    {
+     "intent": "MELEE"
+    }
+   ],
+   "must_not": [
+    "BODY_MOVE"
+   ]
+  },
+  {
+   "id": "b_es_012",
+   "lang": "es",
+   "scene": "foot",
+   "group": "melee_contrast",
+   "text": "dale una patada a ese tío",
+   "want": [
+    {
+     "intent": "MELEE"
+    }
+   ],
+   "must_not": [
+    "BODY_MOVE"
+   ]
+  },
+  {
+   "id": "b_ru_051",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "crouch_contrast",
+   "text": "присядь-ка",
+   "want": [
+    {
+     "intent": "CROUCH"
+    }
+   ],
+   "must_not": [
+    "BODY_MOVE"
+   ]
+  },
+  {
+   "id": "b_ru_052",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "crouch_contrast",
+   "text": "присядь пониже брат",
+   "want": [
+    {
+     "intent": "CROUCH"
+    }
+   ],
+   "must_not": [
+    "BODY_MOVE"
+   ]
+  },
+  {
+   "id": "c_ru_001",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_teach",
+   "text": "запомни связку тройка: джеб, прямой, левый хук",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "teach тройка = jab ; punch ; hook left"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_002",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_teach",
+   "text": "выучи комбо мельница: руки в стороны, потом опусти их",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "teach мельница = raise arms 90 out 90 ; lower arms"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_003",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_teach",
+   "text": "новая связка называется приветствие: правую руку вверх, потом опусти её",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "teach приветствие = raise arm_r 180 ; lower arm_r"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_004",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_teach",
+   "text": "запомни связку удар дракона апперкот потом боковой ногой",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "teach удар дракона = uppercut ; sidekick"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_005",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_teach",
+   "text": "запомни комбинацию зарядка: присед на 90 градусов, а потом расслабься",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "teach зарядка = lower body 90 ; relax all",
+     "alt": [
+      "teach зарядка = lower body 90 ; relax"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c_ru_006",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_teach",
+   "text": "связка вертушка: повернись всем телом направо на 180 и удар ногой, запомни",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "teach вертушка = turn body right 180 ; kick",
+     "alt": [
+      "teach вертушка = turn body right 180 + kick"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c_ru_007",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_teach",
+   "text": "запомни связку победа: руки вверх и одновременно подними голову",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "teach победа = raise arms 180 + raise head"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_008",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_teach",
+   "text": "запомни связку пауза: джеб, подожди секунду, потом хук",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "teach пауза = jab ; wait 1 ; hook"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_009",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_teach",
+   "text": "запомни связку кивок: опусти голову, потом подними голову, и сразу покажи",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "teach кивок = lower head ; raise head",
+     "alt": [
+      "teach кивок = lower head ; relax head"
+     ]
+    },
+    {
+     "intent": "BODY_COMBO",
+     "body": "play кивок"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_010",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_play",
+   "text": "а ну-ка тройку",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "play тройка"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_011",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_play",
+   "text": "выполни связку мельница",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "play мельница"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_012",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_play",
+   "text": "давай вертушку",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "play вертушка"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_013",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_play",
+   "text": "изобрази приветствие",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "play приветствие"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_014",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_play",
+   "text": "запусти комбо удар дракона",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "play удар дракона"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_015",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_forget",
+   "text": "удали связку мельница",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "forget мельница"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_016",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_forget",
+   "text": "забудь комбо тройка",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "forget тройка"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_017",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_forget",
+   "text": "сотри из памяти вертушку",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "forget вертушка"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_018",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_list",
+   "text": "какие у тебя есть связки?",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "combos"
+    }
+   ]
+  },
+  {
+   "id": "c_ru_019",
+   "lang": "ru",
+   "scene": "foot",
+   "group": "combo_list",
+   "text": "перечисли свои комбо",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "combos"
+    }
+   ]
+  },
+  {
+   "id": "c_en_001",
+   "lang": "en",
+   "scene": "foot",
+   "group": "combo_teach",
+   "text": "remember a combo called hammer: elbow, then knee",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "teach hammer = elbow ; knee"
+    }
+   ]
+  },
+  {
+   "id": "c_en_002",
+   "lang": "en",
+   "scene": "foot",
+   "group": "combo_teach",
+   "text": "learn the salute combo: right arm all the way up, then put it down",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "teach salute = raise arm_r 180 ; lower arm_r"
+    }
+   ]
+  },
+  {
+   "id": "c_en_003",
+   "lang": "en",
+   "scene": "foot",
+   "group": "combo_play",
+   "text": "do the hammer",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "play hammer"
+    }
+   ]
+  },
+  {
+   "id": "c_en_004",
+   "lang": "en",
+   "scene": "foot",
+   "group": "combo_play",
+   "text": "show me your salute combo",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "play salute"
+    }
+   ]
+  },
+  {
+   "id": "c_en_005",
+   "lang": "en",
+   "scene": "foot",
+   "group": "combo_forget",
+   "text": "forget the hammer combo",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "forget hammer"
+    }
+   ]
+  },
+  {
+   "id": "c_en_006",
+   "lang": "en",
+   "scene": "foot",
+   "group": "combo_list",
+   "text": "which combos have you got",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "combos"
+    }
+   ]
+  },
+  {
+   "id": "c_es_001",
+   "lang": "es",
+   "scene": "foot",
+   "group": "combo_teach",
+   "text": "aprende el combo relámpago: jab, gancho y patada",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "teach relámpago = jab ; hook ; kick"
+    }
+   ]
+  },
+  {
+   "id": "c_es_002",
+   "lang": "es",
+   "scene": "foot",
+   "group": "combo_teach",
+   "text": "memoriza la combinación saludo: levanta el brazo derecho y luego bájalo",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "teach saludo = raise arm_r ; lower arm_r"
+    }
+   ]
+  },
+  {
+   "id": "c_es_003",
+   "lang": "es",
+   "scene": "foot",
+   "group": "combo_play",
+   "text": "haz el relámpago",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "play relámpago"
+    }
+   ]
+  },
+  {
+   "id": "c_es_004",
+   "lang": "es",
+   "scene": "foot",
+   "group": "combo_forget",
+   "text": "olvida la combinación saludo",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "forget saludo"
+    }
+   ]
+  },
+  {
+   "id": "c_es_005",
+   "lang": "es",
+   "scene": "foot",
+   "group": "combo_list",
+   "text": "¿qué combos te sabes?",
+   "want": [
+    {
+     "intent": "BODY_COMBO",
+     "body": "combos"
+    }
+   ]
+  }
+ ]
+}

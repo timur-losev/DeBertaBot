@@ -45,6 +45,19 @@ BRAINS["v68s2b"], BRAINS["v69s3b"] = BRAINS["v68s2"], BRAINS["v69s3"]
 # 2026-11-06, the owner: the decoder on every English line too (coop_cli --decoder-every-line); v69s5now = v69s5 on today's coop_cli
 BRAINS["v69s5now"] = BRAINS["v69s5all"] = BRAINS["v69s5"]
 EXTRA = {"v69s5all": ["--decoder-every-line"]}
+# round v70 (2026-11-11): v69s5n70 = the deployed brain (bot v67, decoder v69s5) on today's coop_cli; v70 = bot v70 + decoder v70
+BRAINS["v69s5n70"] = BRAINS["v69s5"]
+BRAINS["v70"] = (os.path.join(REPO, "models", "coop-deberta-v3-ens3-v70", "cpp"), os.path.join(REPO, "models", "coop-chain-v70", "cpp"))
+EXTRA["v69s5n70"] = EXTRA["v70"] = ["--decoder-every-line"]
+# bot v70b: the canon's turns among the seeds (2026-11-11), with decoder v70
+BRAINS["v70b"] = (os.path.join(REPO, "models", "coop-deberta-v3-ens3-v70b", "cpp"), os.path.join(REPO, "models", "coop-chain-v70", "cpp"))
+# bot v70c: + the decoder's own "turn left" / "turn right" as LOOK_AT seeds (v70b still asked again on them)
+BRAINS["v70c"] = (os.path.join(REPO, "models", "coop-deberta-v3-ens3-v70c", "cpp"), os.path.join(REPO, "models", "coop-chain-v70", "cpp"))
+EXTRA["v70b"] = EXTRA["v70c"] = ["--decoder-every-line"]
+# the cross brains of 2026-11-11 (which half lost the old tests: the bot or the decoder): bot v67 + decoder v70, bot v70c + decoder v69s5
+BRAINS["x67d70"] = (BRAINS["v69s5"][0], BRAINS["v70c"][1])
+BRAINS["x70cd69"] = (BRAINS["v70c"][0], BRAINS["v69s5"][1])
+EXTRA["x67d70"] = EXTRA["x70cd69"] = ["--decoder-every-line"]
 # one entity of every object, some with their qualifiers (several tables and crates, as the test range has)
 ENTITIES = [("table_w", "table", "white", 0, 6), ("table_r", "table", "red", 30, 9), ("table_b", "table", "blue", -40, 8),
             ("table_y", "table", "yellow", 70, 12), ("crate_1", "crate", None, 10, 3), ("crate_big", "crate", "big", -15, 5),

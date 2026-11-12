@@ -1,0 +1,14 @@
+brain v70c on test66 (192 items, the game's path): intent 180/192 = 93.8%, intent and place 179/192 = 93.2%   (en 50/54, es 51/55, ru 78/83)
+  NO  en Blow the door open.                          -> open the door up                             read OPEN           want BREACH
+  NO  en Head outside, bro.                           -> get out bro                                  read GET_OUT        want MOVE_TO
+  NO  en nah use your gun                             -> nah use your gun                             read SWITCH_WEAPON  want OPEN_FIRE
+  NO  en don't throw that crate man                   -> don't throw that crate man                   read WAIT           want COLLECT
+  NO  ru отвали, не мешай пройти                      -> remove it, let me through                    read DEMOLISH       want GIVE_WAY
+  NO  ru шмальни в стекло под ногами                  -> smack the glass under your feet              read SMOKE          want OPEN_FIRE
+  NO  ru заложи заряд и взорви дверь                  -> plant the charge                             read PLANT          want BREACH
+  NO  ru не спускай её                                -> keep holding it                              read COLLECT        want WAIT
+  NO  ru Ты мой брат, понял?                          -> You're my brother, did you hear that?        read NONE           want SMALL_TALK
+  NO  es estás en medio muévete                       -> move around                                  read MOVE_TO        want GIVE_WAY
+  NO  es parte esa ventana                            -> that window                                  read OPEN_FIRE      want MELEE
+  NO  es tírala lejos                                 -> throw it far                                 read FRAG           want DROP
+  NO  es dispárale                                    -> shoot him                                    place: want window

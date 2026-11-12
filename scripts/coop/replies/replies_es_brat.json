@@ -545,7 +545,57 @@
   "Then to {thing}.": "Luego hacia {thing}.",
   "Then where you pointed.": "Luego adonde señalaste.",
   "And {n} more after that.": "Y {n} {n:orden|órdenes} más después.",
-  "I can't undo that one.": "Eso no lo puedo deshacer, hermano."
+  "I can't undo that one.": "Eso no lo puedo deshacer, hermano.",
+  "I'll get the car.": "Voy por el vehículo, hermano.",
+  "There's no car here.": "Hermano, aquí no hay ningún vehículo.",
+  "I'm not driving.": "Hermano, no voy al volante.",
+  "Stopping.": "Freno.",
+  "Faster.": "Acelero.",
+  "That's as fast as I go here.": "Aquí no voy más rápido, hermano.",
+  "Slower.": "Voy más despacio.",
+  "Any slower and we stop.": "Más despacio y nos paramos, hermano.",
+  "I don't know the roads here.": "Hermano, no conozco estas calles.",
+  "I'm not on a road.": "No estoy en ninguna calle, hermano.",
+  "Driving on.": "Sigo adelante.",
+  "Straight on.": "Sigo de frente.",
+  "There's no road straight on.": "No se puede seguir de frente, hermano.",
+  "The road ends here.": "Aquí se acaba la calle, hermano.",
+  "At the crossroads.": "En el cruce, hermano.",
+  "End of the road.": "Fin de la calle, hermano.",
+  "Left or right?": "¿Izquierda o derecha, hermano?",
+  "Turning left at the crossroads.": "En el cruce giro a la izquierda, hermano.",
+  "Turning right at the crossroads.": "En el cruce giro a la derecha, hermano.",
+  "Taking the second left.": "Tomo la segunda a la izquierda.",
+  "Taking the second right.": "Tomo la segunda a la derecha.",
+  "Taking the third left.": "Tomo la tercera a la izquierda.",
+  "Taking the third right.": "Tomo la tercera a la derecha.",
+  "Taking the next left.": "Tomo la siguiente a la izquierda.",
+  "Taking the next right.": "Tomo la siguiente a la derecha.",
+  "Driving to the crossroads.": "Voy hasta el cruce, hermano.",
+  "There's no left turn here.": "Aquí no se puede girar a la izquierda, hermano.",
+  "There's no right turn here.": "Aquí no se puede girar a la derecha, hermano.",
+  "There's no left turn ahead.": "Hermano, más adelante no hay giro a la izquierda.",
+  "There's no right turn ahead.": "Hermano, más adelante no hay giro a la derecha.",
+  "There's no second left ahead.": "Más adelante no hay segunda a la izquierda, hermano.",
+  "There's no second right ahead.": "Más adelante no hay segunda a la derecha, hermano.",
+  "There's no further left ahead.": "Hermano, no hay más giros a la izquierda.",
+  "There's no further right ahead.": "Hermano, no hay más giros a la derecha.",
+  "Where to?": "¿A dónde vamos, hermano?",
+  "No road goes there.": "Hermano, no hay calle que llegue ahí.",
+  "We're here.": "Llegamos, hermano.",
+  "On my way.": "En camino, hermano.",
+  "Driving to {thing}.": "Hermano, vamos hacia {thing}.",
+  "Pulling over.": "Me detengo a un lado.",
+  "Parked.": "Estacionado, hermano.",
+  "No room to pull over here.": "Aquí no hay lugar para estacionar, hermano.",
+  "Turning round.": "Doy la vuelta.",
+  "Turned round.": "Ya di la vuelta, hermano.",
+  "Out of the way!": "¡Apártate!",
+  "Something's blocking the road.": "Hermano, algo bloquea la calle.",
+  "The car's stuck.": "Hermano, el vehículo está atascado.",
+  "I can't move like that.": "Hermano, así no puedo moverme.",
+  "I know these combos: {name}.": "Hermano, me sé estos combos: {name}.",
+  "I don't know any combos yet.": "Hermano, todavía no me sé ningún combo."
  },
  "slots": {
   "where": {
@@ -1207,6 +1257,126 @@
    },
    "the switch": {
     "text": "el interruptor"
+   },
+   "a bank": {
+    "text": "un banco"
+   },
+   "the bank": {
+    "text": "el banco"
+   },
+   "a restaurant": {
+    "text": "un restaurante"
+   },
+   "the restaurant": {
+    "text": "el restaurante"
+   },
+   "a cafe": {
+    "text": "una cafetería"
+   },
+   "the cafe": {
+    "text": "la cafetería"
+   },
+   "a shop": {
+    "text": "una tienda"
+   },
+   "the shop": {
+    "text": "la tienda"
+   },
+   "a hotel": {
+    "text": "un hotel"
+   },
+   "the hotel": {
+    "text": "el hotel"
+   },
+   "a pharmacy": {
+    "text": "una farmacia"
+   },
+   "the pharmacy": {
+    "text": "la farmacia"
+   },
+   "a gas station": {
+    "text": "una gasolinera"
+   },
+   "the gas station": {
+    "text": "la gasolinera"
+   },
+   "a parking lot": {
+    "text": "un estacionamiento"
+   },
+   "the parking lot": {
+    "text": "el estacionamiento"
+   },
+   "a junction": {
+    "text": "un cruce"
+   },
+   "the junction": {
+    "text": "el cruce"
+   },
+   "a traffic light": {
+    "text": "un semáforo"
+   },
+   "the traffic light": {
+    "text": "el semáforo"
+   },
+   "a crosswalk": {
+    "text": "un paso de peatones"
+   },
+   "the crosswalk": {
+    "text": "el paso de peatones"
+   },
+   "a counter": {
+    "text": "un mostrador"
+   },
+   "the counter": {
+    "text": "el mostrador"
+   },
+   "a kiosk": {
+    "text": "un quiosco"
+   },
+   "the kiosk": {
+    "text": "el quiosco"
+   },
+   "a bench": {
+    "text": "una banca"
+   },
+   "the bench": {
+    "text": "la banca"
+   },
+   "a bin": {
+    "text": "una papelera"
+   },
+   "the bin": {
+    "text": "la papelera"
+   },
+   "an ATM": {
+    "text": "un cajero automático"
+   },
+   "the ATM": {
+    "text": "el cajero automático"
+   },
+   "a parasol": {
+    "text": "una sombrilla"
+   },
+   "the parasol": {
+    "text": "la sombrilla"
+   },
+   "a menu": {
+    "text": "un menú"
+   },
+   "the menu": {
+    "text": "el menú"
+   },
+   "a kitchen": {
+    "text": "una cocina"
+   },
+   "the kitchen": {
+    "text": "la cocina"
+   },
+   "a drinks machine": {
+    "text": "una máquina de bebidas"
+   },
+   "the drinks machine": {
+    "text": "la máquina de bebidas"
    }
   },
   "phrase": {
@@ -1497,6 +1667,18 @@
    "say how you are": {
     "text": "te cuento cómo estoy",
     "ready": "contarte cómo estoy"
+   },
+   "drive the car": {
+    "text": "voy al volante",
+    "ready": "ponerme al volante"
+   },
+   "move a body part": {
+    "text": "hago el movimiento",
+    "ready": "hacer el movimiento"
+   },
+   "teach or play a combo": {
+    "text": "hago el combo",
+    "ready": "hacer el combo"
    }
   },
   "object": {
@@ -1607,6 +1789,86 @@
    "rock": {
     "text": "roca",
     "none": "ninguna roca"
+   },
+   "bank": {
+    "text": "banco",
+    "none": "ningún banco"
+   },
+   "restaurant": {
+    "text": "restaurante",
+    "none": "ningún restaurante"
+   },
+   "cafe": {
+    "text": "cafetería",
+    "none": "ninguna cafetería"
+   },
+   "shop": {
+    "text": "tienda",
+    "none": "ninguna tienda"
+   },
+   "hotel": {
+    "text": "hotel",
+    "none": "ningún hotel"
+   },
+   "pharmacy": {
+    "text": "farmacia",
+    "none": "ninguna farmacia"
+   },
+   "gas station": {
+    "text": "gasolinera",
+    "none": "ninguna gasolinera"
+   },
+   "parking": {
+    "text": "estacionamiento",
+    "none": "ningún estacionamiento"
+   },
+   "junction": {
+    "text": "cruce",
+    "none": "ningún cruce"
+   },
+   "traffic light": {
+    "text": "semáforo",
+    "none": "ningún semáforo"
+   },
+   "crosswalk": {
+    "text": "paso de peatones",
+    "none": "ningún paso de peatones"
+   },
+   "counter": {
+    "text": "mostrador",
+    "none": "ningún mostrador"
+   },
+   "kiosk": {
+    "text": "quiosco",
+    "none": "ningún quiosco"
+   },
+   "bench": {
+    "text": "banca",
+    "none": "ninguna banca"
+   },
+   "bin": {
+    "text": "papelera",
+    "none": "ninguna papelera"
+   },
+   "atm": {
+    "text": "cajero automático",
+    "none": "ningún cajero automático"
+   },
+   "parasol": {
+    "text": "sombrilla",
+    "none": "ninguna sombrilla"
+   },
+   "menu": {
+    "text": "menú",
+    "none": "ningún menú"
+   },
+   "kitchen": {
+    "text": "cocina",
+    "none": "ninguna cocina"
+   },
+   "drinks machine": {
+    "text": "máquina de bebidas",
+    "none": "ninguna máquina de bebidas"
    }
   },
   "name": {

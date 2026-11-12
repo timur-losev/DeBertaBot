@@ -1,0 +1,79 @@
+bot: G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-ens3-v70c\cpp (74 labels, family gate, threshold 0.66)
+ok   "hey, follow me"                             FOLLOW_ME        1.00 act       queued -             
+ok   "breach on my go"                            BREACH           1.00 queued    queued BREACH        
+ok   "go"                                         GO_NOW           0.99 execute   queued -             
+ok   "smoke the hallway when i say"               SMOKE            1.00 queued    queued SMOKE         
+ok   "wait"                                       WAIT             1.00 wait      queued -             
+ok   "go go go"                                   GO_NOW           1.00 go        queued -             
+ok   "hold the other angle"                       HOLD_OTHER_ANGLE 1.00 act       queued -              other
+ok   "flank left on my call"                      FLANK            1.00 queued    queued FLANK         
+ok   "don't push yet"                             WAIT             1.00 wait      queued -             
+ok   "two on the stairs, one lit"                 NONE             1.00 ignore    queued -             
+ok   "asdkj qwe"                                  DONT_KNOW        0.44 say_again queued -             
+ok   "do not come to me"                          WAIT             1.00 wait      queued -             
+ok   "cover me"                                   COVER_ME         1.00 act       queued -             
+ok   "take the other door on my signal"           HOLD_OTHER_ANGLE 0.68 queued    queued HOLD_OTHER_ANGLE other
+ok   "now!"                                       GO_NOW           1.00 execute   queued -             
+ok   "hold position"                              HOLD_POSITION    1.00 act       queued -             
+ok   "don't move, hold position"                  HOLD_POSITION    1.00 act       queued -             
+ok   "frag out on three"                          FRAG             0.99 queued    queued FRAG          
+ok   "never mind"                                 WAIT             1.00 wait      queued -             
+ok   "nice shot"                                  PRAISE           1.00 act       queued -             
+ok   "revive me"                                  HELP             1.00 act       queued -             
+ok   "rappel down on my mark"                     RAPPEL           1.00 act       queued -             
+ok   "okay go now"                                GO_NOW           1.00 go        queued -             
+ok   "fall back!"                                 FALL_BACK        1.00 act       queued -             
+ok   "drone it first"                             DRONE            1.00 act       queued -             
+ok   "vault through the window"                   VAULT_WINDOW     1.00 act       queued -             
+ok   "hold that angle"                            HOLD_ANGLE       1.00 act       queued -             
+ok   "move to the ping"                           MOVE_TO          1.00 act       queued -             
+ok   "defuse it"                                  DEFUSE           1.00 act       queued -             
+ok   "entry now"                                  ENTRY            1.00 act       queued -             
+ok   "flash in when i say"                        FLASH            1.00 queued    queued FLASH         
+ok   "uh, don't breach"                           WAIT             1.00 wait      queued -             
+ok   "go"                                         GO_NOW           0.99 go        queued -             
+ok   "plant the bomb on my count"                 PLANT            1.00 queued    queued PLANT         
+ok   "wait for my call"                           WAIT             0.45 say_again queued PLANT         
+ok   "execute"                                    GO_NOW           1.00 execute   queued -             
+ok   "what"                                       NONE             1.00 ignore    queued -             
+ok   "прикрой меня"                    COVER_ME         0.79 act       queued -             
+ok   "the opposite window, on three"              HOLD_OTHER_ANGLE 0.67 queued    queued HOLD_OTHER_ANGLE other
+ok   "GO"                                         GO_NOW           1.00 execute   queued -             
+ok   "hold   the other   angle"                   HOLD_OTHER_ANGLE 1.00 act       queued -              other
+ok   "go find cover"                              TAKE_COVER       0.66 act       queued -             
+ok   "hide there"                                 TAKE_COVER       1.00 act       queued -             
+ok   "cover yourself"                             TAKE_COVER       1.00 act       queued -             
+ok   "cover me while I reload"                    COVER_ME         1.00 act       queued -             
+ok   "open the door"                              OPEN             1.00 act       queued -             
+ok   "open the other window on my go"             OPEN             1.00 queued    queued OPEN           other
+ok   "go"                                         GO_NOW           0.99 execute   queued -             
+ok   "don't open that door"                       WAIT             1.00 wait      queued -             
+ok   "break in"                                   ENTRY            0.71 act       queued -             
+ok   "open window"                                VAULT_WINDOW     0.73 act       queued -             
+ok   "breach window"                              BREACH           1.00 act       queued -             
+ok   "get down behind the car"                    TAKE_COVER       1.00 act       queued -             
+ok   "shut the door"                              OPEN_FIRE        1.00 act       queued -             
+ok   "open fire"                                  OPEN_FIRE        1.00 act       queued -             
+ok   "take cover when i say"                      TAKE_COVER       1.00 queued    queued TAKE_COVER    
+ok   "wait"                                       WAIT             1.00 wait      queued -             
+ok   "watch that door"                            HOLD_ANGLE       1.00 act       queued -             
+ok   "breach on my go"                            BREACH           1.00 queued    queued BREACH        
+ok   "don't worry about it, breach"               WAIT             0.94 wait      queued -             
+ok   "never mind the wall, flank left"            FLANK            0.68 negated   queued -             
+ok   "no need to wait, go go go"                  WAIT             0.71 wait      queued -             
+ok   "uh the thing"                               ROLL             0.62 say_again queued -             
+ok   "hmm maybe"                                  MAYBE            1.00 answer    queued -             
+ok   "blue"                                       NONE             0.62 say_again queued -             
+ok   "that one there i guess"                     PUSH             0.32 say_again queued -             
+ok   "smoke the north door on my go"              SMOKE            1.00 queued    queued SMOKE         
+ok   "two on red stairs"                          NONE             1.00 ignore    queued SMOKE         
+ok   "go"                                         GO_NOW           0.99 execute   queued -             
+ok   "hold the main door"                         HOLD_ANGLE       1.00 act       queued -             
+ok   "i'll take the north door, you take the south window" HOLD_OTHER_ANGLE 1.00 act       queued -             
+ok   "go to the roof"                             MOVE_TO          1.00 act       queued -             
+ok   "push main"                                  ENTRY            1.00 act       queued -             
+ok   "hide behind the sofa in the basement"       TAKE_COVER       1.00 act       queued -             
+ok   "open the back door"                         OPEN             1.00 act       queued -             
+ok   "take blue on my go"                         MOVE_TO          1.00 queued    queued MOVE_TO       
+ok   "wait"                                       WAIT             1.00 wait      queued -             
+dialogue, 77 lines: the C++ bot did what the Python bot did on 77/77

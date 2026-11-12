@@ -31,8 +31,9 @@ def sessions(items):
 
 
 def replay(tag):
+    tag, _, chain = tag.partition("=")   # NAME=CHAIN: a chain under another name (round v70: v69s5 with bot v67, every line)
     items = json.load(io.open(TALK, encoding="utf-8"))["items"]
-    b = M.Brain(os.path.join(M.REPO, "models", f"coop-chain-{tag}", "cpp"), "ru")
+    b = M.Brain(os.path.join(M.REPO, "models", f"coop-chain-{chain or tag}", "cpp"), "ru")
     rows = []
     for k, sess in enumerate(sessions(items)):
         b.ask({"cmd": "reset"})

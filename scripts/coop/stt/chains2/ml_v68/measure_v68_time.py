@@ -24,6 +24,8 @@ def brain(chain, lang):
     args = [EXE, "--serve", "--model-dir", BOT, "--threads", "2", "--no-spin"]
     if chain:
         args += ["--chain", chain, "--decoder-cpu", "--decoder-threads", "4"]
+        if os.environ.get("COOP_EVERY_LINE") == "1":
+            args += ["--decoder-every-line"]   # as the game runs the brain since 2026-11-06 (round v70's measures)
     if lang != "en":
         args += ["--language", lang]
     p = subprocess.Popen(args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True, encoding="utf-8")

@@ -1,0 +1,256 @@
+talk69_0001  Is that
+    v69s5n70: act WHAT_IS_IT  Is that  
+    v70c: act SEE_THING  Is that  
+talk69_0002  Yeah, what
+    v69s5n70: say_again NONE  Yeah, what  
+    v70c: say_again YES  Yeah, what  
+talk69_0007  Вот это верхний. Брат, можешь спрятаться под землю?
+    v69s5n70: act TAKE_COVER  This is the top. Bro, can you hide underground?  
+    v70c: ignore NONE | act TAKE_COVER  That's the top one, bro | can you hide below ground  
+talk69_0009  Еще ниже.
+    v69s5n70: act MOVE_TO  Go further down.  
+    v70c: act BODY_MOVE  lower further  
+talk69_0010  Brat.
+    v69s5n70: say_again CROUCH  Brat.  
+    v70c: say_again ENTRY  Bramble.  
+talk69_0012  Нет, тебя зовут Тимур.
+    v69s5n70: act SMALL_TALK  what is your name  
+    v70c: negated NONE  no, your name is tamer  
+talk69_0015  Тим димон туда.
+    v69s5n70: ignore NONE  Tim's one tap.  
+    v70c: say_again CHECK  Timo's a dimmer over there.  
+talk69_0020  Вон туда yellowbit.
+    v69s5n70: say_again MOVE_TO  There yellowbit.  
+    v70c: ask PUSH  Yellowbit over there.  
+talk69_0023  The leaves.
+    v69s5n70: say_again COME_BACK  The leaves.  
+    v70c: say_again NONE  The leaves.  
+talk69_0027  Прыляж.
+    v69s5n70: act JUMP  jump down  
+    v70c: say_again MOVE_TO  Climb.  
+talk69_0032  Stine.
+    v69s5n70: act STAND_UP  Get up.  
+    v70c: act HOLD_POSITION  Stay.  
+talk69_0038  Lash.
+    v69s5n70: say_again DROP  Lash.  
+    v70c: say_again PRONE  Lash.  
+talk69_0041  Запомню, что ляж, ях это пляж на пол.
+    v69s5n70: act PRONE  I'll remember to go prone, it's a beach like this.  
+    v70c: ignore NONE  I'll remember where to sleep, this is a beach  
+talk69_0042  Запомни, что ях это ляж на пол.
+    v69s5n70: say_again NONE  remember that this is a floor lay down  
+    v70c: act BODY_COMBO  forget it, what is that is a floor  
+talk69_0058  You should have.
+    v69s5n70: say_again OPEN_FIRE  You should have.  
+    v70c: say_again NONE  You should have.  
+talk69_0060  Ляш.
+    v69s5n70: say_again HOLD_FIRE  Go easy.  
+    v70c: act PRONE  lie down  
+talk69_0062  Left на пол.
+    v69s5n70: act PRONE  Left on the floor.  
+    v70c: act BODY_MOVE  left half  
+talk69_0063  It's done.
+    v69s5n70: say_again GO_NOW  It's done.  
+    v70c: say_again WAIT  It's done.  
+talk69_0067  Тай на ноги.
+    v69s5n70: act CROUCH  crouch  
+    v70c: act STAND_UP  stand up  
+talk69_0077  Ещ<unk> раз.
+    v69s5n70: act REPEAT  again  
+    v70c: act JUMP  jump over it again  
+talk69_0078  Через стену прям.
+    v69s5n70: ask FLASH  Throw a stun through this wall.  
+    v70c: ask JUMP  jump over this wall  
+talk69_0082  A tu.
+    v69s5n70: ask JUMP  Hop over this wall.  
+    v70c: answer MAYBE  On your call.  
+talk69_0084  Second one.
+    v69s5n70: resolved OPEN | act MOVE_TO  Open the other door. | Go in through the door.  
+    v70c: ask MOVE_TO  Go in through the second door.  
+talk69_0091  Меня зовут Эмти.
+    v69s5n70: ignore NONE  my name is emiti  
+    v70c: act SMALL_TALK  my name is emmy  
+talk69_0107  Иди сюда.
+    v69s5n70: act MOVE_TO  go here  
+    v70c: act FOLLOW_ME  Come here.  
+talk69_0111  Stein, stain, stay, stain.
+    v69s5n70: say_again WAIT  Stein, stain, stay, stain.  
+    v70c: act HOLD_POSITION  Stein, stain, stay, stain.  
+talk69_0112  Поднимись.
+    v69s5n70: act JUMP  climb up  
+    v70c: act STAND_UP  get back up  
+talk69_0117  обратно туда где ты там был туда ее принеси
+    v69s5n70: act GO_BACK | act DELIVER  back to where you was, back to where you was | carry it there  
+    v70c: act GO_BACK | say_again GO_BACK  back to where you were | bring it back to where you were  
+talk69_0123  Возьми эту коробку, поставь ее на камень.
+    v69s5n70: act COLLECT | act DELIVER  take this box | put it on the rock  
+    v70c: act DELIVER  Put this box on the rock.  
+talk69_0130  Получилось?
+    v69s5n70: say_again GO_NOW  did it work  
+    v70c: say_again NONE  did it work?  
+talk69_0146  What's this?
+    v69s5n70: act WHAT_IS_IT  What's this?  
+    v70c: act FOLLOW_ME  Call me Michael.  
+talk69_0152  Jamed all.
+    v69s5n70: say_again CHECK  jake all  
+    v70c: act JUMP  Jamed all.  
+talk69_0179  Sleeze.
+    v69s5n70: act SMOKE  Sleeze.  
+    v70c: say_again ENTRY  Sleeze.  
+talk69_0188  Вот эту. Вот эту стену.
+    v69s5n70: act SEE_THING  You see this wall?  
+    v70c: ask JUMP  Hop over this wall.  
+talk69_0192  Иди сюда, вот сюда.
+    v69s5n70: resolved MOVE_TO  Go here, right here.  
+    v70c: ask FOLLOW_ME  Come here, that's where I mean it.  
+talk69_0211  Залезай за мной на желтой кровать.
+    v69s5n70: act JUMP  climb onto the yellow bed  
+    v70c: act FOLLOW_ME  Follow me onto the yellow bed.  
+talk69_0212  Залезай за мной на кровать.
+    v69s5n70: act FOLLOW_ME  follow me to the bed  
+    v70c: act TAKE_COVER  hide behind the bed  
+talk69_0214  Вот здесь. Здесь она здесь.
+    v69s5n70: act MOVE_TO  Go here, where I'm pointing.  
+    v70c: resolved FOLLOW_ME  Find me here.  
+talk69_0226  Иди камни сюда.
+    v69s5n70: act COLLECT  go pick up the rocks here  
+    v70c: act DELIVER  bring the stones here  
+talk69_0229  Бри оружие.
+    v69s5n70: act SWITCH_WEAPON  bri weapon  
+    v70c: ask MELEE  melee the weapon  
+talk69_0232  Бади, не надо запоминать было.
+    v69s5n70: say_again DONT_KNOW  don't remember  
+    v70c: ignore NONE  actually dont have to remember  
+talk69_0250  Quando eu paxu.
+    v69s5n70: say_again NONE  paxu  
+    v70c: say_again HOLD_POSITION  When I paxu.  
+talk69_0251  Ты куда пош<unk>л?
+    v69s5n70: say_again SMALL_TALK  where are you going  
+    v70c: say_again NONE  Where did you go, anyway?  
+talk69_0255  Я прыгну через нее.
+    v69s5n70: act JUMP  jump over it  
+    v70c: ignore NONE  I'll jump over it.  
+talk69_0260  Sto
+    v69s5n70: act CROUCH  Sto  
+    v70c: wait WAIT  Stop.  
+talk69_0264  Skies.
+    v69s5n70: say_again OPEN_FIRE  Skies.  
+    v70c: say_again MOVE_TO  Skies.  
+talk69_0272  Окиси на крышу.
+    v69s5n70: say_again FRAG  ok acid the roof  
+    v70c: ignore NONE  CO2 on the roof.  
+talk69_0274  Теперь и сюда.
+    v69s5n70: say_again GO_NOW  now here  
+    v70c: act FOLLOW_ME  Come here.  
+talk69_0275  Пробку отнеси на крышу и оставь там.
+    v69s5n70: ask DELIVER  Take the crate to the roof.  ['Leave it there.']
+    v70c: say_again OPEN  Get the bunker up on the roof and leave it.  
+talk69_0287  Lasta.
+    v69s5n70: say_again NONE  last one  
+    v70c: say_again DROP  Lest.  
+talk69_0290  Spine blade.
+    v69s5n70: say_again JUMP  Spine blade.  
+    v70c: say_again OPEN_FIRE  Spine blade.  
+talk69_0295  Заходи в комнату.
+    v69s5n70: act MOVE_TO  Go inside.  
+    v70c: act ENTRY  Push into the room.  
+talk69_0297  Sight that you want.
+    v69s5n70: say_again LOOK_AT  Sight that you want.  
+    v70c: say_again SEE_THING  Sight that you want.  
+talk69_0302  Stool, stuff, stuff.
+    v69s5n70: say_again STAND_UP  Stool, stuff, stuff.  
+    v70c: say_again GO_NOW  Stool, stuff, stuff.  
+talk69_0303  Zet na spol.
+    v69s5n70: say_again FRAG  Zet na spol.  
+    v70c: say_again CHECK  Zet na spol.  
+talk69_0307  Зарез ко мне на желтую кровать.
+    v69s5n70: say_again MELEE  Slice me off the yellow bed.  
+    v70c: act ATTACK  attack the enemy at the yellow bed  
+talk69_0313  Найди камень.
+    v69s5n70: act MOVE_TO  find a rock  
+    v70c: act COLLECT  Find the rock.  
+talk69_0316  Поднимись по ней на крышу.
+    v69s5n70: act MOVE_TO | ask MOVE_TO  Go up the blue stairs | go to the roof  
+    v70c: ask MOVE_TO  Find the blue stairs on the roof.  
+talk69_0318  Нать десенюю лестницу.
+    v69s5n70: act MOVE_TO  Move up the blue stairs.  
+    v70c: act FRAG  Nade the south stairs.  
+talk69_0320  Поднимись по ней на крышу.
+    v69s5n70: act MOVE_TO | ask MOVE_TO  Go up the blue stairs | go to the roof  
+    v70c: act RAPPEL | ask MOVE_TO  Rappel up along the blue stairs | go to the roof  
+talk69_0325  На крышу залезь.
+    v69s5n70: ask JUMP  climb up onto the roof  
+    v70c: ask MOVE_TO  Get up on the roof.  
+talk69_0327  Теперь сядь на тот стул.
+    v69s5n70: say_again GET_IN  Sit down on that chair.  
+    v70c: say_again JUMP  Now sit down on that chair.  
+talk69_0330  Что, слишком громко?
+    v69s5n70: act BODY_STATE  Too loud, would you?  
+    v70c: ignore NONE  Too loud, huh?  
+talk69_0332  But
+    v69s5n70: say_again GIVE_WAY  But  
+    v70c: act BODY_MOVE  But  
+talk69_0333  Body.
+    v69s5n70: act SMALL_TALK  Body.  
+    v70c: act BODY_MOVE  Body.  
+talk69_0335  Бади.
+    v69s5n70: go GO_NOW  go ahead  
+    v70c: act SMALL_TALK  hello there  
+talk69_0338  Поднимись на желтую кровать.
+    v69s5n70: act MOVE_TO  Move up to the yellow bed.  
+    v70c: act JUMP  climb up onto the yellow bed  
+talk69_0343  Day.
+    v69s5n70: say_again SMALL_TALK  Day.  
+    v70c: say_again GO_BACK  Day.  
+talk69_0344  Запомню, что лях на диван- это ляж на диван.
+    v69s5n70: act PRONE  I remember that lying on the sofa is the same as going prone.  
+    v70c: say_again NONE  i remember that lying on the sofa is the same as lying on the sofa  
+talk69_0345  Запомни, что лях на диван это ляжный диван.
+    v69s5n70: ignore NONE  remember that the guy on the sofa is lying down  
+    v70c: say_again REPAIR  this is the sofa bed  
+talk69_0348  Запомню, что лях на диванё это ляж на диван.
+    v69s5n70: act PRONE  I remember that lying on the sofa is the way to go.  
+    v70c: act BODY_COMBO | act BODY_COMBO  forget it | teach лях на диван = ляж на диван  
+talk69_0349  Запомни, что лях на диван это ляжена диван.
+    v69s5n70: act PRONE  lie down on the sofa  
+    v70c: say_again BODY_COMBO  teach лях на диван = lie down on the sofa  
+talk69_0360  Stein Safe.
+    v69s5n70: say_again TAKE_COVER  Stein Safe.  
+    v70c: say_again WAIT  Stein Safe.  
+talk69_0367  Dele vai, eles vai.
+    v69s5n70: act OPEN_FIRE  Light them up, they're coming through.  
+    v70c: say_again DELIVER  Deliver it, they'll go.  
+talk69_0398  B.
+    v69s5n70: say_again GO_NOW  B.  
+    v70c: say_again KILL_YOURSELF  B.  
+talk69_0400  Бани.
+    v69s5n70: say_again DEFUSE  ban it  
+    v70c: act REPAIR  repair the bomb  
+talk69_0419  Попробую еще раз.
+    v69s5n70: resolved NONE  i'll try again  
+    v70c: act REPEAT  try again  
+talk69_0432  Models.
+    v69s5n70: say_again DRONE  Models.  
+    v70c: say_again MOVE_TO  Models.  
+talk69_0449  Не получилось.
+    v69s5n70: say_again GO_BACK  it didn't work  
+    v70c: say_again GO_NOW  it didn't work  
+talk69_0460  Иди впереди меня.
+    v69s5n70: act GIVE_WAY  go ahead of me  
+    v70c: act MOVE_TO  Go ahead and meet me.  
+talk69_0461  Gdzie ka mi się to?
+    v69s5n70: act SMALL_TALK  what do you think of that  
+    v70c: ignore NONE  Where do you even stand?  
+talk69_0469  Когда я скажу давай, ты подойдешь к этой коробке, возьмешь е
+    v69s5n70: say_again ENTRY | act COLLECT | act DELIVER  on my go, you approach this box | pick it up | carry it to the red chair  
+    v70c: queued MOVE_TO  on my go go to this box  ['pick it up', 'carry it to the red chair']
+talk69_0470  Давай.
+    v69s5n70: go GO_NOW  go  
+    v70c: execute GO_NOW | act COLLECT | act DELIVER  go | pick it up | carry it to the red chair  
+talk69_0471  Hiddy soda.
+    v69s5n70: say_again SMOKE  Hiddy soda.  
+    v70c: say_again MOVE_TO  Hiddy soda.  
+talk69_0490  Возьми ее и залезь на синий стол.
+    v69s5n70: act COLLECT | act JUMP  pick it up | climb onto the blue table  
+    v70c: act JUMP  take it and climb onto the blue table  
+85 of 495 lines read with other intents

@@ -1,0 +1,3 @@
+bot: G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-ens3-v70c\cpp (74 labels, family gate, threshold 0.66)
+tokenizer tests, 15559 lines: normalizer 15559/15559 equal, token ids 15559/15559 equal, regex slots 15555/15555 equal (+4 lines past std::regex's recursion limit, not compared; it gave up on 4 slot searches)
+  vocabulary reloaded under de_DE.UTF-8: token ids 15559/15559 equal

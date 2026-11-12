@@ -146,6 +146,10 @@ LINES = {
     # the v66 bots: out of the player's way; what the thing looked at is, is the game's answer (the brain says nothing)
     "GIVE_WAY": ["Out of your way.", "Making room.", "Stepping aside."],
     "WHAT_IS_IT": [""],
+    # round v70: the game says what it does with the car and the body (OVCoopBotDriving.cpp, UOVBodyStateComponent): no word here
+    "DRIVE": [""],
+    "BODY_MOVE": [""],
+    "BODY_COMBO": [""],
 }
 ACK = ["Copy.", "Noted.", "Heard."]                   # NONE: a callout or chatter, nothing to do
 AGAIN = ["Say again?", "Didn't catch that.", "Come again?"]

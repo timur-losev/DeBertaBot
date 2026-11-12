@@ -153,10 +153,12 @@ POINTED_HERE = FIRE + ("FRAG", "FLASH", "SMOKE", "LOOK_AT", "CHECK", "HOLD_ANGLE
 NO_PLACE = ("GO_BACK", "HELP_INTERACTION", "SWITCH_WEAPON", "RELOAD",
             "SEE_ME", "SMALL_TALK", "PRAISE", "KILL_YOURSELF",   # bot v62: talk; a place in "thanks for the cover at the door" is no order's
             "HOLSTER", "STATUS_REPORT", "BODY_STATE", "DROP",    # bot v64: the hands, a report, the body, putting down where it stands
-            "GIVE_WAY", "WHAT_IS_IT")      # bot v66: out of the player's way (the game picks the side), the thing under the crosshair
+            "GIVE_WAY", "WHAT_IS_IT",      # bot v66: out of the player's way (the game picks the side), the thing under the crosshair
+            "BODY_MOVE", "BODY_COMBO")     # bot v70: a body part, a combo ("turn head left": no way to go)
 PLACE_INTENTS = CARRY + ("FRAG", "FLASH", "SMOKE", "HOLD_POSITION", "JUMP", "TAKE_COVER", "FALL_BACK", "COME_BACK",
                          "BREACH", "VAULT_WINDOW", "OPEN",       # orders that can be given again at another place
-                         "PUSH", "ROLL")                         # bot v64: the thing pushed or rolled, or where it goes
+                         "PUSH", "ROLL",                         # bot v64: the thing pushed or rolled, or where it goes
+                         "DRIVE")                                # bot v70: "no, to the restaurant"
 NO_LEADS = ("no", "nope", "nah", "not", "negative", "wrong")
 SAID_WORDS = ("said", "meant", "mean")   # "No, I said the north door": the correction's own words
 

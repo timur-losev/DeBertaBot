@@ -1,0 +1,21 @@
+10:52:05  start v70 (chain v70, bot coop-deberta-v3-ens3-v70, every line)
+chain v70, bot coop-deberta-v3-ens3-v70, on test_v70_new (200 lines, the game's path): 148/200 = 74.0%
+chain v70 on the owner test (47 lines, the game's path): with held 42/47 = 89.4%, at once 40/47 = 85.1%
+  NO  [5] es Pon la caja pequeña encima de la grande.           -> DELIVER None/None by None (act)   want DELIVER crate/big by crate   | put the small box on top of the big one
+  NO  [5] es Deja la caja de cartón en la mesa blanca.          -> nothing   want DELIVER table/white by crate   | 
+  NO  [6] es Coge la caja.                                      -> COLLECT None/None by None (act)   want COLLECT crate/None by None   | pick up the box
+  NO  [6] es Salta la vaya.                                     -> JUMP None/None by None (act)   want JUMP fence/None by None   | jump over the way
+W1111 10:57:14.350000 14936 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+  NO  [5] es Riega el bancal norte y después cosecha el del sur -> WATER garden_bed/north by None (act); HARVEST field/None by None (ask)   want WATER garden_bed/north by None; HARVEST garden_bed/south by None   | water the north garden bed / harvest the south field
+  NO  [5] es Recarga, escóndete detrás de la cama y no dispares -> RELOAD None/None by None (act); TAKE_COVER bed/None by None (ask)   want RELOAD None/None by None; TAKE_COVER bed/None by None; HOLD_FIRE None/None by None   | Reload / hide behind the bed
+  NO  [5] es Empuja el peñasco hasta la puerta y escóndete detr -> TAKE_COVER door/None by rock (ask)   want PUSH door/None by rock; TAKE_COVER rock/None by None   | hide behind the door using the boulder
+  NO  [6] es Escóndete detrás de ella.                          -> TAKE_COVER None/None by None (act)   want TAKE_COVER bed/red by None   | hide behind it
+v70: timer test, 240 items (answers in G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains2\ml_v68\measure_v68_time_v70.json)
+  all   240  at once: whole  93.8%  time  93.8%  intents  93.8%   with held: whole 100.0%  time 100.0%  intents 100.0%
+  ru    120  at once: whole  93.3%  time  93.3%  intents  93.3%   with held: whole 100.0%  time 100.0%  intents 100.0%
+  es     70  at once: whole  94.3%  time  94.3%  intents  94.3%   with held: whole 100.0%  time 100.0%  intents 100.0%
+  en     50  at once: whole  94.0%  time  94.0%  intents  94.0%   with held: whole 100.0%  time 100.0%  intents 100.0%
+memory tests: 44 scenarios, 5 wrong
+v70: 495 lines -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains2\ml_v69\replay_owner_talk_v70.jsonl
+83 of 495 lines read with other intents
+11:14:08  done v70

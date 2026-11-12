@@ -1,0 +1,6 @@
+bot: G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-ens3-v70c\cpp (74 labels, family gate, threshold 0.66)
+chain: G:\Proj\ollaya\DeBertaBot\models\coop-chain-v70\cpp (router and decoder, decoder on the CPU, 4 threads, loaded in 2623 ms)
+chain tests, 220 lines: turn text 220/220, token ids 220/220
+  scene line from the game's parts equal to Python's on 60/60
+  router: probability within 1e-4 of PyTorch on 220/220 (largest difference 2.3e-06), same side of the cut 0.50 on 220/220
+  decoder (llama.cpp b11429, CPU): answer equal to llama.cpp's server on the CPU on 220/220, the same order lines on 220/220; 510 ms a line (median 458, p95 872)

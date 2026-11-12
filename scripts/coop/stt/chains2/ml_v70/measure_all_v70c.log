@@ -1,0 +1,26 @@
+13:34:34  start v70c (chain v70, bot coop-deberta-v3-ens3-v70c, every line)
+
+chain v70c, bot coop-deberta-v3-ens3-v70c, on test_v70_new (200 lines, the game's path): 153/200 = 76.5%
+
+
+chain v70c on the owner test (47 lines, the game's path): with held 39/47 = 83.0%, at once 37/47 = 78.7%
+
+
+brain v70c on test67 (240 items): intent 189/240 = 78.8%, + target 174/240 = 72.5%, + means 167/240 = 69.6%
+
+
+brain v70c on test66 (192 items, the game's path): intent 180/192 = 93.8%, intent and place 179/192 = 93.2%   (en 50/54, es 51/55, ru 78/83)
+
+
+brain v70c on test68 things (123 items): intent 108/123 = 87.8%, + target 98/123 = 79.7%, + means 98/123 = 79.7%
+
+v70c: timer test, 240 items (answers in G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains2\ml_v68\measure_v68_time_v70c.json)
+  all   240  at once: whole  93.8%  time  93.8%  intents  93.8%   with held: whole 100.0%  time 100.0%  intents 100.0%
+  ru    120  at once: whole  93.3%  time  93.3%  intents  93.3%   with held: whole 100.0%  time 100.0%  intents 100.0%
+  es     70  at once: whole  94.3%  time  94.3%  intents  94.3%   with held: whole 100.0%  time 100.0%  intents 100.0%
+  en     50  at once: whole  94.0%  time  94.0%  intents  94.0%   with held: whole 100.0%  time 100.0%  intents 100.0%
+memory tests: 44 scenarios, 5 wrong
+memory tests: 44 scenarios, 2 wrong
+v70c: 495 lines -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains2\ml_v69\replay_owner_talk_v70c.jsonl
+85 of 495 lines read with other intents
+14:01:29  done v70c

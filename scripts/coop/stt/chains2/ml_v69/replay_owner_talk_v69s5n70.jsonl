@@ -1,0 +1,495 @@
+{"id": "talk69_0001", "text": "Is that", "session": 0, "lines": ["Is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0002", "text": "Yeah, what", "session": 0, "lines": ["Yeah, what"], "acts": ["say_again NONE"], "held": []}
+{"id": "talk69_0003", "text": "W", "session": 0, "lines": ["W"], "acts": ["say_again NONE"], "held": []}
+{"id": "talk69_0004", "text": "Говорит, залез сюда.", "session": 0, "lines": ["Talk to me, climb up here."], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0005", "text": "Можешь залезть выше?", "session": 0, "lines": ["can you climb up higher"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0006", "text": "Залезть прям на самый верх.", "session": 0, "lines": ["Climb up right onto the top."], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0007", "text": "Вот это верхний. Брат, можешь спрятаться под землю?", "session": 0, "lines": ["This is the top. Bro, can you hide underground?"], "acts": ["act TAKE_COVER"], "held": []}
+{"id": "talk69_0008", "text": "Спрячься под землю.", "session": 0, "lines": ["hide underground"], "acts": ["act TAKE_COVER"], "held": []}
+{"id": "talk69_0009", "text": "Еще ниже.", "session": 0, "lines": ["Go further down."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0010", "text": "Brat.", "session": 0, "lines": ["Brat."], "acts": ["say_again CROUCH"], "held": []}
+{"id": "talk69_0011", "text": "Как тебя зовут?", "session": 1, "lines": ["what is your name"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0012", "text": "Нет, тебя зовут Тимур.", "session": 1, "lines": ["what is your name"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0013", "text": "Как тебя зовут?", "session": 1, "lines": ["What's your name again?"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0014", "text": "Тимур, иди сюда.", "session": 1, "lines": ["come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0015", "text": "Тим димон туда.", "session": 1, "lines": ["Tim's one tap."], "acts": ["ignore NONE"], "held": []}
+{"id": "talk69_0016", "text": "Тимур, что это?", "session": 1, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0017", "text": "Why is me uh", "session": 1, "lines": ["Why is me uh"], "acts": ["act COVER_ME"], "held": []}
+{"id": "talk69_0018", "text": "Возьми коробку.", "session": 1, "lines": ["pick up the box"], "acts": ["act COLLECT"], "held": []}
+{"id": "talk69_0019", "text": "Залез с коробкой на красном кровать.", "session": 1, "lines": ["climb onto the red bed using the box"], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0020", "text": "Вон туда yellowbit.", "session": 1, "lines": ["There yellowbit."], "acts": ["say_again MOVE_TO"], "held": []}
+{"id": "talk69_0021", "text": "Что это такое?", "session": 1, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0022", "text": "Вот на желтую кровать залез.", "session": 1, "lines": ["climb onto the yellow bed"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0023", "text": "The leaves.", "session": 1, "lines": ["The leaves."], "acts": ["say_again COME_BACK"], "held": []}
+{"id": "talk69_0024", "text": "Залезь.", "session": 1, "lines": ["Climb on the yellow bed."], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0025", "text": "Yeah.", "session": 1, "lines": ["Yeah."], "acts": ["answer YES"], "held": []}
+{"id": "talk69_0026", "text": "Yeah.", "session": 1, "lines": ["Yeah."], "acts": ["answer YES"], "held": []}
+{"id": "talk69_0027", "text": "Прыляж.", "session": 1, "lines": ["jump down"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0028", "text": "Yeah.", "session": 1, "lines": ["Yeah."], "acts": ["answer YES"], "held": []}
+{"id": "talk69_0029", "text": "Иди сюда.", "session": 1, "lines": ["come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0030", "text": "Ляж на пол.", "session": 1, "lines": ["lie down on the floor"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0031", "text": "Stay.", "session": 1, "lines": ["Stay."], "acts": ["act HOLD_POSITION"], "held": []}
+{"id": "talk69_0032", "text": "Stine.", "session": 1, "lines": ["Get up."], "acts": ["act STAND_UP"], "held": []}
+{"id": "talk69_0033", "text": "Встань.", "session": 1, "lines": ["Stand up."], "acts": ["act STAND_UP"], "held": []}
+{"id": "talk69_0034", "text": "Возьми коробку.", "session": 1, "lines": ["pick up the box"], "acts": ["act COLLECT"], "held": []}
+{"id": "talk69_0035", "text": "Yeah.", "session": 1, "lines": ["Yeah."], "acts": ["answer YES"], "held": []}
+{"id": "talk69_0036", "text": "Yeah.", "session": 1, "lines": ["Yeah."], "acts": ["answer YES"], "held": []}
+{"id": "talk69_0037", "text": "Yeah.", "session": 1, "lines": ["Yeah."], "acts": ["answer YES"], "held": []}
+{"id": "talk69_0038", "text": "Lash.", "session": 1, "lines": ["Lash."], "acts": ["say_again DROP"], "held": []}
+{"id": "talk69_0039", "text": "Ляжи.", "session": 1, "lines": ["lie down"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0040", "text": "Правильно.", "session": 1, "lines": ["that's right"], "acts": ["answer YES"], "held": []}
+{"id": "talk69_0041", "text": "Запомню, что ляж, ях это пляж на пол.", "session": 1, "lines": ["I'll remember to go prone, it's a beach like this."], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0042", "text": "Запомни, что ях это ляж на пол.", "session": 1, "lines": ["remember that this is a floor lay down"], "acts": ["say_again NONE"], "held": []}
+{"id": "talk69_0043", "text": "Нет.", "session": 1, "lines": ["No."], "acts": ["answer NO"], "held": []}
+{"id": "talk69_0044", "text": "Stop.", "session": 1, "lines": ["Stop."], "acts": ["wait WAIT"], "held": []}
+{"id": "talk69_0045", "text": "Как тебя зовут?", "session": 2, "lines": ["what is your name"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0046", "text": "Меня как зовут?", "session": 2, "lines": ["What's your name again?"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0047", "text": "Меня зовут Лох.", "session": 2, "lines": ["my name is loh"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0048", "text": "Тебя зовут бади.", "session": 2, "lines": ["what is your name"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0049", "text": "Байди сюда.", "session": 2, "lines": ["come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0050", "text": "Что это?", "session": 2, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0051", "text": "Залез на него.", "session": 2, "lines": ["Climb on it."], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0052", "text": "Что это?", "session": 2, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0053", "text": "Сядь на камень.", "session": 2, "lines": ["sit down on the rock"], "acts": ["act CROUCH"], "held": []}
+{"id": "talk69_0054", "text": "Залез на камень.", "session": 2, "lines": ["climb onto the rock"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0055", "text": "Запрыги на камень.", "session": 2, "lines": ["jump on the rock"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0056", "text": "Встань сюда.", "session": 2, "lines": ["stay here"], "acts": ["act HOLD_POSITION"], "held": []}
+{"id": "talk69_0057", "text": "Прям сюда встань, прям куда я показываю.", "session": 2, "lines": ["Stand right here, right where I'm pointing."], "acts": ["act HOLD_POSITION"], "held": []}
+{"id": "talk69_0058", "text": "You should have.", "session": 2, "lines": ["You should have."], "acts": ["say_again OPEN_FIRE"], "held": []}
+{"id": "talk69_0059", "text": "Иди сюда.", "session": 2, "lines": ["come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0060", "text": "Ляш.", "session": 2, "lines": ["Go easy."], "acts": ["say_again HOLD_FIRE"], "held": []}
+{"id": "talk69_0061", "text": "Yeah.", "session": 2, "lines": ["Yeah."], "acts": ["answer YES"], "held": []}
+{"id": "talk69_0062", "text": "Left на пол.", "session": 2, "lines": ["Left on the floor."], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0063", "text": "It's done.", "session": 2, "lines": ["It's done."], "acts": ["say_again GO_NOW"], "held": []}
+{"id": "talk69_0064", "text": "Stay.", "session": 2, "lines": ["Stay."], "acts": ["act HOLD_POSITION"], "held": []}
+{"id": "talk69_0065", "text": "Все, встань.", "session": 2, "lines": ["stand up"], "acts": ["act STAND_UP"], "held": []}
+{"id": "talk69_0066", "text": "Ляж.", "session": 2, "lines": ["Lie down."], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0067", "text": "Тай на ноги.", "session": 2, "lines": ["crouch"], "acts": ["act CROUCH"], "held": []}
+{"id": "talk69_0068", "text": "Встань на ноги.", "session": 2, "lines": ["stand up"], "acts": ["act STAND_UP"], "held": []}
+{"id": "talk69_0069", "text": "Что это?", "session": 2, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0070", "text": "А это что?", "session": 2, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0071", "text": "А это что?", "session": 2, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0072", "text": "А это что?", "session": 2, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0073", "text": "А это что?", "session": 2, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0074", "text": "А это что?", "session": 2, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0075", "text": "Перепрыгни.", "session": 2, "lines": ["jump over it"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0076", "text": "через стену вот эту", "session": 2, "lines": ["jump over this wall"], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0077", "text": "Ещ<unk> раз.", "session": 2, "lines": ["again"], "acts": ["act REPEAT"], "held": []}
+{"id": "talk69_0078", "text": "Через стену прям.", "session": 2, "lines": ["Throw a stun through this wall."], "acts": ["ask FLASH"], "held": []}
+{"id": "talk69_0079", "text": "Перепрыгнем через эту стену.", "session": 2, "lines": ["Hop over this wall."], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0080", "text": "Yeah.", "session": 2, "lines": ["Yeah."], "acts": ["answer YES"], "held": []}
+{"id": "talk69_0081", "text": "Перепрыгни эту стену.", "session": 2, "lines": ["Hop over this wall."], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0082", "text": "A tu.", "session": 2, "lines": ["Hop over this wall."], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0083", "text": "Открой дверь, заходи вовнутрь.", "session": 2, "lines": ["Open the door."], "acts": ["ask OPEN"], "held": ["Go in through the door."]}
+{"id": "talk69_0084", "text": "Second one.", "session": 2, "lines": ["Open the other door.", "Go in through the door."], "acts": ["resolved OPEN", "act MOVE_TO"], "held": []}
+{"id": "talk69_0085", "text": "Сядь, сядь на диван.", "session": 2, "lines": ["sit down on the sofa"], "acts": ["act CROUCH"], "held": []}
+{"id": "talk69_0086", "text": "Сядь на диван.", "session": 2, "lines": ["sit down on the sofa"], "acts": ["act CROUCH"], "held": []}
+{"id": "talk69_0087", "text": "Вот диван сядь на него.", "session": 2, "lines": ["sit down on the sofa"], "acts": ["act CROUCH"], "held": []}
+{"id": "talk69_0088", "text": "Idzie kam je soda.", "session": 2, "lines": ["Idzie kam je soda."], "acts": ["say_again HELP"], "held": []}
+{"id": "talk69_0089", "text": "Stunning.", "session": 2, "lines": ["Stunning."], "acts": ["act PRAISE"], "held": []}
+{"id": "talk69_0090", "text": "Встань.", "session": 2, "lines": ["stand up"], "acts": ["act STAND_UP"], "held": []}
+{"id": "talk69_0091", "text": "Меня зовут Эмти.", "session": 2, "lines": ["my name is emiti"], "acts": ["ignore NONE"], "held": []}
+{"id": "talk69_0092", "text": "Залезь, залезь на диван.", "session": 2, "lines": ["climb up onto the sofa"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0093", "text": "Ляж на диван.", "session": 2, "lines": ["lie down on the sofa"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0094", "text": "Style.", "session": 2, "lines": ["Style."], "acts": ["say_again FLASH"], "held": []}
+{"id": "talk69_0095", "text": "Wstaň.", "session": 2, "lines": ["stand up"], "acts": ["act STAND_UP"], "held": []}
+{"id": "talk69_0096", "text": "Сядь на диван.", "session": 2, "lines": ["sit down on the sofa"], "acts": ["act CROUCH"], "held": []}
+{"id": "talk69_0097", "text": "Сядь на стул.", "session": 2, "lines": ["Sit down on the chair."], "acts": ["act CROUCH"], "held": []}
+{"id": "talk69_0098", "text": "Сядь на стул.", "session": 2, "lines": ["sit down on the chair"], "acts": ["act CROUCH"], "held": []}
+{"id": "talk69_0099", "text": "Запрыги на стул и присядь.", "session": 2, "lines": ["jump onto the chair", "crouch"], "acts": ["act JUMP", "act CROUCH"], "held": []}
+{"id": "talk69_0100", "text": "Da.", "session": 2, "lines": ["yes"], "acts": ["answer YES"], "held": []}
+{"id": "talk69_0101", "text": "Слей со стула на пол.", "session": 2, "lines": ["climb down off the chair"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0102", "text": "Слезая со стула на пол.", "session": 2, "lines": ["climb down off the chair"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0103", "text": "Иди сюда ко мне.", "session": 2, "lines": ["come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0104", "text": "Сядь на стул.", "session": 2, "lines": ["sit down on the chair"], "acts": ["act CROUCH"], "held": []}
+{"id": "talk69_0105", "text": "No.", "session": 2, "lines": ["No."], "acts": ["negated NO"], "held": []}
+{"id": "talk69_0106", "text": "Выйди в эту дверь.", "session": 2, "lines": ["Exit through this door."], "acts": ["ask MOVE_TO"], "held": []}
+{"id": "talk69_0107", "text": "Иди сюда.", "session": 2, "lines": ["go here"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0108", "text": "Закрой эту дверь.", "session": 2, "lines": ["open this door"], "acts": ["ask OPEN"], "held": []}
+{"id": "talk69_0109", "text": "Закрой дверь.", "session": 2, "lines": ["open the door"], "acts": ["ask OPEN"], "held": []}
+{"id": "talk69_0110", "text": "Stun.", "session": 2, "lines": ["Stun."], "acts": ["say_again CROUCH"], "held": []}
+{"id": "talk69_0111", "text": "Stein, stain, stay, stain.", "session": 2, "lines": ["Stein, stain, stay, stain."], "acts": ["say_again WAIT"], "held": []}
+{"id": "talk69_0112", "text": "Поднимись.", "session": 2, "lines": ["climb up"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0113", "text": "Встань, поднимись на на ноги.", "session": 2, "lines": ["Stand up.", "On your feet."], "acts": ["act STAND_UP", "act STAND_UP"], "held": []}
+{"id": "talk69_0114", "text": "Открой эту дверь.", "session": 2, "lines": ["Open this door."], "acts": ["ask OPEN"], "held": []}
+{"id": "talk69_0115", "text": "Возьми эту коробку, принеси ее сюда ко мне.", "session": 2, "lines": ["pick up this box, carry it here to me"], "acts": ["act DELIVER"], "held": []}
+{"id": "talk69_0116", "text": "Унеси ее обратно.", "session": 2, "lines": ["carry it back"], "acts": ["act DELIVER"], "held": []}
+{"id": "talk69_0117", "text": "обратно туда где ты там был туда ее принеси", "session": 2, "lines": ["back to where you was, back to where you was", "carry it there"], "acts": ["act GO_BACK", "act DELIVER"], "held": []}
+{"id": "talk69_0118", "text": "С коробкой.", "session": 2, "lines": ["carry the box"], "acts": ["act COLLECT"], "held": []}
+{"id": "talk69_0119", "text": "Отнеси ее вон туда.", "session": 2, "lines": ["carry it over there"], "acts": ["act DELIVER"], "held": []}
+{"id": "talk69_0120", "text": "Дальше, дальше, вон туда.", "session": 2, "lines": ["more more over there"], "acts": ["say_again REPEAT"], "held": []}
+{"id": "talk69_0121", "text": "вместе с коробкой", "session": 2, "lines": ["take the box with you"], "acts": ["act COLLECT"], "held": []}
+{"id": "talk69_0122", "text": "и отнести коробку вон туда", "session": 2, "lines": ["carry the box over there"], "acts": ["act DELIVER"], "held": []}
+{"id": "talk69_0123", "text": "Возьми эту коробку, поставь ее на камень.", "session": 2, "lines": ["take this box", "put it on the rock"], "acts": ["act COLLECT", "act DELIVER"], "held": []}
+{"id": "talk69_0124", "text": "Залезть на этот псиний стол", "session": 2, "lines": ["climb onto this pink table"], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0125", "text": "На синий стол, я.", "session": 2, "lines": ["Climb onto the blue table."], "acts": ["resolved JUMP"], "held": []}
+{"id": "talk69_0126", "text": "Запрыгни на желтый стол.", "session": 2, "lines": ["Jump on the yellow table."], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0127", "text": "Вот сюда на желтую кровать.", "session": 2, "lines": ["Jump on the yellow bed."], "acts": ["resolved JUMP"], "held": []}
+{"id": "talk69_0128", "text": "Попробуй еще раз, повторайся, ты сможешь.", "session": 2, "lines": ["Try again, keep repeating, you can do it."], "acts": ["act REPEAT"], "held": []}
+{"id": "talk69_0129", "text": "Запрыгни на красный стул, потом перепрыгни на желтую кровать.", "session": 2, "lines": ["jump onto the red chair", "jump over onto the yellow bed"], "acts": ["act JUMP", "act JUMP"], "held": []}
+{"id": "talk69_0130", "text": "Получилось?", "session": 2, "lines": ["did it work"], "acts": ["say_again GO_NOW"], "held": []}
+{"id": "talk69_0131", "text": "Меня зовут Нео.", "session": 2, "lines": ["my name is neo"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0132", "text": "Залезть на крышу здесь.", "session": 2, "lines": ["Get on the roof over here."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0133", "text": "По лестнице залезть по этой.", "session": 2, "lines": ["take the stairs up"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0134", "text": "Don't call me bro.", "session": 2, "lines": ["Don't call me bro."], "acts": ["negated SMALL_TALK"], "held": []}
+{"id": "talk69_0135", "text": "What's this?", "session": 2, "lines": ["what is this"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0136", "text": "Go on top of this.", "session": 2, "lines": ["Go on top of this."], "acts": ["ask MOVE_TO"], "held": []}
+{"id": "talk69_0137", "text": "climb on the white table.", "session": 2, "lines": ["climb on the white table."], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0138", "text": "Go on top of yellow bed.", "session": 2, "lines": ["Go on top of yellow bed."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0139", "text": "Open this door.", "session": 2, "lines": ["Open this door."], "acts": ["ask OPEN"], "held": []}
+{"id": "talk69_0140", "text": "What's this?", "session": 2, "lines": ["What's this?"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0141", "text": "Lie down on sofa.", "session": 2, "lines": ["Lie down on sofa."], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0142", "text": "Hide weapon.", "session": 3, "lines": ["put your weapon away"], "acts": ["act HOLSTER"], "held": []}
+{"id": "talk69_0143", "text": "What's this?", "session": 3, "lines": ["what is this"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0144", "text": "Now call me bra.", "session": 3, "lines": ["now call me bro"], "acts": ["say_again SMALL_TALK"], "held": []}
+{"id": "talk69_0145", "text": "Call me Michael.", "session": 3, "lines": ["Call me Michael."], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0146", "text": "What's this?", "session": 3, "lines": ["What's this?"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0147", "text": "Go on top of this.", "session": 3, "lines": ["Go on top of this."], "acts": ["ask MOVE_TO"], "held": []}
+{"id": "talk69_0148", "text": "climb on this.", "session": 3, "lines": ["climb on this."], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0149", "text": "Uh climb back.", "session": 3, "lines": ["Uh climb back."], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0150", "text": "Go back.", "session": 3, "lines": ["Go back."], "acts": ["act GO_BACK"], "held": []}
+{"id": "talk69_0151", "text": "Come, go back to me.", "session": 3, "lines": ["Come, go back to me."], "acts": ["act COME_BACK"], "held": []}
+{"id": "talk69_0152", "text": "Jamed all.", "session": 3, "lines": ["jake all"], "acts": ["say_again CHECK"], "held": []}
+{"id": "talk69_0153", "text": "Find away here.", "session": 3, "lines": ["Find away here."], "acts": ["say_again TAKE_COVER"], "held": []}
+{"id": "talk69_0154", "text": "Find a way here.", "session": 3, "lines": ["Find a way here."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0155", "text": "No.", "session": 3, "lines": ["No."], "acts": ["answer NO"], "held": []}
+{"id": "talk69_0156", "text": "What's this?", "session": 3, "lines": ["what is this"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0157", "text": "Go on top of all this.", "session": 3, "lines": ["Go on top of all this."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0158", "text": "Go on top of this.", "session": 3, "lines": ["Go on top of this."], "acts": ["ask MOVE_TO"], "held": []}
+{"id": "talk69_0159", "text": "What's this?", "session": 3, "lines": ["What's this?"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0160", "text": "Go on top of this chair.", "session": 3, "lines": ["Go on top of this chair."], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0161", "text": "What's this?", "session": 3, "lines": ["What's this?"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0162", "text": "Go on top of this.", "session": 3, "lines": ["Go on top of this."], "acts": ["ask MOVE_TO"], "held": []}
+{"id": "talk69_0163", "text": "Come here.", "session": 3, "lines": ["Come here."], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0164", "text": "What's this?", "session": 3, "lines": ["What's this?"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0165", "text": "Really?", "session": 3, "lines": ["seriously?"], "acts": ["say_again PRAISE"], "held": []}
+{"id": "talk69_0166", "text": "What's this?", "session": 3, "lines": ["what is this"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0167", "text": "Don't follow me.", "session": 3, "lines": ["Don't follow me."], "acts": ["wait WAIT"], "held": []}
+{"id": "talk69_0168", "text": "What's this?", "session": 3, "lines": ["What's this?"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0169", "text": "Uh go on top of this rock.", "session": 3, "lines": ["Uh go on top of this rock."], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0170", "text": "Okay. Come back.", "session": 3, "lines": ["okay come back"], "acts": ["act COME_BACK"], "held": []}
+{"id": "talk69_0171", "text": "Come back where he was.", "session": 3, "lines": ["Come back where he was."], "acts": ["act GO_BACK"], "held": []}
+{"id": "talk69_0172", "text": "Как тебя зовут?", "session": 4, "lines": ["what is your name"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0173", "text": "Как тебя зовут?", "session": 5, "lines": ["what is your name"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0174", "text": "Ба, иди сюда, возьми эту коробку, поставь ее на камень.", "session": 5, "lines": ["Come here.", "Pick up this box.", "Put it on the rock."], "acts": ["act FOLLOW_ME", "act COLLECT", "act DELIVER"], "held": []}
+{"id": "talk69_0175", "text": "Молодец.", "session": 5, "lines": ["good job"], "acts": ["act PRAISE"], "held": []}
+{"id": "talk69_0176", "text": "Залезть на белый стол.", "session": 5, "lines": ["climb on the white table"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0177", "text": "Без коробки.", "session": 5, "lines": ["climb on the white table without the box"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0178", "text": "Sleeve.", "session": 5, "lines": ["Sleeve."], "acts": ["say_again HOLSTER"], "held": []}
+{"id": "talk69_0179", "text": "Sleeze.", "session": 5, "lines": ["Sleeze."], "acts": ["act SMOKE"], "held": []}
+{"id": "talk69_0180", "text": "Слезь со стола.", "session": 5, "lines": ["climb down off the table"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0181", "text": "Окей, иди ко мне сюда.", "session": 5, "lines": ["okay come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0182", "text": "Убери оружие.", "session": 5, "lines": ["put your weapon away"], "acts": ["act HOLSTER"], "held": []}
+{"id": "talk69_0183", "text": "Что это, бади?", "session": 5, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0184", "text": "Поперепрыгни ее.", "session": 5, "lines": ["jump over it"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0185", "text": "А это что?", "session": 5, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0186", "text": "Перепрыгни ее.", "session": 5, "lines": ["jump over it"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0187", "text": "Другую.", "session": 5, "lines": ["Jump over the wall on the other side."], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0188", "text": "Вот эту. Вот эту стену.", "session": 5, "lines": ["You see this wall?"], "acts": ["act SEE_THING"], "held": []}
+{"id": "talk69_0189", "text": "What is that?", "session": 5, "lines": ["What is that?"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0190", "text": "Иди сюда.", "session": 5, "lines": ["come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0191", "text": "Иди вот сюда, прям куда показываю.", "session": 5, "lines": ["Go here, straight where I'm pointing."], "acts": ["ask MOVE_TO"], "held": []}
+{"id": "talk69_0192", "text": "Иди сюда, вот сюда.", "session": 5, "lines": ["Go here, right here."], "acts": ["resolved MOVE_TO"], "held": []}
+{"id": "talk69_0193", "text": "Иди на мо на мою метку.", "session": 5, "lines": ["Move onto my pin."], "acts": ["ask MOVE_TO"], "held": []}
+{"id": "talk69_0194", "text": "Перепрыгнуть через эту стену.", "session": 5, "lines": ["jump over this wall"], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0195", "text": "Перепрыгни через эту стену.", "session": 5, "lines": ["Jump over this wall."], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0196", "text": "Вот привет.", "session": 5, "lines": ["hello there"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0197", "text": "Как тебя зовут?", "session": 5, "lines": ["What's your name again?"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0198", "text": "А меня как зовут?", "session": 5, "lines": ["What's my name again?"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0199", "text": "А меня зовут Тимур.", "session": 5, "lines": ["my name is timur"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0200", "text": "Бади, иди сюда.", "session": 5, "lines": ["come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0201", "text": "Бади, что это такое передо мной?", "session": 5, "lines": ["what is that before me"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0202", "text": "Перепрыгни через нее.", "session": 5, "lines": ["jump over it"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0203", "text": "Через стену перепрыгни.", "session": 5, "lines": ["jump over the wall"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0204", "text": "Вот это через эту стену перепрыгивай.", "session": 5, "lines": ["Vault over this wall."], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0205", "text": "Нифига себе.", "session": 5, "lines": ["seriously?"], "acts": ["say_again PRAISE"], "held": []}
+{"id": "talk69_0206", "text": "А это что такое?", "session": 5, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0207", "text": "Иди сюда ко мне.", "session": 5, "lines": ["come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0208", "text": "Убери оружие.", "session": 6, "lines": ["put your weapon away"], "acts": ["act HOLSTER"], "held": []}
+{"id": "talk69_0209", "text": "Так что это?", "session": 6, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0210", "text": "Лезь за мной.", "session": 6, "lines": ["follow me"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0211", "text": "Залезай за мной на желтой кровать.", "session": 6, "lines": ["climb onto the yellow bed"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0212", "text": "Залезай за мной на кровать.", "session": 6, "lines": ["follow me to the bed"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0213", "text": "Иди сюда, на мою метку.", "session": 6, "lines": ["Come here, to my pin."], "acts": ["ask FOLLOW_ME"], "held": []}
+{"id": "talk69_0214", "text": "Вот здесь. Здесь она здесь.", "session": 6, "lines": ["Go here, where I'm pointing."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0215", "text": "Как тебя зовут?", "session": 6, "lines": ["What's your name?"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0216", "text": "Как меня зовут.", "session": 6, "lines": ["What's my name again?"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0217", "text": "Окей, прыгай вниз за мной.", "session": 6, "lines": ["okay jump down behind me"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0218", "text": "пройди здесь", "session": 6, "lines": ["go here"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0219", "text": "Пройди через проход.", "session": 6, "lines": ["go in through the doorway"], "acts": ["ask MOVE_TO"], "held": []}
+{"id": "talk69_0220", "text": "Да, и заходи туда.", "session": 6, "lines": ["Go in there."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0221", "text": "Заходи в главную дверь.", "session": 6, "lines": ["Go in through the main door."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0222", "text": "Что это?", "session": 6, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0223", "text": "Заходи в нее.", "session": 6, "lines": ["Go inside the door."], "acts": ["ask MOVE_TO"], "held": []}
+{"id": "talk69_0224", "text": "Выходи из главной двери.", "session": 6, "lines": ["leave through the main door"], "acts": ["resolved MOVE_TO"], "held": []}
+{"id": "talk69_0225", "text": "Закрывай дверь.", "session": 6, "lines": ["open the door"], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0226", "text": "Иди камни сюда.", "session": 6, "lines": ["go pick up the rocks here"], "acts": ["act COLLECT"], "held": []}
+{"id": "talk69_0227", "text": "Не, отнеси обратно.", "session": 6, "lines": ["No, carry it back."], "acts": ["act DELIVER"], "held": []}
+{"id": "talk69_0228", "text": "Что это?", "session": 6, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0229", "text": "Бри оружие.", "session": 6, "lines": ["bri weapon"], "acts": ["act SWITCH_WEAPON"], "held": []}
+{"id": "talk69_0230", "text": "Убери оружие, брат.", "session": 6, "lines": ["put your weapon away bro"], "acts": ["act HOLSTER"], "held": []}
+{"id": "talk69_0231", "text": "Yeah.", "session": 6, "lines": ["Yeah."], "acts": ["answer YES"], "held": []}
+{"id": "talk69_0232", "text": "Бади, не надо запоминать было.", "session": 6, "lines": ["don't remember"], "acts": ["say_again DONT_KNOW"], "held": []}
+{"id": "talk69_0233", "text": "Что это?", "session": 6, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0234", "text": "Ты можешь ее открыть?", "session": 6, "lines": ["can you open it up"], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0235", "text": "Закрой дверь.", "session": 6, "lines": ["open the door"], "acts": ["ask OPEN"], "held": []}
+{"id": "talk69_0236", "text": "Вернись ко мне сюда.", "session": 6, "lines": ["come back to me"], "acts": ["act COME_BACK"], "held": []}
+{"id": "talk69_0237", "text": "Зайди через главную дверь.", "session": 6, "lines": ["go in through the main door"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0238", "text": "Зайди через главную дверь.", "session": 6, "lines": ["go in through the main door"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0239", "text": "Зайди через дверь.", "session": 6, "lines": ["go in through the door"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0240", "text": "Ляш на диван.", "session": 6, "lines": ["lie down on the sofa"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0241", "text": "Ляж на диван.", "session": 6, "lines": ["lie down on the sofa"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0242", "text": "Запрыгнем на диван.", "session": 6, "lines": ["Hop on the sofa."], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0243", "text": "Теперь ляж полностью.", "session": 6, "lines": ["lie down fully"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0244", "text": "Stay.", "session": 6, "lines": ["Stay."], "acts": ["act HOLD_POSITION"], "held": []}
+{"id": "talk69_0245", "text": "Wstań.", "session": 6, "lines": ["stand up"], "acts": ["act STAND_UP"], "held": []}
+{"id": "talk69_0246", "text": "Что это?", "session": 6, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0247", "text": "Сядь на стул.", "session": 6, "lines": ["sit down on the chair"], "acts": ["act CROUCH"], "held": []}
+{"id": "talk69_0248", "text": "Слей со стула.", "session": 6, "lines": ["climb down off the chair"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0249", "text": "Слезь со стула.", "session": 6, "lines": ["climb down off the chair"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0250", "text": "Quando eu paxu.", "session": 6, "lines": ["paxu"], "acts": ["say_again NONE"], "held": []}
+{"id": "talk69_0251", "text": "Ты куда пош<unk>л?", "session": 6, "lines": ["where are you going"], "acts": ["say_again SMALL_TALK"], "held": []}
+{"id": "talk69_0252", "text": "Иди сюда.", "session": 6, "lines": ["come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0253", "text": "Убери оружие.", "session": 7, "lines": ["put your weapon away"], "acts": ["act HOLSTER"], "held": []}
+{"id": "talk69_0254", "text": "Что это?", "session": 7, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0255", "text": "Я прыгну через нее.", "session": 7, "lines": ["jump over it"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0256", "text": "А это что?", "session": 7, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0257", "text": "Перепрыгни через нее.", "session": 7, "lines": ["jump over it"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0258", "text": "А это что?", "session": 7, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0259", "text": "Перепрыгни через нее.", "session": 7, "lines": ["jump over it"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0260", "text": "Sto", "session": 7, "lines": ["Sto"], "acts": ["act CROUCH"], "held": []}
+{"id": "talk69_0261", "text": "Что это?", "session": 7, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0262", "text": "Залезь на него.", "session": 7, "lines": ["climb on it"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0263", "text": "Залез на камень.", "session": 7, "lines": ["climb on the rock"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0264", "text": "Skies.", "session": 7, "lines": ["Skies."], "acts": ["say_again OPEN_FIRE"], "held": []}
+{"id": "talk69_0265", "text": "S.", "session": 7, "lines": ["S."], "acts": ["say_again NONE"], "held": []}
+{"id": "talk69_0266", "text": "Слезь сюда.", "session": 7, "lines": ["climb down here"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0267", "text": "Что это?", "session": 7, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0268", "text": "Залезть на него.", "session": 7, "lines": ["climb on it"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0269", "text": "Иди сюда.", "session": 7, "lines": ["come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0270", "text": "Что это?", "session": 7, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0271", "text": "Можешь ее поднять?", "session": 7, "lines": ["can you pick it up"], "acts": ["act COLLECT"], "held": []}
+{"id": "talk69_0272", "text": "Окиси на крышу.", "session": 7, "lines": ["ok acid the roof"], "acts": ["say_again FRAG"], "held": []}
+{"id": "talk69_0273", "text": "Отнеси на крышу коробку.", "session": 7, "lines": ["put the box on the roof"], "acts": ["act DELIVER"], "held": []}
+{"id": "talk69_0274", "text": "Теперь и сюда.", "session": 7, "lines": ["now here"], "acts": ["say_again GO_NOW"], "held": []}
+{"id": "talk69_0275", "text": "Пробку отнеси на крышу и оставь там.", "session": 7, "lines": ["Take the crate to the roof."], "acts": ["ask DELIVER"], "held": ["Leave it there."]}
+{"id": "talk69_0276", "text": "Вернись ко мне.", "session": 7, "lines": ["come back to me"], "acts": ["act COME_BACK"], "held": []}
+{"id": "talk69_0277", "text": "Что это?", "session": 7, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0278", "text": "Залез на него.", "session": 7, "lines": ["climb on it"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0279", "text": "Ляж на белый стол.", "session": 7, "lines": ["lie down on the white table"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0280", "text": "Ляж на красный стул.", "session": 7, "lines": ["lie down on the red chair"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0281", "text": "Слезь и ляж на синий стол.", "session": 7, "lines": ["Get off the blue table.", "Lie down on the blue table."], "acts": ["act JUMP", "act PRONE"], "held": []}
+{"id": "talk69_0282", "text": "Stun.", "session": 7, "lines": ["Stun."], "acts": ["say_again CROUCH"], "held": []}
+{"id": "talk69_0283", "text": "И ляж на желтую кровать.", "session": 7, "lines": ["Go prone on the yellow bed."], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0284", "text": "Ты можешь пробуй еще раз на желтую кровать.", "session": 7, "lines": ["you can try again on the yellow bed"], "acts": ["act REPEAT"], "held": []}
+{"id": "talk69_0285", "text": "Запрыгне на красный стул.", "session": 7, "lines": ["jump on the red chair"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0286", "text": "Перепрыгнем на желтую кровать.", "session": 7, "lines": ["Jump over onto the yellow bed."], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0287", "text": "Lasta.", "session": 7, "lines": ["last one"], "acts": ["say_again NONE"], "held": []}
+{"id": "talk69_0288", "text": "Yeah.", "session": 7, "lines": ["Yeah."], "acts": ["answer YES"], "held": []}
+{"id": "talk69_0289", "text": "Заляж.", "session": 7, "lines": ["Go prone."], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0290", "text": "Spine blade.", "session": 7, "lines": ["Spine blade."], "acts": ["say_again JUMP"], "held": []}
+{"id": "talk69_0291", "text": "Встань, блядь.", "session": 7, "lines": ["stand up"], "acts": ["act STAND_UP"], "held": []}
+{"id": "talk69_0292", "text": "Открой дверь.", "session": 7, "lines": ["open the door"], "acts": ["ask OPEN"], "held": []}
+{"id": "talk69_0293", "text": "Закрой дверь.", "session": 7, "lines": ["open the door"], "acts": ["ask OPEN"], "held": []}
+{"id": "talk69_0294", "text": "Открой дверь.", "session": 7, "lines": ["Open the door."], "acts": ["ask OPEN"], "held": []}
+{"id": "talk69_0295", "text": "Заходи в комнату.", "session": 7, "lines": ["Go inside."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0296", "text": "Что это?", "session": 7, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0297", "text": "Sight that you want.", "session": 7, "lines": ["Sight that you want."], "acts": ["say_again LOOK_AT"], "held": []}
+{"id": "talk69_0298", "text": "Сядь на диван.", "session": 7, "lines": ["sit down on the sofa"], "acts": ["act CROUCH"], "held": []}
+{"id": "talk69_0299", "text": "А теперь сюда.", "session": 7, "lines": ["now come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0300", "text": "Сядь на стол.", "session": 7, "lines": ["Sit down on the table."], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0301", "text": "Stop.", "session": 7, "lines": ["Stop."], "acts": ["wait WAIT"], "held": []}
+{"id": "talk69_0302", "text": "Stool, stuff, stuff.", "session": 7, "lines": ["Stool, stuff, stuff."], "acts": ["say_again STAND_UP"], "held": []}
+{"id": "talk69_0303", "text": "Zet na spol.", "session": 7, "lines": ["Zet na spol."], "acts": ["say_again FRAG"], "held": []}
+{"id": "talk69_0304", "text": "Сядь на стул.", "session": 7, "lines": ["sit down on the chair"], "acts": ["act CROUCH"], "held": []}
+{"id": "talk69_0305", "text": "Поднимись на ноги и иди сюда.", "session": 7, "lines": ["stand up", "come here"], "acts": ["act STAND_UP", "act FOLLOW_ME"], "held": []}
+{"id": "talk69_0306", "text": "Стой там.", "session": 7, "lines": ["Stand there."], "acts": ["act HOLD_POSITION"], "held": []}
+{"id": "talk69_0307", "text": "Зарез ко мне на желтую кровать.", "session": 7, "lines": ["Slice me off the yellow bed."], "acts": ["say_again MELEE"], "held": []}
+{"id": "talk69_0308", "text": "Залезть ко мне на желтую кровать.", "session": 7, "lines": ["climb onto the yellow bed"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0309", "text": "Как дела?", "session": 7, "lines": ["how are you"], "acts": ["act STATUS_REPORT"], "held": []}
+{"id": "talk69_0310", "text": "Посмотри на меня.", "session": 7, "lines": ["look at me"], "acts": ["act LOOK_AT_ME"], "held": []}
+{"id": "talk69_0311", "text": "Посмотрим на главную дверь.", "session": 7, "lines": ["Look at the main door."], "acts": ["act LOOK_AT"], "held": []}
+{"id": "talk69_0312", "text": "Закрой ее.", "session": 7, "lines": ["Open the main door."], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0313", "text": "Найди камень.", "session": 7, "lines": ["find a rock"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0314", "text": "Залезть на него.", "session": 7, "lines": ["Climb onto the rock."], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0315", "text": "Найди синюю лестницу.", "session": 7, "lines": ["Find the blue stairs."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0316", "text": "Поднимись по ней на крышу.", "session": 7, "lines": ["Go up the blue stairs", "go to the roof"], "acts": ["act MOVE_TO", "ask MOVE_TO"], "held": []}
+{"id": "talk69_0317", "text": "Найди синюю лестницу.", "session": 7, "lines": ["Find the blue stairs."], "acts": ["resolved MOVE_TO"], "held": []}
+{"id": "talk69_0318", "text": "Нать десенюю лестницу.", "session": 7, "lines": ["Move up the blue stairs."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0319", "text": "Найди синюю лестницу.", "session": 7, "lines": ["Find the blue stairs."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0320", "text": "Поднимись по ней на крышу.", "session": 7, "lines": ["Go up the blue stairs", "go to the roof"], "acts": ["act MOVE_TO", "ask MOVE_TO"], "held": []}
+{"id": "talk69_0321", "text": "Что это?", "session": 8, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0322", "text": "Залезь на него наверх.", "session": 8, "lines": ["climb up onto it"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0323", "text": "Слезь не выйди на крышу без оружия.", "session": 8, "lines": ["Get off the roof without the weapon."], "acts": ["ask MOVE_TO"], "held": []}
+{"id": "talk69_0324", "text": "Убери оружие.", "session": 8, "lines": ["put your weapon away"], "acts": ["act HOLSTER"], "held": []}
+{"id": "talk69_0325", "text": "На крышу залезь.", "session": 8, "lines": ["climb up onto the roof"], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0326", "text": "Найди путь, чтобы състь на тот стул.", "session": 8, "lines": ["find a way to eat that chair"], "acts": ["resolved MOVE_TO"], "held": []}
+{"id": "talk69_0327", "text": "Теперь сядь на тот стул.", "session": 8, "lines": ["Sit down on that chair."], "acts": ["say_again GET_IN"], "held": []}
+{"id": "talk69_0328", "text": "Sleep.", "session": 8, "lines": ["Sleep."], "acts": ["say_again MOVE_TO"], "held": []}
+{"id": "talk69_0329", "text": "Посмотри на меня.", "session": 8, "lines": ["look at me"], "acts": ["act LOOK_AT_ME"], "held": []}
+{"id": "talk69_0330", "text": "Что, слишком громко?", "session": 8, "lines": ["Too loud, would you?"], "acts": ["act BODY_STATE"], "held": []}
+{"id": "talk69_0331", "text": "Secret, eh?", "session": 8, "lines": ["Secret, eh?"], "acts": ["say_again MOVE_TO"], "held": []}
+{"id": "talk69_0332", "text": "But", "session": 9, "lines": ["But"], "acts": ["say_again GIVE_WAY"], "held": []}
+{"id": "talk69_0333", "text": "Body.", "session": 9, "lines": ["Body."], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0334", "text": "Как тебя зовут?", "session": 9, "lines": ["What's your name?"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0335", "text": "Бади.", "session": 9, "lines": ["go ahead"], "acts": ["go GO_NOW"], "held": []}
+{"id": "talk69_0336", "text": "Стать о ноги.", "session": 9, "lines": ["stand up"], "acts": ["act STAND_UP"], "held": []}
+{"id": "talk69_0337", "text": "Встань на ноги.", "session": 9, "lines": ["stand up"], "acts": ["act STAND_UP"], "held": []}
+{"id": "talk69_0338", "text": "Поднимись на желтую кровать.", "session": 9, "lines": ["Move up to the yellow bed."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0339", "text": "Открой дверь.", "session": 9, "lines": ["open the door"], "acts": ["ask OPEN"], "held": []}
+{"id": "talk69_0340", "text": "Лях на диван.", "session": 9, "lines": ["lie down on the sofa"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0341", "text": "Ляж на диван.", "session": 9, "lines": ["lie down on the sofa"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0342", "text": "Запомни, что лях на диван- это ляж на диван.", "session": 9, "lines": ["lie down on the sofa"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0343", "text": "Day.", "session": 9, "lines": ["Day."], "acts": ["say_again SMALL_TALK"], "held": []}
+{"id": "talk69_0344", "text": "Запомню, что лях на диван- это ляж на диван.", "session": 9, "lines": ["I remember that lying on the sofa is the same as going prone."], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0345", "text": "Запомни, что лях на диван это ляжный диван.", "session": 9, "lines": ["remember that the guy on the sofa is lying down"], "acts": ["ignore NONE"], "held": []}
+{"id": "talk69_0346", "text": "Нет.", "session": 9, "lines": ["no"], "acts": ["answer NO"], "held": []}
+{"id": "talk69_0347", "text": "Запомню, что ляг на диван- это ляж на диван.", "session": 9, "lines": ["I remember that lying on the sofa is the same as lying on the sofa."], "acts": ["say_again NONE"], "held": []}
+{"id": "talk69_0348", "text": "Запомню, что лях на диванё это ляж на диван.", "session": 9, "lines": ["I remember that lying on the sofa is the way to go."], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0349", "text": "Запомни, что лях на диван это ляжена диван.", "session": 9, "lines": ["lie down on the sofa"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0350", "text": "Da.", "session": 9, "lines": ["yes"], "acts": ["answer YES"], "held": []}
+{"id": "talk69_0351", "text": "Иди вот на ту метку.", "session": 9, "lines": ["Go over to that marker."], "acts": ["ask MOVE_TO"], "held": []}
+{"id": "talk69_0352", "text": "Иди вон туда, куда показываю.", "session": 9, "lines": ["Go over there, where I'm pointing."], "acts": ["resolved MOVE_TO"], "held": []}
+{"id": "talk69_0353", "text": "Теперь лях на диван.", "session": 9, "lines": ["lie down on the sofa"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0354", "text": "Лях на диван.", "session": 9, "lines": ["lie down on the sofa"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0355", "text": "Ляж на диван.", "session": 9, "lines": ["lie down on the sofa"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0356", "text": "Yeah.", "session": 9, "lines": ["Yeah."], "acts": ["answer YES"], "held": []}
+{"id": "talk69_0357", "text": "Ляж на пол.", "session": 9, "lines": ["lie down on the floor"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0358", "text": "Встань.", "session": 9, "lines": ["stand up"], "acts": ["act STAND_UP"], "held": []}
+{"id": "talk69_0359", "text": "Ляж на сафу.", "session": 9, "lines": ["lie down on the sofa"], "acts": ["act PRONE"], "held": []}
+{"id": "talk69_0360", "text": "Stein Safe.", "session": 9, "lines": ["Stein Safe."], "acts": ["say_again TAKE_COVER"], "held": []}
+{"id": "talk69_0361", "text": "Встань с Софы.", "session": 9, "lines": ["climb down off the sofa"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0362", "text": "Слезь Сафи.", "session": 9, "lines": ["climb down off the sofa"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0363", "text": "вылези отсюда вообще выйди", "session": 9, "lines": ["get out of the room"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0364", "text": "Иди за мной.", "session": 9, "lines": ["follow me"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0365", "text": "Возьми этот ящик.", "session": 9, "lines": ["pick up this crate"], "acts": ["act COLLECT"], "held": []}
+{"id": "talk69_0366", "text": "Залезай за мной.", "session": 9, "lines": ["Follow me."], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0367", "text": "Dele vai, eles vai.", "session": 9, "lines": ["Light them up, they're coming through."], "acts": ["act OPEN_FIRE"], "held": []}
+{"id": "talk69_0368", "text": "Найди путь, найди путь ко мне сюда.", "session": 9, "lines": ["find a way find a way to me"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0369", "text": "Перепрыгивай ко мне, перепрыгивай. Давай, ты сможешь перепрыгивай.", "session": 9, "lines": ["jump across for me jump across", "go, can you jump across"], "acts": ["act JUMP", "act JUMP"], "held": []}
+{"id": "talk69_0370", "text": "Попробуй еще раз.", "session": 9, "lines": ["try again"], "acts": ["act REPEAT"], "held": []}
+{"id": "talk69_0371", "text": "Найди путь, попробуй еще раз.", "session": 9, "lines": ["try again"], "acts": ["act REPEAT"], "held": []}
+{"id": "talk69_0372", "text": "Молодец, все получилось.", "session": 9, "lines": ["Nice job, you got it all."], "acts": ["act PRAISE"], "held": []}
+{"id": "talk69_0373", "text": "В общем, заходи туда в комнату и закрой за собой главную дверь.", "session": 9, "lines": ["go inside", "open the main door"], "acts": ["act MOVE_TO", "act OPEN"], "held": []}
+{"id": "talk69_0374", "text": "Вот дверь закрою ее.", "session": 9, "lines": ["open the door"], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0375", "text": "Выйди оттуда через главную дверь.", "session": 9, "lines": ["leave through the main door"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0376", "text": "Выйди оттуда через головную дверь.", "session": 9, "lines": ["leave through the head door"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0377", "text": "Нет.", "session": 9, "lines": ["no"], "acts": ["answer NO"], "held": []}
+{"id": "talk69_0378", "text": "Войди через главную дверь.", "session": 9, "lines": ["go in through the main door"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0379", "text": "Что это?", "session": 9, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0380", "text": "Убери оружие.", "session": 9, "lines": ["put your weapon away"], "acts": ["act HOLSTER"], "held": []}
+{"id": "talk69_0381", "text": "Войди туда через главную дверь.", "session": 9, "lines": ["go in through the main door"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0382", "text": "Закрой дверь.", "session": 9, "lines": ["open the door"], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0383", "text": "Вернись ко мне.", "session": 9, "lines": ["Come back to me."], "acts": ["act COME_BACK"], "held": []}
+{"id": "talk69_0384", "text": "Выйди через главную дверь.", "session": 9, "lines": ["leave through the main door"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0385", "text": "Закрой дверь.", "session": 9, "lines": ["open the door"], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0386", "text": "Выйди через главную дверь.", "session": 9, "lines": ["Leave through the main door."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0387", "text": "Открой другую дверь.", "session": 9, "lines": ["Open the other door."], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0388", "text": "Другую.", "session": 9, "lines": ["Open the other door."], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0389", "text": "Открой вон ту дверь.", "session": 9, "lines": ["Open that door over there."], "acts": ["ask OPEN"], "held": []}
+{"id": "talk69_0390", "text": "Выйди через главную дверь.", "session": 9, "lines": ["Leave through the main door."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0391", "text": "Закрой другую дверь.", "session": 9, "lines": ["Open the other door."], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0392", "text": "Закрой другую дверь.", "session": 9, "lines": ["Open the other door."], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0393", "text": "Открой любую дверь.", "session": 9, "lines": ["Open any door."], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0394", "text": "Другую дверь открой.", "session": 9, "lines": ["Open the other door."], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0395", "text": "Закрой главную дверь.", "session": 9, "lines": ["open the main door"], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0396", "text": "Закрой другую дверь.", "session": 9, "lines": ["Open the other door."], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0397", "text": "Другую дверь, другую закрой.", "session": 9, "lines": ["open the other door"], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0398", "text": "B.", "session": 10, "lines": ["B."], "acts": ["say_again GO_NOW"], "held": []}
+{"id": "talk69_0399", "text": "Bad.", "session": 10, "lines": ["not good"], "acts": ["answer NO"], "held": []}
+{"id": "talk69_0400", "text": "Бани.", "session": 10, "lines": ["ban it"], "acts": ["say_again DEFUSE"], "held": []}
+{"id": "talk69_0401", "text": "Найди синюю лестницу.", "session": 10, "lines": ["Find the blue stairs."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0402", "text": "Поднимись по ней на крышу.", "session": 10, "lines": ["Go up the blue stairs", "go to the roof"], "acts": ["act MOVE_TO", "ask MOVE_TO"], "held": []}
+{"id": "talk69_0403", "text": "Найди синюю лестницу.", "session": 10, "lines": ["Find the blue stairs."], "acts": ["resolved MOVE_TO"], "held": []}
+{"id": "talk69_0404", "text": "Поднимись по ней на крышу.", "session": 10, "lines": ["Move up the blue stairs", "go to the roof"], "acts": ["act MOVE_TO", "ask MOVE_TO"], "held": []}
+{"id": "talk69_0405", "text": "Убери оружие.", "session": 11, "lines": ["put your weapon away"], "acts": ["act HOLSTER"], "held": []}
+{"id": "talk69_0406", "text": "Найди синюю лестницу.", "session": 11, "lines": ["Find the blue stairs."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0407", "text": "Поднимись по ней на крышу.", "session": 11, "lines": ["Go up the blue stairs", "go to the roof"], "acts": ["act MOVE_TO", "ask MOVE_TO"], "held": []}
+{"id": "talk69_0408", "text": "Открой дверь.", "session": 11, "lines": ["Open the door."], "acts": ["ask OPEN"], "held": []}
+{"id": "talk69_0409", "text": "Иди сюда.", "session": 11, "lines": ["Come here."], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0410", "text": "I'm quite here.", "session": 11, "lines": ["I'm quite here."], "acts": ["say_again HELP"], "held": []}
+{"id": "talk69_0411", "text": "Открой дверь.", "session": 11, "lines": ["open the door"], "acts": ["ask OPEN"], "held": []}
+{"id": "talk69_0412", "text": "Сядь на стол.", "session": 11, "lines": ["sit down on the table"], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0413", "text": "Da.", "session": 11, "lines": ["Da."], "acts": ["say_again YES"], "held": []}
+{"id": "talk69_0414", "text": "Встань на ноги.", "session": 11, "lines": ["stand up"], "acts": ["act STAND_UP"], "held": []}
+{"id": "talk69_0415", "text": "Залезть на красный стул.", "session": 11, "lines": ["climb onto the red chair"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0416", "text": "Возьми ящика и отнеси его камню.", "session": 11, "lines": ["pick up the crate", "carry it to the rock"], "acts": ["act COLLECT", "act DELIVER"], "held": []}
+{"id": "talk69_0417", "text": "Доставь ящик к камню.", "session": 11, "lines": ["carry the crate to the rock"], "acts": ["act DELIVER"], "held": []}
+{"id": "talk69_0418", "text": "Залез на камень.", "session": 11, "lines": ["climb onto the rock"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0419", "text": "Попробую еще раз.", "session": 11, "lines": ["i'll try again"], "acts": ["resolved NONE"], "held": []}
+{"id": "talk69_0420", "text": "Перепрыгни на ящик.", "session": 11, "lines": ["jump over onto the crate"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0421", "text": "Перепрыгнем на другой ящик.", "session": 11, "lines": ["Hop over onto the other crate."], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0422", "text": "Da.", "session": 11, "lines": ["Da."], "acts": ["say_again YES"], "held": []}
+{"id": "talk69_0423", "text": "Yeah.", "session": 11, "lines": ["Yeah."], "acts": ["answer YES"], "held": []}
+{"id": "talk69_0424", "text": "Иди сюда.", "session": 11, "lines": ["come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0425", "text": "Что это?", "session": 11, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0426", "text": "А это что?", "session": 11, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0427", "text": "Это что?", "session": 11, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0428", "text": "Залезть на коробку.", "session": 11, "lines": ["climb on the box"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0429", "text": "Перепрыги на эту коробку.", "session": 11, "lines": ["jump over onto this box"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0430", "text": "Подожди пять секунд.", "session": 11, "lines": ["wait for 5 seconds"], "acts": ["wait WAIT"], "held": []}
+{"id": "talk69_0431", "text": "Подожди пять секунд, потом перепрыгни через эту стену.", "session": 11, "lines": ["wait for 5 seconds", "jump over this wall"], "acts": ["wait WAIT", "act JUMP"], "held": []}
+{"id": "talk69_0432", "text": "Models.", "session": 11, "lines": ["Models."], "acts": ["say_again DRONE"], "held": []}
+{"id": "talk69_0433", "text": "Oh I did.", "session": 11, "lines": ["Oh I did."], "acts": ["say_again GO_NOW"], "held": []}
+{"id": "talk69_0434", "text": "Молодец.", "session": 11, "lines": ["good job"], "acts": ["act PRAISE"], "held": []}
+{"id": "talk69_0435", "text": "Открой северную дверь.", "session": 11, "lines": ["open the north door"], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0436", "text": "Северную дверь открой.", "session": 11, "lines": ["open the north door"], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0437", "text": "Вот туда перейди.", "session": 11, "lines": ["Go through the north door."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0438", "text": "Открой северную дверь.", "session": 11, "lines": ["Open the north door."], "acts": ["act OPEN"], "held": []}
+{"id": "talk69_0439", "text": "Зайди в комнату.", "session": 11, "lines": ["Get inside."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0440", "text": "Выйди из комнаты через главную дверь.", "session": 11, "lines": ["leave through the main door"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0441", "text": "Иди сюда.", "session": 11, "lines": ["come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0442", "text": "Stop.", "session": 11, "lines": ["Stop."], "acts": ["wait WAIT"], "held": []}
+{"id": "talk69_0443", "text": "Что это?", "session": 11, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0444", "text": "Залез на нее.", "session": 11, "lines": ["Climb on it."], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0445", "text": "Теперь найди сиднюю лестницу.", "session": 11, "lines": ["now find a comfortable staircase"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0446", "text": "Поднимись по ней наверх.", "session": 11, "lines": ["Go up the stairs."], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0447", "text": "Что это?", "session": 11, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0448", "text": "Перепрыгни ее.", "session": 11, "lines": ["jump over it"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0449", "text": "Не получилось.", "session": 11, "lines": ["it didn't work"], "acts": ["say_again GO_BACK"], "held": []}
+{"id": "talk69_0450", "text": "Иди сюда.", "session": 11, "lines": ["come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0451", "text": "I guess that.", "session": 11, "lines": ["I guess that."], "acts": ["answer MAYBE"], "held": []}
+{"id": "talk69_0452", "text": "Что это?", "session": 11, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0453", "text": "Залез на него.", "session": 11, "lines": ["climb on it"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0454", "text": "Залезть на красную кровать.", "session": 11, "lines": ["Climb on the red bed."], "acts": ["ask JUMP"], "held": []}
+{"id": "talk69_0455", "text": "Залезть на желтую кровать.", "session": 11, "lines": ["Climb onto the yellow bed."], "acts": ["resolved JUMP"], "held": []}
+{"id": "talk69_0456", "text": "Поставь ящик и залезть на желтую кровать.", "session": 11, "lines": ["put the crate down", "climb onto the yellow bed"], "acts": ["act DROP", "act JUMP"], "held": []}
+{"id": "talk69_0457", "text": "Но у меня получилось.", "session": 11, "lines": ["i made it"], "acts": ["ignore NONE"], "held": []}
+{"id": "talk69_0458", "text": "У меня получилось все.", "session": 11, "lines": ["i made it"], "acts": ["ignore NONE"], "held": []}
+{"id": "talk69_0459", "text": "Иди вот сюда встань.", "session": 11, "lines": ["go here", "stay here"], "acts": ["act MOVE_TO", "act HOLD_POSITION"], "held": []}
+{"id": "talk69_0460", "text": "Иди впереди меня.", "session": 11, "lines": ["go ahead of me"], "acts": ["act GIVE_WAY"], "held": []}
+{"id": "talk69_0461", "text": "Gdzie ka mi się to?", "session": 11, "lines": ["what do you think of that"], "acts": ["act SMALL_TALK"], "held": []}
+{"id": "talk69_0462", "text": "Иди ко мне сюда.", "session": 11, "lines": ["come here"], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0463", "text": "Когда я скажу прыгает, ты прыгнешь.", "session": 11, "lines": ["on my jump, you jump"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0464", "text": "Давай.", "session": 11, "lines": ["Go."], "acts": ["go GO_NOW"], "held": []}
+{"id": "talk69_0465", "text": "Когда я скажу иди к камню, ты подойдешь к нему и запрыгнешь.", "session": 11, "lines": ["on my go move to the rock"], "acts": ["queued MOVE_TO"], "held": ["jump onto the rock"]}
+{"id": "talk69_0466", "text": "Давай.", "session": 11, "lines": ["go", "jump onto the rock"], "acts": ["execute GO_NOW", "act JUMP"], "held": []}
+{"id": "talk69_0467", "text": "Да прыгай на камеру.", "session": 11, "lines": ["jump on the camera"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0468", "text": "Вот этот камень.", "session": 11, "lines": ["climb onto this rock"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0469", "text": "Когда я скажу давай, ты подойдешь к этой коробке, возьмешь ее и отнесешь ее к красному стулу.", "session": 11, "lines": ["on my go, you approach this box", "pick it up", "carry it to the red chair"], "acts": ["say_again ENTRY", "act COLLECT", "act DELIVER"], "held": []}
+{"id": "talk69_0470", "text": "Давай.", "session": 11, "lines": ["go"], "acts": ["go GO_NOW"], "held": []}
+{"id": "talk69_0471", "text": "Hiddy soda.", "session": 11, "lines": ["Hiddy soda."], "acts": ["say_again SMOKE"], "held": []}
+{"id": "talk69_0472", "text": "Ты подождешь пять секунд, потом возьмешь этот ящик и доставишь его камню.", "session": 11, "lines": ["wait for 5 seconds", "pick up this crate", "carry it to the rock"], "acts": ["wait WAIT", "act COLLECT", "act DELIVER"], "held": []}
+{"id": "talk69_0473", "text": "Ты подождешь 5 секунд, потом возьмешь этот ящик и отнесешь его камню.", "session": 11, "lines": ["wait for 5 seconds", "pick up this crate", "carry it to the rock"], "acts": ["wait WAIT", "act COLLECT", "act DELIVER"], "held": []}
+{"id": "talk69_0474", "text": "Камню.", "session": 11, "lines": ["carry it to the rock"], "acts": ["act DELIVER"], "held": []}
+{"id": "talk69_0475", "text": "Забудь про ящика.", "session": 11, "lines": ["never mind the crate"], "acts": ["wait WAIT"], "held": []}
+{"id": "talk69_0476", "text": "Не бери ящик и подойди к этой стене.", "session": 11, "lines": ["don't pick up the crate", "move to this wall"], "acts": ["wait WAIT", "act MOVE_TO"], "held": []}
+{"id": "talk69_0477", "text": "Подойди к этой стене.", "session": 11, "lines": ["come to this wall"], "acts": ["act MOVE_TO"], "held": []}
+{"id": "talk69_0478", "text": "Не бери этот ящик.", "session": 11, "lines": ["don't pick up this crate"], "acts": ["wait WAIT"], "held": []}
+{"id": "talk69_0479", "text": "Не бери этот ящик, потом подойди к этой стене.", "session": 11, "lines": ["don't take this crate", "move to this wall"], "acts": ["wait WAIT", "act MOVE_TO"], "held": []}
+{"id": "talk69_0480", "text": "Бещика подойди к камню.", "session": 11, "lines": ["Beshka come to the rock."], "acts": ["act FOLLOW_ME"], "held": []}
+{"id": "talk69_0481", "text": "Это что?", "session": 11, "lines": ["what is this"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0482", "text": "A stuff.", "session": 11, "lines": ["A stuff."], "acts": ["act ATTACK"], "held": []}
+{"id": "talk69_0483", "text": "А это что?", "session": 11, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0484", "text": "А это что?", "session": 11, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0485", "text": "Используй эту коробку, залезть на синий стол.", "session": 11, "lines": ["climb onto the blue table using this box"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0486", "text": "Используя коробку залезть на синий стол.", "session": 11, "lines": ["climb onto the blue table using the box"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0487", "text": "Используя коробку залезть на желтую кровать.", "session": 11, "lines": ["climb onto the yellow bed using the box"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0488", "text": "Возьми коробку и залезь на синий стол.", "session": 11, "lines": ["climb onto the blue table using the box"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0489", "text": "Что это?", "session": 11, "lines": ["what is that"], "acts": ["act WHAT_IS_IT"], "held": []}
+{"id": "talk69_0490", "text": "Возьми ее и залезь на синий стол.", "session": 11, "lines": ["pick it up", "climb onto the blue table"], "acts": ["act COLLECT", "act JUMP"], "held": []}
+{"id": "talk69_0491", "text": "Возьми эту коробку и залезь на синий стол.", "session": 11, "lines": ["climb onto the blue table using this box"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0492", "text": "We need come.", "session": 11, "lines": ["We need come."], "acts": ["act HELP"], "held": []}
+{"id": "talk69_0493", "text": "Вернись ко мне.", "session": 11, "lines": ["come back to me"], "acts": ["act COME_BACK"], "held": []}
+{"id": "talk69_0494", "text": "Используя коробку залезть на синий стол.", "session": 11, "lines": ["climb onto the blue table using the box"], "acts": ["act JUMP"], "held": []}
+{"id": "talk69_0495", "text": "Используя коробку, залезть на желтую кровать.", "session": 11, "lines": ["climb onto the yellow bed using the box"], "acts": ["act JUMP"], "held": []}

@@ -469,11 +469,12 @@ def _no_duplicate_keys(pairs):
     return dict(pairs)
 
 
-V60_TAGS = ("v60", "v61", "v62", "v64", "v65", "v66", "v67")
+V60_TAGS = ("v60", "v61", "v62", "v64", "v65", "v66", "v67", "v70")
 
 
 def vocab_file(tag=None):
-    """The place vocabulary of a study tag (default: COOP_TAG): locations_v67.json (v13: the means of rule set v9) for the v67
+    """The place vocabulary of a study tag (default: COOP_TAG): locations_v70.json (v16: the city and its restaurant, bank ...
+    drinks_machine, make_places_v70.py) for the v70 bots, locations_v67.json (v13: the means of rule set v9) for the v67
     bots, locations_v66.json (v12: glass is a window, the zone
     outside, the weapon used is no place) for the v66 bots, locations_v65.json (v11, colours on tables, the it_* lists of
     rule set v8) for the v65 bot (since 2026-10-27; it was trained and first exported with v10), locations_v64.json (v10, the spool; big, small, cardboard) for the v64 bots, locations_v62.json (v9, the
@@ -483,7 +484,7 @@ def vocab_file(tag=None):
     if os.environ.get("COOP_PLACES"):
         return os.path.join(HERE, os.environ["COOP_PLACES"])
     tag = tag or os.environ.get("COOP_TAG", "")
-    return os.path.join(HERE, "locations_v67.json" if tag == "v67" else "locations_v66.json" if tag == "v66" else "locations_v65.json" if tag == "v65" else "locations_v64.json" if tag == "v64" else
+    return os.path.join(HERE, "locations_v70.json" if tag == "v70" else "locations_v67.json" if tag == "v67" else "locations_v66.json" if tag == "v66" else "locations_v65.json" if tag == "v65" else "locations_v64.json" if tag == "v64" else
                         "locations_v62.json" if tag == "v62" else "locations_v60.json" if tag in V60_TAGS else "locations.json")
 
 

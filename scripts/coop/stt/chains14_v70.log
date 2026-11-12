@@ -1,0 +1,46 @@
+2026-11-11 05:29:18  train start
+W1111 05:29:25.084000 29304 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+
+
+
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\_dynamo\eval_frame.py:1548: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. Starting in PyTorch 2.9, calling checkpoint without use_reentrant will raise an exception. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+snapshot 06:00:19: epoch 1, row 14416 of 87579, step 901 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains14-v70\pieces14v70_final_seed0_snapshot\snapshot.pt
+snapshot 06:30:21: epoch 1, row 28816 of 87579, step 1801 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains14-v70\pieces14v70_final_seed0_snapshot\snapshot.pt
+snapshot 07:00:24: epoch 1, row 43280 of 87579, step 2705 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains14-v70\pieces14v70_final_seed0_snapshot\snapshot.pt
+snapshot 07:30:27: epoch 1, row 58016 of 87579, step 3626 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains14-v70\pieces14v70_final_seed0_snapshot\snapshot.pt
+snapshot 08:00:29: epoch 1, row 72960 of 87579, step 4560 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains14-v70\pieces14v70_final_seed0_snapshot\snapshot.pt
+snapshot 08:30:32: epoch 2, row 224 of 87579, step 5488 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains14-v70\pieces14v70_final_seed0_snapshot\snapshot.pt
+snapshot 09:00:34: epoch 2, row 14880 of 87579, step 6404 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains14-v70\pieces14v70_final_seed0_snapshot\snapshot.pt
+snapshot 09:30:35: epoch 2, row 52880 of 87579, step 8779 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains14-v70\pieces14v70_final_seed0_snapshot\snapshot.pt
+snapshot 10:00:36: epoch 3, row 13968 of 87579, step 11821 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains14-v70\pieces14v70_final_seed0_snapshot\snapshot.pt
+snapshot 10:30:37: epoch 3, row 65408 of 87579, step 15036 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains14-v70\pieces14v70_final_seed0_snapshot\snapshot.pt
+snapshot 10:43:32: epoch 3, row 87579 of 87579, step 16422 -> G:\Proj\ollaya\DeBertaBot\models\coop-qwen3-qlora-chains14-v70\pieces14v70_final_seed0_snapshot\snapshot.pt
+chains12 pieces14v70_final seed 0: 87579 rows, trained in 18847s
+answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\measure_v67_answers_v70.json
+answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\measure_v66_answers_v70.json
+scene answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\measure_v65_answers_v70.json
+v64 test answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains12_68_test64_pieces14v70_final_s0.json
+chains2 pieces14v70_final seed 0: blind 150, blind_heard 100, blind2 150, blind2_heard 100, blind2_heard3 300, ctx 150, ctx_heard3 299, ctx_heardline3 299 answered in 82s
+ml answers: dev_ru 41, blind2_ru 150, ctx_ru 150, dev_es 41, blind2_es 150, ctx_es 150 -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains12_68_ml_pieces14v70_final_s0.json
+pairs answers -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains12_68_pairs_pieces14v70_final_s0.json
+10:46:45  train end, gguf
+llama_model_quantize_impl: quant size  =  1050.43 MiB (5.12 BPW)
+
+llama_quantize: quantize time = 13023.16 ms
+llama_quantize:    total time = 13023.16 ms
+pieces14v70_final seed 0: 1056 MB, 38s -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\models\gguf\pieces14v70_final_s0-Q4_K_M.gguf
+10:47:32  export
+W1111 10:47:38.720000 28424 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+D:\Program\anaconda3\envs\jev\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 106/106 [00:00<00:00, 1439.16it/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+wrote G:\Proj\ollaya\DeBertaBot\models\coop-chain-v70\cpp: decoder.gguf (1056 MB), router.onnx (it sends 76 of 220 test lines on), 220 test lines, 42 answered with several orders
+10:49:38  done (exit 0)

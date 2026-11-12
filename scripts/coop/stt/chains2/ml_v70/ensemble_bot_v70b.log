@@ -1,0 +1,37 @@
+v70 ensemble, build_v70.py out-of-fold (three seeds): gate family, threshold 0.66 (the owner's; fitted 0.66)
+  VCTK pool B, r6+cs       n=1370  near 78.3  wrong family 6.5%  criterion 65.3
+  typed, all lines         n=2055  near 94.0  wrong family 2.0%  criterion 90.0
+  typed, v64 lines         n= 180  near 95.0  wrong family 0.0%  criterion 95.0
+  VCTK pool B, v64 lines   n= 120  near 73.3  wrong family 3.3%  criterion 66.7
+  typed, v62 lines         n= 117  near 85.5  wrong family 5.1%  criterion 75.2
+  VCTK pool B, v62 lines   n=  79  near 73.4  wrong family 6.3%  criterion 60.8
+  typed, v60 lines         n= 180  near 98.9  wrong family 0.0%  criterion 98.9
+  VCTK pool B, v60 lines   n= 120  near 83.3  wrong family 5.8%  criterion 71.7
+  typed, v1-v58 lines      n=1578  near 94.0  wrong family 2.2%  criterion 89.5
+  VCTK pool B, v1-v58      n=1051  near 78.7  wrong family 6.9%  criterion 64.8
+  Russian voices, r6+cs    n=1170  near 71.4  wrong family 8.6%  criterion 54.1
+  German voices, r6+cs     n=1170  near 82.2  wrong family 5.3%  criterion 71.6
+  owner, per line          n= 649  right 87.7  say again / ignored 7.2%  wrong family 4.0%
+  owner, per time said     n=1061  right 91.4  say again / ignored 4.9%  wrong family 2.9%
+  owner v64 lines (boxes)  n=  24  right 91.7  say again / ignored 4.2%  wrong family 4.2%
+  owner v65 lines          n=  33  right 97.0  say again / ignored 3.0%  wrong family 0.0%
+  owner v66 lines          n=  71  right 93.0  say again / ignored 2.8%  wrong family 2.8%
+wrote G:\Proj\ollaya\DeBertaBot\models\coop-deberta-v3-ens3-v70b\cpp: 3 ONNX model(s), vocab 128000 pieces, golden 7384 lines
+gate tests: 7791 rows, the two gates pick different intents on 301
+decide tests, actions per gate: {'top': ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait'], 'family': ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait']} (242 steps in 6 conversations)
+dialogue actions: ['act', 'answer', 'execute', 'go', 'ignore', 'negated', 'queued', 'say_again', 'wait'] 
+location tests: 63245 lines, 50426 name a place, a direction or a pointer, 15711 of them a direction, 20252 a pointer (5839 a pin; in 13724 a pointer is a target of its own)
+  rule set v5: 21807 of the lines are the pointer batch's (16000 generated from 108 pointer patterns among the direction patterns, and 65 written out; without the ones generated twice or already there)
+item tests: 91861 lines and intents, 12207 with an item (8351 lines)
+tokenizer tests: 15553 lines (5447 with [UNK], 837 cut at 64 tokens, slots on_signal/other/negation on [2003, 825, 810])
+  rule set v8: 300 conversations about a thing and "it"; "it" read from the talk 488 times, from the crosshair 306 times
+  put it down by a thing: 150 conversations, 163 DROP lines carried to the thing named (DELIVER)
+  the thing the talk is about: 150 conversations, a bare object read from the talk 53 times
+  the crate and "it": 150 conversations, 242 lines that name the crate and say "it"
+  rule set v9: 150 conversations with a means; 113 orders carry one
+world tests: 2312 scenarios, 16806 steps; actions act 5687, answer 872, ask 3263, execute 119, go 107, ignore 423, negated 97, queued 594, refused 262, resolved 1512, say_again 3616, wait 254
+  groundings: missing/None 3747, resolved/gaze 2068, resolved/only 1549, resolved/memory 854, resolved/direction 739, resolved/pin 640, ambiguous/distance 477, resolved/pin_default 393, resolved/nearest 296, resolved/here 262, missing/pin 250, missing/zone 112, missing/this 106, resolved/zone 70, resolved/outside 58, resolved/answer 52, ambiguous/unknown_modifier 51, resolved/inside 39
+  priors applied on 16806 steps; 18 worlds to refuse
+  the short context: a bare no stopped the bot 81, corrections and fragments 467, repeats 63, the standing pin as the place not said 339; 440 scenarios without the game's clock
+  290 scenarios in a world without named places; 110 orders at "here"; 818 questions answered by pointing; 58 steps with a queued order at "here"
+  lines of several orders: 637 further orders of a line, 242 of them given the place of the order before them; "the other" in answer to "Which ...?" 107 times, 34 of them settled by it and 38 answered with the next one

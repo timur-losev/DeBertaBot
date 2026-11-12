@@ -2158,6 +2158,206 @@
    "source": "game: the orders of the line after the next one"
   },
   {
+   "en": "I'll get the car.",
+   "source": "game: DRIVE on foot: it walks to the nearest free car, gets in and drives"
+  },
+  {
+   "en": "There's no car here.",
+   "source": "game: DRIVE on foot with no free car within reach"
+  },
+  {
+   "en": "I'm not driving.",
+   "source": "game: DRIVE stop or park on foot"
+  },
+  {
+   "en": "Stopping.",
+   "source": "game: DRIVE stop, or WAIT / HOLD_POSITION / STAND_DOWN while it drives: it brakes"
+  },
+  {
+   "en": "Faster.",
+   "source": "game: DRIVE faster"
+  },
+  {
+   "en": "That's as fast as I go here.",
+   "source": "game: DRIVE faster at its top speed"
+  },
+  {
+   "en": "Slower.",
+   "source": "game: DRIVE slower"
+  },
+  {
+   "en": "Any slower and we stop.",
+   "source": "game: DRIVE slower at its lowest speed"
+  },
+  {
+   "en": "I don't know the roads here.",
+   "source": "game: DRIVE on a map with no road graph"
+  },
+  {
+   "en": "I'm not on a road.",
+   "source": "game: DRIVE with the car off the roads"
+  },
+  {
+   "en": "Driving on.",
+   "source": "game: DRIVE forward: on to the next crossroads or the road's end"
+  },
+  {
+   "en": "Straight on.",
+   "source": "game: DRIVE forward at a crossroads: straight across it"
+  },
+  {
+   "en": "There's no road straight on.",
+   "source": "game: DRIVE forward at a crossroads with no way straight across"
+  },
+  {
+   "en": "The road ends here.",
+   "source": "game: DRIVE forward at the road's end"
+  },
+  {
+   "en": "At the crossroads.",
+   "source": "game: a drive is over: the car stopped before a crossroads"
+  },
+  {
+   "en": "End of the road.",
+   "source": "game: a drive is over at the road's end"
+  },
+  {
+   "en": "Left or right?",
+   "source": "game: DRIVE turn with no side said"
+  },
+  {
+   "en": "Turning left at the crossroads.",
+   "source": "game: DRIVE turn left at the next crossroads"
+  },
+  {
+   "en": "Turning right at the crossroads.",
+   "source": "game: DRIVE turn right at the next crossroads"
+  },
+  {
+   "en": "Taking the second left.",
+   "source": "game: DRIVE turn: the second turning to the left"
+  },
+  {
+   "en": "Taking the second right.",
+   "source": "game: the same, to the right"
+  },
+  {
+   "en": "Taking the third left.",
+   "source": "game: DRIVE turn: the third turning to the left"
+  },
+  {
+   "en": "Taking the third right.",
+   "source": "game: the same, to the right"
+  },
+  {
+   "en": "Taking the next left.",
+   "source": "game: DRIVE turn: the fourth or a later turning to the left"
+  },
+  {
+   "en": "Taking the next right.",
+   "source": "game: the same, to the right"
+  },
+  {
+   "en": "Driving to the crossroads.",
+   "source": "game: DRIVE turn where the next crossroads turns only the other way: up to it; on arrival 'There's no left turn here.'"
+  },
+  {
+   "en": "There's no left turn here.",
+   "source": "game: DRIVE turn: on arrival at that crossroads"
+  },
+  {
+   "en": "There's no right turn here.",
+   "source": "game: the same, right"
+  },
+  {
+   "en": "There's no left turn ahead.",
+   "source": "game: DRIVE turn: no turning that way before the roads end"
+  },
+  {
+   "en": "There's no right turn ahead.",
+   "source": "game: the same, right"
+  },
+  {
+   "en": "There's no second left ahead.",
+   "source": "game: DRIVE turn: no second turning that way"
+  },
+  {
+   "en": "There's no second right ahead.",
+   "source": "game: the same, right"
+  },
+  {
+   "en": "There's no further left ahead.",
+   "source": "game: DRIVE turn: no third or later turning that way"
+  },
+  {
+   "en": "There's no further right ahead.",
+   "source": "game: the same, right"
+  },
+  {
+   "en": "Where to?",
+   "source": "game: DRIVE to with no place"
+  },
+  {
+   "en": "No road goes there.",
+   "source": "game: DRIVE to a place no road reaches"
+  },
+  {
+   "en": "We're here.",
+   "source": "game: DRIVE to: arrived (at once when the car is there already)"
+  },
+  {
+   "en": "On my way.",
+   "source": "game: DRIVE to a place with no name"
+  },
+  {
+   "en": "Driving to {thing}.",
+   "source": "game: DRIVE to a named place: the game writes 'the' and the place's name ('the main door', 'the red table'; a name the thing slot has not, 'the bank', takes the line's terms or the slot's _other)"
+  },
+  {
+   "en": "Pulling over.",
+   "source": "game: DRIVE park: to the kerb; on arrival 'Parked.'"
+  },
+  {
+   "en": "Parked.",
+   "source": "game: DRIVE park: stopped at the kerb"
+  },
+  {
+   "en": "No room to pull over here.",
+   "source": "game: DRIVE park with too little road left before the crossroads"
+  },
+  {
+   "en": "Turning round.",
+   "source": "game: DRIVE around: a three-point turn where the car stands"
+  },
+  {
+   "en": "Turned round.",
+   "source": "game: DRIVE around: done, with no road ahead to go on along"
+  },
+  {
+   "en": "Out of the way!",
+   "source": "game: driving: a person or a car stands in the way; it waits for them to go"
+  },
+  {
+   "en": "Something's blocking the road.",
+   "source": "game: driving: a thing stands in the way with no room to pass; the drive is over"
+  },
+  {
+   "en": "The car's stuck.",
+   "source": "game: driving: the car does not move"
+  },
+  {
+   "en": "I can't move like that.",
+   "source": "game: BODY_MOVE / BODY_COMBO: the body's console words refused the line"
+  },
+  {
+   "en": "I know these combos: {name}.",
+   "source": "game: BODY_COMBO 'combos': the combos taught, their names as the player said them, joined by ', '"
+  },
+  {
+   "en": "I don't know any combos yet.",
+   "source": "game: BODY_COMBO 'combos' with none taught"
+  },
+  {
    "en": "Okay, I won't anymore.",
    "source": "coop_cli.cpp bro habit: the player told it to stop saying 'bro'"
   },
@@ -2376,6 +2576,26 @@
     "a small box",
     "a big spool",
     "a small spool",
+    "a bank",
+    "a restaurant",
+    "a cafe",
+    "a shop",
+    "a hotel",
+    "a pharmacy",
+    "a gas station",
+    "a parking lot",
+    "a junction",
+    "a traffic light",
+    "a crosswalk",
+    "a counter",
+    "a kiosk",
+    "a bench",
+    "a bin",
+    "an ATM",
+    "a parasol",
+    "a menu",
+    "a kitchen",
+    "a drinks machine",
     "the sofa",
     "the chair",
     "the rock",
@@ -2388,7 +2608,27 @@
     "the door",
     "the window",
     "the table",
-    "the switch"
+    "the switch",
+    "the bank",
+    "the restaurant",
+    "the cafe",
+    "the shop",
+    "the hotel",
+    "the pharmacy",
+    "the gas station",
+    "the parking lot",
+    "the junction",
+    "the traffic light",
+    "the crosswalk",
+    "the counter",
+    "the kiosk",
+    "the bench",
+    "the bin",
+    "the ATM",
+    "the parasol",
+    "the menu",
+    "the kitchen",
+    "the drinks machine"
    ]
   },
   "things": {
@@ -2437,6 +2677,7 @@
     "crouch",
     "defuse it",
     "do it again",
+    "drive the car",
     "drone it",
     "fall back",
     "feed the animals",
@@ -2459,6 +2700,7 @@
     "jump",
     "look at you",
     "look there",
+    "move a body part",
     "move there",
     "not an order",
     "open fire",
@@ -2489,6 +2731,7 @@
     "take cover",
     "take the praise",
     "talk",
+    "teach or play a combo",
     "tear it down",
     "throw a flash",
     "throw a frag",
@@ -2526,6 +2769,26 @@
     "spool",
     "garden bed",
     "rock",
+    "bank",
+    "restaurant",
+    "cafe",
+    "shop",
+    "hotel",
+    "pharmacy",
+    "gas station",
+    "parking",
+    "junction",
+    "traffic light",
+    "crosswalk",
+    "counter",
+    "kiosk",
+    "bench",
+    "bin",
+    "atm",
+    "parasol",
+    "menu",
+    "kitchen",
+    "drinks machine",
     "place"
    ]
   }

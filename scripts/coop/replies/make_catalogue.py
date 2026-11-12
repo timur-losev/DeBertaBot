@@ -17,8 +17,8 @@ import io, json, os, re
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.normpath(os.path.join(HERE, "..", "..", ".."))
 CLI = os.path.join(REPO, "cpp", "coop_intent", "tools", "coop_cli.cpp")
-CONFIG = os.path.join(REPO, "scripts", "coop", "intents_v66.json")   # bot v66's phrases ("label") and places (locations_v66.json)
-PLACES = os.path.join(REPO, "scripts", "coop", "locations_v68.json")   # v14 (2026-10-28): bed is a bed, garden_bed, rock
+CONFIG = os.path.join(REPO, "scripts", "coop", "intents_v70.json")   # bot v70's phrases ("label"): + drive the car, body moves, combos
+PLACES = os.path.join(REPO, "scripts", "coop", "locations_v70.json")   # v16 (round v70): the city's places and the restaurant's things
 
 PLANNER = [
     ("Copy, stopping.", "world.cpp: a negated order stops the bot"),
@@ -270,6 +270,46 @@ GAME = [  # the game's own lines (Source/LyraGame/CoopBot)
     ("Then out through {thing}.", "the next order: out by a door"), ("Then to {thing}.", "the next order: a walk to a place"),
     ("Then where you pointed.", "the next order: a walk to a spot the player pointed at"),
     ("And {n} more after that.", "the orders of the line after the next one"),
+    # round v70 (2026-11-11): the bot drives a car (OVCoopBotDriving.cpp, DRIVE: «едь вперёд», «поверни налево», «едь к банку»,
+    # «припаркуйся», «быстрее», «тормози»), and the body by voice (BODY_MOVE / BODY_COMBO)
+    ("I'll get the car.", "DRIVE on foot: it walks to the nearest free car, gets in and drives"),
+    ("There's no car here.", "DRIVE on foot with no free car within reach"), ("I'm not driving.", "DRIVE stop or park on foot"),
+    ("Stopping.", "DRIVE stop, or WAIT / HOLD_POSITION / STAND_DOWN while it drives: it brakes"),
+    ("Faster.", "DRIVE faster"), ("That's as fast as I go here.", "DRIVE faster at its top speed"),
+    ("Slower.", "DRIVE slower"), ("Any slower and we stop.", "DRIVE slower at its lowest speed"),
+    ("I don't know the roads here.", "DRIVE on a map with no road graph"), ("I'm not on a road.", "DRIVE with the car off the roads"),
+    ("Driving on.", "DRIVE forward: on to the next crossroads or the road's end"),
+    ("Straight on.", "DRIVE forward at a crossroads: straight across it"),
+    ("There's no road straight on.", "DRIVE forward at a crossroads with no way straight across"),
+    ("The road ends here.", "DRIVE forward at the road's end"),
+    ("At the crossroads.", "a drive is over: the car stopped before a crossroads"), ("End of the road.", "a drive is over at the road's end"),
+    ("Left or right?", "DRIVE turn with no side said"),
+    ("Turning left at the crossroads.", "DRIVE turn left at the next crossroads"),
+    ("Turning right at the crossroads.", "DRIVE turn right at the next crossroads"),
+    ("Taking the second left.", "DRIVE turn: the second turning to the left"), ("Taking the second right.", "the same, to the right"),
+    ("Taking the third left.", "DRIVE turn: the third turning to the left"), ("Taking the third right.", "the same, to the right"),
+    ("Taking the next left.", "DRIVE turn: the fourth or a later turning to the left"), ("Taking the next right.", "the same, to the right"),
+    ("Driving to the crossroads.", "DRIVE turn where the next crossroads turns only the other way: up to it; on arrival "
+                                   "'There's no left turn here.'"),
+    ("There's no left turn here.", "DRIVE turn: on arrival at that crossroads"), ("There's no right turn here.", "the same, right"),
+    ("There's no left turn ahead.", "DRIVE turn: no turning that way before the roads end"), ("There's no right turn ahead.", "the same, right"),
+    ("There's no second left ahead.", "DRIVE turn: no second turning that way"), ("There's no second right ahead.", "the same, right"),
+    ("There's no further left ahead.", "DRIVE turn: no third or later turning that way"), ("There's no further right ahead.", "the same, right"),
+    ("Where to?", "DRIVE to with no place"), ("No road goes there.", "DRIVE to a place no road reaches"),
+    ("We're here.", "DRIVE to: arrived (at once when the car is there already)"), ("On my way.", "DRIVE to a place with no name"),
+    ("Driving to {thing}.", "DRIVE to a named place: the game writes 'the' and the place's name ('the main door', 'the red table'; "
+                            "a name the thing slot has not, 'the bank', takes the line's terms or the slot's _other)"),
+    ("Pulling over.", "DRIVE park: to the kerb; on arrival 'Parked.'"), ("Parked.", "DRIVE park: stopped at the kerb"),
+    ("No room to pull over here.", "DRIVE park with too little road left before the crossroads"),
+    ("Turning round.", "DRIVE around: a three-point turn where the car stands"),
+    ("Turned round.", "DRIVE around: done, with no road ahead to go on along"),
+    ("Out of the way!", "driving: a person or a car stands in the way; it waits for them to go"),
+    ("Something's blocking the road.", "driving: a thing stands in the way with no room to pass; the drive is over"),
+    ("The car's stuck.", "driving: the car does not move"),
+    ("I can't move like that.", "BODY_MOVE / BODY_COMBO: the body's console words refused the line"),
+    # BODY_COMBO's answers (2026-11-11; a combo taught says "Got it, I'll remember.", one forgotten "Forgotten.", as the memory's)
+    ("I know these combos: {name}.", "BODY_COMBO 'combos': the combos taught, their names as the player said them, joined by ', '"),
+    ("I don't know any combos yet.", "BODY_COMBO 'combos' with none taught"),
 ]
 # what the bot calls the thing under the crosshair (LyraStarterGame58 CoopBot OVCoop::ThingName and the client's BuildWorld):
 # the slot "thing" lists them, so that the reply tables say them in the player's language
@@ -283,8 +323,16 @@ WHAT_THINGS = ["an enemy", "a teammate", "someone", "a switch", "the floor", "th
                "the blue table", "the red table", "the yellow table", "the white table", "the brown table",
                "the blue stairs", "the red stairs", "the yellow stairs", "the white stairs", "the brown stairs",
                "a cardboard box", "a big box", "a small box", "a big spool", "a small spool",
+               # place vocabulary v16 (round v70): the city's places and the restaurant's things (OVCoop::ThingName)
+               "a bank", "a restaurant", "a cafe", "a shop", "a hotel", "a pharmacy", "a gas station", "a parking lot", "a junction",
+               "a traffic light", "a crosswalk", "a counter", "a kiosk", "a bench", "a bin", "an ATM", "a parasol", "a menu", "a kitchen",
+               "a drinks machine",
                # the place of a walk under way, said with "the" ("Heading to {thing}.", 2026-11-01)
-               "the sofa", "the chair", "the rock", "the roof", "the bed", "the car", "the box", "the crate", "the spool", "the door", "the window", "the table", "the switch"]
+               "the sofa", "the chair", "the rock", "the roof", "the bed", "the car", "the box", "the crate", "the spool", "the door", "the window", "the table", "the switch",
+               # v16 (round v70): the same for the city ("Driving to {thing}.", AOVCoopBotController::PlaceAsThing)
+               "the bank", "the restaurant", "the cafe", "the shop", "the hotel", "the pharmacy", "the gas station", "the parking lot",
+               "the junction", "the traffic light", "the crosswalk", "the counter", "the kiosk", "the bench", "the bin", "the ATM", "the parasol",
+               "the menu", "the kitchen", "the drinks machine"]
 # the brat habit (coop_cli.cpp kBroOff, kBroRelapse; bro.h): the bot agrees to stop calling the player "bro", and the brat
 # persona slips 30 s later
 BRO = [("Okay, I won't anymore.", "the player told it to stop saying 'bro'"), ("Got it, no more.", "the same"),

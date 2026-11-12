@@ -1,0 +1,21 @@
+07:26:53  start v69s5n70 (chain v69s5, bot coop-deberta-v3-ens3-v67, every line)
+chain v69s5, bot coop-deberta-v3-ens3-v67, on test_v70_new (200 lines, the game's path): 0/200 = 0.0%
+chain v69s5n70 on the owner test (47 lines, the game's path): with held 44/47 = 93.6%, at once 42/47 = 89.4%
+  NO  [5] es Pon la caja pequeña encima de la grande.           -> DELIVER None/None by None (act)   want DELIVER crate/big by crate   | put the small box on top of the big box
+  NO  [5] es Deja la caja de cartón en la mesa blanca.          -> nothing   want DELIVER table/white by crate   | 
+  NO  [6] es Coge la caja.                                      -> COLLECT None/None by None (act)   want COLLECT crate/None by None   | pick up the box
+  NO  [6] es Salta la vaya.                                     -> JUMP None/None by None (act)   want JUMP fence/None by None   | jump over it
+W1111 07:31:11.117000 25496 site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not work for triton kernels
+  NO  [5] es Riega el bancal norte y después cosecha el del sur -> WATER garden_bed/north by None (act); HARVEST [unsure]/None by None (ask)   want WATER garden_bed/north by None; HARVEST garden_bed/south by None   | water the north garden bed / harvest the south crop
+  NO  [5] es Recarga, escóndete detrás de la cama y no dispares -> RELOAD None/None by None (act); TAKE_COVER bed/None by None (ask)   want RELOAD None/None by None; TAKE_COVER bed/None by None; HOLD_FIRE None/None by None   | Reload / hide behind the bed
+  NO  [5] es Empuja el peñasco hasta la puerta y escóndete detr -> TAKE_COVER door/None by rock (ask)   want PUSH door/None by rock; TAKE_COVER rock/None by None   | hide behind the door using the boulder
+  NO  [6] es Empújalo hasta la valla.                           -> PUSH fence/None by None (act)   want PUSH fence/None by rock   | push it to the fence
+  en     50  at once: whole  92.0%  time  92.0%  intents  94.0%   with held: whole  98.0%  time  98.0%  intents 100.0%
+   NO: t089 ru открой дверь и подожди там пять секунд | want [('OPEN', None), ('WAIT', {'kind': 'for', 'seconds': 5})] | got [('OPEN', 'open the door', None), ('HOLD_POSITION', None, {'kind': 'for', 'seconds': 5.0, 'more': False})]
+   NO: t100 ru ляг на 10 секунд, потом вставай и за мной | want [('PRONE', {'kind': 'for', 'seconds': 10}), ('STAND_UP', None), ('FOLLOW_ME', None)] | got [('PRONE', 'go prone for 10 seconds', {'kind': 'for', 'seconds': 10.0, 'more': False}), ('FOLLOW_ME', 'follow me', None)]
+   NO: t168 es súbete al carro después de 15 segundos | want [('GET_IN', {'kind': 'after', 'seconds': 15})] | got [('JUMP', 'in 15 seconds climb onto the car', {'kind': 'after', 'seconds': 15.0, 'more': False})]
+   NO: t185 es espérame un segundito | want [('WAIT', None)] | got [('WAIT', 'wait for a sec', {'kind': 'for', 'seconds': 1.0, 'more': False})]
+   NO: t215 en wait one minute | want [('WAIT', {'kind': 'for', 'seconds': 60})] | got [('WAIT', 'wait a minute', None)]
+memory tests: 44 scenarios, 15 wrong
+v69s5n70: 495 lines -> G:\Proj\ollaya\DeBertaBot\scripts\coop\stt\chains2\ml_v69\replay_owner_talk_v69s5n70.jsonl
+07:48:19  done v69s5n70

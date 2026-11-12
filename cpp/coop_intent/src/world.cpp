@@ -80,7 +80,8 @@ const char* const kCarry[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MELEE", "MOVE_
 const char* const kPointedHere[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MELEE", "FRAG", "FLASH", "SMOKE", "LOOK_AT", "CHECK", "HOLD_ANGLE", "SEE_THING"};
 const char* const kPlaceIntents[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MELEE", "MOVE_TO", "CHECK", "ENTRY", "FLANK", "HOLD_ANGLE", "LOOK_AT",
                                      "FRAG", "FLASH", "SMOKE", "HOLD_POSITION", "JUMP", "TAKE_COVER", "FALL_BACK", "COME_BACK",
-                                     "BREACH", "VAULT_WINDOW", "OPEN", "PUSH", "ROLL"};   // bot v64: push, roll
+                                     "BREACH", "VAULT_WINDOW", "OPEN", "PUSH", "ROLL",    // bot v64: push, roll
+                                     "DRIVE"};                                            // bot v70: "no, to the restaurant"
 // world.NO_PLACE (bot v56): orders whose place is not the line's: going back (the bot's own earlier place, the game keeps
 // it), letting the player out (where the player is). Their lines' places are neither grounded nor asked about. Bot v57:
 // taking out or reloading a weapon the bot carries ("switch to your pistol" names no weapon lying in the world)
@@ -88,7 +89,8 @@ const char* const kPlaceIntents[] = {"OPEN_FIRE", "SUPPRESS", "ATTACK", "MELEE",
 // bot v64: the hands, a report, the body, putting down where it stands
 const char* const kNoPlace[] = {"GO_BACK", "HELP_INTERACTION", "SWITCH_WEAPON", "RELOAD", "SEE_ME", "SMALL_TALK", "PRAISE", "KILL_YOURSELF",
                                 "HOLSTER", "STATUS_REPORT", "BODY_STATE", "DROP",
-                                "GIVE_WAY", "WHAT_IS_IT"};   // bot v66: out of the player's way (the game picks the side), the thing looked at
+                                "GIVE_WAY", "WHAT_IS_IT",    // bot v66: out of the player's way (the game picks the side), the thing looked at
+                                "BODY_MOVE", "BODY_COMBO"};  // bot v70: a body part, a combo ("turn head left": no way to go)
 // world.ITEM_INTENTS (items_v60.json "intents") and FARM_INTENTS: the farmer's and the builder's orders. They join
 // PLACE_INTENTS: "no, by the barn" gives the same order at another place
 const char* const kItemIntents[] = {"PLANT_CROP", "WATER", "HARVEST", "FEED", "COLLECT", "DELIVER", "BUILD", "REPAIR", "DEMOLISH"};
