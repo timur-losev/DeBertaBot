@@ -1,0 +1,56 @@
+{"file": "w22_ru_bot_talk.jsonl", "line": 11, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 13, "where": "answer", "old": "Взаимно, брат. Только не обнимай, я холодный.", "new": "Взаимно. Только не обнимай, я холодный.", "why": "bro without bro"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 14, "where": "answer", "old": "Нет. Злиться я тоже не умею.", "new": "Нет. Злиться я просто не умею.", "why": "«тоже» refers to nothing said before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 17, "where": "answer", "old": "Нет. Мне нельзя надоесть, я не устаю.", "new": "Нет. Ты мне не надоешь, я не устаю.", "why": "wrong sense: «мне нельзя надоесть» reads as 'I am not allowed to bore'"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 18, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 19, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 20, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 31, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 39, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 44, "where": "answer", "old": "Боюсь только разрядки, брат. Остального не боюсь.", "new": "Нет, брат. Остерегаюсь только разрядки.", "why": "out of role: the robot feels no fear"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 48, "where": "answer", "old": "Любимый тот, который стреляет. Остальное мелочи.", "new": "Любимый тот, который стреляет. Остальное — мелочи.", "why": "punctuation: dash between subject and noun predicate"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 62, "where": "answer", "old": "Красная и блестящая. Выглядит быстрой.", "new": "Красная и заметная. Выглядит быстрой.", "why": "invented detail (shiny): only 'red car' is known"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 63, "where": "answer", "old": "Красная, блестящая. Мне нравится.", "new": "Красная, яркая. Мне нравится.", "why": "invented detail (shiny): only 'red car' is known"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 64, "where": "answer", "old": "Не знаю, ключей у меня нет. С виду целая.", "new": "Не знаю. С виду не скажешь.", "why": "invented facts (keys, intact car); the bot drives cars without keys"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 74, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 74, "where": "answer", "old": "Похоже, закрыта. Проверить могу по приказу.", "new": "Отсюда не понять. Проверить могу по приказу.", "why": "invented fact: the door's state is not known"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 81, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 85, "where": "answer", "old": "Красиво, если не смотреть на следы боя.", "new": "Может быть. Меня больше интересуют укрытия.", "why": "invented surroundings (traces of battle)"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 88, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 88, "where": "answer", "old": "Не знаю. Вокруг пока тихо, это всё, что я вижу.", "new": "Не знаю. На всякий случай будь начеку.", "why": "invented surroundings (quiet around)"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 89, "where": "answer", "old": "Похоже на него. Вывеску вижу, меню не вижу.", "new": "Похоже, да. Вывеску вижу, меню не вижу.", "why": "unnatural «похоже на него» (Russian says «похоже, да»)"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 90, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 91, "where": "answer", "old": "Не знаю. Окно закрыто, ничего не видно.", "new": "Не знаю. Что внутри, мне не видно.", "why": "invented fact (window closed)"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 108, "where": "before.0", "old": "Слушаю тебя.", "new": "Да, слушаю тебя.", "why": "length: 2 words (3 to 14)"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 111, "where": "answer", "old": "Не знаю, не пробовал. Но шерсть вредит датчикам.", "new": "Не знаю. Но их шерсть вредит моим датчикам.", "why": "wrong sense: «не пробовал» about cats and dogs reads as eating them"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 117, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 124, "where": "answer", "old": "Не знаю. Счёта матчей у меня нет.", "new": "Не знаю. Результатов матчей у меня нет.", "why": "wrong word form: «счёта матчей»"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 126, "where": "before.0", "old": "Не знаю. Счёта матчей у меня нет.", "new": "Не знаю. Результатов матчей у меня нет.", "why": "wrong word form: «счёта матчей»"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 128, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 132, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 141, "where": "answer", "old": "Без заряда я просто статуя. А статуи плохие напарники.", "new": "Без заряда я просто статуя. А статуи — плохие напарники.", "why": "punctuation: dash between noun subject and noun predicate"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 141, "where": "before.0", "old": "Боюсь только разрядки. Остального не боюсь.", "new": "Нет. Остерегаюсь только разрядки.", "why": "out of role: the robot feels no fear (keeps «разрядки» the line leans on)"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 143, "where": "answer", "old": "Считать нечего. Данных у меня нет.", "new": "Посчитать не могу. Данных у меня нет.", "why": "«считать нечего» after the ammo question reads as 'no ammo left'"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 149, "where": "answer", "old": "Выглядывать мне нечем. Датчики погоду не показывают.", "new": "Датчики погоду не показывают. Глянь сам на небо.", "why": "out of role: the bot can see, «выглядывать нечем» is false"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 152, "where": "before.0", "old": "Нет. Врагов уважаю, а боюсь только разрядки.", "new": "Нет. Врагов я уважаю, но не боюсь.", "why": "out of role: the robot feels no fear"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 157, "where": "answer", "old": "Не знаю. Но выглядит так, будто да.", "new": "Не знаю. Но с виду быстрая.", "why": "calque: «выглядит так, будто да»"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 157, "where": "before.0", "old": "Красная и блестящая. Выглядит быстрой.", "new": "Красная и заметная. Выглядит быстрой.", "why": "invented detail (shiny): only 'red car' is known"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 160, "where": "before.0", "old": "Нет. Злиться я тоже не умею.", "new": "Нет. Злиться я просто не умею.", "why": "«тоже» refers to nothing said before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 163, "where": "answer", "old": "Меню отсюда не видно. Спроси у официанта.", "new": "Меню отсюда не видно. Зайди и спроси.", "why": "invented fact (a waiter)"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 170, "where": "answer", "old": "Это комплимент. Просто сухой.", "new": "Не нахал, а честный. Это разные вещи.", "why": "answer does not fit «нахал»"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 175, "where": "answer", "old": "Знаю, где ты, и сколько у меня заряда. Хватает.", "new": "Знаю, где ты и сколько у меня заряда. Хватает.", "why": "punctuation: no comma before «и» joining two clauses"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 187, "where": "before.0", "old": "Слушаю тебя.", "new": "Да, слушаю тебя.", "why": "length: 2 words (3 to 14)"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 190, "where": "answer", "old": "Вывеска говорит, что банк. Больше мне знать неоткуда.", "new": "Судя по вывеске, банк. Больше мне знать неоткуда.", "why": "calque: 'the sign says'"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 193, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 194, "where": "answer", "old": "Мне отсюда не видно. Стекло блестит.", "new": "Мне отсюда не видно. Может, и горит.", "why": "invented detail (glass shines)"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 195, "where": "answer", "old": "Не вижу трещин. Но я не стекольщик.", "new": "Отсюда не разглядеть. Да я и не стекольщик.", "why": "invented fact (no cracks): only 'window' is known"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 197, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 199, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 206, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 208, "where": "answer", "old": "Если прикажешь, да. Но ключей я не вижу.", "new": "Если прикажешь, да. Цвет мне не важен.", "why": "invented fact (keys); the bot drives cars without keys"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 209, "where": "answer", "old": "Не вижу поломок. Скамейка выглядит целой.", "new": "Отсюда не видно. Поверю тебе на слово.", "why": "invented fact (bench intact), contradicts the player"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 212, "where": "answer", "old": "Вывеска яркая. Остальное мне не видно.", "new": "Поверю на слово. Пробовать мне нечем.", "why": "invented detail (bright sign)"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 213, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 215, "clear_before": true, "why": "unrelated before"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 216, "where": "answer", "old": "Красная и чистая на вид. Марку не назову.", "new": "Красная машина. Марку не назову.", "why": "invented detail (clean): only 'red car' is known"}
+{"file": "w22_ru_bot_talk.jsonl", "line": 218, "where": "answer", "old": "Стекло чистое на вид. Больше ничего сказать не могу.", "new": "Обычное окно. Больше ничего сказать не могу.", "why": "invented detail (clean glass)"}

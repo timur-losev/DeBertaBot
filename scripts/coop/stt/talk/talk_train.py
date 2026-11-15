@@ -22,6 +22,9 @@ BASE = os.environ.get("TALK_BASE", "Qwen/Qwen3-1.7B")   # TALK_BASE=Qwen/Qwen3-4
 ROLES_DIR = os.path.join(REPO, "models", "coop-talk-v1", "cpp", "roles")
 OUT = os.path.join(STT, "models_out", "talk")
 V2 = os.environ.get("TALK_MODEL_DIR", os.path.join(REPO, "models", "coop-talk-v2", "cpp"))   # where gguf writes the model
+ROWS = os.environ.get("TALK_ROWS", os.path.join(HERE, "rows"))   # round talk-2: rows_v2 (the old rows fixed + the new ones)
+# the game's brain's talk folder: the roles and the config a model of the game's people goes with (gguf copies them)
+GAME_TALK = os.environ.get("TALK_GAME_DIR", r"J:/UE4/Projects/LyraStarterGame58/Binaries/CoopBrainV6/talk")
 LL = os.path.join(STT, "models", "llama.cpp")
 BUILD = "b11429"
 LANGS = {"ru": "Russian", "en": "English", "es": "Spanish"}
@@ -49,6 +52,9 @@ def talk_system(row):
     s += "\n"
     if name:
         s += "\nYour name is " + name + "."
+    # a woman or a man of the game's people (the role request's "gender", coop_cli TalkSystem): the forms they use of themselves
+    if row.get("gender") in ("woman", "man") and row["lang"] != "en":
+        s += "\nWhen you speak " + LANGS[row["lang"]] + ", use the " + ("feminine" if row["gender"] == "woman" else "masculine") + " forms for yourself."
     if role == "bot":
         if row.get("player"):
             s += "\nThe player's name is " + row["player"] + "."
@@ -111,7 +117,7 @@ def row_problem(r):
 
 
 def check():
-    rows, problems = read_rows(os.path.join(HERE, "rows", "*.jsonl"))
+    rows, problems = read_rows(os.path.join(ROWS, "*.jsonl"))
     from collections import Counter
     print(f"{len(rows)} rows, {len(problems)} refused")
     for p in problems[:30]:
@@ -142,8 +148,8 @@ def train(seed):
     import torch
     from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
     from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig, get_linear_schedule_with_warmup
-    rows, problems = read_rows(os.path.join(HERE, "rows", "*.jsonl"))
-    print(f"{len(rows)} rows ({len(problems)} refused)", flush=True)
+    rows, problems = read_rows(os.path.join(ROWS, "*.jsonl"))
+    print(f"{len(rows)} rows ({len(problems)} refused) from {ROWS}", flush=True)
     random.seed(seed)
     torch.manual_seed(seed)
     tok = AutoTokenizer.from_pretrained(BASE, cache_dir=CACHE)
@@ -223,8 +229,8 @@ def gguf(seed):
     subprocess.run([os.path.join(LL, f"{BUILD}-cpu", "llama-quantize.exe"), f16, os.path.join(V2, "talk.gguf"), "Q4_K_M", "8"], check=True)
     shutil.rmtree(merged)
     os.remove(f16)
-    v1 = os.path.join(REPO, "models", "coop-talk-v1", "cpp")
-    with open(os.path.join(v1, "talk_config.json"), encoding="utf-8") as f:
+    v1 = GAME_TALK if os.path.exists(os.path.join(GAME_TALK, "talk_config.json")) else os.path.join(REPO, "models", "coop-talk-v1", "cpp")
+    with open(os.path.join(v1, "talk_config.json"), encoding="utf-8-sig") as f:
         cfg = json.load(f)
     cfg["model_from"] = (f"{BASE} (Apache-2.0) + {TAG} seed {seed} ({HP['epochs']} epochs, QLoRA r16 on every projection, scripts/coop/stt/talk/talk_train.py), "
                          f"merged, llama.cpp {BUILD} Q4_K_M")

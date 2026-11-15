@@ -1,0 +1,118 @@
+{
+ "model": "talk.gguf",
+ "model_from": "Qwen/Qwen3-4B (Apache-2.0) + talk2e2_4b seed 0 (2 epochs, QLoRA r16 on every projection, scripts/coop/stt/talk/talk_train.py), merged, llama.cpp b11429 Q4_K_M",
+ "context": 2048,
+ "max_new": 72,
+ "temperature": 0.4,
+ "top_p": 0.8,
+ "top_k": 20,
+ "seed": null,
+ "memory_turns": 4,
+ "memory_seconds": 120,
+ "roles": {
+  "bot": {
+   "file": "roles/bot.txt",
+   "names": {
+    "en": "Buddy",
+    "ru": "Бади",
+    "es": "Buddy"
+   }
+  },
+  "seller": {
+   "file": "roles/seller.txt",
+   "names": {
+    "en": "Max",
+    "ru": "Макс",
+    "es": "Max"
+   }
+  },
+  "teller_anna": {
+   "file": "roles/bank_teller.txt",
+   "names": {
+    "en": "Anna",
+    "ru": "Анна",
+    "es": "Ana"
+   }
+  },
+  "teller_oleg": {
+   "file": "roles/bank_teller.txt",
+   "names": {
+    "en": "Oleg",
+    "ru": "Олег",
+    "es": "Óscar"
+   }
+  },
+  "bank_guard": {
+   "file": "roles/bank_guard.txt",
+   "names": {
+    "ru": "Виктор",
+    "en": "Victor",
+    "es": "Víctor"
+   }
+  },
+  "foreman": {
+   "file": "roles/construction_foreman.txt",
+   "names": {
+    "en": "Mike",
+    "ru": "Михалыч",
+    "es": "Miguel"
+   }
+  },
+  "worker_kolya": {
+   "file": "roles/construction_worker.txt",
+   "names": {
+    "en": "Nick",
+    "ru": "Коля",
+    "es": "Nico"
+   }
+  },
+  "worker_tolik": {
+   "file": "roles/construction_worker.txt",
+   "names": {
+    "en": "Tony",
+    "ru": "Толик",
+    "es": "Toni"
+   }
+  },
+  "taxi_driver": {
+   "file": "roles/taxi_driver.txt",
+   "names": {
+    "ru": "Сергей",
+    "en": "Sergei",
+    "es": "Sergio"
+   }
+  },
+  "street_musician": {
+   "file": "roles/street_musician.txt",
+   "names": {
+    "ru": "Лео",
+    "en": "Leo",
+    "es": "Leo"
+   }
+  },
+  "metro_robot": {
+   "file": "roles/metro_robot.txt",
+   "names": {
+    "ru": "Отто",
+    "en": "Otto",
+    "es": "Otto"
+   }
+  },
+  "sweeper": {
+   "file": "roles/street_sweeper.txt",
+   "names": {
+    "en": "Fred",
+    "ru": "Фёдор",
+    "es": "Federico"
+   }
+  },
+  "granny": {
+   "file": "roles/pensioner.txt",
+   "names": {
+    "en": "Valentina",
+    "ru": "баба Валя",
+    "es": "doña Valentina"
+   }
+  }
+ }
+}

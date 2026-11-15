@@ -6,6 +6,8 @@ talk_text.cpp's TalkAnswer does), then put side by side for a judge who does not
     python talk_eval.py pairs TAG_A TAG_B           -> eval/pairs_<A>_<B>.jsonl (shuffled, "x"/"y") + eval/pairs_<A>_<B>.key.json
     python talk_eval.py score TAG_A TAG_B           eval/judged_<A>_<B>.jsonl (the judge's) + the key -> the tables
     python talk_eval.py auto TAG                    rules alone: the language, Chinese/Japanese/Korean, length, empty
+    python talk_eval.py multi NAME TAG TAG ...      round talk-2: several models a row, per group of the test (eval/multi_NAME_*)
+    python talk_eval.py mscore NAME                 the judges' eval/judged_multi_NAME_<group>.jsonl -> per group and model
 """
 import glob, json, os, random, re, subprocess, sys, time, urllib.request
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -183,6 +185,72 @@ def score(a, b):
             print(f"{tag:8} {lang} {role:6}: " + ", ".join(parts))
 
 
+# Round talk-2 (2026-11-13): several models side by side, a group of the test a file, for judges who do not know which is which
+GROUPS = (("ru_bot", lambda r: r["lang"] == "ru" and r["role"] == "bot"),
+          ("ru_seller", lambda r: r["lang"] == "ru" and r["role"] == "seller"),
+          ("ru_people", lambda r: r["lang"] == "ru" and r["role"] == "other"),
+          ("en", lambda r: r["lang"] == "en"),
+          ("es", lambda r: r["lang"] == "es"))
+CRITERIA = ("understood", "in_role", "language", "facts")
+
+
+def multi(name, tags):
+    """eval/multi_<name>_<group>.jsonl: each test row with its reference and the answers of the models `tags`, shuffled into
+    a, b, c, ... row by row; eval/multi_<name>.key.json: which letter is which model."""
+    rows = test_rows()
+    ans = {t: load_answers(t) for t in tags}
+    rnd = random.Random(20261113)
+    letters = "abcdefgh"[:len(tags)]
+    key, groups = {}, {g: [] for g, _ in GROUPS}
+    for r in rows:
+        order = list(tags)
+        rnd.shuffle(order)
+        key[r["id"]] = dict(zip(letters, order))
+        o = {k: r.get(k) for k in ("id", "role", "role_name", "role_text", "lang", "name", "gender", "player", "scene", "looking_at", "bro")}
+        o.update(before=r.get("before") or [], line=r["line"], reference=r["answer"])
+        for letter, tag in zip(letters, order):
+            o[letter] = ans[tag][r["id"]]["answer"]
+        groups[next(g for g, f in GROUPS if f(r))].append(o)
+    for g, lst in groups.items():
+        rnd.shuffle(lst)
+        with open(os.path.join(EVAL, f"multi_{name}_{g}.jsonl"), "w", encoding="utf-8") as f:
+            for o in lst:
+                f.write(json.dumps(o, ensure_ascii=False) + "\n")
+    with open(os.path.join(EVAL, f"multi_{name}.key.json"), "w", encoding="utf-8") as f:
+        json.dump(key, f)
+    print(f"{len(rows)} rows, {len(tags)} models -> " + ", ".join(f"multi_{name}_{g} ({len(l)})" for g, l in groups.items()))
+
+
+def mscore(name):
+    """The judges' eval/judged_multi_<name>_<group>.jsonl ({"id", "a": {"understood", "in_role", "language", "facts", "good"},
+    ..., "best": "a"}) with the key: per group and model, good answers and each criterion, and how often each was the best."""
+    with open(os.path.join(EVAL, f"multi_{name}.key.json"), encoding="utf-8") as f:
+        key = json.load(f)
+    from collections import Counter, defaultdict
+    per = defaultdict(Counter)
+    for g, _ in GROUPS:
+        path = os.path.join(EVAL, f"judged_multi_{name}_{g}.jsonl")
+        if not os.path.exists(path):
+            continue
+        with open(path, encoding="utf-8") as f:
+            for j in map(json.loads, (l for l in f if l.strip())):
+                k = key[j["id"]]
+                for letter, tag in k.items():
+                    v = j.get(letter) or {}
+                    c = per[(g, tag)]
+                    c["n"] += 1
+                    c["good"] += 1 if v.get("good") else 0
+                    for crit in CRITERIA:
+                        if v.get(crit) is not None:
+                            c[crit] += 1 if v[crit] else 0
+                            c[crit + "_n"] += 1
+                if j.get("best") in k:
+                    per[(g, k[j["best"]])]["best"] += 1
+    for (g, tag), c in sorted(per.items()):
+        parts = [f"good {c['good']}/{c['n']}"] + [f"{k} {c[k]}/{c[k + '_n']}" for k in CRITERIA if c[k + "_n"]] + [f"best {c['best']}"]
+        print(f"{g:10} {tag:12}: " + ", ".join(parts))
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1]
     if cmd == "answer":
@@ -193,3 +261,7 @@ if __name__ == "__main__":
         score(sys.argv[2], sys.argv[3])
     elif cmd == "auto":
         auto(sys.argv[2])
+    elif cmd == "multi":
+        multi(sys.argv[2], sys.argv[3:])
+    elif cmd == "mscore":
+        mscore(sys.argv[2])
