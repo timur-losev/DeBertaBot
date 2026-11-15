@@ -49,6 +49,10 @@ PLANNER = [
     ("I'm {name} now.", "coop_cli.cpp memory: 'your name is Rex' -- the player named the bot"),
     ("My name is {name}.", "coop_cli.cpp memory: 'what's your name?' -- the name the player gave the bot, else the game's"),
     ("Nice to meet you, {name}.", "coop_cli.cpp memory: 'my name is Tim' -- the player told the bot their name"),
+    # going to someone, following them (coop_cli.cpp ReadGoTo, 2026-11-15): {name} is theirs in the words' language, in Russian
+    # already in the case the sentence wants («Иду к Коле.», «Иду за Колей.»)
+    ("Going over to {name}.", "coop_cli.cpp ReadGoTo: «Майк, иди к Нику», 'go to Nick', 'approach Tony' -- the one gone to by name"),
+    ("Following {name}.", "coop_cli.cpp ReadGoTo: «иди за Колей», 'follow Mike' -- the one followed by name"),
     ("Your name is {name}.", "coop_cli.cpp memory: 'what's my name?'"),
     ("I don't know your name yet.", "coop_cli.cpp memory: 'what's my name?' before the player told it"),
     ("Yes?", "coop_cli.cpp kCalled: the player said the bot's name and nothing else ('Rex!'); also 'Right here.', 'I hear you.'"),

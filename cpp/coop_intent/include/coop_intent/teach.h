@@ -182,8 +182,9 @@ int NameQuestion(std::string_view heard);
 // The line calls the bot by its name, at its start or its end («Рекс, иди сюда», «Эй, Рекс!», "come here, Rex"): the name's
 // words as they are (a call is no other form: «иди к Рексу» calls nobody), or one letter off in a word of 4+ letters (the
 // recognizer's «Рэкс» for «Рекс»).
-// *rest: the line without the name as said, its first letter a capital (empty: the name alone, a filler or "hey" at most)
-bool CalledBy(std::string_view heard, const std::string& name, std::string* rest);
+// *rest: the line without the name as said, its first letter a capital (empty: the name alone, a filler or "hey" at most);
+// *at_start (when given): the name was at the start (after "hey", «так», "now" at most), not at the end
+bool CalledBy(std::string_view heard, const std::string& name, std::string* rest, bool* at_start = nullptr);
 
 // The bot's line with the player's name said to them at the end of its first sentence: «Понял.» -> «Понял, Тимур.»,
 // "On my way. Ten seconds." -> "On my way, Tim. Ten seconds."

@@ -1266,6 +1266,45 @@ bool CloseInOwnWords(const std::string& line) {
 // a flank said in the player's own words: the decoder writes «зайди через главную дверь», «пройди через проход» as "Flank
 // through the main door." (decoder v68; the owner, 2026-11-01). With no word of a flank, and a door, a passage or a room said,
 // it is a way in
+// "sit (down) on the bench", "take a seat on this bench", "have a seat at the bench" (2026-11-14, the owner: the benches labelled
+// «чтобы на них можно было сидеть»; E2E people_adventure_look: «сядь на эту лавочку» -> "sit down on this bench" -> GET_IN 0.64,
+// "Ещё раз?"; «баба Валя, сядьте на лавочку» GET_IN 0.42, read as talk). The classifier knows "sit down" as CROUCH, but a sitting
+// ON a thing as getting into a car (GET_IN 0.6; "take a seat on this bench" 0.98, "In the car."; "sit down on the chair" GET_IN
+// 0.35), and "crouch on / at <it>" as CROUCH at that place (1.00), the order the game sits a body down on a seat with (a chair:
+// a crouch where it stands, as ever). The piece is written so, for a bench. In or into a thing ("sit in the car"), or a car named,
+// stays as it is
+bool SitOnPiece(std::string* piece) {
+    std::string low = coop::SpeechTextForClassifier(*piece);
+    for (const char* lead : {"please ", "now ", "okay ", "ok "})
+        if (low.rfind(lead, 0) == 0) low = low.substr(std::string(lead).size());
+    for (const char* sit : {"sit down ", "sit yourself down ", "sit ", "take a seat ", "have a seat ", "be seated ", "seat yourself "}) {
+        if (low.rfind(sit, 0) != 0) continue;
+        const std::string rest = low.substr(std::string(sit).size());
+        bool on = false;
+        for (const char* prep : {"on ", "onto ", "upon ", "at ", "by ", "on top of "})
+            if (rest.rfind(prep, 0) == 0) on = true;
+        if (!on) return false;
+        // only a bench for now, the seat the game sits a body down on (OVCoopBotController.cpp, IsSeatKind): a chair or a sofa
+        // stays as it was read («Сядь на стул» "Ещё раз?"), the owner's to teach or to decide
+        bool bench = false;
+        std::string word;
+        for (const char c : rest + " ") {
+            if (c != ' ' && c != ',' && c != '\'') {
+                word += c;
+                continue;
+            }
+            for (const char* v : {"car", "cars", "truck", "vehicle", "taxi", "cab", "bus", "van", "jeep", "seat", "wheel"})
+                if (word == v) return false;
+            bench = bench || word == "bench" || word == "benches";
+            word.clear();
+        }
+        if (!bench) return false;
+        *piece = "crouch " + rest;
+        return true;
+    }
+    return false;
+}
+
 bool FlankInOwnWords(const std::string& line) {
     const std::string s = OwnWords(line);
     return AnyIn(s, {"фланг", " обойди", " обходи", " обход", " тыл", " сзади", " сбоку", " справа", " слева", " с боку", "flanco", " rodea",
@@ -1579,6 +1618,8 @@ struct Talk {
         std::map<std::string, std::string> names;  // what the speaker is called, per language
         bool orders = false;                       // a body of theirs in the game takes orders (the game's "role" says so)
         std::string gender;                        // "woman", "man" (the game's "role"); empty: not said
+        bool bro = false;                          // they call the player «брат» / "bro" / "hermano" (the game's "role")
+        std::string lang;                          // the language they speak: "en", "ru", "es" (the game's "role"); empty: the player's
     };
     std::map<std::string, Role> roles;
     struct Exchange {
@@ -1786,6 +1827,33 @@ double SinceStart() { return std::chrono::duration<double>(std::chrono::steady_c
 // the table for the next line: the habit's, or the plain one
 void ChooseReplies() {
     g_replies = g_bro_replies && g_bro.Active(SinceStart()) ? g_bro_replies : g_plain_replies;
+}
+
+// The tables of a person's own language (2026-11-14, the owner: «у персоны можно было выбрать её язык общения, даже если язык
+// сейчас пользователя английский, то персона может говорить на русском»): a person of the level who speaks another language
+// than the player's is answered from that language's tables (replies_<lang>.json, replies_<lang>_brat.json with the habit),
+// read from --replies-dir (else the folder of --replies / --replies-bro) when first wanted and kept. English without the habit
+// is no table: the brain's own words. Null: English, or a table that is not there (the line stays English)
+std::string g_replies_dir;
+std::map<std::string, std::unique_ptr<coop::Localizer>> g_lang_replies;
+coop::Localizer* RepliesIn(const std::string& lang, bool bro) {
+    if (lang.empty() || lang == g_language) return bro && g_bro_replies ? g_bro_replies : g_plain_replies;
+    if (lang == "en" && !bro) return nullptr;
+    const std::string key = bro ? lang + "_brat" : lang;
+    auto it = g_lang_replies.find(key);
+    if (it == g_lang_replies.end()) {
+        std::unique_ptr<coop::Localizer> table;
+        std::string err;
+        const std::string file = g_replies_dir + "/replies_" + key + ".json";
+        if (!g_replies_dir.empty()) {
+            table = std::make_unique<coop::Localizer>();
+            if (!table->Load(file, &err)) table.reset();
+        }
+        std::fprintf(stderr, "replies of a person's own language: %s %s\n", file.c_str(), table ? "read" : ("not read: " + err).c_str());
+        it = g_lang_replies.emplace(key, std::move(table)).first;
+    }
+    if (!it->second && bro) return RepliesIn(lang, false);   // no table with the habit: the plain one
+    return it->second.get();
 }
 
 const std::vector<std::string> kBroOff = {"Okay, I won't anymore.", "Got it, no more.", "Fine, I'll stop."};
@@ -2350,6 +2418,10 @@ struct Chat {
                             }
                         }
                     }
+                    if (std::string sat = piece; SitOnPiece(&sat)) {
+                        h->note = "a sitting on a thing: \"" + piece + "\" read as \"" + sat + "\"";
+                        piece = sat;
+                    }
                     std::string read = piece;
                     const bool close = close_said || CloseToOpen(&read);
                     // "go up the blue stairs to the roof": up the stairs, then to the roof
@@ -2371,11 +2443,13 @@ struct Chat {
         if (todo.empty()) {
             std::string read = heard;
             const bool close = CloseToOpen(&read);   // English words only: a Russian or Spanish line is left as it is
+            const bool sat = !foreign && SitOnPiece(&read);   // "sit down on this bench": crouch on it
+            if (sat) h->note = "a sitting on a thing: \"" + heard + "\" read as \"" + read + "\"";
             const std::vector<std::string> parts = foreign ? std::vector<std::string>{read} : SplitWayTo(read);
             if (parts.size() > 1) {
                 for (const std::string& part : parts) todo.push_back({part, coop::SpeechTextForClassifier(part), close});
             } else {
-                todo.push_back(close ? Line{read, coop::SpeechTextForClassifier(read), true} : Line{heard, text, false});
+                todo.push_back(close || sat ? Line{read, coop::SpeechTextForClassifier(read), close} : Line{heard, text, false});
             }
         }
         // each order line with a pointer is read with the crosshair as it was at its own pointer word, in the order said
@@ -2664,11 +2738,18 @@ struct Chat {
     }
     // The system turn for a role: its character, what the speaker is called, for the bot what it holds and what is near the
     // player (the world of this line), the habit of «брат», and the language to answer in
+    // the language a role answers in: its own (a person of the level who speaks one: the game's "role" "lang"), else the player's
+    static std::string RoleLanguage(const std::string& role) {
+        if (role == "bot" || !g_talk) return g_language;
+        const auto it = g_talk->roles.find(role);
+        return it == g_talk->roles.end() || it->second.lang.empty() ? g_language : it->second.lang;
+    }
     std::string TalkSystem(const std::string& role) const {
         const Talk::Role& r = g_talk->roles.at(role);
+        const std::string lang = RoleLanguage(role);
         std::string name = role == "bot" ? BotName() : std::string();
         if (name.empty()) {
-            auto it = r.names.find(g_language);
+            auto it = r.names.find(lang);
             if (it == r.names.end()) it = r.names.find("en");
             if (it != r.names.end()) name = it->second;
         }
@@ -2678,8 +2759,8 @@ struct Chat {
         if (!name.empty()) s += "\nYour name is " + name + ".";
         // a woman or a man (2026-11-12: Anna, a teller of the role both tellers share, said «Я бы ... хотел»): the forms of the words
         // she says of herself in Russian and Spanish; nothing about who she is besides (the robot stays a robot)
-        if (!r.gender.empty() && g_language != "en")
-            s += std::string("\nWhen you speak ") + LanguageName(g_language) + ", use the " + (r.gender == "woman" ? "feminine" : "masculine") +
+        if (!r.gender.empty() && lang != "en")
+            s += std::string("\nWhen you speak ") + LanguageName(lang) + ", use the " + (r.gender == "woman" ? "feminine" : "masculine") +
                  " forms for yourself.";
         if (role == "bot") {
             const std::string player = PlayerName();
@@ -2692,8 +2773,13 @@ struct Chat {
                 if (!w.player_gaze.empty() && e.id == w.player_gaze && !e.object.empty()) s += "\nThe player is looking at the " + ThingWords(e) + ".";
             if (g_replies != nullptr && g_replies == g_bro_replies)
                 s += std::string("\nYou call the player \"") + (g_language == "ru" ? "брат" : g_language == "es" ? "hermano" : "bro") + "\" now and then.";
+        } else if (r.bro) {
+            // a person of the level with the habit (the game's "role" "bro": true; 2026-11-14, the owner: «Mike, Tony, Nick должны
+            // получить роли RU+BRAT»): always on, the player's words do not switch it off (that is the bot's own habit, bro.h)
+            s += std::string("\nYou call the player \"") + (lang == "ru" ? "брат" : lang == "es" ? "hermano" : "bro") + "\" now and then.";
         }
-        s += std::string("\nAnswer in ") + LanguageName(g_language) + " only, in one or two short sentences.";
+        // a person who speaks a language of their own answers in it whatever the player's is (the player may not understand)
+        s += std::string("\nAnswer in ") + LanguageName(lang) + " only, in one or two short sentences.";
         return s;
     }
     // The role's answer to the line, in the role's talk so far; one more draw when the answer is empty or not in the player's
@@ -2713,13 +2799,13 @@ struct Chat {
             return *err = "this coop_cli was built without llama.cpp", false;
 #endif
             answer = coop::TalkAnswer(raw, st.cut_off);
-            ok = !answer.empty() && coop::TalkInLanguage(answer, g_language);
+            ok = !answer.empty() && coop::TalkInLanguage(answer, RoleLanguage(role));
         }
         *info = {{"role", role}, {"ms", std::round(Ms(Clock::now() - t0))}, {"tokens", st.generated}, {"cached", st.cached},
                  {"evaluated", st.evaluated}, {"dropped", st.dropped}, {"tries", tries}, {"cut_off", st.cut_off},
                  {"before", before.size()}};
         if (raw != answer) (*info)["raw"] = raw;
-        if (!ok) return *err = "the talking model gave nothing to say in " + std::string(LanguageName(g_language)) + ": \"" + raw + "\"", false;
+        if (!ok) return *err = "the talking model gave nothing to say in " + std::string(LanguageName(RoleLanguage(role))) + ": \"" + raw + "\"", false;
         g_talk->Keep(role, line, answer);
         *say = answer;
         return true;
@@ -5225,6 +5311,13 @@ int RunVoice(Model& m, const coop::SpeechOptions& opt, int threads, const std::s
 //                                                                scripts/coop/world_example.json) is the state
 //                                                                the planner grounds it in; without it the last
 //                                                                world stays
+//   "callees" (text, ptt_up, vad_up, wav; 2026-11-12): who may be called by name, nearest first: [{"to":"bot","key":"bot",
+//        "names":["Buddy"]}, {"to":"sweeper","key":"OV_Sweeper","names":["Fred","Фёдор","Federico"],"far":false}, ...];
+//        "to_key": the key of the one the game says the line to ("to" names their role). A line that calls another
+//        (CalledCallee: the name at its start or end) is answered at once by {"event":"readdress","id":8,"heard":"Фёдор,
+//        иди за мной","to":"sweeper","key":"OV_Sweeper","name":"Фёдор","text":"Иди за мной","far":false,"spoken":true,
+//        "words":[...],"clip_start_s":0.2} and goes no further: the game says "text" again to them ("to", "to_key", their
+//        world, "spoken" and "words" as given), or tells the player they are too far to hear ("far")
 //   {"cmd":"ptt_down"}                                           the talk key went down: the clip starts (with
 //                                                                its 0.2 s pre-roll), the bot's voice stops
 //   {"cmd":"ptt_up","id":8,"world":{...}}                        the key came up: recognize, classify, plan
@@ -5358,6 +5451,726 @@ bool TalkFor(const json& turn, const std::string& heard, bool talking) {
     constexpr double kTalkShare = 0.15, kOrderSure = 0.6;
     const bool order_like = turn.value("talk_p", 0.0) < kTalkShare && turn.value("prob", 0.0) >= kOrderSure;
     return action == "say_again" && state.empty() && question && talking && !order_like;
+}
+
+// ---- names heard in the other alphabet (2026-11-15, the owner: «когда я одному персонажу NPC говорю ... по имени, то есть Майк, иди
+// к Нику, то системе кажется, что я обращаюсь к Нику, хотя я говорю Майк, иди к Нику. Вот такие вещи должны быть распознаны
+// хорошо»). A person of the level has a name in every language (Mike, Михалыч, Miguel) and the player says the one shown over them
+// in his own speech: the Russian recognizer writes "Mike" as «Майк» and "Nick" as «Ник», an English one «Коля» as "Kolya". A name
+// in Latin letters is read the English way into Cyrillic (Mike -> майк, Nick -> ник, Tony -> тони, Sergei -> сергей, Buddy ->
+// бадди, бади), one in Cyrillic into Latin as names are written (Коля -> kolya, kolia; Михалыч -> mikhalych). A few forms, lower
+// case (MemoryNorm: ё as е), the word itself not among them; a word of other letters or of both alphabets: none
+std::vector<std::string> NameInOtherAlphabet(const std::string& word) {
+    std::u32string w;
+    bool latin = true, cyrillic = true;
+    for (char32_t c : coop::DecodeUtf8(coop::MemoryNorm(word))) {
+        switch (c) {   // Spanish letters as plain ones
+        case U'á': c = U'a'; break;
+        case U'é': c = U'e'; break;
+        case U'í': c = U'i'; break;
+        case U'ó': c = U'o'; break;
+        case U'ú': case U'ü': c = U'u'; break;
+        default: break;
+        }
+        latin = latin && ((c >= U'a' && c <= U'z') || c == U'ñ');
+        cyrillic = cyrillic && ((c >= U'а' && c <= U'я') || c == U'ё');
+        w += c;
+    }
+    if (w.size() < 2 || latin == cyrillic) return {};
+    // the word as pieces, each with its forms (the first the usual one)
+    using Forms = std::vector<std::u32string>;
+    std::vector<Forms> pieces;
+    const size_t n = w.size();
+    auto at = [&](size_t i) { return i < n ? w[i] : char32_t(0); };
+    size_t i = 0;
+    auto put = [&](Forms forms, size_t len) {
+        pieces.push_back(std::move(forms));
+        i += len;
+    };
+    if (latin) {
+        auto vowel = [](char32_t c) { return c == U'a' || c == U'e' || c == U'i' || c == U'o' || c == U'u' || c == U'y'; };
+        auto letter = [&](size_t k) -> std::u32string {   // one letter as it is usually said
+            const char32_t c = w[k], d = at(k + 1);
+            switch (c) {
+            case U'a': return U"а";
+            case U'b': return U"б";
+            case U'c': return d == U'e' || d == U'i' || d == U'y' ? U"с" : U"к";
+            case U'd': return U"д";
+            case U'e': return k == 0 ? U"э" : U"е";
+            case U'f': return U"ф";
+            case U'g': return U"г";
+            case U'h': return U"х";
+            case U'i': return U"и";
+            case U'j': return U"дж";
+            case U'k': return U"к";
+            case U'l': return U"л";
+            case U'm': return U"м";
+            case U'n': return U"н";
+            case U'ñ': return U"нь";
+            case U'o': return U"о";
+            case U'p': return U"п";
+            case U'q': return U"к";
+            case U'r': return U"р";
+            case U's': return U"с";
+            case U't': return U"т";
+            case U'u': return U"у";
+            case U'v': return U"в";
+            case U'w': return vowel(d) ? U"у" : U"в";
+            case U'x': return U"кс";
+            case U'y': return U"и";
+            case U'z': return U"з";
+            default: return U"";
+            }
+        };
+        // a final e that makes the vowel before it long (Mike, Jake, Steve, Luke, Kyle) is not said
+        const bool silent_e = n >= 3 && w[n - 1] == U'e' && !vowel(w[n - 2]) && vowel(w[n - 3]) && (n == 3 || !vowel(w[n - 4]));
+        while (i < n) {
+            const char32_t c = w[i], d = at(i + 1), e = at(i + 2);
+            const bool pair_ends = i + 2 == n;
+            auto two = [&](const char32_t* s) { return c == s[0] && d == s[1]; };
+            if (silent_e && i == n - 1) break;
+            if (silent_e && i == n - 3) {
+                put(c == U'a' ? Forms{U"ей"} : c == U'e' ? Forms{U"и"} : c == U'i' || c == U'y' ? Forms{U"ай"} : c == U'o' ? Forms{U"оу", U"о"} : Forms{U"ю", U"у"}, 1);
+            } else if (c == U's' && d == U'c' && e == U'h') {
+                put({U"ш"}, 3);
+            } else if (c == U't' && d == U'c' && e == U'h') {
+                put({U"ч"}, 3);
+            } else if (two(U"sh")) {
+                put({U"ш"}, 2);
+            } else if (two(U"ch")) {
+                put({U"ч", U"к"}, 2);
+            } else if (two(U"zh")) {
+                put({U"ж"}, 2);
+            } else if (two(U"kh")) {
+                put({U"х"}, 2);
+            } else if (two(U"th")) {
+                put({U"т"}, 2);
+            } else if (two(U"ph")) {
+                put({U"ф"}, 2);
+            } else if (two(U"ck")) {
+                put({U"к"}, 2);
+            } else if (two(U"qu")) {
+                put({U"кв"}, 2);
+            } else if (two(U"gh")) {
+                put({U"г"}, 2);
+            } else if (two(U"wh")) {
+                put({U"у"}, 2);
+            } else if (c == U'g' && d == U'u' && (e == U'e' || e == U'i')) {
+                put({U"г"}, 2);   // Miguel
+            } else if (two(U"ee") || two(U"ea")) {
+                put({U"и"}, 2);
+            } else if (two(U"oo")) {
+                put({U"у"}, 2);
+            } else if (two(U"ai") || two(U"ay") || two(U"ei")) {
+                put({U"ей"}, 2);
+            } else if (two(U"ey")) {
+                put(pair_ends ? Forms{U"и", U"ей"} : Forms{U"ей"}, 2);   // Mickey; Sergey
+            } else if (two(U"ie")) {
+                put({U"и"}, 2);
+            } else if (two(U"ou")) {
+                put({U"у"}, 2);
+            } else if (two(U"au") || two(U"aw")) {
+                put({U"о"}, 2);
+            } else if (two(U"ow")) {
+                put({pair_ends ? U"оу" : U"ау"}, 2);
+            } else if (two(U"oy")) {
+                put({U"ой"}, 2);
+            } else if (c == U'y' && (d == U'a' || d == U'u' || d == U'o' || d == U'e') && (i == 0 || !vowel(at(i - 1)))) {
+                // Kolya, Yuri, Fyodor, Yelena
+                put(d == U'a' ? Forms{U"я"} : d == U'u' ? Forms{U"ю"} : d == U'o' ? Forms{U"ё", U"йо"} : Forms{U"е", U"йе"}, 2);
+            } else if (c == U'ñ' && vowel(d)) {
+                put(d == U'a' ? Forms{U"нья"} : d == U'o' ? Forms{U"ньо"} : d == U'u' ? Forms{U"нью"} : d == U'e' ? Forms{U"нье"} : Forms{U"ньи"}, 2);
+            } else if (c == d && !vowel(c)) {
+                const std::u32string one = letter(i + 1);   // Buddy: бадди, бади; Otto: отто, ото
+                put({one + one, one}, 2);
+            } else if (c == U'u' && d && !vowel(d) && (!e || !vowel(e))) {
+                put({U"а", U"у"}, 1);   // u in a closed syllable: Buddy, Duncan
+            } else if (c == U'y') {
+                const bool first = i == 0, last = i + 1 == n, after_vowel = i > 0 && vowel(at(i - 1));
+                put(first && vowel(d) ? Forms{U"й"} : last ? Forms{U"и"} : after_vowel ? Forms{U"й"} : Forms{U"и", U"ы"}, 1);   // Tony; Mikhalych
+            } else {
+                const std::u32string one = letter(i);
+                put({one}, 1);
+            }
+        }
+    } else {
+        while (i < n) {
+            const char32_t c = w[i], d = at(i + 1);
+            switch (c) {
+            case U'а': put({U"a"}, 1); break;
+            case U'б': put({U"b"}, 1); break;
+            case U'в': put({U"v"}, 1); break;
+            case U'г': put({U"g"}, 1); break;
+            case U'д': put({U"d"}, 1); break;
+            case U'е': put(i == 0 ? Forms{U"e", U"ye"} : Forms{U"e"}, 1); break;
+            case U'ё': put({U"yo", U"e"}, 1); break;
+            case U'ж': put({U"zh"}, 1); break;
+            case U'з': put({U"z"}, 1); break;
+            case U'и': put({U"i"}, 1); break;
+            case U'й': put({U"y", U"i"}, 1); break;
+            case U'к': d == U'с' ? put({U"ks", U"x"}, 2) : put({U"k"}, 1); break;
+            case U'л': put({U"l"}, 1); break;
+            case U'м': put({U"m"}, 1); break;
+            case U'н': put({U"n"}, 1); break;
+            case U'о': put({U"o"}, 1); break;
+            case U'п': put({U"p"}, 1); break;
+            case U'р': put({U"r"}, 1); break;
+            case U'с': put({U"s"}, 1); break;
+            case U'т': put({U"t"}, 1); break;
+            case U'у': put({U"u"}, 1); break;
+            case U'ф': put({U"f"}, 1); break;
+            case U'х': put({U"kh", U"h"}, 1); break;
+            case U'ц': put({U"ts"}, 1); break;
+            case U'ч': put({U"ch"}, 1); break;
+            case U'ш': put({U"sh"}, 1); break;
+            case U'щ': put({U"shch"}, 1); break;
+            case U'ы': put({U"y"}, 1); break;
+            case U'э': put({U"e"}, 1); break;
+            case U'ю': put({U"yu"}, 1); break;
+            case U'я': put({U"ya", U"ia"}, 1); break;
+            default: put({U""}, 1); break;   // ъ, ь
+            }
+        }
+    }
+    // the usual reading, then that reading with one piece in another of its forms, then every piece in its second form
+    std::vector<std::string> out;
+    const std::string self = coop::MemoryNorm(word);
+    auto add = [&](const std::u32string& s) {
+        const std::string x = coop::MemoryNorm(coop::EncodeUtf8(s));
+        if (!x.empty() && x != self && std::find(out.begin(), out.end(), x) == out.end()) out.push_back(x);
+    };
+    std::u32string usual, second;
+    for (const Forms& p : pieces) usual += p[0], second += p.size() > 1 ? p[1] : p[0];
+    add(usual);
+    for (size_t k = 0; k < pieces.size() && out.size() < 6; ++k)
+        for (size_t f = 1; f < pieces[k].size(); ++f) {
+            std::u32string s;
+            for (size_t j = 0; j < pieces.size(); ++j) s += j == k ? pieces[j][f] : pieces[j][0];
+            add(s);
+        }
+    add(second);
+    return out;
+}
+
+// whether a word of a line (MemoryNorm'd) is a word of a name (MemoryNorm'd) as said in any case: the same, one letter off (4+
+// letters: a recognizer's slip), or (Cyrillic) its stem with a case's ending («Колю», «Коле», «Колей» for «Коля»; «Майку»,
+// «Майком» for «Майк»; «Михалыча» for «Михалыч»; «Сергею» for «Сергей»; «Лео», «Тони» do not decline); (Latin) "Nick's"
+bool NameWordIn(const std::string& said, const std::string& name) {
+    if (said == name) return true;
+    const std::u32string a = coop::DecodeUtf8(said), b = coop::DecodeUtf8(name);
+    if (b.size() < 3 || a.empty()) return false;
+    if (a.size() == b.size() && b.size() >= 4) {
+        size_t diff = 0;
+        for (size_t k = 0; k < a.size(); ++k) diff += a[k] != b[k];
+        if (diff <= 1) return true;
+    }
+    const char32_t last = b.back();
+    if (!(last >= U'а' && last <= U'я')) return a == b + U"s" || a == b + U"'s";
+    std::u32string stem = b;
+    if (last == U'а' || last == U'я' || last == U'й' || last == U'ь') stem.pop_back();
+    else if (last == U'о' || last == U'е' || last == U'и' || last == U'у' || last == U'ю' || last == U'э' || last == U'ы') return false;
+    if (a.size() < stem.size() || a.compare(0, stem.size(), stem) != 0) return false;
+    static const std::set<std::u32string> kEnding = {U"",   U"а",  U"я",  U"у",  U"ю",  U"е",  U"и",  U"ы",
+                                                     U"ой", U"ей", U"ою", U"ею", U"ом", U"ем", U"й",  U"ь"};
+    return kEnding.count(a.substr(stem.size())) > 0;
+}
+
+// a Russian name in a case: 'd' dative («Иду к Коле», «к Майку», «к Михалычу»), 'i' instrumental («Иду за Колей», «за Михалычем»);
+// a name of several words word by word («баба Валя» -> «бабе Вале»); one that does not decline (Лео, Отто, Тони, Бади) or is in
+// Latin letters as it is
+std::string RussianNameIn(const std::string& name, char kase) {
+    std::string out;
+    size_t from = 0;
+    while (from <= name.size()) {
+        size_t to = name.find(' ', from);
+        if (to == std::string::npos) to = name.size();
+        std::u32string w = coop::DecodeUtf8(name.substr(from, to - from));
+        if (!w.empty()) {
+            const auto low = [](char32_t c) { return c >= U'А' && c <= U'Я' ? char32_t(c + 0x20) : c == U'Ё' ? U'ё' : c; };
+            const char32_t last = low(w.back()), before = w.size() >= 2 ? low(w[w.size() - 2]) : 0;
+            const auto hush = [](char32_t c) { return c == U'ж' || c == U'ш' || c == U'ч' || c == U'щ' || c == U'ц'; };
+            const bool consonant = last >= U'а' && last <= U'я' && std::u32string(U"аеиоуыэюяйь").find(last) == std::u32string::npos;
+            std::u32string stem = w.substr(0, w.size() - 1);
+            if (last == U'а') w = stem + (kase == 'd' ? U"е" : hush(before) ? U"ей" : U"ой");
+            else if (last == U'я') w = stem + (kase == 'd' ? (before == U'и' ? U"и" : U"е") : U"ей");
+            else if (last == U'й' || last == U'ь') w = stem + (kase == 'd' ? U"ю" : U"ем");
+            else if (consonant) w += kase == 'd' ? U"у" : hush(last) ? U"ем" : U"ом";
+            out += (out.empty() ? "" : " ") + coop::EncodeUtf8(w);
+        }
+        from = to + 1;
+    }
+    return out;
+}
+
+// The one a line calls by name (2026-11-12, the owner: «если он стоит рядом, просто я обращаюсь по имени, то нужно, чтобы система
+// поняла, к какому из персонажей я обращаюсь, в том числе и мой бот»). callees: the game's, nearest first: [{"to": "bot" or a
+// role, "key": the game's id of them, "names": [...], "far": true when they are out of earshot}]. A name is called as
+// CalledBy reads it (at the line's start or its end: «Фёдор, иди за мной», «Эй, Анна, ...», «иди сюда, Рекс»); a name of
+// several words by its last word too («баба Валя»: «Валя, ...»); each heard in the other alphabet too (NameInOtherAlphabet:
+// «Майк» for Mike). The bot answers to the name the player gave it (bot_name), the game's and its role's in every language.
+// A name at the line's start calls, whoever of the callees it is, before any at its end (2026-11-15: «Майк, иди к Нику» is Mike's
+// line; the other names in it are whom the order is about); *rest: the line without the name
+struct ActOn;
+bool ActVerb(const std::string& x, const std::string& next, ActOn* out);
+enum class Going { None, Go, Follow, Stay, Reach };
+Going GoVerb(const std::string& x);
+struct Callee {
+    std::string to, key, name;
+    bool distant = false;   // "far": out of earshot ("far" and "near" are macros of windows.h)
+};
+// every name a callee answers to: the game's, the bot's own, the last word of a name of several, each in the other alphabet
+std::vector<std::string> CalleeNames(const json& c, const std::string& bot_name) {
+    std::vector<std::string> names;
+    const std::string to = c.value("to", std::string());
+    if (c.contains("names") && c["names"].is_array())
+        for (const json& n : c["names"])
+            if (n.is_string() && !n.get<std::string>().empty()) names.push_back(n.get<std::string>());
+    if (to == "bot") {
+        if (!bot_name.empty()) names.push_back(bot_name);
+        if (g_talk && g_talk->roles.count("bot"))
+            for (const auto& [lang, n] : g_talk->roles.at("bot").names) names.push_back(n);
+    }
+    const size_t given = names.size();
+    for (size_t k = 0; k < given; ++k) {
+        const std::vector<std::string> w = coop::MemoryWords(coop::MemoryNorm(names[k]));
+        if (w.size() > 1 && coop::DecodeUtf8(w.back()).size() >= 3) names.push_back(w.back());
+    }
+    const size_t own = names.size();
+    for (size_t k = 0; k < own; ++k) {
+        const std::vector<std::string> w = coop::MemoryWords(coop::MemoryNorm(names[k]));
+        if (w.size() == 1) {
+            for (const std::string& v : NameInOtherAlphabet(w[0])) names.push_back(v);
+        } else if (!w.empty()) {
+            std::string all;   // a name of several words: their usual forms together («doña Valentina» -> «донья валентина»)
+            for (const std::string& x : w) {
+                const std::vector<std::string> v = NameInOtherAlphabet(x);
+                if (v.empty()) {
+                    all.clear();
+                    break;
+                }
+                all += (all.empty() ? "" : " ") + v[0];
+            }
+            if (!all.empty()) names.push_back(all);
+        }
+    }
+    std::vector<std::string> out;
+    std::unordered_set<std::string> seen;
+    for (const std::string& n : names)
+        if (const std::string k = coop::MemoryNorm(n); !k.empty() && seen.insert(k).second) out.push_back(n);
+    return out;
+}
+bool CalledCallee(const std::string& heard, const json& callees, const std::string& bot_name, Callee* out, std::string* rest) {
+    if (!callees.is_array()) return false;
+    const std::vector<coop::SpanWord> sw = coop::SpanWords(heard);
+    std::vector<std::string> hw;
+    for (const coop::SpanWord& s : sw) hw.push_back(s.norm);
+    for (int pass = 0; pass < 2; ++pass)   // the start first, of every callee; then the end
+        for (const json& c : callees) {
+            if (!c.is_object()) continue;
+            const std::string to = c.value("to", std::string());
+            if (to.empty()) continue;
+            for (const std::string& n : CalleeNames(c, bot_name)) {
+                std::string r;
+                bool at_start = false;
+                if (!coop::CalledBy(heard, n, &r, &at_start) || at_start != (pass == 0)) continue;
+                const std::vector<std::string> nw = coop::MemoryWords(coop::MemoryNorm(n));
+                if (nw.empty() || hw.empty()) continue;
+                static const std::unordered_set<std::string> kHey = {"эй", "ей", "слушай", "ну", "так", "а", "ладно", "окей", "hey", "yo", "oi",
+                                                                     "so", "now", "listen", "ok", "okay", "alright", "oye", "mira", "bueno", "vale"};
+                const size_t first = kHey.count(hw[0]) && hw.size() > 1 ? 1 : 0;
+                if (at_start) {
+                    // «ударь Колю», "make fun of him" ~ "Mike": a verb of acting on someone at the start is the verb, not a name
+                    if (ActVerb(hw[first], first + 1 < hw.size() ? hw[first + 1] : std::string(), nullptr)) continue;
+                } else {
+                    // the name at the end after a word that asks about them is a question about them, not a call: «где Фёдор?»,
+                    // "where's Anna?", «¿dónde está Ana?», «кто такой Лео» (CalledBy already leaves out «к Фёдору», «это Анна»)
+                    static const std::unordered_set<std::string> kAbout = {
+                        "где", "кто", "куда", "откуда", "чей", "чья", "чье", "чьи", "такой", "такая", "вот", "where", "wheres", "who",
+                        "whos", "is", "was", "about", "donde", "dónde", "quien", "quién", "esta", "está", "es"};
+                    if (hw.size() > nw.size() && kAbout.count(hw[hw.size() - nw.size() - 1])) continue;
+                    // ... and a name at the end in another case than the one it is called in is whom the line is about: «ударь Колю»,
+                    // «стреляй в Михалыча» (2026-11-14); a call says the name as it is («иди сюда, Коля»)
+                    if (hw.back() != nw.back()) {
+                        const std::u32string said = coop::DecodeUtf8(hw.back()), own = coop::DecodeUtf8(nw.back());
+                        if (said.size() >= 3 && own.size() >= 3 && said.substr(0, own.size() - 1) == own.substr(0, own.size() - 1)) continue;
+                    }
+                    // "shoot Nick", «пристрели Колю», "follow Mike", "approach Tony" (2026-11-14, 11-15): the name after a verb of
+                    // acting on someone (anywhere in the line) or of going (just before it) is whom it is done to, unless a comma
+                    // sets it apart ("Shoot him, Nick.": Nick is called)
+                    const size_t from = sw.size() - nw.size();
+                    bool comma = false;
+                    for (size_t b = from > 0 ? sw[from - 1].end : 0; from > 0 && b < sw[from].begin && !comma; ++b) comma = heard[b] == ',';
+                    if (!comma) {
+                        bool object = false;
+                        for (size_t k = 0; k < from && !object; ++k)
+                            object = ActVerb(hw[k], k + 1 < hw.size() ? hw[k + 1] : std::string(), nullptr) ||
+                                     (k + 3 >= from && GoVerb(hw[k]) != Going::None);
+                        if (object) continue;
+                    }
+                }
+                out->to = to;
+                out->key = c.value("key", to);
+                out->name = n;
+                out->distant = c.value("far", false);
+                *rest = r;
+                return true;
+            }
+        }
+    return false;
+}
+
+// ---- acting on someone (2026-11-14, the owner: «чтобы мой бот мог дамажить. Вообще все могли дамажить друг друга, если я это
+// приказываю ... Бить руками, стрелять, издеваться, направлять»; his choices: the player as a target too, «издеваться» = taunt with
+// words and gestures, «направлять» = aim at without firing). The classifier reads some of these lines well («ударь его» MELEE,
+// «стреляй в него» OPEN_FIRE) and some not at all («ударь меня» HELP, «пристрели Колю» "take out cole" SWITCH_WEAPON, «целься в
+// него» OPEN_FIRE, «подразни его» DEFUSE), and none says WHOM to the game. The player's own words say both: a verb of one of four
+// kinds and whom: me (the speaker), him / her (the one named before it in the line, else the one under the crosshair), the bot,
+// a person of the level by name in any case. The order then carries "target": {"kind": "speaker" | "pointed" | "bot" | "person",
+// "key": the game's key of them, "name": as they are called}; hit = MELEE, shoot = OPEN_FIRE, aim = AIM_AT, taunt = TAUNT (the
+// last two are the game's, not the classifier's). Going to someone and following them (2026-11-15, ReadGoTo) are read alike
+struct ActOn {
+    std::string kind;     // "hit", "shoot", "aim", "taunt"; "go", "follow"
+    std::string intent;   // MELEE, OPEN_FIRE, AIM_AT, TAUNT; MOVE_TO, FOLLOW_ME
+    std::string english;  // the words for it (the reply tables have them)
+    bool once = false;    // «ударь», "punch": one strike; «избей», «бей», "beat up": until they are down
+    json target;
+    size_t clause = 0, clauses = 1;   // the line's part it is in, of how many (split at «и», «потом», "and", "then")
+};
+// whether a word (MemoryNorm'd; next: the word after it) is a verb of acting on someone, and which (into *out, when given)
+bool ActVerb(const std::string& x, const std::string& next, ActOn* out) {
+    auto starts = [&x](std::initializer_list<const char*> stems) {
+        for (const char* st : stems)
+            if (x.rfind(st, 0) == 0) return true;
+        return false;
+    };
+    const char *kind = nullptr, *intent = nullptr, *english = nullptr;
+    if (starts({"дразн", "подразн", "издева", "поиздева", "высме", "оскорб", "обзов", "посмейся", "tease", "mock", "taunt", "insult", "burla",
+                "insulta"}) || (x == "make" && next == "fun"))
+        kind = "taunt", intent = "TAUNT", english = "Copy.";
+    else if (x == "целься" || x == "прицелься" || x == "целись" || starts({"навед", "наведи", "направь", "aim", "apunta"}) ||
+             (x == "point" && (next == "at" || next == "your" || next == "the" || next == "a" || next == "gun")))
+        kind = "aim", intent = "AIM_AT", english = "Eyes on it.";
+    else if (starts({"стреля", "стрельни", "пристрел", "застрел", "подстрел", "выстрел", "пальни", "убей", "убить", "shoot", "kill", "dispara",
+                     "mata"}))
+        kind = "shoot", intent = "OPEN_FIRE", english = "Opening fire!";
+    else if (x == "удар" || starts({"ударь", "ударить", "бей", "побей", "избей", "избить", "врежь", "вмажь", "вдарь", "стукни", "тресни", "пни",
+                                    "отпинай", "отлупи", "двинь", "hit", "punch", "beat", "kick", "smack", "slap", "golpea", "pega", "patea"}))
+        kind = "hit", intent = "MELEE", english = "Going hands-on.";
+    else
+        return false;
+    if (out) {
+        out->kind = kind, out->intent = intent, out->english = english;
+        out->once = out->kind == "hit" && !starts({"бей", "побей", "избей", "избить", "отлупи", "отпинай", "beat", "golpea"});
+    }
+    return true;
+}
+
+// whether a word says going somewhere (Go: «иди», "go", «ve»), following (Follow: «следуй», "follow", «sigue»), staying by
+// (Stay: «встань», "stand", «quédate») or coming up to whom it names (Reach: «догони», "approach")
+Going GoVerb(const std::string& x) {
+    static const std::unordered_set<std::string> kGo = {
+        "иди", "идите", "пойди", "пойдите", "подойди", "подойдите", "подходи", "подходите", "сходи", "сходите", "ступай", "ступайте", "беги",
+        "бегите", "побеги", "подбеги", "подбегите", "сбегай", "двигай", "двигайся", "двигайтесь", "направляйся", "направляйтесь", "шагай",
+        "топай", "дуй", "вали", "чеши", "отправляйся", "ползи", "подползи", "приблизься", "приблизьтесь", "пройди", "пройдите", "вернись",
+        "вернитесь", "возвращайся", "идти", "пойти", "подойти", "сходить", "подбежать", "двигаться", "езжай", "поезжай", "подъедь",
+        "подъезжай", "go", "walk", "run", "head", "move", "come", "get", "proceed", "sprint", "crawl", "hurry", "rush", "return", "drive",
+        "step", "ve", "vaya", "vayan", "id", "anda", "camina", "corre", "acércate", "acercate", "ven", "dirígete", "dirigete", "vuelve",
+        "regresa", "muévete", "muevete"};
+    static const std::unordered_set<std::string> kFollow = {
+        "следуй", "следуйте", "проследуй", "ходи", "ходите", "сопровождай", "сопроводи", "проводи", "преследуй", "следовать", "сопровождать",
+        "follow", "escort", "tail", "shadow", "chase", "accompany", "sigue", "siga", "acompaña", "acompana", "escolta", "persigue"};
+    static const std::unordered_set<std::string> kStay = {
+        "встань", "встаньте", "стань", "стой", "стойте", "постой", "жди", "ждите", "подожди", "подождите", "будь", "оставайся", "останься",
+        "держись", "stand", "stay", "wait", "keep", "remain", "quédate", "quedate", "espera"};
+    static const std::unordered_set<std::string> kReach = {"догони", "догоните", "approach", "reach", "catch"};
+    if (kGo.count(x)) return Going::Go;
+    if (kFollow.count(x)) return Going::Follow;
+    if (kStay.count(x)) return Going::Stay;
+    if (kReach.count(x)) return Going::Reach;
+    return Going::None;
+}
+
+// The ones a line names, each where it is in its words (MemoryNorm'd): a person of the level or the bot by any of their names in
+// any case («Колю», «Майку», "Nick's"), «бота», me, him / her
+struct Mention {
+    size_t at = 0;
+    json target;
+    bool pronoun = false;   // him, her, them: the one named before it in the line (Resolved), else the one under the crosshair
+};
+std::vector<Mention> Mentions(const std::vector<std::string>& w, const json& callees, const std::string& bot_name) {
+    std::vector<std::pair<const json*, std::vector<std::pair<std::string, std::string>>>> named;   // a callee: (name's word, name)
+    if (callees.is_array())
+        for (const json& c : callees) {
+            if (!c.is_object() || c.value("to", std::string()).empty()) continue;
+            // a name the line said in the other alphabet («Майк») is theirs as the game gives it (Mike)
+            std::vector<std::string> given;
+            if (c.contains("names") && c["names"].is_array())
+                for (const json& g : c["names"])
+                    if (g.is_string() && !g.get<std::string>().empty()) given.push_back(g.get<std::string>());
+            std::vector<std::pair<std::string, std::string>> words;
+            for (const std::string& n : CalleeNames(c, bot_name)) {
+                const std::vector<std::string> nw = coop::MemoryWords(coop::MemoryNorm(n));
+                const bool own = given.empty() || std::find(given.begin(), given.end(), n) != given.end() || n == bot_name;
+                if (!nw.empty() && coop::DecodeUtf8(nw.back()).size() >= 3) words.push_back({nw.back(), own ? n : given[0]});
+            }
+            named.push_back({&c, std::move(words)});
+        }
+    static const std::unordered_set<std::string> kBot = {"бот", "бота", "боту", "ботом", "боте", "робот", "робота", "роботу", "роботом",
+                                                         "роботе", "bot", "robot", "bot's", "robot's"};
+    static const std::unordered_set<std::string> kMe = {"меня", "мне", "мной", "мною", "me", "mí", "mi", "myself", "conmigo"};
+    static const std::unordered_set<std::string> kHim = {"его", "него", "её", "неё", "ее", "нее", "ему", "нему", "ей", "ней", "им", "ним",
+                                                         "ими", "ними", "их", "них", "этого", "этому", "этим", "эту", "этот", "этих", "him",
+                                                         "her", "them", "that", "this", "lo", "la", "le", "les", "ese", "este", "esa", "esta",
+                                                         "él", "ella"};
+    std::vector<Mention> out;
+    for (size_t i = 0; i < w.size(); ++i) {
+        bool found = false;
+        for (const auto& [c, words] : named) {
+            for (const auto& [word, n] : words)
+                if (NameWordIn(w[i], word)) {
+                    const std::string to = c->value("to", std::string());
+                    out.push_back({i, to == "bot" ? json{{"kind", "bot"}, {"name", n}}
+                                                  : json{{"kind", "person"}, {"key", c->value("key", to)}, {"to", to}, {"name", n}}});
+                    found = true;
+                    break;
+                }
+            if (found) break;
+        }
+        if (found) continue;
+        if (kBot.count(w[i])) out.push_back({i, {{"kind", "bot"}}});
+        else if (kMe.count(w[i])) out.push_back({i, {{"kind", "speaker"}}});
+        else if (kHim.count(w[i])) out.push_back({i, {{"kind", "pointed"}}, true});
+    }
+    return out;
+}
+// whom a mention stands for: him is the one named last before him in the line («иди к Коле и ударь его»: Коля), else as it is
+json Resolved(const std::vector<Mention>& ms, size_t k) {
+    if (!ms[k].pronoun) return ms[k].target;
+    for (size_t j = k; j-- > 0;) {
+        const std::string kind = ms[j].target.value("kind", std::string());
+        if (!ms[j].pronoun && (kind == "person" || kind == "bot")) return ms[j].target;
+    }
+    return ms[k].target;
+}
+// the line's parts, a part a word (at «и», «а», «потом», «затем», "and", "then", «y», «luego»: they begin the next), and how many
+std::vector<size_t> Clauses(const std::vector<std::string>& w, size_t* count) {
+    static const std::unordered_set<std::string> kAnd = {"и", "а", "потом", "затем", "and", "then", "y", "luego", "después", "despues"};
+    std::vector<size_t> clause(w.size(), 0);
+    size_t k = 0;
+    bool words = false;   // the part has a word of its own yet
+    for (size_t i = 0; i < w.size(); ++i) {
+        const bool conj = kAnd.count(w[i]) > 0;
+        if (conj && words) ++k, words = false;
+        clause[i] = k;
+        words = words || !conj;
+    }
+    *count = words || k == 0 ? k + 1 : k;
+    return clause;
+}
+// «не бей его», "don't shoot him", «хватит дразнить», «не ходи за Колей»: the words before a verb in its part say not to
+bool Negated(const std::vector<std::string>& w, const std::vector<size_t>& clause, size_t verb) {
+    static const std::unordered_set<std::string> kNot = {"не", "нельзя", "хватит", "перестань", "прекрати", "don't", "dont", "do", "stop",
+                                                          "never", "no"};
+    for (size_t i = 0; i < verb; ++i)
+        if (clause[i] == clause[verb] && kNot.count(w[i]) && (w[i] != "do" || (i + 1 < w.size() && w[i + 1] == "not"))) return true;
+    return false;
+}
+// whether a target is the one the line is said to (self: a person's role, or "bot"): nobody does it to themselves
+bool IsSelf(const json& target, const std::string& self) {
+    if (self.empty()) return false;
+    return self == "bot" ? target.value("kind", std::string()) == "bot" : target.value("to", std::string()) == self;
+}
+
+// self: whom the line is said to (a role, or "bot"); line: without their name
+bool ReadActOn(const std::string& line, const json& callees, const std::string& bot_name, const std::string& self, ActOn* out) {
+    const std::vector<std::string> w = coop::MemoryWords(coop::MemoryNorm(line));
+    if (w.empty()) return false;
+    size_t parts = 1;
+    const std::vector<size_t> clause = Clauses(w, &parts);
+    const std::vector<Mention> ms = Mentions(w, callees, bot_name);
+    // every verb of acting on someone in turn (the first not said not to, with whom it is done to)
+    for (size_t verb = 0; verb < w.size(); ++verb) {
+        ActOn act;
+        if (!ActVerb(w[verb], verb + 1 < w.size() ? w[verb + 1] : std::string(), &act) || Negated(w, clause, verb)) continue;
+        // whom: the first one named after the verb in its part (before the next such verb), else the last one before it in its part
+        size_t end = w.size();
+        for (size_t i = verb + 1; i < w.size() && end == w.size(); ++i)
+            if (clause[i] != clause[verb] || ActVerb(w[i], i + 1 < w.size() ? w[i + 1] : std::string(), nullptr) || GoVerb(w[i]) != Going::None) end = i;
+        size_t k = ms.size();
+        for (size_t m = 0; m < ms.size() && k == ms.size(); ++m)
+            if (ms[m].at > verb && ms[m].at < end) k = m;
+        for (size_t m = ms.size(); m-- > 0 && k == ms.size();)
+            if (ms[m].at < verb && clause[ms[m].at] == clause[verb]) k = m;
+        if (k == ms.size()) continue;   // «стреляй!», «бей!»: no one said, the line as the classifier reads it
+        act.target = Resolved(ms, k);
+        if (IsSelf(act.target, self)) continue;
+        act.clause = clause[verb];
+        act.clauses = parts;
+        *out = act;
+        return true;
+    }
+    return false;
+}
+
+// ---- going to someone, following them (2026-11-15, the owner: «Майк, иди к Нику»): «иди к Нику», «подойди к Толику», «иди за
+// Колей», «следуй за Толиком», «встань рядом с Колей», «иди к нему», "go to Nick", "follow Mike", "walk up to Tony", «ve con Nico».
+// People are no places of the planner and their names no words of the decoder's (2026-11-15: «иди к Коле» came back "Go to the
+// garage", «иди за Колей» "follow me", «подойди к Толику» as talk): the player's own words say who, and the order carries
+// "target" as an act on someone does. MOVE_TO walks up to them, FOLLOW_ME follows them instead of the player (the game: a target
+// that is nobody's body, a thing under the crosshair, leaves the order as it was). Me («иди ко мне», «иди за мной») is the
+// classifier's as ever. lang: the language of the words said back (the name in it: «Иду к Коле.», "Going over to Nick.")
+std::string CalledIn(const json& target, const std::string& lang, char kase, const std::string& bot_name);
+bool ReadGoTo(const std::string& line, const json& callees, const std::string& bot_name, const std::string& self, const std::string& lang,
+              ActOn* out) {
+    const std::vector<std::string> w = coop::MemoryWords(coop::MemoryNorm(line));
+    if (w.empty()) return false;
+    size_t parts = 1;
+    const std::vector<size_t> clause = Clauses(w, &parts);
+    const std::vector<Mention> ms = Mentions(w, callees, bot_name);
+    if (ms.empty()) return false;
+    // the word before whom: to them (Go), by them (Near), after them (After), with them (With)
+    enum class Rel { None, To, Near, After, With };
+    auto rel = [](const std::string& x) {
+        static const std::unordered_set<std::string> kTo = {"к", "ко", "до", "навстречу", "to", "towards", "toward", "a", "al", "hacia", "hasta",
+                                                            "donde"};
+        static const std::unordered_set<std::string> kNear = {"рядом", "возле", "около", "у", "близко", "near", "next", "beside", "by",
+                                                              "behind", "junto", "cerca"};
+        static const std::unordered_set<std::string> kAfter = {"за", "after", "tras", "detrás", "detras"};
+        static const std::unordered_set<std::string> kWith = {"с", "со", "with", "con"};
+        return kTo.count(x) ? Rel::To : kNear.count(x) ? Rel::Near : kAfter.count(x) ? Rel::After : kWith.count(x) ? Rel::With : Rel::None;
+    };
+    for (size_t verb = 0; verb < w.size(); ++verb) {
+        const Going going = GoVerb(w[verb]);
+        if (going == Going::None || Negated(w, clause, verb)) continue;
+        // whom: named within three words after the verb in its part (no other verb between), else within three words before it
+        size_t k = ms.size();
+        for (size_t m = 0; m < ms.size() && k == ms.size(); ++m)
+            if (ms[m].at > verb && ms[m].at <= verb + 4 && clause[ms[m].at] == clause[verb]) k = m;
+        if (k < ms.size()) {
+            const size_t at = ms[k].at;
+            for (size_t i = verb + 1; i < at && k < ms.size(); ++i)
+                if (GoVerb(w[i]) != Going::None || ActVerb(w[i], w[i + 1], nullptr)) k = ms.size();
+        }
+        size_t from = verb + 1, to = k < ms.size() ? ms[k].at : verb + 1;   // the words between the verb and whom
+        if (k == ms.size()) {
+            for (size_t m = ms.size(); m-- > 0 && k == ms.size();)
+                if (ms[m].at < verb && ms[m].at + 4 >= verb && clause[ms[m].at] == clause[verb]) k = m;
+            if (k == ms.size()) continue;
+            from = ms[k].at >= 2 ? ms[k].at - 2 : 0, to = ms[k].at;   // «к Коле иди», «за Колей иди»: the word or two before whom
+        }
+        Rel r = Rel::None;
+        for (size_t i = from; i < to; ++i)
+            if (const Rel x = rel(w[i]); x != Rel::None) r = x;   // the last one before whom
+        std::string kind;
+        switch (going) {
+        case Going::Go: kind = r == Rel::To || r == Rel::Near ? "go" : r == Rel::After || r == Rel::With ? "follow" : ""; break;
+        case Going::Follow: kind = "follow"; break;
+        case Going::Stay: kind = r != Rel::None ? "go" : ""; break;
+        case Going::Reach: kind = "go"; break;
+        default: break;
+        }
+        if (kind.empty()) continue;
+        const json target = Resolved(ms, k);
+        const std::string whom = target.value("kind", std::string());
+        if (whom == "speaker" || IsSelf(target, self)) continue;   // «иди ко мне»: the classifier's; nobody goes to themselves
+        out->kind = kind;
+        out->intent = kind == "go" ? "MOVE_TO" : "FOLLOW_ME";
+        out->once = false;
+        out->target = target;
+        out->clause = clause[verb];
+        out->clauses = parts;
+        const std::string name = whom == "pointed" ? std::string() : CalledIn(target, lang, kind == "go" ? 'd' : 'i', bot_name);
+        out->english = name.empty() ? (kind == "go" ? "On my way there." : "Moving.") : (kind == "go" ? "Going over to " : "Following ") + name + ".";
+        return true;
+    }
+    return false;
+}
+
+// what the one who goes calls the one gone to, in the language of its words: their name in it (their role's, else English, else
+// as the line said it), in Russian in the case the sentence wants ('d' «Иду к Коле», 'i' «Иду за Колей», 'n' as it is)
+std::string CalledIn(const json& target, const std::string& lang, char kase, const std::string& bot_name) {
+    const bool bot = target.value("kind", std::string()) == "bot";
+    const std::string role = bot ? std::string("bot") : target.value("to", std::string());
+    std::string name;
+    if (g_talk && g_talk->roles.count(role)) {
+        const auto& names = g_talk->roles.at(role).names;
+        for (const std::string& l : {lang, std::string("en")})
+            if (const auto it = names.find(l); name.empty() && it != names.end() && !it->second.empty()) name = it->second;
+    }
+    if (name.empty() && bot) name = bot_name;
+    if (name.empty()) name = target.value("name", std::string());
+    if (name.empty()) return {};
+    return lang == "ru" && kase != 'n' ? RussianNameIn(name, kase) : name;
+}
+
+// The line's turns with the act: the turn of its part (a turn a part), or the only turn, becomes that order with its target and its
+// words (from the table in use, `table`); a line read otherwise gives the target to its turns of the same kind. A turn that is that
+// order already keeps its words and what it says, the target added; going to someone named never keeps a place (the decoder's
+// reading of their name: "Go to the garage" for «иди к Коле»). True: changed
+bool ApplyActOn(const ActOn& act, json* turns, coop::Localizer* table) {
+    if (!turns->is_array() || turns->empty()) return false;
+    static const std::map<std::string, std::vector<std::string>> kSame = {
+        {"MELEE", {"MELEE", "PUSH"}},
+        {"OPEN_FIRE", {"OPEN_FIRE", "ATTACK", "SUPPRESS"}},
+        {"AIM_AT", {"LOOK_AT", "HOLD_ANGLE"}},
+        {"TAUNT", {}},
+        {"MOVE_TO", {"MOVE_TO", "COME_BACK", "REGROUP", "HOLD_POSITION"}},
+        {"FOLLOW_ME", {"FOLLOW_ME", "COVER_ME", "COME_BACK"}}};
+    const bool going = act.intent == "MOVE_TO" || act.intent == "FOLLOW_ME";
+    const bool named = act.target.value("kind", std::string()) != "pointed";
+    auto rewrite = [&](json& t) {
+        const json was = {{"intent", t.value("intent", json(nullptr))}, {"action", t.value("action", json(nullptr))}, {"prob", t.value("prob", json(nullptr))}};
+        const std::string intent = t.value("intent", std::string());
+        // read right: its order and its own words, the target added. A walk to someone named keeps neither (the place was their
+        // name misread, the words name it: «Иду к метке»); one to him under the crosshair keeps the place (a thing there: the
+        // walk as before) and says its own words (the planner's are about the place, not about him)
+        const bool kept = intent == act.intent && t.value("action", std::string()) == "act" && !(going && named);
+        const bool kept_words = kept && !going && t.contains("say");
+        t["intent"] = act.intent;
+        t["action"] = "act";
+        t["prob"] = 1.0;
+        t["talk_p"] = 0.0;
+        t["question"] = nullptr;
+        t.erase("state");
+        json order = t.contains("order") && t["order"].is_object() && kept ? t["order"] : json::object();
+        order["intent"] = act.intent;
+        order["target"] = act.target;
+        if (act.once) order["strikes"] = 1;   // one strike, not until they are down
+        t["order"] = order;
+        t["target"] = act.target;
+        t["act_on"] = {{"kind", act.kind}, {"was", was}};
+        if (!kept_words) {
+            std::string local;
+            coop::Localizer* const were = g_replies;
+            g_replies = table;
+            if (table && Localize(act.english, &local)) t["say"] = local, t["say_en"] = act.english;
+            else t["say"] = act.english, t.erase("say_en");
+            g_replies = were;
+        }
+    };
+    if (turns->size() == 1) {
+        rewrite(turns->at(0));
+        return true;
+    }
+    if (act.clauses == turns->size() && act.clause < turns->size()) {
+        rewrite(turns->at(act.clause));   // a turn a part: this part's
+        return true;
+    }
+    const auto& same = kSame.at(act.intent);
+    bool any = false;
+    for (json& t : *turns) {
+        const std::string intent = t.value("intent", std::string());
+        if (!t.contains("order") || !t["order"].is_object() || (intent != act.intent && std::find(same.begin(), same.end(), intent) == same.end()))
+            continue;
+        if (going && named) {
+            rewrite(t);   // its place was their name misread
+        } else {
+            t["order"]["target"] = act.target;
+            t["target"] = act.target;
+        }
+        any = true;
+    }
+    return any;
 }
 
 // Whether a person of the level whose body takes orders (2026-11-12, the owner: «чтобы любому NPC можно было отдать именно приказ
@@ -6034,6 +6847,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
         std::string voiced;   // the text as the voice says it (Pronounced); empty: text
         bool stream = false;  // "say"'s "stream": each sentence but the last goes out as soon as it is made ("speech_part")
         std::string local_name;   // a local line: one of the --voice-local-extra voices ("local_voice"); empty: voice_local
+        std::string lang;         // the line's language (its "lang" event field)
     };
     std::mutex out_mutex, jobs_mutex;
     std::condition_variable jobs_cv;
@@ -6115,14 +6929,39 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 std::string speak_err;
                 const coop::PiperVoice* chosen = job.local ? &voice_local : &voice;
                 if (job.local && !job.local_name.empty()) {
-                    const auto extra = voices_extra.find(job.local_name);
-                    if (extra != voices_extra.end()) chosen = extra->second.get();
+                    auto extra = voices_extra.find(job.local_name);
+                    // a voice of another language than the player's (a person who speaks their own, 2026-11-14): its folder beside
+                    // the bot's voice, loaded once, the first time a line wants it (a second or so)
+                    if (extra == voices_extra.end() && piper && job.local_name.find_first_not_of("abcdefghijklmnopqrstuvwxyz0123456789_") == std::string::npos) {
+                        coop::VoiceOptions o = local_voice ? *local_voice : *piper;
+                        o.model_dir = (std::filesystem::u8path(piper->model_dir).parent_path() / job.local_name).u8string();
+                        o.speaker.clear();
+                        o.lang.clear();
+                        if (!local_voice) o.threads = std::max(piper->threads, 4);
+                        auto v = std::make_unique<coop::PiperVoice>();
+                        std::string verr;
+                        const auto l0 = Clock::now();
+                        if (v->Load(o, &verr)) {
+                            std::fprintf(stderr, "voice %s loaded for a line in %s (%.0f ms)\n", job.local_name.c_str(), job.lang.c_str(), Ms(Clock::now() - l0));
+                            extra = voices_extra.emplace(job.local_name, std::move(v)).first;
+                        } else {
+                            std::fprintf(stderr, "voice %s: %s\n", job.local_name.c_str(), verr.c_str());
+                            voices_extra.emplace(job.local_name, nullptr);
+                        }
+                        extra = voices_extra.find(job.local_name);
+                    }
+                    if (extra != voices_extra.end() && extra->second) chosen = extra->second.get();
+                    else if (!local_ready || job.lang != (g_replies ? g_replies->Language() : std::string("en"))) {
+                        // no voice for that language here: the line is not said (the player's language's voice would garble it)
+                        send({{"event", "hushed"}, {"id", job.id}});
+                        continue;
+                    }
                 }
                 const coop::PiperVoice& v = *chosen;
                 const int rate = v.SampleRate();
                 auto line_event = [&](const char* name) {   // the fields every event of the line has
                     return json{{"event", name}, {"id", job.id}, {"text", job.text}, {"voiced", job.voiced.empty() ? json(nullptr) : json(job.voiced)},
-                                {"lang", job.local && g_replies ? g_replies->Language() : std::string("en")}, {"rate", rate}};
+                                {"lang", !job.lang.empty() ? job.lang : job.local && g_replies ? g_replies->Language() : std::string("en")}, {"rate", rate}};
                 };
                 // streamed (2026-11-04): each sentence but the last goes out as it is made, so the game plays the first while the
                 // next is made; the last goes with "speech", which ends the line. A line of one sentence is one "speech", as before
@@ -6366,6 +7205,9 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
             }
             // whom the line is said to (the game's "to", talker.h): the bot when none
             const std::string to = q.is_object() ? q.value("to", std::string()) : std::string();
+            // who may be called by name, and the key of the one the line is said to (2026-11-12; see "callees" above)
+            const json callees = q.is_object() && q.contains("callees") ? q["callees"] : json(nullptr);
+            const std::string to_key = q.is_object() ? q.value("to_key", std::string()) : std::string();
             // a heard or typed line through the classifier and the planner
             // words: the transcript's words with their start times (SpeechWord); clip_start: where the clip's second 0 is from
             // the talk key going down (the microphone's pre-roll comes before it)
@@ -6375,6 +7217,31 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 if (heard.empty()) {
                     send({{"event", "nothing"}, {"id", id}, {"audio_s", audio_s}, {"stt_ms", stt_ms}});
                     return;
+                }
+                // a line that calls another by name than the one the game said it to (its "callees" and "to_key", 2026-11-12): the
+                // game says it again to them, with the world as theirs ("readdress"; "far": they are out of earshot). A line that
+                // calls the one it is said to: theirs, a person's without the name (the bot's Listen reads its own name)
+                std::string line = heard;
+                if (callees.is_array()) {
+                    Callee callee;
+                    std::string rest;
+                    if (CalledCallee(heard, callees, chat.BotName(), &callee, &rest)) {
+                        const std::string whom = to.empty() ? std::string("bot") : to;
+                        if (to_key.empty() ? callee.to != whom : callee.key != to_key) {
+                            json j = {{"event", "readdress"}, {"id", id}, {"heard", heard}, {"to", callee.to}, {"key", callee.key},
+                                      {"name", callee.name}, {"text", rest.empty() ? heard : rest}, {"far", callee.distant},
+                                      {"spoken", spoken}, {"audio_s", audio_s}, {"stt_ms", stt_ms}};
+                            if (words && !words->empty()) {
+                                json w = json::array();
+                                for (const coop::SpeechWord& x : *words) w.push_back({{"w", x.text}, {"t", std::round(x.start * 1000) / 1000}});
+                                j["words"] = std::move(w);
+                                j["clip_start_s"] = clip_start;
+                            }
+                            send(j);
+                            return;
+                        }
+                        if (callee.to != "bot" && !rest.empty()) line = rest;
+                    }
                 }
                 // a line to another than the line before it (the bot, a person of the level): what the planner asked the one before
                 // is not asked of this one, and the decoder's short context (the lines said to the one before, and their words back)
@@ -6399,6 +7266,8 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                         fail("no role \"" + to + "\" (talk_config.json's roles, or the game's \"role\")");
                         return;
                     }
+                    // the language they speak (their own, else the player's)
+                    const std::string person_lang = g_talk->roles[to].lang.empty() ? g_language : g_talk->roles[to].lang;
                     // the answer in their role; was: what the classifier made of the line, when it was asked
                     auto talk_in_role = [&](const json& was) {
                         std::string said, talk_err;
@@ -6408,7 +7277,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                             return;
                         }
                         if (!was.is_null()) info["was"] = was;
-                        said = Rephrased(said, g_language);
+                        said = Rephrased(said, person_lang);
                         KeepLocalized(said);
                         json turn = {{"intent", "TALK"}, {"prob", 1.0}, {"action", "talk"}, {"say", said}, {"line", heard}, {"order", nullptr},
                                      {"question", nullptr}, {"to", to}, {"talk", info}};
@@ -6429,14 +7298,15 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                     }
                     // a body of theirs takes orders (2026-11-12, the owner: «чтобы любому NPC можно было отдать именно приказ и
                     // поговорить»): the line through the classifier, the planner and the decoder as the bot's lines go, without the
-                    // bot's long-term memory, its habit or its name; their words for an order from the plain table (no «брат»)
+                    // bot's long-term memory, its habit or its name; their words for an order from the plain table (no «брат»),
+                    // or from the «брат» one when their role has the habit (2026-11-14, "bro")
                     coop::Localizer* const replies_were = g_replies;
-                    g_replies = g_plain_replies;
+                    g_replies = RepliesIn(person_lang, g_talk->roles[to].bro);   // their own language's tables (none: English)
                     Chat::Heard h;
                     json turns = json::array();
                     chat.words = words ? *words : std::vector<coop::SpeechWord>();
                     chat.clip_start = clip_start;
-                    const bool heard_ok = chat.Hear(heard, spoken ? coop::SpeechTextForClassifier(heard) : heard, &h, &err,
+                    const bool heard_ok = chat.Hear(line, spoken ? coop::SpeechTextForClassifier(line) : line, &h, &err,
                         [&](const Chat::Heard&, const Chat::Turn& t) {
                             json turn = ReplyJson(chat, t);
                             turn.erase("event");
@@ -6458,15 +7328,48 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                         fail(err);
                         return;
                     }
+                    // hit, shoot, aim at, taunt someone (2026-11-14): whom from the player's own words (the line without their name); a
+                    // taunt's words are theirs, from their role
+                    bool acted = false;
+                    {
+                        ActOn act;
+                        if (ReadActOn(line, callees, chat.BotName(), to, &act) && ApplyActOn(act, &turns, RepliesIn(person_lang, g_talk->roles[to].bro))) {
+                            acted = true;
+                            h.note = "acting on someone: " + act.kind + " " + act.target.dump();
+                            if (act.intent == "TAUNT" && turns.size() == 1) {
+                                std::string said, talk_err;
+                                json info;
+                                const std::string kind = act.target.value("kind", std::string());
+                                std::string whom = kind == "speaker" ? "the player" : kind == "pointed" ? "him" : CalledIn(act.target, person_lang, 'n', chat.BotName());
+                                if (whom.empty()) whom = "him";
+                                if (chat.TalkReply(to, "(The player tells you to mock " + whom + " to " + (whom == "the player" ? "his" : "their") +
+                                                           " face. Say one short mocking sentence to " + whom + ".)", &said, &info, &talk_err)) {
+                                    said = Rephrased(said, person_lang);
+                                    KeepLocalized(said);
+                                    turns.at(0)["say"] = said;
+                                    turns.at(0).erase("say_en");
+                                    turns.at(0)["talk"] = info;
+                                }
+                            }
+                        }
+                    }
+                    // going to someone, following them (2026-11-15, «Майк, иди к Нику»): whom from the player's own words; a line read as
+                    // one turn that acts on them already leaves the walk to that (a strike walks up to them first)
+                    {
+                        ActOn go;
+                        if (!(acted && turns.size() == 1) && ReadGoTo(line, callees, chat.BotName(), to, person_lang, &go) &&
+                            ApplyActOn(go, &turns, RepliesIn(person_lang, g_talk->roles[to].bro)))
+                            h.note += std::string(h.note.empty() ? "" : "; ") + "going to someone: " + go.kind + " " + go.target.dump();
+                    }
                     // "what do you see?", "where are you going?" in the player's own words: the game answers from their body
-                    if (g_language != "en" && turns.size() == 1 && !turns.at(0).contains("state") && SeenInOwnWords(heard)) {
+                    if (g_language != "en" && turns.size() == 1 && !turns.at(0).contains("state") && SeenInOwnWords(line)) {
                         json& only = turns.at(0);
                         only["state"] = "seen";
                         only["order"] = nullptr;
                         only["say"] = "";
                         only.erase("say_en");
                     }
-                    if (g_language != "en" && turns.size() == 1 && DoingInOwnWords(heard) &&
+                    if (g_language != "en" && turns.size() == 1 && DoingInOwnWords(line) &&
                         (!turns.at(0).contains("state") || turns.at(0).value("state", std::string()) == "how")) {
                         json& only = turns.at(0);
                         only["state"] = "doing";
@@ -6474,7 +7377,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                         only["say"] = "";
                         only.erase("say_en");
                     }
-                    if (PersonTalks(turns, heard, g_talk->TalkingNow(to))) {
+                    if (PersonTalks(turns, line, g_talk->TalkingNow(to))) {
                         // talk: what the planner asked or queued about the line is not theirs to ask (their role answers instead)
                         if (chat.planner.Mem().has_question) chat.planner.DropQuestion();
                         json was = json::array();
@@ -6572,6 +7475,46 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                     return;
                 }
                 chat.NoteKept(memo.info);   // the last lesson, for «не надо было запоминать»
+                // the player's own words without the bot's name («Бади, иди к Майку»: Майк is whom, Бади who is told)
+                std::string own = heard;
+                {
+                    Callee called;
+                    std::string r;
+                    if (callees.is_array() && CalledCallee(heard, callees, chat.BotName(), &called, &r) && called.to == "bot" && !r.empty()) own = r;
+                    else if (!chat.BotName().empty() && coop::CalledBy(heard, chat.BotName(), &r) && !r.empty()) own = r;
+                }
+                // hit, shoot, aim at, taunt someone (2026-11-14): whom from the player's own words; a taunt's words are the bot's own,
+                // from its talking model
+                bool acted = false;
+                if (!memo.answered) {
+                    ActOn act;
+                    if (ReadActOn(own, callees, chat.BotName(), "bot", &act) && ApplyActOn(act, &turns, g_replies)) {
+                        acted = true;
+                        h.note = "acting on someone: " + act.kind + " " + act.target.dump();
+                        if (act.intent == "TAUNT" && turns.size() == 1 && g_talk && g_talk->Ready()) {
+                            std::string said, talk_err;
+                            json info;
+                            const std::string kind = act.target.value("kind", std::string());
+                            std::string whom = kind == "speaker" ? "the player" : kind == "pointed" ? "him" : CalledIn(act.target, g_language, 'n', chat.BotName());
+                            if (whom.empty()) whom = "him";
+                            if (chat.TalkReply("bot", "(The player tells you to mock " + whom + " to " + (whom == "the player" ? "his" : "their") +
+                                                          " face. Say one short mocking sentence to " + whom + ".)", &said, &info, &talk_err)) {
+                                said = Rephrased(said, g_language);
+                                KeepLocalized(said);
+                                turns.at(0)["say"] = said;
+                                turns.at(0).erase("say_en");
+                                turns.at(0)["talk"] = info;
+                            }
+                        }
+                    }
+                }
+                // going to someone, following them (2026-11-15, «Бади, иди к Майку», «иди за Колей»): whom from the player's own words
+                if (!memo.answered && !(acted && turns.size() == 1)) {
+                    ActOn go;
+                    if (ReadGoTo(own, callees, chat.BotName(), "bot", g_replies ? g_replies->Language() : std::string("en"), &go) &&
+                        ApplyActOn(go, &turns, g_replies))
+                        h.note += std::string(h.note.empty() ? "" : "; ") + "going to someone: " + go.kind + " " + go.target.dump();
+                }
                 if (memo.answered) {
                     // the long-term memory answered the line itself ("What did you mean?", "Got it, I'll remember."): its
                     // words and no order, as SMALL_TALK is
@@ -6709,7 +7652,14 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 send(j);
             };
             if (cmd == "text") {
-                respond(q.at("text").get<std::string>(), false, 0, 0);
+                // a typed line; or a heard one the game says again to the one it called ("readdress"): "spoken" and its words
+                // with their times come with it
+                std::vector<coop::SpeechWord> said_words;
+                if (q.contains("words") && q["words"].is_array())
+                    for (const json& w : q["words"])
+                        if (w.is_object()) said_words.push_back({w.value("w", std::string()), w.value("t", 0.0)});
+                respond(q.at("text").get<std::string>(), q.value("spoken", false), q.value("audio_s", 0.0), q.value("stt_ms", 0.0),
+                        said_words.empty() ? nullptr : &said_words, q.value("clip_start_s", 0.0));
             } else if (cmd == "rephrase") {
                 // {"cmd":"rephrase","text":"Понял, брат, запомню.","lang":"ru"}: the line with the player's phrases and pronunciations
                 const std::string lang = q.value("lang", g_replies ? g_replies->Language() : std::string("en"));
@@ -6842,10 +7792,14 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                     continue;
                 }
                 const double audio_s = static_cast<double>(phrase.samples.size()) / coop::VoiceActivity::kSampleRate, stt_ms = Ms(Clock::now() - t0);
-                // the bot hears it when it is called by its name, or in the game's window after its words (the owner: 8 s)
+                // the bot hears it when it is called by its name, or in the game's window after its words (the owner: 8 s); a
+                // person near when the line calls them (the game's "callees", 2026-11-12: respond readdresses it to them)
                 const std::string said = StripPy(heard), name = chat.BotName();
                 std::string rest;
-                if (!said.empty() && !q.value("window", false) && (name.empty() || !coop::CalledBy(said, name, &rest))) {
+                Callee callee;
+                const bool called = (!name.empty() && coop::CalledBy(said, name, &rest)) ||
+                                    (q.contains("callees") && CalledCallee(said, q["callees"], name, &callee, &rest));
+                if (!said.empty() && !q.value("window", false) && !called) {
                     send({{"event", "not_called"}, {"id", id}, {"heard", said}, {"name", name}, {"audio_s", audio_s}, {"stt_ms", stt_ms}});
                     continue;
                 }
@@ -6891,6 +7845,12 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                         std::string text = q.at("text").get<std::string>(), local;
                         bool in_local = false;
                         ChooseReplies();
+                        // a person who speaks another language than the player's ("lang", 2026-11-14): written and said in theirs, with
+                        // its tables (the habit's with "bro") and a voice of it ("local_voice", loaded when first wanted)
+                        const std::string say_lang = q.contains("lang") && q["lang"].is_string() ? q["lang"].get<std::string>() : std::string();
+                        const bool own_lang = (say_lang == "en" || say_lang == "ru" || say_lang == "es") && say_lang != g_language;
+                        coop::Localizer* const replies_were = g_replies;
+                        if (own_lang) g_replies = RepliesIn(say_lang, q.value("bro", false));
                         // "terms": the words of labelled things in the player's language, {"thing": {"spike trap": {"ru":
                         // {"text": ..., "acc": ...}, "es": {...}}}}: this language's forms go to the table
                         coop::Localizer::Terms terms;
@@ -6903,21 +7863,26 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                                     for (auto f = forms.begin(); f != forms.end(); ++f)
                                         if (f.value().is_string()) terms[s.key()][key][f.key()] = f.value().get<std::string>();
                                 }
-                        if (local_ready && g_replies) {
+                        if (own_lang) {
+                            // English: the brain's own words (with the habit: its English table); another: its table, or as it is
+                            if (say_lang != "en") in_local = true;
+                            if (g_replies && !q.value("localized", false) && !IsLocalized(text) && LocalizeMixed(text, &local, &terms)) text = local;
+                        } else if (local_ready && g_replies) {
                             if (q.value("localized", false) || IsLocalized(text)) in_local = true;
                             else if (LocalizeMixed(text, &local, &terms)) text = local, in_local = true;
                         } else if (g_replies && g_replies->Language() == "en") {
                             // English with the habit: the game's line in the persona's words, said by the English voice
                             if (!q.value("localized", false) && !IsLocalized(text) && LocalizeMixed(text, &local, &terms)) text = local;
                         }
-                        const std::string line_lang = in_local && g_replies ? g_replies->Language() : std::string("en");
+                        const std::string line_lang = own_lang ? say_lang : in_local && g_replies ? g_replies->Language() : std::string("en");
+                        g_replies = replies_were;
                         chat.HeardFromBot(text);
                         text = Rephrased(text, line_lang);
                         if (text.empty()) {   // a line the player asked the bot not to say
                             send({{"event", "hushed"}, {"id", id}});
                             continue;
                         }
-                        text = WithPlayerName(text, chat.rng);   // «Понял, Тимур.» now and then
+                        if (!own_lang) text = WithPlayerName(text, chat.rng);   // «Понял, Тимур.» now and then
                         const std::string voiced = Pronounced(text, line_lang);
                         float speed = q.value("speed", 0.0f);
                         const double tuned = Chat::SettingNow("voice_speed");   // «говори медленнее»
@@ -6927,6 +7892,9 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                         jobs.push_back({id, text, in_local ? q.value("local_speaker", std::string()) : q.value("speaker", std::string()), speed, in_local,
                                         voiced == text ? std::string() : voiced, q.value("stream", false)});
                         if (in_local) jobs.back().local_name = q.value("local_voice", std::string());
+                        // another language's line with no voice named: that language's own folder (voice_ru, voice_es)
+                        if (own_lang && in_local && jobs.back().local_name.empty()) jobs.back().local_name = "voice_" + say_lang;
+                        jobs.back().lang = line_lang;
                         jobs_cv.notify_one();
                     }
                 } else if (cmd == "say" && !id.is_null()) {
@@ -6979,9 +7947,47 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                     r.gender = g == "woman" || g == "man" ? g : std::string();
                     if (r.gender != was) g_talk->talks.erase(name);   // their talk so far was in the other forms
                 }
+                // "bro": true: they call the player «брат» / "bro" / "hermano" (2026-11-14): in their talk (TalkSystem) and in their
+                // words for an order (the --replies-bro table); their voice is the game's choice apart from it
+                {
+                    const bool was = r.bro;
+                    r.bro = q.contains("bro") && q["bro"].is_boolean() && q["bro"].get<bool>();
+                    if (r.bro != was) g_talk->talks.erase(name);
+                }
+                // "lang": "en" | "ru" | "es": the language they speak whatever the player's (2026-11-14); none: the player's
+                {
+                    const std::string was = r.lang;
+                    const std::string l = q.contains("lang") && q["lang"].is_string() ? q["lang"].get<std::string>() : std::string();
+                    r.lang = l == "en" || l == "ru" || l == "es" ? l : std::string();
+                    if (r.lang != was) g_talk->talks.erase(name);   // their talk so far was in another language
+                }
                 if (r.text != before) g_talk->talks.erase(name);   // another character: its talk starts over (the game sends it before each line)
                 send({{"event", "role"}, {"id", id}, {"name", name}, {"source", r.source}, {"chars", r.text.size()}, {"names", r.names},
-                      {"orders", r.orders}, {"gender", r.gender.empty() ? json(nullptr) : json(r.gender)}, {"roles", g_talk->RoleNames()}});
+                      {"orders", r.orders}, {"gender", r.gender.empty() ? json(nullptr) : json(r.gender)}, {"bro", r.bro},
+                      {"lang", r.lang.empty() ? json(nullptr) : json(r.lang)}, {"roles", g_talk->RoleNames()}});
+            } else if (cmd == "react") {
+                // a person of the level's words of their own on what just happened to them (2026-11-14, the owner: a person hurt by
+                // someone complains and steps away): their role answers "line", the game's account of it, in their language.
+                // {"cmd":"react","to":"granny","line":"(The player just hurt you. ...)"} -> {"event":"react","to":"granny","say":...}
+                if (!g_talk || !g_talk->Ready()) {
+                    fail("no talking model: " + g_talk_note);
+                    continue;
+                }
+                const std::string role = q.value("to", std::string());
+                if (!g_talk->roles.count(role)) {
+                    fail("no role \"" + role + "\" (the game's \"role\" first)");
+                    continue;
+                }
+                std::string said, talk_err;
+                json info;
+                if (!chat.TalkReply(role, q.value("line", std::string()), &said, &info, &talk_err)) {
+                    fail(talk_err);
+                    continue;
+                }
+                const std::string lang = g_talk->roles[role].lang.empty() ? g_language : g_talk->roles[role].lang;
+                said = Rephrased(said, lang);
+                KeepLocalized(said);
+                send({{"event", "react"}, {"id", id}, {"to", role}, {"say", said}, {"talk", info}});
             } else if (cmd == "teach" || cmd == "forget" || cmd == "recall") {
                 // the long-term memory by hand (a HUD, a test): {"cmd":"teach","heard":"on my goal","lines":["go"]},
                 // {"cmd":"teach","entity":"Place_Door_03","name":"оружейка"}, {"cmd":"teach","entity":...,"colour":"green"},
@@ -7103,6 +8109,7 @@ int main(int argc, char** argv) {
         else if (a == "--bro-relapse" && i + 1 < argc) bro_relapse = std::atof(argv[++i]);
         else if (a == "--bro-check" && i + 1 < argc) mode = "bro-check", bro_check = argv[++i];
         else if (a == "--replies" && i + 1 < argc) replies_file = argv[++i];
+        else if (a == "--replies-dir" && i + 1 < argc) g_replies_dir = argv[++i];
         else if (a == "--replies-check" && i + 1 < argc) mode = "replies-check", replies_file = argv[++i];
         else if (a == "--voice-local" && i + 1 < argc) voice_local.model_dir = argv[++i];
         else if (a == "--voice-local-extra" && i + 1 < argc) {
@@ -7299,6 +8306,9 @@ int main(int argc, char** argv) {
     else if (g_decode_every_line)
         std::printf("language: en, every line to the decoder (--decoder-every-line)%s\n",
                     g_chain ? "" : "; NO decoder is loaded (--chain DIR): the flag does nothing");
+    // the people's own languages' tables (RepliesIn): --replies-dir, else beside the player's language's tables
+    if (g_replies_dir.empty() && (!replies_file.empty() || !bro_file.empty()))
+        g_replies_dir = std::filesystem::u8path(!replies_file.empty() ? replies_file : bro_file).parent_path().u8string();
     coop::Localizer replies;
     if (!replies_file.empty()) {
         if (!replies.Load(replies_file, &err)) return std::fprintf(stderr, "%s\n", err.c_str()), 2;

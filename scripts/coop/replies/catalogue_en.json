@@ -1042,6 +1042,14 @@
    "source": "coop_cli.cpp memory: 'my name is Tim' -- the player told the bot their name"
   },
   {
+   "en": "Going over to {name}.",
+   "source": "coop_cli.cpp ReadGoTo: «Майк, иди к Нику», 'go to Nick', 'approach Tony' -- the one gone to by name"
+  },
+  {
+   "en": "Following {name}.",
+   "source": "coop_cli.cpp ReadGoTo: «иди за Колей», 'follow Mike' -- the one followed by name"
+  },
+  {
    "en": "Your name is {name}.",
    "source": "coop_cli.cpp memory: 'what's my name?'"
   },

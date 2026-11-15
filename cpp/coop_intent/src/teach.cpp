@@ -1619,13 +1619,17 @@ bool EdgeByte(char c) { return std::string_view(" \t,;:-").find(c) != std::strin
 
 }  // namespace
 
-bool CalledBy(std::string_view heard, const std::string& name, std::string* rest) {
+bool CalledBy(std::string_view heard, const std::string& name, std::string* rest, bool* at_start) {
     const std::vector<std::string> nw = MemoryWords(MemoryNorm(name));
     const std::vector<SpanWord> sw = SpanWords(heard);
+    if (at_start) *at_start = false;
     if (nw.empty() || sw.size() < nw.size()) return false;
-    static const std::unordered_set<std::string> kHey = {"эй", "ей", "слушай", "hey", "yo", "oi", "oye"};
+    // a word before the name at the start that is not the line (2026-11-15: «Так, Майк, иди к Нику», "Now, Mike, ...")
+    static const std::unordered_set<std::string> kHey = {"эй", "ей", "слушай", "ну", "так", "а", "ладно", "окей", "hey", "yo", "oi",
+                                                         "so", "now", "listen", "ok", "okay", "alright", "oye", "mira", "bueno", "vale"};
     static const std::unordered_set<std::string> kFill = {"эй", "ей", "слушай", "hey", "yo", "oi", "oye", "брат", "братан", "bro",
-                                                          "dude", "hermano", "ну", "please", "пожалуйста", "ты", "you"};
+                                                          "dude", "hermano", "ну", "так", "а", "ладно", "окей", "so", "now", "listen", "ok",
+                                                          "okay", "alright", "mira", "bueno", "vale", "please", "пожалуйста", "ты", "you"};
     auto at = [&](size_t i) {
         if (i + nw.size() > sw.size()) return false;
         for (size_t k = 0; k < nw.size(); ++k)
@@ -1647,6 +1651,7 @@ bool CalledBy(std::string_view heard, const std::string& name, std::string* rest
     if (at(i)) {
         const size_t after = i + nw.size();
         *rest = after < sw.size() ? left(after, sw.size(), heard.size()) : std::string();
+        if (at_start) *at_start = true;
         return true;
     }
     const size_t from = sw.size() - nw.size();

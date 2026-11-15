@@ -707,6 +707,92 @@ Q4_K_M, 1.2 GB), no adapter (`include/coop_intent/talker.h`, `src/llama_talker.c
   drops the planner's open question and the decoder's short context: those were the other talk's. The role request's
   `"gender": "woman" | "man"` adds, in Russian and Spanish, "When you speak <the language>, use the feminine (masculine)
   forms for yourself" (two tellers share one role text; Anna said «Я бы ... хотел»), and nothing more about who they are.
+  `"bro": true` (2026-11-14, the owner: «Mike, Tony, Nick должны получить роли RU+BRAT») gives a person the habit of «брат»
+  for good: their talk is told "You call the player "брат" (hermano, bro) now and then", and their words for an order come
+  from the `--replies-bro` table. The player's words never switch it off (that is the bot's own habit, `bro.h`); the
+  accented voice is the game's choice apart from it (`voice_ru_brat`).
+- **A person's own language** (2026-11-14, the owner: «у персоны можно было выбрать её язык общения, даже если язык сейчас
+  пользователя английский, то персона может говорить на русском»). The role request's `"lang": "en" | "ru" | "es"` (none: the
+  player's): their talk is told "Answer in <it> only" and the answer is checked against it (their name and the gender's forms
+  in it too); their words for an order come from that language's tables (`RepliesIn`: `replies_<lang>.json`, with the habit
+  `replies_<lang>_brat.json`; English without the habit is the brain's own words), read from `--replies-dir` (else the folder of
+  `--replies` / `--replies-bro`) when first wanted. `say` takes `"lang"` (and `"bro"`) too: the line is written in that language
+  (an English line of the game's from its table) and said with `local_voice` (none: `voice_<lang>`), a folder beside the bot's
+  voice loaded the first time a line wants it (voice_ru_brat 1.3 s, voice_ru 0.8 s) and kept; no voice for it: the line is not
+  said (`hushed`). The player is understood in any language as before. Checked: an English brain (`--language en`), the
+  foreman with "lang": "ru", "bro": true: "follow me" «Двигаюсь с тобой.», "what's your name?" «Михалыч. А ты кто?», "sit on the
+  bench" «На одно колено, брат.»; `say` «Брат, я прямо за тобой.» in voice_ru_brat, "I'm back." as «Я вернулся.» in voice_ru;
+  the bot's "On my way." in English.
+- **Acting on someone** (2026-11-14, the owner: «Вообще все могли дамажить друг друга, если я это приказываю ... Бить руками,
+  стрелять, издеваться, направлять»). The classifier read some of these lines («ударь его» MELEE) and not others («ударь меня»
+  HELP, «пристрели Колю» "take out cole" SWITCH_WEAPON, «целься в него» OPEN_FIRE, «подразни его» DEFUSE), and none said whom.
+  `ReadActOn` reads the player's own line (the person's without their name): a verb (`ActVerb`: hit -> MELEE, shoot ->
+  OPEN_FIRE, aim -> AIM_AT, taunt -> TAUNT; the last two are the game's own intents) and whom: a name of the line's `callees` in
+  any case (a stem and a case's ending), «бота» / "bot", me, else him / her (the crosshair). A negation before the verb («не бей»)
+  leaves the line to the classifier. `ApplyActOn` makes the line's one turn that order with `"target": {"kind": "speaker" |
+  "pointed" | "bot" | "person", "key", "name"}` (and `"strikes": 1` for «ударь», "punch"; «избей», «бей», "beat" until down), its
+  words from the table (Going hands-on. / Opening fire! / Eyes on it.); a line of several gives the target to its turns of that
+  kind. A taunt's words are the actor's talking model's (bot or person, in their language). `CalledCallee`: a name at the line's
+  end in another case, or after such a verb, is whom the line is about, not a call («ударь Колю», "shoot Nick"), and such a verb
+  is never read as a name ("make fun of him" ~ "Mike"). Checked offline (probe_acton.py): ru 18 lines, en 13, calls unchanged.
+- **Whom a line is said to, whom it is about** (2026-11-15, the owner: «когда я одному персонажу NPC говорю ... Майк, иди к
+  Нику, то системе кажется, что я обращаюсь к Нику ... Вот такие вещи должны быть распознаны хорошо»). The people of the game's
+  street have a name in every language (Mike, Михалыч, Miguel) and the player says the one shown over them in his own speech:
+  «Майк» was no name of anyone's, so the line stayed with Nick under the crosshair. Now: `NameInOtherAlphabet` reads a Latin name
+  the English way into Cyrillic (Mike -> майк, Nick -> ник, Tony -> тони, Sergei -> сергей, Buddy -> бадди, бади; a final silent
+  e, ck, ch, a doubled letter, y as и or ы) and a Cyrillic one into Latin (Коля -> kolya, kolia; Михалыч -> mikhalych), a few
+  forms each; `CalleeNames` gives every callee those too. `CalledCallee` takes a name at the line's start first, whoever of the
+  callees it is, then one at its end; `CalledBy` skips «так», «ну», «а», "so", "now", "ok" before a name at the start (as "hey"
+  before) and says where it found it (`at_start`). A name at the end without a comma before it is whom the line is about when a
+  verb of acting on someone is in the line or one of going is just before it ("follow Nick", "approach Mike"); with a comma it
+  calls ("Shoot him, Nick."). `NameWordIn` reads a name in any case (a stem and a case's ending: «Колю», «Майку», «Михалычем»;
+  «Лео», «Тони» do not decline; one letter off in 4+ letters). **Going to someone** (`ReadGoTo`): a verb of going («иди»,
+  «подойди», "go", «ve»), following («следуй», "follow", «sigue»), staying by («встань», "stay", "wait") or reaching («догони»,
+  "approach") with whom within three words, the word before them saying how (к / to / a: to them; рядом, возле, у, near, by,
+  behind: by them; за / after: after them; с / with / con: with them): to and by them is MOVE_TO, after and with them (or a verb
+  of following) FOLLOW_ME, with `"target"` as an act on someone has. Me («иди ко мне», «иди за мной») is the classifier's as
+  before; him is the one named before him in the line («иди к Коле и ударь его»: both Коля), else the crosshair; nobody is
+  sent to themselves; a negation leaves the line alone. The decoder reads the names as words ("Go to the garage" for «иди к
+  Коле», "follow me" for «иди за Колей», «подойди к Толику» as talk), so a walk to someone named never keeps the place it
+  came with, and its words name them: "Going over to {name}." «Иду к {Name}.», "Following {name}." «Иду за {Name}.» (the name in
+  the words' language, in Russian already in its case: `RussianNameIn`, «Коле», «Колей», «Михалычу», «бабе Вале»); one to him
+  under the crosshair says "On my way there." / "Moving.". `ReadActOn` reads whom by place now (the first one named after the
+  verb in its part of the line, else the last before it; the parts split at «и», «потом», "and", "then"), each verb of acting in
+  turn (the first not said not to); `ApplyActOn` gives a line of several turns the turn of the act's part (a turn a part), else
+  its turns of that kind. The bot's line is read without its name («Бади, ударь Колю» was the bot hitting itself when said to
+  the bot directly). Checked offline (scratchpad probe_address2.py, the game's callees of the building site): «Майк, иди к
+  Нику» said at Nick, at the bot or at nobody -> readdress to Михалыч, MOVE_TO Коля «Иду к Коле.»; «Михалыч, иди за Колей»
+  FOLLOW_ME Коля; «Ник, иди к Майку» «Иду к Михалычу.»; «Тони, иди за Ником»; «Михалыч, иди к Коле и ударь его» MOVE_TO + MELEE
+  Коля; «Подойди к Толику» (was talk), «Следуй за Толиком»; «Бади, иди к Майку»; «иди к Коле, Михалыч»; «Так, Майк, встань рядом
+  с Тони»; English "Mike, go to Nick", "Follow Nick", "Approach Mike", "Kolya, go to Mike", "Go with Nick", "Stay with Tony";
+  unchanged: «Где Михалыч?», «Иди сюда, Коля», «Ударь Колю», «Не ходи за Колей», «Иди ко мне», «Иди за мной», "Follow me".
+  Not read: two people at once («Майк, Ник, идите сюда» is Nick's alone). In the game: `address_orders.txt`.
+- **`react`** (2026-11-14): `{"cmd":"react","to":role,"line":"(what happened)"}` -> `{"event":"react","to","say"}`: a person of
+  the level's words of their own on what happened to them (hurt by someone), in their role and language.
+- **A sitting on a bench** (2026-11-14): the classifier reads a sitting on a thing as getting into a car ("sit down on this
+  bench" GET_IN 0.64, "take a seat on this bench" GET_IN 0.98) and "crouch on / at <it>" as CROUCH at it (1.00), which the
+  game takes as sitting down on a seat. `SitOnPiece` writes a decoder piece (or an English line given back as it was) that
+  starts "sit (down)", "take a seat", "have a seat", ... with on / onto / at / by and names a bench as "crouch <the rest>";
+  in or into a thing ("sit in the car"), or a car or a seat named, is left alone, and so are chairs and sofas («Сядь на стул»
+  is "Не расслышал." as before: the owner's to teach or decide). Checked: «сядь на (эту) лавочку», «садись на скамейку»,
+  «присядь на лавочку», "have a seat at that bench" CROUCH at the bench 1.00; «сядь в машину» GET_IN.
+- **Called by name** (2026-11-12, the owner: «если он стоит рядом, просто я обращаюсь по имени, то нужно, чтобы система
+  поняла, к какому из персонажей я обращаюсь, в том числе и мой бот»). The game sends `"callees"` with a line (text,
+  ptt_up, vad_up, wav): the bot and the people near, nearest first, each with its names in every language, `"far"` when
+  out of earshot; and `"to_key"`, the one it says the line to. `CalledCallee` reads a name as `CalledBy` reads the bot's (at
+  the line's start or end, one letter off in a word of 4+ letters; «иди к Фёдору» calls nobody), a name of several words by
+  its last word too («баба Валя»: «Валя, ...»); the bot answers to the name the player gave it, the game's and its role's
+  («Бади»). A line that calls another than the one it is said to stops there: `{"event": "readdress", "to", "key", "name",
+  "text" (the line without the name), "far", "spoken", "words"}`, and the game says it again as `text` to the one called,
+  with the world as theirs (their body stands for the bot's) and `"spoken"` and the words with their times as heard. A line
+  that calls the person it is said to is read without the name. The open microphone hears a line that calls anyone near, as
+  it hears one with the bot's name. A name at the end after a word that asks about them is a question about them, not a
+  call: «где Фёдор?», "where is Anna", «кто такой Лео» stay with the one the line is said to. Checked 2026-11-12 on the
+  served brain: «Фёдор, иди за мной» (said to the bot) -> readdress to the sweeper, "Иди за мной"; «Валя, иди сюда» -> the
+  granny, far; «Бади, стой здесь» said to the sweeper -> the bot; «стой здесь, Федор», «Эй, Фёдор, иди сюда» -> the
+  sweeper; «Иди сюда Лео» (no comma) -> the musician; «привет, Анна» -> Anna; «иди к Фёдору» -> the bot's MOVE_TO; «где
+  Фёдор?», "where is Anna", «кто такой Лео» -> the bot's own reply; «Фёдор!» said to him -> his talk. In the game:
+  `names_call.txt` (LyraStarterGame58 CoopBot E2E).
 - **The words.** Think blocks, markup, a "Name:" before the words, quotes, pictographs out; a capital at each sentence's
   start and the English "I"; an answer cut by the token limit loses its last unfinished sentence. One more draw when the
   answer is empty, has Chinese, Japanese or Korean in it («я не помню自己的 возраст») or is not in the player's language.
@@ -732,6 +818,17 @@ worse in Russian (the bot's good answers 14 of 100 against 31) and was not used;
 in 57 against 69: it says more and errs more), the Russian seller 25/60 (10; sums right 16 against 5), English 40/50 and
 24/30, Spanish 21/35 and 13/25. The game's brain has it since 2026-11-12 (`models/coop-talk-v3-4b/cpp`, 2.4 GB, about
 100 ms an answer on the GPU; `temperature` 0.4 in its config).
+
+**Round talk-2 (2026-11-13, Russian grammar, `scripts/coop/stt/talk/TALK2.md`).** 875 new Russian rows (the bot 440, the
+seller 120, the eleven people of the game's street 315 with their role texts and genders), every Russian row old and new
+checked by an editor (the old ones were clean: 23 fixes of 1234; the new ones 87 fixes, 19 unrelated earlier exchanges
+cleared), the people's rows trained with the gender line the brain adds; 2905 rows, Qwen3-4B 3 epochs (v4) and 2 epochs
+(v4e2); 66 new blind test rows for the people. Blind six-way judge (Opus for Russian, Sonnet for English and Spanish), good
+answers: Russian bot v3 at 0.4 (the game's) 32/100, v4e2 at 0.2 68; its grammar right 67 -> 89; the people 15/66 -> 37
+(grammar 40 -> 50); the seller 21/60 -> 22 (sums are its weak spot in every model, 17-21 of about 40 right); English 60/80 ->
+54; Spanish 26/60 -> 33; all 366 rows 154 -> 214. Slips every model shares (the base's): «до одиного ночи», the bank opening
+at eight. Models: `models/coop-talk-v4-4b`, `models/coop-talk-v4e2-4b` (`cpp/talk.gguf` + the game's 13 roles). The game's
+brain has v4e2 at temperature 0.2 since 2026-11-13 (the owner's word; v3 kept beside it as `talk.gguf.v3`).
 
 ## The long-term memory (`--memory`, optional, 2026-10-29)
 
