@@ -1245,6 +1245,10 @@ bool AnyIn(const std::string& padded, std::initializer_list<const char*> parts) 
 bool DoingInOwnWords(const std::string& line) {
     const std::string s = OwnWords(line);
     if (OwnWordCount(s) > 6) return false;
+    // «где ты живёшь?», «где ты работаешь?»: about one's life (StateQuestion's kLifeAsked), not where it is going now
+    if (AnyIn(s, {" живешь ", " живете ", " живет ", " работаешь ", " работаете ", " работает ", " родился ", " родилась ", " родились ",
+                  " учишься ", " учитесь ", " vives ", " vive ", " trabajas ", " trabaja ", " naciste "}))
+        return false;
     return AnyIn(s, {" куда идешь ", " куда ты идешь ", " ты куда ", " куда ты ", " куда пошел ", " куда собрался ", " куда направляешься ",
                      " что делаешь ", " что ты делаешь ", " чем занят ", " чем ты занят ", " где ты ", " ты где ", " зачем ты туда ",
                      " зачем туда ", " зачем идешь ", " зачем ты идешь ", " куда ты направляешься ",
@@ -1526,6 +1530,13 @@ std::string StateQuestion(const std::string& text, bool talk, bool walk = false)
     if (walk) return std::string();
     if (PhraseIn(text, kStateWords[0].second)) return "seen";   // the classifier reads it as SEE_THING, or as nothing
     if (!talk) return std::string();
+    // where one lives, comes from, works (2026-11-15: «где вы живёте?», «вы откуда?» said to the granny came back "where are you
+    // living", "where are you from", and "where are you" made them a question of what she is doing: the game answered from her
+    // body). Talk about their life, not about the order
+    static const std::vector<std::string> kLifeAsked = {"where are you from", "where are you living", "where do you live", "where are you staying",
+                                                        "where do you stay", "where do you come from", "where are you working", "where do you work",
+                                                        "where were you born", "where are you based", "where is your home", "where's your home"};
+    if (PhraseIn(text, kLifeAsked)) return std::string();
     for (size_t k = 1; k < kStateWords.size(); ++k)
         if (PhraseIn(text, kStateWords[k].second)) return kStateWords[k].first;
     for (const auto& kind : kTalkWords)
@@ -5753,6 +5764,18 @@ std::vector<std::string> CalleeNames(const json& c, const std::string& bot_name)
             if (!all.empty()) names.push_back(all);
         }
     }
+    // the familiar form a Russian first name has in the street (2026-11-15, the owner's log: «втащи коляну» named nobody): Коля ->
+    // Колян, Толик / Толя -> Толян, Валя -> Валян; its cases are read as any name's (NameWordIn)
+    const size_t with_alphabets = names.size();
+    for (size_t k = 0; k < with_alphabets; ++k) {
+        const std::vector<std::string> w = coop::MemoryWords(coop::MemoryNorm(names[k]));
+        if (w.size() != 1) continue;
+        const std::u32string u = coop::DecodeUtf8(w[0]);
+        std::u32string stem;
+        if (u.size() >= 4 && u.back() == U'я') stem = u.substr(0, u.size() - 1);
+        else if (u.size() >= 5 && u.compare(u.size() - 2, 2, U"ик") == 0) stem = u.substr(0, u.size() - 2);
+        if (stem.size() >= 3) names.push_back(coop::EncodeUtf8(stem + U"ян"));
+    }
     std::vector<std::string> out;
     std::unordered_set<std::string> seen;
     for (const std::string& n : names)
@@ -5835,7 +5858,15 @@ struct ActOn {
     bool once = false;    // «ударь», "punch": one strike; «избей», «бей», "beat up": until they are down
     json target;
     size_t clause = 0, clauses = 1;   // the line's part it is in, of how many (split at «и», «потом», "and", "then")
+    size_t verb_at = 0;   // its verb's word in the line (the turns made of the words go in their order: RebuildTurns)
 };
+// «по щам», «по морде», «в морду», «в табло»: a strike said by where it lands (2026-11-15, the owner: «вот он ... дай ему по щам»;
+// the recognizer heard «да тайму по щам»): w[i] is the place it lands with «по» / «в» before it
+bool StrikeByFace(const std::vector<std::string>& w, size_t i) {
+    static const std::unordered_set<std::string> kFace = {"щам", "щщам", "щи", "морде", "морду", "роже", "рожу", "харе", "харю", "табло",
+                                                          "рылу", "рыло", "башке", "башку", "лицу", "зубам", "сопатке", "сусалам", "мордасам"};
+    return i > 0 && kFace.count(w[i]) && (w[i - 1] == "по" || w[i - 1] == "в");
+}
 // whether a word (MemoryNorm'd; next: the word after it) is a verb of acting on someone, and which (into *out, when given)
 bool ActVerb(const std::string& x, const std::string& next, ActOn* out) {
     auto starts = [&x](std::initializer_list<const char*> stems) {
@@ -5850,11 +5881,22 @@ bool ActVerb(const std::string& x, const std::string& next, ActOn* out) {
     else if (x == "целься" || x == "прицелься" || x == "целись" || starts({"навед", "наведи", "направь", "aim", "apunta"}) ||
              (x == "point" && (next == "at" || next == "your" || next == "the" || next == "a" || next == "gun")))
         kind = "aim", intent = "AIM_AT", english = "Eyes on it.";
-    else if (starts({"стреля", "стрельни", "пристрел", "застрел", "подстрел", "выстрел", "пальни", "убей", "убить", "shoot", "kill", "dispara",
-                     "mata"}))
+    // turning to look at someone (2026-11-15, the owner's log: «развернись к бабе Вале»): with «к» / «на» after it
+    else if ((starts({"развернись", "повернись", "обернись", "посмотри", "глянь", "взгляни", "уставься"}) &&
+              (next == "к" || next == "ко" || next == "на")) ||
+             (x == "look" && next == "at") || (x == "turn" && (next == "to" || next == "towards")) || x == "face" ||
+             ((x == "mira" || x == "gírate" || x == "girate") && (next == "a" || next == "al" || next == "hacia")))
+        kind = "look", intent = "LOOK_AT", english = "Eyes on it.";
+    // (2026-11-15, the owner's log: «расстреляй бабу Валю», «втащи Толику», «замочи», «дай ему по щам» were not read: the
+    // decoder wrote "Smack Toli." and the classifier SMOKE)
+    else if (starts({"стреля", "стрельни", "пристрел", "застрел", "подстрел", "выстрел", "расстрел", "постреля", "обстреля", "пальни",
+                     "шмальни", "шмаляй", "убей", "убейте", "убить", "замочи", "мочи", "грохни", "прикончи", "добей", "ликвидируй",
+                     "устрани", "уничтожь", "пришей", "shoot", "kill", "dispara", "mata"}))
         kind = "shoot", intent = "OPEN_FIRE", english = "Opening fire!";
     else if (x == "удар" || starts({"ударь", "ударить", "бей", "побей", "избей", "избить", "врежь", "вмажь", "вдарь", "стукни", "тресни", "пни",
-                                    "отпинай", "отлупи", "двинь", "hit", "punch", "beat", "kick", "smack", "slap", "golpea", "pega", "patea"}))
+                                    "отпинай", "отлупи", "двинь", "втащи", "втащите", "вломи", "влепи", "залепи", "засвети", "накостыляй",
+                                    "наваляй", "отметель", "отмудохай", "отпизди", "въеби", "уеби", "ебни", "ёбни", "hit", "punch", "beat",
+                                    "kick", "smack", "slap", "whack", "bash", "deck", "golpea", "pega", "patea"}))
         kind = "hit", intent = "MELEE", english = "Going hands-on.";
     else
         return false;
@@ -5899,6 +5941,8 @@ struct Mention {
 };
 std::vector<Mention> Mentions(const std::vector<std::string>& w, const json& callees, const std::string& bot_name) {
     std::vector<std::pair<const json*, std::vector<std::pair<std::string, std::string>>>> named;   // a callee: (name's word, name)
+    // ... and their names of several words, whole: (the words, name)
+    std::vector<std::pair<const json*, std::vector<std::pair<std::vector<std::string>, std::string>>>> named_whole;
     if (callees.is_array())
         for (const json& c : callees) {
             if (!c.is_object() || c.value("to", std::string()).empty()) continue;
@@ -5908,29 +5952,65 @@ std::vector<Mention> Mentions(const std::vector<std::string>& w, const json& cal
                 for (const json& g : c["names"])
                     if (g.is_string() && !g.get<std::string>().empty()) given.push_back(g.get<std::string>());
             std::vector<std::pair<std::string, std::string>> words;
+            std::vector<std::pair<std::vector<std::string>, std::string>> whole;
             for (const std::string& n : CalleeNames(c, bot_name)) {
                 const std::vector<std::string> nw = coop::MemoryWords(coop::MemoryNorm(n));
                 const bool own = given.empty() || std::find(given.begin(), given.end(), n) != given.end() || n == bot_name;
                 if (!nw.empty() && coop::DecodeUtf8(nw.back()).size() >= 3) words.push_back({nw.back(), own ? n : given[0]});
+                if (nw.size() > 1) whole.push_back({nw, own ? n : given[0]});
             }
             named.push_back({&c, std::move(words)});
+            named_whole.push_back({&c, std::move(whole)});
         }
     static const std::unordered_set<std::string> kBot = {"бот", "бота", "боту", "ботом", "боте", "робот", "робота", "роботу", "роботом",
                                                          "роботе", "bot", "robot", "bot's", "robot's"};
     static const std::unordered_set<std::string> kMe = {"меня", "мне", "мной", "мною", "me", "mí", "mi", "myself", "conmigo"};
+    // (2026-11-15: «вот он, ... дай ему по щам»: he as said; «втащи там парню», «втащи тому деду»: a man, an old man, that one, as
+    // the one under the crosshair)
     static const std::unordered_set<std::string> kHim = {"его", "него", "её", "неё", "ее", "нее", "ему", "нему", "ей", "ней", "им", "ним",
-                                                         "ими", "ними", "их", "них", "этого", "этому", "этим", "эту", "этот", "этих", "him",
+                                                         "ими", "ними", "их", "них", "этого", "этому", "этим", "эту", "этот", "этих",
+                                                         "он", "она", "они", "того", "тому", "той", "ту", "парню", "парня", "парнем",
+                                                         "мужику", "мужика", "мужиком", "чуваку", "чувака", "пацану", "пацана", "деду",
+                                                         "деда", "дедом", "старику", "старика", "бабке", "бабку", "тётке", "тётку",
+                                                         "тетке", "тетку", "человеку", "человека", "him",
                                                          "her", "them", "that", "this", "lo", "la", "le", "les", "ese", "este", "esa", "esta",
                                                          "él", "ella"};
     std::vector<Mention> out;
+    auto person = [](const json* c, const std::string& n) {
+        const std::string to = c->value("to", std::string());
+        return to == "bot" ? json{{"kind", "bot"}, {"name", n}} : json{{"kind", "person"}, {"key", c->value("key", to)}, {"to", to}, {"name", n}};
+    };
     for (size_t i = 0; i < w.size(); ++i) {
+        // a name of several words said whole, in any case («бабе Вале»), misheard («баби Вале») or run together by the recognizer
+        // («бабували»): theirs before a word of it is read as another's (2026-11-15, the owner's log: «развернись к баби Вале» went
+        // to nobody, «баби» being a letter off «Бади», the bot's name). Where it is: its last word, as for a name said in part
+        size_t whole_end = 0;
+        for (const auto& [c, names] : named_whole) {
+            for (const auto& [nw, n] : names) {
+                bool all = i + nw.size() <= w.size();
+                for (size_t j = 0; j < nw.size() && all; ++j) all = NameWordIn(w[i + j], nw[j]);
+                if (all) whole_end = i + nw.size();
+                if (!all && nw.size() == 2) {
+                    const std::u32string u = coop::DecodeUtf8(w[i]);
+                    for (size_t cut = 3; cut + 3 <= u.size() && !whole_end; ++cut)
+                        if (NameWordIn(coop::EncodeUtf8(u.substr(0, cut)), nw[0]) && NameWordIn(coop::EncodeUtf8(u.substr(cut)), nw[1])) whole_end = i + 1;
+                }
+                if (whole_end) {
+                    out.push_back({whole_end - 1, person(c, n)});
+                    break;
+                }
+            }
+            if (whole_end) break;
+        }
+        if (whole_end) {
+            i = whole_end - 1;
+            continue;
+        }
         bool found = false;
         for (const auto& [c, words] : named) {
             for (const auto& [word, n] : words)
                 if (NameWordIn(w[i], word)) {
-                    const std::string to = c->value("to", std::string());
-                    out.push_back({i, to == "bot" ? json{{"kind", "bot"}, {"name", n}}
-                                                  : json{{"kind", "person"}, {"key", c->value("key", to)}, {"to", to}, {"name", n}}});
+                    out.push_back({i, person(c, n)});
                     found = true;
                     break;
                 }
@@ -5971,7 +6051,8 @@ std::vector<size_t> Clauses(const std::vector<std::string>& w, size_t* count) {
 bool Negated(const std::vector<std::string>& w, const std::vector<size_t>& clause, size_t verb) {
     static const std::unordered_set<std::string> kNot = {"не", "нельзя", "хватит", "перестань", "прекрати", "don't", "dont", "do", "stop",
                                                           "never", "no"};
-    for (size_t i = 0; i < verb; ++i)
+    // within three words of it (2026-11-15: «вот он, не видишь, вот стоит, да дай ему по щам»: the «не» is of «видишь»)
+    for (size_t i = verb > 3 ? verb - 3 : 0; i < verb; ++i)
         if (clause[i] == clause[verb] && kNot.count(w[i]) && (w[i] != "do" || (i + 1 < w.size() && w[i + 1] == "not"))) return true;
     return false;
 }
@@ -5991,7 +6072,9 @@ bool ReadActOn(const std::string& line, const json& callees, const std::string& 
     // every verb of acting on someone in turn (the first not said not to, with whom it is done to)
     for (size_t verb = 0; verb < w.size(); ++verb) {
         ActOn act;
-        if (!ActVerb(w[verb], verb + 1 < w.size() ? w[verb + 1] : std::string(), &act) || Negated(w, clause, verb)) continue;
+        const bool face = StrikeByFace(w, verb);   // «дай ему по щам»: a strike by where it lands
+        if ((!face && !ActVerb(w[verb], verb + 1 < w.size() ? w[verb + 1] : std::string(), &act)) || Negated(w, clause, verb)) continue;
+        if (face) act.kind = "hit", act.intent = "MELEE", act.english = "Going hands-on.", act.once = true;
         // whom: the first one named after the verb in its part (before the next such verb), else the last one before it in its part
         size_t end = w.size();
         for (size_t i = verb + 1; i < w.size() && end == w.size(); ++i)
@@ -6006,6 +6089,7 @@ bool ReadActOn(const std::string& line, const json& callees, const std::string& 
         if (IsSelf(act.target, self)) continue;
         act.clause = clause[verb];
         act.clauses = parts;
+        act.verb_at = verb;
         *out = act;
         return true;
     }
@@ -6052,14 +6136,25 @@ bool ReadGoTo(const std::string& line, const json& callees, const std::string& b
                 if (GoVerb(w[i]) != Going::None || ActVerb(w[i], w[i + 1], nullptr)) k = ms.size();
         }
         size_t from = verb + 1, to = k < ms.size() ? ms[k].at : verb + 1;   // the words between the verb and whom
+        bool shared = false;   // whom is the one the act after the walk is done to
         if (k == ms.size()) {
             for (size_t m = ms.size(); m-- > 0 && k == ms.size();)
                 if (ms[m].at < verb && ms[m].at + 4 >= verb && clause[ms[m].at] == clause[verb]) k = m;
-            if (k == ms.size()) continue;
-            from = ms[k].at >= 2 ? ms[k].at - 2 : 0, to = ms[k].at;   // «к Коле иди», «за Колей иди»: the word or two before whom
+            if (k == ms.size()) {
+                // «догони и убей бабу Валю», «беги, втащи ему» (2026-11-15, the owner's log): a walk with nobody of its own goes to
+                // whom the act right after it is done to
+                size_t act = w.size();
+                for (size_t v = verb + 1; v < w.size() && v <= verb + 2 && act == w.size(); ++v)
+                    if (ActVerb(w[v], v + 1 < w.size() ? w[v + 1] : std::string(), nullptr) || StrikeByFace(w, v)) act = v;
+                for (size_t m = 0; m < ms.size() && k == ms.size() && act < w.size(); ++m)
+                    if (ms[m].at > act && ms[m].at <= act + 4) k = m, shared = true;
+                if (k == ms.size()) continue;
+            } else {
+                from = ms[k].at >= 2 ? ms[k].at - 2 : 0, to = ms[k].at;   // «к Коле иди», «за Колей иди»: the word or two before whom
+            }
         }
-        Rel r = Rel::None;
-        for (size_t i = from; i < to; ++i)
+        Rel r = shared ? Rel::To : Rel::None;
+        for (size_t i = from; i < to && !shared; ++i)
             if (const Rel x = rel(w[i]); x != Rel::None) r = x;   // the last one before whom
         std::string kind;
         switch (going) {
@@ -6079,6 +6174,7 @@ bool ReadGoTo(const std::string& line, const json& callees, const std::string& b
         out->target = target;
         out->clause = clause[verb];
         out->clauses = parts;
+        out->verb_at = verb;
         const std::string name = whom == "pointed" ? std::string() : CalledIn(target, lang, kind == "go" ? 'd' : 'i', bot_name);
         out->english = name.empty() ? (kind == "go" ? "On my way there." : "Moving.") : (kind == "go" ? "Going over to " : "Following ") + name + ".";
         return true;
@@ -6113,6 +6209,7 @@ bool ApplyActOn(const ActOn& act, json* turns, coop::Localizer* table) {
         {"MELEE", {"MELEE", "PUSH"}},
         {"OPEN_FIRE", {"OPEN_FIRE", "ATTACK", "SUPPRESS"}},
         {"AIM_AT", {"LOOK_AT", "HOLD_ANGLE"}},
+        {"LOOK_AT", {"LOOK_AT", "LOOK_AT_ME", "HOLD_ANGLE", "AIM_AT"}},
         {"TAUNT", {}},
         {"MOVE_TO", {"MOVE_TO", "COME_BACK", "REGROUP", "HOLD_POSITION"}},
         {"FOLLOW_ME", {"FOLLOW_ME", "COVER_ME", "COME_BACK"}}};
@@ -6171,6 +6268,109 @@ bool ApplyActOn(const ActOn& act, json* turns, coop::Localizer* table) {
         any = true;
     }
     return any;
+}
+
+// The turns made again from the player's own words (2026-11-15, the owner's log: «Бади, догони убей, бабу, валю» came back FOLLOW_ME,
+// FRAG, BREACH, and the act on Valya fit none of them): a turn a verb, in their order. Only for a line of one part (no «и», «потом»):
+// every verb in it is one of these, and whatever else the decoder made of it was its misreading
+void RebuildTurns(std::vector<ActOn> orders, json* turns, coop::Localizer* table) {
+    std::sort(orders.begin(), orders.end(), [](const ActOn& a, const ActOn& b) { return a.verb_at < b.verb_at; });
+    json made = json::array();
+    for (const ActOn& o : orders) {
+        json one = json::array({json{{"line", o.english}, {"intent", o.intent}, {"action", "act"}, {"prob", 1.0}, {"talk_p", 0.0},
+                                     {"question", nullptr}, {"order", json::object()}}});
+        ApplyActOn(o, &one, table);
+        made.push_back(one.at(0));
+    }
+    *turns = std::move(made);
+}
+// Who the talk is about (2026-11-15, the owner: «чтобы он понял контекст, про кого шла речь»; «Бади, убей её» after «убей бабу Валю»
+// went to nobody: the crosshair was a hand off her): the one named last in the player's lines, a person or the bot, for 30 s (as "it"
+// is for things, rule set v8). Him / her with nobody named before it in the line is the one under the crosshair (the game's), else them:
+// the target carries "else"
+struct NamedLast {
+    json target;
+    Clock::time_point at{};
+} g_named_last;
+constexpr double kNamedLastSeconds = 30.0;
+json WithElse(json target, const std::string& self) {
+    // (not the one the line is said to: «втащи Коле» to the bot, then «Коля, а ну-ка втащи там парню» -- Коля does not hit himself)
+    if (target.is_object() && target.value("kind", std::string()) == "pointed" && g_named_last.target.is_object() &&
+        std::chrono::duration<double>(Clock::now() - g_named_last.at).count() <= kNamedLastSeconds && !IsSelf(g_named_last.target, self))
+        target["else"] = g_named_last.target;
+    return target;
+}
+void NoteNamed(const std::string& line, const json& callees, const std::string& bot_name, const std::string& self) {
+    const std::vector<std::string> w = coop::MemoryWords(coop::MemoryNorm(line));
+    for (const Mention& m : Mentions(w, callees, bot_name)) {
+        const std::string kind = m.target.value("kind", std::string());
+        if (!m.pronoun && (kind == "person" || kind == "bot") && !IsSelf(m.target, self)) g_named_last = {m.target, Clock::now()};
+    }
+}
+
+// The player's own words on someone (an act, a walk to them) over the turns: each to the turn of its part, its kind's turn, or the
+// only one (ApplyActOn); a line of one part whose turns fit neither made again from the words (RebuildTurns). note: what was done
+struct WordOrders {
+    bool acted = false, went = false, rebuilt = false;
+    ActOn act, go;
+};
+WordOrders ApplyWordOrders(const std::string& line, const json& callees, const std::string& bot_name, const std::string& self,
+                           const std::string& lang, json* turns, coop::Localizer* table) {
+    WordOrders r;
+    const bool has_act = ReadActOn(line, callees, bot_name, self, &r.act);
+    const bool has_go = ReadGoTo(line, callees, bot_name, self, lang, &r.go);
+    r.act.target = WithElse(r.act.target, self);
+    r.go.target = WithElse(r.go.target, self);
+    NoteNamed(line, callees, bot_name, self);   // for the lines after it
+    r.acted = has_act && ApplyActOn(r.act, turns, table);
+    // a line read as one turn that strikes them already leaves the walk to that (a strike walks up to them first); a shot, a look,
+    // an aim do not walk: «Бади, догони убей, бабу, валю» (2026-11-15, the owner's log) came back one turn, OPEN_FIRE at her from
+    // where it stood. The walk is a turn of its own then, before or after the act as said
+    const bool walk_left = r.acted && turns->size() == 1 && r.act.kind == "hit";
+    if (has_go && !walk_left) {
+        if (r.acted && turns->size() == 1) {
+            json one = json::array({json{{"line", r.go.english}, {"intent", r.go.intent}, {"action", "act"}, {"prob", 1.0}, {"talk_p", 0.0},
+                                         {"question", nullptr}, {"order", json::object()}}});
+            ApplyActOn(r.go, &one, table);
+            turns->insert(r.go.verb_at < r.act.verb_at ? turns->begin() : turns->end(), one.at(0));
+            r.went = true;
+        } else {
+            r.went = ApplyActOn(r.go, turns, table);
+        }
+    }
+    const size_t parts = has_act ? r.act.clauses : has_go ? r.go.clauses : 1;
+    if (parts == 1 && ((has_act && !r.acted) || (has_go && !walk_left && !r.went))) {
+        std::vector<ActOn> orders;
+        if (has_go) orders.push_back(r.go);
+        if (has_act) orders.push_back(r.act);
+        RebuildTurns(orders, turns, table);
+        r.acted = has_act, r.went = has_go, r.rebuilt = true;
+    }
+    // the same act on the same one twice in a row is said for weight, not done twice (2026-11-15, the owner's log: «убей, бабу Валю,
+    // убей её» came back ATTACK on her twice: she would come back at her post and be killed again)
+    if (r.acted || r.went)
+        for (size_t k = 1; k < turns->size();) {
+            const json &a = turns->at(k - 1), &b = turns->at(k);
+            const bool same = a.contains("target") && b.contains("target") && a["target"] == b["target"] &&
+                              a.value("intent", std::string()) == b.value("intent", std::string());
+            if (same) turns->erase(turns->begin() + static_cast<std::ptrdiff_t>(k));
+            else ++k;
+        }
+    return r;
+}
+
+// An order the bot would carry out (2026-11-15): a line said while looking at a person, nobody called by name, is the bot's when it
+// gives one: a turn the classifier is sure of that is no talk and asks nothing of them, even one the planner would ask about
+// («открыть огонь на мою метку» with no pin yet: "Where?" is the bot's question then, not the granny's talk)
+bool SureOrder(const json& turns, const std::string& heard, bool talking) {
+    constexpr double kTalkShare = 0.15, kOrderSure = 0.6;
+    for (const json& t : turns) {
+        const std::string action = t.value("action", std::string()), intent = t.value("intent", std::string());
+        if ((action != "act" && action != "ask") || intent.empty() || intent == "SMALL_TALK" || intent == "NONE" || intent == "TALK") continue;
+        if (TalkFor(t, heard, talking) || (t.contains("state") && t["state"].is_string() && !t["state"].get<std::string>().empty())) continue;
+        if (t.value("prob", 0.0) >= kOrderSure && t.value("talk_p", 0.0) < kTalkShare) return true;
+    }
+    return false;
 }
 
 // Whether a person of the level whose body takes orders (2026-11-12, the owner: «чтобы любому NPC можно было отдать именно приказ
@@ -7208,6 +7408,9 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
             // who may be called by name, and the key of the one the line is said to (2026-11-12; see "callees" above)
             const json callees = q.is_object() && q.contains("callees") ? q["callees"] : json(nullptr);
             const std::string to_key = q.is_object() ? q.value("to_key", std::string()) : std::string();
+            // why the line is said to them (2026-11-15): "look", the person under the crosshair, not called by name: an order there is
+            // the bot's (readdress), talk is theirs; "question", their question is open; none: called by name, or the game's own
+            const std::string to_by = q.is_object() ? q.value("to_by", std::string()) : std::string();
             // a heard or typed line through the classifier and the planner
             // words: the transcript's words with their start times (SpeechWord); clip_start: where the clip's second 0 is from
             // the talk key going down (the microphone's pre-roll comes before it)
@@ -7222,6 +7425,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 // game says it again to them, with the world as theirs ("readdress"; "far": they are out of earshot). A line that
                 // calls the one it is said to: theirs, a person's without the name (the bot's Listen reads its own name)
                 std::string line = heard;
+                bool named_here = false;   // the person it is said to was called by name in it
                 if (callees.is_array()) {
                     Callee callee;
                     std::string rest;
@@ -7241,12 +7445,20 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                             return;
                         }
                         if (callee.to != "bot" && !rest.empty()) line = rest;
+                        named_here = callee.to != "bot";
                     }
                 }
                 // a line to another than the line before it (the bot, a person of the level): what the planner asked the one before
                 // is not asked of this one, and the decoder's short context (the lines said to the one before, and their words back)
-                // is not this talk's (2026-11-12)
-                {
+                // is not this talk's (2026-11-12). A line said to the one under the crosshair, not by name ("look"), may yet be the bot's
+                // (an order: readdress below): the talk so far is kept as it was until it is theirs
+                const bool look_only = !to.empty() && to != "bot" && to_by == "look" && !named_here;
+                const std::deque<Chat::Said> said_before = chat.said;
+                const Chat::Said bot_said_before = chat.bot_said;
+                const int what_said_before = chat.what_said_lines;
+                const std::vector<std::string> held_before = chat.held, after_go_before = chat.after_go;
+                const coop::Planner::Saved planner_before = chat.planner.Save();
+                auto switch_to = [&]() {
                     const std::string whom = to.empty() ? std::string("bot") : to;
                     if (whom != last_to) {
                         if (chat.planner.Mem().has_question) chat.planner.DropQuestion();
@@ -7254,7 +7466,8 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                         chat.bot_said = Chat::Said();
                         last_to = whom;
                     }
-                }
+                };
+                if (!look_only) switch_to();
                 // a line to someone else the game has (its "to": the seller at the counter, 2026-11-11): their role answers it
                 // (talker.h), and the bot hears nothing of it -- no habit, no lesson, no name of the bot's
                 if (!to.empty() && to != "bot") {
@@ -7293,6 +7506,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                         send(j);
                     };
                     if (!g_talk->roles[to].orders) {
+                        switch_to();
                         talk_in_role(nullptr);   // nobody of theirs in the game takes orders: every line is talk
                         return;
                     }
@@ -7330,12 +7544,19 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                     }
                     // hit, shoot, aim at, taunt someone (2026-11-14): whom from the player's own words (the line without their name); a
                     // taunt's words are theirs, from their role
+                    // going to someone, following them (2026-11-15, «Майк, иди к Нику»): whom from the player's own words; the turns made
+                    // again from them when they fit none (ApplyWordOrders)
+                    const WordOrders words_said = ApplyWordOrders(line, callees, chat.BotName(), to, person_lang, &turns,
+                                                                  RepliesIn(person_lang, g_talk->roles[to].bro));
+                    if (words_said.rebuilt) h.note = "the turns made from the words";
+                    if (words_said.went)
+                        h.note += std::string(h.note.empty() ? "" : "; ") + "going to someone: " + words_said.go.kind + " " + words_said.go.target.dump();
                     bool acted = false;
                     {
-                        ActOn act;
-                        if (ReadActOn(line, callees, chat.BotName(), to, &act) && ApplyActOn(act, &turns, RepliesIn(person_lang, g_talk->roles[to].bro))) {
+                        const ActOn& act = words_said.act;
+                        if (words_said.acted) {
                             acted = true;
-                            h.note = "acting on someone: " + act.kind + " " + act.target.dump();
+                            h.note += std::string(h.note.empty() ? "" : "; ") + "acting on someone: " + act.kind + " " + act.target.dump();
                             if (act.intent == "TAUNT" && turns.size() == 1) {
                                 std::string said, talk_err;
                                 json info;
@@ -7353,14 +7574,6 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                             }
                         }
                     }
-                    // going to someone, following them (2026-11-15, «Майк, иди к Нику»): whom from the player's own words; a line read as
-                    // one turn that acts on them already leaves the walk to that (a strike walks up to them first)
-                    {
-                        ActOn go;
-                        if (!(acted && turns.size() == 1) && ReadGoTo(line, callees, chat.BotName(), to, person_lang, &go) &&
-                            ApplyActOn(go, &turns, RepliesIn(person_lang, g_talk->roles[to].bro)))
-                            h.note += std::string(h.note.empty() ? "" : "; ") + "going to someone: " + go.kind + " " + go.target.dump();
-                    }
                     // "what do you see?", "where are you going?" in the player's own words: the game answers from their body
                     if (g_language != "en" && turns.size() == 1 && !turns.at(0).contains("state") && SeenInOwnWords(line)) {
                         json& only = turns.at(0);
@@ -7377,7 +7590,42 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                         only["say"] = "";
                         only.erase("say_en");
                     }
-                    if (PersonTalks(turns, line, g_talk->TalkingNow(to))) {
+                    const bool talks = PersonTalks(turns, line, g_talk->TalkingNow(to));
+                    bool asks = false;   // what they see, what they do: a question to them, answered from their body
+                    for (const json& t : turns) asks = asks || (t.contains("state") && t["state"].is_string() && !t["state"].get<std::string>().empty());
+                    if (look_only && !asks && (!talks || SureOrder(turns, line, g_talk->TalkingNow(to)))) {
+                        // an order said while looking at them, nobody called by name (2026-11-15, the owner: «Оно не понимает, что делать
+                        // именно мой бот»; «втащи ему», «встань сюда», «открыть огонь на мою метку» said at a person went to that person):
+                        // the bot's, and the one under the crosshair is what it is about. The talk so far as it was; the game says the line
+                        // again to the bot, with the world as the bot's (HandleReaddress)
+                        chat.said = said_before;
+                        chat.bot_said = bot_said_before;
+                        chat.what_said_lines = what_said_before;
+                        chat.held = held_before;
+                        chat.after_go = after_go_before;
+                        chat.planner.Restore(planner_before);
+                        std::string bot_called = chat.BotName();   // (the world's "bot" is theirs now: the bot's name from the callees)
+                        if (callees.is_array())
+                            for (const json& c : callees)
+                                if (c.is_object() && c.value("to", std::string()) == "bot" && c.contains("names") && c["names"].is_array() &&
+                                    !c["names"].empty() && c["names"][0].is_string()) {
+                                    bot_called = c["names"][0].get<std::string>();
+                                    break;
+                                }
+                        json j = {{"event", "readdress"}, {"id", id}, {"heard", heard}, {"to", "bot"}, {"key", "bot"}, {"name", bot_called},
+                                  {"text", heard}, {"far", false}, {"spoken", spoken}, {"audio_s", audio_s}, {"stt_ms", stt_ms},
+                                  {"why", "an order with nobody called by name: the bot's"}};
+                        if (words && !words->empty()) {
+                            json w = json::array();
+                            for (const coop::SpeechWord& x : *words) w.push_back({{"w", x.text}, {"t", std::round(x.start * 1000) / 1000}});
+                            j["words"] = std::move(w);
+                            j["clip_start_s"] = clip_start;
+                        }
+                        send(j);
+                        return;
+                    }
+                    switch_to();   // the line is theirs: the talk is with them now
+                    if (talks) {
                         // talk: what the planner asked or queued about the line is not theirs to ask (their role answers instead)
                         if (chat.planner.Mem().has_question) chat.planner.DropQuestion();
                         json was = json::array();
@@ -7487,10 +7735,17 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                 // from its talking model
                 bool acted = false;
                 if (!memo.answered) {
-                    ActOn act;
-                    if (ReadActOn(own, callees, chat.BotName(), "bot", &act) && ApplyActOn(act, &turns, g_replies)) {
+                    // ... and going to someone, following them (2026-11-15, «Бади, иди к Майку», «иди за Колей»); the turns made again
+                    // from the words when they fit none (ApplyWordOrders)
+                    const WordOrders words_said = ApplyWordOrders(own, callees, chat.BotName(), "bot",
+                                                                  g_replies ? g_replies->Language() : std::string("en"), &turns, g_replies);
+                    if (words_said.rebuilt) h.note = "the turns made from the words";
+                    if (words_said.went)
+                        h.note += std::string(h.note.empty() ? "" : "; ") + "going to someone: " + words_said.go.kind + " " + words_said.go.target.dump();
+                    const ActOn& act = words_said.act;
+                    if (words_said.acted) {
                         acted = true;
-                        h.note = "acting on someone: " + act.kind + " " + act.target.dump();
+                        h.note += std::string(h.note.empty() ? "" : "; ") + "acting on someone: " + act.kind + " " + act.target.dump();
                         if (act.intent == "TAUNT" && turns.size() == 1 && g_talk && g_talk->Ready()) {
                             std::string said, talk_err;
                             json info;
@@ -7507,13 +7762,6 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                             }
                         }
                     }
-                }
-                // going to someone, following them (2026-11-15, «Бади, иди к Майку», «иди за Колей»): whom from the player's own words
-                if (!memo.answered && !(acted && turns.size() == 1)) {
-                    ActOn go;
-                    if (ReadGoTo(own, callees, chat.BotName(), "bot", g_replies ? g_replies->Language() : std::string("en"), &go) &&
-                        ApplyActOn(go, &turns, g_replies))
-                        h.note += std::string(h.note.empty() ? "" : "; ") + "going to someone: " + go.kind + " " + go.target.dump();
                 }
                 if (memo.answered) {
                     // the long-term memory answered the line itself ("What did you mean?", "Got it, I'll remember."): its

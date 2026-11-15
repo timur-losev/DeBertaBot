@@ -248,6 +248,24 @@ public:
     // bot, not a walk to the ammo the planner asked "Where?" about): the question it asked is no longer open. Not in
     // world.py: no planner step calls it
     void DropQuestion() { memory_.has_question = false; }
+    // what the short context holds, kept and put back: a line read for one who turns out not to be the one it is for (coop_cli,
+    // 2026-11-15: an order said while looking at a person is the bot's) leaves the planner as it was. Not in world.py
+    struct Saved {
+        Memory memory;
+        std::string pending_entity;
+        bool pending_here = false, pending_near = false;
+        ItemInfo pending_item;
+        bool frame_in_line = false;
+    };
+    Saved Save() const { return {memory_, pending_entity_, pending_here_, pending_near_, pending_item_, frame_in_line_}; }
+    void Restore(const Saved& s) {
+        memory_ = s.memory;
+        pending_entity_ = s.pending_entity;
+        pending_here_ = s.pending_here;
+        pending_near_ = s.pending_near;
+        pending_item_ = s.pending_item;
+        frame_in_line_ = s.frame_in_line;
+    }
     // the conversation is about this thing now: "it" means it (rule set v8); coop_cli: also the thing "what is that?" named
     void Named(const std::string& entity);
     // the crosshair's entity for the order line being read: the one under it when its pointer word was said (coop_cli: the

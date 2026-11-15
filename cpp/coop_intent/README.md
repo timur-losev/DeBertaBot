@@ -767,6 +767,34 @@ Q4_K_M, 1.2 GB), no adapter (`include/coop_intent/talker.h`, `src/llama_talker.c
   с Тони»; English "Mike, go to Nick", "Follow Nick", "Approach Mike", "Kolya, go to Mike", "Go with Nick", "Stay with Tony";
   unchanged: «Где Михалыч?», «Иди сюда, Коля», «Ударь Колю», «Не ходи за Колей», «Иди ко мне», «Иди за мной», "Follow me".
   Not read: two people at once («Майк, Ник, идите сюда» is Nick's alone). In the game: `address_orders.txt`.
+- **An order said at someone, nobody called by name, is the bot's; him / her from the talk** (2026-11-15, the owner: «можно было
+  отдавать приказ кому угодно и по имени говорить, что делать с человеком по имени. Например, расстреляй бабу Валю ... Оно не
+  понимает, что делать именно мой бот ... чтобы он понял контекст, про кого шла речь»). The game says a line to the person under
+  the crosshair, so «втащи ему», «встань сюда», «расстреляй бабу Валю», «открыть огонь на мою метку» said while looking at Коля
+  were Коля's to do. The game now says why a line is someone's: `"to_by": "look"` (under the crosshair) or `"question"` (it
+  answers their question); a line that calls them by name has none. A "look" line that is an order (`SureOrder`: a turn the
+  classifier is sure of, 0.6 and under 0.15 of talk, no talk by `TalkFor`, no question of what they see or do; or no talk at all
+  by `PersonTalks`) goes to the bot: `{"event": "readdress", "to": "bot", "key": "bot", "why": "an order with nobody called by
+  name: the bot's", ...}`, and the talk so far is as it was before the line (`said`, `bot_said`, `held`, `after_go`, the
+  planner's memory: `Planner::Save` / `Restore`). Talk and questions stay with them («как дела?», «как вас зовут?», «что ты
+  видишь?», «где вы живёте?»). The one under the crosshair is whom the bot's order is about ("pointed"; the game resolves it).
+  **Him / her** with nobody named before it in the line carries `"else"`: the person or the bot named last in the player's
+  lines within 30 s (`NoteNamed`, `WithElse`; as "it" is for things, rule set v8), never the one the line is said to; the game
+  takes the crosshair's character, else the one looked at, else that. **More words:** shoot (расстреляй, постреляй, замочи,
+  грохни, прикончи, добей, убей(те), шмальни, ...), hit (втащи, вломи, влепи, наваляй, ... whack, bash), a strike by where it
+  lands («по щам», «по морде», «в табло»: `StrikeByFace`), a look («развернись к», «повернись к», «посмотри на», "look at",
+  "turn to", "face", «mira a»: LOOK_AT with the target); him also «он», «тому», «той», «парню», «мужику», «деду», «бабке»,
+  «человеку», ...; a street form of a first name (Коля -> Колян, Толик -> Толян: `CalleeNames`); a name of several words read
+  whole first, in any case, a letter off or run together by the recognizer («бабе Вале», «баби Вале», «бабували»: «баби» is a
+  letter off «Бади», the bot's name); «Бадин,» calls «Бади» (`CalledBy`: one letter more before a comma). A walk with nobody of
+  its own goes to whom the act right after it is done to («догони и убей бабу Валю», «беги, втащи ему»); a shot, a look, an aim
+  read as the line's only turn get the walk as a turn before them (a strike walks up by itself); the same act on the same one
+  twice in a row is one turn («убей её, убей её»: she would come back at her post and be killed again); a line of one part whose
+  turns fit none of its verbs is made again from the words (`RebuildTurns`); «не» negates only within three words before the
+  verb («вот он, не видишь, ... дай ему по щам»). "where are you from / living / working", «где ты живёшь» are talk, not the
+  question of what it is doing. Checked offline (scratchpad probe_orders_look.py, the owner's lines of 2026-11-15 and more, 36
+  lines): every order said at a person with no name -> the bot, with the right target; named -> that person; talk stays. In the
+  game: `orders_by_name.txt`.
 - **`react`** (2026-11-14): `{"cmd":"react","to":role,"line":"(what happened)"}` -> `{"event":"react","to","say"}`: a person of
   the level's words of their own on what happened to them (hurt by someone), in their role and language.
 - **A sitting on a bench** (2026-11-14): the classifier reads a sitting on a thing as getting into a car ("sit down on this

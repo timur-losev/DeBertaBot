@@ -1646,9 +1646,19 @@ bool CalledBy(std::string_view heard, const std::string& name, std::string* rest
         while (e > sw[we - 1].end && EdgeByte(heard[e - 1])) --e;
         return CapitalWord(heard.substr(b, e - b));
     };
+    // ... and at the start with a sound too many at its end and a comma after it: the recognizer's «Бадин, стреляй» for «Бади,
+    // стреляй» (2026-11-15, the owner's log). Only there, before a comma: «Рексу» inside a line is the bot spoken of, not called
+    auto at_plus = [&](size_t i) {
+        if (nw.size() != 1 || i >= sw.size() || i + 1 >= sw.size()) return false;
+        const std::u32string a = DecodeUtf8(sw[i].norm), b = DecodeUtf8(nw[0]);
+        if (b.size() < 4 || a.size() != b.size() + 1 || a.compare(0, b.size(), b) != 0) return false;
+        for (size_t c = sw[i].end; c < sw[i + 1].begin; ++c)
+            if (heard[c] == ',') return true;
+        return false;
+    };
     size_t i = 0;
-    if (!at(0) && kHey.count(sw[0].norm)) i = 1;   // «Эй, Рекс, ...»
-    if (at(i)) {
+    if (!at(0) && !at_plus(0) && kHey.count(sw[0].norm)) i = 1;   // «Эй, Рекс, ...»
+    if (at(i) || at_plus(i)) {
         const size_t after = i + nw.size();
         *rest = after < sw.size() ? left(after, sw.size(), heard.size()) : std::string();
         if (at_start) *at_start = true;
