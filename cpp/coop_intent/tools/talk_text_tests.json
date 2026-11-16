@@ -1,0 +1,18 @@
+[
+ {"why": "the owner's log of 2026-11-16 (the street musician): one word in two alphabets; the Russian sentence is kept",
+  "raw": "Пleased to meet you, Тимур. Я Лео, и у меня тоже хорошее имя.", "language": "ru", "say": "Я Лео, и у меня тоже хорошее имя."},
+ {"why": "a Russian answer is said whole", "raw": "Меня зовут Лео. А вас как?", "language": "ru", "say": "Меня зовут Лео. А вас как?"},
+ {"why": "nothing in Russian: nothing to say (one more draw)", "raw": "Nice to meet you!", "language": "ru", "say": ""},
+ {"why": "English first, Russian last", "raw": "Hello there, friend! How are you doing today? Я тут.", "language": "ru", "say": "Я тут."},
+ {"why": "a few English words among more Russian ones pass whole (names, brands)", "raw": "Привет! How are you? Я тут играю.", "language": "ru",
+  "say": "Привет! How are you? Я тут играю."},
+ {"why": "an English role's Russian slip", "raw": "Sure thing. Конечно, брат.", "language": "en", "say": "Sure thing."},
+ {"why": "a Chinese slip (Qwen) takes its sentence with it", "raw": "Я не помню自己的 возраст. Спроси что-нибудь ещё.", "language": "ru",
+  "say": "Спроси что-нибудь ещё."},
+ {"why": "a sentence ending in its marks and a closing quote", "raw": "«Привет!» Hello there, how is it going?", "language": "ru", "say": "«Привет!»"},
+ {"why": "an ellipsis and ?! end sentences too", "raw": "Ну... Not sure, really?! Ладно.", "language": "ru", "say": "Ну... Ладно."},
+ {"why": "a think block alone: nothing", "raw": "<think>\nhmm\n</think>\n\n", "language": "ru", "say": ""},
+ {"why": "a Spanish role keeps its Spanish", "raw": "¡Claro! Конечно.", "language": "es", "say": "¡Claro!"},
+ {"why": "cut off by the token limit: up to the last whole sentence, as before", "raw": "Я Лео. Я играю на гит", "language": "ru", "cut_off": true,
+  "say": "Я Лео."}
+]

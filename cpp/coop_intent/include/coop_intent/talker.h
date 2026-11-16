@@ -35,6 +35,14 @@ std::string TalkAnswer(std::string_view raw, bool cut_off);
 // Spanish have Latin letters and no Cyrillic
 bool TalkInLanguage(std::string_view text, std::string_view language);
 
+// The sentences of the text that are written in the language (TalkInLanguage), in their order. Empty: none
+std::string TalkSentencesInLanguage(std::string_view text, std::string_view language);
+
+// The answer to say in the language: TalkAnswer; all of it when it is in the language, else the sentences of it that are (an answer
+// that slid into English halfway: «Пleased to meet you, Тимур. Я Лео, и у меня тоже хорошее имя.» -> «Я Лео, и у меня тоже хорошее
+// имя.», 2026-11-16). *part: only some of it was kept. Empty: nothing to say
+std::string TalkSayableIn(std::string_view raw, bool cut_off, std::string_view language, bool* part = nullptr);
+
 struct TalkerOptions {
     std::string model_path;          // the .gguf
     int gpu_layers = 99;             // 0: the CPU alone

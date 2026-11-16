@@ -64,6 +64,7 @@
 //                                 (default 25, never on two of three lines in a row; 100: every one, for tests; 0: never)
 //   coop_cli --memory-dump FILE   everything FILE keeps, as JSON (no model): the lines it holds are rows for a training round
 //   coop_cli --teach-tests FILE   the teaching lines' rules and the memory's text rules (tools/teach_tests.json; no model)
+//   coop_cli --talk-text-tests FILE   what is said of the talking model's raw answers (tools/talk_text_tests.json; no model)
 //   coop_cli --memory-store-tests DIR   the memory's store in a folder of its own, made anew (no model): keeping, reading
 //                                 back in a new store, the matching rule, doubts, a file held twice, compaction, a cut-short
 //                                 compaction, an unreadable file, a folder named in Cyrillic
@@ -2793,8 +2794,9 @@ struct Chat {
         s += std::string("\nAnswer in ") + LanguageName(lang) + " only, in one or two short sentences.";
         return s;
     }
-    // The role's answer to the line, in the role's talk so far; one more draw when the answer is empty or not in the player's
-    // language. False (and *err): no answer to say, the caller keeps its own words. *info: how it went, for the reply
+    // The role's answer to the line, in the role's talk so far; one more draw when the answer is empty or has no sentence in the
+    // role's language (one with a sentence in another keeps the rest: TalkSayableIn). False (and *err): no answer to say, the caller
+    // keeps its own words. *info: how it went, for the reply
     bool TalkReply(const std::string& role, const std::string& line, std::string* say, json* info, std::string* err) {
         const auto t0 = Clock::now();
         const std::string system = TalkSystem(role);
@@ -2802,20 +2804,21 @@ struct Chat {
         std::string raw, answer;
         coop::Talker::Stats st;
         int tries = 0;
-        bool ok = false;
+        bool ok = false, part = false;
         for (; tries < 2 && !ok; ++tries) {
 #ifdef COOP_WITH_LLM
             if (!g_talk->model.Reply(system, before, line, &raw, &st, err, tries > 0)) return false;
 #else
             return *err = "this coop_cli was built without llama.cpp", false;
 #endif
-            answer = coop::TalkAnswer(raw, st.cut_off);
-            ok = !answer.empty() && coop::TalkInLanguage(answer, RoleLanguage(role));
+            answer = coop::TalkSayableIn(raw, st.cut_off, RoleLanguage(role), &part);
+            ok = !answer.empty();
         }
         *info = {{"role", role}, {"ms", std::round(Ms(Clock::now() - t0))}, {"tokens", st.generated}, {"cached", st.cached},
                  {"evaluated", st.evaluated}, {"dropped", st.dropped}, {"tries", tries}, {"cut_off", st.cut_off},
                  {"before", before.size()}};
         if (raw != answer) (*info)["raw"] = raw;
+        if (part) (*info)["kept_part"] = true;   // only its sentences in the role's language
         if (!ok) return *err = "the talking model gave nothing to say in " + std::string(LanguageName(RoleLanguage(role))) + ": \"" + raw + "\"", false;
         g_talk->Keep(role, line, answer);
         *say = answer;
@@ -4774,6 +4777,23 @@ int RunSpeechTextTests(const std::string& path) {
             std::printf("  %s: C++ %s, Python %s\n", Escaped(r.at("text")).c_str(), Escaped(got).c_str(), Escaped(r.at("norm")).c_str());
     }
     std::printf("speech text tests, %zu lines: the classifier's text equals the Python one on %zu/%zu\n", rows.size(), same, rows.size());
+    return same == rows.size() ? 0 : 1;
+}
+
+// --talk-text-tests FILE: the talking model's raw answers and what is said of them (coop::TalkSayableIn): [{"raw", "language",
+// "cut_off"?, "say"}], "say" "" = nothing to say
+int RunTalkTextTests(const std::string& path) {
+    std::string raw;
+    if (!ReadFile(path, &raw)) return std::fprintf(stderr, "cannot read %s\n", path.c_str()), 1;
+    const json rows = json::parse(raw);
+    size_t same = 0;
+    for (const json& r : rows) {
+        const std::string got = coop::TalkSayableIn(r.at("raw").get<std::string>(), r.value("cut_off", false), r.at("language").get<std::string>());
+        if (got == r.at("say").get<std::string>()) ++same;
+        else std::printf("  %s (%s): said %s, wanted %s\n", Escaped(r.at("raw")).c_str(), r.at("language").get<std::string>().c_str(), Escaped(got).c_str(),
+                         Escaped(r.at("say")).c_str());
+    }
+    std::printf("talk text tests, %zu answers: as wanted %zu/%zu\n", rows.size(), same, rows.size());
     return same == rows.size() ? 0 : 1;
 }
 
@@ -8511,6 +8531,7 @@ int main(int argc, char** argv) {
         else if (a == "--tokenize" && i + 1 < argc) mode = "tokenize", tokenize_text = argv[++i];
         else if (a == "--speech-text-tests" && i + 1 < argc) mode = "speech-text-tests", speech_text_file = argv[++i];
         else if (a == "--time-tests" && i + 1 < argc) mode = "time-tests", speech_text_file = argv[++i];
+        else if (a == "--talk-text-tests" && i + 1 < argc) mode = "talk-text-tests", speech_text_file = argv[++i];
         else if (a == "--stt-model" && i + 1 < argc) speech.model_dir = argv[++i];
         else if (a == "--stt-threads" && i + 1 < argc) speech.threads = std::atoi(argv[++i]);
         else if (a == "--voice") mode = "voice";
@@ -8532,7 +8553,8 @@ int main(int argc, char** argv) {
                                  "                [--stt-model DIR] [--stt-threads N] [--vad silero_vad.onnx]\n"
                                  "                [--tts-speaker NAME[,NAME...]] [--tts-speed X] [--tts-threads N] [--tts-provider cpu|cuda|auto]\n"
                                  "                [--chain DIR [--chain-tests] [--decoder-cpu] [--decoder-threads N]]\n"
-                                 "                [--language en|ru|es] [--memory FILE [--name-chance P]] | --memory-dump FILE | --teach-tests FILE\n"
+                                 "                [--language en|ru|es] [--memory FILE [--name-chance P]] | --memory-dump FILE | --teach-tests FILE |\n"
+                                 "                --talk-text-tests FILE\n"
                                  "                [--decider DIR [--decider-tests FILE] [--decider-mode avg|only] [--decider-threads N]\n"
                                  "                 [--decider-gpu-layers N]]\n"
                                  "                [--talk DIR | --no-talk] [--talk-cpu] [--talk-seed N] [--voice-local-extra NAME=DIR ...]\n");
@@ -8544,6 +8566,7 @@ int main(int argc, char** argv) {
         return std::fprintf(stderr, "--tts-provider is cpu, cuda or auto, not %s\n", piper.provider.c_str()), 2;
     if (mode == "speech-text-tests") return RunSpeechTextTests(speech_text_file);
     if (mode == "time-tests") return RunTimeTests(speech_text_file);
+    if (mode == "talk-text-tests") return RunTalkTextTests(speech_text_file);
     if (mode == "teach-tests") return RunTeachTests(speech_text_file);
     if (mode == "memory-store-tests") return RunMemoryStoreTests(speech_text_file);
     coop::BotMemory memory;

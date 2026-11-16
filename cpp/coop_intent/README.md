@@ -846,8 +846,12 @@ Q4_K_M, 1.2 GB), no adapter (`include/coop_intent/talker.h`, `src/llama_talker.c
   Фёдор?», "where is Anna", «кто такой Лео» -> the bot's own reply; «Фёдор!» said to him -> his talk. In the game:
   `names_call.txt` (LyraStarterGame58 CoopBot E2E).
 - **The words.** Think blocks, markup, a "Name:" before the words, quotes, pictographs out; a capital at each sentence's
-  start and the English "I"; an answer cut by the token limit loses its last unfinished sentence. One more draw when the
-  answer is empty, has Chinese, Japanese or Korean in it («я не помню自己的 возраст») or is not in the player's language.
+  start and the English "I"; an answer cut by the token limit loses its last unfinished sentence. An answer partly in another
+  language keeps its sentences in the role's (`TalkSayableIn`, 2026-11-16: «Пleased to meet you, Тимур. Я Лео, и у меня тоже
+  хорошее имя.» was thrown away whole twice, and the musician said nothing; now «Я Лео, и у меня тоже хорошее имя.», the reply's
+  `info` says `kept_part`). One more draw when nothing is left: the answer is empty, every sentence has Chinese, Japanese or
+  Korean in it («я не помню自己的 возраст») or a word in two alphabets, or none is in the language. Checked without a model:
+  `coop_cli --talk-text-tests tools/talk_text_tests.json`.
   The words are written in the player's language already: the game hands them back to `say` and the language's voice
   says them.
 

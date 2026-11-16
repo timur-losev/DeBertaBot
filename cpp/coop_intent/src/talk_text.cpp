@@ -115,6 +115,39 @@ std::string TalkAnswer(std::string_view raw, bool cut_off) {
     return any ? EncodeUtf8(t) : std::string();
 }
 
+std::string TalkSentencesInLanguage(std::string_view text, std::string_view language) {
+    const std::u32string t = DecodeUtf8(text);
+    std::u32string out, sentence;
+    auto keep = [&]() {
+        size_t b = 0, e = sentence.size();
+        while (b < e && sentence[b] == U' ') ++b;
+        while (e > b && sentence[e - 1] == U' ') --e;
+        const std::u32string s = sentence.substr(b, e - b);
+        if (!s.empty() && TalkInLanguage(EncodeUtf8(s), language)) out += (out.empty() ? U"" : U" ") + s;
+        sentence.clear();
+    };
+    for (size_t i = 0; i < t.size(); ++i) {
+        sentence += t[i];
+        if (!EndsSentence(t[i])) continue;
+        // the sentence's end: its marks ("?!", "...") and a closing quote, then a space or the text's end
+        size_t j = i + 1;
+        while (j < t.size() && (EndsSentence(t[j]) || IsQuote(t[j]))) sentence += t[j++];
+        if (j == t.size() || t[j] == U' ') keep();
+        i = j - 1;
+    }
+    keep();
+    return EncodeUtf8(out);
+}
+
+std::string TalkSayableIn(std::string_view raw, bool cut_off, std::string_view language, bool* part) {
+    if (part) *part = false;
+    const std::string answer = TalkAnswer(raw, cut_off);
+    if (answer.empty() || TalkInLanguage(answer, language)) return answer;
+    const std::string kept = TalkSentencesInLanguage(answer, language);
+    if (part) *part = !kept.empty();
+    return kept;
+}
+
 bool TalkInLanguage(std::string_view text, std::string_view language) {
     int cyr = 0, lat = 0, digits = 0;
     bool word_cyr = false, word_lat = false;   // the letters of the word being read
