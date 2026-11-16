@@ -795,6 +795,30 @@ Q4_K_M, 1.2 GB), no adapter (`include/coop_intent/talker.h`, `src/llama_talker.c
   question of what it is doing. Checked offline (scratchpad probe_orders_look.py, the owner's lines of 2026-11-15 and more, 36
   lines): every order said at a person with no name -> the bot, with the right target; named -> that person; talk stays. In the
   game: `orders_by_name.txt`.
+- **Standing where the player points; names as the recognizer hears them** (2026-11-15, the owner's log of the same evening:
+  «когда я говорю встань сюда, встань туда, они не двигаются ... стреляю Михалыча. Он говорит, open fire. И ничего не делает»).
+  - **"stand"** (`StandThere`, `MarkStand`): a HOLD_POSITION turn whose line has «встань», «стань», «становись», "stand",
+    «ponte», «colócate» with a place word after it in its part (сюда, туда, тут, там, возле, у, на, рядом, перед, here, there, by,
+    near, on, aquí, allí, ...) carries `"stand": true` and says "On my way there." (all five tables have it): the game walks it
+    there and holds it, as near as it gets. «Встань!» (STAND_UP), «стой здесь», «стой на месте», "stand by" are left alone.
+  - **A patronymic as the street says it** (`CalleeNames`): Михалыч is heard as «Михаилович», «Михайловича», «Михайловиче» and
+    «Михаил» (the recognizer's words for it in the owner's log; «Михаилович, встань ...» went to the bot as a line naming nobody):
+    for a name in -ыч (or a vowel and -ич) its stem and «ович» / «евич», with й, и or в before the stem's last л (Михал- ->
+    Михайл-, Михаил-; Пал- -> Павл-), and a stem of six letters or more alone (Михаил). Кузьмич, Ильич are names of their own.
+  - **A demonstrative before a thing is not him** (`Mentions`): «встань возле той стенки», «повернись к той стене», "go to that
+    wall" named "her" (the person under the crosshair) since «той», «тому», «того», «ту» were added to him / her: a demonstrative
+    followed by a word that is no person noun, no verb and no small word (`SmallWord`: prepositions, conjunctions, там, быстро,
+    пожалуйста, ...) is that thing's. Person nouns added: урода, козла, придурка, дядьку, мужчину, женщину, девушку, бабулю,
+    старушку, рабочего, охранника, продавца, guy, man, woman, dude, lady.
+  - **Whom implied**: «застрели!», «втащи!», «убей!», «дай по щам!» with nobody named and nothing more in the part (small words
+    aside) are about the one pointed at ("pointed", with "else"); «застрели Петю» (nobody known) is left as it was.
+  - **«огонь по / в / на X»**, "fire at / on X" are shooting («открыть огонь в Михайловиче»).
+  - **An act's place is the one it is done to**: the planner gives OPEN_FIRE the pin left on the map (`"via": "pin_default"`);
+    an act on someone drops such a place and says its own words («Бади, застрели Михалыча» with a pin set was "Opening fire, on
+    your pin." and an order at the pin).
+  Checked offline (probe_orders_look4/5.py with a fence, a bench, a pin and a gaze spot; `--decoder-cpu --talk-cpu`): the owner's
+  lines -> STAND with «Уже иду туда.», Михалыч named in every form, «повернись к той стене» LOOK_AT with no one; teach tests
+  484/484. In the game: `stand_orders.txt`.
 - **`react`** (2026-11-14): `{"cmd":"react","to":role,"line":"(what happened)"}` -> `{"event":"react","to","say"}`: a person of
   the level's words of their own on what happened to them (hurt by someone), in their role and language.
 - **A sitting on a bench** (2026-11-14): the classifier reads a sitting on a thing as getting into a car ("sit down on this

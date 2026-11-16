@@ -5776,6 +5776,31 @@ std::vector<std::string> CalleeNames(const json& c, const std::string& bot_name)
         else if (u.size() >= 5 && u.compare(u.size() - 2, 2, U"ик") == 0) stem = u.substr(0, u.size() - 2);
         if (stem.size() >= 3) names.push_back(coop::EncodeUtf8(stem + U"ян"));
     }
+    // a patronymic as the street says it (Михалыч, Иваныч, Палыч, Сергеич) is heard as the full one too, and the one of six letters or
+    // more as the first name it comes from (2026-11-15, the owner's log: «Михаилович, встань возле этой стенки», «застрели Михайловича»,
+    // «Михаил, иди сюда» were said to Михалыч and called nobody): the stem and «ович» (after a vowel «евич»), with a й, и or в before
+    // the stem's last л as the full name has it (Михал- -> Михайл-, Михаил-; Пал- -> Павл-). Кузьмич, Ильич (no vowel before «ич»)
+    // are names of their own
+    const size_t with_street = names.size();
+    for (size_t k = 0; k < with_street; ++k) {
+        const std::vector<std::string> w = coop::MemoryWords(coop::MemoryNorm(names[k]));
+        if (w.size() != 1) continue;
+        const std::u32string u = coop::DecodeUtf8(w[0]);
+        if (u.size() < 5) continue;
+        const bool yc = u.compare(u.size() - 2, 2, U"ыч") == 0, ic = u.compare(u.size() - 2, 2, U"ич") == 0;
+        if (!yc && !ic) continue;
+        const std::u32string stem = u.substr(0, u.size() - 2);
+        const bool vowel = std::u32string(U"аеиоуэюяы").find(stem.back()) != std::u32string::npos;
+        if (ic && !vowel) continue;
+        const std::u32string suffix = vowel ? U"евич" : U"ович";
+        std::vector<std::u32string> stems = {stem};
+        if (stem.back() == U'л')
+            for (const char32_t ins : {U'й', U'и', U'в'}) stems.push_back(stem.substr(0, stem.size() - 1) + ins + U"л");
+        for (const std::u32string& x : stems) {
+            names.push_back(coop::EncodeUtf8(x + suffix));
+            if (x != stem && x.size() >= 6) names.push_back(coop::EncodeUtf8(x));   // Михаил
+        }
+    }
     std::vector<std::string> out;
     std::unordered_set<std::string> seen;
     for (const std::string& n : names)
@@ -5891,7 +5916,9 @@ bool ActVerb(const std::string& x, const std::string& next, ActOn* out) {
     // decoder wrote "Smack Toli." and the classifier SMOKE)
     else if (starts({"стреля", "стрельни", "пристрел", "застрел", "подстрел", "выстрел", "расстрел", "постреля", "обстреля", "пальни",
                      "шмальни", "шмаляй", "убей", "убейте", "убить", "замочи", "мочи", "грохни", "прикончи", "добей", "ликвидируй",
-                     "устрани", "уничтожь", "пришей", "shoot", "kill", "dispara", "mata"}))
+                     "устрани", "уничтожь", "пришей", "shoot", "kill", "dispara", "mata"}) ||
+             // «открыть огонь в Михайловиче», «огонь по Михалычу», "fire at Nick" (2026-11-15, the owner's log)
+             (x == "огонь" && (next == "по" || next == "в" || next == "на")) || (x == "fire" && (next == "at" || next == "on")))
         kind = "shoot", intent = "OPEN_FIRE", english = "Opening fire!";
     else if (x == "удар" || starts({"ударь", "ударить", "бей", "побей", "избей", "избить", "врежь", "вмажь", "вдарь", "стукни", "тресни", "пни",
                                     "отпинай", "отлупи", "двинь", "втащи", "втащите", "вломи", "влепи", "залепи", "засвети", "накостыляй",
@@ -5932,6 +5959,17 @@ Going GoVerb(const std::string& x) {
     return Going::None;
 }
 
+// a word that is no thing and nobody: a preposition, a conjunction, a particle, "there", "now", "fast" («втащи тому по морде», «убей
+// этого быстро», «застрели, давай»)
+bool SmallWord(const std::string& x) {
+    static const std::unordered_set<std::string> kSmall = {
+        "по", "в", "во", "на", "с", "со", "за", "из", "у", "к", "ко", "от", "до", "и", "а", "но", "или", "потом", "затем", "кто", "что",
+        "который", "которая", "которое", "которые", "там", "тут", "здесь", "вон", "вот", "сейчас", "быстро", "скорее", "живо", "уже",
+        "тоже", "еще", "ещё", "пожалуйста", "нахрен", "нафиг", "нахер", "наконец", "сразу", "давай", "давайте", "ну", "же", "ж", "бы",
+        "ли", "блин", "брат", "братан", "then", "and", "now", "too", "please", "right", "there", "here", "again", "quick", "quickly",
+        "fast", "already", "y", "ahora", "también", "tambien", "ya", "por", "favor", "rápido", "rapido", "ahí", "ahi", "allí", "alli"};
+    return kSmall.count(x) > 0;
+}
 // The ones a line names, each where it is in its words (MemoryNorm'd): a person of the level or the bot by any of their names in
 // any case («Колю», «Майку», "Nick's"), «бота», me, him / her
 struct Mention {
@@ -5972,9 +6010,24 @@ std::vector<Mention> Mentions(const std::vector<std::string>& w, const json& cal
                                                          "он", "она", "они", "того", "тому", "той", "ту", "парню", "парня", "парнем",
                                                          "мужику", "мужика", "мужиком", "чуваку", "чувака", "пацану", "пацана", "деду",
                                                          "деда", "дедом", "старику", "старика", "бабке", "бабку", "тётке", "тётку",
-                                                         "тетке", "тетку", "человеку", "человека", "him",
+                                                         "тетке", "тетку", "человеку", "человека", "урода", "уроду",
+                                                         "гада", "гаду", "козла", "козлу", "придурка", "придурку", "дядьку",
+                                                         "дядьке", "дядю", "дяде", "мужчину", "мужчине", "женщину", "женщине",
+                                                         "девушку", "девушке", "бабулю", "бабуле", "старушку", "старушке",
+                                                         "рабочего", "рабочему", "охранника", "охраннику", "продавца", "продавцу",
+                                                         "guy", "man", "woman", "dude", "lady", "fellow", "him",
                                                          "her", "them", "that", "this", "lo", "la", "le", "les", "ese", "este", "esa", "esta",
                                                          "él", "ella"};
+    // «встань возле той стенки», «повернись к той стене», "go to that wall" (2026-11-15, the owner's log: the bot turned to Михалыч,
+    // not to the wall): a demonstrative before a word that is no person, no verb and no small word is that thing's, not him / her
+    static const std::unordered_set<std::string> kDemo = {"этого", "этому", "этим", "эту", "этот", "этих", "этой", "того", "тому", "той", "ту",
+                                                          "тот", "that", "this", "ese", "este", "esa", "esta"};
+    auto of_a_thing = [&](size_t i) {
+        if (!kDemo.count(w[i]) || i + 1 >= w.size()) return false;
+        const std::string& x = w[i + 1];
+        return !kHim.count(x) && !kMe.count(x) && !kBot.count(x) && !SmallWord(x) && GoVerb(x) == Going::None &&
+               !ActVerb(x, i + 2 < w.size() ? w[i + 2] : std::string(), nullptr);
+    };
     std::vector<Mention> out;
     auto person = [](const json* c, const std::string& n) {
         const std::string to = c->value("to", std::string());
@@ -6019,7 +6072,7 @@ std::vector<Mention> Mentions(const std::vector<std::string>& w, const json& cal
         if (found) continue;
         if (kBot.count(w[i])) out.push_back({i, {{"kind", "bot"}}});
         else if (kMe.count(w[i])) out.push_back({i, {{"kind", "speaker"}}});
-        else if (kHim.count(w[i])) out.push_back({i, {{"kind", "pointed"}}, true});
+        else if (kHim.count(w[i]) && !of_a_thing(i)) out.push_back({i, {{"kind", "pointed"}}, true});
     }
     return out;
 }
@@ -6084,9 +6137,25 @@ bool ReadActOn(const std::string& line, const json& callees, const std::string& 
             if (ms[m].at > verb && ms[m].at < end) k = m;
         for (size_t m = ms.size(); m-- > 0 && k == ms.size();)
             if (ms[m].at < verb && clause[ms[m].at] == clause[verb]) k = m;
-        if (k == ms.size()) continue;   // «стреляй!», «бей!»: no one said, the line as the classifier reads it
-        act.target = Resolved(ms, k);
-        if (IsSelf(act.target, self)) continue;
+        if (k == ms.size()) {
+            // «стреляй!», «бей!»: no one said, the line as the classifier reads it. A verb that wants whom said with nobody and
+            // nothing more («застрели!», «втащи!», «дай по щам!») is about the one pointed at (2026-11-15, the owner's log:
+            // «застрели Михайловича» with the name unheard was "Open fire" at nobody); a word after it that may be whom («застрели
+            // Петю»: nobody known) leaves the line as it is
+            static const std::unordered_set<std::string> kWantsWhom = {
+                "застрели", "пристрели", "подстрели", "расстреляй", "убей", "убейте", "замочи", "грохни", "прикончи", "добей",
+                "ликвидируй", "устрани", "уничтожь", "пришей", "втащи", "втащите", "вломи", "врежь", "вмажь", "вдарь", "наваляй",
+                "накостыляй", "ударь", "стукни", "тресни", "пни", "отпинай", "отлупи", "избей", "побей", "kill", "punch", "smack", "slap"};
+            if (!face && !kWantsWhom.count(w[verb])) continue;
+            bool more = false;
+            for (size_t i = verb + 1; i < w.size() && clause[i] == clause[verb] && !more; ++i)
+                more = !SmallWord(w[i]) && !(face && i <= verb + 1);
+            if (more) continue;
+            act.target = json{{"kind", "pointed"}};
+        } else {
+            act.target = Resolved(ms, k);
+            if (IsSelf(act.target, self)) continue;
+        }
         act.clause = clause[verb];
         act.clauses = parts;
         act.verb_at = verb;
@@ -6215,13 +6284,18 @@ bool ApplyActOn(const ActOn& act, json* turns, coop::Localizer* table) {
         {"FOLLOW_ME", {"FOLLOW_ME", "COVER_ME", "COME_BACK"}}};
     const bool going = act.intent == "MOVE_TO" || act.intent == "FOLLOW_ME";
     const bool named = act.target.value("kind", std::string()) != "pointed";
+    // a place the planner gave an act on someone (the pin left on the map: "via": "pin_default") is not where it is done, the one it is
+    // done to is (2026-11-15: «Бади, застрели Михалыча» with a pin set was "Opening fire, on your pin." and an order at the pin)
+    auto placed = [](const json& t) {
+        return t.contains("order") && t["order"].is_object() && t["order"].contains("entity") && !t["order"]["entity"].is_null();
+    };
     auto rewrite = [&](json& t) {
         const json was = {{"intent", t.value("intent", json(nullptr))}, {"action", t.value("action", json(nullptr))}, {"prob", t.value("prob", json(nullptr))}};
         const std::string intent = t.value("intent", std::string());
         // read right: its order and its own words, the target added. A walk to someone named keeps neither (the place was their
         // name misread, the words name it: «Иду к метке»); one to him under the crosshair keeps the place (a thing there: the
         // walk as before) and says its own words (the planner's are about the place, not about him)
-        const bool kept = intent == act.intent && t.value("action", std::string()) == "act" && !(going && named);
+        const bool kept = intent == act.intent && t.value("action", std::string()) == "act" && !(going && named) && (going || !placed(t));
         const bool kept_words = kept && !going && t.contains("say");
         t["intent"] = act.intent;
         t["action"] = "act";
@@ -6259,8 +6333,8 @@ bool ApplyActOn(const ActOn& act, json* turns, coop::Localizer* table) {
         const std::string intent = t.value("intent", std::string());
         if (!t.contains("order") || !t["order"].is_object() || (intent != act.intent && std::find(same.begin(), same.end(), intent) == same.end()))
             continue;
-        if (going && named) {
-            rewrite(t);   // its place was their name misread
+        if ((going && named) || (!going && placed(t))) {
+            rewrite(t);   // its place was their name misread; an act's place is the one it is done to
         } else {
             t["order"]["target"] = act.target;
             t["target"] = act.target;
@@ -6357,6 +6431,54 @@ WordOrders ApplyWordOrders(const std::string& line, const json& callees, const s
             else ++k;
         }
     return r;
+}
+
+// «встань сюда», «встань туда», «встань возле забора», «встань на мою метку», "stand over there", «ponte allí» (2026-11-15, the owner:
+// «когда я говорю встань сюда, встань туда, они не двигаются ... Я же показываю, куда встать. Я хочу, чтобы чётенько вставали, куда я
+// прям показываю»): HOLD_POSITION is "stay where you are" to the game (a spot named "near", or one within 2.5 m, is never walked to),
+// unless the order says "stand": to that place, or where the crosshair is, and held there. «встань» with no place after it in its
+// part is getting up; "stand by" alone is waiting
+bool StandThere(const std::string& line) {
+    const std::vector<std::string> w = coop::MemoryWords(coop::MemoryNorm(line));
+    static const std::unordered_set<std::string> kStand = {"встань", "встаньте", "стань", "станьте", "становись", "становитесь", "stand", "ponte",
+                                                           "póngase", "pongase", "colócate", "colocate", "sitúate", "situate", "párate", "parate"};
+    static const std::unordered_set<std::string> kWhere = {
+        "сюда", "туда", "здесь", "тут", "там", "вон", "вот", "возле", "около", "рядом", "у", "на", "к", "перед", "за", "под", "напротив",
+        "посреди", "между", "here", "there", "by", "near", "next", "on", "at", "beside", "behind", "aquí", "aqui", "allí", "alli", "ahí",
+        "ahi", "allá", "alla", "junto", "cerca", "en", "al", "delante", "detrás", "detras"};
+    size_t parts = 1;
+    const std::vector<size_t> clause = Clauses(w, &parts);
+    for (size_t i = 0; i < w.size(); ++i) {
+        if (!kStand.count(w[i])) continue;
+        for (size_t j = i + 1; j < w.size() && clause[j] == clause[i]; ++j) {
+            if (w[i] == "stand" && w[j] == "by" && j == i + 1 && j + 1 == w.size()) break;
+            if (kWhere.count(w[j])) return true;
+        }
+    }
+    return false;
+}
+// ... and its words are of going there ("On my way there." from the table in use, `table`), not "Staying put."
+void MarkStand(const std::string& line, json* turns, coop::Localizer* table) {
+    if (!turns->is_array() || !StandThere(line)) return;
+    for (json& t : *turns) {
+        // read as getting up ("Stand up there.", STAND_UP 0.72 in the game's run of 2026-11-15): with a place after «встань» it is
+        // standing there (a chair or a bed is up onto it, as HOLD_POSITION has it)
+        if (t.value("intent", std::string()) == "STAND_UP" && t.value("action", std::string()) == "act") {
+            t["intent"] = "HOLD_POSITION";
+            if (!t.contains("order") || !t["order"].is_object()) t["order"] = json::object();
+            t["order"]["intent"] = "HOLD_POSITION";
+        }
+        if (t.value("intent", std::string()) != "HOLD_POSITION" || !t.contains("order") || !t["order"].is_object()) continue;
+        t["order"]["stand"] = true;
+        if (t.value("action", std::string()) != "act") continue;
+        const std::string en = "On my way there.";
+        std::string local;
+        coop::Localizer* const were = g_replies;
+        g_replies = table;
+        if (table && Localize(en, &local)) t["say"] = local, t["say_en"] = en;
+        else t["say"] = en, t.erase("say_en");
+        g_replies = were;
+    }
 }
 
 // An order the bot would carry out (2026-11-15): a line said while looking at a person, nobody called by name, is the bot's when it
@@ -7551,6 +7673,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                     if (words_said.rebuilt) h.note = "the turns made from the words";
                     if (words_said.went)
                         h.note += std::string(h.note.empty() ? "" : "; ") + "going to someone: " + words_said.go.kind + " " + words_said.go.target.dump();
+                    MarkStand(line, &turns, RepliesIn(person_lang, g_talk->roles[to].bro));   // «встань туда»: there, not where they stand
                     bool acted = false;
                     {
                         const ActOn& act = words_said.act;
@@ -7742,6 +7865,7 @@ int RunServe(Model& m, const coop::SpeechOptions& speech, int threads, bool want
                     if (words_said.rebuilt) h.note = "the turns made from the words";
                     if (words_said.went)
                         h.note += std::string(h.note.empty() ? "" : "; ") + "going to someone: " + words_said.go.kind + " " + words_said.go.target.dump();
+                    MarkStand(own, &turns, g_replies);   // «встань туда»: there, not where it stands
                     const ActOn& act = words_said.act;
                     if (words_said.acted) {
                         acted = true;
